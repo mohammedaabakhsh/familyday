@@ -1075,7 +1075,7 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
         <div class="card-specs">
           <div class="card-spec">${c.suitable&&c.suitable.includes('عرسان')?'للعرسان':'للعوائل'}</div>
           <div class="card-spec">${c.rooms===1?'غرفة نوم واحدة':'غرفتين نوم'}</div>
-          ${(()=>{const b=c.tags&&c.tags.find(t=>t.includes('بانيو')||t.includes('جاكوزي'));return b?'<div class="card-spec">'+b+'</div>':''})()} 
+          ${(()=>{const b=c.tags&&c.tags.find(t=>t.includes('بانيو')||t.includes('جاكوزي'));return b?'<div class="card-spec" style="line-height:1.6;">'+b.replace('||','<br>')+'</div>':''})()} 
         </div>
         <div class="card-guests">
           <span class="card-guests-max" style="color:#19a7b7;">أقصى عدد: ${c.guests > 10 ? c.guests + ' ضيفاً' : c.guests === 2 ? 'ضيفين' : c.guests + ' ضيوف'}</span>
@@ -1220,7 +1220,7 @@ function openM(id,type){
       const indoor=[...indoorBase,...kGroups];
       const outdoor=groups.slice(oIdx>=0?oIdx:2,kIdx>=0?kIdx:groups.length);
       const tipMap={'بانيو داخلي':'ضمن غرفة النوم','بانيو خارجي':'بانيو خارجي بخصوصية كاملة','بانيو داخلي مع جاكوزي':'ضمن غرفة النوم الرئيسية','ميني بار':'سناكس ومشروبات متنوعة بأسعار رمزية'};
-      const rt=t=>{if(t.includes('::')){const[d,tip]=t.split('::');return '<span class="tag" data-tip="'+tip+'">'+d+'</span>';}if(t.includes('||')){const ls=t.split('||');return '<span class="tag" style="display:inline-flex;flex-direction:column;text-align:center;line-height:1.6;padding:6px 12px;">'+ls.map(l=>'<span>'+l+'</span>').join('')+'</span>';}const tip=tipMap[t];return tip?'<span class="tag" data-tip="'+tip+'">'+t+'</span>':'<span class="tag">'+t+'</span>';};
+      const rt=t=>{if(t.includes('::')){const[d,tip]=t.split('::');return '<span class="tag" data-tip="'+tip+'">'+d+'</span>';}if(t.includes('||')){return '<span class="tag">'+t.replace('||',' ')+'</span>';}const tip=tipMap[t];return tip?'<span class="tag" data-tip="'+tip+'">'+t+'</span>':'<span class="tag">'+t+'</span>';};
       const rg=g=>g.map(rt).join('')+'<div style="width:100%;height:0;margin:4px 0"></div>';
       return '<div class="tags-lbl">المنطقة الداخلية</div><div class="tags">'+indoor.map(rg).join('')+'</div>'
         +'<div class="tags-lbl" style="margin-top:14px;">المنطقة الخارجية</div><div class="tags">'+outdoor.map(rg).join('')+'</div>'
