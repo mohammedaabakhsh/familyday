@@ -938,7 +938,7 @@ function bottomNav(tab){
     document.getElementById('grid').parentElement.style.display='';
     document.getElementById('filterSection').style.display='';
     document.getElementById('sectionTitle').textContent='';
-    document.getElementById('sectionDesc').textContent=type==='resort'?'بتجارب مستوحاة من مدن العالم':type==='chalet'?'صممت لتناسب مختلف المناسبات':'';
+    document.getElementById('sectionDesc').textContent='بتجارب مستوحاة من مدن العالم';
     document.getElementById('sectionTag').textContent='';
     document.getElementById('sectionTag').style.display='none';
     _serviceSubReturn=null;
@@ -947,7 +947,6 @@ function bottomNav(tab){
   document.getElementById('sinema-detail').classList.add('hide');
   document.getElementById('maiya-detail').classList.add('hide');
   // Close any open overlays first
-  document.getElementById('services-overlay').classList.add('hide');
   closeM();
   if(tab==='resort') showSection('resort');
   else if(tab==='services') showServices();
@@ -1001,14 +1000,14 @@ function showSection(type){
   document.getElementById('sectionTag').style.display='none';
   document.getElementById('heroLogo').style.display='none';
   document.getElementById('sectionTag').className='section-tag '+d.tagClass;
-  document.getElementById('sectionTag').textContent=type==='resort'?'اختر الكوخ المناسب لك':'اختر القسم المناسب لك';
+  document.getElementById('sectionTag').textContent='اختر الكوخ المناسب لك';
   document.getElementById('sectionTag').style.display='inline-block';
-  document.getElementById('sectionTitle').textContent=type==='resort'?'منتجع يوم العائلة':type==='chalet'?'استراحة يوم العائلة':'أكواخنا';
-  document.getElementById('sectionDesc').textContent=type==='resort'?'بتجارب مستوحاة من مدن العالم':type==='chalet'?'صممت لتناسب مختلف المناسبات':'';
+  document.getElementById('sectionTitle').textContent='منتجع يوم العائلة';
+  document.getElementById('sectionDesc').textContent='بتجارب مستوحاة من مدن العالم';
   const fs=document.getElementById('filterSection');
   fs.style.display='flex';
   setActiveTab('resort');
-  else render('all',type);
+  render('all',type);
 }
 
 function openGalDirect(c){
