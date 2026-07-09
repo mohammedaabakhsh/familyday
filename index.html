@@ -778,9 +778,24 @@ function tarfihiOrder(){
       </div>
     </div>
     <div style="background:#fff;border-radius:16px;padding:16px 20px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
+      <div style="font-size:13px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:10px;">إضافات اختيارية</div>
+      <label onclick="toggleJalsatCake()" id="jalsat-cake-label" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:10px 14px;border-radius:12px;border:1.5px solid #e8e2d8;transition:all 0.2s;">
+        <div>
+          <div style="font-size:14px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;">🎂 كيك وعصير</div>
+          <div style="font-size:12px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-top:2px;">170 ريال</div>
+        </div>
+        <div id="jalsat-cake-toggle" style="width:48px;height:26px;border-radius:13px;background:#e8e2d8;position:relative;transition:background 0.2s;flex-shrink:0;">
+          <div id="jalsat-cake-knob" style="width:22px;height:22px;border-radius:11px;background:#fff;position:absolute;top:2px;right:2px;transition:transform 0.2s;box-shadow:0 1px 4px rgba(0,0,0,0.2);"></div>
+        </div>
+      </label>
+      <div id="jalsat-total-row" style="display:none;margin-top:10px;padding:10px 14px;border-radius:12px;background:#f0fbfc;border:1px solid rgba(25,167,183,0.3);justify-content:space-between;align-items:center;">
+        <div style="font-size:13px;color:#133548;font-family:'Tajawal',sans-serif;">المجموع</div>
+        <div id="jalsat-total-price" style="font-size:16px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;"></div>
+      </div>
+    </div>
+    <div style="background:#fff;border-radius:16px;padding:16px 20px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
       <div style="font-size:13px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:10px;">تعليمات وملاحظات</div>
       <div style="display:flex;flex-direction:column;gap:8px;">
-        <div style="display:flex;align-items:flex-start;gap:8px;font-family:'Tajawal',sans-serif;font-size:13px;color:#2d4a5a;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> يمكن إضافة كيك وعصير مقابل 170 ريال.</div>
         <div style="display:flex;align-items:flex-start;gap:8px;font-family:'Tajawal',sans-serif;font-size:13px;color:#2d4a5a;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> الجلسات متاحة حسب التوفر والحجز المسبق.</div>
         <div style="display:flex;align-items:flex-start;gap:8px;font-family:'Tajawal',sans-serif;font-size:13px;color:#2d4a5a;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> يُرجى المحافظة على تجهيزات الجلسة أثناء الاستخدام.</div>
         <div style="display:flex;align-items:flex-start;gap:8px;font-family:'Tajawal',sans-serif;font-size:13px;color:#2d4a5a;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> للاستفسار والحجز، تواصل معنا عبر واتساب.</div>
@@ -788,7 +803,7 @@ function tarfihiOrder(){
     </div>
   </div>
   <div style="padding:0 20px calc(80px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
-    <button onclick="openOrderPopup(_jalsatSessions[_jalsatIdx] ? _jalsatSessions[_jalsatIdx].name + ' - ' + _jalsatSessions[_jalsatIdx].persons + ' - السعر: ' + _jalsatSessions[_jalsatIdx].price : 'جلسة أرضية')" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;width:100%;text-align:center;">اطلبها الآن</button>
+    <button onclick="openOrderPopup(getJalsatOrderText())" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;width:100%;text-align:center;">اطلبها الآن</button>
   </div></div>
 </div>
 
@@ -1680,7 +1695,44 @@ function openJalsatDetail(){
   };
 }
 function closeJalsatDetail(){ document.getElementById('jalsat-detail').classList.add('hide'); }
+
+var _jalsatCakeAdded = false;
+function toggleJalsatCake(){
+  _jalsatCakeAdded = !_jalsatCakeAdded;
+  var toggle = document.getElementById('jalsat-cake-toggle');
+  var knob = document.getElementById('jalsat-cake-knob');
+  var label = document.getElementById('jalsat-cake-label');
+  var totalRow = document.getElementById('jalsat-total-row');
+  var totalPrice = document.getElementById('jalsat-total-price');
+  if(_jalsatCakeAdded){
+    toggle.style.background = '#19a7b7';
+    knob.style.transform = 'translateX(-22px)';
+    label.style.border = '1.5px solid #19a7b7';
+    var s = _jalsatSessions[_jalsatIdx];
+    var base = parseInt(s.price);
+    totalPrice.textContent = (base + 170) + ' ريال';
+    totalRow.style.display = 'flex';
+  } else {
+    toggle.style.background = '#e8e2d8';
+    knob.style.transform = 'translateX(0)';
+    label.style.border = '1.5px solid #e8e2d8';
+    totalRow.style.display = 'none';
+  }
+}
+function getJalsatOrderText(){
+  var s = _jalsatSessions[_jalsatIdx];
+  if(!s) return 'جلسة أرضية';
+  var txt = s.name + ' - ' + s.persons + ' - السعر: ' + s.price;
+  if(_jalsatCakeAdded){
+    var base = parseInt(s.price);
+    txt += ' + كيك وعصير (170 ريال) - المجموع: ' + (base+170) + ' ريال';
+  }
+  return txt;
+}
+
 function jalsatGoTo(idx){
+  // reset cake
+  if(_jalsatCakeAdded){ _jalsatCakeAdded=true; toggleJalsatCake(); }
   var total = _jalsatSessions.length;
   if(total===0) return;
   idx = Math.max(0, Math.min(idx, total-1));
