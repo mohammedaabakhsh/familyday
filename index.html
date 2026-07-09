@@ -552,7 +552,7 @@ function sendOrderWhatsapp(){
     };
     timeStr = ' - الوقت: من ' + fmt12(h) + ' حتى ' + fmt12(endH);
   }
-  var msg = 'السلام عليكم 👋' + '\n' + 'الاسم: ' + name + '\n' + 'الكوخ: ' + villa + '\n' + 'أريد استئجار: ' + _orderItemName + (timeStr ? '\n' + 'الوقت:' + timeStr : '') + (notes ? '\n' + 'ملاحظات: ' + notes : '');
+  var msg = 'السلام عليكم 👋' + '\n' + 'الاسم: ' + name + '\n' + 'الكوخ: ' + villa + '\n' + 'أريد استئجار: ' + _orderItemName + (timeStr ? '\n' + timeStr.replace(' - ','') : '') + (notes ? '\n' + 'ملاحظات: ' + notes : '');
   window.open('https://wa.me/966555582182?text=' + encodeURIComponent(msg), '_blank');
   closeOrderPopup();
 }
