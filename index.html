@@ -524,9 +524,7 @@ var _orderItemName = '';
 function openOrderPopup(itemName, showTime){
   _orderItemName = itemName;
   document.getElementById('order-item-name').textContent = itemName;
-  document.getElementById('order-name').value = '';
   document.getElementById('order-villa').value = '';
-  document.getElementById('order-notes').value = '';
   document.getElementById('order-time').value = '';
   document.getElementById('order-time-wrap').style.display = showTime ? 'block' : 'none';
   document.getElementById('order-popup').classList.remove('hide');
@@ -535,10 +533,8 @@ function closeOrderPopup(){
   document.getElementById('order-popup').classList.add('hide');
 }
 function sendOrderWhatsapp(){
-  var name = document.getElementById('order-name').value.trim();
   var villa = document.getElementById('order-villa').value.trim();
-  if(!name || !villa){ alert('يرجى إدخال الاسم ورقم الفلة'); return; }
-  var notes = document.getElementById('order-notes').value.trim();
+  if(!villa){ alert('يرجى إدخال اسم الكوخ'); return; }
   var timeVal = document.getElementById('order-time').value;
   var timeStr = '';
   if(timeVal){
@@ -552,7 +548,7 @@ function sendOrderWhatsapp(){
     };
     timeStr = ' - الوقت: من ' + fmt12(h) + ' حتى ' + fmt12(endH);
   }
-  var msg = 'السلام عليكم، اسمي: ' + name + ' - ' + villa + ' - أريد استئجار: ' + _orderItemName + timeStr + (notes ? ' - ملاحظات: ' + notes : '');
+  var msg = 'السلام عليكم، ' + villa + ' - أريد استئجار: ' + _orderItemName + timeStr;
   window.open('https://wa.me/966555582182?text=' + encodeURIComponent(msg), '_blank');
   closeOrderPopup();
 }
@@ -1719,12 +1715,8 @@ function closeWalaaDetail(){
     <div style="font-size:18px;font-weight:700;color:#133548;margin-bottom:6px;">تفاصيل الطلب</div>
     <div id="order-item-name" style="font-size:13px;color:#19a7b7;margin-bottom:20px;"></div>
     <div style="margin-bottom:14px;">
-      <label style="font-size:13px;color:#133548;font-weight:700;display:block;margin-bottom:6px;">اسمك</label>
-      <input id="order-name" type="text" placeholder="أدخل اسمك" style="width:100%;padding:12px 14px;border:1.5px solid #19a7b7;border-radius:12px;font-family:'Tajawal',sans-serif;font-size:14px;color:#133548;outline:none;box-sizing:border-box;">
-    </div>
-    <div style="margin-bottom:14px;">
-      <label style="font-size:13px;color:#133548;font-weight:700;display:block;margin-bottom:6px;">رقم أو اسم الكوخ</label>
-      <input id="order-villa" type="text" placeholder="مثال: كوخ 5 أو الكوخ البوهيمي" style="width:100%;padding:12px 14px;border:1.5px solid #19a7b7;border-radius:12px;font-family:'Tajawal',sans-serif;font-size:14px;color:#133548;outline:none;box-sizing:border-box;">
+      <label style="font-size:13px;color:#133548;font-weight:700;display:block;margin-bottom:6px;">اسم الكوخ</label>
+      <input id="order-villa" type="text" placeholder="مثال: الكوخ البوهيمي" style="width:100%;padding:12px 14px;border:1.5px solid #19a7b7;border-radius:12px;font-family:'Tajawal',sans-serif;font-size:14px;color:#133548;outline:none;box-sizing:border-box;">
     </div>
     <div style="margin-bottom:14px;" id="order-time-wrap">
       <label style="font-size:13px;color:#133548;font-weight:700;display:block;margin-bottom:6px;">من ساعة كم؟</label>
@@ -1741,10 +1733,7 @@ function closeWalaaDetail(){
         <option value="26">2:00 ص</option>
       </select>
     </div>
-    <div style="margin-bottom:24px;">
-      <label style="font-size:13px;color:#133548;font-weight:700;display:block;margin-bottom:6px;">ملاحظات</label>
-      <textarea id="order-notes" placeholder="أي ملاحظات إضافية (اختياري)" rows="3" style="width:100%;padding:12px 14px;border:1.5px solid #19a7b7;border-radius:12px;font-family:'Tajawal',sans-serif;font-size:14px;color:#133548;outline:none;box-sizing:border-box;resize:none;"></textarea>
-    </div>
+    <div style="margin-bottom:24px;"></div>
     <div style="display:flex;gap:10px;">
       <button onclick="closeOrderPopup()" style="flex:1;padding:12px;border:1.5px solid #19a7b7;border-radius:12px;background:#fff;color:#133548;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:700;cursor:pointer;">إلغاء</button>
       <button onclick="sendOrderWhatsapp()" style="flex:2;padding:12px;border:none;border-radius:12px;background:#133548;color:#fff;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:700;cursor:pointer;">اطلبها الآن ←</button>
