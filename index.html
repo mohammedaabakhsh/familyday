@@ -126,7 +126,7 @@ body{background:var(--bg);color:var(--text);font-family:'Tajawal',sans-serif;min
   padding:0 24px calc(env(safe-area-inset-bottom,0px) + 85px);
 }
 .landing-logo-img{
-  width:130px;margin-bottom:4px;
+  width:148px;margin-bottom:4px;
 }
 .landing-logo{
   font-size:20px;font-weight:700;color:#133548;
@@ -143,8 +143,8 @@ body{background:var(--bg);color:var(--text);font-family:'Tajawal',sans-serif;min
   margin-bottom:6px;letter-spacing:0.1em;text-align:center;
   text-transform:uppercase;margin-bottom:8px;text-shadow:0 1px 4px rgba(255,255,255,0.5)
 }
-.landing-subtitle{font-size:12px;color:#133548;font-weight:400;text-align:center;margin-bottom:16px;text-shadow:0 1px 4px rgba(255,255,255,0.5);letter-spacing:0.02em;}
-.landing-cards{display:flex;flex-direction:column;gap:14px;width:100%;margin-top:14px}
+.landing-subtitle{font-size:12px;color:#133548;font-weight:400;text-align:center;margin-bottom:12px;text-shadow:0 1px 4px rgba(255,255,255,0.5);letter-spacing:0.02em;}
+.landing-cards{display:flex;flex-direction:column;gap:12px;width:100%;margin-top:10px}
 .landing-card{
   background:rgba(10,40,80,0.55);
   border:1px solid rgba(100,180,255,0.35);
@@ -159,10 +159,10 @@ body{background:var(--bg);color:var(--text);font-family:'Tajawal',sans-serif;min
   box-shadow:0 12px 30px rgba(19,53,72,0.25);
   transform:translateY(-3px)
 }
-.landing-card.resort{background:rgba(19,53,72,0.45);border-color:rgba(19,53,72,0.4)}
-.landing-card.resort:hover,.landing-card.resort:active{background:rgba(19,53,72,0.65)}
-.landing-card.services{background:rgba(25,167,183,0.40);border-color:rgba(25,167,183,0.4)}
-.landing-card.services:hover,.landing-card.services:active{background:rgba(25,167,183,0.60)}
+.landing-card.resort{background:#133548;border-color:#133548}
+.landing-card.resort:hover,.landing-card.resort:active{background:#1a4560}
+.landing-card.services{background:rgba(25,167,183,0.15);border-color:rgba(25,167,183,0.7)}
+.landing-card.services:hover,.landing-card.services:active{background:rgba(25,167,183,0.30)}
 .landing-icon{
   width:46px;height:46px;border-radius:10px;flex-shrink:0;
   display:flex;align-items:center;justify-content:center;font-size:22px;
@@ -590,13 +590,13 @@ function tarfihiOrder(){
   </div>
   <div class="landing-bottom">
     <div class="landing-title">استكشف خيارك الأنسب</div>
-    <div class="landing-subtitle">تعرّف على التفاصيل والخدمات</div>
+    <div class="landing-subtitle">تعرّف على الأكواخ والخدمات</div>
     <div class="landing-cards">
       <div class="landing-card resort" onclick="showSection('resort')">
-        <div class="landing-card-title">منتجع يوم العائلة</div>
+        <div class="landing-card-title">الأكواخ</div>
       </div>
       <div class="landing-card services" onclick="showServices()">
-        <div class="landing-card-title">خدمات منتجع يوم العائلة</div>
+        <div class="landing-card-title">خدمات المنتجع</div>
       </div>
     </div>
   </div>
