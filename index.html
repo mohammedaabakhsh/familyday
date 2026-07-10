@@ -1927,7 +1927,7 @@ function updateTawilatContents(){
     'أطقم تقديم متكاملة',
     'مناديل قماش',
     'تنسيق زهور',
-    'حاملات شموع مع شموع'
+    'حاملات شموع مزودة بالشموع'
   ];
   var html = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">';
   for(var i=0;i<items.length;i++){
@@ -2068,8 +2068,8 @@ function closeWalaaDetail(){
   <div style="background:#133548;padding:56px 24px 24px;text-align:center;position:relative;">
     <button onclick="closeTawilatDetail()" style="position:absolute;top:18px;right:18px;background:rgba(255,255,255,0.15);border:none;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;cursor:pointer;border-radius:20px;padding:6px 14px;">❯ رجوع</button>
     <div style="font-size:26px;font-weight:700;color:#fff;margin-bottom:6px;">طاولات الطعام</div>
-    <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;margin-top:4px;">جلسة طعام مميزة لمجموعتك</div>
-    <div style="margin-top:10px;display:inline-block;background:rgba(25,167,183,0.3);border:1px solid rgba(25,167,183,0.6);border-radius:20px;padding:5px 16px;font-family:'Tajawal',sans-serif;font-size:12px;color:#fff;font-weight:600;">اختر حسب العدد</div>
+    <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;margin-top:4px;">جلسة طعام خارجية لمجموعتكم</div>
+    <div style="margin-top:10px;display:inline-block;background:rgba(25,167,183,0.3);border:1px solid rgba(25,167,183,0.6);border-radius:20px;padding:5px 16px;font-family:'Tajawal',sans-serif;font-size:12px;color:#fff;font-weight:600;">اختر عدد الأشخاص</div>
   </div>
 
   <div style="padding:16px 20px 0;">
@@ -2090,6 +2090,7 @@ function closeWalaaDetail(){
         <button id="ts-24" onclick="setTawilatSize(24)" style="padding:8px 16px;border:none;border-radius:20px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:#f0f4f7;color:#133548;">24</button>
         <button id="ts-32" onclick="setTawilatSize(32)" style="padding:8px 16px;border:none;border-radius:20px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:#f0f4f7;color:#133548;">32</button>
       </div>
+      <div style="font-size:11px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-top:10px;text-align:center;">اختر العدد لعرض السعر المناسب</div>
     </div>
 
     <!-- Option selector -->
@@ -2099,14 +2100,14 @@ function closeWalaaDetail(){
         <label id="tawilat-opt-plain" onclick="selectTawilatOpt('plain')" style="display:flex;align-items:center;justify-content:space-between;background:#f7f5f2;border-radius:14px;padding:14px 16px;cursor:pointer;border:0.5px solid transparent;box-shadow:0 2px 8px rgba(19,53,72,0.1);">
           <div>
             <div style="font-size:14px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;">بدون تنسيق</div>
-            <div style="font-size:11px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-top:3px;">طاولات وكراسي فقط</div>
+            <div style="font-size:11px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-top:3px;">طاولات وكراسٍ فقط</div>
           </div>
           <div id="tawilat-price-plain" style="font-size:18px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;white-space:nowrap;margin-right:12px;">199 ريال</div>
         </label>
         <label id="tawilat-opt-tansiq" onclick="selectTawilatOpt('tansiq')" style="display:flex;align-items:center;justify-content:space-between;background:#f7f5f2;border-radius:14px;padding:14px 16px;cursor:pointer;border:0.5px solid transparent;box-shadow:0 2px 8px rgba(19,53,72,0.1);">
           <div>
             <div style="font-size:14px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;">مع تنسيق</div>
-            <div style="font-size:11px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-top:3px;">طاولات وكراسي مع تنسيق كامل</div>
+            <div style="font-size:11px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-top:3px;">طاولات وكراسٍ مع تنسيق كامل</div>
           </div>
           <div id="tawilat-price-tansiq" style="font-size:18px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;white-space:nowrap;margin-right:12px;">399 ريال</div>
         </label>
