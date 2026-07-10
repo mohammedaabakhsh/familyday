@@ -809,7 +809,7 @@ function tarfihiOrder(){
       </div>
     </div>
   </div>
-  <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:11.5px;color:#8a9eaa;padding:0 20px 8px;line-height:1.6;">اضغط على "اطلبها الآن" لإرسال طلبك<br>وسيتم تحويلك إلى واتساب لإتمام الحجز أو الاستفسار</div>
+  <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:11.5px;color:#133548;padding:0 20px 8px;line-height:1.6;">اضغط "اطلبها الآن" وسيتم تحويلك إلى واتساب لإتمام الطلب أو الاستفسار</div>
 <div style="padding:0 20px calc(80px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
     <button onclick="openOrderPopup(getJalsatOrderText())" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;width:100%;text-align:center;">اطلبها الآن</button>
   </div></div>
@@ -1712,12 +1712,12 @@ function closeMaiyaDetail(){ document.getElementById('maiya-detail').classList.a
 // ===== الجلسات الأرضية =====
 var _jalsatIdx = 0;
 var _jalsatAllSessions = [
-  {name:'جلسة بإطار مثلث', persons:'شخصين', personsCat:'2', price:'300 ريال', desc:'جلسة تتسع حتى شخصين تضم إطارًا مثلثًا وطاولة وكرسيين منسقة بالشموع والورود بإطلالة على المسبح والحديقة', img:''},
-  {name:'الخيمة الهرمية', persons:'شخصين', personsCat:'2', price:'300 ريال', desc:'خيمة تتسع حتى شخصين تضم طاولة صغيرة منسقة بالشموع والورود مع فرشة أرضية ومخدات بإطلالة على المسبح والحديقة', img:''},
-  {name:'جلسة أرضية', persons:'4 أشخاص', personsCat:'4', price:'200 ريال', desc:'جلسة تتسع حتى 4 أشخاص تضم طاولة أرضية منسقة بالشموع والورود مع فرشة أرضية ومخدات بإطلالة على المسبح والحديقة', img:''},
-  {name:'جلسة خارجية', persons:'4 أشخاص', personsCat:'4', price:'300 ريال', desc:'جلسة تتسع حتى 4 أشخاص تضم إطارًا خشبيًا وطاولة أرضية منسقة بالشموع والورود مع فرشات ومخدات بإطلالة على المسبح والحديقة', img:''},
-  {name:'جلسة خارجية', persons:'8 أشخاص', personsCat:'8', price:'550 ريال', desc:'جلسة تتسع حتى 8 أشخاص تضم إطارًا خشبيًا وطاولة أرضية منسقة بالشموع والورود مع فرشات ومخدات بإطلالة على المسبح والحديقة', img:''},
-  {name:'جلسة خارجية', persons:'12 شخص', personsCat:'12', price:'650 ريال', desc:'جلسة تتسع حتى 12 شخصًا تضم إطارًا خشبيًا وطاولة أرضية منسقة بالشموع والورود مع فرشات ومخدات بإطلالة على المسبح والحديقة', img:''}
+  {name:'جلسة بإطار مثلث', persons:'شخصين', personsCat:'2', price:'300 ر.س', desc:'جلسة تتسع حتى شخصين تضم إطارًا مثلثًا وطاولة وكرسيين منسقة بالشموع والورود بإطلالة على المسبح والحديقة', img:''},
+  {name:'الخيمة الهرمية', persons:'شخصين', personsCat:'2', price:'300 ر.س', desc:'خيمة تتسع حتى شخصين تضم طاولة صغيرة منسقة بالشموع والورود مع فرشة أرضية ومخدات بإطلالة على المسبح والحديقة', img:''},
+  {name:'جلسة أرضية', persons:'4 أشخاص', personsCat:'4', price:'200 ر.س', desc:'جلسة تتسع حتى 4 أشخاص تضم طاولة أرضية منسقة بالشموع والورود مع فرشة أرضية ومخدات بإطلالة على المسبح والحديقة', img:''},
+  {name:'جلسة خارجية', persons:'4 أشخاص', personsCat:'4', price:'300 ر.س', desc:'جلسة تتسع حتى 4 أشخاص تضم إطارًا خشبيًا وطاولة أرضية منسقة بالشموع والورود مع فرشات ومخدات بإطلالة على المسبح والحديقة', img:''},
+  {name:'جلسة خارجية', persons:'8 أشخاص', personsCat:'8', price:'550 ر.س', desc:'جلسة تتسع حتى 8 أشخاص تضم إطارًا خشبيًا وطاولة أرضية منسقة بالشموع والورود مع فرشات ومخدات بإطلالة على المسبح والحديقة', img:''},
+  {name:'جلسة خارجية', persons:'12 شخص', personsCat:'12', price:'650 ر.س', desc:'جلسة تتسع حتى 12 شخصًا تضم إطارًا خشبيًا وطاولة أرضية منسقة بالشموع والورود مع فرشات ومخدات بإطلالة على المسبح والحديقة', img:''}
 ];
 var _jalsatSessions = _jalsatAllSessions.slice();
 var _jalsatFilter = 'all';
@@ -1786,7 +1786,7 @@ function toggleJalsatCake(){
     label.style.border = '1.5px solid #19a7b7';
     var s = _jalsatSessions[_jalsatIdx];
     var base = parseInt(s.price);
-    totalPrice.textContent = (base + 170) + ' ريال';
+    totalPrice.textContent = (base + 170) + ' ر.س';
     totalRow.style.display = 'flex';
   } else {
     toggle.style.background = '#e8e2d8';
@@ -1801,7 +1801,7 @@ function getJalsatOrderText(){
   var txt = s.name + ' - ' + s.persons + ' - السعر: ' + s.price;
   if(_jalsatCakeAdded){
     var base = parseInt(s.price);
-    txt += ' + كيك وعصير (170 ريال) - المجموع: ' + (base+170) + ' ريال';
+    txt += ' + كيك وعصير (170 ر.س) - المجموع: ' + (base+170) + ' ر.س';
   }
   return txt;
 }
