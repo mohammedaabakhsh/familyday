@@ -619,6 +619,7 @@ function tarfihiOrder(){
     <div style="background:#fff;border:0.8px solid #19a7b7;border-radius:14px;padding:20px 24px;cursor:pointer;text-align:center;box-shadow:0 2px 12px rgba(25,167,183,0.2);font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;color:#133548;" onclick="showJalsat()">الجلسات الأرضية الخارجية</div>
     <div style="background:#fff;border:0.8px solid #19a7b7;border-radius:14px;padding:20px 24px;cursor:pointer;text-align:center;box-shadow:0 2px 12px rgba(25,167,183,0.2);font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;color:#133548;" onclick="showTawilat()">طاولات الطعام</div>
     <div style="background:#fff;border:0.8px solid #19a7b7;border-radius:14px;padding:20px 24px;cursor:pointer;text-align:center;box-shadow:0 2px 12px rgba(25,167,183,0.2);font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;color:#133548;" onclick="showWalaa()">بطاقة الولاء</div>
+    <div style="background:#fff;border:0.8px solid #19a7b7;border-radius:14px;padding:20px 24px;cursor:pointer;text-align:center;box-shadow:0 2px 12px rgba(25,167,183,0.2);font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;color:#133548;" onclick="showSharik()">🎁 شارك واربح</div>
   </div>
   </div>
 </div>
@@ -809,6 +810,45 @@ function tarfihiOrder(){
   <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:11.5px;color:#8a9eaa;padding:0 20px 8px;line-height:1.6;">اضغط على "اطلبها الآن" لإرسال طلبك<br>وسيتم تحويلك إلى واتساب لإتمام الحجز أو الاستفسار</div>
 <div style="padding:0 20px calc(80px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
     <button onclick="openOrderPopup(getJalsatOrderText())" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;width:100%;text-align:center;">اطلبها الآن</button>
+  </div></div>
+</div>
+
+
+<!-- SHARIK WIN DETAIL -->
+<div id="sharik-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:#f7f5f2;overflow-y:auto;-webkit-overflow-scrolling:touch;">
+  <div style="background:#133548;padding:56px 24px 32px;text-align:center;position:relative;">
+    <button onclick="closeSharikDetail()" style="position:absolute;top:18px;right:18px;background:rgba(255,255,255,0.15);border:none;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;cursor:pointer;border-radius:20px;padding:6px 14px;">❯ رجوع</button>
+    <div style="font-size:32px;margin-bottom:10px;">🎁</div>
+    <div style="font-size:24px;font-weight:700;color:#fff;margin-bottom:6px;line-height:1.4;">شارك أجمل لحظاتك<br>واربح يومًا مجانيًا</div>
+    <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:Tajawal,sans-serif;margin-top:8px;">صوّر لحظاتك داخل المنتجع وشاركها معنا</div>
+  </div>
+  <div style="padding:20px 20px;display:flex;flex-direction:column;gap:14px;">
+    <!-- الشروط -->
+    <div style="background:#fff;border-radius:16px;padding:18px 20px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
+      <div style="font-size:13px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:14px;">شروط المشاركة</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;align-items:flex-start;gap:10px;font-family:'Tajawal',sans-serif;font-size:13px;color:#2d4a5a;line-height:1.6;"><span style="color:#19a7b7;flex-shrink:0;font-size:15px;">✦</span> أن يكون الفيديو بالوضع الطولي</div>
+        <div style="display:flex;align-items:flex-start;gap:10px;font-family:'Tajawal',sans-serif;font-size:13px;color:#2d4a5a;line-height:1.6;"><span style="color:#19a7b7;flex-shrink:0;font-size:15px;">✦</span> أن يكون الفيديو مصورًا داخل المنتجع بأسلوب إبداعي مميز</div>
+        <div style="display:flex;align-items:flex-start;gap:10px;font-family:'Tajawal',sans-serif;font-size:13px;color:#2d4a5a;line-height:1.6;"><span style="color:#19a7b7;flex-shrink:0;font-size:15px;">✦</span> ألا يحتوي الفيديو على شعارات أو علامات مائية أو حقوق تخص جهات أخرى</div>
+        <div style="display:flex;align-items:flex-start;gap:10px;font-family:'Tajawal',sans-serif;font-size:13px;color:#2d4a5a;line-height:1.6;"><span style="color:#19a7b7;flex-shrink:0;font-size:15px;">✦</span> أن يكون الفيديو واضحًا وعالي الجودة</div>
+        <div style="display:flex;align-items:flex-start;gap:10px;font-family:'Tajawal',sans-serif;font-size:13px;color:#2d4a5a;line-height:1.6;"><span style="color:#19a7b7;flex-shrink:0;font-size:15px;">✦</span> يحق للمنتجع استخدام ونشر جميع المشاركات فائزة كانت أو غير فائزة</div>
+      </div>
+    </div>
+    <!-- ملاحظة الفائز -->
+    <div style="background:#f0fbfc;border-radius:16px;padding:16px 20px;border:1px solid rgba(25,167,183,0.4);text-align:center;">
+      <div style="font-size:13px;color:#133548;font-family:'Tajawal',sans-serif;font-weight:700;margin-bottom:4px;">معيار الاختيار</div>
+      <div style="font-size:13px;color:#2d4a5a;font-family:'Tajawal',sans-serif;">سيتم اختيار الفائز بناءً على جودة المحتوى وإبداعه</div>
+    </div>
+    <!-- طريقة الإرسال -->
+    <div style="background:#fff;border-radius:16px;padding:16px 20px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
+      <div style="font-size:13px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:10px;">طريقة المشاركة</div>
+      <div style="font-size:13px;color:#2d4a5a;font-family:'Tajawal',sans-serif;line-height:1.7;">أرفق اسمك وتاريخ زيارتك مع الفيديو وأرسله عبر البريد الإلكتروني</div>
+      <div style="margin-top:10px;background:#f7f5f2;border-radius:10px;padding:10px 14px;text-align:center;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;color:#19a7b7;letter-spacing:0.5px;">family999day@gmail.com</div>
+    </div>
+  </div>
+  <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:11.5px;color:#8a9eaa;padding:0 20px 8px;line-height:1.6;">اضغط على "شارك الآن" لفتح البريد الإلكتروني<br>وإرسال مشاركتك مباشرة</div>
+  <div style="padding:0 20px calc(80px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
+    <button onclick="openSharikEmail()" class="mbtn mbtn-wa" style="background:#133548;border:none;color:#fff;cursor:pointer;width:100%;text-align:center;">🎁 شارك الآن</button>
   </div></div>
 </div>
 
@@ -1700,6 +1740,14 @@ function openJalsatDetail(){
   };
 }
 function closeJalsatDetail(){ document.getElementById('jalsat-detail').classList.add('hide'); }
+
+// ===== شارك واربح =====
+function showSharik(){ document.getElementById('sharik-detail').classList.remove('hide'); }
+function closeSharikDetail(){ document.getElementById('sharik-detail').classList.add('hide'); }
+function openSharikEmail(){
+  window.open('mailto:family999day@gmail.com?subject=مشاركة - شارك واربح - منتجع يوم العائلة', '_blank');
+}
+
 
 var _jalsatCakeAdded = false;
 function toggleJalsatCake(){
