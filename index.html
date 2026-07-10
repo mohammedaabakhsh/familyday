@@ -710,19 +710,14 @@ function tarfihiOrder(){
       <div id="maiya-counter" style="position:absolute;bottom:10px;left:12px;background:rgba(19,53,72,0.55);color:#fff;font-family:'Tajawal',sans-serif;font-size:12px;border-radius:12px;padding:3px 10px;">1 / 2</div>
     </div>
   <div id="maiya-game-name" style="text-align:center;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;color:#133548;padding:10px 20px 0;"></div>
-  <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:#2d4a5a;padding:4px 20px 0;white-space:nowrap;">اختر اللعبة لعرض التفاصيل والأسعار</div>
+  <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:#2d4a5a;padding:4px 20px 0;white-space:nowrap;">استعرض الألعاب واختر ما يناسبك</div>
   </div>
   <div style="padding:10px 20px;display:flex;flex-direction:column;gap:10px;">
-    <div style="background:#fff;border-radius:16px;padding:14px 20px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-        <div style="background:#f7f5f2;border-radius:14px;padding:12px;text-align:center;">
-          <div style="font-size:11px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-bottom:6px;">رسوم التأجير</div>
-          <div id="maiya-rent" style="font-size:20px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;">10 ر.س</div>
-        </div>
-        <div style="background:#f7f5f2;border-radius:14px;padding:12px;text-align:center;">
-          <div style="font-size:11px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-bottom:6px;">رسوم التعويض</div>
-          <div id="maiya-comp" style="font-size:20px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;">50 ر.س</div>
-        </div>
+    <div style="background:#fff;border-radius:16px;padding:16px 20px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;text-align:center;">
+      <div style="font-size:12px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-bottom:8px;">سعر الباقة</div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;">
+        <div style="font-size:28px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;">50 ر.س</div>
+        <div style="font-size:13px;color:#133548;font-family:'Tajawal',sans-serif;font-weight:600;line-height:1.4;">اختر<br>3 ألعاب</div>
       </div>
     </div>
     <div style="background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
@@ -730,7 +725,7 @@ function tarfihiOrder(){
       <div style="display:flex;flex-direction:column;gap:6px;">
         <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> متاحة حسب التوفر.</div>
         <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> يرجى المحافظة على اللعبة وإعادتها بحالتها الأصلية.</div>
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> يتم احتساب قيمة التعويض في حال تلف أو فقدان اللعبة.</div>
+
         <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> تطبق جميع الشروط والأحكام.</div>
         
       </div>
@@ -738,7 +733,7 @@ function tarfihiOrder(){
     </div>
     <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:#133548;padding:0 20px 8px;line-height:1.6;white-space:nowrap;">اضغط "اطلبها الآن" للتواصل عبر واتساب وإتمام الطلب أو الاستفسار</div>
 <div style="padding:0 20px calc(64px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
-      <button onclick="openOrderPopup(_maiyaGames[_maiyaIdx] ? _maiyaGames[_maiyaIdx].name + ' - سعر التأجير: ' + _maiyaGames[_maiyaIdx].rent : 'لعبة مائية')" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;width:100%;text-align:center;">اطلبها الآن</button>
+      <button onclick="openOrderPopup('ألعاب مائية - باقة 3 ألعاب بـ 50 ريال')" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;width:100%;text-align:center;">اطلبها الآن</button>
     </div></div>
   </div>
 </div>
@@ -1846,9 +1841,7 @@ function maiyaGoTo(idx){
   _maiyaIdx = idx;
   document.getElementById('maiya-slides').style.transform = 'translateX('+(idx*100)+'%)';
   var g = _maiyaGames[idx];
-  document.getElementById('maiya-rent').textContent = g.rent;
-     var nameEl = document.getElementById('maiya-game-name'); if(nameEl) nameEl.textContent = g.name;
-  document.getElementById('maiya-comp').textContent = g.comp;
+  var nameEl = document.getElementById('maiya-game-name'); if(nameEl) nameEl.textContent = g.name;
   var counter = document.getElementById('maiya-counter');
   if(counter) counter.textContent = (idx+1) + ' / ' + total;
 }
