@@ -677,7 +677,7 @@ function tarfihiOrder(){
       </div>
     </div>
     </div>
-    <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:#133548;padding:0 20px 8px;line-height:1.6;white-space:nowrap;">اضغط "اطلبها الآن" للتواصل عبر واتساب وإتمام الطلب أو الاستفسار</div>
+    <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:#133548;padding:0 20px 8px;line-height:1.6;white-space:nowrap;">بعد اختيار 3 ألعاب اضغط "اطلبها الآن" لإتمام الطلب عبر واتساب.</div>
 <div style="padding:0 20px calc(64px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
       <button onclick="openOrderPopup('جلسة سينما', true)" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;width:100%;text-align:center;">اطلبها الآن</button>
     </div></div>
@@ -710,7 +710,14 @@ function tarfihiOrder(){
       <div id="maiya-counter" style="position:absolute;bottom:10px;left:12px;background:rgba(19,53,72,0.55);color:#fff;font-family:'Tajawal',sans-serif;font-size:12px;border-radius:12px;padding:3px 10px;">1 / 2</div>
     </div>
   <div id="maiya-game-name" style="text-align:center;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;color:#133548;padding:10px 20px 0;"></div>
-  <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:#2d4a5a;padding:4px 20px 0;white-space:nowrap;">استعرض الألعاب واختر ما يناسبك</div>
+  <div style="text-align:center;padding:4px 20px 0;">
+    <div style="font-family:'Tajawal',sans-serif;font-size:11px;font-weight:700;color:#133548;">اختر 3 ألعاب من القائمة</div>
+    <div style="font-family:'Tajawal',sans-serif;font-size:10px;color:#8a9eaa;margin-top:2px;">الباقة تشمل 3 ألعاب بسعر 50 ر.س</div>
+  </div>
+  <div id="maiya-selection-count" style="text-align:center;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;color:#19a7b7;padding:6px 20px 0;">تم اختيار 0 من 3</div>
+  <div style="text-align:center;padding:6px 20px 4px;">
+    <button id="maiya-select-btn" onclick="toggleMaiyaGame()" style="background:#f7f5f2;border:1.5px solid #e0d8cd;color:#133548;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;padding:7px 28px;border-radius:20px;cursor:pointer;">اختر اللعبة</button>
+  </div>
   </div>
   <div style="padding:10px 20px;display:flex;flex-direction:column;gap:10px;">
     <div style="background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
@@ -728,17 +735,18 @@ function tarfihiOrder(){
     <div style="background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
       <div style="font-size:13px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:10px;">تعليمات وملاحظات</div>
       <div style="display:flex;flex-direction:column;gap:6px;">
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> متاحة حسب التوفر.</div>
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> يرجى المحافظة على اللعبة وإعادتها بحالتها الأصلية.</div>
-
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> اختر 3 ألعاب من القائمة.</div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> الباقة بسعر 50 ر.س.</div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> الألعاب متاحة حسب التوفر.</div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> يرجى المحافظة عليها وإعادتها بحالتها الأصلية.</div>
         <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> تطبق جميع الشروط والأحكام.</div>
         
       </div>
     </div>
     </div>
-    <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:#133548;padding:0 20px 8px;line-height:1.6;white-space:nowrap;">اضغط "اطلبها الآن" للتواصل عبر واتساب وإتمام الطلب أو الاستفسار</div>
+    <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:#133548;padding:0 20px 8px;line-height:1.6;white-space:nowrap;">بعد اختيار 3 ألعاب اضغط "اطلبها الآن" لإتمام الطلب عبر واتساب.</div>
 <div style="padding:0 20px calc(64px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
-      <button onclick="openOrderPopup('ألعاب مائية - باقة 3 ألعاب بـ 50 ريال')" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;width:100%;text-align:center;">اطلبها الآن</button>
+      <button id="maiya-order-btn" onclick="maiyaOrderNow()" class="mbtn mbtn-wa" style="background:#e8e2d8;border:1.5px solid #b0bdc4;color:#b0bdc4;cursor:not-allowed;width:100%;text-align:center;" disabled>اختر 3 ألعاب أولًا</button>
     </div></div>
   </div>
 </div>
@@ -806,7 +814,7 @@ function tarfihiOrder(){
       </div>
     </div>
   </div>
-  <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:#133548;padding:0 20px 8px;line-height:1.6;white-space:nowrap;">اضغط "اطلبها الآن" للتواصل عبر واتساب وإتمام الطلب أو الاستفسار</div>
+  <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:#133548;padding:0 20px 8px;line-height:1.6;white-space:nowrap;">بعد اختيار 3 ألعاب اضغط "اطلبها الآن" لإتمام الطلب عبر واتساب.</div>
 <div style="padding:0 20px calc(64px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
     <button onclick="openOrderPopup(getJalsatOrderText())" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;width:100%;text-align:center;">اطلبها الآن</button>
   </div></div>
@@ -1669,7 +1677,7 @@ function buildMaiyaSlides(){
   _maiyaGames.forEach(function(g){
     var div = document.createElement('div');
     div.style.cssText = 'min-width:100%;flex-shrink:0;';
-    div.innerHTML = '<img src="'+g.img+'" style="width:100%;height:300px;object-fit:contain;display:block;background:#fff;">';
+    div.innerHTML = '<img src="'+g.img+'" style="width:100%;height:260px;object-fit:contain;display:block;background:#fff;">';
     container.appendChild(div);
   });
   // update total in counter
@@ -1704,7 +1712,62 @@ function openMaiyaDetail(){
     }
   };
 }
-function closeMaiyaDetail(){ document.getElementById('maiya-detail').classList.add('hide'); }
+function closeMaiyaDetail(){
+  document.getElementById('maiya-detail').classList.add('hide');
+  _maiyaSelected = new Set();
+  updateMaiyaSelectionUI();
+}
+var _maiyaSelected = new Set();
+function toggleMaiyaGame(){
+  var g = _maiyaGames[_maiyaIdx];
+  if(!g) return;
+  var name = g.name;
+  if(_maiyaSelected.has(name)){
+    _maiyaSelected.delete(name);
+  } else {
+    if(_maiyaSelected.size >= 3){ return; }
+    _maiyaSelected.add(name);
+  }
+  updateMaiyaSelectionUI();
+}
+function updateMaiyaSelectionUI(){
+  var count = _maiyaSelected.size;
+  var countEl = document.getElementById('maiya-selection-count');
+  if(countEl) countEl.textContent = 'تم اختيار ' + count + ' من 3';
+  var orderBtn = document.getElementById('maiya-order-btn');
+  if(orderBtn){
+    if(count >= 3){
+      orderBtn.disabled = false;
+      orderBtn.style.background = '#19a7b7';
+      orderBtn.style.border = '1.5px solid #19a7b7';
+      orderBtn.style.color = '#fff';
+      orderBtn.style.cursor = 'pointer';
+      orderBtn.textContent = 'اطلب الباقة الآن';
+    } else {
+      orderBtn.disabled = true;
+      orderBtn.style.background = '#e8e2d8';
+      orderBtn.style.border = '1.5px solid #b0bdc4';
+      orderBtn.style.color = '#b0bdc4';
+      orderBtn.style.cursor = 'not-allowed';
+      orderBtn.textContent = 'اختر 3 ألعاب أولًا';
+    }
+  }
+  // Update select button for current game
+  var g = _maiyaGames[_maiyaIdx];
+  var selBtn = document.getElementById('maiya-select-btn');
+  if(selBtn && g){
+    var isSelected = _maiyaSelected.has(g.name);
+    selBtn.textContent = isSelected ? 'تم الاختيار ✓' : 'اختر اللعبة';
+    selBtn.style.background = isSelected ? '#19a7b7' : '#f7f5f2';
+    selBtn.style.border = isSelected ? '1.5px solid #19a7b7' : '1.5px solid #e0d8cd';
+    selBtn.style.color = isSelected ? '#fff' : '#133548';
+  }
+}
+function maiyaOrderNow(){
+  if(_maiyaSelected.size < 3) return;
+  var names = Array.from(_maiyaSelected).join('، ');
+  openOrderPopup('ألعاب مائية - باقة 3 ألعاب بـ 50 ريال - الألعاب: ' + names);
+}
 
 // ===== الجلسات الأرضية =====
 var _jalsatIdx = 0;
@@ -1849,6 +1912,7 @@ function maiyaGoTo(idx){
   var nameEl = document.getElementById('maiya-game-name'); if(nameEl) nameEl.textContent = g.name;
   var counter = document.getElementById('maiya-counter');
   if(counter) counter.textContent = (idx+1) + ' / ' + total;
+  updateMaiyaSelectionUI();
 }
 
 // ===== طاولات الطعام =====
@@ -2053,7 +2117,7 @@ function closeWalaaDetail(){
       </div>
     </div>
   </div>
-  <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:#133548;padding:0 20px 8px;line-height:1.6;white-space:nowrap;">اضغط "اطلبها الآن" للتواصل عبر واتساب وإتمام الطلب أو الاستفسار</div>
+  <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:#133548;padding:0 20px 8px;line-height:1.6;white-space:nowrap;">بعد اختيار 3 ألعاب اضغط "اطلبها الآن" لإتمام الطلب عبر واتساب.</div>
 <div style="padding:0 20px calc(64px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
       <button onclick="tarfihiOrder()" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;width:100%;text-align:center;">اطلبها الآن</button>
     </div></div>
