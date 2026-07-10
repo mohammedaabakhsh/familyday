@@ -273,7 +273,7 @@ header{
 .card-dot.active{background:#fff}
 .badge{
   position:absolute;top:12px;right:12px;
-  background:var(--orange);color:#fff;
+  background:#19a7b7;color:#fff;
   font-size:9px;font-weight:700;padding:4px 10px;border-radius:100px
 }
 
@@ -1286,7 +1286,7 @@ function openM(id,type){
       <div class="modal-name" style="margin-bottom:0;">${c.name}</div>
       ${c.suitable ? '<span style="background:rgba(25,167,183,0.1);border:1px solid rgba(25,167,183,0.25);color:var(--teal);font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;white-space:nowrap;">'+c.suitable+'</span>' : ''}
     </div>
-    <button onclick="open3D('https://my.matterport.com/show/?m=S7Z2CF9tdwm')" class="mbtn" style="background:rgba(25,167,183,0.1);color:#19A7B7;border:1.5px solid #19a7b7;margin-bottom:16px;font-family:Tajawal,sans-serif;cursor:pointer;width:100%;font-size:14px;font-weight:700;padding:12px;">🔭 جولة ثلاثية الأبعاد</button>
+    <button onclick="open3D('https://my.matterport.com/show/?m=S7Z2CF9tdwm')" class="mbtn" style="background:rgba(25,167,183,0.1);color:#19A7B7;border:1px solid #19a7b7;margin-bottom:16px;font-family:Tajawal,sans-serif;cursor:pointer;width:100%;font-size:13px;font-weight:600;padding:9px;display:flex;align-items:center;justify-content:center;gap:8px;">🔭 جولة ثلاثية الأبعاد</button>
     <div style="font-size:14px;color:#2d4a5a;font-family:'Tajawal',sans-serif;margin-bottom:14px;line-height:1.7;">منطقة ألعاب مشتركة بين الأكواخ لجميع ضيوف المنتجع</div>
     <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">
       <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:13px;color:#2d4a5a;background:#f7f5f2;border-radius:12px;padding:10px 14px;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> ألعاب أطفال متنوعة.</div>
@@ -1375,7 +1375,7 @@ function openM(id,type){
       <a href="https://wa.me/966556156693" target="_blank" class="mbtn mbtn-wa">تواصل واتساب</a>
       <a href="tel:+966556156693" class="mbtn" style="background:#133548;color:#fff;border:none;text-decoration:none;">📞 اتصال</a>
     </div>
-    ${c.id===12 ? `<button onclick="open3D('https://my.matterport.com/show/?m=S7Z2CF9tdwm')" class="mbtn" style="background:rgba(25,167,183,0.1);color:#19A7B7;border:1.5px solid #19a7b7;margin-top:8px;font-family:Tajawal,sans-serif;cursor:pointer;">🔭 جولة ثلاثية الأبعاد</button>` : ''}
+    ${c.id===12 ? `<button onclick="open3D('https://my.matterport.com/show/?m=S7Z2CF9tdwm')" class="mbtn" style="background:rgba(25,167,183,0.1);color:#19A7B7;border:1px solid #19a7b7;margin-top:8px;font-family:Tajawal,sans-serif;cursor:pointer;font-size:12px;padding:9px 16px;">🔭 جولة ثلاثية الأبعاد</button>` : ''}
     `;
     document.querySelectorAll('#mBody .tags-lbl').forEach(el=>{el.style.color='#133548';el.style.marginTop='24px';});
     document.querySelectorAll('#mBody .tags').forEach(el=>{el.style.marginBottom='12px';});
