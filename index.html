@@ -553,7 +553,7 @@ function sendOrderWhatsapp(){
     timeStr = ' - الوقت: من ' + fmt12(h) + ' حتى ' + fmt12(endH);
   }
   var msg = 'السلام عليكم 👋' + '\n' + 'الاسم: ' + name + '\n' + 'الكوخ: ' + villa + '\n' + 'أريد استئجار: ' + _orderItemName + (timeStr ? '\n' + timeStr.replace(' - ','') : '') + (notes ? '\n' + 'ملاحظات: ' + notes : '');
-  window.open('https://wa.me/966555582182?text=' + encodeURIComponent(msg), '_blank');
+  window.open('https://wa.me/966556156693?text=' + encodeURIComponent(msg), '_blank');
   closeOrderPopup();
 }
 
@@ -683,7 +683,8 @@ function tarfihiOrder(){
     </div>
     <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:11.5px;color:#8a9eaa;padding:0 20px 8px;line-height:1.6;">اضغط على "اطلبها الآن" لإرسال طلبك<br>وسيتم تحويلك إلى واتساب لإتمام الحجز أو الاستفسار</div>
 <div style="padding:0 20px calc(80px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
-      <button onclick="openOrderPopup('جلسة سينما', true)" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;width:100%;text-align:center;">اطلبها الآن</button>
+      <button onclick="openOrderPopup('جلسة سينما', true)" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;text-align:center;">اطلبها الآن</button>
+    <a href="tel:+966556156693" class="mbtn" style="background:#133548;color:#fff;border:none;text-decoration:none;">📞 اتصال</a>
     </div></div>
   </div>
 </div>
@@ -740,7 +741,8 @@ function tarfihiOrder(){
     </div>
     <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:11.5px;color:#8a9eaa;padding:0 20px 8px;line-height:1.6;">اضغط على "اطلبها الآن" لإرسال طلبك<br>وسيتم تحويلك إلى واتساب لإتمام الحجز أو الاستفسار</div>
 <div style="padding:0 20px calc(80px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
-      <button onclick="openOrderPopup(_maiyaGames[_maiyaIdx] ? _maiyaGames[_maiyaIdx].name + ' - سعر التأجير: ' + _maiyaGames[_maiyaIdx].rent : 'لعبة مائية')" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;width:100%;text-align:center;">اطلبها الآن</button>
+      <button onclick="openOrderPopup(_maiyaGames[_maiyaIdx] ? _maiyaGames[_maiyaIdx].name + ' - سعر التأجير: ' + _maiyaGames[_maiyaIdx].rent : 'لعبة مائية')" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;text-align:center;">اطلبها الآن</button>
+    <a href="tel:+966556156693" class="mbtn" style="background:#133548;color:#fff;border:none;text-decoration:none;">📞 اتصال</a>
     </div></div>
   </div>
 </div>
@@ -809,7 +811,8 @@ function tarfihiOrder(){
   </div>
   <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:11.5px;color:#8a9eaa;padding:0 20px 8px;line-height:1.6;">اضغط على "اطلبها الآن" لإرسال طلبك<br>وسيتم تحويلك إلى واتساب لإتمام الحجز أو الاستفسار</div>
 <div style="padding:0 20px calc(80px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
-    <button onclick="openOrderPopup(getJalsatOrderText())" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;width:100%;text-align:center;">اطلبها الآن</button>
+    <button onclick="openOrderPopup(getJalsatOrderText())" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;text-align:center;">اطلبها الآن</button>
+    <a href="tel:+966556156693" class="mbtn" style="background:#133548;color:#fff;border:none;text-decoration:none;">📞 اتصال</a>
   </div></div>
 </div>
 
@@ -867,7 +870,8 @@ function tarfihiOrder(){
   </div>
   <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:11.5px;color:#8a9eaa;padding:0 20px 8px;line-height:1.6;">اضغط على "شارك الآن" لفتح البريد الإلكتروني<br>وإرسال مشاركتك مباشرة</div>
   <div style="padding:0 20px calc(80px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
-    <button onclick="openSharikEmail()" class="mbtn mbtn-wa" style="background:#133548;border:none;color:#fff;cursor:pointer;width:100%;text-align:center;">شارك الآن ←</button>
+    <button onclick="openSharikEmail()" class="mbtn mbtn-wa" style="background:#133548;border:none;color:#fff;cursor:pointer;text-align:center;">شارك الآن ←</button>
+    <a href="tel:+966556156693" class="mbtn" style="background:#19a7b7;color:#fff;border:none;text-decoration:none;">📞 اتصال</a>
   </div></div>
 </div>
 
@@ -1290,6 +1294,7 @@ function openM(id,type){
     </div>
     <div class="modal-btns">
       <a href="https://wa.me/966556156693" target="_blank" class="mbtn mbtn-wa">تواصل واتساب</a>
+      <a href="tel:+966556156693" class="mbtn" style="background:#133548;color:#fff;border:none;text-decoration:none;">📞 اتصال</a>
     </div>
     `;
     document.getElementById('ov').classList.add('open');
@@ -1366,7 +1371,8 @@ function openM(id,type){
 
     <div class="modal-btns">
       <a href="https://familyday-sa.com/ar" target="_blank" class="mbtn mbtn-book">احجز الآن</a>
-      <a href="https://wa.me/966555582182" target="_blank" class="mbtn mbtn-wa">تواصل واتساب</a>
+      <a href="https://wa.me/966556156693" target="_blank" class="mbtn mbtn-wa">تواصل واتساب</a>
+      <a href="tel:+966556156693" class="mbtn" style="background:#133548;color:#fff;border:none;text-decoration:none;">📞 اتصال</a>
     </div>
     ${c.id===12 ? `<button onclick="open3D('https://my.matterport.com/show/?m=S7Z2CF9tdwm')" class="mbtn" style="background:rgba(25,167,183,0.1);color:#19A7B7;border:1.5px solid #19a7b7;margin-top:8px;font-family:Tajawal,sans-serif;cursor:pointer;">🔭 جولة ثلاثية الأبعاد</button>` : ''}
     `;
@@ -2055,7 +2061,8 @@ function closeWalaaDetail(){
   </div>
   <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:11.5px;color:#8a9eaa;padding:0 20px 8px;line-height:1.6;">اضغط على "اطلبها الآن" لإرسال طلبك<br>وسيتم تحويلك إلى واتساب لإتمام الحجز أو الاستفسار</div>
 <div style="padding:0 20px calc(80px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
-      <button onclick="tarfihiOrder()" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;width:100%;text-align:center;">اطلبها الآن</button>
+      <button onclick="tarfihiOrder()" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;text-align:center;">اطلبها الآن</button>
+    <a href="tel:+966556156693" class="mbtn" style="background:#133548;color:#fff;border:none;text-decoration:none;">📞 اتصال</a>
     </div></div>
 </div>
 
@@ -2123,7 +2130,8 @@ function closeWalaaDetail(){
 
     <!-- Order button -->
     <div style="padding:0 0 calc(80px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
-      <button onclick="window.open('https://wa.me/966556156693?text='+encodeURIComponent('السلام عليكم، أود الاستفسار عن خدمة طاولات الطعام'),'_blank')" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;width:100%;text-align:center;">تواصل معنا واتساب</button>
+      <button onclick="window.open('https://wa.me/966556156693?text='+encodeURIComponent('السلام عليكم، أود الاستفسار عن خدمة طاولات الطعام'),'_blank')" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;text-align:center;">تواصل معنا واتساب</button>
+    <a href="tel:+966556156693" class="mbtn" style="background:#133548;color:#fff;border:none;text-decoration:none;">📞 اتصال</a>
     </div></div>
 
   </div>
