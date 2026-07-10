@@ -717,8 +717,8 @@ function tarfihiOrder(){
   <div id="maiya-game-name" style="text-align:center;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;color:#133548;padding:10px 20px 0;"></div>
   <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:#2d4a5a;padding:4px 20px 0;white-space:nowrap;">اختر اللعبة لعرض التفاصيل والأسعار</div>
   </div>
-  <div style="padding:12px 20px;display:flex;flex-direction:column;gap:12px;">
-    <div style="background:#fff;border-radius:16px;padding:16px 20px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
+  <div style="padding:10px 20px;display:flex;flex-direction:column;gap:10px;">
+    <div style="background:#fff;border-radius:16px;padding:14px 20px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
         <div style="background:#f7f5f2;border-radius:14px;padding:16px;text-align:center;">
           <div style="font-size:11px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-bottom:6px;">رسوم التأجير</div>
@@ -752,7 +752,7 @@ function tarfihiOrder(){
   <div style="background:#133548;padding:56px 24px 24px;text-align:center;position:relative;">
     <button onclick="closeJalsatDetail()" style="position:absolute;top:18px;right:18px;background:rgba(255,255,255,0.15);border:none;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;cursor:pointer;border-radius:20px;padding:6px 14px;">❯ رجوع</button>
     <div style="font-size:26px;font-weight:700;color:#fff;margin-bottom:4px;">الجلسات الأرضية الخارجية</div>
-    <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:Tajawal,sans-serif;margin-top:4px;">جلسات أرضية بتنسيقات متنوعة</div>
+    <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:Tajawal,sans-serif;margin-top:4px;">اختر الجلسة التي تناسب مناسبتك</div>
     <div style="margin-top:10px;display:inline-block;background:rgba(25,167,183,0.3);border:1px solid rgba(25,167,183,0.6);border-radius:20px;padding:5px 16px;font-family:'Tajawal',sans-serif;font-size:12px;color:#fff;font-weight:600;">اختر الجلسة التي تناسبك</div>
   </div>
   <div style="padding:16px 20px 0;">
@@ -773,12 +773,12 @@ function tarfihiOrder(){
     <div id="jalsat-session-name" style="text-align:center;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;color:#133548;padding:10px 20px 0;"></div>
     <div id="jalsat-session-desc" style="text-align:center;font-family:'Tajawal',sans-serif;font-size:13px;color:#2d4a5a;padding:6px 24px 0;line-height:1.6;display:none;"></div>
   </div>
-  <div style="padding:12px 20px;display:flex;flex-direction:column;gap:12px;">
-    <div style="background:#fff;border-radius:16px;padding:16px 20px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
+  <div style="padding:10px 20px;display:flex;flex-direction:column;gap:10px;">
+    <div style="background:#fff;border-radius:16px;padding:14px 20px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
         <div style="background:#f7f5f2;border-radius:14px;padding:16px;text-align:center;">
-          <div style="font-size:11px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-bottom:6px;">عدد الأشخاص</div>
-          <div id="jalsat-persons" style="font-size:20px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;">شخصين</div>
+          <div style="font-size:11px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-bottom:6px;">السعة</div>
+          <div id="jalsat-persons" style="font-size:20px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;">شخصان</div>
         </div>
         <div style="background:#f7f5f2;border-radius:14px;padding:16px;text-align:center;">
           <div style="font-size:11px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-bottom:6px;">السعر</div>
@@ -811,7 +811,7 @@ function tarfihiOrder(){
       </div>
     </div>
   </div>
-  <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:#133548;padding:0 20px 8px;line-height:1.6;white-space:nowrap;">اضغط "اطلبها الآن" وسيتم تحويلك إلى واتساب لإتمام الطلب أو الاستفسار</div>
+  <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:#133548;padding:0 20px 8px;line-height:1.6;white-space:nowrap;">اضغط "اطلبها الآن" للتواصل عبر واتساب وإتمام الطلب أو الاستفسار</div>
 <div style="padding:0 20px calc(80px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
     <button onclick="openOrderPopup(getJalsatOrderText())" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;width:100%;text-align:center;">اطلبها الآن</button>
   </div></div>
@@ -1715,12 +1715,12 @@ function closeMaiyaDetail(){ document.getElementById('maiya-detail').classList.a
 // ===== الجلسات الأرضية =====
 var _jalsatIdx = 0;
 var _jalsatAllSessions = [
-  {name:'جلسة بإطار مثلث', persons:'شخصين', personsCat:'2', price:'300 ر.س', desc:'جلسة تتسع حتى شخصين تضم إطارًا مثلثًا وطاولة وكرسيين منسقة بالشموع والورود بإطلالة على المسبح والحديقة', img:''},
-  {name:'الخيمة الهرمية', persons:'شخصين', personsCat:'2', price:'300 ر.س', desc:'خيمة تتسع حتى شخصين تضم طاولة صغيرة منسقة بالشموع والورود مع فرشة أرضية ومخدات بإطلالة على المسبح والحديقة', img:''},
-  {name:'جلسة أرضية', persons:'4 أشخاص', personsCat:'4', price:'200 ر.س', desc:'جلسة تتسع حتى 4 أشخاص تضم طاولة أرضية منسقة بالشموع والورود مع فرشة أرضية ومخدات بإطلالة على المسبح والحديقة', img:''},
-  {name:'جلسة خارجية', persons:'4 أشخاص', personsCat:'4', price:'300 ر.س', desc:'جلسة تتسع حتى 4 أشخاص تضم إطارًا خشبيًا وطاولة أرضية منسقة بالشموع والورود مع فرشات ومخدات بإطلالة على المسبح والحديقة', img:''},
-  {name:'جلسة خارجية', persons:'8 أشخاص', personsCat:'8', price:'550 ر.س', desc:'جلسة تتسع حتى 8 أشخاص تضم إطارًا خشبيًا وطاولة أرضية منسقة بالشموع والورود مع فرشات ومخدات بإطلالة على المسبح والحديقة', img:''},
-  {name:'جلسة خارجية', persons:'12 شخص', personsCat:'12', price:'650 ر.س', desc:'جلسة تتسع حتى 12 شخصًا تضم إطارًا خشبيًا وطاولة أرضية منسقة بالشموع والورود مع فرشات ومخدات بإطلالة على المسبح والحديقة', img:''}
+  {name:'جلسة بإطار مثلث', persons:'شخصين', personsCat:'2', price:'300 ر.س', desc:'جلسة تتسع حتى شخصين تضم إطارًا مثلثًا وطاولة وكرسيين مزينة بالشموع والورود بإطلالة على المسبح والحديقة', img:''},
+  {name:'الخيمة الهرمية', persons:'شخصين', personsCat:'2', price:'300 ر.س', desc:'خيمة تتسع حتى شخصين تضم طاولة صغيرة مزينة بالشموع والورود مع فرشة أرضية ومخدات بإطلالة على المسبح والحديقة', img:''},
+  {name:'جلسة أرضية', persons:'4 أشخاص', personsCat:'4', price:'200 ر.س', desc:'جلسة تتسع حتى 4 أشخاص تضم طاولة أرضية مزينة بالشموع والورود مع فرشة أرضية ومخدات بإطلالة على المسبح والحديقة', img:''},
+  {name:'جلسة خارجية', persons:'4 أشخاص', personsCat:'4', price:'300 ر.س', desc:'جلسة تتسع حتى 4 أشخاص تضم إطارًا خشبيًا وطاولة أرضية مزينة بالشموع والورود مع فرشات ومخدات بإطلالة على المسبح والحديقة', img:''},
+  {name:'جلسة خارجية', persons:'8 أشخاص', personsCat:'8', price:'550 ر.س', desc:'جلسة تتسع حتى 8 أشخاص تضم إطارًا خشبيًا وطاولة أرضية مزينة بالشموع والورود مع فرشات ومخدات بإطلالة على المسبح والحديقة', img:''},
+  {name:'جلسة خارجية', persons:'12 شخص', personsCat:'12', price:'650 ر.س', desc:'جلسة تتسع حتى 12 شخصًا تضم إطارًا خشبيًا وطاولة أرضية مزينة بالشموع والورود مع فرشات ومخدات بإطلالة على المسبح والحديقة', img:''}
 ];
 var _jalsatSessions = _jalsatAllSessions.slice();
 var _jalsatFilter = 'all';
@@ -1820,7 +1820,7 @@ function jalsatGoTo(idx){
   var s = _jalsatSessions[idx];
   var nameEl = document.getElementById('jalsat-session-name'); if(nameEl) nameEl.textContent = s.name;
   var descEl = document.getElementById('jalsat-session-desc'); if(descEl){ descEl.textContent = s.desc||''; descEl.style.display = s.desc ? 'block' : 'none'; }
-  document.getElementById('jalsat-persons').textContent = s.persons;
+  var p=s.persons; document.getElementById('jalsat-persons').textContent = p==='شخصين'?'شخصان':p;
   document.getElementById('jalsat-price').textContent = s.price;
   var counter = document.getElementById('jalsat-counter');
   if(counter) counter.textContent = (idx+1) + ' / ' + total;
