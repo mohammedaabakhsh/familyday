@@ -642,7 +642,7 @@ function tarfihiOrder(){
     </div>
   </div>
 
-  <div style="padding:16px 20px;display:flex;flex-direction:column;gap:12px;">
+  <div style="padding:12px 20px;display:flex;flex-direction:column;gap:10px;">
     <div style="background:#fff;border-radius:16px;padding:16px 20px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
         <div style="background:#f7f5f2;border-radius:14px;padding:16px;text-align:center;">
@@ -2072,7 +2072,7 @@ function closeWalaaDetail(){
   <div style="background:#133548;padding:56px 24px 24px;text-align:center;position:relative;">
     <button onclick="closeTawilatDetail()" style="position:absolute;top:18px;right:18px;background:rgba(255,255,255,0.15);border:none;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;cursor:pointer;border-radius:20px;padding:6px 14px;">❯ رجوع</button>
     <div style="font-size:26px;font-weight:700;color:#fff;margin-bottom:6px;">طاولات الطعام</div>
-    <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;margin-top:4px;">جلسة طعام خارجية لمجموعتكم</div>
+    <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;margin-top:4px;">جلسة طعام خارجية تناسب مختلف المناسبات</div>
     <div style="margin-top:10px;display:inline-block;background:rgba(25,167,183,0.3);border:1px solid rgba(25,167,183,0.6);border-radius:20px;padding:5px 16px;font-family:'Tajawal',sans-serif;font-size:12px;color:#fff;font-weight:600;">اختر عدد الأشخاص</div>
   </div>
 
@@ -2082,11 +2082,11 @@ function closeWalaaDetail(){
     </div>
   </div>
 
-  <div style="padding:16px 20px;display:flex;flex-direction:column;gap:12px;">
+  <div style="padding:12px 20px;display:flex;flex-direction:column;gap:10px;">
 
     <!-- Size selector -->
-    <div style="background:#fff;border-radius:16px;padding:18px 20px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
-      <div style="font-size:13px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:12px;">عدد الأشخاص</div>
+    <div style="background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
+      <div style="font-size:13px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:10px;">السعة</div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
         <button id="ts-6"  onclick="setTawilatSize(6)"  style="padding:8px 16px;border:none;border-radius:20px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:#19a7b7;color:#fff;">6</button>
         <button id="ts-12" onclick="setTawilatSize(12)" style="padding:8px 16px;border:none;border-radius:20px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:#f0f4f7;color:#133548;">12</button>
@@ -2094,12 +2094,12 @@ function closeWalaaDetail(){
         <button id="ts-24" onclick="setTawilatSize(24)" style="padding:8px 16px;border:none;border-radius:20px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:#f0f4f7;color:#133548;">24</button>
         <button id="ts-32" onclick="setTawilatSize(32)" style="padding:8px 16px;border:none;border-radius:20px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:#f0f4f7;color:#133548;">32</button>
       </div>
-      <div style="font-size:11px;color:#2d4a5a;font-family:'Tajawal',sans-serif;margin-top:10px;text-align:center;">اختر العدد لعرض السعر المناسب</div>
+      <div style="font-size:11px;color:#2d4a5a;font-family:'Tajawal',sans-serif;margin-top:10px;text-align:center;">اختر العدد لعرض الخيارات والأسعار</div>
     </div>
 
     <!-- Option selector -->
-    <div style="background:#fff;border-radius:16px;padding:18px 20px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
-      <div style="font-size:13px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:14px;">اختر الباقة</div>
+    <div style="background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
+      <div style="font-size:13px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:10px;">اختر الباقة</div>
       <div style="display:flex;flex-direction:column;gap:10px;">
         <label id="tawilat-opt-plain" onclick="selectTawilatOpt('plain')" style="display:flex;align-items:center;justify-content:space-between;background:#f7f5f2;border-radius:14px;padding:14px 16px;cursor:pointer;border:0.5px solid transparent;box-shadow:0 2px 8px rgba(19,53,72,0.1);">
           <div>
@@ -2111,7 +2111,7 @@ function closeWalaaDetail(){
         <label id="tawilat-opt-tansiq" onclick="selectTawilatOpt('tansiq')" style="display:flex;align-items:center;justify-content:space-between;background:#f7f5f2;border-radius:14px;padding:14px 16px;cursor:pointer;border:0.5px solid transparent;box-shadow:0 2px 8px rgba(19,53,72,0.1);">
           <div>
             <div style="font-size:14px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;">مع تنسيق</div>
-            <div style="font-size:11px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-top:3px;">طاولات وكراسٍ مع تنسيق كامل</div>
+            <div style="font-size:11px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-top:3px;">طاولات وكراسٍ مع تنسيق متكامل</div>
           </div>
           <div id="tawilat-price-tansiq" style="font-size:18px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;white-space:nowrap;margin-right:12px;">399 ر.س</div>
         </label>
@@ -2125,14 +2125,14 @@ function closeWalaaDetail(){
     </div>
 
     <!-- Package contents (tansiq only) -->
-    <div id="tawilat-contents" style="display:block;background:#fff;border-radius:16px;padding:18px 20px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
+    <div id="tawilat-contents" style="display:block;background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
       <div style="font-size:13px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:12px;">يشمل التنسيق</div>
       <div id="tawilat-contents-list" style="display:flex;flex-direction:column;gap:10px;"></div>
     </div>
 
     <!-- Order button -->
     <div style="padding:0 0 calc(80px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
-      <button onclick="window.open('https://wa.me/966556156693?text='+encodeURIComponent('السلام عليكم، أود الاستفسار عن خدمة طاولات الطعام'),'_blank')" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;width:100%;text-align:center;">تواصل معنا واتساب</button>
+      <button onclick="window.open('https://wa.me/966556156693?text='+encodeURIComponent('السلام عليكم، أود الاستفسار عن خدمة طاولات الطعام'),'_blank')" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;width:100%;text-align:center;">تواصل عبر واتساب</button>
     </div></div>
 
   </div>
@@ -2147,7 +2147,7 @@ function closeWalaaDetail(){
     <div style="margin-top:10px;display:inline-block;background:rgba(25,167,183,0.3);border:1px solid rgba(25,167,183,0.6);border-radius:20px;padding:5px 16px;font-family:'Tajawal',sans-serif;font-size:12px;color:#fff;font-weight:600;">مزايا حصرية لضيوف يوم العائلة</div>
   </div>
 
-  <div style="padding:16px 20px;display:flex;flex-direction:column;gap:12px;">
+  <div style="padding:12px 20px;display:flex;flex-direction:column;gap:10px;">
 
     <div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
       <div style="font-size:13px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:12px;">مزايا البطاقة</div>
