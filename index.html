@@ -344,7 +344,7 @@ header{
 .gal-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.6);border:none;cursor:pointer;transition:all 0.2s}
 .gal-dot.active{background:var(--white);width:18px;border-radius:3px}
 .modal-handle{width:36px;height:4px;background:var(--border);border-radius:100px;margin:14px auto 0}
-.modal-inner{padding:20px 24px calc(80px + env(safe-area-inset-bottom,0px))}
+.modal-inner{padding:20px 24px calc(60px + env(safe-area-inset-bottom,0px))}
 .modal-type{font-size:10px;color:var(--teal);font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:4px}
 .modal-name{font-size:24px;font-weight:700;color:var(--navy);margin-bottom:18px}
 .modal-specs{display:flex;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:20px}
@@ -1038,7 +1038,7 @@ const data={
   resort:{
     tag:'المنتجع',title:'أكواخ المنتجع الفاخرة',desc:'١٢ كوخ بتصاميم فريدة على ساحل البحر الأحمر',tagClass:'resort-tag',
     items:[
-      {id:4,img:12,name:"بيت الدوم",type:"قبة هندسية صُممت خصيصاً للعرسان",suitable:"مناسب للعرسان",rooms:1,guests:2,size:"",bathroom:0,badge:"تجربة فريدة",tags:["يتسع ضيفين","غرفة نوم: سرير مزدوج","بانيو داخل||غرفة النوم","|","حمام واحد","|","جلسة خارجية","ركن شوي","|","مسبح خاص للكبار مع جاكوزي 4×7 م::عمق يصل إلى 140 سم","سرير تشميس داخل المسبح","|","كراسي تشميس","شاور خارجي","|","ركن المطبخ","ميني بار","|","شاشة تلفزيون","سماعات داخلية (ساوند بار)"]},
+      {id:4,img:12,name:"بيت الدوم",type:"قبة هندسية صُممت خصيصاً للعرسان",suitable:"مناسب للعرسان",rooms:1,guests:2,size:"",bathroom:0,badge:"تجربة فريدة",tags:["يتسع لشخصين","غرفة نوم بسرير مزدوج","بانيو داخلي بغرفة النوم","|","حمام واحد","|","جلسة خارجية","ركن شوي","|","مسبح خاص للكبار مع جاكوزي 4×7 م::عمق يصل إلى 140 سم","سرير تشميس داخل المسبح","|","كراسي تشميس","شاور خارجي","|","ركن المطبخ","ميني بار","|","شاشة تلفزيون","سماعات داخلية (ساوند بار)"]},
       {id:3,img:2,name:"الكوخ الهرمي",type:"كوخ خشبي هرمي بطراز هندسي حديث صُمم للمتزوجين",suitable:"مناسب للعرسان",rooms:1,guests:2,size:"",bathroom:1,hall:true,badge:null,tags:["يتسع ضيفين","غرفة نوم: سرير مزدوج","|","بانيو خارجي","جلسة خارجية","ركن شوي","|","مسبح خاص للكبار 4×5 م::عمق يصل إلى 140 سم","كراسي تشميس","شاور خارجي","|","ركن المطبخ","طاولة طعام","ميني بار","|","شاشة تلفزيون","سماعات داخلية (ساوند بار)"]},
       {id:2,img:1,name:"الكوخ الكلاسيكي",type:"يتميز بأسلوبه الحديث والكلاسيكي",suitable:"مناسب للعوائل",rooms:1,guests:15,size:"",bathroom:1,hall:true,badge:null,tags:["يتسع 15 ضيفاً","غرفة نوم: سرير مزدوج","|","جلسة خارجية","ركن شوي","|","مسبح خاص للكبار 4×7 م::عمق يصل إلى 140 سم","كراسي تشميس","شاور خارجي","|","ركن المطبخ","طاولة طعام","ميني بار","|","شاشة تلفزيون","سماعات داخلية (ساوند بار)"]},
       {id:6,img:5,name:"البيت اليوناني",type:"مزيج بين التراث القديم والبساطة الحديثة",suitable:"مناسب للعوائل",rooms:2,guests:10,size:"",bathroom:2,hall:true,badge:null,tags:["يتسع 10 ضيوف","غرفة نوم ١: سرير مزدوج","غرفة نوم ٢: سريران مفردان","|","جلسة خارجية","ركن شوي","|","مسبح خاص للكبار 4×7 م::عمق يصل إلى 140 سم","كراسي تشميس","شاور خارجي","|","ركن المطبخ","طاولة طعام","ميني بار","|","شاشة تلفزيون","سماعات داخلية (ساوند بار)"]},
@@ -1214,12 +1214,12 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
         <div class="card-guests"><span class="card-guests-max">&nbsp;</span></div>
         ` : `
         <div class="card-specs">
-          <div class="card-spec">${c.suitable&&c.suitable.includes('عرسان')?'للعرسان':'للعوائل'}</div>
+          <div class="card-spec">${c.suitable&&c.suitable.includes('عرسان')?'مناسب للعرسان':'للعوائل'}</div>
           <div class="card-spec">${c.rooms===1?'غرفة نوم واحدة':'غرفتين نوم'}</div>
-          ${(()=>{const b=c.tags&&c.tags.find(t=>t.includes('بانيو')||t.includes('جاكوزي'));return b?'<div class="card-spec" style="line-height:1.6;">'+b.replace('||','<br>')+'</div>':''})()} 
+          ${(()=>{const b=c.tags&&c.tags.find(t=>t.includes('بانيو')||t.includes('جاكوزي'));return b?'<div class="card-spec" style="line-height:1.6;">'+b.replace('||',' ')+'</div>':''})()} 
         </div>
         <div class="card-guests">
-          <span class="card-guests-max" style="color:#19a7b7;">أقصى عدد: ${c.guests > 10 ? c.guests + ' ضيفاً' : c.guests === 2 ? 'ضيفين' : c.guests + ' ضيوف'}</span>
+          <span class="card-guests-max" style="color:#19a7b7;">السعة: ${c.guests > 10 ? c.guests + ' ضيفاً' : c.guests === 2 ? 'شخصان' : c.guests + ' ضيوف'}</span>
         </div>
         `}
         <button class="card-btn">عرض التفاصيل</button>
@@ -1367,7 +1367,7 @@ function openM(id,type){
       return '<div class="tags-lbl">المنطقة الداخلية</div><div class="tags">'+indoor.map(rg).join('')+'</div>'
         +'<div class="tags-lbl" style="margin-top:14px;">المنطقة الخارجية</div><div class="tags">'+outdoor.map(rg).join('')+'</div>'
         +'<div class="tags-lbl" style="margin-top:12px;">مرافق المطبخ</div><div class="tags" style="margin-bottom:16px;"><span class="tag">موقد كهربائي</span><span class="tag">ثلاجة</span><span class="tag">مايكرويف</span><span class="tag">غلاية</span><span class="tag">ماكينة قهوة</span></div>'
-        +'<div class="tags-lbl" style="margin-top:12px;">مميزات مكان الإقامة</div><div class="tags" style="margin-bottom:16px;"><span class="tag">واي فاي مجاني</span><span class="tag">تلفزيون</span><span class="tag">سماعات داخلية (ساوند بار)</span><span class="tag" data-tip="متاح يومياً من 1 ظهراً حتى 12 منتصف الليل">مطعم وجبات سريعة</span><span class="tag">موقف سيارة</span><span class="tag" data-tip="متاح حسب التوفر">غرفة سائق</span></div>';
+        +'<div class="tags-lbl" style="margin-top:12px;">مميزات مكان الإقامة</div><div class="tags" style="margin-bottom:16px;"><span class="tag">واي فاي مجاني</span><span class="tag">تلفزيون</span><span class="tag">سماعات داخلية (ساوند بار)</span><span class="tag" data-tip="متاح يومياً من 1 ظهراً حتى 12 منتصف الليل">مطعم ومشروبات خفيفة</span><span class="tag">موقف سيارة</span><span class="tag" data-tip="متاح حسب التوفر">غرفة سائق</span></div>';
     })()}
 
     <div class="modal-btns">
@@ -1381,10 +1381,10 @@ function openM(id,type){
     document.querySelectorAll('#mBody .tags').forEach(el=>{el.style.marginBottom='12px';});
     document.querySelectorAll('#mBody .tags div[style*="margin:4px"]').forEach(el=>el.remove());
     const cr=document.querySelector('#mBody div[style*="margin-bottom:20px"]');if(cr)cr.style.marginBottom='12px';
-    const mb=document.querySelector('#mBody .modal-btns');if(mb)mb.style.marginTop='24px';
+    const mb=document.querySelector('#mBody .modal-btns');if(mb)mb.style.marginTop='18px';
   if(mb){
     const sv=document.createElement('div');
-    sv.style.cssText='margin-bottom:20px;';
+    sv.style.cssText='margin-bottom:14px;';
     sv.innerHTML='<div class="tags-lbl" style="color:#133548;margin-top:24px;">الخدمات الإضافية</div>'
       +'<div class="tags">'
       +'<span class="tag">التنسيقات</span>'
@@ -1393,7 +1393,7 @@ function openM(id,type){
       +'<span class="tag">السينما</span>'
       +'<span class="tag">ألعاب الترفيه</span>'
       +'<span class="tag">الألعاب المائية</span>'
-      +'<div style="width:100%;font-size:11px;color:#8a9eaa;margin-top:2px;">لمعرفة تفاصيل الخدمات الإضافية الرجاء الاطلاع على صفحة الخدمات</div>'
+      +'<div style="width:100%;font-size:11px;color:#8a9eaa;margin-top:2px;">للتعرف على تفاصيل الخدمات الإضافية انتقل إلى صفحة الخدمات.</div>'
       +'</div>';
     mb.parentNode.insertBefore(sv,mb);
   }
