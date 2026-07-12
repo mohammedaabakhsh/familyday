@@ -179,7 +179,7 @@ body{background:var(--bg);color:var(--text);font-family:'Tajawal',sans-serif;min
 /* ===== CONTACT PAGE ===== */
 .cp-hero{padding:40px 24px 20px;text-align:center;background:#133548;position:relative;}
 .contact-back{position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.15);border:none;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;border-radius:20px;padding:6px 14px;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
-.cp-hero-title{font-size:26px;font-weight:700;color:#fff;margin:0 0 6px;font-family:'Tajawal',sans-serif;line-height:1.3;}
+.cp-hero-title{font-size:26px;font-weight:700;margin:0 0 6px;font-family:'Tajawal',sans-serif;line-height:1.3;}
 .cp-hero-desc{font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;margin:0;line-height:1.5;}
 .cp-hero-tag{display:inline-block;background:rgba(25,167,183,0.3);border:1px solid rgba(25,167,183,0.6);border-radius:20px;padding:5px 16px;margin-top:10px;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:600;color:#fff;}
 #contact-page{display:none;position:fixed;inset:0;z-index:350;background:#F8F5F0;overflow-y:auto;font-family:'Tajawal',sans-serif;direction:rtl;}
@@ -203,6 +203,19 @@ body{background:var(--bg);color:var(--text);font-family:'Tajawal',sans-serif;min
 .cp-app-note{background:rgba(25,167,183,0.07);border:0.8px solid rgba(25,167,183,0.25);border-radius:12px;padding:11px 14px;font-size:12px;color:#4a6070;line-height:1.75;}
 .landing-card.contact-card{background:rgba(25,167,183,0.18);border-color:rgba(25,167,183,0.45)}
 .landing-card.contact-card:hover,.landing-card.contact-card:active{background:rgba(25,167,183,0.32)}
+
+/* ===== SHIMMER TITLE ===== */
+.shimmer-title{
+  background:linear-gradient(90deg,#7ecfea 0%,#ffffff 40%,#ffffff 60%,#7ecfea 100%);
+  background-size:250% auto;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:titleShimmer 2.8s linear infinite;
+}
+@keyframes titleShimmer{
+  0%{background-position:150% center;}
+  100%{background-position:-50% center;}
+}
 
 /* ========= MAIN APP ========= */
 #app{display:none}
@@ -220,7 +233,7 @@ header{
 /* ===== CONTACT PAGE ===== */
 .cp-hero{padding:40px 24px 20px;text-align:center;background:#133548;position:relative;}
 .contact-back{position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.15);border:none;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;border-radius:20px;padding:6px 14px;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
-.cp-hero-title{font-size:26px;font-weight:700;color:#fff;margin:0 0 6px;font-family:'Tajawal',sans-serif;line-height:1.3;}
+.cp-hero-title{font-size:26px;font-weight:700;margin:0 0 6px;font-family:'Tajawal',sans-serif;line-height:1.3;}
 .cp-hero-desc{font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;margin:0;line-height:1.5;}
 .cp-hero-tag{display:inline-block;background:rgba(25,167,183,0.3);border:1px solid rgba(25,167,183,0.6);border-radius:20px;padding:5px 16px;margin-top:10px;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:600;color:#fff;}
 #contact-page{display:none;position:fixed;inset:0;z-index:350;background:#F8F5F0;overflow-y:auto;font-family:'Tajawal',sans-serif;direction:rtl;}
@@ -244,6 +257,19 @@ header{
 .cp-app-note{background:rgba(25,167,183,0.07);border:0.8px solid rgba(25,167,183,0.25);border-radius:12px;padding:11px 14px;font-size:12px;color:#4a6070;line-height:1.75;}
 .landing-card.contact-card{background:rgba(25,167,183,0.18);border-color:rgba(25,167,183,0.45)}
 .landing-card.contact-card:hover,.landing-card.contact-card:active{background:rgba(25,167,183,0.32)}
+
+/* ===== SHIMMER TITLE ===== */
+.shimmer-title{
+  background:linear-gradient(90deg,#7ecfea 0%,#ffffff 40%,#ffffff 60%,#7ecfea 100%);
+  background-size:250% auto;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:titleShimmer 2.8s linear infinite;
+}
+@keyframes titleShimmer{
+  0%{background-position:150% center;}
+  100%{background-position:-50% center;}
+}
 
 /* ========= MAIN APP ========= */
 #app{display:none}
@@ -287,17 +313,7 @@ header{
 }
 .resort-tag{background:rgba(25,167,183,0.3);color:#fff}
 .chalet-tag{background:rgba(25,167,183,0.3);color:#fff}
-.section-hero h1{font-size:26px;font-weight:700;margin:0 0 6px 0;padding:0;font-family:'Tajawal',sans-serif;line-height:1.3;
-  background:linear-gradient(90deg,#7ecfea 0%,#ffffff 40%,#ffffff 60%,#7ecfea 100%);
-  background-size:250% auto;
-  -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;
-  animation:titleShimmer 2.8s linear infinite;
-}
-@keyframes titleShimmer{
-  0%{background-position:150% center;}
-  100%{background-position:-50% center;}
-}
+.section-hero h1{font-size:26px;font-weight:700;margin:0 0 6px 0;padding:0;font-family:'Tajawal',sans-serif;line-height:1.3;}
 .section-hero p{font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;margin:0;padding:0;line-height:1.5;}
 
 /* FILTERS */
@@ -691,7 +707,7 @@ function tarfihiOrder(){
 <div id="services-overlay" class="hide" style="position:fixed;top:0;left:0;right:0;bottom:calc(60px + env(safe-area-inset-bottom,0px));z-index:9500;background:#f7f5f2;overflow-y:auto;-webkit-overflow-scrolling:touch;">
   <div style="background:#133548;padding:40px 24px 20px;text-align:center;position:relative;">
     <button onclick="closeServices()" style="position:absolute;top:18px;right:18px;background:rgba(255,255,255,0.15);border:none;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;cursor:pointer;border-radius:20px;padding:6px 14px;">❯ رجوع</button>
-    <div style="font-size:26px;font-weight:700;color:#fff;margin-bottom:6px;">خدمات المنتجع</div>
+    <div class="shimmer-title" style="font-size:26px;font-weight:700;margin-bottom:6px;">خدمات المنتجع</div>
     <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;">خدمات إضافية لتجربة أكثر تميزًا</div>
     <div style="margin-top:10px;display:inline-block;background:rgba(25,167,183,0.3);border:1px solid rgba(25,167,183,0.6);border-radius:20px;padding:5px 16px;font-family:'Tajawal',sans-serif;font-size:12px;color:#fff;font-weight:600;">اختر الخدمة المناسبة</div>
   </div>
@@ -970,7 +986,7 @@ function tarfihiOrder(){
 <div id="contact-page">
   <div class="cp-hero">
     <button class="contact-back" onclick="closeContact()">❯ رجوع</button>
-    <h1 class="cp-hero-title">الحجز والتواصل</h1>
+    <h1 class="cp-hero-title shimmer-title">الحجز والتواصل</h1>
     <div class="cp-hero-tag">كل ما تحتاجه لإتمام حجزك</div>
   </div>
   <div class="cp-body">
@@ -1287,6 +1303,7 @@ function showSection(type){
   document.getElementById('sectionTag').textContent='اختر الكوخ المناسب لك';
   document.getElementById('sectionTag').style.display='inline-block';
   document.getElementById('sectionTitle').textContent='منتجع يوم العائلة';
+  document.getElementById('sectionTitle').className='shimmer-title';
   document.getElementById('sectionDesc').textContent='بتجارب مستوحاة من مدن العالم';
   const fs=document.getElementById('filterSection');
   fs.style.display='flex';
