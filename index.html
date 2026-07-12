@@ -632,6 +632,14 @@ function enterMain(){
   setTimeout(function(){ s.style.display = 'none'; }, 550);
 }
 
+// Auto-enter after 3 seconds if user doesn't tap
+var _autoEnterTimer = setTimeout(function(){
+  if(document.getElementById('splash').style.display !== 'none'){
+    enterMain();
+  }
+}, 3000);
+
+
 
 
 var _orderItemName = '';
