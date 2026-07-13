@@ -612,16 +612,16 @@ header{
 /* ===== LANDING REDESIGN PREMIUM v2 ===== */
 #landing{overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch!important;display:block!important;background:#060f18!important;overscroll-behavior:none;}
 #landing.hide{display:none!important;}
-.lh-hero{position:relative;width:100%;display:flex;flex-direction:column;overflow:hidden;pointer-events:none;}
+.lh-hero{position:relative;width:100%;display:flex;flex-direction:column;overflow:hidden;}
 .lh-hero.landing-bg-photo{position:relative!important;inset:auto!important;height:100vh;height:100svh;min-height:580px;}
-.lh-overlay{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(3,9,18,.65) 0%,rgba(3,9,18,.00) 22%,rgba(3,9,18,.05) 50%,rgba(3,9,18,.62) 70%,rgba(1,5,12,.96) 100%);}
+.lh-overlay{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(2,8,18,.50) 0%,rgba(2,8,18,.00) 22%,rgba(2,8,18,.00) 50%,rgba(2,8,18,.30) 70%,rgba(1,5,12,.68) 100%);}
 .lh-logo-wrap{position:absolute;top:44px;left:50%;transform:translateX(-50%);z-index:3;}
 .lh-logo-img{height:58px;width:auto;filter:drop-shadow(0 2px 16px rgba(0,0,0,.45));}
-.lh-hero-main{flex:1;position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px 72px;}
+.lh-hero-main{flex:1;position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px 210px;}
 .lh-title{font-family:'Tajawal',sans-serif;font-size:44px;font-weight:800;color:#fff;line-height:1.18;margin:0 0 12px;text-shadow:0 2px 40px rgba(0,0,0,.55);letter-spacing:-.01em;}
 .lh-subtitle{font-family:'Tajawal',sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,.70);line-height:1.85;margin:0;}
 /* Floating carousel shell: sibling to hero, pulled up to overlap bottom of hero */
-.lh-float-csl{position:relative;z-index:10;margin-top:-90px;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 36px);}
+.lh-float-csl{position:absolute;bottom:0;left:0;right:0;z-index:10;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 24px);}
 .lh-float-label{font-family:'Tajawal',sans-serif;font-size:10px;font-weight:600;color:rgba(255,255,255,.36);text-align:center;letter-spacing:.2em;text-transform:uppercase;margin:0 0 13px;}
 .lh-carousel{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;gap:10px;padding:8px 16% 8px;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain;}
 .lh-carousel::-webkit-scrollbar{display:none;}
@@ -793,10 +793,8 @@ function tarfihiOrder(){
       <p class="lh-subtitle">خصوصية تليق بكم…<br>وراحة تستحقونها.</p>
     </div>
 
-  </section><!-- /lh-hero -->
-
-  <!-- Floating carousel: overlaps bottom of hero image (margin-top negative) -->
-  <div class="lh-float-csl">
+    <!-- Carousel: absolute-pinned to hero bottom, visible without scroll -->
+    <div class="lh-float-csl">
     <p class="lh-float-label">اكتشف المنتجع</p>
     <div class="lh-carousel" id="lhCarousel">
 
@@ -833,7 +831,9 @@ function tarfihiOrder(){
       <span class="lh-dot"></span>
       <span class="lh-dot"></span>
     </div>
-  </div><!-- /lh-float-csl -->
+    </div><!-- /lh-float-csl -->
+
+  </section><!-- /lh-hero -->
 
 </div>
 
