@@ -612,7 +612,7 @@ header{
 /* ===== LANDING REDESIGN PREMIUM v2 ===== */
 #landing{overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch!important;display:block!important;background:#060f18!important;overscroll-behavior:none;}
 #landing.hide{display:none!important;}
-.lh-hero{position:relative;width:100%;display:flex;flex-direction:column;overflow:hidden;}
+.lh-hero{position:relative;width:100%;display:flex;flex-direction:column;overflow:hidden;pointer-events:none;}
 .lh-hero.landing-bg-photo{position:relative!important;inset:auto!important;height:100vh;height:100svh;min-height:580px;}
 .lh-overlay{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(3,9,18,.65) 0%,rgba(3,9,18,.00) 22%,rgba(3,9,18,.05) 50%,rgba(3,9,18,.62) 70%,rgba(1,5,12,.96) 100%);}
 .lh-logo-wrap{position:absolute;top:44px;left:50%;transform:translateX(-50%);z-index:3;}
@@ -660,24 +660,40 @@ function closeContact(){
 }
 
 
-// Carousel: Intersection Observer for active state + dots
+// Carousel: scroll-based active detection (reliable on iOS/RTL)
 (function(){
   var carousel = document.getElementById('lhCarousel');
   if(!carousel) return;
-  var cards = carousel.querySelectorAll('.lh-card');
-  var dots  = document.querySelectorAll('#lhDots .lh-dot');
-  var obs = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting && e.intersectionRatio >= 0.5){
-        cards.forEach(function(c){ c.classList.remove('is-active'); });
-        dots.forEach(function(d){ d.classList.remove('is-active'); });
-        e.target.classList.add('is-active');
-        var idx = Array.from(cards).indexOf(e.target);
-        if(dots[idx]) dots[idx].classList.add('is-active');
-      }
+  var cards = Array.from(carousel.querySelectorAll('.lh-card'));
+  var dots  = Array.from(document.querySelectorAll('#lhDots .lh-dot'));
+  var raf = null;
+
+  function setActive(i){
+    cards.forEach(function(c){ c.classList.remove('is-active'); });
+    dots.forEach(function(d){ d.classList.remove('is-active'); });
+    if(cards[i]) cards[i].classList.add('is-active');
+    if(dots[i])  dots[i].classList.add('is-active');
+  }
+
+  function detectActive(){
+    var cr = carousel.getBoundingClientRect();
+    var cx = cr.left + cr.width / 2;
+    var best = 0, bestD = Infinity;
+    cards.forEach(function(c,i){
+      var r = c.getBoundingClientRect();
+      var d = Math.abs((r.left + r.width/2) - cx);
+      if(d < bestD){ bestD = d; best = i; }
     });
-  }, {root: carousel, threshold: 0.5});
-  cards.forEach(function(c){ obs.observe(c); });
+    setActive(best);
+  }
+
+  carousel.addEventListener('scroll', function(){
+    if(raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(detectActive);
+  }, {passive:true});
+
+  // Run once after layout settles (handles initial active + RTL)
+  setTimeout(detectActive, 120);
 })();
 
 function enterMain(){
