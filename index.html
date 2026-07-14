@@ -1617,18 +1617,17 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
       </div>
       <div class="card-body">
         <div class="card-name">${c.name}</div>
-        ${c.id===12 ? `
-        <div class="card-specs" style="justify-content:center;">
-          <div class="card-spec" style="flex:none;width:100%;">مساحة ترفيهية مشتركة لجميع ضيوف المنتجع</div>
-        </div>
-        <div class="card-guests"><span class="card-guests-max">&nbsp;</span></div>
-        ` : `
         <div class="card-specs">
+          ${c.id===12 ? `
+          <div class="card-spec">منطقة ألعاب</div>
+          <div class="card-spec">ألعاب أطفال</div>
+          <div class="card-spec">شاشة عرض</div>
+          ` : `
           <div class="card-spec">${c.guests > 10 ? c.guests + ' شخصًا' : c.guests === 2 ? 'شخصان' : c.guests + ' أشخاص'}</div>
           <div class="card-spec">${c.rooms===1?'غرفة نوم واحدة':'غرفتين نوم'}</div>
           ${(()=>{const b=c.tags&&c.tags.find(t=>t.includes('بانيو')||t.includes('جاكوزي'));if(!b)return '';const s=b.includes('داخلي')&&!b.includes('جاكوزي')?'بانيو داخلي':b.includes('خارجي')?'بانيو خارجي':b.includes('جاكوزي')?'جاكوزي داخلي':'بانيو';return '<div class="card-spec">'+s+'</div>'})()} 
+          `}
         </div>
-        `}
         <button class="card-btn">عرض التفاصيل</button>
       </div>`;
     g.appendChild(d);
