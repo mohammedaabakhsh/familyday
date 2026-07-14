@@ -361,9 +361,9 @@ header{
 .filter-section::-webkit-scrollbar{display:none}
 .filter-label{font-size:11px;color:var(--text-light);font-weight:500;margin-left:4px;white-space:nowrap}
 .fbtn{
-  background:rgba(255,255,255,.07);border:1.5px solid rgba(25,167,183,.18);
-  color:rgba(255,255,255,.65);padding:8px 18px;border-radius:100px;
-  font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);
+  color:rgba(255,255,255,.65);padding:6px 12px;border-radius:100px;
+  font-family:'Tajawal',sans-serif;font-size:11px;font-weight:500;
   cursor:pointer;transition:all 0.2s;white-space:nowrap;flex-shrink:0;
 }
 .fbtn.active{background:#19a7b7;border-color:#19a7b7;color:#fff;font-weight:700}
@@ -571,7 +571,7 @@ header{
 
   /* Filter */
   .filter-section{padding:0 16px 16px;}
-  .fbtn{font-size:13px;padding:8px 18px;}
+  .fbtn{font-size:12px;padding:7px 14px;}
 
   /* Grid */
   .cards-grid{gap:14px;padding:0 16px 16px;}
@@ -979,10 +979,10 @@ function tarfihiOrder(){
   </div>
   <div style="padding:12px 20px 0;">
     <div style="display:flex;gap:8px;margin-bottom:10px;font-family:'Tajawal',sans-serif;">
-         <button id="mf-all" onclick="setMaiyaFilter('all')" style="flex:1;padding:8px 0;border:none;border-radius:20px;background:#19a7b7;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">الكل</button>
-         <button id="mf-كبار" onclick="setMaiyaFilter('كبار')" style="flex:1;padding:8px 0;border:none;border-radius:20px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">للكبار</button>
-         <button id="mf-صغار" onclick="setMaiyaFilter('صغار')" style="flex:1;padding:8px 0;border:none;border-radius:20px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">للصغار</button>
-         <button id="mf-عائلة" onclick="setMaiyaFilter('عائلة')" style="flex:1;padding:8px 0;border:none;border-radius:20px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">للعائلة</button>
+         <button id="mf-all" onclick="setMaiyaFilter('all')" style="flex:1;padding:6px 12px;border:1px solid #19a7b7;border-radius:100px;background:#19a7b7;color:#fff;font-family:'Tajawal',sans-serif;font-size:11px;font-weight:600;cursor:pointer;">الكل</button>
+         <button id="mf-كبار" onclick="setMaiyaFilter('كبار')" style="flex:1;padding:6px 12px;border:1px solid rgba(255,255,255,.18);border-radius:100px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);font-family:'Tajawal',sans-serif;font-size:11px;font-weight:500;cursor:pointer;">للكبار</button>
+         <button id="mf-صغار" onclick="setMaiyaFilter('صغار')" style="flex:1;padding:6px 12px;border:1px solid rgba(255,255,255,.18);border-radius:100px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);font-family:'Tajawal',sans-serif;font-size:11px;font-weight:500;cursor:pointer;">للصغار</button>
+         <button id="mf-عائلة" onclick="setMaiyaFilter('عائلة')" style="flex:1;padding:6px 12px;border:1px solid rgba(255,255,255,.18);border-radius:100px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);font-family:'Tajawal',sans-serif;font-size:11px;font-weight:500;cursor:pointer;">للعائلة</button>
        </div>
        <div style="position:relative;overflow:hidden;border-radius:18px;background:rgba(8,22,40,.95);box-shadow:0 4px 20px rgba(0,0,0,.3);">
       <div id="maiya-slides" style="display:flex;direction:rtl;transition:transform 0.35s ease;will-change:transform;"></div>
@@ -1044,11 +1044,11 @@ function tarfihiOrder(){
   </div>
   <div style="padding:12px 20px 0;">
     <div style="display:flex;gap:8px;margin-bottom:10px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch;">
-      <button id="jf-all" onclick="setJalsatFilter('all')" style="flex-shrink:0;padding:8px 14px;border:none;border-radius:20px;background:#19a7b7;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">الكل</button>
-      <button id="jf-2" onclick="setJalsatFilter('2')" style="flex-shrink:0;padding:8px 14px;border:none;border-radius:20px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">شخصين</button>
-      <button id="jf-4" onclick="setJalsatFilter('4')" style="flex-shrink:0;padding:8px 14px;border:none;border-radius:20px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">4 أشخاص</button>
-      <button id="jf-8" onclick="setJalsatFilter('8')" style="flex-shrink:0;padding:8px 14px;border:none;border-radius:20px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">8 أشخاص</button>
-      <button id="jf-12" onclick="setJalsatFilter('12')" style="flex-shrink:0;padding:8px 14px;border:none;border-radius:20px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">12 شخص</button>
+      <button id="jf-all" onclick="setJalsatFilter('all')" style="flex-shrink:0;padding:6px 12px;border:1px solid #19a7b7;border-radius:100px;background:#19a7b7;color:#fff;font-family:'Tajawal',sans-serif;font-size:11px;font-weight:600;cursor:pointer;">الكل</button>
+      <button id="jf-2" onclick="setJalsatFilter('2')" style="flex-shrink:0;padding:6px 12px;border:1px solid rgba(255,255,255,.18);border-radius:100px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);font-family:'Tajawal',sans-serif;font-size:11px;font-weight:500;cursor:pointer;">شخصين</button>
+      <button id="jf-4" onclick="setJalsatFilter('4')" style="flex-shrink:0;padding:6px 12px;border:1px solid rgba(255,255,255,.18);border-radius:100px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);font-family:'Tajawal',sans-serif;font-size:11px;font-weight:500;cursor:pointer;">4 أشخاص</button>
+      <button id="jf-8" onclick="setJalsatFilter('8')" style="flex-shrink:0;padding:6px 12px;border:1px solid rgba(255,255,255,.18);border-radius:100px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);font-family:'Tajawal',sans-serif;font-size:11px;font-weight:500;cursor:pointer;">8 أشخاص</button>
+      <button id="jf-12" onclick="setJalsatFilter('12')" style="flex-shrink:0;padding:6px 12px;border:1px solid rgba(255,255,255,.18);border-radius:100px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);font-family:'Tajawal',sans-serif;font-size:11px;font-weight:500;cursor:pointer;">12 شخص</button>
     </div>
     <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:#7ecfea;margin-bottom:8px;white-space:nowrap;">اختر عدد الأشخاص لعرض السعر المناسب</div>
     <div style="position:relative;overflow:hidden;border-radius:18px;background:rgba(8,22,40,.95);box-shadow:0 4px 20px rgba(0,0,0,.3);">
@@ -2125,7 +2125,7 @@ function buildMaiyaSlides(){
     var btn = document.getElementById('mf-'+f);
     if(btn) btn.style.background = (f===_maiyaFilter)?'#19a7b7':'rgba(255,255,255,.07)';
     if(btn) btn.style.color = (f===_maiyaFilter)?'#fff':'rgba(255,255,255,.65)';
-    if(btn) btn.style.border = (f===_maiyaFilter)?'1.5px solid #19a7b7':'1.5px solid rgba(25,167,183,.18)';
+    if(btn) btn.style.border = (f===_maiyaFilter)?'1px solid #19a7b7':'1px solid rgba(255,255,255,.18)';
   });
 }
 function setMaiyaFilter(f){
