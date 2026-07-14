@@ -1412,7 +1412,7 @@ function bottomNav(tab){
     document.getElementById('grid').parentElement.style.display='';
     document.getElementById('filterSection').style.display='';
     document.getElementById('sectionTitle').textContent='';
-    document.getElementById('sectionDesc').textContent='بتجارب مستوحاة من مدن العالم';
+    document.getElementById('sectionDesc').textContent='';
     document.getElementById('sectionTag').textContent='';
     document.getElementById('sectionTag').style.display='none';
     _serviceSubReturn=null;
@@ -1476,9 +1476,9 @@ function showSection(type){
   document.getElementById('sectionTag').className='section-tag '+d.tagClass;
   document.getElementById('sectionTag').textContent='اختر الكوخ المناسب لك';
   document.getElementById('sectionTag').style.display='inline-block';
-  document.getElementById('sectionTitle').textContent='منتجع يوم العائلة';
-  document.getElementById('sectionTitle').className='shimmer-title';
-  document.getElementById('sectionDesc').textContent='بتجارب مستوحاة من مدن العالم';
+  document.getElementById('sectionTitle').textContent='';
+  document.getElementById('sectionTitle').className='';
+  document.getElementById('sectionDesc').textContent='';
   const fs=document.getElementById('filterSection');
   fs.style.display = (type==='resort') ? 'none' : 'flex';
   setActiveTab('resort');
@@ -2015,8 +2015,8 @@ function showServiceSub(title, subtitle, cabins, hideFilter){
   document.querySelector('.back-btn').style.background = 'rgba(255,255,255,0.15)';
   document.querySelector('.back-btn').style.borderRadius = '20px';
   document.querySelector('.back-btn').style.padding = '6px 14px';
-  document.getElementById('sectionTitle').textContent = title;
-  document.getElementById('sectionDesc').textContent = subtitle;
+  document.getElementById('sectionTitle').textContent = '';
+  document.getElementById('sectionDesc').textContent = '';
   document.getElementById('sectionTag').textContent = 'اختر الباقة المناسبة لمناسبتك';
   document.getElementById('sectionTag').style.display = 'inline-block';
   document.getElementById('sectionTag').className = 'section-tag resort-tag';
