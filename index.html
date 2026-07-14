@@ -2182,9 +2182,9 @@ function updateMaiyaSelectionUI(){
       orderBtn.textContent = 'اطلب الباقة الآن';
     } else {
       orderBtn.disabled = true;
-      orderBtn.style.background = '#e8e2d8';
-      orderBtn.style.border = '1.5px solid #b0bdc4';
-      orderBtn.style.color = '#b0bdc4';
+      orderBtn.style.background = 'rgba(14,36,58,.60)';
+      orderBtn.style.border = '1.5px solid rgba(25,167,183,.20)';
+      orderBtn.style.color = 'rgba(126,207,234,.35)';
       orderBtn.style.cursor = 'not-allowed';
       orderBtn.textContent = 'اختر 3 ألعاب أولًا';
     }
@@ -2195,9 +2195,9 @@ function updateMaiyaSelectionUI(){
   if(selBtn && g){
     var isSelected = _maiyaSelected.has(g.name);
     selBtn.textContent = isSelected ? 'تم الاختيار ✓' : 'اختر اللعبة';
-    selBtn.style.background = isSelected ? '#19a7b7' : '#f7f5f2';
-    selBtn.style.border = isSelected ? '1.5px solid #19a7b7' : '1.5px solid #e0d8cd';
-    selBtn.style.color = isSelected ? '#fff' : '#133548';
+    selBtn.style.background = isSelected ? '#19a7b7' : 'rgba(255,255,255,.08)';
+    selBtn.style.border = isSelected ? '1.5px solid #19a7b7' : '1.5px solid rgba(25,167,183,.35)';
+    selBtn.style.color = isSelected ? '#fff' : '#7ecfea';
   }
 }
 function maiyaOrderNow(){
