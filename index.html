@@ -492,6 +492,7 @@ header{
 .nx-divider{display:flex;align-items:center;gap:8px;padding:0 16px;margin-bottom:16px;direction:rtl;}
 .nx-divider-line{flex:1;height:.5px;background:rgba(255,255,255,.12);}
 .nx-divider-text{font-family:'Tajawal',sans-serif;font-size:11px;color:rgba(255,255,255,.32);letter-spacing:.1em;}
+.nx-old-card{flex:0 0 280px!important;scroll-snap-align:start;min-width:0;}
 /* ===== END RESORT NETFLIX ===== */
 
 
@@ -1530,41 +1531,58 @@ function cardSlide(wrap,dir){
 }
 
 function renderResortNetflix(g){
-  const items=data.resort.items;
-  const couples=items.filter(c=>c.suitable&&c.suitable.includes('عرسان'));
-  const families=items.filter(c=>c.suitable&&c.suitable.includes('عوائل'))
-    .sort((a,b)=>a.guests-b.guests);
-  const shared=items.filter(c=>c.id===12);
+  var items=data.resort.items;
+  var couples=items.filter(function(c){return c.suitable&&c.suitable.includes('عرسان');});
+  var families=items.filter(function(c){return c.suitable&&c.suitable.includes('عوائل');})
+    .sort(function(a,b){return a.guests-b.guests;});
+  var shared=items.filter(function(c){return c.id===12;});
 
   g.className='nx-wrap';
   g.innerHTML='';
 
-  function capLabel(n){
-    if(n===2)return 'شخصان';
-    if(n<=10)return n+' أشخاص';
-    return n+' شخصًا';
+  function buildCard(c){
+    var gl=GALLERY[c.id]||[];
+    var imgs=GALLERY[c.id]||[IMG[c.img]];
+    var d=document.createElement('div');
+    d.className='card nx-old-card';
+    d.onclick=function(){openM(c.id,'resort');};
+    var slideButtons='';
+    if(gl.length>1){
+      slideButtons='<button class="card-slide-btn card-slide-prev" onclick="event.stopPropagation();cardSlide(this.closest(\'.card-img-wrap\'),-1)">&#10095;</button>'+
+        '<button class="card-slide-btn card-slide-next" onclick="event.stopPropagation();cardSlide(this.closest(\'.card-img-wrap\'),1)">&#10094;</button>'+
+        '<div style="position:absolute;bottom:10px;left:12px;background:rgba(19,53,72,0.55);color:#fff;font-family:Tajawal,sans-serif;font-size:11px;border-radius:12px;padding:3px 9px;z-index:2;" class="card-counter">1 / '+gl.length+'</div>';
+    }
+    var imgsHtml=imgs.map(function(src,i){
+      return '<img src="'+src+'" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:'+(i===0?1:0)+';transition:opacity 0.4s ease;">';
+    }).join('');
+    var badgeHtml=c.badge?'<div class="badge">'+c.badge+'</div>':'';
+    var bodyHtml;
+    if(c.id===12){
+      bodyHtml='<div class="card-specs" style="justify-content:center;"><div class="card-spec" style="flex:none;width:100%;">مساحة ترفيهية مشتركة لجميع ضيوف المنتجع</div></div><div class="card-guests"><span class="card-guests-max">&nbsp;</span></div>';
+    } else {
+      var bath=c.tags&&c.tags.find(function(t){return t.includes('بانيو')||t.includes('جاكوزي');});
+      var gl2=c.guests>10?c.guests+' شخصًا':c.guests===2?'شخصان':c.guests+' أشخاص';
+      bodyHtml='<div class="card-specs">'+
+        '<div class="card-spec">'+(c.suitable&&c.suitable.includes('عرسان')?'مناسب للعرسان':'مناسب للعوائل')+'</div>'+
+        '<div class="card-spec">'+(c.rooms===1?'غرفة نوم واحدة':'غرفتين نوم')+'</div>'+
+        (bath?'<div class="card-spec" style="line-height:1.6;">'+bath.replace('||',' ')+'</div>':'')+
+        '</div>'+
+        '<div class="card-guests"><span class="card-guests-max" style="color:#133548;">السعة: '+gl2+'</span></div>';
+    }
+    d.innerHTML='<div class="card-img-wrap" data-cid="'+c.id+'" data-cidx="0" style="position:relative;overflow:hidden;">'+
+      imgsHtml+badgeHtml+slideButtons+'</div>'+
+      '<div class="card-body"><div class="card-name">'+c.name+'</div>'+bodyHtml+
+      '<button class="card-btn">عرض التفاصيل</button></div>';
+    return d;
   }
 
   function buildRow(title,cabins){
-    const sec=document.createElement('div');
+    var sec=document.createElement('div');
     sec.className='nx-section';
     sec.innerHTML='<div class="nx-header"><span class="nx-title">'+title+'</span><span class="nx-count">('+cabins.length+')</span></div>';
-    const row=document.createElement('div');
+    var row=document.createElement('div');
     row.className='nx-row';
-    cabins.forEach(function(c){
-      const imgs=GALLERY[c.id]||[IMG[c.img]];
-      const card=document.createElement('div');
-      card.className='nx-card';
-      card.onclick=function(){openM(c.id,'resort');};
-      card.innerHTML='<div class="nx-img-wrap">'+
-        '<img src="'+imgs[0]+'" loading="lazy">'+
-        '<div class="nx-grad"></div>'+
-        (c.badge?'<div class="nx-badge-top">'+c.badge+'</div>':'')+
-        (c.guests>0?'<div class="nx-cap"><span class="nx-cap-num">'+capLabel(c.guests)+'</span></div>':'')+
-        '</div>'+
-        '<div class="nx-name">'+c.name+'</div>';
-      row.appendChild(card);
-    });
+    cabins.forEach(function(c){row.appendChild(buildCard(c));});
     sec.appendChild(row);
     return sec;
   }
@@ -1573,17 +1591,14 @@ function renderResortNetflix(g){
   if(families.length) g.appendChild(buildRow('للعوائل',families));
 
   if(shared.length){
-    const c=shared[0];
-    const imgs=GALLERY[c.id]||[IMG[c.img]];
     g.insertAdjacentHTML('beforeend','<div class="nx-divider"><div class="nx-divider-line"></div><span class="nx-divider-text">مشترك</span><div class="nx-divider-line"></div></div>');
-    const sw=document.createElement('div');
-    sw.className='nx-shared-wrap';
-    sw.onclick=function(){openM(c.id,'resort');};
-    sw.innerHTML='<img class="nx-shared-img" src="'+imgs[0]+'" loading="lazy">'+
-      '<div class="nx-shared-body">'+
-      '<div class="nx-shared-title">'+c.name+'</div>'+
-      '<div class="nx-shared-sub">منطقة مشتركة لجميع ضيوف المنتجع</div>'+
-      '</div>';
+    var sw=document.createElement('div');
+    sw.className='nx-section';
+    sw.style.padding='0 16px';
+    var row2=document.createElement('div');
+    row2.className='nx-row';
+    row2.appendChild(buildCard(shared[0]));
+    sw.appendChild(row2);
     g.appendChild(sw);
   }
 }
