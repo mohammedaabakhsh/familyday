@@ -177,8 +177,8 @@ body{background:var(--bg);color:var(--text);font-family:'Tajawal',sans-serif;min
 .landing-card.contact-card:hover,.landing-card.contact-card:active{background:rgba(25,167,183,0.32)}
 
 /* ===== CONTACT PAGE ===== */
-.cp-hero{padding:10px 24px 8px;text-align:center;background:#133548;position:relative;}
-.contact-back{position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.15);border:none;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;border-radius:20px;padding:6px 14px;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+.cp-hero{padding:14px 20px 18px;text-align:right;background:#F5F0EA;position:relative;}
+.contact-back{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(19,53,72,0.08);border:none;color:#133548;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;margin-bottom:10px;}
 .cp-hero-title{font-size:22px;font-weight:700;margin:0 0 6px;font-family:'Tajawal',sans-serif;line-height:1.3;}
 .cp-hero-desc{font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;margin:0;line-height:1.5;}
 .cp-hero-tag{display:inline-block;background:rgba(25,167,183,0.3);border:1px solid rgba(25,167,183,0.6);border-radius:20px;padding:5px 16px;margin-top:10px;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:600;color:#fff;}
@@ -243,8 +243,8 @@ header{
 .landing-card.contact-card:hover,.landing-card.contact-card:active{background:rgba(25,167,183,0.32)}
 
 /* ===== CONTACT PAGE ===== */
-.cp-hero{padding:10px 24px 8px;text-align:center;background:#133548;position:relative;}
-.contact-back{position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.15);border:none;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;border-radius:20px;padding:6px 14px;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+.cp-hero{padding:14px 20px 18px;text-align:right;background:#F5F0EA;position:relative;}
+.contact-back{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(19,53,72,0.08);border:none;color:#133548;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;margin-bottom:10px;}
 .cp-hero-title{font-size:22px;font-weight:700;margin:0 0 6px;font-family:'Tajawal',sans-serif;line-height:1.3;}
 .cp-hero-desc{font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;margin:0;line-height:1.5;}
 .cp-hero-tag{display:inline-block;background:rgba(25,167,183,0.3);border:1px solid rgba(25,167,183,0.6);border-radius:20px;padding:5px 16px;margin-top:10px;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:600;color:#fff;}
@@ -892,8 +892,11 @@ function tarfihiOrder(){
 
 <!-- SERVICES OVERLAY -->
 <div id="services-overlay" class="hide" style="position:fixed;top:0;left:0;right:0;bottom:calc(60px + env(safe-area-inset-bottom,0px));z-index:9500;background:#f7f5f2;overflow-y:auto;-webkit-overflow-scrolling:touch;">
-  <div style="background:#133548;padding:10px 24px 8px;text-align:center;position:relative;">
-    <button onclick="closeServices()" style="position:absolute;top:18px;right:18px;background:rgba(255,255,255,0.15);border:none;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;cursor:pointer;border-radius:20px;padding:6px 14px;">❯ رجوع</button>
+  <div style="background:#F5F0EA;padding:14px 20px 18px;text-align:right;position:relative;">
+    <button onclick="closeServices()" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(19,53,72,0.08);border:none;color:#133548;cursor:pointer;margin-bottom:10px;">
+      <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div style="font-family:Tajawal,sans-serif;font-size:20px;font-weight:700;color:#133548;line-height:1.25;">خدمات المنتجع</div>
   </div>
   <div style="padding:14px 20px;">
   <div style="display:flex;flex-direction:column;gap:10px;">
@@ -1165,7 +1168,10 @@ function tarfihiOrder(){
 
 <div id="contact-page">
   <div class="cp-hero">
-    <button class="contact-back" onclick="closeContact()">❯ رجوع</button>
+    <button class="contact-back" onclick="closeContact()">
+      <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div style="font-family:Tajawal,sans-serif;font-size:20px;font-weight:700;color:#133548;line-height:1.25;">الحجز والتواصل</div>
   </div>
   <div class="cp-body">
 
