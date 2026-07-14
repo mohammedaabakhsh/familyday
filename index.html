@@ -1231,9 +1231,8 @@ function tarfihiOrder(){
 
   <div class="filter-section" id="filterSection">
     <button class="fbtn active" data-f="all">الكل</button>
-    <button class="fbtn" data-f="1">غرفة نوم</button>
-    <button class="fbtn" data-f="2">غرفتين نوم</button>
-    <button class="fbtn" data-f="shared">الحديقة المشتركة</button>
+    <button class="fbtn" data-f="عرسان">للعرسان</button>
+    <button class="fbtn" data-f="عوائل">للعوائل</button>
   </div>
 
   <div class="grid-section"><div class="grid" id="grid"></div></div>
@@ -1473,7 +1472,7 @@ function showSection(type){
   document.getElementById('sectionTitle').className='';
   document.getElementById('sectionDesc').textContent='';
   const fs=document.getElementById('filterSection');
-  fs.style.display = (type==='resort') ? 'none' : 'flex';
+  fs.style.display = 'flex';
   setActiveTab('resort');
   render('all',type);
 }
@@ -1599,15 +1598,15 @@ function renderResortNetflix(g){
 function render(f='all',type){
   type=type||curSection;
   const g=document.getElementById('grid');g.innerHTML='';
-  if(type==='resort'){renderResortNetflix(g);return;}
   const items=data[type].items;
   // Splash screen
 
 
 document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
-  document.querySelector(`.fbtn[data-f="${f}"]`).classList.add('active');
+  const activeBtn=document.querySelector(`.fbtn[data-f="${f}"]`);
+  if(activeBtn) activeBtn.classList.add('active');
   items.forEach(c=>{
-    const show=c.id===12||(f==='all')||(f==='shared'&&c.id===12)||(f!=='shared'&&f===c.rooms.toString());
+    const show=c.id===12||(f==='all')||(f==='عرسان'&&c.suitable&&c.suitable.includes('عرسان'))||(f==='عوائل'&&c.suitable&&c.suitable.includes('عوائل'));
     const d=document.createElement('div');
     d.className='card'+(show?'':' hidden');
     d.onclick=()=>openM(c.id,type);
