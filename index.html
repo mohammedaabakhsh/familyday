@@ -700,13 +700,7 @@ function closeContact(){
 
 // Card navigation: check actual position at tap time (not class-based)
 function navCard(el, fn){
-  var cr = document.getElementById('lhCarousel').getBoundingClientRect();
-  var r  = el.getBoundingClientRect();
-  if(Math.abs((r.left + r.width/2) - (cr.left + cr.width/2)) < r.width * 0.32){
-    fn();
-  } else {
-    el.scrollIntoView({inline:'center', behavior:'smooth'});
-  }
+  fn();
 }
 
 // Carousel: scroll-based active detection (reliable on iOS/RTL)
