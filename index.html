@@ -1492,7 +1492,9 @@ function showSection(type){
   document.getElementById('sectionDesc').textContent='';
   const hero=document.querySelector('.section-hero');
   hero.className='section-hero resort-hero';
-  document.getElementById('sectionTitle').innerHTML='اختر الكوخ المناسب لك';
+  const st=document.getElementById('sectionTitle');
+  st.innerHTML='اختر الكوخ المناسب لك';
+  st.style.cssText='font-size:20px!important;font-weight:700!important;color:#133548!important;line-height:1.25;margin:0;';
   const fs=document.getElementById('filterSection');
   fs.style.display = 'flex';
   setActiveTab('resort');
