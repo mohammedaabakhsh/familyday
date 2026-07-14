@@ -2028,29 +2028,32 @@ function showServiceSub(title, subtitle, cabins, hideFilter){
   // Update header like resort/chalet pages
   document.getElementById('headerTitle').innerHTML = '';
   document.getElementById('heroLogo').style.display = 'none';
-  document.querySelector('header').style.background = '#133548';
+  document.querySelector('header').style.background = 'transparent';
   document.querySelector('header').style.borderBottom = 'none';
-  document.querySelector('.back-btn').style.color = '#fff';
-  document.querySelector('.back-btn').style.background = 'rgba(255,255,255,0.15)';
-  document.querySelector('.back-btn').style.borderRadius = '20px';
-  document.querySelector('.back-btn').style.padding = '6px 14px';
+  document.querySelector('header').style.boxShadow = 'none';
+  document.querySelector('.back-btn').style.color = 'rgba(255,255,255,0.85)';
+  document.querySelector('.back-btn').style.background = 'rgba(255,255,255,0.10)';
+  document.querySelector('.back-btn').style.borderRadius = '50%';
+  document.querySelector('.back-btn').style.padding = '0';
+  document.querySelector('.back-btn').style.width = '38px';
+  document.querySelector('.back-btn').style.height = '38px';
+  document.getElementById('sectionTag').style.display = 'none';
   document.getElementById('sectionTitle').textContent = '';
-  document.getElementById('sectionDesc').textContent = '';
-  document.getElementById('sectionTag').textContent = 'اختر الباقة المناسبة لمناسبتك';
-  document.getElementById('sectionTag').style.display = 'inline-block';
-  document.getElementById('sectionTag').className = 'section-tag resort-tag';
+  document.getElementById('sectionDesc').textContent = subtitle;
+  document.getElementById('sectionDesc').style.cssText = 'font-family:Tajawal,sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,0.70);line-height:1.5;margin:0;';
+  const hero=document.querySelector('.section-hero');
+  hero.style.cssText='display:block;background:transparent;padding:4px 24px 16px;text-align:right;';
   // Show service-sub
   const sub = document.getElementById('service-sub');
   sub.classList.remove('hide');
   sub.innerHTML = cabins.map(c=>`
-    <div onclick="${c._sinema ? 'openSinemaDetail()' : c._maiya ? 'openMaiyaDetail()' : 'openServiceCabin('+c.id+')'}" style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(19,53,72,0.07);cursor:pointer;display:flex;align-items:center;">
+    <div onclick="${c._sinema ? 'openSinemaDetail()' : c._maiya ? 'openMaiyaDetail()' : 'openServiceCabin('+c.id+')'}" style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:14px;overflow:hidden;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);cursor:pointer;display:flex;align-items:center;">
       <img src="${IMG[c.img]}" style="width:100px;height:90px;object-fit:cover;flex-shrink:0;" alt="${c.name}">
       <div style="padding:12px 16px;flex:1;">
         <div style="font-size:15px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:4px;">${c.name}</div>
-        <div style="font-size:11px;color:#8a9eaa;font-family:'Tajawal',sans-serif;line-height:1.5;">${c.type}</div>
-        <div style="margin-top:6px;display:inline-block;background:rgba(214,139,106,0.12);color:#19a7b7;font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;font-family:'Tajawal',sans-serif;">${c.suitable}</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.50);font-family:'Tajawal',sans-serif;line-height:1.5;">${c.type}</div>
       </div>
-      <div style="padding:0 14px;color:#c5b9a8;font-size:18px;">←</div>
+      <div style="padding:0 14px;color:#7ecfea;font-size:18px;">←</div>
     </div>
   `).join('');
   document.getElementById('filterSection').style.display = hideFilter ? 'none' : '';
