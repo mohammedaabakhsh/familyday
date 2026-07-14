@@ -2236,7 +2236,7 @@ function buildJalsatSlides(){
   if(counter) counter.textContent = total>0 ? '1 / '+total : '0 / 0';
   ['all','2','4','8','12'].forEach(function(f){
     var btn = document.getElementById('jf-'+f);
-    if(btn){ btn.style.background=(f===_jalsatFilter)?'#19a7b7':'#e8e2d8'; btn.style.color=(f===_jalsatFilter)?'#fff':'#133548'; }
+    if(btn){ btn.style.background=(f===_jalsatFilter)?'#19a7b7':'rgba(255,255,255,.07)'; btn.style.color=(f===_jalsatFilter)?'#fff':'rgba(255,255,255,.65)'; btn.style.border=(f===_jalsatFilter)?'1px solid #19a7b7':'1px solid rgba(255,255,255,.18)'; }
   });
 }
 function setJalsatFilter(f){
