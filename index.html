@@ -913,11 +913,12 @@ function tarfihiOrder(){
 
 
 <!-- SINEMA DETAIL OVERLAY -->
-<div id="sinema-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:#f7f5f2;overflow-y:auto;-webkit-overflow-scrolling:touch;">
-  <div style="background:#133548;padding:44px 24px 20px;text-align:center;position:relative;">
-    <button onclick="closeSinemaDetail()" style="position:absolute;top:18px;right:18px;background:rgba(255,255,255,0.15);border:none;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;cursor:pointer;border-radius:20px;padding:6px 14px;">❯ رجوع</button>
-    <div style="font-size:26px;font-weight:700;color:#fff;margin-bottom:6px;">جلسة سينما</div>
-    <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:Tajawal,sans-serif;margin-top:4px;">تجربة سينمائية خاصة داخل مساحتكم الخاصة</div>
+<div id="sinema-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
+  <div style="background:transparent;padding:14px 20px 18px;padding-top:20px;text-align:right;position:relative;">
+    <button onclick="closeSinemaDetail()" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.10);border:none;color:rgba(255,255,255,0.85);cursor:pointer;margin-bottom:10px;">
+      <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div style="font-family:Tajawal,sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,0.70);line-height:1.5;">تجربة سينمائية خاصة داخل مساحتكم الخاصة</div>
   </div>
   <div style="padding:12px 20px 0;">
     <div style="border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(19,53,72,0.06);">
@@ -926,63 +927,64 @@ function tarfihiOrder(){
   </div>
 
   <div style="padding:12px 20px;display:flex;flex-direction:column;gap:10px;">
-    <div style="background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="display:flex;gap:12px;justify-content:center;">
-        <div style="background:#f7f5f2;border-radius:14px;padding:10px 24px;text-align:center;min-width:110px;">
-          <div style="font-size:11px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-bottom:4px;">مدة الخدمة</div>
-          <div style="font-size:15px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;">3 ساعات</div>
+        <div style="background:rgba(255,255,255,.07);border-radius:14px;padding:10px 24px;text-align:center;min-width:110px;">
+          <div style="font-size:11px;color:rgba(255,255,255,.40);font-family:'Tajawal',sans-serif;margin-bottom:4px;">مدة الخدمة</div>
+          <div style="font-size:15px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;">3 ساعات</div>
         </div>
-        <div style="background:#f7f5f2;border-radius:14px;padding:10px 24px;text-align:center;min-width:110px;">
-          <div style="font-size:11px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-bottom:4px;">سعر الخدمة</div>
+        <div style="background:rgba(255,255,255,.07);border-radius:14px;padding:10px 24px;text-align:center;min-width:110px;">
+          <div style="font-size:11px;color:rgba(255,255,255,.40);font-family:'Tajawal',sans-serif;margin-bottom:4px;">سعر الخدمة</div>
           <div style="font-size:15px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;">150 ر.س</div>
         </div>
       </div>
     </div>
-    <div style="background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
-      <div style="font-size:13px;font-weight:700;color:#133548;margin-bottom:14px;font-family:'Tajawal',sans-serif;">تشمل الخدمة</div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:14px;font-family:'Tajawal',sans-serif;">تشمل الخدمة</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-        <div style="display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;background:#f7f5f2;border-radius:12px;padding:12px;text-align:center;min-height:44px;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> شاشة عرض خارجية</div>
-        <div style="display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;background:#f7f5f2;border-radius:12px;padding:12px;text-align:center;min-height:44px;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> كرسيان مريحان</div>
-        <div style="display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;background:#f7f5f2;border-radius:12px;padding:12px;text-align:center;min-height:44px;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> فشار لشخصين</div>
-        <div style="display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;background:#f7f5f2;border-radius:12px;padding:12px;text-align:center;min-height:44px;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> موهيتو لشخصين</div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:rgba(255,255,255,.65);background:rgba(255,255,255,.07);border-radius:12px;padding:12px;text-align:center;min-height:44px;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> شاشة عرض خارجية</div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:rgba(255,255,255,.65);background:rgba(255,255,255,.07);border-radius:12px;padding:12px;text-align:center;min-height:44px;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> كرسيان مريحان</div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:rgba(255,255,255,.65);background:rgba(255,255,255,.07);border-radius:12px;padding:12px;text-align:center;min-height:44px;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> فشار لشخصين</div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:rgba(255,255,255,.65);background:rgba(255,255,255,.07);border-radius:12px;padding:12px;text-align:center;min-height:44px;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> موهيتو لشخصين</div>
       </div>
     </div>
-    <div style="background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
-      <div style="font-size:13px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:10px;">تعليمات وملاحظات</div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:10px;">تعليمات وملاحظات</div>
       <div style="display:flex;flex-direction:column;gap:6px;">
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> متاحة حسب التوفر والحجز المسبق.</div>
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> مدة الجلسة 3 ساعات.</div>
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> يُرجى الالتزام بوقت بداية الجلسة المحدد.</div>
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> يرجى المحافظة على الشاشة وجهاز العرض.</div>
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> في حال هبوب رياح قوية يُرجى إبلاغنا فورًا.</div>
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> تطبق جميع الشروط والأحكام.</div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:rgba(255,255,255,.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> متاحة حسب التوفر والحجز المسبق.</div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:rgba(255,255,255,.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> مدة الجلسة 3 ساعات.</div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:rgba(255,255,255,.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> يُرجى الالتزام بوقت بداية الجلسة المحدد.</div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:rgba(255,255,255,.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> يرجى المحافظة على الشاشة وجهاز العرض.</div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:rgba(255,255,255,.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> في حال هبوب رياح قوية يُرجى إبلاغنا فورًا.</div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:rgba(255,255,255,.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> تطبق جميع الشروط والأحكام.</div>
         
       </div>
     </div>
     </div>
-    <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:#133548;padding:0 20px 8px;line-height:1.6;white-space:nowrap;">بعد اختيار 3 ألعاب اضغط "اطلبها الآن" لإتمام الطلب عبر واتساب.</div>
+    <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:rgba(255,255,255,.45);padding:0 20px 8px;line-height:1.6;white-space:nowrap;">بعد اختيار 3 ألعاب اضغط "اطلبها الآن" لإتمام الطلب عبر واتساب.</div>
 <div style="padding:0 20px calc(64px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
-      <button onclick="openOrderPopup('جلسة سينما', true)" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;width:100%;text-align:center;">اطلبها الآن</button>
+      <button onclick="openOrderPopup('جلسة سينما', true)" class="mbtn mbtn-wa" style="cursor:pointer;width:100%;text-align:center;">اطلبها الآن</button>
     </div></div>
   </div>
 </div>
 
 
 <!-- MAIYA DETAIL OVERLAY -->
-<div id="maiya-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:#f7f5f2;overflow-y:auto;-webkit-overflow-scrolling:touch;">
-  <div style="background:#133548;padding:44px 24px 20px;text-align:center;position:relative;">
-    <button onclick="closeMaiyaDetail()" style="position:absolute;top:18px;right:18px;background:rgba(255,255,255,0.15);border:none;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;cursor:pointer;border-radius:20px;padding:6px 14px;">❯ رجوع</button>
-    <div style="font-size:26px;font-weight:700;color:#fff;margin-bottom:4px;">الألعاب المائية</div>
-    <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:Tajawal,sans-serif;margin-top:4px;">اختر اللعبة المناسبة واستمتع بوقتك</div>
+<div id="maiya-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
+  <div style="background:transparent;padding:14px 20px 18px;padding-top:20px;text-align:right;position:relative;">
+    <button onclick="closeMaiyaDetail()" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.10);border:none;color:rgba(255,255,255,0.85);cursor:pointer;margin-bottom:10px;">
+      <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div style="font-family:Tajawal,sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,0.70);line-height:1.5;">اختر اللعبة المناسبة واستمتع بوقتك</div>
   </div>
   <div style="padding:12px 20px 0;">
     <div style="display:flex;gap:8px;margin-bottom:10px;font-family:'Tajawal',sans-serif;">
          <button id="mf-all" onclick="setMaiyaFilter('all')" style="flex:1;padding:8px 0;border:none;border-radius:20px;background:#19a7b7;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">الكل</button>
-         <button id="mf-كبار" onclick="setMaiyaFilter('كبار')" style="flex:1;padding:8px 0;border:none;border-radius:20px;background:#e8e2d8;color:#133548;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">للكبار</button>
-         <button id="mf-صغار" onclick="setMaiyaFilter('صغار')" style="flex:1;padding:8px 0;border:none;border-radius:20px;background:#e8e2d8;color:#133548;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">للصغار</button>
-         <button id="mf-عائلة" onclick="setMaiyaFilter('عائلة')" style="flex:1;padding:8px 0;border:none;border-radius:20px;background:#e8e2d8;color:#133548;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">للعائلة</button>
+         <button id="mf-كبار" onclick="setMaiyaFilter('كبار')" style="flex:1;padding:8px 0;border:none;border-radius:20px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">للكبار</button>
+         <button id="mf-صغار" onclick="setMaiyaFilter('صغار')" style="flex:1;padding:8px 0;border:none;border-radius:20px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">للصغار</button>
+         <button id="mf-عائلة" onclick="setMaiyaFilter('عائلة')" style="flex:1;padding:8px 0;border:none;border-radius:20px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">للعائلة</button>
        </div>
-       <div style="position:relative;overflow:hidden;border-radius:18px;background:#fff;box-shadow:0 4px 20px rgba(19,53,72,0.1);">
+       <div style="position:relative;overflow:hidden;border-radius:18px;background:rgba(8,22,40,.95);box-shadow:0 4px 20px rgba(0,0,0,.3);">
       <div id="maiya-slides" style="display:flex;direction:rtl;transition:transform 0.35s ease;will-change:transform;"></div>
          <!-- Left arrow -->
       <button onclick="maiyaGoTo(_maiyaIdx+1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);background:rgba(19,53,72,0.7);border:none;color:#fff;width:40px;height:40px;border-radius:50%;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;direction:ltr;">&#10094;</button>
@@ -991,171 +993,173 @@ function tarfihiOrder(){
       <!-- Counter -->
       <div id="maiya-counter" style="position:absolute;bottom:10px;left:12px;background:rgba(19,53,72,0.55);color:#fff;font-family:'Tajawal',sans-serif;font-size:12px;border-radius:12px;padding:3px 10px;">1 / 2</div>
     </div>
-  <div id="maiya-game-name" style="text-align:center;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;color:#133548;padding:10px 20px 0;"></div>
+  <div id="maiya-game-name" style="text-align:center;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;color:#fff;padding:10px 20px 0;"></div>
   <div style="text-align:center;padding:4px 20px 0;">
-    <div style="font-family:'Tajawal',sans-serif;font-size:11px;font-weight:700;color:#133548;">اختر 3 ألعاب من القائمة</div>
-    <div style="font-family:'Tajawal',sans-serif;font-size:10px;color:#133548;margin-top:2px;">الباقة تشمل 3 ألعاب بسعر 50 ر.س</div>
+    <div style="font-family:'Tajawal',sans-serif;font-size:11px;font-weight:700;color:#fff;">اختر 3 ألعاب من القائمة</div>
+    <div style="font-family:'Tajawal',sans-serif;font-size:10px;color:rgba(255,255,255,.55);margin-top:2px;">الباقة تشمل 3 ألعاب بسعر 50 ر.س</div>
   </div>
   <div style="text-align:center;padding:6px 20px 4px;">
-    <button id="maiya-select-btn" onclick="toggleMaiyaGame()" style="background:#f7f5f2;border:1.5px solid #e0d8cd;color:#133548;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;padding:7px 28px;border-radius:20px;cursor:pointer;">اختر اللعبة</button>
+    <button id="maiya-select-btn" onclick="toggleMaiyaGame()" style="background:rgba(255,255,255,.10);border:1.5px solid rgba(255,255,255,.20);color:rgba(255,255,255,.85);font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;padding:7px 28px;border-radius:20px;cursor:pointer;">اختر اللعبة</button>
   </div>
   <div id="maiya-selection-count" style="text-align:center;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;color:#19a7b7;padding:6px 20px 0;">تم اختيار 0 من 3</div>
   </div>
   <div style="padding:10px 20px;display:flex;flex-direction:column;gap:10px;">
-    <div style="background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="display:flex;gap:12px;justify-content:center;">
-        <div style="background:#f7f5f2;border-radius:14px;padding:10px 24px;text-align:center;min-width:110px;">
-          <div style="font-size:11px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-bottom:4px;">عدد الألعاب</div>
-          <div style="font-size:15px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;">3 ألعاب</div>
+        <div style="background:rgba(255,255,255,.07);border-radius:14px;padding:10px 24px;text-align:center;min-width:110px;">
+          <div style="font-size:11px;color:rgba(255,255,255,.40);font-family:'Tajawal',sans-serif;margin-bottom:4px;">عدد الألعاب</div>
+          <div style="font-size:15px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;">3 ألعاب</div>
         </div>
-        <div style="background:#f7f5f2;border-radius:14px;padding:10px 24px;text-align:center;min-width:110px;">
-          <div style="font-size:11px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-bottom:4px;">سعر الباقة</div>
+        <div style="background:rgba(255,255,255,.07);border-radius:14px;padding:10px 24px;text-align:center;min-width:110px;">
+          <div style="font-size:11px;color:rgba(255,255,255,.40);font-family:'Tajawal',sans-serif;margin-bottom:4px;">سعر الباقة</div>
           <div style="font-size:15px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;">50 ر.س</div>
         </div>
       </div>
     </div>
-    <div style="background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
-      <div style="font-size:13px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:10px;">تعليمات وملاحظات</div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:10px;">تعليمات وملاحظات</div>
       <div style="display:flex;flex-direction:column;gap:6px;">
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> اختر 3 ألعاب من القائمة.</div>
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> الباقة بسعر 50 ر.س.</div>
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> الألعاب متاحة حسب التوفر.</div>
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> يرجى المحافظة عليها وإعادتها بحالتها الأصلية.</div>
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> تطبق جميع الشروط والأحكام.</div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:rgba(255,255,255,.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> اختر 3 ألعاب من القائمة.</div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:rgba(255,255,255,.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> الباقة بسعر 50 ر.س.</div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:rgba(255,255,255,.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> الألعاب متاحة حسب التوفر.</div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:rgba(255,255,255,.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> يرجى المحافظة عليها وإعادتها بحالتها الأصلية.</div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:rgba(255,255,255,.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> تطبق جميع الشروط والأحكام.</div>
         
       </div>
     </div>
     </div>
-    <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:#133548;padding:0 20px 8px;line-height:1.6;white-space:nowrap;">بعد اختيار 3 ألعاب اضغط "اطلبها الآن" لإتمام الطلب عبر واتساب.</div>
+    <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:rgba(255,255,255,.45);padding:0 20px 8px;line-height:1.6;white-space:nowrap;">بعد اختيار 3 ألعاب اضغط "اطلبها الآن" لإتمام الطلب عبر واتساب.</div>
 <div style="padding:0 20px calc(64px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
-      <button id="maiya-order-btn" onclick="maiyaOrderNow()" class="mbtn mbtn-wa" style="background:#e8e2d8;border:1.5px solid #b0bdc4;color:#b0bdc4;cursor:not-allowed;width:100%;text-align:center;" disabled>اختر 3 ألعاب أولًا</button>
+      <button id="maiya-order-btn" onclick="maiyaOrderNow()" class="mbtn mbtn-wa" style="background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.15);color:rgba(255,255,255,.30);cursor:not-allowed;width:100%;text-align:center;" disabled>اختر 3 ألعاب أولًا</button>
     </div></div>
   </div>
 </div>
 
-<div id="jalsat-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:#f7f5f2;overflow-y:auto;-webkit-overflow-scrolling:touch;">
-  <div style="background:#133548;padding:44px 24px 20px;text-align:center;position:relative;">
-    <button onclick="closeJalsatDetail()" style="position:absolute;top:18px;right:18px;background:rgba(255,255,255,0.15);border:none;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;cursor:pointer;border-radius:20px;padding:6px 14px;">❯ رجوع</button>
-    <div style="font-size:26px;font-weight:700;color:#fff;margin-bottom:4px;">الجلسات الأرضية الخارجية</div>
-    <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:Tajawal,sans-serif;margin-top:4px;">اختر الجلسة التي تناسب مناسبتك</div>
+<div id="jalsat-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
+  <div style="background:transparent;padding:14px 20px 18px;padding-top:20px;text-align:right;position:relative;">
+    <button onclick="closeJalsatDetail()" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.10);border:none;color:rgba(255,255,255,0.85);cursor:pointer;margin-bottom:10px;">
+      <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div style="font-family:Tajawal,sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,0.70);line-height:1.5;">اختر الجلسة التي تناسب مناسبتك</div>
   </div>
   <div style="padding:12px 20px 0;">
     <div style="display:flex;gap:8px;margin-bottom:10px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch;">
       <button id="jf-all" onclick="setJalsatFilter('all')" style="flex-shrink:0;padding:8px 14px;border:none;border-radius:20px;background:#19a7b7;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">الكل</button>
-      <button id="jf-2" onclick="setJalsatFilter('2')" style="flex-shrink:0;padding:8px 14px;border:none;border-radius:20px;background:#e8e2d8;color:#133548;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">شخصين</button>
-      <button id="jf-4" onclick="setJalsatFilter('4')" style="flex-shrink:0;padding:8px 14px;border:none;border-radius:20px;background:#e8e2d8;color:#133548;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">4 أشخاص</button>
-      <button id="jf-8" onclick="setJalsatFilter('8')" style="flex-shrink:0;padding:8px 14px;border:none;border-radius:20px;background:#e8e2d8;color:#133548;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">8 أشخاص</button>
-      <button id="jf-12" onclick="setJalsatFilter('12')" style="flex-shrink:0;padding:8px 14px;border:none;border-radius:20px;background:#e8e2d8;color:#133548;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">12 شخص</button>
+      <button id="jf-2" onclick="setJalsatFilter('2')" style="flex-shrink:0;padding:8px 14px;border:none;border-radius:20px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">شخصين</button>
+      <button id="jf-4" onclick="setJalsatFilter('4')" style="flex-shrink:0;padding:8px 14px;border:none;border-radius:20px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">4 أشخاص</button>
+      <button id="jf-8" onclick="setJalsatFilter('8')" style="flex-shrink:0;padding:8px 14px;border:none;border-radius:20px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">8 أشخاص</button>
+      <button id="jf-12" onclick="setJalsatFilter('12')" style="flex-shrink:0;padding:8px 14px;border:none;border-radius:20px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">12 شخص</button>
     </div>
-    <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:#2d4a5a;margin-bottom:8px;white-space:nowrap;">اختر عدد الأشخاص لعرض السعر المناسب</div>
-    <div style="position:relative;overflow:hidden;border-radius:18px;background:#fff;box-shadow:0 4px 20px rgba(19,53,72,0.1);">
+    <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:rgba(255,255,255,.45);margin-bottom:8px;white-space:nowrap;">اختر عدد الأشخاص لعرض السعر المناسب</div>
+    <div style="position:relative;overflow:hidden;border-radius:18px;background:rgba(8,22,40,.95);box-shadow:0 4px 20px rgba(0,0,0,.3);">
       <div id="jalsat-slides" style="display:flex;direction:rtl;transition:transform 0.35s ease;will-change:transform;"></div>
       <button onclick="jalsatGoTo(_jalsatIdx+1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);background:rgba(19,53,72,0.7);border:none;color:#fff;width:40px;height:40px;border-radius:50%;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;direction:ltr;">&#10094;</button>
       <button onclick="jalsatGoTo(_jalsatIdx-1)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:rgba(19,53,72,0.7);border:none;color:#fff;width:40px;height:40px;border-radius:50%;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;direction:ltr;">&#10095;</button>
       <div id="jalsat-counter" style="position:absolute;bottom:10px;left:12px;background:rgba(19,53,72,0.55);color:#fff;font-family:'Tajawal',sans-serif;font-size:12px;border-radius:12px;padding:3px 10px;">1 / 6</div>
     </div>
-    <div id="jalsat-session-name" style="text-align:center;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;color:#133548;padding:10px 20px 0;"></div>
-    <div id="jalsat-session-desc" style="text-align:center;font-family:'Tajawal',sans-serif;font-size:13px;color:#2d4a5a;padding:6px 24px 0;line-height:1.6;display:none;"></div>
+    <div id="jalsat-session-name" style="text-align:center;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;color:#fff;padding:10px 20px 0;"></div>
+    <div id="jalsat-session-desc" style="text-align:center;font-family:'Tajawal',sans-serif;font-size:13px;color:rgba(255,255,255,.70);padding:6px 24px 0;line-height:1.6;display:none;"></div>
   </div>
   <div style="padding:10px 20px;display:flex;flex-direction:column;gap:10px;">
-    <div style="background:#fff;border-radius:16px;padding:14px 20px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 20px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-        <div style="background:#f7f5f2;border-radius:14px;padding:12px;text-align:center;">
+        <div style="background:rgba(255,255,255,.07);border-radius:14px;padding:12px;text-align:center;">
           <div style="font-size:11px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-bottom:6px;">السعة</div>
-          <div id="jalsat-persons" style="font-size:20px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;">شخصان</div>
+          <div id="jalsat-persons" style="font-size:20px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;">شخصان</div>
         </div>
-        <div style="background:#f7f5f2;border-radius:14px;padding:12px;text-align:center;">
+        <div style="background:rgba(255,255,255,.07);border-radius:14px;padding:12px;text-align:center;">
           <div style="font-size:11px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-bottom:6px;">السعر</div>
           <div id="jalsat-price" style="font-size:20px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;">300 ريال</div>
         </div>
       </div>
     </div>
-    <div style="background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
-      <div style="font-size:13px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:10px;">إضافة اختيارية</div>
-      <label onclick="toggleJalsatCake()" id="jalsat-cake-label" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:10px 14px;border-radius:12px;border:1.5px solid #e8e2d8;transition:all 0.2s;">
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:10px;">إضافة اختيارية</div>
+      <label onclick="toggleJalsatCake()" id="jalsat-cake-label" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:10px 14px;border-radius:12px;border:1.5px solid rgba(255,255,255,.12);transition:all 0.2s;">
         <div>
-          <div style="font-size:14px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;">🎂 كيك وعصير</div>
+          <div style="font-size:14px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;">🎂 كيك وعصير</div>
           <div style="font-size:15px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;margin-top:2px;">170 ر.س</div>
         </div>
-        <div id="jalsat-cake-toggle" style="width:48px;height:26px;border-radius:13px;background:#e8e2d8;position:relative;transition:background 0.2s;flex-shrink:0;">
+        <div id="jalsat-cake-toggle" style="width:48px;height:26px;border-radius:13px;background:rgba(255,255,255,.15);position:relative;transition:background 0.2s;flex-shrink:0;">
           <div id="jalsat-cake-knob" style="width:22px;height:22px;border-radius:11px;background:#fff;position:absolute;top:2px;right:2px;transition:transform 0.2s;box-shadow:0 1px 4px rgba(0,0,0,0.2);"></div>
         </div>
       </label>
-      <div id="jalsat-total-row" style="display:none;margin-top:10px;padding:10px 14px;border-radius:12px;background:#f0fbfc;border:1px solid rgba(25,167,183,0.3);justify-content:space-between;align-items:center;">
-        <div style="font-size:13px;color:#133548;font-family:'Tajawal',sans-serif;">المجموع</div>
+      <div id="jalsat-total-row" style="display:none;margin-top:10px;padding:10px 14px;border-radius:12px;background:rgba(25,167,183,.08);border:1px solid rgba(25,167,183,.25);justify-content:space-between;align-items:center;">
+        <div style="font-size:13px;color:rgba(255,255,255,.70);font-family:'Tajawal',sans-serif;">المجموع</div>
         <div id="jalsat-total-price" style="font-size:16px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;"></div>
       </div>
     </div>
-    <div style="background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
-      <div style="font-size:13px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:10px;">تعليمات وملاحظات</div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:10px;">تعليمات وملاحظات</div>
       <div style="display:flex;flex-direction:column;gap:6px;">
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> متاحة حسب التوفر والحجز المسبق.</div>
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> يُرجى المحافظة على تجهيزات الجلسة أثناء الاستخدام.</div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:rgba(255,255,255,.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> متاحة حسب التوفر والحجز المسبق.</div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:rgba(255,255,255,.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> يُرجى المحافظة على تجهيزات الجلسة أثناء الاستخدام.</div>
         
       </div>
     </div>
   </div>
-  <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:#133548;padding:0 20px 8px;line-height:1.6;white-space:nowrap;">بعد اختيار 3 ألعاب اضغط "اطلبها الآن" لإتمام الطلب عبر واتساب.</div>
+  <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:rgba(255,255,255,.45);padding:0 20px 8px;line-height:1.6;white-space:nowrap;">بعد اختيار 3 ألعاب اضغط "اطلبها الآن" لإتمام الطلب عبر واتساب.</div>
 <div style="padding:0 20px calc(64px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
-    <button onclick="openOrderPopup(getJalsatOrderText())" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;width:100%;text-align:center;">اطلبها الآن</button>
+    <button onclick="openOrderPopup(getJalsatOrderText())" class="mbtn mbtn-wa" style="cursor:pointer;width:100%;text-align:center;">اطلبها الآن</button>
   </div></div>
 </div>
 
 
 <!-- SHARIK WIN DETAIL -->
-<div id="sharik-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:#f7f5f2;overflow-y:auto;-webkit-overflow-scrolling:touch;">
-  <div style="background:#133548;padding:44px 24px 20px;text-align:center;position:relative;">
-    <button onclick="closeSharikDetail()" style="position:absolute;top:18px;right:18px;background:rgba(255,255,255,0.15);border:none;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;cursor:pointer;border-radius:20px;padding:6px 14px;">❯ رجوع</button>
-    <div style="font-size:26px;font-weight:700;color:#fff;margin-bottom:4px;">شارك واربح</div>
-    <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:Tajawal,sans-serif;margin-top:4px;">شارك أجمل لحظاتك وادخل فرصة الفوز بيوم مجاني</div>
+<div id="sharik-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
+  <div style="background:transparent;padding:14px 20px 18px;padding-top:20px;text-align:right;position:relative;">
+    <button onclick="closeSharikDetail()" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.10);border:none;color:rgba(255,255,255,0.85);cursor:pointer;margin-bottom:10px;">
+      <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div style="font-family:Tajawal,sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,0.70);line-height:1.5;">شارك أجمل لحظاتك وادخل فرصة الفوز بيوم مجاني</div>
   </div>
   <div style="padding:12px 20px;display:flex;flex-direction:column;gap:9px;">
     <!-- الشروط -->
-    <div style="background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
-      <div style="font-size:13px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:14px;">شروط المشاركة</div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:14px;">شروط المشاركة</div>
       <div style="display:flex;flex-direction:column;gap:10px;">
-        <div style="display:flex;align-items:flex-start;gap:10px;font-family:'Tajawal',sans-serif;font-size:13px;color:#2d4a5a;line-height:1.6;"><span style="color:#19a7b7;flex-shrink:0;font-size:15px;">✦</span> تصوير الفيديو داخل المنتجع بأسلوب إبداعي.</div>
-        <div style="display:flex;align-items:flex-start;gap:10px;font-family:'Tajawal',sans-serif;font-size:13px;color:#2d4a5a;line-height:1.6;"><span style="color:#19a7b7;flex-shrink:0;font-size:15px;">✦</span> الفيديو بالوضع الطولي.</div>
-        <div style="display:flex;align-items:flex-start;gap:10px;font-family:'Tajawal',sans-serif;font-size:13px;color:#2d4a5a;line-height:1.6;"><span style="color:#19a7b7;flex-shrink:0;font-size:15px;">✦</span> جودة فيديو عالية وواضحة.</div>
-        <div style="display:flex;align-items:flex-start;gap:10px;font-family:'Tajawal',sans-serif;font-size:13px;color:#2d4a5a;line-height:1.6;"><span style="color:#19a7b7;flex-shrink:0;font-size:15px;">✦</span> خلو الفيديو من الشعارات والعلامات المائية.</div>
-        <div style="display:flex;align-items:flex-start;gap:10px;font-family:'Tajawal',sans-serif;font-size:13px;color:#2d4a5a;line-height:1.6;"><span style="color:#19a7b7;flex-shrink:0;font-size:15px;">✦</span> يحق للمنتجع استخدام ونشر جميع المشاركات.</div>
-        <div style="display:flex;align-items:flex-start;gap:10px;font-family:'Tajawal',sans-serif;font-size:13px;color:#2d4a5a;line-height:1.6;"><span style="color:#19a7b7;flex-shrink:0;font-size:15px;">✦</span> تطبق جميع الشروط والأحكام.</div>
+        <div style="display:flex;align-items:flex-start;gap:10px;font-family:'Tajawal',sans-serif;font-size:13px;color:rgba(255,255,255,.70);line-height:1.6;"><span style="color:#19a7b7;flex-shrink:0;font-size:15px;">✦</span> تصوير الفيديو داخل المنتجع بأسلوب إبداعي.</div>
+        <div style="display:flex;align-items:flex-start;gap:10px;font-family:'Tajawal',sans-serif;font-size:13px;color:rgba(255,255,255,.70);line-height:1.6;"><span style="color:#19a7b7;flex-shrink:0;font-size:15px;">✦</span> الفيديو بالوضع الطولي.</div>
+        <div style="display:flex;align-items:flex-start;gap:10px;font-family:'Tajawal',sans-serif;font-size:13px;color:rgba(255,255,255,.70);line-height:1.6;"><span style="color:#19a7b7;flex-shrink:0;font-size:15px;">✦</span> جودة فيديو عالية وواضحة.</div>
+        <div style="display:flex;align-items:flex-start;gap:10px;font-family:'Tajawal',sans-serif;font-size:13px;color:rgba(255,255,255,.70);line-height:1.6;"><span style="color:#19a7b7;flex-shrink:0;font-size:15px;">✦</span> خلو الفيديو من الشعارات والعلامات المائية.</div>
+        <div style="display:flex;align-items:flex-start;gap:10px;font-family:'Tajawal',sans-serif;font-size:13px;color:rgba(255,255,255,.70);line-height:1.6;"><span style="color:#19a7b7;flex-shrink:0;font-size:15px;">✦</span> يحق للمنتجع استخدام ونشر جميع المشاركات.</div>
+        <div style="display:flex;align-items:flex-start;gap:10px;font-family:'Tajawal',sans-serif;font-size:13px;color:rgba(255,255,255,.70);line-height:1.6;"><span style="color:#19a7b7;flex-shrink:0;font-size:15px;">✦</span> تطبق جميع الشروط والأحكام.</div>
       </div>
     </div>
     <!-- ملاحظة الفائز -->
-    <div style="background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
-      <div style="font-size:13px;color:#133548;font-family:'Tajawal',sans-serif;font-weight:700;margin-bottom:12px;">معيار الاختيار</div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:13px;color:#fff;font-family:'Tajawal',sans-serif;font-weight:700;margin-bottom:12px;">معيار الاختيار</div>
       <div style="display:flex;gap:8px;text-align:center;">
-        <div style="flex:1;background:#f7f5f2;border-radius:12px;padding:12px 8px;">
-          <div style="font-size:11px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;">الإبداع</div>
+        <div style="flex:1;background:rgba(255,255,255,.07);border-radius:12px;padding:12px 8px;">
+          <div style="font-size:11px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;">الإبداع</div>
         </div>
-        <div style="flex:1;background:#f7f5f2;border-radius:12px;padding:12px 8px;">
-          <div style="font-size:11px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;">جودة الفيديو</div>
+        <div style="flex:1;background:rgba(255,255,255,.07);border-radius:12px;padding:12px 8px;">
+          <div style="font-size:11px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;">جودة الفيديو</div>
         </div>
-        <div style="flex:1;background:#f7f5f2;border-radius:12px;padding:12px 8px;">
-          <div style="font-size:11px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;">طريقة التصوير</div>
+        <div style="flex:1;background:rgba(255,255,255,.07);border-radius:12px;padding:12px 8px;">
+          <div style="font-size:11px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;">طريقة التصوير</div>
         </div>
       </div>
       <div style="font-size:10.5px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-top:10px;text-align:center;">يتم اختيار الفائز بناءً على هذه المعايير.</div>
     </div>
     <!-- الجائزة -->
-    <div style="background:#fff;border-radius:16px;padding:14px 20px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
-      <div style="font-size:13px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:8px;">الجائزة</div>
-      <div style="background:#f7f5f2;border-radius:12px;padding:12px 16px;text-align:center;">
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 20px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:8px;">الجائزة</div>
+      <div style="background:rgba(255,255,255,.07);border-radius:12px;padding:12px 16px;text-align:center;">
         <div style="font-size:13px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;">يفوز المشارك بيوم مجاني في أحد الأكواخ.</div>
       </div>
     </div>
     <!-- طريقة الإرسال -->
-    <div style="background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
-      <div style="font-size:13px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:10px;">طريقة المشاركة</div>
-      <div style="font-size:11px;color:#2d4a5a;font-family:'Tajawal',sans-serif;white-space:nowrap;text-align:center;">أرسل الفيديو مع اسمك وتاريخ زيارتك ورقم الجوال</div>
-      <div style="margin-top:10px;font-size:12px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:6px;text-align:center;">إرسال المشاركات إلى</div>
-      <div style="background:#f7f5f2;border-radius:10px;padding:10px 14px;text-align:center;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;color:#19a7b7;letter-spacing:0.5px;">✉️ family999day@gmail.com</div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:10px;">طريقة المشاركة</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.65);font-family:'Tajawal',sans-serif;white-space:nowrap;text-align:center;">أرسل الفيديو مع اسمك وتاريخ زيارتك ورقم الجوال</div>
+      <div style="margin-top:10px;font-size:12px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:6px;text-align:center;">إرسال المشاركات إلى</div>
+      <div style="background:rgba(255,255,255,.07);border-radius:10px;padding:10px 14px;text-align:center;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;color:#19a7b7;letter-spacing:0.5px;">✉️ family999day@gmail.com</div>
     </div>
   </div>
-  <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:11.5px;color:#133548;padding:0 20px 8px;line-height:1.6;">اضغط "ابدأ المشاركة" لإرسال مشاركتك</div>
+  <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:11.5px;color:rgba(255,255,255,.45);padding:0 20px 8px;line-height:1.6;">اضغط "ابدأ المشاركة" لإرسال مشاركتك</div>
   <div style="padding:0 20px calc(64px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
-    <button onclick="openSharikEmail()" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;width:100%;text-align:center;">ابدأ المشاركة</button>
+    <button onclick="openSharikEmail()" class="mbtn mbtn-wa" style="cursor:pointer;width:100%;text-align:center;">ابدأ المشاركة</button>
   </div></div>
 </div>
 
@@ -1722,11 +1726,11 @@ function openM(id,type){
       ${c.suitable ? '<span style="background:rgba(25,167,183,0.1);border:1px solid rgba(25,167,183,0.25);color:var(--teal);font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;white-space:nowrap;">'+c.suitable+'</span>' : ''}
     </div>
     <button onclick="open3D('https://my.matterport.com/show/?m=S7Z2CF9tdwm')" class="mbtn" style="background:rgba(25,167,183,0.1);color:#19A7B7;border:1px solid #19a7b7;margin-bottom:16px;font-family:Tajawal,sans-serif;cursor:pointer;width:100%;font-size:13px;font-weight:600;padding:9px;display:flex;align-items:center;justify-content:center;gap:8px;">🔭 جولة ثلاثية الأبعاد</button>
-    <div style="font-size:14px;color:#2d4a5a;font-family:'Tajawal',sans-serif;margin-bottom:14px;line-height:1.7;">منطقة ألعاب مشتركة بين الأكواخ لجميع ضيوف المنتجع</div>
+    <div style="font-size:14px;color:rgba(255,255,255,.70);font-family:'Tajawal',sans-serif;margin-bottom:14px;line-height:1.7;">منطقة ألعاب مشتركة بين الأكواخ لجميع ضيوف المنتجع</div>
     <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">
-      <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:13px;color:#2d4a5a;background:#f7f5f2;border-radius:12px;padding:10px 14px;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> ألعاب أطفال متنوعة.</div>
-      <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:13px;color:#2d4a5a;background:#f7f5f2;border-radius:12px;padding:10px 14px;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> شاشة عرض مشتركة.</div>
-      <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:13px;color:#2d4a5a;background:#f7f5f2;border-radius:12px;padding:10px 14px;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> مناسب لجميع الضيوف.</div>
+      <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:13px;color:rgba(255,255,255,.70);background:rgba(255,255,255,.07);border-radius:12px;padding:10px 14px;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> ألعاب أطفال متنوعة.</div>
+      <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:13px;color:rgba(255,255,255,.70);background:rgba(255,255,255,.07);border-radius:12px;padding:10px 14px;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> شاشة عرض مشتركة.</div>
+      <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:13px;color:rgba(255,255,255,.70);background:rgba(255,255,255,.07);border-radius:12px;padding:10px 14px;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> مناسب لجميع الضيوف.</div>
     </div>
     <div class="modal-btns">
       <a href="https://wa.me/966556156693" target="_blank" class="mbtn mbtn-wa">تواصل واتساب</a>
@@ -1819,7 +1823,7 @@ function openM(id,type){
   if(mb){
     const sv=document.createElement('div');
     sv.style.cssText='margin-bottom:14px;';
-    sv.innerHTML='<div class="tags-lbl" style="color:#133548;margin-top:24px;">الخدمات الإضافية</div>'
+    sv.innerHTML='<div class="tags-lbl" style="color:rgba(255,255,255,.40);margin-top:24px;">الخدمات الإضافية</div>'
       +'<div class="tags">'
       +'<span class="tag">التنسيقات</span>'
       +'<span class="tag">الجلسات الأرضية الخارجية</span>'
@@ -2042,7 +2046,7 @@ function showServiceSub(title, subtitle, cabins, hideFilter){
     <div onclick="${c._sinema ? 'openSinemaDetail()' : c._maiya ? 'openMaiyaDetail()' : 'openServiceCabin('+c.id+')'}" style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(19,53,72,0.07);cursor:pointer;display:flex;align-items:center;">
       <img src="${IMG[c.img]}" style="width:100px;height:90px;object-fit:cover;flex-shrink:0;" alt="${c.name}">
       <div style="padding:12px 16px;flex:1;">
-        <div style="font-size:15px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:4px;">${c.name}</div>
+        <div style="font-size:15px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:4px;">${c.name}</div>
         <div style="font-size:11px;color:#8a9eaa;font-family:'Tajawal',sans-serif;line-height:1.5;">${c.type}</div>
         <div style="margin-top:6px;display:inline-block;background:rgba(214,139,106,0.12);color:#19a7b7;font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;font-family:'Tajawal',sans-serif;">${c.suitable}</div>
       </div>
@@ -2422,7 +2426,7 @@ function updateTawilatContents(){
   ];
   var html = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">';
   for(var i=0;i<items.length;i++){
-    html += '<div style="display:flex;align-items:center;gap:8px;font-size:11px;color:#2d4a5a;background:#f7f5f2;border-radius:10px;padding:8px 10px;white-space:nowrap;"><span style="color:#19a7b7;font-size:12px;flex-shrink:0;">✦</span>' + items[i] + '</div>';
+    html += '<div style="display:flex;align-items:center;gap:8px;font-size:11px;color:rgba(255,255,255,.65);background:rgba(255,255,255,.07);border-radius:10px;padding:8px 10px;white-space:nowrap;"><span style="color:#19a7b7;font-size:12px;flex-shrink:0;">✦</span>' + items[i] + '</div>';
   }
   html += '</div>';
   el.innerHTML = html;
@@ -2498,11 +2502,12 @@ function closeWalaaDetail(){
 </div>
 
 <!-- TARFIHI DETAIL -->
-<div id="tarfihi-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:#f7f5f2;overflow-y:auto;-webkit-overflow-scrolling:touch;">
-  <div style="background:#133548;padding:44px 24px 20px;text-align:center;position:relative;">
-    <button onclick="closeTarfihiDetail()" style="position:absolute;top:18px;right:18px;background:rgba(255,255,255,0.15);border:none;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;cursor:pointer;border-radius:20px;padding:6px 14px;">❯ رجوع</button>
-    <div style="font-size:26px;font-weight:700;color:#fff;margin-bottom:4px;">ألعاب الترفيه</div>
-    <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:Tajawal,sans-serif;margin-top:4px;">اختر اللعبة المناسبة واستمتع بوقتك</div>
+<div id="tarfihi-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
+  <div style="background:transparent;padding:14px 20px 18px;padding-top:20px;text-align:right;position:relative;">
+    <button onclick="closeTarfihiDetail()" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.10);border:none;color:rgba(255,255,255,0.85);cursor:pointer;margin-bottom:10px;">
+      <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div style="font-family:Tajawal,sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,0.70);line-height:1.5;">اختر اللعبة المناسبة واستمتع بوقتك</div>
   </div>
   <div style="padding:12px 20px 0;">
     <div style="border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(19,53,72,0.06);">
@@ -2511,56 +2516,56 @@ function closeWalaaDetail(){
   </div>
   <div style="padding:12px 20px;display:flex;flex-direction:column;gap:12px;">
     <!-- خيارات -->
-    <div style="background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
-      <div style="font-size:13px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:14px;">اختر الباقة</div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:14px;">اختر الباقة</div>
       <div style="display:flex;flex-direction:column;gap:10px;">
-        <label id="tarfihi-opt-box" onclick="selectTarfihiOpt('box')" style="display:flex;align-items:center;justify-content:space-between;background:#f7f5f2;border-radius:14px;padding:10px 16px;cursor:pointer;border:2px solid transparent;">
+        <label id="tarfihi-opt-box" onclick="selectTarfihiOpt('box')" style="display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.07);border-radius:14px;padding:10px 16px;cursor:pointer;border:2px solid transparent;">
           <div>
-            <div style="font-size:14px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;">بوكس الألعاب</div>
-            <div style="font-size:11px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-top:3px;">يضم مجموعة من الألعاب الترفيهية</div>
+            <div style="font-size:14px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;">بوكس الألعاب</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.40);font-family:'Tajawal',sans-serif;margin-top:3px;">يضم مجموعة من الألعاب الترفيهية</div>
           </div>
           <div style="font-size:16px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;white-space:nowrap;margin-right:12px;">50 ر.س</div>
         </label>
-        <label id="tarfihi-opt-table" onclick="selectTarfihiOpt('table')" style="display:flex;align-items:center;justify-content:space-between;background:#f7f5f2;border-radius:14px;padding:10px 16px;cursor:pointer;border:2px solid transparent;">
+        <label id="tarfihi-opt-table" onclick="selectTarfihiOpt('table')" style="display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.07);border-radius:14px;padding:10px 16px;cursor:pointer;border:2px solid transparent;">
           <div>
-            <div style="font-size:14px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;">طاولة مع بوكس الألعاب</div>
-            <div style="font-size:11px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-top:3px;">تشمل طاولة، أربعة كراسي، وبوكس ألعاب</div>
+            <div style="font-size:14px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;">طاولة مع بوكس الألعاب</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.40);font-family:'Tajawal',sans-serif;margin-top:3px;">تشمل طاولة، أربعة كراسي، وبوكس ألعاب</div>
           </div>
           <div style="font-size:16px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;white-space:nowrap;margin-right:12px;">150 ر.س</div>
         </label>
       </div>
     </div>
     <!-- محتويات البوكس -->
-    <div style="background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
-      <div style="font-size:13px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:10px;">محتويات بوكس الألعاب</div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:10px;">محتويات بوكس الألعاب</div>
       <div style="display:flex;flex-wrap:wrap;gap:6px;">
-        <div style="background:#f0f4f7;border-radius:16px;padding:6px 14px;font-family:'Tajawal',sans-serif;font-size:12px;color:#133548;font-weight:600;white-space:nowrap;">أونو</div><div style="background:#f0f4f7;border-radius:16px;padding:6px 14px;font-family:'Tajawal',sans-serif;font-size:12px;color:#133548;font-weight:600;white-space:nowrap;">جاكارو</div><div style="background:#f0f4f7;border-radius:16px;padding:6px 14px;font-family:'Tajawal',sans-serif;font-size:12px;color:#133548;font-weight:600;white-space:nowrap;">سيكونس</div><div style="background:#f0f4f7;border-radius:16px;padding:6px 14px;font-family:'Tajawal',sans-serif;font-size:12px;color:#133548;font-weight:600;white-space:nowrap;">شطرنج</div><div style="background:#f0f4f7;border-radius:16px;padding:6px 14px;font-family:'Tajawal',sans-serif;font-size:12px;color:#133548;font-weight:600;white-space:nowrap;">ضومنة</div><div style="background:#f0f4f7;border-radius:16px;padding:6px 14px;font-family:'Tajawal',sans-serif;font-size:12px;color:#133548;font-weight:600;white-space:nowrap;">لعبة لا تقول</div><div style="background:#f0f4f7;border-radius:16px;padding:6px 14px;font-family:'Tajawal',sans-serif;font-size:12px;color:#133548;font-weight:600;white-space:nowrap;">ورق بلوت</div>
+        <div style="background:rgba(255,255,255,.07);border-radius:16px;padding:6px 14px;font-family:'Tajawal',sans-serif;font-size:12px;color:rgba(255,255,255,.85);font-weight:600;white-space:nowrap;">أونو</div><div style="background:rgba(255,255,255,.07);border-radius:16px;padding:6px 14px;font-family:'Tajawal',sans-serif;font-size:12px;color:rgba(255,255,255,.85);font-weight:600;white-space:nowrap;">جاكارو</div><div style="background:rgba(255,255,255,.07);border-radius:16px;padding:6px 14px;font-family:'Tajawal',sans-serif;font-size:12px;color:rgba(255,255,255,.85);font-weight:600;white-space:nowrap;">سيكونس</div><div style="background:rgba(255,255,255,.07);border-radius:16px;padding:6px 14px;font-family:'Tajawal',sans-serif;font-size:12px;color:rgba(255,255,255,.85);font-weight:600;white-space:nowrap;">شطرنج</div><div style="background:rgba(255,255,255,.07);border-radius:16px;padding:6px 14px;font-family:'Tajawal',sans-serif;font-size:12px;color:rgba(255,255,255,.85);font-weight:600;white-space:nowrap;">ضومنة</div><div style="background:rgba(255,255,255,.07);border-radius:16px;padding:6px 14px;font-family:'Tajawal',sans-serif;font-size:12px;color:rgba(255,255,255,.85);font-weight:600;white-space:nowrap;">لعبة لا تقول</div><div style="background:rgba(255,255,255,.07);border-radius:16px;padding:6px 14px;font-family:'Tajawal',sans-serif;font-size:12px;color:rgba(255,255,255,.85);font-weight:600;white-space:nowrap;">ورق بلوت</div>
       </div>
     </div>
     <!-- تعليمات -->
-    <div style="background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
-      <div style="font-size:13px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:10px;">تعليمات وملاحظات</div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:10px;">تعليمات وملاحظات</div>
       <div style="display:flex;flex-direction:column;gap:6px;">
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> متاح حسب التوفر.</div>
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> يرجى المحافظة على جميع الألعاب والمعدات أثناء الاستخدام.</div>
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:#2d4a5a;white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> تطبق جميع الشروط والأحكام.</div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:rgba(255,255,255,.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> متاح حسب التوفر.</div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:rgba(255,255,255,.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> يرجى المحافظة على جميع الألعاب والمعدات أثناء الاستخدام.</div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:11px;color:rgba(255,255,255,.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> تطبق جميع الشروط والأحكام.</div>
         
       </div>
     </div>
   </div>
-  <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:#133548;padding:0 20px 8px;line-height:1.6;white-space:nowrap;">بعد اختيار 3 ألعاب اضغط "اطلبها الآن" لإتمام الطلب عبر واتساب.</div>
+  <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:rgba(255,255,255,.45);padding:0 20px 8px;line-height:1.6;white-space:nowrap;">بعد اختيار 3 ألعاب اضغط "اطلبها الآن" لإتمام الطلب عبر واتساب.</div>
 <div style="padding:0 20px calc(64px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
-      <button onclick="tarfihiOrder()" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;width:100%;text-align:center;">اطلبها الآن</button>
+      <button onclick="tarfihiOrder()" class="mbtn mbtn-wa" style="cursor:pointer;width:100%;text-align:center;">اطلبها الآن</button>
     </div></div>
 </div>
 
 <!-- TAWILAT DETAIL -->
-<div id="tawilat-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:#f7f5f2;overflow-y:auto;-webkit-overflow-scrolling:touch;">
-  <div style="background:#133548;padding:44px 24px 20px;text-align:center;position:relative;">
-    <button onclick="closeTawilatDetail()" style="position:absolute;top:18px;right:18px;background:rgba(255,255,255,0.15);border:none;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;cursor:pointer;border-radius:20px;padding:6px 14px;">❯ رجوع</button>
-    <div style="font-size:26px;font-weight:700;color:#fff;margin-bottom:6px;">طاولات الطعام</div>
-    <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;margin-top:4px;">جلسة طعام خارجية تناسب مختلف المناسبات</div>
-    <div style="margin-top:10px;display:inline-block;background:rgba(25,167,183,0.3);border:1px solid rgba(25,167,183,0.6);border-radius:20px;padding:5px 16px;font-family:'Tajawal',sans-serif;font-size:12px;color:#fff;font-weight:600;">اختر عدد الأشخاص</div>
+<div id="tawilat-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
+  <div style="background:transparent;padding:14px 20px 18px;padding-top:20px;text-align:right;position:relative;">
+    <button onclick="closeTawilatDetail()" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.10);border:none;color:rgba(255,255,255,0.85);cursor:pointer;margin-bottom:10px;">
+      <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div style="font-family:Tajawal,sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,0.70);line-height:1.5;">جلسة طعام خارجية تناسب مختلف المناسبات</div>
   </div>
 
   <div style="padding:12px 20px 0;">
@@ -2572,33 +2577,33 @@ function closeWalaaDetail(){
   <div style="padding:12px 20px;display:flex;flex-direction:column;gap:10px;">
 
     <!-- Size selector -->
-    <div style="background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
-      <div style="font-size:13px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:10px;">السعة</div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:10px;">السعة</div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
         <button id="ts-6"  onclick="setTawilatSize(6)"  style="padding:8px 16px;border:none;border-radius:20px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:#19a7b7;color:#fff;">6</button>
-        <button id="ts-12" onclick="setTawilatSize(12)" style="padding:8px 16px;border:none;border-radius:20px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:#f0f4f7;color:#133548;">12</button>
-        <button id="ts-18" onclick="setTawilatSize(18)" style="padding:8px 16px;border:none;border-radius:20px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:#f0f4f7;color:#133548;">18</button>
-        <button id="ts-24" onclick="setTawilatSize(24)" style="padding:8px 16px;border:none;border-radius:20px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:#f0f4f7;color:#133548;">24</button>
-        <button id="ts-32" onclick="setTawilatSize(32)" style="padding:8px 16px;border:none;border-radius:20px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:#f0f4f7;color:#133548;">32</button>
+        <button id="ts-12" onclick="setTawilatSize(12)" style="padding:8px 16px;border:none;border-radius:20px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);">12</button>
+        <button id="ts-18" onclick="setTawilatSize(18)" style="padding:8px 16px;border:none;border-radius:20px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);">18</button>
+        <button id="ts-24" onclick="setTawilatSize(24)" style="padding:8px 16px;border:none;border-radius:20px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);">24</button>
+        <button id="ts-32" onclick="setTawilatSize(32)" style="padding:8px 16px;border:none;border-radius:20px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);">32</button>
       </div>
-      <div style="font-size:11px;color:#2d4a5a;font-family:'Tajawal',sans-serif;margin-top:10px;text-align:center;">اختر العدد لعرض الخيارات والأسعار</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.65);font-family:'Tajawal',sans-serif;margin-top:10px;text-align:center;">اختر العدد لعرض الخيارات والأسعار</div>
     </div>
 
     <!-- Option selector -->
-    <div style="background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
-      <div style="font-size:13px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:10px;">اختر الباقة</div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:10px;">اختر الباقة</div>
       <div style="display:flex;flex-direction:column;gap:10px;">
-        <label id="tawilat-opt-plain" onclick="selectTawilatOpt('plain')" style="display:flex;align-items:center;justify-content:space-between;background:#f7f5f2;border-radius:14px;padding:14px 16px;cursor:pointer;border:0.5px solid transparent;box-shadow:0 2px 8px rgba(19,53,72,0.1);">
+        <label id="tawilat-opt-plain" onclick="selectTawilatOpt('plain')" style="display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.07);border-radius:14px;padding:14px 16px;cursor:pointer;border:0.5px solid transparent;box-shadow:0 2px 8px rgba(19,53,72,0.1);">
           <div>
-            <div style="font-size:14px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;">بدون تنسيق</div>
-            <div style="font-size:11px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-top:3px;">طاولات وكراسٍ فقط</div>
+            <div style="font-size:14px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;">بدون تنسيق</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.40);font-family:'Tajawal',sans-serif;margin-top:3px;">طاولات وكراسٍ فقط</div>
           </div>
           <div id="tawilat-price-plain" style="font-size:18px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;white-space:nowrap;margin-right:12px;">199 ر.س</div>
         </label>
-        <label id="tawilat-opt-tansiq" onclick="selectTawilatOpt('tansiq')" style="display:flex;align-items:center;justify-content:space-between;background:#f7f5f2;border-radius:14px;padding:14px 16px;cursor:pointer;border:0.5px solid transparent;box-shadow:0 2px 8px rgba(19,53,72,0.1);">
+        <label id="tawilat-opt-tansiq" onclick="selectTawilatOpt('tansiq')" style="display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.07);border-radius:14px;padding:14px 16px;cursor:pointer;border:0.5px solid transparent;box-shadow:0 2px 8px rgba(19,53,72,0.1);">
           <div>
-            <div style="font-size:14px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;">مع تنسيق</div>
-            <div style="font-size:11px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-top:3px;">طاولات وكراسٍ مع تنسيق متكامل</div>
+            <div style="font-size:14px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;">مع تنسيق</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.40);font-family:'Tajawal',sans-serif;margin-top:3px;">طاولات وكراسٍ مع تنسيق متكامل</div>
           </div>
           <div id="tawilat-price-tansiq" style="font-size:18px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;white-space:nowrap;margin-right:12px;">399 ر.س</div>
         </label>
@@ -2612,41 +2617,41 @@ function closeWalaaDetail(){
     </div>
 
     <!-- Package contents (tansiq only) -->
-    <div id="tawilat-contents" style="display:block;background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
-      <div style="font-size:13px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:12px;">يشمل التنسيق</div>
+    <div id="tawilat-contents" style="display:block;background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:12px;">يشمل التنسيق</div>
       <div id="tawilat-contents-list" style="display:flex;flex-direction:column;gap:10px;"></div>
     </div>
 
     <!-- Order button -->
     <div style="padding:0 0 calc(64px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
-      <button onclick="window.open('https://wa.me/966556156693?text='+encodeURIComponent('السلام عليكم، أود الاستفسار عن خدمة طاولات الطعام'),'_blank')" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;width:100%;text-align:center;">تواصل عبر واتساب</button>
+      <button onclick="window.open('https://wa.me/966556156693?text='+encodeURIComponent('السلام عليكم، أود الاستفسار عن خدمة طاولات الطعام'),'_blank')" class="mbtn mbtn-wa" style="cursor:pointer;width:100%;text-align:center;">تواصل عبر واتساب</button>
     </div></div>
 
   </div>
 </div>
 
 <!-- WALAA DETAIL -->
-<div id="walaa-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:#f7f5f2;overflow-y:auto;-webkit-overflow-scrolling:touch;">
-  <div style="background:#133548;padding:28px 24px 16px;text-align:center;position:relative;">
-    <button onclick="closeWalaaDetail()" style="position:absolute;top:18px;right:18px;background:rgba(255,255,255,0.15);border:none;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;cursor:pointer;border-radius:20px;padding:6px 14px;">❯ رجوع</button>
-    <div style="font-size:26px;font-weight:700;color:#fff;margin-bottom:6px;">بطاقة الولاء</div>
-    <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;">استمتع بمزايا حصرية مع بطاقة الولاء</div>
-    <div style="margin-top:10px;display:inline-block;background:rgba(25,167,183,0.3);border:1px solid rgba(25,167,183,0.6);border-radius:20px;padding:5px 16px;font-family:'Tajawal',sans-serif;font-size:12px;color:#fff;font-weight:600;">اكتشف مزايا بطاقة الولاء</div>
+<div id="walaa-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
+  <div style="background:transparent;padding:14px 20px 18px;padding-top:20px;text-align:right;position:relative;">
+    <button onclick="closeWalaaDetail()" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.10);border:none;color:rgba(255,255,255,0.85);cursor:pointer;margin-bottom:10px;">
+      <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div style="font-family:Tajawal,sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,0.70);line-height:1.5;">استمتع بمزايا حصرية مع بطاقة الولاء</div>
   </div>
 
   <div style="padding:12px 20px;display:flex;flex-direction:column;gap:8px;">
 
-    <div style="background:#fff;border-radius:16px;padding:16px 18px;box-shadow:0 2px 10px rgba(19,53,72,0.06);border:0.8px solid #19a7b7;">
-      <div style="font-size:13px;font-weight:700;color:#133548;font-family:'Tajawal',sans-serif;margin-bottom:10px;">مزايا البطاقة</div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:10px;">مزايا البطاقة</div>
       <div style="display:flex;flex-direction:column;gap:10px;">
-        <div style="display:flex;align-items:center;gap:10px;font-family:'Tajawal',sans-serif;font-size:14px;color:#2d4a5a;"><span style="color:#19a7b7;font-size:16px;">✦</span> الحجز الرابع مجانًا.</div>
-        <div style="display:flex;align-items:center;gap:10px;font-family:'Tajawal',sans-serif;font-size:14px;color:#2d4a5a;"><span style="color:#19a7b7;font-size:16px;">✦</span> عروض وخصومات حصرية.</div>
-        <div style="display:flex;align-items:center;gap:10px;font-family:'Tajawal',sans-serif;font-size:14px;color:#2d4a5a;"><span style="color:#19a7b7;font-size:16px;">✦</span> إشعارات بأحدث العروض.</div>
+        <div style="display:flex;align-items:center;gap:10px;font-family:'Tajawal',sans-serif;font-size:14px;color:rgba(255,255,255,.70);"><span style="color:#19a7b7;font-size:16px;">✦</span> الحجز الرابع مجانًا.</div>
+        <div style="display:flex;align-items:center;gap:10px;font-family:'Tajawal',sans-serif;font-size:14px;color:rgba(255,255,255,.70);"><span style="color:#19a7b7;font-size:16px;">✦</span> عروض وخصومات حصرية.</div>
+        <div style="display:flex;align-items:center;gap:10px;font-family:'Tajawal',sans-serif;font-size:14px;color:rgba(255,255,255,.70);"><span style="color:#19a7b7;font-size:16px;">✦</span> إشعارات بأحدث العروض.</div>
       </div>
     </div>
 
     <div style="padding:0 0 calc(32px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
-      <button onclick="window.open('https://loyapro.com/c/MjUyNg==','_blank')" class="mbtn mbtn-wa" style="background:#fff;border:1.5px solid #19a7b7;color:#19a7b7;cursor:pointer;width:100%;text-align:center;">احصل على بطاقة الولاء</button>
+      <button onclick="window.open('https://loyapro.com/c/MjUyNg==','_blank')" class="mbtn mbtn-wa" style="cursor:pointer;width:100%;text-align:center;">احصل على بطاقة الولاء</button>
     </div></div>
 
   </div>
