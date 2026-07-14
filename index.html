@@ -467,6 +467,33 @@ header{
 
 @media(min-width:600px){.overlay{align-items:center}.modal{border-radius:16px;max-height:88vh}.grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
+/* ===== RESORT NETFLIX LAYOUT ===== */
+.nx-wrap{padding:8px 0 24px;}
+.nx-section{margin-bottom:28px;}
+.nx-header{display:flex;align-items:center;gap:8px;padding:0 16px 10px;direction:rtl;}
+.nx-title{font-family:'Tajawal',sans-serif;font-size:17px;font-weight:700;color:#fff;}
+.nx-count{font-family:'Tajawal',sans-serif;font-size:12px;color:rgba(255,255,255,.45);margin-right:4px;}
+.nx-row{display:flex;overflow-x:auto;gap:12px;padding:0 16px 8px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain;}
+.nx-row::-webkit-scrollbar{display:none;}
+.nx-card{flex:0 0 148px;scroll-snap-align:start;cursor:pointer;border-radius:18px;overflow:hidden;background:#0d2235;-webkit-tap-highlight-color:transparent;transition:transform .18s ease;}
+.nx-card:active{transform:scale(.96);}
+.nx-img-wrap{position:relative;width:148px;height:196px;overflow:hidden;flex-shrink:0;}
+.nx-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
+.nx-grad{position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,14,26,.82) 0%,rgba(5,14,26,.20) 50%,transparent 100%);pointer-events:none;}
+.nx-badge-top{position:absolute;top:8px;right:8px;background:rgba(25,167,183,.88);color:#fff;font-family:'Tajawal',sans-serif;font-size:10px;font-weight:600;padding:3px 8px;border-radius:10px;z-index:2;}
+.nx-cap{position:absolute;bottom:8px;right:8px;left:8px;color:#fff;font-family:'Tajawal',sans-serif;font-size:11px;font-weight:600;z-index:2;text-align:right;}
+.nx-cap-num{font-size:13px;font-weight:700;color:rgba(255,255,255,.95);}
+.nx-name{font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;color:#fff;padding:9px 10px 10px;text-align:right;direction:rtl;line-height:1.3;}
+.nx-shared-wrap{margin:4px 16px 8px;cursor:pointer;border-radius:18px;overflow:hidden;background:#0d2235;-webkit-tap-highlight-color:transparent;}
+.nx-shared-img{width:100%;height:130px;object-fit:cover;display:block;}
+.nx-shared-body{padding:12px 14px;direction:rtl;}
+.nx-shared-title{font-family:'Tajawal',sans-serif;font-size:15px;font-weight:700;color:#fff;}
+.nx-shared-sub{font-family:'Tajawal',sans-serif;font-size:12px;color:rgba(255,255,255,.52);margin-top:3px;}
+.nx-divider{display:flex;align-items:center;gap:8px;padding:0 16px;margin-bottom:16px;direction:rtl;}
+.nx-divider-line{flex:1;height:.5px;background:rgba(255,255,255,.12);}
+.nx-divider-text{font-family:'Tajawal',sans-serif;font-size:11px;color:rgba(255,255,255,.32);letter-spacing:.1em;}
+/* ===== END RESORT NETFLIX ===== */
+
 
 
 
@@ -1452,7 +1479,7 @@ function showSection(type){
   document.getElementById('sectionTitle').className='shimmer-title';
   document.getElementById('sectionDesc').textContent='بتجارب مستوحاة من مدن العالم';
   const fs=document.getElementById('filterSection');
-  fs.style.display='flex';
+  fs.style.display = (type==='resort') ? 'none' : 'flex';
   setActiveTab('resort');
   render('all',type);
 }
@@ -1501,9 +1528,70 @@ function cardSlide(wrap,dir){
   var counter=wrap.querySelector('.card-counter');
   if(counter)counter.textContent=(idx+1)+' / '+imgs.length;
 }
+
+function renderResortNetflix(g){
+  const items=data.resort.items;
+  const couples=items.filter(c=>c.suitable&&c.suitable.includes('عرسان'));
+  const families=items.filter(c=>c.suitable&&c.suitable.includes('عوائل'))
+    .sort((a,b)=>a.guests-b.guests);
+  const shared=items.filter(c=>c.id===12);
+
+  g.className='nx-wrap';
+  g.innerHTML='';
+
+  function capLabel(n){
+    if(n===2)return 'شخصان';
+    if(n<=10)return n+' أشخاص';
+    return n+' شخصًا';
+  }
+
+  function buildRow(title,cabins){
+    const sec=document.createElement('div');
+    sec.className='nx-section';
+    sec.innerHTML='<div class="nx-header"><span class="nx-title">'+title+'</span><span class="nx-count">('+cabins.length+')</span></div>';
+    const row=document.createElement('div');
+    row.className='nx-row';
+    cabins.forEach(function(c){
+      const imgs=GALLERY[c.id]||[IMG[c.img]];
+      const card=document.createElement('div');
+      card.className='nx-card';
+      card.onclick=function(){openM(c.id,'resort');};
+      card.innerHTML='<div class="nx-img-wrap">'+
+        '<img src="'+imgs[0]+'" loading="lazy">'+
+        '<div class="nx-grad"></div>'+
+        (c.badge?'<div class="nx-badge-top">'+c.badge+'</div>':'')+
+        (c.guests>0?'<div class="nx-cap"><span class="nx-cap-num">'+capLabel(c.guests)+'</span></div>':'')+
+        '</div>'+
+        '<div class="nx-name">'+c.name+'</div>';
+      row.appendChild(card);
+    });
+    sec.appendChild(row);
+    return sec;
+  }
+
+  if(couples.length) g.appendChild(buildRow('للعرسان',couples));
+  if(families.length) g.appendChild(buildRow('للعوائل',families));
+
+  if(shared.length){
+    const c=shared[0];
+    const imgs=GALLERY[c.id]||[IMG[c.img]];
+    g.insertAdjacentHTML('beforeend','<div class="nx-divider"><div class="nx-divider-line"></div><span class="nx-divider-text">مشترك</span><div class="nx-divider-line"></div></div>');
+    const sw=document.createElement('div');
+    sw.className='nx-shared-wrap';
+    sw.onclick=function(){openM(c.id,'resort');};
+    sw.innerHTML='<img class="nx-shared-img" src="'+imgs[0]+'" loading="lazy">'+
+      '<div class="nx-shared-body">'+
+      '<div class="nx-shared-title">'+c.name+'</div>'+
+      '<div class="nx-shared-sub">منطقة مشتركة لجميع ضيوف المنتجع</div>'+
+      '</div>';
+    g.appendChild(sw);
+  }
+}
+
 function render(f='all',type){
   type=type||curSection;
   const g=document.getElementById('grid');g.innerHTML='';
+  if(type==='resort'){renderResortNetflix(g);return;}
   const items=data[type].items;
   // Splash screen
 
