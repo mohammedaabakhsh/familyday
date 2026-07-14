@@ -306,12 +306,12 @@ header{
   height:60px;position:sticky;top:0;z-index:100
 }
 .back-btn{
-  display:flex;align-items:center;gap:6px;
+  display:flex;align-items:center;justify-content:center;
   background:none;border:none;color:var(--text-mid);
-  font-family:'Tajawal',sans-serif;font-size:13px;font-weight:500;
-  cursor:pointer;padding:6px 10px;border-radius:6px;transition:all 0.2s
+  cursor:pointer;padding:0;width:38px;height:38px;border-radius:50%;
+  transition:background 0.2s;flex-shrink:0;
 }
-.back-btn:hover{background:var(--bg);color:var(--navy)}
+.back-btn:hover{background:rgba(0,0,0,0.06);}
 .header-center{font-size:15px;font-weight:700;color:var(--navy)}
 .header-center span{color:var(--teal)}
 .hbtn-book{
@@ -1218,7 +1218,11 @@ function tarfihiOrder(){
 <!-- MAIN APP -->
 <div id="app">
   <header>
-    <button class="back-btn" onclick="goBack()">❯ رجوع</button>
+    <button class="back-btn" onclick="goBack()">
+      <svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
     <div class="header-center" id="headerTitle"></div>
   </header>
 
@@ -1458,19 +1462,18 @@ function showSection(type){
   document.getElementById('app').classList.add('show');
   document.querySelector('header').style.background = '#133548';
   document.querySelector('header').style.borderBottom = 'none';
-  document.querySelector('.back-btn').style.color = '#fff';
-  document.querySelector('.back-btn').style.background = 'rgba(255,255,255,0.15)';
-  document.querySelector('.back-btn').style.borderRadius = '20px';
-  document.querySelector('.back-btn').style.padding = '6px 14px';
-  document.getElementById('sectionTag').textContent='';
+  document.querySelector('.back-btn').style.color = 'rgba(255,255,255,0.85)';
+  document.querySelector('.back-btn').style.background = 'rgba(255,255,255,0.10)';
+  document.querySelector('.back-btn').style.borderRadius = '50%';
+  document.querySelector('.back-btn').style.padding = '0';
+  document.querySelector('.back-btn').style.width = '38px';
+  document.querySelector('.back-btn').style.height = '38px';
   document.getElementById('sectionTag').style.display='none';
   document.getElementById('heroLogo').style.display='none';
-  document.getElementById('sectionTag').className='section-tag '+d.tagClass;
-  document.getElementById('sectionTag').textContent='اختر الكوخ المناسب لك';
-  document.getElementById('sectionTag').style.display='inline-block';
   document.getElementById('sectionTitle').textContent='';
   document.getElementById('sectionTitle').className='';
   document.getElementById('sectionDesc').textContent='';
+  document.getElementById('headerTitle').innerHTML='<span style="font-family:Tajawal,sans-serif;font-size:16px;font-weight:700;color:#fff;letter-spacing:0.01em;">اختر الكوخ المناسب لك</span>';
   const fs=document.getElementById('filterSection');
   fs.style.display = 'flex';
   setActiveTab('resort');
