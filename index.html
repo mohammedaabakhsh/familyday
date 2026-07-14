@@ -1030,7 +1030,7 @@ function tarfihiOrder(){
     </div>
     <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:#7ecfea;padding:0 20px 8px;line-height:1.6;white-space:nowrap;">بعد اختيار 3 ألعاب اضغط "اطلبها الآن" لإتمام الطلب عبر واتساب.</div>
 <div style="padding:0 20px calc(64px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
-      <button id="maiya-order-btn" onclick="maiyaOrderNow()" class="mbtn mbtn-wa" style="background:rgba(14,36,58,.60);border:1.5px solid rgba(25,167,183,.20);color:rgba(126,207,234,.35);cursor:not-allowed;width:100%;text-align:center;" disabled>اختر 3 ألعاب أولًا</button>
+      <button id="maiya-order-btn" onclick="maiyaOrderNow()" class="mbtn mbtn-wa" style="background:rgba(255,255,255,.08);border:1.5px solid rgba(25,167,183,.35);color:#7ecfea;cursor:not-allowed;width:100%;text-align:center;" disabled>اختر 3 ألعاب أولًا</button>
     </div></div>
   </div>
 </div>
@@ -2182,9 +2182,9 @@ function updateMaiyaSelectionUI(){
       orderBtn.textContent = 'اطلب الباقة الآن';
     } else {
       orderBtn.disabled = true;
-      orderBtn.style.background = 'rgba(14,36,58,.60)';
-      orderBtn.style.border = '1.5px solid rgba(25,167,183,.20)';
-      orderBtn.style.color = 'rgba(126,207,234,.35)';
+      orderBtn.style.background = 'rgba(255,255,255,.08)';
+      orderBtn.style.border = '1.5px solid rgba(25,167,183,.35)';
+      orderBtn.style.color = '#7ecfea';
       orderBtn.style.cursor = 'not-allowed';
       orderBtn.textContent = 'اختر 3 ألعاب أولًا';
     }
