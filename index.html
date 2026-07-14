@@ -330,6 +330,16 @@ header{
   padding:10px 24px 8px;text-align:center;
   background:#133548;position:relative;
 }
+.section-hero.resort-hero{
+  display:block;
+  background:#F5F0EA;
+  padding:4px 24px 20px;
+  text-align:right;
+}
+.section-hero.resort-hero h1{
+  font-size:28px;font-weight:800;color:#133548;
+  line-height:1.25;margin:0;
+}
 .section-tag{
   display:inline-block;
   background:rgba(25,167,183,0.3);border:1px solid rgba(25,167,183,0.6);
@@ -1410,6 +1420,13 @@ function bottomNav(tab){
     document.getElementById('filterSection').style.display='';
     document.getElementById('sectionTitle').textContent='';
     document.getElementById('sectionDesc').textContent='';
+  const hero = document.querySelector('.section-hero');
+  if(type==='resort'){
+    hero.className='section-hero resort-hero';
+    document.getElementById('sectionTitle').innerHTML='اختر الكوخ<br>المناسب لك';
+  } else {
+    hero.className='section-hero';
+  }
     document.getElementById('sectionTag').textContent='';
     document.getElementById('sectionTag').style.display='none';
     _serviceSubReturn=null;
@@ -1460,20 +1477,20 @@ function showSection(type){
   document.getElementById('landing').classList.add('hide');
 
   document.getElementById('app').classList.add('show');
-  document.querySelector('header').style.background = '#133548';
+  document.querySelector('header').style.background = '#F5F0EA';
   document.querySelector('header').style.borderBottom = 'none';
-  document.querySelector('.back-btn').style.color = 'rgba(255,255,255,0.85)';
-  document.querySelector('.back-btn').style.background = 'rgba(255,255,255,0.10)';
+  document.querySelector('header').style.boxShadow = 'none';
+  document.querySelector('.back-btn').style.color = '#133548';
+  document.querySelector('.back-btn').style.background = 'rgba(19,53,72,0.08)';
   document.querySelector('.back-btn').style.borderRadius = '50%';
   document.querySelector('.back-btn').style.padding = '0';
   document.querySelector('.back-btn').style.width = '38px';
   document.querySelector('.back-btn').style.height = '38px';
   document.getElementById('sectionTag').style.display='none';
   document.getElementById('heroLogo').style.display='none';
+  document.getElementById('headerTitle').innerHTML='';
   document.getElementById('sectionTitle').textContent='';
-  document.getElementById('sectionTitle').className='';
   document.getElementById('sectionDesc').textContent='';
-  document.getElementById('headerTitle').innerHTML='<span style="font-family:Tajawal,sans-serif;font-size:16px;font-weight:700;color:#fff;letter-spacing:0.01em;">اختر الكوخ المناسب لك</span>';
   const fs=document.getElementById('filterSection');
   fs.style.display = 'flex';
   setActiveTab('resort');
