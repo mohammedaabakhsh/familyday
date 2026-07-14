@@ -612,15 +612,15 @@ header{
 /* ===== LANDING REDESIGN PREMIUM v2 ===== */
 #landing{overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch!important;display:block!important;background:#060f18!important;overscroll-behavior:none;}
 #landing.hide{display:none!important;}
-.lh-hero{position:relative;width:100%;display:flex;flex-direction:column;overflow:hidden;}
+.lh-hero{position:relative;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;overflow:hidden;}
 .lh-hero.landing-bg-photo{position:relative!important;inset:auto!important;height:100vh;height:100svh;min-height:580px;}
-.lh-overlay{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(1,4,12,.60) 0%,rgba(1,4,12,.22) 16%,rgba(1,4,12,.00) 30%,rgba(1,4,12,.00) 52%,rgba(1,4,12,.38) 68%,rgba(0,3,10,.80) 100%);}
+.lh-overlay{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(1,4,12,.62) 0%,rgba(1,4,12,.18) 18%,rgba(1,4,12,.08) 40%,rgba(1,4,12,.08) 60%,rgba(1,4,12,.22) 80%,rgba(0,3,10,.72) 100%);}
 .lh-logo-wrap{position:absolute;top:44px;left:50%;transform:translateX(-50%);z-index:3;}
 .lh-logo-img{height:58px;width:auto;filter:drop-shadow(0 2px 16px rgba(0,0,0,.45));}
-.lh-hero-main{flex:1;position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;padding:140px 24px 0;}
+.lh-hero-main{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 24px;}
 .lh-title{font-family:'Tajawal',sans-serif;font-size:30px;font-weight:800;color:#fff;line-height:1.18;margin:0 0 10px;text-shadow:0 2px 40px rgba(0,0,0,.55);letter-spacing:-.01em;white-space:nowrap;}
 .lh-subtitle{font-family:'Tajawal',sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,.70);line-height:1.85;margin:0;}
-.lh-float-csl{position:absolute;bottom:0;left:0;right:0;z-index:10;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 22px);}
+.lh-float-csl{position:relative;z-index:10;width:100%;}
 .lh-float-label{font-family:'Tajawal',sans-serif;font-size:10px;font-weight:600;color:rgba(255,255,255,.34);text-align:center;letter-spacing:.2em;text-transform:uppercase;margin:0 0 12px;}
 .lh-carousel{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;gap:12px;padding:8px 15% 8px;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain;}
 .lh-carousel::-webkit-scrollbar{display:none;}
