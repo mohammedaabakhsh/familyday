@@ -1624,9 +1624,9 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
         <div class="card-guests"><span class="card-guests-max">&nbsp;</span></div>
         ` : `
         <div class="card-specs">
-          <div class="card-spec">السعة: ${c.guests > 10 ? c.guests + ' شخصًا' : c.guests === 2 ? 'شخصان' : c.guests + ' أشخاص'}</div>
+          <div class="card-spec">${c.guests > 10 ? c.guests + ' شخصًا' : c.guests === 2 ? 'شخصان' : c.guests + ' أشخاص'}</div>
           <div class="card-spec">${c.rooms===1?'غرفة نوم واحدة':'غرفتين نوم'}</div>
-          ${(()=>{const b=c.tags&&c.tags.find(t=>t.includes('بانيو')||t.includes('جاكوزي'));return b?'<div class="card-spec" style="line-height:1.6;">'+b.replace('||',' ')+'</div>':''})()} 
+          ${(()=>{const b=c.tags&&c.tags.find(t=>t.includes('بانيو')||t.includes('جاكوزي'));if(!b)return '';const s=b.includes('داخلي')?'بانيو داخلي':b.includes('خارجي')?'بانيو خارجي':b.includes('جاكوزي')?'بانيو جاكوزي':'بانيو';return '<div class="card-spec">'+s+'</div>'})()} 
         </div>
         `}
         <button class="card-btn">عرض التفاصيل</button>
