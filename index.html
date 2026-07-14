@@ -89,7 +89,7 @@
   --border:#e8e2d8;
   --card:#ffffff;
 }
-html,body{height:100%;scroll-behavior:smooth;overscroll-behavior-x:none;}
+html,body{height:100%;scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:'Tajawal',sans-serif;min-height:100vh;}
 
 /* ========= LANDING ========= */
@@ -2634,5 +2634,29 @@ function closeWalaaDetail(){
 
   </div>
 </div>
+<script>
+// Prevent browser horizontal swipe-back gesture on non-scrollable areas
+(function(){
+  var startX, startY;
+  document.addEventListener('touchstart', function(e){
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+  }, {passive:true});
+  document.addEventListener('touchmove', function(e){
+    var dx = Math.abs(e.touches[0].clientX - startX);
+    var dy = Math.abs(e.touches[0].clientY - startY);
+    if(dx > dy){
+      // horizontal swipe — check if target or ancestor is horizontally scrollable
+      var el = e.target;
+      var scrollable = false;
+      while(el && el !== document.body){
+        if(el.scrollWidth > el.clientWidth){scrollable=true;break;}
+        el = el.parentElement;
+      }
+      if(!scrollable) e.preventDefault();
+    }
+  }, {passive:false});
+})();
+</script>
 </body>
 </html>
