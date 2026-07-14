@@ -2397,7 +2397,7 @@ function selectTawilatOpt(opt){
   var labels = ['tansiq','plain'];
   labels.forEach(function(l){
     var el = document.getElementById('tawilat-opt-'+l);
-    if(el){ el.style.border = l===opt ? '0.5px solid #19a7b7' : '0.5px solid transparent'; el.style.background = l===opt ? 'rgba(25,167,183,0.06)' : '#f7f5f2'; }
+    if(el){ el.style.border = l===opt ? '1.5px solid rgba(25,167,183,.50)' : '1px solid rgba(255,255,255,.10)'; el.style.background = l===opt ? 'rgba(25,167,183,0.10)' : 'rgba(255,255,255,.07)'; }
   });
   updateTawilatContents();
   updateTawilatSummary();
@@ -2427,7 +2427,7 @@ function updateTawilatContents(){
   ];
   var html = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">';
   for(var i=0;i<items.length;i++){
-    html += '<div style="display:flex;align-items:center;gap:8px;font-size:11px;color:rgba(255,255,255,.65);background:rgba(14,36,58,.80);border:1.5px solid rgba(25,167,183,.35);border-radius:10px;;padding:8px 10px;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 2px 10px rgba(25,167,183,.08);white-space:nowrap;"><span style="color:#19a7b7;font-size:12px;flex-shrink:0;">✦</span>' + items[i] + '</div>';
+    html += '<div style="display:flex;align-items:center;gap:8px;font-size:11px;color:rgba(255,255,255,.70);background:rgba(14,36,58,.80);border:1.5px solid rgba(25,167,183,.35);border-radius:10px;padding:8px 10px;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 2px 10px rgba(25,167,183,.08);"><span style="color:#19a7b7;font-size:12px;flex-shrink:0;">✦</span>' + items[i] + '</div>';
   }
   html += '</div>';
   el.innerHTML = html;
@@ -2612,7 +2612,7 @@ function closeWalaaDetail(){
     </div>
 
     <!-- Price summary -->
-    <div id="tawilat-price-summary" style="background:#133548;border-radius:16px;padding:16px 20px;text-align:center;display:none;">
+    <div id="tawilat-price-summary" style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;border-radius:16px;padding:16px 20px;text-align:center;display:none;">
       <div style="font-size:12px;color:rgba(255,255,255,0.7);font-family:'Tajawal',sans-serif;margin-bottom:4px;" id="tawilat-summary-label">اختر العدد والخيار</div>
       <div style="font-size:28px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;" id="tawilat-summary-price">—</div>
     </div>
