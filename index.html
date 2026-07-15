@@ -1677,11 +1677,10 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
         ${(function(){var gl=GALLERY[c.id]||[];if(gl.length<=1)return '<div class="card-name">'+c.name+'</div>';return '<div style="display:flex;align-items:center;justify-content:space-between;width:100%;margin-bottom:14px;"><button onclick="event.stopPropagation();cardSlide(this.closest(\'.card\').querySelector(\'.card-img-wrap\'),-1)" style="width:30px;height:30px;flex-shrink:0;border-radius:50%;background:rgba(25,167,183,0.15);border:1px solid rgba(25,167,183,0.35);color:#7ecfea;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#10094;</button><div style="font-size:19px;font-weight:700;color:#fff;text-align:center;flex:1;font-family:Tajawal,sans-serif;">'+c.name+'</div><button onclick="event.stopPropagation();cardSlide(this.closest(\'.card\').querySelector(\'.card-img-wrap\'),1)" style="width:30px;height:30px;flex-shrink:0;border-radius:50%;background:rgba(25,167,183,0.15);border:1px solid rgba(25,167,183,0.35);color:#7ecfea;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#10095;</button></div>';})()}
         ${(()=>{
           if(c.id===12) return '<div class="card-specs"><div class="card-spec">منطقة ألعاب</div><div class="card-spec">ألعاب أطفال</div><div class="card-spec">شاشة عرض</div></div>';
-          if(c.id===4) return '<div class="card-specs"><div class="card-spec">غرفة نوم واحدة</div><div class="card-spec">بانيو داخلي</div></div><div class="card-guests"><span class="card-guests-suitable">تستوعب حتى شخصين</span></div>';
           const gl2=c.guests>10?c.guests+' شخصًا':c.guests===2?'شخصين':c.guests+' أشخاص';
           const b=c.tags&&c.tags.find(t=>t.includes('بانيو')||t.includes('جاكوزي'));
           const bs=b?(b.includes('داخلي')&&!b.includes('جاكوزي')?'بانيو داخلي':b.includes('خارجي')?'بانيو خارجي':b.includes('جاكوزي')?'جاكوزي داخلي':'بانيو'):'';
-          return '<div class="card-specs"><div class="card-spec">'+gl2+'</div><div class="card-spec">'+(c.rooms===1?'غرفة نوم واحدة':'غرفتين نوم')+'</div>'+(bs?'<div class="card-spec">'+bs+'</div>':'')+'</div>';
+          return '<div class="card-specs"><div class="card-spec">'+(c.rooms===1?'غرفة نوم واحدة':'غرفتين نوم')+'</div>'+(bs?'<div class="card-spec">'+bs+'</div>':'')+'</div><div class="card-guests"><span class="card-guests-suitable">تستوعب حتى '+gl2+'</span></div>';
         })()}
         <button class="card-btn">عرض التفاصيل</button>
       </div>`;
