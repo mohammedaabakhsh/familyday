@@ -824,8 +824,12 @@ function openTarfihiDetail(){
 function closeTarfihiDetail(){ document.getElementById('tarfihi-detail').classList.add('hide'); }
 function selectTarfihiOpt(opt){
   _tarfihiOpt = opt;
-  document.getElementById('tarfihi-opt-box').style.border = opt==='box' ? '2px solid #133548' : '2px solid transparent';
-  document.getElementById('tarfihi-opt-table').style.border = opt==='table' ? '2px solid #133548' : '2px solid transparent';
+  var box = document.getElementById('tarfihi-opt-box');
+  var tbl = document.getElementById('tarfihi-opt-table');
+  box.style.border = opt==='box' ? '2px solid #19a7b7' : '2px solid transparent';
+  box.style.background = opt==='box' ? 'rgba(25,167,183,0.15)' : 'rgba(255,255,255,.07)';
+  tbl.style.border = opt==='table' ? '2px solid #19a7b7' : '2px solid transparent';
+  tbl.style.background = opt==='table' ? 'rgba(25,167,183,0.15)' : 'rgba(255,255,255,.07)';
 }
 function tarfihiOrder(){
   if(!_tarfihiOpt){ alert('يرجى اختيار خيار أولاً'); return; }
