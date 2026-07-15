@@ -1264,8 +1264,9 @@ function tarfihiOrder(){
 
   <div class="filter-section" id="filterSection">
     <button class="fbtn active" data-f="all">الكل</button>
-    <button class="fbtn" data-f="عرسان">للعرسان</button>
+    <button class="fbtn" data-f="شخصين">شخصين</button>
     <button class="fbtn" data-f="عوائل">للعوائل</button>
+    <button class="fbtn" data-f="حديقة">الحديقة المشتركة</button>
   </div>
 
   <div class="grid-section"><div class="grid" id="grid"></div></div>
@@ -1407,8 +1408,8 @@ const data={
   resort:{
     tag:'المنتجع',title:'أكواخ المنتجع الفاخرة',desc:'١٢ كوخ بتصاميم فريدة على ساحل البحر الأحمر',tagClass:'resort-tag',
     items:[
-      {id:4,img:12,name:"بيت الدوم",type:"قبة هندسية صُممت خصيصاً للعرسان",suitable:"مناسب للعرسان",rooms:1,guests:2,size:"",bathroom:0,badge:"تجربة فريدة",tags:["يتسع لشخصين","غرفة نوم بسرير مزدوج","بانيو داخلي بغرفة النوم","|","حمام واحد","|","جلسة خارجية","ركن شوي","|","مسبح خاص للكبار مع جاكوزي 4×7 م::عمق يصل إلى 140 سم","سرير تشميس داخل المسبح","|","كراسي تشميس","شاور خارجي","|","ركن المطبخ","ميني بار","|","شاشة تلفزيون","سماعات داخلية (ساوند بار)"]},
-      {id:3,img:2,name:"الكوخ الهرمي",type:"كوخ خشبي هرمي بطراز هندسي حديث صُمم للمتزوجين",suitable:"مناسب للعرسان",rooms:1,guests:2,size:"",bathroom:1,hall:true,badge:null,tags:["يتسع لشخصين","غرفة نوم بسرير مزدوج","|","بانيو خارجي","جلسة خارجية","ركن شوي","|","مسبح خاص للكبار 4×5 م::عمق يصل إلى 140 سم","كراسي تشميس","شاور خارجي","|","ركن المطبخ","طاولة طعام","ميني بار","|","شاشة تلفزيون","سماعات داخلية (ساوند بار)"]},
+      {id:4,img:12,name:"بيت الدوم",type:"قبة هندسية صُممت خصيصاً للعرسان",suitable:"مناسب لشخصين",rooms:1,guests:2,size:"",bathroom:0,badge:"تجربة فريدة",tags:["يتسع لشخصين","غرفة نوم بسرير مزدوج","بانيو داخلي بغرفة النوم","|","حمام واحد","|","جلسة خارجية","ركن شوي","|","مسبح خاص للكبار مع جاكوزي 4×7 م::عمق يصل إلى 140 سم","سرير تشميس داخل المسبح","|","كراسي تشميس","شاور خارجي","|","ركن المطبخ","ميني بار","|","شاشة تلفزيون","سماعات داخلية (ساوند بار)"]},
+      {id:3,img:2,name:"الكوخ الهرمي",type:"كوخ خشبي هرمي بطراز هندسي حديث صُمم للمتزوجين",suitable:"مناسب لشخصين",rooms:1,guests:2,size:"",bathroom:1,hall:true,badge:null,tags:["يتسع لشخصين","غرفة نوم بسرير مزدوج","|","بانيو خارجي","جلسة خارجية","ركن شوي","|","مسبح خاص للكبار 4×5 م::عمق يصل إلى 140 سم","كراسي تشميس","شاور خارجي","|","ركن المطبخ","طاولة طعام","ميني بار","|","شاشة تلفزيون","سماعات داخلية (ساوند بار)"]},
       {id:2,img:1,name:"الكوخ الكلاسيكي",type:"يتميز بأسلوبه الحديث والكلاسيكي",suitable:"مناسب للعوائل",rooms:1,guests:15,size:"",bathroom:1,hall:true,badge:null,tags:["يتسع لـ15 شخصًا","غرفة نوم بسرير مزدوج","|","جلسة خارجية","ركن شوي","|","مسبح خاص للكبار 4×7 م::عمق يصل إلى 140 سم","كراسي تشميس","شاور خارجي","|","ركن المطبخ","طاولة طعام","ميني بار","|","شاشة تلفزيون","سماعات داخلية (ساوند بار)"]},
       {id:6,img:5,name:"البيت اليوناني",type:"مزيج بين التراث القديم والبساطة الحديثة",suitable:"مناسب للعوائل",rooms:2,guests:10,size:"",bathroom:2,hall:true,badge:null,tags:["يتسع لـ10 أشخاص","غرفة نوم بسرير مزدوج","غرفة نوم بسريرين مفردين","|","جلسة خارجية","ركن شوي","|","مسبح خاص للكبار 4×7 م::عمق يصل إلى 140 سم","كراسي تشميس","شاور خارجي","|","ركن المطبخ","طاولة طعام","ميني بار","|","شاشة تلفزيون","سماعات داخلية (ساوند بار)"]},
       {id:5,img:4,name:"كوخ بالم بيتش",type:"مصنوع من الخشب وخشب البامبو والقش ليبرز الجمال الأفريقي",suitable:"مناسب للعوائل",rooms:2,guests:10,size:"",bathroom:2,hall:true,badge:null,tags:["يتسع لـ10 أشخاص","غرفة نوم بسرير مزدوج","غرفة نوم بسريرين مفردين","|","جلسة خارجية","ركن شوي","|","مسبح خاص للكبار 4×7 م::عمق يصل إلى 140 سم","كراسي تشميس","شاور خارجي","|","ركن المطبخ","طاولة طعام","ميني بار","|","شاشة تلفزيون","سماعات داخلية (ساوند بار)"]},
@@ -1571,7 +1572,7 @@ function cardSlide(wrap,dir){
 
 function renderResortNetflix(g){
   var items=data.resort.items;
-  var couples=items.filter(function(c){return c.suitable&&c.suitable.includes('عرسان');});
+  var couples=items.filter(function(c){return c.suitable&&c.suitable.includes('شخصين');});
   var families=items.filter(function(c){return c.suitable&&c.suitable.includes('عوائل');})
     .sort(function(a,b){return a.guests-b.guests;});
   var shared=items.filter(function(c){return c.id===12;});
@@ -1625,7 +1626,7 @@ function renderResortNetflix(g){
     return sec;
   }
 
-  if(couples.length) g.appendChild(buildRow('للعرسان',couples));
+  if(couples.length) g.appendChild(buildRow('شخصين',couples));
   if(families.length) g.appendChild(buildRow('للعوائل',families));
 
   if(shared.length){
@@ -1652,7 +1653,7 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
   const activeBtn=document.querySelector(`.fbtn[data-f="${f}"]`);
   if(activeBtn) activeBtn.classList.add('active');
   items.forEach(c=>{
-    const show=c.id===12||(f==='all')||(f==='عرسان'&&c.suitable&&c.suitable.includes('عرسان'))||(f==='عوائل'&&c.suitable&&c.suitable.includes('عوائل'));
+    const show=(f==='all')||(f==='شخصين'&&c.suitable&&c.suitable.includes('شخصين'))||(f==='عوائل'&&c.suitable&&c.suitable.includes('عوائل'))||(f==='حديقة'&&c.id===12);
     const d=document.createElement('div');
     d.className='card'+(show?'':' hidden');
     d.onclick=()=>openM(c.id,type);
