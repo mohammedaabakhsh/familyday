@@ -1060,11 +1060,13 @@ function tarfihiOrder(){
     <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:10.5px;color:#7ecfea;margin-bottom:8px;white-space:nowrap;">اختر عدد الأشخاص لعرض السعر المناسب</div>
     <div style="position:relative;overflow:hidden;border-radius:18px;background:rgba(8,22,40,.95);box-shadow:0 4px 20px rgba(0,0,0,.3);">
       <div id="jalsat-slides" style="display:flex;direction:rtl;transition:transform 0.35s ease;will-change:transform;"></div>
-      <button onclick="jalsatGoTo(_jalsatIdx+1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);background:rgba(19,53,72,0.7);border:none;color:#fff;width:40px;height:40px;border-radius:50%;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;direction:ltr;">&#10094;</button>
-      <button onclick="jalsatGoTo(_jalsatIdx-1)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:rgba(19,53,72,0.7);border:none;color:#fff;width:40px;height:40px;border-radius:50%;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;direction:ltr;">&#10095;</button>
       <div id="jalsat-counter" style="position:absolute;bottom:10px;left:12px;background:rgba(19,53,72,0.55);color:#fff;font-family:'Tajawal',sans-serif;font-size:12px;border-radius:12px;padding:3px 10px;">1 / 6</div>
     </div>
-    <div id="jalsat-session-name" style="text-align:center;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;color:#7ecfea;padding:10px 20px 0;"></div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:14px;padding:12px 20px 0;">
+      <button onclick="jalsatGoTo(_jalsatIdx+1)" style="background:rgba(25,167,183,0.15);border:1px solid rgba(25,167,183,0.35);color:#7ecfea;width:36px;height:36px;border-radius:50%;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;">&#10094;</button>
+      <div id="jalsat-session-name" style="text-align:center;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;color:#7ecfea;flex:1;"></div>
+      <button onclick="jalsatGoTo(_jalsatIdx-1)" style="background:rgba(25,167,183,0.15);border:1px solid rgba(25,167,183,0.35);color:#7ecfea;width:36px;height:36px;border-radius:50%;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;">&#10095;</button>
+    </div>
     <div id="jalsat-session-desc" style="text-align:center;font-family:'Tajawal',sans-serif;font-size:13px;color:rgba(255,255,255,.70);padding:6px 24px 0;line-height:1.6;display:none;"></div>
   </div>
   <div style="padding:10px 20px;display:flex;flex-direction:column;gap:10px;">
