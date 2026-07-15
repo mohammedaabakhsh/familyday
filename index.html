@@ -1266,7 +1266,7 @@ function tarfihiOrder(){
 
   <div class="grid-section"><div class="grid" id="grid"></div></div>
   <!-- SERVICE SUB SECTION -->
-  <div id="service-sub" class="hide" style="padding:16px;display:flex;flex-direction:column;gap:14px;padding-bottom:calc(80px + env(safe-area-inset-bottom,0px));"></div>
+  <div id="service-sub" class="hide" style="display:flex;flex-direction:column;gap:14px;padding-bottom:calc(80px + env(safe-area-inset-bottom,0px));"></div>
 
   
       <div class="service-arrow">←</div>
@@ -2051,7 +2051,7 @@ function showServiceSub(title, subtitle, cabins, hideFilter){
       <div style="font-family:Tajawal,sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,0.70);line-height:1.5;">${subtitle}</div>
     </div>
   ` + cabins.map(c=>`
-    <div onclick="${c._sinema ? 'openSinemaDetail()' : c._maiya ? 'openMaiyaDetail()' : 'openServiceCabin('+c.id+')'}" style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:14px;overflow:hidden;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);cursor:pointer;display:flex;align-items:center;">
+    <div onclick="${c._sinema ? 'openSinemaDetail()' : c._maiya ? 'openMaiyaDetail()' : 'openServiceCabin('+c.id+')'}" style="margin:0 16px;background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:14px;overflow:hidden;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);cursor:pointer;display:flex;align-items:center;">
       <img src="${IMG[c.img]}" style="width:100px;height:90px;object-fit:cover;flex-shrink:0;" alt="${c.name}">
       <div style="padding:12px 16px;flex:1;">
         <div style="font-size:15px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:4px;">${c.name}</div>
