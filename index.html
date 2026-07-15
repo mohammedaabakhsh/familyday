@@ -816,6 +816,7 @@ function sendOrderWhatsapp(){
 var _tarfihiOpt = '';
 function showTarfihi(){ openTarfihiDetail(); }
 function openTarfihiDetail(){
+  history.replaceState(null,'','#tarfihi');
   _tarfihiOpt = '';
   document.getElementById('tarfihi-opt-box').style.border = '2px solid transparent';
   document.getElementById('tarfihi-opt-table').style.border = '2px solid transparent';
@@ -1737,6 +1738,7 @@ function updGal(total){
 
 function openM(id,type){
   type=type||curSection;
+  history.replaceState(null,'','#cabin='+id);
   const items=data[type].items;
   if(id===12){
     const c=items.find(x=>x.id===12);
@@ -1882,6 +1884,7 @@ function updateNavUI(){
 }
 
 function closeM(){
+  history.replaceState(null,'','#');
   document.getElementById('ov').classList.remove('open');
   document.body.style.overflow='';
   if(window._serviceReturn==='sub'){
@@ -1903,6 +1906,7 @@ function closeIframe(){
 }
 
 function showServices(){
+  history.replaceState(null,'','#services');
   document.getElementById('landing').classList.add('hide');
   document.getElementById('services-overlay').classList.remove('hide');
   setActiveTab('services');
@@ -2122,9 +2126,11 @@ function openServiceCabin(id){
 }
 
 function openSinemaDetail(){
+  history.replaceState(null,'','#sinema');
   document.getElementById('sinema-detail').classList.remove('hide');
 }
 function closeSinemaDetail(){
+  history.replaceState(null,'','#');
   document.getElementById('sinema-detail').classList.add('hide');
   document.getElementById('maiya-detail').classList.add('hide');
 }
@@ -2160,7 +2166,8 @@ function setMaiyaFilter(f){
   buildMaiyaSlides();
   maiyaGoTo(0);
 }
-function openMaiyaDetail(){ 
+function openMaiyaDetail(){
+  history.replaceState(null,'','#maiya');
   document.getElementById('maiya-detail').classList.remove('hide');
   buildMaiyaSlides();
   maiyaGoTo(0);
@@ -2272,6 +2279,7 @@ function setJalsatFilter(f){
   jalsatGoTo(0);
 }
 function openJalsatDetail(){
+  history.replaceState(null,'','#jalsat');
   document.getElementById('jalsat-detail').classList.remove('hide');
   buildJalsatSlides();
   jalsatGoTo(0);
@@ -2707,6 +2715,34 @@ function closeWalaaDetail(){
     }
   }, {passive:false});
 })();
+
+// Deep linking
+function parseHash(){
+  var hash = window.location.hash.replace('#','');
+  if(!hash) return;
+  if(hash.startsWith('cabin=')){
+    var id=parseInt(hash.split('=')[1]);
+    if(!isNaN(id)){
+      showSection('resort');
+      setTimeout(function(){ openM(id,'resort'); },300);
+    }
+  } else if(hash==='sinema'){
+    showServices();
+    setTimeout(function(){ openSinemaDetail(); },300);
+  } else if(hash==='maiya'){
+    showServices();
+    setTimeout(function(){ openMaiyaDetail(); },300);
+  } else if(hash==='jalsat'){
+    showServices();
+    setTimeout(function(){ openJalsatDetail(); },300);
+  } else if(hash==='tarfihi'){
+    showServices();
+    setTimeout(function(){ openTarfihiDetail(); },300);
+  } else if(hash==='services'){
+    setTimeout(function(){ showServices(); },300);
+  }
+}
+window.addEventListener('load', parseHash);
 </script>
 </body>
 </html>
