@@ -1601,12 +1601,22 @@ function renderResortNetflix(g){
       bodyHtml='<div class="card-specs" style="justify-content:center;"><div class="card-spec" style="flex:none;width:100%;">مساحة ترفيهية مشتركة لجميع ضيوف المنتجع</div></div><div class="card-guests"><span class="card-guests-max">&nbsp;</span></div>';
     } else {
       var bath=c.tags&&c.tags.find(function(t){return t.includes('بانيو')||t.includes('جاكوزي');});
-      var gl2=c.guests>10?c.guests+' شخصًا':c.guests===2?'شخصان':c.guests+' أشخاص';
-      bodyHtml='<div class="card-specs">'+
-        '<div class="card-spec">السعة: '+gl2+'</div>'+
-        '<div class="card-spec">'+(c.rooms===1?'غرفة نوم واحدة':'غرفتين نوم')+'</div>'+
-        (bath?'<div class="card-spec" style="line-height:1.6;">'+bath.replace('||',' ')+'</div>':'')+
-        '</div>';
+      var gl2=c.guests>10?c.guests+' شخصًا':c.guests===2?'شخصين':c.guests+' أشخاص';
+      if(c.id===4){
+        var chip1=c.rooms===1?'غرفة نوم واحدة':'غرفتين نوم';
+        var chip2=bath?bath.split('::')[0]:'';
+        bodyHtml='<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">'+
+          '<span style="background:rgba(25,167,183,0.10);border:1px solid rgba(25,167,183,0.30);border-radius:8px;padding:4px 10px;font-size:11px;color:rgba(255,255,255,.80);font-family:Tajawal,sans-serif;">'+chip1+'</span>'+
+          (chip2?'<span style="background:rgba(25,167,183,0.10);border:1px solid rgba(25,167,183,0.30);border-radius:8px;padding:4px 10px;font-size:11px;color:rgba(255,255,255,.80);font-family:Tajawal,sans-serif;">'+chip2+'</span>':'')+
+          '</div>'+
+          '<div style="font-size:12px;color:#19a7b7;font-family:Tajawal,sans-serif;font-weight:600;">تستوعب حتى '+gl2+'</div>';
+      } else {
+        bodyHtml='<div class="card-specs">'+
+          '<div class="card-spec">السعة: '+gl2+'</div>'+
+          '<div class="card-spec">'+(c.rooms===1?'غرفة نوم واحدة':'غرفتين نوم')+'</div>'+
+          (bath?'<div class="card-spec" style="line-height:1.6;">'+bath.replace('||',' ')+'</div>':'')+
+          '</div>';
+      }
     }
     d.innerHTML='<div class="card-img-wrap" data-cid="'+c.id+'" data-cidx="0" style="position:relative;overflow:hidden;">'+
       imgsHtml+badgeHtml+slideButtons+'</div>'+
