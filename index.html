@@ -2472,20 +2472,20 @@ function closeWalaaDetail(){
 
 <!-- Order Popup -->
 <div id="order-popup" class="hide" style="position:fixed;inset:0;z-index:10500;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;padding:24px;">
-  <div style="background:#fff;border-radius:20px;padding:28px 24px;width:100%;max-width:380px;max-height:90vh;overflow-y:auto;font-family:'Tajawal',sans-serif;direction:rtl;">
-    <div style="font-size:18px;font-weight:700;color:#133548;margin-bottom:6px;">تفاصيل الطلب</div>
+  <div style="background:linear-gradient(160deg,rgba(14,36,58,.98) 0%,rgba(8,22,40,.96) 100%);border:1.5px solid rgba(25,167,183,.25);border-radius:20px;padding:28px 24px;width:100%;max-width:380px;max-height:90vh;overflow-y:auto;font-family:'Tajawal',sans-serif;direction:rtl;">
+    <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:6px;">تفاصيل الطلب</div>
     <div id="order-item-name" style="font-size:13px;color:#19a7b7;margin-bottom:20px;"></div>
     <div style="margin-bottom:14px;">
-      <label style="font-size:13px;color:#133548;font-weight:700;display:block;margin-bottom:6px;">الاسم</label>
-      <input id="order-name" type="text" placeholder="أدخل اسمك" style="width:100%;padding:12px 14px;border:1.5px solid #19a7b7;border-radius:12px;font-family:'Tajawal',sans-serif;font-size:14px;color:#133548;outline:none;box-sizing:border-box;">
+      <label style="font-size:13px;color:rgba(255,255,255,.70);font-weight:700;display:block;margin-bottom:6px;">الاسم</label>
+      <input id="order-name" type="text" placeholder="أدخل اسمك" style="width:100%;padding:12px 14px;border:1.5px solid #19a7b7;border-radius:12px;font-family:'Tajawal',sans-serif;font-size:14px;color:#fff;outline:none;box-sizing:border-box;background:rgba(4,17,30,.90);">
     </div>
     <div style="margin-bottom:14px;">
-      <label style="font-size:13px;color:#133548;font-weight:700;display:block;margin-bottom:6px;">اسم الكوخ</label>
-      <input id="order-villa" type="text" placeholder="مثال: الكوخ البوهيمي" style="width:100%;padding:12px 14px;border:1.5px solid #19a7b7;border-radius:12px;font-family:'Tajawal',sans-serif;font-size:14px;color:#133548;outline:none;box-sizing:border-box;">
+      <label style="font-size:13px;color:rgba(255,255,255,.70);font-weight:700;display:block;margin-bottom:6px;">اسم الكوخ</label>
+      <input id="order-villa" type="text" placeholder="مثال: الكوخ البوهيمي" style="width:100%;padding:12px 14px;border:1.5px solid #19a7b7;border-radius:12px;font-family:'Tajawal',sans-serif;font-size:14px;color:#fff;outline:none;box-sizing:border-box;background:rgba(4,17,30,.90);">
     </div>
     <div style="margin-bottom:14px;" id="order-time-wrap">
-      <label style="font-size:13px;color:#133548;font-weight:700;display:block;margin-bottom:6px;">من ساعة كم؟</label>
-      <select id="order-time" style="width:100%;padding:12px 14px;border:1.5px solid #19a7b7;border-radius:12px;font-family:'Tajawal',sans-serif;font-size:14px;color:#133548;outline:none;box-sizing:border-box;background:#fff;">
+      <label style="font-size:13px;color:rgba(255,255,255,.70);font-weight:700;display:block;margin-bottom:6px;">من ساعة كم؟</label>
+      <select id="order-time" style="width:100%;padding:12px 14px;border:1.5px solid #19a7b7;border-radius:12px;font-family:'Tajawal',sans-serif;font-size:14px;color:rgba(255,255,255,.85);outline:none;box-sizing:border-box;background:rgba(4,17,30,.90);">
         <option value="">-- اختر الساعة --</option>
         <option value="18">6:00 م</option>
         <option value="19">7:00 م</option>
@@ -2499,11 +2499,11 @@ function closeWalaaDetail(){
       </select>
     </div>
     <div style="margin-bottom:24px;">
-      <label style="font-size:13px;color:#133548;font-weight:700;display:block;margin-bottom:6px;">ملاحظات</label>
-      <textarea id="order-notes" placeholder="أي ملاحظات إضافية (اختياري)" rows="3" style="width:100%;padding:12px 14px;border:1.5px solid #19a7b7;border-radius:12px;font-family:'Tajawal',sans-serif;font-size:14px;color:#133548;outline:none;box-sizing:border-box;resize:none;"></textarea>
+      <label style="font-size:13px;color:rgba(255,255,255,.70);font-weight:700;display:block;margin-bottom:6px;">ملاحظات</label>
+      <textarea id="order-notes" placeholder="أي ملاحظات إضافية (اختياري)" rows="3" style="width:100%;padding:12px 14px;border:1.5px solid #19a7b7;border-radius:12px;font-family:'Tajawal',sans-serif;font-size:14px;color:#fff;outline:none;box-sizing:border-box;resize:none;background:rgba(4,17,30,.90);"></textarea>
     </div>
-    <div style="background:#f0fbfc;border-radius:10px;padding:10px 14px;margin-bottom:16px;border:1px solid rgba(25,167,183,0.3);">
-      <div style="font-size:12px;color:#2d4a5a;font-family:'Tajawal',sans-serif;line-height:1.7;text-align:center;">بعد تعبئة بيانات الطلب سيتم تحويلك إلى واتساب لإتمام الحجز<br>ويمكنك أيضًا التواصل معنا عبر واتساب للاستفسار</div>
+    <div style="background:rgba(25,167,183,0.08);border-radius:10px;padding:10px 14px;margin-bottom:16px;border:1px solid rgba(25,167,183,0.3);">
+      <div style="font-size:12px;color:rgba(255,255,255,.65);font-family:'Tajawal',sans-serif;line-height:1.7;text-align:center;">بعد تعبئة بيانات الطلب سيتم تحويلك إلى واتساب لإتمام الحجز<br>ويمكنك أيضًا التواصل معنا عبر واتساب للاستفسار</div>
     </div>
     <div style="display:flex;gap:10px;">
       <button onclick="closeOrderPopup()" style="flex:1;padding:12px;border:1.5px solid #19a7b7;border-radius:12px;background:#fff;color:#133548;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:700;cursor:pointer;">إلغاء</button>
