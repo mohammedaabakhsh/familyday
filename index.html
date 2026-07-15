@@ -2097,7 +2097,7 @@ function showTansidat(){
   n.innerHTML='<div style="font-size:36px;margin-bottom:14px;">🚧</div>'
     +'<div style="font-size:17px;font-weight:700;color:#fff;margin-bottom:8px;">تحت التنفيذ</div>'
     +'<div style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:20px;">هذه الخدمة ستكون متاحة قريباً</div>'
-    +'<button onclick="this.closest('div').remove()" style="background:rgba(25,167,183,0.18);border:1px solid rgba(25,167,183,0.45);color:#7ecfea;font-family:Tajawal,sans-serif;font-size:14px;padding:8px 28px;border-radius:50px;cursor:pointer;">حسناً</button>';
+    +'<button onclick="this.parentElement.remove()" style="background:rgba(25,167,183,0.18);border:1px solid rgba(25,167,183,0.45);color:#7ecfea;font-family:Tajawal,sans-serif;font-size:14px;padding:8px 28px;border-radius:50px;cursor:pointer;">حسناً</button>';
   document.body.appendChild(n);
 }
 function showJalsat(){ openJalsatDetail(); }
