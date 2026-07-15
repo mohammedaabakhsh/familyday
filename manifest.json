@@ -1,0 +1,14 @@
+{
+  "name": "منتجع يوم العائلة",
+  "short_name": "منتجع يوم العائلة",
+  "start_url": "/familyday/",
+  "display": "standalone",
+  "background_color": "#04111e",
+  "theme_color": "#19a7b7",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    { "src": "imgs/img01.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "imgs/img01.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
