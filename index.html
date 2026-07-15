@@ -2090,7 +2090,16 @@ function closeServiceSub(){
   _serviceSubReturn = null;
 }
 
-function showTansidat(){ showServiceSub('التنسيقات', 'تنسيقات احترافية تناسب مختلف المناسبات', data.resort.items.slice(0,6)); }
+function showTansidat(){
+  // LOCKED - تحت التنفيذ
+  var n=document.createElement('div');
+  n.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9999;background:linear-gradient(160deg,rgba(14,36,58,.97) 0%,rgba(8,22,40,.95) 100%);border:1.5px solid rgba(25,167,183,.40);border-radius:18px;padding:32px 28px;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,.55);font-family:Tajawal,sans-serif;min-width:240px;';
+  n.innerHTML='<div style="font-size:36px;margin-bottom:14px;">🚧</div>'
+    +'<div style="font-size:17px;font-weight:700;color:#fff;margin-bottom:8px;">تحت التنفيذ</div>'
+    +'<div style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:20px;">هذه الخدمة ستكون متاحة قريباً</div>'
+    +'<button onclick="this.closest('div').remove()" style="background:rgba(25,167,183,0.18);border:1px solid rgba(25,167,183,0.45);color:#7ecfea;font-family:Tajawal,sans-serif;font-size:14px;padding:8px 28px;border-radius:50px;cursor:pointer;">حسناً</button>';
+  document.body.appendChild(n);
+}
 function showJalsat(){ openJalsatDetail(); }
 function showSinema(){
   openSinemaDetail();
