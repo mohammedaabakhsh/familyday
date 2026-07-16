@@ -883,7 +883,7 @@ function closeOrderPopup(){
 function sendOrderWhatsapp(){
   var name = document.getElementById('order-name').value.trim();
   var villa = document.getElementById('order-villa').value.trim();
-  if(!name || !villa){ alert('يرجى إدخال الاسم واسم الكوخ'); return; }
+  if(!name || !villa){ alert('يرجى إدخال اسمك واختيار الكوخ'); return; }
   var notes = document.getElementById('order-notes').value.trim();
   var timeVal = document.getElementById('order-time').value;
   var timeStr = '';
@@ -2733,7 +2733,19 @@ function closeWalaaDetail(){
     </div>
     <div style="margin-bottom:14px;">
       <label style="font-size:13px;color:rgba(255,255,255,0.7);font-weight:700;display:block;margin-bottom:6px;">اسم الكوخ</label>
-      <input id="order-villa" type="text" placeholder="مثال: الكوخ البوهيمي" style="width:100%;padding:12px 14px;border:1.5px solid #19a7b7;border-radius:12px;font-family:'Tajawal',sans-serif;font-size:14px;color:#fff;outline:none;box-sizing:border-box;background:rgba(4,17,30,.90);">
+      <select id="order-villa" style="width:100%;padding:12px 14px;border:1.5px solid #19a7b7;border-radius:12px;font-family:'Tajawal',sans-serif;font-size:14px;color:rgba(255,255,255,0.85);outline:none;box-sizing:border-box;background:rgba(4,17,30,.90);appearance:none;-webkit-appearance:none;cursor:pointer;">
+        <option value="">-- اختر الكوخ --</option>
+        <option value="الكوخ الكلاسيكي">الكوخ الكلاسيكي</option>
+        <option value="الكوخ الهرمي">الكوخ الهرمي</option>
+        <option value="بيت الدوم">بيت الدوم</option>
+        <option value="كوخ بالم بيتش">كوخ بالم بيتش</option>
+        <option value="البيت اليوناني">البيت اليوناني</option>
+        <option value="الكوخ البوهيمي">الكوخ البوهيمي</option>
+        <option value="الكوخ الفرنسي">الكوخ الفرنسي</option>
+        <option value="الكوخ الريفي">الكوخ الريفي</option>
+        <option value="كوخ رويال">كوخ رويال</option>
+        <option value="البيت البانورامي">البيت البانورامي</option>
+      </select>
     </div>
     <div style="margin-bottom:14px;" id="order-time-wrap">
       <label style="font-size:13px;color:rgba(255,255,255,0.7);font-weight:700;display:block;margin-bottom:6px;">من ساعة كم؟</label>
