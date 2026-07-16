@@ -39,7 +39,7 @@
   padding:20px 32px 32px;
   background:linear-gradient(to top,rgba(0,0,0,0.6),transparent)
 }
-.fs-counter{color:#fff;font-size:15px;font-weight:500;letter-spacing:0.05em}
+.fs-counter{color:#fff;font-size:15px;font-weight:500;letter-spacing:0}
 .fs-nav-btn{
   background:rgba(255,255,255,0.15);border:none;color:#fff;
   width:44px;height:44px;border-radius:50%;font-size:26px;
@@ -147,10 +147,10 @@ body{background:var(--bg);color:var(--text);font-family:'Tajawal',sans-serif;min
 }
 .landing-title{
   font-size:12px;font-weight:700;color:#0a1e2e;
-  margin-bottom:6px;letter-spacing:0.1em;text-align:center;
+  margin-bottom:6px;letter-spacing:0;text-align:center;
   text-transform:uppercase;margin-bottom:8px;text-shadow:0 1px 4px rgba(255,255,255,0.5)
 }
-.landing-subtitle{font-size:12px;color:#0a1e2e;font-weight:500;text-align:center;margin-bottom:12px;text-shadow:0 1px 4px rgba(255,255,255,0.5);letter-spacing:0.02em;}
+.landing-subtitle{font-size:12px;color:#0a1e2e;font-weight:500;text-align:center;margin-bottom:12px;text-shadow:0 1px 4px rgba(255,255,255,0.5);letter-spacing:0;}
 .landing-cards{display:flex;flex-direction:column;gap:12px;width:100%;margin-top:10px}
 .landing-card{
   background:rgba(10,40,80,0.55);
@@ -193,7 +193,7 @@ body{background:var(--bg);color:var(--text);font-family:'Tajawal',sans-serif;min
 #contact-page.show{display:block}
 .cp-back{position:fixed;top:16px;right:16px;z-index:10;background:#133548;border:none;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;cursor:pointer;border-radius:20px;padding:7px 18px;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
 .cp-body{padding:20px 14px 44px;display:flex;flex-direction:column;gap:8px;}
-.cp-label{font-size:12px;font-weight:700;color:rgba(25,167,183,.85);letter-spacing:0.12em;text-transform:uppercase;padding:12px 4px 6px;}
+.cp-label{font-size:12px;font-weight:700;color:rgba(25,167,183,.85);letter-spacing:0;text-transform:uppercase;padding:12px 4px 6px;}
 .cp-label:first-child{padding-top:0;}
 .cp-row2{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
 .cp-row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
@@ -259,7 +259,7 @@ header{
 #contact-page.show{display:block}
 .cp-back{position:fixed;top:16px;right:16px;z-index:10;background:#133548;border:none;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;cursor:pointer;border-radius:20px;padding:7px 18px;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
 .cp-body{padding:20px 14px 44px;display:flex;flex-direction:column;gap:8px;}
-.cp-label{font-size:12px;font-weight:700;color:rgba(25,167,183,.85);letter-spacing:0.12em;text-transform:uppercase;padding:12px 4px 6px;}
+.cp-label{font-size:12px;font-weight:700;color:rgba(25,167,183,.85);letter-spacing:0;text-transform:uppercase;padding:12px 4px 6px;}
 .cp-label:first-child{padding-top:0;}
 .cp-row2{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
 .cp-row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
@@ -414,7 +414,7 @@ header{
   display:flex;align-items:center;gap:4px
 }
 .card-body{padding:18px 20px 20px}
-.card-type{font-size:12px;color:var(--teal);font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:4px}
+.card-type{font-size:12px;color:var(--teal);font-weight:600;letter-spacing:0;text-transform:uppercase;margin-bottom:4px}
 .card-name{font-size:19px;font-weight:700;color:#fff;margin-bottom:14px}
 .card-specs{display:flex;flex-wrap:wrap;border:1px solid rgba(255,255,255,.10);border-radius:8px;overflow:hidden;margin-bottom:14px}
 .card-spec{flex:1;padding:9px 6px;text-align:center;border-left:1px solid rgba(255,255,255,.10);font-size:12px;font-weight:700;color:rgba(255,255,255,0.85);display:flex;align-items:center;justify-content:center;}
@@ -440,7 +440,7 @@ header{
 
 /* SERVICES */
 .services-section{margin:0 20px 24px;background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 2px 12px rgba(19,53,72,0.06)}
-.services-header{padding:14px 20px;border-bottom:1px solid var(--border);font-size:12px;font-weight:600;color:var(--text-light);letter-spacing:0.12em;text-transform:uppercase}
+.services-header{padding:14px 20px;border-bottom:1px solid var(--border);font-size:12px;font-weight:600;color:var(--text-light);letter-spacing:0;text-transform:uppercase}
 .service-item{display:flex;align-items:center;gap:14px;padding:16px 20px;text-decoration:none;transition:background 0.2s}
 .service-item:hover{background:var(--bg)}
 .service-ico{width:42px;height:42px;border-radius:10px;flex-shrink:0;background:rgba(214,139,106,0.1);border:1px solid rgba(214,139,106,0.2);display:flex;align-items:center;justify-content:center;font-size:20px}
@@ -483,18 +483,18 @@ header{
   z-index:10;
 }
 .modal-bottom-bar .mbtn{flex:1;padding:13px 16px;font-size:14px;}
-.modal-type{font-size:12px;color:var(--teal);font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:4px}
+.modal-type{font-size:12px;color:var(--teal);font-weight:600;letter-spacing:0;text-transform:uppercase;margin-bottom:4px}
 .modal-name{font-size:24px;font-weight:700;color:#fff;margin-bottom:18px}
 .modal-specs{display:flex;border:1px solid rgba(255,255,255,.10);border-radius:10px;overflow:hidden;margin-bottom:20px}
 .modal-spec{flex:1;padding:12px 8px;text-align:center;border-left:1px solid rgba(255,255,255,.10);font-size:12px;font-weight:700;color:rgba(255,255,255,0.9);}
 .modal-spec:last-child{border-left:none}
 .modal-spec-v{display:none}
-.modal-spec-l{font-size:9px;color:rgba(255,255,255,0.68);letter-spacing:0.06em}
-.tags-lbl{font-size:12px;color:#19a7b7;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px}
+.modal-spec-l{font-size:9px;color:rgba(255,255,255,0.68);letter-spacing:0}
+.tags-lbl{font-size:12px;color:#19a7b7;font-weight:600;letter-spacing:0;text-transform:uppercase;margin-bottom:10px}
 .tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:22px}
 .tag{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);font-size:12px;padding:4px 10px;border-radius:100px;color:rgba(255,255,255,0.7)}
 #ov .modal-btns{display:none!important}
-.mbtn{flex:1;padding:11px 16px;border-radius:100px;border:none;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;display:flex;align-items:center;justify-content:center;transition:all 0.2s;letter-spacing:0.01em}
+.mbtn{flex:1;padding:11px 16px;border-radius:100px;border:none;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;display:flex;align-items:center;justify-content:center;transition:all 0.2s;letter-spacing:0}
 .mbtn:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,0.12)}
 .mbtn-book{background:#19a7b7;color:#fff}
 .mbtn-wa{background:rgba(255,255,255,.08);color:#7ecfea;border:1.5px solid rgba(25,167,183,.35)}
@@ -677,10 +677,10 @@ header{
 .lh-logo-wrap{position:absolute;top:52px;left:50%;transform:translateX(-50%);z-index:3;}
 .lh-logo-img{height:110px;width:auto;filter:drop-shadow(0 0 32px rgba(25,167,183,.28)) drop-shadow(0 6px 24px rgba(0,0,0,.70));}
 .lh-hero-main{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 24px;}
-.lh-title{font-family:'Tajawal',sans-serif;font-size:20px;font-weight:600;line-height:1.2;margin:0 0 6px;letter-spacing:.02em;white-space:nowrap;background:linear-gradient(90deg,#7ecfea 0%,#ffffff 40%,#ffffff 60%,#7ecfea 100%);background-size:250% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:titleShimmer 2.8s linear infinite;}
+.lh-title{font-family:'Tajawal',sans-serif;font-size:20px;font-weight:600;line-height:1.2;margin:0 0 6px;letter-spacing:0;white-space:nowrap;background:linear-gradient(90deg,#7ecfea 0%,#ffffff 40%,#ffffff 60%,#7ecfea 100%);background-size:250% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:titleShimmer 2.8s linear infinite;}
 .lh-subtitle{font-family:'Tajawal',sans-serif;font-size:15px;font-weight:400;line-height:1.4;margin:0;background:linear-gradient(90deg,#7ecfea 0%,#ffffff 40%,#ffffff 60%,#7ecfea 100%);background-size:250% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:titleShimmer 3.4s linear infinite;}
 .lh-float-csl{position:relative;z-index:10;width:100%;margin-top:40px;}
-.lh-float-label{font-family:'Tajawal',sans-serif;font-size:12px;font-weight:600;color:rgba(255,255,255,0.68);text-align:center;letter-spacing:.1em;text-transform:uppercase;margin:0 0 12px;}
+.lh-float-label{font-family:'Tajawal',sans-serif;font-size:12px;font-weight:600;color:rgba(255,255,255,0.68);text-align:center;letter-spacing:0;text-transform:uppercase;margin:0 0 12px;}
 .lh-carousel{display:flex;flex-direction:row;gap:10px;padding:8px 16px 8px;justify-content:center;}
 .lh-carousel::-webkit-scrollbar{display:none;}
 /* Card base */
@@ -712,7 +712,7 @@ header{
 </style>
 <div id="splash" style="position:fixed;inset:0;z-index:9999;background:#0B1D2E;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;transition:opacity 0.6s ease;">
   <img src="imgs/img00.png" style="width:140px;opacity:0.92;animation:splashFadeUp 0.5s ease 0.1s both;">
-  <button id="splashBtn" onclick="enterMain()" style="opacity:0;animation:splashFadeUp 0.4s ease 0.5s forwards;padding:16px 52px;border-radius:100px;border:1.5px solid rgba(255,255,255,0.72);background:rgba(255,255,255,0.1);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;cursor:pointer;letter-spacing:0.04em;box-shadow:0 4px 24px rgba(0,0,0,0.18),inset 0 1px 0 rgba(255,255,255,0.18);" class="landing-explore-btn"><span class="shimmer-title">اكتشف يوم العائلة</span></button>
+  <button id="splashBtn" onclick="enterMain()" style="opacity:0;animation:splashFadeUp 0.4s ease 0.5s forwards;padding:16px 52px;border-radius:100px;border:1.5px solid rgba(255,255,255,0.72);background:rgba(255,255,255,0.1);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;cursor:pointer;letter-spacing:0;box-shadow:0 4px 24px rgba(0,0,0,0.18),inset 0 1px 0 rgba(255,255,255,0.18);" class="landing-explore-btn"><span class="shimmer-title">اكتشف يوم العائلة</span></button>
 </div>
 
 
@@ -755,7 +755,7 @@ header{
 </style>
 <div id="dest" class="hide" style="position:fixed;inset:0;z-index:8000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;font-family:'Tajawal',sans-serif;direction:rtl;">
   <img src="imgs/img00.png" style="width:90px;margin-bottom:22px;opacity:0.92;filter:drop-shadow(0 0 24px rgba(25,167,183,.30));">
-  <div style="font-size:21px;font-weight:700;color:#fff;margin-bottom:5px;letter-spacing:0.02em;">اختر وجهتك</div>
+  <div style="font-size:21px;font-weight:700;color:#fff;margin-bottom:5px;letter-spacing:0;">اختر وجهتك</div>
   <div style="font-size:12px;color:rgba(255,255,255,0.68);margin-bottom:28px;text-align:center;line-height:1.6;">وجهتان صُممتا لتناسب مناسبتكم</div>
   <div style="width:100%;max-width:310px;display:flex;flex-direction:column;gap:10px;">
     <div class="dest-card" onclick="pickDest(this,'resort')">
