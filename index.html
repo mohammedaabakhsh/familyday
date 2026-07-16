@@ -1329,7 +1329,7 @@ function tarfihiOrder(){
       <div class="cp-wide-arrow">←</div>
     </a>
     <a href="tel:+966556156693" class="cp-wide">
-      <div><div class="cp-wide-name">اتصل بنا</div></div>
+      <div><div class="cp-wide-name">اتصال هاتفي</div></div>
       <div class="cp-wide-arrow">←</div>
     </a>
     <div class="cp-label">تابعنا</div>
@@ -1399,7 +1399,7 @@ function tarfihiOrder(){
         <div class="cp-tile-sub">Android</div>
       </a>
     </div>
-    <p style="font-size:12px;color:rgba(255,255,255,0.68);line-height:1.5;padding:2px 4px 6px;margin:0;white-space:nowrap;">حمّل التطبيق للحجز ومتابعة حجوزاتك مباشرة</p>
+    <p style="font-size:12px;color:rgba(255,255,255,0.68);line-height:1.5;padding:2px 4px 6px;margin:0;line-height:1.4;">حمّل التطبيق للحجز وإدارة حجوزاتك</p>
 
     <div class="cp-label">تواصل معنا</div>
     <a href="https://wa.me/966556156693" target="_blank" class="cp-wide">
@@ -1410,7 +1410,7 @@ function tarfihiOrder(){
     </a>
     <a href="tel:+966556156693" class="cp-wide">
       <div>
-        <div class="cp-wide-name">اتصل بنا</div>
+        <div class="cp-wide-name">اتصال هاتفي</div>
       </div>
       <div class="cp-wide-arrow">←</div>
     </a>
@@ -1458,9 +1458,8 @@ function tarfihiOrder(){
 
   <div class="filter-section" id="filterSection">
     <button class="fbtn active" data-f="all">الكل</button>
-    <button class="fbtn" data-f="شخصين">شخصين</button>
-    <button class="fbtn" data-f="عوائل">للعوائل</button>
-    <button class="fbtn" data-f="حديقة">الحديقة المشتركة</button>
+    <button class="fbtn" data-f="1">غرفة نوم</button>
+    <button class="fbtn" data-f="2">غرفتين نوم</button>
   </div>
 
   <div class="grid-section"><div class="grid" id="grid"></div></div>
@@ -1478,11 +1477,11 @@ function tarfihiOrder(){
 <div class="overlay" id="ov">
   <div class="modal">
     <div class="modal-topnav">
-      <button class="modal-back-btn" onclick="closeM()">❮ رجوع للقائمة</button>
+      <button class="modal-back-btn" onclick="closeM()">❮ العودة إلى الأكواخ</button>
       <div style="display:flex;align-items:center;gap:4px;">
-        <button class="modal-topnav-btn" id="nav-prev" onclick="navModal(-1)">&#8250; السابق</button>
+        <button class="modal-topnav-btn" id="nav-prev" onclick="navModal(-1)">&#8250; الكوخ السابق</button>
         <span class="modal-topnav-counter" id="nav-counter"></span>
-        <button class="modal-topnav-btn" id="nav-next" onclick="navModal(1)">التالي &#8249;</button>
+        <button class="modal-topnav-btn" id="nav-next" onclick="navModal(1)">الكوخ التالي &#8249;</button>
       </div>
     </div>
     <div class="modal-handle"></div>
@@ -1891,7 +1890,7 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
   const activeBtn=document.querySelector(`.fbtn[data-f="${f}"]`);
   if(activeBtn) activeBtn.classList.add('active');
   items.forEach(c=>{
-    const show=(f==='all')||(f==='شخصين'&&c.suitable&&c.suitable.includes('شخصين'))||(f==='عوائل'&&c.suitable&&c.suitable.includes('عوائل'))||(f==='حديقة'&&c.id===12);
+    const show=(f==='all')||(f==='1'&&c.rooms===1)||(f==='2'&&c.rooms===2);
     const d=document.createElement('div');
     d.className='card'+(show?'':' hidden');
     d.onclick=()=>openM(c.id,type);
