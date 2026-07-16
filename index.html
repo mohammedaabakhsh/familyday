@@ -3172,6 +3172,10 @@ function parseHash(){
   history.replaceState(null,'',window.location.pathname);
 }
 window.addEventListener('load', parseHash);
+// Fix BFCache on mobile (Safari): force fresh load if page restored from cache
+window.addEventListener('pageshow', function(e){
+  if(e.persisted){ window.location.reload(); }
+});
 </script>
 </body>
 </html>
