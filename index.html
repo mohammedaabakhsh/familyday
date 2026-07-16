@@ -702,30 +702,65 @@ header{
 
 
 <!-- DESTINATION SELECTOR -->
+<style>
+.dest-card{
+  background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);
+  border:1.5px solid rgba(25,167,183,.25);
+  border-radius:20px;padding:22px 24px;cursor:pointer;
+  display:flex;align-items:center;gap:16px;
+  -webkit-tap-highlight-color:transparent;
+  transition:border-color 0.25s,box-shadow 0.25s,background 0.25s,transform 0.15s;
+}
+.dest-card:active{
+  border-color:#19a7b7;
+  background:linear-gradient(160deg,rgba(25,167,183,.15) 0%,rgba(14,36,58,.97) 100%);
+  box-shadow:0 0 0 3px rgba(25,167,183,.18),0 8px 28px rgba(25,167,183,.16);
+  transform:scale(0.984);
+}
+.dest-card.selected{
+  border-color:#19a7b7;
+  background:linear-gradient(160deg,rgba(25,167,183,.18) 0%,rgba(14,36,58,.97) 100%);
+  box-shadow:0 0 0 3px rgba(25,167,183,.22),0 8px 32px rgba(25,167,183,.20);
+  transform:scale(0.984);
+}
+.dest-card .dest-icon{
+  width:46px;height:46px;border-radius:14px;
+  background:rgba(25,167,183,0.10);border:1px solid rgba(25,167,183,0.22);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  transition:background 0.25s,border-color 0.25s;
+}
+.dest-card.selected .dest-icon{background:rgba(25,167,183,0.24);border-color:rgba(25,167,183,0.55);}
+.dest-card .dest-title{font-size:18px;font-weight:700;color:#fff;margin-bottom:3px;transition:color 0.2s;}
+.dest-card .dest-sub{font-size:12px;color:rgba(255,255,255,.48);line-height:1.5;transition:color 0.2s;}
+.dest-card.selected .dest-title{color:#7ecfea;}
+.dest-card.selected .dest-sub{color:rgba(126,207,234,.60);}
+.dest-arrow{transition:stroke 0.2s;}
+.dest-card.selected .dest-arrow{stroke:rgba(25,167,183,.80)!important;}
+</style>
 <div id="dest" class="hide" style="position:fixed;inset:0;z-index:8000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;font-family:'Tajawal',sans-serif;direction:rtl;">
   <img src="imgs/img00.png" style="width:110px;margin-bottom:28px;opacity:0.92;filter:drop-shadow(0 0 24px rgba(25,167,183,.30));">
   <div style="font-size:24px;font-weight:700;color:#fff;margin-bottom:6px;letter-spacing:0.02em;">اختار وجهتك</div>
   <div style="font-size:13px;color:rgba(255,255,255,.45);margin-bottom:36px;text-align:center;line-height:1.6;">يوم العائلة — منتجعك واستراحتك في مكان واحد</div>
   <div style="width:100%;max-width:340px;display:flex;flex-direction:column;gap:14px;">
-    <div onclick="showDestination('resort')" style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border:1.5px solid rgba(25,167,183,.30);border-radius:20px;padding:22px 24px;cursor:pointer;display:flex;align-items:center;gap:16px;-webkit-tap-highlight-color:transparent;transition:border-color 0.2s,box-shadow 0.2s;" onmouseenter="this.style.borderColor='rgba(25,167,183,.65)';this.style.boxShadow='0 4px 20px rgba(25,167,183,.12)';" onmouseleave="this.style.borderColor='rgba(25,167,183,.30)';this.style.boxShadow='';" ontouchstart="">
-      <div style="width:46px;height:46px;border-radius:14px;background:rgba(25,167,183,0.12);border:1px solid rgba(25,167,183,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+    <div class="dest-card" onclick="pickDest(this,'resort')">
+      <div class="dest-icon">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#19a7b7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
       </div>
       <div style="flex:1;">
-        <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:3px;">المنتجع</div>
-        <div style="font-size:12px;color:rgba(255,255,255,.50);line-height:1.5;">أكواخ فاخرة • خدمات متكاملة</div>
+        <div class="dest-title">المنتجع</div>
+        <div class="dest-sub">أكواخ فاخرة • خدمات متكاملة</div>
       </div>
-      <svg width="9" height="15" viewBox="0 0 9 15" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1);"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg>
+      <svg class="dest-arrow" width="9" height="15" viewBox="0 0 9 15" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1);"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg>
     </div>
-    <div onclick="showDestination('stay')" style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border:1.5px solid rgba(25,167,183,.30);border-radius:20px;padding:22px 24px;cursor:pointer;display:flex;align-items:center;gap:16px;-webkit-tap-highlight-color:transparent;transition:border-color 0.2s,box-shadow 0.2s;" onmouseenter="this.style.borderColor='rgba(25,167,183,.65)';this.style.boxShadow='0 4px 20px rgba(25,167,183,.12)';" onmouseleave="this.style.borderColor='rgba(25,167,183,.30)';this.style.boxShadow='';" ontouchstart="">
-      <div style="width:46px;height:46px;border-radius:14px;background:rgba(25,167,183,0.12);border:1px solid rgba(25,167,183,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+    <div class="dest-card" onclick="pickDest(this,'stay')">
+      <div class="dest-icon">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#19a7b7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
       </div>
       <div style="flex:1;">
-        <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:3px;">الاستراحة</div>
-        <div style="font-size:12px;color:rgba(255,255,255,.50);line-height:1.5;">قسمين خاصين • مسابح • تجمعات كبيرة</div>
+        <div class="dest-title">الاستراحة</div>
+        <div class="dest-sub">قسمين خاصين • مسابح • تجمعات كبيرة</div>
       </div>
-      <svg width="9" height="15" viewBox="0 0 9 15" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1);"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg>
+      <svg class="dest-arrow" width="9" height="15" viewBox="0 0 9 15" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1);"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg>
     </div>
   </div>
 </div>
@@ -2890,6 +2925,13 @@ function closeWalaaDetail(){
 
 /* ===== STAY (f2) FUNCTIONS ===== */
 var _chaletItems2=[];
+
+function pickDest(el, type){
+  // Flash selected state, then navigate
+  document.querySelectorAll('.dest-card').forEach(function(c){c.classList.remove('selected');});
+  el.classList.add('selected');
+  setTimeout(function(){ showDestination(type); }, 220);
+}
 
 function showDestination(type){
   document.getElementById('dest').classList.add('hide');
