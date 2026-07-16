@@ -790,6 +790,8 @@ function navCard(el, fn){
 
 function enterMain(){
   clearTimeout(_autoEnterTimer);
+  // Hide landing immediately so it doesn't flash through fading splash
+  document.getElementById('landing').classList.add('hide');
   var s = document.getElementById('splash');
   s.style.opacity = '0';
   s.style.pointerEvents = 'none';
