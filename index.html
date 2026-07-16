@@ -1831,7 +1831,7 @@ function renderResortNetflix(g){
       var bath=c.tags&&c.tags.find(function(t){return t.includes('بانيو')||t.includes('جاكوزي');});
       var gl2=c.guests>10?c.guests+' شخصًا':c.guests===2?'شخصين':c.guests+' أشخاص';
       if(c.id===4){
-        var chip1=c.rooms===1?'غرفة نوم واحدة':'غرفتين نوم';
+        var chip1=c.rooms===1?'غرفة نوم':'غرفتين نوم';
         var chip2=bath?bath.split('::')[0]:'';
         bodyHtml='<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">'+
           '<span style="background:rgba(25,167,183,0.10);border:1px solid rgba(25,167,183,0.30);border-radius:8px;padding:4px 10px;font-size:12px;color:rgba(255,255,255,0.8);font-family:Tajawal,sans-serif;">'+chip1+'</span>'+
@@ -1841,7 +1841,7 @@ function renderResortNetflix(g){
       } else {
         bodyHtml='<div class="card-specs">'+
           '<div class="card-spec">السعة: '+gl2+'</div>'+
-          '<div class="card-spec">'+(c.rooms===1?'غرفة نوم واحدة':'غرفتين نوم')+'</div>'+
+          '<div class="card-spec">'+(c.rooms===1?'غرفة نوم':'غرفتين نوم')+'</div>'+
           (bath?'<div class="card-spec" style="line-height:1.6;">'+bath.replace('||',' ')+'</div>':'')+
           '</div>';
       }
@@ -1908,7 +1908,7 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
           const gl2=c.guests>10?c.guests+' شخصًا':c.guests===2?'شخصين':c.guests+' أشخاص';
           const b=c.tags&&c.tags.find(t=>t.includes('بانيو')||t.includes('جاكوزي'));
           const bs=b?(b.includes('داخلي')&&!b.includes('جاكوزي')?'بانيو داخلي':b.includes('خارجي')?'بانيو خارجي':b.includes('جاكوزي')?'جاكوزي داخلي':'بانيو'):'';
-          return '<div class="card-specs"><div class="card-spec">'+(c.rooms===1?'غرفة نوم واحدة':'غرفتين نوم')+'</div>'+(bs?'<div class="card-spec">'+bs+'</div>':'')+'</div><div class="card-guests"><span class="card-guests-suitable">تستوعب حتى '+gl2+'</span></div>';
+          return '<div class="card-specs"><div class="card-spec">'+(c.rooms===1?'غرفة نوم':'غرفتين نوم')+'</div>'+(bs?'<div class="card-spec">'+bs+'</div>':'')+'</div><div class="card-guests"><span class="card-guests-suitable">تستوعب حتى '+gl2+'</span></div>';
         })()}
         <button class="card-btn">عرض التفاصيل</button>
       </div>`;
@@ -2038,7 +2038,7 @@ function openM(id,type){
         }
       } else {
         const gTxt=c.guests===2?'يتسع ضيفين':c.guests>10?'يتسع '+c.guests+' ضيفاً':'يتسع '+c.guests+' ضيوف';
-        const rTxt=c.rooms===1?'غرفة نوم واحدة':'غرفتين نوم';
+        const rTxt=c.rooms===1?'غرفة نوم':'غرفتين نوم';
         dt=[gTxt,'|',rTxt,...line2,...c.tags];
       }
       const groups=[];let cur2=[];
@@ -3055,7 +3055,7 @@ function renderChalet2(){
     var imgHtml=gl.map(function(src,i){return '<img src="'+src+'" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:'+(i===0?1:0)+';transition:opacity 0.4s ease;">';}).join('');
     var counterHtml=gl.length>1?'<div style="position:absolute;bottom:10px;left:12px;background:rgba(19,53,72,0.55);color:#fff;font-family:Tajawal,sans-serif;font-size:12px;border-radius:12px;padding:3px 9px;z-index:2;" class="card-counter">1 / '+gl.length+'</div>':'';
     var nameHtml=gl.length>1?'<div style="display:flex;align-items:center;justify-content:space-between;width:100%;margin-bottom:14px;"><button onclick="event.stopPropagation();cardSlide(this.closest(\'.card\').querySelector(\'.card-img-wrap\'),-1)" style="width:30px;height:30px;flex-shrink:0;border-radius:50%;background:rgba(25,167,183,0.15);border:1px solid rgba(25,167,183,0.35);color:#7ecfea;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#10094;</button><div style="font-size:19px;font-weight:700;color:#fff;text-align:center;flex:1;font-family:Tajawal,sans-serif;">'+c.name+'</div><button onclick="event.stopPropagation();cardSlide(this.closest(\'.card\').querySelector(\'.card-img-wrap\'),1)" style="width:30px;height:30px;flex-shrink:0;border-radius:50%;background:rgba(25,167,183,0.15);border:1px solid rgba(25,167,183,0.35);color:#7ecfea;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#10095;</button></div>':'<div class="card-name">'+c.name+'</div>';
-    var roomsTxt=c.rooms===1?'غرفة نوم واحدة':'غرفتين نوم';
+    var roomsTxt=c.rooms===1?'غرفة نوم':'غرفتين نوم';
     d.innerHTML='<div class="card-img-wrap" data-cid="'+c.id+'" data-cidx="0" style="position:relative;overflow:hidden;">'+imgHtml+counterHtml+'</div>'
       +'<div class="card-body">'+nameHtml
       +'<div class="card-specs"><div class="card-spec">'+roomsTxt+'</div><div class="card-spec">'+c.suitable+'</div></div>'
