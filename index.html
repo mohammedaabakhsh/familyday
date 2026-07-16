@@ -783,15 +783,27 @@ header{
 </div>
 
 <script>
-function showContact(){
-  document.getElementById('landing').classList.add('hide');
+function showContact(type){
+  type = type || 'resort';
+  var mapLink = type === 'stay'
+    ? 'https://maps.app.goo.gl/JaQUQeZWPF9gbvUu9'
+    : 'https://maps.app.goo.gl/MgHPnKH1yDYLnk8z6';
+  var mapName = type === 'stay' ? 'موقع الاستراحة' : 'موقع المنتجع';
+  var el = document.getElementById('cp-map-link');
+  var nm = document.getElementById('cp-map-name');
+  if(el) el.href = mapLink;
+  if(nm) nm.textContent = mapName;
+  var landing = type === 'stay' ? 'landing2' : 'landing';
+  document.getElementById(landing).classList.add('hide');
   document.getElementById('contact-page').classList.add('show');
   document.getElementById('contact-page').scrollTop=0;
+  document.getElementById('contact-page')._fromLanding = landing;
 }
 function closeContact(){
   document.getElementById('contact-page').classList.remove('show');
-  document.getElementById('landing').classList.remove('hide');
-  document.getElementById('landing').scrollTop=0;
+  var landing = document.getElementById('contact-page')._fromLanding || 'landing';
+  document.getElementById(landing).classList.remove('hide');
+  document.getElementById(landing).scrollTop=0;
 }
 
 
@@ -1325,56 +1337,6 @@ function tarfihiOrder(){
 </div>
 
 <!-- STAY CONTACT PAGE (f2) -->
-<div id="contact-page2" style="display:none;position:fixed;inset:0;z-index:500;overflow-y:auto;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);">
-  <div class="cp-hero">
-    <button class="contact-back" onclick="closeContact2()">
-      <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-    <div style="font-family:Tajawal,sans-serif;font-size:20px;font-weight:700;color:#fff;line-height:1.25;margin-top:8px;">الحجز والتواصل</div>
-  </div>
-  <div class="cp-body">
-    <div class="cp-label">الحجز</div>
-    <a href="https://familyday-sa.com/ar" target="_blank" class="cp-wide">
-      <div><div class="cp-wide-name">احجز عبر الموقع</div></div>
-      <div class="cp-wide-arrow">←</div>
-    </a>
-    <div class="cp-row2">
-      <a href="https://apps.apple.com/sa/app/%D9%8A%D9%88%D9%85-%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9/id6475359813" target="_blank" class="cp-tile">
-        <div class="cp-tile-name">App Store</div><div class="cp-tile-sub">iPhone</div>
-      </a>
-      <a href="https://play.google.com/store/apps/details?id=com.familydaysa" target="_blank" class="cp-tile">
-        <div class="cp-tile-name">Google Play</div><div class="cp-tile-sub">Android</div>
-      </a>
-    </div>
-    <div class="cp-label">تواصل معنا</div>
-    <a href="https://wa.me/966556156693" target="_blank" class="cp-wide">
-      <div><div class="cp-wide-name">واتساب</div></div>
-      <div class="cp-wide-arrow">←</div>
-    </a>
-    <a href="tel:+966556156693" class="cp-wide">
-      <div><div class="cp-wide-name">اتصال هاتفي</div></div>
-      <div class="cp-wide-arrow">←</div>
-    </a>
-    <div class="cp-label">تابعنا</div>
-    <div class="cp-row3">
-      <a href="https://instagram.com/FAMILYDAYRESORT" target="_blank" class="cp-tile cp-tile-sm">
-        <div class="cp-tile-name">Instagram</div>
-      </a>
-      <a href="https://www.snapchat.com/add/familyday5" target="_blank" class="cp-tile cp-tile-sm">
-        <div class="cp-tile-name">Snapchat</div>
-      </a>
-      <a href="https://tiktok.com/@familydayresort" target="_blank" class="cp-tile cp-tile-sm">
-        <div class="cp-tile-name">TikTok</div>
-      </a>
-    </div>
-    <div class="cp-label">الموقع</div>
-    <a href="https://maps.app.goo.gl/JaQUQeZWPF9gbvUu9?g_st=iw" target="_blank" class="cp-wide">
-      <div><div class="cp-wide-name">موقع الاستراحة</div></div>
-      <div class="cp-wide-arrow">←</div>
-    </a>
-  </div>
-</div>
-
 <!-- STAY APP (f2) -->
 <div id="app2" style="display:none;position:fixed;inset:0;overflow-y:auto;padding-bottom:env(safe-area-inset-bottom,0px);">
   <header id="header2" style="position:sticky;top:0;z-index:100;display:flex;align-items:center;padding:14px 20px;gap:12px;">
@@ -1452,9 +1414,9 @@ function tarfihiOrder(){
     </div>
 
     <div class="cp-label">الموقع</div>
-    <a href="https://maps.app.goo.gl/MgHPnKH1yDYLnk8z6" target="_blank" class="cp-wide">
+    <a id="cp-map-link" href="https://maps.app.goo.gl/MgHPnKH1yDYLnk8z6" target="_blank" class="cp-wide">
       <div>
-        <div class="cp-wide-name">موقع المنتجع</div>
+        <div class="cp-wide-name" id="cp-map-name">موقع المنتجع</div>
       </div>
       <div class="cp-wide-arrow">←</div>
     </a>
@@ -3054,15 +3016,8 @@ function goBack2(){
   document.getElementById('landing2').classList.remove('hide');
 }
 
-function showContact2(){
-  document.getElementById('landing2').classList.add('hide');
-  document.getElementById('contact-page2').style.display='block';
-  document.getElementById('contact-page2').scrollTop=0;
-}
-function closeContact2(){
-  document.getElementById('contact-page2').style.display='none';
-  document.getElementById('landing2').classList.remove('hide');
-}
+function showContact2(){ showContact('stay'); }
+function closeContact2(){ closeContact(); }
 
 function renderChalet2(){
   var g=document.getElementById('grid2');g.innerHTML='';
