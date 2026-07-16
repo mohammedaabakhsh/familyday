@@ -697,8 +697,39 @@ header{
 </style>
 <div id="splash" style="position:fixed;inset:0;z-index:9999;background:#0B1D2E;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;transition:opacity 0.6s ease;">
   <img src="imgs/img00.png" style="width:140px;opacity:0.92;animation:splashFadeUp 0.5s ease 0.1s both;">
-  <button id="splashBtn" onclick="enterMain()" style="opacity:0;animation:splashFadeUp 0.4s ease 0.5s forwards;padding:16px 52px;border-radius:100px;border:1.5px solid rgba(255,255,255,0.72);background:rgba(255,255,255,0.1);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;cursor:pointer;letter-spacing:0.04em;box-shadow:0 4px 24px rgba(0,0,0,0.18),inset 0 1px 0 rgba(255,255,255,0.18);" class="landing-explore-btn"><span class="shimmer-title">اكتشف منتجع يوم العائلة</span></button>
+  <button id="splashBtn" onclick="enterMain()" style="opacity:0;animation:splashFadeUp 0.4s ease 0.5s forwards;padding:16px 52px;border-radius:100px;border:1.5px solid rgba(255,255,255,0.72);background:rgba(255,255,255,0.1);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;cursor:pointer;letter-spacing:0.04em;box-shadow:0 4px 24px rgba(0,0,0,0.18),inset 0 1px 0 rgba(255,255,255,0.18);" class="landing-explore-btn"><span class="shimmer-title">اكتشف يوم العائلة</span></button>
 </div>
+
+
+<!-- DESTINATION SELECTOR -->
+<div id="dest" class="hide" style="position:fixed;inset:0;z-index:8000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;font-family:'Tajawal',sans-serif;direction:rtl;">
+  <img src="imgs/img00.png" style="width:110px;margin-bottom:28px;opacity:0.92;filter:drop-shadow(0 0 24px rgba(25,167,183,.30));">
+  <div style="font-size:24px;font-weight:700;color:#fff;margin-bottom:6px;letter-spacing:0.02em;">اختار وجهتك</div>
+  <div style="font-size:13px;color:rgba(255,255,255,.45);margin-bottom:36px;text-align:center;line-height:1.6;">يوم العائلة — منتجعك واستراحتك في مكان واحد</div>
+  <div style="width:100%;max-width:340px;display:flex;flex-direction:column;gap:14px;">
+    <div onclick="showDestination('resort')" style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border:1.5px solid rgba(25,167,183,.30);border-radius:20px;padding:22px 24px;cursor:pointer;display:flex;align-items:center;gap:16px;-webkit-tap-highlight-color:transparent;transition:border-color 0.2s,box-shadow 0.2s;" onmouseenter="this.style.borderColor='rgba(25,167,183,.65)';this.style.boxShadow='0 4px 20px rgba(25,167,183,.12)';" onmouseleave="this.style.borderColor='rgba(25,167,183,.30)';this.style.boxShadow='';" ontouchstart="">
+      <div style="width:46px;height:46px;border-radius:14px;background:rgba(25,167,183,0.12);border:1px solid rgba(25,167,183,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#19a7b7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+      </div>
+      <div style="flex:1;">
+        <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:3px;">المنتجع</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.50);line-height:1.5;">أكواخ فاخرة • خدمات متكاملة</div>
+      </div>
+      <svg width="9" height="15" viewBox="0 0 9 15" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1);"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg>
+    </div>
+    <div onclick="showDestination('stay')" style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border:1.5px solid rgba(25,167,183,.30);border-radius:20px;padding:22px 24px;cursor:pointer;display:flex;align-items:center;gap:16px;-webkit-tap-highlight-color:transparent;transition:border-color 0.2s,box-shadow 0.2s;" onmouseenter="this.style.borderColor='rgba(25,167,183,.65)';this.style.boxShadow='0 4px 20px rgba(25,167,183,.12)';" onmouseleave="this.style.borderColor='rgba(25,167,183,.30)';this.style.boxShadow='';" ontouchstart="">
+      <div style="width:46px;height:46px;border-radius:14px;background:rgba(25,167,183,0.12);border:1px solid rgba(25,167,183,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#19a7b7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      </div>
+      <div style="flex:1;">
+        <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:3px;">الاستراحة</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.50);line-height:1.5;">قسمين خاصين • مسابح • تجمعات كبيرة</div>
+      </div>
+      <svg width="9" height="15" viewBox="0 0 9 15" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1);"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg>
+    </div>
+  </div>
+</div>
+
 <script>
 function showContact(){
   document.getElementById('landing').classList.add('hide');
@@ -758,10 +789,14 @@ function navCard(el, fn){
 })();
 
 function enterMain(){
+  clearTimeout(_autoEnterTimer);
   var s = document.getElementById('splash');
   s.style.opacity = '0';
   s.style.pointerEvents = 'none';
-  setTimeout(function(){ s.style.display = 'none'; }, 550);
+  setTimeout(function(){
+    s.style.display = 'none';
+    document.getElementById('dest').classList.remove('hide');
+  }, 550);
 }
 
 // Auto-enter after 2 seconds
@@ -847,6 +882,7 @@ function tarfihiOrder(){
   <!-- HERO: background image fills full screen; carousel pins to bottom -->
   <section class="lh-hero landing-bg-photo">
     <div class="lh-overlay"></div>
+    <button onclick="goBackToDestination()" style="position:absolute;top:18px;left:18px;z-index:20;background:rgba(4,17,30,0.55);border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.80);font-family:'Tajawal',sans-serif;font-size:13px;font-weight:600;padding:7px 14px;border-radius:100px;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;gap:6px;"><svg width="7" height="12" viewBox="0 0 9 15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg> الوجهات</button>
 
     <!-- Logo -->
     <div class="lh-logo-wrap">
@@ -1180,6 +1216,108 @@ function tarfihiOrder(){
 
 <!-- CHALET SUB LANDING -->
 
+
+<!-- STAY LANDING (f2) -->
+<div id="landing2" class="hide">
+  <section class="lh-hero landing-bg-photo">
+    <div class="lh-overlay"></div>
+    <button onclick="goBackToDestination()" style="position:absolute;top:18px;left:18px;z-index:20;background:rgba(4,17,30,0.55);border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.80);font-family:'Tajawal',sans-serif;font-size:13px;font-weight:600;padding:7px 14px;border-radius:100px;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;gap:6px;"><svg width="7" height="12" viewBox="0 0 9 15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg> الوجهات</button>
+    <div class="lh-logo-wrap">
+      <img src="imgs/stay/img01.png" alt="استراحة يوم العائلة" class="lh-logo-img">
+    </div>
+    <div class="lh-hero-main">
+      <h1 class="lh-title">استراحة يوم العائلة</h1>
+      <p class="lh-subtitle">خصوصية تليق بكم… وراحة تستحقونها</p>
+    </div>
+    <div class="lh-float-csl">
+      <div class="lh-carousel" style="justify-content:center;">
+        <div class="lh-card lh-card-teal is-active" onclick="showSection2()" style="max-width:160px;">
+          <svg class="lh-ci lh-ci-teal" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+          <div class="lh-ct">الاستراحة</div>
+          <div class="lh-ca"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+        </div>
+        <div class="lh-card lh-card-teal" onclick="showContact2()" style="max-width:160px;">
+          <svg class="lh-ci lh-ci-teal" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 10a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div class="lh-ct">الحجز والتواصل</div>
+          <div class="lh-ca"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- STAY CONTACT PAGE (f2) -->
+<div id="contact-page2" style="display:none;position:fixed;inset:0;z-index:500;overflow-y:auto;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);">
+  <div class="cp-hero">
+    <button class="contact-back" onclick="closeContact2()">
+      <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div style="font-family:Tajawal,sans-serif;font-size:20px;font-weight:700;color:#fff;line-height:1.25;margin-top:8px;">الحجز والتواصل</div>
+  </div>
+  <div class="cp-body">
+    <div class="cp-label">الحجز</div>
+    <a href="https://familyday-sa.com/ar" target="_blank" class="cp-wide">
+      <div><div class="cp-wide-name">احجز عبر الموقع</div></div>
+      <div class="cp-wide-arrow">←</div>
+    </a>
+    <div class="cp-row2">
+      <a href="https://apps.apple.com/sa/app/%D9%8A%D9%88%D9%85-%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9/id6475359813" target="_blank" class="cp-tile">
+        <div class="cp-tile-name">App Store</div><div class="cp-tile-sub">iPhone</div>
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.familydaysa" target="_blank" class="cp-tile">
+        <div class="cp-tile-name">Google Play</div><div class="cp-tile-sub">Android</div>
+      </a>
+    </div>
+    <div class="cp-label">تواصل معنا</div>
+    <a href="https://wa.me/966556156693" target="_blank" class="cp-wide">
+      <div><div class="cp-wide-name">واتساب</div></div>
+      <div class="cp-wide-arrow">←</div>
+    </a>
+    <a href="tel:+966556156693" class="cp-wide">
+      <div><div class="cp-wide-name">اتصل بنا</div></div>
+      <div class="cp-wide-arrow">←</div>
+    </a>
+    <div class="cp-label">تابعنا</div>
+    <div class="cp-row3">
+      <a href="https://instagram.com/FAMILYDAYRESORT" target="_blank" class="cp-tile cp-tile-sm">
+        <div class="cp-tile-name">Instagram</div>
+      </a>
+      <a href="https://www.snapchat.com/add/familyday5" target="_blank" class="cp-tile cp-tile-sm">
+        <div class="cp-tile-name">Snapchat</div>
+      </a>
+      <a href="https://tiktok.com/@familydayresort" target="_blank" class="cp-tile cp-tile-sm">
+        <div class="cp-tile-name">TikTok</div>
+      </a>
+    </div>
+    <div class="cp-label">الموقع</div>
+    <a href="https://maps.app.goo.gl/JaQUQeZWPF9gbvUu9?g_st=iw" target="_blank" class="cp-wide">
+      <div><div class="cp-wide-name">موقع الاستراحة</div></div>
+      <div class="cp-wide-arrow">←</div>
+    </a>
+  </div>
+</div>
+
+<!-- STAY APP (f2) -->
+<div id="app2" style="display:none;position:fixed;inset:0;overflow-y:auto;padding-bottom:env(safe-area-inset-bottom,0px);">
+  <header id="header2" style="position:sticky;top:0;z-index:100;display:flex;align-items:center;padding:14px 20px;gap:12px;">
+    <button class="back-btn" id="backBtn2" onclick="goBack2()">
+      <svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div class="header-center" id="headerTitle2"></div>
+  </header>
+
+  <section class="section-hero" id="sectionHero2" style="padding-top:0;">
+    <img id="heroLogo2" src="imgs/stay/img02.png" style="height:80px;object-fit:contain;margin:0 auto 2px;display:none;" alt="يوم العائلة">
+    <h1 id="sectionTitle2"></h1>
+    <p id="sectionDesc2"></p>
+  </section>
+
+  <div class="grid-section"><div class="grid" id="grid2"></div></div>
+</div>
+
+
 <div id="contact-page">
   <div class="cp-hero">
     <button class="contact-back" onclick="closeContact()">
@@ -1402,6 +1540,9 @@ const GALLERY={1:["imgs/img23.jpg","imgs/img24.jpg","imgs/img25.jpg","imgs/img26
     "imgs/img91.jpg",
     "imgs/img92.jpg",
   ]
+,
+  20:["imgs/stay/img03.jpg","imgs/stay/img04.jpg","imgs/stay/img05.jpg","imgs/stay/img06.jpg","imgs/stay/img07.jpg","imgs/stay/img08.jpg"],
+  21:["imgs/stay/img09.jpg","imgs/stay/img10.jpg","imgs/stay/img11.jpg","imgs/stay/img12.jpg","imgs/stay/img13.jpg","imgs/stay/img14.jpg"]
 };
 let galIdx=0,curId=null,curSection='resort';
 
@@ -1531,7 +1672,34 @@ function openGalDirect(c){
     el.className='gal-img'+(i===0?' active':'');
     el.src=src;w.appendChild(el);
   });
-
+  if(imgs.length>1){
+    var btnL=document.createElement('button');
+    btnL.innerHTML='&#10094;';
+    btnL.setAttribute('style','position:absolute;left:10px;top:50%;transform:translateY(-50%);background:rgba(19,53,72,0.7);border:none;color:#fff;width:40px;height:40px;border-radius:50%;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:20;direction:ltr;');
+    btnL.onclick=function(){moveGalDirect(1,imgs.length);};
+    w.appendChild(btnL);
+    var btnR=document.createElement('button');
+    btnR.innerHTML='&#10095;';
+    btnR.setAttribute('style','position:absolute;right:10px;top:50%;transform:translateY(-50%);background:rgba(19,53,72,0.7);border:none;color:#fff;width:40px;height:40px;border-radius:50%;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:20;direction:ltr;');
+    btnR.onclick=function(){moveGalDirect(-1,imgs.length);};
+    w.appendChild(btnR);
+    var ctr=document.createElement('div');
+    ctr.id='gal-counter';
+    ctr.setAttribute('style','position:absolute;bottom:10px;left:12px;background:rgba(19,53,72,0.55);color:#fff;font-family:Tajawal,sans-serif;font-size:12px;border-radius:12px;padding:3px 10px;z-index:20;');
+    ctr.textContent='1 / '+imgs.length;
+    w.appendChild(ctr);
+  }
+  var _gsx=0;
+  w.addEventListener('touchstart',function(e){_gsx=e.touches[0].clientX;},{passive:true});
+  w.addEventListener('touchend',function(e){
+    var dx=_gsx-e.changedTouches[0].clientX;
+    if(Math.abs(dx)>40) moveGalDirect(dx>0?1:-1,imgs.length);
+  });
+}
+function moveGalDirect(dir,total){
+  var next=galIdx+dir;
+  if(next<0||next>=total)return;
+  galIdx=next;updGal(total);
 }
 
 function goBack(){
@@ -1869,7 +2037,7 @@ function navModal(dir){
   if(_navIdx >= _navItems.length) _navIdx = _navItems.length-1;
   var c = _navItems[_navIdx];
   if(_navType==='resort') openM(c.id, 'resort');
-  
+  else if(_navType==='chalet') openMDirect(c);
   updateNavUI();
 }
 
@@ -2717,14 +2885,172 @@ function closeWalaaDetail(){
 })();
 
 // Deep linking
+
+/* ===== STAY (f2) FUNCTIONS ===== */
+var _chaletItems2=[];
+
+function showDestination(type){
+  document.getElementById('dest').classList.add('hide');
+  if(type==='resort'){
+    document.getElementById('landing').classList.remove('hide');
+  } else {
+    document.getElementById('landing2').classList.remove('hide');
+  }
+}
+
+function goBackToDestination(){
+  document.getElementById('landing').classList.add('hide');
+  document.getElementById('landing2').classList.add('hide');
+  document.getElementById('app').classList.remove('show');
+  document.getElementById('app2').style.display='none';
+  document.getElementById('dest').classList.remove('hide');
+}
+
+function showSection2(){
+  curSection='chalet';
+  document.getElementById('landing2').classList.add('hide');
+  var app2=document.getElementById('app2');
+  app2.style.display='block';
+  var h2=document.getElementById('header2');
+  h2.style.background='transparent';
+  h2.style.borderBottom='none';
+  h2.style.boxShadow='none';
+  var bb2=document.getElementById('backBtn2');
+  bb2.style.color='rgba(255,255,255,0.85)';
+  bb2.style.background='rgba(255,255,255,0.10)';
+  bb2.style.borderRadius='50%';
+  bb2.style.padding='0';
+  bb2.style.width='38px';
+  bb2.style.height='38px';
+  document.getElementById('heroLogo2').style.display='none';
+  var hero2=document.getElementById('sectionHero2');
+  hero2.className='section-hero resort-hero';
+  var st2=document.getElementById('sectionTitle2');
+  st2.innerHTML='اختر القسم المناسب لك';
+  st2.style.cssText='font-size:20px!important;font-weight:700;color:#fff;line-height:1.25;margin:0;font-family:Tajawal,sans-serif;';
+  document.getElementById('sectionDesc2').textContent='';
+  document.getElementById('headerTitle2').innerHTML='';
+  _chaletItems2=[];
+  renderChalet2();
+}
+
+function goBack2(){
+  var h2=document.getElementById('header2');
+  h2.style.background='';
+  h2.style.borderBottom='';
+  h2.style.boxShadow='';
+  var bb2=document.getElementById('backBtn2');
+  bb2.style.color='';
+  bb2.style.background='';
+  bb2.style.borderRadius='';
+  bb2.style.padding='';
+  bb2.style.width='';
+  bb2.style.height='';
+  document.getElementById('sectionHero2').className='section-hero';
+  document.getElementById('app2').style.display='none';
+  document.getElementById('grid2').innerHTML='';
+  document.getElementById('landing2').classList.remove('hide');
+}
+
+function showContact2(){
+  document.getElementById('landing2').classList.add('hide');
+  document.getElementById('contact-page2').style.display='block';
+  document.getElementById('contact-page2').scrollTop=0;
+}
+function closeContact2(){
+  document.getElementById('contact-page2').style.display='none';
+  document.getElementById('landing2').classList.remove('hide');
+}
+
+function renderChalet2(){
+  var g=document.getElementById('grid2');g.innerHTML='';
+  var items=[
+    {id:20,img:0,name:"القسم الأول",type:"تتضمن مجلساً يتسع لـ 70 شخصاً ومسبحين خاصين",suitable:"مناسب للتجمعات الكبيرة",rooms:2,guests:70,bathroom:0,hall:false,badge:null,tags:["يتسع لـ70 شخصًا","|","غرفة نوم بسرير مزدوج","غرفة نوم بسريرين مفردين","|","مجلس كبير","3 دورات مياه","|","ركن مطبخ","|","جلسة خارجية","ركن شواء","دورة مياه خارجية","|","مسبح الكبار 5×9 م","مسبح الأطفال 3×7 م","كراسي تشميس"]},
+    {id:21,img:5,name:"القسم الثاني",type:"تتضمن مجلساً يتسع لـ 70 شخصاً ومسبحاً خاصاً وملعب طائرة",suitable:"مناسب للتجمعات الكبيرة",rooms:1,guests:70,bathroom:0,hall:false,badge:null,tags:["يتسع لـ70 شخصًا","|","غرفة نوم بـ3 أسرّة","|","مجلس كبير","3 دورات مياه","|","ركن مطبخ","|","جلسة خارجية","ركن شواء","دورة مياه خارجية","|","مسبح الكبار 5×9 م","كراسي تشميس","|","ملعب طائرة"]}
+  ];
+  _chaletItems2=items;
+  items.forEach(function(c){
+    var d=document.createElement('div');
+    d.className='card';
+    d.onclick=function(){openMDirect(c);};
+    var gl=GALLERY[c.id]||[];
+    var imgHtml=gl.map(function(src,i){return '<img src="'+src+'" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:'+(i===0?1:0)+';transition:opacity 0.4s ease;">';}).join('');
+    var counterHtml=gl.length>1?'<div style="position:absolute;bottom:10px;left:12px;background:rgba(19,53,72,0.55);color:#fff;font-family:Tajawal,sans-serif;font-size:11px;border-radius:12px;padding:3px 9px;z-index:2;" class="card-counter">1 / '+gl.length+'</div>':'';
+    var nameHtml=gl.length>1?'<div style="display:flex;align-items:center;justify-content:space-between;width:100%;margin-bottom:14px;"><button onclick="event.stopPropagation();cardSlide(this.closest(\'.card\').querySelector(\'.card-img-wrap\'),-1)" style="width:30px;height:30px;flex-shrink:0;border-radius:50%;background:rgba(25,167,183,0.15);border:1px solid rgba(25,167,183,0.35);color:#7ecfea;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#10094;</button><div style="font-size:19px;font-weight:700;color:#fff;text-align:center;flex:1;font-family:Tajawal,sans-serif;">'+c.name+'</div><button onclick="event.stopPropagation();cardSlide(this.closest(\'.card\').querySelector(\'.card-img-wrap\'),1)" style="width:30px;height:30px;flex-shrink:0;border-radius:50%;background:rgba(25,167,183,0.15);border:1px solid rgba(25,167,183,0.35);color:#7ecfea;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#10095;</button></div>':'<div class="card-name">'+c.name+'</div>';
+    var roomsTxt=c.rooms===1?'غرفة نوم واحدة':'غرفتين نوم';
+    d.innerHTML='<div class="card-img-wrap" data-cid="'+c.id+'" data-cidx="0" style="position:relative;overflow:hidden;">'+imgHtml+counterHtml+'</div>'
+      +'<div class="card-body">'+nameHtml
+      +'<div class="card-specs"><div class="card-spec">'+roomsTxt+'</div><div class="card-spec">'+c.suitable+'</div></div>'
+      +'<div class="card-guests"><span class="card-guests-suitable">تستوعب حتى '+c.guests+' شخصًا</span></div>'
+      +'<button class="card-btn">عرض التفاصيل</button></div>';
+    g.appendChild(d);
+  });
+}
+
+function openMDirect(c){
+  _navType='chalet';
+  _navItems=_chaletItems2.length?_chaletItems2:[c];
+  _navIdx=_navItems.findIndex(function(x){return x.id===c.id;});
+  if(_navIdx===-1)_navIdx=0;
+  updateNavUI();
+  openGalDirect(c);
+
+  var groups=[];var cur=[];
+  c.tags.forEach(function(t){if(t==='|'){groups.push(cur);cur=[];}else cur.push(t);});
+  if(cur.length)groups.push(cur);
+  var indoor=groups.slice(0,4);
+  var outdoor=groups.slice(4);
+  var chaletTips={'مسبح الكبار 5×9 م':'عمق متدرج من 1 م إلى 2.15 م','مسبح الأطفال 3×7 م':'عمق 65 سم'};
+  function mkTag(t){var tip=chaletTips[t];return tip?'<span class="tag" data-tip="'+tip+'">'+t+'</span>':'<span class="tag">'+t+'</span>';}
+  function renderGroup(g){return g.map(mkTag).join('')+'<div style="width:100%;height:0;margin:4px 0"></div>';}
+
+  document.getElementById('mBody').innerHTML=
+    '<div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap;">'
+    +'<div class="modal-name" style="margin-bottom:0;">'+c.name+'</div>'
+    +(c.suitable?'<span style="background:rgba(25,167,183,0.1);border:1px solid rgba(25,167,183,0.25);color:var(--teal);font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;white-space:nowrap;">'+c.suitable+'</span>':'')
+    +'</div>'
+    +'<div style="display:flex;gap:16px;margin-bottom:20px;font-size:12px;color:rgba(255,255,255,.55);">'
+    +'<span>الدخول: <strong style="color:#7ecfea;">4:00 عصراً</strong></span>'
+    +'<span>الخروج: <strong style="color:#7ecfea;">12:00 ظهراً</strong></span>'
+    +'</div>'
+    +'<div class="tags-lbl" style="color:#19a7b7;">المنطقة الداخلية</div>'
+    +'<div class="tags">'+indoor.map(renderGroup).join('')+'</div>'
+    +'<div class="tags-lbl" style="color:#19a7b7;margin-top:6px;">المنطقة الخارجية</div>'
+    +'<div class="tags">'+outdoor.map(renderGroup).join('')+'</div>'
+    +'<div class="tags-lbl" style="color:#19a7b7;margin-top:6px;">مرافق المطبخ</div>'
+    +'<div class="tags" style="margin-bottom:8px;"><span class="tag">موقد كهربائي</span><span class="tag">ثلاجة</span><span class="tag">مايكرويف</span><span class="tag">غلاية كهربائية</span></div>'
+    +'<div class="tags-lbl" style="color:#19a7b7;margin-top:6px;">مميزات الاستراحة</div>'
+    +'<div class="tags" style="margin-bottom:8px;"><span class="tag">شاشة تلفزيون</span><span class="tag">سماعات داخلية (ساوند بار)</span></div>'
+    +'<div class="tags-lbl" style="color:#19a7b7;margin-top:6px;">الخدمات الإضافية</div>'
+    +'<div class="tags" style="margin-bottom:8px;"><span class="tag">زحليقة</span><span class="tag">ملعب صابوني</span></div>'
+    +'<div class="modal-btns"><a href="https://familyday-sa.com/ar" target="_blank" class="mbtn mbtn-book">احجز الآن</a>'
+    +'<a href="https://wa.me/966556156693" target="_blank" class="mbtn mbtn-wa">تواصل واتساب</a></div>';
+
+  document.getElementById('ov').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+/* ===== END STAY FUNCTIONS ===== */
+
+
 function parseHash(){
   var hash = window.location.hash.replace('#','');
   if(!hash) return;
+  // Deep link: skip splash+dest, go directly to section
+  var s=document.getElementById('splash');
+  if(s)s.style.display='none';
+  var dest=document.getElementById('dest');
+  if(dest)dest.classList.add('hide');
   if(hash.startsWith('cabin=')){
     var id=parseInt(hash.split('=')[1]);
     if(!isNaN(id)){
-      showSection('resort');
-      setTimeout(function(){ openM(id,'resort'); },300);
+      if(id>=20){
+        // Stay section
+        showSection2();
+        setTimeout(function(){ openMDirect(_chaletItems2.find(function(x){return x.id===id;})||{id:id}); },400);
+      } else {
+        showSection('resort');
+        setTimeout(function(){ openM(id,'resort'); },300);
+      }
     }
   } else if(hash==='sinema'){
     showServices();
