@@ -3089,18 +3089,23 @@ function openMDirect(c){
 function parseHash(){
   var hash = window.location.hash.replace('#','');
   if(!hash) return;
-  // Deep link: skip splash+dest, go directly to section
+  // Deep link: stop auto-enter timer, skip splash+dest, go directly to section
+  clearTimeout(_autoEnterTimer);
   var s=document.getElementById('splash');
-  if(s)s.style.display='none';
+  if(s){ s.style.opacity='0'; s.style.display='none'; }
   var dest=document.getElementById('dest');
-  if(dest)dest.classList.add('hide');
+  if(dest) dest.classList.add('hide');
+  document.getElementById('landing').classList.add('hide');
+  document.getElementById('landing2').classList.add('hide');
   if(hash.startsWith('cabin=')){
     var id=parseInt(hash.split('=')[1]);
     if(!isNaN(id)){
       if(id>=20){
-        // Stay section
         showSection2();
-        setTimeout(function(){ openMDirect(_chaletItems2.find(function(x){return x.id===id;})||{id:id}); },400);
+        setTimeout(function(){
+          var c=_chaletItems2.find(function(x){return x.id===id;});
+          if(c) openMDirect(c);
+        },400);
       } else {
         showSection('resort');
         setTimeout(function(){ openM(id,'resort'); },300);
@@ -3121,6 +3126,8 @@ function parseHash(){
   } else if(hash==='services'){
     setTimeout(function(){ showServices(); },300);
   }
+  // Clear hash so next refresh starts fresh
+  history.replaceState(null,'',window.location.pathname);
 }
 window.addEventListener('load', parseHash);
 </script>
