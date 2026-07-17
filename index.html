@@ -1847,6 +1847,7 @@ function openM(id,type){
   const items=data[type].items;
   if(id===11){
     const c=items.find(x=>x.id===11);
+    document.getElementById('modalBottomBar').style.display='none';
     openGal(11,type);
     document.getElementById('mBody').innerHTML=`
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
@@ -1865,6 +1866,7 @@ function openM(id,type){
     document.body.style.overflow='hidden';
     return;
   }
+  document.getElementById('modalBottomBar').style.display='';
   const c=items.find(x=>x.id===id);
   _navType=type;_navItems=items;
   _navIdx=items.findIndex(function(x){return x.id===id;});
