@@ -2365,40 +2365,58 @@ function openJalsatDetail(){
 function closeJalsatDetail(){ document.getElementById('jalsat-detail').classList.add('hide'); }
 
 // ===== المنيو =====
-var _menuCat = 'مشروبات حارة';
+var _menuCat = 'الساندويتشات';
 var _menuCart = {}; // {name: {price, qty}}
 
 var _menuData = {
-  'مشروبات حارة': [
-    {name:'كابتشينو بالبندق',price:10},{name:'شوكليت',price:10},{name:'لاتيه',price:10},
-    {name:'موكا',price:10},{name:'نيسبريسو',price:10},{name:'قهوة تركي',price:10},
-    {name:'موكاتشينو',price:10},{name:'شاي عكني',price:8},
-    {name:'ثلاجة قهوة عربية مع التمر',price:20},{name:'ثلاجة شاي مع البسكويت',price:15}
+  'الساندويتشات': [
+    {name:'برجر لحم',price:12},
+    {name:'دجاج زنجر',price:14}
   ],
-  'مشروبات باردة': [
-    {name:'بيبسي',price:5},{name:'حمضيات',price:5},{name:'سفن اب',price:5},
-    {name:'كود رد',price:9},{name:'رد بول',price:15},{name:'بايسون',price:8},
-    {name:'تنج',price:7},{name:'سن توب',price:4},{name:'موسى فراولة',price:10},
-    {name:'موسى شعير',price:10},{name:'ماء صغير',price:2},{name:'ماء كبير',price:3},
-    {name:'موهيتو',price:10},{name:'2 كاسات ثلج',price:5},{name:'كرتون ماء',price:50}
+  'الوجبات': [
+    {name:'وجبة برجر لحم',price:15},
+    {name:'وجبة دجاج زنجر',price:17},
+    {name:'وجبة دجاج ستربس حار مع البطاطس',price:22},
+    {name:'وجبة دجاج مسحب مع البطاطس',price:22},
+    {name:'وجبة ناجتس حار مع بطاطس وبيبسي',price:24},
+    {name:'وجبة فيليه الدجاج مع البطاطس',price:24},
+    {name:'وجبة جمبري حار مع البطاطس',price:36},
+    {name:'وجبة جمبري عادي مع البطاطس',price:36},
+    {name:'وجبة بوب كورن الدجاج مع البطاطس',price:18}
   ],
-  'وجبات خفيفة': [
-    {name:'برجر لحم مع البطاطس',price:15},{name:'دجاج زنجر مع البطاطس',price:17},
-    {name:'فشار صغير',price:5},{name:'فشار كبير',price:15},
-    {name:'بطاطس صغير',price:5},{name:'بطاطس كبير',price:7},
-    {name:'بوكس الشواء بدون فحم',price:85},{name:'بوكس الشواء مع الفحم',price:120},
-    {name:'دجاج سترس خارج مع البطاطس',price:22},{name:'وجبة دجاج سنحب مع البطاطس',price:22},
-    {name:'وجبة ناجتس حار مع بطاطس وبيبسي',price:24},{name:'فيلية الدجاج مع البطاطس',price:24},
-    {name:'وجبة جمبري حراق مع البطاطس',price:36},{name:'وجبة جمبري عادي مع البطاطس',price:36},
-    {name:'تشيكن فرايز',price:24},{name:'وجبة بوب كورن الدجاج مع البطاطس',price:18}
+  'المقبلات': [
+    {name:'بطاطس صغير',price:5},
+    {name:'بطاطس كبير',price:7},
+    {name:'فشار صغير',price:5},
+    {name:'فشار كبير',price:15},
+    {name:'تشكن فرايز',price:24}
   ],
-  'شوكولاتة': [
-    {name:'جالكسي',price:7},{name:'تويكس',price:5},{name:'كيت كات',price:5},
-    {name:'مارس',price:5},{name:'سنيكرس',price:5},{name:'باونتي',price:5}
+  'بوكسات الشواء': [
+    {name:'بوكس الشواء بدون فحم',price:85},
+    {name:'بوكس الشواء مع الفحم',price:120}
   ],
   'وجبات الأطفال': [
-    {name:'ساندويتش ناجتس',price:5},{name:'ساندويتش هوت دوغ',price:5},
-    {name:'برجر لحم أو دجاج',price:10},{name:'وجبة ناجتس مع البطاطس',price:10}
+    {name:'ساندويتش ناجتس',price:5},
+    {name:'ساندويتش هوت دوغ',price:5},
+    {name:'برجر لحم أو دجاج',price:10},
+    {name:'وجبة ناجتس مع البطاطس',price:10}
+  ],
+  'المشروبات الباردة': [
+    {name:'بيبسي',price:5},{name:'حمضيات',price:5},{name:'سفن أب',price:5},
+    {name:'كود رد',price:9},{name:'رد بول',price:15},{name:'بايسون',price:8},
+    {name:'تاج',price:7},{name:'سنتوب',price:4},{name:'موسي فراولة',price:10},
+    {name:'موسي شعير',price:10},{name:'موهيتو',price:10},{name:'ماء صغير',price:2},
+    {name:'ماء كبير',price:3},{name:'كرتون ماء',price:50},{name:'كأسان ثلج',price:5}
+  ],
+  'المشروبات الساخنة': [
+    {name:'كابتشينو بالبندق',price:10},{name:'شوكليت',price:10},{name:'لاتيه',price:10},
+    {name:'موكا',price:10},{name:'نسبرسو',price:10},{name:'قهوة تركي',price:10},
+    {name:'موكاتشينو',price:10},{name:'شاي عدني',price:8},
+    {name:'ثلاجة قهوة عربية مع التمر',price:20},{name:'ثلاجة شاي مع البسكويت',price:15}
+  ],
+  'الشوكولاتة': [
+    {name:'جالكسي',price:7},{name:'تويكس',price:5},{name:'كيت كات',price:5},
+    {name:'مارس',price:5},{name:'سنيكرس',price:5},{name:'باونتي',price:5}
   ]
 };
 
@@ -2406,7 +2424,7 @@ function openMenuDetail(){
   document.getElementById('menu-detail').classList.remove('hide');
   history.replaceState(null,'','#menu');
   _menuCart = {};
-  _menuCat = 'مشروبات حارة';
+  _menuCat = 'الساندويتشات';
   _renderMenuCats();
   _renderMenuItems();
   _updateMenuCartBar();
@@ -3169,4 +3187,4 @@ window.addEventListener('pageshow', function(e){
 });
 </script>
 </body>
-</html><!-- test Fri Jul 17 06:49:48 +03 2026 -->
+</html><!-- test Fri Jul 17 06:59:13 +03 2026 -->
