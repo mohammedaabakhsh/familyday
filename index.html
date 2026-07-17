@@ -1511,19 +1511,6 @@ function tarfihiOrder(){
   </div>
 
   <div class="grid-section"><div class="grid" id="grid"></div></div>
-  <div id="shared-garden-wrap" style="padding:0 12px 8px;">
-    <div class="card" onclick="openM(12,'resort')" style="cursor:pointer;">
-      <div class="card-img-wrap" data-cid="12" data-cidx="0" style="position:relative;overflow:hidden;aspect-ratio:1/1;">
-        <img src="imgs/img87.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-        <div class="badge">مشترك</div>
-      </div>
-      <div class="card-body">
-        <div class="card-name">الحديقة المشتركة</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.65);font-family:Tajawal,sans-serif;line-height:1.6;margin-bottom:14px;">منطقة ألعاب مشتركة بين الأكواخ لجميع ضيوف المنتجع</div>
-        <button class="card-btn">عرض التفاصيل</button>
-      </div>
-    </div>
-  </div>
   <!-- SERVICE SUB SECTION -->
   <div id="service-sub" class="hide" style="display:flex;flex-direction:column;gap:14px;padding-bottom:calc(80px + env(safe-area-inset-bottom,0px));"></div>
 
@@ -1778,7 +1765,6 @@ function showSection(type){
   st.style.cssText='font-size:20px!important;font-weight:700!important;color:#fff!important;line-height:1.25;margin:0;';
   const fs=document.getElementById('filterSection');
   fs.style.display = 'flex';
-  var sgw=document.getElementById('shared-garden-wrap');if(sgw)sgw.style.display='';
   setActiveTab('resort');
   render('all',type);
 }
@@ -1952,8 +1938,8 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
   const activeBtn=document.querySelector(`.fbtn[data-f="${f}"]`);
   if(activeBtn) activeBtn.classList.add('active');
   items.forEach(c=>{
-    if(c.id===12) return; // handled by static card below
-    const show=(f==='all')||(f==='1'&&c.rooms===1)||(f==='2'&&c.rooms===2)||(f==='shared'&&false);
+    if(c.id===12) return; // rendered separately after loop
+    const show=(f==='all')||(f==='1'&&c.rooms===1)||(f==='2'&&c.rooms===2);
     const d=document.createElement('div');
     d.className='card'+(show?'':' hidden');
     d.onclick=()=>openM(c.id,type);
@@ -1976,6 +1962,25 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
       </div>`;
     g.appendChild(d);
   });
+  // Always add shared garden card to grid (never filtered out)
+  if((type||curSection)==='resort'){
+    var c12=data.resort.items.find(function(x){return x.id===12;});
+    if(c12 && (f!=='1') && (f!=='2') || f==='all' || f==='shared'){
+      // show for all, shared; hide for room filters - actually always show
+    }
+    if(c12){
+      var gl12=GALLERY[12]||[];
+      var d12=document.createElement('div');
+      d12.className='card';
+      d12.onclick=function(){openM(12,'resort');};
+      var imgs12=gl12.map(function(src,i){return '<img src="'+src+'" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:'+(i===0?1:0)+';transition:opacity 0.4s ease;">';}).join('');
+      d12.innerHTML='<div class="card-img-wrap" data-cid="12" data-cidx="0" style="position:relative;overflow:hidden;">'+imgs12+'<div class="badge">مشترك</div></div>'
+        +'<div class="card-body"><div class="card-name">'+c12.name+'</div>'
+        +'<div style="font-size:12px;color:rgba(255,255,255,0.65);font-family:Tajawal,sans-serif;line-height:1.6;margin-bottom:14px;">منطقة ألعاب مشتركة بين الأكواخ لجميع ضيوف المنتجع</div>'
+        +'<button class="card-btn">عرض التفاصيل</button></div>';
+      g.appendChild(d12);
+    }
+  }
 }
 
 function openGal(id,type){
@@ -2201,7 +2206,6 @@ function closeIframe(){
 }
 
 function showServices(){
-  var sgw=document.getElementById('shared-garden-wrap');if(sgw)sgw.style.display='none';
   history.replaceState(null,'','#services');
   document.getElementById('landing').classList.add('hide');
   document.getElementById('services-overlay').classList.remove('hide');
