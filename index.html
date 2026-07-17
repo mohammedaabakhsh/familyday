@@ -861,6 +861,9 @@ function sendOrderWhatsapp(){
     if(notes) lines.push('ملاحظات: '+notes);
     msg = lines.join('\n');
     _isMenuOrder = false;
+    window.open('https://wa.me/966555582182?text=' + encodeURIComponent(msg), '_blank');
+    closeOrderPopup();
+    return;
   } else {
     msg = 'السلام عليكم،' + '\n' + 'أرغب في طلب الخدمة التالية:' + '\n' + 'الاسم: ' + name + '\n' + 'الكوخ: ' + villa + cabinNum + '\n' + 'الخدمة: ' + _orderItemName + (timeStr ? '\n' + timeStr.replace(' - ','') : '') + (notes ? '\n' + 'ملاحظات: ' + notes : '');
   }
