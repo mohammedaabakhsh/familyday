@@ -2505,7 +2505,7 @@ function _renderMenuItems(){
     var cheeseQty = (_menuCart[cheeseKey] && _menuCart[cheeseKey].qty) || 0;
     var friesKey = 'بطاطس يمون|'+item.name;
     var friesQty = (_menuCart[friesKey] && _menuCart[friesKey].qty) || 0;
-    var extrasBtn = (item.cheese && qty > 0)
+    var extrasBtn = item.cheese
       ? '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:7px;">'
         +'<button onclick="menuToggleExtra(&apos;جبنة&apos;,&apos;'+item.name+'&apos;,1)" style="font-family:Tajawal,sans-serif;font-size:11px;padding:3px 10px;border-radius:20px;cursor:pointer;border:1.5px solid '+(cheeseQty>0?'#19a7b7':'rgba(255,255,255,.25)')+';background:'+(cheeseQty>0?'rgba(25,167,183,.2)':'transparent')+';color:'+(cheeseQty>0?'#19a7b7':'rgba(255,255,255,.5)')+';transition:all .2s;">'+(cheeseQty>0?'✓ ':'')+'+ جبنة  1 ر.س</button>'
         +'<button onclick="menuToggleExtra(&apos;بطاطس يمون&apos;,&apos;'+item.name+'&apos;,4)" style="font-family:Tajawal,sans-serif;font-size:11px;padding:3px 10px;border-radius:20px;cursor:pointer;border:1.5px solid '+(friesQty>0?'#19a7b7':'rgba(255,255,255,.25)')+';background:'+(friesQty>0?'rgba(25,167,183,.2)':'transparent')+';color:'+(friesQty>0?'#19a7b7':'rgba(255,255,255,.5)')+';transition:all .2s;">'+(friesQty>0?'✓ ':'')+'+ بطاطس يمون  4 ر.س</button>'
@@ -2516,7 +2516,7 @@ function _renderMenuItems(){
       +'<div style="font-family:Tajawal,sans-serif;font-size:14px;font-weight:600;color:#fff;line-height:1.4;">'+item.name+'</div>'
       +(item.desc?'<div style="font-family:Tajawal,sans-serif;font-size:11px;color:rgba(255,255,255,.45);margin-top:2px;">'+item.desc+'</div>':'')
       +'<div style="font-family:Tajawal,sans-serif;font-size:13px;color:#19a7b7;font-weight:700;margin-top:2px;">'+item.price+' ر.س</div>'
-      +cheeseBtn
+      +extrasBtn
       +'</div>'
       +'<div style="display:flex;align-items:center;gap:10px;flex-shrink:0;margin-right:10px;">'
       +(qty > 0
