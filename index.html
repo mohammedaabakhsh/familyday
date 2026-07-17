@@ -2403,13 +2403,13 @@ var _menuData = {
 };
 
 function openMenuDetail(){
+  document.getElementById('menu-detail').classList.remove('hide');
   history.replaceState(null,'','#menu');
   _menuCart = {};
   _menuCat = 'مشروبات حارة';
   _renderMenuCats();
   _renderMenuItems();
   _updateMenuCartBar();
-  document.getElementById('menu-detail').classList.remove('hide');
 }
 function closeMenuDetail(){
   document.getElementById('menu-detail').classList.add('hide');
@@ -3156,6 +3156,9 @@ function parseHash(){
   } else if(hash==='walaa'){
     showServices();
     setTimeout(function(){ showWalaa(); },300);
+  } else if(hash==='menu'){
+    showServices();
+    setTimeout(function(){ openMenuDetail(); },300);
   }
   // Clear hash so next refresh starts fresh
   history.replaceState(null,'',window.location.pathname);
@@ -3167,4 +3170,4 @@ window.addEventListener('pageshow', function(e){
 });
 </script>
 </body>
-</html><!-- test Fri Jul 17 04:46:21 +03 2026 -->
+</html><!-- test Fri Jul 17 06:30:27 +03 2026 -->
