@@ -1952,7 +1952,7 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
       <div class="card-body">
         ${(function(){var gl=GALLERY[c.id]||[];if(gl.length<=1)return '<div class="card-name">'+c.name+'</div>';return '<div style="display:flex;align-items:center;justify-content:space-between;width:100%;margin-bottom:14px;"><button onclick="event.stopPropagation();cardSlide(this.closest(\'.card\').querySelector(\'.card-img-wrap\'),-1)" style="width:30px;height:30px;flex-shrink:0;border-radius:50%;background:rgba(25,167,183,0.15);border:1px solid rgba(25,167,183,0.35);color:#7ecfea;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#10094;</button><div style="font-size:19px;font-weight:700;color:#fff;text-align:center;flex:1;font-family:Tajawal,sans-serif;">'+c.name+'</div><button onclick="event.stopPropagation();cardSlide(this.closest(\'.card\').querySelector(\'.card-img-wrap\'),1)" style="width:30px;height:30px;flex-shrink:0;border-radius:50%;background:rgba(25,167,183,0.15);border:1px solid rgba(25,167,183,0.35);color:#7ecfea;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#10095;</button></div>';})()}
         ${(()=>{
-          if(c.id===12) return '<div style="font-size:12px;color:rgba(255,255,255,0.65);font-family:Tajawal,sans-serif;line-height:1.6;margin-bottom:14px;">منطقة ألعاب مشتركة بين الأكواخ لجميع ضيوف المنتجع</div>';
+          if(c.id===12) return '<div style="font-size:12px;color:rgba(255,255,255,0.65);font-family:Tajawal,sans-serif;line-height:1.6;margin-bottom:14px;">منطقة ألعاب مشتركة للأطفال بين الأكواخ لجميع ضيوف المنتجع</div>';
           const gl2=c.guests>10?c.guests+' شخصًا':c.guests===2?'شخصين':c.guests+' أشخاص';
           const b=c.tags&&c.tags.find(t=>t.includes('بانيو')||t.includes('جاكوزي'));
           const bs=b?(b.includes('داخلي')&&!b.includes('جاكوزي')?'بانيو داخلي':b.includes('خارجي')?'بانيو خارجي':b.includes('جاكوزي')?'جاكوزي داخلي':'بانيو'):'';
@@ -1976,7 +1976,7 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
       var imgs12=gl12.map(function(src,i){return '<img src="'+src+'" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:'+(i===0?1:0)+';transition:opacity 0.4s ease;">';}).join('');
       d12.innerHTML='<div class="card-img-wrap" data-cid="12" data-cidx="0" style="position:relative;overflow:hidden;">'+imgs12+'<div class="badge">مشترك</div></div>'
         +'<div class="card-body"><div class="card-name">'+c12.name+'</div>'
-        +'<div style="font-size:12px;color:rgba(255,255,255,0.65);font-family:Tajawal,sans-serif;line-height:1.6;margin-bottom:14px;">منطقة ألعاب مشتركة بين الأكواخ لجميع ضيوف المنتجع</div>'
+        +'<div style="font-size:12px;color:rgba(255,255,255,0.65);font-family:Tajawal,sans-serif;line-height:1.6;margin-bottom:14px;">منطقة ألعاب مشتركة للأطفال بين الأكواخ لجميع ضيوف المنتجع</div>'
         +'<button class="card-btn">عرض التفاصيل</button></div>';
       g.appendChild(d12);
     }
@@ -2043,7 +2043,7 @@ function openM(id,type){
       ${c.suitable ? '<span style="background:rgba(25,167,183,0.1);border:1px solid rgba(25,167,183,0.25);color:var(--teal);font-size:12px;font-weight:600;padding:3px 10px;border-radius:100px;white-space:nowrap;">'+c.suitable+'</span>' : ''}
     </div>
     <button onclick="open3D('https://my.matterport.com/show/?m=S7Z2CF9tdwm')" class="mbtn" style="background:rgba(25,167,183,0.1);color:#19A7B7;border:1px solid #19a7b7;margin-bottom:16px;font-family:Tajawal,sans-serif;cursor:pointer;width:100%;font-size:13px;font-weight:600;padding:9px;display:flex;align-items:center;justify-content:center;gap:8px;">🔭 جولة ثلاثية الأبعاد</button>
-    <div style="font-size:12px;color:rgba(255,255,255,0.7);font-family:'Tajawal',sans-serif;margin-bottom:14px;line-height:1.7;white-space:nowrap;">منطقة ألعاب مشتركة بين الأكواخ لجميع ضيوف المنتجع</div>
+    <div style="font-size:12px;color:rgba(255,255,255,0.7);font-family:'Tajawal',sans-serif;margin-bottom:14px;line-height:1.7;white-space:nowrap;">منطقة ألعاب مشتركة للأطفال بين الأكواخ لجميع ضيوف المنتجع</div>
     <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">
       <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:13px;color:rgba(255,255,255,0.7);background:rgba(14,36,58,.80);border:1.5px solid rgba(25,167,183,.35);border-radius:12px;;padding:10px 14px;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 2px 10px rgba(25,167,183,.08);"><span style="color:#19a7b7;flex-shrink:0;">✦</span> ألعاب أطفال متنوعة.</div>
       <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:13px;color:rgba(255,255,255,0.7);background:rgba(14,36,58,.80);border:1.5px solid rgba(25,167,183,.35);border-radius:12px;;padding:10px 14px;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 2px 10px rgba(25,167,183,.08);"><span style="color:#19a7b7;flex-shrink:0;">✦</span> شاشة عرض مشتركة.</div>
