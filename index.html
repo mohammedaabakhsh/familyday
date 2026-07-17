@@ -1752,7 +1752,7 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
   if(activeBtn) activeBtn.classList.add('active');
   items.forEach(c=>{
     if(c.id===11) return; // rendered separately after loop
-    const show=(f==='all')||(f==='1'&&c.rooms===1)||(f==='2'&&c.rooms===2);
+    const show=(f==='all'&&c.id!==11)||(f==='1'&&c.rooms===1)||(f==='2'&&c.rooms===2);
     const d=document.createElement('div');
     d.className='card'+(show?'':' hidden');
     d.onclick=()=>openM(c.id,type);
@@ -1778,10 +1778,7 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
   // Always add shared garden card to grid (never filtered out)
   if((type||curSection)==='resort'){
     var c12=data.resort.items.find(function(x){return x.id===11;});
-    if(c12 && (f!=='1') && (f!=='2') || f==='all' || f==='shared'){
-      // show for all, shared; hide for room filters - actually always show
-    }
-    if(c12){
+    if(c12 && (f==='shared')){
       var gl12=GALLERY[11]||[];
       var d12=document.createElement('div');
       d12.className='card';
