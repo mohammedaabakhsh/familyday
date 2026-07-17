@@ -2371,8 +2371,9 @@ var _menuCart = {}; // {name: {price, qty}}
 
 var _menuData = {
   'الساندويتشات': [
-    {name:'برجر لحم',price:12},
-    {name:'دجاج زنجر',price:14}
+    {name:'برجر لحم',  variants:[{label:'ساندويش',price:10},{label:'وجبة',desc:'بطاطس ومشروب',price:22}]},
+    {name:'برجر دجاج', variants:[{label:'ساندويش',price:10},{label:'وجبة',desc:'بطاطس ومشروب',price:0}]},
+    {name:'دجاج زنجر', variants:[{label:'ساندويش',price:12},{label:'وجبة',desc:'بطاطس ومشروب',price:0}]}
   ],
   'الوجبات': [
     {name:'وجبة برجر لحم',price:15},
@@ -2455,6 +2456,31 @@ function _renderMenuItems(){
   var items = _menuData[_menuCat] || [];
   var el = document.getElementById('menu-items');
   el.innerHTML = items.map(function(item){
+    // Item with variants (ساندويش / وجبة)
+    if(item.variants){
+      var rows = item.variants.map(function(v){
+        var key = item.name+'|'+v.label;
+        var qty = (_menuCart[key] && _menuCart[key].qty) || 0;
+        var ek = key.replace(/'/g,"\'");
+        var ctrl = qty > 0
+          ? '<button onclick="menuQty(''+ek+'','+v.price+',-1)" style="width:28px;height:28px;border-radius:50%;background:rgba(25,167,183,0.15);border:1.5px solid rgba(25,167,183,.45);color:#7ecfea;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;">−</button>'
+            +'<span style="font-family:Tajawal,sans-serif;font-size:14px;font-weight:700;color:#fff;min-width:16px;text-align:center;">'+qty+'</span>'
+            +'<button onclick="menuQty(''+ek+'','+v.price+',1)" style="width:28px;height:28px;border-radius:50%;background:#19a7b7;border:none;color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;">+</button>'
+          : '<button onclick="menuQty(''+ek+'','+v.price+',1)" style="width:28px;height:28px;border-radius:50%;background:#19a7b7;border:none;color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;">+</button>';
+        return '<div style="display:flex;align-items:center;justify-content:space-between;padding:7px 0;">'
+          +'<div style="flex:1;min-width:0;">'
+          +'<div style="font-family:Tajawal,sans-serif;font-size:13px;font-weight:600;color:rgba(255,255,255,.9);">'+v.label+'</div>'
+          +(v.desc?'<div style="font-family:Tajawal,sans-serif;font-size:11px;color:rgba(25,167,183,.75);margin-top:1px;">'+v.desc+'</div>':'')
+          +'<div style="font-family:Tajawal,sans-serif;font-size:13px;color:#19a7b7;font-weight:700;margin-top:2px;">'+(v.price?v.price+' ر.س':'—')+'</div>'
+          +'</div>'
+          +'<div style="display:flex;align-items:center;gap:8px;flex-shrink:0;margin-right:8px;">'+ctrl+'</div>'
+          +'</div>';
+      }).join('<div style="height:1px;background:rgba(255,255,255,.07);"></div>');
+      return '<div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border:1.5px solid rgba(25,167,183,.15);border-radius:14px;padding:10px 14px;">'
+        +'<div style="font-family:Tajawal,sans-serif;font-size:14px;font-weight:700;color:#fff;padding-bottom:8px;margin-bottom:4px;border-bottom:1px solid rgba(255,255,255,.09);">'+item.name+'</div>'
+        +rows+'</div>';
+    }
+    // Regular item
     var qty = (_menuCart[item.name] && _menuCart[item.name].qty) || 0;
     return '<div style="display:flex;align-items:center;justify-content:space-between;background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border:1.5px solid rgba(25,167,183,.15);border-radius:14px;padding:12px 14px;">'
       +'<div style="flex:1;min-width:0;">'
@@ -2463,16 +2489,11 @@ function _renderMenuItems(){
       +'</div>'
       +'<div style="display:flex;align-items:center;gap:10px;flex-shrink:0;margin-right:10px;">'
       +(qty > 0
-        ? '<button onclick="menuQty(\''+item.name+'\','+item.price+',-1)" style="width:32px;height:32px;border-radius:50%;background:rgba(25,167,183,0.15);border:1.5px solid rgba(25,167,183,.45);color:#7ecfea;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:300;line-height:1;">−</button>'
+        ? '<button onclick="menuQty(''+item.name+'','+item.price+',-1)" style="width:32px;height:32px;border-radius:50%;background:rgba(25,167,183,0.15);border:1.5px solid rgba(25,167,183,.45);color:#7ecfea;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:300;line-height:1;">−</button>'
         +'<span style="font-family:Tajawal,sans-serif;font-size:15px;font-weight:700;color:#fff;min-width:18px;text-align:center;">'+qty+'</span>'
-        +'<button onclick="menuQty(\''+item.name+'\','+item.price+',1)" style="width:32px;height:32px;border-radius:50%;background:#19a7b7;border:none;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:300;line-height:1;">+</button>'
-        : '<button onclick="menuQty(\''+item.name+'\','+item.price+',1)" style="width:32px;height:32px;border-radius:50%;background:#19a7b7;border:none;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:300;line-height:1;">+</button>'
+        +'<button onclick="menuQty(''+item.name+'','+item.price+',1)" style="width:32px;height:32px;border-radius:50%;background:#19a7b7;border:none;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:300;line-height:1;">+</button>'
+        : '<button onclick="menuQty(''+item.name+'','+item.price+',1)" style="width:32px;height:32px;border-radius:50%;background:#19a7b7;border:none;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:300;line-height:1;">+</button>'
       )
-      +'</div>'
-      +'</div>';
-  }).join('');
-}
-
 function menuQty(name, price, delta){
   if(!_menuCart[name]) _menuCart[name] = {price:price, qty:0};
   _menuCart[name].qty += delta;
@@ -3188,4 +3209,4 @@ window.addEventListener('pageshow', function(e){
 });
 </script>
 </body>
-</html><!-- test Fri Jul 17 07:03:17 +03 2026 -->
+</html><!-- test Fri Jul 17 07:19:37 +03 2026 -->
