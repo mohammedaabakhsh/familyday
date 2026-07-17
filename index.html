@@ -564,10 +564,10 @@ header{
 .bnav-btn:active{opacity:0.7;}
 
 @media(min-width:600px){
-  #sinema-detail,#maiya-detail,#jalsat-detail,#sharik-detail,#tarfihi-detail,#tawilat-detail,#walaa-detail{
+  #sinema-detail,#maiya-detail,#jalsat-detail,#sharik-detail,#tarfihi-detail,#tawilat-detail,#walaa-detail,#menu-detail{
     display:flex;flex-direction:column;align-items:center;
   }
-  #sinema-detail>*,#maiya-detail>*,#jalsat-detail>*,#sharik-detail>*,#tarfihi-detail>*,#tawilat-detail>*,#walaa-detail>*{
+  #sinema-detail>*,#maiya-detail>*,#jalsat-detail>*,#sharik-detail>*,#tarfihi-detail>*,#tawilat-detail>*,#walaa-detail>*,#menu-detail>*{
     max-width:480px;width:100%;box-sizing:border-box;
   }
 }
@@ -924,6 +924,13 @@ function tarfihiOrder(){
   </div>
   <div style="padding:14px 16px;">
 <div style="display:flex;flex-direction:column;gap:16px;">
+
+<!-- طعام ومشروبات -->
+<div>
+  <div style="font-family:Tajawal,sans-serif;font-size:12px;font-weight:700;color:rgba(25,167,183,.85);padding:0 2px 8px;">طعام ومشروبات</div>
+  <div onclick="openMenuDetail()" style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:18px;padding:20px 12px 16px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:10px;border:1.5px solid rgba(25,167,183,.18);text-align:center;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.18);"><div style="width:46px;height:46px;border-radius:12px;background:rgba(25,167,183,0.15);display:flex;align-items:center;justify-content:center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7ecfea" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></div><div style="font-family:Tajawal,sans-serif;font-size:13px;font-weight:700;color:#fff;line-height:1.3;">المنيو</div></div>
+</div>
+
 
 <!-- ترفيه -->
 <div>
@@ -1970,6 +1977,7 @@ function showServices(){
   setActiveTab('services');
 }
 function closeServices(){
+  document.getElementById('menu-detail').classList.add('hide');
   document.getElementById('services-overlay').classList.add('hide');
   document.getElementById('landing').classList.remove('hide');
   document.getElementById('landing').scrollTop=0;
@@ -2355,6 +2363,132 @@ function openJalsatDetail(){
   };
 }
 function closeJalsatDetail(){ document.getElementById('jalsat-detail').classList.add('hide'); }
+
+// ===== المنيو =====
+var _menuCat = 'مشروبات حارة';
+var _menuCart = {}; // {name: {price, qty}}
+
+var _menuData = {
+  'مشروبات حارة': [
+    {name:'كابتشينو بالبندق',price:10},{name:'شوكليت',price:10},{name:'لاتيه',price:10},
+    {name:'موكا',price:10},{name:'نيسبريسو',price:10},{name:'قهوة تركي',price:10},
+    {name:'موكاتشينو',price:10},{name:'شاي عكني',price:8},
+    {name:'ثلاجة قهوة عربية مع التمر',price:20},{name:'ثلاجة شاي مع البسكويت',price:15}
+  ],
+  'مشروبات باردة': [
+    {name:'بيبسي',price:5},{name:'حمضيات',price:5},{name:'سفن اب',price:5},
+    {name:'كود رد',price:9},{name:'رد بول',price:15},{name:'بايسون',price:8},
+    {name:'تنج',price:7},{name:'سن توب',price:4},{name:'موسى فراولة',price:10},
+    {name:'موسى شعير',price:10},{name:'ماء صغير',price:2},{name:'ماء كبير',price:3},
+    {name:'موهيتو',price:10},{name:'2 كاسات ثلج',price:5},{name:'كرتون ماء',price:50}
+  ],
+  'وجبات خفيفة': [
+    {name:'برجر لحم مع البطاطس',price:15},{name:'دجاج زنجر مع البطاطس',price:17},
+    {name:'فشار صغير',price:5},{name:'فشار كبير',price:15},
+    {name:'بطاطس صغير',price:5},{name:'بطاطس كبير',price:7},
+    {name:'بوكس الشواء بدون فحم',price:85},{name:'بوكس الشواء مع الفحم',price:120},
+    {name:'دجاج سترس خارج مع البطاطس',price:22},{name:'وجبة دجاج سنحب مع البطاطس',price:22},
+    {name:'وجبة ناجتس حار مع بطاطس وبيبسي',price:24},{name:'فيلية الدجاج مع البطاطس',price:24},
+    {name:'وجبة جمبري حراق مع البطاطس',price:36},{name:'وجبة جمبري عادي مع البطاطس',price:36},
+    {name:'تشيكن فرايز',price:24},{name:'وجبة بوب كورن الدجاج مع البطاطس',price:18}
+  ],
+  'شوكولاتة': [
+    {name:'جالكسي',price:7},{name:'تويكس',price:5},{name:'كيت كات',price:5},
+    {name:'مارس',price:5},{name:'سنيكرس',price:5},{name:'باونتي',price:5}
+  ],
+  'وجبات الأطفال': [
+    {name:'ساندويتش ناجتس',price:5},{name:'ساندويتش هوت دوغ',price:5},
+    {name:'برجر لحم أو دجاج',price:10},{name:'وجبة ناجتس مع البطاطس',price:10}
+  ]
+};
+
+function openMenuDetail(){
+  history.replaceState(null,'','#menu');
+  _menuCart = {};
+  _menuCat = 'مشروبات حارة';
+  _renderMenuCats();
+  _renderMenuItems();
+  _updateMenuCartBar();
+  document.getElementById('menu-detail').classList.remove('hide');
+}
+function closeMenuDetail(){
+  document.getElementById('menu-detail').classList.add('hide');
+  history.replaceState(null,'','#');
+}
+
+function _renderMenuCats(){
+  var cats = Object.keys(_menuData);
+  var el = document.getElementById('menu-cats');
+  el.innerHTML = cats.map(function(cat){
+    var active = cat === _menuCat;
+    return '<button onclick="setMenuCat(\''+cat+'\')" style="flex-shrink:0;padding:7px 14px;border-radius:100px;border:1px solid '+(active?'#19a7b7':'rgba(255,255,255,.18)')+';background:'+(active?'#19a7b7':'rgba(255,255,255,.07)')+';color:'+(active?'#fff':'rgba(255,255,255,0.65)')+';font-family:Tajawal,sans-serif;font-size:12px;font-weight:'+(active?'700':'500')+';cursor:pointer;white-space:nowrap;">'+cat+'</button>';
+  }).join('');
+}
+
+function setMenuCat(cat){
+  _menuCat = cat;
+  _renderMenuCats();
+  _renderMenuItems();
+  document.getElementById('menu-items').scrollTop = 0;
+}
+
+function _renderMenuItems(){
+  var items = _menuData[_menuCat] || [];
+  var el = document.getElementById('menu-items');
+  el.innerHTML = items.map(function(item){
+    var qty = (_menuCart[item.name] && _menuCart[item.name].qty) || 0;
+    return '<div style="display:flex;align-items:center;justify-content:space-between;background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border:1.5px solid rgba(25,167,183,.15);border-radius:14px;padding:12px 14px;">'
+      +'<div style="flex:1;min-width:0;">'
+      +'<div style="font-family:Tajawal,sans-serif;font-size:14px;font-weight:600;color:#fff;line-height:1.4;">'+item.name+'</div>'
+      +'<div style="font-family:Tajawal,sans-serif;font-size:13px;color:#19a7b7;font-weight:700;margin-top:2px;">'+item.price+' ر.س</div>'
+      +'</div>'
+      +'<div style="display:flex;align-items:center;gap:10px;flex-shrink:0;margin-right:10px;">'
+      +(qty > 0
+        ? '<button onclick="menuQty(\''+item.name+'\','+item.price+',-1)" style="width:32px;height:32px;border-radius:50%;background:rgba(25,167,183,0.15);border:1.5px solid rgba(25,167,183,.45);color:#7ecfea;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:300;line-height:1;">−</button>'
+        +'<span style="font-family:Tajawal,sans-serif;font-size:15px;font-weight:700;color:#fff;min-width:18px;text-align:center;">'+qty+'</span>'
+        +'<button onclick="menuQty(\''+item.name+'\','+item.price+',1)" style="width:32px;height:32px;border-radius:50%;background:#19a7b7;border:none;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:300;line-height:1;">+</button>'
+        : '<button onclick="menuQty(\''+item.name+'\','+item.price+',1)" style="width:32px;height:32px;border-radius:50%;background:#19a7b7;border:none;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:300;line-height:1;">+</button>'
+      )
+      +'</div>'
+      +'</div>';
+  }).join('');
+}
+
+function menuQty(name, price, delta){
+  if(!_menuCart[name]) _menuCart[name] = {price:price, qty:0};
+  _menuCart[name].qty += delta;
+  if(_menuCart[name].qty <= 0) delete _menuCart[name];
+  _renderMenuItems();
+  _updateMenuCartBar();
+}
+
+function _updateMenuCartBar(){
+  var bar = document.getElementById('menu-cart-bar');
+  var keys = Object.keys(_menuCart);
+  if(keys.length === 0){ bar.style.display='none'; return; }
+  var totalQty = 0, totalPrice = 0;
+  keys.forEach(function(k){ totalQty += _menuCart[k].qty; totalPrice += _menuCart[k].qty * _menuCart[k].price; });
+  bar.style.display = 'flex';
+  document.getElementById('menu-cart-summary').textContent = totalQty + (totalQty===1?' صنف':' أصناف');
+  document.getElementById('menu-cart-total').textContent = 'الإجمالي: ' + totalPrice + ' ر.س';
+}
+
+function menuOrderNow(){
+  var keys = Object.keys(_menuCart);
+  if(keys.length===0){ alert('أضف أصناف أولاً'); return; }
+  var cabin = prompt('رقم الكوخ أو اسمك؟','');
+  if(!cabin) return;
+  var lines = ['السلام عليكم،','الكوخ / الاسم: '+cabin,'','الطلب:'];
+  var total = 0;
+  keys.forEach(function(k){
+    var q = _menuCart[k].qty;
+    var p = _menuCart[k].price;
+    lines.push('• '+k+' × '+q+' = '+(q*p)+' ر.س');
+    total += q*p;
+  });
+  lines.push('','الإجمالي: '+total+' ر.س');
+  window.open('https://wa.me/966556156693?text='+encodeURIComponent(lines.join('\n')),'_blank');
+}
 
 // ===== شارك واربح =====
 function showSharik(){ document.getElementById('sharik-detail').classList.remove('hide'); history.replaceState(null,'','#sharik'); }
@@ -2767,6 +2901,33 @@ function closeWalaaDetail(){
     </div></div>
 
   </div>
+
+<!-- MENU DETAIL OVERLAY -->
+<div id="menu-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
+  <div style="background:transparent;padding:14px 20px 10px;padding-top:20px;text-align:right;position:relative;">
+    <button onclick="closeMenuDetail()" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.10);border:none;color:rgba(255,255,255,0.85);cursor:pointer;margin-bottom:6px;">
+      <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div style="font-family:Tajawal,sans-serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:2px;">المنيو</div>
+    <div style="font-family:Tajawal,sans-serif;font-size:13px;color:rgba(255,255,255,0.6);">اختر الفئة ثم أضف ما تريد</div>
+  </div>
+
+  <!-- Category tabs -->
+  <div id="menu-cats" style="display:flex;gap:8px;padding:6px 16px 12px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-shrink:0;"></div>
+
+  <!-- Items list -->
+  <div id="menu-items" style="padding:0 16px;display:flex;flex-direction:column;gap:8px;padding-bottom:140px;"></div>
+
+  <!-- Sticky cart bar -->
+  <div id="menu-cart-bar" style="position:fixed;bottom:0;left:0;right:0;z-index:10;background:linear-gradient(0deg,rgba(4,17,30,1) 60%,rgba(4,17,30,0) 100%);padding:10px 16px calc(16px + env(safe-area-inset-bottom,0px));display:none;flex-direction:column;gap:8px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;background:rgba(14,36,58,.95);border:1.5px solid rgba(25,167,183,.35);border-radius:14px;padding:10px 14px;">
+      <div id="menu-cart-summary" style="font-family:Tajawal,sans-serif;font-size:13px;color:rgba(255,255,255,0.8);"></div>
+      <div id="menu-cart-total" style="font-family:Tajawal,sans-serif;font-size:15px;font-weight:700;color:#19a7b7;"></div>
+    </div>
+    <button onclick="menuOrderNow()" style="width:100%;padding:13px;background:#19a7b7;border:none;border-radius:12px;font-family:Tajawal,sans-serif;font-size:14px;font-weight:700;color:#fff;cursor:pointer;">اطلب الآن عبر واتساب</button>
+  </div>
+</div>
+
 </div>
 <script>
 // Prevent browser horizontal swipe-back gesture on non-scrollable areas
