@@ -2563,7 +2563,7 @@ function _updateMenuCartBar(){
   var keys = Object.keys(_menuCart);
   if(keys.length === 0){ bar.style.display='none'; return; }
   var totalQty = 0, totalPrice = 0;
-  keys.forEach(function(k){ totalQty += _menuCart[k].qty; totalPrice += _menuCart[k].qty * _menuCart[k].price; });
+  keys.forEach(function(k){ if(k.indexOf('|')===-1) totalQty += _menuCart[k].qty; totalPrice += _menuCart[k].qty * _menuCart[k].price; });
   bar.style.display = 'flex';
   document.getElementById('menu-cart-summary').textContent = totalQty + (totalQty===1?' صنف':' أصناف');
   document.getElementById('menu-cart-total').textContent = 'الإجمالي: ' + totalPrice + ' ر.س';
