@@ -1536,7 +1536,7 @@ function tarfihiOrder(){
     <div class="gal-wrap" id="galWrap"></div>
     <div class="modal-inner" id="mBody"></div>
     <div class="modal-bottom-bar" id="modalBottomBar">
-      <a id="modalBookBtn" href="https://familyday-sa.com/ar" target="_blank" class="mbtn mbtn-book">احجز الآن</a>
+      <a id="modalBookBtn" href="https://familyday-sa.com/ar" target="_blank" rel="noopener noreferrer" class="mbtn mbtn-book">احجز الآن</a>
       <a href="https://wa.me/966556156693" target="_blank" class="mbtn mbtn-wa">واتساب</a>
     </div>
   </div>
@@ -2127,7 +2127,7 @@ function openM(id,type){
     })()}
 
     <div class="modal-btns">
-      <a href="${c.bookUrl||'https://familyday-sa.com/ar'}" target="_blank" class="mbtn mbtn-book">احجز الآن</a>
+      <a href="${c.bookUrl||'https://familyday-sa.com/ar'}" target="_blank" rel="noopener noreferrer" class="mbtn mbtn-book">احجز الآن</a>
       <a href="https://wa.me/966556156693" target="_blank" class="mbtn mbtn-wa">تواصل واتساب</a>
     </div>
     ${c.id===12 ? `<button onclick="open3D('https://my.matterport.com/show/?m=S7Z2CF9tdwm')" class="mbtn" style="background:rgba(25,167,183,0.1);color:#19A7B7;border:1px solid #19a7b7;margin-top:8px;font-family:Tajawal,sans-serif;cursor:pointer;font-size:12px;padding:9px 16px;">🔭 جولة ثلاثية الأبعاد</button>` : ''}
@@ -2189,11 +2189,6 @@ function closeM(){
   }
 }
 document.getElementById('ov').addEventListener('click',function(e){if(e.target===this)closeM();});
-document.addEventListener('click',function(e){
-  var a=e.target.closest('.mbtn-book');
-  if(a&&a.href){e.preventDefault();window.open(a.href,'_blank','noopener');}
-});
-
 function open3D(url){
   document.getElementById('iframeEl').src=url;
   document.getElementById('iframeOverlay').classList.add('open');
@@ -3173,7 +3168,7 @@ function openMDirect(c){
     +'<div class="tags" style="margin-bottom:8px;"><span class="tag">شاشة تلفزيون</span><span class="tag">سماعات داخلية (ساوند بار)</span></div>'
     +'<div class="tags-lbl" style="color:#19a7b7;margin-top:6px;">الخدمات الإضافية</div>'
     +'<div class="tags" style="margin-bottom:8px;"><span class="tag">زحليقة</span><span class="tag">ملعب صابوني</span></div>'
-    +'<div class="modal-btns"><a href="'+(c.bookUrl||'https://familyday-sa.com/ar')+'" target="_blank" class="mbtn mbtn-book">احجز الآن</a>'
+    +'<div class="modal-btns"><a href="'+(c.bookUrl||'https://familyday-sa.com/ar')+'" target="_blank" rel="noopener noreferrer" class="mbtn mbtn-book">احجز الآن</a>'
     +'<a href="https://wa.me/966556156693" target="_blank" class="mbtn mbtn-wa">تواصل واتساب</a></div>';
 
   var bookBtn2=document.getElementById('modalBookBtn');
