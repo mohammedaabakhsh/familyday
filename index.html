@@ -792,6 +792,7 @@ var _autoEnterTimer = setTimeout(function(){
 
 
 var _orderItemName = '';
+var _isMenuOrder = false;
 var _cabinNums = {
   'البيت اليوناني 1':10,'البيت اليوناني 2':11,'كوخ بالم بيتش':12,'الكوخ الفرنسي':13,
   'الكوخ الريفي':14,'بيت الدوم 1':15,'بيت الدوم 2':16,'الكوخ الهرمي':17,
@@ -821,6 +822,7 @@ function openOrderPopup(itemName, showTime){
   document.getElementById('order-popup').classList.remove('hide');
 }
 function closeOrderPopup(){
+  _isMenuOrder = false;
   document.getElementById('order-popup').classList.add('hide');
 }
 function sendOrderWhatsapp(){
@@ -842,7 +844,26 @@ function sendOrderWhatsapp(){
     timeStr = ' - الوقت: من ' + fmt12(h) + ' حتى ' + fmt12(endH);
   }
   var cabinNum = _cabinNums[villa] ? ' (رقم ' + _cabinNums[villa] + ')' : '';
-  var msg = 'السلام عليكم،' + '\n' + 'أرغب في طلب الخدمة التالية:' + '\n' + 'الاسم: ' + name + '\n' + 'الكوخ: ' + villa + cabinNum + '\n' + 'الخدمة: ' + _orderItemName + (timeStr ? '\n' + timeStr.replace(' - ','') : '') + (notes ? '\n' + 'ملاحظات: ' + notes : '');
+  var msg;
+  if(_isMenuOrder){
+    var keys = Object.keys(_menuCart);
+    var total = 0;
+    var lines = ['السلام عليكم،','أرغب في طلب الآتي من المطعم:','الاسم: '+name,'الكوخ: '+villa+cabinNum,'','الطلب:'];
+    keys.forEach(function(k){
+      var q = _menuCart[k].qty;
+      var p = _menuCart[k].price;
+      // format extras nicely
+      var display = k.indexOf('|')!==-1 ? '  ↳ '+k.split('|')[0]+' × '+q : k+' × '+q;
+      lines.push('• '+display+' = '+(q*p)+' ر.س');
+      total += q*p;
+    });
+    lines.push('','الإجمالي: '+total+' ر.س');
+    if(notes) lines.push('ملاحظات: '+notes);
+    msg = lines.join('\n');
+    _isMenuOrder = false;
+  } else {
+    msg = 'السلام عليكم،' + '\n' + 'أرغب في طلب الخدمة التالية:' + '\n' + 'الاسم: ' + name + '\n' + 'الكوخ: ' + villa + cabinNum + '\n' + 'الخدمة: ' + _orderItemName + (timeStr ? '\n' + timeStr.replace(' - ','') : '') + (notes ? '\n' + 'ملاحظات: ' + notes : '');
+  }
   window.open('https://wa.me/966556156693?text=' + encodeURIComponent(msg), '_blank');
   closeOrderPopup();
 }
@@ -2576,18 +2597,8 @@ function _updateMenuCartBar(){
 function menuOrderNow(){
   var keys = Object.keys(_menuCart);
   if(keys.length===0){ alert('أضف أصناف أولاً'); return; }
-  var cabin = prompt('رقم الكوخ أو اسمك؟','');
-  if(!cabin) return;
-  var lines = ['السلام عليكم،','الكوخ / الاسم: '+cabin,'','الطلب:'];
-  var total = 0;
-  keys.forEach(function(k){
-    var q = _menuCart[k].qty;
-    var p = _menuCart[k].price;
-    lines.push('• '+k+' × '+q+' = '+(q*p)+' ر.س');
-    total += q*p;
-  });
-  lines.push('','الإجمالي: '+total+' ر.س');
-  window.open('https://wa.me/966556156693?text='+encodeURIComponent(lines.join('\n')),'_blank');
+  _isMenuOrder = true;
+  openOrderPopup('طلب من المطعم', false);
 }
 
 // ===== شارك واربح =====
