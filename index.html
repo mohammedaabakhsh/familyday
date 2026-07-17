@@ -1915,7 +1915,7 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
   const activeBtn=document.querySelector(`.fbtn[data-f="${f}"]`);
   if(activeBtn) activeBtn.classList.add('active');
   items.forEach(c=>{
-    const show=(f==='all')||(f==='1'&&c.rooms===1)||(f==='2'&&c.rooms===2);
+    const show=(f==='all')||(c.id===12)||(f==='1'&&c.rooms===1)||(f==='2'&&c.rooms===2);
     const d=document.createElement('div');
     d.className='card'+(show?'':' hidden');
     d.onclick=()=>openM(c.id,type);
