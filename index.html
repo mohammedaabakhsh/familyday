@@ -1740,8 +1740,10 @@ function cardSlide(wrap,dir){
 }
 
 
+var _curFilter='all';
 function render(f='all',type){
   type=type||curSection;
+  _curFilter=f;
   const g=document.getElementById('grid');g.innerHTML='';
   const items=data[type].items;
   // Splash screen
@@ -1868,7 +1870,12 @@ function openM(id,type){
   }
   document.getElementById('modalBottomBar').style.display='';
   const c=items.find(x=>x.id===id);
-  _navType=type;_navItems=items;
+  _navType=type;
+  // Filter navItems to match current filter
+  if(_curFilter==='all') _navItems=items.filter(function(x){return x.id!==11;});
+  else if(_curFilter==='1') _navItems=items.filter(function(x){return x.rooms===1;});
+  else if(_curFilter==='2') _navItems=items.filter(function(x){return x.rooms===2;});
+  else _navItems=items.filter(function(x){return x.id!==11;});
   _navIdx=items.findIndex(function(x){return x.id===id;});
   if(_navIdx===-1)_navIdx=0;
   updateNavUI();
