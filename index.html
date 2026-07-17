@@ -2503,12 +2503,9 @@ function _renderMenuItems(){
     var qty = (_menuCart[item.name] && _menuCart[item.name].qty) || 0;
     var cheeseKey = 'جبنة|'+item.name;
     var cheeseQty = (_menuCart[cheeseKey] && _menuCart[cheeseKey].qty) || 0;
-    var friesKey = 'بطاطس|'+item.name;
-    var friesQty = (_menuCart[friesKey] && _menuCart[friesKey].qty) || 0;
     var extrasBtn = (item.cheese && qty > 0)
       ? '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:7px;">'
         +'<button onclick="menuToggleExtra(&apos;جبنة&apos;,&apos;'+item.name+'&apos;,1)" style="font-family:Tajawal,sans-serif;font-size:11px;padding:3px 10px;border-radius:20px;cursor:pointer;border:1.5px solid '+(cheeseQty>0?'#19a7b7':'rgba(255,255,255,.25)')+';background:'+(cheeseQty>0?'rgba(25,167,183,.2)':'transparent')+';color:'+(cheeseQty>0?'#19a7b7':'rgba(255,255,255,.5)')+';transition:all .2s;">'+(cheeseQty>0?'✓ ':'')+'+ جبنة  1 ر.س</button>'
-        +'<button onclick="menuToggleExtra(&apos;بطاطس&apos;,&apos;'+item.name+'&apos;,4)" style="font-family:Tajawal,sans-serif;font-size:11px;padding:3px 10px;border-radius:20px;cursor:pointer;border:1.5px solid '+(friesQty>0?'#19a7b7':'rgba(255,255,255,.25)')+';background:'+(friesQty>0?'rgba(25,167,183,.2)':'transparent')+';color:'+(friesQty>0?'#19a7b7':'rgba(255,255,255,.5)')+';transition:all .2s;">'+(friesQty>0?'✓ ':'')+'+ بطاطس  4 ر.س</button>'
         +'</div>'
       : '';
     return '<div style="display:flex;align-items:center;justify-content:space-between;background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border:1.5px solid rgba(25,167,183,.15);border-radius:14px;padding:12px 14px;">'
@@ -2545,11 +2542,10 @@ function menuQty(name, price, delta){
   if(_menuCart[name].qty <= 0){
     delete _menuCart[name];
     delete _menuCart['جبنة|'+name];
-    delete _menuCart['بطاطس|'+name];
   } else {
     // sync extras qty with sandwich qty
     var newQty = _menuCart[name].qty;
-    ['جبنة','بطاطس'].forEach(function(ex){
+    ['جبنة'].forEach(function(ex){
       var k = ex+'|'+name;
       if(_menuCart[k]) _menuCart[k].qty = newQty;
     });
