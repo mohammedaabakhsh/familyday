@@ -2533,7 +2533,8 @@ function menuToggleExtra(extraName, sandwichName, price){
   if(_menuCart[key] && _menuCart[key].qty > 0){
     delete _menuCart[key];
   } else {
-    _menuCart[key] = {price:price, qty:1};
+    var sandwichQty = (_menuCart[sandwichName] && _menuCart[sandwichName].qty) || 1;
+    _menuCart[key] = {price:price, qty:sandwichQty};
   }
   _renderMenuItems();
   _updateMenuCartBar();
@@ -2543,9 +2544,15 @@ function menuQty(name, price, delta){
   _menuCart[name].qty += delta;
   if(_menuCart[name].qty <= 0){
     delete _menuCart[name];
-    // remove extras linked to this item
     delete _menuCart['جبنة|'+name];
     delete _menuCart['بطاطس|'+name];
+  } else {
+    // sync extras qty with sandwich qty
+    var newQty = _menuCart[name].qty;
+    ['جبنة','بطاطس'].forEach(function(ex){
+      var k = ex+'|'+name;
+      if(_menuCart[k]) _menuCart[k].qty = newQty;
+    });
   }
   _renderMenuItems();
   _updateMenuCartBar();
