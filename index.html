@@ -1226,7 +1226,7 @@ function tarfihiOrder(){
   </div>
 </div>
 
-<div id="jalsat-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
+<div id="jalsat-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;align-items:center;"><div style="width:100%;max-width:480px;">
   <div style="background:transparent;padding:14px 20px 18px;padding-top:20px;text-align:right;position:relative;">
     <button onclick="closeJalsatDetail()" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.10);border:none;color:rgba(255,255,255,0.85);cursor:pointer;margin-bottom:10px;">
       <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1299,7 +1299,7 @@ function tarfihiOrder(){
 
 
 <!-- SHARIK WIN DETAIL -->
-<div id="sharik-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
+<div id="sharik-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;align-items:center;"><div style="width:100%;max-width:480px;">
   <div style="background:transparent;padding:14px 20px 18px;padding-top:20px;text-align:right;position:relative;">
     <button onclick="closeSharikDetail()" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.10);border:none;color:rgba(255,255,255,0.85);cursor:pointer;margin-bottom:10px;">
       <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1498,7 +1498,7 @@ function tarfihiOrder(){
     <button class="fbtn active" data-f="all">الكل</button>
     <button class="fbtn" data-f="1">غرفة نوم</button>
     <button class="fbtn" data-f="2">غرفتين نوم</button>
-    <button class="fbtn" data-f="shared">مشترك</button>
+    <button class="fbtn" data-f="shared">الحديقة المشتركة</button>
   </div>
 
   <div class="grid-section"><div class="grid" id="grid"></div></div>
@@ -1967,22 +1967,6 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
       </div>`;
     g.appendChild(d);
   });
-  // Always show shared garden card at the bottom
-  if(type==='resort'||curSection==='resort'){
-    var c12=items.find(function(x){return x.id===12;});
-    if(c12){
-      var d12=document.createElement('div');
-      d12.className='card';
-      d12.onclick=function(){openM(12,'resort');};
-      var imgs12=(typeof GALLERY!=='undefined'&&GALLERY[12])||[];
-      var imgsHtml12=imgs12.length?imgs12.map(function(src,i){return '<img src="'+src+'" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:'+(i===0?1:0)+';transition:opacity 0.4s ease;">';}).join(''):'';
-      d12.innerHTML='<div class="card-img-wrap" data-cid="12" data-cidx="0" style="position:relative;overflow:hidden;">'+imgsHtml12+'<div class="badge">مشترك</div></div>'
-        +'<div class="card-body"><div class="card-name">'+c12.name+'</div>'
-        +'<div style="font-size:12px;color:rgba(255,255,255,0.65);font-family:Tajawal,sans-serif;line-height:1.6;margin-bottom:14px;">منطقة ألعاب مشتركة بين الأكواخ لجميع ضيوف المنتجع</div>'
-        +'<button class="card-btn">عرض التفاصيل</button></div>';
-      g.appendChild(d12);
-    }
-  }
 }
 
 function openGal(id,type){
@@ -2859,7 +2843,7 @@ function closeWalaaDetail(){
 </div>
 
 <!-- TARFIHI DETAIL -->
-<div id="tarfihi-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
+<div id="tarfihi-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;align-items:center;"><div style="width:100%;max-width:480px;">
   <div style="background:transparent;padding:14px 20px 18px;padding-top:20px;text-align:right;position:relative;">
     <button onclick="closeTarfihiDetail()" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.10);border:none;color:rgba(255,255,255,0.85);cursor:pointer;margin-bottom:10px;">
       <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2917,7 +2901,7 @@ function closeWalaaDetail(){
 </div>
 
 <!-- TAWILAT DETAIL -->
-<div id="tawilat-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
+<div id="tawilat-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;align-items:center;"><div style="width:100%;max-width:480px;">
   <div style="background:transparent;padding:14px 20px 18px;padding-top:20px;text-align:right;position:relative;">
     <button onclick="closeTawilatDetail()" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.10);border:none;color:rgba(255,255,255,0.85);cursor:pointer;margin-bottom:10px;">
       <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2988,7 +2972,7 @@ function closeWalaaDetail(){
 </div>
 
 <!-- WALAA DETAIL -->
-<div id="walaa-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
+<div id="walaa-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;align-items:center;"><div style="width:100%;max-width:480px;">
   <div style="background:transparent;padding:14px 20px 18px;padding-top:20px;text-align:right;position:relative;">
     <button onclick="closeWalaaDetail()" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.10);border:none;color:rgba(255,255,255,0.85);cursor:pointer;margin-bottom:10px;">
       <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
