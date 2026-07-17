@@ -2402,7 +2402,10 @@ var _menuData = {
     {name:'سنيكرز',price:5},
     {name:'باونتي',price:5}
   ],
-  'بوكسات الشواء': [],
+  'بوكسات الشواء': [
+    {name:'بوكس الشواء بدون فحم',desc:'مناسب لـ 6 أشخاص • خبز، جبن، صوصات',price:85},
+    {name:'بوكس الشواء مع الفحم',desc:'مناسب لـ 6 أشخاص • خبز، جبن، صوصات',price:120}
+  ],
   'مشروبات باردة': [
     {name:'بيبسي',price:5},
     {name:'سفن أب',price:5},
@@ -2496,6 +2499,7 @@ function _renderMenuItems(){
     return '<div style="display:flex;align-items:center;justify-content:space-between;background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border:1.5px solid rgba(25,167,183,.15);border-radius:14px;padding:12px 14px;">'
       +'<div style="flex:1;min-width:0;">'
       +'<div style="font-family:Tajawal,sans-serif;font-size:14px;font-weight:600;color:#fff;line-height:1.4;">'+item.name+'</div>'
+      +(item.desc?'<div style="font-family:Tajawal,sans-serif;font-size:11px;color:rgba(255,255,255,.45);margin-top:2px;">'+item.desc+'</div>':'')
       +'<div style="font-family:Tajawal,sans-serif;font-size:13px;color:#19a7b7;font-weight:700;margin-top:2px;">'+item.price+' ر.س</div>'
       +'</div>'
       +'<div style="display:flex;align-items:center;gap:10px;flex-shrink:0;margin-right:10px;">'
