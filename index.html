@@ -1498,6 +1498,7 @@ function tarfihiOrder(){
     <button class="fbtn active" data-f="all">الكل</button>
     <button class="fbtn" data-f="1">غرفة نوم</button>
     <button class="fbtn" data-f="2">غرفتين نوم</button>
+    <button class="fbtn" data-f="shared">مشترك</button>
   </div>
 
   <div class="grid-section"><div class="grid" id="grid"></div></div>
@@ -1942,8 +1943,8 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
   const activeBtn=document.querySelector(`.fbtn[data-f="${f}"]`);
   if(activeBtn) activeBtn.classList.add('active');
   items.forEach(c=>{
-    if(c.id===12) return; // handled separately below
-    const show=(f==='all')||(f==='1'&&c.rooms===1)||(f==='2'&&c.rooms===2);
+    if(c.id===12) return; // handled by static card below
+    const show=(f==='all')||(f==='1'&&c.rooms===1)||(f==='2'&&c.rooms===2)||(f==='shared'&&false);
     const d=document.createElement('div');
     d.className='card'+(show?'':' hidden');
     d.onclick=()=>openM(c.id,type);
