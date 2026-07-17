@@ -2541,7 +2541,12 @@ function menuToggleExtra(extraName, sandwichName, price){
 function menuQty(name, price, delta){
   if(!_menuCart[name]) _menuCart[name] = {price:price, qty:0};
   _menuCart[name].qty += delta;
-  if(_menuCart[name].qty <= 0) delete _menuCart[name];
+  if(_menuCart[name].qty <= 0){
+    delete _menuCart[name];
+    // remove extras linked to this item
+    delete _menuCart['جبنة|'+name];
+    delete _menuCart['بطاطس|'+name];
+  }
   _renderMenuItems();
   _updateMenuCartBar();
 }
