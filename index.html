@@ -1976,7 +1976,8 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
       var imgs12=gl12.map(function(src,i){return '<img src="'+src+'" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:'+(i===0?1:0)+';transition:opacity 0.4s ease;">';}).join('');
       d12.innerHTML='<div class="card-img-wrap" data-cid="12" data-cidx="0" style="position:relative;overflow:hidden;">'+imgs12+'<div class="badge">مشترك</div></div>'
         +'<div class="card-body"><div class="card-name">'+c12.name+'</div>'
-        +'<div style="font-size:12px;color:rgba(255,255,255,0.65);font-family:Tajawal,sans-serif;line-height:1.6;margin-bottom:14px;">منطقة ألعاب مشتركة للأطفال بين الأكواخ لجميع ضيوف المنتجع</div>'
+        +'<div class="card-specs"><div class="card-spec">ألعاب أطفال</div><div class="card-spec">شاشة عرض</div></div>'
+        +'<div class="card-guests"><span class="card-guests-suitable">مشتركة لجميع ضيوف المنتجع</span></div>'
         +'<button class="card-btn">عرض التفاصيل</button></div>';
       g.appendChild(d12);
     }
