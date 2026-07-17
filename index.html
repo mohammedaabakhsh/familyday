@@ -2549,8 +2549,8 @@ function openJalsatDetail(){
 function closeJalsatDetail(){ document.getElementById('jalsat-detail').classList.add('hide'); }
 
 // ===== شارك واربح =====
-function showSharik(){ document.getElementById('sharik-detail').classList.remove('hide'); }
-function closeSharikDetail(){ document.getElementById('sharik-detail').classList.add('hide'); }
+function showSharik(){ document.getElementById('sharik-detail').classList.remove('hide'); history.replaceState(null,'','#sharik'); }
+function closeSharikDetail(){ document.getElementById('sharik-detail').classList.add('hide'); history.replaceState(null,'','#'); }
 function openSharikEmail(){
   window.open('mailto:family999day@gmail.com?subject=مشاركة - شارك واربح - منتجع يوم العائلة', '_blank');
 }
@@ -2654,6 +2654,7 @@ var _tawilatTables = {6:1, 12:2, 18:3, 24:3, 32:4};
 function showTawilat(){ openTawilatDetail(); }
 function openTawilatDetail(){
   document.getElementById('tawilat-detail').classList.remove('hide');
+  history.replaceState(null,'','#tawilat');
   document.body.style.overflow='hidden';
   setTawilatSize(6);
   updateTawilatContents();
@@ -2661,6 +2662,7 @@ function openTawilatDetail(){
 function closeTawilatDetail(){
   document.getElementById('tawilat-detail').classList.add('hide');
   document.body.style.overflow='';
+  history.replaceState(null,'','#');
 }
 function setTawilatSize(n){
   _tawilatSize = n;
@@ -2728,13 +2730,15 @@ function tawilatOrder(){
 }
 
 // ===== بطاقة الولاء =====
-function showWalaa(){ 
+function showWalaa(){
   document.getElementById('walaa-detail').classList.remove('hide');
   document.body.style.overflow='hidden';
+  history.replaceState(null,'','#walaa');
 }
 function closeWalaaDetail(){
   document.getElementById('walaa-detail').classList.add('hide');
   document.body.style.overflow='';
+  history.replaceState(null,'','#');
 }
 </script>
 
@@ -3167,6 +3171,15 @@ function parseHash(){
     setTimeout(function(){ openTarfihiDetail(); },300);
   } else if(hash==='services'){
     setTimeout(function(){ showServices(); },300);
+  } else if(hash==='tawilat'){
+    showServices();
+    setTimeout(function(){ openTawilatDetail(); },300);
+  } else if(hash==='sharik'){
+    showServices();
+    setTimeout(function(){ showSharik(); },300);
+  } else if(hash==='walaa'){
+    showServices();
+    setTimeout(function(){ showWalaa(); },300);
   }
   // Clear hash so next refresh starts fresh
   history.replaceState(null,'',window.location.pathname);
