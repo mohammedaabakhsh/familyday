@@ -2145,7 +2145,11 @@ function closeM(){
     // already back in service-sub, nothing extra needed
   }
 }
-document.getElementById('ov').addEventListener('click',function(e){if(e.target===this)closeM()});
+document.getElementById('ov').addEventListener('click',function(e){if(e.target===this)closeM();});
+document.addEventListener('click',function(e){
+  var a=e.target.closest('.mbtn-book');
+  if(a&&a.href){e.preventDefault();window.open(a.href,'_blank','noopener');}
+});
 
 function open3D(url){
   document.getElementById('iframeEl').src=url;
