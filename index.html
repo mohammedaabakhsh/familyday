@@ -894,6 +894,7 @@ function navCard(el, fn){
 })();
 
 function enterMain(){
+  sessionStorage.setItem('fd_visited','1');
   clearTimeout(_autoEnterTimer);
   // Hide landing immediately so it doesn't flash through fading splash
   document.getElementById('landing').classList.add('hide');
@@ -3135,6 +3136,11 @@ function openMDirect(c){
 function parseHash(){
   var hash = window.location.hash.replace('#','');
   if(!hash) return;
+  // If user already visited this session = refresh, go home instead of restoring deep link
+  if(sessionStorage.getItem('fd_visited')){
+    history.replaceState(null,'',window.location.pathname);
+    return;
+  }
   // Deep link: stop auto-enter timer, skip splash+dest, go directly to section
   clearTimeout(_autoEnterTimer);
   var s=document.getElementById('splash');
