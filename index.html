@@ -1921,7 +1921,7 @@ function openM(id,type){
           dt=line2.length>0?[gTag,'|',...restFirst,'|',...line2,...c.tags.slice(sepIdx)]:[gTag,'|',...restFirst,...c.tags.slice(sepIdx)];
         }
       } else {
-        const gTxt=c.guests===2?'يتسع ضيفين':c.guests>10?'يتسع '+c.guests+' ضيفاً':'يتسع '+c.guests+' ضيوف';
+        const gTxt=c.guests===2?'يتسع لـ شخصين':c.guests>10?'يتسع لـ '+c.guests+' شخصًا':'يتسع لـ '+c.guests+' أشخاص';
         const rTxt=c.rooms===1?'غرفة نوم':'غرفتين نوم';
         dt=[gTxt,'|',rTxt,...line2,...c.tags];
       }
