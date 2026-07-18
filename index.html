@@ -3180,6 +3180,7 @@ function renderChalet2(){
 }
 
 function openMDirect(c){
+  history.replaceState(null,'','#cabin='+c.id);
   _navType='chalet';
   _navItems=_chaletItems2.length?_chaletItems2:[c];
   _navIdx=_navItems.findIndex(function(x){return x.id===c.id;});
