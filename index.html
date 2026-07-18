@@ -3157,8 +3157,8 @@ function closeContact2(){ closeContact(); }
 function renderChalet2(){
   var g=document.getElementById('grid2');g.innerHTML='';
   var items=[
-    {id:20,img:0,name:"القسم الأول",type:"تتضمن مجلساً يتسع حتى 70 شخصاً ومسبحين خاصين",suitable:"مناسب للتجمعات الكبيرة",rooms:2,guests:70,bathroom:0,hall:false,badge:null,tags:["يتسع حتى 70 شخصًا","|","غرفة نوم بسرير مزدوج","غرفة نوم بسريرين مفردين","|","مجلس كبير","3 دورات مياه","|","ركن مطبخ","|","جلسة خارجية","ركن شواء","دورة مياه خارجية","|","مسبح الكبار 5×9 م","مسبح الأطفال 3×7 م","كراسي تشميس"],bookUrl:"https://familyday-sa.com/ar/listings/69cea5753a421f1c8de8cb43"},
-    {id:21,img:5,name:"القسم الثاني",type:"تتضمن مجلساً يتسع حتى 70 شخصاً ومسبحاً خاصاً وملعب طائرة",suitable:"مناسب للتجمعات الكبيرة",rooms:1,guests:70,bathroom:0,hall:false,badge:null,tags:["يتسع حتى 70 شخصًا","|","غرفة نوم بـ3 أسرّة","|","مجلس كبير","3 دورات مياه","|","ركن مطبخ","|","جلسة خارجية","ركن شواء","دورة مياه خارجية","|","مسبح الكبار 5×9 م","كراسي تشميس","|","ملعب طائرة"],bookUrl:"https://familyday-sa.com/ar/listings/69cea610f9674d785069b3c5"}
+    {id:20,img:0,name:"القسم الأول",type:"تتضمن مجلساً يتسع حتى 70 شخصاً ومسبحين خاصين",suitable:"مناسب للتجمعات الكبيرة",rooms:2,guests:70,bathroom:0,hall:false,badge:null,tags:["غرفة نوم بسرير مزدوج","غرفة نوم بسريرين مفردين","|","مجلس كبير","3 دورات مياه","|","ركن مطبخ","|","جلسة خارجية","ركن شواء","دورة مياه خارجية","|","مسبح الكبار 5×9 م","مسبح الأطفال 3×7 م","كراسي تشميس"],bookUrl:"https://familyday-sa.com/ar/listings/69cea5753a421f1c8de8cb43"},
+    {id:21,img:5,name:"القسم الثاني",type:"تتضمن مجلساً يتسع حتى 70 شخصاً ومسبحاً خاصاً وملعب طائرة",suitable:"مناسب للتجمعات الكبيرة",rooms:1,guests:70,bathroom:0,hall:false,badge:null,tags:["غرفة نوم بـ3 أسرّة","|","مجلس كبير","3 دورات مياه","|","ركن مطبخ","|","جلسة خارجية","ركن شواء","دورة مياه خارجية","|","مسبح الكبار 5×9 م","كراسي تشميس","|","ملعب طائرة"],bookUrl:"https://familyday-sa.com/ar/listings/69cea610f9674d785069b3c5"}
   ];
   _chaletItems2=items;
   items.forEach(function(c){
@@ -3201,6 +3201,7 @@ function openMDirect(c){
     '<div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap;">'
     +'<div class="modal-name" style="margin-bottom:0;">'+c.name+'</div>'
     +(c.suitable?'<span style="background:rgba(25,167,183,0.1);border:1px solid rgba(25,167,183,0.25);color:var(--teal);font-size:12px;font-weight:600;padding:3px 10px;border-radius:100px;white-space:nowrap;">'+c.suitable+'</span>':'')
+    +(c.guests>0?'<span style="background:rgba(25,167,183,0.1);border:1px solid rgba(25,167,183,0.25);color:var(--teal);font-size:12px;font-weight:600;padding:3px 10px;border-radius:100px;white-space:nowrap;">يتسع حتى '+c.guests+' شخصًا</span>':'')
     +'</div>'
     +'<div style="display:flex;gap:16px;margin-bottom:20px;font-size:12px;color:rgba(255,255,255,0.68);">'
     +'<span>الدخول: <strong style="color:#7ecfea;">4:00 عصراً</strong></span>'
