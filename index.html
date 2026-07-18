@@ -3220,6 +3220,7 @@ function openMDirect(c){
     +'<div class="modal-btns">'+(c.id!==11?'<a href="'+(c.bookUrl||'https://familyday-sa.com/ar')+'" target="_blank" rel="noopener noreferrer" class="mbtn mbtn-book">احجز الآن</a>':'')
     +'<a href="https://wa.me/966556156693" target="_blank" class="mbtn mbtn-wa">تواصل واتساب</a></div>';
 
+  document.querySelectorAll('#mBody .tags div[style*="margin:4px"]').forEach(function(el){el.remove();});
   var bookBtn2=document.getElementById('modalBookBtn');
   if(bookBtn2) bookBtn2.href=c.bookUrl||'https://familyday-sa.com/ar';
   document.getElementById('ov').classList.add('open');
