@@ -1772,7 +1772,7 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
           const gl2=c.guests>10?c.guests+' شخصًا':c.guests===2?'شخصين':c.guests+' أشخاص';
           const b=c.tags&&c.tags.find(t=>t.includes('بانيو')||t.includes('جاكوزي'));
           const bs=b?(b.includes('داخلي')&&!b.includes('جاكوزي')?'بانيو داخلي':b.includes('خارجي')?'بانيو خارجي':b.includes('جاكوزي')?'جاكوزي داخلي':'بانيو'):'';
-          return '<div class="card-specs"><div class="card-spec">'+(c.rooms===1?'غرفة نوم':'غرفتين نوم')+'</div>'+(bs?'<div class="card-spec">'+bs+'</div>':'')+'</div><div class="card-guests"><span class="card-guests-suitable">تستوعب حتى '+gl2+'</span></div>';
+          return '<div class="card-specs"><div class="card-spec">'+(c.rooms===1?'غرفة نوم':'غرفتين نوم')+'</div>'+(bs?'<div class="card-spec">'+bs+'</div>':'')+'</div><div class="card-guests"><span class="card-guests-suitable">يتسع لـ '+gl2+'</span></div>';
         })()}
         <button class="card-btn">عرض التفاصيل</button>
       </div>`;
@@ -3173,7 +3173,7 @@ function renderChalet2(){
     d.innerHTML='<div class="card-img-wrap" data-cid="'+c.id+'" data-cidx="0" style="position:relative;overflow:hidden;">'+imgHtml+counterHtml+'</div>'
       +'<div class="card-body">'+nameHtml
       +'<div class="card-specs"><div class="card-spec">'+roomsTxt+'</div><div class="card-spec">'+c.suitable+'</div></div>'
-      +'<div class="card-guests"><span class="card-guests-suitable">تستوعب حتى '+c.guests+' شخصًا</span></div>'
+      +'<div class="card-guests"><span class="card-guests-suitable">يتسع لـ '+c.guests+' شخصًا</span></div>'
       +'<button class="card-btn">عرض التفاصيل</button></div>';
     g.appendChild(d);
   });
