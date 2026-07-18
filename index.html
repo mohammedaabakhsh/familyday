@@ -3157,7 +3157,7 @@ function closeContact2(){ closeContact(); }
 function renderChalet2(){
   var g=document.getElementById('grid2');g.innerHTML='';
   var items=[
-    {id:20,img:0,name:"القسم الأول",type:"تتضمن مجلساً يتسع حتى 70 شخصاً ومسبحين خاصين",suitable:"مناسب للتجمعات الكبيرة",rooms:2,guests:70,bathroom:0,hall:false,badge:null,tags:["غرفة نوم بسرير مزدوج","غرفة نوم بسريرين مفردين","|","مجلس كبير","3 دورات مياه","|","ركن مطبخ","|","جلسة خارجية","ركن شواء","دورة مياه خارجية","|","مسبح الكبار 5×9 م","مسبح الأطفال 3×7 م","كراسي تشميس"],bookUrl:"https://familyday-sa.com/ar/listings/69cea5753a421f1c8de8cb43"},
+    {id:20,img:0,name:"القسم الأول",specs:["غرفتين نوم","مسبح للكبار","مسبح للصغار"],type:"تتضمن مجلساً يتسع حتى 70 شخصاً ومسبحين خاصين",suitable:"مناسب للتجمعات الكبيرة",rooms:2,guests:70,bathroom:0,hall:false,badge:null,tags:["غرفة نوم بسرير مزدوج","غرفة نوم بسريرين مفردين","|","مجلس كبير","3 دورات مياه","|","ركن مطبخ","|","جلسة خارجية","ركن شواء","دورة مياه خارجية","|","مسبح الكبار 5×9 م","مسبح الأطفال 3×7 م","كراسي تشميس"],bookUrl:"https://familyday-sa.com/ar/listings/69cea5753a421f1c8de8cb43"},
     {id:21,img:5,name:"القسم الثاني",type:"تتضمن مجلساً يتسع حتى 70 شخصاً ومسبحاً خاصاً وملعب طائرة",suitable:"مناسب للتجمعات الكبيرة",rooms:1,guests:70,bathroom:0,hall:false,badge:null,tags:["غرفة نوم بـ3 أسرّة","|","مجلس كبير","3 دورات مياه","|","ركن مطبخ","|","جلسة خارجية","ركن شواء","دورة مياه خارجية","|","مسبح الكبار 5×9 م","كراسي تشميس","|","ملعب طائرة"],bookUrl:"https://familyday-sa.com/ar/listings/69cea610f9674d785069b3c5"}
   ];
   _chaletItems2=items;
@@ -3172,7 +3172,7 @@ function renderChalet2(){
     var roomsTxt=c.rooms===1?'غرفة نوم':'غرفتين نوم';
     d.innerHTML='<div class="card-img-wrap" data-cid="'+c.id+'" data-cidx="0" style="position:relative;overflow:hidden;">'+imgHtml+counterHtml+'</div>'
       +'<div class="card-body">'+nameHtml
-      +'<div class="card-specs"><div class="card-spec">'+roomsTxt+'</div><div class="card-spec">'+c.suitable+'</div></div>'
+      +'<div class="card-specs">'+(c.specs?c.specs.map(function(s){return '<div class="card-spec">'+s+'</div>';}).join(''):'<div class="card-spec">'+roomsTxt+'</div><div class="card-spec">'+c.suitable+'</div>')+'</div>'
       +'<div class="card-guests"><span class="card-guests-suitable">يتسع حتى '+c.guests+' شخصًا</span></div>'
       +'<button class="card-btn">عرض التفاصيل</button></div>';
     g.appendChild(d);
