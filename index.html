@@ -1421,7 +1421,7 @@ function tarfihiOrder(){
   <div class="modal">
     <div class="modal-topnav">
       <button class="modal-back-btn" onclick="closeM()">❮ العودة إلى الأكواخ</button>
-      <div style="display:flex;align-items:center;gap:4px;">
+      <div id="navBtns" style="display:flex;align-items:center;gap:4px;">
         <button class="modal-topnav-btn" id="nav-prev" onclick="navModal(-1)">&#8250;</button>
         <span class="modal-topnav-counter" id="nav-counter"></span>
         <button class="modal-topnav-btn" id="nav-next" onclick="navModal(1)">&#8249;</button>
@@ -1850,7 +1850,7 @@ function openM(id,type){
   const items=data[type].items;
   if(id===11){
     const c=items.find(x=>x.id===11);
-    document.getElementById('modalBottomBar').style.display='none';
+    document.getElementById('modalBottomBar').style.display='none';document.getElementById('navBtns').style.display='none';
     openGal(11,type);
     document.getElementById('mBody').innerHTML=`
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
@@ -1869,7 +1869,7 @@ function openM(id,type){
     document.body.style.overflow='hidden';
     return;
   }
-  document.getElementById('modalBottomBar').style.display='';
+  document.getElementById('modalBottomBar').style.display='';document.getElementById('navBtns').style.display='';
   const c=items.find(x=>x.id===id);
   _navType=type;
   // Filter navItems to match current filter
