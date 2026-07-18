@@ -1626,6 +1626,7 @@ function bottomNav(tab){
 
 function showSection(type){
   curSection=type;
+  if(type==='resort') history.replaceState(null,'','#resort');
   const d=data[type];
   // Close service sub if open
   const sub=document.getElementById('service-sub');
@@ -3105,6 +3106,7 @@ function goBackToDestination(){
 
 function showSection2(){
   curSection='chalet';
+  history.replaceState(null,'','#chalet');
   document.getElementById('landing2').classList.add('hide');
   var app2=document.getElementById('app2');
   app2.style.display='block';
@@ -3254,6 +3256,10 @@ function parseHash(){
         setTimeout(function(){ openM(id,'resort'); },300);
       }
     }
+  } else if(hash==='resort'){
+    setTimeout(function(){ showSection('resort'); },300);
+  } else if(hash==='chalet'){
+    setTimeout(function(){ showSection2(); },300);
   } else if(hash==='sinema'){
     showServices();
     setTimeout(function(){ openSinemaDetail(); },300);
