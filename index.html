@@ -1898,7 +1898,7 @@ function openM(id,type){
       if(cur.length) groups.push(cur);
       const indoor=groups.slice(0,4);
       const outdoor=groups.slice(4);
-      const chaletTips={'مسبح الكبار 5×9 م':'عمق متدرج من 1 م إلى 2.15 م','مسبح الأطفال 3×7 م':'عمق 65 سم'};
+      const chaletTips={'مسبح للكبار 5×9 م':'عمق متدرج من 1 م إلى 2.15 م','مسبح الأطفال 3×7 م':'عمق 65 سم'};
       const rg=g=>g.map(t=>chaletTips[t]?'<span class="tag" data-tip="'+chaletTips[t]+'">'+t+'</span>':'<span class="tag">'+t+'</span>').join('')+'<div style="width:100%;height:0;margin:4px 0"></div>';
       return '<div class="tags-lbl">المنطقة الداخلية</div><div class="tags">'+indoor.map(rg).join('')+'</div>'
         +'<div class="tags-lbl" style="margin-top:14px;">المنطقة الخارجية</div><div class="tags">'+outdoor.map(rg).join('')+'</div>'
@@ -3158,8 +3158,8 @@ function closeContact2(){ closeContact(); }
 function renderChalet2(){
   var g=document.getElementById('grid2');g.innerHTML='';
   var items=[
-    {id:20,img:0,name:"القسم الأول",specs:["غرفتين نوم","مسبح للكبار","مسبح للصغار"],type:"تتضمن مجلساً يتسع حتى 70 شخصاً ومسبحين خاصين",suitable:"مناسب للتجمعات الكبيرة",rooms:2,guests:70,bathroom:0,hall:false,badge:null,tags:["غرفة نوم بسرير مزدوج","غرفة نوم بسريرين مفردين","|","مجلس كبير","3 دورات مياه","|","ركن مطبخ","|","جلسة خارجية","ركن شواء","دورة مياه خارجية","|","مسبح الكبار 5×9 م","مسبح الأطفال 3×7 م","كراسي تشميس"],bookUrl:"https://familyday-sa.com/ar/listings/69cea5753a421f1c8de8cb43"},
-    {id:21,img:5,name:"القسم الثاني",specs:["غرفة نوم","مسبح للكبار","ملعب طائرة"],type:"تتضمن مجلساً يتسع حتى 70 شخصاً ومسبحاً خاصاً وملعب طائرة",suitable:"مناسب للتجمعات الكبيرة",rooms:1,guests:70,bathroom:0,hall:false,badge:null,tags:["غرفة نوم بـ3 أسرّة","|","مجلس كبير","3 دورات مياه","|","ركن مطبخ","|","جلسة خارجية","ركن شواء","دورة مياه خارجية","|","مسبح الكبار 5×9 م","كراسي تشميس","|","ملعب طائرة"],bookUrl:"https://familyday-sa.com/ar/listings/69cea610f9674d785069b3c5"}
+    {id:20,img:0,name:"القسم الأول",specs:["غرفتين نوم","مسبح للكبار","مسبح للصغار"],type:"تتضمن مجلساً يتسع حتى 70 شخصاً ومسبحين خاصين",suitable:"مناسب للتجمعات الكبيرة",rooms:2,guests:70,bathroom:0,hall:false,badge:null,tags:["غرفة نوم بسرير مزدوج","غرفة نوم بسريرين مفردين","|","مجلس كبير","3 دورات مياه","|","ركن مطبخ","|","جلسة خارجية","ركن شواء","دورة مياه خارجية","|","مسبح للكبار 5×9 م","مسبح الأطفال 3×7 م","كراسي تشميس"],bookUrl:"https://familyday-sa.com/ar/listings/69cea5753a421f1c8de8cb43"},
+    {id:21,img:5,name:"القسم الثاني",specs:["غرفة نوم","مسبح للكبار","ملعب طائرة"],type:"تتضمن مجلساً يتسع حتى 70 شخصاً ومسبحاً خاصاً وملعب طائرة",suitable:"مناسب للتجمعات الكبيرة",rooms:1,guests:70,bathroom:0,hall:false,badge:null,tags:["غرفة نوم بـ3 أسرّة","|","مجلس كبير","3 دورات مياه","|","ركن مطبخ","|","جلسة خارجية","ركن شواء","دورة مياه خارجية","|","مسبح للكبار 5×9 م","كراسي تشميس","|","ملعب طائرة"],bookUrl:"https://familyday-sa.com/ar/listings/69cea610f9674d785069b3c5"}
   ];
   _chaletItems2=items;
   items.forEach(function(c){
@@ -3195,7 +3195,7 @@ function openMDirect(c){
   if(cur.length)groups.push(cur);
   var indoor=groups.slice(0,4);
   var outdoor=groups.slice(4);
-  var chaletTips={'مسبح الكبار 5×9 م':'عمق متدرج من 1 م إلى 2.15 م','مسبح الأطفال 3×7 م':'عمق 65 سم'};
+  var chaletTips={'مسبح للكبار 5×9 م':'عمق متدرج من 1 م إلى 2.15 م','مسبح الأطفال 3×7 م':'عمق 65 سم'};
   function mkTag(t){var tip=chaletTips[t];return tip?'<span class="tag" data-tip="'+tip+'">'+t+'</span>':'<span class="tag">'+t+'</span>';}
   function renderGroup(g){return g.map(mkTag).join('')+'<div style="width:100%;height:0;margin:4px 0"></div>';}
 
