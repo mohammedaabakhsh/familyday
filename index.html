@@ -1845,6 +1845,7 @@ function updGal(total){
 }
 
 function openM(id,type){
+  var bb=document.querySelector('.modal-back-btn');if(bb)bb.innerHTML='❮ العودة إلى الأكواخ';
   type=type||curSection;
   history.replaceState(null,'','#cabin='+id);
   const items=data[type].items;
@@ -3180,6 +3181,7 @@ function renderChalet2(){
 }
 
 function openMDirect(c){
+  var bb=document.querySelector('.modal-back-btn');if(bb)bb.innerHTML='❮ العودة إلى الأقسام';
   history.replaceState(null,'','#cabin='+c.id);
   _navType='chalet';
   _navItems=_chaletItems2.length?_chaletItems2:[c];
