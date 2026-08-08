@@ -694,6 +694,14 @@ header{
 </div>
 
 <script>
+
+function showFaq(){
+  document.getElementById('faq-overlay').classList.remove('hide');
+}
+function closeFaq(){
+  document.getElementById('faq-overlay').classList.add('hide');
+}
+
 function showContact(type){
   type = type || 'resort';
   var mapLink = type === 'stay'
@@ -954,8 +962,56 @@ function tarfihiOrder(){
     </div>
     </div><!-- /lh-float-csl -->
 
+    <!-- FAQ card: standalone row below carousel -->
+    <div style="width:100%;display:flex;justify-content:center;padding:10px 20px 24px;">
+      <div class="lh-card lh-card-teal" onclick="showFaq()" style="max-width:220px;width:100%;">
+        <svg class="lh-ci lh-ci-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div class="lh-ct">الأسئلة الشائعة</div>
+        <div class="lh-ca"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      </div>
+    </div>
+
   </section><!-- /lh-hero -->
 
+</div>
+
+
+<!-- FAQ OVERLAY -->
+<div id="faq-overlay" class="hide" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:9500;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
+  <div style="background:transparent;padding:14px 20px 18px;padding-top:20px;text-align:right;position:relative;">
+    <button onclick="closeFaq()" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.10);border:none;color:rgba(255,255,255,0.85);cursor:pointer;margin-bottom:10px;">
+      <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div style="font-family:Tajawal,sans-serif;font-size:20px;font-weight:700;color:#fff;line-height:1.25;margin-top:8px;">الأسئلة الشائعة</div>
+  </div>
+  <div style="padding:0 16px 32px;display:flex;flex-direction:column;gap:10px;">
+
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">ما هي أوقات الدخول والخروج؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">وقت الدخول من الساعة 4 عصرًا، ووقت الخروج حتى الساعة 12 ظهرًا. يمكن التنسيق مع الفريق لأي استثناءات.</div>
+    </div>
+
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">هل المسبح مسخّن؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">نعم، جميع المسابح الخاصة مسخّنة ويمكن ضبط درجة الحرارة حسب رغبتك قبل الوصول.</div>
+    </div>
+
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">هل يُسمح بإحضار طعام من الخارج؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يُسمح بإحضار الطعام من الخارج، كما يمكنك الاستفادة من خدمة المطعم المتوفرة في المنتجع بأسعار مميزة.</div>
+    </div>
+
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">هل يتوفر واي فاي في المنتجع؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">نعم، يتوفر اتصال إنترنت واي فاي مجاني في جميع أنحاء المنتجع بسرعات عالية.</div>
+    </div>
+
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">هل يمكن الحجز لعدة ساعات فقط؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">الحجز يكون لمدة يوم كامل (24 ساعة). للاستفسار عن خيارات أخرى تواصل معنا مباشرة.</div>
+    </div>
+
+  </div>
 </div>
 
 <!-- SERVICES OVERLAY -->
