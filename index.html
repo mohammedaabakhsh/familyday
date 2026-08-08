@@ -698,16 +698,20 @@ header{
 
 function showFaq2(){
   document.getElementById('faq2-overlay').classList.remove('hide');
+  history.replaceState(null,'','#faq2');
 }
 function closeFaq2(){
   document.getElementById('faq2-overlay').classList.add('hide');
+  history.replaceState(null,'','#');
 }
 
 function showFaq(){
   document.getElementById('faq-overlay').classList.remove('hide');
+  history.replaceState(null,'','#faq');
 }
 function closeFaq(){
   document.getElementById('faq-overlay').classList.add('hide');
+  history.replaceState(null,'','#');
 }
 
 function showContact(type){
@@ -3572,6 +3576,12 @@ function parseHash(){
   } else if(hash==='menu'){
     showServices();
     setTimeout(function(){ openMenuDetail(); },300);
+  } else if(hash==='faq'){
+    var l=document.getElementById('landing');if(l) l.classList.remove('hide');
+    setTimeout(function(){ showFaq(); },300);
+  } else if(hash==='faq2'){
+    var l2=document.getElementById('landing2');if(l2) l2.classList.remove('hide');
+    setTimeout(function(){ showFaq2(); },300);
   }
   // Clear hash so next refresh starts fresh
   history.replaceState(null,'',window.location.pathname);
