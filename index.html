@@ -695,6 +695,14 @@ header{
 
 <script>
 
+
+function showFaq2(){
+  document.getElementById('faq2-overlay').classList.remove('hide');
+}
+function closeFaq2(){
+  document.getElementById('faq2-overlay').classList.add('hide');
+}
+
 function showFaq(){
   document.getElementById('faq-overlay').classList.remove('hide');
 }
@@ -1440,9 +1448,110 @@ function tarfihiOrder(){
         </div>
       </div>
     </div>
+
+    <!-- FAQ card for chalet -->
+    <div style="width:100%;display:flex;justify-content:center;padding:10px 20px 24px;">
+      <div class="lh-card lh-card-teal" onclick="showFaq2()" style="max-width:220px;width:100%;">
+        <svg class="lh-ci lh-ci-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div class="lh-ct">الأسئلة الشائعة</div>
+        <div class="lh-ca"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      </div>
+    </div>
+
   </section>
 </div>
 
+
+<!-- FAQ2 OVERLAY (chalet) -->
+<div id="faq2-overlay" class="hide" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:9500;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
+  <div style="background:transparent;padding:14px 20px 18px;padding-top:20px;text-align:right;position:relative;">
+    <button onclick="closeFaq2()" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.10);border:none;color:rgba(255,255,255,0.85);cursor:pointer;margin-bottom:10px;">
+      <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div style="font-family:Tajawal,sans-serif;font-size:20px;font-weight:700;color:#fff;line-height:1.25;margin-top:8px;">الأسئلة الشائعة</div>
+  </div>
+  <div style="padding:0 16px 32px;display:flex;flex-direction:column;gap:10px;">
+
+    <div style="font-family:Tajawal,sans-serif;font-size:12px;font-weight:700;color:rgba(25,167,183,.85);padding:8px 2px 4px;margin-top:6px;">الحجز وأوقات الدخول</div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">1. ما أوقات الدخول والخروج؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">الدخول الساعة 4:00 مساءً، والخروج الساعة 12:00 ظهرًا.</div>
+    </div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">2. كيف يمكنني الحجز؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يمكن الحجز مباشرة عبر الموقع الإلكتروني أو تطبيق يوم العائلة.</div>
+    </div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">3. ما طرق الدفع المتاحة؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يتوفر الدفع عبر مدى وفيزا، كما يمكن الدفع نقدًا أو عبر جهاز نقاط البيع في الموقع.</div>
+    </div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">4. هل يمكن تمديد وقت الإقامة؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">نعم، يتوفر تمديد وقت الإقامة مقابل رسوم إضافية، حسب التوفر والتنسيق المسبق.</div>
+    </div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">5. هل يمكن تعديل أو إلغاء الحجز؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يمكن تعديل أو إلغاء الحجز وفق سياسة الحجز والإلغاء المعتمدة.</div>
+    </div>
+
+    <div style="font-family:Tajawal,sans-serif;font-size:12px;font-weight:700;color:rgba(25,167,183,.85);padding:8px 2px 4px;margin-top:6px;">الاستراحة والمرافق</div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">1. كم عدد الأقسام في الاستراحة؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">تتكون الاستراحة من قسمين مستقلين، يمكن حجز كل قسم بشكل منفصل أو الاثنين معًا.</div>
+    </div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">2. كم تتسع الاستراحة؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يتسع كل قسم حتى 70 شخصًا، وعند حجز القسمين معًا تصل السعة إلى 140 شخصًا.</div>
+    </div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">3. هل لكل قسم مسبح خاص؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">نعم، يضم كل قسم مسبحًا خاصًا للكبار، ويوجد في القسم الأول أيضًا مسبح للأطفال.</div>
+    </div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">4. ما مواصفات المسابح؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">مسبح الكبار 4×8 م بعمق متدرج من 1 م إلى 2 م، ومسبح الأطفال 2×6 م بعمق 65 سم.</div>
+    </div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">5. ماذا يتوفر داخل الاستراحة؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يتوفر مجلس كبير، غرف نوم، 3 دورات مياه، ركن مطبخ، جلسة خارجية وركن شواء.</div>
+    </div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">6. هل يتوفر موقف سيارة؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">نعم، يتوفر موقف سيارة لضيوف الاستراحة.</div>
+    </div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">7. هل تتوفر غرفة سائق؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">نعم، تتوفر غرفة سائق حسب التوفر.</div>
+    </div>
+
+    <div style="font-family:Tajawal,sans-serif;font-size:12px;font-weight:700;color:rgba(25,167,183,.85);padding:8px 2px 4px;margin-top:6px;">الخدمات والتعليمات</div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">1. هل يوجد مطعم داخل الاستراحة؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">نعم، يوجد مطعم يقدم مجموعة من الوجبات والمشروبات.</div>
+    </div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">2. ما الخدمات الإضافية المتوفرة؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">تتوفر خدمات مثل طاولات الطعام، الجلسات الخارجية، الألعاب المائية والألعاب الترفيهية.</div>
+    </div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">3. هل يمكن ترتيب الاستراحة لمناسبة خاصة؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">نعم، نوفر تنسيقات للمناسبات الخاصة، ويُفضل التواصل مسبقًا للتنسيق.</div>
+    </div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">4. هل يُسمح بإحضار الطعام من الخارج؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">نعم، يُسمح بإحضار الطعام من الخارج، كما يمكن الطلب من المطعم داخل الاستراحة.</div>
+    </div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">5. هل يُسمح بإحضار الحيوانات الأليفة؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">لا، لا يُسمح بإحضار الحيوانات الأليفة داخل الاستراحة.</div>
+    </div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">6. هل يوجد فريق خدمة؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">نعم، يتوفر فريق خدمة للمساعدة والرد على الاستفسارات.</div>
+    </div>
+
+  </div>
+</div>
 <!-- STAY CONTACT PAGE (f2) -->
 <!-- STAY APP (f2) -->
 <div id="app2" style="display:none;position:fixed;inset:0;overflow-y:auto;padding-bottom:env(safe-area-inset-bottom,0px);">
