@@ -1,23 +1,7 @@
-<!DOCTYPE html><!-- v999-bust -->
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<script>
-// Force clear any old service workers and caches
-if('serviceWorker' in navigator){
-  navigator.serviceWorker.getRegistrations().then(function(regs){
-    regs.forEach(function(r){r.unregister();});
-  });
-}
-if('caches' in window){
-  caches.keys().then(function(names){
-    names.forEach(function(n){caches.delete(n);});
-  });
-}
-</script>
-<meta http-equiv="Expires" content="0">
 <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" href="imgs/icon.png">
   <link rel="apple-touch-icon" href="imgs/icon.png">
