@@ -2143,12 +2143,12 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
     d.onclick=()=>openM(c.id,type);
     d.innerHTML=`
       <div class="card-img-wrap" data-cid="${c.id}" data-cidx="0" style="position:relative;overflow:hidden;">
-        ${(function(){var gl=GALLERY[c.id]||[IMG[c.img]];if(c.id===1)return '<img src="'+gl[0]+'" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity 0.25s ease;">';return gl.map(function(src,i){return '<img src="'+src+'" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:'+(i===0?1:0)+';transition:opacity 0.4s ease;">';}).join('');})()}
+        ${(function(){var gl=GALLERY[c.id]||[IMG[c.img]];return '<img src="'+gl[0]+'" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;">';})()}
         ${c.badge?`<div class="badge">${c.badge}</div>`:''}
-        ${(function(){var gl=GALLERY[c.id]||[];if(c.id===1||gl.length<=1)return '';return '<button class="card-slide-btn card-slide-prev" onclick="event.stopPropagation();cardSlide(this.closest(\'.card-img-wrap\'),-1)">&#10095;</button><button class="card-slide-btn card-slide-next" onclick="event.stopPropagation();cardSlide(this.closest(\'.card-img-wrap\'),1)">&#10094;</button><div style=\"position:absolute;bottom:10px;left:12px;background:rgba(19,53,72,0.55);color:#fff;font-family:Tajawal,sans-serif;font-size:12px;border-radius:12px;padding:3px 9px;z-index:2;\" class=\"card-counter\">1 من '+gl.length+'</div>';})()}
+        ${''}
       </div>
       <div class="card-body">
-        ${(function(){var gl=GALLERY[c.id]||[];if(c.id===1)return '<div class="card-name" style="width:100%;text-align:center;font-size:22px;color:#19A7B7;">'+c.name+'</div>';if(gl.length<=1)return '<div class="card-name">'+c.name+'</div>';return '<div style="display:flex;align-items:center;justify-content:space-between;width:100%;margin-bottom:14px;"><button onclick="event.stopPropagation();cardSlide(this.closest(\'.card\').querySelector(\'.card-img-wrap\'),-1)" style="width:30px;height:30px;flex-shrink:0;border-radius:50%;background:rgba(25,167,183,0.15);border:1px solid rgba(25,167,183,0.35);color:#7ecfea;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#10094;</button><div style="font-size:19px;font-weight:700;color:#fff;text-align:center;flex:1;font-family:Tajawal,sans-serif;">'+c.name+'</div><button onclick="event.stopPropagation();cardSlide(this.closest(\'.card\').querySelector(\'.card-img-wrap\'),1)" style="width:30px;height:30px;flex-shrink:0;border-radius:50%;background:rgba(25,167,183,0.15);border:1px solid rgba(25,167,183,0.35);color:#7ecfea;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#10095;</button></div>';})()}
+        ${'<div class="card-name" style="width:100%;text-align:center;font-size:22px;color:#19A7B7;">'+c.name+'</div>'}
         ${(()=>{
           if(c.id===11) return '<div style="font-size:10px;color:rgba(255,255,255,0.55);font-family:Tajawal,sans-serif;line-height:1.5;margin-bottom:10px;white-space:normal;word-break:break-word;">منطقة ألعاب مشتركة للأطفال بين الأكواخ لجميع ضيوف المنتجع</div>';
           const gl2=c.guests>10?c.guests+' ضيفًا':c.guests===2?'ضيفين':c.guests+' ضيوف';
@@ -2156,7 +2156,7 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
           const bs=b?(b.includes('داخلي')&&!b.includes('جاكوزي')?'بانيو داخلي':b.includes('خارجي')?'بانيو خارجي':b.includes('جاكوزي')?'جاكوزي داخلي':'بانيو'):'';
           return '<div class="card-specs"><div class="card-spec">'+(c.rooms===1?'غرفة نوم':'غرفتين نوم')+'</div>'+(bs?'<div class="card-spec">'+bs+'</div>':'')+'</div><div class="card-guests"><span class="card-guests-suitable">يتسع حتى '+gl2+'</span></div>';
         })()}
-        <button class="card-btn">${c.id===1?'عرض التفاصيل والصور':'عرض التفاصيل'}</button>
+        <button class="card-btn">عرض التفاصيل والصور</button>
       </div>`;
     g.appendChild(d);
   });
@@ -2168,12 +2168,12 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
       var d12=document.createElement('div');
       d12.className='card';
       d12.onclick=function(){openM(11,'resort');};
-      var imgs12=gl12.map(function(src,i){return '<img src="'+src+'" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:'+(i===0?1:0)+';transition:opacity 0.4s ease;">';}).join('');
+      var imgs12=gl12.length?'<img src="'+gl12[0]+'" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;">':'';
       d12.innerHTML='<div class="card-img-wrap" data-cid="11" data-cidx="0" style="position:relative;overflow:hidden;">'+imgs12+'<div class="badge">مشترك</div></div>'
-        +'<div class="card-body"><div class="card-name">'+c12.name+'</div>'
+        +'<div class="card-body"><div class="card-name" style="width:100%;text-align:center;font-size:22px;color:#19A7B7;">'+c12.name+'</div>'
         +'<div class="card-specs"><div class="card-spec">ألعاب أطفال</div><div class="card-spec">شاشة عرض</div></div>'
         +'<div class="card-guests"><span class="card-guests-suitable">مناسب لجميع الضيوف</span></div>'
-        +'<button class="card-btn">عرض التفاصيل</button></div>';
+        +'<button class="card-btn">عرض التفاصيل والصور</button></div>';
       g.appendChild(d12);
     }
   }
@@ -3554,15 +3554,15 @@ function renderChalet2(){
     d.className='card';
     d.onclick=function(){openMDirect(c);};
     var gl=GALLERY[c.id]||[];
-    var imgHtml=gl.map(function(src,i){return '<img src="'+src+'" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:'+(i===0?1:0)+';transition:opacity 0.4s ease;">';}).join('');
-    var counterHtml=gl.length>1?'<div style="position:absolute;bottom:10px;left:12px;background:rgba(19,53,72,0.55);color:#fff;font-family:Tajawal,sans-serif;font-size:12px;border-radius:12px;padding:3px 9px;z-index:2;" class="card-counter">1 من '+gl.length+'</div>':'';
-    var nameHtml=gl.length>1?'<div style="display:flex;align-items:center;justify-content:space-between;width:100%;margin-bottom:14px;"><button onclick="event.stopPropagation();cardSlide(this.closest(\'.card\').querySelector(\'.card-img-wrap\'),-1)" style="width:30px;height:30px;flex-shrink:0;border-radius:50%;background:rgba(25,167,183,0.15);border:1px solid rgba(25,167,183,0.35);color:#7ecfea;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#10094;</button><div style="font-size:19px;font-weight:700;color:#fff;text-align:center;flex:1;font-family:Tajawal,sans-serif;">'+c.name+'</div><button onclick="event.stopPropagation();cardSlide(this.closest(\'.card\').querySelector(\'.card-img-wrap\'),1)" style="width:30px;height:30px;flex-shrink:0;border-radius:50%;background:rgba(25,167,183,0.15);border:1px solid rgba(25,167,183,0.35);color:#7ecfea;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#10095;</button></div>':'<div class="card-name">'+c.name+'</div>';
+    var imgHtml=gl.length?'<img src="'+gl[0]+'" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;">':'';
+    var counterHtml='';
+    var nameHtml='<div class="card-name" style="width:100%;text-align:center;font-size:22px;color:#19A7B7;">'+c.name+'</div>';
     var roomsTxt=c.rooms===1?'غرفة نوم':'غرفتين نوم';
     d.innerHTML='<div class="card-img-wrap" data-cid="'+c.id+'" data-cidx="0" style="position:relative;overflow:hidden;">'+imgHtml+counterHtml+'</div>'
       +'<div class="card-body">'+nameHtml
       +'<div class="card-specs">'+(c.specs?c.specs.map(function(s){return '<div class="card-spec">'+s+'</div>';}).join(''):'<div class="card-spec">'+roomsTxt+'</div><div class="card-spec">'+c.suitable+'</div>')+'</div>'
       +'<div class="card-guests"><span class="card-guests-suitable">يتسع حتى '+c.guests+' ضيفًا</span></div>'
-      +'<button class="card-btn">عرض التفاصيل</button></div>';
+      +'<button class="card-btn">عرض التفاصيل والصور</button></div>';
     g.appendChild(d);
   });
 }
