@@ -2189,7 +2189,13 @@ function openGal(id,type){
   imgs.forEach((src,i)=>{
     const el=document.createElement('img');
     el.className='gal-img'+(i===0?' active':'');
-    el.src=src;w.appendChild(el);
+    el.src=src;
+    if(id===1){
+      el.style.cursor='zoom-in';
+      el.setAttribute('aria-label','تكبير الصورة');
+      el.onclick=function(){openDomeLightbox(i);};
+    }
+    w.appendChild(el);
   });
   // Add arrows + counter if multiple images
   if(imgs.length>1){
@@ -2224,6 +2230,76 @@ function updGal(total){
   document.querySelectorAll('.gal-dot').forEach((el,i)=>el.classList.toggle('active',i===galIdx));
   var ctr=document.getElementById('gal-counter');
   if(ctr)ctr.textContent=(galIdx+1)+' من '+total;
+}
+
+function openDomeLightbox(startIndex){
+  var imgs=GALLERY[1]||[];
+  if(!imgs.length)return;
+  var old=document.getElementById('domeLightbox');
+  if(old)old.remove();
+  var idx=Math.max(0,Math.min(parseInt(startIndex||0),imgs.length-1));
+  var previousOverflow=document.body.style.overflow;
+
+  var overlay=document.createElement('div');
+  overlay.id='domeLightbox';
+  overlay.setAttribute('role','dialog');
+  overlay.setAttribute('aria-label','صور بيت الدوم');
+  overlay.setAttribute('style','position:fixed;inset:0;background:rgba(3,16,25,0.96);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:99999;display:flex;align-items:center;justify-content:center;padding:18px;box-sizing:border-box;');
+
+  var image=document.createElement('img');
+  image.setAttribute('style','display:block;max-width:100%;max-height:88vh;width:auto;height:auto;object-fit:contain;border-radius:10px;box-shadow:0 14px 50px rgba(0,0,0,0.45);');
+
+  var counter=document.createElement('div');
+  counter.setAttribute('style','position:absolute;bottom:max(18px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:rgba(14,42,58,0.82);border:1px solid rgba(25,167,183,0.4);color:#fff;font-family:Tajawal,sans-serif;font-size:13px;border-radius:18px;padding:6px 14px;');
+
+  function makeButton(label,aria,style){
+    var b=document.createElement('button');
+    b.type='button';
+    b.textContent=label;
+    b.setAttribute('aria-label',aria);
+    b.setAttribute('style',style);
+    return b;
+  }
+  var common='position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:1px solid rgba(25,167,183,0.45);background:rgba(14,42,58,0.82);color:#fff;font-size:28px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;';
+  var nextBtn=makeButton('‹','الصورة التالية',common+'left:12px;');
+  var prevBtn=makeButton('›','الصورة السابقة',common+'right:12px;');
+  var closeBtn=makeButton('×','إغلاق الصورة','position:absolute;top:max(14px,env(safe-area-inset-top));right:14px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,0.22);background:rgba(14,42,58,0.82);color:#fff;font-size:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:3;');
+
+  function show(){
+    image.src=imgs[idx];
+    counter.textContent=(idx+1)+' من '+imgs.length;
+    nextBtn.disabled=idx===imgs.length-1;
+    prevBtn.disabled=idx===0;
+    nextBtn.style.opacity=nextBtn.disabled?'0.3':'1';
+    prevBtn.style.opacity=prevBtn.disabled?'0.3':'1';
+    galIdx=idx;
+    updGal(imgs.length);
+  }
+  function close(){
+    window.removeEventListener('keydown',keyHandler);
+    document.body.style.overflow=previousOverflow;
+    overlay.remove();
+  }
+  function keyHandler(e){
+    if(e.key==='Escape')close();
+    if(e.key==='ArrowLeft'&&!nextBtn.disabled){idx++;show();}
+    if(e.key==='ArrowRight'&&!prevBtn.disabled){idx--;show();}
+  }
+  nextBtn.onclick=function(e){e.stopPropagation();if(idx<imgs.length-1){idx++;show();}};
+  prevBtn.onclick=function(e){e.stopPropagation();if(idx>0){idx--;show();}};
+  closeBtn.onclick=function(e){e.stopPropagation();close();};
+  image.onclick=function(e){e.stopPropagation();};
+  overlay.onclick=function(e){if(e.target===overlay)close();};
+
+  overlay.appendChild(image);
+  overlay.appendChild(counter);
+  overlay.appendChild(nextBtn);
+  overlay.appendChild(prevBtn);
+  overlay.appendChild(closeBtn);
+  document.body.appendChild(overlay);
+  document.body.style.overflow='hidden';
+  window.addEventListener('keydown',keyHandler);
+  show();
 }
 
 function openM(id,type){
