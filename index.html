@@ -2221,11 +2221,12 @@ function openM(id,type){
       const kGroups=kIdx>=0?groups.slice(kIdx,groups.length-1):[];
       const indoor=[...indoorBase,...kGroups];
       const outdoor=groups.slice(oIdx>=0?oIdx:2,kIdx>=0?kIdx:groups.length);
+      const poolNote=outdoor.some(g=>g.some(t=>t.includes('مسبح'))) ? '<div style="font-family:Tajawal,sans-serif;font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;margin-top:-2px;margin-bottom:12px;">يُسمح للأطفال باستخدام المسبح تحت إشراف ذويهم.</div>' : '';
       const tipMap={'بانيو داخلي':'ضمن غرفة النوم','بانيو خارجي':'بانيو خارجي بخصوصية كاملة','بانيو داخلي مع جاكوزي':'ضمن غرفة النوم الرئيسية','ميني بار':'سناكس ومشروبات متنوعة بأسعار رمزية'};
       const rt=t=>{if(t.includes('::')){const[d,tip]=t.split('::');return '<span class="tag" data-tip="'+tip+'">'+d+'</span>';}if(t.includes('||')){return '<span class="tag">'+t.replace('||',' ')+'</span>';}const tip=tipMap[t];return tip?'<span class="tag" data-tip="'+tip+'">'+t+'</span>':'<span class="tag">'+t+'</span>';};
       const rg=g=>g.map(rt).join('')+'<div style="width:100%;height:0;margin:4px 0"></div>';
       return '<div class="tags-lbl">المنطقة الداخلية</div><div class="tags">'+indoor.map(rg).join('')+'</div>'
-        +'<div class="tags-lbl" style="margin-top:14px;">المنطقة الخارجية</div><div class="tags">'+outdoor.map(rg).join('')+'</div>'
+        +'<div class="tags-lbl" style="margin-top:14px;">المنطقة الخارجية</div><div class="tags">'+outdoor.map(rg).join('')+'</div>'+poolNote
         +'<div class="tags-lbl" style="margin-top:12px;">مرافق المطبخ</div><div class="tags" style="margin-bottom:16px;"><span class="tag">موقد كهربائي</span><span class="tag">ثلاجة</span><span class="tag">مايكرويف</span><span class="tag">غلاية</span><span class="tag">ماكينة قهوة</span></div>'
         +'<div class="tags-lbl" style="margin-top:12px;">مميزات مكان الإقامة</div><div class="tags" style="margin-bottom:16px;"><span class="tag">واي فاي مجاني</span><span class="tag">تلفزيون</span><span class="tag">سماعات داخلية (ساوند بار)</span><span class="tag" data-tip="متاح يومياً من 1 ظهراً حتى 12 منتصف الليل">مطعم ومشروبات خفيفة</span><span class="tag">موقف سيارة</span><span class="tag" data-tip="متاح حسب التوفر">غرفة سائق</span></div>';
     })()}
