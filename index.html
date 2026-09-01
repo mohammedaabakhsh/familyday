@@ -692,6 +692,7 @@ header{
 
 
 function showFaq2(){
+  initStayFaqAccordion();
   document.getElementById('faq2-overlay').classList.remove('hide');
   history.replaceState(null,'','#faq2');
 }
@@ -706,6 +707,34 @@ function toggleResortFaq(card, question){
 }
 function initResortFaqAccordion(){
   var list = document.getElementById('faq-list-resort');
+  if(!list) return;
+  Array.from(list.children).forEach(function(card){
+    if(card.classList.contains('faq-accordion-card') || card.children.length < 2) return;
+    var question = card.children[0];
+    var answer = card.children[1];
+    if(!/^\d+\./.test(question.textContent.trim())) return;
+    card.classList.add('faq-accordion-card');
+    question.classList.add('faq-question-row');
+    answer.classList.add('faq-answer');
+    question.setAttribute('role','button');
+    question.setAttribute('tabindex','0');
+    question.setAttribute('aria-expanded','false');
+    var arrow = document.createElement('span');
+    arrow.className = 'faq-chevron';
+    arrow.textContent = '⌄';
+    question.appendChild(arrow);
+    question.addEventListener('click',function(){ toggleResortFaq(card,question); });
+    question.addEventListener('keydown',function(event){
+      if(event.key === 'Enter' || event.key === ' '){
+        event.preventDefault();
+        toggleResortFaq(card,question);
+      }
+    });
+  });
+}
+
+function initStayFaqAccordion(){
+  var list = document.getElementById('faq-list-stay');
   if(!list) return;
   Array.from(list.children).forEach(function(card){
     if(card.classList.contains('faq-accordion-card') || card.children.length < 2) return;
@@ -1031,20 +1060,26 @@ function tarfihiOrder(){
 
 
 <style>
-#faq-list-resort .faq-question-row{
+#faq-list-resort .faq-question-row,
+#faq-list-stay .faq-question-row{
   display:flex;align-items:center;justify-content:space-between;gap:12px;
   margin-bottom:0!important;cursor:pointer;outline:none;
 }
-#faq-list-resort .faq-question-row:focus-visible{
+#faq-list-resort .faq-question-row:focus-visible,
+#faq-list-stay .faq-question-row:focus-visible{
   box-shadow:0 0 0 2px rgba(126,207,234,.65);border-radius:8px;
 }
-#faq-list-resort .faq-answer{display:none;margin-top:8px;}
-#faq-list-resort .faq-accordion-card.open .faq-answer{display:block;}
-#faq-list-resort .faq-chevron{
+#faq-list-resort .faq-answer,
+#faq-list-stay .faq-answer{display:none;margin-top:8px;}
+#faq-list-resort .faq-accordion-card.open .faq-answer,
+#faq-list-stay .faq-accordion-card.open .faq-answer{display:block;}
+#faq-list-resort .faq-chevron,
+#faq-list-stay .faq-chevron{
   color:#7ecfea;font-size:18px;line-height:1;flex-shrink:0;
   transition:transform .22s ease;
 }
-#faq-list-resort .faq-accordion-card.open .faq-chevron{transform:rotate(180deg);}
+#faq-list-resort .faq-accordion-card.open .faq-chevron,
+#faq-list-stay .faq-accordion-card.open .faq-chevron{transform:rotate(180deg);}
 </style>
 
 <!-- FAQ OVERLAY -->
@@ -1540,7 +1575,7 @@ function tarfihiOrder(){
     </button>
     <div style="font-family:Tajawal,sans-serif;font-size:20px;font-weight:700;color:#fff;line-height:1.25;margin-top:8px;">الأسئلة الشائعة</div>
   </div>
-  <div style="padding:0 16px 32px;display:flex;flex-direction:column;gap:10px;">
+  <div id="faq-list-stay" style="padding:0 16px 32px;display:flex;flex-direction:column;gap:10px;">
     <div style="font-family:Tajawal,sans-serif;font-size:12px;font-weight:700;color:rgba(25,167,183,.85);padding:8px 2px 4px;margin-top:6px;">الحجز وأوقات الدخول</div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">1. أين تقع استراحة يوم العائلة؟</div>
