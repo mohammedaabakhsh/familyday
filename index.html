@@ -2700,11 +2700,11 @@ function openJalsatDetail(){
 function closeJalsatDetail(){ document.getElementById('jalsat-detail').classList.add('hide'); }
 
 // ===== المنيو =====
-var _menuCat = 'ساندوتشات';
+var _menuCat = 'ساندويتشات';
 var _menuCart = {}; // {name: {price, qty}}
 
 var _menuData = {
-  'ساندوتشات': [
+  'ساندويتشات': [
     {name:'ساندوتش دجاج زنجر',price:11,cheese:true},
     {name:'برجر لحم',price:9,cheese:true},
     {name:'برجر دجاج',price:9,cheese:true},
@@ -2769,7 +2769,7 @@ function openMenuDetail(){
   document.getElementById('menu-detail').classList.remove('hide');
   history.replaceState(null,'','#menu');
   _menuCart = {};
-  _menuCat = 'ساندوتشات';
+  _menuCat = 'ساندويتشات';
   _renderMenuCats();
   _renderMenuItems();
   _updateMenuCartBar();
