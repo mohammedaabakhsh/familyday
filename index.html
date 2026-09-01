@@ -1083,7 +1083,7 @@ function tarfihiOrder(){
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">11. ما مرافق المطبخ المتوفرة؟</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يتوفر موقد كهربائي، ثلاجة، مايكرويف، غلاية، وأدوات مطبخ أساسية.</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يتوفر موقد كهربائي، ثلاجة، ميكروويف، غلاية، وأدوات مطبخ أساسية.</div>
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">12. هل توجد شواية في الأكواخ؟</div>
@@ -1538,7 +1538,7 @@ function tarfihiOrder(){
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">5. ما مرافق المطبخ المتوفرة؟</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يتوفر موقد كهربائي، ثلاجة، مايكرويف، وغلاية.</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يتوفر موقد كهربائي، ثلاجة، ميكروويف، وغلاية.</div>
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">6. هل توجد شواية في الاستراحة؟</div>
@@ -2188,7 +2188,7 @@ function openM(id,type){
       const rg=g=>g.map(t=>chaletTips[t]?'<span class="tag" data-tip="'+chaletTips[t]+'">'+t+'</span>':'<span class="tag">'+t+'</span>').join('')+'<div style="width:100%;height:0;margin:4px 0"></div>';
       return '<div class="tags-lbl">المنطقة الداخلية</div><div class="tags">'+indoor.map(rg).join('')+'</div>'
         +'<div class="tags-lbl" style="margin-top:14px;">المنطقة الخارجية</div><div class="tags">'+outdoor.map(rg).join('')+'</div>'
-        +'<div class="tags-lbl" style="margin-top:14px;">مرافق المطبخ</div><div class="tags" style="margin-bottom:16px;"><span class="tag">موقد كهربائي</span><span class="tag">ثلاجة</span><span class="tag">مايكرويف</span><span class="tag">غلاية كهربائية</span></div>'
+        +'<div class="tags-lbl" style="margin-top:14px;">مرافق المطبخ</div><div class="tags" style="margin-bottom:16px;"><span class="tag">موقد كهربائي</span><span class="tag">ثلاجة</span><span class="tag">ميكروويف</span><span class="tag">غلاية كهربائية</span></div>'
         +'<div class="tags-lbl" style="margin-top:14px;">مميزات مكان الإقامة</div><div class="tags" style="margin-bottom:16px;"><span class="tag">تلفزيون ذكي</span><span class="tag">سماعات داخلية (ساوند بار)</span></div>'
         +'<div class="tags-lbl" style="margin-top:14px;">الخدمات الإضافية</div><div class="tags" style="margin-bottom:16px;"><span class="tag">زحليقة</span><span class="tag">ملعب صابوني</span></div>';
     })() : (()=>{
@@ -2227,7 +2227,7 @@ function openM(id,type){
       const rg=g=>g.map(rt).join('')+'<div style="width:100%;height:0;margin:4px 0"></div>';
       return '<div class="tags-lbl">المنطقة الداخلية</div><div class="tags">'+indoor.map(rg).join('')+'</div>'
         +'<div class="tags-lbl" style="margin-top:14px;">المنطقة الخارجية</div><div class="tags">'+outdoor.map(rg).join('')+'</div>'+poolNote
-        +'<div class="tags-lbl" style="margin-top:12px;">مرافق المطبخ</div><div class="tags" style="margin-bottom:16px;"><span class="tag">موقد كهربائي</span><span class="tag">ثلاجة</span><span class="tag">مايكرويف</span><span class="tag">غلاية</span><span class="tag">ماكينة قهوة</span></div>'
+        +'<div class="tags-lbl" style="margin-top:12px;">مرافق المطبخ</div><div class="tags" style="margin-bottom:16px;"><span class="tag">موقد كهربائي</span><span class="tag">ثلاجة</span><span class="tag">ميكروويف</span><span class="tag">غلاية</span><span class="tag">ماكينة قهوة</span></div>'
         +'<div class="tags-lbl" style="margin-top:12px;">مميزات مكان الإقامة</div><div class="tags" style="margin-bottom:16px;"><span class="tag">واي فاي مجاني</span><span class="tag">تلفزيون ذكي</span><span class="tag">سماعات داخلية (ساوند بار)</span><span class="tag" data-tip="متاح يومياً من 1 ظهراً حتى 12 منتصف الليل">مطعم ومشروبات خفيفة</span><span class="tag">موقف سيارة</span><span class="tag" data-tip="متاح حسب التوفر">غرفة سائق</span></div>';
     })()}
 
@@ -3505,7 +3505,7 @@ function openMDirect(c){
     +'<div class="tags-lbl" style="color:#19a7b7;margin-top:24px;">المنطقة الخارجية</div>'
     +'<div class="tags">'+outdoor.map(renderGroup).join('')+'</div>'
     +'<div class="tags-lbl" style="color:#19a7b7;margin-top:24px;">مرافق المطبخ</div>'
-    +'<div class="tags" style="margin-bottom:12px;"><span class="tag">موقد كهربائي</span><span class="tag">ثلاجة</span><span class="tag">مايكرويف</span><span class="tag">غلاية كهربائية</span></div>'
+    +'<div class="tags" style="margin-bottom:12px;"><span class="tag">موقد كهربائي</span><span class="tag">ثلاجة</span><span class="tag">ميكروويف</span><span class="tag">غلاية كهربائية</span></div>'
     +'<div class="tags-lbl" style="color:#19a7b7;margin-top:24px;">مميزات الاستراحة</div>'
     +'<div class="tags" style="margin-bottom:12px;"><span class="tag">تلفزيون ذكي</span><span class="tag">سماعات داخلية (ساوند بار)</span></div>'
     +'<div class="tags-lbl" style="color:#19a7b7;margin-top:24px;">الخدمات الإضافية</div>'
