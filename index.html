@@ -868,10 +868,10 @@ function sendOrderWhatsapp(){
       var p = _menuCart[k].price;
       // format extras nicely
       var display = k.indexOf('|')!==-1 ? '  ↳ '+k.split('|')[0]+' × '+q : k+' × '+q;
-      lines.push('• '+display+' = '+(q*p)+' ر.س');
+      lines.push('• '+display+' = '+(q*p)+' ريال');
       total += q*p;
     });
-    lines.push('','الإجمالي: '+total+' ر.س');
+    lines.push('','الإجمالي: '+total+' ريال');
     if(notes) lines.push('ملاحظات: '+notes);
     msg = lines.join('\n');
     _isMenuOrder = false;
@@ -1207,7 +1207,7 @@ function tarfihiOrder(){
         </div>
         <div style="background:rgba(14,36,58,.80);border:1.5px solid rgba(25,167,183,.35);border-radius:14px;;padding:10px 24px;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 2px 10px rgba(25,167,183,.08);text-align:center;min-width:110px;">
           <div style="font-size:12px;color:rgba(255,255,255,0.68);font-family:'Tajawal',sans-serif;margin-bottom:4px;">سعر الخدمة</div>
-          <div style="font-size:15px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;">150 ر.س</div>
+          <div style="font-size:15px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;">150 ريال</div>
         </div>
       </div>
     </div>
@@ -1269,7 +1269,7 @@ function tarfihiOrder(){
   <div id="maiya-game-name" style="text-align:center;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;color:#fff;padding:10px 20px 0;"></div>
   <div style="text-align:center;padding:4px 20px 0;">
     <div style="font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;color:#fff;">اختر 3 ألعاب من القائمة</div>
-    <div style="font-family:'Tajawal',sans-serif;font-size:12px;color:#7ecfea;margin-top:2px;">الباقة تشمل 3 ألعاب بسعر 50 ر.س</div>
+    <div style="font-family:'Tajawal',sans-serif;font-size:12px;color:#7ecfea;margin-top:2px;">الباقة تشمل 3 ألعاب بسعر 50 ريال</div>
   </div>
   <div style="text-align:center;padding:6px 20px 4px;">
     <button id="maiya-select-btn" onclick="toggleMaiyaGame()" style="background:rgba(255,255,255,.08);border:1.5px solid rgba(25,167,183,.35);color:#7ecfea;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;padding:7px 28px;border-radius:20px;cursor:pointer;">اختر اللعبة</button>
@@ -1285,7 +1285,7 @@ function tarfihiOrder(){
         </div>
         <div style="background:rgba(14,36,58,.80);border:1.5px solid rgba(25,167,183,.35);border-radius:14px;;padding:10px 24px;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 2px 10px rgba(25,167,183,.08);text-align:center;min-width:110px;">
           <div style="font-size:12px;color:rgba(255,255,255,0.68);font-family:'Tajawal',sans-serif;margin-bottom:4px;">سعر الباقة</div>
-          <div style="font-size:15px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;">50 ر.س</div>
+          <div style="font-size:15px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;">50 ريال</div>
         </div>
       </div>
     </div>
@@ -1293,7 +1293,7 @@ function tarfihiOrder(){
       <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:10px;">تعليمات وملاحظات</div>
       <div style="display:flex;flex-direction:column;gap:6px;">
         <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:12px;color:rgba(255,255,255,0.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> اختر 3 ألعاب من القائمة.</div>
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:12px;color:rgba(255,255,255,0.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> الباقة بسعر 50 ر.س.</div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:12px;color:rgba(255,255,255,0.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> الباقة بسعر 50 ريال.</div>
         <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:12px;color:rgba(255,255,255,0.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> الألعاب متاحة حسب التوفر.</div>
         <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:12px;color:rgba(255,255,255,0.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> يرجى المحافظة عليها وإعادتها بحالتها الأصلية.</div>
         <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:12px;color:rgba(255,255,255,0.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> تطبق جميع الشروط والأحكام.</div>
@@ -1354,7 +1354,7 @@ function tarfihiOrder(){
       <label onclick="toggleJalsatCake()" id="jalsat-cake-label" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:10px 14px;border-radius:12px;border:1.5px solid rgba(255,255,255,.12);transition:all 0.2s;">
         <div>
           <div style="font-size:14px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;">🎂 كيك وعصير</div>
-          <div style="font-size:15px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;margin-top:2px;">170 ر.س</div>
+          <div style="font-size:15px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;margin-top:2px;">170 ريال</div>
         </div>
         <div id="jalsat-cake-toggle" style="width:48px;height:26px;border-radius:13px;background:rgba(255,255,255,.15);position:relative;transition:background 0.2s;flex-shrink:0;">
           <div id="jalsat-cake-knob" style="width:22px;height:22px;border-radius:11px;background:#fff;position:absolute;top:2px;right:2px;transition:transform 0.2s;box-shadow:0 1px 4px rgba(0,0,0,0.2);"></div>
@@ -2646,12 +2646,12 @@ function maiyaOrderNow(){
 // ===== الجلسات الخارجية =====
 var _jalsatIdx = 0;
 var _jalsatAllSessions = [
-  {name:'جلسة بإطار مثلث', persons:'شخصين', personsCat:'2', price:'300 ر.س', desc:'جلسة تتسع حتى شخصين تضم إطارًا مثلثًا وطاولة وكرسيين مزينة بالشموع والورود بإطلالة على المسبح والحديقة', img:'imgs/jalsat_1.webp'},
-  {name:'الخيمة الهرمية', persons:'شخصين', personsCat:'2', price:'300 ر.س', desc:'خيمة تتسع حتى شخصين تضم طاولة صغيرة مزينة بالشموع والورود مع فرشة أرضية ومخدات بإطلالة على المسبح والحديقة', img:'imgs/jalsat_2.webp'},
-  {name:'جلسة أرضية', persons:'4 أشخاص', personsCat:'4', price:'200 ر.س', desc:'جلسة تتسع حتى 4 أشخاص تضم طاولة أرضية مزينة بالشموع والورود مع فرشة أرضية ومخدات بإطلالة على المسبح والحديقة', img:'imgs/jalsat_3.webp'},
-  {name:'جلسة خارجية', persons:'4 أشخاص', personsCat:'4', price:'300 ر.س', desc:'جلسة تتسع حتى 4 أشخاص تضم إطارًا خشبيًا وطاولة أرضية مزينة بالشموع والورود مع فرشات ومخدات بإطلالة على المسبح والحديقة', img:'imgs/jalsat_4.webp'},
-  {name:'جلسة خارجية', persons:'8 أشخاص', personsCat:'8', price:'550 ر.س', desc:'جلسة تتسع حتى 8 أشخاص تضم إطارًا خشبيًا وطاولة أرضية مزينة بالشموع والورود مع فرشات ومخدات بإطلالة على المسبح والحديقة', img:'imgs/jalsat_5.webp'},
-  {name:'جلسة خارجية', persons:'12 شخص', personsCat:'12', price:'650 ر.س', desc:'جلسة تتسع حتى 12 شخصًا تضم إطارًا خشبيًا وطاولة أرضية مزينة بالشموع والورود مع فرشات ومخدات بإطلالة على المسبح والحديقة', img:'imgs/jalsat_6.webp'}
+  {name:'جلسة بإطار مثلث', persons:'شخصين', personsCat:'2', price:'300 ريال', desc:'جلسة تتسع حتى شخصين تضم إطارًا مثلثًا وطاولة وكرسيين مزينة بالشموع والورود بإطلالة على المسبح والحديقة', img:'imgs/jalsat_1.webp'},
+  {name:'الخيمة الهرمية', persons:'شخصين', personsCat:'2', price:'300 ريال', desc:'خيمة تتسع حتى شخصين تضم طاولة صغيرة مزينة بالشموع والورود مع فرشة أرضية ومخدات بإطلالة على المسبح والحديقة', img:'imgs/jalsat_2.webp'},
+  {name:'جلسة أرضية', persons:'4 أشخاص', personsCat:'4', price:'200 ريال', desc:'جلسة تتسع حتى 4 أشخاص تضم طاولة أرضية مزينة بالشموع والورود مع فرشة أرضية ومخدات بإطلالة على المسبح والحديقة', img:'imgs/jalsat_3.webp'},
+  {name:'جلسة خارجية', persons:'4 أشخاص', personsCat:'4', price:'300 ريال', desc:'جلسة تتسع حتى 4 أشخاص تضم إطارًا خشبيًا وطاولة أرضية مزينة بالشموع والورود مع فرشات ومخدات بإطلالة على المسبح والحديقة', img:'imgs/jalsat_4.webp'},
+  {name:'جلسة خارجية', persons:'8 أشخاص', personsCat:'8', price:'550 ريال', desc:'جلسة تتسع حتى 8 أشخاص تضم إطارًا خشبيًا وطاولة أرضية مزينة بالشموع والورود مع فرشات ومخدات بإطلالة على المسبح والحديقة', img:'imgs/jalsat_5.webp'},
+  {name:'جلسة خارجية', persons:'12 شخص', personsCat:'12', price:'650 ريال', desc:'جلسة تتسع حتى 12 شخصًا تضم إطارًا خشبيًا وطاولة أرضية مزينة بالشموع والورود مع فرشات ومخدات بإطلالة على المسبح والحديقة', img:'imgs/jalsat_6.webp'}
 ];
 var _jalsatSessions = _jalsatAllSessions.slice();
 var _jalsatFilter = 'all';
@@ -2813,7 +2813,7 @@ function _renderMenuItems(){
           +'<div style="flex:1;min-width:0;">'
           +'<div style="font-family:Tajawal,sans-serif;font-size:13px;font-weight:600;color:rgba(255,255,255,.9);">'+v.label+'</div>'
           +(v.desc?'<div style="font-family:Tajawal,sans-serif;font-size:11px;color:rgba(25,167,183,.75);margin-top:1px;">'+v.desc+'</div>':'')
-          +'<div style="font-family:Tajawal,sans-serif;font-size:13px;color:#19a7b7;font-weight:700;margin-top:2px;">'+(v.price?v.price+' ر.س':'—')+'</div>'
+          +'<div style="font-family:Tajawal,sans-serif;font-size:13px;color:#19a7b7;font-weight:700;margin-top:2px;">'+(v.price?v.price+' ريال':'—')+'</div>'
           +'</div>'
           +'<div style="display:flex;align-items:center;gap:8px;flex-shrink:0;margin-right:8px;">'+ctrl+'</div>'
           +'</div>';
@@ -2828,14 +2828,14 @@ function _renderMenuItems(){
     var cheeseQty = (_menuCart[cheeseKey] && _menuCart[cheeseKey].qty) || 0;
     var extrasBtn = (item.cheese && qty > 0)
       ? '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:7px;">'
-        +'<button onclick="menuToggleExtra(&apos;جبنة&apos;,&apos;'+item.name+'&apos;,1)" style="font-family:Tajawal,sans-serif;font-size:11px;padding:3px 10px;border-radius:20px;cursor:pointer;border:1.5px solid '+(cheeseQty>0?'#19a7b7':'rgba(255,255,255,.25)')+';background:'+(cheeseQty>0?'rgba(25,167,183,.2)':'transparent')+';color:'+(cheeseQty>0?'#19a7b7':'rgba(255,255,255,.5)')+';transition:all .2s;">'+(cheeseQty>0?'✓ ':'')+'+ جبنة  1 ر.س</button>'
+        +'<button onclick="menuToggleExtra(&apos;جبنة&apos;,&apos;'+item.name+'&apos;,1)" style="font-family:Tajawal,sans-serif;font-size:11px;padding:3px 10px;border-radius:20px;cursor:pointer;border:1.5px solid '+(cheeseQty>0?'#19a7b7':'rgba(255,255,255,.25)')+';background:'+(cheeseQty>0?'rgba(25,167,183,.2)':'transparent')+';color:'+(cheeseQty>0?'#19a7b7':'rgba(255,255,255,.5)')+';transition:all .2s;">'+(cheeseQty>0?'✓ ':'')+'+ جبنة  1 ريال</button>'
         +'</div>'
       : '';
     return '<div style="display:flex;align-items:center;justify-content:space-between;background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border:1.5px solid rgba(25,167,183,.15);border-radius:14px;padding:12px 14px;">'
       +'<div style="flex:1;min-width:0;">'
       +'<div style="font-family:Tajawal,sans-serif;font-size:14px;font-weight:600;color:#fff;line-height:1.4;">'+item.name+'</div>'
       +(item.desc?'<div style="font-family:Tajawal,sans-serif;font-size:11px;color:rgba(255,255,255,.45);margin-top:2px;">'+item.desc+'</div>':'')
-      +'<div style="font-family:Tajawal,sans-serif;font-size:13px;color:#19a7b7;font-weight:700;margin-top:2px;">'+item.price+' ر.س</div>'
+      +'<div style="font-family:Tajawal,sans-serif;font-size:13px;color:#19a7b7;font-weight:700;margin-top:2px;">'+item.price+' ريال</div>'
       +extrasBtn
       +'</div>'
       +'<div style="display:flex;align-items:center;gap:10px;flex-shrink:0;margin-right:10px;">'
@@ -2885,7 +2885,7 @@ function _updateMenuCartBar(){
   keys.forEach(function(k){ if(k.indexOf('|')===-1) totalQty += _menuCart[k].qty; totalPrice += _menuCart[k].qty * _menuCart[k].price; });
   bar.style.display = 'flex';
   document.getElementById('menu-cart-summary').textContent = totalQty + (totalQty===1?' صنف':' أصناف');
-  document.getElementById('menu-cart-total').textContent = 'الإجمالي: ' + totalPrice + ' ر.س';
+  document.getElementById('menu-cart-total').textContent = 'الإجمالي: ' + totalPrice + ' ريال';
 }
 
 function menuOrderNow(){
@@ -2917,7 +2917,7 @@ function toggleJalsatCake(){
     label.style.border = '1.5px solid #19a7b7';
     var s = _jalsatSessions[_jalsatIdx];
     var base = parseInt(s.price);
-    totalPrice.textContent = (base + 170) + ' ر.س';
+    totalPrice.textContent = (base + 170) + ' ريال';
     totalRow.style.display = 'flex';
   } else {
     toggle.style.background = '#e8e2d8';
@@ -2932,7 +2932,7 @@ function getJalsatOrderText(){
   var txt = s.name + ' - ' + s.persons + ' - السعر: ' + s.price;
   if(_jalsatCakeAdded){
     var base = parseInt(s.price);
-    txt += ' + كيك وعصير (170 ر.س) - المجموع: ' + (base+170) + ' ر.س';
+    txt += ' + كيك وعصير (170 ريال) - المجموع: ' + (base+170) + ' ريال';
   }
   return txt;
 }
@@ -2956,20 +2956,20 @@ function jalsatGoTo(idx){
 
 var _maiyaIdx = 0;
 var _maiyaAllGames = [
-  {name:'لعبة 1', rent:'40 ر.س', comp:'170 ر.س', cat:'كبار', img:'imgs/maiya_1.webp'},
-  {name:'لعبة 2', rent:'30 ر.س', comp:'120 ر.س', cat:'كبار', img:'imgs/maiya_2.webp'},
-  {name:'لعبة 3', rent:'10 ر.س', comp:'40 ر.س', cat:'كبار', img:'imgs/maiya_3.webp'},
-  {name:'لعبة 4', rent:'5 ر.س', comp:'10 ر.س', cat:'صغار', img:'imgs/maiya_4.webp'},
-  {name:'لعبة 5', rent:'10 ر.س', comp:'20 ر.س', cat:'صغار', img:'imgs/maiya_5.webp'},
-  {name:'لعبة 6', rent:'10 ر.س', comp:'20 ر.س', cat:'صغار', img:'imgs/maiya_6.webp'},
-  {name:'لعبة 7', rent:'15 ر.س', comp:'30 ر.س', cat:'صغار', img:'imgs/maiya_7.webp'},
-  {name:'لعبة 8', rent:'30 ر.س', comp:'90 ر.س', cat:'صغار', img:'imgs/maiya_8.webp'},
-  {name:'لعبة 9', rent:'40 ر.س', comp:'150 ر.س', cat:'صغار', img:'imgs/maiya_9.webp'},
-  {name:'لعبة 10', rent:'55 ر.س', comp:'160 ر.س', cat:'صغار', img:'imgs/maiya_10.webp'},
-  {name:'لعبة 11', rent:'40 ر.س', comp:'130 ر.س', cat:'صغار', img:'imgs/maiya_11.webp'},
-  {name:'لعبة 12', rent:'40 ر.س', comp:'140 ر.س', cat:'صغار', img:'imgs/maiya_12.webp'},
-  {name:'لعبة 13', rent:'40 ر.س', comp:'150 ر.س', cat:'صغار', img:'imgs/maiya_13.webp'},
-  {name:'لعبة 14', rent:'150 ر.س', comp:'1200 ر.س', cat:'عائلة', img:'imgs/maiya_14.webp'}
+  {name:'لعبة 1', rent:'40 ريال', comp:'170 ريال', cat:'كبار', img:'imgs/maiya_1.webp'},
+  {name:'لعبة 2', rent:'30 ريال', comp:'120 ريال', cat:'كبار', img:'imgs/maiya_2.webp'},
+  {name:'لعبة 3', rent:'10 ريال', comp:'40 ريال', cat:'كبار', img:'imgs/maiya_3.webp'},
+  {name:'لعبة 4', rent:'5 ريال', comp:'10 ريال', cat:'صغار', img:'imgs/maiya_4.webp'},
+  {name:'لعبة 5', rent:'10 ريال', comp:'20 ريال', cat:'صغار', img:'imgs/maiya_5.webp'},
+  {name:'لعبة 6', rent:'10 ريال', comp:'20 ريال', cat:'صغار', img:'imgs/maiya_6.webp'},
+  {name:'لعبة 7', rent:'15 ريال', comp:'30 ريال', cat:'صغار', img:'imgs/maiya_7.webp'},
+  {name:'لعبة 8', rent:'30 ريال', comp:'90 ريال', cat:'صغار', img:'imgs/maiya_8.webp'},
+  {name:'لعبة 9', rent:'40 ريال', comp:'150 ريال', cat:'صغار', img:'imgs/maiya_9.webp'},
+  {name:'لعبة 10', rent:'55 ريال', comp:'160 ريال', cat:'صغار', img:'imgs/maiya_10.webp'},
+  {name:'لعبة 11', rent:'40 ريال', comp:'130 ريال', cat:'صغار', img:'imgs/maiya_11.webp'},
+  {name:'لعبة 12', rent:'40 ريال', comp:'140 ريال', cat:'صغار', img:'imgs/maiya_12.webp'},
+  {name:'لعبة 13', rent:'40 ريال', comp:'150 ريال', cat:'صغار', img:'imgs/maiya_13.webp'},
+  {name:'لعبة 14', rent:'150 ريال', comp:'1200 ريال', cat:'عائلة', img:'imgs/maiya_14.webp'}
 ];
 var _maiyaGames = _maiyaAllGames.slice();
 var _maiyaFilter = 'all';
@@ -3025,8 +3025,8 @@ function updateTawilatPrices(){
   var p = _tawilatPrices[_tawilatSize];
   var el1 = document.getElementById('tawilat-price-tansiq');
   var el2 = document.getElementById('tawilat-price-plain');
-  if(el1) el1.textContent = p.tansiq + ' ر.س';
-  if(el2) el2.textContent = p.plain + ' ر.س';
+  if(el1) el1.textContent = p.tansiq + ' ريال';
+  if(el2) el2.textContent = p.plain + ' ريال';
 }
 function selectTawilatOpt(opt){
   _tawilatOpt = opt;
@@ -3048,7 +3048,7 @@ function updateTawilatSummary(){
   var optName = _tawilatOpt==='tansiq' ? 'مع تنسيق' : 'بدون تنسيق';
   box.style.display = 'block';
   lbl.textContent = _tawilatSize + ' أشخاص - ' + optName;
-  priceEl.textContent = p + ' ر.س';
+  priceEl.textContent = p + ' ريال';
 }
 function updateTawilatContents(){
   var el = document.getElementById('tawilat-contents-list');
@@ -3072,7 +3072,7 @@ function tawilatOrder(){
   if(!_tawilatOpt){ alert('يرجى اختيار الخيار أولاً'); return; }
   var opt = _tawilatOpt==='tansiq' ? 'مع تنسيق' : 'بدون تنسيق';
   var price = _tawilatPrices[_tawilatSize][_tawilatOpt];
-  var name = 'طاولات الطعام - ' + _tawilatSize + ' أشخاص - ' + opt + ' (' + price + ' ر.س)';
+  var name = 'طاولات الطعام - ' + _tawilatSize + ' أشخاص - ' + opt + ' (' + price + ' ريال)';
   openOrderPopup(name);
 }
 
@@ -3182,14 +3182,14 @@ function closeWalaaDetail(){
             <div style="font-size:14px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;">بوكس الألعاب</div>
             <div style="font-size:12px;color:rgba(255,255,255,0.68);font-family:'Tajawal',sans-serif;margin-top:3px;">يضم مجموعة من الألعاب الترفيهية</div>
           </div>
-          <div style="font-size:16px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;white-space:nowrap;margin-right:12px;">50 ر.س</div>
+          <div style="font-size:16px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;white-space:nowrap;margin-right:12px;">50 ريال</div>
         </label>
         <label id="tarfihi-opt-table" onclick="selectTarfihiOpt('table')" style="display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.07);border-radius:14px;padding:10px 16px;cursor:pointer;border:2px solid transparent;">
           <div>
             <div style="font-size:14px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;">طاولة مع بوكس الألعاب</div>
             <div style="font-size:12px;color:rgba(255,255,255,0.68);font-family:'Tajawal',sans-serif;margin-top:3px;">تشمل طاولة، أربعة كراسي، وبوكس ألعاب</div>
           </div>
-          <div style="font-size:16px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;white-space:nowrap;margin-right:12px;">150 ر.س</div>
+          <div style="font-size:16px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;white-space:nowrap;margin-right:12px;">150 ريال</div>
         </label>
       </div>
     </div>
@@ -3257,14 +3257,14 @@ function closeWalaaDetail(){
             <div style="font-size:14px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;">بدون تنسيق</div>
             <div style="font-size:12px;color:rgba(255,255,255,0.68);font-family:'Tajawal',sans-serif;margin-top:3px;">طاولات وكراسٍ فقط</div>
           </div>
-          <div id="tawilat-price-plain" style="font-size:18px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;white-space:nowrap;margin-right:12px;">199 ر.س</div>
+          <div id="tawilat-price-plain" style="font-size:18px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;white-space:nowrap;margin-right:12px;">199 ريال</div>
         </label>
         <label id="tawilat-opt-tansiq" onclick="selectTawilatOpt('tansiq')" style="display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.07);border-radius:14px;padding:14px 16px;cursor:pointer;border:0.5px solid transparent;box-shadow:0 2px 8px rgba(19,53,72,0.1);">
           <div>
             <div style="font-size:14px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;">مع تنسيق</div>
             <div style="font-size:12px;color:rgba(255,255,255,0.68);font-family:'Tajawal',sans-serif;margin-top:3px;">طاولات وكراسٍ مع تنسيق متكامل</div>
           </div>
-          <div id="tawilat-price-tansiq" style="font-size:18px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;white-space:nowrap;margin-right:12px;">399 ر.س</div>
+          <div id="tawilat-price-tansiq" style="font-size:18px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;white-space:nowrap;margin-right:12px;">399 ريال</div>
         </label>
       </div>
     </div>
