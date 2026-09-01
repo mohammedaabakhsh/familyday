@@ -700,7 +700,40 @@ function closeFaq2(){
   history.replaceState(null,'','#');
 }
 
+function toggleResortFaq(card, question){
+  var isOpen = card.classList.toggle('open');
+  question.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+}
+function initResortFaqAccordion(){
+  var list = document.getElementById('faq-list-resort');
+  if(!list) return;
+  Array.from(list.children).forEach(function(card){
+    if(card.classList.contains('faq-accordion-card') || card.children.length < 2) return;
+    var question = card.children[0];
+    var answer = card.children[1];
+    if(!/^\d+\./.test(question.textContent.trim())) return;
+    card.classList.add('faq-accordion-card');
+    question.classList.add('faq-question-row');
+    answer.classList.add('faq-answer');
+    question.setAttribute('role','button');
+    question.setAttribute('tabindex','0');
+    question.setAttribute('aria-expanded','false');
+    var arrow = document.createElement('span');
+    arrow.className = 'faq-chevron';
+    arrow.textContent = '⌄';
+    question.appendChild(arrow);
+    question.addEventListener('click',function(){ toggleResortFaq(card,question); });
+    question.addEventListener('keydown',function(event){
+      if(event.key === 'Enter' || event.key === ' '){
+        event.preventDefault();
+        toggleResortFaq(card,question);
+      }
+    });
+  });
+}
+
 function showFaq(){
+  initResortFaqAccordion();
   document.getElementById('faq-overlay').classList.remove('hide');
   history.replaceState(null,'','#faq');
 }
@@ -997,6 +1030,23 @@ function tarfihiOrder(){
 </div>
 
 
+<style>
+#faq-list-resort .faq-question-row{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  margin-bottom:0!important;cursor:pointer;outline:none;
+}
+#faq-list-resort .faq-question-row:focus-visible{
+  box-shadow:0 0 0 2px rgba(126,207,234,.65);border-radius:8px;
+}
+#faq-list-resort .faq-answer{display:none;margin-top:8px;}
+#faq-list-resort .faq-accordion-card.open .faq-answer{display:block;}
+#faq-list-resort .faq-chevron{
+  color:#7ecfea;font-size:18px;line-height:1;flex-shrink:0;
+  transition:transform .22s ease;
+}
+#faq-list-resort .faq-accordion-card.open .faq-chevron{transform:rotate(180deg);}
+</style>
+
 <!-- FAQ OVERLAY -->
 <div id="faq-overlay" class="hide" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:9500;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
   <div style="background:transparent;padding:14px 20px 18px;padding-top:20px;text-align:right;position:relative;">
@@ -1005,7 +1055,7 @@ function tarfihiOrder(){
     </button>
     <div style="font-family:Tajawal,sans-serif;font-size:20px;font-weight:700;color:#fff;line-height:1.25;margin-top:8px;">الأسئلة الشائعة</div>
   </div>
-  <div style="padding:0 16px 32px;display:flex;flex-direction:column;gap:10px;">
+  <div id="faq-list-resort" style="padding:0 16px 32px;display:flex;flex-direction:column;gap:10px;">
 
     <div style="font-family:Tajawal,sans-serif;font-size:12px;font-weight:700;color:rgba(25,167,183,.85);padding:8px 2px 4px;margin-top:6px;">الحجز وأوقات الدخول</div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
