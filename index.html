@@ -1263,7 +1263,7 @@ function tarfihiOrder(){
       <!-- Right arrow -->
       <button onclick="maiyaGoTo(_maiyaIdx-1)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:rgba(19,53,72,0.7);border:none;color:#fff;width:40px;height:40px;border-radius:50%;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;direction:ltr;">&#10095;</button>
       <!-- Counter -->
-      <div id="maiya-counter" style="position:absolute;bottom:10px;left:12px;background:rgba(19,53,72,0.55);color:#fff;font-family:'Tajawal',sans-serif;font-size:12px;border-radius:12px;padding:3px 10px;">1 / 2</div>
+      <div id="maiya-counter" style="position:absolute;bottom:10px;left:12px;background:rgba(19,53,72,0.55);color:#fff;font-family:'Tajawal',sans-serif;font-size:12px;border-radius:12px;padding:3px 10px;">1 من 2</div>
     </div>
   <div id="maiya-game-name" style="text-align:center;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;color:#fff;padding:10px 20px 0;"></div>
   <div style="text-align:center;padding:4px 20px 0;">
@@ -1324,7 +1324,7 @@ function tarfihiOrder(){
     <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:12px;color:#7ecfea;margin-bottom:8px;white-space:nowrap;">اختر عدد الأشخاص لعرض السعر المناسب</div>
     <div style="position:relative;overflow:hidden;border-radius:18px;background:rgba(8,22,40,.95);box-shadow:0 4px 20px rgba(0,0,0,.3);">
       <div id="jalsat-slides" style="display:flex;direction:rtl;transition:transform 0.35s ease;will-change:transform;"></div>
-      <div id="jalsat-counter" style="position:absolute;bottom:10px;left:12px;background:rgba(19,53,72,0.55);color:#fff;font-family:'Tajawal',sans-serif;font-size:12px;border-radius:12px;padding:3px 10px;">1 / 6</div>
+      <div id="jalsat-counter" style="position:absolute;bottom:10px;left:12px;background:rgba(19,53,72,0.55);color:#fff;font-family:'Tajawal',sans-serif;font-size:12px;border-radius:12px;padding:3px 10px;">1 من 6</div>
     </div>
     <div style="display:flex;align-items:center;justify-content:center;gap:14px;padding:12px 20px 0;">
       <button onclick="jalsatGoTo(_jalsatIdx-1)" style="background:rgba(25,167,183,0.15);border:1px solid rgba(25,167,183,0.35);color:#7ecfea;width:36px;height:36px;border-radius:50%;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;">&#10094;</button>
@@ -1970,7 +1970,7 @@ function openGalDirect(c){
     var ctr=document.createElement('div');
     ctr.id='gal-counter';
     ctr.setAttribute('style','position:absolute;bottom:10px;left:12px;background:rgba(19,53,72,0.55);color:#fff;font-family:Tajawal,sans-serif;font-size:12px;border-radius:12px;padding:3px 10px;z-index:20;');
-    ctr.textContent='1 / '+imgs.length;
+    ctr.textContent='1 من '+imgs.length;
     w.appendChild(ctr);
   }
   var _gsx=0;
@@ -2020,7 +2020,7 @@ function cardSlide(wrap,dir){
   var allImgs=wrap.querySelectorAll('img');
   allImgs.forEach(function(el,i){el.style.opacity=i===idx?1:0;});
   var counter=wrap.querySelector('.card-counter');
-  if(counter)counter.textContent=(idx+1)+' / '+imgs.length;
+  if(counter)counter.textContent=(idx+1)+' من '+imgs.length;
 }
 
 
@@ -2046,7 +2046,7 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
       <div class="card-img-wrap" data-cid="${c.id}" data-cidx="0" style="position:relative;overflow:hidden;">
         ${(GALLERY[c.id]||[IMG[c.img]]).map(function(src,i){return '<img src=\"'+src+'\" loading=\"lazy\" style=\"position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:'+(i===0?1:0)+';transition:opacity 0.4s ease;\">';}).join('')}
         ${c.badge?`<div class="badge">${c.badge}</div>`:''}
-        ${(function(){var gl=GALLERY[c.id]||[];if(gl.length<=1)return '';return '<button class="card-slide-btn card-slide-prev" onclick="event.stopPropagation();cardSlide(this.closest(\'.card-img-wrap\'),-1)">&#10095;</button><button class="card-slide-btn card-slide-next" onclick="event.stopPropagation();cardSlide(this.closest(\'.card-img-wrap\'),1)">&#10094;</button><div style=\"position:absolute;bottom:10px;left:12px;background:rgba(19,53,72,0.55);color:#fff;font-family:Tajawal,sans-serif;font-size:12px;border-radius:12px;padding:3px 9px;z-index:2;\" class=\"card-counter\">1 / '+gl.length+'</div>';})()}
+        ${(function(){var gl=GALLERY[c.id]||[];if(gl.length<=1)return '';return '<button class="card-slide-btn card-slide-prev" onclick="event.stopPropagation();cardSlide(this.closest(\'.card-img-wrap\'),-1)">&#10095;</button><button class="card-slide-btn card-slide-next" onclick="event.stopPropagation();cardSlide(this.closest(\'.card-img-wrap\'),1)">&#10094;</button><div style=\"position:absolute;bottom:10px;left:12px;background:rgba(19,53,72,0.55);color:#fff;font-family:Tajawal,sans-serif;font-size:12px;border-radius:12px;padding:3px 9px;z-index:2;\" class=\"card-counter\">1 من '+gl.length+'</div>';})()}
       </div>
       <div class="card-body">
         ${(function(){var gl=GALLERY[c.id]||[];if(gl.length<=1)return '<div class="card-name">'+c.name+'</div>';return '<div style="display:flex;align-items:center;justify-content:space-between;width:100%;margin-bottom:14px;"><button onclick="event.stopPropagation();cardSlide(this.closest(\'.card\').querySelector(\'.card-img-wrap\'),-1)" style="width:30px;height:30px;flex-shrink:0;border-radius:50%;background:rgba(25,167,183,0.15);border:1px solid rgba(25,167,183,0.35);color:#7ecfea;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#10094;</button><div style="font-size:19px;font-weight:700;color:#fff;text-align:center;flex:1;font-family:Tajawal,sans-serif;">'+c.name+'</div><button onclick="event.stopPropagation();cardSlide(this.closest(\'.card\').querySelector(\'.card-img-wrap\'),1)" style="width:30px;height:30px;flex-shrink:0;border-radius:50%;background:rgba(25,167,183,0.15);border:1px solid rgba(25,167,183,0.35);color:#7ecfea;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#10095;</button></div>';})()}
@@ -2107,7 +2107,7 @@ function openGal(id,type){
     var ctr=document.createElement('div');
     ctr.id='gal-counter';
     ctr.setAttribute('style','position:absolute;bottom:10px;left:12px;background:rgba(19,53,72,0.55);color:#fff;font-family:Tajawal,sans-serif;font-size:12px;border-radius:12px;padding:3px 10px;z-index:20;');
-    ctr.textContent='1 / '+imgs.length;
+    ctr.textContent='1 من '+imgs.length;
     w.appendChild(ctr);
   }
 }
@@ -2124,7 +2124,7 @@ function updGal(total){
   document.querySelectorAll('.gal-img').forEach((el,i)=>el.classList.toggle('active',i===galIdx));
   document.querySelectorAll('.gal-dot').forEach((el,i)=>el.classList.toggle('active',i===galIdx));
   var ctr=document.getElementById('gal-counter');
-  if(ctr)ctr.textContent=(galIdx+1)+' / '+total;
+  if(ctr)ctr.textContent=(galIdx+1)+' من '+total;
 }
 
 function openM(id,type){
@@ -2278,7 +2278,7 @@ function updateNavUI(){
   if(!prev||!next) return;
   prev.disabled = _navIdx===0;
   next.disabled = _navIdx===_navItems.length-1;
-  counter.textContent = (_navIdx+1) + ' / ' + _navItems.length;
+  counter.textContent = (_navIdx+1) + ' من ' + _navItems.length;
 }
 
 function closeM(){
@@ -2328,7 +2328,7 @@ document.querySelectorAll('.fbtn').forEach(b=>{
   <div class="fs-track" id="fsTrack"></div>
   <div class="fs-bottom">
     <button class="fs-nav-btn" onclick="moveFS(-1)">&#8249;</button>
-    <div class="fs-counter" id="fsCounter">1 \ 1</div>
+    <div class="fs-counter" id="fsCounter">1 من 1</div>
     <button class="fs-nav-btn" onclick="moveFS(1)">&#8250;</button>
   </div>
 </div>
@@ -2389,7 +2389,7 @@ function moveFS(dir){fsIdx=(fsIdx+dir+fsImgs.length)%fsImgs.length;updateFS();}
 
 function updateFS(){
   document.getElementById('fsTrack').style.transform = `translateX(${-fsIdx * 100}%)`;
-  document.getElementById('fsCounter').textContent = (fsIdx+1) + ' \\ ' + fsImgs.length;
+  document.getElementById('fsCounter').textContent = (fsIdx+1) + ' من ' + fsImgs.length;
 
 }
 
@@ -2550,7 +2550,7 @@ function buildMaiyaSlides(){
   // update total in counter
   var total = _maiyaGames.length;
   var counter = document.getElementById('maiya-counter');
-  if(counter) counter.textContent = total>0 ? '1 / '+total : '0 / 0';
+  if(counter) counter.textContent = total>0 ? '1 من '+total : '0 من 0';
   // update filter tabs
   ['all','عائلة','كبار','صغار'].forEach(function(f){
     var btn = document.getElementById('mf-'+f);
@@ -2667,7 +2667,7 @@ function buildJalsatSlides(){
   });
   var total = _jalsatSessions.length;
   var counter = document.getElementById('jalsat-counter');
-  if(counter) counter.textContent = total>0 ? '1 / '+total : '0 / 0';
+  if(counter) counter.textContent = total>0 ? '1 من '+total : '0 من 0';
   ['all','2','4','8','12'].forEach(function(f){
     var btn = document.getElementById('jf-'+f);
     if(btn){ btn.style.background=(f===_jalsatFilter)?'#19a7b7':'rgba(255,255,255,.07)'; btn.style.color=(f===_jalsatFilter)?'#fff':'rgba(255,255,255,.65)'; btn.style.border=(f===_jalsatFilter)?'1px solid #19a7b7':'1px solid rgba(255,255,255,.18)'; }
@@ -2948,7 +2948,7 @@ function jalsatGoTo(idx){
   var p=s.persons; document.getElementById('jalsat-persons').textContent = p==='شخصين'?'شخصان':p;
   document.getElementById('jalsat-price').textContent = s.price;
   var counter = document.getElementById('jalsat-counter');
-  if(counter) counter.textContent = (idx+1) + ' / ' + total;
+  if(counter) counter.textContent = (idx+1) + ' من ' + total;
 }
 
 var _maiyaIdx = 0;
@@ -2979,7 +2979,7 @@ function maiyaGoTo(idx){
   var g = _maiyaGames[idx];
   var nameEl = document.getElementById('maiya-game-name'); if(nameEl) nameEl.textContent = g.name;
   var counter = document.getElementById('maiya-counter');
-  if(counter) counter.textContent = (idx+1) + ' / ' + total;
+  if(counter) counter.textContent = (idx+1) + ' من ' + total;
   updateMaiyaSelectionUI();
 }
 
@@ -3456,7 +3456,7 @@ function renderChalet2(){
     d.onclick=function(){openMDirect(c);};
     var gl=GALLERY[c.id]||[];
     var imgHtml=gl.map(function(src,i){return '<img src="'+src+'" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:'+(i===0?1:0)+';transition:opacity 0.4s ease;">';}).join('');
-    var counterHtml=gl.length>1?'<div style="position:absolute;bottom:10px;left:12px;background:rgba(19,53,72,0.55);color:#fff;font-family:Tajawal,sans-serif;font-size:12px;border-radius:12px;padding:3px 9px;z-index:2;" class="card-counter">1 / '+gl.length+'</div>':'';
+    var counterHtml=gl.length>1?'<div style="position:absolute;bottom:10px;left:12px;background:rgba(19,53,72,0.55);color:#fff;font-family:Tajawal,sans-serif;font-size:12px;border-radius:12px;padding:3px 9px;z-index:2;" class="card-counter">1 من '+gl.length+'</div>':'';
     var nameHtml=gl.length>1?'<div style="display:flex;align-items:center;justify-content:space-between;width:100%;margin-bottom:14px;"><button onclick="event.stopPropagation();cardSlide(this.closest(\'.card\').querySelector(\'.card-img-wrap\'),-1)" style="width:30px;height:30px;flex-shrink:0;border-radius:50%;background:rgba(25,167,183,0.15);border:1px solid rgba(25,167,183,0.35);color:#7ecfea;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#10094;</button><div style="font-size:19px;font-weight:700;color:#fff;text-align:center;flex:1;font-family:Tajawal,sans-serif;">'+c.name+'</div><button onclick="event.stopPropagation();cardSlide(this.closest(\'.card\').querySelector(\'.card-img-wrap\'),1)" style="width:30px;height:30px;flex-shrink:0;border-radius:50%;background:rgba(25,167,183,0.15);border:1px solid rgba(25,167,183,0.35);color:#7ecfea;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#10095;</button></div>':'<div class="card-name">'+c.name+'</div>';
     var roomsTxt=c.rooms===1?'غرفة نوم':'غرفتين نوم';
     d.innerHTML='<div class="card-img-wrap" data-cid="'+c.id+'" data-cidx="0" style="position:relative;overflow:hidden;">'+imgHtml+counterHtml+'</div>'
