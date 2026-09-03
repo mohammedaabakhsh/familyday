@@ -55,18 +55,19 @@
     @keyframes shine{to{background-position:180% center}}
     .lead{font-size:15px;line-height:1.75;color:var(--muted);margin:0 auto;max-width:520px}
     .date-chip{display:inline-flex;align-items:center;gap:7px;margin-top:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.11);border-radius:12px;padding:8px 12px;color:rgba(255,255,255,.84);font-size:12px}
-    .section-title{font-size:13px;color:rgba(255,255,255,.64);font-weight:700;margin:12px 2px 10px}
+    .section-title{font-size:14px;color:rgba(255,255,255,.72);font-weight:700;margin:16px 2px 12px;text-align:center}
     .offers{display:grid;gap:12px}
-    .offer-card{position:relative;overflow:hidden;border-radius:24px;padding:20px 18px;background:linear-gradient(150deg,rgba(14,36,58,.98),rgba(6,24,38,.97));border:1.5px solid var(--line);box-shadow:0 12px 30px rgba(0,0,0,.25),0 0 28px rgba(7,132,71,.09)}
+    .offer-card{position:relative;overflow:hidden;border-radius:24px;padding:21px 19px 20px;background:linear-gradient(150deg,rgba(14,36,58,.98),rgba(6,24,38,.97));border:1.5px solid var(--line);box-shadow:0 12px 30px rgba(0,0,0,.25),0 0 28px rgba(7,132,71,.09)}
     .offer-card::after{content:"";position:absolute;width:130px;height:130px;border-radius:50%;background:rgba(67,217,135,.08);filter:blur(2px);left:-55px;top:-60px}
     .offer-card.featured{border-color:rgba(67,217,135,.55);background:linear-gradient(145deg,rgba(7,132,71,.24),rgba(8,28,42,.98) 58%);box-shadow:0 0 0 1px rgba(67,217,135,.08),0 14px 34px rgba(0,0,0,.3),0 0 30px rgba(7,132,71,.16)}
-    .offer-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;position:relative;z-index:1}
+    .offer-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:17px;position:relative;z-index:1}
     .offer-number{font-size:12px;font-weight:700;color:#caffe0;background:rgba(7,132,71,.24);border:1px solid rgba(67,217,135,.24);padding:7px 10px;border-radius:999px}
     .offer-dates{font-size:12px;color:rgba(255,255,255,.66)}
-    .offer-value{display:flex;align-items:baseline;gap:7px;position:relative;z-index:1}
-    .amount{font-size:42px;font-weight:800;line-height:1;color:#fff;letter-spacing:-1px}
-    .currency{font-size:15px;font-weight:700;color:var(--green-light)}
-    .offer-title{font-size:18px;line-height:1.55;font-weight:700;margin:8px 0 4px;position:relative;z-index:1}
+    .offer-value{display:flex;align-items:flex-end;gap:9px;position:relative;z-index:1;min-height:62px}
+    .offer-value::before{content:"";position:absolute;width:92px;height:54px;right:-9px;bottom:1px;border-radius:50%;background:rgba(67,217,135,.16);filter:blur(18px);z-index:-1}
+    .amount{font-size:clamp(52px,14vw,64px);font-weight:800;line-height:.86;letter-spacing:-2px;background:linear-gradient(180deg,#effff5 0%,#72f0a7 42%,#24bd6c 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 10px rgba(67,217,135,.42)) drop-shadow(0 3px 12px rgba(7,132,71,.26))}
+    .currency{font-size:14px;font-weight:800;color:#8df2b8;margin-bottom:3px;text-shadow:0 0 9px rgba(67,217,135,.24)}
+    .offer-title{font-size:19px;line-height:1.5;font-weight:800;margin:14px 0 5px;position:relative;z-index:1}
     .offer-desc{font-size:13px;line-height:1.7;color:var(--muted);margin:0;position:relative;z-index:1}
     .hospitality{display:flex;align-items:center;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.08);font-size:12px;color:#eafff1;position:relative;z-index:1}
     .hospitality svg{color:var(--green-light);flex:0 0 auto}
@@ -85,7 +86,7 @@
     .btn-book{color:#fff;background:linear-gradient(135deg,#078447,#0aa85a);box-shadow:0 8px 24px rgba(7,132,71,.26)}
     .btn-wa{color:#cffff0;background:rgba(25,167,183,.11);border:1px solid rgba(25,167,183,.32)}
     @media(min-width:620px){.offers{grid-template-columns:1fr 1fr}.hero{padding-top:18px}.logo{height:112px}}
-    @media(max-width:360px){.amount{font-size:37px}.offer-title{font-size:16px}.bottom-inner{grid-template-columns:1.15fr .85fr}.btn{font-size:12px}}
+    @media(max-width:360px){.amount{font-size:48px}.offer-title{font-size:17px}.bottom-inner{grid-template-columns:1.15fr .85fr}.btn{font-size:12px}}
     @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
   </style>
 </head>
@@ -100,7 +101,7 @@
       <img class="logo" src="../imgs/img01.webp" alt="منتجع يوم العائلة">
       <div class="occasion">اليوم الوطني السعودي 96</div>
       <h1>عزّنا بطبعنا</h1>
-      <p class="lead">احتفلوا معنا بأمسية وطنية تجمع الخصوصية والراحة، واختروا العرض الأنسب لإقامتكم.</p>
+      <p class="lead">للسعودية ننتمي… وبعزّها نحتفل.</p>
       <div class="date-chip">22–29 سبتمبر 2026</div>
     </header>
 
