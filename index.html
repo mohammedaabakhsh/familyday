@@ -586,6 +586,25 @@ header{
 .lh-title{font-family:'Tajawal',sans-serif;font-size:24px;font-weight:600;line-height:1.2;margin:0 0 6px;letter-spacing:0;white-space:nowrap;background:linear-gradient(90deg,#7ecfea 0%,#ffffff 40%,#ffffff 60%,#7ecfea 100%);background-size:250% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:titleShimmer 2.8s linear infinite;}
 .lh-subtitle{font-family:'Tajawal',sans-serif;font-size:15px;font-weight:400;line-height:1.4;margin:0;background:linear-gradient(90deg,#7ecfea 0%,#ffffff 40%,#ffffff 60%,#7ecfea 100%);background-size:250% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:titleShimmer 3.4s linear infinite;}
 .lh-float-csl{position:relative;z-index:10;width:100%;margin-top:40px;}
+.lh-float-csl.has-offer{margin-top:-8px;}
+.lh-offer-strip{
+  height:48px;margin:0 16px;border-radius:15px;padding:0 12px;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  direction:rtl;text-decoration:none;position:relative;overflow:hidden;
+  background:linear-gradient(105deg,rgba(7,132,71,.26),rgba(8,31,43,.98) 58%,rgba(7,132,71,.18));
+  border:1.5px solid rgba(67,217,135,.55);
+  box-shadow:0 0 0 1px rgba(67,217,135,.07),0 5px 18px rgba(0,0,0,.22),0 0 24px rgba(7,132,71,.18);
+  animation:offerGreenGlow 2.8s ease-in-out infinite;
+  -webkit-tap-highlight-color:transparent;transition:transform .16s ease,background .2s ease;
+}
+.lh-offer-strip:active{transform:scale(.975);background:linear-gradient(105deg,rgba(7,132,71,.38),rgba(8,31,43,.98) 58%,rgba(7,132,71,.28));}
+.lh-offer-main{display:flex;align-items:center;gap:9px;min-width:0;}
+.lh-offer-icon{width:27px;height:27px;display:grid;place-items:center;border-radius:9px;flex:0 0 auto;color:#7cf0ad;background:rgba(67,217,135,.11);}
+.lh-offer-copy{display:flex;flex-direction:column;gap:1px;min-width:0;}
+.lh-offer-title{font-family:'Tajawal',sans-serif;font-size:14px;font-weight:800;color:#effff5;line-height:1.2;white-space:nowrap;}
+.lh-offer-sub{font-family:'Tajawal',sans-serif;font-size:10px;font-weight:500;color:rgba(206,255,224,.72);line-height:1.2;white-space:nowrap;}
+.lh-offer-go{width:27px;height:27px;display:grid;place-items:center;border-radius:50%;flex:0 0 auto;color:#dfffea;background:rgba(67,217,135,.12);border:1px solid rgba(67,217,135,.28);}
+@keyframes offerGreenGlow{0%,100%{border-color:rgba(67,217,135,.34);box-shadow:0 5px 18px rgba(0,0,0,.22),0 0 13px rgba(7,132,71,.10)}50%{border-color:rgba(67,217,135,.75);box-shadow:0 5px 18px rgba(0,0,0,.22),0 0 26px rgba(7,132,71,.28)}}
 .lh-float-label{font-family:'Tajawal',sans-serif;font-size:12px;font-weight:600;color:rgba(255,255,255,0.68);text-align:center;letter-spacing:0;text-transform:uppercase;margin:0 0 12px;}
 .lh-carousel{display:flex;flex-direction:row;gap:10px;padding:8px 16px 8px;justify-content:center;}
 .lh-carousel::-webkit-scrollbar{display:none;}
@@ -996,7 +1015,21 @@ function tarfihiOrder(){
     </div>
 
     <!-- Carousel: absolute-pinned to hero bottom, visible without scroll -->
-    <div class="lh-float-csl">
+    <div class="lh-float-csl has-offer">
+    <a class="lh-offer-strip" href="offer/" aria-label="عرض اليوم الوطني - شاهد التفاصيل">
+      <span class="lh-offer-main">
+        <span class="lh-offer-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 7v15"/><path d="M12 7H7.5A2.5 2.5 0 1 1 10 4.5C10 7 12 7 12 7Z"/><path d="M12 7h4.5A2.5 2.5 0 1 0 14 4.5C14 7 12 7 12 7Z"/></svg>
+        </span>
+        <span class="lh-offer-copy">
+          <span class="lh-offer-title">عرض اليوم الوطني</span>
+          <span class="lh-offer-sub">اكتشف العرضين واحجز مباشرة</span>
+        </span>
+      </span>
+      <span class="lh-offer-go" aria-hidden="true">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </span>
+    </a>
     <div class="lh-carousel" id="lhCarousel">
 
       <!-- Card 1: الأكواخ — تيل -->
