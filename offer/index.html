@@ -78,7 +78,7 @@
     .chevron{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;flex:0 0 auto;background:rgba(255,255,255,.06);color:var(--green-light);transition:transform .22s ease}
     details[open] .chevron{transform:rotate(180deg)}
     .answer{font-size:13px;line-height:1.8;color:var(--muted);padding:0 0 15px;margin:0;border-top:1px solid rgba(255,255,255,.07);padding-top:11px}
-    .terms{margin-top:14px;padding:13px 15px;border-radius:15px;background:rgba(214,139,106,.08);border:1px solid rgba(214,139,106,.2);font-size:12px;line-height:1.7;color:rgba(255,255,255,.7);text-align:center}
+    .offer-terms{margin:9px 0 0;text-align:center;font-size:9px;font-weight:500;color:rgba(255,255,255,.45);line-height:1.4;position:relative;z-index:1}
     .bottom-bar{position:fixed;z-index:20;bottom:0;left:0;right:0;background:rgba(3,12,24,.88);border-top:1px solid rgba(255,255,255,.08);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:10px 14px calc(10px + env(safe-area-inset-bottom));display:flex;justify-content:center;gap:9px}
     .bottom-inner{width:min(100%,688px);display:grid;grid-template-columns:1.25fr .75fr;gap:9px}
     .btn{min-height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:7px;text-decoration:none;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:800;border:0}
@@ -118,6 +118,7 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 7v15"/><path d="M12 7H7.5A2.5 2.5 0 1 1 10 4.5C10 7 12 7 12 7Z"/><path d="M12 7h4.5A2.5 2.5 0 1 0 14 4.5C14 7 12 7 12 7Z"/></svg>
           مع ضيافة خاصة بأمسية اليوم الوطني
         </div>
+        <div class="offer-terms">تطبق الشروط والأحكام</div>
       </article>
 
       <article class="offer-card featured">
@@ -132,6 +133,7 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v4M16 2v4M3 10h18"/><rect x="3" y="4" width="18" height="17" rx="2"/><path d="m9 16 2 2 4-4"/></svg>
           اليوم الثاني يكون بعد يوم الحجز مباشرةً
         </div>
+        <div class="offer-terms">تطبق الشروط والأحكام</div>
       </article>
     </section>
 
@@ -157,13 +159,8 @@
         <summary>كيف أحجز العرض؟ <span class="chevron">⌄</span></summary>
         <p class="answer">اضغط على «احجز العرض الآن» للانتقال إلى منصة الحجز، أو تواصل معنا عبر واتساب للاستفسار.</p>
       </details>
-      <details>
-        <summary>هل تطبق الشروط والأحكام؟ <span class="chevron">⌄</span></summary>
-        <p class="answer">نعم، تطبق الشروط والأحكام على العرضين.</p>
-      </details>
     </section>
 
-    <div class="terms">تطبق الشروط والأحكام.</div>
   </main>
 
   <nav class="bottom-bar" aria-label="الحجز والتواصل">
