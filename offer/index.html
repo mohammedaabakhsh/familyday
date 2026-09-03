@@ -82,12 +82,11 @@
     .answer{font-size:13px;line-height:1.8;color:var(--muted);padding:0 0 15px;margin:0;border-top:1px solid rgba(255,255,255,.07);padding-top:11px}
     .offer-terms{margin:9px 0 0;text-align:center;font-size:9px;font-weight:500;color:rgba(255,255,255,.45);line-height:1.4;position:relative;z-index:1}
     .bottom-bar{position:fixed;z-index:20;bottom:0;left:0;right:0;background:rgba(3,12,24,.88);border-top:1px solid rgba(255,255,255,.08);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:10px 14px calc(10px + env(safe-area-inset-bottom));display:flex;justify-content:center;gap:9px}
-    .bottom-inner{width:min(100%,688px);display:grid;grid-template-columns:1.25fr .75fr;gap:9px}
+    .bottom-inner{width:min(100%,520px);display:grid;grid-template-columns:1fr;gap:9px}
     .btn{min-height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:7px;text-decoration:none;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:800;border:0}
-    .btn-book{color:#fff;background:linear-gradient(135deg,#078447,#0aa85a);box-shadow:0 8px 24px rgba(7,132,71,.26)}
-    .btn-wa{color:#cffff0;background:rgba(25,167,183,.11);border:1px solid rgba(25,167,183,.32)}
+    .btn-wa{color:#fff;background:linear-gradient(135deg,#006c35,#00854a);border:1px solid rgba(255,255,255,.12);box-shadow:0 8px 24px rgba(0,108,53,.28)}
     @media(min-width:620px){.offers{grid-template-columns:1fr 1fr}.hero{padding-top:18px}.logo{height:112px}}
-    @media(max-width:360px){.amount{font-size:42px}.offer-title{font-size:17px}.bottom-inner{grid-template-columns:1.15fr .85fr}.btn{font-size:12px}}
+    @media(max-width:360px){.amount{font-size:42px}.offer-title{font-size:17px}.btn{font-size:13px}}
     @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
   </style>
 </head>
@@ -159,7 +158,7 @@
       </details>
       <details>
         <summary>كيف أحجز العرض؟ <span class="chevron">⌄</span></summary>
-        <p class="answer">اضغط على «احجز العرض الآن» للانتقال إلى منصة الحجز، أو تواصل معنا عبر واتساب للاستفسار.</p>
+        <p class="answer">اضغط على زر «واتساب» أسفل الصفحة، وسيتم فتح المحادثة للاستفسار وحجز العرض.</p>
       </details>
     </section>
 
@@ -167,7 +166,6 @@
 
   <nav class="bottom-bar" aria-label="الحجز والتواصل">
     <div class="bottom-inner">
-      <a class="btn btn-book" href="https://familyday-sa.com/ar" target="_blank" rel="noopener noreferrer">احجز العرض الآن</a>
       <a class="btn btn-wa" href="https://wa.me/966556156693?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%B9%D8%B1%D8%B6%20%D8%A7%D9%84%D9%8A%D9%88%D9%85%20%D8%A7%D9%84%D9%88%D8%B7%D9%86%D9%8A" target="_blank" rel="noopener noreferrer">واتساب</a>
     </div>
   </nav>
