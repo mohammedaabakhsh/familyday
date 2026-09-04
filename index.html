@@ -1280,7 +1280,7 @@ function tarfihiOrder(){
 <div>
   <div style="font-family:Tajawal,sans-serif;font-size:12px;font-weight:700;color:rgba(25,167,183,.85);padding:0 2px 8px;">تجهيز مناسبتك</div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-<div onclick="showTansidat()" style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:18px;padding:20px 12px 16px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:10px;border:1.5px solid rgba(25,167,183,.18);text-align:center;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.18);"><div style="width:46px;height:46px;border-radius:12px;background:rgba(25,167,183,0.15);display:flex;align-items:center;justify-content:center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7ecfea" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg></div><div style="font-family:Tajawal,sans-serif;font-size:13px;font-weight:700;color:#fff;line-height:1.3;">التنسيقات</div></div>
+<div onclick="showTansidat()" style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:18px;padding:20px 12px 16px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:10px;border:1.5px solid rgba(25,167,183,.18);text-align:center;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.18);"><div style="width:46px;height:46px;border-radius:12px;background:rgba(25,167,183,0.15);display:flex;align-items:center;justify-content:center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7ecfea" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg></div><div style="font-family:Tajawal,sans-serif;font-size:13px;font-weight:700;color:#fff;line-height:1.3;">الضيافة والتنسيقات</div></div>
 <div onclick="showTawilat()" style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:18px;padding:20px 12px 16px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:10px;border:1.5px solid rgba(25,167,183,.18);text-align:center;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.18);"><div style="width:46px;height:46px;border-radius:12px;background:rgba(25,167,183,0.15);display:flex;align-items:center;justify-content:center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7ecfea" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div><div style="font-family:Tajawal,sans-serif;font-size:13px;font-weight:700;color:#fff;line-height:1.3;">طاولات الطعام</div></div>
 <div onclick="showJalsat()" style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:18px;padding:20px 12px 16px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:10px;border:1.5px solid rgba(25,167,183,.18);text-align:center;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.18);"><div style="width:46px;height:46px;border-radius:12px;background:rgba(25,167,183,0.15);display:flex;align-items:center;justify-content:center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7ecfea" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg></div><div style="font-family:Tajawal,sans-serif;font-size:13px;font-weight:700;color:#fff;line-height:1.3;">الجلسات الخارجية</div></div>
   </div>
@@ -1301,6 +1301,61 @@ function tarfihiOrder(){
 
 
 
+
+<!-- HOSPITALITY & COORDINATION DETAIL -->
+<style>
+#hospitality-detail .hd-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 16px 14px;direction:rtl}
+#hospitality-detail .hd-tab{border:1.5px solid rgba(25,167,183,.20);border-radius:14px;background:rgba(255,255,255,.055);color:rgba(255,255,255,.62);font-family:Tajawal,sans-serif;font-size:14px;font-weight:700;padding:12px 10px;cursor:pointer;transition:.2s ease}
+#hospitality-detail .hd-tab.active{color:#fff;background:rgba(25,167,183,.18);border-color:rgba(25,167,183,.65);box-shadow:0 0 18px rgba(25,167,183,.13)}
+#hospitality-detail .hd-content{padding:0 16px 36px}
+#hospitality-detail .hd-intro{font-family:Tajawal,sans-serif;font-size:12px;color:rgba(255,255,255,.58);line-height:1.7;margin:0 2px 10px}
+#hospitality-detail .hd-packages{display:flex;flex-direction:column;gap:10px}
+#hospitality-detail .hd-package{background:linear-gradient(160deg,rgba(14,36,58,.96),rgba(8,22,40,.93));border:1.5px solid rgba(25,167,183,.18);border-radius:18px;padding:17px 18px;box-shadow:0 4px 16px rgba(0,0,0,.20)}
+#hospitality-detail .hd-package.featured{border-color:rgba(25,167,183,.52);box-shadow:0 0 0 1px rgba(25,167,183,.05),0 6px 22px rgba(0,0,0,.24),0 0 22px rgba(25,167,183,.10)}
+#hospitality-detail .hd-package-name{font-family:Tajawal,sans-serif;font-size:16px;font-weight:700;color:#fff;line-height:1.4}
+#hospitality-detail .hd-package.featured .hd-package-name{color:#7ecfea}
+#hospitality-detail .hd-items{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:13px;padding-top:13px;border-top:1px solid rgba(255,255,255,.08)}
+#hospitality-detail .hd-item{display:flex;align-items:center;gap:7px;min-height:39px;padding:9px 10px;border-radius:11px;background:rgba(255,255,255,.045);font-family:Tajawal,sans-serif;font-size:12px;color:rgba(255,255,255,.76);line-height:1.45}
+#hospitality-detail .hd-check{width:18px;height:18px;border-radius:6px;display:grid;place-items:center;flex:0 0 auto;background:rgba(25,167,183,.13);color:#7ecfea;font-size:11px;font-weight:700}
+#hospitality-detail .hd-empty{min-height:240px}
+@media(max-width:360px){#hospitality-detail .hd-items{grid-template-columns:1fr}}
+</style>
+<div id="hospitality-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
+  <div style="background:transparent;padding:20px 20px 16px;text-align:right;position:relative;">
+    <button onclick="closeHospitalityDetail()" aria-label="رجوع" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.10);border:none;color:rgba(255,255,255,.85);cursor:pointer;margin-bottom:10px;">
+      <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div style="font-family:Tajawal,sans-serif;font-size:20px;font-weight:700;color:#fff;line-height:1.3;margin-top:7px;">الضيافة والتنسيقات</div>
+  </div>
+
+  <div class="hd-tabs" role="tablist" aria-label="الضيافة والتنسيقات">
+    <button id="hd-tab-hospitality" class="hd-tab active" type="button" role="tab" aria-selected="true" onclick="showHospitalityTab('hospitality')">الضيافة</button>
+    <button id="hd-tab-coordination" class="hd-tab" type="button" role="tab" aria-selected="false" onclick="showHospitalityTab('coordination')">التنسيقات</button>
+  </div>
+
+  <div class="hd-content">
+    <div id="hd-hospitality-panel" role="tabpanel">
+      <p class="hd-intro">اختر الضيافة المناسبة لإقامتكم</p>
+      <div class="hd-packages">
+        <div class="hd-package featured">
+          <div class="hd-package-name">الضيافة السعودية</div>
+          <div class="hd-items">
+            <div class="hd-item"><span class="hd-check">✓</span><span>قهوة مع تمر</span></div>
+            <div class="hd-item"><span class="hd-check">✓</span><span>شاي مع بسكويت</span></div>
+            <div class="hd-item"><span class="hd-check">✓</span><span>فشار عدد 2</span></div>
+          </div>
+        </div>
+        <div class="hd-package">
+          <div class="hd-package-name">الضيافة العائلية</div>
+        </div>
+        <div class="hd-package">
+          <div class="hd-package-name">الضيافة المتكاملة</div>
+        </div>
+      </div>
+    </div>
+    <div id="hd-coordination-panel" class="hide hd-empty" role="tabpanel"></div>
+  </div>
+</div>
 
 <!-- SINEMA DETAIL OVERLAY -->
 <div id="sinema-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
@@ -2636,14 +2691,24 @@ function closeServiceSub(){
 }
 
 function showTansidat(){
-  // LOCKED - تحت التنفيذ
-  var n=document.createElement('div');
-  n.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9999;background:linear-gradient(160deg,rgba(14,36,58,.97) 0%,rgba(8,22,40,.95) 100%);border:1.5px solid rgba(25,167,183,.40);border-radius:18px;padding:32px 28px;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,.55);font-family:Tajawal,sans-serif;min-width:240px;';
-  n.innerHTML='<div style="font-size:36px;margin-bottom:14px;">🚧</div>'
-    +'<div style="font-size:17px;font-weight:700;color:#fff;margin-bottom:8px;">تحت التنفيذ</div>'
-    +'<div style="font-size:13px;color:rgba(255,255,255,0.68);margin-bottom:20px;">هذه الخدمة ستكون متاحة قريباً</div>'
-    +'<button onclick="this.parentElement.remove()" style="background:rgba(25,167,183,0.18);border:1px solid rgba(25,167,183,0.45);color:#7ecfea;font-family:Tajawal,sans-serif;font-size:14px;padding:8px 28px;border-radius:50px;cursor:pointer;">حسناً</button>';
-  document.body.appendChild(n);
+  history.replaceState(null,'','#hospitality');
+  document.getElementById('hospitality-detail').classList.remove('hide');
+  showHospitalityTab('hospitality');
+}
+function closeHospitalityDetail(){
+  document.getElementById('hospitality-detail').classList.add('hide');
+  history.replaceState(null,'','#services');
+}
+function showHospitalityTab(tab){
+  var isHospitality = tab === 'hospitality';
+  document.getElementById('hd-hospitality-panel').classList.toggle('hide',!isHospitality);
+  document.getElementById('hd-coordination-panel').classList.toggle('hide',isHospitality);
+  var hospitalityBtn=document.getElementById('hd-tab-hospitality');
+  var coordinationBtn=document.getElementById('hd-tab-coordination');
+  hospitalityBtn.classList.toggle('active',isHospitality);
+  coordinationBtn.classList.toggle('active',!isHospitality);
+  hospitalityBtn.setAttribute('aria-selected',isHospitality?'true':'false');
+  coordinationBtn.setAttribute('aria-selected',isHospitality?'false':'true');
 }
 function showJalsat(){ openJalsatDetail(); }
 function showSinema(){
