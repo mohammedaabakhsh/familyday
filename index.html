@@ -2145,7 +2145,8 @@ function showSection(type){
   document.querySelector('.back-btn').style.height = '38px';
   document.getElementById('sectionTag').style.display='none';
   document.getElementById('heroLogo').style.display='none';
-  document.getElementById('headerTitle').innerHTML='';
+  document.getElementById('headerTitle').textContent='الأكواخ';
+  document.getElementById('headerTitle').style.cssText='font-family:Tajawal,sans-serif;font-size:20px;font-weight:700;color:#fff;line-height:1.25;margin-top:8px;';
   document.getElementById('sectionDesc').textContent='';
   const hero=document.querySelector('.section-hero');
   hero.className='section-hero resort-hero';
