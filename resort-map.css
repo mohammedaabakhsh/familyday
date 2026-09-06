@@ -94,6 +94,7 @@
 .fd-map-card-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 .fd-map-card h3 { margin: 0; color: #fff; font-size: 20px; line-height: 1.4; font-weight: 700; }
 .fd-map-clear { display: grid; place-items: center; flex: none; width: 32px; height: 32px; padding: 0; background: transparent; border: 1px solid #2b4655; border-radius: 50%; color: #a9c3cd; }
+.fd-map-description { margin: 0 0 10px; color: #b0c9d1; font-size: 14px; line-height: 1.65; }
 .fd-map-facts { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 16px; margin: 6px 0 12px; color: #c4d9e2; font-size: 14px; line-height: 1.6; }
 .fd-map-fact { display: inline-flex; align-items: center; gap: 6px; }
 .fd-map-fact svg { width: 16px; height: 16px; color: #7ec2cc; }

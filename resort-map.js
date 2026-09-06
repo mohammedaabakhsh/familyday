@@ -12,8 +12,8 @@
     // Owner-confirmed plot directly above the two domes on the left.
     { key: 'pyramid', cabinId: 2, x: 23.25, y: 32.9, labelSide: 'left', labelRightX: 16,
       footprint: [[17.8, 24.8], [38.8, 24.8], [38.8, 38.2], [17.8, 38.2]] },
-    { key: 'dome-upper', cabinId: 1, x: 23.25, y: 43.4, labelSide: 'left', labelRightX: 16, locationLabel: 'العلوي' },
-    { key: 'dome-lower', cabinId: 1, x: 23.25, y: 53.6, labelSide: 'left', labelRightX: 16, locationLabel: 'السفلي' },
+    { key: 'dome-upper', cabinId: 1, x: 23.25, y: 43.4, labelSide: 'left', labelRightX: 16, locationLabel: '2', instanceNumber: 2 },
+    { key: 'dome-lower', cabinId: 1, x: 23.25, y: 53.6, labelSide: 'left', labelRightX: 16, locationLabel: '1', instanceNumber: 1 },
     // Owner's corrected aerial reference: smaller Classic above, larger Royal below.
     { key: 'classic', cabinId: 3, x: 60.2, y: 26.6, labelSide: 'right', labelLeftX: 70,
       footprint: [[39.5, 23.8], [54.4, 10.0], [64.7, 24.5], [51.3, 35.5], [43.8, 24.6]] },
@@ -37,7 +37,11 @@
       footprint: [[63.6, 54.2], [70.4, 48.6], [82.5, 69], [75, 74]] },
     { key: 'palm-beach', cabinId: 5, x: 61.9, y: 61.4,
       labelSide: 'offset', labelX: 79, labelY: 83.5, leaderBend: [70.5, 77.2],
-      footprint: [[55.6, 60.4], [63.6, 54.2], [75, 74], [67, 79.4]] }
+      footprint: [[55.6, 60.4], [63.6, 54.2], [75, 74], [67, 79.4]] },
+    // The central shared garden uses the same details as its existing site card.
+    { key: 'shared-garden', cabinId: 11, kind: 'shared', x: 49, y: 46.5,
+      labelSide: 'offset', labelX: 84, labelY: 44.5, leaderBend: [76, 44.5],
+      footprint: [[39.6, 26.6], [43.7, 25.1], [62.4, 54.4], [52.3, 61.5], [39.6, 60.6]] }
   ].filter(function (location) { return data.resort.items.some(function (item) { return item.id === location.cabinId; }); });
   if (!locations.length) return;
 
@@ -70,6 +74,7 @@
 
   function featuresFor(cabin) {
     var tags = cabin.tags || [];
+    if (cabin.badge === 'مشترك') return tags.filter(function (tag) { return tag !== '|'; });
     var features = [];
     if (tags.some(function (tag) { return tag.indexOf('مسبح خاص') === 0; })) features.push('مسبح خاص');
     // Use the same compact bath feature shown on the site's cabin cards.
@@ -95,6 +100,7 @@
     if (selected === location) { clearSelection(false); return; }
     var cabin = cabinFor(location);
     selected = location;
+    var shared = location.kind === 'shared';
     var connection = connections.find(function (item) { return item.cabinIds.indexOf(cabin.id) !== -1; });
     markers.forEach(function (marker, i) {
       var active = locations[i] === location;
@@ -104,8 +110,15 @@
       highlights[i].classList.toggle('is-connected', Boolean(linked));
     });
     card.querySelector('h3').textContent = cabin.name + (location.instanceNumber ? ' ' + location.instanceNumber : '');
-    card.querySelector('.fd-map-rooms').textContent = roomText(cabin.rooms);
-    card.querySelector('.fd-map-guests').textContent = guestText(cabin.guests);
+    card.setAttribute('aria-label', shared ? 'تفاصيل الحديقة المشتركة' : 'ملخص الكوخ المختار');
+    card.querySelector('.fd-map-clear').setAttribute('aria-label', shared ? 'إلغاء اختيار الحديقة' : 'إلغاء اختيار الكوخ');
+    var description = card.querySelector('.fd-map-description');
+    description.textContent = shared ? cabin.type : '';
+    description.hidden = !shared;
+    var rooms = card.querySelector('.fd-map-rooms');
+    rooms.parentElement.hidden = shared;
+    rooms.textContent = shared ? '' : roomText(cabin.rooms);
+    card.querySelector('.fd-map-guests').textContent = shared ? cabin.suitable : guestText(cabin.guests);
     var amenities = card.querySelector('.fd-map-amenities');
     amenities.replaceChildren();
     featuresFor(cabin).forEach(function (feature) {
@@ -297,9 +310,10 @@
       '<div class="fd-map-toolbar"><button type="button" class="fd-map-tool fd-map-fit" aria-label="عرض الخريطة كاملة">' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg>الخريطة كاملة</button><p class="fd-map-connection" hidden></p></div>' +
       '<div class="fd-map-info" aria-live="polite" aria-atomic="true">' +
-        '<div class="fd-map-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Zm6-2v16m6-14v16"/></svg><p>اضغط على اسم الكوخ أو موقعه<br>للتعرّف على مميزاته</p></div>' +
+        '<div class="fd-map-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Zm6-2v16m6-14v16"/></svg><p>اضغط على الاسم أو الموقع<br>للتعرّف على التفاصيل</p></div>' +
         '<section id="fd-map-card" class="fd-map-card" aria-label="ملخص الكوخ المختار" hidden>' +
           '<div class="fd-map-card-top"><h3></h3><button type="button" class="fd-map-clear" aria-label="إلغاء اختيار الكوخ">' + closeIcon + '</button></div>' +
+          '<p class="fd-map-description" hidden></p>' +
           '<div class="fd-map-facts"><span class="fd-map-fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 18V8m18 10v-7a2 2 0 0 0-2-2h-7v7M3 16h18M3 18v3m18-3v3"/><path d="M5 9h5v5H5z"/></svg><span class="fd-map-rooms"></span></span>' +
           '<span class="fd-map-fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="7" r="3"/><path d="M5 21v-3a7 7 0 0 1 14 0v3"/></svg><span class="fd-map-guests"></span></span></div>' +
           '<div class="fd-map-amenities"></div>' +
