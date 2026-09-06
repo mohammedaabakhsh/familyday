@@ -18,7 +18,16 @@
     { key: 'classic', cabinId: 3, x: 60.2, y: 26.6, labelSide: 'right', labelLeftX: 70,
       footprint: [[39.5, 23.8], [54.4, 10.0], [64.7, 24.5], [51.3, 35.5], [43.8, 24.6]] },
     { key: 'royal', cabinId: 9, x: 65.8, y: 35.5, labelSide: 'right', labelLeftX: 76,
-      footprint: [[51.3, 35.5], [64.7, 24.5], [76.7, 42.5], [64.3, 52.5]] }
+      footprint: [[51.3, 35.5], [64.7, 24.5], [76.7, 42.5], [64.3, 52.5]] },
+    // Owner's plan confirms this bottom row from left to right.
+    { key: 'bohemian', cabinId: 6, x: 22.1, y: 65.2, labelSide: 'left', labelRightX: 15,
+      footprint: [[16.8, 59.2], [27.8, 59.2], [27.8, 84.3], [16.8, 84.3]] },
+    { key: 'panoramic', cabinId: 10, x: 33.2, y: 66.8, labelSide: 'bottom', labelX: 29, labelY: 91.5,
+      footprint: [[27.8, 60.3], [38.9, 60.3], [38.9, 84.3], [27.8, 84.3]] },
+    { key: 'rural', cabinId: 8, x: 43.7, y: 67.1, labelSide: 'bottom', labelX: 51, labelY: 91.5,
+      footprint: [[38.9, 60.9], [48.5, 61.8], [48.5, 84.3], [38.9, 84.3]] },
+    { key: 'french', cabinId: 7, x: 53.3, y: 67.5, labelSide: 'bottom', labelX: 73, labelY: 91.5,
+      footprint: [[48.5, 61.8], [58.2, 61.8], [58.2, 84.3], [48.5, 84.3]] }
   ].filter(function (location) { return data.resort.items.some(function (item) { return item.id === location.cabinId; }); });
   if (!locations.length) return;
 
@@ -113,6 +122,11 @@
     markers.forEach(function (marker, i) {
       var location = locations[i];
       if (!location.labelSide) return;
+      if (location.labelSide === 'bottom') {
+        marker.style.setProperty('--fd-map-label-x', size * (location.labelX - location.x) / 100 + 'px');
+        marker.style.setProperty('--fd-map-label-y', size * (location.labelY - location.y) / 100 + 'px');
+        return;
+      }
       var left = location.labelSide === 'left';
       var offset = size * (left ? location.x - location.labelRightX : location.labelLeftX - location.x) / 100;
       // Keep each full road label inside the image at the overview scale.
@@ -291,6 +305,17 @@
 
     locations.forEach(function (location, i) {
       var cabin = cabinFor(location);
+      if (location.labelSide === 'bottom') {
+        var leader = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        leader.setAttribute('class', 'fd-map-leader');
+        leader.setAttribute('viewBox', '0 0 100 100');
+        leader.setAttribute('aria-hidden', 'true');
+        var route = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+        route.setAttribute('points', [[location.x, location.y], [location.x, 85.7], [location.labelX, location.labelY]].map(function (point) { return point.join(','); }).join(' '));
+        route.setAttribute('vector-effect', 'non-scaling-stroke');
+        leader.appendChild(route);
+        plane.appendChild(leader);
+      }
       var highlight;
       if (location.footprint) {
         highlight = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
