@@ -1,0 +1,61 @@
+/* The resort map is intentionally independent of the full cabin/booking modal. */
+.fd-map-launcher[hidden], .fd-map-card[hidden], .fd-map-error[hidden] { display: none !important; }
+.fd-map-launcher { display: flex; padding: 2px 16px 4px; }
+#fd-map-open {
+  min-height: 40px; padding: 8px 16px; border: 1px solid rgba(25,167,183,.4);
+  border-radius: 12px; background: rgba(25,167,183,.08); color: #91dce4;
+  font: 600 14px/1.4 'Tajawal', sans-serif; cursor: pointer;
+}
+#fd-map-open:hover { background: rgba(25,167,183,.16); }
+.fd-map-dialog {
+  position: fixed; inset: 0; margin: auto; width: min(94vw, 800px);
+  max-width: none; max-height: calc(100vh - 24px); max-height: calc(100dvh - 24px);
+  padding: 0; border: 1px solid rgba(25,167,183,.3); border-radius: 18px;
+  background: #081c2a; color: #fff; overflow: auto; overscroll-behavior: contain;
+  font-family: 'Tajawal', sans-serif; direction: rtl;
+  box-shadow: 0 20px 70px rgba(0,0,0,.28);
+}
+.fd-map-dialog::backdrop { background: rgba(2,10,18,.75); }
+.fd-map-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; }
+.fd-map-header h2 { margin: 0; color: #fff; font-size: 18px; font-weight: 700; line-height: 1.5; }
+.fd-map-header p { margin: 2px 0 0; color: #bbcad3; font-size: 13px; line-height: 1.6; }
+.fd-map-close {
+  flex-shrink: 0; width: 44px; height: 44px; display: grid; place-items: center;
+  background: rgba(255,255,255,.07); color: #fff; border: 0; border-radius: 50%;
+  font: 24px/1 sans-serif; cursor: pointer;
+}
+.fd-map-stage { position: relative; width: 100%; aspect-ratio: 1; background: #eeeae2; direction: ltr; overflow: hidden; }
+.fd-map-image { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; }
+.fd-map-hotspot {
+  position: absolute; left: 23.25%; width: 10.4%; height: 10.4%; min-width: 44px; min-height: 44px;
+  transform: translate(-50%, -50%); display: grid; place-items: center;
+  border: 2px solid transparent; border-radius: 50%; padding: 0; background: transparent;
+  color: #0e2a3a; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+}
+.fd-map-hotspot--upper { top: 43.4%; }
+.fd-map-hotspot--lower { top: 53.6%; }
+.fd-map-hotspot span {
+  display: block; white-space: nowrap; padding: 6px 10px; background: rgba(255,255,255,.96);
+  border: 1px solid rgba(14,42,58,.18); border-radius: 9px; direction: rtl;
+  font: 700 14px/1.25 'Tajawal', sans-serif; box-shadow: 0 2px 8px rgba(14,42,58,.14);
+}
+.fd-map-hotspot[aria-expanded="true"] { border-color: #19a7b7; background: rgba(25,167,183,.12); }
+.fd-map-hotspot[aria-expanded="true"] span { background: #0e2a3a; color: #fff; border-color: #0e2a3a; }
+.fd-map-card {
+  position: absolute; left: 34%; top: 33%; width: min(224px, 63%); box-sizing: border-box;
+  z-index: 2; padding: 12px; border: 1px solid rgba(14,42,58,.16); border-radius: 14px;
+  background: #fff; color: #0e2a3a; direction: rtl; text-align: right;
+  box-shadow: 0 8px 24px rgba(14,42,58,.17);
+}
+.fd-map-card-top { display: flex; align-items: center; justify-content: space-between; gap: 4px; }
+.fd-map-card h3 { margin: 0; color: #0e2a3a; font-size: 18px; font-weight: 700; line-height: 1.5; }
+.fd-map-card-close { flex-shrink: 0; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%; background: #f0f4f5; color: #405661; font: 22px/1 sans-serif; cursor: pointer; }
+.fd-map-card p { margin: 4px 0 0; color: #405661; font-size: 14px; line-height: 1.65; }
+.fd-map-card .fd-map-feature { margin-top: 8px; padding-top: 8px; border-top: 1px solid #e4edef; color: #116674; font-weight: 700; }
+.fd-map-error { margin: 0; padding: 24px 16px; background: #081c2a; color: #fff; font-size: 14px; line-height: 1.7; }
+.fd-map-dialog button:focus-visible, #fd-map-open:focus-visible { outline: 3px solid #19a7b7; outline-offset: 3px; }
+@media (max-width: 380px) {
+  .fd-map-header { padding: 10px 12px; }
+  .fd-map-card { padding: 9px; }
+  .fd-map-hotspot span { padding: 6px 7px; }
+}

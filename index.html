@@ -564,6 +564,7 @@ header{
   #menu-cats{flex-wrap:wrap;overflow-x:visible;}
 }
 </style>
+<link rel="stylesheet" href="resort-map.css?v=1">
 </head>
 <body>
 
@@ -1866,6 +1867,9 @@ function tarfihiOrder(){
     <div class="section-tag" id="sectionTag"></div>
   </section>
 
+  <div class="fd-map-launcher" id="fd-map-launcher" hidden>
+    <button type="button" id="fd-map-open" aria-haspopup="dialog" aria-controls="fd-map-dialog">خريطة الأكواخ</button>
+  </div>
   <div class="filter-section" id="filterSection">
     <button class="fbtn active" data-f="all">الكل</button>
     <button class="fbtn" data-f="1">غرفة نوم</button>
@@ -3825,5 +3829,6 @@ window.addEventListener('pageshow', function(e){
   if(e.persisted){ window.location.reload(); }
 });
 </script>
+<script src="resort-map.js?v=1" defer></script>
 </body>
 </html><!-- test Fri Jul 17 17:12:00 +03 2026 -->
