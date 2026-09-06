@@ -9,6 +9,9 @@
 
   // Only owner-confirmed locations are plotted. Add each remaining location here after confirmation.
   var locations = [
+    // Owner-confirmed plot directly above the two domes on the left.
+    { key: 'pyramid', cabinId: 2, x: 23.25, y: 32.9, labelSide: 'left', labelRightX: 16,
+      footprint: [[17.8, 24.8], [38.8, 24.8], [38.8, 38.2], [17.8, 38.2]] },
     { key: 'dome-upper', cabinId: 1, x: 23.25, y: 43.4, labelSide: 'left', labelRightX: 16, locationLabel: 'العلوي' },
     { key: 'dome-lower', cabinId: 1, x: 23.25, y: 53.6, labelSide: 'left', labelRightX: 16, locationLabel: 'السفلي' },
     // Owner's corrected aerial reference: smaller Classic above, larger Royal below.
@@ -314,6 +317,7 @@
       var marker = document.createElement('button');
       marker.type = 'button'; marker.className = 'fd-map-hotspot' + (location.labelSide ? ' fd-map-hotspot--label-' + location.labelSide : '');
       marker.dataset.mapIndex = String(i);
+      marker.dataset.locationKey = location.key;
       marker.style.left = location.x + '%'; marker.style.top = location.y + '%';
       marker.setAttribute('aria-label', cabin.name + (location.locationLabel ? ' ' + location.locationLabel : '') + ': عرض المميزات');
       marker.setAttribute('aria-pressed', 'false'); marker.setAttribute('aria-controls', 'fd-map-card');

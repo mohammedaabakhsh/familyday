@@ -98,6 +98,7 @@
 .fd-map-error p { margin: 0; }
 .fd-map-dialog button:focus-visible, .fd-map-viewport:focus-visible, #fd-map-open:focus-visible { outline: 3px solid #54cad8; outline-offset: 3px; }
 @media (max-width: 380px) {
+  .fd-map-hotspot[data-location-key="pyramid"] span { max-width: 54px; white-space: normal; text-align: center; }
   .fd-map-header { padding: 12px; }
   .fd-map-header h2 { font-size: 18px; }
   .fd-map-header p { font-size: 11px; }
