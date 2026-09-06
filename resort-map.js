@@ -12,9 +12,10 @@
     { key: 'dome-upper', cabinId: 1, x: 23.25, y: 43.4, labelSide: 'left', labelRightX: 16, locationLabel: 'العلوي' },
     { key: 'dome-lower', cabinId: 1, x: 23.25, y: 53.6, labelSide: 'left', labelRightX: 16, locationLabel: 'السفلي' },
     { key: 'royal', cabinId: 9, x: 60.2, y: 26.6, labelSide: 'right', labelLeftX: 70,
-      footprint: [[51.8, 23.3], [59.6, 17.6], [68.2, 30.8], [60.1, 35.6]] },
+      // The owner-marked divider separates the complete Royal and Classic plots.
+      footprint: [[39.5, 23.8], [54.4, 10.0], [66.7, 27.8], [62.25, 31.9], [53.8, 37.7], [43.8, 24.6]] },
     { key: 'classic', cabinId: 3, x: 65.8, y: 35.5, labelSide: 'right', labelLeftX: 76,
-      footprint: [[60.1, 35.6], [68.2, 30.8], [71.3, 34.6], [62.9, 40.2]] }
+      footprint: [[53.8, 37.7], [62.25, 31.9], [66.7, 27.8], [76.7, 42.5], [64.3, 52.5]] }
   ].filter(function (location) { return data.resort.items.some(function (item) { return item.id === location.cabinId; }); });
   if (!locations.length) return;
 
