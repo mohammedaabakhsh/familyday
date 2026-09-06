@@ -20,7 +20,7 @@
   if (!locations.length) return;
 
   // The connecting door is confirmed in the site's FAQ; both positions are owner-confirmed.
-  var connections = [{ cabinIds: [3, 9], description: 'يمكن ربط كوخي رويال والكلاسيكي عبر باب داخلي.' }];
+  var connections = [{ cabinIds: [3, 9], description: 'يمكن ربط الكلاسيكي ورويال عبر باب داخلي، بسعة تصل إلى 30 ضيفًا.' }];
   var dialog, viewport, plane, card, empty, image, error;
   var markers = [], highlights = [], selected = null;
   var previousOverflow = '', pointers = new Map(), gesture = null;
@@ -91,9 +91,6 @@
       amenities.appendChild(item);
     });
     amenities.hidden = !amenities.children.length;
-    var connectionText = card.querySelector('.fd-map-connection');
-    connectionText.hidden = !connection;
-    connectionText.textContent = connection ? connection.description : '';
     empty.hidden = true;
     card.hidden = false;
   }
@@ -267,14 +264,14 @@
         '<div class="fd-map-error" role="status" hidden><p>تعذّر تحميل الخريطة.</p><button type="button" class="fd-map-tool fd-map-retry">إعادة المحاولة</button></div>' +
       '</div>' +
       '<div class="fd-map-toolbar"><button type="button" class="fd-map-tool fd-map-fit" aria-label="عرض الخريطة كاملة">' +
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg>الخريطة كاملة</button></div>' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg>الخريطة كاملة</button><p class="fd-map-connection"></p></div>' +
       '<div class="fd-map-info" aria-live="polite" aria-atomic="true">' +
         '<div class="fd-map-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Zm6-2v16m6-14v16"/></svg><p>اضغط على اسم الكوخ أو موقعه<br>للتعرّف على مميزاته</p></div>' +
         '<section id="fd-map-card" class="fd-map-card" aria-label="ملخص الكوخ المختار" hidden>' +
           '<div class="fd-map-card-top"><h3></h3><button type="button" class="fd-map-clear" aria-label="إلغاء اختيار الكوخ">' + closeIcon + '</button></div>' +
           '<div class="fd-map-facts"><span class="fd-map-fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 18V8m18 10v-7a2 2 0 0 0-2-2h-7v7M3 16h18M3 18v3m18-3v3"/><path d="M5 9h5v5H5z"/></svg><span class="fd-map-rooms"></span></span>' +
           '<span class="fd-map-fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="7" r="3"/><path d="M5 21v-3a7 7 0 0 1 14 0v3"/></svg><span class="fd-map-guests"></span></span></div>' +
-          '<div class="fd-map-amenities"></div><p class="fd-map-connection" hidden></p>' +
+          '<div class="fd-map-amenities"></div>' +
         '</section></div>';
     document.body.appendChild(dialog);
     viewport = dialog.querySelector('.fd-map-viewport');
@@ -283,6 +280,7 @@
     empty = dialog.querySelector('.fd-map-empty');
     image = dialog.querySelector('.fd-map-image');
     error = dialog.querySelector('.fd-map-error');
+    dialog.querySelector('.fd-map-toolbar .fd-map-connection').textContent = connections[0].description;
 
     locations.forEach(function (location, i) {
       var cabin = cabinFor(location);
