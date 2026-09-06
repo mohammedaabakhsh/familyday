@@ -40,7 +40,7 @@
       footprint: [[55.6, 60.4], [63.6, 54.2], [75, 74], [67, 79.4]] },
     // The central shared garden uses the same details as its existing site card.
     { key: 'shared-garden', cabinId: 11, kind: 'shared', x: 49, y: 46.5,
-      labelSide: 'offset', labelX: 84, labelY: 44.5, leaderBend: [76, 44.5],
+      labelSide: 'offset', labelX: 35, labelY: 8, leaderBend: [43, 24],
       footprint: [[39.6, 26.6], [43.7, 25.1], [62.4, 54.4], [52.3, 61.5], [39.6, 60.6]] }
   ].filter(function (location) { return data.resort.items.some(function (item) { return item.id === location.cabinId; }); });
   if (!locations.length) return;
