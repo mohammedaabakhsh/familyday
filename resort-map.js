@@ -21,7 +21,7 @@
 
   // The connecting door is confirmed in the site's FAQ; both positions are owner-confirmed.
   var connections = [{ cabinIds: [3, 9], description: 'يمكن ربط الكلاسيكي ورويال عبر باب داخلي، بسعة تصل إلى 30 ضيفًا.' }];
-  var dialog, viewport, plane, card, empty, image, error;
+  var dialog, viewport, plane, card, empty, image, error, connectionNote;
   var markers = [], highlights = [], selected = null;
   var previousOverflow = '', pointers = new Map(), gesture = null;
   var view = { width: 0, height: 0, size: 0, scale: 1, x: 0, y: 0 };
@@ -64,6 +64,8 @@
     highlights.forEach(function (highlight) { highlight.hidden = true; highlight.classList.remove('is-connected'); });
     card.hidden = true;
     empty.hidden = false;
+    connectionNote.hidden = true;
+    connectionNote.textContent = '';
     if (restoreFocus && old) markers[locations.indexOf(old)].focus({ preventScroll: true });
   }
 
@@ -91,6 +93,8 @@
       amenities.appendChild(item);
     });
     amenities.hidden = !amenities.children.length;
+    connectionNote.textContent = connection ? connection.description : '';
+    connectionNote.hidden = !connection;
     empty.hidden = true;
     card.hidden = false;
   }
@@ -264,7 +268,7 @@
         '<div class="fd-map-error" role="status" hidden><p>تعذّر تحميل الخريطة.</p><button type="button" class="fd-map-tool fd-map-retry">إعادة المحاولة</button></div>' +
       '</div>' +
       '<div class="fd-map-toolbar"><button type="button" class="fd-map-tool fd-map-fit" aria-label="عرض الخريطة كاملة">' +
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg>الخريطة كاملة</button><p class="fd-map-connection"></p></div>' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg>الخريطة كاملة</button><p class="fd-map-connection" hidden></p></div>' +
       '<div class="fd-map-info" aria-live="polite" aria-atomic="true">' +
         '<div class="fd-map-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Zm6-2v16m6-14v16"/></svg><p>اضغط على اسم الكوخ أو موقعه<br>للتعرّف على مميزاته</p></div>' +
         '<section id="fd-map-card" class="fd-map-card" aria-label="ملخص الكوخ المختار" hidden>' +
@@ -280,7 +284,7 @@
     empty = dialog.querySelector('.fd-map-empty');
     image = dialog.querySelector('.fd-map-image');
     error = dialog.querySelector('.fd-map-error');
-    dialog.querySelector('.fd-map-toolbar .fd-map-connection').textContent = connections[0].description;
+    connectionNote = dialog.querySelector('.fd-map-toolbar .fd-map-connection');
 
     locations.forEach(function (location, i) {
       var cabin = cabinFor(location);
@@ -373,9 +377,11 @@
     if (!dialog) createDialog();
     if (dialog.open) return;
     previousOverflow = document.body.style.overflow;
+    // Every opening starts with no cabin, outline or connection note selected.
+    clearSelection(false);
     dialog.showModal();
     document.body.style.overflow = 'hidden';
-    clearSelection(false); measureView(true);
+    measureView(true);
     if (!error.hidden) loadImage();
   });
 
