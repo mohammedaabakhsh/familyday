@@ -1,5 +1,5 @@
 /* The resort map is intentionally independent of the full cabin/booking modal. */
-.fd-map-launcher[hidden], .fd-map-card[hidden], .fd-map-error[hidden] { display: none !important; }
+.fd-map-launcher[hidden], .fd-map-card[hidden], .fd-map-error[hidden], .fd-map-amenity[hidden] { display: none !important; }
 .fd-map-launcher { display: flex; padding: 2px 16px 4px; }
 #fd-map-open {
   min-height: 40px; padding: 8px 16px; border: 1px solid rgba(25,167,183,.4);
@@ -35,31 +35,42 @@
 .fd-map-hotspot--upper { top: 43.4%; }
 .fd-map-hotspot--lower { top: 53.6%; }
 .fd-map-hotspot span {
-  position: absolute; left: calc(100% + 8px); top: 50%; transform: translateY(-50%);
-  display: block; white-space: nowrap; padding: 3px 6px; background: rgba(255,255,255,.92);
-  border: 1px solid rgba(14,42,58,.14); border-radius: 5px; direction: rtl;
-  font: 600 12px/1.35 'Tajawal', sans-serif;
+  position: absolute; left: calc(100% + 5px); top: 50%; transform: translateY(-50%);
+  display: block; white-space: nowrap; padding: 2px 4px; background: rgba(255,255,255,.92);
+  border: 1px solid rgba(14,42,58,.12); border-radius: 3px; direction: rtl;
+  font: 600 10px/1.3 'Tajawal', sans-serif;
 }
 .fd-map-hotspot span::before {
-  content: ''; position: absolute; right: 100%; top: 50%; width: 9px; height: 1px;
+  content: ''; position: absolute; right: 100%; top: 50%; width: 6px; height: 1px;
   background: rgba(14,42,58,.45); pointer-events: none;
 }
 .fd-map-hotspot[aria-expanded="true"] { border-color: #19a7b7; background: transparent; }
 .fd-map-stage:has(.fd-map-hotspot[aria-expanded="true"]) .fd-map-hotspot span { visibility: hidden; }
 .fd-map-card {
-  position: absolute; left: 34%; top: 33%; width: min(224px, 63%); box-sizing: border-box;
-  z-index: 2; padding: 12px; border: 1px solid rgba(14,42,58,.16); border-radius: 14px;
+  position: absolute; left: 34%; top: 33%; width: min(250px, 63%); box-sizing: border-box;
+  z-index: 2; padding: 12px; border: 1px solid #dce7e9; border-top: 3px solid #19a7b7; border-radius: 12px;
   background: #fff; color: #0e2a3a; direction: rtl; text-align: right;
-  box-shadow: 0 8px 24px rgba(14,42,58,.17);
+  box-shadow: 0 6px 20px rgba(14,42,58,.14);
 }
-.fd-map-card-top { display: flex; align-items: center; justify-content: space-between; gap: 4px; }
-.fd-map-card h3 { margin: 0; color: #0e2a3a; font-size: 18px; font-weight: 700; line-height: 1.5; }
-.fd-map-card-close { flex-shrink: 0; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%; background: #f0f4f5; color: #405661; font: 22px/1 sans-serif; cursor: pointer; }
-.fd-map-card p { margin: 4px 0 0; color: #405661; font-size: 14px; line-height: 1.65; }
-.fd-map-card .fd-map-feature { margin-top: 8px; padding-top: 8px; border-top: 1px solid #e4edef; color: #116674; font-weight: 700; }
+.fd-map-card::before {
+  content: ''; position: absolute; left: -5px; top: 50%; width: 8px; height: 8px;
+  transform: rotate(45deg); background: #fff; border-left: 1px solid #dce7e9; border-bottom: 1px solid #dce7e9;
+}
+.fd-map-card-top { display: flex; align-items: center; justify-content: space-between; gap: 4px; padding-bottom: 7px; border-bottom: 1px solid #edf2f3; }
+.fd-map-card h3 { margin: 0; color: #0e2a3a; font-size: 17px; font-weight: 700; line-height: 1.5; }
+.fd-map-card-close { flex-shrink: 0; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%; background: #f4f7f8; color: #405661; font: 20px/1 sans-serif; cursor: pointer; }
+.fd-map-facts { display: grid; gap: 8px; margin: 12px 0; padding: 0; }
+.fd-map-fact { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 3px 8px; }
+.fd-map-fact dt { margin: 0; color: #667b85; font-size: 12px; line-height: 1.6; }
+.fd-map-fact dd { margin: 0; color: #0e2a3a; font-size: 14px; font-weight: 700; line-height: 1.6; }
+.fd-map-amenities { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+.fd-map-amenity { display: flex; align-items: center; justify-content: center; min-height: 34px; margin: 0; padding: 4px; box-sizing: border-box; border: 1px solid #dceced; border-radius: 7px; background: #f2f8f8; color: #155e69; font-size: 12px; font-weight: 600; line-height: 1.4; text-align: center; }
 .fd-map-error { margin: 0; padding: 24px 16px; background: #081c2a; color: #fff; font-size: 14px; line-height: 1.7; }
 .fd-map-dialog button:focus-visible, #fd-map-open:focus-visible { outline: 3px solid #19a7b7; outline-offset: 3px; }
 @media (max-width: 380px) {
   .fd-map-header { padding: 10px 12px; }
   .fd-map-card { padding: 9px; }
+}
+@media (min-width: 600px) {
+  .fd-map-hotspot span { font-size: 11px; }
 }

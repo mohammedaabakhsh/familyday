@@ -11,8 +11,8 @@
   if (!dome) return;
 
   // Reuse the current site data, keeping the card intentionally brief.
-  var roomText = dome.rooms === 1 ? 'غرفة نوم' : dome.rooms === 2 ? 'غرفتين نوم' : dome.rooms + ' غرف نوم';
-  var guestText = dome.guests === 2 ? 'لشخصين' : 'حتى ' + dome.guests + ' ضيوف';
+  var roomText = dome.rooms === 1 ? 'غرفة واحدة' : dome.rooms === 2 ? 'غرفتان' : dome.rooms + ' غرف';
+  var guestText = dome.guests === 2 ? 'شخصان' : 'حتى ' + dome.guests + ' ضيوف';
   var poolText = dome.tags.some(function (tag) { return tag.indexOf('مسبح خاص') === 0; }) ? 'مسبح خاص' : '';
   var feature = dome.tags.find(function (tag) { return tag.indexOf('بانيو داخلي') === 0; }) || '';
   var dialog;
@@ -73,7 +73,11 @@
         '<button type="button" class="fd-map-hotspot fd-map-hotspot--lower" data-map-y="53.6" aria-label="بيت الدوم السفلي: عرض المميزات" aria-expanded="false" aria-controls="fd-map-card"><span></span></button>' +
         '<section id="fd-map-card" class="fd-map-card" aria-label="مميزات بيت الدوم" aria-live="polite" hidden>' +
           '<div class="fd-map-card-top"><h3></h3><button type="button" class="fd-map-card-close" aria-label="إغلاق مميزات الكوخ">×</button></div>' +
-          '<p class="fd-map-summary"></p><p class="fd-map-pool"></p><p class="fd-map-feature"></p>' +
+          '<dl class="fd-map-facts">' +
+            '<div class="fd-map-fact"><dt>غرف النوم</dt><dd class="fd-map-rooms"></dd></div>' +
+            '<div class="fd-map-fact"><dt>عدد الضيوف</dt><dd class="fd-map-guests"></dd></div>' +
+          '</dl>' +
+          '<div class="fd-map-amenities"><p class="fd-map-amenity fd-map-pool"></p><p class="fd-map-amenity fd-map-feature"></p></div>' +
         '</section>' +
       '</div><p class="fd-map-error" role="status" hidden>تعذّر تحميل الصورة. أغلق الخريطة وافتحها للمحاولة مرة أخرى.</p>';
     document.body.appendChild(dialog);
@@ -86,10 +90,12 @@
       marker.addEventListener('click', function () { selectDome(marker); });
     });
     card.querySelector('h3').textContent = dome.name;
-    card.querySelector('.fd-map-summary').textContent = roomText + ' · ' + guestText;
+    card.querySelector('.fd-map-rooms').textContent = roomText;
+    card.querySelector('.fd-map-guests').textContent = guestText;
     card.querySelector('.fd-map-pool').textContent = poolText;
     card.querySelector('.fd-map-pool').hidden = !poolText;
-    card.querySelector('.fd-map-feature').textContent = feature;
+    card.querySelector('.fd-map-feature').textContent = feature ? 'بانيو داخلي' : '';
+    card.querySelector('.fd-map-feature').title = feature;
     card.querySelector('.fd-map-feature').hidden = !feature;
     dialog.querySelector('.fd-map-close').addEventListener('click', function () { dialog.close(); });
     card.querySelector('.fd-map-card-close').addEventListener('click', function () {
