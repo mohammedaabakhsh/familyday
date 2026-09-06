@@ -132,6 +132,18 @@
     return { x: event.clientX - bounds.left, y: event.clientY - bounds.top };
   }
 
+  function locationAt(point) {
+    if (!view.size) return null;
+    var x = (point.x - view.x) * 100 / (view.size * view.scale);
+    var y = (point.y - view.y) * 100 / (view.size * view.scale);
+    var nearest = null, distance = 5.2;
+    locations.forEach(function (location) {
+      var current = Math.hypot(location.x - x, location.y - y);
+      if (current < distance) { nearest = location; distance = current; }
+    });
+    return nearest;
+  }
+
   function pinchState() {
     var points = Array.from(pointers.values());
     return { x: (points[0].x + points[1].x) / 2, y: (points[0].y + points[1].y) / 2,
@@ -200,7 +212,8 @@
     } else {
       resetGesture();
       if (tapped) {
-        if (marker) selectLocation(locations[Number(marker.dataset.mapIndex)]);
+        var location = marker ? locations[Number(marker.dataset.mapIndex)] : locationAt(localPoint(event));
+        if (location) selectLocation(location);
         else clearSelection(false);
       }
     }

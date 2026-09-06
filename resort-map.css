@@ -10,7 +10,8 @@
 .fd-map-dialog {
   position: fixed; inset: 0; margin: auto; padding: 0;
   width: min(calc(100vw - 24px), 760px); max-width: none;
-  height: min(calc(100vh - 24px), 920px); height: min(calc(100dvh - 24px), 920px);
+  height: min(calc(100vh - 24px), calc(100vw + 246px), 920px);
+  height: min(calc(100dvh - 24px), calc(100vw + 246px), 920px);
   max-height: calc(100vh - 24px); max-height: calc(100dvh - 24px);
   border: 1px solid #234655; border-radius: 20px;
   background: #081c2a; color: #fff; overflow: hidden; overscroll-behavior: contain;
