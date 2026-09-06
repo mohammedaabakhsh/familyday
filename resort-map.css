@@ -58,12 +58,9 @@
 .fd-map-hotspot[aria-pressed="true"] span { background: #0e6470; border-color: #0e6470; color: #fff; }
 .fd-map-hotspot[aria-pressed="true"] span::before { background: #0e6470; }
 .fd-map-hotspot[aria-pressed="true"]::before { background: #0e6470; }
-.fd-map-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 14px; background: #102936; border-bottom: 1px solid #24404d; flex: none; }
-.fd-map-zoom { display: flex; align-items: center; direction: ltr; gap: 4px; }
+.fd-map-toolbar { display: flex; align-items: center; justify-content: flex-start; gap: 8px; padding: 8px 14px; background: #102936; border-bottom: 1px solid #24404d; flex: none; }
 .fd-map-tool { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 38px; min-width: 38px; padding: 0 9px; border: 1px solid #365362; border-radius: 9px; background: #183542; color: #e6f1f5; font-size: 12px; font-weight: 600; touch-action: manipulation; }
 .fd-map-tool svg { width: 17px; height: 17px; }
-.fd-map-tool:disabled { opacity: .35; cursor: default; }
-.fd-map-zoom-value { min-width: 43px; text-align: center; color: #c3d8df; font-size: 12px; font-variant-numeric: tabular-nums; }
 .fd-map-info { flex: none; min-height: 136px; padding: 16px 18px 18px; box-sizing: border-box; background: #081c2a; text-align: right; }
 .fd-map-empty { min-height: 102px; display: flex; align-items: center; justify-content: center; gap: 12px; color: #b9cfd8; font-size: 14px; line-height: 1.6; }
 .fd-map-empty svg { width: 27px; height: 27px; color: #59b8c3; flex: none; }

@@ -16,7 +16,7 @@
 
   // Confirmed in the site's FAQ. No connecting line is drawn until both positions are confirmed.
   var connections = [{ cabinIds: [3, 9], description: 'يمكن ربط كوخي رويال والكلاسيكي عبر باب داخلي.' }];
-  var dialog, viewport, plane, card, empty, image, error, zoomOut, zoomIn, zoomValue;
+  var dialog, viewport, plane, card, empty, image, error;
   var markers = [], highlights = [], selected = null;
   var previousOverflow = '', pointers = new Map(), gesture = null;
   var view = { width: 0, height: 0, size: 0, scale: 1, x: 0, y: 0 };
@@ -98,9 +98,6 @@
     view.y = size <= view.height ? (view.height - size) / 2 : clamp(view.y, view.height - size, 0);
     plane.style.transform = 'translate(' + view.x + 'px,' + view.y + 'px) scale(' + view.scale + ')';
     plane.style.setProperty('--fd-map-inverse', String(1 / view.scale));
-    zoomValue.textContent = Math.round(view.scale * 100) + '%';
-    zoomOut.disabled = view.scale <= 1;
-    zoomIn.disabled = view.scale >= 3;
     viewport.classList.toggle('is-zoomed', view.scale > 1);
   }
 
@@ -241,12 +238,7 @@
         '<div class="fd-map-error" role="status" hidden><p>تعذّر تحميل الخريطة.</p><button type="button" class="fd-map-tool fd-map-retry">إعادة المحاولة</button></div>' +
       '</div>' +
       '<div class="fd-map-toolbar"><button type="button" class="fd-map-tool fd-map-fit" aria-label="عرض الخريطة كاملة">' +
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg>الخريطة كاملة</button>' +
-        '<div class="fd-map-zoom"><button type="button" class="fd-map-tool fd-map-minus" aria-label="تصغير الخريطة">' +
-          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/></svg></button>' +
-          '<span class="fd-map-zoom-value" aria-label="مستوى التكبير">100%</span>' +
-          '<button type="button" class="fd-map-tool fd-map-plus" aria-label="تكبير الخريطة">' +
-          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5v14"/></svg></button></div></div>' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg>الخريطة كاملة</button></div>' +
       '<div class="fd-map-info" aria-live="polite" aria-atomic="true">' +
         '<div class="fd-map-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Zm6-2v16m6-14v16"/></svg><p>اضغط على اسم الكوخ أو موقعه<br>للتعرّف على مميزاته</p></div>' +
         '<section id="fd-map-card" class="fd-map-card" aria-label="ملخص الكوخ المختار" hidden>' +
@@ -262,9 +254,6 @@
     empty = dialog.querySelector('.fd-map-empty');
     image = dialog.querySelector('.fd-map-image');
     error = dialog.querySelector('.fd-map-error');
-    zoomOut = dialog.querySelector('.fd-map-minus');
-    zoomIn = dialog.querySelector('.fd-map-plus');
-    zoomValue = dialog.querySelector('.fd-map-zoom-value');
 
     locations.forEach(function (location, i) {
       var cabin = cabinFor(location);
@@ -306,8 +295,6 @@
       } else return;
       event.preventDefault();
     });
-    zoomIn.addEventListener('click', function () { zoomTo(view.scale + .5, view.width / 2, view.height / 2); });
-    zoomOut.addEventListener('click', function () { zoomTo(view.scale - .5, view.width / 2, view.height / 2); });
     dialog.querySelector('.fd-map-fit').addEventListener('click', function () { measureView(true); });
     dialog.querySelector('.fd-map-clear').addEventListener('click', function () { clearSelection(true); });
     dialog.querySelector('.fd-map-close').addEventListener('click', function () { dialog.close(); });
