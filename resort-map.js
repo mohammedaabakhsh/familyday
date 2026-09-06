@@ -10,11 +10,15 @@
   // Only owner-confirmed locations are plotted. Add each remaining location here after confirmation.
   var locations = [
     { key: 'dome-upper', cabinId: 1, x: 23.25, y: 43.4, labelSide: 'left', labelRightX: 16, locationLabel: 'العلوي' },
-    { key: 'dome-lower', cabinId: 1, x: 23.25, y: 53.6, labelSide: 'left', labelRightX: 16, locationLabel: 'السفلي' }
+    { key: 'dome-lower', cabinId: 1, x: 23.25, y: 53.6, labelSide: 'left', labelRightX: 16, locationLabel: 'السفلي' },
+    { key: 'royal', cabinId: 9, x: 60.2, y: 26.6, labelSide: 'right', labelLeftX: 70,
+      footprint: [[51.8, 23.3], [59.6, 17.6], [68.2, 30.8], [60.1, 35.6]] },
+    { key: 'classic', cabinId: 3, x: 65.8, y: 35.5, labelSide: 'right', labelLeftX: 76,
+      footprint: [[60.1, 35.6], [68.2, 30.8], [71.3, 34.6], [62.9, 40.2]] }
   ].filter(function (location) { return data.resort.items.some(function (item) { return item.id === location.cabinId; }); });
   if (!locations.length) return;
 
-  // Confirmed in the site's FAQ. No connecting line is drawn until both positions are confirmed.
+  // The connecting door is confirmed in the site's FAQ; both positions are owner-confirmed.
   var connections = [{ cabinIds: [3, 9], description: 'يمكن ربط كوخي رويال والكلاسيكي عبر باب داخلي.' }];
   var dialog, viewport, plane, card, empty, image, error;
   var markers = [], highlights = [], selected = null;
@@ -56,7 +60,7 @@
     var old = selected;
     selected = null;
     markers.forEach(function (marker) { marker.setAttribute('aria-pressed', 'false'); });
-    highlights.forEach(function (highlight) { highlight.hidden = true; });
+    highlights.forEach(function (highlight) { highlight.hidden = true; highlight.classList.remove('is-connected'); });
     card.hidden = true;
     empty.hidden = false;
     if (restoreFocus && old) markers[locations.indexOf(old)].focus({ preventScroll: true });
@@ -66,9 +70,13 @@
     if (selected === location) { clearSelection(false); return; }
     var cabin = cabinFor(location);
     selected = location;
+    var connection = connections.find(function (item) { return item.cabinIds.indexOf(cabin.id) !== -1; });
     markers.forEach(function (marker, i) {
-      marker.setAttribute('aria-pressed', String(locations[i] === location));
-      highlights[i].hidden = locations[i] !== location;
+      var active = locations[i] === location;
+      var linked = !active && connection && connection.cabinIds.indexOf(locations[i].cabinId) !== -1;
+      marker.setAttribute('aria-pressed', String(active));
+      highlights[i].hidden = !active && !linked;
+      highlights[i].classList.toggle('is-connected', Boolean(linked));
     });
     card.querySelector('h3').textContent = cabin.name;
     card.querySelector('.fd-map-rooms').textContent = roomText(cabin.rooms);
@@ -82,7 +90,6 @@
       amenities.appendChild(item);
     });
     amenities.hidden = !amenities.children.length;
-    var connection = connections.find(function (item) { return item.cabinIds.indexOf(cabin.id) !== -1; });
     var connectionText = card.querySelector('.fd-map-connection');
     connectionText.hidden = !connection;
     connectionText.textContent = connection ? connection.description : '';
@@ -100,11 +107,13 @@
     plane.style.setProperty('--fd-map-inverse', String(1 / view.scale));
     markers.forEach(function (marker, i) {
       var location = locations[i];
-      if (location.labelSide !== 'left') return;
-      var offset = size * (location.x - location.labelRightX) / 100;
-      // Keep the full label inside the image at the overview scale.
+      if (!location.labelSide) return;
+      var left = location.labelSide === 'left';
+      var offset = size * (left ? location.x - location.labelRightX : location.labelLeftX - location.x) / 100;
+      // Keep each full road label inside the image at the overview scale.
       if (view.scale === 1) {
-        var available = size * location.x / 100 - marker.querySelector('span').offsetWidth - 4;
+        var space = left ? location.x : 100 - location.x;
+        var available = size * space / 100 - marker.querySelector('span').offsetWidth - 4;
         offset = Math.min(offset, available);
       }
       marker.style.setProperty('--fd-map-label-offset', Math.max(10, offset) + 'px');
@@ -140,16 +149,24 @@
     return { x: event.clientX - bounds.left, y: event.clientY - bounds.top };
   }
 
+  function insideFootprint(x, y, points) {
+    var inside = false;
+    for (var i = 0, j = points.length - 1; i < points.length; j = i++) {
+      var a = points[i], b = points[j];
+      if ((a[1] > y) !== (b[1] > y) &&
+          x < (b[0] - a[0]) * (y - a[1]) / (b[1] - a[1]) + a[0]) inside = !inside;
+    }
+    return inside;
+  }
+
   function locationAt(point) {
     if (!view.size) return null;
     var x = (point.x - view.x) * 100 / (view.size * view.scale);
     var y = (point.y - view.y) * 100 / (view.size * view.scale);
-    var nearest = null, distance = 5.2;
-    locations.forEach(function (location) {
-      var current = Math.hypot(location.x - x, location.y - y);
-      if (current < distance) { nearest = location; distance = current; }
-    });
-    return nearest;
+    return locations.find(function (location) {
+      return location.footprint ? insideFootprint(x, y, location.footprint) :
+        Math.hypot(location.x - x, location.y - y) < 5.2;
+    }) || null;
   }
 
   function pinchState() {
@@ -268,17 +285,34 @@
 
     locations.forEach(function (location, i) {
       var cabin = cabinFor(location);
-      var highlight = document.createElement('div');
-      highlight.className = 'fd-map-highlight';
-      highlight.style.left = location.x + '%'; highlight.style.top = location.y + '%';
+      var highlight;
+      if (location.footprint) {
+        highlight = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        highlight.setAttribute('class', 'fd-map-footprint');
+        highlight.setAttribute('viewBox', '0 0 100 100');
+        highlight.setAttribute('aria-hidden', 'true');
+        var outline = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+        outline.setAttribute('points', location.footprint.map(function (point) { return point.join(','); }).join(' '));
+        outline.setAttribute('vector-effect', 'non-scaling-stroke');
+        highlight.appendChild(outline);
+        // HTML wrappers preserve the same hidden-property behavior as the dome outlines.
+        var wrapper = document.createElement('div');
+        wrapper.className = 'fd-map-footprint-wrap';
+        wrapper.appendChild(highlight);
+        highlight = wrapper;
+      } else {
+        highlight = document.createElement('div');
+        highlight.className = 'fd-map-highlight';
+        highlight.style.left = location.x + '%'; highlight.style.top = location.y + '%';
+      }
       highlight.hidden = true;
       plane.appendChild(highlight);
       highlights.push(highlight);
       var marker = document.createElement('button');
-      marker.type = 'button'; marker.className = 'fd-map-hotspot' + (location.labelSide === 'left' ? ' fd-map-hotspot--label-left' : '');
+      marker.type = 'button'; marker.className = 'fd-map-hotspot' + (location.labelSide ? ' fd-map-hotspot--label-' + location.labelSide : '');
       marker.dataset.mapIndex = String(i);
       marker.style.left = location.x + '%'; marker.style.top = location.y + '%';
-      marker.setAttribute('aria-label', cabin.name + ' ' + location.locationLabel + ': عرض المميزات');
+      marker.setAttribute('aria-label', cabin.name + (location.locationLabel ? ' ' + location.locationLabel : '') + ': عرض المميزات');
       marker.setAttribute('aria-pressed', 'false'); marker.setAttribute('aria-controls', 'fd-map-card');
       var label = document.createElement('span'); label.textContent = cabin.name;
       marker.appendChild(label);

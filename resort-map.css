@@ -39,6 +39,10 @@
   border: 2px solid #128b99; border-radius: 50%; box-sizing: border-box;
   background: rgba(25,167,183,.07); pointer-events: none;
 }
+.fd-map-footprint-wrap { position: absolute; inset: 0; pointer-events: none; }
+.fd-map-footprint { display: block; width: 100%; height: 100%; overflow: visible; }
+.fd-map-footprint polygon { fill: rgba(25,167,183,.12); stroke: #128b99; stroke-width: 2; stroke-linejoin: round; }
+.fd-map-footprint-wrap.is-connected polygon { fill: rgba(25,167,183,.04); stroke: #366c77; stroke-dasharray: 4 3; }
 .fd-map-hotspot {
   position: absolute; width: 28px; height: 28px; padding: 0;
   transform: translate(-50%, -50%) scale(var(--fd-map-inverse, 1));
@@ -54,9 +58,17 @@
   font-size: 11px; font-weight: 700; line-height: 1.4; box-shadow: 0 1px 4px rgba(0,0,0,.08);
 }
 .fd-map-hotspot span::before { content: ''; position: absolute; right: 100%; top: 50%; width: 11px; height: 1px; background: #637b83; pointer-events: none; }
+.fd-map-hotspot--label-left span, .fd-map-hotspot--label-right span {
+  min-height: 24px; padding: 2px 4px; border-radius: 4px; font-size: 10.5px;
+}
 .fd-map-hotspot--label-left span {
   left: auto; right: calc(50% + var(--fd-map-label-offset, 32px));
-  min-height: 24px; padding: 2px 4px; border-radius: 4px; font-size: 10.5px;
+}
+.fd-map-hotspot--label-right span {
+  left: calc(50% + var(--fd-map-label-offset, 32px)); right: auto;
+}
+.fd-map-hotspot--label-right span::before {
+  left: auto; right: 100%; width: calc(var(--fd-map-label-offset, 32px) - 5px);
 }
 .fd-map-hotspot--label-left span::before {
   right: auto; left: 100%; width: calc(var(--fd-map-label-offset, 32px) - 5px);
@@ -98,5 +110,5 @@
 }
 @media (min-width: 600px) {
   .fd-map-hotspot span { font-size: 12px; }
-  .fd-map-hotspot--label-left span { font-size: 11px; }
+  .fd-map-hotspot--label-left span, .fd-map-hotspot--label-right span { font-size: 11px; }
 }
