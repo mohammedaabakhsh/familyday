@@ -11,11 +11,11 @@
   var locations = [
     { key: 'dome-upper', cabinId: 1, x: 23.25, y: 43.4, labelSide: 'left', labelRightX: 16, locationLabel: 'العلوي' },
     { key: 'dome-lower', cabinId: 1, x: 23.25, y: 53.6, labelSide: 'left', labelRightX: 16, locationLabel: 'السفلي' },
-    { key: 'royal', cabinId: 9, x: 60.2, y: 26.6, labelSide: 'right', labelLeftX: 70,
-      // The owner-marked divider separates the complete Royal and Classic plots.
-      footprint: [[39.5, 23.8], [54.4, 10.0], [66.7, 27.8], [62.25, 31.9], [53.8, 37.7], [43.8, 24.6]] },
-    { key: 'classic', cabinId: 3, x: 65.8, y: 35.5, labelSide: 'right', labelLeftX: 76,
-      footprint: [[53.8, 37.7], [62.25, 31.9], [66.7, 27.8], [76.7, 42.5], [64.3, 52.5]] }
+    // Owner's corrected aerial reference: smaller Classic above, larger Royal below.
+    { key: 'classic', cabinId: 3, x: 60.2, y: 26.6, labelSide: 'right', labelLeftX: 70,
+      footprint: [[39.5, 23.8], [54.4, 10.0], [64.7, 24.5], [51.3, 35.5], [43.8, 24.6]] },
+    { key: 'royal', cabinId: 9, x: 65.8, y: 35.5, labelSide: 'right', labelLeftX: 76,
+      footprint: [[51.3, 35.5], [64.7, 24.5], [76.7, 42.5], [64.3, 52.5]] }
   ].filter(function (location) { return data.resort.items.some(function (item) { return item.id === location.cabinId; }); });
   if (!locations.length) return;
 
@@ -249,7 +249,7 @@
     error.hidden = true;
     plane.hidden = false;
     viewport.setAttribute('aria-busy', 'true');
-    image.src = 'imgs/resort-map-v1.webp';
+    image.src = 'imgs/resort-map-v2.webp';
   }
 
   function createDialog() {
