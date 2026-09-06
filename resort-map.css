@@ -54,6 +54,13 @@
   font-size: 11px; font-weight: 700; line-height: 1.4; box-shadow: 0 1px 4px rgba(0,0,0,.08);
 }
 .fd-map-hotspot span::before { content: ''; position: absolute; right: 100%; top: 50%; width: 11px; height: 1px; background: #637b83; pointer-events: none; }
+.fd-map-hotspot--label-left span {
+  left: auto; right: calc(50% + var(--fd-map-label-offset, 32px));
+  min-height: 24px; padding: 2px 4px; border-radius: 4px; font-size: 10.5px;
+}
+.fd-map-hotspot--label-left span::before {
+  right: auto; left: 100%; width: calc(var(--fd-map-label-offset, 32px) - 5px);
+}
 .fd-map-hotspot[aria-pressed="true"] { z-index: 3; }
 .fd-map-hotspot[aria-pressed="true"] span { background: #0e6470; border-color: #0e6470; color: #fff; }
 .fd-map-hotspot[aria-pressed="true"] span::before { background: #0e6470; }
@@ -89,4 +96,7 @@
   .fd-map-dialog { overflow-y: auto; }
   .fd-map-viewport { flex: none; height: min(90vw, 430px); }
 }
-@media (min-width: 600px) { .fd-map-hotspot span { font-size: 12px; } }
+@media (min-width: 600px) {
+  .fd-map-hotspot span { font-size: 12px; }
+  .fd-map-hotspot--label-left span { font-size: 11px; }
+}

@@ -9,8 +9,8 @@
 
   // Only owner-confirmed locations are plotted. Add each remaining location here after confirmation.
   var locations = [
-    { key: 'dome-upper', cabinId: 1, x: 23.25, y: 43.4, locationLabel: 'العلوي' },
-    { key: 'dome-lower', cabinId: 1, x: 23.25, y: 53.6, locationLabel: 'السفلي' }
+    { key: 'dome-upper', cabinId: 1, x: 23.25, y: 43.4, labelSide: 'left', labelRightX: 16, locationLabel: 'العلوي' },
+    { key: 'dome-lower', cabinId: 1, x: 23.25, y: 53.6, labelSide: 'left', labelRightX: 16, locationLabel: 'السفلي' }
   ].filter(function (location) { return data.resort.items.some(function (item) { return item.id === location.cabinId; }); });
   if (!locations.length) return;
 
@@ -98,6 +98,17 @@
     view.y = size <= view.height ? (view.height - size) / 2 : clamp(view.y, view.height - size, 0);
     plane.style.transform = 'translate(' + view.x + 'px,' + view.y + 'px) scale(' + view.scale + ')';
     plane.style.setProperty('--fd-map-inverse', String(1 / view.scale));
+    markers.forEach(function (marker, i) {
+      var location = locations[i];
+      if (location.labelSide !== 'left') return;
+      var offset = size * (location.x - location.labelRightX) / 100;
+      // Keep the full label inside the image at the overview scale.
+      if (view.scale === 1) {
+        var available = size * location.x / 100 - marker.querySelector('span').offsetWidth - 4;
+        offset = Math.min(offset, available);
+      }
+      marker.style.setProperty('--fd-map-label-offset', Math.max(10, offset) + 'px');
+    });
     viewport.classList.toggle('is-zoomed', view.scale > 1);
   }
 
@@ -264,7 +275,7 @@
       plane.appendChild(highlight);
       highlights.push(highlight);
       var marker = document.createElement('button');
-      marker.type = 'button'; marker.className = 'fd-map-hotspot';
+      marker.type = 'button'; marker.className = 'fd-map-hotspot' + (location.labelSide === 'left' ? ' fd-map-hotspot--label-left' : '');
       marker.dataset.mapIndex = String(i);
       marker.style.left = location.x + '%'; marker.style.top = location.y + '%';
       marker.setAttribute('aria-label', cabin.name + ' ' + location.locationLabel + ': عرض المميزات');
