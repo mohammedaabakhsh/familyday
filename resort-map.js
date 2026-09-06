@@ -55,7 +55,7 @@
   }
 
   function guestText(count) {
-    return count === 2 ? 'يتسع لشخصين' : 'يتسع حتى ' + count + ' ضيفًا';
+    return count === 2 ? 'يتسع لشخصين' : 'يتسع حتى ' + count + (count >= 3 && count <= 10 ? ' ضيوف' : ' ضيفًا');
   }
 
   function featuresFor(cabin) {
