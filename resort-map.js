@@ -27,7 +27,17 @@
     { key: 'rural', cabinId: 8, x: 43.7, y: 67.1, labelSide: 'bottom', labelX: 47, labelY: 91,
       footprint: [[38.9, 60.9], [48.5, 61.8], [48.5, 84.3], [38.9, 84.3]] },
     { key: 'french', cabinId: 7, x: 53.3, y: 67.5, labelSide: 'bottom', labelX: 63, labelY: 91,
-      footprint: [[48.5, 61.8], [58.2, 61.8], [58.2, 84.3], [48.5, 84.3]] }
+      footprint: [[48.5, 61.8], [56.44, 61.8], [58.2, 64.7333333333], [58.2, 84.3], [48.5, 84.3]] },
+    // Owner-confirmed right-hand row: Greek 1, Greek 2, then Palm Beach.
+    { key: 'greek-one', cabinId: 4, locationLabel: '1', instanceNumber: 1,
+      x: 75.9, y: 51.4, labelSide: 'offset', labelX: 89.5, labelY: 69, leaderBend: [87.1, 65.1],
+      footprint: [[70.4, 48.6], [76.8, 43.5], [89.9, 63.7], [82.5, 69]] },
+    { key: 'greek-two', cabinId: 4, locationLabel: '2', instanceNumber: 2,
+      x: 69.4, y: 56.8, labelSide: 'offset', labelX: 86, labelY: 76.5, leaderBend: [80.1, 71],
+      footprint: [[63.6, 54.2], [70.4, 48.6], [82.5, 69], [75, 74]] },
+    { key: 'palm-beach', cabinId: 5, x: 61.9, y: 61.4,
+      labelSide: 'offset', labelX: 79, labelY: 83.5, leaderBend: [70.5, 77.2],
+      footprint: [[55.6, 60.4], [63.6, 54.2], [75, 74], [67, 79.4]] }
   ].filter(function (location) { return data.resort.items.some(function (item) { return item.id === location.cabinId; }); });
   if (!locations.length) return;
 
@@ -93,7 +103,7 @@
       highlights[i].hidden = !active && !linked;
       highlights[i].classList.toggle('is-connected', Boolean(linked));
     });
-    card.querySelector('h3').textContent = cabin.name;
+    card.querySelector('h3').textContent = cabin.name + (location.instanceNumber ? ' ' + location.instanceNumber : '');
     card.querySelector('.fd-map-rooms').textContent = roomText(cabin.rooms);
     card.querySelector('.fd-map-guests').textContent = guestText(cabin.guests);
     var amenities = card.querySelector('.fd-map-amenities');
@@ -122,7 +132,7 @@
     markers.forEach(function (marker, i) {
       var location = locations[i];
       if (!location.labelSide) return;
-      if (location.labelSide === 'bottom') {
+      if (location.labelSide === 'bottom' || location.labelSide === 'offset') {
         marker.style.setProperty('--fd-map-label-x', size * (location.labelX - location.x) / 100 + 'px');
         marker.style.setProperty('--fd-map-label-y', size * (location.labelY - location.y) / 100 + 'px');
         return;
@@ -305,13 +315,13 @@
 
     locations.forEach(function (location, i) {
       var cabin = cabinFor(location);
-      if (location.labelSide === 'bottom') {
+      if (location.labelSide === 'bottom' || location.labelSide === 'offset') {
         var leader = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
         leader.setAttribute('class', 'fd-map-leader');
         leader.setAttribute('viewBox', '0 0 100 100');
         leader.setAttribute('aria-hidden', 'true');
         var route = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
-        route.setAttribute('points', [[location.x, location.y], [location.x, 85.7], [location.labelX, location.labelY]].map(function (point) { return point.join(','); }).join(' '));
+        route.setAttribute('points', [[location.x, location.y], location.leaderBend || [location.x, 85.7], [location.labelX, location.labelY]].map(function (point) { return point.join(','); }).join(' '));
         route.setAttribute('vector-effect', 'non-scaling-stroke');
         leader.appendChild(route);
         plane.appendChild(leader);
@@ -348,7 +358,7 @@
       marker.setAttribute('aria-pressed', 'false'); marker.setAttribute('aria-controls', 'fd-map-card');
       var label = document.createElement('span');
       // Compact map names; full names remain in the detail card and accessible label.
-      label.textContent = cabin.name.replace(/^(?:الكوخ|كوخ|البيت|بيت)\s+/, '');
+      label.textContent = cabin.name.replace(/^(?:الكوخ|كوخ|البيت|بيت)\s+/, '') + (location.instanceNumber ? ' ' + location.instanceNumber : '');
       marker.appendChild(label);
       // Pointer gestures are handled once on pointerup; keyboard/assistive clicks have detail=0.
       marker.addEventListener('click', function (event) { if (event.detail === 0) selectLocation(location); });

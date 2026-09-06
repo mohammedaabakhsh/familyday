@@ -73,12 +73,12 @@
 .fd-map-hotspot--label-left span::before {
   right: auto; left: 100%; width: calc(var(--fd-map-label-offset, 32px) - 5px);
 }
-.fd-map-hotspot--label-bottom span {
+.fd-map-hotspot--label-bottom span, .fd-map-hotspot--label-offset span {
   left: calc(50% + var(--fd-map-label-x, 0px)); right: auto;
   top: calc(50% + var(--fd-map-label-y, 0px)); transform: translate(-50%, -50%);
   text-align: center;
 }
-.fd-map-hotspot--label-bottom span::before { display: none; }
+.fd-map-hotspot--label-bottom span::before, .fd-map-hotspot--label-offset span::before { display: none; }
 .fd-map-hotspot[aria-pressed="true"] { z-index: 3; }
 .fd-map-hotspot[aria-pressed="true"] span { background: #0e6470; border-color: #0e6470; color: #fff; }
 .fd-map-hotspot[aria-pressed="true"] span::before { background: #0e6470; }
