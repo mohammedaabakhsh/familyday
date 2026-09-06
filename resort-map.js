@@ -22,11 +22,11 @@
     // Owner's plan confirms this bottom row from left to right.
     { key: 'bohemian', cabinId: 6, x: 22.1, y: 65.2, labelSide: 'left', labelRightX: 15,
       footprint: [[16.8, 59.2], [27.8, 59.2], [27.8, 84.3], [16.8, 84.3]] },
-    { key: 'panoramic', cabinId: 10, x: 33.2, y: 66.8, labelSide: 'bottom', labelX: 29, labelY: 91.5,
+    { key: 'panoramic', cabinId: 10, x: 33.2, y: 66.8, labelSide: 'bottom', labelX: 31, labelY: 91,
       footprint: [[27.8, 60.3], [38.9, 60.3], [38.9, 84.3], [27.8, 84.3]] },
-    { key: 'rural', cabinId: 8, x: 43.7, y: 67.1, labelSide: 'bottom', labelX: 51, labelY: 91.5,
+    { key: 'rural', cabinId: 8, x: 43.7, y: 67.1, labelSide: 'bottom', labelX: 47, labelY: 91,
       footprint: [[38.9, 60.9], [48.5, 61.8], [48.5, 84.3], [38.9, 84.3]] },
-    { key: 'french', cabinId: 7, x: 53.3, y: 67.5, labelSide: 'bottom', labelX: 73, labelY: 91.5,
+    { key: 'french', cabinId: 7, x: 53.3, y: 67.5, labelSide: 'bottom', labelX: 63, labelY: 91,
       footprint: [[48.5, 61.8], [58.2, 61.8], [58.2, 84.3], [48.5, 84.3]] }
   ].filter(function (location) { return data.resort.items.some(function (item) { return item.id === location.cabinId; }); });
   if (!locations.length) return;
@@ -346,7 +346,9 @@
       marker.style.left = location.x + '%'; marker.style.top = location.y + '%';
       marker.setAttribute('aria-label', cabin.name + (location.locationLabel ? ' ' + location.locationLabel : '') + ': عرض المميزات');
       marker.setAttribute('aria-pressed', 'false'); marker.setAttribute('aria-controls', 'fd-map-card');
-      var label = document.createElement('span'); label.textContent = cabin.name;
+      var label = document.createElement('span');
+      // Compact map names; full names remain in the detail card and accessible label.
+      label.textContent = cabin.name.replace(/^(?:الكوخ|كوخ|البيت|بيت)\s+/, '');
       marker.appendChild(label);
       // Pointer gestures are handled once on pointerup; keyboard/assistive clicks have detail=0.
       marker.addEventListener('click', function (event) { if (event.detail === 0) selectLocation(location); });
