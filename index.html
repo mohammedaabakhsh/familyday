@@ -3716,8 +3716,8 @@ function openMDirect(c){
   var groups=[];var cur=[];
   c.tags.forEach(function(t){if(t==='|'){groups.push(cur);cur=[];}else cur.push(t);});
   if(cur.length)groups.push(cur);
-  var indoor=groups.slice(0,4);
-  var outdoor=groups.slice(4);
+  var indoor=groups.slice(0,3);
+  var outdoor=groups.slice(3);
   var chaletTips={'مسبح للكبار 4×8 م':'عمق متدرج من 1 م إلى 2 م','مسبح للأطفال 2×6 م':'عمق 65 سم'};
   function mkTag(t){var tip=chaletTips[t];return tip?'<span class="tag" data-tip="'+tip+'">'+t+'</span>':'<span class="tag">'+t+'</span>';}
   function renderGroup(g){return g.map(mkTag).join('')+'<div style="width:100%;height:0;margin:4px 0"></div>';}
@@ -3738,7 +3738,7 @@ function openMDirect(c){
     +'<div class="tags">'+outdoor.map(renderGroup).join('')+'</div>'
     +'<div class="tags-lbl" style="color:#19a7b7;margin-top:24px;">مرافق المطبخ</div>'
     +'<div class="tags" style="margin-bottom:12px;"><span class="tag">موقد كهربائي</span><span class="tag">ثلاجة</span><span class="tag">ميكروويف</span><span class="tag">غلاية كهربائية</span></div>'
-    +'<div class="tags-lbl" style="color:#19a7b7;margin-top:24px;">مميزات الاستراحة</div>'
+    +'<div class="tags-lbl" style="color:#19a7b7;margin-top:24px;">مميزات مكان الإقامة</div>'
     +'<div class="tags" style="margin-bottom:12px;"><span class="tag">تلفزيون ذكي</span><span class="tag">سماعات داخلية (ساوند بار)</span></div>'
     +'<div class="tags-lbl" style="color:#19a7b7;margin-top:24px;">الخدمات الإضافية</div>'
     +'<div class="tags" style="margin-bottom:12px;"><span class="tag">زحليقة</span><span class="tag">ملعب صابوني</span></div>'
