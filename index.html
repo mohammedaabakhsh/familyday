@@ -54,16 +54,29 @@
 <link href="resort-home.css?v=2" rel="stylesheet">
 <style>
 .hide{display:none!important}
-/* Cinema service card */
-#services-overlay .svc-entertainment-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-#services-overlay .svc-cinema-card{grid-column:1/-1;box-sizing:border-box;width:100%;min-width:0;min-height:116px;display:grid;grid-template-columns:88px minmax(0,1fr)20px;align-items:center;gap:14px;padding:12px;border:1px solid #245162;border-radius:18px;background:#0d2435;color:#f4f8fa;font-family:Tajawal,sans-serif;text-align:right;direction:rtl;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.18)}
-#services-overlay .svc-cinema-photo{display:block;width:88px;height:88px;object-fit:cover;object-position:35% 50%;border-radius:12px}
-#services-overlay .svc-cinema-name{min-width:0;font-size:20px;font-weight:700;line-height:1.4}
-#services-overlay .svc-cinema-arrow{display:block;width:20px;height:20px;color:#92c4d0}
-#services-overlay .svc-cinema-card:focus-visible{outline:2px solid #7ecfea;outline-offset:4px}
-@media (max-width:360px){#services-overlay .svc-cinema-card{grid-template-columns:76px minmax(0,1fr)20px;gap:12px;min-height:104px}#services-overlay .svc-cinema-photo{width:76px;height:76px}}
-@media (min-width:900px){#services-overlay .svc-entertainment-grid{grid-template-columns:repeat(3,minmax(0,1fr))}#services-overlay .svc-cinema-card{grid-column:auto}}
-@media (hover:hover) and (pointer:fine){#services-overlay .svc-cinema-card:hover{background:#112e40;border-color:#3d8191}}
+/* Services page cards */
+#services-overlay .svcs-header,#services-overlay .svcs-content{box-sizing:border-box;width:100%;max-width:1100px;margin:0 auto}
+#services-overlay .svcs-header{display:flex;align-items:center;gap:14px;padding:24px 20px 28px;direction:rtl}
+#services-overlay .svcs-back{display:flex;align-items:center;justify-content:center;width:38px;height:38px;flex:0 0 38px;padding:0;border:1px solid rgba(126,207,234,.16);border-radius:50%;background:rgba(255,255,255,.06);color:#d7e8ef;cursor:pointer}
+#services-overlay .svcs-title{margin:0;font-family:Tajawal,sans-serif;font-size:24px;font-weight:700;line-height:1.4;color:#f4f8fa}
+#services-overlay .svcs-content{display:grid;gap:26px;padding:0 20px calc(32px + env(safe-area-inset-bottom,0px))}
+#services-overlay .svcs-section-title{margin:0 2px 10px;font-family:Tajawal,sans-serif;font-size:14px;font-weight:500;line-height:1.5;color:#8bc4d1}
+#services-overlay .svcs-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+#services-overlay .svcs-card{box-sizing:border-box;width:100%;min-width:0;min-height:114px;display:grid;grid-template-columns:88px minmax(0,1fr)20px;align-items:center;gap:14px;padding:12px;border:1px solid #245162;border-radius:18px;background:#0d2435;color:#f4f8fa;font-family:Tajawal,sans-serif;text-align:right;direction:rtl;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.12)}
+#services-overlay .svcs-photo{display:block;width:88px;height:88px;object-fit:cover;border-radius:12px;background:#04111e}
+#services-overlay .svcs-photo--contain{object-fit:contain}
+#services-overlay .svcs-name{min-width:0;font-size:20px;font-weight:700;line-height:1.4}
+#services-overlay .svcs-arrow{display:block;width:20px;height:20px;color:#92c4d0}
+#services-overlay .svcs-reward{grid-template-columns:56px minmax(0,1fr)20px;min-height:82px}
+#services-overlay .svcs-reward .svcs-name{font-size:18px}
+#services-overlay .svcs-symbol{display:flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:12px;background:#133b4a;color:#82ccda}
+#services-overlay .svcs-symbol svg{display:block;width:26px;height:26px}
+#services-overlay .svcs-card:focus-visible,#services-overlay .svcs-back:focus-visible{outline:2px solid #7ecfea;outline-offset:4px}
+@media (max-width:360px){#services-overlay .svcs-header{padding-inline:16px}#services-overlay .svcs-content{padding-inline:16px}#services-overlay .svcs-card{grid-template-columns:76px minmax(0,1fr)20px;gap:12px;min-height:102px}#services-overlay .svcs-photo{width:76px;height:76px}#services-overlay .svcs-reward{grid-template-columns:56px minmax(0,1fr)20px;min-height:82px}}
+@media (min-width:600px){#services-overlay .svcs-grid--rewards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:900px){#services-overlay .svcs-grid{grid-template-columns:repeat(3,minmax(0,1fr))}#services-overlay .svcs-grid--single{grid-template-columns:minmax(0,1fr)}#services-overlay .svcs-grid--rewards{grid-template-columns:repeat(2,minmax(0,1fr))}#services-overlay .svcs-header{padding-top:28px;padding-bottom:30px}#services-overlay .svcs-content{gap:28px}}
+@media (min-width:900px) and (max-width:1099px){#services-overlay .svcs-card{grid-template-columns:72px minmax(0,1fr)18px;gap:12px}#services-overlay .svcs-photo{width:72px;height:72px}#services-overlay .svcs-reward{grid-template-columns:56px minmax(0,1fr)18px}}
+@media (hover:hover) and (pointer:fine){#services-overlay .svcs-card:hover{background:#112e40;border-color:#3d8191}#services-overlay .svcs-back:hover{background:#133343}}
 .phone-link{
   color:#7ecfea!important;
   text-decoration:underline;
@@ -1242,60 +1255,79 @@ function tarfihiOrder(){
 
 <!-- SERVICES OVERLAY -->
 <div id="services-overlay" class="hide" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:9500;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
-  <div style="background:transparent;padding:14px 20px 18px;padding-top:20px;text-align:right;position:relative;">
-    <button onclick="closeServices()" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.10);border:none;color:rgba(255,255,255,0.85);cursor:pointer;margin-bottom:10px;">
-      <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div class="svcs-header">
+    <button type="button" class="svcs-back" onclick="closeServices()" aria-label="العودة">
+      <svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-    <div style="font-family:Tajawal,sans-serif;font-size:20px;font-weight:700;color:#fff;line-height:1.25;margin-top:8px;">خدمات المنتجع</div>
+    <h1 class="svcs-title">خدمات المنتجع</h1>
   </div>
-  <div style="padding:14px 16px;">
-<div style="display:flex;flex-direction:column;gap:16px;">
-
-<!-- طعام ومشروبات -->
-<div>
-  <div style="font-family:Tajawal,sans-serif;font-size:12px;font-weight:700;color:rgba(25,167,183,.85);padding:0 2px 8px;">طعام ومشروبات</div>
-  <div onclick="openMenuDetail()" style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:18px;padding:20px 12px 16px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:10px;border:1.5px solid rgba(25,167,183,.18);text-align:center;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.18);"><div style="width:46px;height:46px;border-radius:12px;background:rgba(25,167,183,0.15);display:flex;align-items:center;justify-content:center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7ecfea" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></div><div style="font-family:Tajawal,sans-serif;font-size:13px;font-weight:700;color:#fff;line-height:1.3;">المطعم</div></div>
-</div>
-
-
-<!-- ترفيه -->
-<div>
-  <div style="font-family:Tajawal,sans-serif;font-size:12px;font-weight:700;color:rgba(25,167,183,.85);padding:0 2px 8px;">ترفيه</div>
-  <div class="svc-entertainment-grid">
-    <button type="button" class="svc-cinema-card" onclick="showSinema()" aria-label="جلسة السينما">
-      <img class="svc-cinema-photo" src="imgs/cinema_1.webp" width="88" height="88" alt="" loading="lazy" decoding="async">
-      <span class="svc-cinema-name">جلسة السينما</span>
-      <svg class="svc-cinema-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
-    </button>
-<div onclick="showTarfihi()" style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:18px;padding:20px 12px 16px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:10px;border:1.5px solid rgba(25,167,183,.18);text-align:center;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.18);"><div style="width:46px;height:46px;border-radius:12px;background:rgba(25,167,183,0.15);display:flex;align-items:center;justify-content:center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7ecfea" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1" fill="#7ecfea"/><circle cx="18" cy="13" r="1" fill="#7ecfea"/></svg></div><div style="font-family:Tajawal,sans-serif;font-size:13px;font-weight:700;color:#fff;line-height:1.3;">الألعاب الترفيهية</div></div>
-<div onclick="showMaiya()" style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:18px;padding:20px 12px 16px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:10px;border:1.5px solid rgba(25,167,183,.18);text-align:center;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.18);"><div style="width:46px;height:46px;border-radius:12px;background:rgba(25,167,183,0.15);display:flex;align-items:center;justify-content:center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7ecfea" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16c1.5 0 3-1 4.5-1s3 1 4.5 1 3-1 4.5-1 3 1 4.5 1"/><path d="M2 12c1.5 0 3-1 4.5-1s3 1 4.5 1 3-1 4.5-1 3 1 4.5 1"/><path d="M2 8c1.5 0 3-1 4.5-1s3 1 4.5 1 3-1 4.5-1 3 1 4.5 1"/></svg></div><div style="font-family:Tajawal,sans-serif;font-size:13px;font-weight:700;color:#fff;line-height:1.3;">الألعاب المائية</div></div>
+  <div class="svcs-content">
+    <section aria-labelledby="svcs-group-0">
+      <h2 id="svcs-group-0" class="svcs-section-title">طعام ومشروبات</h2>
+      <div class="svcs-grid svcs-grid--single">
+        <button type="button" class="svcs-card" onclick="openMenuDetail()" aria-label="المطعم">
+          <img class="svcs-photo" src="imgs/img114.webp" width="88" height="88" alt="" loading="lazy" decoding="async" style="object-position:50% 60%;">
+          <span class="svcs-name">المطعم</span>
+          <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+        </button>
+      </div>
+    </section>
+    <section aria-labelledby="svcs-group-1">
+      <h2 id="svcs-group-1" class="svcs-section-title">ترفيه</h2>
+      <div class="svcs-grid">
+        <button type="button" class="svcs-card" onclick="showSinema()" aria-label="جلسة السينما">
+          <img class="svcs-photo" src="imgs/cinema_1.webp" width="88" height="88" alt="" loading="lazy" decoding="async" style="object-position:35% 50%;">
+          <span class="svcs-name">جلسة السينما</span>
+          <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+        </button>
+        <button type="button" class="svcs-card" onclick="showTarfihi()" aria-label="الألعاب الترفيهية">
+          <img class="svcs-photo" src="imgs/tarfihi_1.webp" width="88" height="88" alt="" loading="lazy" decoding="async" style="object-position:50% 60%;">
+          <span class="svcs-name">الألعاب الترفيهية</span>
+          <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+        </button>
+        <button type="button" class="svcs-card" onclick="showMaiya()" aria-label="الألعاب المائية">
+          <img class="svcs-photo svcs-photo--contain" src="imgs/maiya_9.webp" width="88" height="88" alt="" loading="lazy" decoding="async">
+          <span class="svcs-name">الألعاب المائية</span>
+          <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+        </button>
+      </div>
+    </section>
+    <section aria-labelledby="svcs-group-2">
+      <h2 id="svcs-group-2" class="svcs-section-title">تجهيز مناسبتك</h2>
+      <div class="svcs-grid">
+        <button type="button" class="svcs-card" onclick="showTansidat()" aria-label="الضيافة والتنسيقات">
+          <img class="svcs-photo" src="imgs/jalsat_1.webp" width="88" height="88" alt="" loading="lazy" decoding="async" style="object-position:50% 58%;">
+          <span class="svcs-name">الضيافة والتنسيقات</span>
+          <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+        </button>
+        <button type="button" class="svcs-card" onclick="showTawilat()" aria-label="طاولات الطعام">
+          <img class="svcs-photo" src="imgs/tawilat_1.webp" width="88" height="88" alt="" loading="lazy" decoding="async">
+          <span class="svcs-name">طاولات الطعام</span>
+          <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+        </button>
+        <button type="button" class="svcs-card" onclick="showJalsat()" aria-label="الجلسات الخارجية">
+          <img class="svcs-photo" src="imgs/jalsat_2.webp" width="88" height="88" alt="" loading="lazy" decoding="async" style="object-position:50% 60%;">
+          <span class="svcs-name">الجلسات الخارجية</span>
+          <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+        </button>
+      </div>
+    </section>
+    <section aria-labelledby="svcs-group-3">
+      <h2 id="svcs-group-3" class="svcs-section-title">عروض وامتيازات</h2>
+      <div class="svcs-grid svcs-grid--rewards">
+        <button type="button" class="svcs-card svcs-reward" onclick="showSharik()" aria-label="شارك واربح">
+          <span class="svcs-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4m0-11-6.8 4"/></svg></span>
+          <span class="svcs-name">شارك واربح</span>
+          <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+        </button>
+        <button type="button" class="svcs-card svcs-reward" onclick="showWalaa()" aria-label="بطاقة الولاء">
+          <span class="svcs-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 10h20m-15 5h4"/></svg></span>
+          <span class="svcs-name">بطاقة الولاء</span>
+          <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+        </button>
+      </div>
+    </section>
   </div>
-</div>
-
-<!-- تجهيز مناسبتك -->
-<div>
-  <div style="font-family:Tajawal,sans-serif;font-size:12px;font-weight:700;color:rgba(25,167,183,.85);padding:0 2px 8px;">تجهيز مناسبتك</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-<div onclick="showTansidat()" style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:18px;padding:20px 12px 16px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:10px;border:1.5px solid rgba(25,167,183,.18);text-align:center;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.18);"><div style="width:46px;height:46px;border-radius:12px;background:rgba(25,167,183,0.15);display:flex;align-items:center;justify-content:center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7ecfea" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg></div><div style="font-family:Tajawal,sans-serif;font-size:13px;font-weight:700;color:#fff;line-height:1.3;">الضيافة والتنسيقات</div></div>
-<div onclick="showTawilat()" style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:18px;padding:20px 12px 16px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:10px;border:1.5px solid rgba(25,167,183,.18);text-align:center;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.18);"><div style="width:46px;height:46px;border-radius:12px;background:rgba(25,167,183,0.15);display:flex;align-items:center;justify-content:center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7ecfea" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div><div style="font-family:Tajawal,sans-serif;font-size:13px;font-weight:700;color:#fff;line-height:1.3;">طاولات الطعام</div></div>
-<div onclick="showJalsat()" style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:18px;padding:20px 12px 16px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:10px;border:1.5px solid rgba(25,167,183,.18);text-align:center;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.18);"><div style="width:46px;height:46px;border-radius:12px;background:rgba(25,167,183,0.15);display:flex;align-items:center;justify-content:center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7ecfea" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg></div><div style="font-family:Tajawal,sans-serif;font-size:13px;font-weight:700;color:#fff;line-height:1.3;">الجلسات الخارجية</div></div>
-  </div>
-</div>
-
-<!-- عروض وامتيازات -->
-<div>
-  <div style="font-family:Tajawal,sans-serif;font-size:12px;font-weight:700;color:rgba(25,167,183,.85);padding:0 2px 8px;">عروض وامتيازات</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-<div onclick="showSharik()" style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:18px;padding:20px 12px 16px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:10px;border:1.5px solid rgba(25,167,183,.18);text-align:center;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.18);"><div style="width:46px;height:46px;border-radius:12px;background:rgba(25,167,183,0.15);display:flex;align-items:center;justify-content:center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7ecfea" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div><div style="font-family:Tajawal,sans-serif;font-size:13px;font-weight:700;color:#fff;line-height:1.3;">شارك واربح</div></div>
-<div onclick="showWalaa()" style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:18px;padding:20px 12px 16px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:10px;border:1.5px solid rgba(25,167,183,.18);text-align:center;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.18);"><div style="width:46px;height:46px;border-radius:12px;background:rgba(25,167,183,0.15);display:flex;align-items:center;justify-content:center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7ecfea" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div><div style="font-family:Tajawal,sans-serif;font-size:13px;font-weight:700;color:#fff;line-height:1.3;">بطاقة الولاء</div></div>
-  </div>
-</div>
-
-</div>
-  </div>
-
-
-
 
 
 <!-- HOSPITALITY & COORDINATION DETAIL -->
