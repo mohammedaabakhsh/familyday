@@ -4004,9 +4004,11 @@ function openMDirect(c){
 
 <!-- Approved keyboard navigation enhancement -->
 <style id="fd-keyboard-focus">
-/* A visible focus indicator only while using the keyboard. */
-button:focus-visible, a:focus-visible, [data-fd-keyboard]:focus-visible,
-input:focus-visible, select:focus-visible, textarea:focus-visible {
+/* Only real keyboard navigation reveals the focus ring. */
+html:not([data-fd-keyboard-mode]) :is(button, a, [tabindex], input, select, textarea):focus {
+  outline: none !important;
+}
+html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, textarea):focus-visible {
   outline: 2px solid #7ecfea !important;
   outline-offset: 3px;
 }
@@ -4145,6 +4147,16 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   function schedule() {
     if (!scheduled) { scheduled = true; requestAnimationFrame(sync); }
   }
+  // Programmatic startup focus must not look like a user selection.
+  // Capture real keyboard input before native control/FAQ handlers run.
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Tab' || event.key === 'Enter' || event.key === ' ') {
+      document.documentElement.setAttribute('data-fd-keyboard-mode', '');
+    }
+  }, true);
+  document.addEventListener('pointerdown', function () {
+    document.documentElement.removeAttribute('data-fd-keyboard-mode');
+  }, true);
   document.addEventListener('focusin', function (event) {
     if (activePanel && activePanel.contains(event.target)) remembered.set(activePanel, event.target);
   });
