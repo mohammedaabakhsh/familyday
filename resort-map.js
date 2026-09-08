@@ -93,7 +93,10 @@
     var tags = cabin.tags || [];
     if (cabin.badge === 'مشترك') return tags.filter(function (tag) { return tag !== '|'; });
     var features = [];
-    if (tags.some(function (tag) { return tag.indexOf('مسبح خاص') === 0; })) features.push('مسبح خاص');
+    if (tags.some(function (tag) { return tag.indexOf('مسبح خاص') === 0; })) {
+      features.push('مسبح خاص');
+      features.push('مساحة خارجية خاصة');
+    }
     // Use the same compact bath feature shown on the site's cabin cards.
     var bath = tags.find(function (tag) { return tag.indexOf('بانيو') !== -1 || tag.indexOf('جاكوزي') !== -1; });
     if (bath) features.push(bath.indexOf('داخلي') !== -1 && bath.indexOf('جاكوزي') === -1 ? 'بانيو داخلي' :
