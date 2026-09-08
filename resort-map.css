@@ -107,8 +107,7 @@
 .fd-map-fact svg { width: 16px; height: 16px; color: #7ec2cc; }
 .fd-map-amenities { display: flex; flex-wrap: wrap; gap: 7px; }
 .fd-map-amenity { margin: 0; padding: 5px 10px; border: 1px solid #285b67; border-radius: 7px; color: #9adce3; background: #10323f; font-size: 12px; font-weight: 600; line-height: 1.5; }
-.fd-map-card.has-photo .fd-map-amenities { flex-wrap: nowrap; gap: 3px; }
-.fd-map-card.has-photo .fd-map-amenity { padding: 2px 3px; font-size: 9px; white-space: nowrap; }
+.fd-map-card.has-photo .fd-map-amenities { grid-column: 1 / -1; margin-top: 2px; }
 .fd-map-connection { flex: 1; min-width: 0; margin: 0; padding-inline-start: 4px; color: #d5e9ee; text-align: right; font-size: 12px; line-height: 1.65; }
 .fd-map-error { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 12px; background: #102936; padding: 20px; text-align: center; color: #daeaf0; font-size: 14px; }
 .fd-map-error p { margin: 0; }

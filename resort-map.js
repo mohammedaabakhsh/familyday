@@ -486,10 +486,10 @@
           '<div class="fd-map-card-copy">' +
           '<div class="fd-map-card-top"><h3></h3><button type="button" class="fd-map-clear" aria-label="إلغاء اختيار الكوخ">' + closeIcon + '</button></div>' +
           '<p class="fd-map-description" hidden></p>' +
-          '<div class="fd-map-facts"><span class="fd-map-fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 18V8m18 10v-7a2 2 0 0 0-2-2h-7v7M3 16h18M3 18v3m18-3v3"/><path d="M5 9h5v5H5z"/></svg><span class="fd-map-rooms"></span></span>' +
-          '<span class="fd-map-fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="7" r="3"/><path d="M5 21v-3a7 7 0 0 1 14 0v3"/></svg><span class="fd-map-guests"></span></span></div>' +
-          '<div class="fd-map-amenities"></div>' +
+          '<div class="fd-map-facts"><span class="fd-map-fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="7" r="3"/><path d="M5 21v-3a7 7 0 0 1 14 0v3"/></svg><span class="fd-map-guests"></span></span>' +
+          '<span class="fd-map-fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 18V8m18 10v-7a2 2 0 0 0-2-2h-7v7M3 16h18M3 18v3m18-3v3"/><path d="M5 9h5v5H5z"/></svg><span class="fd-map-rooms"></span></span></div>' +
           '</div><button type="button" class="fd-map-card-photo" aria-label="عرض صور الكوخ" aria-haspopup="dialog" aria-controls="fd-map-photos" hidden><img width="240" height="240" alt="" decoding="async" draggable="false"><span class="fd-map-photo-label" aria-hidden="true">عرض الصور</span></button>' +
+          '<div class="fd-map-amenities"></div>' +
         '</section></div>';
     document.body.appendChild(dialog);
     viewport = dialog.querySelector('.fd-map-viewport');
