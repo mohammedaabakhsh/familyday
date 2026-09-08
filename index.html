@@ -51,6 +51,7 @@
 }
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="resort-home.css?v=2" rel="stylesheet">
 <style>
 .hide{display:none!important}
 .phone-link{
@@ -999,27 +1000,19 @@ function tarfihiOrder(){
 
 
 
-<!-- LANDING SCREEN -->
-<div id="landing">
-
-  <!-- HERO: background image fills full screen; carousel pins to bottom -->
-  <section class="lh-hero landing-bg-photo">
-    <div class="lh-overlay"></div>
-    <button onclick="goBackToDestination()" style="position:absolute;top:18px;left:18px;z-index:20;background:rgba(4,17,30,0.55);border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.8);font-family:'Tajawal',sans-serif;font-size:13px;font-weight:600;padding:7px 14px;border-radius:100px;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;gap:6px;"><svg width="7" height="12" viewBox="0 0 9 15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg> الوجهات</button>
-
-    <!-- Logo -->
-    <div class="lh-logo-wrap">
-      <img src="imgs/img01.webp" alt="Family Day Resort" class="lh-logo-img">
+<!-- RESORT HOME -->
+<div id="landing" class="rh-page">
+  <section class="rh-shell" aria-labelledby="rh-title">
+    <div class="rh-intro">
+      <button type="button" class="rh-destinations" onclick="goBackToDestination()">
+        <svg width="7" height="12" viewBox="0 0 9 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg>
+        <span>الوجهات</span>
+      </button>
+      <img src="imgs/img01.webp" width="400" height="400" alt="Family Day Resort" class="rh-logo" decoding="async">
+      <h1 id="rh-title">منتجع يوم العائلة</h1>
+      <p class="rh-subtitle">خصوصية تليق بكم… وراحة تستحقونها</p>
     </div>
 
-    <!-- Title + Subtitle (centers in remaining space) -->
-    <div class="lh-hero-main">
-      <h1 class="lh-title">منتجع يوم العائلة</h1>
-      <p class="lh-subtitle">خصوصية تليق بكم… وراحة تستحقونها</p>
-    </div>
-
-    <!-- Carousel: absolute-pinned to hero bottom, visible without scroll -->
-    <div class="lh-float-csl has-offer">
     <a class="lh-offer-strip" href="offer/" aria-label="عرض اليوم الوطني - شاهد التفاصيل">
       <span class="lh-offer-main">
         <span class="lh-offer-icon lh-offer-flag" aria-hidden="true">🇸🇦</span>
@@ -1032,65 +1025,52 @@ function tarfihiOrder(){
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
       </span>
     </a>
-    <div class="lh-carousel" id="lhCarousel">
 
-      <!-- Card 1: الأكواخ — تيل -->
-      <div class="lh-card lh-card-teal is-active"
-           onclick="navCard(this,function(){showSection('resort')})">
-        <svg class="lh-ci lh-ci-teal" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
-        <div class="lh-ct">الأكواخ</div>
-        <div class="lh-ca"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      </div>
+    <div class="rh-grid">
+      <button type="button" class="rh-cabins" onclick="showSection('resort')" aria-label="الأكواخ">
+        <img class="rh-cabin-photo" src="imgs/classic_2.webp" width="1200" height="1200" alt="" fetchpriority="high" decoding="async">
+        <span class="rh-cabin-shade" aria-hidden="true"></span>
+        <span class="rh-cabin-bottom">
+          <span class="rh-cabin-copy">
+            <span class="rh-cabin-title">الأكواخ</span>
+            <span class="rh-cabin-caption">أكواخ خاصة · مسابح مستقلة</span>
+          </span>
+          <svg class="rh-arrow rh-cabin-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg>
+        </span>
+      </button>
 
-      <!-- Card 2: خدمات المنتجع — ذهبي -->
-      <div class="lh-card lh-card-gold"
-           onclick="navCard(this,function(){showServices()})">
-        <svg class="lh-ci lh-ci-gold" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <div class="lh-ct">خدمات المنتجع</div>
-        <div class="lh-ca"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      </div>
+      <button type="button" class="rh-action rh-services" onclick="showServices()" aria-label="خدمات المنتجع">
+        <svg class="rh-action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.7 5.7 6.3.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.3-.9L12 3Z"/></svg>
+        <span class="rh-action-body">
+          <span class="rh-action-title">خدمات المنتجع</span>
+          <span class="rh-action-description">الضيافة والترفيه وتجهيز مناسبتك</span>
+        </span>
+        <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg>
+      </button>
 
-      <!-- Card 3: الحجز والتواصل — تيل -->
-      <div class="lh-card lh-card-teal"
-           onclick="navCard(this,function(){showContact()})">
-        <svg class="lh-ci lh-ci-teal" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 10a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.18 6.18l.9-.9a2 2 0 0 1 2.1-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <div class="lh-ct">الحجز والتواصل</div>
-        <div class="lh-ca"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      </div>
-
-    </div><!-- /lh-carousel -->
-    <div class="lh-dots" id="lhDots">
-      <span class="lh-dot is-active"></span>
-      <span class="lh-dot"></span>
-      <span class="lh-dot"></span>
-    </div>
-    </div><!-- /lh-float-csl -->
-
-    <!-- FAQ card: standalone row below carousel -->
-    <div style="width:100%;display:flex;justify-content:center;padding:10px 20px 4px;">
-      <div class="lh-card lh-card-teal" onclick="showFaq()" style="max-width:220px;width:100%;">
-        <svg class="lh-ci lh-ci-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        <div class="lh-ct">الأسئلة الشائعة</div>
-        <div class="lh-ca"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      </div>
+      <button type="button" class="rh-action rh-contact" onclick="showContact()" aria-label="الحجز والتواصل">
+        <svg class="rh-action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3.1 5.2 2 2 0 0 1 5.1 3h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L9.1 10.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 .7 1Z"/></svg>
+        <span class="rh-action-body">
+          <span class="rh-action-title">الحجز والتواصل</span>
+          <span class="rh-action-description">طرق الحجز والتواصل معنا</span>
+        </span>
+        <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg>
+      </button>
     </div>
 
-    <!-- Google reviews badge -->
-    <div style="width:100%;display:flex;justify-content:center;padding:10px 20px 24px;">
-      <a href="https://maps.app.goo.gl/MgHPnKH1yDYLnk8z6" target="_blank" rel="noopener noreferrer" class="lh-card lh-card-gold" style="max-width:220px;width:100%;text-decoration:none;">
-        <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#f9a826"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#f9a826"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#f9a826"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#f9a826"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#f9a826"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <div class="lh-ct" style="margin-bottom:2px;">4.7 من 5</div>
+    <div class="rh-footer">
+      <button type="button" class="rh-faq" onclick="showFaq()" aria-label="الأسئلة الشائعة">
+        <svg class="rh-faq-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 2-2.5 2-2.5 4m0 3h.01"/></svg>
+        <span>الأسئلة الشائعة</span>
+        <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+      </button>
+      <a class="rh-reviews" href="https://maps.app.goo.gl/MgHPnKH1yDYLnk8z6" target="_blank" rel="noopener noreferrer" aria-label="تقييم الزوار: 4.7 من 5">
+        <span class="rh-stars" aria-hidden="true">★★★★★</span>
+        <span class="rh-rating"><bdi>4.7</bdi><span>من 5</span></span>
+        <span class="rh-reviews-label">تقييم الزوار</span>
       </a>
     </div>
-
-  </section><!-- /lh-hero -->
-
+  </section>
 </div>
 
 
