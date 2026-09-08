@@ -1,0 +1,273 @@
+/* Resort home only. The rest-house landing and all detail screens keep their styles. */
+#landing.rh-page {
+  background:
+    radial-gradient(ellipse 76% 52% at 70% 0%, rgba(25,167,183,.085), transparent 75%),
+    linear-gradient(160deg, #061722 0%, #04111e 55%, #050f19 100%) !important;
+}
+#landing .rh-shell {
+  width: min(100%, 1104px);
+  min-height: 100%;
+  margin-inline: auto;
+  padding: 18px 20px calc(24px + env(safe-area-inset-bottom, 0px));
+  color: #f4f7f8;
+  direction: rtl;
+}
+#landing .rh-shell button,
+#landing .rh-shell a {
+  font-family: 'Tajawal', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+#landing .rh-intro {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 6px;
+  padding-bottom: 22px;
+  text-align: center;
+}
+#landing .rh-logo {
+  display: block;
+  width: 150px;
+  height: 80px;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: 12px;
+}
+#landing .rh-destinations {
+  position: absolute;
+  top: 0;
+  left: -4px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 44px;
+  padding: 8px 7px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #a4bac4;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+#landing #rh-title {
+  font-size: 26px;
+  line-height: 1.3;
+  font-weight: 700;
+  margin: 0;
+  color: #f4f7f8;
+}
+#landing .rh-subtitle {
+  margin: 6px 0 0;
+  color: #adbdc5;
+  font-size: 14px;
+  line-height: 1.5;
+}
+#landing .rh-shell .lh-offer-strip {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) 28px;
+  min-height: 54px;
+  height: auto;
+  margin: 0 0 16px;
+  padding: 10px 14px;
+  border-width: 1px;
+  border-color: rgba(67,217,135,.42);
+  border-radius: 16px;
+  box-shadow: none;
+  animation: none;
+}
+#landing .rh-shell .lh-offer-copy { gap: 3px; }
+#landing .rh-shell .lh-offer-title { font-size: 14px; }
+#landing .rh-shell .lh-offer-sub { font-size: 11px; }
+#landing .rh-shell .lh-offer-go {
+  border: 0;
+  background: transparent;
+}
+#landing .rh-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+#landing .rh-cabins {
+  grid-column: 1 / -1;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: clamp(212px, 60vw, 290px);
+  min-width: 0;
+  overflow: hidden;
+  padding: 22px;
+  border: 1px solid rgba(152,206,213,.24);
+  border-radius: 22px;
+  background: #10303e;
+  text-align: right;
+  color: #fff;
+  cursor: pointer;
+}
+#landing .rh-cabin-photo,
+#landing .rh-cabin-shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+#landing .rh-cabin-photo {
+  z-index: -2;
+  object-fit: cover;
+  object-position: 50% 54%;
+  transition: transform .55s ease;
+}
+#landing .rh-cabin-shade {
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(3,16,25,.01) 25%, rgba(3,16,25,.12) 48%, rgba(3,16,25,.82) 100%);
+}
+#landing .rh-cabin-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+}
+#landing .rh-cabin-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+#landing .rh-cabin-title {
+  font-size: 29px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+#landing .rh-cabin-caption {
+  color: #e3edf0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+#landing .rh-arrow {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+#landing .rh-cabin-arrow { width: 27px; height: 27px; color: #fff; }
+#landing .rh-action {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 17px;
+  align-content: space-between;
+  align-items: center;
+  gap: 16px 5px;
+  min-height: 112px;
+  min-width: 0;
+  padding: 17px 15px;
+  border: 1px solid rgba(103,164,184,.2);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(18,49,65,.8), rgba(9,30,44,.75));
+  color: #edf5f7;
+  text-align: right;
+  cursor: pointer;
+  transition: border-color .2s ease, background .2s ease, transform .2s ease;
+}
+#landing .rh-action-icon,
+#landing .rh-faq-icon {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+#landing .rh-action-icon { grid-column: 1 / -1; width: 25px; height: 25px; color: #63bfcd; }
+#landing .rh-action-body { display: flex; flex-direction: column; gap: 7px; }
+#landing .rh-action-title { font-size: 16px; font-weight: 700; line-height: 1.35; }
+#landing .rh-action-description { display: none; }
+#landing .rh-action > .rh-arrow { width: 17px; height: 17px; color: #85b0bf; }
+#landing .rh-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(141,184,197,.15);
+}
+#landing .rh-faq {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 8px 2px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  font-size: 15px;
+  font-weight: 500;
+  color: #cbdee5;
+  text-align: right;
+  cursor: pointer;
+}
+#landing .rh-faq-icon { width: 20px; height: 20px; color: #78adbd; }
+#landing .rh-faq > .rh-arrow { margin-right: auto; width: 16px; height: 16px; }
+#landing .rh-reviews {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 6px 0;
+  color: #edf5f7;
+  text-decoration: none;
+  font-size: 13px;
+  border-radius: 6px;
+}
+#landing .rh-stars { color: #f9a826; font-size: 13px; letter-spacing: 3px; line-height: 1; }
+#landing .rh-rating { display: flex; align-items: baseline; gap: 4px; }
+#landing .rh-rating bdi { font-size: 15px; font-weight: 700; }
+#landing .rh-rating > span { font-size: 12px; color: #a4bac4; }
+#landing .rh-reviews-label { color: #a4bac4; font-size: 12px; }
+@media (min-width: 600px) and (max-width: 799px) {
+  #landing .rh-shell { max-width: 620px; padding-inline: 28px; }
+  #landing .rh-action-title { font-size: 18px; }
+}
+@media (min-width: 800px) {
+  #landing .rh-shell { padding: 26px 36px 36px; }
+  #landing .rh-intro { padding-top: 6px; padding-bottom: 30px; }
+  #landing .rh-logo { width: 182px; height: 96px; margin-bottom: 16px; }
+  #landing #rh-title { font-size: 34px; }
+  #landing .rh-subtitle { font-size: 16px; margin-top: 8px; }
+  #landing .rh-destinations { top: 8px; font-size: 14px; padding-inline: 10px; }
+  #landing .rh-shell .lh-offer-strip { min-height: 58px; margin-bottom: 20px; padding-inline: 20px; }
+  #landing .rh-shell .lh-offer-title { font-size: 16px; }
+  #landing .rh-shell .lh-offer-sub { font-size: 12px; }
+  #landing .rh-grid { grid-template-columns: minmax(0, 1.85fr) minmax(0, 1fr); grid-template-rows: repeat(2, 186px); gap: 18px; }
+  #landing .rh-cabins { grid-column: 1; grid-row: 1 / 3; height: 100%; padding: 32px; border-radius: 24px; }
+  #landing .rh-cabin-title { font-size: 36px; }
+  #landing .rh-cabin-caption { font-size: 15px; }
+  #landing .rh-services { grid-column: 2; grid-row: 1; }
+  #landing .rh-contact { grid-column: 2; grid-row: 2; }
+  #landing .rh-action { padding: 26px; gap: 16px; border-radius: 22px; }
+  #landing .rh-action-icon { width: 29px; height: 29px; }
+  #landing .rh-action-title { font-size: 21px; }
+  #landing .rh-action-description { display: block; font-size: 13px; font-weight: 400; line-height: 1.6; color: #9ab4c0; }
+  #landing .rh-footer { flex-direction: row; align-items: center; justify-content: space-between; gap: 32px; padding-top: 16px; margin-top: 24px; }
+  #landing .rh-faq { min-width: 230px; }
+  #landing .rh-reviews { gap: 12px; }
+}
+@media (hover: hover) and (pointer: fine) {
+  #landing .rh-cabins:hover .rh-cabin-photo { transform: scale(1.035); }
+  #landing .rh-action:hover { border-color: rgba(99,191,205,.52); background: #133346; transform: translateY(-2px); }
+  #landing .rh-faq:hover, #landing .rh-destinations:hover { color: #fff; }
+  #landing .rh-reviews:hover .rh-reviews-label { color: #d9eef5; }
+}
+#landing .rh-action:active { transform: scale(.985); }
+@media (prefers-reduced-motion: reduce) {
+  #landing .rh-shell *, #landing .rh-shell *::before, #landing .rh-shell *::after { animation: none !important; transition: none !important; }
+}
