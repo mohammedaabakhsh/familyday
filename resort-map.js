@@ -47,7 +47,22 @@
 
   // The connecting door is confirmed in the site's FAQ; both positions are owner-confirmed.
   var connections = [{ cabinIds: [3, 9], description: 'يمكن ربط الكلاسيكي ورويال عبر باب داخلي، بسعة تصل إلى 30 ضيفًا.' }];
-  var dialog, viewport, plane, card, empty, image, error, connectionNote;
+  // Existing gallery photos chosen for a clear, recognizable square thumbnail.
+  // Physical instances of the same cabin type share that type's gallery.
+  var cardPhotos = {
+    1: 'imgs/dome_2.webp',
+    2: 'imgs/harami_2.webp',
+    3: 'imgs/classic_2.webp',
+    4: 'imgs/greek_3.webp',
+    5: 'imgs/palm_2.webp',
+    6: 'imgs/boho_2.webp',
+    7: 'imgs/french_3.webp',
+    8: 'imgs/rural_3.webp',
+    9: 'imgs/royal_2.webp',
+    10: 'imgs/panorama_2.webp',
+    11: 'imgs/garden_4.webp'
+  };
+  var dialog, viewport, plane, card, cardPhoto, empty, image, error, connectionNote;
   var markers = [], highlights = [], selected = null;
   var previousOverflow = '', pointers = new Map(), gesture = null;
   var view = { width: 0, height: 0, size: 0, scale: 1, x: 0, y: 0 };
@@ -96,6 +111,21 @@
     if (restoreFocus && old) markers[locations.indexOf(old)].focus({ preventScroll: true });
   }
 
+  function showCardPhoto(cabin) {
+    var gallery = typeof GALLERY !== 'undefined' ? GALLERY[cabin.id] : null;
+    var source = cardPhotos[cabin.id] || (gallery && gallery[0]);
+    card.classList.toggle('has-photo', Boolean(source));
+    cardPhoto.parentElement.hidden = !source;
+    if (!source) return;
+    cardPhoto.alt = cabin.name;
+    if (cardPhoto.getAttribute('src') !== source || !cardPhoto.naturalWidth) {
+      // Never show the previous cabin's photo while the new one is loading.
+      cardPhoto.classList.remove('is-ready');
+      cardPhoto.src = source;
+    }
+    if (cardPhoto.complete && cardPhoto.naturalWidth) cardPhoto.classList.add('is-ready');
+  }
+
   function selectLocation(location) {
     if (selected === location) { clearSelection(false); return; }
     var cabin = cabinFor(location);
@@ -110,6 +140,7 @@
       highlights[i].classList.toggle('is-connected', Boolean(linked));
     });
     card.querySelector('h3').textContent = cabin.name + (location.instanceNumber ? ' ' + location.instanceNumber : '');
+    showCardPhoto(cabin);
     card.setAttribute('aria-label', shared ? 'تفاصيل الحديقة المشتركة' : 'ملخص الكوخ المختار');
     card.querySelector('.fd-map-clear').setAttribute('aria-label', shared ? 'إلغاء اختيار الحديقة' : 'إلغاء اختيار الكوخ');
     var description = card.querySelector('.fd-map-description');
@@ -312,16 +343,25 @@
       '<div class="fd-map-info" aria-live="polite" aria-atomic="true">' +
         '<div class="fd-map-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Zm6-2v16m6-14v16"/></svg><p>اضغط على الاسم أو الموقع<br>للتعرّف على التفاصيل</p></div>' +
         '<section id="fd-map-card" class="fd-map-card" aria-label="ملخص الكوخ المختار" hidden>' +
+          '<div class="fd-map-card-copy">' +
           '<div class="fd-map-card-top"><h3></h3><button type="button" class="fd-map-clear" aria-label="إلغاء اختيار الكوخ">' + closeIcon + '</button></div>' +
           '<p class="fd-map-description" hidden></p>' +
           '<div class="fd-map-facts"><span class="fd-map-fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 18V8m18 10v-7a2 2 0 0 0-2-2h-7v7M3 16h18M3 18v3m18-3v3"/><path d="M5 9h5v5H5z"/></svg><span class="fd-map-rooms"></span></span>' +
           '<span class="fd-map-fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="7" r="3"/><path d="M5 21v-3a7 7 0 0 1 14 0v3"/></svg><span class="fd-map-guests"></span></span></div>' +
           '<div class="fd-map-amenities"></div>' +
+          '</div><div class="fd-map-card-photo" hidden><img width="240" height="240" alt="" decoding="async" draggable="false"></div>' +
         '</section></div>';
     document.body.appendChild(dialog);
     viewport = dialog.querySelector('.fd-map-viewport');
     plane = dialog.querySelector('.fd-map-plane');
     card = dialog.querySelector('.fd-map-card');
+    cardPhoto = card.querySelector('.fd-map-card-photo img');
+    cardPhoto.addEventListener('load', function () { cardPhoto.classList.add('is-ready'); });
+    cardPhoto.addEventListener('error', function () {
+      cardPhoto.classList.remove('is-ready');
+      cardPhoto.parentElement.hidden = true;
+      card.classList.remove('has-photo');
+    });
     empty = dialog.querySelector('.fd-map-empty');
     image = dialog.querySelector('.fd-map-image');
     error = dialog.querySelector('.fd-map-error');
