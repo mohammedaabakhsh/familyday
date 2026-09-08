@@ -321,7 +321,7 @@
     error.hidden = true;
     plane.hidden = false;
     viewport.setAttribute('aria-busy', 'true');
-    image.src = 'imgs/resort-map-v3-cool-gray.webp';
+    image.src = 'imgs/resort-map-v4-equal-dome-pools.webp';
   }
 
   function createDialog() {
