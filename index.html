@@ -681,7 +681,8 @@ header{
 .dest-card.selected .dest-arrow{stroke:rgba(25,167,183,.80)!important;}
 </style>
 <div id="dest" class="hide" style="position:fixed;inset:0;z-index:8000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;font-family:'Tajawal',sans-serif;direction:rtl;">
-  <img src="imgs/img00.webp" style="width:140px;margin-bottom:22px;opacity:0.92;filter:drop-shadow(0 0 24px rgba(25,167,183,.30));">
+  <img class="dest-brand" src="imgs/img00.webp" style="width:140px;margin-bottom:22px;opacity:0.92;filter:drop-shadow(0 0 24px rgba(25,167,183,.30));">
+  <div class="dest-choice-group">
   <div class="shimmer-title" style="font-size:24px;font-weight:700;color:#fff;margin-bottom:6px;letter-spacing:0;">اختر وجهتك</div>
   <div class="shimmer-title" style="font-size:14px;color:rgba(255,255,255,0.68);margin-bottom:28px;text-align:center;line-height:1.6;animation-duration:3.4s;">تعرّف على تفاصيل كل وجهة واختر ما يناسبك</div>
   <div style="width:100%;max-width:360px;display:flex;flex-direction:column;gap:14px;">
@@ -705,6 +706,7 @@ header{
       </div>
       <svg class="dest-arrow" width="9" height="15" viewBox="0 0 9 15" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1);"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg>
     </div>
+  </div>
   </div>
 </div>
 
@@ -4029,6 +4031,26 @@ function openMDirect(c){
 #landing .lh-offer-flag{
   font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;
   font-size:24px;line-height:1;
+}
+</style>
+
+<style id="fd-destination-layout">
+/* Keep the brand above a separately centered, unchanged choice group. */
+#dest{
+  --dest-brand-top:clamp(24px,6vh,56px);
+  --dest-brand-top:clamp(24px,6svh,56px);
+  grid-template-columns:minmax(0,1fr);
+  grid-template-rows:minmax(calc(var(--dest-brand-top) + 164px),1fr) auto minmax(24px,1fr);
+  padding-block:0 !important;overflow-y:auto;overscroll-behavior:contain;
+}
+#dest:not(.hide){display:grid !important;}
+#dest > .dest-brand{
+  position:absolute;top:var(--dest-brand-top);left:50%;transform:translateX(-50%);
+  margin:0 !important;
+}
+#dest > .dest-choice-group{
+  grid-column:1;grid-row:2;display:flex;flex-direction:column;align-items:center;
+  width:100%;min-width:0;
 }
 </style>
 
