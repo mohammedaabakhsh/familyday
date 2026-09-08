@@ -28,7 +28,7 @@
 .fd-map-close svg, .fd-map-clear svg { width: 17px; height: 17px; }
 .fd-map-viewport {
   flex: 1; min-height: min(90vw, 340px); position: relative; overflow: hidden;
-  background: #e9e5dc; direction: ltr; touch-action: none; user-select: none; -webkit-user-select: none;
+  background: #e3e9ec; direction: ltr; touch-action: none; user-select: none; -webkit-user-select: none;
 }
 .fd-map-viewport.is-zoomed { cursor: grab; }
 .fd-map-viewport.is-dragging { cursor: grabbing; }
