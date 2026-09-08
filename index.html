@@ -685,7 +685,7 @@ header{
   <div class="shimmer-title" style="font-size:24px;font-weight:700;color:#fff;margin-bottom:6px;letter-spacing:0;">اختر وجهتك</div>
   <div class="shimmer-title" style="font-size:14px;color:rgba(255,255,255,0.68);margin-bottom:28px;text-align:center;line-height:1.6;animation-duration:3.4s;">تعرّف على تفاصيل كل وجهة واختر ما يناسبك</div>
   <div style="width:100%;max-width:360px;display:flex;flex-direction:column;gap:14px;">
-    <div class="dest-card" onclick="pickDest(this,'resort')">
+    <div class="dest-card" data-dest-photo="resort" onclick="pickDest(this,'resort')">
       <div class="dest-icon">
         <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#19a7b7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
       </div>
@@ -695,7 +695,7 @@ header{
       </div>
       <svg class="dest-arrow" width="9" height="15" viewBox="0 0 9 15" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1);"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg>
     </div>
-    <div class="dest-card" onclick="pickDest(this,'stay')">
+    <div class="dest-card" data-dest-photo="stay" onclick="pickDest(this,'stay')">
       <div class="dest-icon">
         <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#19a7b7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
       </div>
@@ -714,11 +714,11 @@ header{
 function showFaq2(){
   initStayFaqAccordion();
   document.getElementById('faq2-overlay').classList.remove('hide');
-  history.replaceState(null,'','#faq2');
+  
 }
 function closeFaq2(){
   document.getElementById('faq2-overlay').classList.add('hide');
-  history.replaceState(null,'','#');
+  
 }
 
 function toggleResortFaq(card, question){
@@ -784,11 +784,11 @@ function initStayFaqAccordion(){
 function showFaq(){
   initResortFaqAccordion();
   document.getElementById('faq-overlay').classList.remove('hide');
-  history.replaceState(null,'','#faq');
+  
 }
 function closeFaq(){
   document.getElementById('faq-overlay').classList.add('hide');
-  history.replaceState(null,'','#');
+  
 }
 
 function showContact(type){
@@ -862,6 +862,7 @@ function navCard(el, fn){
   }, 80);
 })();
 
+var _enterMainTimer;
 function enterMain(){
   sessionStorage.setItem('fd_visited','1');
   clearTimeout(_autoEnterTimer);
@@ -870,7 +871,7 @@ function enterMain(){
   var s = document.getElementById('splash');
   s.style.opacity = '0';
   s.style.pointerEvents = 'none';
-  setTimeout(function(){
+  _enterMainTimer = setTimeout(function(){
     s.style.display = 'none';
     document.getElementById('dest').classList.remove('hide');
   }, 550);
@@ -971,7 +972,7 @@ function sendOrderWhatsapp(){
 var _tarfihiOpt = '';
 function showTarfihi(){ openTarfihiDetail(); }
 function openTarfihiDetail(){
-  history.replaceState(null,'','#tarfihi');
+  
   _tarfihiOpt = '';
   document.getElementById('tarfihi-opt-box').style.border = '2px solid transparent';
   document.getElementById('tarfihi-opt-table').style.border = '2px solid transparent';
@@ -2120,7 +2121,7 @@ function bottomNav(tab){
 
 function showSection(type){
   curSection=type;
-  if(type==='resort') history.replaceState(null,'','#resort');
+  
   const d=data[type];
   // Close service sub if open
   const sub=document.getElementById('service-sub');
@@ -2355,7 +2356,7 @@ function updGal(total){
 function openM(id,type){
   var bb=document.querySelector('.modal-back-btn');if(bb)bb.innerHTML='❮ العودة إلى الأكواخ';
   type=type||curSection;
-  history.replaceState(null,'','#cabin='+id);
+  
   const items=data[type].items;
   if(id===11){
     const c=items.find(x=>x.id===11);
@@ -2470,7 +2471,7 @@ function openM(id,type){
     sv.innerHTML='<div class="tags-lbl" style="color:#19a7b7;margin-top:24px;">الخدمات الإضافية</div>'
       +'<div class="tags">'
       +'<span class="tag">الضيافة والتنسيقات</span>'
-      +'<span class="tag">الجلسات الخارجية الخارجية</span>'
+      +'<span class="tag">الجلسات الخارجية</span>'
       +'<span class="tag">طاولات الطعام</span>'
       +'<span class="tag">جلسة السينما</span>'
       +'<span class="tag">الألعاب الترفيهية</span>'
@@ -2507,7 +2508,7 @@ function updateNavUI(){
 }
 
 function closeM(){
-  history.replaceState(null,'','#');
+  
   document.getElementById('ov').classList.remove('open');
   document.body.style.overflow='';
   if(window._serviceReturn==='sub'){
@@ -2528,7 +2529,7 @@ function closeIframe(){
 }
 
 function showServices(){
-  history.replaceState(null,'','#services');
+  
   document.getElementById('landing').classList.add('hide');
   document.getElementById('services-overlay').classList.remove('hide');
   setActiveTab('services');
@@ -2729,13 +2730,13 @@ function closeServiceSub(){
 }
 
 function showTansidat(){
-  history.replaceState(null,'','#hospitality');
+  
   document.getElementById('hospitality-detail').classList.remove('hide');
   showHospitalityTab('hospitality');
 }
 function closeHospitalityDetail(){
   document.getElementById('hospitality-detail').classList.add('hide');
-  history.replaceState(null,'','#services');
+  
 }
 function showHospitalityTab(tab){
   var isHospitality = tab === 'hospitality';
@@ -2759,11 +2760,11 @@ function openServiceCabin(id){
 }
 
 function openSinemaDetail(){
-  history.replaceState(null,'','#sinema');
+  
   document.getElementById('sinema-detail').classList.remove('hide');
 }
 function closeSinemaDetail(){
-  history.replaceState(null,'','#');
+  
   document.getElementById('sinema-detail').classList.add('hide');
   document.getElementById('maiya-detail').classList.add('hide');
 }
@@ -2800,7 +2801,7 @@ function setMaiyaFilter(f){
   maiyaGoTo(0);
 }
 function openMaiyaDetail(){
-  history.replaceState(null,'','#maiya');
+  
   document.getElementById('maiya-detail').classList.remove('hide');
   buildMaiyaSlides();
   maiyaGoTo(0);
@@ -2914,7 +2915,7 @@ function setJalsatFilter(f){
   jalsatGoTo(0);
 }
 function openJalsatDetail(){
-  history.replaceState(null,'','#jalsat');
+  
   document.getElementById('jalsat-detail').classList.remove('hide');
   buildJalsatSlides();
   jalsatGoTo(0);
@@ -2999,7 +3000,7 @@ var _menuData = {
 
 function openMenuDetail(){
   document.getElementById('menu-detail').classList.remove('hide');
-  history.replaceState(null,'','#menu');
+  
   _menuCart = {};
   _menuCat = 'ساندويتشات';
   _renderMenuCats();
@@ -3008,7 +3009,7 @@ function openMenuDetail(){
 }
 function closeMenuDetail(){
   document.getElementById('menu-detail').classList.add('hide');
-  history.replaceState(null,'','#');
+  
 }
 
 function _renderMenuCats(){
@@ -3128,8 +3129,8 @@ function menuOrderNow(){
 }
 
 // ===== شارك واربح =====
-function showSharik(){ document.getElementById('sharik-detail').classList.remove('hide'); history.replaceState(null,'','#sharik'); }
-function closeSharikDetail(){ document.getElementById('sharik-detail').classList.add('hide'); history.replaceState(null,'','#'); }
+function showSharik(){ document.getElementById('sharik-detail').classList.remove('hide');  }
+function closeSharikDetail(){ document.getElementById('sharik-detail').classList.add('hide');  }
 function openSharikEmail(){
   window.open('mailto:family999day@gmail.com?subject=مشاركة - شارك واربح - منتجع يوم العائلة', '_blank');
 }
@@ -3233,7 +3234,7 @@ var _tawilatTables = {6:1, 12:2, 18:3, 24:3, 32:4};
 function showTawilat(){ openTawilatDetail(); }
 function openTawilatDetail(){
   document.getElementById('tawilat-detail').classList.remove('hide');
-  history.replaceState(null,'','#tawilat');
+  
   document.body.style.overflow='hidden';
   setTawilatSize(6);
   updateTawilatContents();
@@ -3241,7 +3242,7 @@ function openTawilatDetail(){
 function closeTawilatDetail(){
   document.getElementById('tawilat-detail').classList.add('hide');
   document.body.style.overflow='';
-  history.replaceState(null,'','#');
+  
 }
 function setTawilatSize(n){
   _tawilatSize = n;
@@ -3312,12 +3313,12 @@ function tawilatOrder(){
 function showWalaa(){
   document.getElementById('walaa-detail').classList.remove('hide');
   document.body.style.overflow='hidden';
-  history.replaceState(null,'','#walaa');
+  
 }
 function closeWalaaDetail(){
   document.getElementById('walaa-detail').classList.add('hide');
   document.body.style.overflow='';
-  history.replaceState(null,'','#');
+  
 }
 </script>
 
@@ -3630,7 +3631,7 @@ function goBackToDestination(){
 
 function showSection2(){
   curSection='chalet';
-  history.replaceState(null,'','#chalet');
+  
   document.getElementById('landing2').classList.add('hide');
   var app2=document.getElementById('app2');
   app2.style.display='block';
@@ -3705,7 +3706,7 @@ function renderChalet2(){
 
 function openMDirect(c){
   var bb=document.querySelector('.modal-back-btn');if(bb)bb.innerHTML='❮ العودة إلى الأقسام';
-  history.replaceState(null,'','#cabin='+c.id);
+  
   _navType='chalet';
   _navItems=_chaletItems2.length?_chaletItems2:[c];
   _navIdx=_navItems.findIndex(function(x){return x.id===c.id;});
@@ -3754,82 +3755,430 @@ function openMDirect(c){
 /* ===== END STAY FUNCTIONS ===== */
 
 
-function parseHash(){
-  var hash = window.location.hash.replace('#','');
-  if(!hash) return;
-  // If user already visited this session = refresh, go home instead of restoring deep link
-  if(sessionStorage.getItem('fd_visited')){
-    history.replaceState(null,'',window.location.pathname);
-    return;
+// Family Day navigation history: existing views remain the rendering layer.
+// A route has a parent; only changed layers are reopened, so Back from a
+// popup preserves the underlying grid/filter or service form selections.
+(function(){
+  'use strict';
+  var originals = {};
+  var current = {name:'dest', args:[]};
+  var rendering = false;
+  var waitingForBack = false;
+  var version = 1;
+  var serviceViews = {
+    hospitality:['showTansidat','closeHospitalityDetail'],
+    sinema:['openSinemaDetail','closeSinemaDetail'],
+    maiya:['openMaiyaDetail','closeMaiyaDetail'],
+    jalsat:['openJalsatDetail','closeJalsatDetail'],
+    tarfihi:['openTarfihiDetail','closeTarfihiDetail'],
+    tawilat:['openTawilatDetail','closeTawilatDetail'],
+    sharik:['showSharik','closeSharikDetail'],
+    walaa:['showWalaa','closeWalaaDetail'],
+    menu:['openMenuDetail','closeMenuDetail']
+  };
+
+  function route(name,args,parent){
+    var r = {name:name,args:args || []};
+    if(parent) r.parent = parent;
+    else if(name==='home') r.parent = route('dest');
+    else if(name==='resort' || name==='services' || name==='faq') r.parent = route('home',['resort']);
+    else if(name==='chalet' || name==='faq2') r.parent = route('home',['stay']);
+    else if(name==='contact') r.parent = route('home',[r.args[0] || 'resort']);
+    else if(name==='cabin') r.parent = route(r.args[0]>=20 ? 'chalet' : 'resort');
+    else if(serviceViews[name] || name==='service-sub') r.parent = route('services');
+    return r;
   }
-  // Deep link: stop auto-enter timer, skip splash+dest, go directly to section
-  clearTimeout(_autoEnterTimer);
-  var s=document.getElementById('splash');
-  if(s){ s.style.opacity='0'; s.style.display='none'; }
-  var dest=document.getElementById('dest');
-  if(dest) dest.classList.add('hide');
-  document.getElementById('landing').classList.add('hide');
-  document.getElementById('landing2').classList.add('hide');
-  if(hash.startsWith('cabin=')){
-    var id=parseInt(hash.split('=')[1]);
-    if(!isNaN(id)){
-      if(id>=20){
-        showSection2();
-        setTimeout(function(){
-          var c=_chaletItems2.find(function(x){return x.id===id;});
-          if(c) openMDirect(c);
-        },400);
-      } else {
-        showSection('resort');
-        setTimeout(function(){ openM(id,'resort'); },300);
-      }
+  function key(r){ return JSON.stringify(r); }
+  function pathFor(r){
+    var list=[];
+    while(r){ list.unshift(r); r=r.parent; }
+    return list;
+  }
+  function urlFor(r){
+    var base=location.pathname+location.search;
+    if(r.name==='dest') return base;
+    if(r.name==='home') return base+'#home='+r.args[0];
+    if(r.name==='cabin') return base+'#cabin='+r.args[0];
+    if(r.name==='contact') return base+'#contact='+r.args[0];
+    if(['photos','tour','order','map','service-sub'].indexOf(r.name)!==-1) return urlFor(r.parent);
+    return base+'#'+r.name;
+  }
+  function fromHash(){
+    var hash=location.hash.slice(1);
+    var match=/^cabin=(\d+)$/.exec(hash);
+    if(match){
+      var id=Number(match[1]);
+      if(id===20 || id===21 || data.resort.items.some(function(c){return c.id===id;})) return route('cabin',[id]);
     }
-  } else if(hash==='resort'){
-    setTimeout(function(){ showSection('resort'); },300);
-  } else if(hash==='chalet'){
-    setTimeout(function(){ showSection2(); },300);
-  } else if(hash==='sinema'){
-    showServices();
-    setTimeout(function(){ openSinemaDetail(); },300);
-  } else if(hash==='maiya'){
-    showServices();
-    setTimeout(function(){ openMaiyaDetail(); },300);
-  } else if(hash==='jalsat'){
-    showServices();
-    setTimeout(function(){ openJalsatDetail(); },300);
-  } else if(hash==='tarfihi'){
-    showServices();
-    setTimeout(function(){ openTarfihiDetail(); },300);
-  } else if(hash==='services'){
-    setTimeout(function(){ showServices(); },300);
-  } else if(hash==='tawilat'){
-    showServices();
-    setTimeout(function(){ openTawilatDetail(); },300);
-  } else if(hash==='sharik'){
-    showServices();
-    setTimeout(function(){ showSharik(); },300);
-  } else if(hash==='walaa'){
-    showServices();
-    setTimeout(function(){ showWalaa(); },300);
-  } else if(hash==='menu'){
-    showServices();
-    setTimeout(function(){ openMenuDetail(); },300);
-  } else if(hash==='faq'){
-    var l=document.getElementById('landing');if(l) l.classList.remove('hide');
-    setTimeout(function(){ showFaq(); },300);
-  } else if(hash==='faq2'){
-    var l2=document.getElementById('landing2');if(l2) l2.classList.remove('hide');
-    setTimeout(function(){ showFaq2(); },300);
+    match=/^(home|contact)=(resort|stay)$/.exec(hash);
+    if(match) return route(match[1],[match[2]]);
+    if(['resort','chalet','services','faq','faq2'].indexOf(hash)!==-1 || serviceViews[hash]) return route(hash);
+    return route('dest');
   }
-  // Clear hash so next refresh starts fresh
-  history.replaceState(null,'',window.location.pathname);
-}
-window.addEventListener('load', parseHash);
-// Fix BFCache on mobile (Safari): force fresh load if page restored from cache
-window.addEventListener('pageshow', function(e){
-  if(e.persisted){ window.location.reload(); }
-});
+  function remember(name){
+    if(!originals[name]) originals[name]=window[name];
+    return originals[name];
+  }
+  function call(name,args){ return remember(name).apply(window,args || []); }
+  function openView(r){
+    switch(r.name){
+      case 'dest': call('goBackToDestination'); break;
+      case 'home': call('showDestination',r.args); break;
+      case 'resort': call('showSection',['resort']); break;
+      case 'chalet': call('showSection2'); break;
+      case 'services': call('showServices'); break;
+      case 'faq': call('showFaq'); break;
+      case 'faq2': call('showFaq2'); break;
+      case 'contact': call('showContact',r.args); break;
+      case 'cabin':
+        if(r.args[0]>=20){
+          var item=_chaletItems2.find(function(c){return c.id===r.args[0];});
+          if(item) call('openMDirect',[item]);
+        } else call('openM',[r.args[0],'resort']);
+        break;
+      case 'service-sub': call('showServiceSub',r.args); break;
+      case 'photos': call('openFS',r.args); break;
+      case 'tour': call('open3D',r.args); break;
+      case 'order':
+        _isMenuOrder=!!r.args[2];
+        call('openOrderPopup',r.args.slice(0,2));
+        break;
+      case 'map': document.getElementById('fd-map-open').click(); break;
+      default: if(serviceViews[r.name]) call(serviceViews[r.name][0]);
+    }
+  }
+  function closeView(r){
+    var close={home:'goBackToDestination',resort:'goBack',chalet:'goBack2',
+      services:'closeServices',faq:'closeFaq',faq2:'closeFaq2',contact:'closeContact',
+      cabin:'closeM','service-sub':'goBack',photos:'closeFS',tour:'closeIframe',order:'closeOrderPopup'};
+    if(r.name==='map'){
+      var dialog=document.getElementById('fd-map-dialog');
+      if(dialog && dialog.open) dialog.close();
+    } else if(close[r.name]) call(close[r.name]);
+    else if(serviceViews[r.name]) call(serviceViews[r.name][1]);
+  }
+  function renderRoute(next){
+    var before=pathFor(current), after=pathFor(next), common=0;
+    while(common<before.length && common<after.length && key(before[common])===key(after[common])) common++;
+    rendering=true;
+    try{
+      for(var i=before.length-1;i>=common;i--) closeView(before[i]);
+      for(var j=common;j<after.length;j++) openView(after[j]);
+      current=next;
+      document.body.style.overflow=after.some(function(r){
+        return ['cabin','photos','tour','tawilat','walaa','map'].indexOf(r.name)!==-1;
+      }) ? 'hidden' : '';
+    } finally { rendering=false; }
+  }
+  function navigate(next,replace){
+    if(waitingForBack || key(next)===key(current)) return;
+    var previous=key(current);
+    var oldState=history.state;
+    renderRoute(next);
+    var state={fdNavigation:version,route:next,previous:replace && oldState ? oldState.previous : previous};
+    history[replace ? 'replaceState' : 'pushState'](state,'',urlFor(next));
+  }
+  function returnTo(parent){
+    if(waitingForBack) return;
+    parent=parent || current.parent || route('dest');
+    var state=history.state;
+    if(state && state.fdNavigation===version && state.previous===key(parent)){
+      waitingForBack=true;
+      history.back();
+    } else navigate(parent,true);
+  }
+  function wrapOpen(name,makeRoute){
+    var original=remember(name);
+    window[name]=function(){
+      if(rendering) return original.apply(this,arguments);
+      var next=makeRoute.apply(null,arguments);
+      var replace=current.name==='cabin' && next.name==='cabin';
+      navigate(next,replace);
+    };
+  }
+  function wrapClose(name,parentFor){
+    var original=remember(name);
+    window[name]=function(){
+      if(rendering) return original.apply(this,arguments);
+      returnTo(parentFor ? parentFor() : current.parent);
+    };
+  }
+  wrapOpen('showDestination',function(type){return route('home',[type]);});
+  wrapOpen('showSection',function(){return route('resort');});
+  wrapOpen('showSection2',function(){return route('chalet');});
+  wrapOpen('showServices',function(){return route('services');});
+  wrapOpen('showFaq',function(){return route('faq');});
+  wrapOpen('showFaq2',function(){return route('faq2');});
+  wrapOpen('showContact',function(type){return route('contact',[type || 'resort']);});
+  function cabinRoute(id){
+    var parent=current.name==='cabin' ? current.parent : current.name==='service-sub' ? current : null;
+    return route('cabin',[id],parent);
+  }
+  wrapOpen('openM',cabinRoute);
+  wrapOpen('openMDirect',function(c){return cabinRoute(c.id);});
+  wrapOpen('showServiceSub',function(){return route('service-sub',Array.from(arguments));});
+  Object.keys(serviceViews).forEach(function(name){
+    wrapOpen(serviceViews[name][0],function(){return route(name,[],current.name==='service-sub' ? current : null);});
+    wrapClose(serviceViews[name][1]);
+  });
+  wrapOpen('openFS',function(imgs,index){return route('photos',[imgs,index || 0],current);});
+  wrapOpen('open3D',function(url){return route('tour',[url],current);});
+  wrapOpen('openOrderPopup',function(name,showTime){return route('order',[name,!!showTime,_isMenuOrder],current);});
+  ['closeM','closeServices','closeFaq','closeFaq2','closeContact','closeServiceSub',
+    'closeFS','closeIframe','closeOrderPopup','goBack','goBack2'].forEach(function(name){wrapClose(name);});
+  wrapClose('goBackToDestination',function(){return route('dest');});
+  // A bottom-tab switch is one navigation, not a modal-close plus a page-open.
+  remember('bottomNav');
+  window.bottomNav=function(tab){navigate(route(tab==='services' ? 'services' : 'resort'));};
+
+  function dismissSplash(){
+    clearTimeout(_autoEnterTimer);
+    clearTimeout(_enterMainTimer);
+    var splash=document.getElementById('splash');
+    if(splash){splash.style.display='none';splash.style.pointerEvents='none';}
+  }
+  function restore(){
+    waitingForBack=false;
+    dismissSplash();
+    var state=history.state;
+    var next=state && state.fdNavigation===version && urlFor(state.route)===location.pathname+location.search+location.hash ? state.route : fromHash();
+    renderRoute(next);
+    if(!state || state.fdNavigation!==version) history.replaceState({fdNavigation:version,route:next},'',urlFor(next));
+  }
+  window.addEventListener('popstate',restore);
+  window.addEventListener('hashchange',restore);
+  window.addEventListener('load',function(){
+    // The existing map retains its own rendering and controls.
+    var mapButton=document.getElementById('fd-map-open');
+    if(mapButton) mapButton.addEventListener('click',function(){
+      var dialog=document.getElementById('fd-map-dialog');
+      if(!dialog || !dialog.open) return;
+      if(!dialog.dataset.fdHistory){
+        dialog.dataset.fdHistory='1';
+        dialog.addEventListener('close',function(){
+          if(!rendering && current.name==='map') returnTo(current.parent);
+        });
+      }
+      if(!rendering && current.name!=='map') navigate(route('map',[],current));
+    });
+    var state=history.state;
+    var next=state && state.fdNavigation===version && urlFor(state.route)===location.pathname+location.search+location.hash ? state.route : fromHash();
+    if(next.name!=='dest' && key(next)!==key(current)){
+      dismissSplash();
+      call('goBackToDestination');
+      renderRoute(next);
+    }
+    history.replaceState({fdNavigation:version,route:next,previous:state && state.previous},'',urlFor(next));
+  });
+  // Native BFCache already preserves the page and its history; do not reload it.
+  window.addEventListener('pageshow',function(event){if(event.persisted) restore();});
+})();
 </script>
 <script src="resort-map.js?v=19" defer></script>
+
+<style id="fd-approved-visual-refinements">
+/* Approved refinements. Remove data-dest-photo to restore the original cards. */
+.dest-card[data-dest-photo]{position:relative;isolation:isolate;overflow:hidden;}
+.dest-card[data-dest-photo]::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(90deg,rgba(4,17,30,.18),rgba(4,17,30,.60)),var(--dest-photo);
+  background-size:cover;background-position:center 65%;opacity:.24;
+}
+.dest-card[data-dest-photo="resort"]{--dest-photo:url('imgs/dome_1.webp');}
+.dest-card[data-dest-photo="stay"]{--dest-photo:url('imgs/sec1_1.webp');}
+#ov .mbtn-book{color:#04111e;}
+#mBody .tag{font-size:14px;line-height:1.45;}
+#mBody .tags-lbl{font-size:14px;line-height:1.45;}
+/* Extra touch area only; keep the visible arrow and button dimensions. */
+#ov .modal-topnav-btn{position:relative;overflow:visible;}
+#ov .modal-topnav-btn::after{
+  content:"";position:absolute;left:50%;top:50%;
+  width:max(100%,44px);height:max(100%,44px);transform:translate(-50%,-50%);
+}
+@media(min-width:1024px){
+  #ov .modal{width:calc(100vw - 80px);max-width:860px;}
+  #ov .gal-wrap{height:clamp(260px,42vh,400px);}
+  #grid2{grid-template-columns:repeat(2,minmax(0,1fr));max-width:728px;}
+}
+</style>
+
+<!-- Approved keyboard navigation enhancement -->
+<style id="fd-keyboard-focus">
+/* A visible focus indicator only while using the keyboard. */
+button:focus-visible, a:focus-visible, [data-fd-keyboard]:focus-visible,
+input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid #7ecfea !important;
+  outline-offset: 3px;
+}
+</style>
+<script>
+/* Keyboard access to the existing controls. Does not change visible copy/layout. */
+(function () {
+  'use strict';
+  var panelIds = [
+    'splash', 'dest', 'landing', 'landing2', 'app', 'app2', 'contact-page',
+    'faq-overlay', 'faq2-overlay', 'services-overlay', 'hospitality-detail',
+    'sinema-detail', 'maiya-detail', 'jalsat-detail', 'sharik-detail',
+    'tarfihi-detail', 'tawilat-detail', 'walaa-detail', 'menu-detail',
+    'ov', 'fsOverlay', 'iframeOverlay', 'order-popup'
+  ];
+  var modalLabels = {
+    ov: 'تفاصيل مكان الإقامة', fsOverlay: 'صور مكان الإقامة',
+    iframeOverlay: 'جولة ثلاثية الأبعاد', 'order-popup': 'طلب الخدمة'
+  };
+  var focusSelector = 'button, a[href], input, select, textarea, iframe, [tabindex]';
+  var activePanel = null, blocked = new Map(), remembered = new WeakMap(), scheduled = false;
+
+  function label(el, value) {
+    if (el && !el.hasAttribute('aria-label')) el.setAttribute('aria-label', value);
+  }
+
+  function enhanceControls() {
+    document.querySelectorAll('.dest-card, .lh-card[onclick], #services-overlay [onclick], #service-sub [onclick], label[onclick], .tag[data-tip]').forEach(function (el) {
+      // Keep native buttons and their existing click bubbling; never create nested buttons.
+      if (el.matches('button, a, input, select, textarea, .faq-question-row') || el.querySelector('button, a[href], input, select, textarea')) return;
+      if (el.hasAttribute('data-fd-keyboard')) return;
+      el.setAttribute('role', 'button');
+      el.setAttribute('tabindex', '0');
+      el.setAttribute('data-fd-keyboard', '');
+      if (el.matches('.tag[data-tip]')) label(el, el.textContent.trim() + ': ' + el.getAttribute('data-tip'));
+    });
+    document.querySelectorAll('.card-btn').forEach(function (button) {
+      var name = button.closest('.card').querySelector('.card-name');
+      if (name) label(button, 'عرض التفاصيل والصور: ' + name.textContent.trim());
+    });
+    document.querySelectorAll('button[onclick]').forEach(function (button) {
+      var action = button.getAttribute('onclick') || '';
+      if (!button.textContent.trim() && /^(?:close|goBack)/.test(action)) label(button, 'العودة');
+      if (/^moveFS\(-1\)/.test(action)) label(button, 'الصورة السابقة');
+      if (/^moveFS\(1\)/.test(action)) label(button, 'الصورة التالية');
+    });
+    label(document.getElementById('nav-prev'), 'مكان الإقامة السابق');
+    label(document.getElementById('nav-next'), 'مكان الإقامة التالي');
+    label(document.querySelector('.fs-close'), 'إغلاق الصور');
+    label(document.querySelector('.iframe-close'), 'إغلاق الجولة ثلاثية الأبعاد');
+    var frame = document.getElementById('iframeEl');
+    if (frame && !frame.title) frame.title = 'جولة ثلاثية الأبعاد في مكان الإقامة';
+    document.querySelectorAll('#galWrap button').forEach(function (button, i) {
+      label(button, i === 0 ? 'الصورة التالية' : 'الصورة السابقة');
+    });
+    Object.keys(modalLabels).forEach(function (id) {
+      var panel = document.getElementById(id);
+      if (!panel) return;
+      panel.setAttribute('role', 'dialog');
+      label(panel, modalLabels[id]);
+      panel.setAttribute('tabindex', '-1');
+    });
+  }
+
+  // Deliberately ignores inert, because this module manages it separately.
+  function shown(el) {
+    if (!el || !el.isConnected) return false;
+    if (el.id === 'ov' && !el.classList.contains('open')) return false;
+    for (var node = el; node && node !== document.body; node = node.parentElement) {
+      var style = getComputedStyle(node);
+      if (node.hidden || style.display === 'none' || style.visibility === 'hidden') return false;
+    }
+    return true;
+  }
+
+  function focusable(el) {
+    return !!(el && el.isConnected && !el.disabled && el.tabIndex >= 0 &&
+      !el.closest('[inert]') && shown(el) && el.getClientRects().length);
+  }
+
+  function focusIn(panel) {
+    var previous = remembered.get(panel);
+    var target = focusable(previous) && panel.contains(previous) ? previous :
+      Array.from(panel.querySelectorAll(focusSelector)).find(focusable);
+    if (target) target.focus({ preventScroll: true });
+    else if (panel.hasAttribute('tabindex')) panel.focus({ preventScroll: true });
+  }
+
+  function sync() {
+    scheduled = false;
+    enhanceControls();
+    // The map uses a native modal dialog with its own focus/close behavior.
+    // Leave its top-layer interaction untouched.
+    if (document.querySelector('dialog[open]')) return;
+    var panels = panelIds.map(function (id) { return document.getElementById(id); }).filter(Boolean);
+    var next = null, priority = -Infinity;
+    panels.forEach(function (panel) {
+      if (!shown(panel)) return;
+      var z = parseInt(getComputedStyle(panel).zIndex, 10) || 0;
+      if (z >= priority) { priority = z; next = panel; }
+    });
+    if (!next) return;
+
+    var exclusions = new Set();
+    panels.forEach(function (panel) {
+      if (panel === next) return;
+      if (panel.contains(next)) {
+        // Some service details are nested in services-overlay. Block only the
+        // sibling branches, never an ancestor of the active details screen.
+        for (var branch = next; branch && branch !== panel; branch = branch.parentElement) {
+          Array.from(branch.parentElement.children).forEach(function (sibling) {
+            if (sibling !== branch && !sibling.matches('script, style, link')) exclusions.add(sibling);
+          });
+        }
+      } else if (!next.contains(panel) || !shown(panel)) exclusions.add(panel);
+    });
+    var bottomNav = document.getElementById('bottomNav');
+    if (bottomNav && next.id !== 'app' && next.id !== 'services-overlay') exclusions.add(bottomNav);
+
+    var previousPanel = activePanel;
+    if (previousPanel && previousPanel.contains(document.activeElement)) remembered.set(previousPanel, document.activeElement);
+    blocked.forEach(function (wasInert, node) {
+      if (!exclusions.has(node)) { node.inert = wasInert; blocked.delete(node); }
+    });
+    exclusions.forEach(function (node) {
+      if (!blocked.has(node)) { blocked.set(node, node.inert); node.inert = true; }
+    });
+    activePanel = next;
+    Object.keys(modalLabels).forEach(function (id) {
+      var panel = document.getElementById(id);
+      if (panel) panel.setAttribute('aria-modal', panel === next ? 'true' : 'false');
+    });
+    if (next !== previousPanel && !next.contains(document.activeElement)) focusIn(next);
+  }
+
+  function schedule() {
+    if (!scheduled) { scheduled = true; requestAnimationFrame(sync); }
+  }
+  document.addEventListener('focusin', function (event) {
+    if (activePanel && activePanel.contains(event.target)) remembered.set(activePanel, event.target);
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.defaultPrevented || document.querySelector('dialog[open]')) return;
+    if ((event.key === 'Enter' || event.key === ' ') && event.target.matches('[data-fd-keyboard]')) {
+      event.preventDefault();
+      if (!event.repeat) event.target.click();
+      return;
+    }
+    // Keep Tab within actual modal dialogs; ordinary pages retain browser Tab behavior.
+    if (event.key === 'Tab' && activePanel && modalLabels[activePanel.id]) {
+      var targets = Array.from(activePanel.querySelectorAll(focusSelector)).filter(focusable);
+      if (!targets.length) { event.preventDefault(); activePanel.focus(); return; }
+      var first = targets[0], last = targets[targets.length - 1];
+      if (event.shiftKey && (document.activeElement === first || document.activeElement === activePanel)) {
+        event.preventDefault(); last.focus();
+      } else if (!event.shiftKey && (document.activeElement === last || document.activeElement === activePanel)) {
+        event.preventDefault(); first.focus();
+      }
+    }
+  });
+  function init() {
+    sync();
+    new MutationObserver(schedule).observe(document.body, {
+      subtree: true, childList: true, attributes: true,
+      attributeFilter: ['class', 'style', 'hidden', 'open', 'disabled']
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+</script>
 </body>
 </html><!-- test Fri Jul 17 17:12:00 +03 2026 -->
+
