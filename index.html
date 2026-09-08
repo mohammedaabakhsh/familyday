@@ -3093,6 +3093,7 @@ function menuToggleExtra(extraName, sandwichName, price){
   }
   _renderMenuItems();
   _updateMenuCartBar();
+  if(!document.getElementById('menu-cart-review').classList.contains('hide')) _renderMenuCartReview();
 }
 function menuQty(name, price, delta){
   if(!_menuCart[name]) _menuCart[name] = {price:price, qty:0};
@@ -3110,17 +3111,62 @@ function menuQty(name, price, delta){
   }
   _renderMenuItems();
   _updateMenuCartBar();
+  if(!document.getElementById('menu-cart-review').classList.contains('hide')) _renderMenuCartReview();
+}
+
+function _menuCartTotals(){
+  var totalQty = 0, totalPrice = 0;
+  Object.keys(_menuCart).forEach(function(k){
+    if(k.indexOf('|') === -1) totalQty += _menuCart[k].qty;
+    totalPrice += _menuCart[k].qty * _menuCart[k].price;
+  });
+  return {qty:totalQty, price:totalPrice};
 }
 
 function _updateMenuCartBar(){
   var bar = document.getElementById('menu-cart-bar');
   var keys = Object.keys(_menuCart);
   if(keys.length === 0){ bar.style.display='none'; return; }
-  var totalQty = 0, totalPrice = 0;
-  keys.forEach(function(k){ if(k.indexOf('|')===-1) totalQty += _menuCart[k].qty; totalPrice += _menuCart[k].qty * _menuCart[k].price; });
+  var totals = _menuCartTotals();
   bar.style.display = 'flex';
-  document.getElementById('menu-cart-summary').textContent = totalQty + (totalQty===1?' صنف':' أصناف');
-  document.getElementById('menu-cart-total').textContent = 'الإجمالي: ' + totalPrice + ' ريال';
+  document.getElementById('menu-cart-summary').textContent = totals.qty + (totals.qty===1?' صنف':' أصناف');
+  document.getElementById('menu-cart-total').textContent = 'الإجمالي: ' + totals.price + ' ريال';
+}
+
+function openMenuCartReview(){
+  if(Object.keys(_menuCart).length === 0){ alert('أضف صنفًا أولًا'); return; }
+  _renderMenuCartReview();
+  document.getElementById('menu-cart-review').classList.remove('hide');
+}
+function closeMenuCartReview(){
+  document.getElementById('menu-cart-review').classList.add('hide');
+}
+function _renderMenuCartReview(){
+  var list = document.getElementById('menu-cart-review-items');
+  var keys = Object.keys(_menuCart);
+  if(!keys.length){ closeMenuCartReview(); return; }
+  list.innerHTML = keys.map(function(k){
+    var entry = _menuCart[k];
+    var isExtra = k.indexOf('|') !== -1;
+    var label = isExtra ? k.split('|')[0] + ' — ' + k.split('|')[1] : k;
+    return '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);">'
+      +'<div style="min-width:0;flex:1;">'
+        +'<div style="font-family:Tajawal,sans-serif;font-size:14px;font-weight:700;color:#fff;line-height:1.5;">'+label+'</div>'
+        +(isExtra?'<div style="font-family:Tajawal,sans-serif;font-size:11px;color:rgba(126,207,234,.8);margin-top:2px;">إضافة</div>':'')
+      +'</div>'
+      +'<div style="text-align:left;flex-shrink:0;">'
+        +'<div style="font-family:Tajawal,sans-serif;font-size:13px;font-weight:700;color:#19a7b7;">'+entry.qty+' × '+entry.price+' ريال</div>'
+        +'<div style="font-family:Tajawal,sans-serif;font-size:12px;color:rgba(255,255,255,.58);margin-top:2px;">'+(entry.qty*entry.price)+' ريال</div>'
+      +'</div>'
+    +'</div>';
+  }).join('');
+  var totals = _menuCartTotals();
+  document.getElementById('menu-cart-review-count').textContent = totals.qty + (totals.qty===1?' صنف':' أصناف');
+  document.getElementById('menu-cart-review-total').textContent = totals.price + ' ريال';
+}
+function continueMenuOrder(){
+  closeMenuCartReview();
+  menuOrderNow();
 }
 
 function menuOrderNow(){
@@ -3570,11 +3616,39 @@ function closeWalaaDetail(){
 
   <!-- Sticky cart bar -->
   <div id="menu-cart-bar" style="position:fixed;bottom:0;left:0;right:0;z-index:10;background:linear-gradient(0deg,rgba(4,17,30,1) 60%,rgba(4,17,30,0) 100%);padding:10px 16px calc(16px + env(safe-area-inset-bottom,0px));display:none;flex-direction:column;gap:8px;">
-    <div style="display:flex;align-items:center;justify-content:space-between;background:rgba(14,36,58,.95);border:1.5px solid rgba(25,167,183,.35);border-radius:14px;padding:10px 14px;">
+    <button type="button" onclick="openMenuCartReview()" aria-label="مراجعة الطلب" style="display:flex;align-items:center;justify-content:space-between;width:100%;background:rgba(14,36,58,.95);border:1.5px solid rgba(25,167,183,.35);border-radius:14px;padding:10px 14px;cursor:pointer;text-align:right;">
       <div id="menu-cart-summary" style="font-family:Tajawal,sans-serif;font-size:13px;color:rgba(255,255,255,0.8);"></div>
-      <div id="menu-cart-total" style="font-family:Tajawal,sans-serif;font-size:15px;font-weight:700;color:#19a7b7;"></div>
-    </div>
+      <div style="display:flex;align-items:center;gap:9px;">
+        <div id="menu-cart-total" style="font-family:Tajawal,sans-serif;font-size:15px;font-weight:700;color:#19a7b7;"></div>
+        <span aria-hidden="true" style="font-family:Arial,sans-serif;font-size:20px;line-height:1;color:#7ecfea;">‹</span>
+      </div>
+    </button>
     <button onclick="menuOrderNow()" style="width:100%;padding:13px;background:#19a7b7;border:none;border-radius:12px;font-family:Tajawal,sans-serif;font-size:14px;font-weight:700;color:#fff;cursor:pointer;">اطلب الآن عبر واتساب</button>
+  </div>
+</div>
+
+<!-- MENU CART REVIEW -->
+<div id="menu-cart-review" class="hide" role="dialog" aria-modal="true" aria-label="مراجعة الطلب" style="position:fixed;inset:0;z-index:10400;background:rgba(2,11,22,.72);display:flex;align-items:flex-end;justify-content:center;padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px));box-sizing:border-box;">
+  <div style="width:100%;max-width:460px;max-height:82vh;overflow-y:auto;background:linear-gradient(160deg,rgba(14,36,58,.99) 0%,rgba(5,19,34,.99) 100%);border:1.5px solid rgba(25,167,183,.32);border-radius:22px;padding:18px 18px 16px;box-shadow:0 -10px 35px rgba(0,0,0,.3);font-family:Tajawal,sans-serif;direction:rtl;">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px;">
+      <button type="button" onclick="closeMenuCartReview()" aria-label="إغلاق مراجعة الطلب" style="width:38px;height:38px;flex:0 0 38px;border-radius:50%;background:rgba(126,207,234,.1);border:1px solid rgba(126,207,234,.24);color:#d9f3fb;font-size:25px;font-weight:300;line-height:1;cursor:pointer;">×</button>
+      <div style="text-align:right;flex:1;">
+        <div style="font-size:20px;font-weight:700;color:#fff;line-height:1.35;">مراجعة الطلب</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.62);margin-top:3px;">تأكد من أصنافك قبل الإرسال</div>
+      </div>
+    </div>
+    <div id="menu-cart-review-items" style="border-top:1px solid rgba(255,255,255,.08);"></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:15px;padding:13px 14px;background:rgba(25,167,183,.1);border:1px solid rgba(25,167,183,.28);border-radius:13px;">
+      <div id="menu-cart-review-count" style="font-size:13px;color:rgba(255,255,255,.78);"></div>
+      <div style="text-align:left;">
+        <div style="font-size:11px;color:rgba(255,255,255,.52);">الإجمالي</div>
+        <div id="menu-cart-review-total" style="font-size:17px;font-weight:700;color:#19a7b7;margin-top:1px;"></div>
+      </div>
+    </div>
+    <div style="display:flex;gap:9px;margin-top:14px;">
+      <button type="button" onclick="closeMenuCartReview()" style="flex:1;padding:12px 8px;background:transparent;border:1.5px solid rgba(126,207,234,.35);border-radius:12px;font-family:Tajawal,sans-serif;font-size:14px;font-weight:700;color:#c5eaf4;cursor:pointer;">تعديل الطلب</button>
+      <button type="button" onclick="continueMenuOrder()" style="flex:1.35;padding:12px 8px;background:#19a7b7;border:none;border-radius:12px;font-family:Tajawal,sans-serif;font-size:14px;font-weight:700;color:#fff;cursor:pointer;">متابعة الطلب</button>
+    </div>
   </div>
 </div>
 
@@ -4088,12 +4162,12 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
     'splash', 'dest', 'landing', 'landing2', 'app', 'app2', 'contact-page',
     'faq-overlay', 'faq2-overlay', 'services-overlay', 'hospitality-detail',
     'sinema-detail', 'maiya-detail', 'jalsat-detail', 'sharik-detail',
-    'tarfihi-detail', 'tawilat-detail', 'walaa-detail', 'menu-detail',
+    'tarfihi-detail', 'tawilat-detail', 'walaa-detail', 'menu-detail', 'menu-cart-review',
     'ov', 'fsOverlay', 'iframeOverlay', 'order-popup'
   ];
   var modalLabels = {
     ov: 'تفاصيل مكان الإقامة', fsOverlay: 'صور مكان الإقامة',
-    iframeOverlay: 'جولة ثلاثية الأبعاد', 'order-popup': 'طلب الخدمة'
+    iframeOverlay: 'جولة ثلاثية الأبعاد', 'order-popup': 'طلب الخدمة', 'menu-cart-review': 'مراجعة الطلب'
   };
   var focusSelector = 'button, a[href], input, select, textarea, iframe, [tabindex]';
   var activePanel = null, blocked = new Map(), remembered = new WeakMap(), scheduled = false;
