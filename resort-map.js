@@ -158,8 +158,9 @@
       amenities.appendChild(item);
     });
     amenities.hidden = !amenities.children.length;
-    connectionNote.textContent = connection ? connection.description : '';
-    connectionNote.hidden = !connection;
+    connectionNote.textContent = shared ? 'لكل كوخ باب داخلي يفتح مباشرة على الحديقة المشتركة' :
+      connection ? connection.description : '';
+    connectionNote.hidden = !shared && !connection;
     empty.hidden = true;
     card.hidden = false;
   }
