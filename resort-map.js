@@ -46,7 +46,7 @@
   if (!locations.length) return;
 
   // The connecting door is confirmed in the site's FAQ; both positions are owner-confirmed.
-  var connections = [{ cabinIds: [3, 9], description: 'يمكن ربط الكلاسيكي ورويال عبر باب داخلي، بسعة تصل إلى 30 ضيفًا.' }];
+  var connections = [{ cabinIds: [3, 9], description: 'ربط الكلاسيكي ورويال بباب داخلي • حتى 30 ضيف' }];
   // Existing gallery photos chosen for a clear, recognizable square thumbnail.
   // Physical instances of the same cabin type share that type's gallery.
   var cardPhotos = {
@@ -270,6 +270,7 @@
       highlights[i].hidden = !active && !linked;
       highlights[i].classList.toggle('is-connected', Boolean(linked));
     });
+    card.classList.toggle('is-classic', cabin.id === 3);
     card.querySelector('h3').textContent = cabin.name + (location.instanceNumber ? ' ' + location.instanceNumber : '');
     showCardPhoto(cabin);
     card.setAttribute('aria-label', shared ? 'تفاصيل الحديقة المشتركة' : 'ملخص الكوخ المختار');
