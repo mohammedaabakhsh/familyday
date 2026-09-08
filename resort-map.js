@@ -62,6 +62,9 @@
     10: 'imgs/panorama_2.webp'
   };
   var dialog, viewport, plane, card, cardPhoto, empty, image, error, connectionNote;
+  var toolbar, fitButton, photoButton;
+  var photoDialog, photoStage, photoImage, photoTitle, photoCounter, photoError, photoPrevious, photoNext, photoHint;
+  var photoSources = [], photoIndex = 0, photoSwipe = null;
   var markers = [], highlights = [], selected = null;
   var previousOverflow = '', pointers = new Map(), gesture = null;
   var view = { width: 0, height: 0, size: 0, scale: 1, x: 0, y: 0 };
@@ -107,7 +110,14 @@
     empty.hidden = false;
     connectionNote.hidden = true;
     connectionNote.textContent = '';
+    syncToolbar();
     if (restoreFocus && old) markers[locations.indexOf(old)].focus({ preventScroll: true });
+  }
+
+  function photosFor(cabin) {
+    if (cabin.badge === 'مشترك') return [];
+    var gallery = typeof GALLERY !== 'undefined' ? GALLERY[cabin.id] : null;
+    return gallery && gallery.length ? gallery.slice() : cardPhotos[cabin.id] ? [cardPhotos[cabin.id]] : [];
   }
 
   function showCardPhoto(cabin) {
@@ -116,6 +126,7 @@
     card.classList.toggle('has-photo', Boolean(source));
     cardPhoto.parentElement.hidden = !source;
     if (!source) return;
+    photoButton.setAttribute('aria-label', 'عرض صور ' + card.querySelector('h3').textContent);
     cardPhoto.alt = cabin.name;
     if (cardPhoto.getAttribute('src') !== source || !cardPhoto.naturalWidth) {
       // Never show the previous cabin's photo while the new one is loading.
@@ -124,6 +135,124 @@
     }
     if (cardPhoto.complete && cardPhoto.naturalWidth) cardPhoto.classList.add('is-ready');
   }
+
+  function renderPhoto() {
+    if (!photoSources.length) return;
+    photoSwipe = null;
+    photoError.hidden = true;
+    photoStage.setAttribute('aria-busy', 'true');
+    photoImage.classList.remove('is-ready');
+    photoImage.alt = photoTitle.textContent + '، الصورة ' + (photoIndex + 1);
+    photoImage.src = photoSources[photoIndex];
+    photoCounter.textContent = (photoIndex + 1) + ' من ' + photoSources.length;
+    photoPrevious.hidden = photoNext.hidden = photoHint.hidden = photoSources.length < 2;
+    if (photoImage.complete && photoImage.naturalWidth) {
+      photoImage.classList.add('is-ready');
+      photoStage.setAttribute('aria-busy', 'false');
+    }
+    // Warm only the adjacent photos; keep the site's original gallery order.
+    if (photoSources.length > 1) {
+      [-1, 1].forEach(function (direction) {
+        var preload = new Image();
+        preload.src = photoSources[(photoIndex + direction + photoSources.length) % photoSources.length];
+      });
+    }
+  }
+
+  function movePhoto(direction) {
+    if (photoSources.length < 2) return;
+    photoIndex = (photoIndex + direction + photoSources.length) % photoSources.length;
+    renderPhoto();
+  }
+
+  function createPhotoDialog() {
+    photoDialog = document.createElement('dialog');
+    photoDialog.id = 'fd-map-photos';
+    photoDialog.className = 'fd-map-photos';
+    photoDialog.setAttribute('aria-labelledby', 'fd-map-photo-title');
+    photoDialog.innerHTML =
+      '<div class="fd-map-photo-header"><h2 id="fd-map-photo-title"></h2>' +
+        '<button type="button" class="fd-map-photo-close" aria-label="إغلاق الصور والعودة إلى الخريطة" autofocus>' + closeIcon + '</button></div>' +
+      '<div class="fd-map-photo-stage"><img class="fd-map-photo-image" alt="" decoding="async" draggable="false">' +
+        '<div class="fd-map-photo-error" role="status" hidden><p>تعذّر تحميل الصورة.</p><button type="button" class="fd-map-photo-retry">إعادة المحاولة</button></div></div>' +
+      '<div class="fd-map-photo-footer">' +
+        '<button type="button" class="fd-map-photo-previous" aria-label="الصورة السابقة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>' +
+        '<div class="fd-map-photo-position"><p class="fd-map-photo-counter" role="status" aria-live="polite" aria-atomic="true"></p><p class="fd-map-photo-hint">اسحب للتنقل بين الصور</p></div>' +
+        '<button type="button" class="fd-map-photo-next" aria-label="الصورة التالية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div>';
+    document.body.appendChild(photoDialog);
+    photoStage = photoDialog.querySelector('.fd-map-photo-stage');
+    photoImage = photoDialog.querySelector('.fd-map-photo-image');
+    photoTitle = photoDialog.querySelector('h2');
+    photoCounter = photoDialog.querySelector('.fd-map-photo-counter');
+    photoError = photoDialog.querySelector('.fd-map-photo-error');
+    photoPrevious = photoDialog.querySelector('.fd-map-photo-previous');
+    photoNext = photoDialog.querySelector('.fd-map-photo-next');
+    photoHint = photoDialog.querySelector('.fd-map-photo-hint');
+    photoImage.addEventListener('load', function () {
+      photoImage.classList.add('is-ready');
+      photoError.hidden = true;
+      photoStage.setAttribute('aria-busy', 'false');
+    });
+    photoImage.addEventListener('error', function () {
+      photoImage.classList.remove('is-ready');
+      photoError.hidden = false;
+      photoStage.setAttribute('aria-busy', 'false');
+    });
+    photoPrevious.addEventListener('click', function () { movePhoto(-1); });
+    photoNext.addEventListener('click', function () { movePhoto(1); });
+    photoDialog.querySelector('.fd-map-photo-retry').addEventListener('click', renderPhoto);
+    photoDialog.querySelector('.fd-map-photo-close').addEventListener('click', function () { photoDialog.close(); });
+    photoDialog.addEventListener('cancel', function (event) { event.stopPropagation(); });
+    photoDialog.addEventListener('close', function () {
+      photoSwipe = null;
+      // The map stays open, zoomed and selected beneath this native modal.
+      if (dialog.open && !photoButton.hidden) photoButton.focus({ preventScroll: true });
+      document.dispatchEvent(new CustomEvent('fd-map-photos-dismiss'));
+    });
+    photoDialog.addEventListener('keydown', function (event) {
+      if (event.key === 'ArrowRight') movePhoto(1);
+      else if (event.key === 'ArrowLeft') movePhoto(-1);
+      else if (event.key === 'Home') { photoIndex = 0; renderPhoto(); }
+      else if (event.key === 'End') { photoIndex = photoSources.length - 1; renderPhoto(); }
+      else return;
+      event.preventDefault();
+      event.stopPropagation();
+    });
+    photoStage.addEventListener('pointerdown', function (event) {
+      if (!event.isPrimary) { photoSwipe = null; return; }
+      if (event.button !== 0 || event.target.closest('button')) return;
+      photoSwipe = { id: event.pointerId, x: event.clientX, y: event.clientY };
+      photoStage.setPointerCapture(event.pointerId);
+    });
+    photoStage.addEventListener('pointerup', function (event) {
+      if (!photoSwipe || photoSwipe.id !== event.pointerId) return;
+      var dx = event.clientX - photoSwipe.x, dy = event.clientY - photoSwipe.y;
+      photoSwipe = null;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2) movePhoto(dx < 0 ? 1 : -1);
+    });
+    ['pointercancel', 'lostpointercapture'].forEach(function (type) {
+      photoStage.addEventListener(type, function () { photoSwipe = null; });
+    });
+  }
+
+  document.addEventListener('fd-map-photos-open', function (event) {
+    var key = event.detail && event.detail.locationKey;
+    var location = locations.find(function (item) { return item.key === key && item.kind !== 'shared'; });
+    if (!location || !dialog || !dialog.open) return;
+    var sources = photosFor(cabinFor(location));
+    if (!sources.length) return;
+    if (selected !== location) selectLocation(location);
+    if (!photoDialog) createPhotoDialog();
+    photoSources = sources;
+    // Start with the thumbnail that the guest actually pressed.
+    photoIndex = Math.max(0, photoSources.indexOf(cardPhoto.getAttribute('src')));
+    photoTitle.textContent = 'صور ' + card.querySelector('h3').textContent;
+    renderPhoto();
+    if (!photoDialog.open) photoDialog.showModal();
+  });
+  document.addEventListener('fd-map-photos-close', function () {
+    if (photoDialog && photoDialog.open) photoDialog.close();
+  });
 
   function selectLocation(location) {
     if (selected === location) { clearSelection(false); return; }
@@ -161,11 +290,18 @@
     connectionNote.textContent = shared ? 'لكل كوخ باب داخلي يفتح مباشرة على الحديقة المشتركة' :
       connection ? connection.description : '';
     connectionNote.hidden = !shared && !connection;
+    syncToolbar();
     empty.hidden = true;
     card.hidden = false;
   }
 
   function clamp(value, min, max) { return Math.max(min, Math.min(max, value)); }
+
+  function syncToolbar() {
+    if (!toolbar) return;
+    fitButton.hidden = view.scale <= 1.001;
+    toolbar.hidden = fitButton.hidden && connectionNote.hidden;
+  }
 
   function renderView() {
     var size = view.size * view.scale;
@@ -192,6 +328,7 @@
       marker.style.setProperty('--fd-map-label-offset', Math.max(10, offset) + 'px');
     });
     viewport.classList.toggle('is-zoomed', view.scale > 1);
+    syncToolbar();
   }
 
   function measureView(reset) {
@@ -338,8 +475,8 @@
         '<div class="fd-map-plane"><img class="fd-map-image" width="1254" height="1254" alt="توزيع أكواخ المنتجع من الأعلى" draggable="false" decoding="async"></div>' +
         '<div class="fd-map-error" role="status" hidden><p>تعذّر تحميل الخريطة.</p><button type="button" class="fd-map-tool fd-map-retry">إعادة المحاولة</button></div>' +
       '</div>' +
-      '<div class="fd-map-toolbar"><button type="button" class="fd-map-tool fd-map-fit" aria-label="عرض الخريطة كاملة">' +
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg>الخريطة كاملة</button><p class="fd-map-connection" hidden></p></div>' +
+      '<div class="fd-map-toolbar" hidden><button type="button" class="fd-map-tool fd-map-fit" aria-label="إلغاء التكبير" hidden>' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 8h5V3m13 5h-5V3M3 16h5v5m13-5h-5v5"/></svg>إلغاء التكبير</button><p class="fd-map-connection" hidden></p></div>' +
       '<div class="fd-map-info" aria-live="polite" aria-atomic="true">' +
         '<div class="fd-map-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Zm6-2v16m6-14v16"/></svg><p>اضغط على الاسم أو الموقع<br>للتعرّف على التفاصيل</p></div>' +
         '<section id="fd-map-card" class="fd-map-card" aria-label="ملخص الكوخ المختار" hidden>' +
@@ -349,13 +486,17 @@
           '<div class="fd-map-facts"><span class="fd-map-fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 18V8m18 10v-7a2 2 0 0 0-2-2h-7v7M3 16h18M3 18v3m18-3v3"/><path d="M5 9h5v5H5z"/></svg><span class="fd-map-rooms"></span></span>' +
           '<span class="fd-map-fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="7" r="3"/><path d="M5 21v-3a7 7 0 0 1 14 0v3"/></svg><span class="fd-map-guests"></span></span></div>' +
           '<div class="fd-map-amenities"></div>' +
-          '</div><div class="fd-map-card-photo" hidden><img width="240" height="240" alt="" decoding="async" draggable="false"></div>' +
+          '</div><button type="button" class="fd-map-card-photo" aria-label="عرض صور الكوخ" aria-haspopup="dialog" aria-controls="fd-map-photos" hidden><img width="240" height="240" alt="" decoding="async" draggable="false"><span class="fd-map-photo-label" aria-hidden="true">عرض الصور</span></button>' +
         '</section></div>';
     document.body.appendChild(dialog);
     viewport = dialog.querySelector('.fd-map-viewport');
     plane = dialog.querySelector('.fd-map-plane');
     card = dialog.querySelector('.fd-map-card');
+    photoButton = card.querySelector('.fd-map-card-photo');
     cardPhoto = card.querySelector('.fd-map-card-photo img');
+    photoButton.addEventListener('click', function () {
+      if (selected) document.dispatchEvent(new CustomEvent('fd-map-photos-request', { detail: { locationKey: selected.key } }));
+    });
     cardPhoto.addEventListener('load', function () { cardPhoto.classList.add('is-ready'); });
     cardPhoto.addEventListener('error', function () {
       cardPhoto.classList.remove('is-ready');
@@ -366,6 +507,8 @@
     image = dialog.querySelector('.fd-map-image');
     error = dialog.querySelector('.fd-map-error');
     connectionNote = dialog.querySelector('.fd-map-toolbar .fd-map-connection');
+    toolbar = dialog.querySelector('.fd-map-toolbar');
+    fitButton = dialog.querySelector('.fd-map-fit');
 
     locations.forEach(function (location, i) {
       var cabin = cabinFor(location);
@@ -438,7 +581,11 @@
       } else return;
       event.preventDefault();
     });
-    dialog.querySelector('.fd-map-fit').addEventListener('click', function () { measureView(true); });
+    fitButton.addEventListener('click', function () {
+      resetGesture();
+      measureView(true);
+      viewport.focus({ preventScroll: true });
+    });
     dialog.querySelector('.fd-map-clear').addEventListener('click', function () { clearSelection(true); });
     dialog.querySelector('.fd-map-close').addEventListener('click', function () { dialog.close(); });
     dialog.querySelector('.fd-map-retry').addEventListener('click', loadImage);
@@ -451,6 +598,7 @@
       if (selected) { event.preventDefault(); clearSelection(true); }
     });
     dialog.addEventListener('close', function () {
+      if (photoDialog && photoDialog.open) photoDialog.close();
       resetGesture(); clearSelection(false);
       document.body.style.overflow = previousOverflow;
       openButton.focus({ preventScroll: true });

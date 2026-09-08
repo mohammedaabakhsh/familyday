@@ -564,7 +564,7 @@ header{
   #menu-cats{flex-wrap:wrap;overflow-x:visible;}
 }
 </style>
-<link rel="stylesheet" href="resort-map.css?v=21">
+<link rel="stylesheet" href="resort-map.css?v=22">
 </head>
 <body>
 
@@ -3802,7 +3802,7 @@ function openMDirect(c){
     if(r.name==='home') return base+'#home='+r.args[0];
     if(r.name==='cabin') return base+'#cabin='+r.args[0];
     if(r.name==='contact') return base+'#contact='+r.args[0];
-    if(['photos','tour','order','map','service-sub'].indexOf(r.name)!==-1) return urlFor(r.parent);
+    if(['photos','map-photos','tour','order','map','service-sub'].indexOf(r.name)!==-1) return urlFor(r.parent);
     return base+'#'+r.name;
   }
   function fromHash(){
@@ -3840,6 +3840,9 @@ function openMDirect(c){
         break;
       case 'service-sub': call('showServiceSub',r.args); break;
       case 'photos': call('openFS',r.args); break;
+      case 'map-photos':
+        document.dispatchEvent(new CustomEvent('fd-map-photos-open',{detail:{locationKey:r.args[0]}}));
+        break;
       case 'tour': call('open3D',r.args); break;
       case 'order':
         _isMenuOrder=!!r.args[2];
@@ -3853,7 +3856,9 @@ function openMDirect(c){
     var close={home:'goBackToDestination',resort:'goBack',chalet:'goBack2',
       services:'closeServices',faq:'closeFaq',faq2:'closeFaq2',contact:'closeContact',
       cabin:'closeM','service-sub':'goBack',photos:'closeFS',tour:'closeIframe',order:'closeOrderPopup'};
-    if(r.name==='map'){
+    if(r.name==='map-photos'){
+      document.dispatchEvent(new CustomEvent('fd-map-photos-close'));
+    } else if(r.name==='map'){
       var dialog=document.getElementById('fd-map-dialog');
       if(dialog && dialog.open) dialog.close();
     } else if(close[r.name]) call(close[r.name]);
@@ -3924,6 +3929,16 @@ function openMDirect(c){
     wrapClose(serviceViews[name][1]);
   });
   wrapOpen('openFS',function(imgs,index){return route('photos',[imgs,index || 0],current);});
+  // Map photos are a separate view so Back and X return to the selected map cabin.
+  document.addEventListener('fd-map-photos-request',function(event){
+    var locationKey=event.detail && event.detail.locationKey;
+    if(!locationKey) return;
+    var parent=current.name==='map' ? current : route('map',[],current);
+    navigate(route('map-photos',[locationKey],parent));
+  });
+  document.addEventListener('fd-map-photos-dismiss',function(){
+    if(!rendering && current.name==='map-photos') returnTo(current.parent);
+  });
   wrapOpen('open3D',function(url){return route('tour',[url],current);});
   wrapOpen('openOrderPopup',function(name,showTime){return route('order',[name,!!showTime,_isMenuOrder],current);});
   ['closeM','closeServices','closeFaq','closeFaq2','closeContact','closeServiceSub',
@@ -3976,7 +3991,7 @@ function openMDirect(c){
   window.addEventListener('pageshow',function(event){if(event.persisted) restore();});
 })();
 </script>
-<script src="resort-map.js?v=23" defer></script>
+<script src="resort-map.js?v=24" defer></script>
 
 <style id="fd-approved-visual-refinements">
 /* Approved refinements. Remove data-dest-photo to restore the original cards. */
