@@ -1020,9 +1020,7 @@ function tarfihiOrder(){
     <div class="lh-float-csl has-offer">
     <a class="lh-offer-strip" href="offer/" aria-label="عرض اليوم الوطني - شاهد التفاصيل">
       <span class="lh-offer-main">
-        <span class="lh-offer-icon" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 7v15"/><path d="M12 7H7.5A2.5 2.5 0 1 1 10 4.5C10 7 12 7 12 7Z"/><path d="M12 7h4.5A2.5 2.5 0 1 0 14 4.5C14 7 12 7 12 7Z"/></svg>
-        </span>
+        <span class="lh-offer-icon lh-offer-flag" aria-hidden="true">🇸🇦</span>
         <span class="lh-offer-copy">
           <span class="lh-offer-title">عرض اليوم الوطني</span>
           <span class="lh-offer-sub">اكتشف العرضين واحجز مباشرة</span>
@@ -4018,6 +4016,19 @@ function openMDirect(c){
 }
 #app .cabin-heading-row #fd-map-open:hover{
   background:transparent;color:#c0f6fc;text-decoration-color:currentColor;
+}
+</style>
+
+<style id="fd-offer-banner-alignment">
+/* Preserve the green card; center its copy between equal-sized side icons. */
+#landing .lh-offer-strip{
+  display:grid;grid-template-columns:27px minmax(0,1fr) 27px;margin-bottom:12px;
+}
+#landing .lh-offer-main{display:contents;}
+#landing .lh-offer-copy{align-items:center;text-align:center;}
+#landing .lh-offer-flag{
+  font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;
+  font-size:24px;line-height:1;
 }
 </style>
 
