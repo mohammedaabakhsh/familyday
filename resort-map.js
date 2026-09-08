@@ -59,8 +59,7 @@
     7: 'imgs/french_3.webp',
     8: 'imgs/rural_3.webp',
     9: 'imgs/royal_2.webp',
-    10: 'imgs/panorama_2.webp',
-    11: 'imgs/garden_4.webp'
+    10: 'imgs/panorama_2.webp'
   };
   var dialog, viewport, plane, card, cardPhoto, empty, image, error, connectionNote;
   var markers = [], highlights = [], selected = null;
@@ -113,7 +112,7 @@
 
   function showCardPhoto(cabin) {
     var gallery = typeof GALLERY !== 'undefined' ? GALLERY[cabin.id] : null;
-    var source = cardPhotos[cabin.id] || (gallery && gallery[0]);
+    var source = cabin.badge === 'مشترك' ? null : cardPhotos[cabin.id] || (gallery && gallery[0]);
     card.classList.toggle('has-photo', Boolean(source));
     cardPhoto.parentElement.hidden = !source;
     if (!source) return;
