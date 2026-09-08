@@ -1858,7 +1858,12 @@ function tarfihiOrder(){
         <path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </button>
-    <div class="header-center" id="headerTitle"></div>
+    <div class="cabin-heading-row">
+      <div class="header-center" id="headerTitle"></div>
+      <div class="fd-map-launcher" id="fd-map-launcher" hidden>
+        <button type="button" id="fd-map-open" aria-haspopup="dialog" aria-controls="fd-map-dialog">خريطة الأكواخ</button>
+      </div>
+    </div>
   </header>
 
   <section class="section-hero" id="sectionHero">
@@ -1868,9 +1873,6 @@ function tarfihiOrder(){
     <div class="section-tag" id="sectionTag"></div>
   </section>
 
-  <div class="fd-map-launcher" id="fd-map-launcher" hidden>
-    <button type="button" id="fd-map-open" aria-haspopup="dialog" aria-controls="fd-map-dialog">خريطة الأكواخ</button>
-  </div>
   <div class="filter-section" id="filterSection">
     <button class="fbtn active" data-f="all">الكل</button>
     <button class="fbtn" data-f="1">غرفة نوم</button>
@@ -3999,6 +4001,23 @@ function openMDirect(c){
   #ov .modal{width:calc(100vw - 80px);max-width:860px;}
   #ov .gal-wrap{height:clamp(260px,42vh,400px);}
   #grid2{grid-template-columns:repeat(2,minmax(0,1fr));max-width:728px;}
+}
+</style>
+
+<style id="fd-cabin-heading-map-action">
+/* Map access belongs beside the cabin title; the map itself is unchanged. */
+#app .cabin-heading-row{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:8px;
+}
+#app .cabin-heading-row #headerTitle{margin-top:0 !important;min-width:0;}
+#app .cabin-heading-row .fd-map-launcher{flex:none;padding:0;}
+#app .cabin-heading-row #fd-map-open{
+  min-height:44px;padding:4px 0;border:0;border-radius:6px;background:transparent;
+  color:#91dce4;font-size:13px;font-weight:600;white-space:nowrap;
+  text-decoration:underline;text-decoration-color:rgba(145,220,228,.4);text-underline-offset:4px;
+}
+#app .cabin-heading-row #fd-map-open:hover{
+  background:transparent;color:#c0f6fc;text-decoration-color:currentColor;
 }
 </style>
 
