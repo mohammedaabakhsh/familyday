@@ -381,9 +381,12 @@
 #tawilat-detail .tw-heading{display:flex;align-items:center;gap:14px}
 #tawilat-detail .tw-back{display:flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;padding:0;border:1px solid rgba(126,207,234,.16);border-radius:50%;background:rgba(255,255,255,.06);color:#d7e8ef;cursor:pointer}
 #tawilat-detail .tw-title{margin:0;font-size:24px;font-weight:700;line-height:1.4;color:#f4f8fa}
-#tawilat-detail .tw-intro{margin:8px 0 0;color:#b6cbd6;font-size:14px;line-height:1.65;text-align:right}
+#tawilat-detail .tw-intro{margin:0;color:#b6cbd6;font-size:14px;line-height:1.65;text-align:center}
+#tawilat-detail .tw-intro--desktop{display:none}
+#tawilat-detail .tw-intro--mobile{margin-bottom:10px}
 #tawilat-detail .tw-layout{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"photo" "options";gap:22px;align-items:start}
-#tawilat-detail .tw-photo{grid-area:photo;min-width:0;overflow:hidden;border-radius:18px;background:#102b3c}
+#tawilat-detail .tw-photo-group{grid-area:photo;min-width:0}
+#tawilat-detail .tw-photo{min-width:0;overflow:hidden;border-radius:18px;background:#102b3c}
 #tawilat-detail .tw-photo img{display:block;width:100%;height:clamp(240px,76vw,300px);object-fit:cover;object-position:50% 56%}
 #tawilat-detail .tw-options{grid-area:options;min-width:0;display:flex;flex-direction:column;gap:24px}
 #tawilat-detail .tw-label{margin:0 0 12px;color:#f4f8fa;font-size:16px;font-weight:700;line-height:1.5}
@@ -414,7 +417,7 @@
 #tawilat-detail .tw-contact{width:100%;min-height:46px;padding:12px;border:1px solid #2498a8;border-radius:12px;background:#137787;color:#fff;font-family:inherit;font-size:16px;font-weight:700;line-height:1.4;cursor:pointer}
 #tawilat-detail button:focus-visible{outline:2px solid #7ecfea;outline-offset:3px}
 @media(max-width:360px){#tawilat-detail .tw-shell{padding-inline:16px}#tawilat-detail .tw-package{gap:8px;padding-inline:12px}#tawilat-detail .tw-package-price{font-size:17px}}
-@media(min-width:900px){#tawilat-detail .tw-shell{max-width:1100px;padding-top:28px;padding-bottom:32px}#tawilat-detail .tw-header{margin-bottom:26px}#tawilat-detail .tw-layout{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"options photo";gap:32px}#tawilat-detail .tw-photo{position:sticky;top:24px}#tawilat-detail .tw-photo img{height:auto;object-fit:contain}}
+@media(min-width:900px){#tawilat-detail .tw-shell{max-width:1100px;padding-top:28px;padding-bottom:32px}#tawilat-detail .tw-header{margin-bottom:26px}#tawilat-detail .tw-layout{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"options photo";gap:32px}#tawilat-detail .tw-photo-group{position:sticky;top:24px}#tawilat-detail .tw-intro--desktop{display:block;margin-bottom:10px}#tawilat-detail .tw-intro--mobile{display:none}#tawilat-detail .tw-photo img{height:auto;object-fit:contain}}
 @media(hover:hover) and (pointer:fine){#tawilat-detail .tw-size:hover{border-color:#4e8293;color:#fff}#tawilat-detail .tw-package:hover{border-color:#58a6b5}#tawilat-detail .tw-contact:hover{background:#168595}}
 .phone-link{
   color:#7ecfea!important;
@@ -4069,18 +4072,20 @@ function closeWalaaDetail(){
         </button>
         <h1 class="tw-title">طاولات الطعام</h1>
       </div>
-      <p class="tw-intro">جلسة طعام خارجية تناسب مختلف المناسبات</p>
     </div>
 
     <div class="tw-layout">
-      <div class="tw-photo">
-        <img src="imgs/tawilat_1.webp" width="1200" height="1200" alt="طاولة طعام خارجية مجهزة بالكراسي وأطقم التقديم والزهور بجانب المسبح" decoding="async">
+      <div class="tw-photo-group">
+        <p class="tw-intro tw-intro--desktop">جلسة طعام خارجية تناسب مختلف المناسبات</p>
+        <div class="tw-photo">
+          <img src="imgs/tawilat_1.webp" width="1200" height="1200" alt="طاولة طعام خارجية مجهزة بالكراسي وأطقم التقديم والزهور بجانب المسبح" decoding="async">
+        </div>
       </div>
 
       <div class="tw-options">
-        <section aria-labelledby="tw-size-title">
-          <h2 id="tw-size-title" class="tw-label">عدد الأشخاص</h2>
-          <div class="tw-sizes" role="group" aria-labelledby="tw-size-title">
+        <section aria-label="اختيار عدد الأشخاص">
+          <p class="tw-intro tw-intro--mobile">جلسة طعام خارجية تناسب مختلف المناسبات</p>
+          <div class="tw-sizes" role="group" aria-label="عدد الأشخاص">
             <button type="button" id="ts-6" class="tw-size is-active" onclick="setTawilatSize(6)" aria-pressed="true">6</button>
             <button type="button" id="ts-12" class="tw-size" onclick="setTawilatSize(12)" aria-pressed="false">12</button>
             <button type="button" id="ts-18" class="tw-size" onclick="setTawilatSize(18)" aria-pressed="false">18</button>
