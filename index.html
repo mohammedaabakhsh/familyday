@@ -113,6 +113,38 @@
 @media(hover:hover) and (pointer:fine){#menu-detail .menu-cat:hover{border-color:#4e8293;color:#fff}#menu-detail .menu-qty-button:hover,#menu-detail .menu-extra:hover{border-color:#7ac9d8}#menu-detail .menu-cart-trigger:hover{background:#1b3d50}#menu-detail .menu-order-button:hover{background:#168595}}
 /* Dining tables page */
 #tawilat-detail{font-family:Tajawal,sans-serif;direction:rtl}
+/* Loyalty card */
+#walaa-detail .wl-shell{box-sizing:border-box;width:100%;max-width:600px;margin:0 auto;padding:24px 20px calc(32px + env(safe-area-inset-bottom,0px));font-family:'Tajawal',sans-serif;text-align:right;direction:rtl}
+#walaa-detail .wl-header{margin-bottom:22px}
+#walaa-detail .wl-heading{display:flex;align-items:center;gap:14px}
+#walaa-detail .wl-back{display:inline-flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;cursor:pointer}
+#walaa-detail .wl-title{margin:0;color:#f0f5f7;font-size:24px;font-weight:800;line-height:1.4}
+#walaa-detail .wl-intro{margin:8px 0 0;color:#b6cbd6;font-size:15px;line-height:1.65}
+#walaa-detail .wl-layout{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"card" "details";gap:26px;align-items:center}
+#walaa-detail .wl-card{grid-area:card;min-width:0;padding:22px 18px;border:1px solid #397782;border-radius:22px;background:linear-gradient(145deg,#164452,#102c3a);text-align:center}
+#walaa-detail .wl-card-name{margin:0;color:#abd4da;font-size:14px;font-weight:600;line-height:1.6;text-align:right}
+#walaa-detail .wl-promise{margin:22px 0 26px;font-weight:600;line-height:1.6}
+#walaa-detail .wl-promise-intro{display:block;color:#c7e5e7;font-size:19px}
+#walaa-detail .wl-promise-reward{display:block;margin-top:4px;color:#f5fbfb;font-size:30px;font-weight:800;line-height:1.4}
+#walaa-detail .wl-stamps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:0;padding:0;list-style:none}
+#walaa-detail .wl-stamp{display:flex;flex-direction:column;align-items:center;gap:10px;min-width:0}
+#walaa-detail .wl-stamp-mark{box-sizing:border-box;display:flex;align-items:center;justify-content:center;width:100%;max-width:58px;aspect-ratio:1;border:1.5px dashed #79aeb8;border-radius:50%;background:rgba(5,27,38,.24);color:#d4edf0;font-size:23px;font-weight:700;line-height:1}
+#walaa-detail .wl-stamp-label{display:block;color:#c7e0e5;font-size:14px;font-weight:600;line-height:1.6}
+#walaa-detail .wl-stamp-label span{display:block}
+#walaa-detail .wl-stamp.is-reward .wl-stamp-mark{border:1.5px solid #67d6df;background:#16889b;color:#fff}
+#walaa-detail .wl-stamp.is-reward .wl-stamp-label{color:#fff;font-weight:800}
+#walaa-detail .wl-details{grid-area:details;display:flex;flex-direction:column;gap:22px;min-width:0}
+#walaa-detail .wl-benefits{padding:22px;border:1px solid #29434f;border-radius:18px;background:#0b2130}
+#walaa-detail .wl-section-title{margin:0 0 16px;color:#f0f5f7;font-size:18px;font-weight:700;line-height:1.5}
+#walaa-detail .wl-benefits-list{display:flex;flex-direction:column;gap:14px;margin:0;padding:0;list-style:none;color:#b6cbd6;font-size:15px;line-height:1.8}
+#walaa-detail .wl-benefits-list li{position:relative;padding-inline-start:13px}
+#walaa-detail .wl-benefits-list li::before{content:"";position:absolute;inset-inline-start:0;top:.8em;width:4px;height:4px;border-radius:50%;background:#608694}
+#walaa-detail .wl-enroll-button{box-sizing:border-box;display:flex;align-items:center;justify-content:center;width:100%;min-height:52px;padding:12px 16px;border:1px solid #3aa9b9;border-radius:14px;background:#147a8c;color:#fff;font-family:inherit;font-size:18px;font-weight:700;line-height:1.5;text-align:center;text-decoration:none;cursor:pointer}
+#walaa-detail .wl-enroll-hint{margin:10px 0 0;color:#b6cbd6;font-size:13px;line-height:1.7;text-align:center}
+#walaa-detail .wl-shell :is(button,a):focus-visible{outline:2px solid #8fd5e4;outline-offset:3px}
+@media(hover:hover){#walaa-detail .wl-back:hover{background:#1c4456}#walaa-detail .wl-enroll-button:hover{background:#168b9e}}
+@media(max-width:360px){#walaa-detail .wl-shell{padding-inline:16px}#walaa-detail .wl-card{padding-inline:16px}#walaa-detail .wl-benefits{padding:18px}}
+@media(min-width:900px){#walaa-detail .wl-shell{max-width:1100px;padding-top:28px}#walaa-detail .wl-header{margin-bottom:26px}#walaa-detail .wl-layout{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"card details";gap:32px}#walaa-detail .wl-card{padding:26px 28px}#walaa-detail .wl-promise{margin:24px 0 28px}#walaa-detail .wl-promise-reward{font-size:34px}#walaa-detail .wl-stamp-mark{max-width:66px;font-size:25px}#walaa-detail .wl-benefits{padding:26px}}
 /* Share and win */
 #sharik-detail .sw-shell{box-sizing:border-box;width:100%;max-width:600px;margin:0 auto;padding:24px 20px calc(32px + env(safe-area-inset-bottom,0px));font-family:'Tajawal',sans-serif;text-align:right;direction:rtl}
 #sharik-detail .sw-header{margin-bottom:22px}
@@ -884,14 +916,6 @@ header{
 .bnav-btn.active{background:rgba(255,255,255,0.12);color:#fff;}
 .bnav-btn:active{opacity:0.7;}
 
-@media(min-width:600px){
-  #walaa-detail{
-    display:flex;flex-direction:column;align-items:center;
-  }
-  #walaa-detail>*{
-    max-width:480px;width:100%;box-sizing:border-box;
-  }
-}
 </style>
 <link rel="stylesheet" href="resort-map.css?v=25">
 </head>
@@ -3806,7 +3830,9 @@ function tawilatOrder(){
 
 // ===== بطاقة الولاء =====
 function showWalaa(){
-  document.getElementById('walaa-detail').classList.remove('hide');
+  var panel = document.getElementById('walaa-detail');
+  panel.classList.remove('hide');
+  panel.scrollTop = 0;
   document.body.style.overflow='hidden';
   
 }
@@ -4027,29 +4053,56 @@ function closeWalaaDetail(){
 
 <!-- WALAA DETAIL -->
 <div id="walaa-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
-  <div style="background:transparent;padding:14px 20px 18px;padding-top:20px;text-align:right;position:relative;">
-    <button onclick="closeWalaaDetail()" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.10);border:none;color:rgba(255,255,255,0.85);cursor:pointer;margin-bottom:10px;">
-      <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-    <div style="font-family:Tajawal,sans-serif;font-size:20px;font-weight:700;color:#7ecfea;line-height:1.4;margin-bottom:4px;">بطاقة الولاء</div>
-    <div style="font-family:Tajawal,sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,0.7);line-height:1.5;">استمتع بمزايا حصرية مع بطاقة الولاء</div>
-  </div>
-
-  <div style="padding:12px 20px;display:flex;flex-direction:column;gap:8px;">
-
-    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
-      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:10px;">مزايا البطاقة</div>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <div style="display:flex;align-items:center;gap:10px;font-family:'Tajawal',sans-serif;font-size:14px;color:rgba(255,255,255,0.7);"><span style="color:#19a7b7;font-size:16px;">✦</span> أكمل ثلاثة حجوزات واحصل على الحجز الرابع مجانًا.</div>
-        <div style="display:flex;align-items:center;gap:10px;font-family:'Tajawal',sans-serif;font-size:14px;color:rgba(255,255,255,0.7);"><span style="color:#19a7b7;font-size:16px;">✦</span> عروض وخصومات حصرية.</div>
-        <div style="display:flex;align-items:center;gap:10px;font-family:'Tajawal',sans-serif;font-size:14px;color:rgba(255,255,255,0.7);"><span style="color:#19a7b7;font-size:16px;">✦</span> إشعارات بأحدث العروض.</div>
+  <div class="wl-shell">
+    <div class="wl-header">
+      <div class="wl-heading">
+        <button type="button" class="wl-back" onclick="closeWalaaDetail()" aria-label="العودة">
+          <svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <h1 class="wl-title">بطاقة الولاء</h1>
+      </div>
+      <p class="wl-intro">استمتع بمزايا حصرية مع بطاقة الولاء</p>
+    </div>
+    <div class="wl-layout">
+      <section class="wl-card" aria-labelledby="walaa-promise">
+        <p class="wl-card-name">منتجع يوم العائلة</p>
+        <h2 id="walaa-promise" class="wl-promise">
+          <span class="wl-promise-intro">اختم 3 حجوزات..</span>
+          <strong class="wl-promise-reward">والرابع علينا</strong>
+        </h2>
+        <ol class="wl-stamps" aria-label="ثلاثة حجوزات ثم الحجز الرابع مجانًا">
+          <li class="wl-stamp">
+            <span class="wl-stamp-mark" aria-hidden="true">1</span>
+            <span class="wl-stamp-label"><span>الحجز</span><span>الأول</span></span>
+          </li>
+          <li class="wl-stamp">
+            <span class="wl-stamp-mark" aria-hidden="true">2</span>
+            <span class="wl-stamp-label"><span>الحجز</span><span>الثاني</span></span>
+          </li>
+          <li class="wl-stamp">
+            <span class="wl-stamp-mark" aria-hidden="true">3</span>
+            <span class="wl-stamp-label"><span>الحجز</span><span>الثالث</span></span>
+          </li>
+          <li class="wl-stamp is-reward">
+            <span class="wl-stamp-mark" aria-hidden="true">4</span>
+            <span class="wl-stamp-label"><span>الرابع</span><span>مجانًا</span></span>
+          </li>
+        </ol>
+      </section>
+      <div class="wl-details">
+        <section class="wl-benefits" aria-labelledby="walaa-benefits-title">
+          <h2 id="walaa-benefits-title" class="wl-section-title">مزايا البطاقة</h2>
+          <ul class="wl-benefits-list">
+            <li>عروض وخصومات حصرية.</li>
+            <li>إشعارات بأحدث العروض.</li>
+          </ul>
+        </section>
+        <div class="wl-enroll">
+          <a id="walaa-enroll-link" class="wl-enroll-button" href="https://loyapro.com/c/MjUyNg==" target="_blank" rel="noopener noreferrer">احصل على بطاقة الولاء</a>
+          <p class="wl-enroll-hint">سجّل بياناتك للحصول على البطاقة</p>
+        </div>
       </div>
     </div>
-
-    <div style="padding:0 0 calc(32px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
-      <button onclick="window.open('https://loyapro.com/c/MjUyNg==','_blank')" class="mbtn mbtn-wa" style="cursor:pointer;width:100%;text-align:center;">احصل على بطاقة الولاء</button>
-    </div></div>
-
   </div>
 </div>
 
