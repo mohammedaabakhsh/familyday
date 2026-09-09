@@ -613,6 +613,51 @@ body{background:var(--bg);color:var(--text);font-family:'Tajawal',sans-serif;min
 .cp-wide-sub{font-size:12px;color:rgba(255,255,255,0.68);margin-top:3px;}
 .cp-wide-arrow{color:#19a7b7;font-size:20px;}
 .cp-app-note{background:rgba(25,167,183,0.07);border:0.8px solid rgba(25,167,183,0.25);border-radius:12px;padding:11px 14px;font-size:12px;color:#4a6070;line-height:1.75;}
+
+/* Resort contact: use the approved service-page typography and surfaces. */
+#contact-page .cp-shell,#contact-page .cp-heading,#contact-page .cp-group,#contact-page .cp-contact-links{display:contents}
+#contact-page .cp-title{margin:8px 0 0;font-family:Tajawal,sans-serif;font-size:20px;font-weight:700;color:#fff;line-height:1.25}
+#contact-page .cp-label{margin:0}
+#contact-page .cp-app-caption{margin:0;padding:2px 4px 6px;color:rgba(255,255,255,.68);font-size:12px;line-height:1.4}
+#contact-page .cp-resort-only{display:none}
+#contact-page[data-venue="resort"] .cp-shell{display:block;box-sizing:border-box;width:100%;max-width:600px;margin:0 auto;padding:24px 20px calc(32px + env(safe-area-inset-bottom,0px));text-align:right}
+#contact-page[data-venue="resort"] .cp-hero{padding:0;margin-bottom:22px}
+#contact-page[data-venue="resort"] .cp-heading{display:flex;align-items:center;gap:14px}
+#contact-page[data-venue="resort"] .contact-back{flex:0 0 38px;width:38px;height:38px;margin:0;padding:0;border:1px solid #29434f;background:rgba(255,255,255,.05);color:#d6e9ef}
+#contact-page[data-venue="resort"] .cp-title{margin:0;color:#f0f5f7;font-size:1.5rem;font-weight:800;line-height:1.4}
+#contact-page[data-venue="resort"] .cp-intro{display:block;margin:8px 0 0;color:#b6cbd6;font-size:.9375rem;line-height:1.65}
+#contact-page[data-venue="resort"] .cp-body{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"booking" "contact" "location" "social";gap:26px;padding:0}
+#contact-page[data-venue="resort"] .cp-group{display:block;min-width:0}
+#contact-page[data-venue="resort"] .cp-label{margin:0 0 14px;padding:0;color:#f0f5f7;font-size:1.125rem;font-weight:700;line-height:1.5}
+#contact-page[data-venue="resort"] .cp-booking{grid-area:booking;align-self:start;padding:22px;border:1px solid #29434f;border-radius:18px;background:#0b2130}
+#contact-page[data-venue="resort"] .cp-contact{grid-area:contact}
+#contact-page[data-venue="resort"] .cp-location{grid-area:location}
+#contact-page[data-venue="resort"] .cp-social{grid-area:social;padding-top:22px;border-top:1px solid #29434f}
+#contact-page[data-venue="resort"] :is(.cp-wide,.cp-tile){box-sizing:border-box;min-width:0;border:1px solid #315967;border-radius:16px;background:#153244;box-shadow:none;animation:none;transition:background-color .15s,border-color .15s}
+#contact-page[data-venue="resort"] :is(.cp-wide,.cp-tile):active{transform:none}
+#contact-page[data-venue="resort"] .cp-wide{min-height:64px;padding:16px 18px;gap:14px}
+#contact-page[data-venue="resort"] .cp-wide-name{color:#f0f5f7;font-size:1rem;font-weight:700;line-height:1.5}
+#contact-page[data-venue="resort"] .cp-wide-arrow{flex:0 0 auto;color:#92c4d0;font-size:20px;line-height:1}
+#contact-page[data-venue="resort"] .cp-primary{justify-content:center;min-height:52px;padding:12px 16px;border-color:#3aa9b9;border-radius:14px;background:#147a8c;text-align:center}
+#contact-page[data-venue="resort"] .cp-primary .cp-wide-name{color:#fff;font-size:1.125rem}
+#contact-page[data-venue="resort"] .cp-primary .cp-wide-arrow{display:none}
+#contact-page[data-venue="resort"] .cp-row2{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+#contact-page[data-venue="resort"] .cp-tile{display:flex;flex-direction:column;justify-content:center;min-height:84px;padding:14px 10px}
+#contact-page[data-venue="resort"] .cp-tile-name{color:#f0f5f7;font-size:1rem;font-weight:700;line-height:1.5}
+#contact-page[data-venue="resort"] .cp-tile-sub{margin-top:4px;color:#b6cbd6;font-size:.8125rem;line-height:1.6}
+#contact-page[data-venue="resort"] .cp-app-caption{margin:12px 0 0;padding:0;color:#b6cbd6;font-size:.875rem;line-height:1.7;text-align:center}
+#contact-page[data-venue="resort"] .cp-contact-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#contact-page[data-venue="resort"] .cp-contact-links .cp-wide{justify-content:center;padding-inline:10px;text-align:center}
+#contact-page[data-venue="resort"] .cp-contact-links .cp-wide-arrow{display:none}
+#contact-page[data-venue="resort"] .cp-whatsapp{border-color:#3f7e8c;background:#123746}
+#contact-page[data-venue="resort"] .cp-map-sub{display:block;margin-top:4px;color:#b6cbd6;font-size:.875rem;line-height:1.6}
+#contact-page[data-venue="resort"] .cp-row3{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+#contact-page[data-venue="resort"] .cp-tile-sm{min-height:46px;padding:12px 8px;border-color:#29434f;border-radius:12px;background:#0b2130}
+#contact-page[data-venue="resort"] .cp-tile-sm .cp-tile-name{font-size:.875rem;font-weight:500}
+#contact-page[data-venue="resort"] :is(button,a):focus-visible{outline:2px solid #8fd5e4;outline-offset:3px}
+@media(hover:hover){#contact-page[data-venue="resort"] :is(.cp-wide,.cp-tile):hover{border-color:#4d8997;background:#1b3d50}#contact-page[data-venue="resort"] .cp-primary:hover{border-color:#3aa9b9;background:#168b9e}#contact-page[data-venue="resort"] .contact-back:hover{background:#153244}}
+@media(max-width:360px){#contact-page[data-venue="resort"] .cp-shell{padding-inline:16px}#contact-page[data-venue="resort"] .cp-booking{padding:18px}#contact-page[data-venue="resort"] .cp-tile{padding-inline:8px}}
+@media(min-width:900px){#contact-page[data-venue="resort"] .cp-shell{max-width:1100px;padding-top:28px}#contact-page[data-venue="resort"] .cp-hero{margin-bottom:26px}#contact-page[data-venue="resort"] .cp-body{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"booking contact" "booking location" "social social";gap:26px 32px;align-items:start}#contact-page[data-venue="resort"] .cp-booking{padding:26px}#contact-page[data-venue="resort"] .cp-social{display:flex;align-items:center;justify-content:space-between;gap:24px}#contact-page[data-venue="resort"] .cp-social .cp-label{margin:0}#contact-page[data-venue="resort"] .cp-social .cp-row3{width:500px;max-width:100%}}
 .landing-card.contact-card{background:rgba(25,167,183,0.18);border-color:rgba(25,167,183,0.45)}
 .landing-card.contact-card:hover,.landing-card.contact-card:active{background:rgba(25,167,183,0.32)}
 
@@ -1158,6 +1203,11 @@ function showContact(type){
   if(nm) nm.textContent = mapName;
   var landing = type === 'stay' ? 'landing2' : 'landing';
   document.getElementById(landing).classList.add('hide');
+  document.getElementById('contact-page').setAttribute('data-venue', type === 'stay' ? 'stay' : 'resort');
+  var contactBody = document.querySelector('#contact-page .cp-body');
+  var locationGroup = contactBody.querySelector('.cp-location');
+  if(type === 'stay') contactBody.appendChild(locationGroup);
+  else contactBody.insertBefore(locationGroup, contactBody.querySelector('.cp-social'));
   document.getElementById('contact-page').classList.add('show');
   document.getElementById('contact-page').scrollTop=0;
   document.getElementById('contact-page')._fromLanding = landing;
@@ -2155,21 +2205,26 @@ function tarfihiOrder(){
 </div>
 
 
-<div id="contact-page">
+<div id="contact-page" data-venue="resort" role="region" aria-labelledby="cp-title">
+ <div class="cp-shell">
   <div class="cp-hero">
-    <button class="contact-back" onclick="closeContact()">
-      <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-    <div style="font-family:Tajawal,sans-serif;font-size:20px;font-weight:700;color:#fff;line-height:1.25;margin-top:8px;">الحجز والتواصل</div>
+    <div class="cp-heading">
+      <button type="button" class="contact-back" onclick="closeContact()" aria-label="العودة">
+        <svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <h1 class="cp-title" id="cp-title">الحجز والتواصل</h1>
+    </div>
+    <p class="cp-intro cp-resort-only">احجز إقامتك وتواصل معنا</p>
   </div>
   <div class="cp-body">
 
-    <div class="cp-label">الحجز</div>
-    <a href="https://familyday-sa.com/ar" target="_blank" rel="noopener noreferrer" class="cp-wide">
+   <section class="cp-group cp-booking" aria-labelledby="cp-booking-title">
+    <h2 class="cp-label" id="cp-booking-title">الحجز</h2>
+    <a href="https://familyday-sa.com/ar" target="_blank" rel="noopener noreferrer" class="cp-wide cp-primary">
       <div>
         <div class="cp-wide-name">احجز عبر الموقع</div>
       </div>
-      <div class="cp-wide-arrow">←</div>
+      <div class="cp-wide-arrow" aria-hidden="true">←</div>
     </a>
     <div class="cp-row2">
       <a href="https://apps.apple.com/sa/app/%D9%8A%D9%88%D9%85-%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9/id6475359813" target="_blank" rel="noopener noreferrer" class="cp-tile">
@@ -2181,23 +2236,29 @@ function tarfihiOrder(){
         <div class="cp-tile-sub">التنزيل من Google Play</div>
       </a>
     </div>
-    <p style="font-size:12px;color:rgba(255,255,255,0.68);line-height:1.5;padding:2px 4px 6px;margin:0;line-height:1.4;">حمّل التطبيق للحجز وإدارة حجوزاتك</p>
+    <p class="cp-app-caption">حمّل التطبيق للحجز وإدارة حجوزاتك</p>
+   </section>
 
-    <div class="cp-label">تواصل معنا</div>
-    <a href="https://wa.me/966556156693" target="_blank" rel="noopener noreferrer" class="cp-wide">
+   <section class="cp-group cp-contact" aria-labelledby="cp-contact-title">
+    <h2 class="cp-label" id="cp-contact-title">تواصل معنا</h2>
+    <div class="cp-contact-links">
+    <a href="https://wa.me/966556156693" target="_blank" rel="noopener noreferrer" class="cp-wide cp-whatsapp">
       <div>
         <div class="cp-wide-name">واتساب</div>
       </div>
-      <div class="cp-wide-arrow">←</div>
+      <div class="cp-wide-arrow" aria-hidden="true">←</div>
     </a>
     <a href="tel:+966556156693" class="cp-wide">
       <div>
         <div class="cp-wide-name">اتصال هاتفي</div>
       </div>
-      <div class="cp-wide-arrow">←</div>
+      <div class="cp-wide-arrow" aria-hidden="true">←</div>
     </a>
+    </div>
+   </section>
 
-    <div class="cp-label">تابعنا</div>
+   <section class="cp-group cp-social" aria-labelledby="cp-social-title">
+    <h2 class="cp-label" id="cp-social-title">تابعنا</h2>
     <div class="cp-row3">
       <a href="https://instagram.com/FAMILYDAYRESORT" target="_blank" rel="noopener noreferrer" class="cp-tile cp-tile-sm">
         <div class="cp-tile-name">Instagram</div>
@@ -2209,16 +2270,21 @@ function tarfihiOrder(){
         <div class="cp-tile-name">TikTok</div>
       </a>
     </div>
+   </section>
 
-    <div class="cp-label">الموقع</div>
+   <section class="cp-group cp-location" aria-labelledby="cp-location-title">
+    <h2 class="cp-label" id="cp-location-title">الموقع</h2>
     <a id="cp-map-link" href="https://maps.app.goo.gl/MgHPnKH1yDYLnk8z6" target="_blank" rel="noopener noreferrer" class="cp-wide">
       <div>
         <div class="cp-wide-name" id="cp-map-name">موقع المنتجع</div>
+        <div class="cp-map-sub cp-resort-only">الاتجاهات عبر خرائط Google</div>
       </div>
-      <div class="cp-wide-arrow">←</div>
+      <div class="cp-wide-arrow" aria-hidden="true">←</div>
     </a>
+   </section>
 
   </div>
+ </div>
 </div>
 <!-- MAIN APP -->
 <div id="app">
