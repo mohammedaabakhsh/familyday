@@ -111,6 +111,48 @@
 @media(max-width:360px){#menu-detail .menu-shell{padding-inline:16px}#menu-detail .menu-cat{padding-inline:4px;font-size:13px}#menu-detail #menu-cart-bar{padding-inline:16px}#menu-detail #menu-cart-summary,#menu-detail #menu-cart-total{font-size:13px}}
 @media(min-width:768px){#menu-detail .menu-shell{padding-top:28px}#menu-detail #menu-items{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}#menu-detail #menu-cats{grid-template-columns:repeat(6,minmax(0,1fr));margin-bottom:24px}}
 @media(hover:hover) and (pointer:fine){#menu-detail .menu-cat:hover{border-color:#4e8293;color:#fff}#menu-detail .menu-qty-button:hover,#menu-detail .menu-extra:hover{border-color:#7ac9d8}#menu-detail .menu-cart-trigger:hover{background:#1b3d50}#menu-detail .menu-order-button:hover{background:#168595}}
+/* Dining tables page */
+#tawilat-detail{font-family:Tajawal,sans-serif;direction:rtl}
+#tawilat-detail .tw-shell{box-sizing:border-box;width:100%;max-width:600px;margin:0 auto;padding:24px 20px calc(178px + env(safe-area-inset-bottom,0px))}
+#tawilat-detail .tw-header{margin-bottom:18px}
+#tawilat-detail .tw-heading{display:flex;align-items:center;gap:14px}
+#tawilat-detail .tw-back{display:flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;padding:0;border:1px solid rgba(126,207,234,.16);border-radius:50%;background:rgba(255,255,255,.06);color:#d7e8ef;cursor:pointer}
+#tawilat-detail .tw-title{margin:0;font-size:24px;font-weight:700;line-height:1.4;color:#f4f8fa}
+#tawilat-detail .tw-intro{margin:8px 52px 0 0;color:#b6cbd6;font-size:14px;line-height:1.65}
+#tawilat-detail .tw-layout{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"photo" "options";gap:22px;align-items:start}
+#tawilat-detail .tw-photo{grid-area:photo;min-width:0;overflow:hidden;border-radius:18px;background:#102b3c}
+#tawilat-detail .tw-photo img{display:block;width:100%;height:clamp(240px,76vw,300px);object-fit:cover;object-position:50% 56%}
+#tawilat-detail .tw-options{grid-area:options;min-width:0;display:flex;flex-direction:column;gap:24px}
+#tawilat-detail .tw-label{margin:0 0 12px;color:#f4f8fa;font-size:16px;font-weight:700;line-height:1.5}
+#tawilat-detail .tw-sizes{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+#tawilat-detail .tw-size{min-width:0;min-height:44px;padding:10px 4px;border:1px solid #315365;border-radius:12px;background:#102a3b;color:#c8dce5;font-family:inherit;font-size:15px;font-weight:700;line-height:1.4;cursor:pointer}
+#tawilat-detail .tw-size.is-active{border-color:#299bad;background:#126575;color:#fff}
+#tawilat-detail .tw-hint{margin:9px 0 0;color:#b6cbd6;font-size:13px;line-height:1.6}
+#tawilat-detail .tw-packages{display:grid;gap:10px}
+#tawilat-detail .tw-package{box-sizing:border-box;width:100%;min-width:0;display:grid;grid-template-columns:22px minmax(0,1fr) auto;align-items:center;gap:10px;padding:15px 14px;border:1px solid #315967;border-radius:16px;background:#153244;color:#f4f8fa;font-family:inherit;text-align:right;direction:rtl;cursor:pointer}
+#tawilat-detail .tw-package.is-selected{border-color:#44acba;background:#164452;box-shadow:inset 0 0 0 1px #44acba}
+#tawilat-detail .tw-check{display:flex;align-items:center;justify-content:center;width:20px;height:20px;border:1px solid #7197a7;border-radius:50%;color:#fff}
+#tawilat-detail .tw-check svg{width:14px;height:14px;opacity:0}
+#tawilat-detail .tw-package.is-selected .tw-check{background:#137787;border-color:#58c0ce}
+#tawilat-detail .tw-package.is-selected .tw-check svg{opacity:1}
+#tawilat-detail .tw-package-copy{min-width:0}
+#tawilat-detail .tw-package-name{display:block;font-size:16px;font-weight:700;line-height:1.5}
+#tawilat-detail .tw-package-desc{display:block;margin-top:4px;color:#c2d4de;font-size:13px;font-weight:400;line-height:1.65}
+#tawilat-detail .tw-package-price{font-size:18px;font-weight:700;line-height:1.4;color:#91d7e2;white-space:nowrap}
+#tawilat-detail .tw-contents{padding-top:18px;border-top:1px solid #284b5c}
+#tawilat-detail .tw-content-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px;margin:0;padding:0;list-style:none}
+#tawilat-detail .tw-content-list li{display:flex;align-items:flex-start;gap:8px;min-width:0;color:#c4d7e1;font-size:14px;line-height:1.65}
+#tawilat-detail .tw-content-list li::before{content:"";flex:0 0 5px;width:5px;height:5px;margin-top:9px;border-radius:50%;background:#67bfce}
+#tawilat-detail .tw-footer{position:fixed;bottom:0;left:0;right:0;z-index:5;box-sizing:border-box;width:100%;max-width:600px;margin:0 auto;padding:12px 20px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(0deg,#04111e 78%,rgba(4,17,30,0) 100%)}
+#tawilat-detail .tw-footer-inner{padding:12px 14px;border:1px solid #315967;border-radius:16px;background:#0d293a}
+#tawilat-detail .tw-summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:28px;margin-bottom:10px}
+#tawilat-detail #tawilat-summary-label{min-width:0;color:#cee0e8;font-size:14px;font-weight:500;line-height:1.5}
+#tawilat-detail #tawilat-summary-price{color:#91d7e2;font-size:20px;font-weight:700;line-height:1.4;white-space:nowrap}
+#tawilat-detail .tw-contact{width:100%;min-height:46px;padding:12px;border:1px solid #2498a8;border-radius:12px;background:#137787;color:#fff;font-family:inherit;font-size:16px;font-weight:700;line-height:1.4;cursor:pointer}
+#tawilat-detail button:focus-visible{outline:2px solid #7ecfea;outline-offset:3px}
+@media(max-width:360px){#tawilat-detail .tw-shell{padding-inline:16px}#tawilat-detail .tw-footer{padding-inline:16px}#tawilat-detail .tw-package{gap:8px;padding-inline:12px}#tawilat-detail .tw-package-price{font-size:17px}}
+@media(min-width:900px){#tawilat-detail .tw-shell{max-width:1100px;padding-top:28px;padding-bottom:32px}#tawilat-detail .tw-header{margin-bottom:26px}#tawilat-detail .tw-layout{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"options photo";gap:32px}#tawilat-detail .tw-photo{position:sticky;top:24px}#tawilat-detail .tw-photo img{height:auto;object-fit:contain}#tawilat-detail .tw-footer{position:static;max-width:none;margin:0;padding:0;background:none}}
+@media(hover:hover) and (pointer:fine){#tawilat-detail .tw-size:hover{border-color:#4e8293;color:#fff}#tawilat-detail .tw-package:hover{border-color:#58a6b5}#tawilat-detail .tw-contact:hover{background:#168595}}
 .phone-link{
   color:#7ecfea!important;
   text-decoration:underline;
@@ -613,10 +655,10 @@ header{
 .bnav-btn:active{opacity:0.7;}
 
 @media(min-width:600px){
-  #sinema-detail,#maiya-detail,#jalsat-detail,#sharik-detail,#tarfihi-detail,#tawilat-detail,#walaa-detail{
+  #sinema-detail,#maiya-detail,#jalsat-detail,#sharik-detail,#tarfihi-detail,#walaa-detail{
     display:flex;flex-direction:column;align-items:center;
   }
-  #sinema-detail>*,#maiya-detail>*,#jalsat-detail>*,#sharik-detail>*,#tarfihi-detail>*,#tawilat-detail>*,#walaa-detail>*{
+  #sinema-detail>*,#maiya-detail>*,#jalsat-detail>*,#sharik-detail>*,#tarfihi-detail>*,#walaa-detail>*{
     max-width:480px;width:100%;box-sizing:border-box;
   }
 }
@@ -3331,6 +3373,7 @@ var _tawilatTables = {6:1, 12:2, 18:3, 24:3, 32:4};
 function showTawilat(){ openTawilatDetail(); }
 function openTawilatDetail(){
   document.getElementById('tawilat-detail').classList.remove('hide');
+  document.getElementById('tawilat-detail').scrollTop = 0;
   
   document.body.style.overflow='hidden';
   setTawilatSize(6);
@@ -3346,7 +3389,10 @@ function setTawilatSize(n){
   _tawilatOpt = '';
   [6,12,18,24,32].forEach(function(s){
     var btn = document.getElementById('ts-'+s);
-    if(btn){ btn.style.background = s===n ? '#19a7b7' : '#f0f4f7'; btn.style.color = s===n ? '#fff' : '#133548'; }
+    if(btn){
+      btn.classList.toggle('is-active', s===n);
+      btn.setAttribute('aria-pressed', String(s===n));
+    }
   });
   updateTawilatPrices();
   selectTawilatOpt('');
@@ -3360,10 +3406,12 @@ function updateTawilatPrices(){
 }
 function selectTawilatOpt(opt){
   _tawilatOpt = opt;
-  var labels = ['tansiq','plain'];
-  labels.forEach(function(l){
+  ['tansiq','plain'].forEach(function(l){
     var el = document.getElementById('tawilat-opt-'+l);
-    if(el){ el.style.border = l===opt ? '1.5px solid rgba(25,167,183,.50)' : '1px solid rgba(255,255,255,.10)'; el.style.background = l===opt ? 'rgba(25,167,183,0.10)' : 'rgba(255,255,255,.07)'; }
+    if(el){
+      el.classList.toggle('is-selected', l===opt);
+      el.setAttribute('aria-pressed', String(l===opt));
+    }
   });
   updateTawilatContents();
   updateTawilatSummary();
@@ -3372,17 +3420,22 @@ function updateTawilatSummary(){
   var box = document.getElementById('tawilat-price-summary');
   var lbl = document.getElementById('tawilat-summary-label');
   var priceEl = document.getElementById('tawilat-summary-price');
-  if(!box) return;
-  if(!_tawilatOpt){ box.style.display='none'; return; }
+  if(!box || !lbl || !priceEl) return;
+  if(!_tawilatOpt){
+    lbl.textContent = 'اختر الباقة لعرض الإجمالي';
+    priceEl.textContent = '';
+    return;
+  }
   var p = _tawilatPrices[_tawilatSize][_tawilatOpt];
   var optName = _tawilatOpt==='tansiq' ? 'مع تنسيق' : 'بدون تنسيق';
-  box.style.display = 'block';
-  lbl.textContent = _tawilatSize + ' أشخاص - ' + optName;
+  lbl.textContent = _tawilatSize + (_tawilatSize===6?' أشخاص':' شخصا') + ' · ' + optName;
   priceEl.textContent = p + ' ريال';
 }
 function updateTawilatContents(){
+  var section = document.getElementById('tawilat-contents');
   var el = document.getElementById('tawilat-contents-list');
-  if(!el) return;
+  if(section) section.classList.toggle('hide', _tawilatOpt!=='tansiq');
+  if(!el || _tawilatOpt!=='tansiq') return;
   var items = [
     'طاولات زجاجية أنيقة',
     'كراسي أكريليك شفافة',
@@ -3391,12 +3444,7 @@ function updateTawilatContents(){
     'تنسيق زهور',
     'حاملات شموع مزودة بالشموع'
   ];
-  var html = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">';
-  for(var i=0;i<items.length;i++){
-    html += '<div style="display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.7);background:rgba(14,36,58,.80);border:1.5px solid rgba(25,167,183,.35);border-radius:10px;padding:8px 10px;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 2px 10px rgba(25,167,183,.08);"><span style="color:#19a7b7;font-size:12px;flex-shrink:0;">✦</span>' + items[i] + '</div>';
-  }
-  html += '</div>';
-  el.innerHTML = html;
+  el.innerHTML = items.map(function(item){ return '<li>'+item+'</li>'; }).join('');
 }
 function tawilatOrder(){
   if(!_tawilatOpt){ alert('يرجى اختيار الخيار أولاً'); return; }
@@ -3549,73 +3597,67 @@ function closeWalaaDetail(){
 
 <!-- TAWILAT DETAIL -->
 <div id="tawilat-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
-  <div style="background:transparent;padding:14px 20px 18px;padding-top:20px;text-align:right;position:relative;">
-    <button onclick="closeTawilatDetail()" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.10);border:none;color:rgba(255,255,255,0.85);cursor:pointer;margin-bottom:10px;">
-      <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-    <div style="font-family:Tajawal,sans-serif;font-size:20px;font-weight:700;color:#7ecfea;line-height:1.4;margin-bottom:4px;">طاولات الطعام</div>
-    <div style="font-family:Tajawal,sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,0.7);line-height:1.5;">جلسة طعام خارجية تناسب مختلف المناسبات</div>
-  </div>
-
-  <div style="padding:12px 20px 0;">
-    <div style="border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(19,53,72,0.06);">
-      <img style="width:100%;height:320px;object-fit:cover;display:block;" src="imgs/tawilat_1.webp">
-    </div>
-  </div>
-
-  <div style="padding:12px 20px;display:flex;flex-direction:column;gap:10px;">
-
-    <!-- Size selector -->
-    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
-      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:10px;">السعة</div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <button id="ts-6"  onclick="setTawilatSize(6)"  style="padding:8px 16px;border:none;border-radius:20px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:#19a7b7;color:#fff;">6</button>
-        <button id="ts-12" onclick="setTawilatSize(12)" style="padding:8px 16px;border:none;border-radius:20px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:rgba(255,255,255,.07);color:rgba(255,255,255,0.65);">12</button>
-        <button id="ts-18" onclick="setTawilatSize(18)" style="padding:8px 16px;border:none;border-radius:20px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:rgba(255,255,255,.07);color:rgba(255,255,255,0.65);">18</button>
-        <button id="ts-24" onclick="setTawilatSize(24)" style="padding:8px 16px;border:none;border-radius:20px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:rgba(255,255,255,.07);color:rgba(255,255,255,0.65);">24</button>
-        <button id="ts-32" onclick="setTawilatSize(32)" style="padding:8px 16px;border:none;border-radius:20px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:rgba(255,255,255,.07);color:rgba(255,255,255,0.65);">32</button>
+  <div class="tw-shell">
+    <div class="tw-header">
+      <div class="tw-heading">
+        <button type="button" class="tw-back" onclick="closeTawilatDetail()" aria-label="العودة إلى الخدمات">
+          <svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <h1 class="tw-title">طاولات الطعام</h1>
       </div>
-      <div style="font-size:12px;color:rgba(255,255,255,0.65);font-family:'Tajawal',sans-serif;margin-top:10px;text-align:center;">اختر العدد لعرض الخيارات والأسعار</div>
+      <p class="tw-intro">جلسة طعام خارجية تناسب مختلف المناسبات</p>
     </div>
 
-    <!-- Option selector -->
-    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
-      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:10px;">اختر الباقة</div>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <label id="tawilat-opt-plain" onclick="selectTawilatOpt('plain')" style="display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.07);border-radius:14px;padding:14px 16px;cursor:pointer;border:0.5px solid transparent;box-shadow:0 2px 8px rgba(19,53,72,0.1);">
-          <div>
-            <div style="font-size:14px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;">بدون تنسيق</div>
-            <div style="font-size:12px;color:rgba(255,255,255,0.68);font-family:'Tajawal',sans-serif;margin-top:3px;">طاولات وكراسٍ فقط</div>
+    <div class="tw-layout">
+      <div class="tw-photo">
+        <img src="imgs/tawilat_1.webp" width="1200" height="1200" alt="طاولة طعام خارجية مجهزة بالكراسي وأطقم التقديم والزهور بجانب المسبح" decoding="async">
+      </div>
+
+      <div class="tw-options">
+        <section aria-labelledby="tw-size-title">
+          <h2 id="tw-size-title" class="tw-label">عدد الأشخاص</h2>
+          <div class="tw-sizes" role="group" aria-labelledby="tw-size-title">
+            <button type="button" id="ts-6" class="tw-size is-active" onclick="setTawilatSize(6)" aria-pressed="true">6</button>
+            <button type="button" id="ts-12" class="tw-size" onclick="setTawilatSize(12)" aria-pressed="false">12</button>
+            <button type="button" id="ts-18" class="tw-size" onclick="setTawilatSize(18)" aria-pressed="false">18</button>
+            <button type="button" id="ts-24" class="tw-size" onclick="setTawilatSize(24)" aria-pressed="false">24</button>
+            <button type="button" id="ts-32" class="tw-size" onclick="setTawilatSize(32)" aria-pressed="false">32</button>
           </div>
-          <div id="tawilat-price-plain" style="font-size:18px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;white-space:nowrap;margin-right:12px;">199 ريال</div>
-        </label>
-        <label id="tawilat-opt-tansiq" onclick="selectTawilatOpt('tansiq')" style="display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.07);border-radius:14px;padding:14px 16px;cursor:pointer;border:0.5px solid transparent;box-shadow:0 2px 8px rgba(19,53,72,0.1);">
-          <div>
-            <div style="font-size:14px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;">مع تنسيق</div>
-            <div style="font-size:12px;color:rgba(255,255,255,0.68);font-family:'Tajawal',sans-serif;margin-top:3px;">طاولات وكراسٍ مع تنسيق متكامل</div>
+          <p class="tw-hint">اختر العدد لعرض الخيارات والأسعار</p>
+        </section>
+
+        <section aria-labelledby="tw-package-title">
+          <h2 id="tw-package-title" class="tw-label">اختر الباقة</h2>
+          <div class="tw-packages" role="group" aria-labelledby="tw-package-title">
+            <button type="button" id="tawilat-opt-plain" class="tw-package" onclick="selectTawilatOpt('plain')" aria-pressed="false">
+              <span class="tw-check" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 10 3 3 7-7"/></svg></span>
+              <span class="tw-package-copy"><span class="tw-package-name">بدون تنسيق</span><span class="tw-package-desc">طاولات وكراسٍ فقط</span></span>
+              <span id="tawilat-price-plain" class="tw-package-price">199 ريال</span>
+            </button>
+            <button type="button" id="tawilat-opt-tansiq" class="tw-package" onclick="selectTawilatOpt('tansiq')" aria-pressed="false" aria-controls="tawilat-contents">
+              <span class="tw-check" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 10 3 3 7-7"/></svg></span>
+              <span class="tw-package-copy"><span class="tw-package-name">مع تنسيق</span><span class="tw-package-desc">طاولات وكراسٍ مع تنسيق متكامل</span></span>
+              <span id="tawilat-price-tansiq" class="tw-package-price">399 ريال</span>
+            </button>
           </div>
-          <div id="tawilat-price-tansiq" style="font-size:18px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;white-space:nowrap;margin-right:12px;">399 ريال</div>
-        </label>
+        </section>
+
+        <section id="tawilat-contents" class="tw-contents hide" aria-labelledby="tw-contents-title">
+          <h2 id="tw-contents-title" class="tw-label">يشمل التنسيق</h2>
+          <ul id="tawilat-contents-list" class="tw-content-list"></ul>
+        </section>
+
+        <div class="tw-footer">
+          <div class="tw-footer-inner">
+            <div id="tawilat-price-summary" class="tw-summary" aria-live="polite" aria-atomic="true">
+              <span id="tawilat-summary-label">اختر الباقة لعرض الإجمالي</span>
+              <span id="tawilat-summary-price"></span>
+            </div>
+            <button type="button" class="tw-contact" onclick="window.open('https://wa.me/966556156693?text='+encodeURIComponent('السلام عليكم، أود الاستفسار عن خدمة طاولات الطعام'),'_blank')">تواصل عبر واتساب</button>
+          </div>
+        </div>
       </div>
     </div>
-
-    <!-- Price summary -->
-    <div id="tawilat-price-summary" style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;border-radius:16px;padding:16px 20px;text-align:center;display:none;">
-      <div style="font-size:12px;color:rgba(255,255,255,0.7);font-family:'Tajawal',sans-serif;margin-bottom:4px;" id="tawilat-summary-label">اختر العدد والخيار</div>
-      <div style="font-size:28px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;" id="tawilat-summary-price">—</div>
-    </div>
-
-    <!-- Package contents (tansiq only) -->
-    <div id="tawilat-contents" style="display:block;background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
-      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:12px;">يشمل التنسيق</div>
-      <div id="tawilat-contents-list" style="display:flex;flex-direction:column;gap:10px;"></div>
-    </div>
-
-    <!-- Order button -->
-    <div style="padding:0 0 calc(64px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
-      <button onclick="window.open('https://wa.me/966556156693?text='+encodeURIComponent('السلام عليكم، أود الاستفسار عن خدمة طاولات الطعام'),'_blank')" class="mbtn mbtn-wa" style="cursor:pointer;width:100%;text-align:center;">تواصل عبر واتساب</button>
-    </div></div>
-
   </div>
 </div>
 
