@@ -113,6 +113,65 @@
 @media(hover:hover) and (pointer:fine){#menu-detail .menu-cat:hover{border-color:#4e8293;color:#fff}#menu-detail .menu-qty-button:hover,#menu-detail .menu-extra:hover{border-color:#7ac9d8}#menu-detail .menu-cart-trigger:hover{background:#1b3d50}#menu-detail .menu-order-button:hover{background:#168595}}
 /* Dining tables page */
 #tawilat-detail{font-family:Tajawal,sans-serif;direction:rtl}
+/* Water games service */
+#maiya-detail .wm-shell{box-sizing:border-box;width:100%;max-width:600px;margin:0 auto;padding:24px 20px calc(32px + env(safe-area-inset-bottom,0px));font-family:'Tajawal',sans-serif;text-align:right}
+#maiya-detail .wm-header{margin-bottom:22px}
+#maiya-detail .wm-heading{display:flex;align-items:center;gap:14px}
+#maiya-detail .wm-back{display:inline-flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;cursor:pointer}
+#maiya-detail .wm-title{margin:0;color:#f0f5f7;font-size:24px;font-weight:800;line-height:1.4}
+#maiya-detail .wm-intro{margin:8px 0 0;color:#b6cbd6;font-size:15px;line-height:1.65}
+#maiya-detail .wm-intro strong{color:#8fd5e4;font-weight:700}
+#maiya-detail .wm-layout{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"browser" "details";gap:24px;align-items:start}
+#maiya-detail .wm-browser{grid-area:browser;min-width:0}
+#maiya-detail .wm-filters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:14px}
+#maiya-detail .wm-filter{min-height:44px;padding:8px;border:1px solid #315967;border-radius:24px;background:#153244;color:#b6cbd6;font-family:inherit;font-size:14px;font-weight:600;line-height:1.5;cursor:pointer}
+#maiya-detail .wm-filter.is-active{border-color:#44acba;background:#16889b;color:#fff}
+#maiya-detail .wm-gallery{position:relative;min-width:0;overflow:hidden;border:1px solid #29434f;border-radius:18px;background:#071c2a}
+#maiya-detail .wm-slides{display:flex;direction:rtl;transition:transform .28s ease;touch-action:pan-y pinch-zoom}
+#maiya-detail .wm-slide{flex:0 0 100%;min-width:0}
+#maiya-detail .wm-game-image{display:block;box-sizing:border-box;width:100%;height:clamp(260px,82vw,360px);padding:12px 24px;object-fit:contain}
+#maiya-detail .wm-arrow{position:absolute;top:50%;transform:translateY(-50%);display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:1px solid #315967;border-radius:50%;background:rgba(21,50,68,.94);color:#fff;cursor:pointer}
+#maiya-detail .wm-prev{right:10px}
+#maiya-detail .wm-next{left:10px}
+#maiya-detail .wm-arrow:disabled{opacity:.35;cursor:default}
+#maiya-detail .wm-arrow[hidden]{display:none}
+#maiya-detail .wm-counter{position:absolute;bottom:12px;left:14px;padding:4px 10px;border-radius:12px;background:rgba(13,41,58,.88);color:#d6e4eb;font-size:13px;line-height:1.5}
+#maiya-detail .wm-game-actions{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:14px}
+#maiya-detail .wm-game-name{margin:0;color:#f0f5f7;font-size:20px;font-weight:700;line-height:1.5}
+#maiya-detail .wm-select{min-height:46px;padding:10px 18px;border:1.5px solid #3aa9b9;border-radius:14px;background:#153244;color:#d6e9ef;font-family:inherit;font-size:16px;font-weight:700;line-height:1.5;cursor:pointer}
+#maiya-detail .wm-select.is-selected{border-color:#44acba;background:#164452;color:#fff}
+#maiya-detail .wm-select:disabled{border-color:#315967;background:#102938;color:#8caebe;cursor:not-allowed}
+#maiya-detail .wm-selection-hint{margin:10px 0 0;color:#b6cbd6;font-size:13px;line-height:1.7}
+#maiya-detail .wm-details{grid-area:details;display:flex;flex-direction:column;gap:24px;min-width:0}
+#maiya-detail .wm-section-title{margin:0 0 14px;color:#f0f5f7;font-size:18px;font-weight:700;line-height:1.5}
+#maiya-detail .wm-selection-header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+#maiya-detail .wm-selection-header .wm-section-title{margin:0}
+#maiya-detail .wm-selection-count{color:#b6cbd6;font-size:14px;line-height:1.6;white-space:nowrap}
+#maiya-detail .wm-selection-count.is-complete{color:#8fd5e4;font-weight:700}
+#maiya-detail .wm-empty{display:flex;align-items:center;justify-content:center;min-height:96px;margin:0;padding:20px;border:1px dashed #315967;border-radius:14px;background:#0d2332;color:#b6cbd6;font-size:14px;line-height:1.7;text-align:center}
+#maiya-detail .wm-selected-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0;padding:0;list-style:none}
+#maiya-detail .wm-selected-list[hidden],#maiya-detail .wm-empty[hidden]{display:none}
+#maiya-detail .wm-selected-item{min-width:0;padding:6px;border:1px solid #315967;border-radius:14px;background:#102938}
+#maiya-detail .wm-selected-image{display:block;width:100%;height:auto;aspect-ratio:1.1;object-fit:contain;border-radius:10px;background:#071c2a}
+#maiya-detail .wm-selected-caption{display:flex;align-items:center;justify-content:space-between;gap:2px;margin-top:6px}
+#maiya-detail .wm-selected-name{min-width:0;color:#d6e4eb;font-size:14px;font-weight:600;line-height:1.5}
+#maiya-detail .wm-remove{display:inline-flex;align-items:center;justify-content:center;flex:0 0 32px;width:32px;height:32px;padding:0;border:1px solid #315967;border-radius:50%;background:#163746;color:#d6e9ef;cursor:pointer}
+#maiya-detail .wm-notes{padding-top:20px;border-top:1px solid #29434f}
+#maiya-detail .wm-notes-list{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none;color:#b6cbd6;font-size:14px;line-height:1.8;white-space:normal;overflow-wrap:break-word}
+#maiya-detail .wm-notes-list li{position:relative;padding-inline-start:13px}
+#maiya-detail .wm-notes-list li::before{content:"";position:absolute;inset-inline-start:0;top:.8em;width:4px;height:4px;border-radius:50%;background:#608694}
+#maiya-detail .wm-order{padding:14px;border:1px solid #315967;border-radius:16px;background:#0d293a}
+#maiya-detail .wm-order-summary{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;color:#d6e4eb;font-size:15px;line-height:1.6}
+#maiya-detail .wm-order-summary strong{color:#8fd5e4;font-size:20px;font-weight:800;white-space:nowrap}
+#maiya-detail .wm-order-button{display:block;width:100%;min-height:52px;padding:12px 18px;border:1px solid #3aa9b9;border-radius:14px;background:#147a8c;color:#fff;font-family:inherit;font-size:18px;font-weight:700;line-height:1.5;text-align:center;cursor:pointer}
+#maiya-detail .wm-order-button:disabled{border-color:#315967;background:#153244;color:#8caebe;cursor:not-allowed}
+#maiya-detail .wm-order-hint{margin:10px 0 0;color:#b6cbd6;font-size:13px;line-height:1.6;text-align:center}
+#maiya-detail .wm-shell button:focus-visible{outline:2px solid #8fd5e4;outline-offset:3px}
+@media(hover:hover){#maiya-detail .wm-back:hover,#maiya-detail .wm-remove:hover{background:#1c4456}#maiya-detail .wm-filter:hover,#maiya-detail .wm-select:not(:disabled):hover{border-color:#8fd5e4}#maiya-detail .wm-order-button:not(:disabled):hover{background:#168b9e}}
+@media(max-width:360px){#maiya-detail .wm-shell{padding-inline:16px}}
+@media(min-width:900px){#maiya-detail .wm-shell{max-width:1100px;padding-top:28px}#maiya-detail .wm-header{margin-bottom:26px}#maiya-detail .wm-layout{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"details browser";gap:32px}#maiya-detail .wm-game-image{height:430px;padding:20px 36px}}
+@media(prefers-reduced-motion:reduce){#maiya-detail .wm-slides{transition:none}}
+
 /* Entertainment games service */
 #tarfihi-detail .tg-shell{box-sizing:border-box;width:100%;max-width:600px;margin:0 auto;padding:24px 20px calc(32px + env(safe-area-inset-bottom,0px));font-family:'Tajawal',sans-serif;text-align:right}
 #tarfihi-detail .tg-header{margin-bottom:22px}
@@ -725,10 +784,10 @@ header{
 .bnav-btn:active{opacity:0.7;}
 
 @media(min-width:600px){
-  #maiya-detail,#jalsat-detail,#sharik-detail,#walaa-detail{
+  #jalsat-detail,#sharik-detail,#walaa-detail{
     display:flex;flex-direction:column;align-items:center;
   }
-  #maiya-detail>*,#jalsat-detail>*,#sharik-detail>*,#walaa-detail>*{
+  #jalsat-detail>*,#sharik-detail>*,#walaa-detail>*{
     max-width:480px;width:100%;box-sizing:border-box;
   }
 }
@@ -1618,66 +1677,70 @@ function tarfihiOrder(){
 
 <!-- MAIYA DETAIL OVERLAY -->
 <div id="maiya-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
-  <div style="background:transparent;padding:14px 20px 18px;padding-top:20px;text-align:right;position:relative;">
-    <button onclick="closeMaiyaDetail()" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.10);border:none;color:rgba(255,255,255,0.85);cursor:pointer;margin-bottom:10px;">
-      <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-    <div style="font-family:Tajawal,sans-serif;font-size:20px;font-weight:700;color:#7ecfea;line-height:1.4;margin-bottom:4px;">الألعاب المائية</div>
-    <div style="font-family:Tajawal,sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,0.7);line-height:1.5;">اختر باقة الألعاب المناسبة</div>
-  </div>
-  <div style="padding:12px 20px 0;">
-    <div style="display:flex;gap:8px;margin-bottom:10px;font-family:'Tajawal',sans-serif;">
-         <button id="mf-all" onclick="setMaiyaFilter('all')" style="flex:1;padding:6px 12px;border:1px solid #19a7b7;border-radius:100px;background:#19a7b7;color:#fff;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:600;cursor:pointer;">الكل</button>
-         <button id="mf-كبار" onclick="setMaiyaFilter('كبار')" style="flex:1;padding:6px 12px;border:1px solid rgba(255,255,255,.18);border-radius:100px;background:rgba(255,255,255,.07);color:rgba(255,255,255,0.65);font-family:'Tajawal',sans-serif;font-size:12px;font-weight:500;cursor:pointer;">للكبار</button>
-         <button id="mf-صغار" onclick="setMaiyaFilter('صغار')" style="flex:1;padding:6px 12px;border:1px solid rgba(255,255,255,.18);border-radius:100px;background:rgba(255,255,255,.07);color:rgba(255,255,255,0.65);font-family:'Tajawal',sans-serif;font-size:12px;font-weight:500;cursor:pointer;">للصغار</button>
-         <button id="mf-عائلة" onclick="setMaiyaFilter('عائلة')" style="flex:1;padding:6px 12px;border:1px solid rgba(255,255,255,.18);border-radius:100px;background:rgba(255,255,255,.07);color:rgba(255,255,255,0.65);font-family:'Tajawal',sans-serif;font-size:12px;font-weight:500;cursor:pointer;">للعائلة</button>
-       </div>
-       <div style="position:relative;overflow:hidden;border-radius:18px;background:rgba(8,22,40,.95);box-shadow:0 4px 20px rgba(0,0,0,.3);">
-      <div id="maiya-slides" style="display:flex;direction:rtl;transition:transform 0.35s ease;will-change:transform;"></div>
-         <!-- Left arrow -->
-      <button onclick="maiyaGoTo(_maiyaIdx+1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);background:rgba(19,53,72,0.7);border:none;color:#fff;width:40px;height:40px;border-radius:50%;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;direction:ltr;">&#10094;</button>
-      <!-- Right arrow -->
-      <button onclick="maiyaGoTo(_maiyaIdx-1)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:rgba(19,53,72,0.7);border:none;color:#fff;width:40px;height:40px;border-radius:50%;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;direction:ltr;">&#10095;</button>
-      <!-- Counter -->
-      <div id="maiya-counter" style="position:absolute;bottom:10px;left:12px;background:rgba(19,53,72,0.55);color:#fff;font-family:'Tajawal',sans-serif;font-size:12px;border-radius:12px;padding:3px 10px;">1 من 2</div>
+  <div class="wm-shell">
+    <div class="wm-header">
+      <div class="wm-heading">
+        <button type="button" class="wm-back" onclick="closeMaiyaDetail()" aria-label="العودة إلى الخدمات">
+          <svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <h1 class="wm-title">الألعاب المائية</h1>
+      </div>
+      <p class="wm-intro">اختر <strong>3 ألعاب بـ50 ريال</strong></p>
     </div>
-  <div id="maiya-game-name" style="text-align:center;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;color:#fff;padding:10px 20px 0;"></div>
-  <div style="text-align:center;padding:4px 20px 0;">
-    <div style="font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;color:#fff;">اختر 3 ألعاب من القائمة</div>
-    <div style="font-family:'Tajawal',sans-serif;font-size:12px;color:#7ecfea;margin-top:2px;">الباقة تشمل 3 ألعاب بسعر 50 ريال</div>
-  </div>
-  <div style="text-align:center;padding:6px 20px 4px;">
-    <button id="maiya-select-btn" onclick="toggleMaiyaGame()" style="background:rgba(255,255,255,.08);border:1.5px solid rgba(25,167,183,.35);color:#7ecfea;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;padding:7px 28px;border-radius:20px;cursor:pointer;">اختر اللعبة</button>
-  </div>
-  <div id="maiya-selection-count" style="text-align:center;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;color:#19a7b7;padding:6px 20px 0;">اختر 3 ألعاب لإكمال الباقة</div>
-  </div>
-  <div style="padding:10px 20px;display:flex;flex-direction:column;gap:10px;">
-    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
-      <div style="display:flex;gap:12px;justify-content:center;">
-        <div style="background:rgba(14,36,58,.80);border:1.5px solid rgba(25,167,183,.35);border-radius:14px;;padding:10px 24px;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 2px 10px rgba(25,167,183,.08);text-align:center;min-width:110px;">
-          <div style="font-size:12px;color:rgba(255,255,255,0.68);font-family:'Tajawal',sans-serif;margin-bottom:4px;">عدد الألعاب</div>
-          <div style="font-size:15px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;">3 ألعاب</div>
+
+    <div class="wm-layout">
+      <section class="wm-browser" aria-label="استعراض الألعاب المائية">
+        <div class="wm-filters" role="group" aria-label="فئات الألعاب">
+          <button type="button" id="mf-all" class="wm-filter is-active" onclick="setMaiyaFilter('all')" aria-pressed="true">الكل</button>
+          <button type="button" id="mf-كبار" class="wm-filter" onclick="setMaiyaFilter('كبار')" aria-pressed="false">للكبار</button>
+          <button type="button" id="mf-صغار" class="wm-filter" onclick="setMaiyaFilter('صغار')" aria-pressed="false">للصغار</button>
+          <button type="button" id="mf-عائلة" class="wm-filter" onclick="setMaiyaFilter('عائلة')" aria-pressed="false">للعائلة</button>
         </div>
-        <div style="background:rgba(14,36,58,.80);border:1.5px solid rgba(25,167,183,.35);border-radius:14px;;padding:10px 24px;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 2px 10px rgba(25,167,183,.08);text-align:center;min-width:110px;">
-          <div style="font-size:12px;color:rgba(255,255,255,0.68);font-family:'Tajawal',sans-serif;margin-bottom:4px;">سعر الباقة</div>
-          <div style="font-size:15px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;">50 ريال</div>
+
+        <div class="wm-gallery">
+          <div id="maiya-slides" class="wm-slides"></div>
+          <button type="button" id="maiya-prev" class="wm-arrow wm-prev" onclick="maiyaGoTo(_maiyaIdx-1)" aria-label="اللعبة السابقة" disabled>
+            <svg width="10" height="16" viewBox="0 0 10 16" fill="none" aria-hidden="true"><path d="M2 2L8 8L2 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button type="button" id="maiya-next" class="wm-arrow wm-next" onclick="maiyaGoTo(_maiyaIdx+1)" aria-label="اللعبة التالية">
+            <svg width="10" height="16" viewBox="0 0 10 16" fill="none" aria-hidden="true"><path d="M8 2L2 8L8 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <span id="maiya-counter" class="wm-counter">1 من 14</span>
+        </div>
+
+        <div class="wm-game-actions">
+          <h2 id="maiya-game-name" class="wm-game-name" aria-live="polite" aria-atomic="true">لعبة 1</h2>
+          <button type="button" id="maiya-select-btn" class="wm-select" onclick="toggleMaiyaGame()" aria-pressed="false">اختر اللعبة</button>
+        </div>
+        <p id="maiya-selection-hint" class="wm-selection-hint" hidden>لإضافة هذه اللعبة، أزل إحدى اختياراتك.</p>
+      </section>
+
+      <div class="wm-details">
+        <section aria-labelledby="wm-selections-title">
+          <div class="wm-selection-header">
+            <h2 id="wm-selections-title" class="wm-section-title">اختياراتك</h2>
+            <span id="maiya-selection-count" class="wm-selection-count" aria-live="polite" aria-atomic="true" tabindex="-1">اخترت 0 من 3</span>
+          </div>
+          <p id="maiya-selection-empty" class="wm-empty">الألعاب التي تختارها تظهر هنا</p>
+          <ul id="maiya-selected-games" class="wm-selected-list" hidden></ul>
+        </section>
+
+        <section class="wm-notes" aria-labelledby="wm-notes-title">
+          <h2 id="wm-notes-title" class="wm-section-title">تعليمات وملاحظات</h2>
+          <ul class="wm-notes-list">
+            <li>الألعاب متاحة حسب التوفر.</li>
+            <li>يرجى المحافظة عليها وإعادتها بحالتها الأصلية.</li>
+            <li>تطبق جميع الشروط والأحكام.</li>
+          </ul>
+        </section>
+
+        <div class="wm-order">
+          <div class="wm-order-summary"><span>إجمالي الباقة</span><strong>50 ريال</strong></div>
+          <button type="button" id="maiya-order-btn" class="wm-order-button" onclick="maiyaOrderNow()" disabled>متبقي 3 ألعاب</button>
+          <p class="wm-order-hint">إكمال الطلب عبر واتساب</p>
         </div>
       </div>
     </div>
-    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
-      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:10px;">تعليمات وملاحظات</div>
-      <div style="display:flex;flex-direction:column;gap:6px;">
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:12px;color:rgba(255,255,255,0.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> الألعاب متاحة حسب التوفر.</div>
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:12px;color:rgba(255,255,255,0.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> يرجى المحافظة عليها وإعادتها بحالتها الأصلية.</div>
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:12px;color:rgba(255,255,255,0.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> تطبق جميع الشروط والأحكام.</div>
-        
-      </div>
-    </div>
-    </div>
-    <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:12px;color:#7ecfea;padding:0 20px 8px;line-height:1.6;white-space:nowrap;">اختر 3 ألعاب، ثم اضغط الزر بعد تحوله إلى «اطلبها الآن» لإرسال طلبك عبر واتساب.</div>
-<div style="padding:0 20px calc(64px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
-      <button id="maiya-order-btn" onclick="maiyaOrderNow()" class="mbtn mbtn-wa" style="background:rgba(255,255,255,.08);border:1.5px solid rgba(25,167,183,.35);color:#7ecfea;cursor:not-allowed;width:100%;text-align:center;" disabled>متبقي 3 ألعاب</button>
-    </div></div>
   </div>
 </div>
 
@@ -2945,23 +3008,33 @@ function buildMaiyaSlides(){
   if(_maiyaFilter==='all') _maiyaGames = _maiyaAllGames.slice();
   else _maiyaGames = _maiyaAllGames.filter(function(g){ return g.cat===_maiyaFilter; });
   var container = document.getElementById('maiya-slides');
+  container.style.transition = 'none';
+  container.style.transform = 'translateX(0%)';
   container.innerHTML = '';
-  _maiyaGames.forEach(function(g){
-    var div = document.createElement('div');
-    div.style.cssText = 'min-width:100%;flex-shrink:0;';
-    div.innerHTML = '<img src="'+g.img+'" style="width:100%;height:260px;object-fit:cover;display:block;">';
-    container.appendChild(div);
+  _maiyaGames.forEach(function(g, index){
+    var slide = document.createElement('div');
+    slide.className = 'wm-slide';
+    slide.setAttribute('aria-hidden', String(index!==0));
+    var image = document.createElement('img');
+    image.className = 'wm-game-image';
+    image.src = g.img;
+    image.alt = g.name;
+    image.width = 1200;
+    image.height = 1200;
+    image.loading = index===0 ? 'eager' : 'lazy';
+    image.decoding = 'async';
+    slide.appendChild(image);
+    container.appendChild(slide);
   });
-  // update total in counter
-  var total = _maiyaGames.length;
-  var counter = document.getElementById('maiya-counter');
-  if(counter) counter.textContent = total>0 ? '1 من '+total : '0 من 0';
-  // update filter tabs
+  // Reset the gallery immediately when switching categories.
+  void container.offsetWidth;
+  container.style.transition = '';
   ['all','عائلة','كبار','صغار'].forEach(function(f){
-    var btn = document.getElementById('mf-'+f);
-    if(btn) btn.style.background = (f===_maiyaFilter)?'#19a7b7':'rgba(255,255,255,.07)';
-    if(btn) btn.style.color = (f===_maiyaFilter)?'#fff':'rgba(255,255,255,.65)';
-    if(btn) btn.style.border = (f===_maiyaFilter)?'1px solid #19a7b7':'1px solid rgba(255,255,255,.18)';
+    var button = document.getElementById('mf-'+f);
+    if(button){
+      button.classList.toggle('is-active', f===_maiyaFilter);
+      button.setAttribute('aria-pressed', String(f===_maiyaFilter));
+    }
   });
 }
 function setMaiyaFilter(f){
@@ -2970,19 +3043,23 @@ function setMaiyaFilter(f){
   maiyaGoTo(0);
 }
 function openMaiyaDetail(){
-  
-  document.getElementById('maiya-detail').classList.remove('hide');
+  var panel = document.getElementById('maiya-detail');
+  panel.classList.remove('hide');
+  panel.scrollTop = 0;
   buildMaiyaSlides();
   maiyaGoTo(0);
-  // Add touch/swipe support
   var slides = document.getElementById('maiya-slides');
-  var startX = 0;
-  slides.ontouchstart = function(e){ startX = e.touches[0].clientX; };
+  var startX = 0, startY = 0;
+  slides.ontouchstart = function(e){
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+  };
   slides.ontouchend = function(e){
     var dx = e.changedTouches[0].clientX - startX;
-    if(Math.abs(dx) > 40){
-      if(dx < 0) maiyaGoTo(Math.min(_maiyaIdx+1, _maiyaGames.length-1));
-      else maiyaGoTo(Math.max(_maiyaIdx-1, 0));
+    var dy = e.changedTouches[0].clientY - startY;
+    if(Math.abs(dx)>40 && Math.abs(dx)>Math.abs(dy)){
+      if(dx<0) maiyaGoTo(_maiyaIdx+1);
+      else maiyaGoTo(_maiyaIdx-1);
     }
   };
 }
@@ -2993,54 +3070,94 @@ function closeMaiyaDetail(){
 }
 var _maiyaSelected = new Set();
 function toggleMaiyaGame(){
-  var g = _maiyaGames[_maiyaIdx];
-  if(!g) return;
-  var name = g.name;
-  if(_maiyaSelected.has(name)){
-    _maiyaSelected.delete(name);
+  var game = _maiyaGames[_maiyaIdx];
+  if(!game) return;
+  if(_maiyaSelected.has(game.name)){
+    _maiyaSelected.delete(game.name);
   } else {
-    if(_maiyaSelected.size >= 3){ return; }
-    _maiyaSelected.add(name);
+    if(_maiyaSelected.size>=3) return;
+    _maiyaSelected.add(game.name);
   }
   updateMaiyaSelectionUI();
+}
+function removeMaiyaGame(name){
+  _maiyaSelected.delete(name);
+  updateMaiyaSelectionUI();
+  var target = document.querySelector('#maiya-selected-games button') || document.getElementById('maiya-selection-count');
+  if(target) target.focus({preventScroll:true});
+}
+function renderMaiyaSelection(){
+  var names = Array.from(_maiyaSelected);
+  var list = document.getElementById('maiya-selected-games');
+  var empty = document.getElementById('maiya-selection-empty');
+  if(!list || !empty) return;
+  list.hidden = names.length===0;
+  empty.hidden = names.length>0;
+  var key = names.join('|');
+  // Keep thumbnails and their controls stable while browsing other games.
+  if(list.getAttribute('data-selection')===key) return;
+  list.setAttribute('data-selection', key);
+  list.innerHTML = '';
+  names.forEach(function(name){
+    var game = _maiyaAllGames.find(function(g){ return g.name===name; });
+    if(!game) return;
+    var item = document.createElement('li');
+    item.className = 'wm-selected-item';
+    var image = document.createElement('img');
+    image.className = 'wm-selected-image';
+    image.src = game.img;
+    image.alt = name;
+    image.width = 240;
+    image.height = 220;
+    image.decoding = 'async';
+    var caption = document.createElement('div');
+    caption.className = 'wm-selected-caption';
+    var label = document.createElement('span');
+    label.className = 'wm-selected-name';
+    label.textContent = name;
+    var remove = document.createElement('button');
+    remove.type = 'button';
+    remove.className = 'wm-remove';
+    remove.setAttribute('aria-label', 'إزالة '+name);
+    remove.innerHTML = '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 2L10 10M10 2L2 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+    remove.onclick = function(){ removeMaiyaGame(name); };
+    caption.appendChild(label);
+    caption.appendChild(remove);
+    item.appendChild(image);
+    item.appendChild(caption);
+    list.appendChild(item);
+  });
 }
 function updateMaiyaSelectionUI(){
   var count = _maiyaSelected.size;
   var countEl = document.getElementById('maiya-selection-count');
-  var remaining = 3 - count;
-  var remainingTxt = remaining === 3 ? 'متبقي 3 ألعاب' : remaining === 2 ? 'متبقي لعبتان' : remaining === 1 ? 'متبقية لعبة واحدة' : '';
-  if(countEl) countEl.textContent = count >= 3 ? 'اكتمل اختيار الألعاب ✓' : 'اختر 3 ألعاب لإكمال الباقة';
-  var orderBtn = document.getElementById('maiya-order-btn');
-  if(orderBtn){
-    if(count >= 3){
-      orderBtn.disabled = false;
-      orderBtn.style.background = '#19a7b7';
-      orderBtn.style.border = '1.5px solid #19a7b7';
-      orderBtn.style.color = '#fff';
-      orderBtn.style.cursor = 'pointer';
-      orderBtn.textContent = 'اطلب باقة الألعاب المائية';
-    } else {
-      orderBtn.disabled = true;
-      orderBtn.style.background = 'rgba(255,255,255,.08)';
-      orderBtn.style.border = '1.5px solid rgba(25,167,183,.35)';
-      orderBtn.style.color = '#7ecfea';
-      orderBtn.style.cursor = 'not-allowed';
-      orderBtn.textContent = remainingTxt;
-    }
+  if(countEl){
+    countEl.textContent = 'اخترت '+count+' من 3';
+    countEl.classList.toggle('is-complete', count===3);
   }
-  // Update select button for current game
-  var g = _maiyaGames[_maiyaIdx];
-  var selBtn = document.getElementById('maiya-select-btn');
-  if(selBtn && g){
-    var isSelected = _maiyaSelected.has(g.name);
-    selBtn.textContent = isSelected ? 'تم الاختيار ✓' : 'اختر اللعبة';
-    selBtn.style.background = isSelected ? '#19a7b7' : 'rgba(255,255,255,.08)';
-    selBtn.style.border = isSelected ? '1.5px solid #19a7b7' : '1.5px solid rgba(25,167,183,.35)';
-    selBtn.style.color = isSelected ? '#fff' : '#7ecfea';
+  renderMaiyaSelection();
+  var remaining = 3-count;
+  var remainingText = remaining===3 ? 'متبقي 3 ألعاب' : remaining===2 ? 'متبقي لعبتان' : 'متبقية لعبة واحدة';
+  var orderButton = document.getElementById('maiya-order-btn');
+  if(orderButton){
+    orderButton.disabled = count!==3;
+    orderButton.textContent = count===3 ? 'اطلبها الآن' : remainingText;
   }
+  var game = _maiyaGames[_maiyaIdx];
+  var isSelected = !!game && _maiyaSelected.has(game.name);
+  var full = count===3 && !isSelected;
+  var selectButton = document.getElementById('maiya-select-btn');
+  if(selectButton){
+    selectButton.disabled = !game || full;
+    selectButton.classList.toggle('is-selected', isSelected);
+    selectButton.setAttribute('aria-pressed', String(isSelected));
+    selectButton.textContent = isSelected ? 'تم الاختيار ✓' : full ? 'اكتملت الباقة' : 'اختر اللعبة';
+  }
+  var hint = document.getElementById('maiya-selection-hint');
+  if(hint) hint.hidden = !game || !full;
 }
 function maiyaOrderNow(){
-  if(_maiyaSelected.size < 3) return;
+  if(_maiyaSelected.size!==3) return;
   var names = Array.from(_maiyaSelected).join('، ');
   openOrderPopup('ألعاب مائية - باقة 3 ألعاب بـ 50 ريال - الألعاب: ' + names);
 }
@@ -3422,14 +3539,22 @@ var _maiyaGames = _maiyaAllGames.slice();
 var _maiyaFilter = 'all';
 function maiyaGoTo(idx){
   var total = _maiyaGames.length;
-  if(total===0) return;
-  idx = Math.max(0, Math.min(idx, total-1));
+  idx = total ? Math.max(0, Math.min(idx, total-1)) : 0;
   _maiyaIdx = idx;
-  document.getElementById('maiya-slides').style.transform = 'translateX('+(idx*100)+'%)';
-  var g = _maiyaGames[idx];
-  var nameEl = document.getElementById('maiya-game-name'); if(nameEl) nameEl.textContent = g.name;
+  var slides = document.getElementById('maiya-slides');
+  slides.style.transform = 'translateX('+(idx*100)+'%)';
+  Array.from(slides.children).forEach(function(slide, index){
+    slide.setAttribute('aria-hidden', String(index!==idx));
+  });
+  var game = _maiyaGames[idx];
+  var nameEl = document.getElementById('maiya-game-name');
+  if(nameEl) nameEl.textContent = game ? game.name : 'لا توجد ألعاب في هذه الفئة';
   var counter = document.getElementById('maiya-counter');
-  if(counter) counter.textContent = (idx+1) + ' من ' + total;
+  if(counter) counter.textContent = total ? (idx+1)+' من '+total : '0 من 0';
+  var previous = document.getElementById('maiya-prev');
+  var next = document.getElementById('maiya-next');
+  if(previous){ previous.hidden = total<=1; previous.disabled = idx===0; }
+  if(next){ next.hidden = total<=1; next.disabled = idx>=total-1; }
   updateMaiyaSelectionUI();
 }
 
