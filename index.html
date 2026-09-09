@@ -113,6 +113,44 @@
 @media(hover:hover) and (pointer:fine){#menu-detail .menu-cat:hover{border-color:#4e8293;color:#fff}#menu-detail .menu-qty-button:hover,#menu-detail .menu-extra:hover{border-color:#7ac9d8}#menu-detail .menu-cart-trigger:hover{background:#1b3d50}#menu-detail .menu-order-button:hover{background:#168595}}
 /* Dining tables page */
 #tawilat-detail{font-family:Tajawal,sans-serif;direction:rtl}
+/* Entertainment games service */
+#tarfihi-detail .tg-shell{box-sizing:border-box;width:100%;max-width:600px;margin:0 auto;padding:24px 20px calc(32px + env(safe-area-inset-bottom,0px));font-family:'Tajawal',sans-serif;text-align:right}
+#tarfihi-detail .tg-header{margin-bottom:22px}
+#tarfihi-detail .tg-heading{display:flex;align-items:center;gap:14px}
+#tarfihi-detail .tg-back{display:inline-flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;cursor:pointer}
+#tarfihi-detail .tg-title{margin:0;color:#f0f5f7;font-size:24px;font-weight:800;line-height:1.4}
+#tarfihi-detail .tg-intro{margin:8px 0 0;color:#b6cbd6;font-size:15px;line-height:1.65}
+#tarfihi-detail .tg-layout{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"photo" "details";gap:22px;align-items:start}
+#tarfihi-detail .tg-photo{grid-area:photo;min-width:0;margin:0;overflow:hidden;border-radius:18px}
+#tarfihi-detail .tg-photo img{display:block;width:100%;height:auto;max-height:420px;aspect-ratio:1;object-fit:cover;object-position:center}
+#tarfihi-detail .tg-details{grid-area:details;display:flex;flex-direction:column;gap:24px;min-width:0}
+#tarfihi-detail .tg-section-title{margin:0 0 14px;color:#f0f5f7;font-size:18px;font-weight:700;line-height:1.5}
+#tarfihi-detail .tg-packages{display:grid;gap:12px}
+#tarfihi-detail .tg-package{display:grid;grid-template-columns:22px minmax(0,1fr) auto;grid-template-areas:"check name price" ". description description";align-items:center;gap:4px 10px;width:100%;padding:16px 14px;border:2px solid #315967;border-radius:16px;background:#153244;color:#f0f5f7;font-family:inherit;text-align:right;cursor:pointer}
+#tarfihi-detail .tg-package.is-selected{border-color:#44acba;background:#164452}
+#tarfihi-detail .tg-package-check{grid-area:check;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border:1.5px solid #789eaf;border-radius:50%;color:#fff}
+#tarfihi-detail .tg-package-check svg{opacity:0}
+#tarfihi-detail .tg-package.is-selected .tg-package-check{border-color:#44acba;background:#218e9e}
+#tarfihi-detail .tg-package.is-selected .tg-package-check svg{opacity:1}
+#tarfihi-detail .tg-package-name{grid-area:name;min-width:0;font-size:16px;font-weight:700;line-height:1.55}
+#tarfihi-detail .tg-package-description{grid-area:description;min-width:0;color:#b6cbd6;font-size:14px;line-height:1.65}
+#tarfihi-detail .tg-package-price{grid-area:price;color:#8fd5e4;font-size:18px;font-weight:800;line-height:1.5;white-space:nowrap}
+#tarfihi-detail .tg-games{display:flex;flex-wrap:wrap;gap:10px;max-width:360px;margin:0;padding:0;list-style:none}
+#tarfihi-detail .tg-games li{min-width:64px;padding:9px 12px;border:1px solid #315967;border-radius:12px;background:#102938;color:#d6e4eb;font-size:14px;line-height:1.5;text-align:center;white-space:nowrap}
+#tarfihi-detail .tg-notes{padding-top:20px;border-top:1px solid #29434f}
+#tarfihi-detail .tg-notes-list{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none;color:#b6cbd6;font-size:14px;line-height:1.8}
+#tarfihi-detail .tg-notes-list li{position:relative;padding-inline-start:13px}
+#tarfihi-detail .tg-notes-list li::before{content:"";position:absolute;inset-inline-start:0;top:.8em;width:4px;height:4px;border-radius:50%;background:#608694}
+#tarfihi-detail .tg-order-hint{margin:0 0 12px;color:#b6cbd6;font-size:13px;line-height:1.75;text-align:center}
+#tarfihi-detail .tg-order{padding:14px;border:1px solid #315967;border-radius:16px;background:#0d293a}
+#tarfihi-detail .tg-summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:30px;margin-bottom:12px;color:#d6e4eb;font-size:15px;line-height:1.6}
+#tarfihi-detail .tg-summary-price{flex-shrink:0;color:#8fd5e4;font-size:20px;font-weight:800;white-space:nowrap}
+#tarfihi-detail .tg-order-button{display:block;width:100%;min-height:52px;padding:12px 18px;border:1px solid #3aa9b9;border-radius:14px;background:#147a8c;color:#fff;font-family:inherit;font-size:18px;font-weight:700;line-height:1.5;text-align:center;cursor:pointer}
+#tarfihi-detail .tg-back:focus-visible,#tarfihi-detail .tg-package:focus-visible,#tarfihi-detail .tg-order-button:focus-visible{outline:2px solid #8fd5e4;outline-offset:3px}
+@media(hover:hover){#tarfihi-detail .tg-back:hover{background:#153244}#tarfihi-detail .tg-package:hover{border-color:#44acba}#tarfihi-detail .tg-order-button:hover{background:#168b9e}}
+@media(max-width:360px){#tarfihi-detail .tg-shell{padding-inline:16px}#tarfihi-detail .tg-package{padding-inline:12px}}
+@media(min-width:900px){#tarfihi-detail .tg-shell{max-width:1100px;padding-top:28px}#tarfihi-detail .tg-header{margin-bottom:26px}#tarfihi-detail .tg-layout{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"details photo";gap:32px}#tarfihi-detail .tg-photo{position:sticky;top:24px}#tarfihi-detail .tg-photo img{max-height:none;object-fit:contain}}
+
 /* Cinema service */
 #sinema-detail .cn-shell{box-sizing:border-box;width:100%;max-width:600px;margin:0 auto;padding:24px 20px calc(32px + env(safe-area-inset-bottom,0px));font-family:'Tajawal',sans-serif;text-align:right}
 #sinema-detail .cn-header{margin-bottom:22px}
@@ -687,10 +725,10 @@ header{
 .bnav-btn:active{opacity:0.7;}
 
 @media(min-width:600px){
-  #maiya-detail,#jalsat-detail,#sharik-detail,#tarfihi-detail,#walaa-detail{
+  #maiya-detail,#jalsat-detail,#sharik-detail,#walaa-detail{
     display:flex;flex-direction:column;align-items:center;
   }
-  #maiya-detail>*,#jalsat-detail>*,#sharik-detail>*,#tarfihi-detail>*,#walaa-detail>*{
+  #maiya-detail>*,#jalsat-detail>*,#sharik-detail>*,#walaa-detail>*{
     max-width:480px;width:100%;box-sizing:border-box;
   }
 }
@@ -1105,21 +1143,22 @@ function sendOrderWhatsapp(){
 var _tarfihiOpt = '';
 function showTarfihi(){ openTarfihiDetail(); }
 function openTarfihiDetail(){
-  
-  _tarfihiOpt = '';
-  document.getElementById('tarfihi-opt-box').style.border = '2px solid transparent';
-  document.getElementById('tarfihi-opt-table').style.border = '2px solid transparent';
-  document.getElementById('tarfihi-detail').classList.remove('hide');
+  var panel = document.getElementById('tarfihi-detail');
+  selectTarfihiOpt('');
+  panel.classList.remove('hide');
+  panel.scrollTop = 0;
 }
 function closeTarfihiDetail(){ document.getElementById('tarfihi-detail').classList.add('hide'); }
 function selectTarfihiOpt(opt){
   _tarfihiOpt = opt;
-  var box = document.getElementById('tarfihi-opt-box');
-  var tbl = document.getElementById('tarfihi-opt-table');
-  box.style.border = opt==='box' ? '2px solid #19a7b7' : '2px solid transparent';
-  box.style.background = opt==='box' ? 'rgba(25,167,183,0.15)' : 'rgba(255,255,255,.07)';
-  tbl.style.border = opt==='table' ? '2px solid #19a7b7' : '2px solid transparent';
-  tbl.style.background = opt==='table' ? 'rgba(25,167,183,0.15)' : 'rgba(255,255,255,.07)';
+  ['box','table'].forEach(function(key){
+    var button = document.getElementById('tarfihi-opt-'+key);
+    var selected = opt===key;
+    button.classList.toggle('is-selected', selected);
+    button.setAttribute('aria-pressed', String(selected));
+  });
+  document.getElementById('tarfihi-summary-label').textContent = opt==='box' ? 'بوكس الألعاب' : opt==='table' ? 'طاولة مع بوكس الألعاب' : 'اختر الباقة لعرض الإجمالي';
+  document.getElementById('tarfihi-summary-price').textContent = opt==='box' ? '50 ريال' : opt==='table' ? '150 ريال' : '';
 }
 function tarfihiOrder(){
   if(!_tarfihiOpt){ alert('يرجى اختيار خيار أولاً'); return; }
@@ -3574,61 +3613,75 @@ function closeWalaaDetail(){
 
 <!-- TARFIHI DETAIL -->
 <div id="tarfihi-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
-  <div style="background:transparent;padding:14px 20px 18px;padding-top:20px;text-align:right;position:relative;">
-    <button onclick="closeTarfihiDetail()" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.10);border:none;color:rgba(255,255,255,0.85);cursor:pointer;margin-bottom:10px;">
-      <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-    <div style="font-family:Tajawal,sans-serif;font-size:20px;font-weight:700;color:#7ecfea;line-height:1.4;margin-bottom:4px;">الألعاب الترفيهية</div>
-    <div style="font-family:Tajawal,sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,0.7);line-height:1.5;">اختر باقة الألعاب المناسبة</div>
-  </div>
-  <div style="padding:12px 20px 0;">
-    <div style="border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(19,53,72,0.06);">
-      <img style="width:100%;height:320px;object-fit:cover;display:block;" src="imgs/tarfihi_1.webp">
+  <div class="tg-shell">
+    <div class="tg-header">
+      <div class="tg-heading">
+        <button type="button" class="tg-back" onclick="closeTarfihiDetail()" aria-label="العودة إلى الخدمات">
+          <svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <h1 class="tg-title">الألعاب الترفيهية</h1>
+      </div>
+      <p class="tg-intro">اختر باقة الألعاب المناسبة</p>
     </div>
-  </div>
-  <div style="padding:12px 20px;display:flex;flex-direction:column;gap:12px;">
-    <!-- خيارات -->
-    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
-      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:14px;">اختر الباقة</div>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <label id="tarfihi-opt-box" onclick="selectTarfihiOpt('box')" style="display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.07);border-radius:14px;padding:10px 16px;cursor:pointer;border:2px solid transparent;">
-          <div>
-            <div style="font-size:14px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;">بوكس الألعاب</div>
-            <div style="font-size:12px;color:rgba(255,255,255,0.68);font-family:'Tajawal',sans-serif;margin-top:3px;">يضم مجموعة من الألعاب الترفيهية</div>
+
+    <div class="tg-layout">
+      <figure class="tg-photo">
+        <img src="imgs/tarfihi_1.webp" width="1200" height="1200" alt="ضيوف يلعبون لعبة جماعية على طاولة داخل الكوخ" decoding="async">
+      </figure>
+      <div class="tg-details">
+        <section aria-labelledby="tg-packages-title">
+          <h2 id="tg-packages-title" class="tg-section-title">اختر الباقة</h2>
+          <div class="tg-packages" role="group" aria-labelledby="tg-packages-title">
+            <button type="button" id="tarfihi-opt-box" class="tg-package" onclick="selectTarfihiOpt('box')" aria-pressed="false">
+              <span class="tg-package-check" aria-hidden="true"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4.5L4.5 8L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="tg-package-name">بوكس الألعاب</span>
+              <span class="tg-package-price">50 ريال</span>
+              <span class="tg-package-description">يضم مجموعة من الألعاب الترفيهية</span>
+            </button>
+            <button type="button" id="tarfihi-opt-table" class="tg-package" onclick="selectTarfihiOpt('table')" aria-pressed="false">
+              <span class="tg-package-check" aria-hidden="true"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4.5L4.5 8L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="tg-package-name">طاولة مع بوكس الألعاب</span>
+              <span class="tg-package-price">150 ريال</span>
+              <span class="tg-package-description">تشمل طاولة، أربعة كراسي، وبوكس ألعاب</span>
+            </button>
           </div>
-          <div style="font-size:16px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;white-space:nowrap;margin-right:12px;">50 ريال</div>
-        </label>
-        <label id="tarfihi-opt-table" onclick="selectTarfihiOpt('table')" style="display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.07);border-radius:14px;padding:10px 16px;cursor:pointer;border:2px solid transparent;">
-          <div>
-            <div style="font-size:14px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;">طاولة مع بوكس الألعاب</div>
-            <div style="font-size:12px;color:rgba(255,255,255,0.68);font-family:'Tajawal',sans-serif;margin-top:3px;">تشمل طاولة، أربعة كراسي، وبوكس ألعاب</div>
+        </section>
+
+        <section aria-labelledby="tg-games-title">
+          <h2 id="tg-games-title" class="tg-section-title">محتويات بوكس الألعاب</h2>
+          <ul class="tg-games">
+            <li>أونو</li>
+            <li>جاكارو</li>
+            <li>سيكونس</li>
+            <li>شطرنج</li>
+            <li>ضومنة</li>
+            <li>لعبة لا تقول</li>
+            <li>ورق بلوت</li>
+          </ul>
+        </section>
+
+        <section class="tg-notes" aria-labelledby="tg-notes-title">
+          <h2 id="tg-notes-title" class="tg-section-title">تعليمات وملاحظات</h2>
+          <ul class="tg-notes-list">
+            <li>متاح حسب التوفر.</li>
+            <li>يرجى المحافظة على جميع الألعاب.</li>
+            <li>تطبق جميع الشروط والأحكام.</li>
+          </ul>
+        </section>
+
+        <div class="tg-order-area">
+          <p class="tg-order-hint">اختر الباقة ثم اضغط «اطلبها الآن» لإرسال طلبك عبر واتساب</p>
+          <div class="tg-order">
+            <div class="tg-summary" aria-live="polite" aria-atomic="true">
+              <span id="tarfihi-summary-label">اختر الباقة لعرض الإجمالي</span>
+              <span id="tarfihi-summary-price" class="tg-summary-price"></span>
+            </div>
+            <button type="button" class="tg-order-button" onclick="tarfihiOrder()">اطلبها الآن</button>
           </div>
-          <div style="font-size:16px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;white-space:nowrap;margin-right:12px;">150 ريال</div>
-        </label>
-      </div>
-    </div>
-    <!-- محتويات البوكس -->
-    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
-      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:10px;">محتويات بوكس الألعاب</div>
-      <div style="display:flex;flex-wrap:wrap;gap:6px;">
-        <div style="background:rgba(14,36,58,.80);border:1.5px solid rgba(25,167,183,.35);border-radius:16px;;padding:6px 14px;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 2px 10px rgba(25,167,183,.08);font-family:'Tajawal',sans-serif;font-size:12px;color:#7ecfea;font-weight:600;white-space:nowrap;">أونو</div><div style="background:rgba(14,36,58,.80);border:1.5px solid rgba(25,167,183,.35);border-radius:16px;;padding:6px 14px;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 2px 10px rgba(25,167,183,.08);font-family:'Tajawal',sans-serif;font-size:12px;color:#7ecfea;font-weight:600;white-space:nowrap;">جاكارو</div><div style="background:rgba(14,36,58,.80);border:1.5px solid rgba(25,167,183,.35);border-radius:16px;;padding:6px 14px;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 2px 10px rgba(25,167,183,.08);font-family:'Tajawal',sans-serif;font-size:12px;color:#7ecfea;font-weight:600;white-space:nowrap;">سيكونس</div><div style="background:rgba(14,36,58,.80);border:1.5px solid rgba(25,167,183,.35);border-radius:16px;;padding:6px 14px;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 2px 10px rgba(25,167,183,.08);font-family:'Tajawal',sans-serif;font-size:12px;color:#7ecfea;font-weight:600;white-space:nowrap;">شطرنج</div><div style="background:rgba(14,36,58,.80);border:1.5px solid rgba(25,167,183,.35);border-radius:16px;;padding:6px 14px;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 2px 10px rgba(25,167,183,.08);font-family:'Tajawal',sans-serif;font-size:12px;color:#7ecfea;font-weight:600;white-space:nowrap;">ضومنة</div><div style="background:rgba(14,36,58,.80);border:1.5px solid rgba(25,167,183,.35);border-radius:16px;;padding:6px 14px;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 2px 10px rgba(25,167,183,.08);font-family:'Tajawal',sans-serif;font-size:12px;color:#7ecfea;font-weight:600;white-space:nowrap;">لعبة لا تقول</div><div style="background:rgba(14,36,58,.80);border:1.5px solid rgba(25,167,183,.35);border-radius:16px;;padding:6px 14px;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 2px 10px rgba(25,167,183,.08);font-family:'Tajawal',sans-serif;font-size:12px;color:#7ecfea;font-weight:600;white-space:nowrap;">ورق بلوت</div>
-      </div>
-    </div>
-    <!-- تعليمات -->
-    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
-      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:10px;">تعليمات وملاحظات</div>
-      <div style="display:flex;flex-direction:column;gap:6px;">
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:12px;color:rgba(255,255,255,0.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> متاح حسب التوفر.</div>
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:12px;color:rgba(255,255,255,0.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> يرجى المحافظة على جميع الألعاب.</div>
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:12px;color:rgba(255,255,255,0.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> تطبق جميع الشروط والأحكام.</div>
-        
+        </div>
       </div>
     </div>
   </div>
-  <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:12px;color:#7ecfea;padding:0 20px 8px;line-height:1.6;">اختر الباقة ثم اضغط «اطلبها الآن» لإرسال طلبك عبر واتساب</div>
-<div style="padding:0 20px calc(64px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
-      <button onclick="tarfihiOrder()" class="mbtn mbtn-wa" style="cursor:pointer;width:100%;text-align:center;">اطلبها الآن</button>
-    </div></div>
 </div>
 
 <!-- TAWILAT DETAIL -->
