@@ -79,7 +79,6 @@
 #menu-detail .menu-heading{display:flex;align-items:center;gap:14px}
 #menu-detail .menu-back{display:flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;padding:0;border:1px solid rgba(126,207,234,.16);border-radius:50%;background:rgba(255,255,255,.06);color:#d7e8ef;cursor:pointer}
 #menu-detail .menu-title{margin:0;font-size:24px;font-weight:700;line-height:1.4;color:#f4f8fa}
-#menu-detail .menu-intro{margin:8px 52px 0 0;color:#b6cbd6;font-size:14px;line-height:1.6}
 #menu-detail #menu-cats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 20px;padding:0}
 #menu-detail .menu-cat{box-sizing:border-box;min-width:0;min-height:42px;padding:10px 6px;border:1px solid #2b4c5d;border-radius:12px;background:#0c2232;color:#c4d8e2;font-family:inherit;font-size:14px;font-weight:500;line-height:1.4;white-space:nowrap;cursor:pointer}
 #menu-detail .menu-cat.is-active{background:#126575;border-color:#299bad;color:#fff;font-weight:700}
@@ -253,8 +252,6 @@
 #maiya-detail .wm-heading{display:flex;align-items:center;gap:14px}
 #maiya-detail .wm-back{display:inline-flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;cursor:pointer}
 #maiya-detail .wm-title{margin:0;color:#f0f5f7;font-size:24px;font-weight:800;line-height:1.4}
-#maiya-detail .wm-intro{margin:8px 0 0;color:#b6cbd6;font-size:15px;line-height:1.65}
-#maiya-detail .wm-intro strong{color:#8fd5e4;font-weight:700}
 #maiya-detail .wm-layout{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"browser" "details";gap:24px;align-items:start}
 #maiya-detail .wm-browser{grid-area:browser;min-width:0}
 #maiya-detail .wm-filters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:14px}
@@ -278,6 +275,7 @@
 #maiya-detail .wm-selection-hint{margin:10px 0 0;color:#b6cbd6;font-size:13px;line-height:1.7}
 #maiya-detail .wm-details{grid-area:details;display:flex;flex-direction:column;gap:24px;min-width:0}
 #maiya-detail .wm-section-title{margin:0 0 14px;color:#f0f5f7;font-size:18px;font-weight:700;line-height:1.5}
+#maiya-detail .wm-section-title strong{color:#8fd5e4;font-weight:700}
 #maiya-detail .wm-selection-header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
 #maiya-detail .wm-selection-header .wm-section-title{margin:0}
 #maiya-detail .wm-selection-count{color:#b6cbd6;font-size:14px;line-height:1.6;white-space:nowrap}
@@ -302,6 +300,7 @@
 #maiya-detail .wm-order-hint{margin:10px 0 0;color:#b6cbd6;font-size:13px;line-height:1.6;text-align:center}
 #maiya-detail .wm-shell button:focus-visible{outline:2px solid #8fd5e4;outline-offset:3px}
 @media(hover:hover){#maiya-detail .wm-back:hover,#maiya-detail .wm-remove:hover{background:#1c4456}#maiya-detail .wm-filter:hover,#maiya-detail .wm-select:not(:disabled):hover{border-color:#8fd5e4}#maiya-detail .wm-order-button:not(:disabled):hover{background:#168b9e}}
+@media(max-width:480px){#maiya-detail .wm-selection-header{align-items:flex-start;flex-direction:column;gap:4px}}
 @media(max-width:360px){#maiya-detail .wm-shell{padding-inline:16px}}
 @media(min-width:900px){#maiya-detail .wm-shell{max-width:1100px;padding-top:28px}#maiya-detail .wm-header{margin-bottom:26px}#maiya-detail .wm-layout{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"details browser";gap:32px}#maiya-detail .wm-game-image{height:430px;padding:20px 36px}}
 @media(prefers-reduced-motion:reduce){#maiya-detail .wm-slides{transition:none}}
@@ -312,7 +311,6 @@
 #tarfihi-detail .tg-heading{display:flex;align-items:center;gap:14px}
 #tarfihi-detail .tg-back{display:inline-flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;cursor:pointer}
 #tarfihi-detail .tg-title{margin:0;color:#f0f5f7;font-size:24px;font-weight:800;line-height:1.4}
-#tarfihi-detail .tg-intro{margin:8px 0 0;color:#b6cbd6;font-size:15px;line-height:1.65}
 #tarfihi-detail .tg-layout{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"photo" "details";gap:22px;align-items:start}
 #tarfihi-detail .tg-photo{grid-area:photo;min-width:0;margin:0;overflow:hidden;border-radius:18px}
 #tarfihi-detail .tg-photo img{display:block;width:100%;height:auto;max-height:420px;aspect-ratio:1;object-fit:cover;object-position:center}
@@ -350,11 +348,12 @@
 #sinema-detail .cn-heading{display:flex;align-items:center;gap:14px}
 #sinema-detail .cn-back{display:inline-flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;cursor:pointer}
 #sinema-detail .cn-title{margin:0;color:#f0f5f7;font-size:24px;font-weight:800;line-height:1.4}
-#sinema-detail .cn-intro{margin:8px 0 0;color:#b6cbd6;font-size:15px;line-height:1.65}
 #sinema-detail .cn-layout{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"photo" "details";gap:22px;align-items:start}
 #sinema-detail .cn-photo{grid-area:photo;min-width:0;margin:0;overflow:hidden;border-radius:18px}
 #sinema-detail .cn-photo img{display:block;width:100%;height:auto;max-height:420px;aspect-ratio:1;object-fit:cover;object-position:center}
 #sinema-detail .cn-details{grid-area:details;display:flex;flex-direction:column;gap:24px;min-width:0}
+#sinema-detail .cn-summary{display:flex;flex-direction:column;gap:10px}
+#sinema-detail .cn-intro{margin:0;color:#b6cbd6;font-size:15px;line-height:1.65}
 #sinema-detail .cn-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:0;padding:16px 20px;border:1px solid #315967;border-radius:16px;background:#153244}
 #sinema-detail .cn-stat{text-align:center}
 #sinema-detail .cn-stat+.cn-stat{border-inline-start:1px solid #315967}
@@ -1799,7 +1798,6 @@ function tarfihiOrder(){
         </button>
         <h1 class="cn-title">جلسة السينما</h1>
       </div>
-      <p class="cn-intro">سهرة سينمائية في مساحتكم الخاصة</p>
     </div>
 
     <div class="cn-layout">
@@ -1807,16 +1805,19 @@ function tarfihiOrder(){
         <img src="imgs/cinema_1.webp" width="1200" height="1200" alt="جلسة سينما ليلية بشاشة عرض وجلسات خارجية داخل المساحة الخاصة بالكوخ" decoding="async">
       </figure>
       <div class="cn-details">
-        <dl class="cn-facts" aria-label="مدة الجلسة وسعرها">
-          <div class="cn-stat">
-            <dt>مدة الجلسة</dt>
-            <dd>3 ساعات</dd>
-          </div>
-          <div class="cn-stat">
-            <dt>السعر</dt>
-            <dd class="cn-price">150 ريال</dd>
-          </div>
-        </dl>
+        <div class="cn-summary">
+          <p class="cn-intro">سهرة سينمائية في مساحتكم الخاصة</p>
+          <dl class="cn-facts" aria-label="مدة الجلسة وسعرها">
+            <div class="cn-stat">
+              <dt>مدة الجلسة</dt>
+              <dd>3 ساعات</dd>
+            </div>
+            <div class="cn-stat">
+              <dt>السعر</dt>
+              <dd class="cn-price">150 ريال</dd>
+            </div>
+          </dl>
+        </div>
 
         <section aria-labelledby="cn-inclusions-title">
           <h2 id="cn-inclusions-title" class="cn-section-title">تشمل الجلسة</h2>
@@ -1860,7 +1861,6 @@ function tarfihiOrder(){
         </button>
         <h1 class="wm-title">الألعاب المائية</h1>
       </div>
-      <p class="wm-intro">اختر <strong>3 ألعاب بـ50 ريال</strong></p>
     </div>
 
     <div class="wm-layout">
@@ -1893,7 +1893,7 @@ function tarfihiOrder(){
       <div class="wm-details">
         <section aria-labelledby="wm-selections-title">
           <div class="wm-selection-header">
-            <h2 id="wm-selections-title" class="wm-section-title">اختياراتك</h2>
+            <h2 id="wm-selections-title" class="wm-section-title">اختر <strong>3 ألعاب بـ50 ريال</strong></h2>
             <span id="maiya-selection-count" class="wm-selection-count" aria-live="polite" aria-atomic="true" tabindex="-1">اخترت 0 من 3</span>
           </div>
           <p id="maiya-selection-empty" class="wm-empty">الألعاب التي تختارها تظهر هنا</p>
@@ -3990,7 +3990,6 @@ function closeWalaaDetail(){
         </button>
         <h1 class="tg-title">الألعاب الترفيهية</h1>
       </div>
-      <p class="tg-intro">اختر باقة الألعاب المناسبة</p>
     </div>
 
     <div class="tg-layout">
@@ -3999,7 +3998,7 @@ function closeWalaaDetail(){
       </figure>
       <div class="tg-details">
         <section aria-labelledby="tg-packages-title">
-          <h2 id="tg-packages-title" class="tg-section-title">اختر الباقة</h2>
+          <h2 id="tg-packages-title" class="tg-section-title">اختر باقة الألعاب المناسبة</h2>
           <div class="tg-packages" role="group" aria-labelledby="tg-packages-title">
             <button type="button" id="tarfihi-opt-box" class="tg-package" onclick="selectTarfihiOpt('box')" aria-pressed="false">
               <span class="tg-package-check" aria-hidden="true"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4.5L4.5 8L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -4184,7 +4183,6 @@ function closeWalaaDetail(){
         </button>
         <h1 class="menu-title">المطعم</h1>
       </div>
-      <p class="menu-intro">اختر الفئة ثم أضف ما تريد</p>
     </header>
 
     <nav id="menu-cats" aria-label="فئات المطعم"></nav>
