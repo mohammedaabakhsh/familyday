@@ -194,7 +194,6 @@
 #jalsat-detail .jl-heading{display:flex;align-items:center;gap:14px}
 #jalsat-detail .jl-back{display:inline-flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;cursor:pointer}
 #jalsat-detail .jl-title{margin:0;color:#f0f5f7;font-size:24px;font-weight:800;line-height:1.4}
-#jalsat-detail .jl-intro{margin:8px 0 0;color:#b6cbd6;font-size:15px;line-height:1.65}
 #jalsat-detail .jl-layout{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"browser" "details";gap:24px;align-items:start}
 #jalsat-detail .jl-browser{grid-area:browser;min-width:0}
 #jalsat-detail .jl-filter-title{margin:0 0 12px;color:#d6e4eb;font-size:16px;font-weight:700;line-height:1.5}
@@ -1938,11 +1937,10 @@ function tarfihiOrder(){
         </button>
         <h1 class="jl-title">الجلسات الخارجية</h1>
       </div>
-      <p class="jl-intro">اختر الجلسة التي تناسب مناسبتك</p>
     </div>
     <div class="jl-layout">
       <div class="jl-browser">
-        <h2 id="jalsat-filter-title" class="jl-filter-title">عدد الأشخاص</h2>
+        <h2 id="jalsat-filter-title" class="jl-filter-title">اختر الجلسة المناسبة حسب عدد الأشخاص</h2>
         <div class="jl-filters" role="group" aria-labelledby="jalsat-filter-title">
           <button type="button" id="jf-all" class="jl-filter is-active" onclick="setJalsatFilter('all')" aria-pressed="true">الكل</button>
           <button type="button" id="jf-2" class="jl-filter" onclick="setJalsatFilter('2')" aria-label="شخصين" aria-pressed="false">2</button>
