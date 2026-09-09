@@ -113,12 +113,12 @@
 @media(hover:hover) and (pointer:fine){#menu-detail .menu-cat:hover{border-color:#4e8293;color:#fff}#menu-detail .menu-qty-button:hover,#menu-detail .menu-extra:hover{border-color:#7ac9d8}#menu-detail .menu-cart-trigger:hover{background:#1b3d50}#menu-detail .menu-order-button:hover{background:#168595}}
 /* Dining tables page */
 #tawilat-detail{font-family:Tajawal,sans-serif;direction:rtl}
-#tawilat-detail .tw-shell{box-sizing:border-box;width:100%;max-width:600px;margin:0 auto;padding:24px 20px calc(178px + env(safe-area-inset-bottom,0px))}
+#tawilat-detail .tw-shell{box-sizing:border-box;width:100%;max-width:600px;margin:0 auto;padding:24px 20px calc(32px + env(safe-area-inset-bottom,0px))}
 #tawilat-detail .tw-header{margin-bottom:18px}
 #tawilat-detail .tw-heading{display:flex;align-items:center;gap:14px}
 #tawilat-detail .tw-back{display:flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;padding:0;border:1px solid rgba(126,207,234,.16);border-radius:50%;background:rgba(255,255,255,.06);color:#d7e8ef;cursor:pointer}
 #tawilat-detail .tw-title{margin:0;font-size:24px;font-weight:700;line-height:1.4;color:#f4f8fa}
-#tawilat-detail .tw-intro{margin:8px 52px 0 0;color:#b6cbd6;font-size:14px;line-height:1.65}
+#tawilat-detail .tw-intro{margin:8px 0 0;color:#b6cbd6;font-size:14px;line-height:1.65;text-align:right}
 #tawilat-detail .tw-layout{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"photo" "options";gap:22px;align-items:start}
 #tawilat-detail .tw-photo{grid-area:photo;min-width:0;overflow:hidden;border-radius:18px;background:#102b3c}
 #tawilat-detail .tw-photo img{display:block;width:100%;height:clamp(240px,76vw,300px);object-fit:cover;object-position:50% 56%}
@@ -143,15 +143,15 @@
 #tawilat-detail .tw-content-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px;margin:0;padding:0;list-style:none}
 #tawilat-detail .tw-content-list li{display:flex;align-items:flex-start;gap:8px;min-width:0;color:#c4d7e1;font-size:14px;line-height:1.65}
 #tawilat-detail .tw-content-list li::before{content:"";flex:0 0 5px;width:5px;height:5px;margin-top:9px;border-radius:50%;background:#67bfce}
-#tawilat-detail .tw-footer{position:fixed;bottom:0;left:0;right:0;z-index:5;box-sizing:border-box;width:100%;max-width:600px;margin:0 auto;padding:12px 20px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(0deg,#04111e 78%,rgba(4,17,30,0) 100%)}
+#tawilat-detail .tw-footer{position:static;box-sizing:border-box;width:100%;margin:0;padding:0;background:none}
 #tawilat-detail .tw-footer-inner{padding:12px 14px;border:1px solid #315967;border-radius:16px;background:#0d293a}
 #tawilat-detail .tw-summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:28px;margin-bottom:10px}
 #tawilat-detail #tawilat-summary-label{min-width:0;color:#cee0e8;font-size:14px;font-weight:500;line-height:1.5}
 #tawilat-detail #tawilat-summary-price{color:#91d7e2;font-size:20px;font-weight:700;line-height:1.4;white-space:nowrap}
 #tawilat-detail .tw-contact{width:100%;min-height:46px;padding:12px;border:1px solid #2498a8;border-radius:12px;background:#137787;color:#fff;font-family:inherit;font-size:16px;font-weight:700;line-height:1.4;cursor:pointer}
 #tawilat-detail button:focus-visible{outline:2px solid #7ecfea;outline-offset:3px}
-@media(max-width:360px){#tawilat-detail .tw-shell{padding-inline:16px}#tawilat-detail .tw-footer{padding-inline:16px}#tawilat-detail .tw-package{gap:8px;padding-inline:12px}#tawilat-detail .tw-package-price{font-size:17px}}
-@media(min-width:900px){#tawilat-detail .tw-shell{max-width:1100px;padding-top:28px;padding-bottom:32px}#tawilat-detail .tw-header{margin-bottom:26px}#tawilat-detail .tw-layout{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"options photo";gap:32px}#tawilat-detail .tw-photo{position:sticky;top:24px}#tawilat-detail .tw-photo img{height:auto;object-fit:contain}#tawilat-detail .tw-footer{position:static;max-width:none;margin:0;padding:0;background:none}}
+@media(max-width:360px){#tawilat-detail .tw-shell{padding-inline:16px}#tawilat-detail .tw-package{gap:8px;padding-inline:12px}#tawilat-detail .tw-package-price{font-size:17px}}
+@media(min-width:900px){#tawilat-detail .tw-shell{max-width:1100px;padding-top:28px;padding-bottom:32px}#tawilat-detail .tw-header{margin-bottom:26px}#tawilat-detail .tw-layout{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"options photo";gap:32px}#tawilat-detail .tw-photo{position:sticky;top:24px}#tawilat-detail .tw-photo img{height:auto;object-fit:contain}}
 @media(hover:hover) and (pointer:fine){#tawilat-detail .tw-size:hover{border-color:#4e8293;color:#fff}#tawilat-detail .tw-package:hover{border-color:#58a6b5}#tawilat-detail .tw-contact:hover{background:#168595}}
 .phone-link{
   color:#7ecfea!important;
