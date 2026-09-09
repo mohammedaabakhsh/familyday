@@ -88,6 +88,12 @@
 #menu-detail .menu-item-name{margin:0;font-size:16px;font-weight:700;line-height:1.5;color:#f4f8fa}
 #menu-detail .menu-item-desc{margin:6px 0 0;color:#c1d2dc;font-size:13px;line-height:1.7}
 #menu-detail .menu-item-price{margin:4px 0 0;color:#91d7e2;font-size:15px;font-weight:700;line-height:1.5}
+#menu-detail .menu-item--described{grid-template-areas:"name name" "description description" "price controls";gap:8px 12px}
+#menu-detail .menu-item--described .menu-item-info{display:contents}
+#menu-detail .menu-item--described .menu-item-name{grid-area:name}
+#menu-detail .menu-item--described .menu-item-desc{grid-area:description;margin:0}
+#menu-detail .menu-item--described .menu-item-price{grid-area:price;margin:0}
+#menu-detail .menu-item--described .menu-controls{grid-area:controls}
 #menu-detail .menu-controls{display:flex;align-items:center;justify-content:flex-end;gap:8px;direction:rtl}
 #menu-detail .menu-qty-button{display:flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;padding:0;border:1px solid #299bad;border-radius:50%;background:#126575;color:#fff;font-family:Arial,sans-serif;font-size:21px;font-weight:400;line-height:1;cursor:pointer}
 #menu-detail .menu-qty-button--minus{border-color:#477889;background:#123746;color:#b1e6ef}
@@ -3110,7 +3116,7 @@ function _renderMenuItems(){
         +'<button type="button" class="menu-extra'+(cheeseQty>0?' is-selected':'')+'" aria-pressed="'+(cheeseQty>0)+'" onclick="menuToggleExtra(&apos;جبنة&apos;,&apos;'+item.name+'&apos;,1)">'+(cheeseQty>0?'✓ ':'')+'إضافة جبنة · 1 ريال</button>'
         +'</div>'
       : '';
-    return '<article class="menu-item" aria-label="'+item.name+'">'
+    return '<article class="menu-item'+(item.desc?' menu-item--described':'')+'" aria-label="'+item.name+'">'
       +'<div class="menu-item-info">'
       +'<h2 class="menu-item-name">'+item.name+'</h2>'
       +(item.desc?'<p class="menu-item-desc">'+item.desc+'</p>':'')
