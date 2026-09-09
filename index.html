@@ -113,6 +113,64 @@
 @media(hover:hover) and (pointer:fine){#menu-detail .menu-cat:hover{border-color:#4e8293;color:#fff}#menu-detail .menu-qty-button:hover,#menu-detail .menu-extra:hover{border-color:#7ac9d8}#menu-detail .menu-cart-trigger:hover{background:#1b3d50}#menu-detail .menu-order-button:hover{background:#168595}}
 /* Dining tables page */
 #tawilat-detail{font-family:Tajawal,sans-serif;direction:rtl}
+/* Outdoor seating service */
+#jalsat-detail .jl-shell{box-sizing:border-box;width:100%;max-width:600px;margin:0 auto;padding:24px 20px calc(32px + env(safe-area-inset-bottom,0px));font-family:'Tajawal',sans-serif;text-align:right;direction:rtl}
+#jalsat-detail .jl-header{margin-bottom:22px}
+#jalsat-detail .jl-heading{display:flex;align-items:center;gap:14px}
+#jalsat-detail .jl-back{display:inline-flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;cursor:pointer}
+#jalsat-detail .jl-title{margin:0;color:#f0f5f7;font-size:24px;font-weight:800;line-height:1.4}
+#jalsat-detail .jl-intro{margin:8px 0 0;color:#b6cbd6;font-size:15px;line-height:1.65}
+#jalsat-detail .jl-layout{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"browser" "details";gap:24px;align-items:start}
+#jalsat-detail .jl-browser{grid-area:browser;min-width:0}
+#jalsat-detail .jl-filter-title{margin:0 0 12px;color:#d6e4eb;font-size:16px;font-weight:700;line-height:1.5}
+#jalsat-detail .jl-filters{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-bottom:18px}
+#jalsat-detail .jl-filter{min-height:44px;padding:8px 4px;border:1px solid #315967;border-radius:14px;background:#153244;color:#b6cbd6;font-family:inherit;font-size:16px;font-weight:700;line-height:1.5;cursor:pointer}
+#jalsat-detail .jl-filter.is-active{border-color:#44acba;background:#16889b;color:#fff}
+#jalsat-detail .jl-gallery{min-width:0;overflow:hidden;border:1px solid #29434f;border-radius:18px;background:#071c2a}
+#jalsat-detail .jl-slides{display:flex;direction:rtl;transition:transform .28s ease;touch-action:pan-y pinch-zoom}
+#jalsat-detail .jl-slide{flex:0 0 100%;min-width:0}
+#jalsat-detail .jl-image{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain}
+#jalsat-detail .jl-gallery-controls{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;gap:12px;margin-top:12px}
+#jalsat-detail .jl-gallery-controls[hidden]{display:none}
+#jalsat-detail .jl-arrow{display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:1px solid #315967;border-radius:50%;background:#153244;color:#d6e9ef;cursor:pointer}
+#jalsat-detail .jl-arrow:disabled{opacity:.35;cursor:default}
+#jalsat-detail .jl-counter{color:#b6cbd6;font-size:14px;line-height:1.5;text-align:center}
+#jalsat-detail .jl-details{grid-area:details;display:flex;flex-direction:column;gap:24px;min-width:0}
+#jalsat-detail .jl-session-name{margin:0;color:#f0f5f7;font-size:22px;font-weight:800;line-height:1.5}
+#jalsat-detail .jl-description{margin:10px 0 0;color:#b6cbd6;font-size:15px;line-height:1.8}
+#jalsat-detail .jl-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:18px 0 0;padding:16px 0;border:1px solid #315967;border-radius:16px;background:#102938;text-align:center}
+#jalsat-detail .jl-facts>div{padding:0 12px}
+#jalsat-detail .jl-facts>div+div{border-inline-start:1px solid #315967}
+#jalsat-detail .jl-facts dt{margin:0 0 5px;color:#b6cbd6;font-size:13px;line-height:1.5}
+#jalsat-detail .jl-facts dd{margin:0;color:#f0f5f7;font-size:20px;font-weight:700;line-height:1.5}
+#jalsat-detail .jl-facts #jalsat-price{color:#8fd5e4;font-weight:800}
+#jalsat-detail .jl-section-title{margin:0 0 14px;color:#f0f5f7;font-size:18px;font-weight:700;line-height:1.5}
+#jalsat-detail .jl-addon-option{display:grid;grid-template-columns:minmax(0,1fr) auto 44px;align-items:center;gap:12px;width:100%;min-height:66px;padding:14px;border:1.5px solid #315967;border-radius:16px;background:#153244;color:#f0f5f7;font-family:inherit;text-align:right;cursor:pointer}
+#jalsat-detail .jl-addon-option.is-selected{border-color:#44acba;background:#164452}
+#jalsat-detail .jl-addon-name{font-size:16px;font-weight:700;line-height:1.5}
+#jalsat-detail .jl-addon-price{color:#8fd5e4;font-size:16px;font-weight:700;line-height:1.5;white-space:nowrap}
+#jalsat-detail .jl-toggle{position:relative;width:44px;height:26px;border-radius:13px;background:#476471;transition:background .2s}
+#jalsat-detail .jl-toggle-knob{position:absolute;top:2px;right:2px;width:22px;height:22px;border-radius:50%;background:#fff;transition:transform .2s}
+#jalsat-detail .jl-addon-option.is-selected .jl-toggle{background:#218e9e}
+#jalsat-detail .jl-addon-option.is-selected .jl-toggle-knob{transform:translateX(-18px)}
+#jalsat-detail .jl-notes{padding-top:20px;border-top:1px solid #29434f}
+#jalsat-detail .jl-notes-list{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none;color:#b6cbd6;font-size:14px;line-height:1.8;white-space:normal;overflow-wrap:break-word}
+#jalsat-detail .jl-notes-list li{position:relative;padding-inline-start:13px}
+#jalsat-detail .jl-notes-list li::before{content:"";position:absolute;inset-inline-start:0;top:.8em;width:4px;height:4px;border-radius:50%;background:#608694}
+#jalsat-detail .jl-order{padding:14px;border:1px solid #315967;border-radius:16px;background:#0d293a}
+#jalsat-detail .jl-order-line{display:flex;align-items:baseline;justify-content:space-between;gap:14px;color:#b6cbd6;font-size:14px;line-height:1.7}
+#jalsat-detail .jl-order-line+.jl-order-line{margin-top:8px}
+#jalsat-detail .jl-order-line[hidden]{display:none}
+#jalsat-detail .jl-order-line>span:last-child{flex-shrink:0;color:#d6e4eb;white-space:nowrap}
+#jalsat-detail .jl-total{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:12px 0;padding-top:12px;border-top:1px solid #315967;color:#d6e4eb;font-size:16px;line-height:1.6}
+#jalsat-detail .jl-total strong{color:#8fd5e4;font-size:22px;font-weight:800;white-space:nowrap}
+#jalsat-detail .jl-order-button{display:block;width:100%;min-height:52px;padding:12px 18px;border:1px solid #3aa9b9;border-radius:14px;background:#147a8c;color:#fff;font-family:inherit;font-size:18px;font-weight:700;line-height:1.5;text-align:center;cursor:pointer}
+#jalsat-detail .jl-order-hint{margin:10px 0 0;color:#b6cbd6;font-size:13px;line-height:1.6;text-align:center}
+#jalsat-detail .jl-shell button:focus-visible{outline:2px solid #8fd5e4;outline-offset:3px}
+@media(hover:hover){#jalsat-detail .jl-back:hover,#jalsat-detail .jl-arrow:not(:disabled):hover{background:#1c4456}#jalsat-detail .jl-filter:hover,#jalsat-detail .jl-addon-option:hover{border-color:#8fd5e4}#jalsat-detail .jl-order-button:hover{background:#168b9e}}
+@media(max-width:360px){#jalsat-detail .jl-shell{padding-inline:16px}#jalsat-detail .jl-addon-option{gap:10px;padding-inline:12px}}
+@media(min-width:900px){#jalsat-detail .jl-shell{max-width:1100px;padding-top:28px}#jalsat-detail .jl-header{margin-bottom:26px}#jalsat-detail .jl-layout{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"details browser";gap:32px}#jalsat-detail .jl-browser{position:sticky;top:24px}}
+@media(prefers-reduced-motion:reduce){#jalsat-detail .jl-slides,#jalsat-detail .jl-toggle,#jalsat-detail .jl-toggle-knob{transition:none}}
 /* Water games service */
 #maiya-detail .wm-shell{box-sizing:border-box;width:100%;max-width:600px;margin:0 auto;padding:24px 20px calc(32px + env(safe-area-inset-bottom,0px));font-family:'Tajawal',sans-serif;text-align:right}
 #maiya-detail .wm-header{margin-bottom:22px}
@@ -784,10 +842,10 @@ header{
 .bnav-btn:active{opacity:0.7;}
 
 @media(min-width:600px){
-  #jalsat-detail,#sharik-detail,#walaa-detail{
+  #sharik-detail,#walaa-detail{
     display:flex;flex-direction:column;align-items:center;
   }
-  #jalsat-detail>*,#sharik-detail>*,#walaa-detail>*{
+  #sharik-detail>*,#walaa-detail>*{
     max-width:480px;width:100%;box-sizing:border-box;
   }
 }
@@ -1743,75 +1801,74 @@ function tarfihiOrder(){
 </div>
 
 <div id="jalsat-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
-  <div style="background:transparent;padding:14px 20px 18px;padding-top:20px;text-align:right;position:relative;">
-    <button onclick="closeJalsatDetail()" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.10);border:none;color:rgba(255,255,255,0.85);cursor:pointer;margin-bottom:10px;">
-      <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-    <div style="font-family:Tajawal,sans-serif;font-size:20px;font-weight:700;color:#7ecfea;line-height:1.4;margin-bottom:4px;">الجلسات الخارجية</div>
-    <div style="font-family:Tajawal,sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,0.7);line-height:1.5;">اختر الجلسة التي تناسب مناسبتك</div>
-  </div>
-  <div style="padding:12px 20px 0;">
-    <div style="display:flex;gap:8px;margin-bottom:10px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch;">
-      <button id="jf-all" onclick="setJalsatFilter('all')" style="flex-shrink:0;padding:6px 12px;border:1px solid #19a7b7;border-radius:100px;background:#19a7b7;color:#fff;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:600;cursor:pointer;">الكل</button>
-      <button id="jf-2" onclick="setJalsatFilter('2')" style="flex-shrink:0;padding:6px 12px;border:1px solid rgba(255,255,255,.18);border-radius:100px;background:rgba(255,255,255,.07);color:rgba(255,255,255,0.65);font-family:'Tajawal',sans-serif;font-size:12px;font-weight:500;cursor:pointer;">شخصين</button>
-      <button id="jf-4" onclick="setJalsatFilter('4')" style="flex-shrink:0;padding:6px 12px;border:1px solid rgba(255,255,255,.18);border-radius:100px;background:rgba(255,255,255,.07);color:rgba(255,255,255,0.65);font-family:'Tajawal',sans-serif;font-size:12px;font-weight:500;cursor:pointer;">4 أشخاص</button>
-      <button id="jf-8" onclick="setJalsatFilter('8')" style="flex-shrink:0;padding:6px 12px;border:1px solid rgba(255,255,255,.18);border-radius:100px;background:rgba(255,255,255,.07);color:rgba(255,255,255,0.65);font-family:'Tajawal',sans-serif;font-size:12px;font-weight:500;cursor:pointer;">8 أشخاص</button>
-      <button id="jf-12" onclick="setJalsatFilter('12')" style="flex-shrink:0;padding:6px 12px;border:1px solid rgba(255,255,255,.18);border-radius:100px;background:rgba(255,255,255,.07);color:rgba(255,255,255,0.65);font-family:'Tajawal',sans-serif;font-size:12px;font-weight:500;cursor:pointer;">12 شخص</button>
+  <div class="jl-shell">
+    <div class="jl-header">
+      <div class="jl-heading">
+        <button type="button" class="jl-back" onclick="closeJalsatDetail()" aria-label="العودة">
+          <svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <h1 class="jl-title">الجلسات الخارجية</h1>
+      </div>
+      <p class="jl-intro">اختر الجلسة التي تناسب مناسبتك</p>
     </div>
-    <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:12px;color:#7ecfea;margin-bottom:8px;white-space:nowrap;">اختر عدد الأشخاص لعرض السعر المناسب</div>
-    <div style="position:relative;overflow:hidden;border-radius:18px;background:rgba(8,22,40,.95);box-shadow:0 4px 20px rgba(0,0,0,.3);">
-      <div id="jalsat-slides" style="display:flex;direction:rtl;transition:transform 0.35s ease;will-change:transform;"></div>
-      <div id="jalsat-counter" style="position:absolute;bottom:10px;left:12px;background:rgba(19,53,72,0.55);color:#fff;font-family:'Tajawal',sans-serif;font-size:12px;border-radius:12px;padding:3px 10px;">1 من 6</div>
-    </div>
-    <div style="display:flex;align-items:center;justify-content:center;gap:14px;padding:12px 20px 0;">
-      <button onclick="jalsatGoTo(_jalsatIdx-1)" style="background:rgba(25,167,183,0.15);border:1px solid rgba(25,167,183,0.35);color:#7ecfea;width:36px;height:36px;border-radius:50%;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;">&#10094;</button>
-      <div id="jalsat-session-name" style="text-align:center;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;color:#7ecfea;flex:1;"></div>
-      <button onclick="jalsatGoTo(_jalsatIdx+1)" style="background:rgba(25,167,183,0.15);border:1px solid rgba(25,167,183,0.35);color:#7ecfea;width:36px;height:36px;border-radius:50%;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;">&#10095;</button>
-    </div>
-    <div id="jalsat-session-desc" style="text-align:center;font-family:'Tajawal',sans-serif;font-size:13px;color:rgba(255,255,255,0.7);padding:6px 24px 0;line-height:1.6;display:none;"></div>
-  </div>
-  <div style="padding:10px 20px;display:flex;flex-direction:column;gap:10px;">
-    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 20px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-        <div style="background:rgba(14,36,58,.80);border:1.5px solid rgba(25,167,183,.35);border-radius:14px;;padding:12px;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 2px 10px rgba(25,167,183,.08);text-align:center;">
-          <div style="font-size:12px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-bottom:6px;">السعة</div>
-          <div id="jalsat-persons" style="font-size:20px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;">شخصان</div>
+    <div class="jl-layout">
+      <div class="jl-browser">
+        <h2 id="jalsat-filter-title" class="jl-filter-title">عدد الأشخاص</h2>
+        <div class="jl-filters" role="group" aria-labelledby="jalsat-filter-title">
+          <button type="button" id="jf-all" class="jl-filter is-active" onclick="setJalsatFilter('all')" aria-pressed="true">الكل</button>
+          <button type="button" id="jf-2" class="jl-filter" onclick="setJalsatFilter('2')" aria-label="شخصين" aria-pressed="false">2</button>
+          <button type="button" id="jf-4" class="jl-filter" onclick="setJalsatFilter('4')" aria-label="4 أشخاص" aria-pressed="false">4</button>
+          <button type="button" id="jf-8" class="jl-filter" onclick="setJalsatFilter('8')" aria-label="8 أشخاص" aria-pressed="false">8</button>
+          <button type="button" id="jf-12" class="jl-filter" onclick="setJalsatFilter('12')" aria-label="12 شخص" aria-pressed="false">12</button>
         </div>
-        <div style="background:rgba(14,36,58,.80);border:1.5px solid rgba(25,167,183,.35);border-radius:14px;;padding:12px;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 2px 10px rgba(25,167,183,.08);text-align:center;">
-          <div style="font-size:12px;color:#8a9eaa;font-family:'Tajawal',sans-serif;margin-bottom:6px;">السعر</div>
-          <div id="jalsat-price" style="font-size:20px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;">300 ريال</div>
+        <div class="jl-gallery">
+          <div id="jalsat-slides" class="jl-slides"></div>
+        </div>
+        <div id="jalsat-gallery-controls" class="jl-gallery-controls">
+          <button type="button" id="jalsat-prev" class="jl-arrow" onclick="jalsatGoTo(_jalsatIdx-1)" aria-label="الجلسة السابقة" disabled>
+            <svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <span id="jalsat-counter" class="jl-counter" aria-live="polite" aria-atomic="true">1 من 6</span>
+          <button type="button" id="jalsat-next" class="jl-arrow" onclick="jalsatGoTo(_jalsatIdx+1)" aria-label="الجلسة التالية">
+            <svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M7.5 1.5L1.5 7.5L7.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
         </div>
       </div>
-    </div>
-    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
-      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:10px;">إضافة اختيارية</div>
-      <label onclick="toggleJalsatCake()" id="jalsat-cake-label" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:10px 14px;border-radius:12px;border:1.5px solid rgba(255,255,255,.12);transition:all 0.2s;">
+      <div class="jl-details">
+        <div aria-live="polite" aria-atomic="true">
+          <h2 id="jalsat-session-name" class="jl-session-name"></h2>
+          <p id="jalsat-session-desc" class="jl-description"></p>
+          <dl class="jl-facts">
+            <div><dt>السعة</dt><dd id="jalsat-persons">شخصان</dd></div>
+            <div><dt>السعر</dt><dd id="jalsat-price">300 ريال</dd></div>
+          </dl>
+        </div>
         <div>
-          <div style="font-size:14px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;">🎂 كيك وعصير</div>
-          <div style="font-size:15px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;margin-top:2px;">170 ريال</div>
+          <h3 class="jl-section-title">إضافة اختيارية</h3>
+          <button type="button" id="jalsat-cake-label" class="jl-addon-option" onclick="toggleJalsatCake()" aria-pressed="false">
+            <span class="jl-addon-name">كيك وعصير</span>
+            <span class="jl-addon-price">170 ريال</span>
+            <span class="jl-toggle" aria-hidden="true"><span class="jl-toggle-knob"></span></span>
+          </button>
         </div>
-        <div id="jalsat-cake-toggle" style="width:48px;height:26px;border-radius:13px;background:rgba(255,255,255,.15);position:relative;transition:background 0.2s;flex-shrink:0;">
-          <div id="jalsat-cake-knob" style="width:22px;height:22px;border-radius:11px;background:#fff;position:absolute;top:2px;right:2px;transition:transform 0.2s;box-shadow:0 1px 4px rgba(0,0,0,0.2);"></div>
+        <div class="jl-notes">
+          <ul class="jl-notes-list">
+            <li>متاحة حسب التوفر والحجز المسبق.</li>
+            <li>يُرجى المحافظة على تجهيزات الجلسة أثناء الاستخدام.</li>
+          </ul>
         </div>
-      </label>
-      <div id="jalsat-total-row" style="display:none;margin-top:10px;padding:10px 14px;border-radius:12px;background:rgba(25,167,183,.08);border:1px solid rgba(25,167,183,.25);justify-content:space-between;align-items:center;">
-        <div style="font-size:13px;color:rgba(255,255,255,0.7);font-family:'Tajawal',sans-serif;">المجموع</div>
-        <div id="jalsat-total-price" style="font-size:16px;font-weight:700;color:#19a7b7;font-family:'Tajawal',sans-serif;"></div>
-      </div>
-    </div>
-    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
-      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:10px;">تعليمات وملاحظات</div>
-      <div style="display:flex;flex-direction:column;gap:6px;">
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:12px;color:rgba(255,255,255,0.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> متاحة حسب التوفر والحجز المسبق.</div>
-        <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:12px;color:rgba(255,255,255,0.65);white-space:nowrap;"><span style="color:#19a7b7;flex-shrink:0;">✦</span> يُرجى المحافظة على تجهيزات الجلسة أثناء الاستخدام.</div>
-        
+        <div class="jl-order" aria-label="ملخص الطلب">
+          <div aria-live="polite" aria-atomic="true">
+            <div class="jl-order-line"><span id="jalsat-order-session"></span><span id="jalsat-order-base"></span></div>
+            <div id="jalsat-order-addon" class="jl-order-line" hidden><span>كيك وعصير</span><span>170 ريال</span></div>
+            <div id="jalsat-total-row" class="jl-total"><span>الإجمالي</span><strong id="jalsat-total-price">300 ريال</strong></div>
+          </div>
+          <button type="button" class="jl-order-button" onclick="openOrderPopup(getJalsatOrderText())">اطلبها الآن</button>
+          <p class="jl-order-hint">إكمال الطلب عبر واتساب</p>
+        </div>
       </div>
     </div>
   </div>
-  <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:12px;color:#7ecfea;padding:0 20px 8px;line-height:1.6;">اختر الجلسة المناسبة، ثم اضغط «اطلبها الآن» لإرسال الطلب عبر واتساب</div>
-<div style="padding:0 20px calc(64px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
-    <button onclick="openOrderPopup(getJalsatOrderText())" class="mbtn mbtn-wa" style="cursor:pointer;width:100%;text-align:center;">اطلبها الآن</button>
-  </div></div>
 </div>
 
 
@@ -3177,20 +3234,28 @@ function buildJalsatSlides(){
   else _jalsatSessions = _jalsatAllSessions.filter(function(s){ return s.personsCat===_jalsatFilter; });
   var container = document.getElementById('jalsat-slides');
   container.innerHTML = '';
-  _jalsatSessions.forEach(function(s){
+  _jalsatSessions.forEach(function(s,idx){
     var div = document.createElement('div');
-    div.style.cssText = 'min-width:100%;flex-shrink:0;';
-    div.innerHTML = s.img
-      ? '<img src="'+s.img+'" style="width:100%;height:260px;object-fit:cover;display:block;">'
-      : '<div style="width:100%;height:260px;background:#e8e2d8;display:flex;align-items:center;justify-content:center;font-family:Tajawal,sans-serif;font-size:14px;color:#8a9eaa;">🖼️ سيتم إضافة الصورة قريباً</div>';
+    div.className = 'jl-slide';
+    div.setAttribute('aria-hidden',idx===0?'false':'true');
+    var img = document.createElement('img');
+    img.className = 'jl-image';
+    img.src = s.img;
+    img.alt = s.name + ' - ' + s.persons;
+    img.decoding = 'async';
+    div.appendChild(img);
     container.appendChild(div);
   });
   var total = _jalsatSessions.length;
+  document.getElementById('jalsat-gallery-controls').hidden = total<=1;
   var counter = document.getElementById('jalsat-counter');
   if(counter) counter.textContent = total>0 ? '1 من '+total : '0 من 0';
   ['all','2','4','8','12'].forEach(function(f){
     var btn = document.getElementById('jf-'+f);
-    if(btn){ btn.style.background=(f===_jalsatFilter)?'#19a7b7':'rgba(255,255,255,.07)'; btn.style.color=(f===_jalsatFilter)?'#fff':'rgba(255,255,255,.65)'; btn.style.border=(f===_jalsatFilter)?'1px solid #19a7b7':'1px solid rgba(255,255,255,.18)'; }
+    if(btn){
+      btn.classList.toggle('is-active',f===_jalsatFilter);
+      btn.setAttribute('aria-pressed',f===_jalsatFilter?'true':'false');
+    }
   });
 }
 function setJalsatFilter(f){
@@ -3199,18 +3264,20 @@ function setJalsatFilter(f){
   jalsatGoTo(0);
 }
 function openJalsatDetail(){
-  
-  document.getElementById('jalsat-detail').classList.remove('hide');
+  var panel = document.getElementById('jalsat-detail');
+  panel.classList.remove('hide');
+  panel.scrollTop = 0;
   buildJalsatSlides();
   jalsatGoTo(0);
   var slides = document.getElementById('jalsat-slides');
-  var startX = 0;
-  slides.ontouchstart = function(e){ startX = e.touches[0].clientX; };
+  var startX = 0, startY = 0;
+  slides.ontouchstart = function(e){ startX = e.touches[0].clientX; startY = e.touches[0].clientY; };
   slides.ontouchend = function(e){
     var dx = e.changedTouches[0].clientX - startX;
-    if(Math.abs(dx) > 40){
-      if(dx < 0) jalsatGoTo(Math.min(_jalsatIdx+1, _jalsatSessions.length-1));
-      else jalsatGoTo(Math.max(_jalsatIdx-1, 0));
+    var dy = e.changedTouches[0].clientY - startY;
+    if(Math.abs(dx)>40 && Math.abs(dx)>Math.abs(dy)){
+      var next = Math.max(0,Math.min(_jalsatIdx+(dx<0?1:-1),_jalsatSessions.length-1));
+      if(next!==_jalsatIdx) jalsatGoTo(next);
     }
   };
 }
@@ -3468,25 +3535,18 @@ function openSharikEmail(){
 var _jalsatCakeAdded = false;
 function toggleJalsatCake(){
   _jalsatCakeAdded = !_jalsatCakeAdded;
-  var toggle = document.getElementById('jalsat-cake-toggle');
-  var knob = document.getElementById('jalsat-cake-knob');
+  updateJalsatSummary();
+}
+function updateJalsatSummary(){
+  var s = _jalsatSessions[_jalsatIdx];
+  if(!s) return;
   var label = document.getElementById('jalsat-cake-label');
-  var totalRow = document.getElementById('jalsat-total-row');
-  var totalPrice = document.getElementById('jalsat-total-price');
-  if(_jalsatCakeAdded){
-    toggle.style.background = '#19a7b7';
-    knob.style.transform = 'translateX(-22px)';
-    label.style.border = '1.5px solid #19a7b7';
-    var s = _jalsatSessions[_jalsatIdx];
-    var base = parseInt(s.price);
-    totalPrice.textContent = (base + 170) + ' ريال';
-    totalRow.style.display = 'flex';
-  } else {
-    toggle.style.background = '#e8e2d8';
-    knob.style.transform = 'translateX(0)';
-    label.style.border = '1.5px solid #e8e2d8';
-    totalRow.style.display = 'none';
-  }
+  label.classList.toggle('is-selected',_jalsatCakeAdded);
+  label.setAttribute('aria-pressed',_jalsatCakeAdded?'true':'false');
+  document.getElementById('jalsat-order-session').textContent = s.name + ' · ' + (s.persons==='شخصين'?'شخصان':s.persons);
+  document.getElementById('jalsat-order-base').textContent = s.price;
+  document.getElementById('jalsat-order-addon').hidden = !_jalsatCakeAdded;
+  document.getElementById('jalsat-total-price').textContent = (parseInt(s.price,10)+(_jalsatCakeAdded?170:0)) + ' ريال';
 }
 function getJalsatOrderText(){
   var s = _jalsatSessions[_jalsatIdx];
@@ -3500,13 +3560,14 @@ function getJalsatOrderText(){
 }
 
 function jalsatGoTo(idx){
-  // reset cake
-  if(_jalsatCakeAdded){ _jalsatCakeAdded=true; toggleJalsatCake(); }
   var total = _jalsatSessions.length;
   if(total===0) return;
   idx = Math.max(0, Math.min(idx, total-1));
+  _jalsatCakeAdded = false;
   _jalsatIdx = idx;
-  document.getElementById('jalsat-slides').style.transform = 'translateX('+(idx*100)+'%)';
+  var slides = document.getElementById('jalsat-slides');
+  slides.style.transform = 'translateX('+(idx*100)+'%)';
+  Array.prototype.forEach.call(slides.children,function(slide,i){slide.setAttribute('aria-hidden',i===idx?'false':'true');});
   var s = _jalsatSessions[idx];
   var nameEl = document.getElementById('jalsat-session-name'); if(nameEl) nameEl.textContent = s.name;
   var descEl = document.getElementById('jalsat-session-desc'); if(descEl){ descEl.textContent = s.desc||''; descEl.style.display = s.desc ? 'block' : 'none'; }
@@ -3514,6 +3575,9 @@ function jalsatGoTo(idx){
   document.getElementById('jalsat-price').textContent = s.price;
   var counter = document.getElementById('jalsat-counter');
   if(counter) counter.textContent = (idx+1) + ' من ' + total;
+  document.getElementById('jalsat-prev').disabled = idx===0;
+  document.getElementById('jalsat-next').disabled = idx===total-1;
+  updateJalsatSummary();
 }
 
 var _maiyaIdx = 0;
