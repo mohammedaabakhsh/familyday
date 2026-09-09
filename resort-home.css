@@ -231,7 +231,7 @@
 #landing .rh-stars { display: inline-flex; direction: ltr; gap: 3px; color: #f9a826; font-size: 13px; line-height: 1; }
 #landing .rh-star-partial {
   color: transparent;
-  background: linear-gradient(90deg, #f9a826 0 70%, #566b76 70% 100%);
+  background: linear-gradient(90deg, #f9a826 0 50%, #566b76 50% 100%);
   background-clip: text;
   -webkit-background-clip: text;
 }
