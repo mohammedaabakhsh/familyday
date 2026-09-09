@@ -228,7 +228,13 @@
   font-size: 13px;
   border-radius: 6px;
 }
-#landing .rh-stars { color: #f9a826; font-size: 13px; letter-spacing: 3px; line-height: 1; }
+#landing .rh-stars { display: inline-flex; direction: ltr; gap: 3px; color: #f9a826; font-size: 13px; line-height: 1; }
+#landing .rh-star-partial {
+  color: transparent;
+  background: linear-gradient(90deg, #f9a826 0 70%, #566b76 70% 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
 #landing .rh-rating { display: flex; align-items: baseline; gap: 4px; }
 #landing .rh-rating bdi { font-size: 15px; font-weight: 700; }
 #landing .rh-rating > span { font-size: 12px; color: #a4bac4; }
