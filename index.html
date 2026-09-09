@@ -113,6 +113,49 @@
 @media(hover:hover) and (pointer:fine){#menu-detail .menu-cat:hover{border-color:#4e8293;color:#fff}#menu-detail .menu-qty-button:hover,#menu-detail .menu-extra:hover{border-color:#7ac9d8}#menu-detail .menu-cart-trigger:hover{background:#1b3d50}#menu-detail .menu-order-button:hover{background:#168595}}
 /* Dining tables page */
 #tawilat-detail{font-family:Tajawal,sans-serif;direction:rtl}
+/* Share and win */
+#sharik-detail .sw-shell{box-sizing:border-box;width:100%;max-width:600px;margin:0 auto;padding:24px 20px calc(32px + env(safe-area-inset-bottom,0px));font-family:'Tajawal',sans-serif;text-align:right;direction:rtl}
+#sharik-detail .sw-header{margin-bottom:22px}
+#sharik-detail .sw-heading{display:flex;align-items:center;gap:14px}
+#sharik-detail .sw-back{display:inline-flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;cursor:pointer}
+#sharik-detail .sw-title{margin:0;color:#f0f5f7;font-size:24px;font-weight:800;line-height:1.4}
+#sharik-detail .sw-intro{margin:8px 0 0;color:#b6cbd6;font-size:15px;line-height:1.65}
+#sharik-detail .sw-layout{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"lead" "conditions" "contact";gap:26px;align-items:start}
+#sharik-detail .sw-lead{grid-area:lead;min-width:0}
+#sharik-detail .sw-prize{padding:24px 20px;border:1px solid #397782;border-radius:20px;background:linear-gradient(145deg,#164452,#102c3a);text-align:center}
+#sharik-detail .sw-prize-title{margin:0;font-weight:600;line-height:1.6}
+#sharik-detail .sw-prize-kicker{display:block;color:#c7e5e7;font-size:16px}
+#sharik-detail .sw-prize-highlight{display:block;margin:5px 0;color:#f5fbfb;font-size:34px;font-weight:800;line-height:1.4}
+#sharik-detail .sw-prize-detail{display:block;color:#c7e5e7;font-size:18px}
+#sharik-detail .sw-section-title{margin:0 0 16px;color:#f0f5f7;font-size:18px;font-weight:700;line-height:1.5}
+#sharik-detail .sw-how{margin-top:26px}
+#sharik-detail .sw-steps{display:flex;flex-direction:column;gap:18px;margin:0;padding:0;list-style:none}
+#sharik-detail .sw-step{display:grid;grid-template-columns:32px minmax(0,1fr);align-items:start;gap:12px}
+#sharik-detail .sw-step-number{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid #315967;border-radius:50%;background:#102938;color:#8fd5e4;font-size:15px;font-weight:700;line-height:1}
+#sharik-detail .sw-step-title{margin:1px 0 4px;color:#f0f5f7;font-size:16px;font-weight:700;line-height:1.5}
+#sharik-detail .sw-step-copy{margin:0;color:#b6cbd6;font-size:15px;line-height:1.8}
+#sharik-detail .sw-guidelines{grid-area:conditions;min-width:0;padding:22px;border:1px solid #29434f;border-radius:18px;background:#0b2130}
+#sharik-detail .sw-terms{display:flex;flex-direction:column;gap:12px;margin:0;padding:0;list-style:none;color:#b6cbd6;font-size:15px;line-height:1.8;overflow-wrap:break-word}
+#sharik-detail .sw-terms li{position:relative;padding-inline-start:13px}
+#sharik-detail .sw-terms li::before{content:"";position:absolute;inset-inline-start:0;top:.8em;width:4px;height:4px;border-radius:50%;background:#608694}
+#sharik-detail .sw-criteria{margin-top:24px;padding-top:22px;border-top:1px solid #29434f}
+#sharik-detail .sw-criteria-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0;padding:10px 0;border-radius:12px;background:#102e3e;list-style:none;color:#8fd5e4;text-align:center;font-size:14px;font-weight:700;line-height:1.6}
+#sharik-detail .sw-criteria-list li{display:flex;align-items:center;justify-content:center;min-height:28px;padding:0 6px}
+#sharik-detail .sw-criteria-list li+li{border-inline-start:1px solid #315967}
+#sharik-detail .sw-criteria-copy{margin:14px 0 0;color:#b6cbd6;font-size:14px;line-height:1.8}
+#sharik-detail .sw-contact{grid-area:contact;min-width:0;padding:16px;border:1px solid #315967;border-radius:16px;background:#0d293a}
+#sharik-detail .sw-contact .sw-section-title{margin-bottom:12px}
+#sharik-detail .sw-email-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 12px}
+#sharik-detail .sw-email-address{min-width:0;color:#d6e9ef;font-size:15px;font-weight:600;line-height:1.7;direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere;user-select:all;-webkit-user-select:all}
+#sharik-detail .sw-copy{flex-shrink:0;min-width:84px;min-height:40px;padding:8px 10px;border:1px solid #527487;border-radius:11px;background:#153244;color:#d6e9ef;font-family:inherit;font-size:14px;font-weight:600;line-height:1.5;cursor:pointer}
+#sharik-detail .sw-copy-status{margin:8px 0 0;color:#8fd5e4;font-size:13px;line-height:1.6}
+#sharik-detail .sw-copy-status:empty{display:none}
+#sharik-detail .sw-email-button{box-sizing:border-box;display:flex;align-items:center;justify-content:center;width:100%;min-height:52px;margin-top:16px;padding:12px 14px;border:1px solid #3aa9b9;border-radius:14px;background:#147a8c;color:#fff;font-family:inherit;font-size:18px;font-weight:700;line-height:1.5;text-align:center;text-decoration:none;cursor:pointer}
+#sharik-detail .sw-email-hint{margin:10px 0 0;color:#b6cbd6;font-size:13px;line-height:1.7;text-align:center}
+#sharik-detail .sw-shell :is(button,a):focus-visible{outline:2px solid #8fd5e4;outline-offset:3px}
+@media(hover:hover){#sharik-detail .sw-back:hover,#sharik-detail .sw-copy:hover{background:#1c4456}#sharik-detail .sw-email-button:hover{background:#168b9e}}
+@media(max-width:360px){#sharik-detail .sw-shell{padding-inline:16px}#sharik-detail .sw-guidelines{padding:18px}#sharik-detail .sw-contact{padding:14px}}
+@media(min-width:900px){#sharik-detail .sw-shell{max-width:1100px;padding-top:28px}#sharik-detail .sw-header{margin-bottom:26px}#sharik-detail .sw-layout{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"lead conditions" "contact conditions";gap:26px 32px}#sharik-detail .sw-prize{padding:28px 24px}#sharik-detail .sw-prize-highlight{font-size:38px}#sharik-detail .sw-guidelines{padding:26px}}
 /* Outdoor seating service */
 #jalsat-detail .jl-shell{box-sizing:border-box;width:100%;max-width:600px;margin:0 auto;padding:24px 20px calc(32px + env(safe-area-inset-bottom,0px));font-family:'Tajawal',sans-serif;text-align:right;direction:rtl}
 #jalsat-detail .jl-header{margin-bottom:22px}
@@ -842,10 +885,10 @@ header{
 .bnav-btn:active{opacity:0.7;}
 
 @media(min-width:600px){
-  #sharik-detail,#walaa-detail{
+  #walaa-detail{
     display:flex;flex-direction:column;align-items:center;
   }
-  #sharik-detail>*,#walaa-detail>*{
+  #walaa-detail>*{
     max-width:480px;width:100%;box-sizing:border-box;
   }
 }
@@ -1874,61 +1917,79 @@ function tarfihiOrder(){
 
 <!-- SHARIK WIN DETAIL -->
 <div id="sharik-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
-  <div style="background:transparent;padding:14px 20px 18px;padding-top:20px;text-align:right;position:relative;">
-    <button onclick="closeSharikDetail()" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.10);border:none;color:rgba(255,255,255,0.85);cursor:pointer;margin-bottom:10px;">
-      <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-    <div style="font-family:Tajawal,sans-serif;font-size:20px;font-weight:700;color:#7ecfea;line-height:1.4;margin-bottom:4px;">شارك واربح</div>
-    <div style="font-family:Tajawal,sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,0.7);line-height:1.5;">شارك أجمل لحظاتك<br>وادخل فرصة الفوز بيوم مجاني</div>
+  <div class="sw-shell">
+    <div class="sw-header">
+      <div class="sw-heading">
+        <button type="button" class="sw-back" onclick="closeSharikDetail()" aria-label="العودة">
+          <svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <h1 class="sw-title">شارك واربح</h1>
+      </div>
+      <p class="sw-intro">شارك أجمل لحظاتك</p>
+    </div>
+    <div class="sw-layout">
+      <div class="sw-lead">
+        <div class="sw-prize">
+          <h2 class="sw-prize-title">
+            <span class="sw-prize-kicker">فرصتك للفوز</span>
+            <strong class="sw-prize-highlight">بيوم مجاني</strong>
+            <span class="sw-prize-detail">في أحد الأكواخ</span>
+          </h2>
+        </div>
+        <section class="sw-how" aria-labelledby="sharik-how-title">
+          <h2 id="sharik-how-title" class="sw-section-title">طريقة المشاركة</h2>
+          <ol class="sw-steps">
+            <li class="sw-step">
+              <span class="sw-step-number" aria-hidden="true">1</span>
+              <div>
+                <h3 class="sw-step-title">صوّر تجربتك</h3>
+                <p class="sw-step-copy">التقط فيديو من زيارتك للمنتجع.</p>
+              </div>
+            </li>
+            <li class="sw-step">
+              <span class="sw-step-number" aria-hidden="true">2</span>
+              <div>
+                <h3 class="sw-step-title">أرسل مشاركتك</h3>
+                <p class="sw-step-copy">أرسل الفيديو مع اسمك وتاريخ زيارتك ورقم جوالك.</p>
+              </div>
+            </li>
+          </ol>
+        </section>
+      </div>
+      <div class="sw-guidelines">
+        <section aria-labelledby="sharik-terms-title">
+          <h2 id="sharik-terms-title" class="sw-section-title">شروط المشاركة</h2>
+          <ul class="sw-terms">
+            <li>تصوير الفيديو داخل المنتجع بأسلوب إبداعي.</li>
+            <li>الفيديو بالوضع الطولي.</li>
+            <li>جودة فيديو عالية وواضحة.</li>
+            <li>خلو الفيديو من الشعارات والعلامات المائية.</li>
+            <li>يحق للمنتجع نشر جميع المشاركات.</li>
+            <li>تطبق جميع الشروط والأحكام.</li>
+          </ul>
+        </section>
+        <section class="sw-criteria" aria-labelledby="sharik-criteria-title">
+          <h2 id="sharik-criteria-title" class="sw-section-title">معايير الاختيار</h2>
+          <ul class="sw-criteria-list">
+            <li>الإبداع</li>
+            <li>جودة الفيديو</li>
+            <li>التصوير</li>
+          </ul>
+          <p class="sw-criteria-copy">يتم التقييم من إدارة المنتجع وفق جودة المحتوى، وضوح التصوير، وطريقة عرض التجربة.</p>
+        </section>
+      </div>
+      <section class="sw-contact" aria-labelledby="sharik-contact-title">
+        <h2 id="sharik-contact-title" class="sw-section-title">إرسال المشاركة</h2>
+        <div class="sw-email-row">
+          <span id="sharik-email-address" class="sw-email-address" dir="ltr">family999day@gmail.com</span>
+          <button type="button" id="sharik-copy-email" class="sw-copy" onclick="copySharikEmail()">نسخ البريد</button>
+        </div>
+        <p id="sharik-copy-status" class="sw-copy-status" role="status"></p>
+        <a id="sharik-email-link" class="sw-email-button" href="mailto:family999day@gmail.com?subject=%D9%85%D8%B4%D8%A7%D8%B1%D9%83%D8%A9%20-%20%D8%B4%D8%A7%D8%B1%D9%83%20%D9%88%D8%A7%D8%B1%D8%A8%D8%AD%20-%20%D9%85%D9%86%D8%AA%D8%AC%D8%B9%20%D9%8A%D9%88%D9%85%20%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9">أرسل مشاركتك بالبريد</a>
+        <p class="sw-email-hint">أرفق الفيديو في رسالة البريد قبل الإرسال.</p>
+      </section>
+    </div>
   </div>
-  <div style="padding:12px 20px;display:flex;flex-direction:column;gap:9px;">
-    <!-- الشروط -->
-    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
-      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:14px;">شروط المشاركة</div>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <div style="display:flex;align-items:flex-start;gap:10px;font-family:'Tajawal',sans-serif;font-size:13px;color:rgba(255,255,255,0.7);line-height:1.6;"><span style="color:#19a7b7;flex-shrink:0;font-size:15px;">✦</span> تصوير الفيديو داخل المنتجع بأسلوب إبداعي.</div>
-        <div style="display:flex;align-items:flex-start;gap:10px;font-family:'Tajawal',sans-serif;font-size:13px;color:rgba(255,255,255,0.7);line-height:1.6;"><span style="color:#19a7b7;flex-shrink:0;font-size:15px;">✦</span> الفيديو بالوضع الطولي.</div>
-        <div style="display:flex;align-items:flex-start;gap:10px;font-family:'Tajawal',sans-serif;font-size:13px;color:rgba(255,255,255,0.7);line-height:1.6;"><span style="color:#19a7b7;flex-shrink:0;font-size:15px;">✦</span> جودة فيديو عالية وواضحة.</div>
-        <div style="display:flex;align-items:flex-start;gap:10px;font-family:'Tajawal',sans-serif;font-size:13px;color:rgba(255,255,255,0.7);line-height:1.6;"><span style="color:#19a7b7;flex-shrink:0;font-size:15px;">✦</span> خلو الفيديو من الشعارات والعلامات المائية.</div>
-        <div style="display:flex;align-items:flex-start;gap:10px;font-family:'Tajawal',sans-serif;font-size:13px;color:rgba(255,255,255,0.7);line-height:1.6;"><span style="color:#19a7b7;flex-shrink:0;font-size:15px;">✦</span> يحق للمنتجع نشر جميع المشاركات.</div>
-        <div style="display:flex;align-items:flex-start;gap:10px;font-family:'Tajawal',sans-serif;font-size:13px;color:rgba(255,255,255,0.7);line-height:1.6;"><span style="color:#19a7b7;flex-shrink:0;font-size:15px;">✦</span> تطبق جميع الشروط والأحكام.</div>
-      </div>
-    </div>
-    <!-- ملاحظة الفائز -->
-    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
-      <div style="font-size:13px;color:#fff;font-family:'Tajawal',sans-serif;font-weight:700;margin-bottom:12px;">معيار الاختيار</div>
-      <div style="display:flex;gap:8px;text-align:center;">
-        <div style="flex:1;background:rgba(14,36,58,.80);border:1.5px solid rgba(25,167,183,.35);border-radius:12px;padding:12px 8px;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 2px 10px rgba(25,167,183,.08);">
-          <div style="font-size:12px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;">الإبداع</div>
-        </div>
-        <div style="flex:1;background:rgba(14,36,58,.80);border:1.5px solid rgba(25,167,183,.35);border-radius:12px;padding:12px 8px;animation:cardBorderBreath 3.6s ease-in-out infinite;box-shadow:0 2px 10px rgba(25,167,183,.08);">
-          <div style="font-size:12px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;">جودة الفيديو</div>
-        </div>
-        <div style="flex:1;background:rgba(14,36,58,.80);border:1.5px solid rgba(25,167,183,.35);border-radius:12px;padding:12px 8px;animation:cardBorderBreath 4.0s ease-in-out infinite;box-shadow:0 2px 10px rgba(25,167,183,.08);">
-          <div style="font-size:12px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;">التصوير</div>
-        </div>
-      </div>
-      <div style="font-size:12px;color:rgba(255,255,255,0.65);font-family:'Tajawal',sans-serif;margin-top:10px;text-align:center;line-height:1.6;">يتم التقييم من إدارة المنتجع وفق جودة المحتوى، وضوح التصوير، وطريقة عرض التجربة.</div>
-    </div>
-    <!-- الجائزة -->
-    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 20px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
-      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:8px;">الجائزة</div>
-      <div style="background:rgba(14,36,58,.80);border:1.5px solid rgba(25,167,183,.35);border-radius:12px;padding:12px 16px;text-align:center;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 2px 10px rgba(25,167,183,.08);">
-        <div style="font-size:13px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;">يفوز المشارك بيوم مجاني في أحد الأكواخ</div>
-      </div>
-    </div>
-    <!-- طريقة الإرسال -->
-    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:14px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
-      <div style="font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:10px;">طريقة المشاركة</div>
-      <div style="font-size:12px;color:rgba(255,255,255,0.65);font-family:'Tajawal',sans-serif;white-space:nowrap;text-align:center;">أرسل الفيديو مع اسمك وتاريخ زيارتك ورقم الجوال</div>
-      <div style="margin-top:10px;font-size:12px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:6px;text-align:center;">إرسال المشاركات إلى</div>
-      <div style="background:rgba(14,36,58,.80);border:1.5px solid rgba(25,167,183,.35);border-radius:10px;padding:10px 14px;text-align:center;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;color:#7ecfea;letter-spacing:0.5px;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 2px 10px rgba(25,167,183,.08);">✉️ family999day@gmail.com</div>
-    </div>
-  </div>
-  <div style="text-align:center;font-family:'Tajawal',sans-serif;font-size:12px;color:#7ecfea;padding:0 20px 8px;line-height:1.6;">اضغط "ابدأ المشاركة" لإرسال مشاركتك</div>
-  <div style="padding:0 20px calc(64px + env(safe-area-inset-bottom,0px));"><div class="modal-btns">
-    <button onclick="openSharikEmail()" class="mbtn mbtn-wa" style="cursor:pointer;width:100%;text-align:center;">ابدأ المشاركة</button>
-  </div></div>
 </div>
 
 
@@ -3525,10 +3586,37 @@ function menuOrderNow(){
 }
 
 // ===== شارك واربح =====
-function showSharik(){ document.getElementById('sharik-detail').classList.remove('hide');  }
+function showSharik(){
+  var panel = document.getElementById('sharik-detail');
+  panel.classList.remove('hide');
+  panel.scrollTop = 0;
+  document.getElementById('sharik-copy-email').textContent = 'نسخ البريد';
+  document.getElementById('sharik-copy-status').textContent = '';
+}
 function closeSharikDetail(){ document.getElementById('sharik-detail').classList.add('hide');  }
-function openSharikEmail(){
-  window.open('mailto:family999day@gmail.com?subject=مشاركة - شارك واربح - منتجع يوم العائلة', '_blank');
+async function copySharikEmail(){
+  var address = document.getElementById('sharik-email-address');
+  var button = document.getElementById('sharik-copy-email');
+  var status = document.getElementById('sharik-copy-status');
+  var copied = false;
+  button.disabled = true;
+  try {
+    await navigator.clipboard.writeText(address.textContent.trim());
+    copied = true;
+  } catch (error) {
+    try {
+      var selection = window.getSelection();
+      var range = document.createRange();
+      range.selectNodeContents(address);
+      selection.removeAllRanges();
+      selection.addRange(range);
+      copied = document.execCommand('copy');
+      if(copied) selection.removeAllRanges();
+    } catch (fallbackError) { copied = false; }
+  }
+  button.disabled = false;
+  button.textContent = copied ? 'تم النسخ' : 'نسخ البريد';
+  status.textContent = copied ? 'تم نسخ البريد الإلكتروني.' : 'حدد البريد واضغط «نسخ» لإكمال النسخ يدويًا.';
 }
 
 
