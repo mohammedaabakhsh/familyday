@@ -62,20 +62,14 @@
 #services-overlay .svcs-content{display:grid;gap:26px;padding:0 20px calc(32px + env(safe-area-inset-bottom,0px))}
 #services-overlay .svcs-section-title{margin:0 2px 10px;font-family:Tajawal,sans-serif;font-size:14px;font-weight:500;line-height:1.5;color:#8bc4d1}
 #services-overlay .svcs-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
-#services-overlay .svcs-card{box-sizing:border-box;width:100%;min-width:0;min-height:114px;display:grid;grid-template-columns:88px minmax(0,1fr)20px;align-items:center;gap:14px;padding:12px;border:1px solid #315967;border-radius:18px;background:#153244;color:#f4f8fa;font-family:Tajawal,sans-serif;text-align:right;direction:rtl;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.12)}
-#services-overlay .svcs-photo{display:block;width:88px;height:88px;object-fit:cover;border-radius:12px;background:#04111e;opacity:.7}
-#services-overlay .svcs-photo--contain{object-fit:contain}
+#services-overlay .svcs-card{box-sizing:border-box;width:100%;min-width:0;min-height:72px;display:grid;grid-template-columns:minmax(0,1fr)20px;align-items:center;gap:14px;padding:18px 20px;border:1px solid #315967;border-radius:18px;background:#153244;color:#f4f8fa;font-family:Tajawal,sans-serif;text-align:right;direction:rtl;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.12)}
 #services-overlay .svcs-name{min-width:0;font-size:20px;font-weight:700;line-height:1.4}
 #services-overlay .svcs-arrow{display:block;width:20px;height:20px;color:#92c4d0}
-#services-overlay .svcs-reward{grid-template-columns:56px minmax(0,1fr)20px;min-height:82px}
 #services-overlay .svcs-reward .svcs-name{font-size:18px}
-#services-overlay .svcs-symbol{display:flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:12px;background:#133b4a;color:#82ccda}
-#services-overlay .svcs-symbol svg{display:block;width:26px;height:26px}
 #services-overlay .svcs-card:focus-visible,#services-overlay .svcs-back:focus-visible{outline:2px solid #7ecfea;outline-offset:4px}
-@media (max-width:360px){#services-overlay .svcs-header{padding-inline:16px}#services-overlay .svcs-content{padding-inline:16px}#services-overlay .svcs-card{grid-template-columns:76px minmax(0,1fr)20px;gap:12px;min-height:102px}#services-overlay .svcs-photo{width:76px;height:76px}#services-overlay .svcs-reward{grid-template-columns:56px minmax(0,1fr)20px;min-height:82px}}
+@media (max-width:360px){#services-overlay .svcs-header{padding-inline:16px}#services-overlay .svcs-content{padding-inline:16px}#services-overlay .svcs-card{padding-inline:18px}}
 @media (min-width:600px){#services-overlay .svcs-grid--rewards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (min-width:900px){#services-overlay .svcs-grid{grid-template-columns:repeat(3,minmax(0,1fr))}#services-overlay .svcs-grid--single{grid-template-columns:minmax(0,1fr)}#services-overlay .svcs-grid--rewards{grid-template-columns:repeat(2,minmax(0,1fr))}#services-overlay .svcs-header{padding-top:28px;padding-bottom:30px}#services-overlay .svcs-content{gap:28px}}
-@media (min-width:900px) and (max-width:1099px){#services-overlay .svcs-card{grid-template-columns:72px minmax(0,1fr)18px;gap:12px}#services-overlay .svcs-photo{width:72px;height:72px}#services-overlay .svcs-reward{grid-template-columns:56px minmax(0,1fr)18px}}
 @media (hover:hover) and (pointer:fine){#services-overlay .svcs-card:hover{background:#1b3d50;border-color:#4d8997}#services-overlay .svcs-back:hover{background:#133343}}
 .phone-link{
   color:#7ecfea!important;
@@ -1266,7 +1260,6 @@ function tarfihiOrder(){
       <h2 id="svcs-group-0" class="svcs-section-title">طعام ومشروبات</h2>
       <div class="svcs-grid svcs-grid--single">
         <button type="button" class="svcs-card" onclick="openMenuDetail()" aria-label="المطعم">
-          <img class="svcs-photo" src="imgs/img114.webp" width="88" height="88" alt="" loading="lazy" decoding="async" style="object-position:50% 60%;">
           <span class="svcs-name">المطعم</span>
           <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
         </button>
@@ -1276,17 +1269,14 @@ function tarfihiOrder(){
       <h2 id="svcs-group-1" class="svcs-section-title">ترفيه</h2>
       <div class="svcs-grid">
         <button type="button" class="svcs-card" onclick="showSinema()" aria-label="جلسة السينما">
-          <img class="svcs-photo" src="imgs/cinema_1.webp" width="88" height="88" alt="" loading="lazy" decoding="async" style="object-position:35% 50%;">
           <span class="svcs-name">جلسة السينما</span>
           <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
         </button>
         <button type="button" class="svcs-card" onclick="showTarfihi()" aria-label="الألعاب الترفيهية">
-          <img class="svcs-photo" src="imgs/tarfihi_1.webp" width="88" height="88" alt="" loading="lazy" decoding="async" style="object-position:50% 60%;">
           <span class="svcs-name">الألعاب الترفيهية</span>
           <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
         </button>
         <button type="button" class="svcs-card" onclick="showMaiya()" aria-label="الألعاب المائية">
-          <img class="svcs-photo svcs-photo--contain" src="imgs/maiya_9.webp" width="88" height="88" alt="" loading="lazy" decoding="async">
           <span class="svcs-name">الألعاب المائية</span>
           <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
         </button>
@@ -1296,17 +1286,14 @@ function tarfihiOrder(){
       <h2 id="svcs-group-2" class="svcs-section-title">تجهيز مناسبتك</h2>
       <div class="svcs-grid">
         <button type="button" class="svcs-card" onclick="showTansidat()" aria-label="الضيافة والتنسيقات">
-          <img class="svcs-photo" src="imgs/jalsat_1.webp" width="88" height="88" alt="" loading="lazy" decoding="async" style="object-position:50% 58%;">
           <span class="svcs-name">الضيافة والتنسيقات</span>
           <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
         </button>
         <button type="button" class="svcs-card" onclick="showTawilat()" aria-label="طاولات الطعام">
-          <img class="svcs-photo" src="imgs/tawilat_1.webp" width="88" height="88" alt="" loading="lazy" decoding="async">
           <span class="svcs-name">طاولات الطعام</span>
           <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
         </button>
         <button type="button" class="svcs-card" onclick="showJalsat()" aria-label="الجلسات الخارجية">
-          <img class="svcs-photo" src="imgs/jalsat_5.webp" width="88" height="88" alt="" loading="lazy" decoding="async" style="object-position:50% 60%;">
           <span class="svcs-name">الجلسات الخارجية</span>
           <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
         </button>
@@ -1316,12 +1303,10 @@ function tarfihiOrder(){
       <h2 id="svcs-group-3" class="svcs-section-title">عروض وامتيازات</h2>
       <div class="svcs-grid svcs-grid--rewards">
         <button type="button" class="svcs-card svcs-reward" onclick="showSharik()" aria-label="شارك واربح">
-          <span class="svcs-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4m0-11-6.8 4"/></svg></span>
           <span class="svcs-name">شارك واربح</span>
           <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
         </button>
         <button type="button" class="svcs-card svcs-reward" onclick="showWalaa()" aria-label="بطاقة الولاء">
-          <span class="svcs-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 10h20m-15 5h4"/></svg></span>
           <span class="svcs-name">بطاقة الولاء</span>
           <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
         </button>
