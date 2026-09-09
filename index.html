@@ -1703,6 +1703,9 @@ function tarfihiOrder(){
 
 <!-- HOSPITALITY & COORDINATION DETAIL -->
 <style>
+#hospitality-detail .hd-header{display:flex;align-items:center;gap:14px;padding:20px 20px 16px;text-align:right}
+#hospitality-detail .hd-back{display:inline-flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;cursor:pointer}
+#hospitality-detail .hd-title{margin:0;color:#f0f5f7;font-family:Tajawal,sans-serif;font-size:24px;font-weight:800;line-height:1.4}
 #hospitality-detail .hd-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 16px 14px;direction:rtl}
 #hospitality-detail .hd-tab{border:1.5px solid rgba(25,167,183,.20);border-radius:14px;background:rgba(255,255,255,.055);color:rgba(255,255,255,.62);font-family:Tajawal,sans-serif;font-size:14px;font-weight:700;padding:12px 10px;cursor:pointer;transition:.2s ease}
 #hospitality-detail .hd-tab.active{color:#fff;background:rgba(25,167,183,.18);border-color:rgba(25,167,183,.65);box-shadow:0 0 18px rgba(25,167,183,.13)}
@@ -1724,11 +1727,11 @@ function tarfihiOrder(){
 @media(max-width:360px){#hospitality-detail .hd-items{grid-template-columns:1fr}}
 </style>
 <div id="hospitality-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
-  <div style="background:transparent;padding:20px 20px 16px;text-align:right;position:relative;">
-    <button onclick="closeHospitalityDetail()" aria-label="رجوع" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.10);border:none;color:rgba(255,255,255,.85);cursor:pointer;margin-bottom:10px;">
+  <div class="hd-header">
+    <button type="button" class="hd-back" onclick="closeHospitalityDetail()" aria-label="العودة إلى الخدمات">
       <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-    <div style="font-family:Tajawal,sans-serif;font-size:20px;font-weight:700;color:#fff;line-height:1.3;margin-top:7px;">الضيافة والتنسيقات</div>
+    <h1 class="hd-title">الضيافة والتنسيقات</h1>
   </div>
 
   <div class="hd-tabs" role="tablist" aria-label="الضيافة والتنسيقات">
