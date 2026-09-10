@@ -85,8 +85,18 @@
     return count === 1 ? 'غرفة نوم واحدة' : count === 2 ? 'غرفتين نوم' : count + ' غرف نوم';
   }
 
+  function roomValue(count) {
+    return count === 1 ? 'غرفة واحدة' : count === 2 ? 'غرفتان' : count + ' غرف';
+  }
+
   function guestText(count) {
     return count === 2 ? 'يتسع لشخصين' : 'يتسع حتى ' + count + (count >= 3 && count <= 10 ? ' ضيوف' : ' ضيفًا');
+  }
+
+  function guestValue(count) {
+    if (count === 1) return 'ضيف واحد';
+    if (count === 2) return 'حتى ضيفين';
+    return 'حتى ' + count + (count >= 3 && count <= 10 ? ' ضيوف' : ' ضيفًا');
   }
 
   function featuresFor(cabin) {
@@ -271,17 +281,19 @@
       highlights[i].classList.toggle('is-connected', Boolean(linked));
     });
     card.classList.toggle('is-classic', cabin.id === 3);
+    card.classList.toggle('is-shared', shared);
     card.querySelector('h3').textContent = cabin.name + (location.instanceNumber ? ' ' + location.instanceNumber : '');
-    showCardPhoto(cabin);
+    card.classList.remove('has-photo');
+    photoButton.hidden = true;
     card.setAttribute('aria-label', shared ? 'تفاصيل الحديقة المشتركة' : 'ملخص الكوخ المختار');
     card.querySelector('.fd-map-clear').setAttribute('aria-label', shared ? 'إلغاء اختيار الحديقة' : 'إلغاء اختيار الكوخ');
     var description = card.querySelector('.fd-map-description');
-    description.textContent = shared ? cabin.type : '';
-    description.hidden = !shared;
-    var rooms = card.querySelector('.fd-map-rooms');
-    rooms.parentElement.hidden = shared;
-    rooms.textContent = shared ? '' : roomText(cabin.rooms);
-    card.querySelector('.fd-map-guests').textContent = shared ? cabin.suitable : guestText(cabin.guests);
+    description.textContent = cabin.type || cabin.suitable || '';
+    description.hidden = !description.textContent;
+    card.querySelector('.fd-map-guest-label').textContent = shared ? 'الموقع' : 'السعة';
+    card.querySelector('.fd-map-room-label').textContent = shared ? 'الاستخدام' : 'غرف النوم';
+    card.querySelector('.fd-map-guests').textContent = shared ? 'وسط الأكواخ' : guestValue(cabin.guests);
+    card.querySelector('.fd-map-rooms').textContent = shared ? 'لجميع الضيوف' : roomValue(cabin.rooms);
     var amenities = card.querySelector('.fd-map-amenities');
     amenities.replaceChildren();
     featuresFor(cabin).forEach(function (feature) {
@@ -451,7 +463,7 @@
     } else {
       resetGesture();
       if (tapped) {
-        var location = marker ? locations[Number(marker.dataset.mapIndex)] : locationAt(localPoint(event));
+        var location = locationAt(localPoint(event)) || (marker ? locations[Number(marker.dataset.mapIndex)] : null);
         if (location) selectLocation(location);
         else clearSelection(false);
       }
@@ -475,23 +487,30 @@
       '<div class="fd-map-header"><div><h2 id="fd-map-title">خريطة الأكواخ</h2>' +
       '<p id="fd-map-hint">اختر الكوخ وشاهد موقعه ومميزاته</p></div>' +
       '<button type="button" class="fd-map-close" aria-label="إغلاق الخريطة" autofocus>' + closeIcon + '</button></div>' +
-      '<div class="fd-map-viewport" tabindex="0" aria-label="خريطة تفاعلية؛ كبّر ثم اسحب للاستكشاف، أو استخدم الأسهم للتحريك">' +
-        '<div class="fd-map-plane"><img class="fd-map-image" width="1254" height="1254" alt="توزيع أكواخ المنتجع من الأعلى" draggable="false" decoding="async"></div>' +
-        '<div class="fd-map-error" role="status" hidden><p>تعذّر تحميل الخريطة.</p><button type="button" class="fd-map-tool fd-map-retry">إعادة المحاولة</button></div>' +
-      '</div>' +
-      '<div class="fd-map-toolbar" hidden><button type="button" class="fd-map-tool fd-map-fit" aria-label="إلغاء التكبير" hidden>' +
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 8h5V3m13 5h-5V3M3 16h5v5m13-5h-5v5"/></svg>إلغاء التكبير</button><p class="fd-map-connection" hidden></p></div>' +
-      '<div class="fd-map-info" aria-live="polite" aria-atomic="true">' +
-        '<div class="fd-map-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Zm6-2v16m6-14v16"/></svg><p>اضغط على الاسم أو الموقع<br>للتعرّف على التفاصيل</p></div>' +
-        '<section id="fd-map-card" class="fd-map-card" aria-label="ملخص الكوخ المختار" hidden>' +
-          '<div class="fd-map-card-copy">' +
-          '<div class="fd-map-card-top"><h3></h3><button type="button" class="fd-map-clear" aria-label="إلغاء اختيار الكوخ">' + closeIcon + '</button></div>' +
-          '<p class="fd-map-description" hidden></p>' +
-          '<div class="fd-map-facts"><span class="fd-map-fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="7" r="3"/><path d="M5 21v-3a7 7 0 0 1 14 0v3"/></svg><span class="fd-map-guests"></span></span>' +
-          '<span class="fd-map-fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 18V8m18 10v-7a2 2 0 0 0-2-2h-7v7M3 16h18M3 18v3m18-3v3"/><path d="M5 9h5v5H5z"/></svg><span class="fd-map-rooms"></span></span></div>' +
-          '</div><button type="button" class="fd-map-card-photo" aria-label="عرض صور الكوخ" aria-haspopup="dialog" aria-controls="fd-map-photos" hidden><img width="240" height="240" alt="" decoding="async" draggable="false"><span class="fd-map-photo-label" aria-hidden="true">عرض الصور</span></button>' +
-          '<div class="fd-map-amenities"></div>' +
-        '</section></div>';
+      '<div class="fd-map-workspace">' +
+        '<div class="fd-map-viewport" tabindex="0" aria-label="خريطة تفاعلية؛ كبّر ثم اسحب للاستكشاف، أو استخدم الأسهم للتحريك">' +
+          '<div class="fd-map-plane"><img class="fd-map-image" width="1254" height="1254" alt="توزيع أكواخ المنتجع من الأعلى" draggable="false" decoding="async"></div>' +
+          '<div class="fd-map-error" role="status" hidden><p>تعذّر تحميل الخريطة.</p><button type="button" class="fd-map-tool fd-map-retry">إعادة المحاولة</button></div>' +
+        '</div>' +
+        '<aside class="fd-map-panel" aria-label="معلومات الموقع المختار">' +
+          '<div class="fd-map-toolbar" hidden><button type="button" class="fd-map-tool fd-map-fit" aria-label="إلغاء التكبير" hidden>' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 8h5V3m13 5h-5V3M3 16h5v5m13-5h-5v5"/></svg>إلغاء التكبير</button><p class="fd-map-connection" hidden></p></div>' +
+          '<div class="fd-map-info" aria-live="polite" aria-atomic="true">' +
+            '<div class="fd-map-empty"><p>اختر اسم الكوخ من الخريطة</p></div>' +
+            '<section id="fd-map-card" class="fd-map-card" aria-label="ملخص الكوخ المختار" hidden>' +
+              '<div class="fd-map-card-top"><h3></h3><button type="button" class="fd-map-clear" aria-label="إلغاء اختيار الكوخ">' + closeIcon + '</button></div>' +
+              '<p class="fd-map-description" hidden></p>' +
+              '<div class="fd-map-facts">' +
+                '<div class="fd-map-fact"><span class="fd-map-fact-label fd-map-guest-label">السعة</span><strong class="fd-map-guests"></strong></div>' +
+                '<div class="fd-map-fact"><span class="fd-map-fact-label fd-map-room-label">غرف النوم</span><strong class="fd-map-rooms"></strong></div>' +
+              '</div>' +
+              '<div class="fd-map-amenities"></div>' +
+              '<button type="button" class="fd-map-details-button">عرض التفاصيل والصور</button>' +
+              '<button type="button" class="fd-map-card-photo" aria-label="عرض صور الكوخ" aria-haspopup="dialog" aria-controls="fd-map-photos" hidden><img width="240" height="240" alt="" decoding="async" draggable="false"><span class="fd-map-photo-label" aria-hidden="true">عرض الصور</span></button>' +
+            '</section>' +
+          '</div>' +
+        '</aside>' +
+      '</div>';
     document.body.appendChild(dialog);
     viewport = dialog.querySelector('.fd-map-viewport');
     plane = dialog.querySelector('.fd-map-plane');
@@ -591,6 +610,10 @@
       viewport.focus({ preventScroll: true });
     });
     dialog.querySelector('.fd-map-clear').addEventListener('click', function () { clearSelection(true); });
+    dialog.querySelector('.fd-map-details-button').addEventListener('click', function () {
+      if (!selected || typeof window.openM !== 'function') return;
+      window.openM(cabinFor(selected).id, 'resort');
+    });
     dialog.querySelector('.fd-map-close').addEventListener('click', function () { dialog.close(); });
     dialog.querySelector('.fd-map-retry').addEventListener('click', loadImage);
     dialog.addEventListener('click', function (event) {
