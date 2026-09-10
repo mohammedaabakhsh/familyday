@@ -2838,81 +2838,117 @@ function updGal(total){
   if(ctr)ctr.textContent=(galIdx+1)+' من '+total;
 }
 
-function renderDomeDetail(c){
-  const groups=[];let current=[];
-  (c.tags||[]).forEach(function(tag){
-    if(tag==='|'){if(current.length)groups.push(current);current=[];}
-    else current.push(tag);
+function renderCabinDetail(c){
+  const indoor=[];
+  const outdoor=[];
+  const kitchenOriginal=[];
+  const stayOriginal=[];
+  const additional=[];
+  let poolTip='';
+  let hasMinibar=false;
+  let hasOutdoorBath=false;
+
+  (c.tags||[]).forEach(function(rawTag){
+    if(rawTag==='|') return;
+    const parts=rawTag.split('::');
+    const name=parts[0];
+    const tip=parts.slice(1).join('::');
+
+    if(name.includes('مسبح')) poolTip=tip;
+    if(name.includes('ميني بار')) hasMinibar=true;
+    if(name.includes('بانيو خارجي')) hasOutdoorBath=true;
+
+    if(name.includes('غرفة نوم')||name.includes('بانيو داخلي')||(name.includes('بانيو')&&name.includes('بغرفة النوم'))){
+      indoor.push(name);
+    } else if(name.includes('جلسة خارجية')||name.includes('ركن شواء')||name.includes('مسبح')||name.includes('تشميس')||name.includes('شاور خارجي')||name.includes('بانيو خارجي')){
+      outdoor.push(name);
+    } else if(name.includes('المطبخ')||name.includes('مطبخ')||name.includes('طاولة طعام')||name.includes('طاولة بار')||name.includes('ميني بار')){
+      kitchenOriginal.push(name);
+    } else if(name.includes('تلفزيون')||name.includes('سماعات')||name.includes('واي فاي')){
+      stayOriginal.push(name);
+    } else {
+      additional.push(name);
+    }
   });
-  if(current.length)groups.push(current);
-  const clean=function(tag){return tag.split('::')[0];};
+
+  if(c.hall) indoor.push('صالة داخلية');
+  const kitchenLead=kitchenOriginal.filter(function(name){return name.includes('المطبخ')||name.includes('مطبخ');});
+  const kitchenRest=kitchenOriginal.filter(function(name){return !name.includes('المطبخ')&&!name.includes('مطبخ');});
+  const kitchen=[].concat(kitchenLead,['موقد كهربائي','ثلاجة','ميكروويف','غلاية','ماكينة قهوة'],kitchenRest);
+  const stayFeatures=['واي فاي مجاني'].concat(stayOriginal.filter(function(name){return name!=='واي فاي مجاني';}));
+  const availableServices=['مطعم ومشروبات خفيفة','غرفة سائق'];
+  const subtitle=c.type||c.suitable||'';
+  const badge=c.type?c.suitable:c.badge;
+  const roomsText=c.rooms===1?'غرفة واحدة':c.rooms===2?'غرفتان':c.rooms+' غرف';
+  const guestsText=c.guests===2?'يتسع لضيفين':'حتى '+c.guests+' أشخاص';
+  const bathroomsText=c.bathroom===1?'حمام واحد':c.bathroom===2?'دورتا مياه':c.bathroom+' دورات مياه';
+  const poolNote=poolTip
+    ? poolTip.replace(/^عمق\s*/, 'عمق المسبح ')+'، ويُسمح للأطفال باستخدامه تحت إشراف ذويهم.'
+    : 'يُسمح للأطفال باستخدام المسبح تحت إشراف ذويهم.';
   const renderFeatures=function(list){
-    return list.map(function(tag){
-      const name=clean(tag);
-      return '<span class="fd-dome-feature'+(name.length>24?' fd-dome-feature--wide':'')+'">'+name+'</span>';
+    return list.map(function(name){
+      return '<span class="fd-cabin-feature'+(name.length>24?' fd-cabin-feature--wide':'')+'">'+name+'</span>';
     }).join('');
   };
-  const indoor=[].concat(groups[0]||[]);
-  const outdoor=[].concat(groups[1]||[],groups[2]||[],groups[3]||[]);
-  const kitchenBase=groups[4]||[];
-  const kitchen=[].concat(kitchenBase.slice(0,1),['موقد كهربائي','ثلاجة','ميكروويف','غلاية','ماكينة قهوة'],kitchenBase.slice(1));
-  const stayFeatures=['واي فاي مجاني'].concat(groups[5]||[]);
-  const availableServices=['مطعم ومشروبات خفيفة','غرفة سائق'];
+
   return `
-    <section class="fd-dome-content" aria-labelledby="fd-dome-title">
-      <div class="fd-dome-heading">
+    <section class="fd-cabin-content" aria-labelledby="fd-cabin-detail-title">
+      <div class="fd-cabin-heading">
         <div>
-          <h2 class="fd-dome-title" id="fd-dome-title">${c.name}</h2>
-          <p class="fd-dome-suitable">${c.suitable}</p>
+          <h2 class="fd-cabin-title" id="fd-cabin-detail-title">${c.name}</h2>
+          ${subtitle?`<p class="fd-cabin-suitable">${subtitle}</p>`:''}
         </div>
-        <span class="fd-dome-badge">تجربة فريدة</span>
+        ${badge?`<span class="fd-cabin-badge">${badge}</span>`:''}
       </div>
 
-      <div class="fd-dome-facts" aria-label="معلومات بيت الدوم">
-        <div><span>غرف النوم</span><strong>غرفة واحدة</strong></div>
-        <div><span>السعة</span><strong>يتسع لضيفين</strong></div>
-        <div><span>دورات المياه</span><strong>حمام واحد</strong></div>
+      <div class="fd-cabin-facts" aria-label="معلومات ${c.name}">
+        <div><span>غرف النوم</span><strong>${roomsText}</strong></div>
+        <div><span>السعة</span><strong>${guestsText}</strong></div>
+        <div><span>دورات المياه</span><strong>${bathroomsText}</strong></div>
       </div>
 
-      <div class="fd-dome-times" aria-label="أوقات الدخول والخروج">
+      <div class="fd-cabin-times" aria-label="أوقات الدخول والخروج">
         <div><span>الدخول</span><strong>4:00 مساءً</strong></div>
         <div><span>الخروج</span><strong>12:00 ظهرًا</strong></div>
       </div>
 
-      <section class="fd-dome-section">
+      <section class="fd-cabin-section">
         <h3>المنطقة الداخلية</h3>
-        <div class="fd-dome-feature-list">${renderFeatures(indoor)}</div>
+        <div class="fd-cabin-feature-list">${renderFeatures(indoor)}</div>
       </section>
 
-      <section class="fd-dome-section">
+      <section class="fd-cabin-section">
         <h3>المنطقة الخارجية</h3>
-        <div class="fd-dome-feature-list">${renderFeatures(outdoor)}</div>
-        <p class="fd-dome-pool-note">عمق المسبح يصل إلى 140 سم، ويُسمح للأطفال باستخدامه تحت إشراف ذويهم.</p>
-      </section>
-
-      <section class="fd-dome-section">
-        <h3>مرافق المطبخ</h3>
-        <div class="fd-dome-feature-list">${renderFeatures(kitchen)}</div>
-        <div class="fd-dome-instructions">
-          <p><strong>الميني بار:</strong> سناكس ومشروبات متنوعة بأسعار رمزية.</p>
+        <div class="fd-cabin-feature-list">${renderFeatures(outdoor)}</div>
+        <div class="fd-cabin-instructions">
+          <p>${poolNote}</p>
+          ${hasOutdoorBath?'<p><strong>البانيو الخارجي:</strong> بخصوصية كاملة.</p>':''}
         </div>
       </section>
 
-      <section class="fd-dome-section">
-        <h3>مميزات الإقامة</h3>
-        <div class="fd-dome-feature-list">${renderFeatures(stayFeatures)}</div>
+      <section class="fd-cabin-section">
+        <h3>مرافق المطبخ</h3>
+        <div class="fd-cabin-feature-list">${renderFeatures(kitchen)}</div>
+        ${hasMinibar?'<div class="fd-cabin-instructions"><p><strong>الميني بار:</strong> سناكس ومشروبات متنوعة بأسعار رمزية.</p></div>':''}
       </section>
 
-      <section class="fd-dome-section">
+      <section class="fd-cabin-section">
+        <h3>مميزات الإقامة</h3>
+        <div class="fd-cabin-feature-list">${renderFeatures(stayFeatures)}</div>
+      </section>
+
+      ${additional.length?`<section class="fd-cabin-section"><h3>مميزات إضافية</h3><div class="fd-cabin-feature-list">${renderFeatures(additional)}</div></section>`:''}
+
+      <section class="fd-cabin-section">
         <h3>خدمات متاحة</h3>
-        <div class="fd-dome-feature-list">${renderFeatures(availableServices)}</div>
-        <div class="fd-dome-instructions">
+        <div class="fd-cabin-feature-list">${renderFeatures(availableServices)}</div>
+        <div class="fd-cabin-instructions">
           <p><strong>المطعم والمشروبات الخفيفة:</strong> متاح يوميًا من 1 ظهرًا حتى 12 منتصف الليل.</p>
           <p><strong>غرفة السائق:</strong> متاحة حسب التوفر.</p>
         </div>
       </section>
 
-      <section class="fd-dome-addons">
+      <section class="fd-cabin-addons">
         <h3>إضافات الحجز</h3>
         <p>الضيافة والتنسيقات، الجلسات الخارجية، طاولات الطعام، السينما، والألعاب الترفيهية والمائية.</p>
       </section>
@@ -2922,8 +2958,8 @@ function renderDomeDetail(c){
 function openM(id,type){
   var bb=document.querySelector('.modal-back-btn');if(bb)bb.innerHTML='❮ العودة إلى الأكواخ';
   type=type||curSection;
-  const domeExperiment=type==='resort'&&id===1;
-  document.getElementById('ov').classList.toggle('fd-dome-open',domeExperiment);
+  const modernCabin=type==='resort'&&id>=1&&id<=10;
+  document.getElementById('ov').classList.toggle('fd-cabin-modern',modernCabin);
   
   const items=data[type].items;
   if(id===11){
@@ -2959,7 +2995,7 @@ function openM(id,type){
   if(_navIdx===-1)_navIdx=0;
   updateNavUI();
   openGal(id,type);
-  document.getElementById('mBody').innerHTML=domeExperiment?renderDomeDetail(c):`
+  document.getElementById('mBody').innerHTML=modernCabin?renderCabinDetail(c):`
 
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap;">
       <div class="modal-name" style="margin-bottom:0;">${c.name}</div>
@@ -3028,7 +3064,7 @@ function openM(id,type){
     </div>
     ${c.id===11 ? `<button onclick="open3D('https://my.matterport.com/show/?m=S7Z2CF9tdwm')" class="mbtn" style="background:rgba(25,167,183,0.1);color:#19A7B7;border:1px solid #19a7b7;margin-top:8px;font-family:Tajawal,sans-serif;cursor:pointer;font-size:12px;padding:9px 16px;">🔭 جولة ثلاثية الأبعاد</button>` : ''}
     `;
-  if(!domeExperiment){
+  if(!modernCabin){
     document.querySelectorAll('#mBody .tags-lbl').forEach(el=>{el.style.color='#19a7b7';el.style.marginTop='24px';});
     document.querySelectorAll('#mBody .tags').forEach(el=>{el.style.marginBottom='12px';});
     document.querySelectorAll('#mBody .tags div[style*="margin:4px"]').forEach(el=>el.remove());
@@ -3080,6 +3116,7 @@ function updateNavUI(){
 function closeM(){
   
   document.getElementById('ov').classList.remove('open');
+  document.getElementById('ov').classList.remove('fd-cabin-modern');
   document.body.style.overflow='';
   if(window._serviceReturn==='sub'){
     window._serviceReturn=null;
@@ -4485,7 +4522,7 @@ function renderChalet2(){
 
 function openMDirect(c){
   var bb=document.querySelector('.modal-back-btn');if(bb)bb.innerHTML='❮ العودة إلى الأقسام';
-  document.getElementById('ov').classList.remove('fd-dome-open');
+  document.getElementById('ov').classList.remove('fd-cabin-modern');
   
   _navType='chalet';
   _navItems=_chaletItems2.length?_chaletItems2:[c];
@@ -4858,93 +4895,93 @@ function openMDirect(c){
 }
 </style>
 
-<style id="fd-dome-detail-experiment">
-/* Isolated trial: these rules apply only while بيت الدوم is open. */
-#ov.fd-dome-open .modal{box-sizing:border-box;padding:0;}
-#ov.fd-dome-open .modal-handle{display:none;}
-#ov.fd-dome-open .modal-topnav{padding:12px 16px;border-color:#203e4d;background:#071a28;}
-#ov.fd-dome-open .modal-back-btn{
+<style id="fd-cabin-detail-layout">
+/* Shared detail layout for the ten resort cabins; other accommodation types keep their own view. */
+#ov.fd-cabin-modern .modal{box-sizing:border-box;padding:0;}
+#ov.fd-cabin-modern .modal-handle{display:none;}
+#ov.fd-cabin-modern .modal-topnav{padding:12px 16px;border-color:#203e4d;background:#071a28;}
+#ov.fd-cabin-modern .modal-back-btn{
   min-height:38px;padding:7px 12px;border:1px solid #294957;border-radius:12px;
   background:#102b3a;color:#d7e8ef;font-size:12px;
 }
-#ov.fd-dome-open .modal-inner{padding:22px 20px 18px;}
-#ov.fd-dome-open .fd-dome-content{font-family:Tajawal,sans-serif;direction:rtl;color:#f4f8fa;}
-#ov.fd-dome-open .fd-dome-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:18px;}
-#ov.fd-dome-open .fd-dome-title{margin:0;color:#f4f8fa;font-size:22px;font-weight:700;line-height:1.4;}
-#ov.fd-dome-open .fd-dome-suitable{margin:4px 0 0;color:#a9c2cc;font-size:13px;line-height:1.6;}
-#ov.fd-dome-open .fd-dome-badge{
+#ov.fd-cabin-modern .modal-inner{padding:22px 20px 18px;}
+#ov.fd-cabin-modern .fd-cabin-content{font-family:Tajawal,sans-serif;direction:rtl;color:#f4f8fa;}
+#ov.fd-cabin-modern .fd-cabin-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:18px;}
+#ov.fd-cabin-modern .fd-cabin-heading>div{min-width:0;}
+#ov.fd-cabin-modern .fd-cabin-title{margin:0;color:#f4f8fa;font-size:22px;font-weight:700;line-height:1.4;}
+#ov.fd-cabin-modern .fd-cabin-suitable{margin:4px 0 0;color:#a9c2cc;font-size:13px;line-height:1.65;}
+#ov.fd-cabin-modern .fd-cabin-badge{
   flex:none;margin-top:2px;padding:5px 10px;border:1px solid #2d6671;border-radius:9px;
   background:#103440;color:#91dce4;font-size:12px;font-weight:700;line-height:1.4;
 }
-#ov.fd-dome-open .fd-dome-facts{
+#ov.fd-cabin-modern .fd-cabin-facts{
   display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:hidden;margin-bottom:12px;
   border:1px solid #31515f;border-radius:14px;background:#102a39;
 }
-#ov.fd-dome-open .fd-dome-facts div{min-width:0;padding:12px 7px;text-align:center;border-left:1px solid #31515f;}
-#ov.fd-dome-open .fd-dome-facts div:last-child{border-left:0;}
-#ov.fd-dome-open .fd-dome-facts span,#ov.fd-dome-open .fd-dome-times span{display:block;color:#91aab5;font-size:11px;line-height:1.5;}
-#ov.fd-dome-open .fd-dome-facts strong{display:block;margin-top:3px;color:#eef5f7;font-size:13px;font-weight:700;line-height:1.5;}
-#ov.fd-dome-open .fd-dome-times{
+#ov.fd-cabin-modern .fd-cabin-facts div{min-width:0;padding:12px 7px;text-align:center;border-left:1px solid #31515f;}
+#ov.fd-cabin-modern .fd-cabin-facts div:last-child{border-left:0;}
+#ov.fd-cabin-modern .fd-cabin-facts span,#ov.fd-cabin-modern .fd-cabin-times span{display:block;color:#91aab5;font-size:11px;line-height:1.5;}
+#ov.fd-cabin-modern .fd-cabin-facts strong{display:block;margin-top:3px;color:#eef5f7;font-size:13px;font-weight:700;line-height:1.5;}
+#ov.fd-cabin-modern .fd-cabin-times{
   display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:24px;
   border:1px solid #294957;border-radius:14px;background:#0b2130;
 }
-#ov.fd-dome-open .fd-dome-times div{padding:11px 14px;}
-#ov.fd-dome-open .fd-dome-times div+div{border-right:1px solid #294957;}
-#ov.fd-dome-open .fd-dome-times strong{display:block;margin-top:2px;color:#9edce5;font-size:13px;font-weight:700;line-height:1.5;}
-#ov.fd-dome-open .fd-dome-section{margin:0 0 24px;}
-#ov.fd-dome-open .fd-dome-section h3,#ov.fd-dome-open .fd-dome-addons h3{
+#ov.fd-cabin-modern .fd-cabin-times div{padding:11px 14px;}
+#ov.fd-cabin-modern .fd-cabin-times div+div{border-right:1px solid #294957;}
+#ov.fd-cabin-modern .fd-cabin-times strong{display:block;margin-top:2px;color:#9edce5;font-size:13px;font-weight:700;line-height:1.5;}
+#ov.fd-cabin-modern .fd-cabin-section{margin:0 0 24px;}
+#ov.fd-cabin-modern .fd-cabin-section h3,#ov.fd-cabin-modern .fd-cabin-addons h3{
   margin:0 2px 10px;color:#8bc4d1;font-size:15px;font-weight:700;line-height:1.5;
 }
-#ov.fd-dome-open .fd-dome-feature-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
-#ov.fd-dome-open .fd-dome-feature{
+#ov.fd-cabin-modern .fd-cabin-feature-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
+#ov.fd-cabin-modern .fd-cabin-feature{
   box-sizing:border-box;display:flex;align-items:center;min-width:0;min-height:44px;padding:10px 12px;
   border:1px solid #315967;border-radius:12px;background:#153244;color:#e9f1f4;
   font-size:13px;font-weight:500;line-height:1.55;
 }
-#ov.fd-dome-open .fd-dome-feature--wide{grid-column:1/-1;}
-#ov.fd-dome-open .fd-dome-pool-note{margin:10px 2px 0;color:#9eb4be;font-size:12px;line-height:1.75;}
-#ov.fd-dome-open .fd-dome-instructions{
+#ov.fd-cabin-modern .fd-cabin-feature--wide{grid-column:1/-1;}
+#ov.fd-cabin-modern .fd-cabin-instructions{
   display:grid;gap:5px;margin:10px 2px 0;padding-top:10px;border-top:1px solid rgba(49,89,103,.65);
 }
-#ov.fd-dome-open .fd-dome-instructions p{margin:0;color:#aebfc7;font-size:13px;line-height:1.75;}
-#ov.fd-dome-open .fd-dome-instructions strong{color:#dce9ed;font-weight:700;}
-#ov.fd-dome-open .fd-dome-addons{
+#ov.fd-cabin-modern .fd-cabin-instructions p{margin:0;color:#aebfc7;font-size:13px;line-height:1.75;}
+#ov.fd-cabin-modern .fd-cabin-instructions strong{color:#dce9ed;font-weight:700;}
+#ov.fd-cabin-modern .fd-cabin-addons{
   margin-top:2px;padding:15px 16px;border:1px solid #294957;border-radius:14px;background:#0b2130;
 }
-#ov.fd-dome-open .fd-dome-addons h3{margin:0 0 5px;}
-#ov.fd-dome-open .fd-dome-addons p{margin:0;color:#bdced6;font-size:13px;line-height:1.75;}
-#ov.fd-dome-open .modal-bottom-bar{border-top:1px solid rgba(49,81,95,.65);background:#071a28;}
-#ov.fd-dome-open :is(.modal-back-btn,.modal-topnav-btn,.mbtn):focus-visible{outline:2px solid #7ecfea;outline-offset:3px;}
+#ov.fd-cabin-modern .fd-cabin-addons h3{margin:0 0 5px;}
+#ov.fd-cabin-modern .fd-cabin-addons p{margin:0;color:#bdced6;font-size:13px;line-height:1.75;}
+#ov.fd-cabin-modern .modal-bottom-bar{border-top:1px solid rgba(49,81,95,.65);background:#071a28;}
+#ov.fd-cabin-modern :is(.modal-back-btn,.modal-topnav-btn,.mbtn):focus-visible{outline:2px solid #7ecfea;outline-offset:3px;}
 @media(max-width:360px){
-  #ov.fd-dome-open .modal-inner{padding-inline:16px;}
-  #ov.fd-dome-open .fd-dome-feature-list{grid-template-columns:minmax(0,1fr);}
-  #ov.fd-dome-open .fd-dome-feature--wide{grid-column:auto;}
+  #ov.fd-cabin-modern .modal-inner{padding-inline:16px;}
+  #ov.fd-cabin-modern .fd-cabin-feature-list{grid-template-columns:minmax(0,1fr);}
+  #ov.fd-cabin-modern .fd-cabin-feature--wide{grid-column:auto;}
 }
 @media(min-width:900px){
-  #ov.fd-dome-open .modal{
+  #ov.fd-cabin-modern .modal{
     width:min(calc(100vw - 64px),1040px);max-width:1040px;height:min(88vh,760px);max-height:760px;
     display:grid;grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr);
     grid-template-rows:minmax(0,1fr) auto;
     grid-template-areas:"gallery content" "actions actions";
     overflow:hidden;border-radius:20px;
   }
-  #ov.fd-dome-open .modal-topnav{
+  #ov.fd-cabin-modern .modal-topnav{
     position:absolute;top:14px;right:14px;left:14px;z-index:30;padding:0;border:0;background:transparent;
     pointer-events:none;
   }
-  #ov.fd-dome-open .modal-topnav :is(button,#navBtns){pointer-events:auto;}
-  #ov.fd-dome-open .modal-back-btn,#ov.fd-dome-open #navBtns{
+  #ov.fd-cabin-modern .modal-topnav :is(button,#navBtns){pointer-events:auto;}
+  #ov.fd-cabin-modern .modal-back-btn,#ov.fd-cabin-modern #navBtns{
     border-color:rgba(255,255,255,.22);background:rgba(4,17,30,.74);backdrop-filter:blur(8px);
   }
-  #ov.fd-dome-open #navBtns{padding:3px 5px;border:1px solid rgba(255,255,255,.18);border-radius:12px;}
-  #ov.fd-dome-open .gal-wrap{grid-area:gallery;height:100%;min-height:0;border-left:1px solid #294957;}
-  #ov.fd-dome-open .modal-inner{grid-area:content;min-height:0;overflow-y:auto;padding:76px 28px 28px;overscroll-behavior:contain;scrollbar-width:thin;}
-  #ov.fd-dome-open .modal-bottom-bar{grid-area:actions;position:static;padding:14px 20px 16px;}
-  #ov.fd-dome-open .fd-dome-title{font-size:24px;}
+  #ov.fd-cabin-modern #navBtns{padding:3px 5px;border:1px solid rgba(255,255,255,.18);border-radius:12px;}
+  #ov.fd-cabin-modern .gal-wrap{grid-area:gallery;height:100%;min-height:0;border-left:1px solid #294957;}
+  #ov.fd-cabin-modern .modal-inner{grid-area:content;min-height:0;overflow-y:auto;padding:76px 28px 28px;overscroll-behavior:contain;scrollbar-width:thin;}
+  #ov.fd-cabin-modern .modal-bottom-bar{grid-area:actions;position:static;padding:14px 20px 16px;}
+  #ov.fd-cabin-modern .fd-cabin-title{font-size:24px;}
 }
 @media(hover:hover) and (pointer:fine){
-  #ov.fd-dome-open .modal-back-btn:hover{background:#173b4c;}
-  #ov.fd-dome-open .fd-dome-feature:hover{border-color:#4d8997;background:#193b4d;}
+  #ov.fd-cabin-modern .modal-back-btn:hover{background:#173b4c;}
+  #ov.fd-cabin-modern .fd-cabin-feature:hover{border-color:#4d8997;background:#193b4d;}
 }
 </style>
 
