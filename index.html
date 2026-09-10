@@ -1131,7 +1131,7 @@ function toggleResortFaq(card, question){
 function initResortFaqAccordion(){
   var list = document.getElementById('faq-list-resort');
   if(!list) return;
-  Array.from(list.children).forEach(function(card){
+  Array.from(list.querySelectorAll('.faq-grid > div')).forEach(function(card){
     if(card.classList.contains('faq-accordion-card') || card.children.length < 2) return;
     var question = card.children[0];
     var answer = card.children[1];
@@ -1501,19 +1501,45 @@ function tarfihiOrder(){
 }
 #faq-list-resort .faq-accordion-card.open .faq-chevron,
 #faq-list-stay .faq-accordion-card.open .faq-chevron{transform:rotate(180deg);}
+
+/* Resort FAQ: match the refined service and contact pages. */
+#faq-overlay{font-family:Tajawal,sans-serif;direction:rtl}
+#faq-overlay .faq-page-header{box-sizing:border-box;width:100%;max-width:600px;margin:0 auto;padding:24px 20px 28px}
+#faq-overlay .faq-heading{display:flex;align-items:center;gap:14px}
+#faq-overlay .faq-back{display:flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;cursor:pointer}
+#faq-overlay .faq-title{margin:0;color:#f0f5f7;font-size:24px;font-weight:800;line-height:1.4}
+#faq-list-resort{box-sizing:border-box;width:100%;max-width:600px;margin:0 auto;padding:0 20px calc(32px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:26px}
+#faq-list-resort .faq-section{min-width:0}
+#faq-list-resort .faq-section-title{margin:0 2px 12px;color:#8bc4d1;font-family:Tajawal,sans-serif;font-size:15px;font-weight:700;line-height:1.5}
+#faq-list-resort .faq-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;align-items:start}
+#faq-list-resort .faq-accordion-card{min-width:0;overflow:hidden;padding:0!important;border:1px solid #315967!important;border-radius:16px!important;background:#153244!important;box-shadow:none!important;animation:none!important}
+#faq-list-resort .faq-question-row{box-sizing:border-box;width:100%;min-height:56px;padding:15px 18px;margin:0!important;color:#f0f5f7!important;font-family:Tajawal,sans-serif!important;font-size:15px!important;font-weight:700!important;line-height:1.6!important}
+#faq-list-resort .faq-answer{box-sizing:border-box;margin:0!important;padding:0 18px 16px;color:#b6cbd6!important;font-family:Tajawal,sans-serif!important;font-size:14px!important;line-height:1.8!important}
+#faq-list-resort .faq-answer::before{content:"";display:block;margin-bottom:12px;border-top:1px solid rgba(49,89,103,.72)}
+#faq-list-resort .faq-chevron{display:flex;align-items:center;justify-content:center;width:20px;height:20px;color:#92c4d0;font-size:20px}
+#faq-list-resort .faq-accordion-card.open{border-color:#3b7080!important;background:#173849!important}
+#faq-overlay :is(.faq-back,.faq-question-row):focus-visible{outline:2px solid #7ecfea;outline-offset:3px;box-shadow:none}
+@media(max-width:599px){#faq-overlay .faq-title{font-size:22px}}
+@media(max-width:360px){#faq-overlay .faq-page-header,#faq-list-resort{padding-inline:16px}}
+@media(min-width:900px){#faq-overlay .faq-page-header,#faq-list-resort{max-width:1100px}#faq-overlay .faq-page-header{padding-top:28px;padding-bottom:30px}#faq-list-resort{gap:30px}#faq-list-resort .faq-section-title{margin-bottom:14px;font-size:16px}#faq-list-resort .faq-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px}#faq-list-resort .faq-question-row{min-height:60px;font-size:16px!important}#faq-list-resort .faq-answer{font-size:15px!important}}
+@media(hover:hover) and (pointer:fine){#faq-overlay .faq-back:hover{background:#133343}#faq-list-resort .faq-accordion-card:hover{border-color:#4d8997!important}#faq-list-resort .faq-question-row:hover{background:rgba(255,255,255,.025)}}
 </style>
 
 <!-- FAQ OVERLAY -->
-<div id="faq-overlay" class="hide" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:9500;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
-  <div style="background:transparent;padding:14px 20px 18px;padding-top:20px;text-align:right;position:relative;">
-    <button onclick="closeFaq()" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.10);border:none;color:rgba(255,255,255,0.85);cursor:pointer;margin-bottom:10px;">
-      <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div id="faq-overlay" class="hide" role="region" aria-labelledby="faq-title-resort" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:9500;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
+  <header class="faq-page-header">
+   <div class="faq-heading">
+    <button type="button" class="faq-back" onclick="closeFaq()" aria-label="العودة">
+      <svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-    <div style="font-family:Tajawal,sans-serif;font-size:20px;font-weight:700;color:#fff;line-height:1.25;margin-top:8px;">الأسئلة الشائعة</div>
-  </div>
-  <div id="faq-list-resort" style="padding:0 16px 32px;display:flex;flex-direction:column;gap:10px;">
+    <h1 id="faq-title-resort" class="faq-title">الأسئلة الشائعة</h1>
+   </div>
+  </header>
+  <div id="faq-list-resort">
 
-    <div style="font-family:Tajawal,sans-serif;font-size:12px;font-weight:700;color:rgba(25,167,183,.85);padding:8px 2px 4px;margin-top:6px;">الحجز وأوقات الدخول</div>
+   <section class="faq-section" aria-labelledby="faq-resort-booking-title">
+    <h2 id="faq-resort-booking-title" class="faq-section-title">الحجز وأوقات الدخول</h2>
+    <div class="faq-grid">
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">1. أين يقع منتجع يوم العائلة؟</div>
       <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يقع منتجع يوم العائلة في خليج سلمان، جدة.</div>
@@ -1547,7 +1573,12 @@ function tarfihiOrder(){
       <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يمكنكم التواصل معنا عبر الاتصال أو واتساب على الرقم: <a href="tel:+966556156693" class="phone-link">0556156693</a>، والتواصل متاح على مدار 24 ساعة.</div>
     </div>
 
-    <div style="font-family:Tajawal,sans-serif;font-size:12px;font-weight:700;color:rgba(25,167,183,.85);padding:8px 2px 4px;margin-top:6px;">الأكواخ والمرافق</div>
+    </div>
+   </section>
+
+   <section class="faq-section" aria-labelledby="faq-resort-cabins-title">
+    <h2 id="faq-resort-cabins-title" class="faq-section-title">الأكواخ والمرافق</h2>
+    <div class="faq-grid">
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">1. كم عدد غرف النوم في الأكواخ؟</div>
       <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">تتوفر أكواخ بغرفة نوم واحدة وأخرى بغرفتين نوم.</div>
@@ -1597,7 +1628,12 @@ function tarfihiOrder(){
       <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">نعم، تتوفر شواية في جميع الأكواخ، ويتوفر الفحم والأدوات برسوم إضافية.</div>
     </div>
 
-    <div style="font-family:Tajawal,sans-serif;font-size:12px;font-weight:700;color:rgba(25,167,183,.85);padding:8px 2px 4px;margin-top:6px;">الخدمات والتعليمات</div>
+    </div>
+   </section>
+
+   <section class="faq-section" aria-labelledby="faq-resort-services-title">
+    <h2 id="faq-resort-services-title" class="faq-section-title">الخدمات والتعليمات</h2>
+    <div class="faq-grid">
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">1. هل يوجد مطعم داخل المنتجع؟</div>
       <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">نعم، يوجد مطعم داخل المنتجع يقدم وجبات ومشروبات متنوعة.</div>
@@ -1632,7 +1668,8 @@ function tarfihiOrder(){
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">8. هل يُسمح بإحضار سماعات خارجية؟</div>
       <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">لا يُسمح بإحضار سماعات خارجية، ويتوفر ساوند بار داخل الأكواخ.</div>
     </div>
-
+    </div>
+   </section>
   </div>
 </div>
 
