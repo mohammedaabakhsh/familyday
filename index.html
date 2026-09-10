@@ -2955,30 +2955,65 @@ function renderCabinDetail(c){
     </section>`;
 }
 
+function renderSharedGardenDetail(c){
+  const features=(c.tags||[]).filter(function(tag){return tag!=='|';});
+  const renderFeatures=function(list){
+    return list.map(function(name){
+      return '<span class="fd-cabin-feature'+(name.length>24?' fd-cabin-feature--wide':'')+'">'+name+'</span>';
+    }).join('');
+  };
+
+  return `
+    <section class="fd-cabin-content fd-shared-garden-content" aria-labelledby="fd-cabin-detail-title">
+      <div class="fd-cabin-heading">
+        <div>
+          <h2 class="fd-cabin-title" id="fd-cabin-detail-title">${c.name}</h2>
+          <p class="fd-cabin-suitable">${c.type}</p>
+        </div>
+        <span class="fd-cabin-badge">${c.badge}</span>
+      </div>
+
+      <div class="fd-cabin-facts" aria-label="معلومات الحديقة المشتركة">
+        <div><span>الموقع</span><strong>وسط الأكواخ</strong></div>
+        <div><span>مخصصة لـ</span><strong>العائلات والأطفال</strong></div>
+        <div><span>الاستخدام</span><strong>لجميع الضيوف</strong></div>
+      </div>
+
+      <section class="fd-cabin-section">
+        <h3>مرافق الحديقة</h3>
+        <div class="fd-cabin-feature-list">${renderFeatures(features)}</div>
+      </section>
+
+      <section class="fd-cabin-section">
+        <h3>خدمات متاحة</h3>
+        <div class="fd-cabin-feature-list">
+          ${renderFeatures(['مطعم ومشروبات خفيفة','ألعاب مسبح برسوم'])}
+        </div>
+        <div class="fd-cabin-instructions">
+          <p><strong>الحديقة المشتركة:</strong> مساحة وسط الأكواخ تخدم العائلات المقيمة.</p>
+          <p><strong>الوصول:</strong> لكل كوخ باب داخلي يفتح مباشرة على الحديقة.</p>
+        </div>
+      </section>
+
+      <section class="fd-cabin-section fd-shared-garden-tour">
+        <h3>الجولة الافتراضية</h3>
+        <button type="button" onclick="open3D('https://my.matterport.com/show/?m=S7Z2CF9tdwm')" class="mbtn fd-garden-tour-btn">جولة ثلاثية الأبعاد</button>
+      </section>
+    </section>`;
+}
+
 function openM(id,type){
   var bb=document.querySelector('.modal-back-btn');if(bb)bb.innerHTML='❮ العودة إلى الأكواخ';
   type=type||curSection;
-  const modernCabin=type==='resort'&&id>=1&&id<=10;
-  document.getElementById('ov').classList.toggle('fd-cabin-modern',modernCabin);
+  const modernResortDetail=type==='resort'&&id>=1&&id<=11;
+  document.getElementById('ov').classList.toggle('fd-cabin-modern',modernResortDetail);
   
   const items=data[type].items;
   if(id===11){
     const c=items.find(x=>x.id===11);
     document.getElementById('modalBottomBar').style.display='none';document.getElementById('navBtns').style.display='none';
     openGal(11,type);
-    document.getElementById('mBody').innerHTML=`
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
-      <div class="modal-name" style="margin-bottom:0;">${c.name}</div>
-      ${c.suitable ? '<span style="background:rgba(25,167,183,0.1);border:1px solid rgba(25,167,183,0.25);color:var(--teal);font-size:12px;font-weight:600;padding:3px 10px;border-radius:100px;white-space:nowrap;">'+c.suitable+'</span>' : ''}
-    </div>
-    <button onclick="open3D('https://my.matterport.com/show/?m=S7Z2CF9tdwm')" class="mbtn" style="background:rgba(25,167,183,0.1);color:#19A7B7;border:1px solid #19a7b7;margin-bottom:16px;font-family:Tajawal,sans-serif;cursor:pointer;width:100%;font-size:13px;font-weight:600;padding:9px;display:flex;align-items:center;justify-content:center;gap:8px;">🔭 جولة ثلاثية الأبعاد</button>
-    <div style="font-size:10px;color:rgba(255,255,255,0.5);font-family:'Tajawal',sans-serif;margin-bottom:14px;line-height:1.6;">منطقة ألعاب مشتركة للأطفال بين الأكواخ لجميع ضيوف المنتجع</div>
-    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">
-      <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:13px;color:rgba(255,255,255,0.7);background:rgba(14,36,58,.80);border:1.5px solid rgba(25,167,183,.35);border-radius:12px;;padding:10px 14px;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 2px 10px rgba(25,167,183,.08);"><span style="color:#19a7b7;flex-shrink:0;">✦</span> ألعاب أطفال متنوعة.</div>
-      <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:13px;color:rgba(255,255,255,0.7);background:rgba(14,36,58,.80);border:1.5px solid rgba(25,167,183,.35);border-radius:12px;;padding:10px 14px;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 2px 10px rgba(25,167,183,.08);"><span style="color:#19a7b7;flex-shrink:0;">✦</span> شاشة عرض مشتركة.</div>
-      <div style="display:flex;align-items:center;gap:8px;font-family:'Tajawal',sans-serif;font-size:13px;color:rgba(255,255,255,0.7);background:rgba(14,36,58,.80);border:1.5px solid rgba(25,167,183,.35);border-radius:12px;;padding:10px 14px;animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 2px 10px rgba(25,167,183,.08);"><span style="color:#19a7b7;flex-shrink:0;">✦</span> مناسب لجميع الضيوف.</div>
-    </div>
-    `;
+    document.getElementById('mBody').innerHTML=renderSharedGardenDetail(c);
     document.getElementById('ov').classList.add('open');
     document.body.style.overflow='hidden';
     return;
@@ -2995,7 +3030,7 @@ function openM(id,type){
   if(_navIdx===-1)_navIdx=0;
   updateNavUI();
   openGal(id,type);
-  document.getElementById('mBody').innerHTML=modernCabin?renderCabinDetail(c):`
+  document.getElementById('mBody').innerHTML=modernResortDetail?renderCabinDetail(c):`
 
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap;">
       <div class="modal-name" style="margin-bottom:0;">${c.name}</div>
@@ -3064,7 +3099,7 @@ function openM(id,type){
     </div>
     ${c.id===11 ? `<button onclick="open3D('https://my.matterport.com/show/?m=S7Z2CF9tdwm')" class="mbtn" style="background:rgba(25,167,183,0.1);color:#19A7B7;border:1px solid #19a7b7;margin-top:8px;font-family:Tajawal,sans-serif;cursor:pointer;font-size:12px;padding:9px 16px;">🔭 جولة ثلاثية الأبعاد</button>` : ''}
     `;
-  if(!modernCabin){
+  if(!modernResortDetail){
     document.querySelectorAll('#mBody .tags-lbl').forEach(el=>{el.style.color='#19a7b7';el.style.marginTop='24px';});
     document.querySelectorAll('#mBody .tags').forEach(el=>{el.style.marginBottom='12px';});
     document.querySelectorAll('#mBody .tags div[style*="margin:4px"]').forEach(el=>el.remove());
@@ -4950,6 +4985,11 @@ function openMDirect(c){
 }
 #ov.fd-cabin-modern .fd-cabin-addons h3{margin:0 0 5px;}
 #ov.fd-cabin-modern .fd-cabin-addons p{margin:0;color:#bdced6;font-size:13px;line-height:1.75;}
+#ov.fd-cabin-modern .fd-shared-garden-tour{margin-bottom:0;}
+#ov.fd-cabin-modern .fd-garden-tour-btn{
+  width:100%;min-height:46px;border:1px solid #315967;border-radius:12px;
+  background:#102b3a;color:#9edce5;font-size:14px;
+}
 #ov.fd-cabin-modern .modal-bottom-bar{border-top:1px solid rgba(49,81,95,.65);background:#071a28;}
 #ov.fd-cabin-modern :is(.modal-back-btn,.modal-topnav-btn,.mbtn):focus-visible{outline:2px solid #7ecfea;outline-offset:3px;}
 @media(max-width:360px){
@@ -4982,6 +5022,7 @@ function openMDirect(c){
 @media(hover:hover) and (pointer:fine){
   #ov.fd-cabin-modern .modal-back-btn:hover{background:#173b4c;}
   #ov.fd-cabin-modern .fd-cabin-feature:hover{border-color:#4d8997;background:#193b4d;}
+  #ov.fd-cabin-modern .fd-garden-tour-btn:hover{border-color:#4d8997;background:#173b4c;}
 }
 </style>
 
