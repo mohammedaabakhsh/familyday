@@ -2852,9 +2852,12 @@ function renderDomeDetail(c){
       return '<span class="fd-dome-feature'+(name.length>24?' fd-dome-feature--wide':'')+'">'+name+'</span>';
     }).join('');
   };
-  const indoor=[].concat(groups[0]||[],groups[4]||[],groups[5]||[]);
+  const indoor=[].concat(groups[0]||[]);
   const outdoor=[].concat(groups[1]||[],groups[2]||[],groups[3]||[]);
-  const amenities=['موقد كهربائي','ثلاجة','ميكروويف','غلاية','ماكينة قهوة','واي فاي مجاني','مطعم ومشروبات خفيفة','غرفة سائق'];
+  const kitchenBase=groups[4]||[];
+  const kitchen=[].concat(kitchenBase.slice(0,1),['موقد كهربائي','ثلاجة','ميكروويف','غلاية','ماكينة قهوة'],kitchenBase.slice(1));
+  const stayFeatures=['واي فاي مجاني'].concat(groups[5]||[]);
+  const availableServices=['مطعم ومشروبات خفيفة','غرفة سائق'];
   return `
     <section class="fd-dome-content" aria-labelledby="fd-dome-title">
       <div class="fd-dome-heading">
@@ -2888,8 +2891,25 @@ function renderDomeDetail(c){
       </section>
 
       <section class="fd-dome-section">
-        <h3>المرافق والخدمات</h3>
-        <div class="fd-dome-feature-list">${renderFeatures(amenities)}</div>
+        <h3>مرافق المطبخ</h3>
+        <div class="fd-dome-feature-list">${renderFeatures(kitchen)}</div>
+        <div class="fd-dome-instructions">
+          <p><strong>الميني بار:</strong> سناكس ومشروبات متنوعة بأسعار رمزية.</p>
+        </div>
+      </section>
+
+      <section class="fd-dome-section">
+        <h3>مميزات الإقامة</h3>
+        <div class="fd-dome-feature-list">${renderFeatures(stayFeatures)}</div>
+      </section>
+
+      <section class="fd-dome-section">
+        <h3>خدمات متاحة</h3>
+        <div class="fd-dome-feature-list">${renderFeatures(availableServices)}</div>
+        <div class="fd-dome-instructions">
+          <p><strong>المطعم والمشروبات الخفيفة:</strong> متاح يوميًا من 1 ظهرًا حتى 12 منتصف الليل.</p>
+          <p><strong>غرفة السائق:</strong> متاحة حسب التوفر.</p>
+        </div>
       </section>
 
       <section class="fd-dome-addons">
@@ -4883,6 +4903,11 @@ function openMDirect(c){
 }
 #ov.fd-dome-open .fd-dome-feature--wide{grid-column:1/-1;}
 #ov.fd-dome-open .fd-dome-pool-note{margin:10px 2px 0;color:#9eb4be;font-size:12px;line-height:1.75;}
+#ov.fd-dome-open .fd-dome-instructions{
+  display:grid;gap:5px;margin:10px 2px 0;padding-top:10px;border-top:1px solid rgba(49,89,103,.65);
+}
+#ov.fd-dome-open .fd-dome-instructions p{margin:0;color:#aebfc7;font-size:13px;line-height:1.75;}
+#ov.fd-dome-open .fd-dome-instructions strong{color:#dce9ed;font-weight:700;}
 #ov.fd-dome-open .fd-dome-addons{
   margin-top:2px;padding:15px 16px;border:1px solid #294957;border-radius:14px;background:#0b2130;
 }
