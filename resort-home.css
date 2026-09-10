@@ -23,7 +23,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 6px;
+  padding-top: 0;
   padding-bottom: 22px;
   text-align: center;
 }
@@ -36,21 +36,34 @@
   margin-bottom: 12px;
 }
 #landing .rh-destinations {
-  position: absolute;
-  top: 0;
-  left: -4px;
+  align-self: flex-start;
   display: flex;
   align-items: center;
-  gap: 7px;
+  justify-content: center;
+  gap: 8px;
   min-height: 44px;
-  padding: 8px 7px;
-  border: 0;
-  border-radius: 8px;
-  background: transparent;
-  color: #a4bac4;
-  font-size: 12px;
-  font-weight: 500;
+  max-width: 100%;
+  margin-bottom: 8px;
+  padding: 10px 12px;
+  border: 1px solid #294653;
+  border-radius: 12px;
+  background: #0b2534;
+  color: #d7e8ed;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
   cursor: pointer;
+  transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+}
+#landing .rh-destinations svg {
+  width: 8px;
+  height: 14px;
+  flex-shrink: 0;
+  color: #8fc3cf;
+}
+#landing .rh-destinations:focus-visible {
+  outline: 2px solid #8fc3cf;
+  outline-offset: 3px;
 }
 #landing #rh-title {
   font-size: 26px;
@@ -239,6 +252,15 @@
 #landing .rh-rating bdi { font-size: 15px; font-weight: 700; }
 #landing .rh-rating > span { font-size: 12px; color: #a4bac4; }
 #landing .rh-reviews-label { color: #a4bac4; font-size: 12px; }
+@media (min-width: 600px) {
+  #landing .rh-intro { padding-top: 6px; }
+  #landing .rh-destinations {
+    position: absolute;
+    top: 0;
+    inset-inline-start: 0;
+    margin-bottom: 0;
+  }
+}
 @media (min-width: 600px) and (max-width: 799px) {
   #landing .rh-shell { max-width: 620px; padding-inline: 28px; }
   #landing .rh-action-title { font-size: 18px; }
@@ -249,7 +271,7 @@
   #landing .rh-logo { width: 182px; height: 96px; margin-bottom: 16px; }
   #landing #rh-title { font-size: 34px; }
   #landing .rh-subtitle { font-size: 16px; margin-top: 8px; }
-  #landing .rh-destinations { top: 8px; font-size: 14px; padding-inline: 10px; }
+  #landing .rh-destinations { top: 8px; padding-inline: 14px; }
   #landing .rh-shell .lh-offer-strip { min-height: 58px; margin-bottom: 20px; padding-inline: 20px; }
   #landing .rh-shell .lh-offer-title { font-size: 16px; }
   #landing .rh-shell .lh-offer-sub { font-size: 12px; }
@@ -277,7 +299,8 @@
 @media (hover: hover) and (pointer: fine) {
   #landing .rh-cabins:hover .rh-cabin-photo { transform: scale(1.035); }
   #landing .rh-action:hover { border-color: rgba(99,191,205,.52); background: #133346; transform: translateY(-2px); }
-  #landing .rh-faq:hover, #landing .rh-destinations:hover { color: #fff; }
+  #landing .rh-faq:hover { color: #fff; }
+  #landing .rh-destinations:hover { color: #fff; background: #133346; border-color: #416b7c; }
   #landing .rh-reviews:hover .rh-reviews-label { color: #d9eef5; }
 }
 #landing .rh-action:active { transform: scale(.985); }
