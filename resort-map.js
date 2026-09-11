@@ -89,28 +89,10 @@
     return count === 1 ? 'غرفة واحدة' : count === 2 ? 'غرفتان' : count + ' غرف';
   }
 
-  function guestText(count) {
-    return count === 2 ? 'يتسع لشخصين' : 'يتسع حتى ' + count + (count >= 3 && count <= 10 ? ' ضيوف' : ' ضيفًا');
-  }
-
-  function guestValue(count) {
-    if (count === 1) return 'ضيف واحد';
-    if (count === 2) return 'حتى ضيفين';
-    return 'حتى ' + count + (count >= 3 && count <= 10 ? ' ضيوف' : ' ضيفًا');
-  }
-
   function featuresFor(cabin) {
-    var tags = cabin.tags || [];
-    if (cabin.badge === 'مشترك') return tags.filter(function (tag) { return tag !== '|'; });
-    var features = [];
-    if (tags.some(function (tag) { return tag.indexOf('مسبح خاص') === 0; })) {
-      features.push('مسبح خاص');
-      features.push('مساحة خارجية خاصة');
-    }
-    // Use the same compact bath feature shown on the site's cabin cards.
-    var bath = tags.find(function (tag) { return tag.indexOf('بانيو') !== -1 || tag.indexOf('جاكوزي') !== -1; });
-    if (bath) features.push(bath.indexOf('داخلي') !== -1 && bath.indexOf('جاكوزي') === -1 ? 'بانيو داخلي' :
-      bath.indexOf('خارجي') !== -1 ? 'بانيو خارجي' : bath.indexOf('جاكوزي') !== -1 ? 'جاكوزي داخلي' : 'بانيو');
+    if (cabin.badge === 'مشترك') return cabin.tags.filter(function (tag) { return tag !== '|'; });
+    var features = cabin.pool ? ['مسبح خاص', 'مساحة خارجية خاصة'] : [];
+    if (cabin.bath.summary) features.push(cabin.bath.summary);
     return features;
   }
 
@@ -292,7 +274,7 @@
     description.hidden = !description.textContent;
     card.querySelector('.fd-map-guest-label').textContent = shared ? 'الموقع' : 'السعة';
     card.querySelector('.fd-map-room-label').textContent = shared ? 'الاستخدام' : 'غرف النوم';
-    card.querySelector('.fd-map-guests').textContent = shared ? 'وسط الأكواخ' : guestValue(cabin.guests);
+    card.querySelector('.fd-map-guests').textContent = shared ? 'وسط الأكواخ' : resortGuestText(cabin.guests);
     card.querySelector('.fd-map-rooms').textContent = shared ? 'لجميع الضيوف' : roomValue(cabin.rooms);
     var amenities = card.querySelector('.fd-map-amenities');
     amenities.replaceChildren();

@@ -28,6 +28,11 @@
       --action:#176b43;
       --action-hover:#1d7a4e;
     }
+    [hidden]{display:none!important}
+    .offer-ended-label{margin:14px 0 0;color:var(--muted);font-size:14px;font-weight:700;}
+    .offer-expired{text-align:center;margin:48px auto;padding:28px 20px;border:1px solid var(--line);border-radius:16px;background:var(--surface);}
+    .offer-expired h2{margin:0 0 20px;font-size:22px;line-height:1.5;}
+    .offer-expired a{margin:0 auto;}
     *{box-sizing:border-box}
     body{
       margin:0;min-height:100vh;background:var(--page-bg);color:var(--text);
@@ -86,7 +91,7 @@
     }
     @media(min-width:760px){
       .page{padding:32px 24px 48px;}
-      h1{font-size:28px;}
+      h1{font-size:24px;}
       .hero{padding:20px 0 30px;}
       .logo{width:128px;height:74px;}
       .occasion{margin-top:12px;font-size:14px;}
@@ -115,8 +120,10 @@
     }
     @media(prefers-reduced-motion:reduce){*{transition:none!important;}}
   </style>
+  <script src="../campaign-data.js?v=1" defer></script>
+  <script src="../resort-campaign.js?v=1" defer></script>
 </head>
-<body>
+<body data-campaign-page="offer">
   <main class="page">
     <!-- Update campaign name, slogan, offer copy, dates, and contact message together. -->
     <header class="page-heading">
@@ -125,6 +132,11 @@
       </a>
       <h1>عرض اليوم الوطني</h1>
     </header>
+
+    <section id="offer-expired" class="offer-expired" hidden>
+      <h2>انتهى هذا العرض</h2>
+      <a class="booking-link" href="../#home=resort">العودة إلى المنتجع</a>
+    </section>
 
     <div class="hero">
       <img class="logo" src="../imgs/img01.webp" alt="منتجع يوم العائلة" width="112" height="64">
@@ -160,7 +172,7 @@
     <p class="offer-terms">تطبق الشروط والأحكام</p>
 
     <nav class="booking-bar" aria-label="الحجز والتواصل">
-      <a class="booking-link" href="https://wa.me/966556156693?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%B9%D8%B1%D8%B6%20%D8%A7%D9%84%D9%8A%D9%88%D9%85%20%D8%A7%D9%84%D9%88%D8%B7%D9%86%D9%8A" target="_blank" rel="noopener noreferrer">احجز العرض عبر واتساب</a>
+      <a class="booking-link offer-booking-link" href="https://wa.me/966556156693?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%B9%D8%B1%D8%B6%20%D8%A7%D9%84%D9%8A%D9%88%D9%85%20%D8%A7%D9%84%D9%88%D8%B7%D9%86%D9%8A" target="_blank" rel="noopener noreferrer">احجز العرض عبر واتساب</a>
     </nav>
   </main>
 </body>
