@@ -190,3 +190,25 @@ async function copyCabinLink() {
     sharing.querySelector('[role="status"]').textContent = copied ? 'تم نسخ الرابط' : 'تعذر النسخ، يمكنك نسخ الرابط من شريط العنوان.';
   }
 }
+
+/* Mobile-only contact page tuning. Kept here as a narrow override so desktop and other resort views stay unchanged. */
+(function () {
+  var style = document.createElement('style');
+  style.id = 'fd-contact-mobile-compact';
+  style.textContent = '@media(max-width:599px){'
+    + '#contact-page[data-venue="resort"] .cp-title{font-size:17px!important;font-weight:700!important;}'
+    + '#contact-page[data-venue="resort"] .cp-intro{font-size:13px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-label{font-size:15px!important;margin-bottom:10px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-wide-name,#contact-page[data-venue="resort"] .cp-tile-name{font-size:14px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-primary .cp-wide-name{font-size:14px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-tile-sub,#contact-page[data-venue="resort"] .cp-map-sub,#contact-page[data-venue="resort"] .cp-app-caption{font-size:13px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-wide{min-height:54px!important;padding:12px 16px!important;border-radius:14px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-primary{min-height:48px!important;padding:10px 14px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-tile{min-height:68px!important;padding:11px 9px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-booking{padding:18px!important;border-radius:16px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-body{gap:clamp(26px,4.5vh,40px)!important;}'
+    + '#contact-page[data-venue="resort"] .cp-row2{margin-top:10px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-social{padding-top:18px!important;}'
+    + '}';
+  document.head.appendChild(style);
+})();
