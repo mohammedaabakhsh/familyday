@@ -110,7 +110,7 @@
   #services-overlay .svcs-section-title { margin-bottom:6px; font-size:13px; }
   :is(#menu-detail,#sinema-detail,#tarfihi-detail,#maiya-detail,
       #tawilat-detail,#jalsat-detail,#sharik-detail,#walaa-detail) {
-    --fd-heading:18px;
+    --fd-heading:17px;
     --fd-action-size:14px;
   }
   #menu-detail .menu-title,#sinema-detail .cn-title,#tarfihi-detail .tg-title,
