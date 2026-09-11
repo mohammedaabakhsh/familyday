@@ -211,6 +211,26 @@ async function copyCabinLink() {
     + '#contact-page[data-venue="resort"] .cp-social{padding-top:18px!important;}'
     + '#contact-page[data-venue="resort"] .cp-tile-sm{min-height:42px!important;padding:9px 6px!important;}'
     + '#contact-page[data-venue="resort"] .cp-tile-sm .cp-tile-name{font-size:12px!important;font-weight:500!important;}'
+    + '#contact-page[data-venue="resort"] .fd-contact-faq-section{padding-top:0!important;}'
+    + '#contact-page[data-venue="resort"] .fd-contact-faq-button{width:100%!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;min-height:54px!important;padding:12px 16px!important;border:1px solid #315967!important;border-radius:14px!important;background:#153244!important;color:#f0f5f7!important;font-family:Tajawal,sans-serif!important;font-size:14px!important;font-weight:700!important;text-align:right!important;cursor:pointer!important;}'
+    + '#contact-page[data-venue="resort"] .fd-contact-faq-arrow{color:#92c4d0!important;font-size:18px!important;}'
     + '}';
   document.head.appendChild(style);
+
+  function addFaqShortcut() {
+    var page = document.querySelector('#contact-page[data-venue="resort"]');
+    if (!page || page.querySelector('.fd-contact-faq-section')) return;
+    var social = page.querySelector('.cp-social');
+    if (!social) return;
+    var section = document.createElement('section');
+    section.className = 'cp-group fd-contact-faq-section';
+    section.innerHTML = '<h2 class="cp-label">معلومات مفيدة</h2><button type="button" class="fd-contact-faq-button"><span>الأسئلة الشائعة</span><span class="fd-contact-faq-arrow" aria-hidden="true">←</span></button>';
+    section.querySelector('button').addEventListener('click', function () {
+      if (typeof showFaq === 'function') showFaq();
+    });
+    social.after(section);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addFaqShortcut);
+  else addFaqShortcut();
 })();
