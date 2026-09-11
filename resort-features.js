@@ -191,63 +191,26 @@ async function copyCabinLink() {
   }
 }
 
-/* Mobile-only booking/contact redesign. Desktop and the rest of the resort stay untouched. */
+/* Mobile-only contact page tuning. Original layout retained; only compact typography/sizing is applied. */
 (function () {
-  function iconMarkup(kind) {
-    var icons = {
-      web: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.8 12h16.4M12 3.5c2.2 2.4 3.4 5.2 3.4 8.5S14.2 18.1 12 20.5M12 3.5C9.8 5.9 8.6 8.7 8.6 12s1.2 6.1 3.4 8.5"/></svg>',
-      apple: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.2 16.8 12 6.2m3.8 10.6L12 6.2M6 14.1h12"/></svg>',
-      android: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7.2 5.3 1.5-2M16.8 5.3l-1.5-2M6 9.2h12v7.6H6zM8 16.8v3M16 16.8v3M6 10v6M18 10v6"/></svg>',
-      whatsapp: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.2 4.8a9 9 0 0 0-14.4 10.6L4 20l4.7-.8a9 9 0 1 0 10.5-14.4Z"/><path d="M9 8.6c.4 2.7 2.5 4.8 5.3 5.4l1.2-1.2"/></svg>',
-      phone: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.4 4.5 10 8l-1.7 1.7a13.2 13.2 0 0 0 6 6L16 14l3.5 2.6-1.1 3c-.3.8-1.1 1.3-2 1.2C9.3 19.9 4.1 14.7 3.2 7.6c-.1-.9.4-1.7 1.2-2l3-1.1Z"/></svg>',
-      map: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s6-5.8 6-11a6 6 0 1 0-12 0c0 5.2 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg>',
-      faq: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5.5h14v10H9l-4 3v-13Z"/><path d="M9.8 9a2.3 2.3 0 1 1 3.8 1.8c-.9.7-1.5 1.1-1.5 2M12.1 14.7h.01"/></svg>'
-    };
-    return '<span class="fd-contact-icon fd-contact-icon--' + kind + '">' + icons[kind] + '</span>';
-  }
-
-  function addIcon(link, kind) {
-    if (!link || link.querySelector('.fd-contact-icon')) return;
-    link.insertAdjacentHTML('afterbegin', iconMarkup(kind));
-  }
-
-  function wrapCardCopy(link) {
-    if (!link || link.querySelector('.fd-contact-card-copy')) return;
-    var name = link.querySelector('.cp-tile-name, .cp-wide-name');
-    var sub = link.querySelector('.cp-tile-sub, .cp-map-sub');
-    if (!name) return;
-    var copy = document.createElement('div');
-    copy.className = 'fd-contact-card-copy';
-    name.before(copy);
-    copy.appendChild(name);
-    if (sub) copy.appendChild(sub);
-  }
-
-  function enhanceContact() {
-    var page = document.getElementById('contact-page');
-    if (!page || page.dataset.fdEnhanced === 'true') return;
-    page.dataset.fdEnhanced = 'true';
-
-    var hero = page.querySelector('.cp-hero');
-    var heading = page.querySelector('.cp-heading');
-    if (hero && heading && !hero.querySelector('.cp-intro')) {
-      var intro = document.createElement('p');
-      intro.className = 'cp-intro cp-resort-only';
-      intro.textContent = 'اختر طريقة الحجز أو التواصل المناسبة لك';
-      heading.after(intro);
-    }
-
-    var booking = page.querySelector('.cp-booking');
-    if (booking) {
-      var site = booking.querySelector('.cp-primary');
-      addIcon(site, 'web');
-      wrapCardCopy(site);
-      var appLinks = booking.querySelectorAll('.cp-row2 a');
-      if (appLinks[0]) { addIcon(appLinks[0], 'apple'); wrapCardCopy(appLinks[0]); }
-      if (appLinks[1]) { addIcon(appLinks[1], 'android'); wrapCardCopy(appLinks[1]); }
-    }
-
-    var contact = page.querySelector('.cp-contact');
-    if (contact) {
-      var contactTitle = contact.querySelector('.cp-label');
-      if (contactTitle) contactTitle.textContent = 'التواصل المباشر
+  var style = document.createElement('style');
+  style.id = 'fd-contact-mobile-compact';
+  style.textContent = '@media(max-width:599px){'
+    + '#contact-page[data-venue="resort"] .cp-title{font-size:17px!important;font-weight:700!important;}'
+    + '#contact-page[data-venue="resort"] .cp-intro{font-size:13px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-label{font-size:13px!important;margin-bottom:7px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-wide-name,#contact-page[data-venue="resort"] .cp-tile-name{font-size:14px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-primary .cp-wide-name{font-size:14px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-tile-sub,#contact-page[data-venue="resort"] .cp-map-sub,#contact-page[data-venue="resort"] .cp-app-caption{font-size:12px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-wide{min-height:54px!important;padding:12px 16px!important;border-radius:14px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-primary{min-height:48px!important;padding:10px 14px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-tile{min-height:62px!important;padding:10px 9px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-booking{padding:16px!important;border-radius:16px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-body{gap:clamp(24px,4.5vh,40px)!important;}'
+    + '#contact-page[data-venue="resort"] .cp-row2{margin-top:8px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-social{padding-top:18px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-tile-sm{min-height:42px!important;padding:9px 6px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-tile-sm .cp-tile-name{font-size:12px!important;font-weight:500!important;}'
+    + '}';
+  document.head.appendChild(style);
+})();
