@@ -191,24 +191,115 @@ async function copyCabinLink() {
   }
 }
 
-/* Mobile-only contact page tuning. Kept here as a narrow override so desktop and other resort views stay unchanged. */
+/* Mobile-only booking/contact redesign. Desktop and the rest of the resort stay untouched. */
 (function () {
+  function iconMarkup(kind) {
+    var icons = {
+      web: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.8 12h16.4M12 3.5c2.2 2.4 3.4 5.2 3.4 8.5S14.2 18.1 12 20.5M12 3.5C9.8 5.9 8.6 8.7 8.6 12s1.2 6.1 3.4 8.5"/></svg>',
+      apple: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.2 16.8 12 6.2m3.8 10.6L12 6.2M6 14.1h12"/></svg>',
+      android: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7.2 5.3 1.5-2M16.8 5.3l-1.5-2M6 9.2h12v7.6H6zM8 16.8v3M16 16.8v3M6 10v6M18 10v6"/></svg>',
+      whatsapp: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.2 4.8a9 9 0 0 0-14.4 10.6L4 20l4.7-.8a9 9 0 1 0 10.5-14.4Z"/><path d="M9 8.6c.4 2.7 2.5 4.8 5.3 5.4l1.2-1.2"/></svg>',
+      map: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s6-5.8 6-11a6 6 0 1 0-12 0c0 5.2 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg>',
+      faq: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5.5h14v10H9l-4 3v-13Z"/><path d="M9.8 9a2.3 2.3 0 1 1 3.8 1.8c-.9.7-1.5 1.1-1.5 2M12.1 14.7h.01"/></svg>'
+    };
+    return '<span class="fd-contact-icon fd-contact-icon--' + kind + '">' + icons[kind] + '</span>';
+  }
+
+  function addIcon(link, kind) {
+    if (!link || link.querySelector('.fd-contact-icon')) return;
+    link.insertAdjacentHTML('afterbegin', iconMarkup(kind));
+  }
+
+  function enhanceContact() {
+    var page = document.getElementById('contact-page');
+    if (!page || page.dataset.fdEnhanced === 'true') return;
+    page.dataset.fdEnhanced = 'true';
+
+    var hero = page.querySelector('.cp-hero');
+    var heading = page.querySelector('.cp-heading');
+    if (hero && heading && !hero.querySelector('.cp-intro')) {
+      var intro = document.createElement('p');
+      intro.className = 'cp-intro cp-resort-only';
+      intro.textContent = 'اختر طريقة الحجز أو التواصل المناسبة لك';
+      heading.after(intro);
+    }
+
+    var booking = page.querySelector('.cp-booking');
+    if (booking) {
+      var site = booking.querySelector('.cp-primary');
+      addIcon(site, 'web');
+      var appLinks = booking.querySelectorAll('.cp-row2 a');
+      if (appLinks[0]) addIcon(appLinks[0], 'apple');
+      if (appLinks[1]) addIcon(appLinks[1], 'android');
+    }
+
+    var contact = page.querySelector('.cp-contact');
+    if (contact) {
+      var contactTitle = contact.querySelector('.cp-label');
+      if (contactTitle) contactTitle.textContent = 'التواصل المباشر';
+      var wa = contact.querySelector('a[href*="wa.me"]');
+      addIcon(wa, 'whatsapp');
+    }
+
+    var location = page.querySelector('.cp-location');
+    if (location) {
+      var locationTitle = location.querySelector('.cp-label');
+      if (locationTitle) locationTitle.textContent = 'معلومات المنتجع';
+      var map = location.querySelector('#cp-map-link');
+      addIcon(map, 'map');
+      if (!location.querySelector('.fd-contact-faq')) {
+        var faq = document.createElement('button');
+        faq.type = 'button';
+        faq.className = 'cp-wide fd-contact-faq';
+        faq.innerHTML = iconMarkup('faq') + '<div class="fd-contact-card-copy"><div class="cp-wide-name">الأسئلة الشائعة</div><div class="cp-map-sub">إجابات سريعة لأهم استفساراتكم</div></div><div class="cp-wide-arrow" aria-hidden="true">←</div>';
+        faq.addEventListener('click', function () { if (typeof showFaq === 'function') showFaq(); });
+        map.after(faq);
+      }
+    }
+  }
+
   var style = document.createElement('style');
   style.id = 'fd-contact-mobile-compact';
   style.textContent = '@media(max-width:599px){'
+    + '#contact-page[data-venue="resort"] .cp-shell{padding-top:16px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-hero{margin-bottom:22px!important;}'
     + '#contact-page[data-venue="resort"] .cp-title{font-size:17px!important;font-weight:700!important;}'
-    + '#contact-page[data-venue="resort"] .cp-intro{font-size:13px!important;}'
-    + '#contact-page[data-venue="resort"] .cp-label{font-size:15px!important;margin-bottom:10px!important;}'
-    + '#contact-page[data-venue="resort"] .cp-wide-name,#contact-page[data-venue="resort"] .cp-tile-name{font-size:14px!important;}'
-    + '#contact-page[data-venue="resort"] .cp-primary .cp-wide-name{font-size:14px!important;}'
-    + '#contact-page[data-venue="resort"] .cp-tile-sub,#contact-page[data-venue="resort"] .cp-map-sub,#contact-page[data-venue="resort"] .cp-app-caption{font-size:13px!important;}'
-    + '#contact-page[data-venue="resort"] .cp-wide{min-height:54px!important;padding:12px 16px!important;border-radius:14px!important;}'
-    + '#contact-page[data-venue="resort"] .cp-primary{min-height:48px!important;padding:10px 14px!important;}'
-    + '#contact-page[data-venue="resort"] .cp-tile{min-height:68px!important;padding:11px 9px!important;}'
-    + '#contact-page[data-venue="resort"] .cp-booking{padding:18px!important;border-radius:16px!important;}'
-    + '#contact-page[data-venue="resort"] .cp-body{gap:clamp(26px,4.5vh,40px)!important;}'
-    + '#contact-page[data-venue="resort"] .cp-row2{margin-top:10px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-intro{font-size:13px!important;margin-top:6px!important;color:#8fb4c0!important;line-height:1.5!important;}'
+    + '#contact-page[data-venue="resort"] .cp-label{font-size:13px!important;color:#8bc4d1!important;margin:0 2px 7px!important;font-weight:700!important;}'
+    + '#contact-page[data-venue="resort"] .cp-body{gap:clamp(24px,4.5vh,40px)!important;}'
+    + '#contact-page[data-venue="resort"] .cp-booking{padding:0!important;border:0!important;background:transparent!important;}'
+    + '#contact-page[data-venue="resort"] :is(.cp-wide,.cp-tile){position:relative!important;display:grid!important;grid-template-columns:48px minmax(0,1fr) 18px!important;align-items:center!important;gap:11px!important;min-height:58px!important;padding:9px 14px!important;border-radius:14px!important;text-align:right!important;}'
+    + '#contact-page[data-venue="resort"] .cp-row2{grid-template-columns:1fr!important;gap:8px!important;margin-top:8px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-row2 .cp-tile{min-height:62px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-primary{justify-content:initial!important;background:#153244!important;border-color:#315967!important;}'
+    + '#contact-page[data-venue="resort"] .cp-primary .cp-wide-arrow{display:block!important;}'
+    + '#contact-page[data-venue="resort"] .cp-wide-name,#contact-page[data-venue="resort"] .cp-tile-name,#contact-page[data-venue="resort"] .cp-primary .cp-wide-name{font-size:14px!important;font-weight:700!important;}'
+    + '#contact-page[data-venue="resort"] .cp-tile-sub,#contact-page[data-venue="resort"] .cp-map-sub,#contact-page[data-venue="resort"] .cp-app-caption{font-size:12px!important;color:#9bb6c1!important;line-height:1.55!important;}'
+    + '#contact-page[data-venue="resort"] .cp-app-caption{margin-top:7px!important;text-align:right!important;padding-inline:2px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-contact-links{grid-template-columns:1fr!important;gap:8px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-contact-links .cp-wide{justify-content:initial!important;text-align:right!important;}'
+    + '#contact-page[data-venue="resort"] .cp-contact-links .cp-wide-arrow{display:block!important;}'
+    + '#contact-page[data-venue="resort"] .cp-whatsapp{background:#123746!important;border-color:#3f7e8c!important;}'
+    + '#contact-page[data-venue="resort"] .cp-location .cp-wide+ .cp-wide{margin-top:8px!important;}'
+    + '#contact-page[data-venue="resort"] .fd-contact-faq{width:100%!important;font-family:Tajawal,sans-serif!important;color:#f0f5f7!important;cursor:pointer!important;}'
+    + '#contact-page[data-venue="resort"] .fd-contact-card-copy{min-width:0!important;}'
+    + '#contact-page[data-venue="resort"] .fd-contact-icon{grid-column:1!important;grid-row:1!important;width:42px!important;height:42px!important;border-radius:11px!important;display:grid!important;place-items:center!important;color:#fff!important;box-sizing:border-box!important;}'
+    + '#contact-page[data-venue="resort"] .fd-contact-icon svg{width:24px!important;height:24px!important;fill:none!important;stroke:currentColor!important;stroke-width:1.8!important;stroke-linecap:round!important;stroke-linejoin:round!important;}'
+    + '#contact-page[data-venue="resort"] .fd-contact-icon--web{background:linear-gradient(145deg,#147a8c,#105769)!important;}'
+    + '#contact-page[data-venue="resort"] .fd-contact-icon--apple{background:linear-gradient(145deg,#2d9cff,#0968de)!important;}'
+    + '#contact-page[data-venue="resort"] .fd-contact-icon--android{background:linear-gradient(145deg,#3fbf69,#188d47)!important;}'
+    + '#contact-page[data-venue="resort"] .fd-contact-icon--whatsapp{background:linear-gradient(145deg,#31d36b,#159b47)!important;}'
+    + '#contact-page[data-venue="resort"] .fd-contact-icon--map{background:linear-gradient(145deg,#d68b6a,#ad6346)!important;}'
+    + '#contact-page[data-venue="resort"] .fd-contact-icon--faq{background:#102b3a!important;border:1px solid #315967!important;color:#9edce5!important;}'
+    + '#contact-page[data-venue="resort"] :is(.cp-wide,.cp-tile)>div:not(.cp-wide-arrow):not(.fd-contact-icon){grid-column:2!important;grid-row:1!important;}'
+    + '#contact-page[data-venue="resort"] :is(.cp-wide,.cp-tile)>.cp-wide-arrow{grid-column:3!important;grid-row:1!important;font-size:18px!important;}'
     + '#contact-page[data-venue="resort"] .cp-social{padding-top:18px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-row3{gap:8px!important;}'
+    + '#contact-page[data-venue="resort"] .cp-tile-sm{display:flex!important;min-height:42px!important;padding:9px 6px!important;text-align:center!important;}'
+    + '#contact-page[data-venue="resort"] .cp-tile-sm .cp-tile-name{font-size:12px!important;font-weight:500!important;}'
     + '}';
   document.head.appendChild(style);
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', enhanceContact);
+  else enhanceContact();
 })();
