@@ -1157,11 +1157,12 @@ function selectResortFaqSection(sectionId){
   var list = document.getElementById('faq-list-resort');
   var section = document.getElementById(sectionId);
   if(!list || !section || section.parentElement !== list) return;
+  var shouldOpen = section.hidden;
   Array.from(list.children).forEach(function(item){
-    item.hidden = item !== section;
+    item.hidden = !shouldOpen || item !== section;
   });
   document.querySelectorAll('#faq-overlay .fd-faq-shortcuts button').forEach(function(button){
-    button.setAttribute('aria-expanded', button.getAttribute('aria-controls') === sectionId ? 'true' : 'false');
+    button.setAttribute('aria-expanded', shouldOpen && button.getAttribute('aria-controls') === sectionId ? 'true' : 'false');
   });
 }
 function initResortFaqAccordion(){
