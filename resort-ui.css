@@ -202,8 +202,42 @@
 #menu-detail .menu-bbq .menu-item-desc { margin:0; }
 #menu-detail .menu-bbq-types { display:flex; gap:8px; }
 #menu-detail .menu-bbq-types button { flex:1; }
-
 #maiya-detail .wm-thumbnails { display:flex; gap:8px; max-width:100%; overflow-x:auto; padding:4px 2px 10px; margin-top:10px; scrollbar-width:thin; }
 #maiya-detail .wm-thumbnail { flex:0 0 56px; width:56px; height:56px; padding:3px; border:1px solid var(--fd-line); border-radius:10px; background:#0b2130; cursor:pointer; }
 #maiya-detail .wm-thumbnail img { display:block; width:100%; height:100%; object-fit:cover; border-radius:6px; }
-#maiya-detail .wm-thumbnail[aria-pressed="true"] { border:2px solid var(--fd
+#maiya-detail .wm-thumbnail[aria-pressed="true"] { border:2px solid var(--fd-link); background:#174454; }
+
+#faq-overlay .fd-faq-shortcuts { display:grid; grid-template-columns:minmax(0,1fr); gap:10px; margin-top:22px; }
+#faq-overlay .fd-faq-shortcuts button { box-sizing:border-box; width:100%; min-width:0; min-height:48px; padding:12px 16px; border:1px solid var(--fd-line); border-radius:12px; background:#153244; color:var(--fd-text); font:700 var(--fd-copy)/1.6 Tajawal,sans-serif; text-align:right; cursor:pointer; }
+#faq-overlay .fd-faq-shortcuts button[aria-expanded="true"] { background:var(--fd-primary); border-color:var(--fd-primary); color:#fff; }
+#faq-overlay .fd-faq-shortcuts button:focus-visible { outline:2px solid var(--fd-link); outline-offset:3px; }
+@media(min-width:900px) {
+  #faq-overlay .fd-faq-shortcuts { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  #faq-overlay .fd-faq-shortcuts button { text-align:center; }
+}
+#faq-list-resort .faq-answer p { margin:0 0 10px; }
+#faq-list-resort .faq-answer p:last-child { margin:10px 0 0; }
+#faq-list-resort .fd-text-link { display:block; width:fit-content; margin-top:12px; color:var(--fd-link); text-decoration:underline; text-underline-offset:4px; }
+
+#ov.fd-cabin-modern .fd-cabin-service-link { justify-content:space-between; gap:8px; color:var(--fd-link); text-decoration:underline; text-underline-offset:4px; }
+#ov.fd-cabin-modern .fd-cabin-addons a { color:var(--fd-link); text-decoration:underline; text-underline-offset:4px; }
+#ov.fd-cabin-modern .modal-bottom-bar { flex-wrap:wrap; gap:10px; }
+#ov.fd-cabin-modern .modal-bottom-bar > .mbtn { flex:1; }
+#ov.fd-cabin-modern .mbtn-wa { background:#102b3a; border:1px solid var(--fd-line); color:var(--fd-link); }
+#ov.fd-cabin-modern .mbtn-wa:hover { background:#173b4c; }
+#ov.fd-cabin-modern .modal-bottom-bar > .mbtn-wa:not(.fd-cabin-inquiry) { display:none; }
+#ov:not(.fd-cabin-modern) :is(.fd-cabin-inquiry,.fd-cabin-sharing) { display:none; }
+#ov.fd-cabin-modern .fd-cabin-sharing { flex:0 0 100%; width:100%; }
+#ov.fd-cabin-modern .fd-cabin-share-links { display:flex; justify-content:center; gap:8px 24px; flex-wrap:wrap; }
+#ov.fd-cabin-modern .fd-cabin-share-links :is(a,button) { display:inline-flex; align-items:center; justify-content:center; min-height:32px; margin:0; padding:4px 0; border:0; background:none; color:var(--fd-link); font:500 13px/1.5 Tajawal,sans-serif; text-decoration:underline; text-underline-offset:4px; cursor:pointer; }
+#ov.fd-cabin-modern .fd-cabin-copy-status { margin:4px 0 0; color:var(--fd-link); font-size:13px; text-align:center; }
+#ov.fd-cabin-modern .fd-cabin-copy-status:empty { display:none; }
+.fd-copy-buffer { position:fixed; top:0; left:-9999px; }
+
+#landing .lh-offer-strip[hidden] { display:none!important; }
+
+@media(max-width:380px) {
+  #app .cabin-toolbar { flex-wrap:wrap; }
+  #app .cabin-toolbar .filter-section { flex:0 0 100%; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); }
+  #app .cabin-toolbar .fd-map-launcher { border:0; padding:0; margin-inline-start:auto; }
+}
