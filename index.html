@@ -1220,14 +1220,27 @@ function initStayFaqAccordion(){
   });
 }
 
+function resetResortFaq(){
+  var overlay = document.getElementById('faq-overlay');
+  overlay.querySelectorAll('.faq-section').forEach(function(section){
+    section.hidden = true;
+  });
+  overlay.querySelectorAll('.faq-accordion-card.open').forEach(function(card){
+    card.classList.remove('open');
+  });
+  overlay.querySelectorAll('.fd-faq-shortcuts button, .faq-question-row').forEach(function(button){
+    button.setAttribute('aria-expanded','false');
+  });
+  overlay.scrollTop = 0;
+}
 function showFaq(){
   initResortFaqAccordion();
   document.getElementById('faq-overlay').classList.remove('hide');
-  
+  resetResortFaq();
 }
 function closeFaq(){
   document.getElementById('faq-overlay').classList.add('hide');
-  
+  resetResortFaq();
 }
 
 function showContact(type){
