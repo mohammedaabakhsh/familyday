@@ -4661,12 +4661,13 @@ function openMDirect(c){
       case 'tour': call('open3D',r.args); break;
       case 'order':
         _isMenuOrder=!!r.args[2];
-        _orderResortScope=!!r.args[3];
+        _orderResortScope=r.args.length>3 ? !!r.args[3] : !!r.parent && ['menu','sinema','maiya','tarfihi','tawilat','jalsat'].indexOf(r.parent.name)!==-1;
         call('openOrderPopup',r.args.slice(0,2));
         break;
       case 'map': document.getElementById('fd-map-open').click(); break;
       default:
         if(serviceViews[r.name]) {
+          if(r.name==='sinema' && r.parent && r.parent.name==='cabin') document.getElementById('services-overlay').classList.remove('hide');
           call(serviceViews[r.name][0]);
           if(['menu','jalsat','tawilat','sinema','tarfihi','maiya'].indexOf(r.name)!==-1) {
             var back=document.querySelector('#'+r.name+'-detail button[onclick="'+serviceViews[r.name][1]+'()"]');
@@ -4685,7 +4686,10 @@ function openMDirect(c){
       var dialog=document.getElementById('fd-map-dialog');
       if(dialog && dialog.open) dialog.close();
     } else if(close[r.name]) call(close[r.name]);
-    else if(serviceViews[r.name]) call(serviceViews[r.name][1]);
+    else if(serviceViews[r.name]) {
+      call(serviceViews[r.name][1]);
+      if(r.name==='sinema' && r.parent && r.parent.name==='cabin') document.getElementById('services-overlay').classList.add('hide');
+    }
   }
   function renderRoute(next){
     var before=pathFor(current), after=pathFor(next), common=0;
