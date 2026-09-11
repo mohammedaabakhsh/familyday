@@ -99,11 +99,41 @@
 #menu-detail .menu-qty-button:disabled { background:#183745; border-color:#31505d; color:#91aab5; cursor:default; }
 
 /* Keep each page's approved photo/phrase order; share the outer spacing. */
-/* Mobile typography trial: resort services listing only. */
+/* Compact mobile typography for the resort services trial. */
 @media(max-width:599px) {
-  #services-overlay .svcs-title { font-size:20px; }
-  #services-overlay .svcs-card .svcs-name { font-size:16px; }
+  #services-overlay .svcs-title { font-size:18px; }
+  #services-overlay .svcs-card .svcs-name { font-size:14px; }
   #services-overlay .svcs-section-title { font-size:13px; }
+  :is(#menu-detail,#sinema-detail,#tarfihi-detail,#maiya-detail,
+      #tawilat-detail,#jalsat-detail,#sharik-detail,#walaa-detail) {
+    --fd-heading:18px;
+    --fd-action-size:14px;
+  }
+  #menu-detail .menu-title,#sinema-detail .cn-title,#tarfihi-detail .tg-title,
+  #maiya-detail .wm-title,#tawilat-detail .tw-title,#jalsat-detail .jl-title,
+  #sharik-detail .sw-title,#walaa-detail .wl-title { font-weight:700; }
+
+  #sinema-detail .cn-section-title,#tarfihi-detail .tg-section-title,
+  #maiya-detail .wm-section-title,#tawilat-detail .tw-label,
+  #jalsat-detail :is(.jl-section-title,.jl-filter-title),
+  #sharik-detail :is(.sw-section-title,.sw-step-title),
+  #walaa-detail .wl-section-title { font-size:15px; }
+
+  #menu-detail :is(.menu-item-name,.menu-qty),
+  #tarfihi-detail .tg-package-name,#maiya-detail .wm-select,
+  #tawilat-detail :is(.tw-package-name,.tw-size),
+  #jalsat-detail :is(.jl-filter,.jl-addon-name,.jl-addon-price,.jl-total),
+  #sinema-detail .cn-inclusions,#walaa-detail .wl-benefits-list,
+  #sharik-detail :is(.sw-prize-kicker,.sw-prize-detail,.sw-email-address),
+  #tarfihi-detail .tg-summary,#maiya-detail .wm-order-summary { font-size:14px; }
+
+  #maiya-detail .wm-game-name,#jalsat-detail .jl-session-name { font-size:16px; font-weight:700; }
+  #sinema-detail .cn-stat dd,#jalsat-detail .jl-facts dd { font-size:18px; font-weight:700; }
+  #tarfihi-detail :is(.tg-package-price,.tg-summary-price),
+  #maiya-detail .wm-order-summary strong,
+  #tawilat-detail :is(.tw-package-price,#tawilat-summary-price),
+  #jalsat-detail .jl-total strong { font-size:16px; }
+  #walaa-detail .wl-promise-reward,#sharik-detail .sw-prize-highlight { font-size:22px; }
 }
 
 #menu-detail .menu-shell,#sinema-detail .cn-shell,#tarfihi-detail .tg-shell,
