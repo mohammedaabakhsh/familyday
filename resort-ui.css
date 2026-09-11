@@ -99,6 +99,13 @@
 #menu-detail .menu-qty-button:disabled { background:#183745; border-color:#31505d; color:#91aab5; cursor:default; }
 
 /* Keep each page's approved photo/phrase order; share the outer spacing. */
+/* Mobile typography trial: resort services listing only. */
+@media(max-width:599px) {
+  #services-overlay .svcs-title { font-size:20px; }
+  #services-overlay .svcs-card .svcs-name { font-size:16px; }
+  #services-overlay .svcs-section-title { font-size:13px; }
+}
+
 #menu-detail .menu-shell,#sinema-detail .cn-shell,#tarfihi-detail .tg-shell,
 #maiya-detail .wm-shell,#tawilat-detail .tw-shell,#jalsat-detail .jl-shell,
 #sharik-detail .sw-shell,#walaa-detail .wl-shell { padding-inline:var(--fd-side); }
