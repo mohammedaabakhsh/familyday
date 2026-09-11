@@ -101,9 +101,13 @@
 /* Keep each page's approved photo/phrase order; share the outer spacing. */
 /* Compact mobile typography for the resort services trial. */
 @media(max-width:599px) {
-  #services-overlay .svcs-title { font-size:18px; }
+  #services-overlay .svcs-title { font-size:17px; }
+  #services-overlay .svcs-header { padding-top:16px; padding-bottom:18px; }
+  #services-overlay .svcs-content { gap:16px; padding-bottom:calc(20px + env(safe-area-inset-bottom,0px)); }
+  #services-overlay .svcs-grid { gap:8px; }
+  #services-overlay .svcs-card { min-height:48px; padding:10px 16px; border-radius:14px; }
   #services-overlay .svcs-card .svcs-name { font-size:14px; }
-  #services-overlay .svcs-section-title { font-size:13px; }
+  #services-overlay .svcs-section-title { margin-bottom:6px; font-size:13px; }
   :is(#menu-detail,#sinema-detail,#tarfihi-detail,#maiya-detail,
       #tawilat-detail,#jalsat-detail,#sharik-detail,#walaa-detail) {
     --fd-heading:18px;
