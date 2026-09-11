@@ -167,9 +167,14 @@
 #maiya-detail .wm-thumbnail img { display:block; width:100%; height:100%; object-fit:cover; border-radius:6px; }
 #maiya-detail .wm-thumbnail[aria-pressed="true"] { border:2px solid var(--fd-link); background:#174454; }
 
-#faq-overlay .fd-faq-shortcuts { display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
-#faq-overlay .fd-faq-shortcuts button { min-height:40px; padding:8px 12px; border:1px solid var(--fd-line); border-radius:10px; background:var(--fd-surface); color:var(--fd-link); font:500 14px/1.5 Tajawal,sans-serif; cursor:pointer; }
-#faq-list-resort .faq-section-title { scroll-margin-top:20px; }
+#faq-overlay .fd-faq-shortcuts { display:grid; grid-template-columns:minmax(0,1fr); gap:10px; margin-top:22px; }
+#faq-overlay .fd-faq-shortcuts button { box-sizing:border-box; width:100%; min-width:0; min-height:48px; padding:12px 16px; border:1px solid var(--fd-line); border-radius:12px; background:#153244; color:var(--fd-text); font:700 var(--fd-copy)/1.6 Tajawal,sans-serif; text-align:right; cursor:pointer; }
+#faq-overlay .fd-faq-shortcuts button[aria-expanded="true"] { background:var(--fd-primary); border-color:var(--fd-primary); color:#fff; }
+#faq-overlay .fd-faq-shortcuts button:focus-visible { outline:2px solid var(--fd-link); outline-offset:3px; }
+@media(min-width:900px) {
+  #faq-overlay .fd-faq-shortcuts { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  #faq-overlay .fd-faq-shortcuts button { text-align:center; }
+}
 #faq-list-resort .faq-answer p { margin:0 0 10px; }
 #faq-list-resort .faq-answer p:last-child { margin:10px 0 0; }
 #faq-list-resort .fd-text-link { display:block; width:fit-content; margin-top:12px; color:var(--fd-link); text-decoration:underline; text-underline-offset:4px; }

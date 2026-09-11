@@ -1153,6 +1153,17 @@ function toggleResortFaq(card, question){
   var isOpen = card.classList.toggle('open');
   question.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
 }
+function selectResortFaqSection(sectionId){
+  var list = document.getElementById('faq-list-resort');
+  var section = document.getElementById(sectionId);
+  if(!list || !section || section.parentElement !== list) return;
+  Array.from(list.children).forEach(function(item){
+    item.hidden = item !== section;
+  });
+  document.querySelectorAll('#faq-overlay .fd-faq-shortcuts button').forEach(function(button){
+    button.setAttribute('aria-expanded', button.getAttribute('aria-controls') === sectionId ? 'true' : 'false');
+  });
+}
 function initResortFaqAccordion(){
   var list = document.getElementById('faq-list-resort');
   if(!list) return;
@@ -1534,12 +1545,13 @@ function tarfihiOrder(){
 
 /* Resort FAQ: match the refined service and contact pages. */
 #faq-overlay{font-family:Tajawal,sans-serif;direction:rtl}
-#faq-overlay .faq-page-header{box-sizing:border-box;width:100%;max-width:600px;margin:0 auto;padding:24px 20px 28px}
+#faq-overlay .faq-page-header{box-sizing:border-box;display:block;position:static;height:auto;min-height:0;width:100%;max-width:600px;margin:0 auto;padding:24px 20px 28px}
 #faq-overlay .faq-heading{display:flex;align-items:center;gap:14px}
 #faq-overlay .faq-back{display:flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;cursor:pointer}
 #faq-overlay .faq-title{margin:0;color:#f0f5f7;font-weight:800;line-height:1.4}
 #faq-list-resort{box-sizing:border-box;width:100%;max-width:600px;margin:0 auto;padding:0 20px calc(32px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:26px}
 #faq-list-resort .faq-section{min-width:0}
+#faq-list-resort .faq-section[hidden]{display:none}
 #faq-list-resort .faq-section-title{margin:0 2px 12px;color:#8bc4d1;font-family:Tajawal,sans-serif;font-size:15px;font-weight:700;line-height:1.5}
 #faq-list-resort .faq-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;align-items:start}
 #faq-list-resort .faq-accordion-card{min-width:0;overflow:hidden;padding:0!important;border:1px solid #315967!important;border-radius:16px!important;background:#153244!important;box-shadow:none!important;animation:none!important}
@@ -1565,11 +1577,15 @@ function tarfihiOrder(){
     <h1 id="faq-title-resort" class="faq-title">الأسئلة الشائعة</h1>
    </div>
 
-   <nav class="fd-faq-shortcuts" aria-label="أقسام الأسئلة الشائعة"><button type="button" onclick="document.getElementById('faq-resort-booking-title').scrollIntoView({block:'start'})">الحجز وأوقات الدخول</button><button type="button" onclick="document.getElementById('faq-resort-cabins-title').scrollIntoView({block:'start'})">الأكواخ والمرافق</button><button type="button" onclick="document.getElementById('faq-resort-services-title').scrollIntoView({block:'start'})">الخدمات والتعليمات</button></nav>
+   <nav class="fd-faq-shortcuts" aria-label="أقسام الأسئلة الشائعة">
+    <button type="button" aria-controls="faq-resort-booking" aria-expanded="false" onclick="selectResortFaqSection('faq-resort-booking')">الحجز وأوقات الدخول</button>
+    <button type="button" aria-controls="faq-resort-cabins" aria-expanded="false" onclick="selectResortFaqSection('faq-resort-cabins')">الأكواخ والمرافق</button>
+    <button type="button" aria-controls="faq-resort-services" aria-expanded="false" onclick="selectResortFaqSection('faq-resort-services')">الخدمات والتعليمات</button>
+   </nav>
   </header>
   <div id="faq-list-resort">
 
-   <section class="faq-section" aria-labelledby="faq-resort-booking-title">
+   <section id="faq-resort-booking" class="faq-section" aria-labelledby="faq-resort-booking-title" hidden>
     <h2 id="faq-resort-booking-title" class="faq-section-title">الحجز وأوقات الدخول</h2>
     <div class="faq-grid">
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
@@ -1608,7 +1624,7 @@ function tarfihiOrder(){
     </div>
    </section>
 
-   <section class="faq-section" aria-labelledby="faq-resort-cabins-title">
+   <section id="faq-resort-cabins" class="faq-section" aria-labelledby="faq-resort-cabins-title" hidden>
     <h2 id="faq-resort-cabins-title" class="faq-section-title">الأكواخ والمرافق</h2>
     <div class="faq-grid">
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
@@ -1663,7 +1679,7 @@ function tarfihiOrder(){
     </div>
    </section>
 
-   <section class="faq-section" aria-labelledby="faq-resort-services-title">
+   <section id="faq-resort-services" class="faq-section" aria-labelledby="faq-resort-services-title" hidden>
     <h2 id="faq-resort-services-title" class="faq-section-title">الخدمات والتعليمات</h2>
     <div class="faq-grid">
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
@@ -5089,7 +5105,7 @@ function openMDirect(c){
 @media(max-width:599px){#hospitality-detail .hd-title{font-size:22px}}
 </style>
 
-<link rel="stylesheet" href="resort-ui.css?v=1">
+<link rel="stylesheet" href="resort-ui.css?v=2">
 
 <!-- Approved keyboard navigation enhancement -->
 <style id="fd-keyboard-focus">
