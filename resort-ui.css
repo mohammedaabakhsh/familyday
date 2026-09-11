@@ -115,7 +115,7 @@
   }
   #menu-detail .menu-title,#sinema-detail .cn-title,#tarfihi-detail .tg-title,
   #maiya-detail .wm-title,#tawilat-detail .tw-title,#jalsat-detail .jl-title,
-  #sharik-detail .sw-title,#walaa-detail .wl-title { font-weight:700; }
+  #sharik-detail .sw-title,#walaa-detail .wl-title { font-weight:700; font-size:17px!important; }
 
   #sinema-detail .cn-section-title,#tarfihi-detail .tg-section-title,
   #maiya-detail .wm-section-title,#tawilat-detail .tw-label,
