@@ -5709,6 +5709,7 @@ body.fa-app[data-fa-destination=true][data-fa-demo=true]{--fa-top:148px}
 .fa-info-row small{display:block;font-size:13px;line-height:1.8;color:var(--fa-muted);margin-top:4px}
 @media(min-width:900px){body.fa-app[data-fa-destination=true]{--fa-top:90px}body.fa-app[data-fa-destination=true][data-fa-demo=true]{--fa-top:118px}.fa-app[data-fa-destination=true] .fa-header-inner{position:relative}.fa-app[data-fa-destination=true] .fa-brand-row{height:80px}.fa-place-switch{position:absolute;top:17px;left:50%;transform:translateX(-50%);width:340px;margin:0}.fa-app .fa-book-form{grid-template-areas:"dates guests action" "note note note";padding:22px;gap:11px 22px}.fa-info-place>img{width:100px;height:100px}.fa-info-place{grid-template-columns:100px minmax(0,1fr)}.fa-offer-card{padding:27px;min-height:350px}}
 @media(max-width:360px){.fa-place-switch button{font-size:15px}.fa-info-row{padding:14px;gap:10px}.fa-info-row strong{font-size:16px}.fa-info-place{padding:14px;gap:12px;grid-template-columns:74px minmax(0,1fr)}.fa-info-place>img{width:74px;height:94px}.fa-info-place h2{font-size:18px}}
+@media(min-width:900px){.fa-app[data-fa-page=search] .fa-detail-title{visibility:hidden}}
 
 .fa-app .fa-campaign[hidden]{display:none!important}
 </style>
@@ -5888,7 +5889,7 @@ body.fa-app[data-fa-destination=true][data-fa-demo=true]{--fa-top:148px}
   function infoRow(symbol,title,description,action){return '<button type="button" class="fa-info-row" onclick="'+action+'">'+icon(symbol)+'<span><strong>'+title+'</strong><small>'+description+'</small></span>'+icon('arrow')+'</button>';}
   function renderInfo(){
     var stay=window.fdAppVenue==='stay',name=stay?'استراحة يوم العائلة':'منتجع يوم العائلة';
-    var html='<div class="fa-page-body fa-info-body"><h1>المعلومات</h1><p class="fa-page-intro">'+name+'</p><div class="fa-info-place"><img src="'+GALLERY[stay?20:1][0]+'" alt="'+name+'"><div><h2>'+name+'</h2><p>جدة، خليج سلمان</p><span>الدخول 4 مساءً · الخروج 12 ظهرًا</span></div></div><div class="fa-info-list">'
+    var html='<div class="fa-page-body fa-info-body"><h1>المعلومات</h1><div class="fa-info-place"><img src="'+GALLERY[stay?20:1][0]+'" alt="'+name+'"><div><h2>'+name+'</h2><p>جدة، خليج سلمان</p><span>الدخول 4 مساءً · الخروج 12 ظهرًا</span></div></div><div class="fa-info-list">'
       +infoRow('services',stay?'المرافق والخدمات':'الخدمات والتجارب',stay?'تعرّف على تجهيزات الاستراحة':'تعرّف على الضيافة والتنسيق وبقية الخدمات',"fdAppNavigate('services')")
       +infoRow('map','الموقع والتواصل','الخريطة وطرق التواصل مع الاستقبال',"fdAppNavigate('contact')")
       +infoRow('help','الأسئلة الشائعة','معلومات الحجز والإقامة والتعليمات',stay?'showFaq2()':'showFaq()')+'</div></div>';
