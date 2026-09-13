@@ -1,20 +1,14 @@
 /* Rest-house presentation. Existing section IDs, galleries and booking destinations are retained. */
 function renderStayCard(c) {
   var photos = GALLERY[c.id] || [];
-  var feature = c.id === 20 ? 'مسبح للأطفال' : 'ملعب كرة طائرة';
   return '<div class="card-img-wrap" data-cid="' + c.id + '" data-cidx="0">'
     + '<img class="card-img" src="' + photos[0] + '" alt="' + c.name + '" loading="lazy" width="800" height="800">'
     + '</div><div class="card-body fd-cabin-card-v2-body">'
     + '<div class="fd-cabin-card-v2-heading"><div><h2 class="card-name">' + c.name + '</h2>'
-    + '<p class="fd-cabin-card-v2-subtitle">مناسب للتجمعات العائلية</p></div>'
-    + '<span class="fd-cabin-card-v2-feature">' + feature + '</span></div>'
+    + '<p class="fd-cabin-card-v2-subtitle">مناسب للتجمعات العائلية</p></div></div>'
     + '<div class="fd-cabin-card-v2-facts" aria-label="معلومات ' + c.name + '">'
-    + '<div class="fd-cabin-card-v2-fact"><span>غرف النوم</span><strong>' + (c.rooms === 2 ? 'غرفتا نوم' : 'غرفة نوم') + '</strong></div>'
-    + '<div class="fd-cabin-card-v2-fact"><span>السعة</span><strong>حتى 70 ضيفًا</strong></div></div>'
-    + '<div class="stay-card-photos" role="group" aria-label="صور ' + c.name + '">'
-    + photos.slice(0, 4).map(function (src, i) {
-      return '<button type="button" onclick="event.stopPropagation();openFS(GALLERY[' + c.id + '],' + i + ')" aria-label="تكبير الصورة ' + (i + 1) + ' من ' + c.name + '"><img src="' + src + '" alt="" loading="lazy" width="64" height="64"></button>';
-    }).join('') + '<span>' + photos.length + ' صورة</span></div>'
+    + '<div class="fd-cabin-card-v2-fact"><span>السعة</span><strong>حتى 70 ضيفًا</strong></div>'
+    + '<div class="fd-cabin-card-v2-fact"><span>غرف النوم</span><strong>' + (c.rooms === 2 ? 'غرفتان' : 'غرفة واحدة') + '</strong></div></div>'
     + '<button type="button" class="card-btn">عرض التفاصيل والصور</button></div>';
 }
 
