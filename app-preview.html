@@ -4632,7 +4632,8 @@ function openMDirect(c){
     var r = {name:name,args:args || []};
     if(parent) r.parent = parent;
     else if(name==='home') { /* App home is a top-level destination. */ }
-    else if(name==='offers' || name==='walaa' || name==='bookings') r.parent = route('home',[window.fdAppVenue || 'resort']);
+    else if(name==='offers' || name==='walaa') r.parent = route('home',[window.fdAppVenue || 'resort']);
+    else if(name==='bookings') r.parent = route('home',[window.fdPreviewVisitVenue || window.fdAppVenue || 'resort']);
     else if(name==='search') r.parent = route('home',[(r.args[0] && r.args[0].venue) || window.fdAppVenue || 'resort']);
     else if(name==='stay-services') r.parent = route('home',['stay']);
     else if(name==='resort' || name==='services' || name==='faq') r.parent = route('home',['resort']);
@@ -5701,6 +5702,7 @@ body.fa-app[data-fa-demo=true]{--fa-top:94px}
   // and check-in state; a date or a device location is not proof of check-in.
   var visitStage=demoMode==='staying'?'staying':demoMode==='booking'?'upcoming':'exploring';
   var demoBooking=visitStage!=='exploring';
+  window.fdPreviewVisitVenue=demoBooking?'resort':null;
   var demoExtras=[];
   var pendingService='';
   var serviceRules={
