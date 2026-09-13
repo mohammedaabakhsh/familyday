@@ -30,7 +30,7 @@ const FD_CAMPAIGN = {
       start: '2026-09-26', end: '2026-09-29',
       datesHTML: '<bdi dir="ltr">26–29</bdi> سبتمبر 2026',
       intro: 'احجز يومًا والثاني بـ', amount: 96, currency: 'ريال',
-      noteHTML: 'اليوم الثاني يكون بعد يوم الحجز مباشرة'
+      noteHTML: 'يسري العرض على يومين متتاليين'
     }
   ]
 };

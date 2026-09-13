@@ -36,7 +36,7 @@ function configureResortOrderForm() {
   outputLabel.id = 'fd-cabin-number-label';
   document.getElementById('order-cabin-num').setAttribute('aria-labelledby', outputLabel.id);
   var send = popup.querySelector('[onclick="sendOrderWhatsapp()"]');
-  send.textContent = 'متابعة إلى واتساب';
+  send.textContent = 'أرسل الطلب عبر واتساب';
   send.classList.add('fd-order-submit');
   var cancel = popup.querySelector('[onclick="closeOrderPopup()"]');
   cancel.classList.add('fd-order-cancel');
@@ -150,7 +150,7 @@ function updateCabinShareActions(cabin) {
     inquiry.className = 'mbtn mbtn-wa fd-cabin-inquiry';
     inquiry.target = '_blank';
     inquiry.rel = 'noopener noreferrer';
-    inquiry.textContent = 'تواصل واتساب';
+    inquiry.textContent = 'تواصل عبر واتساب';
     bar.appendChild(inquiry);
   }
   inquiry.href = 'https://wa.me/966556156693?text=' + encodeURIComponent('السلام عليكم، أرغب في الاستفسار عن ' + cabin.name + '.');
