@@ -4752,7 +4752,7 @@ function openMDirect(c){
   wrapOpen('showSection2',function(){return route('chalet');});
   wrapOpen('showServices',function(){return route('services');});
   wrapOpen('showFaq',function(){return route('faq');});
-  wrapOpen('showFaq2',function(){return route('faq2');});
+  wrapOpen('showFaq2',function(){return route('faq2',[],current.name==='contact' && current.args[0]==='stay' ? current : null);});
   wrapOpen('showContact',function(type){return route('contact',[type || 'resort']);});
   function cabinRoute(id){
     var parent=current.name==='cabin' ? current.parent : current.name==='service-sub' ? current : null;
