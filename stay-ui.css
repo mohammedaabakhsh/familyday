@@ -1,0 +1,442 @@
+/* Rest-house home follows the approved resort composition. */
+#landing2.rh-page {
+  background:
+    radial-gradient(ellipse 76% 52% at 70% 0%, rgba(25,167,183,.085), transparent 75%),
+    linear-gradient(160deg, #061722 0%, #04111e 55%, #050f19 100%) !important;
+}
+#landing2 .rh-shell {
+  width: min(100%, 1104px);
+  min-height: 100%;
+  margin-inline: auto;
+  padding: 18px 20px calc(24px + env(safe-area-inset-bottom, 0px));
+  color: #f4f7f8;
+  direction: rtl;
+}
+#landing2 .rh-shell button,
+#landing2 .rh-shell a {
+  font-family: 'Tajawal', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+#landing2 .rh-intro {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0;
+  padding-bottom: 22px;
+  text-align: center;
+}
+#landing2 .rh-logo {
+  display: block;
+  width: 150px;
+  height: 80px;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: 12px;
+}
+#landing2 .rh-destinations {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  max-width: 100%;
+  margin-bottom: 8px;
+  padding: 10px 12px;
+  border: 1px solid #294653;
+  border-radius: 12px;
+  background: #0b2534;
+  color: #d7e8ed;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  cursor: pointer;
+  transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+}
+#landing2 .rh-destinations svg {
+  width: 8px;
+  height: 14px;
+  flex-shrink: 0;
+  color: #8fc3cf;
+}
+#landing2 .rh-destinations:focus-visible {
+  outline: 2px solid #8fc3cf;
+  outline-offset: 3px;
+}
+#landing2 #sh-title {
+  font-size: 26px;
+  line-height: 1.3;
+  font-weight: 700;
+  margin: 0;
+  color: #f4f7f8;
+}
+#landing2 .rh-subtitle {
+  margin: 6px 0 0;
+  color: #adbdc5;
+  font-size: 14px;
+  line-height: 1.5;
+}
+#landing2 .rh-shell .lh-offer-strip {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) 28px;
+  min-height: 54px;
+  height: auto;
+  margin: 0 0 16px;
+  padding: 10px 14px;
+  border-width: 1px;
+  border-color: rgba(67,217,135,.42);
+  border-radius: 16px;
+  box-shadow: none;
+  animation: none;
+}
+#landing2 .rh-shell .lh-offer-copy { gap: 3px; }
+#landing2 .rh-shell .lh-offer-title { font-size: 14px; }
+#landing2 .rh-shell .lh-offer-sub { font-size: 11px; }
+#landing2 .rh-shell .lh-offer-go {
+  border: 0;
+  background: transparent;
+}
+#landing2 .rh-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+#landing2 .rh-cabins {
+  grid-column: 1 / -1;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: clamp(212px, 60vw, 290px);
+  min-width: 0;
+  overflow: hidden;
+  padding: 22px;
+  border: 1px solid rgba(152,206,213,.24);
+  border-radius: 22px;
+  background: #10303e;
+  text-align: right;
+  color: #fff;
+  cursor: pointer;
+}
+#landing2 .rh-cabin-photo,
+#landing2 .rh-cabin-shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+#landing2 .rh-cabin-photo {
+  z-index: -2;
+  object-fit: cover;
+  object-position: 50% 34%;
+  transition: transform .55s ease;
+}
+#landing2 .rh-cabin-shade {
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(3,16,25,.01) 25%, rgba(3,16,25,.12) 48%, rgba(3,16,25,.82) 100%);
+}
+#landing2 .rh-cabin-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+}
+#landing2 .rh-cabin-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+#landing2 .rh-cabin-title {
+  font-size: 29px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+#landing2 .rh-cabin-caption {
+  color: #e3edf0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+#landing2 .rh-arrow {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+#landing2 .rh-cabin-arrow { width: 27px; height: 27px; color: #fff; }
+#landing2 .rh-action {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 17px;
+  align-content: space-between;
+  align-items: center;
+  gap: 16px 5px;
+  min-height: 112px;
+  min-width: 0;
+  padding: 17px 15px;
+  border: 1px solid rgba(103,164,184,.2);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(18,49,65,.8), rgba(9,30,44,.75));
+  color: #edf5f7;
+  text-align: right;
+  cursor: pointer;
+  transition: border-color .2s ease, background .2s ease, transform .2s ease;
+}
+#landing2 .rh-action-icon,
+#landing2 .rh-faq-icon {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+#landing2 .rh-action-icon { grid-column: 1; grid-row: 1; width: 25px; height: 25px; color: #63bfcd; }
+#landing2 .rh-action-body { grid-column: 1 / -1; grid-row: 2; display: flex; flex-direction: column; gap: 7px; }
+#landing2 .rh-action-title { font-size: 16px; font-weight: 700; line-height: 1.35; }
+#landing2 .rh-action-description { display: none; }
+#landing2 .rh-action > .rh-arrow { grid-column: 2; grid-row: 1; width: 17px; height: 17px; color: #85b0bf; }
+#landing2 .rh-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(141,184,197,.15);
+}
+#landing2 .rh-faq {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 8px 2px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  font-size: 15px;
+  font-weight: 500;
+  color: #cbdee5;
+  text-align: right;
+  cursor: pointer;
+}
+#landing2 .rh-faq-icon { width: 20px; height: 20px; color: #78adbd; }
+#landing2 .rh-faq > .rh-arrow { margin-right: auto; width: 16px; height: 16px; }
+#landing2 .rh-reviews {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 6px 0;
+  color: #edf5f7;
+  text-decoration: none;
+  font-size: 13px;
+  border-radius: 6px;
+}
+#landing2 .rh-stars { display: inline-flex; direction: ltr; gap: 3px; color: #f9a826; font-size: 13px; line-height: 1; }
+#landing2 .rh-star-partial {
+  color: transparent;
+  background: linear-gradient(90deg, #f9a826 0 50%, #566b76 50% 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+#landing2 .rh-rating { display: flex; align-items: baseline; gap: 4px; }
+#landing2 .rh-rating bdi { font-size: 15px; font-weight: 700; }
+#landing2 .rh-rating > span { font-size: 12px; color: #a4bac4; }
+#landing2 .rh-reviews-label { color: #a4bac4; font-size: 12px; }
+@media (min-width: 600px) {
+  #landing2 .rh-intro { padding-top: 6px; }
+  #landing2 .rh-destinations {
+    position: absolute;
+    top: 0;
+    inset-inline-start: 0;
+    margin-bottom: 0;
+  }
+}
+@media (min-width: 600px) and (max-width: 799px) {
+  #landing2 .rh-shell { max-width: 620px; padding-inline: 28px; }
+  #landing2 .rh-action-title { font-size: 18px; }
+}
+@media (min-width: 800px) {
+  #landing2 .rh-shell { padding: 26px 36px 36px; }
+  #landing2 .rh-intro { padding-top: 6px; padding-bottom: 30px; }
+  #landing2 .rh-logo { width: 182px; height: 96px; margin-bottom: 16px; }
+  #landing2 #sh-title { font-size: 34px; }
+  #landing2 .rh-subtitle { font-size: 16px; margin-top: 8px; }
+  #landing2 .rh-destinations { top: 8px; padding-inline: 14px; }
+  #landing2 .rh-shell .lh-offer-strip { min-height: 58px; margin-bottom: 20px; padding-inline: 20px; }
+  #landing2 .rh-shell .lh-offer-title { font-size: 16px; }
+  #landing2 .rh-shell .lh-offer-sub { font-size: 12px; }
+  #landing2 .rh-grid { grid-template-columns: minmax(0, 1.85fr) minmax(0, 1fr); grid-template-rows: repeat(2, 186px); gap: 18px; }
+  #landing2 .rh-cabins { grid-column: 1; grid-row: 1 / 3; height: 100%; padding: 32px; border-radius: 24px; }
+  #landing2 .rh-cabin-title { font-size: 36px; }
+  #landing2 .rh-cabin-caption { font-size: 15px; }
+  #landing2 .rh-services { grid-column: 2; grid-row: 1; }
+  #landing2 .rh-contact { grid-column: 2; grid-row: 2; }
+  #landing2 .rh-action { padding: 26px; gap: 16px; border-radius: 22px; }
+  #landing2 .rh-action-icon { width: 29px; height: 29px; }
+  #landing2 .rh-action-title { font-size: 21px; }
+  #landing2 .rh-action-description { display: block; font-size: 13px; font-weight: 400; line-height: 1.6; color: #9ab4c0; }
+  #landing2 .rh-footer { flex-direction: row; align-items: center; justify-content: space-between; gap: 32px; padding-top: 16px; margin-top: 24px; }
+  #landing2 .rh-faq { min-width: 230px; }
+  #landing2 .rh-reviews { gap: 12px; }
+}
+@media (min-width: 800px) and (max-height: 820px) {
+  #landing2 .rh-shell { padding-top: 18px; padding-bottom: 24px; }
+  #landing2 .rh-intro { padding-bottom: 24px; }
+  #landing2 .rh-logo { width: 160px; height: 80px; margin-bottom: 12px; }
+  #landing2 #sh-title { font-size: 30px; }
+  #landing2 .rh-grid { grid-template-rows: repeat(2, 164px); }
+}
+@media (hover: hover) and (pointer: fine) {
+  #landing2 .rh-cabins:hover .rh-cabin-photo { transform: scale(1.035); }
+  #landing2 .rh-action:hover { border-color: rgba(99,191,205,.52); background: #133346; transform: translateY(-2px); }
+  #landing2 .rh-faq:hover { color: #fff; }
+  #landing2 .rh-destinations:hover { color: #fff; background: #133346; border-color: #416b7c; }
+  #landing2 .rh-reviews:hover .rh-reviews-label { color: #d9eef5; }
+}
+#landing2 .rh-action:active { transform: scale(.985); }
+@media (prefers-reduced-motion: reduce) {
+  #landing2 .rh-shell *, #landing2 .rh-shell *::before, #landing2 .rh-shell *::after { animation: none !important; transition: none !important; }
+}
+
+/* Resort contact: use the approved service-page typography and surfaces. */
+
+#contact-page .cp-title{margin:8px 0 0;font-family:Tajawal,sans-serif;font-size:20px;font-weight:700;color:#fff;line-height:1.25}
+#contact-page .cp-label{margin:0}
+#contact-page .cp-app-caption{margin:0;padding:2px 4px 6px;color:rgba(255,255,255,.68);font-size:12px;line-height:1.4}
+#contact-page .cp-resort-only{display:none}
+#contact-page[data-venue="stay"] .cp-shell{display:block;box-sizing:border-box;width:100%;max-width:600px;margin:0 auto;padding:24px 20px calc(32px + env(safe-area-inset-bottom,0px));text-align:right}
+#contact-page[data-venue="stay"] .cp-hero{padding:0;margin-bottom:22px}
+#contact-page[data-venue="stay"] .cp-heading{display:flex;align-items:center;gap:14px}
+#contact-page[data-venue="stay"] .contact-back{flex:0 0 38px;width:38px;height:38px;margin:0;padding:0;border:1px solid #29434f;background:rgba(255,255,255,.05);color:#d6e9ef}
+#contact-page[data-venue="stay"] .cp-title{margin:0;color:#f0f5f7;font-weight:800;line-height:1.4}
+
+#contact-page[data-venue="stay"] .cp-intro{display:block;margin:8px 0 0;color:#b6cbd6;font-size:.9375rem;line-height:1.65}
+#contact-page[data-venue="stay"] .cp-body{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"booking" "contact" "location" "social";gap:26px;padding:0}
+#contact-page[data-venue="stay"] .cp-group{display:block;min-width:0}
+#contact-page[data-venue="stay"] .cp-label{margin:0 0 14px;padding:0;color:#f0f5f7;font-size:1.125rem;font-weight:700;line-height:1.5}
+#contact-page[data-venue="stay"] .cp-booking{grid-area:booking;align-self:start;padding:22px;border:1px solid #29434f;border-radius:18px;background:#0b2130}
+#contact-page[data-venue="stay"] .cp-contact{grid-area:contact}
+#contact-page[data-venue="stay"] .cp-location{grid-area:location}
+#contact-page[data-venue="stay"] .cp-social{grid-area:social;padding-top:22px;border-top:1px solid #29434f}
+#contact-page[data-venue="stay"] :is(.cp-wide,.cp-tile){box-sizing:border-box;min-width:0;border:1px solid #315967;border-radius:16px;background:#153244;box-shadow:none;animation:none;transition:background-color .15s,border-color .15s}
+#contact-page[data-venue="stay"] :is(.cp-wide,.cp-tile):active{transform:none}
+#contact-page[data-venue="stay"] .cp-wide{min-height:64px;padding:16px 18px;gap:14px}
+#contact-page[data-venue="stay"] .cp-wide-name{color:#f0f5f7;font-size:1rem;font-weight:700;line-height:1.5}
+#contact-page[data-venue="stay"] .cp-wide-arrow{flex:0 0 auto;color:#92c4d0;font-size:20px;line-height:1}
+/* Match the FAQ shortcut to the existing resort contact cards. */
+#contact-page[data-venue="stay"] .fd-contact-faq-button{width:100%;font-family:inherit;font-size:1rem;font-weight:700;line-height:1.5;color:#f0f5f7;text-align:right;cursor:pointer}
+#contact-page[data-venue="stay"] .fd-contact-faq-arrow{flex:0 0 auto;color:#92c4d0;font-size:20px;line-height:1}
+#contact-page[data-venue="stay"] .cp-primary{justify-content:center;min-height:52px;padding:12px 16px;border-color:#3aa9b9;border-radius:14px;background:#147a8c;text-align:center}
+#contact-page[data-venue="stay"] .cp-primary .cp-wide-name{color:#fff;font-size:1.125rem}
+#contact-page[data-venue="stay"] .cp-primary .cp-wide-arrow{display:none}
+#contact-page[data-venue="stay"] .cp-row2{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+#contact-page[data-venue="stay"] .cp-tile{display:flex;flex-direction:column;justify-content:center;min-height:84px;padding:14px 10px}
+#contact-page[data-venue="stay"] .cp-tile-name{color:#f0f5f7;font-size:1rem;font-weight:700;line-height:1.5}
+#contact-page[data-venue="stay"] .cp-tile-sub{margin-top:4px;color:#b6cbd6;font-size:.8125rem;line-height:1.6}
+#contact-page[data-venue="stay"] .cp-app-caption{margin:12px 0 0;padding:0;color:#b6cbd6;font-size:.875rem;line-height:1.7;text-align:center}
+#contact-page[data-venue="stay"] .cp-contact-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#contact-page[data-venue="stay"] .cp-contact-links .cp-wide{justify-content:center;padding-inline:10px;text-align:center}
+#contact-page[data-venue="stay"] .cp-contact-links .cp-wide-arrow{display:none}
+#contact-page[data-venue="stay"] .cp-whatsapp{border-color:#3f7e8c;background:#123746}
+#contact-page[data-venue="stay"] .cp-map-sub{display:block;margin-top:4px;color:#b6cbd6;font-size:.875rem;line-height:1.6}
+#contact-page[data-venue="stay"] .cp-row3{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+#contact-page[data-venue="stay"] .cp-tile-sm{min-height:46px;padding:12px 8px;border-color:#29434f;border-radius:12px;background:#0b2130}
+#contact-page[data-venue="stay"] .cp-tile-sm .cp-tile-name{font-size:.875rem;font-weight:500}
+#contact-page[data-venue="stay"] :is(button,a):focus-visible{outline:2px solid #8fd5e4;outline-offset:3px}
+@media(hover:hover){#contact-page[data-venue="stay"] :is(.cp-wide,.cp-tile):hover{border-color:#4d8997;background:#1b3d50}#contact-page[data-venue="stay"] .cp-primary:hover{border-color:#3aa9b9;background:#168b9e}#contact-page[data-venue="stay"] .contact-back:hover{background:#153244}}
+@media(max-width:360px){#contact-page[data-venue="stay"] .cp-shell{padding-inline:16px}#contact-page[data-venue="stay"] .cp-booking{padding:18px}#contact-page[data-venue="stay"] .cp-tile{padding-inline:8px}}
+@media(min-width:900px){#contact-page[data-venue="stay"] .cp-shell{max-width:1100px;padding-top:28px}#contact-page[data-venue="stay"] .cp-hero{margin-bottom:26px}#contact-page[data-venue="stay"] .cp-body{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"booking contact" "booking location" "social social";gap:26px 32px;align-items:start}#contact-page[data-venue="stay"] .cp-booking{padding:26px}#contact-page[data-venue="stay"] .cp-social{display:flex;align-items:center;justify-content:space-between;gap:24px}#contact-page[data-venue="stay"] .cp-social .cp-label{margin:0}#contact-page[data-venue="stay"] .cp-social .cp-row3{width:500px;max-width:100%}}
+/* Resort FAQ: match the refined service and contact pages. */
+#faq2-overlay{font-family:Tajawal,sans-serif;direction:rtl}
+#faq2-overlay .faq-page-header{box-sizing:border-box;display:block;position:static;height:auto;min-height:0;width:100%;max-width:600px;margin:0 auto;padding:24px 20px 28px}
+#faq2-overlay .faq-heading{display:flex;align-items:center;gap:14px}
+#faq2-overlay .faq-back{display:flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;cursor:pointer}
+#faq2-overlay .faq-title{margin:0;color:#f0f5f7;font-weight:800;line-height:1.4}
+#faq-list-stay{box-sizing:border-box;width:100%;max-width:600px;margin:0 auto;padding:0 20px calc(32px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:26px}
+#faq-list-stay .faq-section{min-width:0}
+#faq-list-stay .faq-section[hidden]{display:none}
+#faq-list-stay .faq-section-title{margin:0 2px 12px;color:#8bc4d1;font-family:Tajawal,sans-serif;font-size:15px;font-weight:700;line-height:1.5}
+#faq-list-stay .faq-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;align-items:start}
+#faq-list-stay .faq-accordion-card{min-width:0;overflow:hidden;padding:0!important;border:1px solid #315967!important;border-radius:16px!important;background:#153244!important;box-shadow:none!important;animation:none!important}
+#faq-list-stay .faq-question-row{box-sizing:border-box;width:100%;min-height:56px;padding:15px 18px;margin:0!important;color:#f0f5f7!important;font-family:Tajawal,sans-serif!important;font-size:15px!important;font-weight:700!important;line-height:1.6!important}
+#faq-list-stay .faq-answer{box-sizing:border-box;margin:0!important;padding:0 18px 16px;color:#b6cbd6!important;font-family:Tajawal,sans-serif!important;font-size:14px!important;line-height:1.8!important}
+#faq-list-stay .faq-answer::before{content:"";display:block;margin-bottom:12px;border-top:1px solid rgba(49,89,103,.72)}
+#faq-list-stay .faq-chevron{display:flex;align-items:center;justify-content:center;width:20px;height:20px;color:#92c4d0;font-size:20px}
+#faq-list-stay .faq-accordion-card.open{border-color:#3b7080!important;background:#173849!important}
+#faq2-overlay :is(.faq-back,.faq-question-row):focus-visible{outline:2px solid #7ecfea;outline-offset:3px;box-shadow:none}
+
+@media(max-width:360px){#faq2-overlay .faq-page-header,#faq-list-stay{padding-inline:16px}}
+@media(min-width:900px){#faq2-overlay .faq-page-header,#faq-list-stay{max-width:1100px}#faq2-overlay .faq-page-header{padding-top:28px;padding-bottom:30px}#faq-list-stay{gap:30px}#faq-list-stay .faq-section-title{margin-bottom:14px;font-size:16px}#faq-list-stay .faq-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px}#faq-list-stay .faq-question-row{min-height:60px;font-size:16px!important}#faq-list-stay .faq-answer{font-size:15px!important}}
+@media(hover:hover) and (pointer:fine){#faq2-overlay .faq-back:hover{background:#133343}#faq-list-stay .faq-accordion-card:hover{border-color:#4d8997!important}#faq-list-stay .faq-question-row:hover{background:rgba(255,255,255,.025)}}
+#faq2-overlay .fd-faq-shortcuts { display:grid; grid-template-columns:minmax(0,1fr); gap:10px; margin-top:22px; }
+#faq2-overlay .fd-faq-shortcuts button { box-sizing:border-box; width:100%; min-width:0; min-height:48px; padding:12px 16px; border:1px solid var(--fd-line); border-radius:12px; background:#153244; color:var(--fd-text); font:700 var(--fd-copy)/1.6 Tajawal,sans-serif; text-align:right; cursor:pointer; }
+#faq2-overlay .fd-faq-shortcuts button[aria-expanded="true"] { background:var(--fd-primary); border-color:var(--fd-primary); color:#fff; }
+#faq2-overlay .fd-faq-shortcuts button:focus-visible { outline:2px solid var(--fd-link); outline-offset:3px; }
+@media(min-width:900px) {
+  #faq2-overlay .fd-faq-shortcuts { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  #faq2-overlay .fd-faq-shortcuts button { text-align:center; }
+}
+#faq-list-stay .faq-answer p { margin:0 0 10px; }
+#faq-list-stay .faq-answer p:last-child { margin:10px 0 0; }
+#faq-list-stay .fd-text-link { display:block; width:fit-content; margin-top:12px; color:var(--fd-link); text-decoration:underline; text-underline-offset:4px; }
+
+
+@media(max-width:599px){#contact-page[data-venue="stay"] .cp-title{font-size:17px!important;font-weight:700!important;}#contact-page[data-venue="stay"] .cp-intro{font-size:13px!important;}#contact-page[data-venue="stay"] .cp-label{font-size:13px!important;margin-bottom:7px!important;}#contact-page[data-venue="stay"] .cp-wide-name,#contact-page[data-venue="stay"] .cp-tile-name{font-size:14px!important;}#contact-page[data-venue="stay"] .cp-primary .cp-wide-name{font-size:14px!important;}#contact-page[data-venue="stay"] .cp-tile-sub,#contact-page[data-venue="stay"] .cp-map-sub,#contact-page[data-venue="stay"] .cp-app-caption{font-size:12px!important;}#contact-page[data-venue="stay"] .cp-wide{min-height:54px!important;padding:12px 16px!important;border-radius:14px!important;}#contact-page[data-venue="stay"] .cp-primary{min-height:48px!important;padding:10px 14px!important;}#contact-page[data-venue="stay"] .cp-tile{min-height:62px!important;padding:10px 9px!important;}#contact-page[data-venue="stay"] .cp-booking{padding:16px!important;border-radius:16px!important;}#contact-page[data-venue="stay"] .cp-body{gap:clamp(24px,4.5vh,40px)!important;}#contact-page[data-venue="stay"] .cp-row2{margin-top:8px!important;}#contact-page[data-venue="stay"] .cp-social{padding-top:18px!important;}#contact-page[data-venue="stay"] .cp-tile-sm{min-height:42px!important;padding:9px 6px!important;}#contact-page[data-venue="stay"] .cp-tile-sm .cp-tile-name{font-size:12px!important;font-weight:500!important;}#contact-page[data-venue="stay"] .fd-contact-faq-section{padding-top:0!important;}#contact-page[data-venue="stay"] .fd-contact-faq-button{width:100%!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;min-height:54px!important;padding:12px 16px!important;border:1px solid #315967!important;border-radius:14px!important;background:#153244!important;color:#f0f5f7!important;font-family:Tajawal,sans-serif!important;font-size:14px!important;font-weight:700!important;text-align:right!important;cursor:pointer!important;}#contact-page[data-venue="stay"] .fd-contact-faq-arrow{color:#92c4d0!important;font-size:18px!important;}}
+@media(max-width:599px){#faq2-overlay .faq-title{font-size:17px!important;font-weight:700!important;}#faq2-overlay .faq-page-header{padding:20px 20px 22px!important;}#faq2-overlay .fd-faq-shortcuts{display:grid!important;grid-template-columns:1fr!important;gap:8px!important;margin-top:18px!important;}#faq2-overlay .fd-faq-shortcuts button{min-height:48px!important;padding:11px 14px!important;border-radius:12px!important;font-size:14px!important;font-weight:700!important;text-align:right!important;}#faq-list-stay .faq-section-title{font-size:13px!important;margin-bottom:8px!important;}#faq-list-stay .faq-question-row{min-height:52px!important;padding:13px 16px!important;font-size:14px!important;}#faq-list-stay .faq-answer{padding:0 16px 14px!important;font-size:13px!important;}}
+/* Rest-house-specific content density and responsive section cards. */
+:is(#landing2,#app2,#faq2-overlay,#contact-page[data-venue="stay"]) { --fd-primary:#147a8c; --fd-line:#315967; --fd-text:#f4f8fa; --fd-link:#9edce5; --fd-copy:15px; }
+#landing2 .rh-cabin-photo { object-position:center; }
+#landing2 .rh-cabin-title { font-size:28px; }
+#landing2 .rh-cabin-caption { font-size:13px; }
+#landing2 .stay-home-note { margin:24px 0 0; padding-top:18px; border-top:1px solid #29434f; color:#a9c2cc; text-align:center; font:400 14px/1.7 Tajawal,sans-serif; }
+#app2 { background:linear-gradient(160deg,#061722,#04111e 55%,#050f19); direction:rtl; }
+#app2 #header2 { position:static!important; width:100%; max-width:1100px; height:auto; margin:0 auto; padding:24px 20px 16px; justify-content:flex-start; }
+#app2 #headerTitle2 { flex:initial; color:#f4f8fa; margin:0; font:700 24px/1.4 Tajawal,sans-serif; text-align:right; }
+#app2 #backBtn2 { flex:0 0 38px; border:1px solid #29434f; }
+#app2 #sectionHero2 { width:100%; max-width:1100px; margin:0 auto; padding:0 20px 20px!important; text-align:right; }
+#app2 #sectionTitle2 { margin:0; color:#9fc8d2; font:500 15px/1.6 Tajawal,sans-serif; }
+#app2 #sectionDesc2:empty { display:none; }
+#app2 .grid-section { padding:0 20px calc(32px + env(safe-area-inset-bottom,0px)); }
+#app2 #grid2 { grid-template-columns:minmax(0,1fr); gap:20px; }
+#app2 .card { border:1px solid #315967; border-radius:18px; background:#0b2130; box-shadow:none; animation:none; }
+#app2 .card:hover { transform:none; }
+#app2 .card-img-wrap { aspect-ratio:4/3; }
+#app2 .card-name { font-size:20px; }
+#app2 .card-btn { min-height:48px; border-radius:12px; border-color:#147a8c; background:#147a8c; font-size:16px; }
+#app2 .stay-card-photos { display:flex; align-items:center; gap:8px; margin:0 0 16px; }
+#app2 .stay-card-photos button { flex:0 0 48px; width:48px; height:48px; padding:0; overflow:hidden; border:1px solid #315967; border-radius:9px; background:#102b3a; cursor:pointer; }
+#app2 .stay-card-photos img { display:block; width:100%; height:100%; object-fit:cover; }
+#app2 .stay-card-photos>span { margin-inline-start:auto; font-size:12px; color:#a9c2cc; }
+#app2 button:focus-visible { outline:2px solid #9edce5; outline-offset:3px; }
+#ov.fd-stay-modern .modal-bottom-bar > .mbtn-wa:not(.fd-cabin-inquiry) { display:flex; }
+#ov.fd-stay-modern :is(.fd-cabin-inquiry,.fd-cabin-sharing) { display:none; }
+#contact-page[data-venue="stay"] .cp-title,#faq2-overlay .faq-title { font-size:24px; }
+#contact-page[data-venue="stay"] .cp-primary .cp-wide-name { font-size:16px; }
+#contact-page[data-venue="stay"] .fd-contact-faq-section { grid-column:1/-1; }
+#contact-page[data-venue="stay"] .fd-contact-faq-button { display:flex; justify-content:space-between; }
+@media(max-width:599px) {
+  :is(#landing2,#app2,#faq2-overlay,#contact-page[data-venue="stay"]) { --fd-copy:14px; }
+  #app2 #headerTitle2 { font-size:22px; }
+  #app2 .card-btn { font-size:14px; }
+}
+@media(max-width:360px) {
+  #app2 :is(#header2,#sectionHero2,.grid-section) { padding-inline:16px!important; }
+  #app2 .stay-card-photos { gap:6px; }
+  #app2 .stay-card-photos button { flex-basis:44px; width:44px; height:44px; }
+  #landing2 .rh-cabin-title { font-size:25px; }
+  #landing2 .rh-cabin-caption { font-size:12px; }
+}
+@media(min-width:700px) { #app2 #grid2 { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(min-width:800px) { #landing2 .rh-cabin-title { font-size:36px; } #landing2 .rh-cabin-caption { font-size:15px; } }
+@media(min-width:900px) { #app2 #header2 { padding-top:28px; } }
+@media(prefers-reduced-motion:reduce) { #app2 .card-img { transition:none; } }

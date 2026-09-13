@@ -226,7 +226,8 @@ async function copyCabinLink() {
     section.className = 'cp-group fd-contact-faq-section';
     section.innerHTML = '<h2 class="cp-label">معلومات مفيدة</h2><button type="button" class="cp-wide fd-contact-faq-button"><span>الأسئلة الشائعة</span><span class="fd-contact-faq-arrow" aria-hidden="true">←</span></button>';
     section.querySelector('button').addEventListener('click', function () {
-      if (typeof showFaq === 'function') showFaq();
+      if (page.dataset.venue === 'stay') showFaq2();
+      else if (typeof showFaq === 'function') showFaq();
     });
     social.after(section);
   }
