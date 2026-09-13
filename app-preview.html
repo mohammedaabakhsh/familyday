@@ -5547,6 +5547,7 @@ body.fa-app{background:var(--fa-bg)!important;color:var(--fa-ink);font-family:Ta
 @media(min-width:900px){.fa-app .fa-venues{width:300px;top:27px}.fa-app .fa-campaign{min-height:94px;padding:20px 26px}.fa-app .fa-campaign strong{font-size:23px}}
 
 /* Start with a stay. Browse extras now and request them from a booking. */
+.fa-app:not([data-fa-home=true]) :is(#landing,#landing2),.fa-app:not([data-fa-page=search]) #fa-search,.fa-app:not([data-fa-page=offers]) #fa-offers,.fa-app:not([data-fa-page=bookings]) #fa-bookings{visibility:hidden!important;pointer-events:none}
 body.fa-app[data-fa-home],body.fa-app[data-fa-detail]{--fa-top:66px}
 .fa-app .fa-header{height:calc(var(--fa-top) + env(safe-area-inset-top,0px))!important;padding-bottom:0}
 .fa-app .fa-brand-row{height:66px}
@@ -5662,6 +5663,7 @@ body.fa-app[data-fa-demo=true]{--fa-top:94px}
   function todayISO(){return new Date(Date.now()+3*3600000).toISOString().slice(0,10);}
   function nextDay(iso,days){var d=new Date(iso+'T12:00:00Z');d.setUTCDate(d.getUTCDate()+days);return d.toISOString().slice(0,10);}
   function dateLabel(iso){return iso?new Intl.DateTimeFormat('ar-SA-u-ca-gregory',{day:'numeric',month:'short'}).format(new Date(iso+'T12:00:00Z')):'اختر الموعد';}
+  function guestLabel(number){var n=Number(number);return n===1?'ضيف واحد':n===2?'ضيفان':n+(n>=3&&n<=10?' ضيوف':' ضيفًا');}
   function saveCriteria(){window.fdBookingCriteria=bookingCriteria;try{sessionStorage.setItem('fd-booking-criteria',JSON.stringify(bookingCriteria));}catch(e){}}
   function venueButtons(venue){return '<div class="fa-book-venues" role="group" aria-label="مكان الإقامة"><button type="button" data-fa-venue="resort" aria-pressed="'+(venue==='resort')+'" onclick="fdChooseBookingVenue(\'resort\')">المنتجع</button><button type="button" data-fa-venue="stay" aria-pressed="'+(venue==='stay')+'" onclick="fdChooseBookingVenue(\'stay\')">الاستراحة</button></div>';}
   function bookingForm(venue){
@@ -5725,7 +5727,7 @@ body.fa-app[data-fa-demo=true]{--fa-top:94px}
     var choices=items.filter(function(c){return c.id!==11 && c.guests>=Number(criteria.guests||2);});
     // Dates are preserved for the future availability provider. Capacity is the
     // only local filter; no unit is marked available without an inventory response.
-    var html='<div class="fa-page-body"><h1>خيارات الإقامة</h1><div class="fa-search-summary"><div><strong>'+(criteria.venue==='stay'?'الاستراحة':'المنتجع')+'</strong><span>'+dateLabel(criteria.arrival)+' — '+dateLabel(criteria.departure)+' · '+criteria.guests+' ضيوف</span></div><button type="button" class="fa-text-btn" onclick="fdAppNavigate(\'home\')">تعديل</button></div><p class="fa-availability-note">هذه الخيارات تناسب عدد الضيوف. يُؤكد توفر موعدك عند إتمام الحجز.</p>';
+    var html='<div class="fa-page-body"><h1>خيارات الإقامة</h1><div class="fa-search-summary"><div><strong>'+(criteria.venue==='stay'?'الاستراحة':'المنتجع')+'</strong><span>'+dateLabel(criteria.arrival)+' — '+dateLabel(criteria.departure)+' · '+guestLabel(criteria.guests)+'</span></div><button type="button" class="fa-text-btn" onclick="fdAppNavigate(\'home\')">تعديل</button></div><p class="fa-availability-note">هذه الخيارات تناسب عدد الضيوف. يُؤكد توفر موعدك عند إتمام الحجز.</p>';
     if(criteria.venue==='resort')html+=campaignBanner();
     html+=choices.length?'<div class="fa-search-grid">'+choices.map(cabinCard).join('')+'</div>':'<div class="fa-book-empty"><h2>نرتّب معك الإقامة المناسبة</h2><p>لا يوجد كوخ منفرد في القائمة يتسع لهذا العدد. تواصل معنا لترتيب الخيارات المناسبة لمجموعتكم.</p><button type="button" class="fa-primary" onclick="showContact(\''+criteria.venue+'\')">تواصل معنا</button></div>';
     document.getElementById('fa-search').innerHTML=html+'</div>';
@@ -5791,6 +5793,7 @@ body.fa-app[data-fa-demo=true]{--fa-top:94px}
     document.body.dataset.faDetail=String(detailRoutes.indexOf(contentRoute.name)!==-1);
     document.body.dataset.faModal=String(modalRoutes.indexOf(route.name)!==-1);
     document.body.dataset.faHome=String(contentRoute.name==='home');
+    document.body.dataset.faPage=contentRoute.name;
     document.body.dataset.faList=String(['resort','chalet','search','offers'].indexOf(contentRoute.name)!==-1);
     document.getElementById('fa-contact-venue').textContent=venue==='stay'?'استراحة يوم العائلة':'منتجع يوم العائلة';
     var title=titles[route.name]||'يوم العائلة';
