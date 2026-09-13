@@ -4782,8 +4782,8 @@ function openMDirect(c){
   wrapOpen('showSection',function(){return route('resort');});
   wrapOpen('showSection2',function(){return route('chalet');});
   wrapOpen('showServices',function(){return route('services');});
-  wrapOpen('showFaq',function(){return route('faq');});
-  wrapOpen('showFaq2',function(){return route('faq2');});
+  wrapOpen('showFaq',function(){return route('faq',[],current.name==='contact'?current:null);});
+  wrapOpen('showFaq2',function(){return route('faq2',[],current.name==='contact'?current:null);});
   wrapOpen('showContact',function(type){return route('contact',[type || 'resort']);});
   function cabinRoute(id){
     var parent=current.name==='cabin' ? current.parent : (current.name==='service-sub' || current.name==='home') ? current : null;
@@ -5485,6 +5485,25 @@ body.fa-app{background:var(--fa-bg)!important;color:var(--fa-ink);font-family:Ta
 @media(max-width:360px){.fa-header{padding-inline:16px}.fa-home{padding-inline:16px}.fa-cabins{margin-inline:-16px;padding-inline:16px}.fa-welcome h1{font-size:22px}.fa-welcome p{font-size:13px}.fa-campaign{padding:16px;gap:10px}.fa-campaign strong{font-size:19px}.fa-campaign-mark{padding-right:10px;min-width:55px}.fa-cabin{flex-basis:87%}.fa-quick-services{gap:7px}.fa-quick-service{font-size:13px}.fa-app #services-overlay .svcs-card{padding:14px 12px}.fa-nav{padding-inline:8px}.fa-nav button{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.fa-app *{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
 
+/* Shared page rhythm and fixes verified in the responsive preview. */
+.fa-app *{scrollbar-width:thin;scrollbar-color:#3e5b68 var(--fa-bg)}
+.fa-app .fa-cabins{scrollbar-width:none;scroll-padding-inline:20px}
+.fa-app #ov:not(.open){visibility:hidden}
+.fa-app[data-fa-detail=true] .fa-header{height:calc(66px + env(safe-area-inset-top,0px))}
+.fa-app :is(#services-overlay,#contact-page,#walaa-detail,#faq-overlay,#faq2-overlay,#sinema-detail,#tarfihi-detail,#maiya-detail,#jalsat-detail,#tawilat-detail,#menu-detail,#sharik-detail,#hospitality-detail) h1{font-size:24px!important;font-weight:700!important;line-height:1.4!important}
+.fa-app #walaa-detail .wl-header{padding-top:0!important;padding-bottom:0!important;margin-bottom:22px}
+.fa-app #contact-page .contact-back,.fa-app #contact-page .cp-app-caption,.fa-app #contact-page a[href*="apps.apple.com"],.fa-app #contact-page a[href*="play.google.com"]{display:none!important}
+.fa-app[data-fa-detail=true] :is(.faq-back,.sw-back){display:none!important}
+.fa-app #services-overlay .svcs-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.fa-app #services-overlay .svcs-card{flex-direction:column;flex-wrap:nowrap;justify-content:center;min-height:116px;gap:11px;padding:14px 8px;text-align:center}
+.fa-app #services-overlay .svcs-name{flex:initial;min-width:0;font-size:15px!important;line-height:1.5!important}
+.fa-app #services-overlay .svcs-grid--single{grid-template-columns:1fr}
+.fa-app #services-overlay .svcs-grid--single .svcs-card{flex-direction:row;justify-content:flex-start;min-height:82px;padding:16px 18px}
+.fa-app #services-overlay .svcs-grid--single .svcs-name{font-size:17px!important}
+.fa-offer-date{gap:5px}
+@media(max-width:360px){.fa-app .fa-cabins{scroll-padding-inline:16px}.fa-app #services-overlay .svcs-grid{gap:8px}.fa-app #services-overlay .svcs-name{font-size:14px!important}}
+@media(min-width:900px){.fa-app #services-overlay .svcs-name{font-size:18px!important}.fa-app #services-overlay .svcs-card{min-height:120px}}
+
 .fa-app .fa-campaign[hidden]{display:none!important}
 </style>
 <script id="familyday-app-preview-runtime">
@@ -5584,7 +5603,8 @@ body.fa-app{background:var(--fa-bg)!important;color:var(--fa-ink);font-family:Ta
     document.querySelectorAll('[data-fa-venue]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.faVenue===venue));});
     var active=chain.some(function(x){return x.name==='offers';})?'offers':chain.some(function(x){return x.name==='walaa';})?'walaa':chain.some(function(x){return x.name==='contact';})?'contact':chain.some(function(x){return x.name==='services'||x.name==='stay-services';})?'services':'home';
     document.querySelectorAll('[data-fa-tab]').forEach(function(b){if(b.dataset.faTab===active)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
-    document.body.dataset.faDetail=String(detailRoutes.indexOf(route.name)!==-1);
+    var contentRoute=chain.find(function(x){return modalRoutes.indexOf(x.name)===-1;})||route;
+    document.body.dataset.faDetail=String(detailRoutes.indexOf(contentRoute.name)!==-1);
     document.body.dataset.faModal=String(modalRoutes.indexOf(route.name)!==-1);
     var title=titles[route.name]||'يوم العائلة';
     if(route.name==='cabin'){var c=(route.args[0]>=20?_chaletItems2:data.resort.items).find(function(x){return x.id===route.args[0];});if(c)title=c.name;}
