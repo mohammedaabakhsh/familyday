@@ -4632,7 +4632,7 @@ function openMDirect(c){
     var r = {name:name,args:args || []};
     if(parent) r.parent = parent;
     else if(name==='home') { /* App home is a top-level destination. */ }
-    else if(name==='offers') r.parent = route('home',['resort']);
+    else if(name==='offers' || name==='walaa') r.parent = route('home',[window.fdAppVenue || 'resort']);
     else if(name==='stay-services') r.parent = route('home',['stay']);
     else if(name==='resort' || name==='services' || name==='faq') r.parent = route('home',['resort']);
     else if(name==='chalet' || name==='faq2') r.parent = route('home',['stay']);
@@ -4798,7 +4798,7 @@ function openMDirect(c){
   wrapOpen('openMDirect',function(c){return cabinRoute(c.id);});
   wrapOpen('showServiceSub',function(){return route('service-sub',Array.from(arguments));});
   Object.keys(serviceViews).forEach(function(name){
-    wrapOpen(serviceViews[name][0],function(){return route(name,[],current.name==='service-sub' ? current : null);});
+    wrapOpen(serviceViews[name][0],function(){return route(name,[],current.name==='service-sub' || name==='sharik' && current.name==='offers' ? current : null);});
     wrapClose(serviceViews[name][1]);
   });
   window.openCabinService=function(event,name){
@@ -5509,6 +5509,30 @@ body.fa-app{background:var(--fa-bg)!important;color:var(--fa-ink);font-family:Ta
 @media(max-width:360px){.fa-app .fa-cabins{scroll-padding-inline:16px}.fa-app #services-overlay .svcs-grid{gap:8px}.fa-app #services-overlay .svcs-name{font-size:14px!important}}
 @media(min-width:900px){.fa-app #services-overlay .svcs-name{font-size:18px!important}.fa-app #services-overlay .svcs-card{min-height:120px}}
 
+/* Choose the property on Home; keep the main app sections independent. */
+.fa-app:not([data-fa-home=true]){--fa-top:66px}
+.fa-app:not([data-fa-home=true]) .fa-header{height:calc(66px + env(safe-area-inset-top,0px));padding-bottom:0}
+.fa-app:not([data-fa-home=true]) .fa-brand-row{height:66px}
+.fa-venues[hidden]{display:none!important}
+.fa-header-spacer{width:42px;flex:none}
+.fa-app[data-fa-detail=true] .fa-detail-title{text-align:center}
+.fa-app .fa-venues{gap:24px;border:0;border-radius:0;border-bottom:1px solid #28434e;background:transparent;padding:0}
+.fa-app .fa-venues button{position:relative;min-height:44px;border-radius:0;background:transparent;box-shadow:none;color:#94b0bc;padding:9px 12px}
+.fa-app .fa-venues button[aria-pressed=true]{color:#88e1e4;background:transparent;box-shadow:none}
+.fa-app .fa-venues button[aria-pressed=true]::after{content:"";position:absolute;inset:auto 20% -1px;height:3px;border-radius:4px;background:#65c6cb}
+.fa-app .fa-campaign{min-height:88px;border-radius:17px;padding:17px 20px;margin-bottom:24px}
+.fa-app .fa-campaign strong{font-size:20px}
+.fa-app .fa-campaign-sub{margin-top:4px}
+.fa-offers-heading{font-size:18px;font-weight:700;line-height:1.5;margin:0 0 16px;color:#c9deda}
+.fa-context-caption{font-size:14px;line-height:1.5;color:var(--fa-muted);margin:6px 0 0}
+.fa-app #contact-page .cp-heading{display:block!important}
+.fa-app #contact-page .fd-contact-faq-button{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:52px;border:1px solid #315967;border-radius:14px;background:#153244;color:#f0f5f7;font:700 14px Tajawal,sans-serif;text-align:right;padding:12px 16px;cursor:pointer}
+.fa-app #contact-page .fd-contact-faq-button .fa-icon{width:18px;height:18px;color:#92c4d0}
+.fa-app[data-fa-list=true] .fa-brand{display:none}
+.fa-app[data-fa-list=true] .fa-back{display:grid}
+.fa-app[data-fa-list=true] .fa-detail-title{display:block;text-align:center}
+@media(min-width:900px){.fa-app .fa-venues{width:300px;top:27px}.fa-app .fa-campaign{min-height:94px;padding:20px 26px}.fa-app .fa-campaign strong{font-size:23px}}
+
 .fa-app .fa-campaign[hidden]{display:none!important}
 </style>
 <script id="familyday-app-preview-runtime">
@@ -5546,11 +5570,10 @@ body.fa-app{background:var(--fa-bg)!important;color:var(--fa-ink);font-family:Ta
   }
   function sectionHeading(title,action,label){return '<div class="fa-section-head"><h2>'+title+'</h2><button type="button" class="fa-text-btn" onclick="'+action+'">'+(label||'عرض الكل')+icon('arrow')+'</button></div>';}
   function quick(name,label,action){return '<button type="button" class="fa-quick-service" onclick="'+action+'"><span>'+icon(name)+'</span><span>'+label+'</span></button>';}
-  function loyaltyNote(){return '<button type="button" class="fa-loyalty-note" onclick="fdAppNavigate(\'walaa\')">'+icon('card')+'<span><strong>كل زيارة لها مكافأة</strong><small>اختم 3 حجوزات.. والرابع علينا</small></span>'+icon('arrow')+'</button>';}
   function campaignBanner(){
     var expired=typeof resortCampaignState==='function' && resortCampaignState(new Date()).allExpired;
     if(expired) return '';
-    return '<button type="button" class="fa-campaign" onclick="fdAppNavigate(\'offers\')"><span class="fa-campaign-copy"><span class="fa-campaign-kicker">'+escapeText(FD_CAMPAIGN.occasion)+'</span><strong>'+escapeText(FD_CAMPAIGN.name)+'</strong><span class="fa-campaign-sub">'+escapeText(FD_CAMPAIGN.bannerDescription)+'</span></span><span class="fa-campaign-mark" aria-hidden="true"><b>96</b><small>عامًا من العز</small></span>'+icon('arrow')+'</button>';
+    return '<button type="button" class="fa-campaign" onclick="fdAppNavigate(\'offers\')"><span class="fa-campaign-copy"><strong>'+escapeText(FD_CAMPAIGN.name)+'</strong><span class="fa-campaign-sub">'+escapeText(FD_CAMPAIGN.bannerDescription)+'</span></span>'+icon('arrow')+'</button>';
   }
   function renderHome(venue){
     var stay=venue==='stay';
@@ -5564,18 +5587,17 @@ body.fa-app{background:var(--fa-bg)!important;color:var(--fa-ink);font-family:Ta
       +'<div class="fa-cabins">'+items.map(cabinCard).join('')+'</div></section>';
     if(stay){
       html+='<section class="fa-section">'+sectionHeading('مرافق الاستراحة',"fdAppNavigate('services')")+'<div class="fa-quick-services">'
-        +quick('pool','المسابح',"fdAppNavigate('services')")+quick('outdoor','الجلسات',"fdAppNavigate('services')")+quick('games','الألعاب',"fdAppNavigate('services')")+quick('phone','التواصل',"showContact('stay')")+'</div></section>';
+        +quick('pool','المسابح',"fdAppNavigate('services')")+quick('outdoor','الجلسات',"fdAppNavigate('services')")+quick('games','الألعاب',"fdAppNavigate('services')")+quick('food','المطبخ',"fdAppNavigate('services')")+'</div></section>';
     }else{
       html+='<section class="fa-section">'+sectionHeading('خدمات تكمل يومك','showServices()','كل الخدمات')+'<div class="fa-quick-services">'
-        +quick('food','المطعم','openMenuDetail()')+quick('cinema','السينما','showSinema()')+quick('outdoor','الجلسات','showJalsat()')+quick('games','الألعاب','showTarfihi()')+'</div></section>'
-        +loyaltyNote();
+        +quick('food','المطعم','openMenuDetail()')+quick('cinema','السينما','showSinema()')+quick('outdoor','الجلسات','showJalsat()')+quick('games','الألعاب','showTarfihi()')+'</div></section>';
     }
-    html+='<div class="fa-home-footer"><button type="button" class="fa-text-btn" onclick="'+(stay?'showFaq2()':'showFaq()')+'">'+icon('help')+'الأسئلة الشائعة</button><button type="button" class="fa-text-btn" onclick="showContact(\''+venue+'\')">'+icon('phone')+'الحجز والتواصل</button></div></div>';
+    html+='</div>';
     document.getElementById(stay?'landing2':'landing').innerHTML=html;
   }
   function renderOffers(){
     var state=typeof resortCampaignState==='function'?resortCampaignState(new Date()):{statuses:[],allExpired:false};
-    var html='<div class="fa-page-body"><h1>العروض والمزايا</h1><p class="fa-page-intro">'+escapeText(FD_CAMPAIGN.occasion)+' · '+escapeText(FD_CAMPAIGN.slogan)+'</p>';
+    var html='<div class="fa-page-body"><h1>العروض</h1><p class="fa-page-intro">عروض منتجع يوم العائلة</p><h2 class="fa-offers-heading">'+escapeText(FD_CAMPAIGN.occasion)+'</h2>';
     if(state.allExpired){html+='<p class="fa-page-intro">انتهت عروض اليوم الوطني. تواصل معنا للتعرّف على العروض المتاحة.</p><button class="fa-primary" onclick="showContact(\'resort\')">تواصل معنا</button>';}
     else{
       html+='<div class="fa-offers-grid">'+FD_CAMPAIGN.offers.map(function(offer,index){
@@ -5585,7 +5607,7 @@ body.fa-app{background:var(--fa-bg)!important;color:var(--fa-ink);font-family:Ta
           +(ended?'<p>انتهى العرض</p>':'<a class="fa-primary" href="https://wa.me/'+FD_CAMPAIGN.whatsappNumber+'?text='+encodeURIComponent(msg)+'" target="_blank" rel="noopener noreferrer">'+FD_CAMPAIGN.bookingLabel+icon('arrow')+'</a>')+'</article>';
       }).join('')+'</div><p class="fa-subtle-note">'+escapeText(FD_CAMPAIGN.terms)+'</p>';
     }
-    html+=loyaltyNote()+'<button type="button" class="fa-loyalty-note" onclick="showSharik()">'+icon('gift')+'<span><strong>شارك واربح</strong><small>تعرّف على طريقة المشاركة</small></span>'+icon('arrow')+'</button></div>';
+    html+='<button type="button" class="fa-loyalty-note" onclick="showSharik()">'+icon('gift')+'<span><strong>شارك واربح</strong><small>تعرّف على طريقة المشاركة</small></span>'+icon('arrow')+'</button></div>';
     document.getElementById('fa-offers').innerHTML=html;
   }
   function renderStayServices(){
@@ -5595,7 +5617,7 @@ body.fa-app{background:var(--fa-bg)!important;color:var(--fa-ink);font-family:Ta
   }
   var detailRoutes=['cabin','sinema','maiya','tarfihi','jalsat','tawilat','menu','sharik','hospitality','faq','faq2','service-sub'];
   var modalRoutes=['photos','map-photos','tour','order','map'];
-  var titles={sinema:'جلسة السينما',maiya:'الألعاب المائية',tarfihi:'الألعاب الترفيهية',jalsat:'الجلسات الخارجية',tawilat:'طاولات الطعام',menu:'المطعم',sharik:'شارك واربح',hospitality:'الضيافة والتنسيقات',faq:'الأسئلة الشائعة',faq2:'الأسئلة الشائعة','service-sub':'الخدمات'};
+  var titles={resort:'أكواخ المنتجع',chalet:'أقسام الاستراحة',sinema:'جلسة السينما',maiya:'الألعاب المائية',tarfihi:'الألعاب الترفيهية',jalsat:'الجلسات الخارجية',tawilat:'طاولات الطعام',menu:'المطعم',sharik:'شارك واربح',hospitality:'الضيافة والتنسيقات',faq:'الأسئلة الشائعة',faq2:'الأسئلة الشائعة','service-sub':'الخدمات'};
   function syncRoute(route){
     if(!route)return;
     var r=route,chain=[];
@@ -5611,27 +5633,36 @@ body.fa-app{background:var(--fa-bg)!important;color:var(--fa-ink);font-family:Ta
     var contentRoute=chain.find(function(x){return modalRoutes.indexOf(x.name)===-1;})||route;
     document.body.dataset.faDetail=String(detailRoutes.indexOf(contentRoute.name)!==-1);
     document.body.dataset.faModal=String(modalRoutes.indexOf(route.name)!==-1);
+    document.body.dataset.faHome=String(contentRoute.name==='home');
+    document.body.dataset.faList=String(contentRoute.name==='resort'||contentRoute.name==='chalet');
+    document.querySelector('.fa-venues').hidden=contentRoute.name!=='home';
+    document.getElementById('fa-contact-venue').textContent=venue==='stay'?'استراحة يوم العائلة':'منتجع يوم العائلة';
     var title=titles[route.name]||'يوم العائلة';
     if(route.name==='cabin'){var c=(route.args[0]>=20?_chaletItems2:data.resort.items).find(function(x){return x.id===route.args[0];});if(c)title=c.name;}
     document.getElementById('fa-detail-title').textContent=title;
-    var map=document.getElementById('fa-location');map.href=venue==='stay'?'https://maps.app.goo.gl/JaQUQeZWPF9gbvUu9':'https://maps.app.goo.gl/FLmawLadNaa3uYpJ8?g_st=ic';map.setAttribute('aria-label',venue==='stay'?'موقع الاستراحة':'موقع المنتجع');
     if(route.name==='offers')renderOffers();
   }
   function init(){
     document.body.classList.add('fa-app');
     try{window.fdAppVenue=sessionStorage.getItem('fd-app-preview-venue')==='stay'?'stay':'resort';}catch(e){window.fdAppVenue='resort';}
     var header=document.createElement('div');header.className='fa-header';header.setAttribute('role','banner');
-    header.innerHTML='<div class="fa-header-inner"><div class="fa-brand-row"><button type="button" class="fa-back" onclick="fdAppBack()" aria-label="العودة">'+icon('back')+'</button><p id="fa-detail-title" class="fa-detail-title"></p><button type="button" class="fa-brand" onclick="fdAppNavigate(\'home\')" aria-label="يوم العائلة - الرئيسية"><img src="imgs/img00.webp" alt="" width="55" height="50"><span class="fa-brand-copy"><strong>يوم العائلة</strong><span>FAMILY DAY</span></span></button><a id="fa-location" class="fa-map-link" target="_blank" rel="noopener noreferrer" aria-label="موقع المنتجع">'+icon('map')+'</a></div><nav class="fa-venues" aria-label="اختيار المكان"><button type="button" data-fa-venue="resort" aria-pressed="true" onclick="fdAppSelectVenue(\'resort\')">'+icon('resort')+'المنتجع</button><button type="button" data-fa-venue="stay" aria-pressed="false" onclick="fdAppSelectVenue(\'stay\')">'+icon('stay')+'الاستراحة</button></nav></div>';
+    header.innerHTML='<div class="fa-header-inner"><div class="fa-brand-row"><button type="button" class="fa-back" onclick="fdAppBack()" aria-label="العودة">'+icon('back')+'</button><p id="fa-detail-title" class="fa-detail-title"></p><button type="button" class="fa-brand" onclick="fdAppNavigate(\'home\')" aria-label="يوم العائلة - الرئيسية"><img src="imgs/img00.webp" alt="" width="55" height="50"><span class="fa-brand-copy"><strong>يوم العائلة</strong><span>FAMILY DAY</span></span></button><span class="fa-header-spacer" aria-hidden="true"></span></div><nav class="fa-venues" aria-label="اختيار المكان"><button type="button" data-fa-venue="resort" aria-pressed="true" onclick="fdAppSelectVenue(\'resort\')">المنتجع</button><button type="button" data-fa-venue="stay" aria-pressed="false" onclick="fdAppSelectVenue(\'stay\')">الاستراحة</button></nav></div>';
     document.body.appendChild(header);
     var nav=document.createElement('nav');nav.className='fa-nav';nav.setAttribute('aria-label','أقسام التطبيق');
     var tabs=[['home','الرئيسية','home'],['offers','العروض','gift'],['walaa','بطاقتي','card'],['services','الخدمات','services'],['contact','التواصل','phone']];
     nav.innerHTML='<div class="fa-nav-inner">'+tabs.map(function(t){return '<button type="button" data-fa-tab="'+t[0]+'"'+(t[0]==='walaa'?' class="fa-card-tab"':'')+' onclick="fdAppNavigate(\''+t[0]+'\')"'+(t[0]==='home'?' aria-current="page"':'')+'>'+(t[0]==='walaa'?'<span class="fa-card-disc">'+icon(t[2])+'</span>':icon(t[2]))+'<span>'+t[1]+'</span></button>';}).join('')+'</div>';
     document.body.appendChild(nav);
-    [['fa-offers','العروض والمزايا'],['fa-stay-services','مرافق الاستراحة']].forEach(function(pair){var page=document.createElement('section');page.id=pair[0];page.className='fa-page';page.hidden=true;page.setAttribute('aria-label',pair[1]);page.setAttribute('tabindex','-1');document.body.appendChild(page);});
+    [['fa-offers','العروض'],['fa-stay-services','مرافق الاستراحة']].forEach(function(pair){var page=document.createElement('section');page.id=pair[0];page.className='fa-page';page.hidden=true;page.setAttribute('aria-label',pair[1]);page.setAttribute('tabindex','-1');document.body.appendChild(page);});
     renderChalet2();renderHome('resort');renderHome('stay');renderOffers();renderStayServices();
     var names={'المطعم':'food','جلسة السينما':'cinema','الألعاب الترفيهية':'games','الألعاب المائية':'pool','الضيافة والتنسيقات':'gift','طاولات الطعام':'table','الجلسات الخارجية':'outdoor'};
     document.querySelectorAll('#services-overlay .svcs-card').forEach(function(b){var title=b.getAttribute('aria-label');if(names[title])b.insertAdjacentHTML('afterbegin','<span class="fa-service-icon">'+icon(names[title])+'</span>');});
     document.querySelector('#walaa-detail .wl-card').insertAdjacentHTML('afterbegin','<div class="fa-loyalty-brand"><span>يوم العائلة<small>LOYALTY CARD</small></span>'+icon('card')+'</div>');
+    document.querySelector('#contact-page .cp-title').insertAdjacentHTML('afterend','<p id="fa-contact-venue" class="fa-context-caption"></p>');
+    var contactBody=document.querySelector('#contact-page .cp-body');
+    var faqSection=contactBody.querySelector('.fd-contact-faq-section');
+    if(!faqSection){faqSection=document.createElement('section');faqSection.className='cp-group fd-contact-faq-section';contactBody.appendChild(faqSection);}
+    faqSection.innerHTML='<h2 class="cp-label">معلومات مفيدة</h2><button type="button" class="cp-wide fd-contact-faq-button"><span>الأسئلة الشائعة</span>'+icon('arrow')+'</button>';
+    faqSection.querySelector('button').addEventListener('click',function(){if(document.getElementById('contact-page').dataset.venue==='stay')showFaq2();else showFaq();});
     document.getElementById('landing').setAttribute('aria-label','منتجع يوم العائلة');
     document.getElementById('landing2').setAttribute('aria-labelledby','fa-stay-title');
     syncRoute(history.state&&history.state.route||{name:'home',args:[window.fdAppVenue]});
