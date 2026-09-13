@@ -4632,7 +4632,8 @@ function openMDirect(c){
     var r = {name:name,args:args || []};
     if(parent) r.parent = parent;
     else if(name==='home') { /* App home is a top-level destination. */ }
-    else if(name==='offers' || name==='walaa') r.parent = route('home',[window.fdAppVenue || 'resort']);
+    else if(name==='offers' || name==='walaa' || name==='bookings') r.parent = route('home',[window.fdAppVenue || 'resort']);
+    else if(name==='search') r.parent = route('home',[(r.args[0] && r.args[0].venue) || window.fdAppVenue || 'resort']);
     else if(name==='stay-services') r.parent = route('home',['stay']);
     else if(name==='resort' || name==='services' || name==='faq') r.parent = route('home',['resort']);
     else if(name==='chalet' || name==='faq2') r.parent = route('home',['stay']);
@@ -4665,7 +4666,8 @@ function openMDirect(c){
     }
     match=/^(home|contact)=(resort|stay)$/.exec(hash);
     if(match) return route(match[1],[match[2]]);
-    if(['resort','chalet','services','faq','faq2','offers','stay-services'].indexOf(hash)!==-1 || serviceViews[hash]) return route(hash);
+    if(hash==='search') return route('search',[window.fdBookingCriteria || {venue:window.fdAppVenue || 'resort',guests:2}]);
+    if(['resort','chalet','services','faq','faq2','offers','stay-services','bookings'].indexOf(hash)!==-1 || serviceViews[hash]) return route(hash);
     return route('home',[window.fdAppVenue || 'resort']);
   }
   function remember(name){
@@ -4680,8 +4682,7 @@ function openMDirect(c){
       case 'resort': call('showSection',['resort']); break;
       case 'chalet': call('showSection2'); break;
       case 'services': call('showServices'); break;
-      case 'offers': document.getElementById('fa-offers').hidden=false; document.getElementById('fa-offers').scrollTop=0; break;
-      case 'stay-services': document.getElementById('fa-stay-services').hidden=false; document.getElementById('fa-stay-services').scrollTop=0; break;
+      case 'offers': case 'stay-services': case 'bookings': case 'search': var page=document.getElementById('fa-'+r.name);page.hidden=false;page.scrollTop=0;break;
       case 'faq': call('showFaq'); break;
       case 'faq2': call('showFaq2'); break;
       case 'contact': call('showContact',r.args); break;
@@ -4691,8 +4692,16 @@ function openMDirect(c){
           if(item) call('openMDirect',[item]);
         } else {
           var priorFilter=_curFilter;
-          if(r.parent && r.parent.name==='home') _curFilter='all';
-          try { call('openM',[r.args[0],'resort']); }
+          if(r.parent && ['home','search'].indexOf(r.parent.name)!==-1) _curFilter='all';
+          try {
+            call('openM',[r.args[0],'resort']);
+            if(r.parent && r.parent.name==='search'){
+              var people=Number(r.parent.args[0].guests)||2;
+              _navItems=data.resort.items.filter(function(c){return c.id!==11 && c.guests>=people;});
+              _navIdx=_navItems.findIndex(function(c){return c.id===r.args[0];});
+              updateNavUI();
+            }
+          }
           finally { _curFilter=priorFilter; }
         }
         break;
@@ -4710,7 +4719,7 @@ function openMDirect(c){
       case 'map': document.getElementById('fd-map-open').click(); break;
       default:
         if(serviceViews[r.name]) {
-          if(r.name==='sinema' && r.parent && r.parent.name==='cabin') document.getElementById('services-overlay').classList.remove('hide');
+          if(['sinema','hospitality'].indexOf(r.name)!==-1 && r.parent && r.parent.name!=='services') document.getElementById('services-overlay').classList.remove('hide');
           call(serviceViews[r.name][0]);
           if(['menu','jalsat','tawilat','sinema','tarfihi','maiya'].indexOf(r.name)!==-1) {
             var back=document.querySelector('#'+r.name+'-detail button[onclick="'+serviceViews[r.name][1]+'()"]');
@@ -4723,8 +4732,8 @@ function openMDirect(c){
     var close={home:'goBackToDestination',resort:'goBack',chalet:'goBack2',
       services:'closeServices',faq:'closeFaq',faq2:'closeFaq2',contact:'closeContact',
       cabin:'closeM','service-sub':'goBack',photos:'closeFS',tour:'closeIframe',order:'closeOrderPopup'};
-    if(r.name==='offers' || r.name==='stay-services'){
-      document.getElementById(r.name==='offers'?'fa-offers':'fa-stay-services').hidden=true;
+    if(['offers','stay-services','bookings','search'].indexOf(r.name)!==-1){
+      document.getElementById('fa-'+r.name).hidden=true;
     } else if(r.name==='map-photos'){
       document.dispatchEvent(new CustomEvent('fd-map-photos-close'));
     } else if(r.name==='map'){
@@ -4733,7 +4742,7 @@ function openMDirect(c){
     } else if(close[r.name]) call(close[r.name]);
     else if(serviceViews[r.name]) {
       call(serviceViews[r.name][1]);
-      if(r.name==='sinema' && r.parent && r.parent.name==='cabin') document.getElementById('services-overlay').classList.add('hide');
+      if(['sinema','hospitality'].indexOf(r.name)!==-1 && r.parent && r.parent.name!=='services') document.getElementById('services-overlay').classList.add('hide');
     }
   }
   function renderRoute(next){
@@ -4791,14 +4800,14 @@ function openMDirect(c){
   wrapOpen('showFaq2',function(){return route('faq2',[],current.name==='contact'?current:null);});
   wrapOpen('showContact',function(type){return route('contact',[type || 'resort']);});
   function cabinRoute(id){
-    var parent=current.name==='cabin' ? current.parent : (current.name==='service-sub' || current.name==='home') ? current : null;
+    var parent=current.name==='cabin' ? current.parent : (current.name==='service-sub' || current.name==='home' || current.name==='search') ? current : null;
     return route('cabin',[id],parent);
   }
   wrapOpen('openM',cabinRoute);
   wrapOpen('openMDirect',function(c){return cabinRoute(c.id);});
   wrapOpen('showServiceSub',function(){return route('service-sub',Array.from(arguments));});
   Object.keys(serviceViews).forEach(function(name){
-    wrapOpen(serviceViews[name][0],function(){return route(name,[],current.name==='service-sub' || name==='sharik' && current.name==='offers' ? current : null);});
+    wrapOpen(serviceViews[name][0],function(){return route(name,[],current.name==='service-sub' || current.name==='bookings' || name==='sharik' && current.name==='offers' ? current : null);});
     wrapClose(serviceViews[name][1]);
   });
   window.openCabinService=function(event,name){
@@ -4820,7 +4829,10 @@ function openMDirect(c){
     if(!rendering && current.name==='map-photos') returnTo(current.parent);
   });
   wrapOpen('open3D',function(url){return route('tour',[url],current);});
-  wrapOpen('openOrderPopup',function(name,showTime){return route('order',[name,!!showTime,_isMenuOrder,['menu','sinema','maiya','tarfihi','tawilat','jalsat'].indexOf(current.name)!==-1],current);});
+  wrapOpen('openOrderPopup',function(name,showTime){
+    if(typeof window.fdPreviewServiceRequest==='function') window.fdPreviewServiceRequest(name);
+    return route('bookings');
+  });
   ['closeM','closeServices','closeFaq','closeFaq2','closeContact','closeServiceSub',
     'closeFS','closeIframe','closeOrderPopup','goBack','goBack2'].forEach(function(name){wrapClose(name);});
   wrapClose('goBackToDestination',function(){return route('home',[window.fdAppVenue || 'resort']);});
@@ -4830,10 +4842,11 @@ function openMDirect(c){
     var venue=window.fdAppVenue || 'resort';
     var next=tab==='home' ? route('home',[venue]) :
       tab==='services' ? route(venue==='stay'?'stay-services':'services') :
-      tab==='contact' ? route('contact',[venue]) : route(tab);
+      tab==='contact' ? route('contact',[venue]) : tab==='offers' ? route('offers',[],current) : route(tab);
     navigate(next);
   };
   window.fdAppSelectVenue=function(venue){window.fdAppVenue=venue; navigate(route('home',[venue]));};
+  window.fdAppSearch=function(criteria){navigate(route('search',[criteria]));};
   window.fdAppBack=function(){returnTo(current.parent || route('home',[window.fdAppVenue || 'resort']));};
 
   function dismissSplash(){
@@ -5162,7 +5175,7 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 (function () {
   'use strict';
   var panelIds = [
-    'splash', 'dest', 'landing', 'landing2', 'app', 'app2', 'contact-page', 'fa-offers', 'fa-stay-services',
+    'splash', 'dest', 'landing', 'landing2', 'app', 'app2', 'contact-page', 'fa-offers', 'fa-stay-services', 'fa-bookings', 'fa-search',
     'faq-overlay', 'faq2-overlay', 'services-overlay', 'hospitality-detail',
     'sinema-detail', 'maiya-detail', 'jalsat-detail', 'sharik-detail',
     'tarfihi-detail', 'tawilat-detail', 'walaa-detail', 'menu-detail', 'menu-cart-review',
@@ -5533,6 +5546,86 @@ body.fa-app{background:var(--fa-bg)!important;color:var(--fa-ink);font-family:Ta
 .fa-app[data-fa-list=true] .fa-detail-title{display:block;text-align:center}
 @media(min-width:900px){.fa-app .fa-venues{width:300px;top:27px}.fa-app .fa-campaign{min-height:94px;padding:20px 26px}.fa-app .fa-campaign strong{font-size:23px}}
 
+/* Start with a stay. Browse extras now and request them from a booking. */
+body.fa-app[data-fa-home],body.fa-app[data-fa-detail]{--fa-top:66px}
+.fa-app .fa-header{height:calc(var(--fa-top) + env(safe-area-inset-top,0px))!important;padding-bottom:0}
+.fa-app .fa-brand-row{height:66px}
+body.fa-app[data-fa-demo=true]{--fa-top:94px}
+.fa-demo-notice{height:28px;line-height:28px;margin:0;text-align:center;font-size:12px;color:#ecd7b2;background:#e1c4950c;border-radius:7px 7px 0 0}
+.fa-home .fa-welcome{margin-bottom:18px}
+.fa-book-form{padding:19px;margin:0 0 28px;border:1px solid #d5e4e3;border-radius:22px;background:#edf5f3;color:#143540;box-shadow:0 12px 28px #0002}
+.fa-book-form h2{font-size:22px;line-height:1.4;font-weight:800;margin:0 0 14px}
+.fa-book-venues{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;border-radius:12px;background:#dce9e8;margin-bottom:15px}
+.fa-book-venues button{min-height:42px;border:0;border-radius:9px;background:none;color:#49666e;font-size:16px;font-weight:700;cursor:pointer}
+.fa-book-venues button[aria-pressed=true]{background:#164b56;color:#fff;box-shadow:0 2px 5px #16334020}
+.fa-book-dates{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;margin-bottom:12px}
+.fa-book-dates label{min-width:0;font-size:13px;font-weight:700;color:#4f6970;line-height:1.5}
+.fa-book-form input{display:block;width:100%;min-width:0;min-height:46px;margin-top:5px;padding:9px;border:1px solid #c6d9d7;border-radius:10px;background:#fff;color:#173c48;font:500 16px Tajawal,sans-serif;color-scheme:light}
+.fa-book-form input[type=date]{direction:ltr;text-align:center;max-width:100%;-webkit-appearance:none;appearance:none}
+.fa-book-form input[type=date]::-webkit-date-and-time-value{text-align:center}
+.fa-book-guests{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:15px;font-weight:700;margin-bottom:14px}
+.fa-book-guests>span{display:flex;align-items:center;gap:9px}
+.fa-book-guests .fa-icon{width:21px;height:21px;color:#44747c}
+.fa-book-guests input{width:76px;margin:0;text-align:center}
+.fa-book-form .fa-primary{background:#164b56;color:#fff;min-height:49px;font-size:16px}
+.fa-book-note{margin:9px 0 0;text-align:center;font-size:12px;line-height:1.5;color:#546e74}
+.fa-book-error{font-size:13px;line-height:1.5;color:#922b38;margin:0 0 10px}
+.fa-book-offer{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:46px;width:100%;padding:13px 0 0;margin-top:11px;border:0;border-top:1px solid #c8dcda;background:none;text-align:right;font-size:14px;font-weight:700;color:#235e53;cursor:pointer}
+.fa-book-offer>span:last-child{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:500;white-space:nowrap}
+.fa-book-offer .fa-icon{width:15px;height:15px}
+.fa-book-offer[hidden]{display:none!important}
+.fa-service-preview{padding:22px 0 5px;border-top:1px solid var(--fa-border)}
+.fa-service-preview h2{font-size:21px;line-height:1.5;margin:0 0 8px;font-weight:700}
+.fa-service-preview p{font-size:15px;line-height:1.8;color:var(--fa-muted);margin:0 0 9px;max-width:640px}
+.fa-service-intro{width:100%;max-width:1100px;margin:0 auto 22px;padding:0 20px;color:var(--fa-muted);font-size:15px;line-height:1.8;text-align:right}
+.fa-app #services-overlay .svcs-header{padding-bottom:12px!important}
+.fa-search-summary{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 0;border-bottom:1px solid var(--fa-border)}
+.fa-search-summary strong{display:block;font-size:17px;margin-bottom:6px}
+.fa-search-summary span{display:block;font-size:14px;line-height:1.7;color:var(--fa-muted)}
+.fa-availability-note{font-size:14px;line-height:1.8;color:var(--fa-muted);margin:15px 0}
+.fa-page-body>.fa-book-offer{background:#10372f;color:#cfebdf;border:1px solid #315b4d;border-radius:12px;padding:12px 15px;margin:0 0 22px}
+.fa-search-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;margin-top:22px}
+.fa-search-grid .fa-cabin{max-width:none;width:100%}
+.fa-bookings-body{max-width:720px}
+.fa-book-empty{max-width:470px;margin:24px auto;padding:24px 0;text-align:center}
+.fa-book-empty>.fa-icon{width:52px;height:52px;color:var(--fa-teal);margin-bottom:18px}
+.fa-book-empty h2{font-size:23px;line-height:1.5;margin:0 0 12px}
+.fa-book-empty p{font-size:16px;line-height:1.9;color:var(--fa-muted);margin:0 0 24px}
+.fa-book-empty .fa-primary{margin:0 0 10px}
+.fa-book-empty .fa-text-btn{white-space:normal;justify-content:center;min-height:44px}
+.fa-book-empty .fa-request-note{padding:13px;border-radius:12px;background:#173440;color:#d1e3e7;font-size:14px}
+.fa-booking-card{display:grid;grid-template-columns:90px minmax(0,1fr);gap:16px;padding:18px;margin:20px 0 28px;background:#102b39;border:1px solid #2c4d59;border-radius:20px}
+.fa-booking-card>img{width:90px;height:90px;object-fit:cover;border-radius:13px}
+.fa-booking-card h2{font-size:23px;line-height:1.4;margin:5px 0}
+.fa-booking-card small{display:block;color:var(--fa-muted);font-size:13px;line-height:1.5}
+.fa-booking-card>div>span{color:#e4cfae;font-size:12px}
+.fa-booking-card dl{display:grid;grid-template-columns:1fr 1fr;grid-column:1/-1;gap:15px;padding-top:15px;border-top:1px solid #2b4853;margin:0}
+.fa-booking-card dt{font-size:13px;color:var(--fa-muted);margin:0 0 4px}
+.fa-booking-card dd{font-size:18px;font-weight:700;margin:0}
+.fa-booking-card dd small{font-weight:400;margin-top:5px}
+.fa-booking-section-title{font-size:22px;margin:0 0 4px}
+.fa-booking-section-title+.fa-page-intro{margin-bottom:16px}
+.fa-booking-addons{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:0 0 16px}
+.fa-booking-addons button{display:flex;flex-direction:column;align-items:flex-start;gap:9px;padding:20px;border:1px solid #315460;border-radius:17px;background:#102b39;color:var(--fa-ink);text-align:right;cursor:pointer}
+.fa-booking-addons .fa-icon{color:var(--fa-teal);margin-bottom:4px}
+.fa-booking-addons strong{font-size:19px;line-height:1.5}
+.fa-booking-addons span{font-size:13px;color:var(--fa-muted)}
+.fa-addon-form{background:#153541;border:1px solid #386170;border-radius:16px;margin:0 0 18px;padding:18px}
+.fa-addon-form[hidden],.fa-book-error[hidden]{display:none!important}
+.fa-addon-form h3{font-size:20px;margin:0 0 15px}
+.fa-addon-form label{display:block;color:var(--fa-muted);font-size:14px}
+.fa-addon-form textarea{display:block;resize:vertical;min-height:86px;width:100%;margin:8px 0 15px;padding:12px;border:1px solid #456270;border-radius:10px;background:#0c2532;color:#f3f7f9;font:400 16px Tajawal,sans-serif}
+.fa-addon-form .fa-text-btn{display:flex;justify-content:center;width:100%;margin-top:7px}
+.fa-demo-extras{margin-top:25px;padding-top:22px;border-top:1px solid var(--fa-border)}
+.fa-demo-extras h2{font-size:20px;line-height:1.5;margin:0 0 15px}
+.fa-demo-extras ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.fa-demo-extras li{padding:15px;border:1px solid var(--fa-border);border-radius:12px;background:var(--fa-surface);font-size:16px}
+.fa-demo-extras li span{display:block;overflow-wrap:anywhere;font-size:14px;color:var(--fa-muted);line-height:1.8;margin-top:5px}
+.fa-demo-extras>p{font-size:13px;line-height:1.6;color:#ddc9a7}
+@media(min-width:700px){.fa-search-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:900px){.fa-book-form{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr);grid-template-areas:"heading venue venue" "dates guests action" "note note note" "offer offer offer";gap:12px 22px;padding:24px}.fa-book-form h2{grid-area:heading;margin:4px 0 0}.fa-book-venues{grid-area:venue;margin:0;width:300px;justify-self:end}.fa-book-dates{grid-area:dates;margin:0}.fa-book-guests{grid-area:guests;margin:0;align-self:end;min-height:46px}.fa-search-button{grid-area:action;align-self:end}.fa-book-note{grid-area:note;margin:0;text-align:left}.fa-book-offer{grid-area:offer;margin:0;padding-top:14px}.fa-book-error{grid-column:1/-1;margin:0}.fa-service-preview h2{font-size:24px}.fa-search-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:360px){.fa-book-form{padding:16px}.fa-book-dates{gap:8px}.fa-book-form input{padding-inline:5px}.fa-book-offer{font-size:13px;gap:8px}.fa-demo-notice{font-size:11px}.fa-booking-addons button{padding:16px}}
+
 .fa-app .fa-campaign[hidden]{display:none!important}
 </style>
 <script id="familyday-app-preview-runtime">
@@ -5559,6 +5652,39 @@ body.fa-app{background:var(--fa-bg)!important;color:var(--fa-ink);font-family:Ta
     table:'<path d="M3 10h18M6 10V5h12v5M5 10l-1 11m15-11 1 11M2 15h20"/>',
     help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 4 2c-1 .7-1.5 1-1.5 3m0 3h.01"/>'
   };
+  paths.calendar='<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4m10-4v4M3 11h18m-13 4h3m3 0h2"/>';
+  var demoBooking=new URLSearchParams(location.search).get('demo')==='booking';
+  var demoExtras=[];
+  var pendingService='';
+  var bookingCriteria={venue:'resort',arrival:'',departure:'',guests:2};
+  try{var saved=JSON.parse(sessionStorage.getItem('fd-booking-criteria')||'null');if(saved)Object.assign(bookingCriteria,saved);}catch(e){}
+  window.fdBookingCriteria=bookingCriteria;
+  function todayISO(){return new Date(Date.now()+3*3600000).toISOString().slice(0,10);}
+  function nextDay(iso,days){var d=new Date(iso+'T12:00:00Z');d.setUTCDate(d.getUTCDate()+days);return d.toISOString().slice(0,10);}
+  function dateLabel(iso){return iso?new Intl.DateTimeFormat('ar-SA-u-ca-gregory',{day:'numeric',month:'short'}).format(new Date(iso+'T12:00:00Z')):'اختر الموعد';}
+  function saveCriteria(){window.fdBookingCriteria=bookingCriteria;try{sessionStorage.setItem('fd-booking-criteria',JSON.stringify(bookingCriteria));}catch(e){}}
+  function venueButtons(venue){return '<div class="fa-book-venues" role="group" aria-label="مكان الإقامة"><button type="button" data-fa-venue="resort" aria-pressed="'+(venue==='resort')+'" onclick="fdChooseBookingVenue(\'resort\')">المنتجع</button><button type="button" data-fa-venue="stay" aria-pressed="'+(venue==='stay')+'" onclick="fdChooseBookingVenue(\'stay\')">الاستراحة</button></div>';}
+  function bookingForm(venue){
+    return '<form class="fa-book-form" data-venue="'+venue+'" onsubmit="return fdSubmitBooking(event)" onchange="fdBookingChanged(this)"><h2>متى تبغى تحجز؟</h2>'+venueButtons(venue)
+      +'<div class="fa-book-dates"><label>الوصول<input type="date" name="arrival" aria-label="تاريخ الوصول" min="'+todayISO()+'" value="'+escapeText(bookingCriteria.arrival)+'" required></label><label>المغادرة<input type="date" name="departure" aria-label="تاريخ المغادرة" min="'+(bookingCriteria.arrival?nextDay(bookingCriteria.arrival,1):nextDay(todayISO(),1))+'" value="'+escapeText(bookingCriteria.departure)+'" required></label></div>'
+      +'<label class="fa-book-guests"><span>'+icon('people')+'عدد الضيوف</span><input type="number" inputmode="numeric" name="guests" min="1" max="70" step="1" aria-label="عدد الضيوف" value="'+bookingCriteria.guests+'" required></label>'
+      +'<p class="fa-book-error" role="alert" hidden></p><button class="fa-primary fa-search-button" type="submit">'+(venue==='stay'?'عرض الأقسام':'عرض الأكواخ')+icon('arrow')+'</button><p class="fa-book-note">يُؤكد توفر موعدك عند إتمام الحجز</p>'
+      +(venue==='resort'?campaignBanner():'')+'</form>';
+  }
+  window.fdBookingChanged=function(form){
+    var arrival=form.elements.arrival.value,departure=form.elements.departure.value;
+    if(arrival && (!departure || departure<=arrival)){departure=nextDay(arrival,1);form.elements.departure.value=departure;}
+    form.elements.departure.min=arrival?nextDay(arrival,1):nextDay(todayISO(),1);
+    bookingCriteria={venue:form.dataset.venue,arrival:arrival,departure:departure,guests:Number(form.elements.guests.value)||2};saveCriteria();
+    document.querySelectorAll('.fa-book-form').forEach(function(other){if(other!==form){other.elements.arrival.value=arrival;other.elements.departure.value=departure;other.elements.guests.value=bookingCriteria.guests;other.elements.departure.min=form.elements.departure.min;}});
+  };
+  window.fdChooseBookingVenue=function(venue){bookingCriteria.venue=venue;saveCriteria();fdAppSelectVenue(venue);};
+  window.fdSubmitBooking=function(event){
+    event.preventDefault();var form=event.currentTarget;fdBookingChanged(form);var error=form.querySelector('.fa-book-error');
+    var invalid=!bookingCriteria.arrival || !bookingCriteria.departure || bookingCriteria.arrival<todayISO() || bookingCriteria.departure<=bookingCriteria.arrival;
+    if(invalid || bookingCriteria.guests<1 || bookingCriteria.guests>70){error.textContent=invalid?'اختر تاريخ وصول ومغادرة صحيحين.':'أدخل عدد الضيوف من 1 إلى 70.';error.hidden=false;return false;}
+    error.hidden=true;fdAppSearch(Object.assign({},bookingCriteria));return false;
+  };
   function icon(name){return '<svg class="fa-icon" viewBox="0 0 24 24" aria-hidden="true">'+(paths[name]||paths.services)+'</svg>';}
   function escapeText(value){return String(value).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
   function caption(c){return c.id>=20 ? 'لجمعات العائلة' : c.suitable;}
@@ -5573,28 +5699,54 @@ body.fa-app{background:var(--fa-bg)!important;color:var(--fa-ink);font-family:Ta
   function campaignBanner(){
     var expired=typeof resortCampaignState==='function' && resortCampaignState(new Date()).allExpired;
     if(expired) return '';
-    return '<button type="button" class="fa-campaign" onclick="fdAppNavigate(\'offers\')"><span class="fa-campaign-copy"><strong>'+escapeText(FD_CAMPAIGN.name)+'</strong><span class="fa-campaign-sub">'+escapeText(FD_CAMPAIGN.bannerDescription)+'</span></span>'+icon('arrow')+'</button>';
+    return '<button type="button" class="fa-book-offer" onclick="fdAppNavigate(\'offers\')"><span>'+escapeText(FD_CAMPAIGN.name)+'</span><span>تفاصيل العرض'+icon('arrow')+'</span></button>';
   }
   function renderHome(venue){
     var stay=venue==='stay';
     var items=stay?_chaletItems2:[1,3,10].map(function(id){return data.resort.items.find(function(c){return c.id===id;});});
     var gridAction=stay?'showSection2()':"showSection('resort')";
     var title=stay?'استراحة يوم العائلة':'منتجع يوم العائلة';
-    var html='<div class="fa-home"><div class="fa-welcome"><div><h1 id="'+(stay?'fa-stay-title':'rh-title')+'">'+title+'</h1><p>'+(stay?'قسمان مستقلان لجمعات العائلة':'خصوصية تليق بكم… وراحة تستحقونها')+'</p></div>'
-      +(stay?'':'<a class="fa-rating" href="https://maps.app.goo.gl/FLmawLadNaa3uYpJ8?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="تقييم الزوار 4.7 من 5">'+icon('services')+'<bdi>4.7</bdi></a>')+'</div>'
-      +(stay?'':campaignBanner())
-      +'<section class="fa-section">'+sectionHeading(stay?'اختر قسمك':'اختر كوخك',gridAction)
+    var html='<div class="fa-home"><div class="fa-welcome"><div><h1 id="'+(stay?'fa-stay-title':'rh-title')+'">يوم حلو يجمعكم</h1><p>'+title+' · جدة، خليج سلمان</p></div></div>'
+      +bookingForm(venue)
+      +'<section class="fa-section">'+sectionHeading(stay?'تعرّف على القسمين':'تعرّف على الأكواخ',gridAction)
       +'<div class="fa-cabins">'+items.map(cabinCard).join('')+'</div></section>';
     if(stay){
       html+='<section class="fa-section">'+sectionHeading('مرافق الاستراحة',"fdAppNavigate('services')")+'<div class="fa-quick-services">'
         +quick('pool','المسابح',"fdAppNavigate('services')")+quick('outdoor','الجلسات',"fdAppNavigate('services')")+quick('games','الألعاب',"fdAppNavigate('services')")+quick('food','المطبخ',"fdAppNavigate('services')")+'</div></section>';
     }else{
-      html+='<section class="fa-section">'+sectionHeading('خدمات تكمل يومك','showServices()','كل الخدمات')+'<div class="fa-quick-services">'
-        +quick('food','المطعم','openMenuDetail()')+quick('cinema','السينما','showSinema()')+quick('outdoor','الجلسات','showJalsat()')+quick('games','الألعاب','showTarfihi()')+'</div></section>';
+      html+='<section class="fa-service-preview"><h2>كيف تحب يكون يومكم؟</h2><p>ضيافة وتنسيق وسينما وجلسات… تعرّف عليها الآن وأضفها بعد تأكيد حجزك.</p><button type="button" class="fa-text-btn" onclick="showServices()">اكتشف خدماتنا'+icon('arrow')+'</button></section>';
     }
     html+='</div>';
     document.getElementById(stay?'landing2':'landing').innerHTML=html;
   }
+  function renderSearch(criteria){
+    criteria=criteria||bookingCriteria;bookingCriteria=Object.assign({},bookingCriteria,criteria);saveCriteria();
+    var items=criteria.venue==='stay'?_chaletItems2:data.resort.items;
+    var choices=items.filter(function(c){return c.id!==11 && c.guests>=Number(criteria.guests||2);});
+    // Dates are preserved for the future availability provider. Capacity is the
+    // only local filter; no unit is marked available without an inventory response.
+    var html='<div class="fa-page-body"><h1>خيارات الإقامة</h1><div class="fa-search-summary"><div><strong>'+(criteria.venue==='stay'?'الاستراحة':'المنتجع')+'</strong><span>'+dateLabel(criteria.arrival)+' — '+dateLabel(criteria.departure)+' · '+criteria.guests+' ضيوف</span></div><button type="button" class="fa-text-btn" onclick="fdAppNavigate(\'home\')">تعديل</button></div><p class="fa-availability-note">هذه الخيارات تناسب عدد الضيوف. يُؤكد توفر موعدك عند إتمام الحجز.</p>';
+    if(criteria.venue==='resort')html+=campaignBanner();
+    html+=choices.length?'<div class="fa-search-grid">'+choices.map(cabinCard).join('')+'</div>':'<div class="fa-book-empty"><h2>نرتّب معك الإقامة المناسبة</h2><p>لا يوجد كوخ منفرد في القائمة يتسع لهذا العدد. تواصل معنا لترتيب الخيارات المناسبة لمجموعتكم.</p><button type="button" class="fa-primary" onclick="showContact(\''+criteria.venue+'\')">تواصل معنا</button></div>';
+    document.getElementById('fa-search').innerHTML=html+'</div>';
+  }
+  function renderBookings(){
+    var html='<div class="fa-page-body fa-bookings-body"><h1>حجزي</h1>';
+    if(!demoBooking){
+      html+='<div class="fa-book-empty">'+icon('calendar')+'<h2>كل تفاصيل زيارتك هنا</h2><p>بعد تأكيد الحجز، تابع إقامتك وأضف الضيافة والتنسيق والخدمات التي تناسب يومك.</p>'+(pendingService?'<p class="fa-request-note">إضافة «'+escapeText(pendingService)+'» تحتاج إلى حجز إقامة مؤكد.</p>':'')+'<button type="button" class="fa-primary" onclick="fdAppNavigate(\'home\')">احجز إقامتك</button><button type="button" class="fa-text-btn" onclick="fdAppNavigate(\'contact\')">لدي حجز وأحتاج مساعدة</button></div>';
+    }else{
+      var arrival=bookingCriteria.arrival||nextDay(todayISO(),7),departure=bookingCriteria.departure||nextDay(arrival,1);
+      html+='<p class="fa-page-intro">مثال لشكل الصفحة بعد تأكيد الحجز</p><article class="fa-booking-card"><img src="'+GALLERY[1][0]+'" alt="بيت الدوم"><div><small>منتجع يوم العائلة</small><h2>بيت الدوم</h2><span>حجز تجريبي</span></div><dl><div><dt>الوصول</dt><dd>'+dateLabel(arrival)+'<small>4:00 مساءً</small></dd></div><div><dt>المغادرة</dt><dd>'+dateLabel(departure)+'<small>12:00 ظهرًا</small></dd></div></dl></article>'
+        +'<h2 class="fa-booking-section-title">جهّز إقامتك</h2><p class="fa-page-intro">أضف لمستك إلى الحجز</p><div class="fa-booking-addons"><button type="button" onclick="fdChooseDemoAddon(\'الضيافة\')">'+icon('food')+'<strong>الضيافة</strong><span>إضافة إلى الحجز</span></button><button type="button" onclick="fdChooseDemoAddon(\'التنسيق\')">'+icon('gift')+'<strong>التنسيق</strong><span>إضافة إلى الحجز</span></button></div>'
+        +'<form id="fa-addon-form" class="fa-addon-form" hidden onsubmit="return fdSubmitDemoAddon(event)"><h3 id="fa-addon-title"></h3><label>ملاحظاتك<textarea name="notes" rows="2" placeholder="كيف تحب نجهزها لكم؟"></textarea></label><button type="submit" class="fa-primary">إضافة للحجز التجريبي</button><button type="button" class="fa-text-btn" onclick="this.form.hidden=true">إلغاء</button></form>'
+        +'<button class="fa-text-btn" type="button" onclick="fdAppNavigate(\'services\')">تصفح بقية الخدمات'+icon('arrow')+'</button>';
+      if(demoExtras.length)html+='<section class="fa-demo-extras" aria-live="polite"><h2>إضافات الحجز التجريبي</h2><ul>'+demoExtras.map(function(x){return '<li><strong>'+escapeText(x.name)+'</strong>'+(x.notes?'<span>'+escapeText(x.notes)+'</span>':'')+'</li>';}).join('')+'</ul><p>للمعاينة فقط؛ لم يُرسل أي طلب.</p></section>';
+    }
+    document.getElementById('fa-bookings').innerHTML=html+'</div>';
+  }
+  window.fdChooseDemoAddon=function(name){var form=document.getElementById('fa-addon-form');form.hidden=false;form.dataset.addon=name;document.getElementById('fa-addon-title').textContent='إضافة '+name;form.scrollIntoView({behavior:'smooth',block:'nearest'});};
+  window.fdSubmitDemoAddon=function(event){event.preventDefault();var form=event.currentTarget;demoExtras.push({name:form.dataset.addon,notes:form.elements.notes.value.trim()});renderBookings();return false;};
+  window.fdPreviewServiceRequest=function(name){pendingService=name;if(demoBooking && !demoExtras.some(function(x){return x.name===name;}))demoExtras.push({name:name,notes:''});};
   function renderOffers(){
     var state=typeof resortCampaignState==='function'?resortCampaignState(new Date()):{statuses:[],allExpired:false};
     var html='<div class="fa-page-body"><h1>العروض</h1><p class="fa-page-intro">عروض منتجع يوم العائلة</p><h2 class="fa-offers-heading">'+escapeText(FD_CAMPAIGN.occasion)+'</h2>';
@@ -5617,7 +5769,12 @@ body.fa-app{background:var(--fa-bg)!important;color:var(--fa-ink);font-family:Ta
   }
   var detailRoutes=['cabin','sinema','maiya','tarfihi','jalsat','tawilat','menu','sharik','hospitality','faq','faq2','service-sub'];
   var modalRoutes=['photos','map-photos','tour','order','map'];
-  var titles={resort:'أكواخ المنتجع',chalet:'أقسام الاستراحة',sinema:'جلسة السينما',maiya:'الألعاب المائية',tarfihi:'الألعاب الترفيهية',jalsat:'الجلسات الخارجية',tawilat:'طاولات الطعام',menu:'المطعم',sharik:'شارك واربح',hospitality:'الضيافة والتنسيقات',faq:'الأسئلة الشائعة',faq2:'الأسئلة الشائعة','service-sub':'الخدمات'};
+  var titles={resort:'أكواخ المنتجع',chalet:'أقسام الاستراحة',search:'خيارات الإقامة',offers:'عروض الإقامة',bookings:'حجزي',sinema:'جلسة السينما',maiya:'الألعاب المائية',tarfihi:'الألعاب الترفيهية',jalsat:'الجلسات الخارجية',tawilat:'طاولات الطعام',menu:'المطعم',sharik:'شارك واربح',hospitality:'الضيافة والتنسيقات',faq:'الأسئلة الشائعة',faq2:'الأسئلة الشائعة','service-sub':'الخدمات'};
+  function refreshServiceActions(){
+    document.querySelectorAll('#services-overlay button,#menu-detail button,#jalsat-detail button,#tarfihi-detail button,#maiya-detail button,#tawilat-detail button').forEach(function(button){
+      if(!button.disabled && /^(اطلبها الآن|اطلب الآن عبر واتساب)$/.test(button.textContent.trim()))button.textContent='إضافة إلى حجزي';
+    });
+  }
   function syncRoute(route){
     if(!route)return;
     var r=route,chain=[];
@@ -5628,32 +5785,36 @@ body.fa-app{background:var(--fa-bg)!important;color:var(--fa-ink);font-family:Ta
     var venue=window.fdAppVenue||'resort';
     try{sessionStorage.setItem('fd-app-preview-venue',venue);}catch(e){}
     document.querySelectorAll('[data-fa-venue]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.faVenue===venue));});
-    var active=chain.some(function(x){return x.name==='offers';})?'offers':chain.some(function(x){return x.name==='walaa';})?'walaa':chain.some(function(x){return x.name==='contact';})?'contact':chain.some(function(x){return x.name==='services'||x.name==='stay-services';})?'services':'home';
+    var active=chain.some(function(x){return x.name==='bookings';})?'bookings':chain.some(function(x){return x.name==='walaa';})?'walaa':chain.some(function(x){return x.name==='contact';})?'contact':chain.some(function(x){return x.name==='services'||x.name==='stay-services';})?'services':'home';
     document.querySelectorAll('[data-fa-tab]').forEach(function(b){if(b.dataset.faTab===active)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
     var contentRoute=chain.find(function(x){return modalRoutes.indexOf(x.name)===-1;})||route;
     document.body.dataset.faDetail=String(detailRoutes.indexOf(contentRoute.name)!==-1);
     document.body.dataset.faModal=String(modalRoutes.indexOf(route.name)!==-1);
     document.body.dataset.faHome=String(contentRoute.name==='home');
-    document.body.dataset.faList=String(contentRoute.name==='resort'||contentRoute.name==='chalet');
-    document.querySelector('.fa-venues').hidden=contentRoute.name!=='home';
+    document.body.dataset.faList=String(['resort','chalet','search','offers'].indexOf(contentRoute.name)!==-1);
     document.getElementById('fa-contact-venue').textContent=venue==='stay'?'استراحة يوم العائلة':'منتجع يوم العائلة';
     var title=titles[route.name]||'يوم العائلة';
     if(route.name==='cabin'){var c=(route.args[0]>=20?_chaletItems2:data.resort.items).find(function(x){return x.id===route.args[0];});if(c)title=c.name;}
     document.getElementById('fa-detail-title').textContent=title;
     if(route.name==='offers')renderOffers();
+    if(route.name==='search')renderSearch(route.args[0]);
+    if(route.name==='bookings')renderBookings();
+    requestAnimationFrame(refreshServiceActions);
   }
   function init(){
     document.body.classList.add('fa-app');
+    document.body.dataset.faDemo=String(demoBooking);
     try{window.fdAppVenue=sessionStorage.getItem('fd-app-preview-venue')==='stay'?'stay':'resort';}catch(e){window.fdAppVenue='resort';}
     var header=document.createElement('div');header.className='fa-header';header.setAttribute('role','banner');
-    header.innerHTML='<div class="fa-header-inner"><div class="fa-brand-row"><button type="button" class="fa-back" onclick="fdAppBack()" aria-label="العودة">'+icon('back')+'</button><p id="fa-detail-title" class="fa-detail-title"></p><button type="button" class="fa-brand" onclick="fdAppNavigate(\'home\')" aria-label="يوم العائلة - الرئيسية"><img src="imgs/img00.webp" alt="" width="55" height="50"><span class="fa-brand-copy"><strong>يوم العائلة</strong><span>FAMILY DAY</span></span></button><span class="fa-header-spacer" aria-hidden="true"></span></div><nav class="fa-venues" aria-label="اختيار المكان"><button type="button" data-fa-venue="resort" aria-pressed="true" onclick="fdAppSelectVenue(\'resort\')">المنتجع</button><button type="button" data-fa-venue="stay" aria-pressed="false" onclick="fdAppSelectVenue(\'stay\')">الاستراحة</button></nav></div>';
+    header.innerHTML='<div class="fa-header-inner"><div class="fa-brand-row"><button type="button" class="fa-back" onclick="fdAppBack()" aria-label="العودة">'+icon('back')+'</button><p id="fa-detail-title" class="fa-detail-title"></p><button type="button" class="fa-brand" onclick="fdAppNavigate(\'home\')" aria-label="يوم العائلة - الرئيسية"><img src="imgs/img00.webp" alt="" width="55" height="50"><span class="fa-brand-copy"><strong>يوم العائلة</strong><span>FAMILY DAY</span></span></button><span class="fa-header-spacer" aria-hidden="true"></span></div>'+(demoBooking?'<p class="fa-demo-notice">حجز تجريبي للمعاينة · لا تُرسل أي طلبات</p>':'')+'</div>';
     document.body.appendChild(header);
     var nav=document.createElement('nav');nav.className='fa-nav';nav.setAttribute('aria-label','أقسام التطبيق');
-    var tabs=[['home','الرئيسية','home'],['offers','العروض','gift'],['walaa','بطاقتي','card'],['services','الخدمات','services'],['contact','التواصل','phone']];
+    var tabs=[['home','الرئيسية','home'],['bookings','حجزي','calendar'],['walaa','بطاقتي','card'],['services','خدماتنا','services'],['contact','التواصل','phone']];
     nav.innerHTML='<div class="fa-nav-inner">'+tabs.map(function(t){return '<button type="button" data-fa-tab="'+t[0]+'"'+(t[0]==='walaa'?' class="fa-card-tab"':'')+' onclick="fdAppNavigate(\''+t[0]+'\')"'+(t[0]==='home'?' aria-current="page"':'')+'>'+(t[0]==='walaa'?'<span class="fa-card-disc">'+icon(t[2])+'</span>':icon(t[2]))+'<span>'+t[1]+'</span></button>';}).join('')+'</div>';
     document.body.appendChild(nav);
-    [['fa-offers','العروض'],['fa-stay-services','مرافق الاستراحة']].forEach(function(pair){var page=document.createElement('section');page.id=pair[0];page.className='fa-page';page.hidden=true;page.setAttribute('aria-label',pair[1]);page.setAttribute('tabindex','-1');document.body.appendChild(page);});
-    renderChalet2();renderHome('resort');renderHome('stay');renderOffers();renderStayServices();
+    [['fa-offers','العروض'],['fa-stay-services','مرافق الاستراحة'],['fa-bookings','حجزي'],['fa-search','خيارات الإقامة']].forEach(function(pair){var page=document.createElement('section');page.id=pair[0];page.className='fa-page';page.hidden=true;page.setAttribute('aria-label',pair[1]);page.setAttribute('tabindex','-1');document.body.appendChild(page);});
+    renderChalet2();renderHome('resort');renderHome('stay');renderOffers();renderStayServices();renderBookings();
+    document.querySelector('#services-overlay .svcs-header').insertAdjacentHTML('afterend','<p class="fa-service-intro">تعرّف على خدماتنا، وأضف ما يناسبك بعد تأكيد حجز الإقامة.</p>');
     var names={'المطعم':'food','جلسة السينما':'cinema','الألعاب الترفيهية':'games','الألعاب المائية':'pool','الضيافة والتنسيقات':'gift','طاولات الطعام':'table','الجلسات الخارجية':'outdoor'};
     document.querySelectorAll('#services-overlay .svcs-card').forEach(function(b){var title=b.getAttribute('aria-label');if(names[title])b.insertAdjacentHTML('afterbegin','<span class="fa-service-icon">'+icon(names[title])+'</span>');});
     document.querySelector('#walaa-detail .wl-card').insertAdjacentHTML('afterbegin','<div class="fa-loyalty-brand"><span>يوم العائلة<small>LOYALTY CARD</small></span>'+icon('card')+'</div>');
@@ -5667,7 +5828,8 @@ body.fa-app{background:var(--fa-bg)!important;color:var(--fa-ink);font-family:Ta
     document.getElementById('landing2').setAttribute('aria-labelledby','fa-stay-title');
     syncRoute(history.state&&history.state.route||{name:'home',args:[window.fdAppVenue]});
     document.addEventListener('fd-app-route',function(e){syncRoute(e.detail);});
-    document.addEventListener('visibilitychange',function(){if(!document.hidden){renderOffers();var banner=document.querySelector('#landing .fa-campaign');if(banner&&typeof resortCampaignState==='function')banner.hidden=resortCampaignState(new Date()).allExpired;}});
+    document.addEventListener('click',function(){requestAnimationFrame(refreshServiceActions);});
+    document.addEventListener('visibilitychange',function(){if(!document.hidden){renderOffers();document.querySelectorAll('.fa-book-offer').forEach(function(banner){if(typeof resortCampaignState==='function')banner.hidden=resortCampaignState(new Date()).allExpired;});}});
   }
   window.fdAppOpenCabin=function(id){if(id>=20){var c=_chaletItems2.find(function(x){return x.id===id;});if(c)openMDirect(c);}else openM(id,'resort');};
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
