@@ -549,7 +549,7 @@ function resortGuestText(count) {
   return count === 2 ? 'حتى ضيفين' : 'حتى ' + count + (count <= 10 ? ' ضيوف' : ' ضيفًا');
 }
 function resortRoomText(count) {
-  return count === 1 ? 'غرفة واحدة' : count === 2 ? 'غرفتان' : count + ' غرف';
+  return count === 1 ? 'غرفة واحدة' : count === 2 ? 'غرفتين' : count + ' غرف';
 }
 function resortBathroomText(count) {
   return count === 1 ? 'دورة مياه واحدة' : count === 2 ? 'دورتين مياه' : count + ' دورات مياه';

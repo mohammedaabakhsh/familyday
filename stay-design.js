@@ -8,7 +8,7 @@ function renderStayCard(c) {
     + '<p class="fd-cabin-card-v2-subtitle">مناسب للتجمعات العائلية</p></div></div>'
     + '<div class="fd-cabin-card-v2-facts" aria-label="معلومات ' + c.name + '">'
     + '<div class="fd-cabin-card-v2-fact"><span>السعة</span><strong>حتى 70 ضيفًا</strong></div>'
-    + '<div class="fd-cabin-card-v2-fact"><span>غرف النوم</span><strong>' + (c.rooms === 2 ? 'غرفتان' : 'غرفة واحدة') + '</strong></div></div>'
+    + '<div class="fd-cabin-card-v2-fact"><span>غرف النوم</span><strong>' + (c.rooms === 2 ? 'غرفتين' : 'غرفة واحدة') + '</strong></div></div>'
     + '<button type="button" class="card-btn">عرض التفاصيل والصور</button></div>';
 }
 
@@ -34,7 +34,7 @@ function renderStayDetail(c) {
     + '<div class="fd-cabin-heading"><div><h2 id="fd-stay-detail-title" class="fd-cabin-title">' + c.name + '</h2>'
     + '<p class="fd-cabin-suitable">مناسب للتجمعات ويتسع حتى 70 ضيفًا</p></div></div>'
     + '<div class="fd-cabin-facts" aria-label="معلومات ' + c.name + '">'
-    + '<div><span>غرف النوم</span><strong>' + (c.rooms === 2 ? 'غرفتا نوم' : 'غرفة نوم') + '</strong></div>'
+    + '<div><span>غرف النوم</span><strong>' + (c.rooms === 2 ? 'غرفتين نوم' : 'غرفة نوم') + '</strong></div>'
     + '<div><span>السعة</span><strong>حتى 70 ضيفًا</strong></div>'
     + '<div><span>المسابح</span><strong>' + (c.id === 20 ? 'مسبحان' : 'مسبح واحد') + '</strong></div></div>'
     + '<div class="fd-cabin-times" aria-label="أوقات الدخول والخروج"><div><span>الدخول</span><strong>4:00 مساءً</strong></div><div><span>الخروج</span><strong>12:00 ظهرًا</strong></div></div>'

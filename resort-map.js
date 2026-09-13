@@ -86,7 +86,7 @@
   }
 
   function roomValue(count) {
-    return count === 1 ? 'غرفة واحدة' : count === 2 ? 'غرفتان' : count + ' غرف';
+    return count === 1 ? 'غرفة واحدة' : count === 2 ? 'غرفتين' : count + ' غرف';
   }
 
   function featuresFor(cabin) {
