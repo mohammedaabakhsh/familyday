@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>مراجعة الاستراحة على الجوال والكمبيوتر</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#dce5e9;color:#183440;font-family:system-ui,sans-serif}
+    nav{display:flex;justify-content:center;align-items:center;gap:10px;padding:12px;flex-wrap:wrap}
+    button,a{padding:10px 14px;background:#fff;border:1px solid #a7bbc5;border-radius:8px;font:inherit;color:inherit;cursor:pointer;text-decoration:none}
+    button[aria-pressed=true]{background:#173e4b;color:#fff}main{display:flex;justify-content:center;padding:0 12px 24px}
+    iframe{display:block;width:390px;max-width:100%;height:844px;border:0;border-radius:12px;background:#071a26}
+  </style>
+</head>
+<body>
+  <nav aria-label="مقاسات المراجعة">
+    <button type="button" data-width="390" aria-pressed="true">الجوال</button>
+    <button type="button" data-width="360" aria-pressed="false">جوال صغير</button>
+    <button type="button" data-width="1360" aria-pressed="false">الكمبيوتر</button>
+    <a href="index.html?stay-design=1#home=stay" target="_blank" rel="noopener">فتح الاستراحة</a>
+  </nav>
+  <main><iframe id="stay-preview" title="مراجعة الاستراحة" src="index.html?stay-design=1#home=stay"></iframe></main>
+  <script>
+    document.querySelectorAll('[data-width]').forEach(function(button){
+      button.addEventListener('click',function(){
+        document.getElementById('stay-preview').style.width=button.dataset.width+'px';
+        document.querySelectorAll('[data-width]').forEach(function(item){item.setAttribute('aria-pressed',String(item===button));});
+      });
+    });
+  </script>
+</body>
+</html>
