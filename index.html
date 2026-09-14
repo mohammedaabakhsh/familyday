@@ -4612,6 +4612,7 @@ function openMDirect(c){
     else if(name==='chalet' || name==='faq2') r.parent = route('home',['stay']);
     else if(name==='contact') r.parent = route('home',[r.args[0] || 'resort']);
     else if(name==='cabin') r.parent = route(r.args[0]>=20 ? 'chalet' : 'resort');
+    else if(name==='map') r.parent = route('resort');
     else if(serviceViews[name] || name==='service-sub') r.parent = route('services');
     return r;
   }
@@ -4627,7 +4628,7 @@ function openMDirect(c){
     if(r.name==='home') return base+'#home='+r.args[0];
     if(r.name==='cabin') return base+'#cabin='+r.args[0];
     if(r.name==='contact') return base+'#contact='+r.args[0];
-    if(['photos','map-photos','tour','order','map','service-sub'].indexOf(r.name)!==-1) return urlFor(r.parent);
+    if(['photos','map-photos','tour','order','service-sub'].indexOf(r.name)!==-1) return urlFor(r.parent);
     return base+'#'+r.name;
   }
   function fromHash(){
@@ -4639,7 +4640,7 @@ function openMDirect(c){
     }
     match=/^(home|contact)=(resort|stay)$/.exec(hash);
     if(match) return route(match[1],[match[2]]);
-    if(['resort','chalet','services','faq','faq2'].indexOf(hash)!==-1 || serviceViews[hash]) return route(hash);
+    if(['resort','chalet','services','faq','faq2','map'].indexOf(hash)!==-1 || serviceViews[hash]) return route(hash);
     return route('dest');
   }
   function remember(name){
