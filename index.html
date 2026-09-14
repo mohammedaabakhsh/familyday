@@ -993,14 +993,13 @@ header{
 <link rel="stylesheet" href="resort-map.css?v=25">
 <style id="fd-home-map-shortcut">
 #landing .rh-map-shortcut{display:flex;align-items:center;gap:14px;margin-top:16px;padding:12px 14px;border:1px solid rgba(99,191,205,.32);border-radius:16px;background:linear-gradient(120deg,#0d2b3a,#0a202e);color:#edf5f7;text-decoration:none;text-align:right;min-width:0;}
-#landing .rh-map-thumb{display:block;flex:0 0 72px;width:72px;height:60px;object-fit:cover;border-radius:10px;}
 #landing .rh-map-copy{display:flex;flex:1;min-width:0;flex-direction:column;gap:4px;}
 #landing .rh-map-title{font-size:16px;font-weight:700;line-height:1.4;}
 #landing .rh-map-description{font-size:12px;line-height:1.5;color:#a9c3ce;}
 #landing .rh-map-shortcut>.rh-arrow{width:17px;height:17px;color:#83c7d2;}
 #landing .rh-map-shortcut:focus-visible{outline:2px solid #83c7d2;outline-offset:3px;}
 @media(min-width:800px){#landing .rh-map-shortcut{margin-top:18px;padding:12px 18px;}#landing .rh-map-title{font-size:18px;}#landing .rh-map-description{font-size:13px;}}
-@media(max-width:380px){#landing .rh-map-shortcut{gap:10px;padding:10px;}#landing .rh-map-thumb{flex-basis:60px;width:60px;height:54px;}#landing .rh-map-title{font-size:15px;}}
+@media(max-width:380px){#landing .rh-map-shortcut{gap:10px;padding:10px;}#landing .rh-map-title{font-size:15px;}}
 @media(hover:hover){#landing .rh-map-shortcut:hover{border-color:#63bfcd;background:#103142;}}
 </style>
 </head>
@@ -1537,7 +1536,6 @@ function tarfihiOrder(){
     </div>
 
     <a class="rh-map-shortcut" href="#map" onclick="event.preventDefault();openResortMap()" aria-label="استكشف خريطة المنتجع">
-      <img class="rh-map-thumb" src="imgs/resort-map-v4-equal-dome-pools.webp" width="72" height="60" alt="" loading="lazy" decoding="async">
       <span class="rh-map-copy">
         <span class="rh-map-title">استكشف خريطة المنتجع</span>
         <span class="rh-map-description">شاهد مواقع الأكواخ والمرافق</span>
