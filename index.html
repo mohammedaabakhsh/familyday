@@ -5312,5 +5312,81 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 })();
 
 </script>
+
+<!-- Resort carousel: isolated presentation; remove this block to restore the grid. -->
+<style id="fd-resort-carousel-style">
+#app .grid-section:has(.fd-carousel){padding-inline:0!important;padding-bottom:20px}
+#app #grid.fd-carousel{--slide: min(80vw,340px);display:flex;direction:rtl;gap:16px;max-width:900px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;padding:8px calc((100% - var(--slide))/2) 18px;scroll-padding-inline:calc((100% - var(--slide))/2);box-sizing:border-box;align-items:stretch;-webkit-overflow-scrolling:touch}
+#app #grid.fd-carousel::-webkit-scrollbar{display:none}
+#app #grid.fd-carousel>.card:not(.hidden){flex:0 0 var(--slide);min-width:0;scroll-snap-align:center;scroll-snap-stop:always;border-radius:170px 170px 34px 34px;padding:8px;box-sizing:border-box;background:linear-gradient(165deg,#15394a,#0a1d2c 80%);border:1px solid #315967;animation:none;box-shadow:none;transform:none}
+#app #grid.fd-carousel .card-img-wrap{border-radius:160px 160px 24px 24px;aspect-ratio:1/1;max-height:290px}
+#app #grid.fd-carousel .badge{top:auto;bottom:12px;right:50%;transform:translateX(50%);white-space:nowrap}
+#app #grid.fd-carousel .fd-cabin-card-v2-body{padding:16px 10px 10px}
+#app #grid.fd-carousel .fd-cabin-card-v2-heading{justify-content:center;text-align:center;gap:8px;margin-bottom:12px;min-height:78px;align-content:flex-start}
+#app #grid.fd-carousel .fd-cabin-card-v2-heading>div{width:100%}
+#app #grid.fd-carousel .card-name{text-align:center;font-size:21px}
+#app #grid.fd-carousel .fd-cabin-card-v2-subtitle{font-size:13px}
+#app #grid.fd-carousel .fd-cabin-card-v2-feature{margin:0;font-size:11px;padding:3px 9px}
+#app #grid.fd-carousel .fd-cabin-card-v2-fact{background:transparent;border:0;border-radius:0;text-align:center;min-height:46px;padding:4px}
+#app #grid.fd-carousel .fd-cabin-card-v2-fact+div{border-right:1px solid #315160}
+#app #grid.fd-carousel .fd-cabin-card-v2-facts{gap:0;margin-bottom:12px}
+#app #grid.fd-carousel .card-btn{border-radius:24px;min-height:44px;font-size:14px}
+.fd-carousel-controls{display:flex;align-items:center;justify-content:center;direction:rtl;gap:22px;color:#d6eaf0;margin:0 auto;padding:0 16px 8px}
+.fd-carousel-controls button{width:44px;height:44px;border:1px solid #315967;border-radius:50%;background:#102d3d;color:#c2e6ed;font-size:24px;cursor:pointer;display:grid;place-items:center}
+.fd-carousel-controls button:disabled{opacity:.25;cursor:default}
+.fd-carousel-controls button:focus-visible{outline:2px solid #7ecfea;outline-offset:3px}
+.fd-carousel-count{min-width:80px;text-align:center;font-size:15px;font-weight:700;font-family:Tajawal,sans-serif}
+@media(max-height:760px) and (max-width:599px){#app #grid.fd-carousel .card-img-wrap{aspect-ratio:1.18}#app #grid.fd-carousel .fd-cabin-card-v2-body{padding-top:12px}#app #grid.fd-carousel .fd-cabin-card-v2-heading{min-height:73px;margin-bottom:8px}}
+@media(min-width:900px){#app #grid.fd-carousel{padding-inline:280px;scroll-padding-inline:280px;--slide:340px}}
+</style>
+<script id="fd-resort-carousel-script">
+(function(){
+  const grid=document.getElementById('grid');
+  const controls=document.createElement('div');
+  controls.className='fd-carousel-controls';
+  controls.innerHTML='<button type="button" aria-label="الكوخ السابق">&#8250;</button><span class="fd-carousel-count" role="status" aria-live="polite" aria-atomic="true"></span><button type="button" aria-label="الكوخ التالي">&#8249;</button>';
+  grid.after(controls);
+  const previous=controls.children[0], count=controls.children[1], next=controls.children[2];
+  let cards=[], selected=0, frame=0, timer=0;
+  const digits=new Intl.NumberFormat('ar-SA');
+  function update(){
+    if(!cards.length)return;
+    const box=grid.getBoundingClientRect(), center=box.left+box.width/2;
+    let distance=Infinity;
+    cards.forEach((card,i)=>{const r=card.getBoundingClientRect(), d=Math.abs(r.left+r.width/2-center);if(d<distance){distance=d;selected=i;}});
+    const text=digits.format(selected+1)+' من '+digits.format(cards.length);
+    if(count.textContent!==text)count.textContent=text;
+    previous.disabled=selected===0;next.disabled=selected===cards.length-1;
+  }
+  function go(index,instant){
+    if(index<0||index>=cards.length||!grid.clientWidth)return;
+    const box=grid.getBoundingClientRect(), r=cards[index].getBoundingClientRect();
+    grid.scrollBy({left:r.left+r.width/2-box.left-box.width/2,behavior:instant||matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+  }
+  function setup(){
+    cards=Array.from(grid.querySelectorAll(':scope > .fd-cabin-card-v2:not(.hidden)'));
+    const enabled=cards.length>0;
+    grid.classList.toggle('fd-carousel',enabled);controls.hidden=!enabled;
+    controls.style.display=enabled?'flex':'none';
+    if(!enabled)return;
+    grid.setAttribute('role','region');grid.setAttribute('aria-label','تصفح الأكواخ');
+    selected=0;previous.disabled=true;next.disabled=cards.length<2;
+    count.textContent=digits.format(1)+' من '+digits.format(cards.length);
+    requestAnimationFrame(()=>go(0,true));
+  }
+  previous.onclick=()=>go(selected-1);next.onclick=()=>go(selected+1);
+  grid.addEventListener('scroll',()=>{clearTimeout(timer);timer=setTimeout(update,90);},{passive:true});
+  grid.addEventListener('keydown',event=>{
+    if(event.key==='ArrowLeft'||event.key==='ArrowRight'){
+      event.preventDefault();go(selected+(event.key==='ArrowLeft'?1:-1));
+    }
+  });
+  // Native touch scrolling suppresses clicks while swiping; keep every card's original click handler.
+  new MutationObserver(()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(setup);}).observe(grid,{childList:true});
+  new ResizeObserver(()=>{go(selected,true);update();}).observe(grid);
+  setup();
+})();
+</script>
+
 </body>
 </html><!-- test Fri Jul 17 17:12:00 +03 2026 -->
