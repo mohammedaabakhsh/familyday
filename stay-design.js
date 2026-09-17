@@ -32,13 +32,9 @@ function renderStayDetail(c) {
     + (c.id === 20 ? '<p><strong>مسبح الأطفال:</strong> عمق 65 سم.</p>' : '');
   return '<section class="fd-cabin-content" aria-labelledby="fd-stay-detail-title">'
     + '<div class="fd-cabin-heading"><div><h2 id="fd-stay-detail-title" class="fd-cabin-title">' + c.name + '</h2>'
-    + '<p class="fd-cabin-suitable">مناسب للتجمعات ويتسع حتى 70 ضيفًا</p></div></div>'
-    + '<div class="fd-cabin-facts" aria-label="معلومات ' + c.name + '">'
-    + '<div><span>غرف النوم</span><strong>' + (c.rooms === 2 ? 'غرفتين' : 'غرفة واحدة') + '</strong></div>'
-    + '<div><span>السعة</span><strong>حتى 70 ضيفًا</strong></div>'
-    + '<div><span>المسابح</span><strong>' + (c.id === 20 ? 'مسبحان' : 'مسبح واحد') + '</strong></div></div>'
+    + '<p class="fd-cabin-occupancy">مناسب للتجمعات العائلية – حتى 70 ضيفًا</p></div></div>'
     + '<div class="fd-cabin-times" aria-label="أوقات الدخول والخروج"><div><span>الدخول</span><strong>4:00 مساءً</strong></div><div><span>الخروج</span><strong>12:00 ظهرًا</strong></div></div>'
-    + section('المنطقة الداخلية', groups.slice(0, 3).flat())
+    + section('المنطقة الداخلية', groups.slice(0, 3).flat().map(function(text){return text.replace('3 دورات مياه','3 حمامات');}))
     + section('المنطقة الخارجية', groups.slice(3).flat(), poolNotes)
     + section('تجهيزات المطبخ', ['موقد كهربائي', 'ثلاجة', 'ميكروويف', 'غلاية كهربائية'])
     + section('مميزات الإقامة', ['تلفزيون ذكي', 'سماعات داخلية (ساوند بار)'])
