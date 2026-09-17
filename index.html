@@ -1150,7 +1150,7 @@ header{
 <script src="campaign-data.js?v=2"></script>
 <script src="resort-campaign.js?v=1" defer></script>
 <script src="resort-features.js?v=3"></script>
-<script src="stay-design.js?v=4"></script>
+<script src="stay-design.js?v=5"></script>
 <script>
 
 
@@ -2902,7 +2902,7 @@ function updGal(total){
 }
 
 function renderCabinDetail(c){
-  const indoor=c.features.indoor;
+  const indoor=c.features.indoor.concat([c.bathroom===1?'حمام واحد':c.bathroom===2?'حمامين':c.bathroom+' حمامات']);
   const outdoor=c.features.outdoor.concat([c.pool.label],c.pool.facilities);
   const kitchen=c.features.kitchen;
   const stayFeatures=c.features.stay;
@@ -2910,9 +2910,7 @@ function renderCabinDetail(c){
   const hasOutdoorBath=c.bath.outdoorPrivacy;
   const subtitle=c.type||'';
   const badge=c.suitable||'';
-  const roomsText=resortRoomText(c.rooms);
   const guestsText=resortGuestText(c.guests);
-  const bathroomsText=resortBathroomText(c.bathroom);
   const poolNote='عمق المسبح يصل إلى '+c.pool.depthCm+' سم، ويُسمح للأطفال باستخدامه تحت إشراف ذويهم.';
   const renderFeatures=function(list){
     return list.map(function(name){
@@ -2925,15 +2923,9 @@ function renderCabinDetail(c){
       <div class="fd-cabin-heading">
         <div>
           <h2 class="fd-cabin-title" id="fd-cabin-detail-title">${c.name}</h2>
+          <p class="fd-cabin-occupancy">${badge?badge+' – ':''}${guestsText}</p>
           ${subtitle?`<p class="fd-cabin-suitable">${subtitle}</p>`:''}
         </div>
-        ${badge?`<span class="fd-cabin-badge">${badge}</span>`:''}
-      </div>
-
-      <div class="fd-cabin-facts" aria-label="معلومات ${c.name}">
-        <div><span>غرف النوم</span><strong>${roomsText}</strong></div>
-        <div><span>السعة</span><strong>${guestsText}</strong></div>
-        <div><span>دورات المياه</span><strong>${bathroomsText}</strong></div>
       </div>
 
       <div class="fd-cabin-times" aria-label="أوقات الدخول والخروج">
@@ -5412,6 +5404,11 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 #ov.fd-cabin-modern .fd-cabin-nav-back span{display:block;font:600 14px/1.4 Tajawal,sans-serif}
 #ov.fd-cabin-modern .fd-cabin-nav-back svg{width:18px;height:18px}
 @media(min-width:900px){#ov.fd-cabin-modern .fd-cabin-nav{padding:6px 20px}}
+</style>
+<style id="fd-detail-occupancy">
+#ov.fd-cabin-modern .fd-cabin-occupancy{margin:6px 0 0;color:#9edce5;font:500 14px/1.6 Tajawal,sans-serif}
+#ov.fd-cabin-modern .fd-cabin-heading:has(.fd-cabin-occupancy){display:block}
+#ov.fd-cabin-modern .fd-cabin-occupancy + .fd-cabin-suitable{margin-top:7px}
 </style>
 </body>
 </html><!-- test Fri Jul 17 17:12:00 +03 2026 -->
