@@ -3109,7 +3109,7 @@ function updateCabinPicker(){
   var backLabel=isStay?'العودة إلى الأقسام':'العودة إلى الأكواخ';
   var back=document.querySelector('.fd-cabin-nav-back');
   back.setAttribute('aria-label',backLabel);
-  back.querySelector('span').textContent=isStay?backLabel:'الأكواخ';
+  back.querySelector('span').textContent=isStay?'الأقسام':'الأكواخ';
   document.querySelector('.fd-cabin-nav').setAttribute('aria-label',isStay?'التنقّل بين الأقسام':'التنقّل بين الأكواخ');
   document.querySelector('#fd-cabin-nav-list ul').setAttribute('aria-label',isStay?'أقسام الاستراحة':'الأكواخ ضمن اختيارك');
   picker.setAttribute('aria-label','اختيار '+noun+': '+c.name);
@@ -5398,51 +5398,20 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 
 
 <style id="fd-cabin-clear-navigation">
-/* Clear resort-only navigation: back and cabin selection above labelled steps. */
-.fd-cabin-step-label,#fd-cabin-nav-position{display:none}
-#ov.fd-cabin-modern:not(.fd-stay-modern) .fd-cabin-nav{
-  grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);grid-template-rows:44px 44px;
-  gap:0 10px;padding:6px 16px;position:sticky;
+/* Details focus on this accommodation; the listing handles switching. */
+#ov.fd-cabin-modern .fd-cabin-nav{
+  display:flex;align-items:center;justify-content:flex-start;
+  gap:0;padding:6px 16px;min-height:56px;box-sizing:border-box;
 }
-#ov.fd-cabin-modern:not(.fd-stay-modern) .fd-cabin-nav-controls{display:contents}
-#ov.fd-cabin-modern:not(.fd-stay-modern) .fd-cabin-nav-back{
-  grid-column:1;grid-row:1;justify-self:start;width:auto;height:44px;padding:0 4px;
-  gap:3px;border:0;background:transparent;color:#b9dce6;white-space:nowrap;
+#ov.fd-cabin-modern .fd-cabin-nav-controls{display:none!important}
+#ov.fd-cabin-modern .fd-cabin-nav-back{
+  display:flex;align-items:center;justify-content:center;gap:5px;
+  width:auto;height:44px;padding:0 4px;border:0;background:transparent;
+  color:#b9dce6;white-space:nowrap;border-radius:8px;
 }
-#ov.fd-cabin-modern:not(.fd-stay-modern) .fd-cabin-nav-back span{display:block;font-size:14px;font-weight:600}
-#ov.fd-cabin-modern:not(.fd-stay-modern) .fd-cabin-nav-back svg{width:17px;height:17px}
-#ov.fd-cabin-modern:not(.fd-stay-modern) #fd-cabin-picker{
-  grid-column:2/4;grid-row:1;justify-self:end;width:auto;max-width:100%;min-height:44px;
-  padding:4px 6px;gap:7px;border:0;background:transparent;text-align:right;border-radius:8px;
-}
-#ov.fd-cabin-modern:not(.fd-stay-modern) .fd-cabin-nav-copy{flex:initial}
-#ov.fd-cabin-modern:not(.fd-stay-modern) .fd-cabin-nav-copy strong{font-size:17px;line-height:1.4}
-#ov.fd-cabin-modern:not(.fd-stay-modern) #fd-cabin-nav-count{display:none}
-#ov.fd-cabin-modern:not(.fd-stay-modern) #fd-cabin-nav-position{
-  display:block;grid-column:2;grid-row:2;text-align:center;color:#9ab8c5;font-size:13px;white-space:nowrap;
-}
-#ov.fd-cabin-modern:not(.fd-stay-modern) .fd-cabin-nav-arrow{
-  grid-row:2;width:auto;min-width:80px;height:44px;padding:0 8px;gap:5px;
-  border-color:transparent;background:transparent;font-size:14px;font-weight:600;border-radius:8px;
-}
-#ov.fd-cabin-modern:not(.fd-stay-modern) #fd-cabin-prev{grid-column:1;justify-self:start}
-#ov.fd-cabin-modern:not(.fd-stay-modern) #fd-cabin-next{grid-column:3;justify-self:end;flex-direction:row-reverse}
-#ov.fd-cabin-modern:not(.fd-stay-modern) .fd-cabin-nav-arrow svg{width:14px;height:14px}
-#ov.fd-cabin-modern:not(.fd-stay-modern) .fd-cabin-step-label{display:inline}
-#ov.fd-cabin-modern:not(.fd-stay-modern) .fd-cabin-nav button:disabled{opacity:.3}
-#ov.fd-cabin-modern:not(.fd-stay-modern) #fd-cabin-picker:disabled{opacity:1}
-#ov.fd-cabin-modern:not(.fd-stay-modern) .fd-cabin-nav-list{inset-inline:16px;top:calc(100% + 4px)}
-@media(min-width:900px){
-  #ov.fd-cabin-modern:not(.fd-stay-modern) .fd-cabin-nav{
-    position:relative;grid-template-columns:140px 90px minmax(0,1fr) 60px 90px;
-    grid-template-rows:44px;gap:12px;padding:8px 20px;
-  }
-  #ov.fd-cabin-modern:not(.fd-stay-modern) #fd-cabin-prev{grid-column:2;grid-row:1}
-  #ov.fd-cabin-modern:not(.fd-stay-modern) #fd-cabin-picker{grid-column:3;grid-row:1;justify-self:center}
-  #ov.fd-cabin-modern:not(.fd-stay-modern) #fd-cabin-nav-position{grid-column:4;grid-row:1}
-  #ov.fd-cabin-modern:not(.fd-stay-modern) #fd-cabin-next{grid-column:5;grid-row:1}
-  #ov.fd-cabin-modern:not(.fd-stay-modern) .fd-cabin-nav-list{inset-inline:180px 20px}
-}
+#ov.fd-cabin-modern .fd-cabin-nav-back span{display:block;font:600 14px/1.4 Tajawal,sans-serif}
+#ov.fd-cabin-modern .fd-cabin-nav-back svg{width:18px;height:18px}
+@media(min-width:900px){#ov.fd-cabin-modern .fd-cabin-nav{padding:6px 20px}}
 </style>
 </body>
 </html><!-- test Fri Jul 17 17:12:00 +03 2026 -->
