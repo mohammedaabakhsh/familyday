@@ -120,3 +120,15 @@
   #chalet-faq details:hover { border-color: #4d8997; }
   #chalet-faq summary:hover { background: rgba(255,255,255,.025); }
 }
+
+/* Floor headings stay within the indoor area on mobile and desktop. */
+#ov.fd-cabin-modern .fd-chalet-floor h4 {
+  margin: 0 2px 8px;
+  color: #c1d5dd;
+  font: 700 14px/1.5 Tajawal, sans-serif;
+}
+#ov.fd-cabin-modern .fd-chalet-floor + .fd-chalet-floor {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(49,89,103,.65);
+}

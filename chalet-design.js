@@ -13,26 +13,35 @@ function chaletEnquiryUrl(message){
 }
 
 function renderPrivateChaletDetail(){
+  function features(items){
+    return '<div class="fd-cabin-feature-list">' + items.map(function(text){
+      return '<span class="fd-cabin-feature' + (text.length > 24 ? ' fd-cabin-feature--wide' : '') + '">' + text + '</span>';
+    }).join('') + '</div>';
+  }
   function section(title, items){
-    return '<section class="fd-cabin-section"><h3>' + title + '</h3><div class="fd-cabin-feature-list">'
-      + items.map(function(text){
-        return '<span class="fd-cabin-feature' + (text.length > 24 ? ' fd-cabin-feature--wide' : '') + '">' + text + '</span>';
-      }).join('')
-      + '</div></section>';
+    return '<section class="fd-cabin-section"><h3>' + title + '</h3>' + features(items) + '</section>';
+  }
+  function floor(title, items){
+    return '<div class="fd-chalet-floor"><h4>' + title + '</h4>' + features(items) + '</div>';
   }
   return '<section class="fd-cabin-content" aria-labelledby="fd-chalet-detail-title">'
     + '<div class="fd-cabin-heading"><div><h2 id="fd-chalet-detail-title" class="fd-cabin-title">' + PRIVATE_CHALET.name + '</h2>'
     + '<p class="fd-cabin-occupancy">شاليه من دورين – حتى 15 ضيفًا</p></div></div>'
     + '<div class="fd-cabin-times" aria-label="أوقات الدخول والخروج"><div><span>الدخول</span><strong>4:00 مساءً</strong></div><div><span>الخروج</span><strong>12:00 ظهرًا</strong></div></div>'
-    + section('المنطقة الداخلية', [
-      'مجلس مستقل لـ10 أشخاص مع حمام ومدخل خاص',
+    + '<section class="fd-cabin-section"><h3>المنطقة الداخلية</h3>'
+    + floor('الدور الأول', [
       'مجلس داخلي لـ15 شخصًا مع حمام ومطبخ',
       'طاولة طعام لـ8 أشخاص',
       'غرفة ألعاب للأطفال',
-      'غرفة نوم بسريرين مفردين — الدور الأول',
-      'غرفة نوم بسرير كبير وحمام خاص — الدور الثاني'
+      'غرفة نوم بسريرين مفردين'
     ])
-    + section('المنطقة الخارجية', ['مسبح أطفال بعمق 60 سم', 'ألعاب مائية'])
+    + floor('الدور الثاني', ['غرفة نوم بسرير مزدوج', 'حمام خاص'])
+    + '</section>'
+    + section('المنطقة الخارجية', [
+      'مجلس مستقل لـ10 أشخاص مع حمام ومدخل خاص',
+      'مسبح أطفال بعمق 60 سم',
+      'ألعاب مائية'
+    ])
     + section('تجهيزات المطبخ', ['ثلاجة', 'ميكروويف', 'فرن', 'موقد كهربائي', 'موقد غاز', 'غلاية', 'أدوات مطبخ خفيفة'])
     + '</section>';
 }
@@ -73,7 +82,7 @@ function openPrivateChalet(){
     ]},
     {id:'chalet-faq-facilities', title:'المساحات والمرافق', items:[
       {question:'كم تبلغ سعة الشاليه؟', answer:'يتسع الشاليه حتى 15 ضيفًا.'},
-      {question:'كيف تتوزع غرف النوم؟', answer:'غرفتين نوم: غرفة في الدور الأول بسريرين مفردين، وغرفة في الدور الثاني بسرير كبير وحمام خاص.'},
+      {question:'كيف تتوزع غرف النوم؟', answer:'غرفتين نوم: غرفة في الدور الأول بسريرين مفردين، وغرفة في الدور الثاني بسرير مزدوج وحمام خاص.'},
       {question:'هل توجد غرفة ألعاب للأطفال؟', answer:'نعم، توجد غرفة ألعاب للأطفال في الدور الأول.'}
     ]},
     {id:'chalet-faq-pool-kitchen', title:'المسبح وتجهيزات المطبخ', items:[
