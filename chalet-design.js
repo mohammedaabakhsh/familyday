@@ -74,29 +74,59 @@ function openPrivateChalet(){
 }
 
 (function(){
-  var contactLink = '<a class="fd-text-link" href="#contact=chalet" onclick="event.preventDefault();showContact(&quot;chalet&quot;)">عرض خيارات الحجز</a>';
-  var whatsappLink = '<a class="fd-text-link" href="' + chaletEnquiryUrl() + '" target="_blank" rel="noopener noreferrer">تواصل عبر واتساب</a>';
+  // Booking follows the resort; the other two categories remain empty for now.
   var groups = [
-    {id:'chalet-faq-booking', title:'الحجز وأوقات الدخول', items:[
-      {question:'أين يقع شاليه يوم العائلة؟', answer:'يقع شاليه يوم العائلة في ' + PRIVATE_CHALET.location + '.'
-        + '<a class="fd-text-link" href="' + PRIVATE_CHALET.mapUrl + '" target="_blank" rel="noopener noreferrer">عرض الموقع على الخريطة</a>'},
-      {question:'ما أوقات الدخول والخروج؟', answer:'الدخول الساعة 4:00 مساءً، والخروج الساعة 12:00 ظهرًا.'},
-      {question:'كيف يمكنني الحجز؟', answer:'تواصل معنا للاستفسار عن التوفر والأسعار وإتمام حجز الشاليه.' + contactLink}
-    ]},
-    {id:'chalet-faq-facilities', title:'الشاليه والمرافق', items:[
-      {question:'كم عدد غرف النوم في الشاليه؟', answer:'غرفتين نوم: غرفة في الدور الأول بسريرين مفردين، وغرفة في الدور الثاني بسرير مزدوج وحمام خاص.'},
-      {question:'كم ضيف يستوعب الشاليه؟', answer:'يتسع الشاليه حتى 15 ضيفًا.'},
-      {question:'هل توجد منطقة خارجية في الشاليه؟', answer:'يوجد في المنطقة الخارجية مجلس مستقل يتسع لـ10 أشخاص مع حمام ومدخل خاص، ومسبح أطفال بعمق 60 سم مع ألعاب مائية.'},
-      {question:'ما مواصفات المسبح؟', answer:'مسبح أطفال بعمق 60 سم مع ألعاب مائية.'},
-      {question:'هل توجد غرفة مخصصة للأطفال؟', answer:'نعم، توجد غرفة أطفال مجهزة بالألعاب في الدور الأول.'},
-      {question:'ما تجهيزات المطبخ المتوفرة؟', answer:'ثلاجة، ميكروويف، فرن، موقد كهربائي، موقد غاز، غلاية، وأدوات مطبخ خفيفة.'}
-    ]},
-    {id:'chalet-faq-services', title:'الخدمات والتعليمات', items:[
-      {question:'ما الخدمات الإضافية وكيف أطلبها؟', answer:'للاستفسار عن الخدمات الإضافية المتاحة للشاليه، تواصل معنا عبر واتساب.'
-        + '<a class="fd-text-link" href="' + chaletEnquiryUrl('أرغب في الاستفسار عن الخدمات الإضافية المتاحة للشاليه') + '" target="_blank" rel="noopener noreferrer">استفسر عن الخدمات</a>'},
-      {question:'كيف يمكنني التواصل معكم؟', answer:'يمكنك التواصل معنا عبر الاتصال أو واتساب على الرقم: <a href="tel:+966556156693" class="phone-link">0556156693</a>.' + whatsappLink}
-    ]}
+    {
+      "id": "chalet-faq-booking",
+      "title": "الحجز وأوقات الدخول",
+      "items": [
+        {
+          "question": "أين يقع شاليه يوم العائلة؟",
+          "answer": "يقع شاليه يوم العائلة في جدة - المروج.<a class=\"fd-text-link\" href=\"https://maps.app.goo.gl/np6uD3XvCQTCr4ff7\" target=\"_blank\" rel=\"noopener noreferrer\">عرض الموقع على الخريطة</a>"
+        },
+        {
+          "question": "ما أوقات الدخول والخروج؟",
+          "answer": "الدخول الساعة 4:00 مساءً، والخروج الساعة 12:00 ظهرًا."
+        },
+        {
+          "question": "كيف يمكنني الحجز؟",
+          "answer": "يمكن الحجز مباشرة عبر الموقع الإلكتروني أو تطبيق يوم العائلة.<a class=\"fd-text-link\" href=\"#contact=chalet\" onclick=\"event.preventDefault();showContact('chalet')\">عرض خيارات الحجز</a>"
+        },
+        {
+          "question": "ما طرق الدفع المتاحة؟",
+          "answer": "تتوفر عدة طرق للدفع تشمل مدى، فيزا، Apple Pay، والتحويل البنكي، كما يمكن الدفع نقدًا أو عبر جهاز نقاط البيع في الموقع."
+        },
+        {
+          "question": "هل تختلف أسعار الشاليه؟",
+          "answer": "نعم، تختلف الأسعار حسب تاريخ الحجز، وتظهر عند اختيار التاريخ."
+        },
+        {
+          "question": "هل يتوفر حجز لمدة 10 ساعات؟",
+          "answer": "نعم، يتوفر الحجز لمدة 10 ساعات من الأحد إلى الأربعاء، من 4:00 مساءً حتى 2:00 صباحًا، ولا يتوفر خلال الإجازات والمواسم. ويمكن التمديد بـ40 ريالًا لكل ساعة حتى 10:00 صباحًا."
+        },
+        {
+          "question": "هل يمكن تعديل أو إلغاء الحجز؟",
+          "answer": "يمكن التعديل أو الإلغاء قبل موعد الوصول بثلاثة أيام أو أكثر. بعد ذلك لا يمكن التعديل أو الإلغاء، بما في ذلك بسبب الأحوال الجوية."
+        },
+        {
+          "question": "كيف يمكنني التواصل معكم؟",
+          "answer": "يمكنك التواصل معنا عبر الاتصال أو واتساب على الرقم: <a href=\"tel:+966556156693\" class=\"phone-link\">0556156693</a>، والتواصل متاح على مدار 24 ساعة."
+        }
+      ]
+    },
+    {
+      "id": "chalet-faq-facilities",
+      "title": "الشاليه والمرافق",
+      "items": []
+    },
+    {
+      "id": "chalet-faq-services",
+      "title": "الخدمات والتعليمات",
+      "items": []
+    }
   ];
+  groups[0].items[0].answer = 'يقع شاليه يوم العائلة في ' + PRIVATE_CHALET.location + '.'
+    + '<a class="fd-text-link" href="' + PRIVATE_CHALET.mapUrl + '" target="_blank" rel="noopener noreferrer">عرض الموقع على الخريطة</a>';
   var panel = document.createElement('div');
   panel.id = 'chalet-faq';
   panel.className = 'hide';
