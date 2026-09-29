@@ -285,7 +285,7 @@
   #landing .rh-action-icon { width: 29px; height: 29px; }
   #landing .rh-action-title { font-size: 21px; }
   #landing .rh-action-description { display: block; font-size: 13px; font-weight: 400; line-height: 1.6; color: #9ab4c0; }
-  #landing .rh-footer { flex-direction: row; align-items: center; justify-content: space-between; gap: 32px; padding-top: 16px; margin-top: 24px; }
+  #landing .rh-footer { flex-direction: row; align-items: center; justify-content: center; gap: 32px; padding-top: 16px; margin-top: 24px; }
   #landing .rh-faq { min-width: 230px; }
   #landing .rh-reviews { gap: 12px; }
 }

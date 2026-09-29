@@ -51,7 +51,7 @@
 }
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link href="resort-home.css?v=4" rel="stylesheet">
+<link href="resort-home.css?v=5" rel="stylesheet">
 <style>
 .hide{display:none!important}
 /* Services page cards */
@@ -992,15 +992,15 @@ header{
 </style>
 <link rel="stylesheet" href="resort-map.css?v=25">
 <style id="fd-home-map-shortcut">
-#landing .rh-map-shortcut{display:flex;align-items:center;gap:14px;margin-top:16px;padding:12px 14px;border:1px solid rgba(99,191,205,.32);border-radius:16px;background:linear-gradient(120deg,#0d2b3a,#0a202e);color:#edf5f7;text-decoration:none;text-align:right;min-width:0;}
+#landing .rh-home-shortcut{display:flex;align-items:center;gap:14px;margin-top:16px;padding:12px 14px;border:1px solid rgba(99,191,205,.32);border-radius:16px;background:linear-gradient(120deg,#0d2b3a,#0a202e);color:#edf5f7;text-decoration:none;text-align:right;min-width:0;}
 #landing .rh-map-copy{display:flex;flex:1;min-width:0;flex-direction:column;gap:4px;}
 #landing .rh-map-title{font-size:16px;font-weight:700;line-height:1.4;}
 #landing .rh-map-description{font-size:12px;line-height:1.5;color:#a9c3ce;}
-#landing .rh-map-shortcut>.rh-arrow{width:17px;height:17px;color:#83c7d2;}
-#landing .rh-map-shortcut:focus-visible{outline:2px solid #83c7d2;outline-offset:3px;}
-@media(min-width:800px){#landing .rh-map-shortcut{margin-top:18px;padding:12px 18px;}#landing .rh-map-title{font-size:18px;}#landing .rh-map-description{font-size:13px;}}
-@media(max-width:380px){#landing .rh-map-shortcut{gap:10px;padding:10px;}#landing .rh-map-title{font-size:15px;}}
-@media(hover:hover){#landing .rh-map-shortcut:hover{border-color:#63bfcd;background:#103142;}}
+#landing .rh-home-shortcut>.rh-arrow{width:17px;height:17px;color:#83c7d2;}
+#landing .rh-home-shortcut:focus-visible{outline:2px solid #83c7d2;outline-offset:3px;}
+@media(min-width:800px){#landing .rh-home-shortcut{margin-top:18px;padding:12px 18px;}#landing .rh-map-title{font-size:18px;}#landing .rh-map-description{font-size:13px;}}
+@media(max-width:380px){#landing .rh-home-shortcut{gap:10px;padding:10px;}#landing .rh-map-title{font-size:15px;}}
+@media(hover:hover){#landing .rh-home-shortcut:hover{border-color:#63bfcd;background:#103142;}}
 </style>
 </head>
 <body>
@@ -1159,7 +1159,7 @@ header{
 
 <script src="campaign-data.js?v=2"></script>
 <script src="resort-campaign.js?v=1" defer></script>
-<script src="resort-features.js?v=4"></script>
+<script src="resort-features.js?v=5"></script>
 <script src="stay-design.js?v=5"></script>
 <script>
 
@@ -1533,25 +1533,28 @@ function tarfihiOrder(){
         </span>
       </button>
 
-      <button type="button" class="rh-action rh-services" onclick="showServices()" aria-label="خدمات المنتجع">
-        <svg class="rh-action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.7 5.7 6.3.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.3-.9L12 3Z"/></svg>
-        <span class="rh-action-body">
-          <span class="rh-action-title">خدمات المنتجع</span>
-          <span class="rh-action-description">الضيافة والترفيه وتجهيز مناسبتك</span>
-        </span>
+      <button type="button" class="rh-action rh-services" onclick="showContact('resort')" aria-label="الحجز والتواصل">
+        <svg class="rh-action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3.1 5.2 2 2 0 0 1 5.1 3h3a2 2 0 0 1 2 1.7l.7 2.8a2 2 0 0 1-.4 2.1L9.1 10.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4l2.8.7a2 2 0 0 1 .7 1Z"/></svg>
+        <span class="rh-action-body"><span class="rh-action-title">الحجز والتواصل</span></span>
         <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg>
       </button>
 
-      <button type="button" class="rh-action rh-contact" onclick="showContact()" aria-label="الحجز والتواصل">
-        <svg class="rh-action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3.1 5.2 2 2 0 0 1 5.1 3h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L9.1 10.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 .7 1Z"/></svg>
-        <span class="rh-action-body">
-          <span class="rh-action-title">الحجز والتواصل</span>
-        </span>
+      <button type="button" class="rh-action rh-contact" onclick="showFaq()" aria-label="الأسئلة الشائعة">
+        <svg class="rh-action-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 2-2.5 2-2.5 4m0 3h.01"/></svg>
+        <span class="rh-action-body"><span class="rh-action-title">الأسئلة الشائعة</span></span>
         <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg>
       </button>
     </div>
 
-    <a class="rh-map-shortcut" href="#map" onclick="event.preventDefault();openResortMap()" aria-label="استكشف خريطة المنتجع">
+    <a class="rh-home-shortcut rh-services-shortcut" href="#services" onclick="event.preventDefault();showServices()" aria-label="خدمات المنتجع">
+      <span class="rh-map-copy">
+        <span class="rh-map-title">الخدمات</span>
+        <span class="rh-map-description">الضيافة والترفيه وتجهيز مناسبتك</span>
+      </span>
+      <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+    </a>
+
+    <a class="rh-home-shortcut rh-map-shortcut" href="#map" onclick="event.preventDefault();openResortMap()" aria-label="استكشف خريطة المنتجع">
       <span class="rh-map-copy">
         <span class="rh-map-title">استكشف خريطة المنتجع</span>
         <span class="rh-map-description">شاهد مواقع الأكواخ والمرافق</span>
@@ -1560,11 +1563,6 @@ function tarfihiOrder(){
     </a>
 
     <div class="rh-footer">
-      <button type="button" class="rh-faq" onclick="showFaq()" aria-label="الأسئلة الشائعة">
-        <svg class="rh-faq-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 2-2.5 2-2.5 4m0 3h.01"/></svg>
-        <span>الأسئلة الشائعة</span>
-        <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
-      </button>
       <a class="rh-reviews" href="https://maps.app.goo.gl/FLmawLadNaa3uYpJ8?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="تقييم الزوار: 4.7 من 5">
         <span class="rh-stars" aria-hidden="true"><span>★</span><span>★</span><span>★</span><span>★</span><span class="rh-star-partial">★</span></span>
         <span class="rh-rating"><bdi>4.7</bdi><span>من 5</span></span>
@@ -2243,13 +2241,13 @@ function tarfihiOrder(){
 
       <button type="button" class="rh-action rh-services" onclick="showContact2()" aria-label="الحجز والتواصل">
         <svg class="rh-action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3.1 5.2 2 2 0 0 1 5.1 3h3a2 2 0 0 1 2 1.7l.7 2.8a2 2 0 0 1-.4 2.1L9.1 10.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4l2.8.7a2 2 0 0 1 .7 1Z"/></svg>
-        <span class="rh-action-body"><span class="rh-action-title">الحجز والتواصل</span><span class="rh-action-description">خيارات الحجز والموقع وطرق التواصل</span></span>
+        <span class="rh-action-body"><span class="rh-action-title">الحجز والتواصل</span></span>
         <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg>
       </button>
 
       <button type="button" class="rh-action rh-contact" onclick="showFaq2()" aria-label="الأسئلة الشائعة">
         <svg class="rh-action-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 2-2.5 2-2.5 4m0 3h.01"/></svg>
-        <span class="rh-action-body"><span class="rh-action-title">الأسئلة الشائعة</span><span class="rh-action-description">الأقسام والمرافق وتعليمات الحجز</span></span>
+        <span class="rh-action-body"><span class="rh-action-title">الأسئلة الشائعة</span></span>
         <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg>
       </button>
     </div>
@@ -2287,13 +2285,13 @@ function tarfihiOrder(){
 
       <button type="button" class="rh-action rh-services" onclick="showContact('chalet')" aria-label="الحجز والتواصل">
         <svg class="rh-action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3.1 5.2 2 2 0 0 1 5.1 3h3a2 2 0 0 1 2 1.7l.7 2.8a2 2 0 0 1-.4 2.1L9.1 10.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4l2.8.7a2 2 0 0 1 .7 1Z"/></svg>
-        <span class="rh-action-body"><span class="rh-action-title">الحجز والتواصل</span><span class="rh-action-description">استفسر عن التوفر والأسعار</span></span>
+        <span class="rh-action-body"><span class="rh-action-title">الحجز والتواصل</span></span>
         <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg>
       </button>
 
       <button type="button" class="rh-action rh-contact" onclick="showChaletFaq()" aria-label="الأسئلة الشائعة">
         <svg class="rh-action-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 2-2.5 2-2.5 4m0 3h.01"/></svg>
-        <span class="rh-action-body"><span class="rh-action-title">الأسئلة الشائعة</span><span class="rh-action-description">المرافق والموقع وأوقات الدخول</span></span>
+        <span class="rh-action-body"><span class="rh-action-title">الأسئلة الشائعة</span></span>
         <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg>
       </button>
     </div>
