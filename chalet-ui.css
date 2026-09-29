@@ -10,7 +10,13 @@
   font-family: Tajawal, sans-serif;
 }
 #landing3 .rh-cabin-photo { object-position: center 60%; }
-#contact-page[data-venue="chalet"] .cp-map-sub { display: none !important; }
+#contact-page[data-venue="chalet"] .cp-map-sub {
+  display: block !important;
+  margin-top: 4px;
+  color: #b6cbd6;
+  font-size: .875rem;
+  line-height: 1.6;
+}
 .chalet-copy { margin: 0; color: #b6cbd6; line-height: 1.8; }
 .chalet-gallery-button {
   max-width: 100%;
@@ -89,6 +95,7 @@
 #chalet-faq .chalet-faq-answer { padding: 0 18px 16px; color: #b6cbd6; font-size: 14px; line-height: 1.8; }
 #chalet-faq .chalet-faq-answer::before { content: ""; display: block; margin-bottom: 12px; border-top: 1px solid rgba(49,89,103,.72); }
 #chalet-faq .chalet-faq-answer p { margin: 0; }
+#chalet-faq .phone-link { color: #9edce5; text-decoration: underline; text-underline-offset: 4px; direction: ltr; unicode-bidi: isolate; }
 #chalet-faq .fd-text-link { display: block; width: fit-content; margin-top: 12px; color: #9edce5; text-decoration: underline; text-underline-offset: 4px; }
 .chalet-gallery-button:focus-visible,
 #chalet-faq :is(.faq-back,.fd-faq-shortcuts button,summary,a):focus-visible { outline: 2px solid #7ecfea; outline-offset: 3px; }

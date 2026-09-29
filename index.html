@@ -1281,6 +1281,8 @@ function showContact(type){
   var nm = document.getElementById('cp-map-name');
   if(el) el.href = mapLink;
   if(nm) nm.textContent = mapName;
+  var mapSubtitle = document.querySelector('#contact-page .cp-map-sub');
+  if(mapSubtitle) mapSubtitle.textContent = type === 'chalet' ? PRIVATE_CHALET.location : 'جدة — خليج سلمان';
   var landing = type === 'chalet' ? 'landing3' : type === 'stay' ? 'landing2' : 'landing';
   document.getElementById(landing).classList.add('hide');
   document.getElementById('contact-page').setAttribute('data-venue', type === 'chalet' ? 'chalet' : type === 'stay' ? 'stay' : 'resort');
@@ -4658,7 +4660,7 @@ function openMDirect(c){
 
 
 </script>
-<script src="chalet-design.js?v=4"></script>
+<script src="chalet-design.js?v=5"></script>
 <script>
 // Family Day navigation history: existing views remain the rendering layer.
 // A route has a parent; only changed layers are reopened, so Back from a
@@ -5188,7 +5190,7 @@ function openMDirect(c){
 
 <link rel="stylesheet" href="resort-ui.css?v=5">
 <link rel="stylesheet" href="stay-ui.css?v=4">
-<link rel="stylesheet" href="chalet-ui.css?v=3">
+<link rel="stylesheet" href="chalet-ui.css?v=4">
 
 <!-- Approved keyboard navigation enhancement -->
 <style id="fd-keyboard-focus">

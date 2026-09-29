@@ -2,6 +2,7 @@
 var PRIVATE_CHALET = {
   id: 30,
   name: 'شاليه يوم العائلة',
+  location: 'جدة - المروج',
   mapUrl: 'https://maps.app.goo.gl/np6uD3XvCQTCr4ff7'
 };
 GALLERY[PRIVATE_CHALET.id] = Array.from({length:10}, function(_, index){
@@ -30,17 +31,18 @@ function renderPrivateChaletDetail(){
     + '<div class="fd-cabin-times" aria-label="أوقات الدخول والخروج"><div><span>الدخول</span><strong>4:00 مساءً</strong></div><div><span>الخروج</span><strong>12:00 ظهرًا</strong></div></div>'
     + '<section class="fd-cabin-section"><h3>المنطقة الداخلية</h3>'
     + floor('الدور الأول', [
-      'مجلس داخلي لـ15 شخصًا مع حمام ومطبخ',
-      'طاولة طعام لـ8 أشخاص',
-      'غرفة ألعاب للأطفال',
-      'غرفة نوم بسريرين مفردين'
+      'غرفة نوم بسريرين مفردين',
+      'صالة',
+      'حمام',
+      'مطبخ',
+      'طاولة طعام',
+      'غرفة أطفال مجهزة بالألعاب'
     ])
     + floor('الدور الثاني', ['غرفة نوم بسرير مزدوج', 'حمام خاص'])
     + '</section>'
     + section('المنطقة الخارجية', [
-      'مجلس مستقل لـ10 أشخاص مع حمام ومدخل خاص',
-      'مسبح أطفال بعمق 60 سم',
-      'ألعاب مائية'
+      'مجلس مستقل يتسع لـ10 أشخاص مع حمام ومدخل خاص',
+      'مسبح أطفال بعمق 60 سم مع ألعاب مائية'
     ])
     + section('تجهيزات المطبخ', ['ثلاجة', 'ميكروويف', 'فرن', 'موقد كهربائي', 'موقد غاز', 'غلاية', 'أدوات مطبخ خفيفة'])
     + '</section>';
@@ -72,22 +74,27 @@ function openPrivateChalet(){
 }
 
 (function(){
+  var contactLink = '<a class="fd-text-link" href="#contact=chalet" onclick="event.preventDefault();showContact(&quot;chalet&quot;)">عرض خيارات الحجز</a>';
+  var whatsappLink = '<a class="fd-text-link" href="' + chaletEnquiryUrl() + '" target="_blank" rel="noopener noreferrer">تواصل عبر واتساب</a>';
   var groups = [
-    {id:'chalet-faq-booking', title:'الحجز والموقع', items:[
-      {question:'أين يقع شاليه يوم العائلة؟', answer:'يمكنك مشاهدة موقع الشاليه وبدء الاتجاهات عبر خرائط Google.'
-        + '<a class="fd-text-link" href="' + PRIVATE_CHALET.mapUrl + '" target="_blank" rel="noopener noreferrer">موقع الشاليه على الخريطة</a>'},
-      {question:'كيف أستفسر عن الحجز والأسعار؟', answer:'تواصل معنا عبر واتساب لمعرفة التوفر والسعر في التاريخ المناسب لك.'
-        + '<a class="fd-text-link" href="' + chaletEnquiryUrl() + '" target="_blank" rel="noopener noreferrer">استفسر عن الحجز</a>'},
-      {question:'ما أوقات الدخول والخروج؟', answer:'الدخول الساعة 4:00 مساءً، والخروج الساعة 12:00 ظهرًا.'}
+    {id:'chalet-faq-booking', title:'الحجز وأوقات الدخول', items:[
+      {question:'أين يقع شاليه يوم العائلة؟', answer:'يقع شاليه يوم العائلة في ' + PRIVATE_CHALET.location + '.'
+        + '<a class="fd-text-link" href="' + PRIVATE_CHALET.mapUrl + '" target="_blank" rel="noopener noreferrer">عرض الموقع على الخريطة</a>'},
+      {question:'ما أوقات الدخول والخروج؟', answer:'الدخول الساعة 4:00 مساءً، والخروج الساعة 12:00 ظهرًا.'},
+      {question:'كيف يمكنني الحجز؟', answer:'تواصل معنا للاستفسار عن التوفر والأسعار وإتمام حجز الشاليه.' + contactLink}
     ]},
-    {id:'chalet-faq-facilities', title:'المساحات والمرافق', items:[
-      {question:'كم تبلغ سعة الشاليه؟', answer:'يتسع الشاليه حتى 15 ضيفًا.'},
-      {question:'كيف تتوزع غرف النوم؟', answer:'غرفتين نوم: غرفة في الدور الأول بسريرين مفردين، وغرفة في الدور الثاني بسرير مزدوج وحمام خاص.'},
-      {question:'هل توجد غرفة ألعاب للأطفال؟', answer:'نعم، توجد غرفة ألعاب للأطفال في الدور الأول.'}
+    {id:'chalet-faq-facilities', title:'الشاليه والمرافق', items:[
+      {question:'كم عدد غرف النوم في الشاليه؟', answer:'غرفتين نوم: غرفة في الدور الأول بسريرين مفردين، وغرفة في الدور الثاني بسرير مزدوج وحمام خاص.'},
+      {question:'كم ضيف يستوعب الشاليه؟', answer:'يتسع الشاليه حتى 15 ضيفًا.'},
+      {question:'هل توجد منطقة خارجية في الشاليه؟', answer:'يوجد في المنطقة الخارجية مجلس مستقل يتسع لـ10 أشخاص مع حمام ومدخل خاص، ومسبح أطفال بعمق 60 سم مع ألعاب مائية.'},
+      {question:'ما مواصفات المسبح؟', answer:'مسبح أطفال بعمق 60 سم مع ألعاب مائية.'},
+      {question:'هل توجد غرفة مخصصة للأطفال؟', answer:'نعم، توجد غرفة أطفال مجهزة بالألعاب في الدور الأول.'},
+      {question:'ما تجهيزات المطبخ المتوفرة؟', answer:'ثلاجة، ميكروويف، فرن، موقد كهربائي، موقد غاز، غلاية، وأدوات مطبخ خفيفة.'}
     ]},
-    {id:'chalet-faq-pool-kitchen', title:'المسبح وتجهيزات المطبخ', items:[
-      {question:'ما نوع المسبح وعمقه؟', answer:'يوجد مسبح أطفال بعمق 60 سم مع ألعاب مائية، وهو المسبح الوحيد في الشاليه.'},
-      {question:'ما تجهيزات المطبخ؟', answer:'ثلاجة، ميكروويف، فرن، موقد كهربائي، موقد غاز، غلاية، وأدوات مطبخ خفيفة.'}
+    {id:'chalet-faq-services', title:'الخدمات والتعليمات', items:[
+      {question:'ما الخدمات الإضافية وكيف أطلبها؟', answer:'للاستفسار عن الخدمات الإضافية المتاحة للشاليه، تواصل معنا عبر واتساب.'
+        + '<a class="fd-text-link" href="' + chaletEnquiryUrl('أرغب في الاستفسار عن الخدمات الإضافية المتاحة للشاليه') + '" target="_blank" rel="noopener noreferrer">استفسر عن الخدمات</a>'},
+      {question:'كيف يمكنني التواصل معكم؟', answer:'يمكنك التواصل معنا عبر الاتصال أو واتساب على الرقم: <a href="tel:+966556156693" class="phone-link">0556156693</a>.' + whatsappLink}
     ]}
   ];
   var panel = document.createElement('div');
@@ -107,8 +114,8 @@ function openPrivateChalet(){
     + groups.map(function(group){
       return '<section id="' + group.id + '" class="chalet-faq-section" aria-labelledby="' + group.id + '-title" hidden>'
         + '<h2 id="' + group.id + '-title" class="faq-section-title">' + group.title + '</h2><div class="chalet-faq-grid">'
-        + group.items.map(function(item){
-          return '<details><summary><span>' + item.question + '</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="chalet-faq-answer"><p>' + item.answer + '</p></div></details>';
+        + group.items.map(function(item,index){
+          return '<details><summary><span>' + (index + 1) + '. ' + item.question + '</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="chalet-faq-answer"><p>' + item.answer + '</p></div></details>';
         }).join('') + '</div></section>';
     }).join('')
     + '</div>';
