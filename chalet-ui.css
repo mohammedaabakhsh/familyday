@@ -1,4 +1,4 @@
-/* Home components inherit the same responsive design as the rest house. */
+/* Home and detail components use the existing resort/rest-house design. */
 #landing3 {
   position: fixed;
   inset: 0;
@@ -13,6 +13,7 @@
 #contact-page[data-venue="chalet"] .cp-map-sub { display: none !important; }
 .chalet-copy { margin: 0; color: #b6cbd6; line-height: 1.8; }
 .chalet-gallery-button {
+  max-width: 100%;
   padding: 14px 18px;
   border: 1px solid #3f7e8c;
   border-radius: 12px;
@@ -21,29 +22,101 @@
   font: 700 15px/1.5 Tajawal, sans-serif;
   cursor: pointer;
 }
+
+/* Match the FAQ headers, shortcuts and accordion cards in the other destinations. */
 #chalet-faq {
   position: fixed;
   inset: 0;
   z-index: 9500;
   overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   background: linear-gradient(170deg,#04111e,#030c18 45%,#04101c);
   color: #f4f8fa;
   direction: rtl;
   font-family: Tajawal, sans-serif;
 }
-.chalet-faq-shell { max-width: 1100px; margin: auto; padding: 24px 20px calc(32px + env(safe-area-inset-bottom,0px)); }
-.chalet-faq-heading { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
-.chalet-faq-heading h1 { margin: 0; font-size: 24px; }
-.chalet-back {
+#chalet-faq .faq-page-header {
+  box-sizing: border-box;
+  display: block;
+  position: static;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin: 0 auto;
+  padding: 24px 20px 28px;
+}
+#chalet-faq .faq-heading { display: flex; align-items: center; gap: 14px; }
+#chalet-faq .faq-title { margin: 0; color: #f0f5f7; font-size: 24px; font-weight: 800; line-height: 1.4; }
+#chalet-faq .faq-back {
   display: flex; align-items: center; justify-content: center;
   flex: 0 0 38px; width: 38px; height: 38px;
   padding: 0; border: 1px solid #29434f; border-radius: 50%;
   background: rgba(255,255,255,.05); color: #d6e9ef; cursor: pointer;
 }
-.chalet-faq-list { display: grid; gap: 12px; align-items: start; }
-.chalet-faq-list details { border: 1px solid #315967; border-radius: 16px; background: #153244; overflow: hidden; }
-.chalet-faq-list summary { padding: 17px 18px; font-weight: 700; line-height: 1.6; cursor: pointer; }
-.chalet-faq-list p { margin: 0 18px; padding: 14px 0 18px; border-top: 1px solid #315967; color: #b6cbd6; line-height: 1.8; }
-.chalet-faq-list a { display: block; width: fit-content; margin-top: 10px; color: #9edce5; }
-:is(.chalet-gallery-button,.chalet-back,.chalet-faq-list summary,.chalet-faq-list a):focus-visible { outline: 2px solid #7ecfea; outline-offset: 3px; }
-@media (min-width: 900px) { .chalet-faq-list { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; } }
+#chalet-faq .fd-faq-shortcuts { display: grid; grid-template-columns: minmax(0,1fr); gap: 10px; margin-top: 22px; }
+#chalet-faq .fd-faq-shortcuts button {
+  box-sizing: border-box;
+  width: 100%; min-width: 0; min-height: 48px;
+  padding: 12px 16px;
+  border: 1px solid #315967; border-radius: 12px;
+  background: #153244; color: #f4f8fa;
+  font: 700 15px/1.6 Tajawal,sans-serif;
+  text-align: right; cursor: pointer;
+}
+#chalet-faq .fd-faq-shortcuts button[aria-expanded="true"] { background: #147a8c; border-color: #147a8c; color: #fff; }
+#chalet-faq-list {
+  box-sizing: border-box; width: 100%; max-width: 600px; margin: 0 auto;
+  padding: 0 20px calc(32px + env(safe-area-inset-bottom,0px));
+  display: flex; flex-direction: column; gap: 26px;
+}
+#chalet-faq .chalet-faq-section { min-width: 0; }
+#chalet-faq .chalet-faq-section[hidden] { display: none; }
+#chalet-faq .faq-section-title { margin: 0 2px 12px; color: #8bc4d1; font-size: 15px; font-weight: 700; line-height: 1.5; }
+#chalet-faq .chalet-faq-grid { display: grid; grid-template-columns: minmax(0,1fr); gap: 10px; align-items: start; }
+#chalet-faq details { min-width: 0; overflow: hidden; border: 1px solid #315967; border-radius: 16px; background: #153244; }
+#chalet-faq summary {
+  box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  width: 100%; min-height: 56px; padding: 15px 18px;
+  color: #f0f5f7; font: 700 15px/1.6 Tajawal,sans-serif; cursor: pointer; list-style: none;
+}
+#chalet-faq summary::-webkit-details-marker { display: none; }
+#chalet-faq summary::marker { content: ""; }
+#chalet-faq .faq-chevron { flex: 0 0 20px; color: #92c4d0; }
+#chalet-faq details[open] { border-color: #3b7080; background: #173849; }
+#chalet-faq details[open] .faq-chevron { transform: rotate(180deg); }
+#chalet-faq .chalet-faq-answer { padding: 0 18px 16px; color: #b6cbd6; font-size: 14px; line-height: 1.8; }
+#chalet-faq .chalet-faq-answer::before { content: ""; display: block; margin-bottom: 12px; border-top: 1px solid rgba(49,89,103,.72); }
+#chalet-faq .chalet-faq-answer p { margin: 0; }
+#chalet-faq .fd-text-link { display: block; width: fit-content; margin-top: 12px; color: #9edce5; text-decoration: underline; text-underline-offset: 4px; }
+.chalet-gallery-button:focus-visible,
+#chalet-faq :is(.faq-back,.fd-faq-shortcuts button,summary,a):focus-visible { outline: 2px solid #7ecfea; outline-offset: 3px; }
+@media (max-width: 599px) {
+  #chalet-faq .faq-title { font-size: 17px; font-weight: 700; }
+  #chalet-faq .faq-page-header { padding: 20px 20px 22px; }
+  #chalet-faq .fd-faq-shortcuts { gap: 8px; margin-top: 18px; }
+  #chalet-faq .fd-faq-shortcuts button { padding: 11px 14px; font-size: 14px; }
+  #chalet-faq .faq-section-title { font-size: 13px; margin-bottom: 8px; }
+  #chalet-faq summary { min-height: 52px; padding: 13px 16px; font-size: 14px; }
+  #chalet-faq .chalet-faq-answer { padding: 0 16px 14px; font-size: 13px; }
+}
+@media (max-width: 360px) {
+  #chalet-faq .faq-page-header,#chalet-faq-list { padding-inline: 16px; }
+}
+@media (min-width: 900px) {
+  #chalet-faq .faq-page-header,#chalet-faq-list { max-width: 1100px; }
+  #chalet-faq .faq-page-header { padding-top: 28px; padding-bottom: 30px; }
+  #chalet-faq .fd-faq-shortcuts { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  #chalet-faq .fd-faq-shortcuts button { text-align: center; }
+  #chalet-faq-list { gap: 30px; }
+  #chalet-faq .faq-section-title { margin-bottom: 14px; font-size: 16px; }
+  #chalet-faq .chalet-faq-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px 16px; }
+  #chalet-faq summary { min-height: 60px; font-size: 16px; }
+  #chalet-faq .chalet-faq-answer { font-size: 15px; }
+}
+@media (hover: hover) and (pointer: fine) {
+  #chalet-faq .faq-back:hover { background: #133343; }
+  #chalet-faq details:hover { border-color: #4d8997; }
+  #chalet-faq summary:hover { background: rgba(255,255,255,.025); }
+}

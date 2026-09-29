@@ -1148,8 +1148,8 @@ header{
         <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#19a7b7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10 12 3l9 7M5 9v12h14V9M9 21v-7h6v7"/></svg>
       </div>
       <div style="flex:1;">
-        <div class="dest-title">شالية</div>
-        <div class="dest-sub">اكتشف الشالية بالصور</div>
+        <div class="dest-title">شاليه</div>
+        <div class="dest-sub">اكتشف الشاليه بالصور</div>
       </div>
       <svg class="dest-arrow" width="9" height="15" viewBox="0 0 9 15" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1);" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg>
     </div>
@@ -1285,8 +1285,8 @@ function showContact(type){
   document.getElementById(landing).classList.add('hide');
   document.getElementById('contact-page').setAttribute('data-venue', type === 'chalet' ? 'chalet' : type === 'stay' ? 'stay' : 'resort');
   if(type === 'chalet'){
-    if(el) el.href = chaletEnquiryUrl('أرغب في معرفة موقع الشالية');
-    if(nm) nm.textContent = 'استفسر عن موقع الشالية';
+    if(el) el.href = PRIVATE_CHALET.mapUrl;
+    if(nm) nm.textContent = 'موقع الشاليه';
   }
   var contactBody = document.querySelector('#contact-page .cp-body');
   var locationGroup = contactBody.querySelector('.cp-location');
@@ -2264,20 +2264,20 @@ function tarfihiOrder(){
         <svg width="7" height="12" viewBox="0 0 9 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg>
         <span>الوجهات</span>
       </button>
-      <img src="imgs/img01.webp" width="400" height="400" alt="شالية يوم العائلة" class="rh-logo" decoding="async">
-      <h1 id="ch-title">شالية يوم العائلة</h1>
+      <img src="imgs/img01.webp" width="400" height="400" alt="شاليه يوم العائلة" class="rh-logo" decoding="async">
+      <h1 id="ch-title">شاليه يوم العائلة</h1>
       <p class="rh-subtitle">لحظات تجمعكم… وذكريات تبقى معكم</p>
     </div>
 
 
     <div class="rh-grid">
-      <button type="button" class="rh-cabins" onclick="openPrivateChalet()" aria-label="اكتشف الشالية">
+      <button type="button" class="rh-cabins" onclick="openPrivateChalet()" aria-label="اكتشف الشاليه">
         <img class="rh-cabin-photo" src="imgs/chalet_8.webp" width="1200" height="1200" alt="" loading="lazy" decoding="async">
         <span class="rh-cabin-shade" aria-hidden="true"></span>
         <span class="rh-cabin-bottom">
           <span class="rh-cabin-copy">
-            <span class="rh-cabin-title">اكتشف الشالية</span>
-            <span class="rh-cabin-caption">شاهد التفاصيل والصور</span>
+            <span class="rh-cabin-title">اكتشف الشاليه</span>
+            <span class="rh-cabin-caption">شاليه من دورين · حتى 15 ضيفًا</span>
           </span>
           <svg class="rh-arrow rh-cabin-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg>
         </span>
@@ -2291,7 +2291,7 @@ function tarfihiOrder(){
 
       <button type="button" class="rh-action rh-contact" onclick="showChaletFaq()" aria-label="الأسئلة الشائعة">
         <svg class="rh-action-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 2-2.5 2-2.5 4m0 3h.01"/></svg>
-        <span class="rh-action-body"><span class="rh-action-title">الأسئلة الشائعة</span><span class="rh-action-description">الصور والاستفسار عن الحجز</span></span>
+        <span class="rh-action-body"><span class="rh-action-title">الأسئلة الشائعة</span><span class="rh-action-description">المرافق والموقع وأوقات الدخول</span></span>
         <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg>
       </button>
     </div>
@@ -3155,13 +3155,13 @@ function updateCabinPicker(){
   document.getElementById('fd-cabin-nav-position').textContent=new Intl.NumberFormat('ar-SA').format(_navIdx+1)+' من '+new Intl.NumberFormat('ar-SA').format(_navItems.length);
   var isStay=_navType==='chalet';
   var isChalet=_navType==='private-chalet';
-  var noun=isChalet?'الشالية':isStay?'القسم':'الكوخ';
-  var backLabel=isChalet?'العودة إلى الشالية':isStay?'العودة إلى الأقسام':'العودة إلى الأكواخ';
+  var noun=isChalet?'الشاليه':isStay?'القسم':'الكوخ';
+  var backLabel=isChalet?'العودة إلى الشاليه':isStay?'العودة إلى الأقسام':'العودة إلى الأكواخ';
   var back=document.querySelector('.fd-cabin-nav-back');
   back.setAttribute('aria-label',backLabel);
-  back.querySelector('span').textContent=isChalet?'الشالية':isStay?'الأقسام':'الأكواخ';
-  document.querySelector('.fd-cabin-nav').setAttribute('aria-label',isChalet?'تفاصيل الشالية':isStay?'التنقّل بين الأقسام':'التنقّل بين الأكواخ');
-  document.querySelector('#fd-cabin-nav-list ul').setAttribute('aria-label',isChalet?'الشالية':isStay?'أقسام الاستراحة':'الأكواخ ضمن اختيارك');
+  back.querySelector('span').textContent=isChalet?'الشاليه':isStay?'الأقسام':'الأكواخ';
+  document.querySelector('.fd-cabin-nav').setAttribute('aria-label',isChalet?'تفاصيل الشاليه':isStay?'التنقّل بين الأقسام':'التنقّل بين الأكواخ');
+  document.querySelector('#fd-cabin-nav-list ul').setAttribute('aria-label',isChalet?'الشاليه':isStay?'أقسام الاستراحة':'الأكواخ ضمن اختيارك');
   picker.setAttribute('aria-label','اختيار '+noun+': '+c.name);
   picker.disabled=_navItems.length<2;
   ['prev','next'].forEach(function(key){
@@ -4658,7 +4658,7 @@ function openMDirect(c){
 
 
 </script>
-<script src="chalet-design.js?v=1"></script>
+<script src="chalet-design.js?v=2"></script>
 <script>
 // Family Day navigation history: existing views remain the rendering layer.
 // A route has a parent; only changed layers are reopened, so Back from a
@@ -5188,7 +5188,7 @@ function openMDirect(c){
 
 <link rel="stylesheet" href="resort-ui.css?v=5">
 <link rel="stylesheet" href="stay-ui.css?v=4">
-<link rel="stylesheet" href="chalet-ui.css?v=1">
+<link rel="stylesheet" href="chalet-ui.css?v=2">
 
 <!-- Approved keyboard navigation enhancement -->
 <style id="fd-keyboard-focus">
