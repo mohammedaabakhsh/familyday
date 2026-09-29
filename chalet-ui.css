@@ -1,0 +1,49 @@
+/* Home components inherit the same responsive design as the rest house. */
+#landing3 {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  font-family: Tajawal, sans-serif;
+}
+#landing3 .rh-cabin-photo { object-position: center 60%; }
+#contact-page[data-venue="chalet"] .cp-map-sub { display: none !important; }
+.chalet-copy { margin: 0; color: #b6cbd6; line-height: 1.8; }
+.chalet-gallery-button {
+  padding: 14px 18px;
+  border: 1px solid #3f7e8c;
+  border-radius: 12px;
+  background: #123746;
+  color: #eaf7fa;
+  font: 700 15px/1.5 Tajawal, sans-serif;
+  cursor: pointer;
+}
+#chalet-faq {
+  position: fixed;
+  inset: 0;
+  z-index: 9500;
+  overflow-y: auto;
+  background: linear-gradient(170deg,#04111e,#030c18 45%,#04101c);
+  color: #f4f8fa;
+  direction: rtl;
+  font-family: Tajawal, sans-serif;
+}
+.chalet-faq-shell { max-width: 1100px; margin: auto; padding: 24px 20px calc(32px + env(safe-area-inset-bottom,0px)); }
+.chalet-faq-heading { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+.chalet-faq-heading h1 { margin: 0; font-size: 24px; }
+.chalet-back {
+  display: flex; align-items: center; justify-content: center;
+  flex: 0 0 38px; width: 38px; height: 38px;
+  padding: 0; border: 1px solid #29434f; border-radius: 50%;
+  background: rgba(255,255,255,.05); color: #d6e9ef; cursor: pointer;
+}
+.chalet-faq-list { display: grid; gap: 12px; align-items: start; }
+.chalet-faq-list details { border: 1px solid #315967; border-radius: 16px; background: #153244; overflow: hidden; }
+.chalet-faq-list summary { padding: 17px 18px; font-weight: 700; line-height: 1.6; cursor: pointer; }
+.chalet-faq-list p { margin: 0 18px; padding: 14px 0 18px; border-top: 1px solid #315967; color: #b6cbd6; line-height: 1.8; }
+.chalet-faq-list a { display: block; width: fit-content; margin-top: 10px; color: #9edce5; }
+:is(.chalet-gallery-button,.chalet-back,.chalet-faq-list summary,.chalet-faq-list a):focus-visible { outline: 2px solid #7ecfea; outline-offset: 3px; }
+@media (min-width: 900px) { .chalet-faq-list { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; } }

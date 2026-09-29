@@ -1143,13 +1143,23 @@ header{
       </div>
       <svg class="dest-arrow" width="9" height="15" viewBox="0 0 9 15" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1);"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg>
     </div>
+    <div class="dest-card" data-dest-photo="chalet" onclick="pickDest(this,'chalet')">
+      <div class="dest-icon">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#19a7b7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10 12 3l9 7M5 9v12h14V9M9 21v-7h6v7"/></svg>
+      </div>
+      <div style="flex:1;">
+        <div class="dest-title">شالية</div>
+        <div class="dest-sub">اكتشف الشالية بالصور</div>
+      </div>
+      <svg class="dest-arrow" width="9" height="15" viewBox="0 0 9 15" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1);" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg>
+    </div>
   </div>
   </div>
 </div>
 
 <script src="campaign-data.js?v=2"></script>
 <script src="resort-campaign.js?v=1" defer></script>
-<script src="resort-features.js?v=3"></script>
+<script src="resort-features.js?v=4"></script>
 <script src="stay-design.js?v=5"></script>
 <script>
 
@@ -1271,9 +1281,13 @@ function showContact(type){
   var nm = document.getElementById('cp-map-name');
   if(el) el.href = mapLink;
   if(nm) nm.textContent = mapName;
-  var landing = type === 'stay' ? 'landing2' : 'landing';
+  var landing = type === 'chalet' ? 'landing3' : type === 'stay' ? 'landing2' : 'landing';
   document.getElementById(landing).classList.add('hide');
-  document.getElementById('contact-page').setAttribute('data-venue', type === 'stay' ? 'stay' : 'resort');
+  document.getElementById('contact-page').setAttribute('data-venue', type === 'chalet' ? 'chalet' : type === 'stay' ? 'stay' : 'resort');
+  if(type === 'chalet'){
+    if(el) el.href = chaletEnquiryUrl('أرغب في معرفة موقع الشالية');
+    if(nm) nm.textContent = 'استفسر عن موقع الشالية';
+  }
   var contactBody = document.querySelector('#contact-page .cp-body');
   var locationGroup = contactBody.querySelector('.cp-location');
   contactBody.insertBefore(locationGroup, contactBody.querySelector('.cp-social'));
@@ -2242,6 +2256,49 @@ function tarfihiOrder(){
   </section>
 </div>
 
+<!-- PRIVATE CHALET HOME -->
+<div id="landing3" class="rh-page hide">
+  <section class="rh-shell" aria-labelledby="ch-title">
+    <div class="rh-intro">
+      <button type="button" class="rh-destinations" onclick="goBackToDestination()">
+        <svg width="7" height="12" viewBox="0 0 9 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg>
+        <span>الوجهات</span>
+      </button>
+      <img src="imgs/img01.webp" width="400" height="400" alt="شالية يوم العائلة" class="rh-logo" decoding="async">
+      <h1 id="ch-title">شالية يوم العائلة</h1>
+      <p class="rh-subtitle">لحظات تجمعكم… وذكريات تبقى معكم</p>
+    </div>
+
+
+    <div class="rh-grid">
+      <button type="button" class="rh-cabins" onclick="openPrivateChalet()" aria-label="اكتشف الشالية">
+        <img class="rh-cabin-photo" src="imgs/chalet_8.webp" width="1200" height="1200" alt="" loading="lazy" decoding="async">
+        <span class="rh-cabin-shade" aria-hidden="true"></span>
+        <span class="rh-cabin-bottom">
+          <span class="rh-cabin-copy">
+            <span class="rh-cabin-title">اكتشف الشالية</span>
+            <span class="rh-cabin-caption">شاهد التفاصيل والصور</span>
+          </span>
+          <svg class="rh-arrow rh-cabin-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg>
+        </span>
+      </button>
+
+      <button type="button" class="rh-action rh-services" onclick="showContact('chalet')" aria-label="الحجز والتواصل">
+        <svg class="rh-action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3.1 5.2 2 2 0 0 1 5.1 3h3a2 2 0 0 1 2 1.7l.7 2.8a2 2 0 0 1-.4 2.1L9.1 10.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4l2.8.7a2 2 0 0 1 .7 1Z"/></svg>
+        <span class="rh-action-body"><span class="rh-action-title">الحجز والتواصل</span><span class="rh-action-description">استفسر عن التوفر والأسعار</span></span>
+        <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg>
+      </button>
+
+      <button type="button" class="rh-action rh-contact" onclick="showChaletFaq()" aria-label="الأسئلة الشائعة">
+        <svg class="rh-action-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 2-2.5 2-2.5 4m0 3h.01"/></svg>
+        <span class="rh-action-body"><span class="rh-action-title">الأسئلة الشائعة</span><span class="rh-action-description">الصور والاستفسار عن الحجز</span></span>
+        <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg>
+      </button>
+    </div>
+
+  </section>
+</div>
+
 <!-- FAQ2 OVERLAY (chalet) -->
 <div id="faq2-overlay" class="hide" role="region" aria-labelledby="faq-title-stay" style="position:fixed;inset:0;z-index:9500;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
   <header class="faq-page-header"><div class="faq-heading">
@@ -3086,7 +3143,7 @@ function updateNavUI(){
   prev.disabled = _navIdx===0;
   next.disabled = _navIdx===_navItems.length-1;
   counter.textContent = (_navIdx+1) + ' من ' + _navItems.length;
-  if(_navType==='resort' || _navType==='chalet') updateCabinPicker();
+  if(_navType==='resort' || _navType==='chalet' || _navType==='private-chalet') updateCabinPicker();
 }
 
 function updateCabinPicker(){
@@ -3097,13 +3154,14 @@ function updateCabinPicker(){
   document.getElementById('fd-cabin-nav-count').textContent=(_navIdx+1)+' من '+_navItems.length;
   document.getElementById('fd-cabin-nav-position').textContent=new Intl.NumberFormat('ar-SA').format(_navIdx+1)+' من '+new Intl.NumberFormat('ar-SA').format(_navItems.length);
   var isStay=_navType==='chalet';
-  var noun=isStay?'القسم':'الكوخ';
-  var backLabel=isStay?'العودة إلى الأقسام':'العودة إلى الأكواخ';
+  var isChalet=_navType==='private-chalet';
+  var noun=isChalet?'الشالية':isStay?'القسم':'الكوخ';
+  var backLabel=isChalet?'العودة إلى الشالية':isStay?'العودة إلى الأقسام':'العودة إلى الأكواخ';
   var back=document.querySelector('.fd-cabin-nav-back');
   back.setAttribute('aria-label',backLabel);
-  back.querySelector('span').textContent=isStay?'الأقسام':'الأكواخ';
-  document.querySelector('.fd-cabin-nav').setAttribute('aria-label',isStay?'التنقّل بين الأقسام':'التنقّل بين الأكواخ');
-  document.querySelector('#fd-cabin-nav-list ul').setAttribute('aria-label',isStay?'أقسام الاستراحة':'الأكواخ ضمن اختيارك');
+  back.querySelector('span').textContent=isChalet?'الشالية':isStay?'الأقسام':'الأكواخ';
+  document.querySelector('.fd-cabin-nav').setAttribute('aria-label',isChalet?'تفاصيل الشالية':isStay?'التنقّل بين الأقسام':'التنقّل بين الأكواخ');
+  document.querySelector('#fd-cabin-nav-list ul').setAttribute('aria-label',isChalet?'الشالية':isStay?'أقسام الاستراحة':'الأكواخ ضمن اختيارك');
   picker.setAttribute('aria-label','اختيار '+noun+': '+c.name);
   picker.disabled=_navItems.length<2;
   ['prev','next'].forEach(function(key){
@@ -3198,6 +3256,8 @@ document.querySelector('.fd-cabin-nav-controls').addEventListener('focusout',fun
 
 function closeM(){
   closeCabinPicker();
+  document.getElementById('modalBookBtn').textContent='احجز الآن';
+  if(_navType==='private-chalet') document.getElementById('landing3').classList.remove('hide');
   document.getElementById('ov').classList.remove('fd-stay-modern');
   document.getElementById('ov').classList.remove('open');
   document.getElementById('ov').classList.remove('fd-cabin-modern');
@@ -4492,16 +4552,16 @@ function pickDest(el, type){
 
 function showDestination(type){
   document.getElementById('dest').classList.add('hide');
-  if(type==='resort'){
-    document.getElementById('landing').classList.remove('hide');
-  } else {
-    document.getElementById('landing2').classList.remove('hide');
-  }
+  var target = type==='chalet' ? 'landing3' : type==='stay' ? 'landing2' : 'landing';
+  ['landing','landing2','landing3'].forEach(function(id){
+    document.getElementById(id).classList.toggle('hide',id!==target);
+  });
 }
 
 function goBackToDestination(){
   document.getElementById('landing').classList.add('hide');
   document.getElementById('landing2').classList.add('hide');
+  document.getElementById('landing3').classList.add('hide');
   document.getElementById('app').classList.remove('show');
   document.getElementById('app2').style.display='none';
   document.getElementById('dest').classList.remove('hide');
@@ -4597,6 +4657,9 @@ function openMDirect(c){
 /* ===== END STAY FUNCTIONS ===== */
 
 
+</script>
+<script src="chalet-design.js?v=1"></script>
+<script>
 // Family Day navigation history: existing views remain the rendering layer.
 // A route has a parent; only changed layers are reopened, so Back from a
 // popup preserves the underlying grid/filter or service form selections.
@@ -4625,6 +4688,7 @@ function openMDirect(c){
     else if(name==='home') r.parent = route('dest');
     else if(name==='resort' || name==='services' || name==='faq') r.parent = route('home',['resort']);
     else if(name==='chalet' || name==='faq2') r.parent = route('home',['stay']);
+    else if(name==='chalet-detail' || name==='chalet-faq') r.parent = route('home',['chalet']);
     else if(name==='contact') r.parent = route('home',[r.args[0] || 'resort']);
     else if(name==='cabin') r.parent = route(r.args[0]>=20 ? 'chalet' : 'resort');
     else if(name==='map') r.parent = route('resort');
@@ -4653,9 +4717,9 @@ function openMDirect(c){
       var id=Number(match[1]);
       if(id===20 || id===21 || data.resort.items.some(function(c){return c.id===id;})) return route('cabin',[id]);
     }
-    match=/^(home|contact)=(resort|stay)$/.exec(hash);
+    match=/^(home|contact)=(resort|stay|chalet)$/.exec(hash);
     if(match) return route(match[1],[match[2]]);
-    if(['resort','chalet','services','faq','faq2','map'].indexOf(hash)!==-1 || serviceViews[hash]) return route(hash);
+    if(['resort','chalet','services','faq','faq2','map','chalet-detail','chalet-faq'].indexOf(hash)!==-1 || serviceViews[hash]) return route(hash);
     return route('dest');
   }
   function remember(name){
@@ -4669,6 +4733,8 @@ function openMDirect(c){
       case 'home': call('showDestination',r.args); break;
       case 'resort': call('showSection',['resort']); break;
       case 'chalet': call('showSection2'); break;
+      case 'chalet-detail': call('openPrivateChalet'); break;
+      case 'chalet-faq': call('showChaletFaq'); break;
       case 'services': call('showServices'); break;
       case 'faq': call('showFaq'); break;
       case 'faq2': call('showFaq2'); break;
@@ -4705,7 +4771,7 @@ function openMDirect(c){
   function closeView(r){
     var close={home:'goBackToDestination',resort:'goBack',chalet:'goBack2',
       services:'closeServices',faq:'closeFaq',faq2:'closeFaq2',contact:'closeContact',
-      cabin:'closeM','service-sub':'goBack',photos:'closeFS',tour:'closeIframe',order:'closeOrderPopup'};
+      cabin:'closeM','chalet-detail':'closeM','chalet-faq':'closeChaletFaq','service-sub':'goBack',photos:'closeFS',tour:'closeIframe',order:'closeOrderPopup'};
     if(r.name==='map-photos'){
       document.dispatchEvent(new CustomEvent('fd-map-photos-close'));
     } else if(r.name==='map'){
@@ -4726,7 +4792,7 @@ function openMDirect(c){
       for(var j=common;j<after.length;j++) openView(after[j]);
       current=next;
       document.body.style.overflow=after.some(function(r){
-        return ['cabin','photos','tour','tawilat','walaa','map'].indexOf(r.name)!==-1;
+        return ['cabin','chalet-detail','photos','tour','tawilat','walaa','map'].indexOf(r.name)!==-1;
       }) ? 'hidden' : '';
     } finally { rendering=false; }
   }
@@ -4766,6 +4832,9 @@ function openMDirect(c){
   wrapOpen('showDestination',function(type){return route('home',[type]);});
   wrapOpen('showSection',function(){return route('resort');});
   wrapOpen('showSection2',function(){return route('chalet');});
+  wrapOpen('openPrivateChalet',function(){return route('chalet-detail');});
+  wrapOpen('showChaletFaq',function(){return route('chalet-faq',[],current.name==='contact' && current.args[0]==='chalet' ? current : null);});
+  wrapClose('closeChaletFaq');
   wrapOpen('showServices',function(){return route('services');});
   wrapOpen('showFaq',function(){return route('faq');});
   wrapOpen('showFaq2',function(){return route('faq2',[],current.name==='contact' && current.args[0]==='stay' ? current : null);});
@@ -4863,6 +4932,7 @@ function openMDirect(c){
 }
 .dest-card[data-dest-photo="resort"]{--dest-photo:url('imgs/dome_1.webp');}
 .dest-card[data-dest-photo="stay"]{--dest-photo:url('imgs/sec1_1.webp');}
+.dest-card[data-dest-photo="chalet"]{--dest-photo:url('imgs/chalet_8.webp');}
 #ov .mbtn-book{color:#04111e;}
 #mBody .tag{font-size:14px;line-height:1.45;}
 #mBody .tags-lbl{font-size:14px;line-height:1.45;}
@@ -5117,7 +5187,8 @@ function openMDirect(c){
 </style>
 
 <link rel="stylesheet" href="resort-ui.css?v=5">
-<link rel="stylesheet" href="stay-ui.css?v=3">
+<link rel="stylesheet" href="stay-ui.css?v=4">
+<link rel="stylesheet" href="chalet-ui.css?v=1">
 
 <!-- Approved keyboard navigation enhancement -->
 <style id="fd-keyboard-focus">
@@ -5135,7 +5206,7 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 (function () {
   'use strict';
   var panelIds = [
-    'splash', 'dest', 'landing', 'landing2', 'app', 'app2', 'contact-page',
+    'splash', 'dest', 'landing', 'landing2', 'landing3', 'chalet-faq', 'app', 'app2', 'contact-page',
     'faq-overlay', 'faq2-overlay', 'services-overlay', 'hospitality-detail',
     'sinema-detail', 'maiya-detail', 'jalsat-detail', 'sharik-detail',
     'tarfihi-detail', 'tawilat-detail', 'walaa-detail', 'menu-detail', 'menu-cart-review',
@@ -5412,3 +5483,4 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 </style>
 </body>
 </html><!-- test Fri Jul 17 17:12:00 +03 2026 -->
+
