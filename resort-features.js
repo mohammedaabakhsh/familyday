@@ -36,7 +36,7 @@ function configureResortOrderForm() {
   outputLabel.id = 'fd-cabin-number-label';
   document.getElementById('order-cabin-num').setAttribute('aria-labelledby', outputLabel.id);
   var send = popup.querySelector('[onclick="sendOrderWhatsapp()"]');
-  send.textContent = 'أرسل الطلب عبر واتساب';
+  send.textContent = 'إكمال الطلب عبر واتساب';
   send.classList.add('fd-order-submit');
   var cancel = popup.querySelector('[onclick="closeOrderPopup()"]');
   cancel.classList.add('fd-order-cancel');
@@ -138,7 +138,7 @@ function updateMaiyaThumbnail() {
 
 function cabinShareURL(id) {
   var url = new URL(location.href);
-  url.hash = 'cabin=' + id;
+  url.hash = String(id) === '30' ? 'chalet-detail' : 'cabin=' + id;
   return url.href;
 }
 

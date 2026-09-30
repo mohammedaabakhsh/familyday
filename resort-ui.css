@@ -1,6 +1,6 @@
 /* Shared settings for the reviewed resort views only. */
 :is(#landing,#app,#ov.fd-cabin-modern,#services-overlay,#menu-detail,#sinema-detail,
-    #tarfihi-detail,#maiya-detail,#tawilat-detail,#jalsat-detail,#sharik-detail,
+    #tarfihi-detail,#maiya-detail,#tawilat-detail,#jalsat-detail,#hospitality-detail,#sharik-detail,
     #walaa-detail,#faq-overlay,#contact-page[data-venue="resort"],#order-popup.fd-resort-order,#fd-map-dialog) {
   --fd-primary:#147a8c;
   --fd-primary-hover:#126b7b;
@@ -19,7 +19,7 @@
 }
 @media(max-width:599px) {
   :is(#landing,#app,#ov.fd-cabin-modern,#services-overlay,#menu-detail,#sinema-detail,
-      #tarfihi-detail,#maiya-detail,#tawilat-detail,#jalsat-detail,#sharik-detail,
+      #tarfihi-detail,#maiya-detail,#tawilat-detail,#jalsat-detail,#hospitality-detail,#sharik-detail,
       #walaa-detail,#faq-overlay,#contact-page[data-venue="resort"],#order-popup.fd-resort-order,#fd-map-dialog) {
     --fd-heading:22px;
     --fd-copy:14px;
@@ -27,7 +27,7 @@
 }
 @media(max-width:360px) {
   :is(#landing,#app,#ov.fd-cabin-modern,#services-overlay,#menu-detail,#sinema-detail,
-      #tarfihi-detail,#maiya-detail,#tawilat-detail,#jalsat-detail,#sharik-detail,
+      #tarfihi-detail,#maiya-detail,#tawilat-detail,#jalsat-detail,#hospitality-detail,#sharik-detail,
       #walaa-detail,#faq-overlay,#contact-page[data-venue="resort"],#order-popup.fd-resort-order) { --fd-side:16px; }
 }
 
@@ -40,6 +40,7 @@
 #maiya-detail .wm-title,
 #tawilat-detail .tw-title,
 #jalsat-detail .jl-title,
+#hospitality-detail .hd-title,
 #sharik-detail .sw-title,
 #walaa-detail .wl-title,
 #faq-overlay .faq-title,
@@ -52,6 +53,7 @@
 #maiya-detail :is(.wm-notes-list,.wm-selection-hint,.wm-order-hint),
 #tawilat-detail :is(.tw-intro,.tw-hint),
 #jalsat-detail :is(.jl-description,.jl-notes-list,.jl-order-hint),
+#hospitality-detail :is(.hd-intro,.hd-item),
 #sharik-detail :is(.sw-step-copy,.sw-terms,.sw-criteria-copy,.sw-email-hint),
 #walaa-detail :is(.wl-card-intro,.wl-promise-intro,.wl-enroll-hint) { font-size:var(--fd-copy); }
 #faq-list-resort .faq-answer { font-size:var(--fd-copy)!important; }
@@ -98,6 +100,20 @@
 #maiya-detail .wm-order-button:disabled,
 #menu-detail .menu-qty-button:disabled { background:#183745; border-color:#31505d; color:#91aab5; cursor:default; }
 
+/* Hospitality uses the same content width and type scale as the service pages. */
+#hospitality-detail .hd-shell { box-sizing:border-box; width:100%; max-width:600px; margin:0 auto; padding:24px var(--fd-side) calc(32px + env(safe-area-inset-bottom,0px)); font-family:Tajawal,sans-serif; direction:rtl; }
+#hospitality-detail .hd-header { padding:0; margin-bottom:22px; }
+#hospitality-detail .hd-tabs { padding:0; margin-bottom:20px; }
+#hospitality-detail .hd-content { padding:0; }
+#hospitality-detail .hd-intro { margin:0 0 16px; color:var(--fd-muted); }
+#hospitality-detail .hd-packages { gap:16px; }
+#hospitality-detail .hd-package-name { font-size:18px; }
+#hospitality-detail .hd-item { min-width:0; line-height:1.65; }
+@media(min-width:900px) {
+  #hospitality-detail .hd-shell { max-width:1100px; padding-top:28px; }
+  #hospitality-detail .hd-header { margin-bottom:26px; }
+}
+
 /* Keep each page's approved photo/phrase order; share the outer spacing. */
 /* Compact mobile typography for the resort services trial. */
 @media(max-width:599px) {
@@ -109,17 +125,18 @@
   #services-overlay .svcs-card .svcs-name { font-size:14px; }
   #services-overlay .svcs-section-title { margin-bottom:6px; font-size:13px; }
   :is(#menu-detail,#sinema-detail,#tarfihi-detail,#maiya-detail,
-      #tawilat-detail,#jalsat-detail,#sharik-detail,#walaa-detail) {
+      #tawilat-detail,#jalsat-detail,#hospitality-detail,#sharik-detail,#walaa-detail) {
     --fd-heading:17px;
     --fd-action-size:14px;
   }
   #menu-detail .menu-title,#sinema-detail .cn-title,#tarfihi-detail .tg-title,
   #maiya-detail .wm-title,#tawilat-detail .tw-title,#jalsat-detail .jl-title,
-  #sharik-detail .sw-title,#walaa-detail .wl-title { font-weight:700; font-size:17px!important; }
+  #hospitality-detail .hd-title,#sharik-detail .sw-title,#walaa-detail .wl-title { font-weight:700; font-size:17px!important; }
 
   #sinema-detail .cn-section-title,#tarfihi-detail .tg-section-title,
   #maiya-detail .wm-section-title,#tawilat-detail .tw-label,
   #jalsat-detail :is(.jl-section-title,.jl-filter-title),
+  #hospitality-detail .hd-package-name,
   #sharik-detail :is(.sw-section-title,.sw-step-title),
   #walaa-detail .wl-section-title { font-size:15px; }
 

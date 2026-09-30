@@ -10,7 +10,7 @@ GALLERY[PRIVATE_CHALET.id] = Array.from({length:10}, function(_, index){
 });
 
 function chaletEnquiryUrl(message){
-  return 'https://wa.me/966556156693?text=' + encodeURIComponent(message || 'أرغب في الاستفسار عن حجز الشاليه والأسعار والتوفر');
+  return 'https://wa.me/966556156693?text=' + encodeURIComponent(message || 'أرغب في الاستفسار عن شاليه يوم العائلة');
 }
 
 function renderPrivateChaletDetail(){
@@ -65,9 +65,10 @@ function openPrivateChalet(){
     img.alt = PRIVATE_CHALET.name + ' — صورة ' + (index + 1);
   });
   document.getElementById('mBody').innerHTML = renderPrivateChaletDetail();
+  updateCabinShareActions(PRIVATE_CHALET);
   var book = document.getElementById('modalBookBtn');
-  book.href = chaletEnquiryUrl();
-  book.textContent = 'استفسر عن الحجز';
+  book.href = 'https://familyday-sa.com/ar';
+  book.textContent = 'احجز الآن';
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
   resetCabinDetailView();

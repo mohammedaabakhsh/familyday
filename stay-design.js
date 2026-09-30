@@ -36,9 +36,9 @@ function renderStayDetail(c) {
     + '<div class="fd-cabin-times" aria-label="أوقات الدخول والخروج"><div><span>الدخول</span><strong>4:00 مساءً</strong></div><div><span>الخروج</span><strong>12:00 ظهرًا</strong></div></div>'
     + section('المنطقة الداخلية', groups.slice(0, 3).flat().map(function(text){return text.replace('3 دورات مياه','3 حمامات');}))
     + section('المنطقة الخارجية', groups.slice(3).flat(), poolNotes)
-    + section('تجهيزات المطبخ', ['موقد كهربائي', 'ثلاجة', 'ميكروويف', 'غلاية كهربائية'])
+    + section('تجهيزات المطبخ', ['موقد كهربائي', 'ثلاجة', 'ميكروويف', 'غلاية'])
     + section('مميزات الإقامة', ['تلفزيون ذكي', 'سماعات داخلية (ساوند بار)'])
-    + '<section class="fd-cabin-addons"><h3>الخدمات الإضافية</h3><p>زحليقة وملعب صابوني.</p></section></section>';
+    + '<section class="fd-cabin-addons"><h3>إضافات الحجز</h3><p>زحليقة وملعب صابوني.</p></section></section>';
 }
 
 function resetStayFaq() {

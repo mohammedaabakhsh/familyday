@@ -78,7 +78,7 @@
 #menu-detail .menu-header{display:block;position:static;height:auto;padding:0;margin-bottom:22px}
 #menu-detail .menu-heading{display:flex;align-items:center;gap:14px}
 #menu-detail .menu-back{display:flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;padding:0;border:1px solid rgba(126,207,234,.16);border-radius:50%;background:rgba(255,255,255,.06);color:#d7e8ef;cursor:pointer}
-#menu-detail .menu-title{margin:0;font-weight:700;line-height:1.4;color:#f4f8fa}
+#menu-detail .menu-title{margin:0;font-weight:800;line-height:1.4;color:#f4f8fa}
 #menu-detail #menu-cats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 20px;padding:0}
 #menu-detail .menu-cat{box-sizing:border-box;min-width:0;min-height:42px;padding:10px 6px;border:1px solid #2b4c5d;border-radius:12px;background:#0c2232;color:#c4d8e2;font-family:inherit;font-size:14px;font-weight:500;line-height:1.4;white-space:nowrap;cursor:pointer}
 #menu-detail .menu-cat.is-active{background:#126575;border-color:#299bad;color:#fff;font-weight:700}
@@ -376,7 +376,7 @@
 #tawilat-detail .tw-header{margin-bottom:18px}
 #tawilat-detail .tw-heading{display:flex;align-items:center;gap:14px}
 #tawilat-detail .tw-back{display:flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;padding:0;border:1px solid rgba(126,207,234,.16);border-radius:50%;background:rgba(255,255,255,.06);color:#d7e8ef;cursor:pointer}
-#tawilat-detail .tw-title{margin:0;font-weight:700;line-height:1.4;color:#f4f8fa}
+#tawilat-detail .tw-title{margin:0;font-weight:800;line-height:1.4;color:#f4f8fa}
 #tawilat-detail .tw-intro{margin:0;color:#b6cbd6;font-size:14px;line-height:1.65;text-align:center}
 #tawilat-detail .tw-intro--desktop{display:none}
 #tawilat-detail .tw-intro--mobile{margin-bottom:10px}
@@ -1159,8 +1159,8 @@ header{
 
 <script src="campaign-data.js?v=2"></script>
 <script src="resort-campaign.js?v=1" defer></script>
-<script src="resort-features.js?v=5"></script>
-<script src="stay-design.js?v=5"></script>
+<script src="resort-features.js?v=6"></script>
+<script src="stay-design.js?v=6"></script>
 <script>
 
 
@@ -1863,6 +1863,7 @@ function tarfihiOrder(){
 @media(max-width:360px){#hospitality-detail .hd-items{grid-template-columns:1fr}}
 </style>
 <div id="hospitality-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
+  <div class="hd-shell">
   <div class="hd-header">
     <button type="button" class="hd-back" onclick="closeHospitalityDetail()" aria-label="العودة إلى الخدمات">
       <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1924,6 +1925,7 @@ function tarfihiOrder(){
     </div>
     <div id="hd-coordination-panel" class="hide hd-empty" role="tabpanel"></div>
   </div>
+  </div>
 </div>
 
 <!-- SINEMA DETAIL OVERLAY -->
@@ -1981,7 +1983,7 @@ function tarfihiOrder(){
         </section>
 
         <div class="cn-order">
-          <button type="button" class="cn-order-button" onclick="openOrderPopup('جلسة السينما', true)">أرسل الطلب عبر واتساب</button>
+          <button type="button" class="cn-order-button" onclick="openOrderPopup('جلسة السينما', true)">إكمال الطلب عبر واتساب</button>
         </div>
       </div>
     </div>
@@ -2122,8 +2124,7 @@ function tarfihiOrder(){
             <div id="jalsat-order-addon" class="jl-order-line" hidden><span>كيك وعصير</span><span>170 ريال</span></div>
             <div id="jalsat-total-row" class="jl-total"><span>الإجمالي</span><strong id="jalsat-total-price">300 ريال</strong></div>
           </div>
-          <button type="button" class="jl-order-button" onclick="openOrderPopup(getJalsatOrderText())">أرسل الطلب عبر واتساب</button>
-          <p class="jl-order-hint">إكمال الطلب عبر واتساب</p>
+          <button type="button" class="jl-order-button" onclick="openOrderPopup(getJalsatOrderText())">إكمال الطلب عبر واتساب</button>
         </div>
       </div>
     </div>
@@ -2191,7 +2192,7 @@ function tarfihiOrder(){
             <li>وضوح التصوير</li>
             <li>طريقة عرض التجربة</li>
           </ul>
-          <p class="sw-criteria-copy">يتم التقييم من إدارة المنتجع<br>وفق جودة المحتوى وضوح التصوير وطريقة عرض التجربة.</p>
+          <p class="sw-criteria-copy">يتم التقييم من إدارة المنتجع<br>وفق جودة المحتوى ووضوح التصوير وطريقة عرض التجربة.</p>
         </section>
       </div>
       <section class="sw-contact" aria-labelledby="sharik-contact-title">
@@ -2968,7 +2969,7 @@ function renderCabinDetail(c){
   const subtitle=c.type||'';
   const badge=c.suitable||'';
   const guestsText=resortGuestText(c.guests);
-  const poolNote='عمق المسبح يصل إلى '+c.pool.depthCm+' سم، ويُسمح للأطفال باستخدامه تحت إشراف ذويهم.';
+  const poolNote='المسبح بعمق '+c.pool.depthCm+' سم، ويُسمح للأطفال باستخدامه تحت إشراف ذويهم.';
   const renderFeatures=function(list){
     return list.map(function(name){
       return '<span class="fd-cabin-feature'+(name.length>24?' fd-cabin-feature--wide':'')+'">'+name+'</span>';
@@ -3018,11 +3019,11 @@ function renderCabinDetail(c){
       <section class="fd-cabin-section">
         <h3>خدمات متاحة</h3>
         <div class="fd-cabin-feature-list">
-          <a class="fd-cabin-feature fd-cabin-service-link" href="#menu" onclick="return openCabinService(event,'menu')">المطعم والمشروبات <span aria-hidden="true">←</span></a>
+          <a class="fd-cabin-feature fd-cabin-service-link" href="#menu" onclick="return openCabinService(event,'menu')">المطعم <span aria-hidden="true">←</span></a>
           <span class="fd-cabin-feature">غرفة سائق</span>
         </div>
         <div class="fd-cabin-instructions">
-          <p><strong>المطعم والمشروبات:</strong> متاح يوميًا من 1 ظهرًا حتى 12 منتصف الليل.</p>
+          <p><strong>المطعم:</strong> متاح يوميًا من 1 ظهرًا حتى 12 منتصف الليل.</p>
           <p><strong>غرفة السائق:</strong> متاحة حسب التوفر.</p>
         </div>
       </section>
@@ -3066,7 +3067,7 @@ function renderSharedGardenDetail(c){
       <section class="fd-cabin-section">
         <h3>خدمات متاحة</h3>
         <div class="fd-cabin-feature-list">
-          ${renderFeatures(['المطعم والمشروبات','الألعاب المائية برسوم'])}
+          ${renderFeatures(['المطعم','الألعاب المائية برسوم'])}
         </div>
         <div class="fd-cabin-instructions">
           <p><strong>الحديقة المشتركة:</strong> مساحة وسط الأكواخ تخدم العائلات المقيمة.</p>
@@ -3659,7 +3660,7 @@ function updateMaiyaSelectionUI(){
   var orderButton = document.getElementById('maiya-order-btn');
   if(orderButton){
     orderButton.disabled = count!==3;
-    orderButton.textContent = count===3 ? 'أرسل الطلب عبر واتساب' : remainingText;
+    orderButton.textContent = count===3 ? 'إكمال الطلب عبر واتساب' : remainingText;
   }
   var game = _maiyaGames[_maiyaIdx];
   var isSelected = !!game && _maiyaSelected.has(game.name);
@@ -4264,7 +4265,7 @@ function closeWalaaDetail(){
     </div>
     <div style="display:flex;gap:10px;">
       <button onclick="closeOrderPopup()" style="flex:1;padding:12px;border:1.5px solid #19a7b7;border-radius:12px;background:#fff;color:#133548;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:700;cursor:pointer;">إلغاء</button>
-      <button onclick="sendOrderWhatsapp()" style="flex:2;padding:12px;border:none;border-radius:12px;background:#133548;color:#fff;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:700;cursor:pointer;">أرسل الطلب عبر واتساب ←</button>
+      <button onclick="sendOrderWhatsapp()" style="flex:2;padding:12px;border:none;border-radius:12px;background:#133548;color:#fff;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:700;cursor:pointer;">إكمال الطلب عبر واتساب</button>
     </div>
   </div>
 </div>
@@ -4332,7 +4333,7 @@ function closeWalaaDetail(){
               <span id="tarfihi-summary-label">اختر الباقة لعرض الإجمالي</span>
               <span id="tarfihi-summary-price" class="tg-summary-price"></span>
             </div>
-            <button type="button" class="tg-order-button" onclick="tarfihiOrder()" disabled>أرسل الطلب عبر واتساب</button>
+            <button type="button" class="tg-order-button" onclick="tarfihiOrder()" disabled>إكمال الطلب عبر واتساب</button>
           </div>
         </div>
       </div>
@@ -4400,7 +4401,7 @@ function closeWalaaDetail(){
               <span id="tawilat-summary-label">اختر التجهيز لعرض الإجمالي</span>
               <span id="tawilat-summary-price"></span>
             </div>
-            <button type="button" class="tw-contact" onclick="tawilatOrder()">متابعة الطلب</button>
+            <button type="button" class="tw-contact" onclick="tawilatOrder()">إكمال الطلب عبر واتساب</button>
           </div>
         </div>
       </div>
@@ -4485,7 +4486,7 @@ function closeWalaaDetail(){
       <span id="menu-cart-total"></span>
       <svg class="menu-cart-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
     </button>
-    <button type="button" class="menu-order-button" onclick="menuOrderNow()">أرسل الطلب عبر واتساب</button>
+    <button type="button" class="menu-order-button" onclick="menuOrderNow()">إكمال الطلب عبر واتساب</button>
   </div>
 </div>
 
@@ -4509,7 +4510,7 @@ function closeWalaaDetail(){
     </div>
     <div style="display:flex;gap:9px;margin-top:14px;">
       <button type="button" onclick="closeMenuCartReview()" style="flex:1;padding:12px 8px;background:transparent;border:1.5px solid rgba(126,207,234,.35);border-radius:12px;font-family:Tajawal,sans-serif;font-size:14px;font-weight:700;color:#c5eaf4;cursor:pointer;">تعديل الطلب</button>
-      <button type="button" onclick="continueMenuOrder()" style="flex:1.35;padding:12px 8px;background:#19a7b7;border:none;border-radius:12px;font-family:Tajawal,sans-serif;font-size:14px;font-weight:700;color:#fff;cursor:pointer;">متابعة الطلب</button>
+      <button type="button" onclick="continueMenuOrder()" style="flex:1.35;padding:12px 8px;background:#19a7b7;border:none;border-radius:12px;font-family:Tajawal,sans-serif;font-size:14px;font-weight:700;color:#fff;cursor:pointer;">إكمال الطلب عبر واتساب</button>
     </div>
   </div>
 </div>
@@ -4621,8 +4622,8 @@ function closeContact2(){ closeContact(); }
 function renderChalet2(){
   var g=document.getElementById('grid2');g.innerHTML='';
   var items=[
-    {id:20,img:0,name:"القسم الأول",specs:["غرفتين نوم","مسبح للكبار","مسبح للأطفال"],type:"تتضمن مجلساً يتسع حتى 70 شخصاً ومسبحين خاصين",suitable:"مناسب للتجمعات الكبيرة",rooms:2,guests:70,bathroom:0,hall:false,badge:null,tags:["غرفة نوم بسرير مزدوج","غرفة نوم بسريرين مفردين","|","مجلس كبير","3 دورات مياه","|","ركن مطبخ","|","جلسة خارجية","ركن شواء","دورة مياه خارجية","|","مسبح للكبار 4×8 م","مسبح للأطفال 2×6 م","كراسي تشميس"],bookUrl:"https://familyday-sa.com/ar/listings/69cea5753a421f1c8de8cb43"},
-    {id:21,img:5,name:"القسم الثاني",specs:["غرفة نوم","مسبح للكبار","ملعب كرة طائرة"],type:"تتضمن مجلساً يتسع حتى 70 شخصاً ومسبحاً خاصاً وملعب كرة طائرة",suitable:"مناسب للتجمعات الكبيرة",rooms:1,guests:70,bathroom:0,hall:false,badge:null,tags:["غرفة نوم بـ3 أسرّة","|","مجلس كبير","3 دورات مياه","|","ركن مطبخ","|","جلسة خارجية","ركن شواء","دورة مياه خارجية","|","مسبح للكبار 4×8 م","كراسي تشميس","|","ملعب كرة طائرة"],bookUrl:"https://familyday-sa.com/ar/listings/69cea610f9674d785069b3c5"}
+    {id:20,img:0,name:"القسم الأول",specs:["غرفتين نوم","مسبح للكبار","مسبح للأطفال"],type:"تتضمن مجلساً يتسع حتى 70 شخصاً ومسبحين خاصين",suitable:"مناسب للتجمعات الكبيرة",rooms:2,guests:70,bathroom:0,hall:false,badge:null,tags:["غرفة نوم بسرير مزدوج","غرفة نوم بسريرين مفردين","|","مجلس كبير","3 دورات مياه","|","ركن مطبخ","|","جلسة خارجية","ركن شواء","حمام خارجي","|","مسبح للكبار 4×8 م","مسبح للأطفال 2×6 م","كراسي تشميس"],bookUrl:"https://familyday-sa.com/ar/listings/69cea5753a421f1c8de8cb43"},
+    {id:21,img:5,name:"القسم الثاني",specs:["غرفة نوم","مسبح للكبار","ملعب كرة طائرة"],type:"تتضمن مجلساً يتسع حتى 70 شخصاً ومسبحاً خاصاً وملعب كرة طائرة",suitable:"مناسب للتجمعات الكبيرة",rooms:1,guests:70,bathroom:0,hall:false,badge:null,tags:["غرفة نوم بـ3 أسرّة","|","مجلس كبير","3 دورات مياه","|","ركن مطبخ","|","جلسة خارجية","ركن شواء","حمام خارجي","|","مسبح للكبار 4×8 م","كراسي تشميس","|","ملعب كرة طائرة"],bookUrl:"https://familyday-sa.com/ar/listings/69cea610f9674d785069b3c5"}
   ];
   _chaletItems2=items;
   items.forEach(function(c){
@@ -4649,6 +4650,7 @@ function openMDirect(c){
   document.getElementById('navBtns').style.display='';
   openGalDirect(c);
   document.getElementById('mBody').innerHTML=renderStayDetail(c);
+  updateCabinShareActions(c);
   document.getElementById('modalBookBtn').href=c.bookUrl||'https://familyday-sa.com/ar';
   overlay.classList.add('open');
   document.body.style.overflow='hidden';
@@ -4658,7 +4660,7 @@ function openMDirect(c){
 
 
 </script>
-<script src="chalet-design.js?v=7"></script>
+<script src="chalet-design.js?v=8"></script>
 <script>
 // Family Day navigation history: existing views remain the rendering layer.
 // A route has a parent; only changed layers are reopened, so Back from a
@@ -5186,8 +5188,8 @@ function openMDirect(c){
 @media(max-width:599px){#hospitality-detail .hd-title{font-size:22px}}
 </style>
 
-<link rel="stylesheet" href="resort-ui.css?v=5">
-<link rel="stylesheet" href="stay-ui.css?v=4">
+<link rel="stylesheet" href="resort-ui.css?v=6">
+<link rel="stylesheet" href="stay-ui.css?v=5">
 <link rel="stylesheet" href="chalet-ui.css?v=4">
 
 <!-- Approved keyboard navigation enhancement -->

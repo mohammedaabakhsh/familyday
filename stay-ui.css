@@ -413,8 +413,6 @@
 #app2 .card-btn { min-height:48px; border-radius:12px; border-color:#147a8c; background:#147a8c; font-size:16px; }
 @media(hover:hover) and (pointer:fine) { #app2 .card-btn:hover { background:#126b7b; } }
 #app2 button:focus-visible { outline:2px solid #9edce5; outline-offset:3px; }
-#ov.fd-stay-modern .modal-bottom-bar > .mbtn-wa:not(.fd-cabin-inquiry) { display:flex; }
-#ov.fd-stay-modern :is(.fd-cabin-inquiry,.fd-cabin-sharing) { display:none; }
 #contact-page:is([data-venue="stay"],[data-venue="chalet"]) .cp-title,#faq2-overlay .faq-title { font-size:24px; }
 #contact-page:is([data-venue="stay"],[data-venue="chalet"]) .cp-primary .cp-wide-name { font-size:16px; }
 #contact-page:is([data-venue="stay"],[data-venue="chalet"]) .fd-contact-faq-section { grid-column:1/-1; }
