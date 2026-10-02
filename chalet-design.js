@@ -27,12 +27,12 @@ function renderPrivateChaletDetail(){
   }
   return '<section class="fd-cabin-content" aria-labelledby="fd-chalet-detail-title">'
     + '<div class="fd-cabin-heading"><div><h2 id="fd-chalet-detail-title" class="fd-cabin-title">' + PRIVATE_CHALET.name + '</h2>'
-    + '<p class="fd-cabin-occupancy">شاليه من دورين – حتى 15 ضيفًا</p></div></div>'
+    + '<p class="fd-cabin-occupancy">شاليه من دورين – حتى 25 ضيفًا</p></div></div>'
     + '<div class="fd-cabin-times" aria-label="أوقات الدخول والخروج"><div><span>الدخول</span><strong>4:00 مساءً</strong></div><div><span>الخروج</span><strong>12:00 ظهرًا</strong></div></div>'
     + '<section class="fd-cabin-section"><h3>المنطقة الداخلية</h3>'
     + floor('الدور الأول', [
       'غرفة نوم بسريرين مفردين',
-      'صالة',
+      'مجلس يتسع لـ15 شخصًا',
       'حمام',
       'مطبخ',
       'طاولة طعام',
@@ -41,8 +41,8 @@ function renderPrivateChaletDetail(){
     + floor('الدور الثاني', ['غرفة نوم بسرير مزدوج', 'حمام خاص'])
     + '</section>'
     + section('المنطقة الخارجية', [
-      'مجلس مستقل يتسع لـ10 أشخاص مع حمام ومدخل خاص',
-      'مسبح أطفال بعمق 60 سم مع ألعاب مائية'
+      'مسبح أطفال بعمق 60 سم مع ألعاب مائية',
+      'مجلس مستقل بمدخل خاص، يتسع لـ10 أشخاص، مع حمام'
     ])
     + section('تجهيزات المطبخ', ['ثلاجة', 'ميكروويف', 'فرن', 'موقد كهربائي', 'موقد غاز', 'غلاية', 'أدوات مطبخ خفيفة'])
     + '</section>';
