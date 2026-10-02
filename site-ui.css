@@ -1,0 +1,85 @@
+/* Approved shared presentation for the three destinations. */
+@media (max-width:599px) {
+  #app .cabin-heading-row #headerTitle,
+  #app2 #headerTitle2,
+  #ov.fd-cabin-modern .fd-cabin-title,
+  #services-overlay .svcs-title,
+  #menu-detail .menu-title,
+  #sinema-detail .cn-title,
+  #tarfihi-detail .tg-title,
+  #maiya-detail .wm-title,
+  #tawilat-detail .tw-title,
+  #jalsat-detail .jl-title,
+  #hospitality-detail .hd-title,
+  #sharik-detail .sw-title,
+  #walaa-detail .wl-title,
+  #faq-overlay .faq-title,
+  #faq2-overlay .faq-title,
+  #chalet-faq .faq-title,
+  #contact-page[data-venue] .cp-title {
+    font-size:22px!important;
+    line-height:1.4;
+  }
+}
+
+/* Increase the controls' touch area while retaining their existing appearance. */
+:is(.back-btn,.faq-back,.contact-back,.svcs-back,.menu-back,.cn-back,.tg-back,
+    .wm-back,.tw-back,.jl-back,.hd-back,.sw-back,.wl-back,.fs-close,.fs-nav-btn,
+    .iframe-close,.fd-cabin-nav-back,.fd-cabin-nav-arrow),
+#galWrap > button,
+#menu-cart-review button[onclick="closeMenuCartReview()"] {
+  box-sizing:border-box;
+  min-width:44px!important;
+  min-height:44px!important;
+}
+#ov.fd-cabin-modern .fd-cabin-share-links :is(a,button) {
+  box-sizing:border-box;
+  min-width:44px;
+  min-height:44px;
+  padding:8px 4px;
+}
+#galWrap .gal-img { pointer-events:none; }
+#galWrap .gal-img.active { pointer-events:auto; }
+#galWrap .gal-img.active:focus-visible { outline:3px solid #7ecfea; outline-offset:-5px; }
+#fsOverlay { overflow:hidden; }
+#fsTrack { direction:ltr; width:100%; }
+
+/* Three short features can wrap as a single caption at narrow widths. */
+.dest-card .dest-sub,
+:is(#landing,#landing2,#landing3) .rh-cabin-caption { line-height:1.6; text-wrap:balance; }
+
+/* Retain the mobile carousel and use the available desktop width for cards. */
+@media (min-width:900px) {
+  :is(#app,#app2) .grid-section:has(.fd-carousel) { padding-inline:24px!important; }
+  :is(#app #grid,#app2 #grid2).fd-carousel {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px;
+    width:100%;
+    max-width:1100px;
+    margin-inline:auto;
+    padding:8px 0 24px;
+    overflow:visible;
+    scroll-snap-type:none;
+    scroll-padding:0;
+    align-items:stretch;
+  }
+  :is(#app #grid,#app2 #grid2).fd-carousel > .card:not(.hidden) {
+    width:100%;
+    max-width:none;
+    min-width:0;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+  }
+  :is(#app #grid,#app2 #grid2).fd-carousel .fd-cabin-card-v2-body {
+    flex:1;
+    display:flex;
+    flex-direction:column;
+  }
+  :is(#app #grid,#app2 #grid2).fd-carousel .card-btn { margin-top:auto; }
+  .fd-carousel-controls { display:none!important; }
+}
+@media (min-width:1100px) {
+  #app #grid.fd-carousel { grid-template-columns:repeat(3,minmax(0,1fr)); }
+}

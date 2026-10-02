@@ -3,6 +3,7 @@ var PRIVATE_CHALET = {
   id: 30,
   name: 'شاليه يوم العائلة',
   location: 'جدة - المروج',
+  bookUrl: 'https://familyday-sa.com/ar/listings/6abb996392a258b8171230a3',
   mapUrl: 'https://maps.app.goo.gl/np6uD3XvCQTCr4ff7'
 };
 GALLERY[PRIVATE_CHALET.id] = Array.from({length:19}, function(_, index){
@@ -67,7 +68,7 @@ function openPrivateChalet(){
   document.getElementById('mBody').innerHTML = renderPrivateChaletDetail();
   updateCabinShareActions(PRIVATE_CHALET);
   var book = document.getElementById('modalBookBtn');
-  book.href = 'https://familyday-sa.com/ar';
+  book.href = PRIVATE_CHALET.bookUrl;
   book.textContent = 'احجز الآن';
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -75,7 +76,7 @@ function openPrivateChalet(){
 }
 
 (function(){
-  // Booking follows the resort; the other two categories remain empty for now.
+  // Keep booking, facilities, and instructions in the same FAQ structure.
   var groups = [
     {
       "id": "chalet-faq-booking",
@@ -110,12 +111,46 @@ function openPrivateChalet(){
     {
       "id": "chalet-faq-facilities",
       "title": "الشاليه والمرافق",
-      "items": []
+      "items": [
+        {
+          "question": "كم عدد الأدوار وغرف النوم في الشاليه؟",
+          "answer": "يتكون الشاليه من دورين، ويضم غرفتي نوم: غرفة بسريرين مفردين في الدور الأول، وغرفة بسرير مزدوج وحمام خاص في الدور الثاني."
+        },
+        {
+          "question": "كم ضيف يستوعب الشاليه؟",
+          "answer": "يتسع الشاليه حتى 25 ضيفًا."
+        },
+        {
+          "question": "هل يوجد مسبح في الشاليه؟",
+          "answer": "نعم، يوجد مسبح للأطفال بعمق 60 سم، مع ألعاب مائية."
+        },
+        {
+          "question": "ما المجالس المتوفرة في الشاليه؟",
+          "answer": "مجلس في الدور الأول يتسع لـ15 شخصًا، ومجلس مستقل بمدخل خاص يتسع لـ10 أشخاص، مع حمام."
+        },
+        {
+          "question": "هل توجد غرفة ألعاب للأطفال؟",
+          "answer": "نعم، توجد غرفة أطفال مجهزة بالألعاب في الدور الأول."
+        },
+        {
+          "question": "ما تجهيزات المطبخ المتوفرة؟",
+          "answer": "يتوفر ثلاجة، ميكروويف، فرن، موقد كهربائي، موقد غاز، غلاية، وأدوات مطبخ خفيفة."
+        }
+      ]
     },
     {
       "id": "chalet-faq-services",
       "title": "الخدمات والتعليمات",
-      "items": []
+      "items": [
+        {
+          "question": "هل يُسمح بإحضار سماعات خارجية؟",
+          "answer": "نعم، يُسمح بإحضار سماعات خارجية للشاليه."
+        },
+        {
+          "question": "ما تعليمات استخدام المسبح؟",
+          "answer": "يُرجى الإشراف على الأطفال طوال فترة استخدام المسبح."
+        }
+      ]
     }
   ];
   groups[0].items[0].answer = 'يقع شاليه يوم العائلة في ' + PRIVATE_CHALET.location + '.'
