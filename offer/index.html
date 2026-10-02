@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#041d15">
-  <title>عرض اليوم الوطني | منتجع يوم العائلة</title>
-  <meta name="description" content="اكتشف عروض اليوم الوطني من منتجع يوم العائلة، تعرّف على التفاصيل وأكمل حجزك مباشرة.">
+  <meta name="theme-color" content="#04111e">
+  <title>عروض أكتوبر الحصرية | منتجع يوم العائلة</title>
+  <meta name="description" content="اكتشف عروض أكتوبر الحصرية من منتجع يوم العائلة: إقامة 10 ساعات بخصم 45%، وخصم 25% منتصف الأسبوع، و10% يوم الخميس أو الجمعة.">
   <link rel="canonical" href="https://mohammedaabakhsh.github.io/familyday/offer/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="منتجع يوم العائلة">
-  <meta property="og:title" content="عروض اليوم الوطني | يوم العائلة">
-  <meta property="og:description" content="عرضان مميزان للاحتفال باليوم الوطني. شاهد التفاصيل واحجز مباشرة.">
+  <meta property="og:title" content="عروض أكتوبر الحصرية | يوم العائلة">
+  <meta property="og:description" content="ثلاثة عروض خلال أكتوبر بخصومات 45% و25% و10%. تعرّف على أيام كل عرض واحجز عبر واتساب.">
   <meta property="og:image" content="https://mohammedaabakhsh.github.io/familyday/imgs/img01.webp">
   <link rel="icon" type="image/png" href="../imgs/icon.png">
   <link rel="apple-touch-icon" href="../imgs/icon.png">
@@ -18,15 +18,15 @@
   <style>
     /* Campaign palette: replace these values when the next offer changes. */
     :root{
-      --page-bg:#041d15;
-      --surface:#0a2b20;
-      --surface-raised:#10392a;
-      --line:#2a5441;
-      --text:#f5faf7;
-      --muted:#b7ccbf;
-      --accent:#a0d7b6;
-      --action:#176b43;
-      --action-hover:#1d7a4e;
+      --page-bg:#04111e;
+      --surface:#153244;
+      --surface-raised:#173849;
+      --line:#315967;
+      --text:#f0f5f7;
+      --muted:#b6cbd6;
+      --accent:#7ecfea;
+      --action:#117e8d;
+      --action-hover:#1494a4;
     }
     [hidden]{display:none!important}
     .offer-ended-label{margin:14px 0 0;color:var(--muted);font-size:14px;font-weight:700;}
@@ -85,7 +85,7 @@
     }
     .booking-link{
       display:flex;align-items:center;justify-content:center;min-height:48px;width:100%;max-width:520px;
-      padding:12px 18px;border:1px solid #307b54;border-radius:12px;background:var(--action);
+      padding:12px 18px;border:1px solid #19a7b7;border-radius:12px;background:var(--action);
       color:#fff;text-decoration:none;text-align:center;font-size:16px;font-weight:700;line-height:1.5;
       transition:background .15s;
     }
@@ -106,6 +106,7 @@
       .booking-bar{position:static;padding:0;margin-top:26px;border:0;background:transparent;}
       .booking-link{max-width:420px;}
     }
+    @media(min-width:1000px){.offers{grid-template-columns:repeat(3,minmax(0,1fr));}.amount{font-size:58px;}}
     @media(max-width:360px){
       .page{padding-inline:16px;}
       .page-heading{gap:10px;}
@@ -120,8 +121,8 @@
     }
     @media(prefers-reduced-motion:reduce){*{transition:none!important;}}
   </style>
-  <script src="../campaign-data.js?v=2" defer></script>
-  <script src="../resort-campaign.js?v=1" defer></script>
+  <script src="../campaign-data.js?v=3" defer></script>
+  <script src="../resort-campaign.js?v=2" defer></script>
 </head>
 <body data-campaign-page="offer">
   <main class="page">
@@ -130,7 +131,7 @@
       <a class="back" href="../#home=resort" aria-label="العودة إلى منتجع يوم العائلة">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
       </a>
-      <h1>عرض اليوم الوطني</h1>
+      <h1>عروض أكتوبر الحصرية</h1>
     </header>
 
     <section id="offer-expired" class="offer-expired" hidden>
@@ -140,40 +141,33 @@
 
     <div class="hero">
       <img class="logo" src="../imgs/img01.webp" alt="منتجع يوم العائلة" width="112" height="64">
-      <p class="occasion">اليوم الوطني السعودي 96</p>
-      <p class="slogan">عزّنا بطبعنا</p>
+      <p class="occasion">أكتوبر 2026</p>
+      <p class="slogan" hidden></p>
     </div>
 
-    <section class="offers" aria-label="عروض اليوم الوطني">
-      <article class="offer-card" aria-labelledby="offer-first-title" data-start="2026-09-22" data-end="2026-09-25">
-        <div class="offer-head">
-          <span class="offer-label">عرضنا الأول</span>
-          <p class="offer-dates"><bdi dir="ltr">22–25</bdi> سبتمبر 2026</p>
-        </div>
-        <h2 class="offer-title" id="offer-first-title">
-          <span class="offer-intro">خصم على الحجز</span>
-          <span class="offer-value"><bdi class="amount">196</bdi><span class="currency">ريال</span></span>
-        </h2>
-        <p class="offer-note">مع <strong>ضيافة اليوم الوطني</strong></p>
+    <section class="offers" aria-label="عروض أكتوبر الحصرية">
+      <article class="offer-card" aria-labelledby="offer-first-title" data-start="2026-10-01" data-end="2026-10-31">
+        <div class="offer-head"><span class="offer-label">عرضنا الأول</span></div>
+        <h2 class="offer-title" id="offer-first-title"><span class="offer-intro">إقامة 10 ساعات بخصم</span><span class="offer-value"><bdi class="amount" dir="ltr">45%</bdi></span></h2>
+        <p class="offer-note">من الأحد إلى الأربعاء.</p>
       </article>
-
-      <article class="offer-card" aria-labelledby="offer-second-title" data-start="2026-09-26" data-end="2026-09-29">
-        <div class="offer-head">
-          <span class="offer-label">عرضنا الثاني</span>
-          <p class="offer-dates"><bdi dir="ltr">26–29</bdi> سبتمبر 2026</p>
-        </div>
-        <h2 class="offer-title" id="offer-second-title">
-          <span class="offer-intro">احجز يومًا والثاني بـ</span>
-          <span class="offer-value"><bdi class="amount">96</bdi><span class="currency">ريال</span></span>
-        </h2>
-        <p class="offer-note">يسري العرض على يومين متتاليين</p>
+      <article class="offer-card" aria-labelledby="offer-second-title" data-start="2026-10-01" data-end="2026-10-31">
+        <div class="offer-head"><span class="offer-label">عرضنا الثاني</span></div>
+        <h2 class="offer-title" id="offer-second-title"><span class="offer-intro">عرض منتصف الأسبوع بخصم</span><span class="offer-value"><bdi class="amount" dir="ltr">25%</bdi></span></h2>
+        <p class="offer-note">من السبت إلى الأربعاء.</p>
+      </article>
+      <article class="offer-card" aria-labelledby="offer-third-title" data-start="2026-10-01" data-end="2026-10-31">
+        <div class="offer-head"><span class="offer-label">عرضنا الثالث</span></div>
+        <h2 class="offer-title" id="offer-third-title"><span class="offer-intro">عرض نهاية الأسبوع بخصم</span><span class="offer-value"><bdi class="amount" dir="ltr">10%</bdi></span></h2>
+        <p class="offer-note">احجز الخميس أو الجمعة.</p>
       </article>
     </section>
-    <p class="offer-terms">تطبق الشروط والأحكام</p>
+    <p class="offer-terms">تُطبق الشروط والأحكام</p>
 
     <nav class="booking-bar" aria-label="الحجز والتواصل">
-      <a class="booking-link offer-booking-link" href="https://wa.me/966556156693?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%B9%D8%B1%D8%B6%20%D8%A7%D9%84%D9%8A%D9%88%D9%85%20%D8%A7%D9%84%D9%88%D8%B7%D9%86%D9%8A" target="_blank" rel="noopener noreferrer">احجز العرض عبر واتساب</a>
+      <a class="booking-link offer-booking-link" href="https://wa.me/966556156693?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%B9%D8%B1%D9%88%D8%B6%20%D8%A3%D9%83%D8%AA%D9%88%D8%A8%D8%B1%20%D8%A7%D9%84%D8%AD%D8%B5%D8%B1%D9%8A%D8%A9" target="_blank" rel="noopener noreferrer">احجز العرض عبر واتساب</a>
     </nav>
   </main>
 </body>
 </html>
+

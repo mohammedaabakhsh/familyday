@@ -1,36 +1,54 @@
-// Edit the active campaign here; both the resort banner and offer page use it.
-// Dates are inclusive, in Saudi Arabia time. Existing public links stay fixed.
+// October campaign. Dates are inclusive in Saudi Arabia time.
 const FD_CAMPAIGN = {
-  name: 'عرض اليوم الوطني',
-  occasion: 'اليوم الوطني السعودي 96',
-  slogan: 'عزّنا بطبعنا',
-  bannerDescription: 'اكتشف العرضين واحجز مباشرة',
-  bannerLabel: 'عرض اليوم الوطني - شاهد التفاصيل',
-  offersLabel: 'عروض اليوم الوطني',
-  terms: 'تطبق الشروط والأحكام',
-  bookingLabel: 'احجز العرض عبر واتساب',
-  whatsappNumber: '966556156693',
-  whatsappMessage: 'السلام عليكم، أرغب في الاستفسار عن عرض اليوم الوطني',
-  metadata: {
-    title: 'عرض اليوم الوطني | منتجع يوم العائلة',
-    description: 'اكتشف عروض اليوم الوطني من منتجع يوم العائلة، تعرّف على التفاصيل وأكمل حجزك مباشرة.',
-    socialTitle: 'عروض اليوم الوطني | يوم العائلة',
-    socialDescription: 'عرضان مميزان للاحتفال باليوم الوطني. شاهد التفاصيل واحجز مباشرة.'
+  "name": "عروض أكتوبر الحصرية",
+  "occasion": "أكتوبر 2026",
+  "slogan": "",
+  "bannerDescription": "اكتشف العروض الثلاثة واحجز مباشرة",
+  "bannerLabel": "عروض أكتوبر الحصرية - شاهد التفاصيل",
+  "offersLabel": "عروض أكتوبر الحصرية",
+  "terms": "تُطبق الشروط والأحكام",
+  "bookingLabel": "احجز العرض عبر واتساب",
+  "whatsappNumber": "966556156693",
+  "whatsappMessage": "السلام عليكم، أرغب في الاستفسار عن عروض أكتوبر الحصرية",
+  "metadata": {
+    "title": "عروض أكتوبر الحصرية | منتجع يوم العائلة",
+    "description": "اكتشف عروض أكتوبر الحصرية من منتجع يوم العائلة: إقامة 10 ساعات بخصم 45%، وخصم 25% منتصف الأسبوع، و10% يوم الخميس أو الجمعة.",
+    "socialTitle": "عروض أكتوبر الحصرية | يوم العائلة",
+    "socialDescription": "ثلاثة عروض خلال أكتوبر بخصومات 45% و25% و10%. تعرّف على أيام كل عرض واحجز عبر واتساب."
   },
-  offers: [
+  "offers": [
     {
-      titleId: 'offer-first-title', label: 'عرضنا الأول',
-      start: '2026-09-22', end: '2026-09-25',
-      datesHTML: '<bdi dir="ltr">22–25</bdi> سبتمبر 2026',
-      intro: 'خصم على الحجز', amount: 196, currency: 'ريال',
-      noteHTML: 'مع <strong>ضيافة اليوم الوطني</strong>'
+      "titleId": "offer-first-title",
+      "label": "عرضنا الأول",
+      "intro": "إقامة 10 ساعات بخصم",
+      "amount": "45%",
+      "currency": "",
+      "noteHTML": "من الأحد إلى الأربعاء.",
+      "start": "2026-10-01",
+      "end": "2026-10-31",
+      "datesHTML": ""
     },
     {
-      titleId: 'offer-second-title', label: 'عرضنا الثاني',
-      start: '2026-09-26', end: '2026-09-29',
-      datesHTML: '<bdi dir="ltr">26–29</bdi> سبتمبر 2026',
-      intro: 'احجز يومًا والثاني بـ', amount: 96, currency: 'ريال',
-      noteHTML: 'يسري العرض على يومين متتاليين'
+      "titleId": "offer-second-title",
+      "label": "عرضنا الثاني",
+      "intro": "عرض منتصف الأسبوع بخصم",
+      "amount": "25%",
+      "currency": "",
+      "noteHTML": "من السبت إلى الأربعاء.",
+      "start": "2026-10-01",
+      "end": "2026-10-31",
+      "datesHTML": ""
+    },
+    {
+      "titleId": "offer-third-title",
+      "label": "عرضنا الثالث",
+      "intro": "عرض نهاية الأسبوع بخصم",
+      "amount": "10%",
+      "currency": "",
+      "noteHTML": "احجز الخميس أو الجمعة.",
+      "start": "2026-10-01",
+      "end": "2026-10-31",
+      "datesHTML": ""
     }
   ]
 };

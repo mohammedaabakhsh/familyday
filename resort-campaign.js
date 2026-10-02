@@ -30,13 +30,14 @@ function resortCampaignState(now) {
       document.querySelector('.page-heading h1').textContent = FD_CAMPAIGN.name;
       document.querySelector('.occasion').textContent = FD_CAMPAIGN.occasion;
       document.querySelector('.slogan').textContent = FD_CAMPAIGN.slogan;
+      document.querySelector('.slogan').hidden = !FD_CAMPAIGN.slogan;
       var offers = document.querySelector('.offers');
       offers.setAttribute('aria-label', FD_CAMPAIGN.offersLabel);
       offers.innerHTML = FD_CAMPAIGN.offers.map(function (offer, index) {
         var expired = state.statuses[index] === 'expired';
         return '<article class="offer-card" aria-labelledby="' + offer.titleId + '" data-start="' + offer.start + '" data-end="' + offer.end + '">'
-          + '<div class="offer-head"><span class="offer-label">' + offer.label + '</span><p class="offer-dates">' + offer.datesHTML + '</p></div>'
-          + '<h2 class="offer-title" id="' + offer.titleId + '"><span class="offer-intro">' + offer.intro + '</span><span class="offer-value"><bdi class="amount">' + offer.amount + '</bdi><span class="currency">' + offer.currency + '</span></span></h2>'
+          + '<div class="offer-head"><span class="offer-label">' + offer.label + '</span>' + (offer.datesHTML ? '<p class="offer-dates">' + offer.datesHTML + '</p>' : '') + '</div>'
+          + '<h2 class="offer-title" id="' + offer.titleId + '"><span class="offer-intro">' + offer.intro + '</span><span class="offer-value"><bdi class="amount" dir="ltr">' + offer.amount + '</bdi>' + (offer.currency ? '<span class="currency">' + offer.currency + '</span>' : '') + '</span></h2>'
           + '<p class="offer-note">' + offer.noteHTML + '</p>'
           + (expired ? '<p class="offer-ended-label">انتهى العرض</p>' : '') + '</article>';
       }).join('');
@@ -60,3 +61,4 @@ function resortCampaignState(now) {
   document.addEventListener('visibilitychange', function () { if (!document.hidden) renderCampaign(); });
   window.addEventListener('pageshow', function (event) { if (event.persisted) renderCampaign(); });
 })();
+
