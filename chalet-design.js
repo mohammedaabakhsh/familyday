@@ -5,8 +5,8 @@ var PRIVATE_CHALET = {
   location: 'جدة - المروج',
   mapUrl: 'https://maps.app.goo.gl/np6uD3XvCQTCr4ff7'
 };
-GALLERY[PRIVATE_CHALET.id] = Array.from({length:10}, function(_, index){
-  return 'imgs/chalet_' + (index + 1) + '.webp';
+GALLERY[PRIVATE_CHALET.id] = Array.from({length:19}, function(_, index){
+  return 'imgs/chalet_' + (index + 1) + '.webp?v=20261002';
 });
 
 function chaletEnquiryUrl(message){
