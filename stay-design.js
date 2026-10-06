@@ -38,7 +38,8 @@ function renderStayDetail(c) {
     + section('المنطقة الخارجية', groups.slice(3).flat(), poolNotes)
     + section('تجهيزات المطبخ', ['موقد كهربائي', 'ثلاجة', 'ميكروويف', 'غلاية'])
     + section('مميزات الإقامة', ['تلفزيون ذكي', 'سماعات داخلية (ساوند بار)'])
-    + '<section class="fd-cabin-addons"><h3>إضافات الحجز</h3><p>زحليقة وملعب صابوني.</p></section></section>';
+    + (c.id === 21 ? '<section class="fd-cabin-addons"><h3>إضافات الحجز</h3><p>الزحليقة الهوائية الكبيرة.</p></section>' : '')
+    + '</section>';
 }
 
 function resetStayFaq() {
@@ -58,3 +59,4 @@ function selectStayFaqSection(id) {
   section.hidden = false;
   document.querySelector('#faq2-overlay [aria-controls="' + id + '"]').setAttribute('aria-expanded', 'true');
 }
+
