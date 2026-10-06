@@ -1157,8 +1157,8 @@ header{
   </div>
 </div>
 
-<script src="campaign-data.js?v=3"></script>
-<script src="resort-campaign.js?v=2" defer></script>
+<script src="campaign-data.js?v=4"></script>
+<script src="resort-campaign.js?v=3" defer></script>
 <script src="resort-features.js?v=6"></script>
 <script src="stay-design.js?v=6"></script>
 <script>
@@ -1509,7 +1509,7 @@ function tarfihiOrder(){
       <p class="rh-subtitle">خصوصية تليق بكم… وراحة تستحقونها</p>
     </div>
 
-    <a class="lh-offer-strip" href="offer/" aria-label="عروض أكتوبر الحصرية - شاهد التفاصيل">
+    <a class="lh-offer-strip" data-campaign-banner="resort" href="offer/" aria-label="عروض أكتوبر الحصرية - شاهد التفاصيل">
       <span class="lh-offer-main">
         <span class="lh-offer-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="m8 16 8-8"/><circle cx="8" cy="8" r="1"/><circle cx="16" cy="16" r="1"/></svg></span>
         <span class="lh-offer-copy">
@@ -2229,6 +2229,19 @@ function tarfihiOrder(){
     </div>
 
 
+    <a class="lh-offer-strip" data-campaign-banner="stay" href="offer/stay.html" aria-label="عروض أكتوبر الحصرية للاستراحة - شاهد التفاصيل">
+      <span class="lh-offer-main">
+        <span class="lh-offer-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="m8 16 8-8"/><circle cx="8" cy="8" r="1"/><circle cx="16" cy="16" r="1"/></svg></span>
+        <span class="lh-offer-copy">
+          <span class="lh-offer-title">عروض أكتوبر الحصرية</span>
+          <span class="lh-offer-sub">اكتشف العرضين واحجز مباشرة</span>
+        </span>
+      </span>
+      <span class="lh-offer-go" aria-hidden="true">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </span>
+    </a>
+
     <div class="rh-grid">
       <button type="button" class="rh-cabins" onclick="showSection2()" aria-label="أقسام الاستراحة">
         <img class="rh-cabin-photo" src="imgs/sec1_1.webp" width="1200" height="1200" alt="" fetchpriority="high" decoding="async">
@@ -2272,6 +2285,19 @@ function tarfihiOrder(){
       <p class="rh-subtitle">لحظات تجمعكم… وذكريات تبقى معكم</p>
     </div>
 
+
+    <a class="lh-offer-strip" data-campaign-banner="chalet" href="offer/chalet.html" aria-label="تمديد عرض افتتاح الشاليه - شاهد التفاصيل">
+      <span class="lh-offer-main">
+        <span class="lh-offer-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="m8 16 8-8"/><circle cx="8" cy="8" r="1"/><circle cx="16" cy="16" r="1"/></svg></span>
+        <span class="lh-offer-copy">
+          <span class="lh-offer-title">تمديد عرض الافتتاح</span>
+          <span class="lh-offer-sub">خصم 50% لـ20 حجزًا إضافيًا فقط</span>
+        </span>
+      </span>
+      <span class="lh-offer-go" aria-hidden="true">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </span>
+    </a>
 
     <div class="rh-grid">
       <button type="button" class="rh-cabins" onclick="openPrivateChalet()" aria-label="اكتشف الشاليه">
@@ -5180,12 +5206,13 @@ function openMDirect(c){
 </style>
 
 <style id="fd-offer-banner-alignment">
-/* Center the campaign copy between equal-sized side icons. */
-#landing .lh-offer-strip{
+/* Center each destination campaign between equal-sized side icons. */
+[data-campaign-banner][hidden]{display:none!important;}
+:is(#landing,#landing2,#landing3) .lh-offer-strip{
   display:grid;grid-template-columns:27px minmax(0,1fr) 27px;margin-bottom:12px;
 }
-#landing .lh-offer-main{display:contents;}
-#landing .lh-offer-copy{align-items:center;text-align:center;}
+:is(#landing,#landing2,#landing3) .lh-offer-main{display:contents;}
+:is(#landing,#landing2,#landing3) .lh-offer-copy{align-items:center;text-align:center;}
 </style>
 
 <style id="fd-destination-layout">
@@ -5213,7 +5240,7 @@ function openMDirect(c){
 </style>
 
 <link rel="stylesheet" href="resort-ui.css?v=6">
-<link rel="stylesheet" href="stay-ui.css?v=5">
+<link rel="stylesheet" href="stay-ui.css?v=7">
 <link rel="stylesheet" href="chalet-ui.css?v=4">
 
 <!-- Approved keyboard navigation enhancement -->

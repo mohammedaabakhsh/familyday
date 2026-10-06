@@ -86,7 +86,7 @@
   margin: 0 0 16px;
   padding: 10px 14px;
   border-width: 1px;
-  border-color: rgba(67,217,135,.42);
+  border-color: rgba(25,167,183,.42);
   border-radius: 16px;
   box-shadow: none;
   animation: none;
@@ -430,4 +430,5 @@
 @media(min-width:800px) { :is(#landing2,#landing3) .rh-cabin-title { font-size:36px; } :is(#landing2,#landing3) .rh-cabin-caption { font-size:15px; } }
 @media(min-width:900px) { #app2 #header2 { padding-top:28px; } }
 @media(prefers-reduced-motion:reduce) { #app2 .card-img { transition:none; } }
+
 
