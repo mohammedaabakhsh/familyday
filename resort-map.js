@@ -46,7 +46,7 @@
   if (!locations.length) return;
 
   // The connecting door is confirmed in the site's FAQ; both positions are owner-confirmed.
-  var connections = [{ cabinIds: [3, 9], description: 'يمكن ربط الكلاسيكي ورويال عبر باب داخلي بسعة تصل إلى 30 ضيفًا.' }];
+  var connections = [{ cabinIds: [3, 9], description: 'يمكن ربط الكلاسيكي ورويال عبر باب داخلي بسعة تصل إلى 35 ضيفًا.' }];
   // Existing gallery photos chosen for a clear, recognizable square thumbnail.
   // Physical instances of the same cabin type share that type's gallery.
   var cardPhotos = {
@@ -82,11 +82,11 @@
   }
 
   function roomText(count) {
-    return count === 1 ? 'غرفة نوم واحدة' : count === 2 ? 'غرفتين نوم' : count + ' غرف نوم';
+    return count === 1 ? 'غرفة نوم واحدة' : count === 2 ? 'غرفتا نوم' : count + ' غرف نوم';
   }
 
   function roomValue(count) {
-    return count === 1 ? 'غرفة واحدة' : count === 2 ? 'غرفتين' : count + ' غرف';
+    return count === 1 ? 'غرفة واحدة' : count === 2 ? 'غرفتان' : count + ' غرف';
   }
 
   function featuresFor(cabin) {
@@ -644,3 +644,4 @@
   if (sub) observer.observe(sub, { attributes: true, attributeFilter: ['class'] });
   syncLauncher();
 })();
+

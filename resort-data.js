@@ -44,7 +44,7 @@ const data = {
           "facilities": [
             "سرير تشميس داخل المسبح",
             "كراسي تشميس",
-            "شاور خارجي"
+            "دش خارجي"
           ]
         },
         "minibar": true,
@@ -96,7 +96,7 @@ const data = {
           "depthCm": 140,
           "facilities": [
             "كراسي تشميس",
-            "شاور خارجي"
+            "دش خارجي"
           ]
         },
         "minibar": true,
@@ -147,7 +147,7 @@ const data = {
           "depthCm": 140,
           "facilities": [
             "كراسي تشميس",
-            "شاور خارجي"
+            "دش خارجي"
           ]
         },
         "minibar": true,
@@ -199,7 +199,7 @@ const data = {
           "depthCm": 140,
           "facilities": [
             "كراسي تشميس",
-            "شاور خارجي"
+            "دش خارجي"
           ]
         },
         "minibar": true,
@@ -251,7 +251,7 @@ const data = {
           "depthCm": 140,
           "facilities": [
             "كراسي تشميس",
-            "شاور خارجي"
+            "دش خارجي"
           ]
         },
         "minibar": true,
@@ -303,7 +303,7 @@ const data = {
           "depthCm": 140,
           "facilities": [
             "كراسي تشميس",
-            "شاور خارجي"
+            "دش خارجي"
           ]
         },
         "minibar": true,
@@ -355,7 +355,7 @@ const data = {
           "depthCm": 140,
           "facilities": [
             "كراسي تشميس",
-            "شاور خارجي"
+            "دش خارجي"
           ]
         },
         "minibar": true,
@@ -407,7 +407,7 @@ const data = {
           "depthCm": 140,
           "facilities": [
             "كراسي تشميس",
-            "شاور خارجي"
+            "دش خارجي"
           ]
         },
         "minibar": true,
@@ -459,7 +459,7 @@ const data = {
           "depthCm": 140,
           "facilities": [
             "كراسي تشميس",
-            "شاور خارجي"
+            "دش خارجي"
           ]
         },
         "minibar": true,
@@ -475,7 +475,7 @@ const data = {
         "type": "واجهات زجاجية بانورامية تطل على حديقتك الخاصة والمسبح",
         "suitable": "مناسب للعائلات",
         "rooms": 2,
-        "guests": 20,
+        "guests": 15,
         "bathroom": 2,
         "hall": true,
         "badge": null,
@@ -513,7 +513,7 @@ const data = {
           "depthCm": 140,
           "facilities": [
             "كراسي تشميس",
-            "شاور خارجي"
+            "دش خارجي"
           ]
         },
         "minibar": true,
@@ -549,8 +549,9 @@ function resortGuestText(count) {
   return count === 2 ? 'حتى ضيفين' : 'حتى ' + count + (count <= 10 ? ' ضيوف' : ' ضيفًا');
 }
 function resortRoomText(count) {
-  return count === 1 ? 'غرفة واحدة' : count === 2 ? 'غرفتين' : count + ' غرف';
+  return count === 1 ? 'غرفة واحدة' : count === 2 ? 'غرفتان' : count + ' غرف';
 }
 function resortBathroomText(count) {
-  return count === 1 ? 'دورة مياه واحدة' : count === 2 ? 'دورتين مياه' : count + ' دورات مياه';
+  return count === 1 ? 'حمام واحد' : count === 2 ? 'حمامان' : count + ' حمامات';
 }
+

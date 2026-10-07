@@ -20,6 +20,18 @@
     font-size:22px!important;
     line-height:1.4;
   }
+
+  :is(#faq-list-resort,#faq-list-stay) .faq-answer,
+  #chalet-faq .chalet-faq-answer { font-size:13px!important; }
+
+  /* Use the resort contact type sizes for all three destinations. */
+  #contact-page[data-venue] .cp-label { font-size:18px!important; }
+  #contact-page[data-venue] .cp-intro { font-size:15px!important; }
+  #contact-page[data-venue] :is(.cp-wide-name,.cp-tile-name,.fd-contact-faq-button),
+  #contact-page[data-venue] .cp-primary .cp-wide-name { font-size:16px!important; }
+  #contact-page[data-venue] .cp-tile-sub { font-size:13px!important; }
+  #contact-page[data-venue] :is(.cp-map-sub,.cp-app-caption),
+  #contact-page[data-venue] .cp-tile-sm .cp-tile-name { font-size:14px!important; }
 }
 
 /* Increase the controls' touch area while retaining their existing appearance. */

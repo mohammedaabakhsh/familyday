@@ -7,8 +7,8 @@ function renderStayCard(c) {
     + '<div class="fd-cabin-card-v2-heading"><div><h2 class="card-name">' + c.name + '</h2>'
     + '<p class="fd-cabin-card-v2-subtitle">مناسب للتجمعات العائلية</p></div></div>'
     + '<div class="fd-cabin-card-v2-facts" aria-label="معلومات ' + c.name + '">'
-    + '<div class="fd-cabin-card-v2-fact"><span>السعة</span><strong>حتى 70 ضيفًا</strong></div>'
-    + '<div class="fd-cabin-card-v2-fact"><span>غرف النوم</span><strong>' + (c.rooms === 2 ? 'غرفتين' : 'غرفة واحدة') + '</strong></div></div>'
+    + '<div class="fd-cabin-card-v2-fact"><span>السعة</span><strong>حتى 25 ضيفًا</strong></div>'
+    + '<div class="fd-cabin-card-v2-fact"><span>غرف النوم</span><strong>' + (c.rooms === 2 ? 'غرفتان' : 'غرفة واحدة') + '</strong></div></div>'
     + '<button type="button" class="card-btn">عرض التفاصيل والصور</button></div>';
 }
 
@@ -32,14 +32,34 @@ function renderStayDetail(c) {
     + (c.id === 20 ? '<p><strong>مسبح الأطفال:</strong> عمق 65 سم.</p>' : '');
   return '<section class="fd-cabin-content" aria-labelledby="fd-stay-detail-title">'
     + '<div class="fd-cabin-heading"><div><h2 id="fd-stay-detail-title" class="fd-cabin-title">' + c.name + '</h2>'
-    + '<p class="fd-cabin-occupancy">مناسب للتجمعات العائلية – حتى 70 ضيفًا</p></div></div>'
+    + '<p class="fd-cabin-occupancy">مناسب للتجمعات العائلية – حتى 25 ضيفًا</p></div></div>'
     + '<div class="fd-cabin-times" aria-label="أوقات الدخول والخروج"><div><span>الدخول</span><strong>4:00 مساءً</strong></div><div><span>الخروج</span><strong>12:00 ظهرًا</strong></div></div>'
     + section('المنطقة الداخلية', groups.slice(0, 3).flat().map(function(text){return text.replace('3 دورات مياه','3 حمامات');}))
     + section('المنطقة الخارجية', groups.slice(3).flat(), poolNotes)
     + section('تجهيزات المطبخ', ['موقد كهربائي', 'ثلاجة', 'ميكروويف', 'غلاية'])
     + section('مميزات الإقامة', ['تلفزيون ذكي', 'سماعات داخلية (ساوند بار)'])
-    + (c.id === 21 ? '<section class="fd-cabin-addons"><h3>إضافات الحجز</h3><p>الزحليقة الهوائية الكبيرة.</p></section>' : '')
+    + '<div class="fd-cabin-section fd-stay-guest-note"><div class="fd-cabin-instructions"><p>يمكن زيادة إجمالي عدد الضيوف إلى 70 ضيفًا كحد أقصى، برسوم إضافية.</p></div></div>'
+    + (c.id === 21 ? '<section class="fd-cabin-addons"><h3>إضافات الحجز</h3><p>الزحليقة الهوائية الكبيرة — برسوم إضافية.</p></section>' : '')
     + '</section>';
+}
+
+function renderStayComparison() {
+  var rows = [
+    ['غرف النوم', 'غرفتان', 'غرفة واحدة'],
+    ['الأسرّة', 'سرير مزدوج وسريران مفردان', '3 أسرّة'],
+    ['الحمامات', '4 حمامات', '4 حمامات'],
+    ['المسابح', 'مسبح للكبار ومسبح للأطفال', 'مسبح للكبار'],
+    ['الزحليقة الهوائية الكبيرة', 'غير متاحة', 'متاحة برسوم إضافية'],
+    ['ملعب كرة طائرة', 'غير متوفر', 'متوفر']
+  ];
+  return '<section class="fd-stay-comparison" aria-labelledby="fd-stay-comparison-title">'
+    + '<h2 id="fd-stay-comparison-title">قارن بين القسمين</h2>'
+    + '<div class="fd-stay-comparison-frame"><table aria-labelledby="fd-stay-comparison-title">'
+    + '<colgroup><col class="fd-stay-comparison-label"><col><col></colgroup>'
+    + '<thead><tr><th scope="col">المرفق</th><th scope="col">القسم الأول</th><th scope="col">القسم الثاني</th></tr></thead>'
+    + '<tbody>' + rows.map(function (row) {
+      return '<tr><th scope="row">' + row[0] + '</th><td>' + row[1] + '</td><td>' + row[2] + '</td></tr>';
+    }).join('') + '</tbody></table></div></section>';
 }
 
 function resetStayFaq() {
@@ -59,4 +79,3 @@ function selectStayFaqSection(id) {
   section.hidden = false;
   document.querySelector('#faq2-overlay [aria-controls="' + id + '"]').setAttribute('aria-expanded', 'true');
 }
-

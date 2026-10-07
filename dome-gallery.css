@@ -1,0 +1,145 @@
+/* One photo overview for بيت الدوم; no changes to the shared image viewer. */
+#galWrap > .fd-dome-gallery-trigger {
+  position:absolute;
+  inset-inline-start:12px;
+  bottom:10px;
+  z-index:21;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:44px;
+  padding:9px 12px;
+  border:1px solid rgba(158,220,229,.65);
+  border-radius:12px;
+  background:rgba(7,28,42,.94);
+  color:#f4f8fa;
+  font:700 14px/1.5 Tajawal,sans-serif;
+  cursor:pointer;
+}
+#galWrap > .fd-dome-gallery-trigger svg { flex:0 0 18px; }
+
+#fd-dome-gallery {
+  position:fixed;
+  inset:0;
+  z-index:450;
+  box-sizing:border-box;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(2,11,22,.86);
+  color:#f4f8fa;
+  direction:rtl;
+  font-family:Tajawal,sans-serif;
+}
+#fd-dome-gallery[hidden] { display:none!important; }
+#fd-dome-gallery .fd-dome-gallery-shell {
+  box-sizing:border-box;
+  width:100%;
+  max-width:1040px;
+  max-height:calc(100vh - 40px);
+  max-height:calc(100dvh - 40px);
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+  border:1px solid #315967;
+  border-radius:20px;
+  background:#0b2130;
+  box-shadow:0 16px 48px rgba(0,0,0,.35);
+}
+#fd-dome-gallery .fd-dome-gallery-header {
+  box-sizing:border-box;
+  position:sticky;
+  inset-block-start:0;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  width:100%;
+  height:auto;
+  min-height:0;
+  padding:22px 24px;
+  border-bottom:1px solid #315967;
+  background:#0b2130;
+}
+#fd-dome-gallery .fd-dome-gallery-heading { min-width:0; }
+#fd-dome-gallery-title { margin:0; font-size:24px; font-weight:700; line-height:1.4; }
+#fd-dome-gallery-help { margin:6px 0 0; color:#b6cbd6; font-size:14px; line-height:1.6; }
+#fd-dome-gallery .fd-dome-gallery-close {
+  display:flex;
+  flex:0 0 44px;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  height:44px;
+  padding:0;
+  border:1px solid #315967;
+  border-radius:50%;
+  background:#153244;
+  color:#f4f8fa;
+  cursor:pointer;
+}
+#fd-dome-gallery .fd-dome-gallery-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin:0;
+  padding:20px;
+  list-style:none;
+}
+#fd-dome-gallery .fd-dome-gallery-grid > li { min-width:0; }
+#fd-dome-gallery .fd-dome-gallery-photo {
+  position:relative;
+  display:block;
+  box-sizing:border-box;
+  width:100%;
+  aspect-ratio:1;
+  padding:0;
+  overflow:hidden;
+  border:1px solid #315967;
+  border-radius:14px;
+  background:#153244;
+  cursor:zoom-in;
+}
+#fd-dome-gallery .fd-dome-gallery-photo img {
+  display:block;
+  width:100%;
+  height:100%;
+  aspect-ratio:1;
+  object-fit:cover;
+}
+#fd-dome-gallery .fd-dome-gallery-number {
+  position:absolute;
+  inset-inline-start:8px;
+  bottom:8px;
+  display:grid;
+  place-items:center;
+  min-width:28px;
+  height:28px;
+  padding-inline:4px;
+  box-sizing:border-box;
+  border-radius:8px;
+  background:rgba(7,28,42,.9);
+  color:#f4f8fa;
+  font:700 13px/1 Tajawal,sans-serif;
+}
+#galWrap > .fd-dome-gallery-trigger:focus-visible,
+#fd-dome-gallery button:focus-visible { outline:3px solid #9edce5; outline-offset:3px; }
+@media(min-width:900px) {
+  #fd-dome-gallery .fd-dome-gallery-grid { grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; padding:24px; }
+}
+@media(max-width:599px) {
+  #fd-dome-gallery { padding:12px; }
+  #fd-dome-gallery .fd-dome-gallery-shell { max-height:calc(100vh - 24px); max-height:calc(100dvh - 24px); border-radius:16px; }
+  #fd-dome-gallery .fd-dome-gallery-header { gap:10px; padding:16px; }
+  #fd-dome-gallery-title { font-size:22px; }
+  #fd-dome-gallery-help { font-size:13px; }
+  #fd-dome-gallery .fd-dome-gallery-grid { gap:10px; padding:14px; }
+}
+@media(hover:hover) and (pointer:fine) {
+  #galWrap > .fd-dome-gallery-trigger:hover,
+  #fd-dome-gallery .fd-dome-gallery-close:hover { background:#173b4c; border-color:#9edce5; }
+  #fd-dome-gallery .fd-dome-gallery-photo:hover { border-color:#9edce5; }
+}
