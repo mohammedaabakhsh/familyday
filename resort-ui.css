@@ -261,3 +261,13 @@
 
 /* Match the square mobile detail gallery used by the other destinations. */
 @media(max-width:899px){#ov.fd-cabin-modern:not(.fd-stay-modern) .gal-wrap{height:auto;aspect-ratio:1;min-height:0;}}
+
+/* Shared desktop detail layout for all three destinations. */
+@media(min-width:900px){
+#ov.fd-cabin-modern .modal{
+--detail-photo-size:min(560px,calc(88dvh - 194px),calc(100vw - 424px));
+width:min(calc(100vw - 64px),calc(var(--detail-photo-size) + 480px));
+height:auto;grid-template-columns:var(--detail-photo-size) minmax(0,1fr);grid-template-rows:auto var(--detail-photo-size) auto;
+}
+#ov.fd-cabin-modern .gal-wrap{width:100%;height:100%;aspect-ratio:1;min-height:0;border:0;}
+}

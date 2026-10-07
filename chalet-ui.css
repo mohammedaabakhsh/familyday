@@ -142,10 +142,10 @@
 
 
 /* Full square photo crops; preserve the original composition in source files. */
-#ov.fd-cabin-modern .gal-wrap:has(img[src*="imgs/chalet_"]){height:auto;aspect-ratio:1;align-self:start;min-height:0;}
+@media(max-width:899px){#ov.fd-cabin-modern .gal-wrap:has(img[src*="imgs/chalet_"]){height:auto;aspect-ratio:1;align-self:start;min-height:0;}}
 .fs-slide img[src*="imgs/chalet_"]{width:min(100vw,100dvh);height:min(100vw,100dvh);aspect-ratio:1;object-fit:cover;}
 .dest-card[data-dest-photo="chalet"]::before{background-position:60% center;}
 
 img[src*="imgs/chalet_"]{object-position:center !important;}
 
-@media(min-width:900px){#ov.fd-cabin-modern .gal-wrap:has(img[src*="imgs/chalet_"]){width:min(100%,calc(min(88vh,760px) - 210px));height:auto;justify-self:center;align-self:center;border:0;}}
+

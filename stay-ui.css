@@ -435,13 +435,3 @@
 
 /* Square mobile detail photos for the two rest-house sections. */
 @media(max-width:899px){#ov.fd-stay-modern .gal-wrap:has(img[src*="imgs/sec1_"],img[src*="imgs/sec2_"]){height:auto;aspect-ratio:1;min-height:0;}}
-
-/* Rest-house desktop trial: a full square image beside the details. */
-@media(min-width:900px){
-#ov.fd-stay-modern:has(.gal-img[src*="imgs/sec1_"],.gal-img[src*="imgs/sec2_"]) .modal{
---stay-photo-size:min(560px,calc(88dvh - 194px),calc(100vw - 424px));
-width:min(calc(100vw - 64px),calc(var(--stay-photo-size) + 480px));
-height:auto;grid-template-columns:var(--stay-photo-size) minmax(0,1fr);grid-template-rows:auto var(--stay-photo-size) auto;
-}
-#ov.fd-stay-modern .gal-wrap:has(img[src*="imgs/sec1_"],img[src*="imgs/sec2_"]){width:100%;height:100%;aspect-ratio:1;min-height:0;border:0;}
-}
