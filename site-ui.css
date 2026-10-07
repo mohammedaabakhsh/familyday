@@ -95,3 +95,11 @@
 @media (min-width:1100px) {
   #app #grid.fd-carousel { grid-template-columns:repeat(3,minmax(0,1fr)); }
 }
+
+/* Match every resort card to the tallest content without a fixed height. */
+#app #grid.fd-carousel { align-items:stretch; }
+#app #grid.fd-carousel .fd-cabin-card-v2-body { flex:1; }
+#app #grid.fd-carousel .card-btn { margin-top:auto; }
+@media (min-width:900px) {
+  #app #grid.fd-carousel { grid-auto-rows:1fr; }
+}
