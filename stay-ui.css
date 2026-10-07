@@ -432,3 +432,6 @@
 @media(prefers-reduced-motion:reduce) { #app2 .card-img { transition:none; } }
 
 
+
+/* Square mobile detail photos for the two rest-house sections. */
+@media(max-width:899px){#ov.fd-stay-modern .gal-wrap:has(img[src*="imgs/sec1_"],img[src*="imgs/sec2_"]){height:auto;aspect-ratio:1;min-height:0;}}
