@@ -144,21 +144,8 @@
 /* Full square photo crops; preserve the original composition in source files. */
 #ov.fd-cabin-modern .gal-wrap:has(img[src*="imgs/chalet_"]){height:auto;aspect-ratio:1;align-self:start;min-height:0;}
 .fs-slide img[src*="imgs/chalet_"]{width:min(100vw,100dvh);height:min(100vw,100dvh);aspect-ratio:1;object-fit:cover;}
-img[src*="imgs/chalet_1.webp"]{object-position:60% 50% !important;}
-img[src*="imgs/chalet_2.webp"]{object-position:45% 50% !important;}
-img[src*="imgs/chalet_3.webp"]{object-position:68% 50% !important;}
-img[src*="imgs/chalet_4.webp"]{object-position:46% 50% !important;}
-img[src*="imgs/chalet_5.webp"]{object-position:48% 50% !important;}
-img[src*="imgs/chalet_6.webp"]{object-position:58% 50% !important;}
-img[src*="imgs/chalet_7.webp"]{object-position:64% 50% !important;}
-img[src*="imgs/chalet_8.webp"]{object-position:51% 50% !important;}
-img[src*="imgs/chalet_9.webp"]{object-position:69% 50% !important;}
-img[src*="imgs/chalet_10.webp"]{object-position:15% 50% !important;}
-img[src*="imgs/chalet_11.webp"]{object-position:56% 50% !important;}
-img[src*="imgs/chalet_12.webp"]{object-position:57% 50% !important;}
-img[src*="imgs/chalet_13.webp"]{object-position:55% 50% !important;}
-img[src*="imgs/chalet_14.webp"]{object-position:49% 50% !important;}
-img[src*="imgs/chalet_15.webp"]{object-position:43% 50% !important;}
-img[src*="imgs/chalet_16.webp"]{object-position:34% 50% !important;}
-img[src*="imgs/chalet_17.webp"]{object-position:66% 50% !important;}
 .dest-card[data-dest-photo="chalet"]::before{background-position:60% center;}
+
+img[src*="imgs/chalet_"]{object-position:center !important;}
+
+@media(min-width:900px){#ov.fd-cabin-modern .gal-wrap:has(img[src*="imgs/chalet_"]){width:min(100%,calc(min(88vh,760px) - 210px));height:auto;justify-self:center;align-self:center;border:0;}}

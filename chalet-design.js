@@ -6,8 +6,8 @@ var PRIVATE_CHALET = {
   bookUrl: 'https://familyday-sa.com/ar/listings/6abb996392a258b8171230a3',
   mapUrl: 'https://maps.app.goo.gl/np6uD3XvCQTCr4ff7'
 };
-GALLERY[PRIVATE_CHALET.id] = Array.from({length:17}, function(_, index){
-  return 'imgs/chalet_' + (index + 1) + '.webp?v=20261006';
+GALLERY[PRIVATE_CHALET.id] = Array.from({length:18}, function(_, index){
+  return 'imgs/chalet_' + (index + 1) + '.webp?v=20261007';
 });
 
 function chaletEnquiryUrl(message){
