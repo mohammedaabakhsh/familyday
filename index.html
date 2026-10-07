@@ -2904,7 +2904,7 @@ function cardSlide(wrap,dir){
 
 function renderResortCardSummary(c){
   const shared=c.id===11;
-  const feature=shared?'':c.bath.summary;
+  const feature=shared?'مشترك':c.bath.summary;
   const guests=resortGuestText(c.guests);
   const rooms=resortRoomText(c.rooms);
   const facts=shared?[['الموقع','وسط الأكواخ'],['الاستخدام','لجميع الضيوف']]:[['السعة',guests],['غرف النوم',rooms]];
@@ -2957,7 +2957,7 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
       d12.className='card fd-cabin-card-v2';
       d12.onclick=function(){openM(11,'resort');};
       var imgs12=gl12.length?'<img src="'+gl12[0]+'" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;">':'';
-      d12.innerHTML='<div class="card-img-wrap" data-cid="11" data-cidx="0" style="position:relative;overflow:hidden;">'+imgs12+'<div class="badge">مشترك</div></div>'
+      d12.innerHTML='<div class="card-img-wrap" data-cid="11" data-cidx="0" style="position:relative;overflow:hidden;">'+imgs12+'</div>'
         +'<div class="card-body fd-cabin-card-v2-body">'+renderResortCardSummary(c12)
         +'<button class="card-btn">عرض التفاصيل والصور</button></div>';
       g.appendChild(d12);
@@ -3058,7 +3058,7 @@ function renderCabinDetail(c){
         </div>
       </section>
 
-      ${(c.id===3 || c.id===9)?'<section class="fd-cabin-section"><h3>حجز الكوخين معًا</h3><div class="fd-cabin-instructions"><p>يمكن ربط كوخ رويال والكوخ الكلاسيكي عبر باب داخلي عند حجزهما معًا، بسعة إجمالية تصل إلى 35 ضيفًا.</p></div></section>':''}
+      ${(c.id===3 || c.id===9)?'<section class="fd-cabin-section fd-cabin-combined-note"><h3>حجز الكوخين معًا</h3><div class="fd-cabin-instructions"><p>يمكن ربط كوخ رويال والكوخ الكلاسيكي عبر باب داخلي عند حجزهما معًا، بسعة إجمالية تصل إلى 35 ضيفًا.</p></div></section>':''}
 
       <section class="fd-cabin-addons">
         <h3>إضافات الحجز</h3>
@@ -5549,7 +5549,7 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 #ov.fd-cabin-modern .fd-cabin-heading:has(.fd-cabin-occupancy){display:block}
 #ov.fd-cabin-modern .fd-cabin-occupancy + .fd-cabin-suitable{margin-top:7px}
 </style>
-<link rel="stylesheet" href="site-ui.css?v=3">
+<link rel="stylesheet" href="site-ui.css?v=4">
 <link rel="stylesheet" href="dome-gallery.css?v=1">
 </body>
 </html><!-- test Fri Jul 17 17:12:00 +03 2026 -->

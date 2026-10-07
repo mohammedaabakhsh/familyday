@@ -103,3 +103,10 @@
 @media (min-width:900px) {
   #app #grid.fd-carousel { grid-auto-rows:1fr; }
 }
+
+/* Keep the combined-booking explanation directly below its own heading. */
+#ov.fd-cabin-modern .fd-cabin-combined-note .fd-cabin-instructions {
+  margin-top:0;
+  padding-top:0;
+  border-top:0;
+}
