@@ -2584,7 +2584,7 @@ function tarfihiOrder(){
   </div>
 </div>
 
-<script src="resort-data.js?v=3"></script>
+<script src="resort-data.js?v=4"></script>
 <script>
 const IMG=["imgs/img04.webp","imgs/img05.webp","imgs/img06.webp","imgs/img07.webp","imgs/img08.webp","imgs/img09.webp",
   "imgs/img10.webp",
@@ -2991,7 +2991,8 @@ function updGal(total){
 
 function renderCabinDetail(c){
   const indoor=c.features.indoor.concat([c.bathroom===1?'حمام واحد':c.bathroom===2?'حمامان':c.bathroom+' حمامات']);
-  const outdoor=c.features.outdoor.concat([c.pool.label],c.pool.facilities);
+  const poolLabel=c.pool.depthInLabel?c.pool.label+' وعمق '+c.pool.depthCm+' سم.':c.pool.label;
+  const outdoor=c.features.outdoor.concat([poolLabel],c.pool.facilities);
   const kitchen=c.features.kitchen;
   const stayFeatures=c.features.stay;
   const hasMinibar=c.minibar;
@@ -2999,7 +3000,7 @@ function renderCabinDetail(c){
   const subtitle=c.type||'';
   const badge=c.suitable||'';
   const guestsText=resortGuestText(c.guests);
-  const poolNote='المسبح بعمق '+c.pool.depthCm+' سم، ويُسمح للأطفال باستخدامه تحت إشراف ذويهم.';
+  const poolNote=(c.pool.depthInLabel?'':'المسبح بعمق '+c.pool.depthCm+' سم، و')+'يُسمح للأطفال باستخدامه تحت إشراف ذويهم.';
   const renderFeatures=function(list){
     return list.map(function(name){
       return '<span class="fd-cabin-feature'+(name.length>24?' fd-cabin-feature--wide':'')+'">'+name+'</span>';

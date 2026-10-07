@@ -39,8 +39,9 @@ const data = {
           ]
         },
         "pool": {
-          "label": "مسبح خاص للكبار مع جاكوزي 4×7 م",
+          "label": "مسبح خاص للكبار مع جاكوزي، بمقاس 4 × 7 م",
           "depthCm": 140,
+          "depthInLabel": true,
           "facilities": [
             "سرير تشميس داخل المسبح",
             "كراسي تشميس",
@@ -554,4 +555,3 @@ function resortRoomText(count) {
 function resortBathroomText(count) {
   return count === 1 ? 'حمام واحد' : count === 2 ? 'حمامان' : count + ' حمامات';
 }
-
