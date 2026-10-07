@@ -2843,7 +2843,7 @@ function openGalDirect(c){
       e.preventDefault();openFS(imgs,galIdx,curId);
     }
   };
-  FD_DOME_GALLERY.mountTrigger(w,c.id);
+  FD_DOME_GALLERY.mountTrigger(w,c);
 }
 function moveGalDirect(dir,total){
   var next=galIdx+dir;
@@ -4698,7 +4698,7 @@ function openMDirect(c){
 
 </script>
 <script src="chalet-design.js?v=15"></script>
-<script src="dome-gallery.js?v=1"></script>
+<script src="dome-gallery.js?v=2"></script>
 <script>
 // Family Day navigation history: existing views remain the rendering layer.
 // A route has a parent; only changed layers are reopened, so Back from a
@@ -4787,7 +4787,7 @@ function openMDirect(c){
         break;
       case 'service-sub': call('showServiceSub',r.args); break;
       case 'photos': call('openFS',r.args); break;
-      case 'dome-gallery': FD_DOME_GALLERY.show(); break;
+      case 'dome-gallery': FD_DOME_GALLERY.show(r.args[0]); break;
       case 'menu-cart': call('openMenuCartReview'); break;
       case 'map-photos':
         document.dispatchEvent(new CustomEvent('fd-map-photos-open',{detail:{locationKey:r.args[0]}}));
@@ -4902,9 +4902,12 @@ function openMDirect(c){
     return false;
   };
   wrapOpen('openFS',function(imgs,index,sourceId){return route('photos',[imgs,index || 0,sourceId == null ? null : sourceId],current);});
-  document.addEventListener('fd-dome-gallery-request',function(){
-    if(!rendering && current.name==='cabin' && current.args[0]===1){
-      navigate(route('dome-gallery',[],current));
+  document.addEventListener('fd-dome-gallery-request',function(event){
+    var cabin=event.detail;
+    var matchesCabin=cabin && current.name==='cabin' && current.args[0]===cabin.id;
+    var matchesChalet=cabin && current.name==='chalet-detail' && cabin.id===PRIVATE_CHALET.id;
+    if(!rendering && (matchesCabin || matchesChalet)){
+      navigate(route('dome-gallery',[{id:cabin.id,name:cabin.name}],current));
     }
   });
   document.addEventListener('fd-dome-gallery-dismiss',function(){
@@ -5279,7 +5282,7 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
     'ov', 'fd-dome-gallery', 'fsOverlay', 'iframeOverlay', 'order-popup'
   ];
   var modalLabels = {
-    ov: 'تفاصيل مكان الإقامة', fsOverlay: 'صور مكان الإقامة', 'fd-dome-gallery': 'صور بيت الدوم',
+    ov: 'تفاصيل مكان الإقامة', fsOverlay: 'صور مكان الإقامة', 'fd-dome-gallery': 'صور مكان الإقامة',
     iframeOverlay: 'جولة ثلاثية الأبعاد', 'order-popup': 'طلب الخدمة', 'menu-cart-review': 'مراجعة الطلب'
   };
   var focusSelector = 'button, a[href], input, select, textarea, iframe, [tabindex]';
