@@ -258,3 +258,6 @@
   #app .cabin-toolbar .filter-section { flex:0 0 100%; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); }
   #app .cabin-toolbar .fd-map-launcher { border:0; padding:0; margin-inline-start:auto; }
 }
+
+/* Match the square mobile detail gallery used by the other destinations. */
+@media(max-width:899px){#ov.fd-cabin-modern:not(.fd-stay-modern) .gal-wrap{height:auto;aspect-ratio:1;min-height:0;}}
