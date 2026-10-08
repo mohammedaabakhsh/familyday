@@ -110,3 +110,32 @@
   padding-top:0;
   border-top:0;
 }
+
+/* A divider marks a new main specification section in every destination. */
+#ov.fd-cabin-modern .fd-cabin-content > .fd-cabin-section {
+  margin:0;
+}
+#ov.fd-cabin-modern .fd-cabin-content > .fd-cabin-section + .fd-cabin-section,
+#ov.fd-cabin-modern .fd-cabin-content > .fd-cabin-addons {
+  margin:24px 0 0;
+  padding:20px 0 0;
+  border:0;
+  border-top:1px solid rgba(49,89,103,.65);
+  border-radius:0;
+  background:none;
+}
+/* Notes stay attached to their features or heading, without an inner divider. */
+#ov.fd-cabin-modern .fd-cabin-content .fd-cabin-instructions {
+  padding-top:0;
+  border-top:0;
+}
+#ov.fd-cabin-modern .fd-cabin-content h3 + .fd-cabin-instructions,
+#ov.fd-cabin-modern .fd-cabin-content .fd-stay-guest-note .fd-cabin-instructions {
+  margin-top:0;
+}
+/* Floors are subsections of the indoor area; headings and spacing distinguish them. */
+#ov.fd-cabin-modern .fd-cabin-content .fd-chalet-floor + .fd-chalet-floor {
+  margin-top:20px;
+  padding-top:0;
+  border-top:0;
+}
