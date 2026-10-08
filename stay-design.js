@@ -28,10 +28,7 @@ function renderStayDetail(c) {
     return '<section class="fd-cabin-section"><h3>' + title + '</h3><div class="fd-cabin-feature-list">'
       + features(list) + '</div>' + (note ? '<div class="fd-cabin-instructions">' + note + '</div>' : '') + '</section>';
   }
-  var poolNotes = c.id === 20
-    ? '<p><strong>مسبح الكبار:</strong> بمقاس 4 × 8 م، وعمق متدرج من 1 إلى 2 م.</p>'
-      + '<p><strong>مسبح الأطفال:</strong> بمقاس 2 × 6 م، وعمق 65 سم.</p>'
-    : '<p><strong>مسبح الكبار:</strong> بمقاس 4 × 8 م، وعمق متدرج من 1 إلى 2 م.</p>';
+  var poolNotes = '<p>يُسمح للأطفال باستخدامه تحت إشراف ذويهم.</p>';
   return '<section class="fd-cabin-content" aria-labelledby="fd-stay-detail-title">'
     + '<div class="fd-cabin-heading"><div><h2 id="fd-stay-detail-title" class="fd-cabin-title">' + c.name + '</h2>'
     + '<p class="fd-cabin-occupancy">مناسب للتجمعات العائلية – حتى 25 ضيفًا</p></div></div>'
