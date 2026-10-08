@@ -17,7 +17,8 @@ function chaletEnquiryUrl(message){
 function renderPrivateChaletDetail(){
   function features(items){
     return '<div class="fd-cabin-feature-list">' + items.map(function(text){
-      return '<span class="fd-cabin-feature' + (text.length > 24 ? ' fd-cabin-feature--wide' : '') + '">' + text + '</span>';
+      return '<span class="fd-cabin-feature' + (text.length > 24 ? ' fd-cabin-feature--wide' : '') + '">' + text + '</span>'
+        + (text === 'مسبح أطفال بعمق 60 سم مع ألعاب مائية' ? '<div class="fd-cabin-instructions fd-chalet-pool-note"><p>يُسمح للأطفال باستخدامه تحت إشراف ذويهم.</p></div>' : '');
     }).join('') + '</div>';
   }
   function section(title, items){
@@ -41,12 +42,13 @@ function renderPrivateChaletDetail(){
     ])
     + floor('الدور العلوي', ['غرفة نوم بسرير مزدوج', 'حمام خاص'])
     + '</section>'
-    + section('المرافق الخارجية', [
+    + section('المنطقة الخارجية', [
       'مسبح أطفال بعمق 60 سم مع ألعاب مائية',
       'مجلس مستقل بمدخل خاص، يتسع لـ10 أشخاص، مع حمام'
     ])
-    + section('تجهيزات المطبخ', ['ثلاجة', 'ميكروويف', 'فرن', 'موقد كهربائي', 'موقد غاز', 'غلاية', 'أدوات مطبخ خفيفة'])
-    + '<section class="fd-cabin-section"><h3>ملاحظة</h3><div class="fd-cabin-instructions"><p>يمكن زيادة إجمالي عدد الضيوف إلى 25 ضيفًا كحد أقصى، برسوم إضافية.</p></div></section>'
+    + section('تجهيزات المطبخ', ['ثلاجة', 'ميكروويف', 'فرن', 'موقد كهربائي', 'موقد غاز', 'غلاية', 'أدوات مطبخ أساسية'])
+    + '<section class="fd-cabin-section"><h3>زيادة عدد الضيوف</h3><div class="fd-cabin-instructions"><p>يمكن زيادة إجمالي عدد الضيوف إلى 25 ضيفًا كحد أقصى، برسوم إضافية.</p></div></section>'
+    + '<div class="fd-cabin-faq-footer"><a class="fd-cabin-faq-link" href="#chalet-faq" onclick="return openAccommodationFaq(event,\'chalet-faq\')">الأسئلة الشائعة <span aria-hidden="true">←</span></a></div>'
     + '</section>';
 }
 
@@ -131,7 +133,7 @@ function openPrivateChalet(){
         },
         {
           "question": "ما تجهيزات المطبخ المتوفرة؟",
-          "answer": "يتوفر ثلاجة، ميكروويف، فرن، موقد كهربائي، موقد غاز، غلاية، وأدوات مطبخ خفيفة."
+          "answer": "يشمل المطبخ ثلاجة، وميكروويف، وفرنًا، وموقدًا كهربائيًا، وموقد غاز، وغلاية، وأدوات مطبخ أساسية."
         }
       ]
     },

@@ -37,8 +37,9 @@ function renderStayDetail(c) {
     + section('المنطقة الخارجية', groups.slice(3).flat(), poolNotes)
     + section('تجهيزات المطبخ', ['موقد كهربائي', 'ثلاجة', 'ميكروويف', 'غلاية'])
     + section('مميزات الإقامة', ['تلفزيون ذكي', 'سماعات داخلية (ساوند بار)'])
-    + '<div class="fd-cabin-section fd-stay-guest-note"><div class="fd-cabin-instructions"><p>يمكن زيادة إجمالي عدد الضيوف إلى 70 ضيفًا كحد أقصى، برسوم إضافية.</p></div></div>'
+    + '<div class="fd-cabin-section fd-stay-guest-note"><h3>زيادة عدد الضيوف</h3><div class="fd-cabin-instructions"><p>يمكن زيادة إجمالي عدد الضيوف إلى 70 ضيفًا كحد أقصى، برسوم إضافية.</p></div></div>'
     + (c.id === 21 ? '<section class="fd-cabin-addons"><h3>إضافات الحجز</h3><p>الزحليقة الهوائية الكبيرة — برسوم إضافية.</p></section>' : '')
+    + '<div class="fd-cabin-faq-footer"><a class="fd-cabin-faq-link" href="#faq2" onclick="return openAccommodationFaq(event,\'faq2\')">الأسئلة الشائعة <span aria-hidden="true">←</span></a></div>'
     + '</section>';
 }
 

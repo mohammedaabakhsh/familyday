@@ -139,3 +139,10 @@
   padding-top:0;
   border-top:0;
 }
+
+/* Contextual FAQ access at the end of accommodation specifications. */
+#ov.fd-cabin-modern .fd-cabin-faq-footer{margin-top:24px;padding-top:12px;border-top:1px solid rgba(49,89,103,.65);}
+#ov.fd-cabin-modern .fd-cabin-faq-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:#a6dfe8;font-size:14px;font-weight:700;text-decoration:underline;text-underline-offset:4px;}
+#ov.fd-cabin-modern .fd-cabin-faq-link:hover{color:#fff;}
+#ov.fd-cabin-modern .fd-cabin-faq-link:focus-visible{outline:2px solid #7ecfea;outline-offset:4px;border-radius:4px;}
+#ov.fd-cabin-modern .fd-chalet-pool-note{grid-column:1/-1;margin:0 0 8px;}
