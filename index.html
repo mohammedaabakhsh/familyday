@@ -2584,7 +2584,7 @@ function tarfihiOrder(){
   </div>
 </div>
 
-<script src="resort-data.js?v=4"></script>
+<script src="resort-data.js?v=5"></script>
 <script>
 const IMG=["imgs/img04.webp","imgs/img05.webp","imgs/img06.webp","imgs/img07.webp","imgs/img08.webp","imgs/img09.webp",
   "imgs/img10.webp",
@@ -2996,7 +2996,7 @@ function renderCabinDetail(c){
   const kitchen=c.features.kitchen;
   const stayFeatures=c.features.stay;
   const hasMinibar=c.minibar;
-  const hasOutdoorBath=c.bath.outdoorPrivacy;
+  const hasOutdoorBath=c.bath.outdoorPrivacy&&!c.bath.privacyInLabel;
   const subtitle=c.type||'';
   const badge=c.suitable||'';
   const guestsText=resortGuestText(c.guests);
