@@ -167,3 +167,7 @@
 .fd-cart-row-controls .fd-cart-remove{margin-inline-start:auto;font-size:13px;background:transparent;color:#c5dbe2;}
 .fd-cart-qty{min-width:22px;text-align:center;font-size:15px;color:#fff;}
 .fd-cart-row-controls button:focus-visible{outline:2px solid #7ecfea;outline-offset:2px;}
+
+/* Keep swimming instructions with the pools before the other outdoor spaces. */
+#ov.fd-cabin-modern .fd-cabin-content .fd-pool-note{grid-column:1/-1;margin:4px 0 8px;}
+#ov.fd-cabin-modern .fd-cabin-feature bdi{white-space:nowrap;}

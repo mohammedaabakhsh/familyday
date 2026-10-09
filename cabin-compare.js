@@ -56,6 +56,8 @@ var FD_CABIN_COMPARE = (function(){
       ['الضيوف',function(c){return resortGuestText(c.guests);}],
       ['غرف النوم',function(c){return resortRoomText(c.rooms);}],
       ['الأسرّة',function(c){return c.features.indoor.filter(function(t){return /^غرفة نوم/.test(t);}).join(' · ');}],
+      ['صالة داخلية',function(c){return c.features.indoor.includes('صالة داخلية')?'متوفرة':'غير متوفرة';}],
+      ['طاولة طعام',function(c){return c.features.indoor.includes('طاولة طعام')?'متوفرة':'غير متوفرة';}],
       ['الحمامات',function(c){return c.bathroom===1?'حمام واحد':c.bathroom===2?'حمامان':c.bathroom+' حمامات';}],
       ['المسبح',function(c){return c.pool.label+' وعمق '+c.pool.depthCm+' سم.';}],
       ['مميزات خاصة',specials]

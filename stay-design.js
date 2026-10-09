@@ -21,21 +21,28 @@ function renderStayDetail(c) {
   if (group.length) groups.push(group);
   function features(list) {
     return list.map(function (text) {
-      return '<span class="fd-cabin-feature' + (text.length > 24 ? ' fd-cabin-feature--wide' : '') + '">' + text + '</span>';
+      return '<span class="fd-cabin-feature' + (text.length > 24 ? ' fd-cabin-feature--wide' : '') + '">' + formatSpecificationText(text) + '</span>';
     }).join('');
   }
   function section(title, list, note) {
     return '<section class="fd-cabin-section"><h3>' + title + '</h3><div class="fd-cabin-feature-list">'
       + features(list) + '</div>' + (note ? '<div class="fd-cabin-instructions">' + note + '</div>' : '') + '</section>';
   }
-  var poolNotes = '<p>يُسمح للأطفال باستخدامه تحت إشراف ذويهم.</p>';
+  var indoor = groups.slice(0, 3).flat().map(function(text){return text.replace('3 دورات مياه','3 حمامات');});
+  // Put rooms and seating first, then the kitchen and bathrooms.
+  indoor = indoor.filter(function(text){return !/حمام|ركن مطبخ/.test(text);})
+    .concat(indoor.filter(function(text){return text==='ركن مطبخ';}), indoor.filter(function(text){return /حمام/.test(text);}));
+  var outdoor = groups.slice(3).flat();
+  var pools = outdoor.filter(function(text){return /^مسبح|كراسي تشميس/.test(text);});
+  var otherOutdoor = outdoor.filter(function(text){return !/^مسبح|كراسي تشميس/.test(text);});
+  var poolNotes = '<div class="fd-cabin-instructions fd-pool-note"><p>يُسمح للأطفال باستخدامه تحت إشراف ذويهم.</p></div>';
   return '<section class="fd-cabin-content" aria-labelledby="fd-stay-detail-title">'
     + '<div class="fd-cabin-heading"><div><h2 id="fd-stay-detail-title" class="fd-cabin-title">' + c.name + '</h2>'
     + '<p class="fd-cabin-occupancy">مناسب للتجمعات العائلية – حتى 25 ضيفًا</p></div></div>'
     + '<div class="fd-cabin-times" aria-label="أوقات الدخول والخروج"><div><span>الدخول</span><strong>4:00 مساءً</strong></div><div><span>الخروج</span><strong>12:00 ظهرًا</strong></div></div>'
-    + section('المنطقة الداخلية', groups.slice(0, 3).flat().map(function(text){return text.replace('3 دورات مياه','3 حمامات');}))
-    + section('المنطقة الخارجية', groups.slice(3).flat(), poolNotes)
-    + section('تجهيزات المطبخ', ['موقد كهربائي', 'ثلاجة', 'ميكروويف', 'غلاية'])
+    + section('المنطقة الداخلية', indoor)
+    + '<section class="fd-cabin-section"><h3>المنطقة الخارجية</h3><div class="fd-cabin-feature-list">' + features(pools) + poolNotes + features(otherOutdoor) + '</div></section>'
+    + section('تجهيزات المطبخ', ['موقد كهربائي', 'ميكروويف', 'ثلاجة', 'غلاية'])
     + section('مميزات الإقامة', ['تلفزيون ذكي', 'سماعات داخلية (ساوند بار)'])
     + '<div class="fd-cabin-section fd-stay-guest-note"><h3>زيادة عدد الضيوف</h3><div class="fd-cabin-instructions"><p>يمكن زيادة إجمالي عدد الضيوف إلى 70 ضيفًا كحد أقصى، برسوم إضافية.</p></div></div>'
     + (c.id === 21 ? '<section class="fd-cabin-addons"><h3>إضافات الحجز</h3><p>الزحليقة الهوائية الكبيرة — برسوم إضافية.</p></section>' : '')
@@ -47,6 +54,7 @@ function renderStayComparison() {
   var rows = [
     ['غرف النوم', 'غرفتان', 'غرفة واحدة'],
     ['الأسرّة', 'سرير مزدوج وسريران مفردان', '3 أسرّة'],
+    ['صالة داخلية', 'متوفرة', 'غير متوفرة'],
     ['الحمامات', '4 حمامات', '4 حمامات'],
     ['المسابح', 'مسبح للكبار ومسبح للأطفال', 'مسبح للكبار'],
     ['الزحليقة الهوائية الكبيرة', 'غير متاحة', 'متاحة برسوم إضافية'],

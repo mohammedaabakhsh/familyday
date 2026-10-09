@@ -1160,9 +1160,9 @@ header{
 <script src="campaign-data.js?v=5"></script>
 <script src="resort-campaign.js?v=4" defer></script>
 <script src="resort-features.js?v=6"></script>
-<script src="stay-design.js?v=12"></script>
+<script src="stay-design.js?v=13"></script>
 <script src="site-enhancements.js?v=1"></script>
-<script src="cabin-compare.js?v=1"></script>
+<script src="cabin-compare.js?v=2"></script>
 <script>
 
 
@@ -1723,7 +1723,7 @@ function tarfihiOrder(){
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">9. ما تجهيزات المطبخ المتوفرة؟</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يشمل ركن المطبخ موقدًا كهربائيًا، وثلاجة، وميكروويف، وغلاية، وماكينة قهوة، وأدوات مطبخ أساسية.</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يشمل ركن المطبخ موقدًا كهربائيًا، وميكروويف، وثلاجة، وغلاية، وماكينة قهوة، وأدوات مطبخ أساسية.</div>
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">10. هل توجد شواية في الأكواخ؟</div>
@@ -2387,7 +2387,7 @@ function tarfihiOrder(){
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">6. ما تجهيزات المطبخ المتوفرة؟</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يشمل ركن المطبخ موقدًا كهربائيًا، وثلاجة، وميكروويف، وغلاية.</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يشمل ركن المطبخ موقدًا كهربائيًا، وميكروويف، وثلاجة، وغلاية.</div>
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">7. هل توجد شواية في الاستراحة؟</div>
@@ -2593,7 +2593,7 @@ function tarfihiOrder(){
   </div>
 </div>
 
-<script src="resort-data.js?v=6"></script>
+<script src="resort-data.js?v=7"></script>
 <script>
 const IMG=["imgs/img04.webp","imgs/img05.webp","imgs/img06.webp","imgs/img07.webp","imgs/img08.webp","imgs/img09.webp",
   "imgs/img10.webp",
@@ -3002,7 +3002,9 @@ function updGal(total){
 function renderCabinDetail(c){
   const indoor=c.features.indoor.concat([c.bathroom===1?'حمام واحد':c.bathroom===2?'حمامان':c.bathroom+' حمامات']);
   const poolLabel=c.pool.depthInLabel?c.pool.label+' وعمق '+c.pool.depthCm+' سم.':c.pool.label;
-  const outdoor=c.features.outdoor.concat([poolLabel],c.pool.facilities);
+  const wetOutdoor=c.features.outdoor.filter(function(text){return /بانيو|جاكوزي/.test(text);});
+  const outdoor=c.features.outdoor.filter(function(text){return !/بانيو|جاكوزي/.test(text);});
+  const poolFeatures=[poolLabel].concat(c.pool.facilities,wetOutdoor);
   const kitchen=c.features.kitchen;
   const stayFeatures=c.features.stay;
   const hasMinibar=c.minibar;
@@ -3013,7 +3015,7 @@ function renderCabinDetail(c){
   const poolNote=(c.pool.depthInLabel?'':'المسبح بعمق '+c.pool.depthCm+' سم، و')+'يُسمح للأطفال باستخدامه تحت إشراف ذويهم.';
   const renderFeatures=function(list){
     return list.map(function(name){
-      return '<span class="fd-cabin-feature'+(name.length>24?' fd-cabin-feature--wide':'')+'">'+name+'</span>';
+      return '<span class="fd-cabin-feature'+(name.length>24?' fd-cabin-feature--wide':'')+'">'+formatSpecificationText(name)+'</span>';
     }).join('');
   };
 
@@ -3039,10 +3041,13 @@ function renderCabinDetail(c){
 
       <section class="fd-cabin-section">
         <h3>المنطقة الخارجية</h3>
-        <div class="fd-cabin-feature-list">${renderFeatures(outdoor)}</div>
-        <div class="fd-cabin-instructions">
-          <p>${poolNote}</p>
-          ${hasOutdoorBath?'<p><strong>البانيو الخارجي:</strong> بخصوصية كاملة.</p>':''}
+        <div class="fd-cabin-feature-list">
+          ${renderFeatures(poolFeatures)}
+          <div class="fd-cabin-instructions fd-pool-note">
+            <p>${poolNote}</p>
+            ${hasOutdoorBath?'<p><strong>البانيو الخارجي:</strong> بخصوصية كاملة.</p>':''}
+          </div>
+          ${renderFeatures(outdoor)}
         </div>
       </section>
 
@@ -3111,7 +3116,8 @@ function renderSharedGardenDetail(c){
       <section class="fd-cabin-section">
         <h3>خدمات متاحة</h3>
         <div class="fd-cabin-feature-list">
-          ${renderFeatures(['المطعم','الألعاب المائية برسوم'])}
+          <a class="fd-cabin-feature fd-cabin-service-link" href="#menu" onclick="return openCabinService(event,'menu')">المطعم <span aria-hidden="true">←</span></a>
+          <a class="fd-cabin-feature fd-cabin-service-link" href="#maiya" onclick="return openCabinService(event,'maiya')">الألعاب المائية برسوم <span aria-hidden="true">←</span></a>
         </div>
         <div class="fd-cabin-instructions">
           <p><strong>الحديقة المشتركة:</strong> مساحة وسط الأكواخ تخدم العائلات المقيمة.</p>
@@ -4659,8 +4665,8 @@ function closeContact2(){ closeContact(); }
 function renderChalet2(){
   var g=document.getElementById('grid2');g.innerHTML='';
   var items=[
-    {id:20,img:0,name:"القسم الأول",specs:["غرفتا نوم","مسبح للكبار","مسبح للأطفال"],type:"تتضمن مجلسًا كبيرًا ومسبحين خاصين",suitable:"مناسب للتجمعات الكبيرة",rooms:2,guests:25,bathroom:4,hall:true,badge:null,tags:["غرفة نوم بسرير مزدوج","غرفة نوم بسريرين مفردين","|","مجلس كبير","صالة داخلية","3 دورات مياه","|","ركن مطبخ","|","جلسة خارجية","ركن شواء","حمام خارجي","|","مسبح للكبار، بمقاس 4 × 8 م وعمق متدرج من 1 إلى 2 م.","مسبح للأطفال، بمقاس 2 × 6 م وعمق 65 سم.","كراسي تشميس"],bookUrl:"https://familyday-sa.com/ar/listings/69cea5753a421f1c8de8cb43"},
-    {id:21,img:5,name:"القسم الثاني",specs:["غرفة نوم","مسبح للكبار","ملعب كرة طائرة"],type:"تتضمن مجلسًا كبيرًا ومسبحًا خاصًا وملعب كرة طائرة",suitable:"مناسب للتجمعات الكبيرة",rooms:1,guests:25,bathroom:4,hall:false,badge:null,tags:["غرفة نوم بـ3 أسرّة","|","مجلس كبير","3 دورات مياه","|","ركن مطبخ","|","جلسة خارجية","ركن شواء","حمام خارجي","|","مسبح للكبار، بمقاس 4 × 8 م وعمق متدرج من 1 إلى 2 م.","كراسي تشميس","|","ملعب كرة طائرة"],bookUrl:"https://familyday-sa.com/ar/listings/69cea610f9674d785069b3c5"}
+    {id:20,img:0,name:"القسم الأول",specs:["غرفتا نوم","مسبح للكبار","مسبح للأطفال"],type:"تتضمن مجلسًا كبيرًا ومسبحين خاصين",suitable:"مناسب للتجمعات الكبيرة",rooms:2,guests:25,bathroom:4,hall:true,badge:null,tags:["غرفة نوم بسرير مزدوج","غرفة نوم بسريرين مفردين","|","مجلس كبير","صالة داخلية","3 دورات مياه","|","ركن مطبخ","|","جلسة خارجية","شواية","حمام خارجي","|","مسبح للكبار، بمقاس 4 × 8 م وعمق متدرج من 1 إلى 2 م.","مسبح للأطفال، بمقاس 2 × 6 م وعمق 65 سم.","كراسي تشميس"],bookUrl:"https://familyday-sa.com/ar/listings/69cea5753a421f1c8de8cb43"},
+    {id:21,img:5,name:"القسم الثاني",specs:["غرفة نوم","مسبح للكبار","ملعب كرة طائرة"],type:"تتضمن مجلسًا كبيرًا ومسبحًا خاصًا وملعب كرة طائرة",suitable:"مناسب للتجمعات الكبيرة",rooms:1,guests:25,bathroom:4,hall:false,badge:null,tags:["غرفة نوم بـ3 أسرّة","|","مجلس كبير","3 دورات مياه","|","ركن مطبخ","|","جلسة خارجية","شواية","حمام خارجي","|","مسبح للكبار، بمقاس 4 × 8 م وعمق متدرج من 1 إلى 2 م.","كراسي تشميس","|","ملعب كرة طائرة"],bookUrl:"https://familyday-sa.com/ar/listings/69cea610f9674d785069b3c5"}
   ];
   _chaletItems2=items;
   document.getElementById('fd-stay-comparison-slot').innerHTML=renderStayComparison();
@@ -4698,7 +4704,7 @@ function openMDirect(c){
 
 
 </script>
-<script src="chalet-design.js?v=17"></script>
+<script src="chalet-design.js?v=18"></script>
 <script src="dome-gallery.js?v=2"></script>
 <script>
 // Family Day navigation history: existing views remain the rendering layer.
@@ -4808,7 +4814,7 @@ function openMDirect(c){
           call(serviceViews[r.name][0]);
           if(['menu','jalsat','tawilat','sinema','tarfihi','maiya'].indexOf(r.name)!==-1) {
             var back=document.querySelector('#'+r.name+'-detail button[onclick="'+serviceViews[r.name][1]+'()"]');
-            if(back) back.setAttribute('aria-label',r.parent && r.parent.name==='cabin' ? 'العودة إلى الكوخ' : 'العودة إلى الخدمات');
+            if(back) back.setAttribute('aria-label',r.parent && r.parent.name==='cabin' ? (r.parent.args[0]===11 ? 'العودة إلى الحديقة' : 'العودة إلى الكوخ') : 'العودة إلى الخدمات');
           }
         }
     }
@@ -5574,7 +5580,7 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 #ov.fd-cabin-modern .fd-cabin-heading:has(.fd-cabin-occupancy){display:block}
 #ov.fd-cabin-modern .fd-cabin-occupancy + .fd-cabin-suitable{margin-top:7px}
 </style>
-<link rel="stylesheet" href="site-ui.css?v=7">
+<link rel="stylesheet" href="site-ui.css?v=8">
 <link rel="stylesheet" href="cabin-compare.css?v=1">
 <link rel="stylesheet" href="dome-gallery.css?v=1">
 </body>
