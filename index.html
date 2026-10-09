@@ -1128,7 +1128,7 @@ header{
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#19a7b7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 13 6-7 6 7M4 11v10h8V11M7 21v-5h3v5M18 21c-1-5-1-10 0-14M18 7c-2-4-5-4-6-2M18 7c2-4 5-4 5-2M18 7c-3-1-5 0-5 2M18 7c3-1 5 0 5 2M18 7c-1-3 0-5 2-5"/></svg>
       </div>
       <div style="flex:1;">
-        <div class="dest-title">المنتجع</div>
+        <div class="dest-title">المنتجع</div><div class="fd-destination-location">جدة — خليج سلمان</div>
         <div class="dest-sub">أكواخ خاصة · مسابح مستقلة · حديقة مشتركة</div>
       </div>
       <svg class="dest-arrow" width="9" height="15" viewBox="0 0 9 15" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1);"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg>
@@ -1138,7 +1138,7 @@ header{
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#19a7b7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 21V7h8v14M14 21V7h8v14M1 7h10M13 7h10M5 21v-5h2v5M17 21v-5h2v5M5 11h2M17 11h2M1 21h22"/></svg>
       </div>
       <div style="flex:1;">
-        <div class="dest-title">الاستراحة</div>
+        <div class="dest-title">الاستراحة</div><div class="fd-destination-location">جدة — خليج سلمان</div>
         <div class="dest-sub">قسمان مستقلان · مسابح كبيرة · سعة كبيرة</div>
       </div>
       <svg class="dest-arrow" width="9" height="15" viewBox="0 0 9 15" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1);"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg>
@@ -1148,7 +1148,7 @@ header{
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#19a7b7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V3h14v18M3 3h18M5 12h14M9 7h1M14 7h1M10 21v-5h4v5M3 21h18"/></svg>
       </div>
       <div style="flex:1;">
-        <div class="dest-title">الشاليه</div>
+        <div class="dest-title">الشاليه</div><div class="fd-destination-location">جدة — المروج</div>
         <div class="dest-sub">شاليه من دورين · مسبح أطفال · مجلس مستقل</div>
       </div>
       <svg class="dest-arrow" width="9" height="15" viewBox="0 0 9 15" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1);" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg>
@@ -1158,9 +1158,11 @@ header{
 </div>
 
 <script src="campaign-data.js?v=5"></script>
-<script src="resort-campaign.js?v=3" defer></script>
+<script src="resort-campaign.js?v=4" defer></script>
 <script src="resort-features.js?v=6"></script>
 <script src="stay-design.js?v=12"></script>
+<script src="site-enhancements.js?v=1"></script>
+<script src="cabin-compare.js?v=1"></script>
 <script>
 
 
@@ -1273,6 +1275,7 @@ function closeFaq(){
 
 function showContact(type){
   type = type || 'resort';
+  document.getElementById('fd-contact-venue').textContent = type==='chalet'?'شاليه يوم العائلة':type==='stay'?'استراحة يوم العائلة':'منتجع يوم العائلة';
   var mapLink = type === 'stay'
     ? 'https://maps.app.goo.gl/i7BhZbfkRLyV68eFA?g_st=ic'
     : 'https://maps.app.goo.gl/FLmawLadNaa3uYpJ8?g_st=ic';
@@ -1401,6 +1404,7 @@ function updateCabinNum(){
   }
 }
 function openOrderPopup(itemName, showTime){
+  FD_ORDER_DRAFTS.save();
   configureResortOrderForm();
   _orderItemName = itemName;
   document.getElementById('order-item-name').textContent = itemName;
@@ -1411,9 +1415,11 @@ function openOrderPopup(itemName, showTime){
   document.getElementById('order-cabin-num-wrap').style.display = 'none';
   document.getElementById('order-cabin-num').textContent = '';
   document.getElementById('order-time-wrap').style.display = showTime ? 'block' : 'none';
+  FD_ORDER_DRAFTS.restore(_orderDraftScope || itemName);
   document.getElementById('order-popup').classList.remove('hide');
 }
 function closeOrderPopup(){
+  FD_ORDER_DRAFTS.close();
   _isMenuOrder = false;
   document.getElementById('order-popup').classList.add('hide');
 }
@@ -1457,12 +1463,14 @@ function sendOrderWhatsapp(){
     msg = lines.join('\n');
     _isMenuOrder = false;
     window.open('https://wa.me/966537006531?text=' + encodeURIComponent(msg), '_blank');
+    FD_ORDER_DRAFTS.clear();
     closeOrderPopup();
     return;
   } else {
     msg = 'السلام عليكم،' + '\n' + (inquiryOnly ? 'أرغب في الاستفسار عن الخدمة التالية:' : 'أرغب في طلب الخدمة التالية:') + '\n' + 'الاسم: ' + name + '\n' + 'الكوخ: ' + villa + cabinNum + '\n' + 'الخدمة: ' + _orderItemName + (timeStr ? '\n' + timeStr.replace(' - ','') : '') + (notes ? '\n' + 'ملاحظات: ' + notes : '');
   }
   window.open('https://wa.me/966556156693?text=' + encodeURIComponent(msg), '_blank');
+  FD_ORDER_DRAFTS.clear();
   closeOrderPopup();
 }
 
@@ -1628,7 +1636,7 @@ function tarfihiOrder(){
     <button type="button" class="faq-back" onclick="closeFaq()" aria-label="العودة">
       <svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-    <h1 id="faq-title-resort" class="faq-title">الأسئلة الشائعة</h1>
+    <div class="fd-page-heading-copy"><h1 id="faq-title-resort" class="faq-title">الأسئلة الشائعة</h1><p class="fd-venue-subtitle">منتجع يوم العائلة</p></div>
    </div>
 
    <nav class="fd-faq-shortcuts" aria-label="أقسام الأسئلة الشائعة">
@@ -2328,7 +2336,7 @@ function tarfihiOrder(){
 <div id="faq2-overlay" class="hide" role="region" aria-labelledby="faq-title-stay" style="position:fixed;inset:0;z-index:9500;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
   <header class="faq-page-header"><div class="faq-heading">
     <button type="button" class="faq-back" onclick="closeFaq2()" aria-label="العودة"><svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    <h1 id="faq-title-stay" class="faq-title">الأسئلة الشائعة</h1></div>
+    <div class="fd-page-heading-copy"><h1 id="faq-title-stay" class="faq-title">الأسئلة الشائعة</h1><p class="fd-venue-subtitle">استراحة يوم العائلة</p></div></div>
     <nav class="fd-faq-shortcuts" aria-label="أقسام الأسئلة الشائعة"><button type="button" aria-controls="faq-stay-booking" aria-expanded="false" onclick="selectStayFaqSection('faq-stay-booking')">الحجز وأوقات الدخول</button><button type="button" aria-controls="faq-stay-sections" aria-expanded="false" onclick="selectStayFaqSection('faq-stay-sections')">الأقسام والمرافق</button><button type="button" aria-controls="faq-stay-services" aria-expanded="false" onclick="selectStayFaqSection('faq-stay-services')">الخدمات والتعليمات</button></nav></header>
   <div id="faq-list-stay"><section id="faq-stay-booking" class="faq-section" aria-labelledby="faq-stay-booking-title" hidden><h2 id="faq-stay-booking-title" class="faq-section-title">الحجز وأوقات الدخول</h2><div class="faq-grid">
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
@@ -2432,7 +2440,7 @@ function tarfihiOrder(){
       <button type="button" class="contact-back" onclick="closeContact()" aria-label="العودة">
         <svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-      <h1 class="cp-title" id="cp-title">الحجز والموقع والتواصل</h1>
+      <div class="fd-page-heading-copy"><h1 class="cp-title" id="cp-title">الحجز والموقع والتواصل</h1><p class="fd-venue-subtitle" id="fd-contact-venue">منتجع يوم العائلة</p></div>
     </div>
   </div>
   <div class="cp-body">
@@ -2559,6 +2567,7 @@ function tarfihiOrder(){
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
         <span>العودة إلى الأكواخ</span>
       </button>
+      <strong class="fd-detail-current-name" id="fd-detail-current-name"></strong>
       <div class="fd-cabin-nav-controls">
         <button type="button" id="fd-cabin-prev" class="fd-cabin-nav-arrow" onclick="navModal(-1)" aria-label="الكوخ السابق">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg><span class="fd-cabin-step-label">السابق</span>
@@ -2584,7 +2593,7 @@ function tarfihiOrder(){
   </div>
 </div>
 
-<script src="resort-data.js?v=5"></script>
+<script src="resort-data.js?v=6"></script>
 <script>
 const IMG=["imgs/img04.webp","imgs/img05.webp","imgs/img06.webp","imgs/img07.webp","imgs/img08.webp","imgs/img09.webp",
   "imgs/img10.webp",
@@ -2912,7 +2921,7 @@ function renderResortCardSummary(c){
   return `
     <div class="fd-cabin-card-v2-heading">
       <div><div class="card-name">${c.name}</div>${subtitle?'<p class="fd-cabin-card-v2-subtitle">'+subtitle+'</p>':''}</div>
-      ${feature?'<span class="fd-cabin-card-v2-feature">'+feature+'</span>':''}
+      <div class="fd-card-feature-slot">${feature?'<span class="fd-cabin-card-v2-feature">'+feature+'</span>':''}</div>
     </div>
     <div class="fd-cabin-card-v2-facts" aria-label="معلومات ${c.name}">
       ${facts.map(([label,value])=>'<div class="fd-cabin-card-v2-fact"><span>'+label+'</span><strong>'+value+'</strong></div>').join('')}
@@ -2944,7 +2953,7 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
       </div>
       <div class="card-body fd-cabin-card-v2-body">
         ${renderResortCardSummary(c)}
-        <button class="card-btn">عرض التفاصيل والصور</button>
+        <div class="fd-card-actions"><button class="card-btn">عرض التفاصيل والصور</button>${FD_CABIN_COMPARE.cardButton(c)}</div>
       </div>`;
     g.appendChild(d);
   });
@@ -2963,6 +2972,7 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
       g.appendChild(d12);
     }
   }
+  FD_CABIN_COMPARE.sync();
 }
 
 function openGal(id,type){
@@ -3186,6 +3196,7 @@ function updateCabinPicker(){
   if(!c) return;
   var picker=document.getElementById('fd-cabin-picker');
   document.getElementById('fd-cabin-nav-name').textContent=c.name;
+  document.getElementById('fd-detail-current-name').textContent=c.name;
   document.getElementById('fd-cabin-nav-count').textContent=(_navIdx+1)+' من '+_navItems.length;
   document.getElementById('fd-cabin-nav-position').textContent=(_navIdx+1)+' من '+_navItems.length;
   var isStay=_navType==='chalet';
@@ -3972,21 +3983,7 @@ function _renderMenuCartReview(){
   var list = document.getElementById('menu-cart-review-items');
   var keys = Object.keys(_menuCart);
   if(!keys.length){ closeMenuCartReview(); return; }
-  list.innerHTML = keys.map(function(k){
-    var entry = _menuCart[k];
-    var isExtra = k.indexOf('|') !== -1;
-    var label = isExtra ? k.split('|')[0] + ' — ' + k.split('|')[1] : k;
-    return '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);">'
-      +'<div style="min-width:0;flex:1;">'
-        +'<div style="font-family:Tajawal,sans-serif;font-size:14px;font-weight:700;color:#fff;line-height:1.5;">'+label+'</div>'
-        +(isExtra?'<div style="font-family:Tajawal,sans-serif;font-size:11px;color:rgba(126,207,234,.8);margin-top:2px;">إضافة</div>':'')
-      +'</div>'
-      +'<div style="text-align:left;flex-shrink:0;">'
-        +'<div style="font-family:Tajawal,sans-serif;font-size:13px;font-weight:700;color:#19a7b7;">'+entry.qty+' × '+entry.price+' ريال</div>'
-        +'<div style="font-family:Tajawal,sans-serif;font-size:12px;color:rgba(255,255,255,.58);margin-top:2px;">'+(entry.qty*entry.price)+' ريال</div>'
-      +'</div>'
-    +'</div>';
-  }).join('');
+  fdRenderCartItems(list, keys);
   var totals = _menuCartTotals();
   document.getElementById('menu-cart-review-count').textContent = 'إجمالي الكمية: ' + totals.qty;
   document.getElementById('menu-cart-review-total').textContent = totals.price + ' ريال';
@@ -4187,6 +4184,8 @@ function selectTawilatOpt(opt){
   updateTawilatSummary();
 }
 function updateTawilatSummary(){
+  var orderButton=document.querySelector('#tawilat-detail button[onclick="tawilatOrder()"]');
+  if(orderButton){orderButton.disabled=!_tawilatOpt;orderButton.textContent=_tawilatOpt?'إكمال الطلب عبر واتساب':'اختر التجهيز لإكمال الطلب';}
   var box = document.getElementById('tawilat-price-summary');
   var lbl = document.getElementById('tawilat-summary-label');
   var priceEl = document.getElementById('tawilat-summary-price');
@@ -4439,7 +4438,7 @@ function closeWalaaDetail(){
               <span id="tawilat-summary-label">اختر التجهيز لعرض الإجمالي</span>
               <span id="tawilat-summary-price"></span>
             </div>
-            <button type="button" class="tw-contact" onclick="tawilatOrder()">إكمال الطلب عبر واتساب</button>
+            <button type="button" class="tw-contact" onclick="tawilatOrder()" disabled>إكمال الطلب عبر واتساب</button>
           </div>
         </div>
       </div>
@@ -4699,7 +4698,7 @@ function openMDirect(c){
 
 
 </script>
-<script src="chalet-design.js?v=16"></script>
+<script src="chalet-design.js?v=17"></script>
 <script src="dome-gallery.js?v=2"></script>
 <script>
 // Family Day navigation history: existing views remain the rendering layer.
@@ -4749,7 +4748,7 @@ function openMDirect(c){
     if(r.name==='home') return base+'#home='+r.args[0];
     if(r.name==='cabin') return base+'#cabin='+r.args[0];
     if(r.name==='contact') return base+'#contact='+r.args[0];
-    if(['photos','map-photos','dome-gallery','tour','order','service-sub','menu-cart'].indexOf(r.name)!==-1) return urlFor(r.parent);
+    if(['photos','map-photos','dome-gallery','cabin-compare','tour','order','service-sub','menu-cart'].indexOf(r.name)!==-1) return urlFor(r.parent);
     return base+'#'+r.name;
   }
   function fromHash(){
@@ -4790,12 +4789,14 @@ function openMDirect(c){
       case 'service-sub': call('showServiceSub',r.args); break;
       case 'photos': call('openFS',r.args); break;
       case 'dome-gallery': FD_DOME_GALLERY.show(r.args[0]); break;
+      case 'cabin-compare': FD_CABIN_COMPARE.show(r.args); break;
       case 'menu-cart': call('openMenuCartReview'); break;
       case 'map-photos':
         document.dispatchEvent(new CustomEvent('fd-map-photos-open',{detail:{locationKey:r.args[0]}}));
         break;
       case 'tour': call('open3D',r.args); break;
       case 'order':
+        _orderDraftScope=r.parent ? r.parent.name : r.args[0];
         _isMenuOrder=!!r.args[2];
         _orderResortScope=r.args.length>3 ? !!r.args[3] : !!r.parent && ['menu','sinema','maiya','tarfihi','tawilat','jalsat'].indexOf(r.parent.name)!==-1;
         call('openOrderPopup',r.args.slice(0,2));
@@ -4816,7 +4817,9 @@ function openMDirect(c){
     var close={home:'goBackToDestination',resort:'goBack',chalet:'goBack2',
       services:'closeServices',faq:'closeFaq',faq2:'closeFaq2',contact:'closeContact',
       cabin:'closeM','chalet-detail':'closeM','chalet-faq':'closeChaletFaq','service-sub':'goBack',photos:'closeFS',tour:'closeIframe',order:'closeOrderPopup','menu-cart':'closeMenuCartReview'};
-    if(r.name==='dome-gallery'){
+    if(r.name==='cabin-compare'){
+      FD_CABIN_COMPARE.hide();
+    } else if(r.name==='dome-gallery'){
       FD_DOME_GALLERY.hide();
     } else if(r.name==='map-photos'){
       document.dispatchEvent(new CustomEvent('fd-map-photos-close'));
@@ -4895,6 +4898,15 @@ function openMDirect(c){
   Object.keys(serviceViews).forEach(function(name){
     wrapOpen(serviceViews[name][0],function(){return route(name,[],current.name==='service-sub' ? current : null);});
     wrapClose(serviceViews[name][1]);
+  });
+  document.addEventListener('fd-compare-open',function(event){
+    if(current.name==='resort') navigate(route('cabin-compare',event.detail,current));
+  });
+  document.addEventListener('fd-compare-dismiss',function(){
+    if(current.name==='cabin-compare')returnTo(current.parent);
+  });
+  document.addEventListener('fd-compare-detail',function(event){
+    if(current.name==='cabin-compare')navigate(route('cabin',[event.detail],current.parent));
   });
   window.openAccommodationFaq=function(event,name){
     if(event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return true;
@@ -5562,7 +5574,8 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 #ov.fd-cabin-modern .fd-cabin-heading:has(.fd-cabin-occupancy){display:block}
 #ov.fd-cabin-modern .fd-cabin-occupancy + .fd-cabin-suitable{margin-top:7px}
 </style>
-<link rel="stylesheet" href="site-ui.css?v=6">
+<link rel="stylesheet" href="site-ui.css?v=7">
+<link rel="stylesheet" href="cabin-compare.css?v=1">
 <link rel="stylesheet" href="dome-gallery.css?v=1">
 </body>
 </html><!-- test Fri Jul 17 17:12:00 +03 2026 -->

@@ -146,3 +146,24 @@
 #ov.fd-cabin-modern .fd-cabin-faq-link:hover{color:#fff;}
 #ov.fd-cabin-modern .fd-cabin-faq-link:focus-visible{outline:2px solid #7ecfea;outline-offset:4px;border-radius:4px;}
 #ov.fd-cabin-modern .fd-chalet-pool-note{grid-column:1/-1;margin:0 0 8px;}
+
+/* Approved refinements: keep facts aligned even without an amenity badge. */
+#app #grid .fd-card-feature-slot{display:flex;align-items:center;justify-content:center;min-height:24px;}
+#app #grid .fd-card-actions{display:flex;align-items:stretch;gap:8px;margin-top:auto;}
+#app #grid .fd-card-actions .card-btn{flex:1;min-width:0;margin:0;}
+.fd-destination-location{font:500 12px/1.5 Tajawal,sans-serif;color:#a6dfe8;margin:2px 0 4px;}
+.fd-page-heading-copy{min-width:0;}
+.fd-venue-subtitle{margin:4px 0 0;color:#9ac8d4;font:500 13px/1.5 Tajawal,sans-serif;}
+/* The name trial uses existing space; the header remains 56px tall. */
+#ov.fd-cabin-modern .fd-detail-current-name{margin-inline-start:auto;max-width:calc(100% - 110px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#f0f5f7;font:700 14px/1.5 Tajawal,sans-serif;}
+#tawilat-detail .tw-contact:disabled{opacity:.55;cursor:default;}
+.fd-cart-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 12px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.1);font-family:Tajawal,sans-serif;}
+.fd-cart-copy{min-width:0;display:flex;flex-direction:column;gap:4px;}
+.fd-cart-copy strong{color:#f0f5f7;font-size:14px;line-height:1.6;}
+.fd-cart-copy span{color:#a8c8d3;font-size:13px;}
+.fd-cart-line-total{font-size:14px;color:#9edce5;align-self:start;white-space:nowrap;}
+.fd-cart-row-controls{grid-column:1/-1;display:flex;align-items:center;gap:8px;}
+.fd-cart-row-controls button{min-width:44px;min-height:44px;padding:6px 12px;border:1px solid #315967;border-radius:10px;background:#123442;color:#eaf5f8;font:700 18px Tajawal,sans-serif;cursor:pointer;}
+.fd-cart-row-controls .fd-cart-remove{margin-inline-start:auto;font-size:13px;background:transparent;color:#c5dbe2;}
+.fd-cart-qty{min-width:22px;text-align:center;font-size:15px;color:#fff;}
+.fd-cart-row-controls button:focus-visible{outline:2px solid #7ecfea;outline-offset:2px;}

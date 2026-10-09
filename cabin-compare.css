@@ -1,0 +1,33 @@
+/* Reversible two-cabin comparison trial; use existing Family Day palette. */
+#app #grid .fd-card-compare{flex:0 0 64px;min-height:44px;padding:6px;border:1px solid #315967;border-radius:10px;background:transparent;color:#b9e3e9;font:700 13px Tajawal,sans-serif;cursor:pointer;}
+#app #grid .fd-card-compare[aria-pressed="true"]{background:#123c49;border-color:#7ecfea;color:#fff;}
+#app #grid .fd-card-compare:disabled{opacity:.4;cursor:default;}
+.fd-compare-tray[hidden]{display:none!important;}
+.fd-compare-tray{position:fixed;z-index:150;bottom:12px;inset-inline:16px;width:auto;max-width:660px;margin-inline:auto;padding:12px 14px;border:1px solid #397181;border-radius:16px;background:#0b2534;box-shadow:0 8px 32px #0008;direction:rtl;font-family:Tajawal,sans-serif;}
+.fd-comparing .grid-section{padding-bottom:170px!important;}
+.fd-compare-selection{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;}
+.fd-compare-selection button{background:#163c4a;color:#d4ebf1;border:1px solid #315967;border-radius:8px;padding:8px 10px;min-height:36px;font:500 12px Tajawal,sans-serif;cursor:pointer;}
+.fd-compare-tray-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.fd-compare-tray-actions p{margin:0;flex:1;min-width:110px;font-size:12px;color:#b9d5de;}
+.fd-compare-open{background:#147a8c;color:#fff;border:1px solid #2a9aab;border-radius:10px;min-height:44px;padding:10px 14px;font:700 14px Tajawal,sans-serif;cursor:pointer;}
+.fd-compare-open:disabled{opacity:.45;cursor:default;}
+.fd-compare-clear{background:none;border:0;color:#b9d5de;min-height:36px;font:500 12px Tajawal,sans-serif;text-decoration:underline;cursor:pointer;}
+.fd-compare-dialog{width:min(850px,calc(100% - 24px));max-width:none;max-height:90dvh;margin:auto;padding:0;border:1px solid #315967;border-radius:20px;background:#081d2a;color:#f0f5f7;direction:rtl;font-family:Tajawal,sans-serif;overflow:hidden;}
+.fd-compare-dialog::backdrop{background:#020c17b8;backdrop-filter:blur(4px);}
+.fd-compare-dialog>header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 22px;border-bottom:1px solid #315967;}
+.fd-compare-dialog h2{margin:0;font-size:22px;line-height:1.4;}
+.fd-compare-dialog header p{margin:5px 0 0;color:#9ec5d1;font-size:13px;}
+.fd-compare-close{width:44px;height:44px;flex:none;border:1px solid #315967;border-radius:50%;background:#153444;color:#fff;font-size:26px;cursor:pointer;}
+.fd-compare-scroll{max-height:calc(90dvh - 105px);overflow:auto;overscroll-behavior:contain;}
+.fd-compare-table{border-collapse:collapse;table-layout:fixed;width:100%;font-size:14px;line-height:1.75;}
+.fd-compare-table th,.fd-compare-table td{padding:16px;vertical-align:top;border-bottom:1px solid #254452;overflow-wrap:anywhere;}
+.fd-compare-table th:first-child{width:23%;color:#a8d3dd;font-weight:600;text-align:right;}
+.fd-compare-table thead th{position:sticky;top:0;background:#103040;z-index:1;text-align:center;}
+.fd-compare-table thead strong{display:block;font-size:17px;line-height:1.5;}
+.fd-compare-table thead img{display:block;max-width:100%;width:88px;height:88px;object-fit:cover;border-radius:12px;margin:0 auto 10px;}
+.fd-compare-table tbody tr:nth-child(even){background:#0b2331;}
+.fd-compare-table td+td,.fd-compare-table th+th{border-inline-start:1px solid #254452;}
+.fd-compare-table td{font-weight:400;text-align:center;}
+.fd-compare-table button{min-height:44px;width:100%;padding:8px;border:1px solid #3b7785;background:#123a48;border-radius:10px;color:#e7f5f8;font:700 14px Tajawal,sans-serif;cursor:pointer;}
+:is(.fd-card-compare,.fd-compare-tray button,.fd-compare-dialog button):focus-visible{outline:2px solid #7ecfea;outline-offset:3px;}
+@media(max-width:599px){.fd-compare-dialog>header{padding:14px;}.fd-compare-dialog h2{font-size:20px;}.fd-compare-table{font-size:13px;}.fd-compare-table th,.fd-compare-table td{padding:12px 8px;}.fd-compare-table th:first-child{width:24%;font-size:12px;}.fd-compare-table thead strong{font-size:14px;}.fd-compare-table thead img{width:68px;height:68px;}.fd-compare-table button{font-size:12px;}.fd-compare-tray-actions p{flex-basis:100%;}.fd-compare-open{flex:1;}}

@@ -162,7 +162,7 @@ function openPrivateChalet(){
   panel.innerHTML = '<header class="faq-page-header"><div class="faq-heading">'
     + '<button type="button" class="faq-back" onclick="closeChaletFaq()" aria-label="العودة">'
     + '<svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>'
-    + '<h1 id="chalet-faq-title" class="faq-title">الأسئلة الشائعة</h1></div>'
+    + '<div class="fd-page-heading-copy"><h1 id="chalet-faq-title" class="faq-title">الأسئلة الشائعة</h1><p class="fd-venue-subtitle">شاليه يوم العائلة</p></div></div>'
     + '<nav class="fd-faq-shortcuts" aria-label="أقسام الأسئلة الشائعة">'
     + groups.map(function(group){
       return '<button type="button" aria-controls="' + group.id + '" aria-expanded="false" onclick="selectChaletFaqSection(this.getAttribute(&quot;aria-controls&quot;))">' + group.title + '</button>';

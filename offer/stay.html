@@ -120,9 +120,14 @@
       .booking-link:hover{background:var(--action-hover);}
     }
     @media(prefers-reduced-motion:reduce){*{transition:none!important;}}
+    .offer-card.is-selected{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent);}
+    .offer-select{margin-top:18px;min-height:44px;padding:9px 14px;font:700 14px Tajawal,sans-serif;color:var(--accent);border:1px solid var(--line);border-radius:10px;background:var(--page-bg);cursor:pointer;}
+    .offer-select[aria-pressed="true"]{background:var(--action);border-color:var(--action);color:#fff;}
+    .offer-select:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+    .offer-booking-link[aria-disabled="true"]{background:var(--surface);border-color:var(--line);color:var(--muted);cursor:default;}
   </style>
   <script src="../campaign-data.js?v=5" defer></script>
-  <script src="../resort-campaign.js?v=3" defer></script>
+  <script src="../resort-campaign.js?v=4" defer></script>
 </head>
 <body data-campaign-page="offer" data-campaign-venue="stay">
   <main class="page">

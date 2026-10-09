@@ -13,7 +13,29 @@ function resortCampaignState(now, campaign) {
 }
 
 (function () {
-  var expiryTimer;
+  var expiryTimer, selectedOffer = null;
+  function updateOfferSelection(campaign, state) {
+    var multiple = campaign.offers.length > 1;
+    if (selectedOffer !== null && state.statuses[selectedOffer] !== 'active') selectedOffer = null;
+    document.querySelectorAll('[data-offer-choice]').forEach(function (button) {
+      var chosen = Number(button.dataset.offerChoice) === selectedOffer;
+      button.setAttribute('aria-pressed', String(chosen));
+      button.textContent = chosen ? 'تم اختيار العرض ✓' : 'اختر هذا العرض';
+      button.closest('.offer-card').classList.toggle('is-selected', chosen);
+    });
+    var booking = document.querySelector('.offer-booking-link');
+    var unavailable = multiple && selectedOffer === null;
+    booking.setAttribute('aria-disabled', String(unavailable));
+    booking.textContent = unavailable ? 'اختر العرض لإكمال الحجز' : campaign.bookingLabel;
+    if (unavailable) { booking.removeAttribute('href'); return; }
+    var message = campaign.whatsappMessage;
+    if (multiple) {
+      var offer = campaign.offers[selectedOffer];
+      var venue = document.body.dataset.campaignVenue === 'stay' ? 'استراحة يوم العائلة' : 'منتجع يوم العائلة';
+      message = 'السلام عليكم، أرغب في الاستفسار عن عرض ' + [offer.intro.replace(/^عرض\s+/, ''), offer.amount, offer.currency].filter(Boolean).join(' ') + ' لدى ' + venue + ' ضمن ' + campaign.name + '.';
+    }
+    booking.href = 'https://wa.me/' + campaign.whatsappNumber + '?text=' + encodeURIComponent(message);
+  }
   function renderCampaign() {
     var campaigns = Object.assign({resort: FD_CAMPAIGN}, typeof FD_VENUE_CAMPAIGNS === 'undefined' ? {} : FD_VENUE_CAMPAIGNS);
     document.querySelectorAll('[data-campaign-banner]').forEach(function (banner) {
@@ -43,12 +65,17 @@ function resortCampaignState(now, campaign) {
           + '<div class="offer-head"><span class="offer-label">' + offer.label + '</span>' + (offer.datesHTML ? '<p class="offer-dates">' + offer.datesHTML + '</p>' : '') + '</div>'
           + '<h2 class="offer-title" id="' + offer.titleId + '"><span class="offer-intro">' + offer.intro + '</span><span class="offer-value"><bdi class="amount" dir="ltr">' + offer.amount + '</bdi>' + (offer.currency ? '<span class="currency">' + offer.currency + '</span>' : '') + '</span></h2>'
           + '<p class="offer-note">' + offer.noteHTML + '</p>'
-          + (expired ? '<p class="offer-ended-label">انتهى العرض</p>' : '') + '</article>';
+          + (expired ? '<p class="offer-ended-label">انتهى العرض</p>' : '')
+          + (campaign.offers.length > 1 ? '<button type="button" class="offer-select" data-offer-choice="' + index + '" aria-pressed="false" aria-label="اختيار ' + offer.intro + ' ' + offer.amount + ' ' + (offer.currency || '') + '"' + (state.statuses[index] !== 'active' ? ' disabled' : '') + '>اختر هذا العرض</button>' : '') + '</article>';
       }).join('');
       document.querySelector('.offer-terms').textContent = campaign.terms;
-      var booking = document.querySelector('.offer-booking-link');
-      booking.textContent = campaign.bookingLabel;
-      booking.href = 'https://wa.me/' + campaign.whatsappNumber + '?text=' + encodeURIComponent(campaign.whatsappMessage);
+      offers.querySelectorAll('[data-offer-choice]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          selectedOffer = Number(button.dataset.offerChoice);
+          updateOfferSelection(campaign, resortCampaignState(new Date(), campaign));
+        });
+      });
+      updateOfferSelection(campaign, state);
       ['.hero', '.offers', '.offer-terms', '.booking-bar'].forEach(function (selector) {
         document.querySelector(selector).hidden = state.allExpired;
       });
