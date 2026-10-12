@@ -620,13 +620,12 @@ body{background:var(--bg);color:var(--text);font-family:'Tajawal',sans-serif;min
 #contact-page .cp-label{margin:0}
 #contact-page .cp-app-caption{margin:0;padding:2px 4px 6px;color:rgba(255,255,255,.68);font-size:12px;line-height:1.4}
 #contact-page .cp-resort-only{display:none}
-/* Review invitation is a resort-only trial below the location link. */
-#contact-page .cp-review{display:none}
-#contact-page[data-venue="resort"] .cp-review{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-top:18px}
-#contact-page[data-venue="resort"] .cp-review-copy{margin:0;color:#b6cbd6;font-size:.9375rem;line-height:1.65}
-#contact-page[data-venue="resort"] .cp-review-link{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;box-sizing:border-box;padding:10px 18px;border:1px solid #3f7e8c;border-radius:12px;background:#123746;color:#d6eef2;font-family:inherit;font-size:.9375rem;font-weight:700;line-height:1.5;text-decoration:none;transition:background-color .15s,border-color .15s}
-#contact-page[data-venue="resort"] .cp-review-link svg{flex:0 0 18px;color:#8fd5e4}
-@media(hover:hover){#contact-page[data-venue="resort"] .cp-review-link:hover{background:#1b3d50;border-color:#4d8997}}
+/* Shared review invitation; showContact selects the destination for each venue. */
+#contact-page[data-venue] .cp-review{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-top:18px}
+#contact-page[data-venue] .cp-review-copy{margin:0;color:#b6cbd6;font-size:.9375rem;line-height:1.65}
+#contact-page[data-venue] .cp-review-link{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;box-sizing:border-box;padding:10px 18px;border:1px solid #3f7e8c;border-radius:12px;background:#123746;color:#d6eef2;font-family:inherit;font-size:.9375rem;font-weight:700;line-height:1.5;text-decoration:none;transition:background-color .15s,border-color .15s}
+#contact-page[data-venue] .cp-review-link svg{flex:0 0 18px;color:#8fd5e4}
+@media(hover:hover){#contact-page[data-venue] .cp-review-link:hover{background:#1b3d50;border-color:#4d8997}}
 
 #contact-page[data-venue="resort"] .cp-shell{display:block;box-sizing:border-box;width:100%;max-width:600px;margin:0 auto;padding:24px 20px calc(32px + env(safe-area-inset-bottom,0px));text-align:right}
 #contact-page[data-venue="resort"] .cp-hero{padding:0;margin-bottom:22px}
@@ -1292,6 +1291,13 @@ function showContact(type){
   var nm = document.getElementById('cp-map-name');
   if(el) el.href = mapLink;
   if(nm) nm.textContent = mapName;
+  var reviewPlaceIds = {
+    resort: 'ChIJkfXGX69nwRURYJSW6ifyHqY',
+    stay: 'ChIJ9cqaFpNnwRURFlcvpptWW_4',
+    chalet: 'ChIJBx9eaoVnwRURtljowMtrzV4'
+  };
+  var reviewLink = document.querySelector('#contact-page .cp-review-link');
+  if(reviewLink) reviewLink.href = 'https://search.google.com/local/writereview?placeid=' + (reviewPlaceIds[type] || reviewPlaceIds.resort);
   var bookingLink = document.querySelector('#contact-page .cp-primary');
   if(bookingLink) bookingLink.href = type === 'chalet' ? PRIVATE_CHALET.bookUrl : 'https://familyday-sa.com/ar';
   var mapSubtitle = document.querySelector('#contact-page .cp-map-sub');
