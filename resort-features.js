@@ -136,8 +136,15 @@ function updateMaiyaThumbnail() {
   }
 }
 
+// Keep Meta's click ID out of copied links and the address bar.
+function cleanFamilyDayURL(href) {
+  var url = new URL(href || location.href);
+  url.searchParams.delete('fbclid');
+  return url;
+}
+
 function cabinShareURL(id) {
-  var url = new URL(location.href);
+  var url = cleanFamilyDayURL();
   url.hash = String(id) === '30' ? 'chalet-detail' : 'cabin=' + id;
   return url.href;
 }
