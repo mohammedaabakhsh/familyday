@@ -12,8 +12,8 @@
     // Owner-confirmed plot directly above the two domes on the left.
     { key: 'pyramid', cabinId: 2, x: 23.25, y: 32.9, labelSide: 'left', labelRightX: 16,
       footprint: [[17.8, 24.8], [38.8, 24.8], [38.8, 38.2], [17.8, 38.2]] },
-    { key: 'dome-upper', cabinId: 1, x: 23.25, y: 43.4, labelSide: 'left', labelRightX: 16, locationLabel: '2', instanceNumber: 2 },
-    { key: 'dome-lower', cabinId: 1, x: 23.25, y: 53.6, labelSide: 'left', labelRightX: 16, locationLabel: '1', instanceNumber: 1 },
+    { key: 'dome-upper', cabinId: 12, x: 23.25, y: 43.4, labelSide: 'left', labelRightX: 16 },
+    { key: 'dome-lower', cabinId: 1, x: 23.25, y: 53.6, labelSide: 'left', labelRightX: 16 },
     // Owner's corrected aerial reference: smaller Classic above, larger Royal below.
     { key: 'classic', cabinId: 3, x: 60.2, y: 26.6, labelSide: 'right', labelLeftX: 70,
       footprint: [[39.5, 23.8], [54.4, 10.0], [64.7, 24.5], [51.3, 35.5], [43.8, 24.6]] },
@@ -29,10 +29,10 @@
     { key: 'french', cabinId: 7, x: 53.3, y: 67.5, labelSide: 'bottom', labelX: 63, labelY: 91,
       footprint: [[48.5, 61.8], [56.44, 61.8], [58.2, 64.7333333333], [58.2, 84.3], [48.5, 84.3]] },
     // Owner-confirmed right-hand row: Greek 1, Greek 2, then Palm Beach.
-    { key: 'greek-one', cabinId: 4, locationLabel: '1', instanceNumber: 1,
+    { key: 'greek-one', cabinId: 4,
       x: 75.9, y: 51.4, labelSide: 'offset', labelX: 89.5, labelY: 69, leaderBend: [87.1, 65.1],
       footprint: [[70.4, 48.6], [76.8, 43.5], [89.9, 63.7], [82.5, 69]] },
-    { key: 'greek-two', cabinId: 4, locationLabel: '2', instanceNumber: 2,
+    { key: 'greek-two', cabinId: 13,
       x: 69.4, y: 56.8, labelSide: 'offset', labelX: 86, labelY: 76.5, leaderBend: [80.1, 71],
       footprint: [[63.6, 54.2], [70.4, 48.6], [82.5, 69], [75, 74]] },
     { key: 'palm-beach', cabinId: 5, x: 61.9, y: 61.4,
@@ -51,9 +51,11 @@
   // Physical instances of the same cabin type share that type's gallery.
   var cardPhotos = {
     1: 'imgs/dome_2.webp',
+    12: 'imgs/dome_2.webp',
     2: 'imgs/harami_2.webp',
     3: 'imgs/classic_2.webp',
     4: 'imgs/greek_3.webp',
+    13: 'imgs/greek_3.webp',
     5: 'imgs/palm_2.webp',
     6: 'imgs/boho_2.webp',
     7: 'imgs/french_3.webp',
@@ -264,7 +266,7 @@
     });
     card.classList.toggle('is-classic', cabin.id === 3);
     card.classList.toggle('is-shared', shared);
-    card.querySelector('h3').textContent = cabin.name + (location.instanceNumber ? ' ' + location.instanceNumber : '');
+    card.querySelector('h3').textContent = cabin.name;
     card.classList.remove('has-photo');
     photoButton.hidden = true;
     card.setAttribute('aria-label', shared ? 'تفاصيل الحديقة المشتركة' : 'ملخص الكوخ المختار');
@@ -556,11 +558,11 @@
       marker.dataset.mapIndex = String(i);
       marker.dataset.locationKey = location.key;
       marker.style.left = location.x + '%'; marker.style.top = location.y + '%';
-      marker.setAttribute('aria-label', cabin.name + (location.locationLabel ? ' ' + location.locationLabel : '') + ': عرض المميزات');
+      marker.setAttribute('aria-label', cabin.name + ': عرض المميزات');
       marker.setAttribute('aria-pressed', 'false'); marker.setAttribute('aria-controls', 'fd-map-card');
       var label = document.createElement('span');
       // Compact map names; full names remain in the detail card and accessible label.
-      label.textContent = cabin.name.replace(/^(?:الكوخ|كوخ|البيت|بيت)\s+/, '') + (location.instanceNumber ? ' ' + location.instanceNumber : '');
+      label.textContent = cabin.name.replace(/^(?:الكوخ|كوخ|البيت|بيت)\s+/, '');
       marker.appendChild(label);
       // Pointer gestures are handled once on pointerup; keyboard/assistive clicks have detail=0.
       marker.addEventListener('click', function (event) { if (event.detail === 0) selectLocation(location); });

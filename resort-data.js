@@ -6,7 +6,7 @@ const data = {
       {
         "id": 1,
         "img": 12,
-        "name": "بيت الدوم",
+        "name": "بيت الدوم 1",
         "type": "تجربة فريدة على شكل قبة مع بانيو داخلي وجاكوزي داخل المسبح",
         "suitable": "مثالي للأزواج",
         "rooms": 1,
@@ -166,7 +166,7 @@ const data = {
       {
         "id": 4,
         "img": 5,
-        "name": "البيت اليوناني",
+        "name": "البيت اليوناني 1",
         "type": "مزيج بين التراث القديم والبساطة الحديثة",
         "suitable": "مناسب للعائلات",
         "rooms": 2,
@@ -564,6 +564,18 @@ const data = {
     ]
   }
 };
+
+// Separate physical units retain the owner-confirmed shared specifications.
+(function () {
+  [
+    {sourceId: 1, id: 12, name: 'بيت الدوم 2', bookUrl: 'https://familyday-sa.com/ar/listings/69cea40091aebf200fef69e9'},
+    {sourceId: 4, id: 13, name: 'البيت اليوناني 2', bookUrl: 'https://familyday-sa.com/ar/listings/69cea28b4b817e1124e35e57'}
+  ].forEach(function (unit) {
+    var index = data.resort.items.findIndex(function (item) { return item.id === unit.sourceId; });
+    var copy = Object.assign({}, data.resort.items[index], {id: unit.id, name: unit.name, bookUrl: unit.bookUrl});
+    data.resort.items.splice(index + 1, 0, copy);
+  });
+})();
 
 function resortGuestText(count) {
   return count === 2 ? 'حتى ضيفين' : 'حتى ' + count + (count <= 10 ? ' ضيوف' : ' ضيفًا');

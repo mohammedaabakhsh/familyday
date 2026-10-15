@@ -1167,7 +1167,7 @@ header{
 <script src="campaign-data.js?v=7"></script>
 <script src="resort-campaign.js?v=5" defer></script>
 <script src="resort-features.js?v=7"></script>
-<script src="stay-design.js?v=14"></script>
+<script src="stay-design.js?v=15"></script>
 <script src="site-enhancements.js?v=1"></script>
 <script src="cabin-compare.js?v=2"></script>
 <script>
@@ -1421,6 +1421,7 @@ function openOrderPopup(itemName, showTime){
   FD_ORDER_DRAFTS.save();
   configureResortOrderForm();
   _orderItemName = itemName;
+  document.getElementById('order-cinema-note').hidden = itemName !== 'جلسة السينما';
   document.getElementById('order-item-name').textContent = itemName;
   document.getElementById('order-name').value = '';
   document.getElementById('order-villa').value = '';
@@ -1483,6 +1484,7 @@ function sendOrderWhatsapp(){
   } else {
     msg = 'السلام عليكم،' + '\n' + (inquiryOnly ? 'أرغب في الاستفسار عن الخدمة التالية:' : 'أرغب في طلب الخدمة التالية:') + '\n' + 'الاسم: ' + name + '\n' + 'الكوخ: ' + villa + cabinNum + '\n' + 'الخدمة: ' + _orderItemName + (timeStr ? '\n' + timeStr.replace(' - ','') : '') + (notes ? '\n' + 'ملاحظات: ' + notes : '');
   }
+  if(_orderItemName === 'جلسة السينما') msg += '\nالسعر: 150 ريال لمدة 3 ساعات\nيُؤكَّد الموعد حسب التوفر.';
   window.open('https://wa.me/966556156693?text=' + encodeURIComponent(msg), '_blank');
   FD_ORDER_DRAFTS.clear();
   closeOrderPopup();
@@ -2117,7 +2119,7 @@ function tarfihiOrder(){
         <section class="cn-notes" aria-labelledby="cn-notes-title">
           <h2 id="cn-notes-title" class="cn-section-title">تعليمات وملاحظات</h2>
           <ul class="cn-notes-list">
-            <li>الجلسة بالحجز المسبق وحسب التوفر.</li>
+            <li>الجلسة بالحجز المسبق، ويُؤكَّد الموعد حسب التوفر.</li>
             <li>الالتزام بوقت بداية الجلسة.</li>
             <li>المحافظة على الشاشة وجهاز العرض.</li>
             <li>إبلاغنا فورًا عند هبوب رياح قوية.</li>
@@ -2736,7 +2738,7 @@ function tarfihiOrder(){
   </div>
 </div>
 
-<script src="resort-data.js?v=10"></script>
+<script src="resort-data.js?v=11"></script>
 <script>
 const IMG=["imgs/img04.webp","imgs/img05.webp","imgs/img06.webp","imgs/img07.webp","imgs/img08.webp","imgs/img09.webp",
   "imgs/img10.webp",
@@ -2871,6 +2873,9 @@ const GALLERY={1:[
   20:["imgs/sec1_1.webp","imgs/sec1_2.webp","imgs/sec1_3.webp","imgs/sec1_4.webp","imgs/sec1_5.webp","imgs/sec1_6.webp","imgs/sec1_7.webp","imgs/sec1_8.webp","imgs/sec1_9.webp","imgs/sec1_10.webp","imgs/sec1_11.webp","imgs/sec1_12.webp"],
   21:["imgs/sec2_1.webp?v=20261002b","imgs/sec2_2.webp?v=20261002b","imgs/sec2_3.webp?v=20261002b","imgs/sec2_4.webp?v=20261002b","imgs/sec2_5.webp?v=20261002b","imgs/sec2_6.webp?v=20261002b","imgs/sec2_7.webp?v=20261002b","imgs/sec2_8.webp?v=20261002b","imgs/sec2_9.webp?v=20261002b","imgs/sec2_10.webp?v=20261002b","imgs/sec2_11.webp?v=20261002b","imgs/sec2_12.webp?v=20261002b","imgs/sec2_13.webp?v=20261002b"]
 };
+// Owner-confirmed identical photo sets for the second Dome and Greek units.
+GALLERY[12] = GALLERY[1].slice();
+GALLERY[13] = GALLERY[4].slice();
 let galIdx=0,curId=null,curSection='resort';
 
 
@@ -4419,6 +4424,7 @@ function closeWalaaDetail(){
       <label style="font-size:13px;color:rgba(255,255,255,0.7);font-weight:700;display:block;margin-bottom:6px;">رقم الكوخ</label>
       <div id="order-cabin-num" style="width:100%;padding:12px 14px;border:1.5px solid rgba(25,167,183,.4);border-radius:12px;font-family:'Tajawal',sans-serif;font-size:20px;font-weight:700;color:#19a7b7;box-sizing:border-box;background:rgba(4,17,30,.60);text-align:center;letter-spacing:2px;"></div>
     </div>
+    <p id="order-cinema-note" hidden style="font-size:14px;color:#a4d8df;line-height:1.8;margin:0 0 14px;">مدة الجلسة 3 ساعات بسعر 150 ريال. يُؤكَّد الموعد حسب التوفر.</p>
     <div style="margin-bottom:14px;" id="order-time-wrap">
       <label style="font-size:13px;color:rgba(255,255,255,0.7);font-weight:700;display:block;margin-bottom:6px;">من ساعة كم؟</label>
       <select id="order-time" style="width:100%;padding:12px 14px;border:1.5px solid #19a7b7;border-radius:12px;font-family:'Tajawal',sans-serif;font-size:14px;color:rgba(255,255,255,0.85);outline:none;box-sizing:border-box;background:rgba(4,17,30,.90);">
@@ -5156,7 +5162,7 @@ function openMDirect(c){
   window.addEventListener('pageshow',function(event){if(event.persisted) restore();});
 })();
 </script>
-<script src="resort-map.js?v=31" defer></script>
+<script src="resort-map.js?v=32" defer></script>
 
 <style id="fd-approved-visual-refinements">
 /* Approved refinements. Remove data-dest-photo to restore the original cards. */
