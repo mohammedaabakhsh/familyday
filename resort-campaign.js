@@ -32,7 +32,7 @@ function resortCampaignState(now, campaign) {
     if (multiple) {
       var offer = campaign.offers[selectedOffer];
       var venue = document.body.dataset.campaignVenue === 'stay' ? 'استراحة يوم العائلة' : 'منتجع يوم العائلة';
-      message = 'السلام عليكم، أرغب في الاستفسار عن عرض ' + [offer.intro.replace(/^عرض\s+/, ''), offer.amount, offer.currency].filter(Boolean).join(' ') + ' لدى ' + venue + ' ضمن ' + campaign.name + '.';
+      message = offer.whatsappMessage || 'السلام عليكم، أرغب في الاستفسار عن عرض ' + [offer.intro.replace(/^عرض\s+/, ''), offer.amount, offer.currency].filter(Boolean).join(' ') + ' لدى ' + venue + ' ضمن ' + campaign.name + '.';
     }
     booking.href = 'https://wa.me/' + campaign.whatsappNumber + '?text=' + encodeURIComponent(message);
   }
@@ -61,7 +61,7 @@ function resortCampaignState(now, campaign) {
       offers.setAttribute('aria-label', campaign.offersLabel);
       offers.innerHTML = campaign.offers.map(function (offer, index) {
         var expired = state.statuses[index] === 'expired';
-        return '<article class="offer-card" aria-labelledby="' + offer.titleId + '" data-start="' + (offer.start || '') + '" data-end="' + (offer.end || '') + '">'
+        return (offer.groupTitle ? '<h2 class="offer-group-title">' + offer.groupTitle + '</h2>' : '') + '<article class="offer-card' + (offer.wide ? ' offer-card--wide' : '') + '" aria-labelledby="' + offer.titleId + '" data-start="' + (offer.start || '') + '" data-end="' + (offer.end || '') + '">'
           + '<div class="offer-head"><span class="offer-label">' + offer.label + '</span>' + (offer.datesHTML ? '<p class="offer-dates">' + offer.datesHTML + '</p>' : '') + '</div>'
           + '<h2 class="offer-title" id="' + offer.titleId + '"><span class="offer-intro">' + offer.intro + '</span><span class="offer-value"><bdi class="amount" dir="ltr">' + offer.amount + '</bdi>' + (offer.currency ? '<span class="currency">' + offer.currency + '</span>' : '') + '</span></h2>'
           + '<p class="offer-note">' + offer.noteHTML + '</p>'

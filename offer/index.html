@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#04111e">
   <title>عروض أكتوبر الحصرية | منتجع يوم العائلة</title>
-  <meta name="description" content="اكتشف عروض أكتوبر الحصرية من منتجع يوم العائلة: إقامة 10 ساعات بخصم 45%، وخصم 25% منتصف الأسبوع، و10% يوم الخميس أو الجمعة.">
-  <link rel="canonical" href="https://mohammedaabakhsh.github.io/familyday/offer/">
+  <meta name="description" content="عروض أكتوبر لمنتجع يوم العائلة: أسعار الأكواخ من 507 ريال من السبت إلى الأربعاء، وإقامة 10 ساعات بخصم 45% من الأحد إلى الأربعاء، وخصم 10% الخميس و20% الجمعة.">
+  <link rel="canonical" href="https://familydaystay.com/offer/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="منتجع يوم العائلة">
   <meta property="og:title" content="عروض أكتوبر الحصرية | يوم العائلة">
-  <meta property="og:description" content="ثلاثة عروض خلال أكتوبر بخصومات 45% و25% و10%. تعرّف على أيام كل عرض واحجز عبر واتساب.">
-  <meta property="og:image" content="https://mohammedaabakhsh.github.io/familyday/imgs/img01.webp">
+  <meta property="og:description" content="أكواخ بأسعار تبدأ من 507 ريال، وإقامة 10 ساعات بخصم 45%، والخميس بخصم 10% والجمعة بخصم 20%.">
+  <meta property="og:image" content="https://familydaystay.com/imgs/img01.webp">
   <link rel="icon" type="image/png" href="../imgs/icon.png">
   <link rel="apple-touch-icon" href="../imgs/icon.png">
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
@@ -106,7 +106,10 @@
       .booking-bar{position:static;padding:0;margin-top:26px;border:0;background:transparent;}
       .booking-link{max-width:420px;}
     }
-    @media(min-width:1000px){.offers{grid-template-columns:repeat(3,minmax(0,1fr));}.amount{font-size:58px;}}
+    .offer-group-title{grid-column:1/-1;margin:18px 0 0;font-size:21px;line-height:1.5;color:var(--accent);}
+    .offer-group-title:first-child{margin-top:0;}
+    .offer-card--wide{grid-column:1/-1;}
+    @media(min-width:760px){.offer-card--wide .offer-note{margin-top:0;}}
     @media(max-width:360px){
       .page{padding-inline:16px;}
       .page-heading{gap:10px;}
@@ -126,8 +129,8 @@
     .offer-select:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
     .offer-booking-link[aria-disabled="true"]{background:var(--surface);border-color:var(--line);color:var(--muted);cursor:default;}
   </style>
-  <script src="../campaign-data.js?v=5" defer></script>
-  <script src="../resort-campaign.js?v=4" defer></script>
+  <script src="../campaign-data.js?v=6" defer></script>
+  <script src="../resort-campaign.js?v=5" defer></script>
 </head>
 <body data-campaign-page="offer">
   <main class="page">
@@ -151,20 +154,43 @@
     </div>
 
     <section class="offers" aria-label="عروض أكتوبر الحصرية">
-      <article class="offer-card" aria-labelledby="offer-first-title" data-start="2026-10-01" data-end="2026-10-31">
-        <div class="offer-head"><span class="offer-label">عرضنا الأول</span></div>
-        <h2 class="offer-title" id="offer-first-title"><span class="offer-intro">إقامة 10 ساعات بخصم</span><span class="offer-value"><bdi class="amount" dir="ltr">45%</bdi></span></h2>
-        <p class="offer-note">من الأحد إلى الأربعاء، من 4:00 مساءً حتى 2:00 صباحًا.<br>لا يتوفر خلال الإجازات والمواسم.<br>التمديد بـ40 ريالًا للساعة حتى 10:00 صباحًا.</p>
-      </article>
-      <article class="offer-card" aria-labelledby="offer-second-title" data-start="2026-10-01" data-end="2026-10-31">
-        <div class="offer-head"><span class="offer-label">عرضنا الثاني</span></div>
-        <h2 class="offer-title" id="offer-second-title"><span class="offer-intro">عرض منتصف الأسبوع بخصم</span><span class="offer-value"><bdi class="amount" dir="ltr">25%</bdi></span></h2>
+      <h2 class="offer-group-title">أسعار السبت إلى الأربعاء</h2>
+      <article class="offer-card" aria-labelledby="offer-pyramid-title" data-start="2026-10-01" data-end="2026-10-31">
+        <div class="offer-head"><span class="offer-label">أكواخ مختارة</span></div>
+        <h2 class="offer-title" id="offer-pyramid-title"><span class="offer-intro">الكوخ الهرمي</span><span class="offer-value"><bdi class="amount" dir="ltr">507</bdi><span class="currency">ريال للكوخ</span></span></h2>
         <p class="offer-note">من السبت إلى الأربعاء.</p>
       </article>
-      <article class="offer-card" aria-labelledby="offer-third-title" data-start="2026-10-01" data-end="2026-10-31">
-        <div class="offer-head"><span class="offer-label">عرضنا الثالث</span></div>
-        <h2 class="offer-title" id="offer-third-title"><span class="offer-intro">عرض نهاية الأسبوع بخصم</span><span class="offer-value"><bdi class="amount" dir="ltr">10%</bdi></span></h2>
-        <p class="offer-note">احجز الخميس أو الجمعة.</p>
+      <article class="offer-card" aria-labelledby="offer-540-title" data-start="2026-10-01" data-end="2026-10-31">
+        <div class="offer-head"><span class="offer-label">أكواخ مختارة</span></div>
+        <h2 class="offer-title" id="offer-540-title"><span class="offer-intro">اليوناني والكلاسيكي وبالم بيتش وبيت الدوم</span><span class="offer-value"><bdi class="amount" dir="ltr">540</bdi><span class="currency">ريال لكل كوخ</span></span></h2>
+        <p class="offer-note">من السبت إلى الأربعاء.</p>
+      </article>
+      <article class="offer-card" aria-labelledby="offer-572-title" data-start="2026-10-01" data-end="2026-10-31">
+        <div class="offer-head"><span class="offer-label">أكواخ مختارة</span></div>
+        <h2 class="offer-title" id="offer-572-title"><span class="offer-intro">البوهيمي والريفي والفرنسي</span><span class="offer-value"><bdi class="amount" dir="ltr">572</bdi><span class="currency">ريال لكل كوخ</span></span></h2>
+        <p class="offer-note">من السبت إلى الأربعاء.</p>
+      </article>
+      <article class="offer-card" aria-labelledby="offer-713-title" data-start="2026-10-01" data-end="2026-10-31">
+        <div class="offer-head"><span class="offer-label">أكواخ مختارة</span></div>
+        <h2 class="offer-title" id="offer-713-title"><span class="offer-intro">البانورامي ورويال</span><span class="offer-value"><bdi class="amount" dir="ltr">713</bdi><span class="currency">ريال لكل كوخ</span></span></h2>
+        <p class="offer-note">من السبت إلى الأربعاء.</p>
+      </article>
+      <h2 class="offer-group-title">إقامة 10 ساعات</h2>
+      <article class="offer-card offer-card--wide" aria-labelledby="offer-short-title" data-start="2026-10-01" data-end="2026-10-31">
+        <div class="offer-head"><span class="offer-label">إقامة قصيرة</span></div>
+        <h2 class="offer-title" id="offer-short-title"><span class="offer-intro">إقامة 10 ساعات بخصم</span><span class="offer-value"><bdi class="amount" dir="ltr">45%</bdi></span></h2>
+        <p class="offer-note">من الأحد إلى الأربعاء.<br>إقامة قصيرة بخصوصية وراحة.</p>
+      </article>
+      <h2 class="offer-group-title">عروض نهاية الأسبوع</h2>
+      <article class="offer-card" aria-labelledby="offer-thursday-title" data-start="2026-10-01" data-end="2026-10-31">
+        <div class="offer-head"><span class="offer-label">نهاية الأسبوع</span></div>
+        <h2 class="offer-title" id="offer-thursday-title"><span class="offer-intro">الخميس بخصم</span><span class="offer-value"><bdi class="amount" dir="ltr">10%</bdi></span></h2>
+        <p class="offer-note">يسري العرض يوم الخميس.</p>
+      </article>
+      <article class="offer-card" aria-labelledby="offer-friday-title" data-start="2026-10-01" data-end="2026-10-31">
+        <div class="offer-head"><span class="offer-label">نهاية الأسبوع</span></div>
+        <h2 class="offer-title" id="offer-friday-title"><span class="offer-intro">الجمعة بخصم</span><span class="offer-value"><bdi class="amount" dir="ltr">20%</bdi></span></h2>
+        <p class="offer-note">يسري العرض يوم الجمعة.</p>
       </article>
     </section>
     <p class="offer-terms">تُطبق الشروط والأحكام</p>
