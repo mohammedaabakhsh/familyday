@@ -3276,7 +3276,7 @@ function openM(id,type){
   document.getElementById('ov').classList.remove('fd-stay-modern');
   var bb=document.querySelector('.modal-back-btn');if(bb)bb.innerHTML='❮ العودة إلى الأكواخ';
   type=type||curSection;
-  const modernResortDetail=type==='resort'&&id>=1&&id<=11;
+  const modernResortDetail=type==='resort'&&data.resort.items.some(function(item){return item.id===id;});
   document.getElementById('ov').classList.toggle('fd-cabin-modern',modernResortDetail);
   
   const items=data[type].items;
