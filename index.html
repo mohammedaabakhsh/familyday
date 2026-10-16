@@ -4845,7 +4845,7 @@ function openMDirect(c){
 
 
 </script>
-<script src="chalet-design.js?v=18"></script>
+<script src="chalet-design.js?v=19"></script>
 <script src="dome-gallery.js?v=2"></script>
 <script>
 // Family Day navigation history: existing views remain the rendering layer.
@@ -4880,6 +4880,7 @@ function openMDirect(c){
     else if(name==='contact') r.parent = route('home',[r.args[0] || 'resort']);
     else if(name==='cabin') r.parent = route(r.args[0]>=20 ? 'chalet' : 'resort');
     else if(name==='map') r.parent = route('resort');
+    else if(name==='chalet-map') r.parent = route('home',['chalet']);
     else if(serviceViews[name] || name==='service-sub') r.parent = route('services');
     return r;
   }
@@ -4908,7 +4909,7 @@ function openMDirect(c){
     }
     match=/^(home|contact)=(resort|stay|chalet)$/.exec(hash);
     if(match) return route(match[1],[match[2]]);
-    if(['resort','chalet','services','faq','faq2','map','chalet-detail','chalet-faq'].indexOf(hash)!==-1 || serviceViews[hash]) return route(hash);
+    if(['resort','chalet','services','faq','faq2','map','chalet-detail','chalet-faq','chalet-map'].indexOf(hash)!==-1 || serviceViews[hash]) return route(hash);
     return route('dest');
   }
   function remember(name){
@@ -4923,6 +4924,7 @@ function openMDirect(c){
       case 'resort': call('showSection',['resort']); break;
       case 'chalet': call('showSection2'); break;
       case 'chalet-detail': call('openPrivateChalet'); break;
+      case 'chalet-map': FD_CHALET_MAP.show(); break;
       case 'chalet-faq': call('showChaletFaq'); break;
       case 'services': call('showServices'); break;
       case 'faq': call('showFaq'); break;
@@ -4971,6 +4973,8 @@ function openMDirect(c){
       FD_DOME_GALLERY.hide();
     } else if(r.name==='map-photos'){
       document.dispatchEvent(new CustomEvent('fd-map-photos-close'));
+    } else if(r.name==='chalet-map'){
+      FD_CHALET_MAP.hide();
     } else if(r.name==='map'){
       var dialog=document.getElementById('fd-map-dialog');
       if(dialog && dialog.open) dialog.close();
@@ -4989,7 +4993,7 @@ function openMDirect(c){
       for(var j=common;j<after.length;j++) openView(after[j]);
       current=next;
       document.body.style.overflow=after.some(function(r){
-        return ['cabin','chalet-detail','photos','dome-gallery','tour','tawilat','walaa','map'].indexOf(r.name)!==-1;
+        return ['cabin','chalet-detail','photos','dome-gallery','tour','tawilat','walaa','map','chalet-map'].indexOf(r.name)!==-1;
       }) ? 'hidden' : '';
     } finally { rendering=false; }
   }
@@ -5046,6 +5050,12 @@ function openMDirect(c){
   Object.keys(serviceViews).forEach(function(name){
     wrapOpen(serviceViews[name][0],function(){return route(name,[],current.name==='service-sub' ? current : null);});
     wrapClose(serviceViews[name][1]);
+  });
+  document.addEventListener('fd-chalet-map-request',function(){
+    if(!rendering && current.name!=='chalet-map') navigate(route('chalet-map',[],current));
+  });
+  document.addEventListener('fd-chalet-map-dismiss',function(){
+    if(!rendering && current.name==='chalet-map') returnTo(current.parent);
   });
   document.addEventListener('fd-compare-open',function(event){
     if(current.name==='resort') navigate(route('cabin-compare',event.detail,current));
@@ -5163,6 +5173,8 @@ function openMDirect(c){
 })();
 </script>
 <script src="resort-map.js?v=32" defer></script>
+<link rel="stylesheet" href="chalet-map.css?v=1">
+<script src="chalet-map.js?v=1" defer></script>
 
 <style id="fd-approved-visual-refinements">
 /* Approved refinements. Remove data-dest-photo to restore the original cards. */
@@ -5727,3 +5739,4 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 <link rel="stylesheet" href="dome-gallery.css?v=1">
 </body>
 </html><!-- test Fri Jul 17 17:12:00 +03 2026 -->
+
