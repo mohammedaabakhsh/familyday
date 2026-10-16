@@ -27,8 +27,7 @@ function renderPrivateChaletDetail(){
   function floor(title, items){
     return '<div class="fd-chalet-floor"><h4>' + title + '</h4>' + features(items) + '</div>';
   }
-  return '<div class="fd-chalet-map-launcher"><button type="button" class="fd-chalet-map-open" aria-haspopup="dialog" aria-controls="fd-chalet-map">خريطة الشاليه</button></div>'
-    + '<section class="fd-cabin-content" aria-labelledby="fd-chalet-detail-title">'
+  return '<section class="fd-cabin-content" aria-labelledby="fd-chalet-detail-title">'
     + '<div class="fd-cabin-heading"><div><h2 id="fd-chalet-detail-title" class="fd-cabin-title">' + PRIVATE_CHALET.name + '</h2>'
     + '<p class="fd-cabin-occupancy">شاليه من دورين – حتى 15 ضيفًا</p></div></div>'
     + '<div class="fd-cabin-times" aria-label="أوقات الدخول والخروج"><div><span>الدخول</span><strong>4:00 مساءً</strong></div><div><span>الخروج</span><strong>12:00 ظهرًا</strong></div></div>'

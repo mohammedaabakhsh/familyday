@@ -2,27 +2,274 @@
 (function () {
   'use strict';
   var rooms = [
-    {key:'upper',name:'غرفة النوم العلوية',floor:'الدور العلوي',x:35,y:14,shape:'24,8 42,8 42,18 23,18',facts:['سرير مزدوج','حمام خاص','تلفزيون'],text:'غرفة النوم في الدور العلوي، يصل إليها السلم الداخلي. منطقة المغسلة مفتوحة على الغرفة، مع كابينة دش زجاجية ودورة مياه بفاصل زجاجي.'},
-    {key:'ground',name:'غرفة النوم الأرضية',floor:'الدور الأرضي',x:28,y:24,shape:'23,20 34,20 34,29 22,29',facts:['سريران مفردان'],text:'غرفة نوم في الدور الأرضي، مدخلها من داخل غرفة الألعاب بجانب الواجهة المطلة على المسبح.'},
-    {key:'play',name:'غرفة الألعاب',floor:'الدور الأرضي',x:38,y:25,shape:'34,20 42,20 42,30 34,30',facts:['ألعاب أطفال','واجهة زجاجية على المسبح'],text:'غرفة مجهزة بألعاب الأطفال عند نهاية المسبح، وبجوارها السلم الداخلي المؤدي للدور العلوي.'},
-    {key:'living',name:'الصالة الداخلية',floor:'الدور الأرضي',x:68,y:46,shape:'57,36 76,36 80,57 58,57',facts:['مجلس يتسع لـ15 شخصًا','تلفزيون','باب إلى ممر المسبح'],text:'جلسة داخلية بواجهة زجاجية تطل على المسبح. خلف الجلسة منطقة الطعام والمطبخ، مع فتحة واسعة بإطار جبسي تفصل المساحتين.'},
-    {key:'dining',name:'الطعام والمطبخ',floor:'الدور الأرضي',x:65,y:31,shape:'57,15 70,15 74,36 57,36',facts:['طاولة طعام','ثلاجة وفرن وميكروويف','موقد كهربائي وغاز','غلاية وأدوات مطبخ أساسية'],text:'طاولة الطعام خلف كنبة الصالة وبجوار المطبخ المجهز، مع ممر جانبي يصل إلى السلم وغرفة الألعاب.'},
-    {key:'majlis',name:'المجلس المستقل',floor:'المنطقة الخارجية',x:72,y:65,shape:'61,58 80,58 83,72 62,72',facts:['يتسع لـ10 أشخاص','مدخل خاص','حمام'],text:'مجلس مستقل في مقدمة الشاليه، بجلسة ركنية وتلفزيون. له مدخل خاص من الشارع وباب داخلي يفتح على ساحة الشاليه.'},
-    {key:'pool',name:'مسبح الأطفال',floor:'المنطقة الخارجية',x:39,y:51,shape:'28,31 49,35 50,66 24,66',facts:['عمق 60 سم','ألعاب مائية وزحليقة مزدوجة','حاجز زجاجي'],text:'مسبح للأطفال بجوار الصالة، مع منصات ألعاب مائية وسلالم وزحليقة. يُسمح للأطفال باستخدامه تحت إشراف ذويهم.'},
-    {key:'shower',name:'المروش والجلسة الخارجية',floor:'المنطقة الخارجية',x:29,y:68,shape:'20,64 25,64 25,66 48,66 48,72 20,72',facts:['مروش خارجي','كرسي استرخاء ومظلة'],text:'عند المدخل الرئيسي توجد مساحة للاستراحة بجوار المسبح، ومروش خارجي بحاجز زجاجي جانبي.'},
-    {key:'stairs',name:'السلم والحمام الأرضي',floor:'الدور الأرضي',x:49,y:25,shape:'43,15 56,15 56,30 43,30',facts:['سلم داخلي للدور العلوي','حمام ومغاسل'],text:'سلم داخلي بدرجات سوداء وحواجز زجاجية، بجوار غرفة الألعاب والمطبخ. الحمام الأرضي والمغاسل بجانب السلم.'}
-  ];
+  {
+    "key": "upperBath",
+    "name": "حمام داخلي بغرفة النوم",
+    "floor": "الدور العلوي",
+    "x": 27,
+    "y": 13,
+    "shape": "23,8 30,8 30,18 23,18",
+    "label": [
+      "top",
+      24,
+      6
+    ],
+    "facts": [
+      "مغسلة مفتوحة على الغرفة",
+      "دش زجاجي",
+      "دورة مياه بفاصل زجاجي"
+    ],
+    "text": "الحمام داخل جناح النوم العلوي، والوصول إليه مباشرة من الغرفة."
+  },
+  {
+    "key": "upper",
+    "name": "غرفة النوم العلوية",
+    "floor": "الدور العلوي",
+    "x": 36,
+    "y": 13,
+    "shape": "30,8 42,8 42,18 30,18",
+    "label": [
+      "top",
+      50,
+      6
+    ],
+    "facts": [
+      "سرير مزدوج",
+      "تلفزيون",
+      "حمام داخل الغرفة"
+    ],
+    "text": "جناح النوم في الدور العلوي، مع تسريحة ومرآة وركن لتعليق الملابس."
+  },
+  {
+    "key": "stairs",
+    "name": "السلم",
+    "floor": "بين الدورين",
+    "x": 48,
+    "y": 22,
+    "shape": "44,15 51,15 51,29 44,29",
+    "label": [
+      "top",
+      76,
+      6
+    ],
+    "facts": [
+      "درج داخلي",
+      "حواجز زجاجية"
+    ],
+    "text": "يصل الدور الأرضي بغرفة النوم العلوية، بجوار المطبخ وغرفة الأطفال."
+  },
+  {
+    "key": "ground",
+    "name": "غرفة النوم الأرضية",
+    "floor": "الدور الأرضي",
+    "x": 28,
+    "y": 24,
+    "shape": "23,20 34,20 34,29 22,29",
+    "label": [
+      "left",
+      9,
+      35
+    ],
+    "facts": [
+      "سريران مفردان",
+      "في الدور الأرضي"
+    ],
+    "text": "مدخل غرفة النوم من غرفة الأطفال، من دون الحاجة إلى صعود الدرج."
+  },
+  {
+    "key": "play",
+    "name": "غرفة الأطفال",
+    "floor": "الدور الأرضي",
+    "x": 38,
+    "y": 25,
+    "shape": "34,20 42,20 42,30 34,30",
+    "label": [
+      "left",
+      9,
+      48
+    ],
+    "facts": [
+      "ألعاب أطفال",
+      "واجهة زجاجية"
+    ],
+    "text": "غرفة لعب داخلية تطل على المسبح، وبجوارها غرفة النوم الأرضية."
+  },
+  {
+    "key": "pool",
+    "name": "مسبح للأطفال",
+    "floor": "المنطقة الخارجية",
+    "x": 38,
+    "y": 51,
+    "shape": "28,31 49,35 50,66 24,66",
+    "label": [
+      "left",
+      9,
+      64
+    ],
+    "facts": [
+      "عمق 60 سم",
+      "زحليقة مزدوجة وألعاب مائية",
+      "حاجز زجاجي"
+    ],
+    "text": "مخصص للأطفال، ويُستخدم تحت إشراف ذويهم طوال الوقت."
+  },
+  {
+    "key": "groundBath",
+    "name": "حمام",
+    "floor": "الدور الأرضي",
+    "x": 54,
+    "y": 24,
+    "shape": "51,19 56,19 56,29 51,29",
+    "label": [
+      "right",
+      91,
+      33
+    ],
+    "facts": [
+      "دورة مياه ودش",
+      "مغاسل خارج الحمام"
+    ],
+    "text": "بجوار السلم الداخلي، ويخدم مرافق الدور الأرضي."
+  },
+  {
+    "key": "kitchen",
+    "name": "مطبخ",
+    "floor": "الدور الأرضي",
+    "x": 65,
+    "y": 24,
+    "shape": "57,15 70,15 72,28 57,28",
+    "label": [
+      "right",
+      91,
+      46
+    ],
+    "facts": [
+      "ثلاجة وفرن وميكروويف",
+      "موقد غاز وكهرباء",
+      "غلاية وأدوات مطبخ أساسية"
+    ],
+    "text": "مطبخ مفتوح بجوار طاولة الطعام، لتحضير الوجبات وتقديمها."
+  },
+  {
+    "key": "dining",
+    "name": "طاولة طعام",
+    "floor": "الدور الأرضي",
+    "x": 65,
+    "y": 32,
+    "shape": "58,29 73,29 74,36 58,36",
+    "label": [
+      "right",
+      91,
+      58
+    ],
+    "facts": [
+      "طاولة مستطيلة",
+      "بجوار المطبخ"
+    ],
+    "text": "خلف جلسة الصالة، ضمن مساحة يحددها فاصل جبسي بفتحة واسعة."
+  },
+  {
+    "key": "living",
+    "name": "الصالة الداخلية",
+    "floor": "الدور الأرضي",
+    "x": 69,
+    "y": 46,
+    "shape": "57,37 76,37 80,57 58,57",
+    "label": [
+      "right",
+      91,
+      72
+    ],
+    "facts": [
+      "تتسع لـ15 شخصًا",
+      "تلفزيون",
+      "إطلالة زجاجية على المسبح"
+    ],
+    "text": "باب الصالة يفتح مباشرة على الممر المحاذي للمسبح."
+  },
+  {
+    "key": "shower",
+    "name": "مروش خارجي",
+    "floor": "المنطقة الخارجية",
+    "x": 22,
+    "y": 68,
+    "shape": "20,64 25,64 25,72 20,72",
+    "label": [
+      "bottom",
+      14,
+      101
+    ],
+    "facts": [
+      "دش خارجي",
+      "حاجز زجاجي جانبي"
+    ],
+    "text": "بجوار المدخل الرئيسي للمسبح، للاستخدام قبل السباحة وبعدها."
+  },
+  {
+    "key": "lounger",
+    "name": "كرسي تشميس",
+    "floor": "المنطقة الخارجية",
+    "x": 33,
+    "y": 69,
+    "shape": "27,66 40,66 40,72 27,72",
+    "label": [
+      "bottom",
+      38,
+      101
+    ],
+    "facts": [
+      "كرسي استرخاء",
+      "مظلة"
+    ],
+    "text": "على الساحة المبلطة بجوار المسبح."
+  },
+  {
+    "key": "majlis",
+    "name": "المجلس المستقل",
+    "floor": "المنطقة الخارجية",
+    "x": 70,
+    "y": 64,
+    "shape": "61,58 80,58 83,72 62,72",
+    "label": [
+      "bottom",
+      62,
+      101
+    ],
+    "facts": [
+      "يتسع لـ10 أشخاص",
+      "تلفزيون",
+      "مدخل خاص وحمام"
+    ],
+    "text": "مجلس منفصل عن الصالة الداخلية، وله باب إلى ساحة الشاليه."
+  },
+  {
+    "key": "majlisBath",
+    "name": "حمام المجلس المستقل",
+    "floor": "المجلس المستقل",
+    "x": 78,
+    "y": 71,
+    "shape": "76,69 81,69 82,73 76,73",
+    "label": [
+      "bottom",
+      86,
+      101
+    ],
+    "facts": [
+      "حمام مخصص للمجلس"
+    ],
+    "text": "لضيوف المجلس دون الحاجة إلى دخول الصالة الداخلية."
+  }
+];
   var dialog, viewport, plane, panel, selected, opener, previousOverflow;
   var view={w:0,h:0,size:0,scale:1,x:0,y:0}, pointers=new Map(), gesture;
   var markers=[], polygons=[], leaders=[];
-  var labels=[['left',12],['left',25],['left',37],['right',47],['right',29],['right',83],['left',53],['left',83],['right',12]];
   var imagePath='imgs/chalet-map-clean-v2.webp';
   function clamp(n,min,max){return Math.max(min,Math.min(max,n));}
   function clear(){
     selected=null;
     markers.forEach(function(b){b.setAttribute('aria-pressed','false');});
     polygons.concat(leaders).forEach(function(p){p.classList.remove('is-selected');});
-    panel.innerHTML='<p class="cm-empty">اختر رقم المكان أو اسمه على الخريطة لعرض مواصفاته هنا</p>';
+    panel.innerHTML='<p class="cm-empty">اختر اسم المكان على الخريطة لعرض تجهيزاته هنا</p>';
   }
   function select(room){
     selected=room;
@@ -30,14 +277,14 @@
     markers.forEach(function(b,i){b.setAttribute('aria-pressed',String(i===index));});
     polygons.forEach(function(p,i){p.classList.toggle('is-selected',i===index);});
     leaders.forEach(function(p,i){p.classList.toggle('is-selected',i===index);});
-    panel.innerHTML='<div class="cm-detail-heading"><div><span class="cm-floor">'+room.floor+'</span><h3><span class="cm-detail-number">'+(index+1)+'</span>'+room.name+'</h3></div><button type="button" class="cm-icon cm-clear" aria-label="إلغاء اختيار المكان">×</button></div>'
+    panel.innerHTML='<div class="cm-detail-heading"><div><span class="cm-floor">'+room.floor+'</span><h3>'+room.name+'</h3></div><button type="button" class="cm-icon cm-clear" aria-label="إلغاء اختيار المكان">×</button></div>'
       +'<ul class="cm-facts">'+room.facts.map(function(f){return '<li>'+f+'</li>';}).join('')+'</ul><p class="cm-description">'+room.text+'</p>';
     panel.scrollTop=0;
     panel.querySelector('.cm-clear').onclick=function(){clear();markers[index].focus({preventScroll:true});};
     dialog.querySelector('.cm-announcement').textContent='تم عرض مواصفات '+room.name;
   }
   function renderView(){
-    var size=view.size*view.scale, height=size*.90;
+    var size=view.size*view.scale, height=size*1.10;
     view.x=size<=view.w?(view.w-size)/2:clamp(view.x,view.w-size,0);
     view.y=height<=view.h?(view.h-height)/2:clamp(view.y,view.h-height,0);
     plane.style.transform='translate('+view.x+'px,'+view.y+'px) scale('+view.scale+')';
@@ -49,10 +296,10 @@
     if(!dialog.open)return;
     var cx=view.size?(view.w/2-view.x)/(view.size*view.scale):.5;
     var cy=view.size?(view.h/2-view.y)/(view.size*view.scale):.5;
-    view.w=viewport.clientWidth;view.h=viewport.clientHeight;view.size=Math.min(view.w,view.h/.90);
-    if(reset){view.scale=1;cx=.5;cy=.45;}
+    view.w=viewport.clientWidth;view.h=viewport.clientHeight;view.size=Math.min(view.w,view.h/1.10);
+    if(reset){view.scale=1;cx=.5;cy=.55;}
     view.x=view.w/2-cx*view.size*view.scale;view.y=view.h/2-cy*view.size*view.scale;
-    plane.style.width=view.size+'px';plane.style.height=(view.size*.90)+'px';plane.style.setProperty('--cm-label-font',clamp(view.size*.022,10,14)+'px');renderView();
+    plane.style.width=view.size+'px';plane.style.height=(view.size*1.10)+'px';plane.style.setProperty('--cm-label-font',clamp(view.size*.025,11,14)+'px');renderView();
   }
   function zoom(scale,x,y){var next=clamp(scale,1,3),ratio=next/view.scale;view.x=x-(x-view.x)*ratio;view.y=y-(y-view.y)*ratio;view.scale=next;renderView();}
   function point(e){var b=viewport.getBoundingClientRect();return{x:e.clientX-b.left,y:e.clientY-b.top};}
@@ -81,18 +328,19 @@
   function create(){
     dialog=document.createElement('dialog');dialog.id='fd-chalet-map';dialog.className='cm-dialog';dialog.setAttribute('aria-labelledby','cm-title');
     dialog.innerHTML='<h2 id="cm-title" class="cm-sr-only">خريطة الشاليه التفاعلية</h2><button type="button" class="cm-icon cm-close" aria-label="إغلاق خريطة الشاليه" autofocus>×</button>'
-      +'<div class="cm-workspace"><div class="cm-map-side"><div class="cm-viewport" tabindex="0" aria-label="خريطة تفاعلية، اختر اسم المكان. استخدم إصبعين أو الأزرار للتكبير والأسهم للتحريك"><div class="cm-plane"><img class="cm-image" width="1254" height="1254" alt="توزيع غرف الشاليه ومرافقه" draggable="false"><svg class="cm-regions" viewBox="0 0 100 90" aria-hidden="true"></svg><svg class="cm-leaders" viewBox="0 0 100 90" aria-hidden="true"></svg></div><div class="cm-error" hidden><p>تعذّر تحميل الرسم. الأسماء تظل متاحة للاختيار.</p><button type="button" class="cm-retry">إعادة المحاولة</button></div></div><div class="cm-tools"><span>اختر المكان لعرض مواصفاته</span><div><button type="button" class="cm-zoom-in" aria-label="تكبير الخريطة">+</button><button type="button" class="cm-zoom-out" aria-label="تصغير الخريطة">−</button><button type="button" class="cm-fit">إظهار الكل</button></div></div></div><section id="cm-details" class="cm-details" aria-label="مواصفات المكان المختار"></section></div><p class="cm-announcement" role="status" aria-live="polite"></p>';
+      +'<div class="cm-workspace"><div class="cm-map-side"><div class="cm-viewport" tabindex="0" aria-label="خريطة تفاعلية، اختر اسم المكان. استخدم إصبعين أو الأزرار للتكبير والأسهم للتحريك"><div class="cm-plane"><img class="cm-image" width="1254" height="1254" alt="توزيع غرف الشاليه ومرافقه" draggable="false"><svg class="cm-regions" viewBox="0 0 100 110" aria-hidden="true"></svg><svg class="cm-leaders" viewBox="0 0 100 110" aria-hidden="true"></svg></div><div class="cm-error" hidden><p>تعذّر تحميل الرسم. الأسماء تظل متاحة للاختيار.</p><button type="button" class="cm-retry">إعادة المحاولة</button></div></div><div class="cm-tools"><span>اختر المكان لعرض مواصفاته</span><div><button type="button" class="cm-zoom-in" aria-label="تكبير الخريطة">+</button><button type="button" class="cm-zoom-out" aria-label="تصغير الخريطة">−</button><button type="button" class="cm-fit">إظهار الكل</button></div></div></div><section id="cm-details" class="cm-details" aria-label="مواصفات المكان المختار"></section></div><p class="cm-announcement" role="status" aria-live="polite"></p>';
     document.body.appendChild(dialog);
     viewport=dialog.querySelector('.cm-viewport');plane=dialog.querySelector('.cm-plane');panel=dialog.querySelector('.cm-details');
     rooms.forEach(function(room,i){
-      var polygon=document.createElementNS('http://www.w3.org/2000/svg','polygon');polygon.setAttribute('points',room.shape);polygon.dataset.room=room.key;polygon.setAttribute('vector-effect','non-scaling-stroke');dialog.querySelector('svg').appendChild(polygon);polygons.push(polygon);
-      var side=labels[i][0], y=labels[i][1], edge=side==='left'?18.8:81.2;
-      var labelName={upper:'النوم العلوية',ground:'النوم الأرضية',stairs:'السلم والحمام',shower:'المروش والجلسة'}[room.key]||room.name;
+      var polygon=document.createElementNS('http://www.w3.org/2000/svg','polygon');polygon.setAttribute('points',room.shape.split(' ').map(function(p){var xy=p.split(',');return xy[0]+','+(Number(xy[1])+10);}).join(' '));polygon.dataset.room=room.key;polygon.setAttribute('vector-effect','non-scaling-stroke');dialog.querySelector('svg').appendChild(polygon);polygons.push(polygon);
+      var side=room.label[0], x=room.label[1], y=room.label[2], ax=room.x, ay=room.y+10;
+      var edgeX=side==='left'?18:side==='right'?82:x;
+      var edgeY=side==='top'?y+4:side==='bottom'?y-4:y;
       var leader=document.createElementNS('http://www.w3.org/2000/svg','g');
-      var line=document.createElementNS('http://www.w3.org/2000/svg','polyline');line.setAttribute('points',edge+','+y+' '+(side==='left'?edge+2:edge-2)+','+y+' '+room.x+','+room.y);line.setAttribute('vector-effect','non-scaling-stroke');
-      var dot=document.createElementNS('http://www.w3.org/2000/svg','circle');dot.setAttribute('cx',room.x);dot.setAttribute('cy',room.y);dot.setAttribute('r','.45');
+      var line=document.createElementNS('http://www.w3.org/2000/svg','polyline');line.setAttribute('points',edgeX+','+edgeY+' '+ax+','+ay);line.setAttribute('vector-effect','non-scaling-stroke');
+      var dot=document.createElementNS('http://www.w3.org/2000/svg','circle');dot.setAttribute('cx',ax);dot.setAttribute('cy',ay);dot.setAttribute('r','.45');
       leader.append(line,dot);dialog.querySelector('.cm-leaders').appendChild(leader);leaders.push(leader);
-      var b=document.createElement('button');b.type='button';b.className='cm-marker cm-label-'+side;b.dataset.room=room.key;b.style.top=(y/.90)+'%';b.innerHTML='<span class="cm-number">'+(i+1)+'</span><span>'+labelName+'</span>';b.setAttribute('aria-label',room.name);b.setAttribute('aria-controls','cm-details');b.onclick=function(e){if(e.detail===0)select(room);};plane.appendChild(b);markers.push(b);
+      var b=document.createElement('button');b.type='button';b.className='cm-marker cm-label-'+side;b.dataset.room=room.key;b.style.left=x+'%';b.style.top=(y/1.10)+'%';b.textContent=room.name;b.setAttribute('aria-label',room.name);b.setAttribute('aria-controls','cm-details');b.onclick=function(e){if(e.detail===0)select(room);};plane.appendChild(b);markers.push(b);
     });
     viewport.addEventListener('pointerdown',down);viewport.addEventListener('pointermove',move);viewport.addEventListener('pointerup',up);viewport.addEventListener('pointercancel',up);
     viewport.addEventListener('lostpointercapture',function(e){if(pointers.has(e.pointerId))resetGesture();});
@@ -122,6 +370,6 @@
     hide:function(){if(!dialog||!dialog.open)return;dialog.close();resetGesture();document.body.style.overflow=previousOverflow;if(opener&&opener.isConnected)opener.focus({preventScroll:true});}
   };
   var grid=document.querySelector('#landing3 .rh-grid');
-  if(grid){var launcher=document.createElement('div');launcher.className='fd-chalet-map-launcher';launcher.innerHTML='<button type="button" class="fd-chalet-map-open" aria-haspopup="dialog" aria-controls="fd-chalet-map">خريطة الشاليه</button>';grid.before(launcher);}
+  if(grid){var launcher=document.createElement('div');launcher.className='fd-chalet-map-launcher';launcher.innerHTML='<button type="button" class="fd-chalet-map-open" aria-haspopup="dialog" aria-controls="fd-chalet-map"><span><strong>خريطة الشاليه</strong><small>استكشف الغرف والمرافق وتجهيزاتها</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>';grid.after(launcher);}
   document.addEventListener('click',function(e){if(e.target.closest('.fd-chalet-map-open'))document.dispatchEvent(new CustomEvent('fd-chalet-map-request'));});
 })();

@@ -1,6 +1,7 @@
-.fd-chalet-map-launcher{display:flex;justify-content:flex-start;margin:0 0 14px;direction:rtl}
-.fd-chalet-map-open{min-height:42px;padding:9px 18px;border:1px solid #337e8c;border-radius:12px;background:#12323f;color:#bcf2f4;font:700 14px/1.4 'Tajawal',sans-serif;cursor:pointer}
-.fd-chalet-map-open:hover{background:#1b4655}
+.fd-chalet-map-launcher{margin:16px 0 0;direction:rtl}
+.fd-chalet-map-open{display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;min-height:74px;padding:12px 18px;border:1px solid #63bfcd52;border-radius:16px;background:linear-gradient(120deg,#0d2b3a,#0a202e);color:#edf5f7;text-align:right;font-family:'Tajawal',sans-serif;cursor:pointer}
+.fd-chalet-map-open>span{display:flex;flex-direction:column;gap:4px}.fd-chalet-map-open strong{font-size:18px;line-height:1.4}.fd-chalet-map-open small{font-size:13px;line-height:1.5;color:#a9c3ce}.fd-chalet-map-open svg{width:17px;height:17px;color:#83c7d2;flex:none}
+.fd-chalet-map-open:hover{border-color:#63bfcd;background:#103142}
 .cm-dialog,.cm-dialog *{box-sizing:border-box}
 .cm-dialog{position:fixed;inset:0;margin:auto;padding:0;width:min(1120px,calc(100vw - 32px));height:min(900px,calc(100dvh - 32px));max-width:none;max-height:none;border:1px solid #234655;border-radius:20px;background:#081c2a;color:#fff;font-family:'Tajawal',sans-serif;direction:rtl;overflow:hidden;box-shadow:0 20px 70px #0006}
 .cm-dialog[open]{display:flex;flex-direction:column}.cm-dialog::backdrop{background:#020a12cf}.cm-dialog [hidden]{display:none!important}
@@ -11,22 +12,21 @@
 .cm-workspace{display:flex;flex-direction:column;min-height:0;flex:1}.cm-map-side{display:flex;flex-direction:column;min-height:0;flex:1}
 .cm-viewport{flex:1;position:relative;min-height:0;overflow:hidden;background:radial-gradient(ellipse at 50% 45%,#f2f5f4 0,#e3eaeb 60%,#dfe6e8 100%);touch-action:none;user-select:none;direction:ltr;cursor:grab}
 .cm-viewport:active{cursor:grabbing}.cm-plane{position:absolute;inset:0 auto auto 0;transform-origin:0 0;will-change:transform}
-.cm-image{position:absolute;left:0;top:0;width:100%;height:auto;display:block;pointer-events:none;-webkit-user-drag:none}
+.cm-image{position:absolute;left:0;top:9.0909%;width:100%;height:auto;display:block;pointer-events:none;-webkit-user-drag:none}
 .cm-regions,.cm-leaders{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
 .cm-regions polygon{fill:transparent;stroke:transparent;pointer-events:all;cursor:pointer;transition:fill .18s,stroke .18s}
 .cm-regions polygon:hover{fill:#18a7b31a;stroke:#187f89;stroke-width:1.5}.cm-regions polygon.is-selected{fill:#00acb31f;stroke:#00747d;stroke-width:2;stroke-linejoin:round}
 .cm-leaders polyline{fill:none;stroke:#677f86;stroke-width:1;stroke-linejoin:round}.cm-leaders circle{fill:#187f89;stroke:white;stroke-width:.18}
 .cm-leaders .is-selected polyline{stroke:#007782;stroke-width:2}.cm-leaders .is-selected circle{fill:#007782}
-.cm-marker{position:absolute;transform:translateY(-50%);display:flex;align-items:center;gap:4px;direction:rtl;width:18%;min-height:36px;padding:6px 5px;border:1px solid #c0ced0;border-radius:7px;background:#fffffff5;color:#183544;font-size:var(--cm-label-font,12px);line-height:1.45;font-weight:700;z-index:2;box-shadow:0 2px 6px #163c4812;transition:background .15s,border-color .15s,box-shadow .15s}
-.cm-label-left{left:.8%}.cm-label-right{right:.8%}.cm-marker:hover{background:#e9f8f8;border-color:#158f9b;box-shadow:0 3px 12px #12657230}
-.cm-number{display:grid;place-items:center;flex:none;width:21px;height:21px;border-radius:50%;background:#e5f1f2;color:#146575;font:800 11px/1 'Tajawal',sans-serif}
-.cm-marker[aria-pressed=true]{color:#fff;background:#0e6470;border-color:#0e6470;box-shadow:0 0 0 3px #2e9ca51a}.cm-marker[aria-pressed=true] .cm-number{background:#fff;color:#0e6470}
-.cm-tools{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 16px;direction:rtl;background:#102936;border-bottom:1px solid #24404d;font-size:12px;color:#b9cfd8;flex:none}
+.cm-marker{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;text-align:center;gap:4px;direction:rtl;width:18%;min-height:36px;padding:6px 5px;border:1px solid #c0ced0;border-radius:7px;background:#fffffff5;color:#183544;font-size:var(--cm-label-font,12px);line-height:1.45;font-weight:700;z-index:2;box-shadow:0 2px 6px #163c4812;transition:background .15s,border-color .15s,box-shadow .15s}
+.cm-label-top{width:24%}.cm-label-bottom{width:22%}.cm-marker:hover{background:#e9f8f8;border-color:#158f9b;box-shadow:0 3px 12px #12657230}
+
+.cm-marker[aria-pressed=true]{color:#fff;background:#0e6470;border-color:#0e6470;box-shadow:0 0 0 3px #2e9ca51a}.cm-tools{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 16px;direction:rtl;background:#102936;border-bottom:1px solid #24404d;font-size:12px;color:#b9cfd8;flex:none}
 .cm-tools>div{display:flex;gap:6px}.cm-tools button,.cm-retry{min-width:38px;min-height:38px;border:1px solid #365362;border-radius:9px;background:#183542;color:#e6f1f5;padding:5px 10px;font-size:12px}
 .cm-tools .cm-zoom-in,.cm-tools .cm-zoom-out{font-size:21px}.cm-tools button:disabled{opacity:.4;cursor:default}
 .cm-details{direction:rtl;flex:none;height:184px;max-height:32dvh;overflow-y:auto;overscroll-behavior:contain;padding:14px 22px 18px;scrollbar-width:thin}
 .cm-detail-heading{display:flex;gap:8px;justify-content:space-between;align-items:center;margin-bottom:10px}.cm-detail-heading h3{display:flex;align-items:center;gap:8px;margin:4px 0 0;font-size:20px;line-height:1.4;color:#fff}
-.cm-detail-number{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;font-size:12px;background:#146575;color:#fff}.cm-floor{color:#80d2da;font-size:11px;font-weight:600}.cm-clear{width:30px;height:30px;font-size:20px}
+.cm-floor{color:#80d2da;font-size:11px;font-weight:600}.cm-clear{width:30px;height:30px;font-size:20px}
 .cm-facts{display:flex;flex-wrap:wrap;gap:7px;list-style:none;margin:0 0 9px;padding:0}.cm-facts li{padding:5px 9px;border-radius:7px;background:#143542;color:#d0edf0;font-size:12px;line-height:1.4}
 .cm-description{font-size:14px;line-height:1.7;color:#ccdce4;margin:0}.cm-empty{display:grid;place-items:center;height:100%;margin:0;text-align:center;color:#b9cfd8;line-height:1.8;font-size:14px}
 .cm-error{position:absolute;bottom:5px;left:22%;right:22%;z-index:3;padding:10px;text-align:center;direction:rtl;color:#173544;background:#fffffff2;border-radius:10px;font-size:12px}
@@ -34,8 +34,10 @@
 @media(max-width:700px){
 .cm-dialog{width:100%;height:100dvh;border:0;border-radius:0}.cm-close{top:10px;left:10px;width:34px;height:34px}
 .cm-details{height:210px;max-height:35dvh;padding:12px 16px max(16px,env(safe-area-inset-bottom))}.cm-detail-heading h3{font-size:18px}.cm-detail-heading{margin-bottom:8px}
-.cm-description{font-size:13px}.cm-facts{gap:5px}.cm-facts li{font-size:11px;padding:5px 7px}.cm-marker{gap:3px;min-height:40px;padding:5px 3px;border-radius:5px;line-height:1.3}.cm-number{width:17px;height:17px;font-size:10px}
+.cm-description{font-size:13px}.cm-facts{gap:5px}.cm-facts li{font-size:11px;padding:5px 7px}.cm-marker{gap:3px;min-height:40px;padding:5px 3px;border-radius:5px;line-height:1.3}
 .cm-tools{padding:6px 10px}.cm-tools>span{font-size:11px}.cm-tools button{min-height:36px;padding:5px 8px}}
 @media(max-height:500px) and (min-width:600px){.cm-dialog{height:100dvh;width:100%;border-radius:0}.cm-details{height:125px;max-height:35dvh;padding:8px 16px}.cm-detail-heading{margin-bottom:5px}.cm-floor{display:none}.cm-detail-heading h3{font-size:16px}.cm-tools{padding:3px 12px}.cm-description{font-size:12px}.cm-facts{margin-bottom:4px}}
 @media(prefers-reduced-motion:reduce){.cm-dialog *{transition:none!important}}
-@media(max-width:400px){.cm-marker{width:19%;gap:2px;padding:5px 2px}.cm-label-left{left:.5%}.cm-label-right{right:.5%}.cm-number{width:16px;height:16px}}
+
+
+@media(max-width:700px){.cm-label-top{min-height:48px}.cm-label-bottom{min-height:44px}.fd-chalet-map-open strong{font-size:16px}.fd-chalet-map-open small{font-size:12px}}
