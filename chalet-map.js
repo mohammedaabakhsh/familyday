@@ -86,7 +86,7 @@
     "label": [
       "left",
       9,
-      48
+      55
     ],
     "facts": [
       "ألعاب أطفال",
@@ -98,13 +98,13 @@
     "key": "pool",
     "name": "مسبح للأطفال",
     "floor": "المنطقة الخارجية",
-    "x": 38,
-    "y": 51,
+    "x": 42,
+    "y": 62,
     "shape": "28,31 49,35 50,66 24,66",
     "label": [
-      "left",
-      9,
-      64
+      "bottom",
+      50,
+      101
     ],
     "facts": [
       "عمق 60 سم",
@@ -141,7 +141,7 @@
     "label": [
       "right",
       91,
-      46
+      47
     ],
     "facts": [
       "ثلاجة وفرن وميكروويف",
@@ -160,7 +160,7 @@
     "label": [
       "right",
       91,
-      58
+      61
     ],
     "facts": [
       "طاولة مستطيلة",
@@ -178,7 +178,7 @@
     "label": [
       "right",
       91,
-      72
+      75
     ],
     "facts": [
       "تتسع لـ15 شخصًا",
@@ -189,75 +189,44 @@
   },
   {
     "key": "shower",
-    "name": "مروش خارجي",
+    "name": "مروش وكرسي تشميس",
     "floor": "المنطقة الخارجية",
     "x": 22,
     "y": 68,
     "shape": "20,64 25,64 25,72 20,72",
     "label": [
       "bottom",
-      14,
+      18,
       101
     ],
     "facts": [
-      "دش خارجي",
-      "حاجز زجاجي جانبي"
+      "دش خارجي بحاجز زجاجي جانبي",
+      "كرسي تشميس ومظلة"
     ],
-    "text": "بجوار المدخل الرئيسي للمسبح، للاستخدام قبل السباحة وبعدها."
-  },
-  {
-    "key": "lounger",
-    "name": "كرسي تشميس",
-    "floor": "المنطقة الخارجية",
-    "x": 33,
-    "y": 69,
-    "shape": "27,66 40,66 40,72 27,72",
-    "label": [
-      "bottom",
-      38,
-      101
-    ],
-    "facts": [
-      "كرسي استرخاء",
-      "مظلة"
-    ],
-    "text": "على الساحة المبلطة بجوار المسبح."
+    "text": "في الساحة بجوار المسبح، بالقرب من المدخل الرئيسي.",
+    "extraShapes": [
+      "27,66 40,66 40,72 27,72"
+    ]
   },
   {
     "key": "majlis",
-    "name": "المجلس المستقل",
+    "name": "المجلس المستقل مع حمام",
     "floor": "المنطقة الخارجية",
     "x": 70,
     "y": 64,
     "shape": "61,58 80,58 83,72 62,72",
     "label": [
       "bottom",
-      62,
+      82,
       101
     ],
     "facts": [
-      "يتسع لـ10 أشخاص",
+      "مجلس لـ10 أشخاص",
       "تلفزيون",
-      "مدخل خاص وحمام"
+      "مدخل خاص",
+      "حمام خاص بالمجلس"
     ],
     "text": "مجلس منفصل عن الصالة الداخلية، وله باب إلى ساحة الشاليه."
-  },
-  {
-    "key": "majlisBath",
-    "name": "حمام المجلس المستقل",
-    "floor": "المجلس المستقل",
-    "x": 78,
-    "y": 71,
-    "shape": "76,69 81,69 82,73 76,73",
-    "label": [
-      "bottom",
-      86,
-      101
-    ],
-    "facts": [
-      "حمام مخصص للمجلس"
-    ],
-    "text": "لضيوف المجلس دون الحاجة إلى دخول الصالة الداخلية."
   }
 ];
   var dialog, viewport, plane, panel, selected, opener, previousOverflow;
@@ -275,7 +244,7 @@
     selected=room;
     var index=rooms.indexOf(room);
     markers.forEach(function(b,i){b.setAttribute('aria-pressed',String(i===index));});
-    polygons.forEach(function(p,i){p.classList.toggle('is-selected',i===index);});
+    polygons.forEach(function(p){p.classList.toggle('is-selected',p.dataset.room===room.key);});
     leaders.forEach(function(p,i){p.classList.toggle('is-selected',i===index);});
     panel.innerHTML='<div class="cm-detail-heading"><div><span class="cm-floor">'+room.floor+'</span><h3>'+room.name+'</h3></div><button type="button" class="cm-icon cm-clear" aria-label="إلغاء اختيار المكان">×</button></div>'
       +'<ul class="cm-facts">'+room.facts.map(function(f){return '<li>'+f+'</li>';}).join('')+'</ul><p class="cm-description">'+room.text+'</p>';
@@ -332,7 +301,9 @@
     document.body.appendChild(dialog);
     viewport=dialog.querySelector('.cm-viewport');plane=dialog.querySelector('.cm-plane');panel=dialog.querySelector('.cm-details');
     rooms.forEach(function(room,i){
-      var polygon=document.createElementNS('http://www.w3.org/2000/svg','polygon');polygon.setAttribute('points',room.shape.split(' ').map(function(p){var xy=p.split(',');return xy[0]+','+(Number(xy[1])+10);}).join(' '));polygon.dataset.room=room.key;polygon.setAttribute('vector-effect','non-scaling-stroke');dialog.querySelector('svg').appendChild(polygon);polygons.push(polygon);
+      [room.shape].concat(room.extraShapes||[]).forEach(function(shape){
+      var polygon=document.createElementNS('http://www.w3.org/2000/svg','polygon');polygon.setAttribute('points',shape.split(' ').map(function(p){var xy=p.split(',');return xy[0]+','+(Number(xy[1])+10);}).join(' '));polygon.dataset.room=room.key;polygon.setAttribute('vector-effect','non-scaling-stroke');dialog.querySelector('svg').appendChild(polygon);polygons.push(polygon);
+      });
       var side=room.label[0], x=room.label[1], y=room.label[2], ax=room.x, ay=room.y+10;
       var edgeX=side==='left'?18:side==='right'?82:x;
       var edgeY=side==='top'?y+4:side==='bottom'?y-4:y;
