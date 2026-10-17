@@ -330,6 +330,22 @@
     "بين الدورين": "Between Floors",
     "المنطقة الخارجية": "Outdoor Area"
   };
+  var primaryFactCards={
+    upperBath:[[1,'shower'],[0,'washbasin']],
+    upper:[[0,'bed'],[2,'bathroom']],
+    ground:[[0,'beds']],
+    play:[[0,'play'],[1,'view']],
+    pool:[[0,'depth'],[1,'waterPlay']],
+    groundBath:[[1,'shower'],[2,'washbasins']],
+    kitchen:[[0,'dining'],[4,'cooking']],
+    living:[[0,'capacity'],[2,'view']],
+    shower:[[0,'seating'],[2,'shower']],
+    majlis:[[0,'capacity'],[2,'entrance']]
+  };
+  var factCardLabels={
+    ar:{bed:'السرير',beds:'الأسرّة',bathroom:'الحمام',shower:'الاستحمام',washbasin:'المغسلة',washbasins:'المغاسل',play:'الألعاب',view:'الإطلالة',depth:'العمق',waterPlay:'الألعاب المائية',dining:'الطعام',cooking:'الطهي',capacity:'السعة',seating:'الجلسة',entrance:'المدخل'},
+    en:{bed:'Bed',beds:'Beds',bathroom:'Bathroom',shower:'Shower',washbasin:'Washbasin',washbasins:'Washbasins',play:'Play',view:'View',depth:'Depth',waterPlay:'Water play',dining:'Dining',cooking:'Cooking',capacity:'Capacity',seating:'Seating',entrance:'Entrance'}
+  };
   var tourCopy={
     "ar": {
       "title": "جولة داخل الشاليه",
@@ -401,8 +417,15 @@
   function renderDetails(room){
     var index=rooms.indexOf(room), details=labelLanguage==='en'?roomDetailsEn[room.key]:room;
     var floor=labelLanguage==='en'?floorNamesEn[room.floor]:room.floor, copy=tourCopy[labelLanguage];
+    var cards=primaryFactCards[room.key]||[], primaryIndices=cards.map(function(card){return card[0];});
+    var remainingFacts=details.facts.filter(function(fact,i){return primaryIndices.indexOf(i)===-1;});
     panel.innerHTML='<div class="cm-detail-heading"><div><span class="cm-floor">'+floor+'</span><h3 lang="'+labelLanguage+'">'+roomName(room)+'</h3></div><button type="button" class="cm-icon cm-clear" aria-label="'+copy.clear+'">×</button></div>'
-      +(details.facts.length?'<ul class="cm-facts">'+details.facts.map(function(f){return '<li>'+f+'</li>';}).join('')+'</ul>':'')
+      +(cards.length?'<div class="cm-fact-grid">'+cards.map(function(card){
+        var value=details.facts[card[0]];
+        if(card[1]==='depth')value=value.replace(labelLanguage==='en'?/^Depth:\s*/:/^عمق\s*/,'');
+        return '<div class="cm-fact-card"><span class="cm-fact-label">'+factCardLabels[labelLanguage][card[1]]+'</span><strong>'+value+'</strong></div>';
+      }).join('')+'</div>':'')
+      +(remainingFacts.length?'<ul class="cm-facts">'+remainingFacts.map(function(f){return '<li>'+f+'</li>';}).join('')+'</ul>':'')
       +(details.text?'<p class="cm-description">'+details.text+'</p>':'');
     panel.querySelector('.cm-clear').onclick=function(){clear();markers[index].focus({preventScroll:true});};
   }
