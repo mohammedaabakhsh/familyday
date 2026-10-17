@@ -337,6 +337,20 @@
     "المنطقة الخارجية": "Outdoor Area"
   };
   var detailTitles={ar:{upper:"غرفة النوم",ground:"غرفة النوم",groundBath:"الحمام"},en:{upper:"Bedroom",ground:"Bedroom",groundBath:"Bathroom"}};
+  // Indices of primary features. Other facts use compact resort-style amenity chips.
+  var primaryFactIndices={
+    upperBath:[],
+    upper:[0,2],
+    stairs:[0],
+    ground:[0],
+    play:[0],
+    pool:[0,1],
+    groundBath:[0,1],
+    kitchen:[0,4],
+    living:[0,2],
+    shower:[0],
+    majlis:[0,2]
+  };
   var tourCopy={
     "ar": {
       "title": "جولة داخل الشاليه",
@@ -409,10 +423,14 @@
     var index=rooms.indexOf(room),details=labelLanguage==='en'?roomDetailsEn[room.key]:room;
     var floor=room.floor?(labelLanguage==='en'?floorNamesEn[room.floor]:room.floor):'';
     var copy=tourCopy[labelLanguage],name=detailTitles[labelLanguage][room.key]||roomName(room),facts=details.facts||[];
+    var mainIndices=primaryFactIndices[room.key]||[];
+    var mainFacts=facts.filter(function(f,i){return mainIndices.indexOf(i)!==-1;});
+    var extras=facts.filter(function(f,i){return mainIndices.indexOf(i)===-1;});
     panel.innerHTML='<div class="cm-detail-heading"><div>'
       +(floor?'<span class="cm-floor">'+floor+'</span>':'')
       +'<h3 lang="'+labelLanguage+'">'+name+'</h3></div><button type="button" class="cm-icon cm-clear" aria-label="'+copy.clear+'">×</button></div>'
-      +(facts.length?'<div class="cm-fact-grid" data-count="'+facts.length+'">'+facts.map(function(f){return '<div class="cm-fact-card"><strong>'+f+'</strong></div>';}).join('')+'</div>':'')
+      +(mainFacts.length?'<div class="cm-fact-grid">'+mainFacts.map(function(f){return '<div class="cm-fact-card"><strong>'+f+'</strong></div>';}).join('')+'</div>':'')
+      +(extras.length?'<ul class="cm-facts">'+extras.map(function(f){return '<li>'+f+'</li>';}).join('')+'</ul>':'')
       +(details.text?'<p class="cm-description">'+details.text+'</p>':'');
     panel.querySelector('.cm-clear').onclick=function(){clear();markers[index].focus({preventScroll:true});};
   }
