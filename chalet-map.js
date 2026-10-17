@@ -17,9 +17,10 @@
     "facts": [
       "دش زجاجي",
       "مغسلة",
-      "مرحاض"
+      "دورة مياه"
     ],
-    "text": ""
+    "text": "",
+    "primary": []
   },
   {
     "key": "upper",
@@ -34,11 +35,19 @@
       6
     ],
     "facts": [
-      "سرير مزدوج",
-      "تلفزيون",
-      "حمام خاص"
+      "تلفزيون"
     ],
-    "text": ""
+    "text": "",
+    "primary": [
+      [
+        "السرير",
+        "سرير مزدوج"
+      ],
+      [
+        "الحمام",
+        "حمام خاص"
+      ]
+    ]
   },
   {
     "key": "stairs",
@@ -52,10 +61,9 @@
       76,
       6
     ],
-    "facts": [
-      "يؤدي إلى الدور العلوي"
-    ],
-    "text": ""
+    "facts": [],
+    "text": "يربط الدور الأرضي بالدور العلوي",
+    "primary": []
   },
   {
     "key": "ground",
@@ -69,10 +77,14 @@
       9,
       35
     ],
-    "facts": [
-      "سريران مفردان"
-    ],
-    "text": ""
+    "facts": [],
+    "text": "",
+    "primary": [
+      [
+        "الأسرّة",
+        "سريران مفردان"
+      ]
+    ]
   },
   {
     "key": "play",
@@ -90,7 +102,8 @@
       "ألعاب للأطفال",
       "إطلالة على المسبح"
     ],
-    "text": ""
+    "text": "",
+    "primary": []
   },
   {
     "key": "pool",
@@ -105,17 +118,23 @@
       101
     ],
     "facts": [
-      "عمق 60 سم",
       "ألعاب مائية",
       "زحليقة مزدوجة",
       "حاجز زجاجي"
     ],
-    "text": "يجب الإشراف على الأطفال أثناء السباحة"
+    "text": "يجب الإشراف على الأطفال أثناء السباحة",
+    "primary": [
+      [
+        "العمق",
+        "60 سم"
+      ]
+    ],
+    "note": true
   },
   {
     "key": "groundBath",
     "name": "حمام",
-    "floor": "",
+    "floor": "الدور الأرضي",
     "x": 54,
     "y": 24,
     "shape": "51,19 56,19 56,29 51,29",
@@ -125,7 +144,8 @@
       33
     ],
     "facts": [],
-    "text": ""
+    "text": "",
+    "primary": []
   },
   {
     "key": "kitchen",
@@ -140,10 +160,9 @@
       53
     ],
     "facts": [
-      "طاولة طعام",
       "ثلاجة",
       "فرن",
-      "مايكرويف",
+      "ميكروويف",
       "موقد غاز وكهرباء",
       "غلاية",
       "أدوات مطبخ أساسية"
@@ -151,7 +170,8 @@
     "text": "",
     "extraShapes": [
       "58,29 73,29 74,36 58,36"
-    ]
+    ],
+    "primary": []
   },
   {
     "key": "living",
@@ -166,16 +186,21 @@
       75
     ],
     "facts": [
-      "تتسع لـ15 شخص",
-      "تلفزيون",
       "إطلالة على المسبح",
+      "تلفزيون",
       "باب مباشر لساحة المسبح"
     ],
-    "text": ""
+    "text": "",
+    "primary": [
+      [
+        "السعة",
+        "15 شخصًا"
+      ]
+    ]
   },
   {
     "key": "shower",
-    "name": "كرسي التشميس والدش",
+    "name": "كرسي التشميس والمروش",
     "floor": "المنطقة الخارجية",
     "x": 22,
     "y": 68,
@@ -186,19 +211,18 @@
       101
     ],
     "facts": [
-      "كرسي تشميس",
-      "مظلة",
-      "دش خارجي"
+      "مظلة"
     ],
     "text": "",
     "extraShapes": [
       "27,66 40,66 40,72 27,72"
-    ]
+    ],
+    "primary": []
   },
   {
     "key": "majlis",
     "name": "المجلس المستقل",
-    "floor": "",
+    "floor": "المنطقة الخارجية",
     "x": 70,
     "y": 64,
     "shape": "61,58 80,58 83,72 62,72",
@@ -208,12 +232,17 @@
       101
     ],
     "facts": [
-      "يتسع لـ10 أشخاص",
       "تلفزيون",
       "مدخل خاص",
       "حمام خاص"
     ],
-    "text": ""
+    "text": "",
+    "primary": [
+      [
+        "السعة",
+        "10 أشخاص"
+      ]
+    ]
   }
 ];
   var dialog, viewport, plane, panel, selected, opener, previousOverflow;
@@ -236,6 +265,7 @@
 };
   var roomDetailsEn={
   "upperBath": {
+    "primary": [],
     "facts": [
       "Glass-enclosed shower",
       "Washbasin",
@@ -244,48 +274,67 @@
     "text": ""
   },
   "upper": {
+    "primary": [
+      [
+        "Bed",
+        "Double bed"
+      ],
+      [
+        "Bathroom",
+        "Private bathroom"
+      ]
+    ],
     "facts": [
-      "Double bed",
-      "TV",
-      "Private bathroom"
+      "TV"
     ],
     "text": ""
   },
   "stairs": {
-    "facts": [
-      "Leads to the upper floor"
-    ],
-    "text": ""
+    "primary": [],
+    "facts": [],
+    "text": "Connects the ground floor to the upper floor"
   },
   "ground": {
-    "facts": [
-      "Two single beds"
+    "primary": [
+      [
+        "Beds",
+        "Two single beds"
+      ]
     ],
+    "facts": [],
     "text": ""
   },
   "play": {
+    "primary": [],
     "facts": [
-      "Children's games",
+      "Children’s games",
       "Pool view"
     ],
     "text": ""
   },
   "pool": {
+    "primary": [
+      [
+        "Depth",
+        "60 cm"
+      ]
+    ],
     "facts": [
-      "Depth: 60 cm",
       "Water play features",
       "Double slide",
       "Glass barrier"
     ],
-    "text": "Children must be supervised while swimming."
+    "text": "Children must be supervised while swimming.",
+    "note": true
   },
   "groundBath": {
+    "primary": [],
     "facts": [],
     "text": ""
   },
   "kitchen": {
+    "primary": [],
     "facts": [
-      "Dining table",
       "Refrigerator",
       "Oven",
       "Microwave",
@@ -296,25 +345,34 @@
     "text": ""
   },
   "living": {
+    "primary": [
+      [
+        "Capacity",
+        "15 people"
+      ]
+    ],
     "facts": [
-      "Up to 15 people",
-      "TV",
       "Pool view",
+      "TV",
       "Direct access to the pool area"
     ],
     "text": ""
   },
   "shower": {
+    "primary": [],
     "facts": [
-      "Sun lounger",
-      "Umbrella",
-      "Outdoor shower"
+      "Umbrella"
     ],
     "text": ""
   },
   "majlis": {
+    "primary": [
+      [
+        "Capacity",
+        "10 people"
+      ]
+    ],
     "facts": [
-      "Up to 10 people",
       "TV",
       "Private entrance",
       "Private bathroom"
@@ -329,20 +387,6 @@
     "المنطقة الخارجية": "Outdoor Area"
   };
   var detailTitles={ar:{upper:"غرفة النوم",ground:"غرفة النوم",groundBath:"الحمام"},en:{upper:"Bedroom",ground:"Bedroom",groundBath:"Bathroom"}};
-  // Indices of primary features. Other facts use compact resort-style amenity chips.
-  var primaryFactIndices={
-    upperBath:[],
-    upper:[0,2],
-    stairs:[0],
-    ground:[0],
-    play:[0],
-    pool:[0,1],
-    groundBath:[],
-    kitchen:[0,4],
-    living:[0,2],
-    shower:[0],
-    majlis:[0,2]
-  };
   var tourCopy={
     "ar": {
       "title": "جولة داخل الشاليه",
@@ -414,16 +458,14 @@
   function renderDetails(room){
     var index=rooms.indexOf(room),details=labelLanguage==='en'?roomDetailsEn[room.key]:room;
     var floor=room.floor?(labelLanguage==='en'?floorNamesEn[room.floor]:room.floor):'';
-    var copy=tourCopy[labelLanguage],name=detailTitles[labelLanguage][room.key]||roomName(room),facts=details.facts||[];
-    var mainIndices=primaryFactIndices[room.key]||[];
-    var mainFacts=facts.filter(function(f,i){return mainIndices.indexOf(i)!==-1;});
-    var extras=facts.filter(function(f,i){return mainIndices.indexOf(i)===-1;});
+    var copy=tourCopy[labelLanguage],name=detailTitles[labelLanguage][room.key]||roomName(room);
+    var mainFacts=details.primary||[],extras=details.facts||[];
     panel.innerHTML='<div class="cm-detail-heading"><div>'
       +(floor?'<span class="cm-floor">'+floor+'</span>':'')
       +'<h3 lang="'+labelLanguage+'">'+name+'</h3></div><button type="button" class="cm-icon cm-clear" aria-label="'+copy.clear+'">×</button></div>'
-      +(mainFacts.length?'<div class="cm-fact-grid">'+mainFacts.map(function(f){return '<div class="cm-fact-card"><strong>'+f+'</strong></div>';}).join('')+'</div>':'')
+      +(mainFacts.length?'<div class="cm-fact-grid">'+mainFacts.map(function(f){return '<div class="cm-fact-card"><span class="cm-fact-label">'+f[0]+'</span><strong>'+f[1]+'</strong></div>';}).join('')+'</div>':'')
       +(extras.length?'<ul class="cm-facts">'+extras.map(function(f){return '<li>'+f+'</li>';}).join('')+'</ul>':'')
-      +(details.text?'<p class="cm-description">'+details.text+'</p>':'');
+      +(details.text?'<p class="'+(details.note?'cm-note':'cm-description')+'">'+details.text+'</p>':'');
     panel.querySelector('.cm-clear').onclick=function(){clear();markers[index].focus({preventScroll:true});};
   }
   function select(room){
@@ -446,7 +488,7 @@
     if(!dialog.open)return;
     var cx=view.size?(view.w/2-view.x)/(view.size*view.scale):.5;
     var cy=view.size?(view.h/2-view.y)/(view.size*view.scale):.5;
-    view.w=viewport.clientWidth;view.h=viewport.clientHeight;view.size=Math.min(view.w,view.h/1.10);
+    view.w=viewport.clientWidth;view.h=viewport.clientHeight;view.size=Math.min(Math.max(1,view.w-16),Math.max(1,view.h-32)/1.10);
     if(reset){view.scale=1;cx=.5;cy=.55;}
     view.x=view.w/2-cx*view.size*view.scale;view.y=view.h/2-cy*view.size*view.scale;
     plane.style.width=view.size+'px';plane.style.height=(view.size*1.10)+'px';plane.style.setProperty('--cm-label-font',clamp(view.size*.025,11,14)+'px');renderView();
