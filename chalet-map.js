@@ -114,8 +114,8 @@
   },
   {
     "key": "groundBath",
-    "name": "حمام الدور الأرضي",
-    "floor": "الدور الأرضي",
+    "name": "حمام",
+    "floor": "",
     "x": 54,
     "y": 24,
     "shape": "51,19 56,19 56,29 51,29",
@@ -124,11 +124,7 @@
       91,
       33
     ],
-    "facts": [
-      "دش",
-      "مغاسل",
-      "مرحاض"
-    ],
+    "facts": [],
     "text": ""
   },
   {
@@ -232,7 +228,7 @@
   "ground": "Ground Floor Bedroom",
   "play": "Kids' Playroom",
   "pool": "Kids' Pool",
-  "groundBath": "Ground Floor Bathroom",
+  "groundBath": "Bathroom",
   "kitchen": "Kitchen & Dining Table",
   "living": "Indoor Lounge",
   "shower": "Sun Lounger & Shower",
@@ -284,11 +280,7 @@
     "text": "Children must be supervised while swimming."
   },
   "groundBath": {
-    "facts": [
-      "Shower",
-      "Washbasins",
-      "Toilet"
-    ],
+    "facts": [],
     "text": ""
   },
   "kitchen": {
@@ -345,7 +337,7 @@
     ground:[0],
     play:[0],
     pool:[0,1],
-    groundBath:[0,1],
+    groundBath:[],
     kitchen:[0,4],
     living:[0,2],
     shower:[0],
