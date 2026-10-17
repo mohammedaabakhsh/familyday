@@ -34,9 +34,10 @@
 .cm-detail-heading{display:flex;gap:8px;justify-content:space-between;align-items:center;margin-bottom:10px}.cm-detail-heading h3{display:flex;align-items:center;gap:8px;margin:4px 0 0;font-size:20px;line-height:1.4;color:#fff}
 .cm-floor{color:#80d2da;font-size:11px;font-weight:600}.cm-clear{width:30px;height:30px;font-size:20px}
 .cm-fact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:16px 0 12px}
-.cm-fact-card{min-width:0;min-height:62px;display:flex;flex-direction:column;justify-content:center;gap:3px;padding:10px 12px;border:1px solid #285160;border-radius:10px;background:#102f3e}.cm-fact-card:only-child{grid-column:1/-1}
-.cm-fact-label{color:#7ecfea;font-size:11px;font-weight:600;line-height:1.4}.cm-fact-card strong{color:#fff;font-size:14px;font-weight:700;line-height:1.45}
-.cm-facts{display:flex;flex-wrap:wrap;gap:7px;list-style:none;margin:0 0 14px;padding:0}.cm-facts li{margin:0;padding:6px 10px;border:1px solid #285b67;border-radius:8px;background:#10323f;color:#9adce3;font-size:12px;font-weight:600;line-height:1.5}
+.cm-fact-grid[data-count="3"]{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cm-fact-card{min-width:0;min-height:62px;display:flex;align-items:center;justify-content:center;padding:10px 8px;border:1px solid #285160;border-radius:10px;background:#102f3e;text-align:center}
+.cm-fact-card:only-child,.cm-fact-grid[data-count="7"] .cm-fact-card:last-child{grid-column:1/-1}
+.cm-fact-card strong{color:#fff;font-size:13px;font-weight:700;line-height:1.5;overflow-wrap:anywhere}
 .cm-description{font-size:14px;line-height:1.7;color:#ccdce4;margin:0}.cm-empty{display:grid;place-items:center;min-height:72px;margin:0;text-align:center;color:#b9cfd8;line-height:1.8;font-size:14px}
 .cm-error{position:absolute;bottom:5px;left:22%;right:22%;z-index:3;padding:10px;text-align:center;direction:rtl;color:#173544;background:#fffffff2;border-radius:10px;font-size:12px}
 .cm-announcement,.cm-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}

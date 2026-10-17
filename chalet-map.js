@@ -4,7 +4,7 @@
   var rooms = [
   {
     "key": "upperBath",
-    "name": "حمام داخلي بغرفة النوم",
+    "name": "حمام غرفة النوم",
     "floor": "الدور العلوي",
     "x": 27,
     "y": 13,
@@ -15,9 +15,9 @@
       6
     ],
     "facts": [
-      "مغسلة",
       "دش زجاجي",
-      "دورة مياه"
+      "مغسلة",
+      "مرحاض"
     ],
     "text": ""
   },
@@ -43,7 +43,7 @@
   {
     "key": "stairs",
     "name": "السلم",
-    "floor": "بين الدورين",
+    "floor": "",
     "x": 48,
     "y": 22,
     "shape": "44,15 51,15 51,29 44,29",
@@ -52,8 +52,10 @@
       76,
       6
     ],
-    "facts": [],
-    "text": "يربط الدور الأرضي بالدور العلوي"
+    "facts": [
+      "يؤدي إلى الدور العلوي"
+    ],
+    "text": ""
   },
   {
     "key": "ground",
@@ -74,7 +76,7 @@
   },
   {
     "key": "play",
-    "name": "غرفة الأطفال",
+    "name": "غرفة ألعاب الأطفال",
     "floor": "الدور الأرضي",
     "x": 38,
     "y": 25,
@@ -85,14 +87,14 @@
       55
     ],
     "facts": [
-      "مجهزة بألعاب للأطفال",
-      "تطل على المسبح"
+      "ألعاب للأطفال",
+      "إطلالة على المسبح"
     ],
     "text": ""
   },
   {
     "key": "pool",
-    "name": "مسبح للأطفال",
+    "name": "مسبح الأطفال",
     "floor": "المنطقة الخارجية",
     "x": 42,
     "y": 62,
@@ -104,14 +106,15 @@
     ],
     "facts": [
       "عمق 60 سم",
-      "ألعاب مائية وزحليقة مزدوجة",
+      "ألعاب مائية",
+      "زحليقة مزدوجة",
       "حاجز زجاجي"
     ],
-    "text": "يُستخدم تحت إشراف الأهل."
+    "text": "يجب الإشراف على الأطفال أثناء السباحة"
   },
   {
     "key": "groundBath",
-    "name": "حمام",
+    "name": "حمام الدور الأرضي",
     "floor": "الدور الأرضي",
     "x": 54,
     "y": 24,
@@ -122,9 +125,9 @@
       33
     ],
     "facts": [
-      "دورة مياه",
       "دش",
-      "مغاسل"
+      "مغاسل",
+      "مرحاض"
     ],
     "text": ""
   },
@@ -144,7 +147,7 @@
       "طاولة طعام",
       "ثلاجة",
       "فرن",
-      "ميكروويف",
+      "مايكرويف",
       "موقد غاز وكهرباء",
       "غلاية",
       "أدوات مطبخ أساسية"
@@ -167,16 +170,16 @@
       75
     ],
     "facts": [
-      "تتسع لـ15 شخصًا",
+      "تتسع لـ15 شخص",
       "تلفزيون",
-      "تطل على المسبح",
-      "باب مباشر إلى ساحة المسبح"
+      "إطلالة على المسبح",
+      "باب مباشر لساحة المسبح"
     ],
     "text": ""
   },
   {
     "key": "shower",
-    "name": "كرسي التشميس والمروش",
+    "name": "كرسي التشميس والدش",
     "floor": "المنطقة الخارجية",
     "x": 22,
     "y": 68,
@@ -198,8 +201,8 @@
   },
   {
     "key": "majlis",
-    "name": "المجلس المستقل مع حمام",
-    "floor": "المنطقة الخارجية",
+    "name": "المجلس المستقل",
+    "floor": "",
     "x": 70,
     "y": 64,
     "shape": "61,58 80,58 83,72 62,72",
@@ -223,129 +226,117 @@
   var imagePath='imgs/chalet-map-clean-v2.webp';
   var labelLanguage='ar';
   var roomNamesEn={
-    "upperBath": "En-suite Bathroom",
-    "upper": "Upstairs Bedroom",
-    "stairs": "Stairs",
-    "ground": "Ground Floor Bedroom",
-    "play": "Kids' Playroom",
-    "pool": "Kids' Pool",
-    "groundBath": "Bathroom",
-    "kitchen": "Kitchen & Dining Table",
-    "living": "Indoor Lounge",
-    "shower": "Sun Lounger & Shower",
-    "majlis": "Separate Majlis & Bathroom"
-  };
+  "upperBath": "En-suite Bathroom",
+  "upper": "Upstairs Bedroom",
+  "stairs": "Stairs",
+  "ground": "Ground Floor Bedroom",
+  "play": "Kids' Playroom",
+  "pool": "Kids' Pool",
+  "groundBath": "Ground Floor Bathroom",
+  "kitchen": "Kitchen & Dining Table",
+  "living": "Indoor Lounge",
+  "shower": "Sun Lounger & Shower",
+  "majlis": "Separate Majlis"
+};
   var roomDetailsEn={
-    "upperBath": {
-      "facts": [
-        "Washbasin",
-        "Glass-enclosed shower",
-        "Toilet"
-      ],
-      "text": ""
-    },
-    "upper": {
-      "facts": [
-        "Double bed",
-        "TV",
-        "Private bathroom"
-      ],
-      "text": ""
-    },
-    "stairs": {
-      "facts": [],
-      "text": "Connects the ground and upper floors."
-    },
-    "ground": {
-      "facts": [
-        "Two single beds"
-      ],
-      "text": ""
-    },
-    "play": {
-      "facts": [
-        "Children's play equipment",
-        "Overlooks the pool"
-      ],
-      "text": ""
-    },
-    "pool": {
-      "facts": [
-        "Depth: 60 cm",
-        "Water play features and a double slide",
-        "Glass barrier"
-      ],
-      "text": "Parental supervision required."
-    },
-    "groundBath": {
-      "facts": [
-        "Toilet",
-        "Shower",
-        "Washbasins"
-      ],
-      "text": ""
-    },
-    "kitchen": {
-      "facts": [
-        "Dining table",
-        "Refrigerator",
-        "Oven",
-        "Microwave",
-        "Gas and electric hob",
-        "Kettle",
-        "Basic kitchen utensils"
-      ],
-      "text": ""
-    },
-    "living": {
-      "facts": [
-        "Up to 15 guests",
-        "TV",
-        "Overlooks the pool",
-        "Door opens onto the pool area"
-      ],
-      "text": ""
-    },
-    "shower": {
-      "facts": [
-        "Sun lounger",
-        "Sun umbrella",
-        "Outdoor shower"
-      ],
-      "text": ""
-    },
-    "majlis": {
-      "facts": [
-        "Up to 10 guests",
-        "TV",
-        "Private entrance",
-        "Private bathroom"
-      ],
-      "text": ""
-    }
-  };
+  "upperBath": {
+    "facts": [
+      "Glass-enclosed shower",
+      "Washbasin",
+      "Toilet"
+    ],
+    "text": ""
+  },
+  "upper": {
+    "facts": [
+      "Double bed",
+      "TV",
+      "Private bathroom"
+    ],
+    "text": ""
+  },
+  "stairs": {
+    "facts": [
+      "Leads to the upper floor"
+    ],
+    "text": ""
+  },
+  "ground": {
+    "facts": [
+      "Two single beds"
+    ],
+    "text": ""
+  },
+  "play": {
+    "facts": [
+      "Children's games",
+      "Pool view"
+    ],
+    "text": ""
+  },
+  "pool": {
+    "facts": [
+      "Depth: 60 cm",
+      "Water play features",
+      "Double slide",
+      "Glass barrier"
+    ],
+    "text": "Children must be supervised while swimming."
+  },
+  "groundBath": {
+    "facts": [
+      "Shower",
+      "Washbasins",
+      "Toilet"
+    ],
+    "text": ""
+  },
+  "kitchen": {
+    "facts": [
+      "Dining table",
+      "Refrigerator",
+      "Oven",
+      "Microwave",
+      "Gas and electric hob",
+      "Kettle",
+      "Basic kitchen utensils"
+    ],
+    "text": ""
+  },
+  "living": {
+    "facts": [
+      "Up to 15 people",
+      "TV",
+      "Pool view",
+      "Direct access to the pool area"
+    ],
+    "text": ""
+  },
+  "shower": {
+    "facts": [
+      "Sun lounger",
+      "Umbrella",
+      "Outdoor shower"
+    ],
+    "text": ""
+  },
+  "majlis": {
+    "facts": [
+      "Up to 10 people",
+      "TV",
+      "Private entrance",
+      "Private bathroom"
+    ],
+    "text": ""
+  }
+};
   var floorNamesEn={
     "الدور العلوي": "Upper Floor",
     "الدور الأرضي": "Ground Floor",
     "بين الدورين": "Between Floors",
     "المنطقة الخارجية": "Outdoor Area"
   };
-  var primaryFactCards={
-    upperBath:[[1,'shower'],[0,'washbasin']],
-    upper:[[0,'bed'],[2,'bathroom']],
-    ground:[[0,'beds']],
-    play:[[0,'play'],[1,'view']],
-    pool:[[0,'depth'],[1,'waterPlay']],
-    groundBath:[[1,'shower'],[2,'washbasins']],
-    kitchen:[[0,'dining'],[4,'cooking']],
-    living:[[0,'capacity'],[2,'view']],
-    shower:[[0,'seating'],[2,'shower']],
-    majlis:[[0,'capacity'],[2,'entrance']]
-  };
-  var factCardLabels={
-    ar:{bed:'السرير',beds:'الأسرّة',bathroom:'الحمام',shower:'الاستحمام',washbasin:'المغسلة',washbasins:'المغاسل',play:'الألعاب',view:'الإطلالة',depth:'العمق',waterPlay:'الألعاب المائية',dining:'الطعام',cooking:'الطهي',capacity:'السعة',seating:'الجلسة',entrance:'المدخل'},
-    en:{bed:'Bed',beds:'Beds',bathroom:'Bathroom',shower:'Shower',washbasin:'Washbasin',washbasins:'Washbasins',play:'Play',view:'View',depth:'Depth',waterPlay:'Water play',dining:'Dining',cooking:'Cooking',capacity:'Capacity',seating:'Seating',entrance:'Entrance'}
-  };
+  var detailTitles={ar:{upper:"غرفة النوم",ground:"غرفة النوم",groundBath:"الحمام"},en:{upper:"Bedroom",ground:"Bedroom",groundBath:"Bathroom"}};
   var tourCopy={
     "ar": {
       "title": "جولة داخل الشاليه",
@@ -415,17 +406,13 @@
     panel.innerHTML='<p class="cm-empty">'+tourCopy[labelLanguage].empty+'</p>';
   }
   function renderDetails(room){
-    var index=rooms.indexOf(room), details=labelLanguage==='en'?roomDetailsEn[room.key]:room;
-    var floor=labelLanguage==='en'?floorNamesEn[room.floor]:room.floor, copy=tourCopy[labelLanguage];
-    var cards=primaryFactCards[room.key]||[], primaryIndices=cards.map(function(card){return card[0];});
-    var remainingFacts=details.facts.filter(function(fact,i){return primaryIndices.indexOf(i)===-1;});
-    panel.innerHTML='<div class="cm-detail-heading"><div><span class="cm-floor">'+floor+'</span><h3 lang="'+labelLanguage+'">'+roomName(room)+'</h3></div><button type="button" class="cm-icon cm-clear" aria-label="'+copy.clear+'">×</button></div>'
-      +(cards.length?'<div class="cm-fact-grid">'+cards.map(function(card){
-        var value=details.facts[card[0]];
-        if(card[1]==='depth')value=value.replace(labelLanguage==='en'?/^Depth:\s*/:/^عمق\s*/,'');
-        return '<div class="cm-fact-card"><span class="cm-fact-label">'+factCardLabels[labelLanguage][card[1]]+'</span><strong>'+value+'</strong></div>';
-      }).join('')+'</div>':'')
-      +(remainingFacts.length?'<ul class="cm-facts">'+remainingFacts.map(function(f){return '<li>'+f+'</li>';}).join('')+'</ul>':'')
+    var index=rooms.indexOf(room),details=labelLanguage==='en'?roomDetailsEn[room.key]:room;
+    var floor=room.floor?(labelLanguage==='en'?floorNamesEn[room.floor]:room.floor):'';
+    var copy=tourCopy[labelLanguage],name=detailTitles[labelLanguage][room.key]||roomName(room),facts=details.facts||[];
+    panel.innerHTML='<div class="cm-detail-heading"><div>'
+      +(floor?'<span class="cm-floor">'+floor+'</span>':'')
+      +'<h3 lang="'+labelLanguage+'">'+name+'</h3></div><button type="button" class="cm-icon cm-clear" aria-label="'+copy.clear+'">×</button></div>'
+      +(facts.length?'<div class="cm-fact-grid" data-count="'+facts.length+'">'+facts.map(function(f){return '<div class="cm-fact-card"><strong>'+f+'</strong></div>';}).join('')+'</div>':'')
       +(details.text?'<p class="cm-description">'+details.text+'</p>':'');
     panel.querySelector('.cm-clear').onclick=function(){clear();markers[index].focus({preventScroll:true});};
   }
