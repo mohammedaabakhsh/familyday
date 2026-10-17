@@ -71,6 +71,157 @@
   var previousOverflow = '', pointers = new Map(), gesture = null;
   var view = { width: 0, height: 0, size: 0, scale: 1, x: 0, y: 0 };
   var closeIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg>';
+  var mapLanguage = 'ar', photoLocation = null;
+  var cabinNamesEn = {
+    1: { name: 'Dome House 1', label: 'Dome 1' },
+    12: { name: 'Dome House 2', label: 'Dome 2' },
+    2: { name: 'Pyramid Cabin', label: 'Pyramid' },
+    3: { name: 'Classic Cabin', label: 'Classic' },
+    4: { name: 'Greek House 1', label: 'Greek 1' },
+    13: { name: 'Greek House 2', label: 'Greek 2' },
+    5: { name: 'Palm Beach Cabin', label: 'Palm Beach' },
+    6: { name: 'Bohemian Cabin', label: 'Bohemian' },
+    7: { name: 'French Cabin', label: 'French' },
+    8: { name: 'Rustic Cabin', label: 'Rustic' },
+    9: { name: 'Royal Cabin', label: 'Royal' },
+    10: { name: 'Panoramic House', label: 'Panoramic' },
+    11: { name: 'Shared Garden', label: 'Shared Garden' }
+  };
+  var textEn = {
+    'تجربة فريدة على شكل قبة مع بانيو داخلي وجاكوزي داخل المسبح': 'A distinctive dome design with an indoor bathtub and an in-pool Jacuzzi.',
+    'تصميم هرمي بطابع خشبي مع بانيو خارجي بخصوصية كاملة': 'A pyramid design with a wood-inspired look and a fully private outdoor bathtub.',
+    'يتميز بأسلوبه الحديث والكلاسيكي': 'Combines modern and classic styling.',
+    'مزيج بين التراث القديم والبساطة الحديثة': 'A blend of traditional heritage and modern simplicity.',
+    'طابع أفريقي يجمع بين الخشب والبامبو والقش': 'African-inspired styling with wood, bamboo and straw.',
+    'طابع بوهيمي بسيط مستوحى من الطبيعة': 'Simple, nature-inspired bohemian styling.',
+    'كوخ خشبي بطراز فرنسي يتميز بالأناقة والفخامة': 'An elegant, luxurious wooden cabin with French styling.',
+    'صُمم على الطراز الريفي الأوروبي': 'Designed in a European country style.',
+    'أجواء ريفية ومساحات واسعة لجمعات العائلة': 'A rustic setting with plenty of space for family gatherings.',
+    'واجهات زجاجية بانورامية تطل على حديقتك الخاصة والمسبح': 'Panoramic windows overlooking your private garden and pool.',
+    'منطقة مشتركة مجهزة للعائلات': 'A shared area with facilities for families.',
+    'مثالي للأزواج': 'Ideal for couples',
+    'مناسب للعائلات': 'Suitable for families',
+    'مناسب للجميع': 'Suitable for everyone',
+    'مسبح خاص': 'Private pool',
+    'مساحة خارجية خاصة': 'Private outdoor space',
+    'بانيو داخلي': 'Indoor bathtub',
+    'بانيو خارجي': 'Outdoor bathtub',
+    'جاكوزي داخلي': 'Indoor Jacuzzi',
+    'ألعاب أطفال متنوعة': "A variety of children's play equipment",
+    'شاشة عرض مشتركة للأطفال': 'Shared screen for children',
+    'جلسات خارجية': 'Outdoor seating',
+    'يمكن ربط الكلاسيكي ورويال عبر باب داخلي بسعة تصل إلى 35 ضيفًا.': 'Classic and Royal can be connected through an internal door, with space for up to 35 guests.'
+  };
+  var mapCopy = {
+    ar: {
+      title: 'خريطة الأكواخ', hint: 'اختر الكوخ وشاهد موقعه ومميزاته',
+      languageLabel: 'لغة الخريطة', languageStatus: 'تم عرض الخريطة بالعربية',
+      close: 'إغلاق الخريطة', viewport: 'خريطة تفاعلية؛ كبّر ثم اسحب للاستكشاف، أو استخدم الأسهم للتحريك',
+      image: 'توزيع أكواخ المنتجع من الأعلى', error: 'تعذّر تحميل الخريطة.', retry: 'إعادة المحاولة',
+      panel: 'معلومات الموقع المختار', empty: 'اختر اسم الكوخ من الخريطة', reset: 'إلغاء التكبير',
+      card: 'ملخص الكوخ المختار', gardenCard: 'تفاصيل الحديقة المشتركة',
+      clear: 'إلغاء اختيار الكوخ', gardenClear: 'إلغاء اختيار الحديقة',
+      capacity: 'السعة', bedrooms: 'غرف النوم', location: 'الموقع', access: 'الاستخدام',
+      gardenLocation: 'وسط الأكواخ', gardenAccess: 'لجميع الضيوف',
+      gardenConnection: 'لكل كوخ باب داخلي يفتح مباشرة على الحديقة المشتركة',
+      details: 'عرض التفاصيل والصور', markerAction: ': عرض المميزات',
+      viewPhotos: 'عرض الصور', cabinPhotos: 'عرض صور الكوخ', viewPhotosOf: 'عرض صور ',
+      photosOf: 'صور ', photoClose: 'إغلاق الصور والعودة إلى الخريطة',
+      photoError: 'تعذّر تحميل الصورة.', previousPhoto: 'الصورة السابقة', nextPhoto: 'الصورة التالية',
+      photoHint: 'اسحب للتنقل بين الصور', photoImage: '، الصورة ', photoOf: ' من '
+    },
+    en: {
+      title: 'Cabin Map', hint: 'Choose a cabin to see its location and features',
+      languageLabel: 'Map language', languageStatus: 'Map shown in English.',
+      close: 'Close map', viewport: 'Interactive map; zoom in and drag to explore, or use the arrow keys to pan.',
+      image: 'An overhead view of the resort cabins', error: 'The map could not be loaded.', retry: 'Try again',
+      panel: 'Selected location details', empty: 'Select a cabin name on the map', reset: 'Reset zoom',
+      card: 'Selected cabin summary', gardenCard: 'Shared garden details',
+      clear: 'Clear cabin selection', gardenClear: 'Clear garden selection',
+      capacity: 'Capacity', bedrooms: 'Bedrooms', location: 'Location', access: 'Access',
+      gardenLocation: 'Among the cabins', gardenAccess: 'All resort guests',
+      gardenConnection: 'Each cabin has an internal door that opens directly onto the shared garden.',
+      details: 'View details and photos', markerAction: ': View features',
+      viewPhotos: 'View photos', cabinPhotos: 'View cabin photos', viewPhotosOf: 'View photos of ',
+      photosOf: 'Photos of ', photoClose: 'Close photos and return to the map',
+      photoError: 'The photo could not be loaded.', previousPhoto: 'Previous photo', nextPhoto: 'Next photo',
+      photoHint: 'Swipe to browse the photos', photoImage: ', photo ', photoOf: ' of '
+    }
+  };
+
+  function translateText(value) {
+    return mapLanguage === 'en' && Object.prototype.hasOwnProperty.call(textEn, value) ? textEn[value] : value;
+  }
+
+  function cabinName(cabin, compact) {
+    if (mapLanguage === 'en' && cabinNamesEn[cabin.id]) return cabinNamesEn[cabin.id][compact ? 'label' : 'name'];
+    return compact ? cabin.name.replace(/^(?:الكوخ|كوخ|البيت|بيت)\s+/, '') : cabin.name;
+  }
+
+  function updatePhotoText() {
+    if (!photoDialog) return;
+    var copy = mapCopy[mapLanguage], direction = mapLanguage === 'en' ? 'ltr' : 'rtl';
+    photoDialog.lang = mapLanguage;
+    photoDialog.querySelector('.fd-map-photo-header').dir = direction;
+    photoDialog.querySelector('.fd-map-photo-position').dir = direction;
+    photoError.dir = direction;
+    photoDialog.querySelector('.fd-map-photo-close').setAttribute('aria-label', copy.photoClose);
+    photoError.querySelector('p').textContent = copy.photoError;
+    photoDialog.querySelector('.fd-map-photo-retry').textContent = copy.retry;
+    photoPrevious.setAttribute('aria-label', copy.previousPhoto);
+    photoNext.setAttribute('aria-label', copy.nextPhoto);
+    photoHint.textContent = copy.photoHint;
+    if (photoLocation) photoTitle.textContent = copy.photosOf + cabinName(cabinFor(photoLocation));
+    photoImage.alt = photoTitle.textContent + copy.photoImage + (photoIndex + 1);
+    photoCounter.textContent = (photoIndex + 1) + copy.photoOf + photoSources.length;
+  }
+
+  function updateMapText() {
+    var copy = mapCopy[mapLanguage], direction = mapLanguage === 'en' ? 'ltr' : 'rtl';
+    dialog.lang = mapLanguage;
+    dialog.querySelector('.fd-map-header').dir = direction;
+    dialog.querySelector('#fd-map-title').textContent = copy.title;
+    dialog.querySelector('#fd-map-hint').textContent = copy.hint;
+    dialog.querySelector('.fd-map-languages').setAttribute('aria-label', copy.languageLabel);
+    dialog.querySelectorAll('.fd-map-language').forEach(function (button) {
+      button.setAttribute('aria-pressed', String(button.dataset.lang === mapLanguage));
+    });
+    dialog.querySelector('.fd-map-close').setAttribute('aria-label', copy.close);
+    viewport.setAttribute('aria-label', copy.viewport);
+    image.alt = copy.image;
+    error.dir = direction; error.querySelector('p').textContent = copy.error;
+    dialog.querySelector('.fd-map-retry').textContent = copy.retry;
+    var panel = dialog.querySelector('.fd-map-panel');
+    panel.dir = direction; panel.setAttribute('aria-label', copy.panel);
+    empty.querySelector('p').textContent = copy.empty;
+    fitButton.setAttribute('aria-label', copy.reset);
+    fitButton.querySelector('span').textContent = copy.reset;
+    card.setAttribute('aria-label', copy.card);
+    card.querySelector('.fd-map-clear').setAttribute('aria-label', copy.clear);
+    card.querySelector('.fd-map-guest-label').textContent = copy.capacity;
+    card.querySelector('.fd-map-room-label').textContent = copy.bedrooms;
+    card.querySelector('.fd-map-details-button').textContent = copy.details;
+    card.querySelector('.fd-map-photo-label').textContent = copy.viewPhotos;
+    photoButton.setAttribute('aria-label', selected ? copy.viewPhotosOf + cabinName(cabinFor(selected)) : copy.cabinPhotos);
+    if (selected) cardPhoto.alt = cabinName(cabinFor(selected));
+    markers.forEach(function (marker, i) {
+      var cabin = cabinFor(locations[i]), label = marker.querySelector('span');
+      marker.setAttribute('aria-label', cabinName(cabin) + copy.markerAction);
+      label.textContent = cabinName(cabin, true); label.dir = direction;
+    });
+    updatePhotoText();
+  }
+
+  function setMapLanguage(language) {
+    if ((language !== 'ar' && language !== 'en') || language === mapLanguage) return;
+    var info = dialog.querySelector('.fd-map-info'), previousScroll = info.scrollTop;
+    mapLanguage = language;
+    updateMapText();
+    if (selected) renderSelectedLocation(selected);
+    info.scrollTop = previousScroll;
+    renderView();
+    dialog.querySelector('.fd-map-announcement').textContent = mapCopy[mapLanguage].languageStatus;
+  }
 
   function cabinFor(location) {
     return data.resort.items.find(function (item) { return item.id === location.cabinId; });
@@ -84,18 +235,20 @@
   }
 
   function roomText(count) {
+    if (mapLanguage === 'en') return count + (count === 1 ? ' bedroom' : ' bedrooms');
     return count === 1 ? 'غرفة نوم واحدة' : count === 2 ? 'غرفتا نوم' : count + ' غرف نوم';
   }
 
   function roomValue(count) {
+    if (mapLanguage === 'en') return count + (count === 1 ? ' bedroom' : ' bedrooms');
     return count === 1 ? 'غرفة واحدة' : count === 2 ? 'غرفتان' : count + ' غرف';
   }
 
   function featuresFor(cabin) {
-    if (cabin.badge === 'مشترك') return cabin.tags.filter(function (tag) { return tag !== '|'; });
+    if (cabin.badge === 'مشترك') return cabin.tags.filter(function (tag) { return tag !== '|'; }).map(translateText);
     var features = cabin.pool ? ['مسبح خاص', 'مساحة خارجية خاصة'] : [];
     if (cabin.bath.summary) features.push(cabin.bath.summary);
-    return features;
+    return features.map(translateText);
   }
 
   function clearSelection(restoreFocus) {
@@ -123,8 +276,8 @@
     card.classList.toggle('has-photo', Boolean(source));
     cardPhoto.parentElement.hidden = !source;
     if (!source) return;
-    photoButton.setAttribute('aria-label', 'عرض صور ' + card.querySelector('h3').textContent);
-    cardPhoto.alt = cabin.name;
+    photoButton.setAttribute('aria-label', mapCopy[mapLanguage].viewPhotosOf + card.querySelector('h3').textContent);
+    cardPhoto.alt = cabinName(cabin);
     if (cardPhoto.getAttribute('src') !== source || !cardPhoto.naturalWidth) {
       // Never show the previous cabin's photo while the new one is loading.
       cardPhoto.classList.remove('is-ready');
@@ -139,9 +292,8 @@
     photoError.hidden = true;
     photoStage.setAttribute('aria-busy', 'true');
     photoImage.classList.remove('is-ready');
-    photoImage.alt = photoTitle.textContent + '، الصورة ' + (photoIndex + 1);
+    updatePhotoText();
     photoImage.src = photoSources[photoIndex];
-    photoCounter.textContent = (photoIndex + 1) + ' من ' + photoSources.length;
     photoPrevious.hidden = photoNext.hidden = photoHint.hidden = photoSources.length < 2;
     if (photoImage.complete && photoImage.naturalWidth) {
       photoImage.classList.add('is-ready');
@@ -230,6 +382,7 @@
     ['pointercancel', 'lostpointercapture'].forEach(function (type) {
       photoStage.addEventListener(type, function () { photoSwipe = null; });
     });
+    updatePhotoText();
   }
 
   document.addEventListener('fd-map-photos-open', function (event) {
@@ -239,11 +392,11 @@
     var sources = photosFor(cabinFor(location));
     if (!sources.length) return;
     if (selected !== location) selectLocation(location);
+    photoLocation = location;
     if (!photoDialog) createPhotoDialog();
     photoSources = sources;
     // Start with the thumbnail that the guest actually pressed.
     photoIndex = Math.max(0, photoSources.indexOf(cardPhoto.getAttribute('src')));
-    photoTitle.textContent = 'صور ' + card.querySelector('h3').textContent;
     renderPhoto();
     if (!photoDialog.open) photoDialog.showModal();
   });
@@ -255,7 +408,6 @@
     if (selected === location) { clearSelection(false); return; }
     var cabin = cabinFor(location);
     selected = location;
-    var shared = location.kind === 'shared';
     var connection = connections.find(function (item) { return item.cabinIds.indexOf(cabin.id) !== -1; });
     markers.forEach(function (marker, i) {
       var active = locations[i] === location;
@@ -264,20 +416,30 @@
       highlights[i].hidden = !active && !linked;
       highlights[i].classList.toggle('is-connected', Boolean(linked));
     });
+    renderSelectedLocation(location);
+  }
+
+  function renderSelectedLocation(location) {
+    var cabin = cabinFor(location), copy = mapCopy[mapLanguage];
+    var shared = location.kind === 'shared';
+    var connection = connections.find(function (item) { return item.cabinIds.indexOf(cabin.id) !== -1; });
     card.classList.toggle('is-classic', cabin.id === 3);
     card.classList.toggle('is-shared', shared);
-    card.querySelector('h3').textContent = cabin.name;
+    card.querySelector('h3').textContent = cabinName(cabin);
     card.classList.remove('has-photo');
     photoButton.hidden = true;
-    card.setAttribute('aria-label', shared ? 'تفاصيل الحديقة المشتركة' : 'ملخص الكوخ المختار');
-    card.querySelector('.fd-map-clear').setAttribute('aria-label', shared ? 'إلغاء اختيار الحديقة' : 'إلغاء اختيار الكوخ');
+    card.setAttribute('aria-label', shared ? copy.gardenCard : copy.card);
+    card.querySelector('.fd-map-clear').setAttribute('aria-label', shared ? copy.gardenClear : copy.clear);
     var description = card.querySelector('.fd-map-description');
-    description.textContent = cabin.type || cabin.suitable || '';
+    description.textContent = translateText(cabin.type || cabin.suitable || '');
     description.hidden = !description.textContent;
-    card.querySelector('.fd-map-guest-label').textContent = shared ? 'الموقع' : 'السعة';
-    card.querySelector('.fd-map-room-label').textContent = shared ? 'الاستخدام' : 'غرف النوم';
-    card.querySelector('.fd-map-guests').textContent = shared ? 'وسط الأكواخ' : resortGuestText(cabin.guests);
-    card.querySelector('.fd-map-rooms').textContent = shared ? 'لجميع الضيوف' : roomValue(cabin.rooms);
+    card.querySelector('.fd-map-guest-label').textContent = shared ? copy.location : copy.capacity;
+    card.querySelector('.fd-map-room-label').textContent = shared ? copy.access : copy.bedrooms;
+    card.querySelector('.fd-map-guests').textContent = shared ? copy.gardenLocation : mapLanguage === 'en' ?
+      'Up to ' + cabin.guests + (Number(cabin.guests) === 1 ? ' guest' : ' guests') : resortGuestText(cabin.guests);
+    card.querySelector('.fd-map-rooms').textContent = shared ? copy.gardenAccess : roomValue(cabin.rooms);
+    photoButton.setAttribute('aria-label', copy.viewPhotosOf + cabinName(cabin));
+    cardPhoto.alt = cabinName(cabin);
     var amenities = card.querySelector('.fd-map-amenities');
     amenities.replaceChildren();
     featuresFor(cabin).forEach(function (feature) {
@@ -287,8 +449,8 @@
       amenities.appendChild(item);
     });
     amenities.hidden = !amenities.children.length;
-    connectionNote.textContent = shared ? 'لكل كوخ باب داخلي يفتح مباشرة على الحديقة المشتركة' :
-      connection ? connection.description : '';
+    connectionNote.textContent = shared ? copy.gardenConnection :
+      connection ? translateText(connection.description) : '';
     connectionNote.hidden = !shared && !connection;
     syncToolbar();
     empty.hidden = true;
@@ -468,7 +630,8 @@
     dialog.setAttribute('aria-labelledby', 'fd-map-title');
     dialog.setAttribute('aria-describedby', 'fd-map-hint');
     dialog.innerHTML =
-      '<div class="fd-map-header"><div><h2 id="fd-map-title">خريطة الأكواخ</h2>' +
+      '<div class="fd-map-header"><div class="fd-map-heading"><div class="fd-map-title-row"><h2 id="fd-map-title">خريطة الأكواخ</h2>' +
+      '<div class="fd-map-languages" role="group" aria-label="لغة الخريطة"><button type="button" class="fd-map-language" data-lang="ar" lang="ar" aria-label="عرض الخريطة بالعربية" aria-pressed="true">AR</button><button type="button" class="fd-map-language" data-lang="en" lang="en" aria-label="Show map in English" aria-pressed="false">EN</button></div></div>' +
       '<p id="fd-map-hint">اختر الكوخ وشاهد موقعه ومميزاته</p></div>' +
       '<button type="button" class="fd-map-close" aria-label="إغلاق الخريطة" autofocus>' + closeIcon + '</button></div>' +
       '<div class="fd-map-workspace">' +
@@ -478,7 +641,7 @@
         '</div>' +
         '<aside class="fd-map-panel" aria-label="معلومات الموقع المختار">' +
           '<div class="fd-map-toolbar" hidden><button type="button" class="fd-map-tool fd-map-fit" aria-label="إلغاء التكبير" hidden>' +
-            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 8h5V3m13 5h-5V3M3 16h5v5m13-5h-5v5"/></svg>إلغاء التكبير</button><p class="fd-map-connection" hidden></p></div>' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 8h5V3m13 5h-5V3M3 16h5v5m13-5h-5v5"/></svg><span>إلغاء التكبير</span></button><p class="fd-map-connection" hidden></p></div>' +
           '<div class="fd-map-info" aria-live="polite" aria-atomic="true">' +
             '<div class="fd-map-empty"><p>اختر اسم الكوخ من الخريطة</p></div>' +
             '<section id="fd-map-card" class="fd-map-card" aria-label="ملخص الكوخ المختار" hidden>' +
@@ -494,7 +657,7 @@
             '</section>' +
           '</div>' +
         '</aside>' +
-      '</div>';
+      '</div><p class="fd-map-announcement" role="status" aria-live="polite"></p>';
     document.body.appendChild(dialog);
     viewport = dialog.querySelector('.fd-map-viewport');
     plane = dialog.querySelector('.fd-map-plane');
@@ -593,6 +756,9 @@
       measureView(true);
       viewport.focus({ preventScroll: true });
     });
+    dialog.querySelectorAll('.fd-map-language').forEach(function (button) {
+      button.addEventListener('click', function () { setMapLanguage(button.dataset.lang); });
+    });
     dialog.querySelector('.fd-map-clear').addEventListener('click', function () { clearSelection(true); });
     dialog.querySelector('.fd-map-details-button').addEventListener('click', function () {
       if (!selected || typeof window.openM !== 'function') return;
@@ -624,6 +790,7 @@
     });
     new ResizeObserver(function () { measureView(false); }).observe(viewport);
     window.addEventListener('blur', resetGesture);
+    updateMapText();
     loadImage();
   }
 

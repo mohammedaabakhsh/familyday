@@ -334,8 +334,9 @@
     "ar": {
       "title": "جولة داخل الشاليه",
       "close": "إغلاق الجولة",
-      "hint": "اختر المكان لعرض مواصفاته",
-      "empty": "اختر اسم المكان على الخريطة لعرض تجهيزاته هنا",
+      "subtitle": "تعرف على الغرف والمرافق",
+      "languageLabel": "لغة الجولة",
+      "empty": "اختر اسم الغرفة أو المرفق من الخريطة",
       "details": "مواصفات المكان المختار",
       "clear": "إلغاء اختيار المكان",
       "selected": "تم عرض مواصفات ",
@@ -348,8 +349,9 @@
     "en": {
       "title": "Chalet Tour",
       "close": "Close tour",
-      "hint": "Select an area for details",
-      "empty": "Select a label on the map to view its amenities here.",
+      "subtitle": "Explore the rooms and facilities",
+      "languageLabel": "Tour language",
+      "empty": "Select a room or facility on the map",
       "details": "Selected area details",
       "clear": "Clear selection",
       "selected": "Showing details for ",
@@ -363,12 +365,14 @@
   function updateTourText(){
     var copy=tourCopy[labelLanguage], direction=labelLanguage==='en'?'ltr':'rtl';
     dialog.lang=labelLanguage;
+    dialog.querySelector('.cm-header').dir=direction;
     dialog.querySelector('#cm-title').textContent=copy.title;
+    dialog.querySelector('.cm-subtitle').textContent=copy.subtitle;
+    dialog.querySelector('.cm-languages').setAttribute('aria-label',copy.languageLabel);
     dialog.querySelector('.cm-close').setAttribute('aria-label',copy.close);
     viewport.setAttribute('aria-label',copy.viewport);
     dialog.querySelector('.cm-image').alt=copy.image;
     panel.lang=labelLanguage;panel.dir=direction;panel.setAttribute('aria-label',copy.details);
-    var hint=dialog.querySelector('.cm-tools>span');hint.textContent=copy.hint;hint.lang=labelLanguage;hint.dir=direction;
     var error=dialog.querySelector('.cm-error');error.dir=direction;error.querySelector('p').textContent=copy.error;
     dialog.querySelector('.cm-retry').textContent=copy.retry;
   }
@@ -452,9 +456,9 @@
   }
   function dismiss(){document.dispatchEvent(new CustomEvent('fd-chalet-map-dismiss'));}
   function create(){
-    dialog=document.createElement('dialog');dialog.id='fd-chalet-map';dialog.className='cm-dialog';dialog.setAttribute('aria-labelledby','cm-title');
-    dialog.innerHTML='<h2 id="cm-title" class="cm-sr-only">جولة داخل الشاليه</h2><button type="button" class="cm-icon cm-close" aria-label="إغلاق الجولة" autofocus>×</button>'
-      +'<div class="cm-workspace"><div class="cm-map-side"><div class="cm-viewport" tabindex="0" aria-label="خريطة تفاعلية، اختر اسم المكان. استخدم إصبعين أو مفتاحي + و- للتكبير والأسهم للتحريك"><div class="cm-plane"><img class="cm-image" width="1254" height="1254" alt="توزيع غرف الشاليه ومرافقه" draggable="false"><svg class="cm-regions" viewBox="0 0 100 110" aria-hidden="true"></svg><svg class="cm-leaders" viewBox="0 0 100 110" aria-hidden="true"></svg></div><div class="cm-error" hidden><p>تعذّر تحميل الرسم. الأسماء تظل متاحة للاختيار.</p><button type="button" class="cm-retry">إعادة المحاولة</button></div></div><div class="cm-tools"><span>اختر المكان لعرض مواصفاته</span><div><button type="button" class="cm-language" data-lang="ar" lang="ar" aria-label="عرض الجولة بالعربية" aria-pressed="true">AR</button><button type="button" class="cm-language" data-lang="en" lang="en" aria-label="Show tour in English" aria-pressed="false">EN</button></div></div></div><section id="cm-details" class="cm-details" aria-label="مواصفات المكان المختار"></section></div><p class="cm-announcement" role="status" aria-live="polite"></p>';
+    dialog=document.createElement('dialog');dialog.id='fd-chalet-map';dialog.className='cm-dialog';dialog.setAttribute('aria-labelledby','cm-title');dialog.setAttribute('aria-describedby','cm-subtitle');
+    dialog.innerHTML='<div class="cm-header"><div class="cm-heading"><div class="cm-title-row"><h2 id="cm-title">جولة داخل الشاليه</h2><div class="cm-languages" role="group" aria-label="لغة الجولة"><button type="button" class="cm-language" data-lang="ar" lang="ar" aria-label="عرض الجولة بالعربية" aria-pressed="true">AR</button><button type="button" class="cm-language" data-lang="en" lang="en" aria-label="Show tour in English" aria-pressed="false">EN</button></div></div><p id="cm-subtitle" class="cm-subtitle">تعرف على الغرف والمرافق</p></div><button type="button" class="cm-icon cm-close" aria-label="إغلاق الجولة" autofocus>×</button></div>'
+      +'<div class="cm-workspace"><div class="cm-map-side"><div class="cm-viewport" tabindex="0" aria-label="خريطة تفاعلية، اختر اسم المكان. استخدم إصبعين أو مفتاحي + و- للتكبير والأسهم للتحريك"><div class="cm-plane"><img class="cm-image" width="1254" height="1254" alt="توزيع غرف الشاليه ومرافقه" draggable="false"><svg class="cm-regions" viewBox="0 0 100 110" aria-hidden="true"></svg><svg class="cm-leaders" viewBox="0 0 100 110" aria-hidden="true"></svg></div><div class="cm-error" hidden><p>تعذّر تحميل الرسم. الأسماء تظل متاحة للاختيار.</p><button type="button" class="cm-retry">إعادة المحاولة</button></div></div></div><section id="cm-details" class="cm-details" aria-label="مواصفات المكان المختار"></section></div><p class="cm-announcement" role="status" aria-live="polite"></p>';
     document.body.appendChild(dialog);
     viewport=dialog.querySelector('.cm-viewport');plane=dialog.querySelector('.cm-plane');panel=dialog.querySelector('.cm-details');
     rooms.forEach(function(room,i){
@@ -496,6 +500,6 @@
     hide:function(){if(!dialog||!dialog.open)return;dialog.close();resetGesture();document.body.style.overflow=previousOverflow;if(opener&&opener.isConnected)opener.focus({preventScroll:true});}
   };
   var grid=document.querySelector('#landing3 .rh-grid');
-  if(grid){var launcher=document.createElement('div');launcher.className='fd-chalet-map-launcher';launcher.innerHTML='<button type="button" class="fd-chalet-map-open" aria-haspopup="dialog" aria-controls="fd-chalet-map"><span><strong>جولة داخل الشاليه</strong><small>تعرف على الغرف والمرافق وتجهيزاتها</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>';grid.after(launcher);}
+  if(grid){var launcher=document.createElement('div');launcher.className='fd-chalet-map-launcher';launcher.innerHTML='<button type="button" class="fd-chalet-map-open" aria-haspopup="dialog" aria-controls="fd-chalet-map"><span><strong>جولة داخل الشاليه</strong><small>تعرف على الغرف والمرافق</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>';grid.after(launcher);}
   document.addEventListener('click',function(e){if(e.target.closest('.fd-chalet-map-open'))document.dispatchEvent(new CustomEvent('fd-chalet-map-request'));});
 })();
