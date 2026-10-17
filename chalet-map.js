@@ -221,6 +221,32 @@
   var view={w:0,h:0,size:0,scale:1,x:0,y:0}, pointers=new Map(), gesture;
   var markers=[], polygons=[], leaders=[];
   var imagePath='imgs/chalet-map-clean-v2.webp';
+  var labelLanguage='ar';
+  var roomNamesEn={
+    "upperBath": "En-suite Bathroom",
+    "upper": "Upstairs Bedroom",
+    "stairs": "Stairs",
+    "ground": "Ground Floor Bedroom",
+    "play": "Kids' Playroom",
+    "pool": "Kids' Pool",
+    "groundBath": "Bathroom",
+    "kitchen": "Kitchen & Dining Table",
+    "living": "Indoor Lounge",
+    "shower": "Sun Lounger & Shower",
+    "majlis": "Separate Majlis & Bathroom"
+  };
+  function roomName(room){return labelLanguage==='en'?(roomNamesEn[room.key]||room.name):room.name;}
+  function setLabelLanguage(language){
+    labelLanguage=language;
+    markers.forEach(function(button,i){
+      var name=roomName(rooms[i]);
+      button.textContent=name;button.setAttribute('aria-label',name);
+      button.lang=labelLanguage;button.dir=labelLanguage==='en'?'ltr':'rtl';
+    });
+    dialog.querySelectorAll('.cm-language').forEach(function(button){button.setAttribute('aria-pressed',String(button.dataset.lang===labelLanguage));});
+    if(selected){var heading=panel.querySelector('.cm-detail-heading h3');heading.textContent=roomName(selected);heading.lang=labelLanguage;}
+    dialog.querySelector('.cm-announcement').textContent=labelLanguage==='en'?'تم عرض مسميات الغرف والمرافق بالإنجليزية':'تم عرض مسميات الغرف والمرافق بالعربية';
+  }
   function clamp(n,min,max){return Math.max(min,Math.min(max,n));}
   function clear(){
     selected=null;
@@ -234,12 +260,12 @@
     markers.forEach(function(b,i){b.setAttribute('aria-pressed',String(i===index));});
     polygons.forEach(function(p){p.classList.toggle('is-selected',p.dataset.room===room.key);});
     leaders.forEach(function(p,i){p.classList.toggle('is-selected',i===index);});
-    panel.innerHTML='<div class="cm-detail-heading"><div><span class="cm-floor">'+room.floor+'</span><h3>'+room.name+'</h3></div><button type="button" class="cm-icon cm-clear" aria-label="إلغاء اختيار المكان">×</button></div>'
+    panel.innerHTML='<div class="cm-detail-heading"><div><span class="cm-floor">'+room.floor+'</span><h3 lang="'+labelLanguage+'">'+roomName(room)+'</h3></div><button type="button" class="cm-icon cm-clear" aria-label="إلغاء اختيار المكان">×</button></div>'
       +(room.facts.length?'<ul class="cm-facts">'+room.facts.map(function(f){return '<li>'+f+'</li>';}).join('')+'</ul>':'')
       +(room.text?'<p class="cm-description">'+room.text+'</p>':'');
     panel.scrollTop=0;
     panel.querySelector('.cm-clear').onclick=function(){clear();markers[index].focus({preventScroll:true});};
-    dialog.querySelector('.cm-announcement').textContent='تم عرض مواصفات '+room.name;
+    dialog.querySelector('.cm-announcement').textContent='تم عرض مواصفات '+roomName(room);
   }
   function renderView(){
     var size=view.size*view.scale, height=size*1.10;
@@ -247,8 +273,6 @@
     view.y=height<=view.h?(view.h-height)/2:clamp(view.y,view.h-height,0);
     plane.style.transform='translate('+view.x+'px,'+view.y+'px) scale('+view.scale+')';
     plane.style.setProperty('--cm-inverse',1/view.scale);
-    dialog.querySelector('.cm-zoom-in').disabled=view.scale>=3;
-    dialog.querySelector('.cm-zoom-out').disabled=view.scale<=1;
   }
   function measure(reset){
     if(!dialog.open)return;
@@ -285,8 +309,8 @@
   function dismiss(){document.dispatchEvent(new CustomEvent('fd-chalet-map-dismiss'));}
   function create(){
     dialog=document.createElement('dialog');dialog.id='fd-chalet-map';dialog.className='cm-dialog';dialog.setAttribute('aria-labelledby','cm-title');
-    dialog.innerHTML='<h2 id="cm-title" class="cm-sr-only">خريطة الشاليه التفاعلية</h2><button type="button" class="cm-icon cm-close" aria-label="إغلاق خريطة الشاليه" autofocus>×</button>'
-      +'<div class="cm-workspace"><div class="cm-map-side"><div class="cm-viewport" tabindex="0" aria-label="خريطة تفاعلية، اختر اسم المكان. استخدم إصبعين أو الأزرار للتكبير والأسهم للتحريك"><div class="cm-plane"><img class="cm-image" width="1254" height="1254" alt="توزيع غرف الشاليه ومرافقه" draggable="false"><svg class="cm-regions" viewBox="0 0 100 110" aria-hidden="true"></svg><svg class="cm-leaders" viewBox="0 0 100 110" aria-hidden="true"></svg></div><div class="cm-error" hidden><p>تعذّر تحميل الرسم. الأسماء تظل متاحة للاختيار.</p><button type="button" class="cm-retry">إعادة المحاولة</button></div></div><div class="cm-tools"><span>اختر المكان لعرض مواصفاته</span><div><button type="button" class="cm-zoom-in" aria-label="تكبير الخريطة">+</button><button type="button" class="cm-zoom-out" aria-label="تصغير الخريطة">−</button><button type="button" class="cm-fit">إظهار الكل</button></div></div></div><section id="cm-details" class="cm-details" aria-label="مواصفات المكان المختار"></section></div><p class="cm-announcement" role="status" aria-live="polite"></p>';
+    dialog.innerHTML='<h2 id="cm-title" class="cm-sr-only">جولة داخل الشاليه</h2><button type="button" class="cm-icon cm-close" aria-label="إغلاق الجولة" autofocus>×</button>'
+      +'<div class="cm-workspace"><div class="cm-map-side"><div class="cm-viewport" tabindex="0" aria-label="خريطة تفاعلية، اختر اسم المكان. استخدم إصبعين أو مفتاحي + و- للتكبير والأسهم للتحريك"><div class="cm-plane"><img class="cm-image" width="1254" height="1254" alt="توزيع غرف الشاليه ومرافقه" draggable="false"><svg class="cm-regions" viewBox="0 0 100 110" aria-hidden="true"></svg><svg class="cm-leaders" viewBox="0 0 100 110" aria-hidden="true"></svg></div><div class="cm-error" hidden><p>تعذّر تحميل الرسم. الأسماء تظل متاحة للاختيار.</p><button type="button" class="cm-retry">إعادة المحاولة</button></div></div><div class="cm-tools"><span>اختر المكان لعرض مواصفاته</span><div><button type="button" class="cm-language" data-lang="ar" lang="ar" aria-label="عرض المسميات بالعربية" aria-pressed="true">AR</button><button type="button" class="cm-language" data-lang="en" lang="en" aria-label="Show room names in English" aria-pressed="false">EN</button><button type="button" class="cm-fit">إظهار الكل</button></div></div></div><section id="cm-details" class="cm-details" aria-label="مواصفات المكان المختار"></section></div><p class="cm-announcement" role="status" aria-live="polite"></p>';
     document.body.appendChild(dialog);
     viewport=dialog.querySelector('.cm-viewport');plane=dialog.querySelector('.cm-plane');panel=dialog.querySelector('.cm-details');
     rooms.forEach(function(room,i){
@@ -300,7 +324,7 @@
       var line=document.createElementNS('http://www.w3.org/2000/svg','polyline');line.setAttribute('points',edgeX+','+edgeY+' '+ax+','+ay);line.setAttribute('vector-effect','non-scaling-stroke');
       var dot=document.createElementNS('http://www.w3.org/2000/svg','circle');dot.setAttribute('cx',ax);dot.setAttribute('cy',ay);dot.setAttribute('r','.45');
       leader.append(line,dot);dialog.querySelector('.cm-leaders').appendChild(leader);leaders.push(leader);
-      var b=document.createElement('button');b.type='button';b.className='cm-marker cm-label-'+side;b.dataset.room=room.key;b.style.left=x+'%';b.style.top=(y/1.10)+'%';b.textContent=room.name;b.setAttribute('aria-label',room.name);b.setAttribute('aria-controls','cm-details');b.onclick=function(e){if(e.detail===0)select(room);};plane.appendChild(b);markers.push(b);
+      var b=document.createElement('button');b.type='button';b.className='cm-marker cm-label-'+side;b.dataset.room=room.key;b.style.left=x+'%';b.style.top=(y/1.10)+'%';b.textContent=roomName(room);b.setAttribute('aria-label',roomName(room));b.lang=labelLanguage;b.dir=labelLanguage==='en'?'ltr':'rtl';b.setAttribute('aria-controls','cm-details');b.onclick=function(e){if(e.detail===0)select(room);};plane.appendChild(b);markers.push(b);
     });
     viewport.addEventListener('pointerdown',down);viewport.addEventListener('pointermove',move);viewport.addEventListener('pointerup',up);viewport.addEventListener('pointercancel',up);
     viewport.addEventListener('lostpointercapture',function(e){if(pointers.has(e.pointerId))resetGesture();});
@@ -314,8 +338,7 @@
     dialog.querySelector('.cm-close').onclick=dismiss;
     dialog.addEventListener('cancel',function(e){e.preventDefault();dismiss();});
     dialog.addEventListener('keydown',function(e){if(e.key==='Escape'){e.preventDefault();e.stopPropagation();dismiss();}});
-    dialog.querySelector('.cm-zoom-in').onclick=function(){zoom(view.scale+.5,view.w/2,view.h/2);};
-    dialog.querySelector('.cm-zoom-out').onclick=function(){zoom(view.scale-.5,view.w/2,view.h/2);};
+    dialog.querySelectorAll('.cm-language').forEach(function(button){button.onclick=function(){setLabelLanguage(button.dataset.lang);};});
     dialog.querySelector('.cm-fit').onclick=function(){resetGesture();measure(true);};
     var img=dialog.querySelector('.cm-image'),error=dialog.querySelector('.cm-error');
     img.onload=function(){error.hidden=true;img.hidden=false;viewport.setAttribute('aria-busy','false');};
@@ -330,6 +353,6 @@
     hide:function(){if(!dialog||!dialog.open)return;dialog.close();resetGesture();document.body.style.overflow=previousOverflow;if(opener&&opener.isConnected)opener.focus({preventScroll:true});}
   };
   var grid=document.querySelector('#landing3 .rh-grid');
-  if(grid){var launcher=document.createElement('div');launcher.className='fd-chalet-map-launcher';launcher.innerHTML='<button type="button" class="fd-chalet-map-open" aria-haspopup="dialog" aria-controls="fd-chalet-map"><span><strong>خريطة الشاليه</strong><small>استكشف الغرف والمرافق وتجهيزاتها</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>';grid.after(launcher);}
+  if(grid){var launcher=document.createElement('div');launcher.className='fd-chalet-map-launcher';launcher.innerHTML='<button type="button" class="fd-chalet-map-open" aria-haspopup="dialog" aria-controls="fd-chalet-map"><span><strong>جولة داخل الشاليه</strong><small>تعرف على الغرف والمرافق وتجهيزاتها</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>';grid.after(launcher);}
   document.addEventListener('click',function(e){if(e.target.closest('.fd-chalet-map-open'))document.dispatchEvent(new CustomEvent('fd-chalet-map-request'));});
 })();
