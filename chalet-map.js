@@ -235,6 +235,143 @@
     "shower": "Sun Lounger & Shower",
     "majlis": "Separate Majlis & Bathroom"
   };
+  var roomDetailsEn={
+    "upperBath": {
+      "facts": [
+        "Washbasin",
+        "Glass-enclosed shower",
+        "Toilet"
+      ],
+      "text": ""
+    },
+    "upper": {
+      "facts": [
+        "Double bed",
+        "TV",
+        "Private bathroom"
+      ],
+      "text": ""
+    },
+    "stairs": {
+      "facts": [],
+      "text": "Connects the ground and upper floors."
+    },
+    "ground": {
+      "facts": [
+        "Two single beds"
+      ],
+      "text": ""
+    },
+    "play": {
+      "facts": [
+        "Children's play equipment",
+        "Overlooks the pool"
+      ],
+      "text": ""
+    },
+    "pool": {
+      "facts": [
+        "Depth: 60 cm",
+        "Water play features and a double slide",
+        "Glass barrier"
+      ],
+      "text": "Parental supervision required."
+    },
+    "groundBath": {
+      "facts": [
+        "Toilet",
+        "Shower",
+        "Washbasins"
+      ],
+      "text": ""
+    },
+    "kitchen": {
+      "facts": [
+        "Dining table",
+        "Refrigerator",
+        "Oven",
+        "Microwave",
+        "Gas and electric hob",
+        "Kettle",
+        "Basic kitchen utensils"
+      ],
+      "text": ""
+    },
+    "living": {
+      "facts": [
+        "Up to 15 guests",
+        "TV",
+        "Overlooks the pool",
+        "Door opens onto the pool area"
+      ],
+      "text": ""
+    },
+    "shower": {
+      "facts": [
+        "Sun lounger",
+        "Sun umbrella",
+        "Outdoor shower"
+      ],
+      "text": ""
+    },
+    "majlis": {
+      "facts": [
+        "Up to 10 guests",
+        "TV",
+        "Private entrance",
+        "Private bathroom"
+      ],
+      "text": ""
+    }
+  };
+  var floorNamesEn={
+    "الدور العلوي": "Upper Floor",
+    "الدور الأرضي": "Ground Floor",
+    "بين الدورين": "Between Floors",
+    "المنطقة الخارجية": "Outdoor Area"
+  };
+  var tourCopy={
+    "ar": {
+      "title": "جولة داخل الشاليه",
+      "close": "إغلاق الجولة",
+      "hint": "اختر المكان لعرض مواصفاته",
+      "empty": "اختر اسم المكان على الخريطة لعرض تجهيزاته هنا",
+      "details": "مواصفات المكان المختار",
+      "clear": "إلغاء اختيار المكان",
+      "selected": "تم عرض مواصفات ",
+      "language": "تم عرض الجولة بالعربية",
+      "viewport": "خريطة تفاعلية، اختر اسم المكان. استخدم إصبعين أو مفتاحي + و- للتكبير والأسهم للتحريك",
+      "image": "توزيع غرف الشاليه ومرافقه",
+      "error": "تعذّر تحميل الرسم. الأسماء تظل متاحة للاختيار.",
+      "retry": "إعادة المحاولة"
+    },
+    "en": {
+      "title": "Chalet Tour",
+      "close": "Close tour",
+      "hint": "Select an area for details",
+      "empty": "Select a label on the map to view its amenities here.",
+      "details": "Selected area details",
+      "clear": "Clear selection",
+      "selected": "Showing details for ",
+      "language": "Tour shown in English.",
+      "viewport": "Interactive map. Select a label. Pinch or use the + and - keys to zoom, and the arrow keys to pan.",
+      "image": "Layout of the chalet's rooms and facilities",
+      "error": "The map could not be loaded. You can still select the labels.",
+      "retry": "Try again"
+    }
+  };
+  function updateTourText(){
+    var copy=tourCopy[labelLanguage], direction=labelLanguage==='en'?'ltr':'rtl';
+    dialog.lang=labelLanguage;
+    dialog.querySelector('#cm-title').textContent=copy.title;
+    dialog.querySelector('.cm-close').setAttribute('aria-label',copy.close);
+    viewport.setAttribute('aria-label',copy.viewport);
+    dialog.querySelector('.cm-image').alt=copy.image;
+    panel.lang=labelLanguage;panel.dir=direction;panel.setAttribute('aria-label',copy.details);
+    var hint=dialog.querySelector('.cm-tools>span');hint.textContent=copy.hint;hint.lang=labelLanguage;hint.dir=direction;
+    var error=dialog.querySelector('.cm-error');error.dir=direction;error.querySelector('p').textContent=copy.error;
+    dialog.querySelector('.cm-retry').textContent=copy.retry;
+  }
   function roomName(room){return labelLanguage==='en'?(roomNamesEn[room.key]||room.name):room.name;}
   function setLabelLanguage(language){
     labelLanguage=language;
@@ -244,15 +381,26 @@
       button.lang=labelLanguage;button.dir=labelLanguage==='en'?'ltr':'rtl';
     });
     dialog.querySelectorAll('.cm-language').forEach(function(button){button.setAttribute('aria-pressed',String(button.dataset.lang===labelLanguage));});
-    if(selected){var heading=panel.querySelector('.cm-detail-heading h3');heading.textContent=roomName(selected);heading.lang=labelLanguage;}
-    dialog.querySelector('.cm-announcement').textContent=labelLanguage==='en'?'تم عرض مسميات الغرف والمرافق بالإنجليزية':'تم عرض مسميات الغرف والمرافق بالعربية';
+    updateTourText();
+    var previousScroll=panel.scrollTop;
+    if(selected)renderDetails(selected);else clear();
+    panel.scrollTop=previousScroll;
+    dialog.querySelector('.cm-announcement').textContent=tourCopy[labelLanguage].language;
   }
   function clamp(n,min,max){return Math.max(min,Math.min(max,n));}
   function clear(){
     selected=null;
     markers.forEach(function(b){b.setAttribute('aria-pressed','false');});
     polygons.concat(leaders).forEach(function(p){p.classList.remove('is-selected');});
-    panel.innerHTML='<p class="cm-empty">اختر اسم المكان على الخريطة لعرض تجهيزاته هنا</p>';
+    panel.innerHTML='<p class="cm-empty">'+tourCopy[labelLanguage].empty+'</p>';
+  }
+  function renderDetails(room){
+    var index=rooms.indexOf(room), details=labelLanguage==='en'?roomDetailsEn[room.key]:room;
+    var floor=labelLanguage==='en'?floorNamesEn[room.floor]:room.floor, copy=tourCopy[labelLanguage];
+    panel.innerHTML='<div class="cm-detail-heading"><div><span class="cm-floor">'+floor+'</span><h3 lang="'+labelLanguage+'">'+roomName(room)+'</h3></div><button type="button" class="cm-icon cm-clear" aria-label="'+copy.clear+'">×</button></div>'
+      +(details.facts.length?'<ul class="cm-facts">'+details.facts.map(function(f){return '<li>'+f+'</li>';}).join('')+'</ul>':'')
+      +(details.text?'<p class="cm-description">'+details.text+'</p>':'');
+    panel.querySelector('.cm-clear').onclick=function(){clear();markers[index].focus({preventScroll:true});};
   }
   function select(room){
     selected=room;
@@ -260,12 +408,8 @@
     markers.forEach(function(b,i){b.setAttribute('aria-pressed',String(i===index));});
     polygons.forEach(function(p){p.classList.toggle('is-selected',p.dataset.room===room.key);});
     leaders.forEach(function(p,i){p.classList.toggle('is-selected',i===index);});
-    panel.innerHTML='<div class="cm-detail-heading"><div><span class="cm-floor">'+room.floor+'</span><h3 lang="'+labelLanguage+'">'+roomName(room)+'</h3></div><button type="button" class="cm-icon cm-clear" aria-label="إلغاء اختيار المكان">×</button></div>'
-      +(room.facts.length?'<ul class="cm-facts">'+room.facts.map(function(f){return '<li>'+f+'</li>';}).join('')+'</ul>':'')
-      +(room.text?'<p class="cm-description">'+room.text+'</p>':'');
-    panel.scrollTop=0;
-    panel.querySelector('.cm-clear').onclick=function(){clear();markers[index].focus({preventScroll:true});};
-    dialog.querySelector('.cm-announcement').textContent='تم عرض مواصفات '+roomName(room);
+    renderDetails(room);panel.scrollTop=0;
+    dialog.querySelector('.cm-announcement').textContent=tourCopy[labelLanguage].selected+roomName(room);
   }
   function renderView(){
     var size=view.size*view.scale, height=size*1.10;
@@ -310,7 +454,7 @@
   function create(){
     dialog=document.createElement('dialog');dialog.id='fd-chalet-map';dialog.className='cm-dialog';dialog.setAttribute('aria-labelledby','cm-title');
     dialog.innerHTML='<h2 id="cm-title" class="cm-sr-only">جولة داخل الشاليه</h2><button type="button" class="cm-icon cm-close" aria-label="إغلاق الجولة" autofocus>×</button>'
-      +'<div class="cm-workspace"><div class="cm-map-side"><div class="cm-viewport" tabindex="0" aria-label="خريطة تفاعلية، اختر اسم المكان. استخدم إصبعين أو مفتاحي + و- للتكبير والأسهم للتحريك"><div class="cm-plane"><img class="cm-image" width="1254" height="1254" alt="توزيع غرف الشاليه ومرافقه" draggable="false"><svg class="cm-regions" viewBox="0 0 100 110" aria-hidden="true"></svg><svg class="cm-leaders" viewBox="0 0 100 110" aria-hidden="true"></svg></div><div class="cm-error" hidden><p>تعذّر تحميل الرسم. الأسماء تظل متاحة للاختيار.</p><button type="button" class="cm-retry">إعادة المحاولة</button></div></div><div class="cm-tools"><span>اختر المكان لعرض مواصفاته</span><div><button type="button" class="cm-language" data-lang="ar" lang="ar" aria-label="عرض المسميات بالعربية" aria-pressed="true">AR</button><button type="button" class="cm-language" data-lang="en" lang="en" aria-label="Show room names in English" aria-pressed="false">EN</button><button type="button" class="cm-fit">إظهار الكل</button></div></div></div><section id="cm-details" class="cm-details" aria-label="مواصفات المكان المختار"></section></div><p class="cm-announcement" role="status" aria-live="polite"></p>';
+      +'<div class="cm-workspace"><div class="cm-map-side"><div class="cm-viewport" tabindex="0" aria-label="خريطة تفاعلية، اختر اسم المكان. استخدم إصبعين أو مفتاحي + و- للتكبير والأسهم للتحريك"><div class="cm-plane"><img class="cm-image" width="1254" height="1254" alt="توزيع غرف الشاليه ومرافقه" draggable="false"><svg class="cm-regions" viewBox="0 0 100 110" aria-hidden="true"></svg><svg class="cm-leaders" viewBox="0 0 100 110" aria-hidden="true"></svg></div><div class="cm-error" hidden><p>تعذّر تحميل الرسم. الأسماء تظل متاحة للاختيار.</p><button type="button" class="cm-retry">إعادة المحاولة</button></div></div><div class="cm-tools"><span>اختر المكان لعرض مواصفاته</span><div><button type="button" class="cm-language" data-lang="ar" lang="ar" aria-label="عرض الجولة بالعربية" aria-pressed="true">AR</button><button type="button" class="cm-language" data-lang="en" lang="en" aria-label="Show tour in English" aria-pressed="false">EN</button></div></div></div><section id="cm-details" class="cm-details" aria-label="مواصفات المكان المختار"></section></div><p class="cm-announcement" role="status" aria-live="polite"></p>';
     document.body.appendChild(dialog);
     viewport=dialog.querySelector('.cm-viewport');plane=dialog.querySelector('.cm-plane');panel=dialog.querySelector('.cm-details');
     rooms.forEach(function(room,i){
@@ -339,14 +483,13 @@
     dialog.addEventListener('cancel',function(e){e.preventDefault();dismiss();});
     dialog.addEventListener('keydown',function(e){if(e.key==='Escape'){e.preventDefault();e.stopPropagation();dismiss();}});
     dialog.querySelectorAll('.cm-language').forEach(function(button){button.onclick=function(){setLabelLanguage(button.dataset.lang);};});
-    dialog.querySelector('.cm-fit').onclick=function(){resetGesture();measure(true);};
     var img=dialog.querySelector('.cm-image'),error=dialog.querySelector('.cm-error');
     img.onload=function(){error.hidden=true;img.hidden=false;viewport.setAttribute('aria-busy','false');};
     img.onerror=function(){error.hidden=false;img.hidden=true;viewport.setAttribute('aria-busy','false');};
     function load(){error.hidden=true;viewport.setAttribute('aria-busy','true');img.src=imagePath;}
     dialog.querySelector('.cm-retry').onclick=load;
     new ResizeObserver(function(){measure(false);}).observe(viewport);
-    window.addEventListener('blur',resetGesture);load();
+    window.addEventListener('blur',resetGesture);updateTourText();load();
   }
   window.FD_CHALET_MAP={
     show:function(){if(!dialog)create();if(dialog.open)return;opener=document.activeElement;previousOverflow=document.body.style.overflow;clear();dialog.showModal();document.body.style.overflow='hidden';measure(true);},
