@@ -1009,6 +1009,28 @@ header{
 @media(max-width:380px){#landing .rh-home-shortcut{gap:10px;padding:10px;}#landing .rh-map-title{font-size:15px;}}
 @media(hover:hover){#landing .rh-home-shortcut:hover{border-color:#63bfcd;background:#103142;}}
 </style>
+<style id="contest-social-styles">
+#contest-detail .sw-header{position:static}
+@media(min-width:900px){#contest-detail .sw-layout{grid-template-rows:min-content 1fr}}
+#contest-detail .contest-social{margin-top:24px;padding-top:22px;border-top:1px solid #29434f}
+#contest-detail .contest-social-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+#contest-detail .contest-social-card{min-width:0;padding:14px 10px;border:1px solid #315967;border-radius:14px;background:#0d293a}
+#contest-detail .contest-social-info h4{margin:0 0 7px;color:#f0f5f7;font-size:15px;font-weight:700;line-height:1.5}
+#contest-detail .contest-social-handle{display:block;color:#b6cbd6;font-size:12px;line-height:1.6;text-align:right;user-select:text;overflow-wrap:anywhere}
+#contest-detail .contest-social-actions{display:grid;gap:8px;margin-top:14px}
+#contest-detail .contest-social-actions :is(a,button){display:flex;align-items:center;justify-content:center;box-sizing:border-box;min-height:44px;width:100%;margin:0;padding:8px 6px;border:1px solid #397782;border-radius:10px;background:#143848;color:#e4f2f5;text-decoration:none;font-family:inherit;font-size:13px;font-weight:700;line-height:1.5;cursor:pointer}
+#contest-detail .contest-social-actions button{background:transparent;color:#a9d4de}
+#contest-detail .contest-copy-status{margin:10px 0 0;min-height:20px;color:#a9d4de;font-size:13px;line-height:1.6}
+@media(hover:hover){#contest-detail .contest-social-actions :is(a,button):hover{background:#1c4456}}
+@media(max-width:599px){
+#contest-detail .contest-social-grid{grid-template-columns:minmax(0,1fr)}
+#contest-detail .contest-social-card{padding:14px}
+#contest-detail .contest-social-info{display:flex;align-items:center;justify-content:space-between;gap:8px}
+#contest-detail .contest-social-info h4{margin:0}
+#contest-detail .contest-social-handle{font-size:13px}
+#contest-detail .contest-social-actions{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:12px}
+}
+</style>
 </head>
 <body>
 
@@ -2304,6 +2326,33 @@ function tarfihiOrder(){
 <li>اذكر اسم منتجع يوم العائلة في الفيديو أو الوصف، واعمل منشن لحسابنا على المنصة.</li>
 <li>يُشترط أن يكون حسابك عامًا.</li>
 </ul>
+<section class="contest-social" aria-labelledby="contest-social-title">
+<h3 id="contest-social-title" class="sw-section-title">حساباتنا للمنشن</h3>
+<div class="contest-social-grid">
+<div class="contest-social-card">
+<div class="contest-social-info"><h4>إنستقرام</h4><span class="contest-social-handle" dir="ltr">@familydayresort</span></div>
+<div class="contest-social-actions">
+<a href="https://instagram.com/FAMILYDAYRESORT" target="_blank" rel="noopener noreferrer" aria-label="فتح حساب إنستقرام">فتح الحساب</a>
+<button type="button" onclick="copyContestHandle(this)" aria-label="نسخ يوزر إنستقرام">نسخ اليوزر</button>
+</div>
+</div>
+<div class="contest-social-card">
+<div class="contest-social-info"><h4>سناب شات</h4><span class="contest-social-handle" dir="ltr">@familyday5</span></div>
+<div class="contest-social-actions">
+<a href="https://www.snapchat.com/add/familyday5" target="_blank" rel="noopener noreferrer" aria-label="فتح حساب سناب شات">فتح الحساب</a>
+<button type="button" onclick="copyContestHandle(this)" aria-label="نسخ يوزر سناب شات">نسخ اليوزر</button>
+</div>
+</div>
+<div class="contest-social-card">
+<div class="contest-social-info"><h4>تيك توك</h4><span class="contest-social-handle" dir="ltr">@familydayresort</span></div>
+<div class="contest-social-actions">
+<a href="https://tiktok.com/@familydayresort" target="_blank" rel="noopener noreferrer" aria-label="فتح حساب تيك توك">فتح الحساب</a>
+<button type="button" onclick="copyContestHandle(this)" aria-label="نسخ يوزر تيك توك">نسخ اليوزر</button>
+</div>
+</div>
+</div>
+<p id="contest-copy-status" class="contest-copy-status" role="status" aria-live="polite"></p>
+</section>
 </section>
 <section class="sw-contact" aria-labelledby="contest-videos-title">
 <h2 id="contest-videos-title" class="sw-section-title">اختر الفيديو اللي يعجبك</h2>
@@ -4184,7 +4233,33 @@ function menuOrderNow(){
 }
 
 // ===== شارك واربح =====
+async function copyContestHandle(button){
+  var address = button.closest('.contest-social-card').querySelector('.contest-social-handle');
+  var status = document.getElementById('contest-copy-status');
+  var copied = false;
+  button.disabled = true;
+  try {
+    await navigator.clipboard.writeText(address.textContent.trim());
+    copied = true;
+  } catch(error) {
+    try {
+      var selection = window.getSelection();
+      var range = document.createRange();
+      range.selectNodeContents(address);
+      selection.removeAllRanges();
+      selection.addRange(range);
+      copied = document.execCommand('copy');
+      if(copied) selection.removeAllRanges();
+    } catch(fallbackError) { copied = false; }
+  }
+  button.disabled = false;
+  document.querySelectorAll('#contest-detail .contest-social-actions button').forEach(function(item){item.textContent='نسخ اليوزر';});
+  button.textContent = copied ? 'تم النسخ' : 'نسخ اليوزر';
+  status.textContent = copied ? 'تم نسخ يوزر ' + button.closest('.contest-social-card').querySelector('h4').textContent + '.' : 'حدد اسم الحساب واضغط «نسخ».';
+}
 function showContest(){
+  document.getElementById('contest-copy-status').textContent = '';
+  document.querySelectorAll('#contest-detail .contest-social-actions button').forEach(function(button){button.textContent='نسخ اليوزر';});
   var panel = document.getElementById('contest-detail');
   panel.classList.remove('hide');
   panel.scrollTop = 0;
