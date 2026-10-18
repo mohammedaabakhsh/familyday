@@ -11,7 +11,7 @@
   #tawilat-detail .tw-title,
   #jalsat-detail .jl-title,
   #hospitality-detail .hd-title,
-  #sharik-detail .sw-title,
+  :is(#sharik-detail,#contest-detail) .sw-title,
   #walaa-detail .wl-title,
   #faq-overlay .faq-title,
   #faq2-overlay .faq-title,

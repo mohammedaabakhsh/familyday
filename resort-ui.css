@@ -1,6 +1,6 @@
 /* Shared settings for the reviewed resort views only. */
 :is(#landing,#app,#ov.fd-cabin-modern,#services-overlay,#menu-detail,#sinema-detail,
-    #tarfihi-detail,#maiya-detail,#tawilat-detail,#jalsat-detail,#hospitality-detail,#sharik-detail,
+    #tarfihi-detail,#maiya-detail,#tawilat-detail,#jalsat-detail,#hospitality-detail,:is(#sharik-detail,#contest-detail),
     #walaa-detail,#faq-overlay,#contact-page[data-venue="resort"],#order-popup.fd-resort-order,#fd-map-dialog) {
   --fd-primary:#147a8c;
   --fd-primary-hover:#126b7b;
@@ -19,7 +19,7 @@
 }
 @media(max-width:599px) {
   :is(#landing,#app,#ov.fd-cabin-modern,#services-overlay,#menu-detail,#sinema-detail,
-      #tarfihi-detail,#maiya-detail,#tawilat-detail,#jalsat-detail,#hospitality-detail,#sharik-detail,
+      #tarfihi-detail,#maiya-detail,#tawilat-detail,#jalsat-detail,#hospitality-detail,:is(#sharik-detail,#contest-detail),
       #walaa-detail,#faq-overlay,#contact-page[data-venue="resort"],#order-popup.fd-resort-order,#fd-map-dialog) {
     --fd-heading:22px;
     --fd-copy:14px;
@@ -27,7 +27,7 @@
 }
 @media(max-width:360px) {
   :is(#landing,#app,#ov.fd-cabin-modern,#services-overlay,#menu-detail,#sinema-detail,
-      #tarfihi-detail,#maiya-detail,#tawilat-detail,#jalsat-detail,#hospitality-detail,#sharik-detail,
+      #tarfihi-detail,#maiya-detail,#tawilat-detail,#jalsat-detail,#hospitality-detail,:is(#sharik-detail,#contest-detail),
       #walaa-detail,#faq-overlay,#contact-page[data-venue="resort"],#order-popup.fd-resort-order) { --fd-side:16px; }
 }
 
@@ -41,7 +41,7 @@
 #tawilat-detail .tw-title,
 #jalsat-detail .jl-title,
 #hospitality-detail .hd-title,
-#sharik-detail .sw-title,
+:is(#sharik-detail,#contest-detail) .sw-title,
 #walaa-detail .wl-title,
 #faq-overlay .faq-title,
 #contact-page[data-venue="resort"] .cp-title { font-size:var(--fd-heading); line-height:1.4; }
@@ -54,7 +54,7 @@
 #tawilat-detail :is(.tw-intro,.tw-hint),
 #jalsat-detail :is(.jl-description,.jl-notes-list,.jl-order-hint),
 #hospitality-detail :is(.hd-intro,.hd-item),
-#sharik-detail :is(.sw-step-copy,.sw-terms,.sw-criteria-copy,.sw-email-hint),
+:is(#sharik-detail,#contest-detail) :is(.sw-step-copy,.sw-terms,.sw-criteria-copy,.sw-email-hint),
 #walaa-detail :is(.wl-card-intro,.wl-promise-intro,.wl-enroll-hint) { font-size:var(--fd-copy); }
 #faq-list-resort .faq-answer { font-size:var(--fd-copy)!important; }
 
@@ -66,7 +66,7 @@
 #maiya-detail .wm-order-button,
 #tawilat-detail .tw-contact,
 #jalsat-detail .jl-order-button,
-#sharik-detail .sw-email-button,
+:is(#sharik-detail,#contest-detail) .sw-email-button,
 #walaa-detail .wl-enroll-button,
 #contact-page[data-venue="resort"] .cp-primary,
 #order-popup.fd-resort-order .fd-order-submit,
@@ -90,7 +90,7 @@
   #maiya-detail .wm-order-button:not(:disabled):hover,
   #tawilat-detail .tw-contact:hover,
   #jalsat-detail .jl-order-button:hover,
-  #sharik-detail .sw-email-button:hover,
+  :is(#sharik-detail,#contest-detail) .sw-email-button:hover,
   #walaa-detail .wl-enroll-button:hover,
   #contact-page[data-venue="resort"] .cp-primary:hover,
   #order-popup.fd-resort-order .fd-order-submit:hover,
@@ -125,19 +125,19 @@
   #services-overlay .svcs-card .svcs-name { font-size:14px; }
   #services-overlay .svcs-section-title { margin-bottom:6px; font-size:13px; }
   :is(#menu-detail,#sinema-detail,#tarfihi-detail,#maiya-detail,
-      #tawilat-detail,#jalsat-detail,#hospitality-detail,#sharik-detail,#walaa-detail) {
+      #tawilat-detail,#jalsat-detail,#hospitality-detail,:is(#sharik-detail,#contest-detail),#walaa-detail) {
     --fd-heading:17px;
     --fd-action-size:14px;
   }
   #menu-detail .menu-title,#sinema-detail .cn-title,#tarfihi-detail .tg-title,
   #maiya-detail .wm-title,#tawilat-detail .tw-title,#jalsat-detail .jl-title,
-  #hospitality-detail .hd-title,#sharik-detail .sw-title,#walaa-detail .wl-title { font-weight:700; font-size:17px!important; }
+  #hospitality-detail .hd-title,:is(#sharik-detail,#contest-detail) .sw-title,#walaa-detail .wl-title { font-weight:700; font-size:17px!important; }
 
   #sinema-detail .cn-section-title,#tarfihi-detail .tg-section-title,
   #maiya-detail .wm-section-title,#tawilat-detail .tw-label,
   #jalsat-detail :is(.jl-section-title,.jl-filter-title),
   #hospitality-detail .hd-package-name,
-  #sharik-detail :is(.sw-section-title,.sw-step-title),
+  :is(#sharik-detail,#contest-detail) :is(.sw-section-title,.sw-step-title),
   #walaa-detail .wl-section-title { font-size:15px; }
 
   #menu-detail :is(.menu-item-name,.menu-qty),
@@ -145,7 +145,7 @@
   #tawilat-detail :is(.tw-package-name,.tw-size),
   #jalsat-detail :is(.jl-filter,.jl-addon-name,.jl-addon-price,.jl-total),
   #sinema-detail .cn-inclusions,#walaa-detail .wl-benefits-list,
-  #sharik-detail :is(.sw-prize-kicker,.sw-prize-detail,.sw-email-address),
+  :is(#sharik-detail,#contest-detail) :is(.sw-prize-kicker,.sw-prize-detail,.sw-email-address),
   #tarfihi-detail .tg-summary,#maiya-detail .wm-order-summary { font-size:14px; }
 
   #maiya-detail .wm-game-name,#jalsat-detail .jl-session-name { font-size:16px; font-weight:700; }
@@ -154,12 +154,12 @@
   #maiya-detail .wm-order-summary strong,
   #tawilat-detail :is(.tw-package-price,#tawilat-summary-price),
   #jalsat-detail .jl-total strong { font-size:16px; }
-  #walaa-detail .wl-promise-reward,#sharik-detail .sw-prize-highlight { font-size:22px; }
+  #walaa-detail .wl-promise-reward,:is(#sharik-detail,#contest-detail) .sw-prize-highlight { font-size:22px; }
 }
 
 #menu-detail .menu-shell,#sinema-detail .cn-shell,#tarfihi-detail .tg-shell,
 #maiya-detail .wm-shell,#tawilat-detail .tw-shell,#jalsat-detail .jl-shell,
-#sharik-detail .sw-shell,#walaa-detail .wl-shell { padding-inline:var(--fd-side); }
+:is(#sharik-detail,#contest-detail) .sw-shell,#walaa-detail .wl-shell { padding-inline:var(--fd-side); }
 #ov.fd-cabin-modern .fd-cabin-section { margin-bottom:var(--fd-gap); }
 #menu-detail .menu-hours { margin:0 0 20px; color:var(--fd-link); line-height:1.7; }
 #menu-detail .menu-header { margin-bottom:14px; }
@@ -271,3 +271,9 @@ height:auto;grid-template-columns:var(--detail-photo-size) minmax(0,1fr);grid-te
 }
 #ov.fd-cabin-modern .gal-wrap{width:100%;height:100%;aspect-ratio:1;min-height:0;border:0;}
 }
+
+/* Video contest uses the same reward-service components. */
+#contest-detail .sw-prize-description{margin:14px 0 0;color:#b6cbd6;font-size:15px;line-height:1.8}
+#contest-detail .sw-email-button{gap:10px}
+#contest-detail .sw-email-button svg{width:20px;height:20px;flex-shrink:0}
+@media(max-width:599px){#contest-detail .sw-prize-description{font-size:14px}}
