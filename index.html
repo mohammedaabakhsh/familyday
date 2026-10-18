@@ -1023,6 +1023,7 @@ header{
 #contest-detail .contest-copy-status{margin:10px 0 0;min-height:20px;color:#a9d4de;font-size:13px;line-height:1.6}
 @media(hover:hover){#contest-detail .contest-social-actions :is(a,button):hover{background:#1c4456}}
 @media(max-width:599px){
+#contest-detail .sw-header .sw-title{font-size:clamp(14px,4vw,18px)!important;white-space:nowrap}
 #contest-detail .contest-social-grid{grid-template-columns:minmax(0,1fr)}
 #contest-detail .contest-social-card{padding:14px}
 #contest-detail .contest-social-info{display:flex;align-items:center;justify-content:space-between;gap:8px}
@@ -2332,22 +2333,22 @@ function tarfihiOrder(){
 <div class="contest-social-card">
 <div class="contest-social-info"><h4>إنستقرام</h4><span class="contest-social-handle" dir="ltr">@familydayresort</span></div>
 <div class="contest-social-actions">
-<a href="https://instagram.com/FAMILYDAYRESORT" target="_blank" rel="noopener noreferrer" aria-label="فتح حساب إنستقرام">فتح الحساب</a>
-<button type="button" onclick="copyContestHandle(this)" aria-label="نسخ يوزر إنستقرام">نسخ اليوزر</button>
+<a href="https://instagram.com/FAMILYDAYRESORT" target="_blank" rel="noopener noreferrer" aria-label="زيارة حساب إنستقرام">زيارة الحساب</a>
+<button type="button" onclick="copyContestHandle(this)" aria-label="نسخ اسم مستخدم إنستقرام">نسخ اسم المستخدم</button>
 </div>
 </div>
 <div class="contest-social-card">
 <div class="contest-social-info"><h4>سناب شات</h4><span class="contest-social-handle" dir="ltr">@familyday5</span></div>
 <div class="contest-social-actions">
-<a href="https://www.snapchat.com/add/familyday5" target="_blank" rel="noopener noreferrer" aria-label="فتح حساب سناب شات">فتح الحساب</a>
-<button type="button" onclick="copyContestHandle(this)" aria-label="نسخ يوزر سناب شات">نسخ اليوزر</button>
+<a href="https://www.snapchat.com/add/familyday5" target="_blank" rel="noopener noreferrer" aria-label="زيارة حساب سناب شات">زيارة الحساب</a>
+<button type="button" onclick="copyContestHandle(this)" aria-label="نسخ اسم مستخدم سناب شات">نسخ اسم المستخدم</button>
 </div>
 </div>
 <div class="contest-social-card">
 <div class="contest-social-info"><h4>تيك توك</h4><span class="contest-social-handle" dir="ltr">@familydayresort</span></div>
 <div class="contest-social-actions">
-<a href="https://tiktok.com/@familydayresort" target="_blank" rel="noopener noreferrer" aria-label="فتح حساب تيك توك">فتح الحساب</a>
-<button type="button" onclick="copyContestHandle(this)" aria-label="نسخ يوزر تيك توك">نسخ اليوزر</button>
+<a href="https://tiktok.com/@familydayresort" target="_blank" rel="noopener noreferrer" aria-label="زيارة حساب تيك توك">زيارة الحساب</a>
+<button type="button" onclick="copyContestHandle(this)" aria-label="نسخ اسم مستخدم تيك توك">نسخ اسم المستخدم</button>
 </div>
 </div>
 </div>
@@ -4253,13 +4254,13 @@ async function copyContestHandle(button){
     } catch(fallbackError) { copied = false; }
   }
   button.disabled = false;
-  document.querySelectorAll('#contest-detail .contest-social-actions button').forEach(function(item){item.textContent='نسخ اليوزر';});
-  button.textContent = copied ? 'تم النسخ' : 'نسخ اليوزر';
-  status.textContent = copied ? 'تم نسخ يوزر ' + button.closest('.contest-social-card').querySelector('h4').textContent + '.' : 'حدد اسم الحساب واضغط «نسخ».';
+  document.querySelectorAll('#contest-detail .contest-social-actions button').forEach(function(item){item.textContent='نسخ اسم المستخدم';});
+  button.textContent = copied ? 'تم النسخ ✓' : 'نسخ اسم المستخدم';
+  status.textContent = copied ? 'تم نسخ اسم مستخدم ' + button.closest('.contest-social-card').querySelector('h4').textContent + '.' : 'حدد اسم الحساب واضغط «نسخ».';
 }
 function showContest(){
   document.getElementById('contest-copy-status').textContent = '';
-  document.querySelectorAll('#contest-detail .contest-social-actions button').forEach(function(button){button.textContent='نسخ اليوزر';});
+  document.querySelectorAll('#contest-detail .contest-social-actions button').forEach(function(button){button.textContent='نسخ اسم المستخدم';});
   var panel = document.getElementById('contest-detail');
   panel.classList.remove('hide');
   panel.scrollTop = 0;
