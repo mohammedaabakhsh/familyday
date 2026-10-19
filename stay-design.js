@@ -52,7 +52,6 @@ function renderStayDetail(c) {
 
 function renderStayComparison() {
   var rows = [
-    ['موقع غرف النوم والمجالس', 'الدور الأرضي', 'الدور العلوي — عبر الدرج'],
     ['غرف النوم', 'غرفتان', 'غرفة واحدة'],
     ['الأسرّة', 'سرير مزدوج وسريران مفردان', '3 أسرّة'],
     ['صالة داخلية', 'متوفرة', 'غير متوفرة'],
@@ -65,7 +64,7 @@ function renderStayComparison() {
     + '<h2 id="fd-stay-comparison-title">قارن بين القسمين</h2>'
     + '<div class="fd-stay-comparison-frame"><table aria-labelledby="fd-stay-comparison-title">'
     + '<colgroup><col class="fd-stay-comparison-label"><col><col></colgroup>'
-    + '<thead><tr><th scope="col">المرفق</th><th scope="col">القسم الأول</th><th scope="col">القسم الثاني</th></tr></thead>'
+    + '<thead><tr><th scope="col">المرفق</th><th scope="col">القسم الأول - الدور الأرضي</th><th scope="col">القسم الثاني - الدور العلوي</th></tr></thead>'
     + '<tbody>' + rows.map(function (row) {
       return '<tr><th scope="row">' + row[0] + '</th><td>' + row[1] + '</td><td>' + row[2] + '</td></tr>';
     }).join('') + '</tbody></table></div></section>';
