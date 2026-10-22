@@ -95,7 +95,7 @@ var FD_PYRAMID_TOUR = (function () {
       var sx=mobile?b.left+b.width/2-box.left:(left?b.right:b.left)-box.left;
       var sy=mobile?b.bottom-box.top:b.top+b.height/2-box.top;
       var desktop=window.matchMedia('(min-width:900px)').matches;
-      var below=desktop && ['pool','outdoor'].includes(p.id);
+      var below=false;
       var above=desktop && ['kitchen','bathroom','bedroom'].includes(p.id);
       if(below || above){
         sx=b.left+b.width/2-box.left;
@@ -120,7 +120,7 @@ var FD_PYRAMID_TOUR = (function () {
     if(root && cabin && cabin.id===next.id) return;
     remove(); cabin=next; selected='pool'; language='ar';
     root=document.createElement('section');root.id='pyramid-tour';root.className='dt-tour';root.setAttribute('aria-labelledby','dt-title');
-    root.innerHTML='<h3 id="dt-title" class="dt-title"></h3><div class="dt-stage"><div class="dt-labels">'+parts.map(function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';}).join('')+'</div><img class="dt-image" src="/imgs/pyramid-tour-v1.webp" width="1536" height="1024" loading="lazy" decoding="async" alt=""><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div class="dt-languages" role="group"><button type="button" data-language="ar" lang="ar" aria-label="العربية">AR</button><button type="button" data-language="en" lang="en" aria-label="English">EN</button></div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
+    root.innerHTML='<h3 id="dt-title" class="dt-title"></h3><div class="dt-stage"><div class="dt-labels">'+parts.map(function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';}).join('')+'</div><img class="dt-image" src="/imgs/pyramid-tour-v2.webp" width="1536" height="1024" loading="lazy" decoding="async" alt=""><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div class="dt-languages" role="group"><button type="button" data-language="ar" lang="ar" aria-label="العربية">AR</button><button type="button" data-language="en" lang="en" aria-label="English">EN</button></div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
     document.getElementById('pyramid-tour-host').appendChild(root);
     document.getElementById('ov').classList.add('fd-has-dome-tour');
     root.addEventListener('click',function(event){

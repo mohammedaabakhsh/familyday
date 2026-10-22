@@ -98,6 +98,14 @@
  #ov .dt-image{width:96%;margin-top:8px}
  #ov .dt-languages{margin:4px auto 10px}
 }
+
+/* Keep pool and seating labels beside the illustration on desktop. */
+@media(min-width:900px){
+ #ov .dt-stage{padding:54px 0 0}
+ #ov .dt-image{width:78%}
+ #ov .dt-label--outdoor{left:0;right:auto;top:58%;bottom:auto;width:20%}
+ #ov .dt-label--pool{left:auto;right:0;top:76%;bottom:auto;width:20%}
+}
 </style>
 </head>
 <body>
@@ -114,5 +122,5 @@
 })();
 </script>
 <script src="/resort-data.js?v=11"></script>
-<script src="/pyramid-tour.js?v=1"></script>
+<script src="/pyramid-tour.js?v=2"></script>
 </body></html>
