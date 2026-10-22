@@ -3,12 +3,12 @@ var FD_DOME_TOUR = (function () {
   'use strict';
   var root, observer, frame, cabin, selected = 'pool', language = 'ar';
   var parts = [
-    {id:'kitchen', ar:'ركن المطبخ', en:'Kitchenette', x:.425, y:.265},
-    {id:'bathroom', ar:'الحمام', en:'Bathroom', x:.55, y:.21},
-    {id:'bedroom', ar:'غرفة النوم', en:'Bedroom', x:.50, y:.31},
-    {id:'tub', ar:'البانيو', en:'Bathtub', x:.39, y:.34},
-    {id:'pool', ar:'المسبح', en:'Pool', x:.19, y:.53},
-    {id:'outdoor', ar:'الجلسة الخارجية', en:'Outdoor seating', x:.82, y:.52}
+    {id:'kitchen', ar:'ركن المطبخ', en:'Kitchenette', x:.44, y:.29},
+    {id:'bathroom', ar:'الحمام', en:'Bathroom', x:.55, y:.26},
+    {id:'bedroom', ar:'غرفة النوم', en:'Bedroom', x:.50, y:.34},
+    {id:'tub', ar:'البانيو', en:'Bathtub', x:.40, y:.37},
+    {id:'pool', ar:'المسبح', en:'Pool', x:.24, y:.53},
+    {id:'outdoor', ar:'الجلسة الخارجية', en:'Outdoor seating', x:.82, y:.55}
   ];
   var translations = {
     'موقد كهربائي':'Electric hob', 'ميكروويف':'Microwave', 'ثلاجة':'Refrigerator',
@@ -106,7 +106,7 @@ var FD_DOME_TOUR = (function () {
     if(root && cabin && cabin.id===next.id) return;
     remove(); cabin=next; selected='pool'; language='ar';
     root=document.createElement('section');root.id='dome-tour';root.className='dt-tour';root.setAttribute('aria-labelledby','dt-title');
-    root.innerHTML='<h3 id="dt-title" class="dt-title"></h3><div class="dt-stage"><div class="dt-labels">'+parts.map(function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';}).join('')+'</div><img class="dt-image" src="/imgs/dome-tour-v1.webp" width="1536" height="1024" loading="lazy" decoding="async" alt=""><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div class="dt-languages" role="group"><button type="button" data-language="ar" lang="ar">عربي</button><button type="button" data-language="en" lang="en">English</button></div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
+    root.innerHTML='<h3 id="dt-title" class="dt-title"></h3><div class="dt-stage"><div class="dt-labels">'+parts.map(function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';}).join('')+'</div><img class="dt-image" src="/imgs/dome-tour-v2.webp" width="1536" height="1024" loading="lazy" decoding="async" alt=""><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div class="dt-languages" role="group"><button type="button" data-language="ar" lang="ar">عربي</button><button type="button" data-language="en" lang="en">English</button></div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
     document.getElementById('dome-tour-host').appendChild(root);
     document.getElementById('ov').classList.add('fd-has-dome-tour');
     root.addEventListener('click',function(event){

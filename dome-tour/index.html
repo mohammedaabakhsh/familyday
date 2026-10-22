@@ -35,7 +35,7 @@
  #ov .dt-title{font-size:22px;margin-bottom:10px}
  #ov .dt-labels{gap:6px}
  #ov .dt-label{font-size:12px;min-height:40px;inset:auto}
- #ov .dt-image{width:min(92%,max(240px,calc(150svh - 720px)))}
+ #ov .dt-image{width:min(88%,max(230px,calc(150svh - 750px)))}
  #ov .dt-languages{margin:-6px auto 8px}
  #ov .dt-details{padding:9px;margin-inline:8px}
  #ov .dt-detail-heading{margin-bottom:8px}
@@ -47,6 +47,28 @@
  #ov .dt-card strong[dir=ltr]{font-size:14px}
  #ov .dt-note{font-size:12px;margin-top:6px}
 }
+
+/* Open canvas; desktop follows the resort map's illustration/detail split. */
+#ov .dt-tour{border:0;border-radius:0;background:transparent;overflow:visible}
+#ov .dt-image{object-fit:contain;clip-path:none;border-radius:0}
+@media(min-width:900px){
+ #ov .dt-tour{display:grid;grid-template-columns:minmax(280px,32%) minmax(0,1fr);grid-template-rows:auto 1fr auto;grid-template-areas:"heading heading" "details stage" "occupancy stage";gap:20px 24px;direction:ltr;padding-inline:0;min-height:min(640px,calc(100svh - 90px))}
+ #ov .dt-title{grid-area:heading;text-align:right;padding-bottom:14px;margin:0;border-bottom:1px solid #234353;font-size:24px}
+ #ov .dt-languages{grid-area:heading;align-self:start;justify-self:start;margin:0}
+ #ov .dt-stage{grid-area:stage;align-self:center;min-width:0}
+ #ov .dt-image{width:100%;height:auto}
+ #ov .dt-details{grid-area:details;display:block;align-self:start;margin:0;padding:16px}
+ #ov .dt-detail-heading{margin-bottom:16px}
+ #ov .dt-detail-heading h4{font-size:22px}
+ #ov .dt-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ #ov .dt-card{min-height:76px}
+ #ov .dt-card strong{font-size:13px}
+ #ov .dt-note{margin-top:12px}
+ #ov .dt-occupancy{grid-area:occupancy;align-self:end;margin:0 0 10px}
+ #ov .dt-tour[lang=ar] .dt-details{direction:rtl}
+ #ov .dt-tour[lang=en] .dt-details{direction:ltr}
+ #ov .dt-label{font-size:13px;min-height:40px;width:20%;padding:6px}
+}
 </style>
 </head>
 <body>
@@ -56,5 +78,5 @@
 
 </div>
 <script src="/resort-data.js?v=11"></script>
-<script src="/dome-tour.js?v=2"></script>
+<script src="/dome-tour.js?v=4"></script>
 </body></html>
