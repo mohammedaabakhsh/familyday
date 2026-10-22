@@ -106,8 +106,8 @@ var FD_DOME_TOUR = (function () {
     if(root && cabin && cabin.id===next.id) return;
     remove(); cabin=next; selected='pool'; language='ar';
     root=document.createElement('section');root.id='dome-tour';root.className='dt-tour';root.setAttribute('aria-labelledby','dt-title');
-    root.innerHTML='<h3 id="dt-title" class="dt-title"></h3><div class="dt-stage"><div class="dt-labels">'+parts.map(function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';}).join('')+'</div><img class="dt-image" src="imgs/dome-tour-v1.webp" width="1536" height="1024" loading="lazy" decoding="async" alt=""><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div class="dt-languages" role="group"><button type="button" data-language="ar" lang="ar">عربي</button><button type="button" data-language="en" lang="en">English</button></div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
-    document.getElementById('galWrap').after(root);
+    root.innerHTML='<h3 id="dt-title" class="dt-title"></h3><div class="dt-stage"><div class="dt-labels">'+parts.map(function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';}).join('')+'</div><img class="dt-image" src="/imgs/dome-tour-v1.webp" width="1536" height="1024" loading="lazy" decoding="async" alt=""><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div class="dt-languages" role="group"><button type="button" data-language="ar" lang="ar">عربي</button><button type="button" data-language="en" lang="en">English</button></div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
+    document.getElementById('dome-tour-host').appendChild(root);
     document.getElementById('ov').classList.add('fd-has-dome-tour');
     root.addEventListener('click',function(event){
       var button=event.target.closest('button');if(!button)return;
@@ -120,13 +120,11 @@ var FD_DOME_TOUR = (function () {
     observer=new ResizeObserver(queueLines);observer.observe(root);update();
   }
   function sync() {
-    // Only Dome 1 has had its physical layout reviewed. Other cabins remain unchanged.
-    var content=document.querySelector('#mBody .fd-cabin-content[data-cabin-id="1"]');
-    if(content && typeof data!=='undefined') mount(data.resort.items.find(function(c){return c.id===1;}));
-    else if(root) remove();
+    if(document.getElementById('dome-tour-host') && typeof data!=='undefined') {
+      mount(data.resort.items.find(function(c){return c.id===1;}));
+    }
   }
-  var body=document.getElementById('mBody');
-  if(body){new MutationObserver(sync).observe(body,{childList:true});sync();}
+  sync();
   window.addEventListener('resize',queueLines,{passive:true});
   return {sync:sync};
 })();

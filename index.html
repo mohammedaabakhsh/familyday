@@ -996,6 +996,7 @@ header{
 .bnav-btn.active{background:rgba(255,255,255,0.12);color:#fff;}
 .bnav-btn:active{opacity:0.7;}
 
+.fd-cabin-card-v2 .fd-dome-tour-link{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;box-sizing:border-box;margin-top:8px;text-decoration:none;background:#10323f;color:#a1e4ed;border:1px solid #287786;min-height:44px}
 </style>
 <link rel="stylesheet" href="resort-map.css?v=26">
 <style id="fd-home-map-shortcut">
@@ -3199,6 +3200,7 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
       <div class="card-body fd-cabin-card-v2-body">
         ${renderResortCardSummary(c)}
         <div class="fd-card-actions"><button class="card-btn">عرض التفاصيل والصور</button>${FD_CABIN_COMPARE.cardButton(c)}</div>
+        ${c.id===1?'<a class="card-btn fd-dome-tour-link" href="/dome-tour/" onclick="event.stopPropagation()">جولة داخل الدوم <span aria-hidden="true">←</span></a>':''}
       </div>`;
     g.appendChild(d);
   });
@@ -4976,7 +4978,7 @@ function openMDirect(c){
 </script>
 <script src="chalet-design.js?v=21"></script>
 <script src="dome-gallery.js?v=2"></script>
-<script src="dome-tour.js?v=1"></script>
+
 <script>
 // Family Day navigation history: existing views remain the rendering layer.
 // A route has a parent; only changed layers are reopened, so Back from a
@@ -5868,7 +5870,6 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 <link rel="stylesheet" href="site-ui.css?v=9">
 <link rel="stylesheet" href="cabin-compare.css?v=1">
 <link rel="stylesheet" href="dome-gallery.css?v=1">
-<link rel="stylesheet" href="dome-tour.css?v=1">
+
 </body>
 </html><!-- test Fri Jul 17 17:12:00 +03 2026 -->
-
