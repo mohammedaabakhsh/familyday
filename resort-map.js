@@ -124,7 +124,7 @@
       capacity: 'السعة', bedrooms: 'غرف النوم', location: 'الموقع', access: 'الاستخدام',
       gardenLocation: 'وسط الأكواخ', gardenAccess: 'لجميع الضيوف',
       gardenConnection: 'لكل كوخ باب داخلي يفتح مباشرة على الحديقة المشتركة',
-      details: 'عرض التفاصيل والصور', markerAction: ': عرض المميزات',
+      tour: 'جولة في كوخ الدوم', details: 'عرض التفاصيل والصور', markerAction: ': عرض المميزات',
       viewPhotos: 'عرض الصور', cabinPhotos: 'عرض صور الكوخ', viewPhotosOf: 'عرض صور ',
       photosOf: 'صور ', photoClose: 'إغلاق الصور والعودة إلى الخريطة',
       photoError: 'تعذّر تحميل الصورة.', previousPhoto: 'الصورة السابقة', nextPhoto: 'الصورة التالية',
@@ -141,7 +141,7 @@
       capacity: 'Capacity', bedrooms: 'Bedrooms', location: 'Location', access: 'Access',
       gardenLocation: 'Among the cabins', gardenAccess: 'All resort guests',
       gardenConnection: 'Each cabin has an internal door that opens directly onto the shared garden.',
-      details: 'View details and photos', markerAction: ': View features',
+      tour: 'Explore the Dome House', details: 'View details and photos', markerAction: ': View features',
       viewPhotos: 'View photos', cabinPhotos: 'View cabin photos', viewPhotosOf: 'View photos of ',
       photosOf: 'Photos of ', photoClose: 'Close photos and return to the map',
       photoError: 'The photo could not be loaded.', previousPhoto: 'Previous photo', nextPhoto: 'Next photo',
@@ -201,6 +201,7 @@
     card.querySelector('.fd-map-guest-label').textContent = copy.capacity;
     card.querySelector('.fd-map-room-label').textContent = copy.bedrooms;
     card.querySelector('.fd-map-details-button').textContent = copy.details;
+    card.querySelector('.fd-map-tour-button').textContent = copy.tour;
     card.querySelector('.fd-map-photo-label').textContent = copy.viewPhotos;
     photoButton.setAttribute('aria-label', selected ? copy.viewPhotosOf + cabinName(cabinFor(selected)) : copy.cabinPhotos);
     if (selected) cardPhoto.alt = cabinName(cabinFor(selected));
@@ -431,7 +432,11 @@
     card.setAttribute('aria-label', shared ? copy.gardenCard : copy.card);
     card.querySelector('.fd-map-clear').setAttribute('aria-label', shared ? copy.gardenClear : copy.clear);
     var description = card.querySelector('.fd-map-description');
-    description.textContent = translateText(cabin.type || cabin.suitable || '');
+    var isDome = cabin.id === 1 || cabin.id === 12;
+    description.textContent = isDome ? '' : translateText(cabin.type || cabin.suitable || '');
+    var tourButton = card.querySelector('.fd-map-tour-button');
+    tourButton.hidden = !isDome;
+    tourButton.textContent = copy.tour;
     description.hidden = !description.textContent;
     card.querySelector('.fd-map-guest-label').textContent = shared ? copy.location : copy.capacity;
     card.querySelector('.fd-map-room-label').textContent = shared ? copy.access : copy.bedrooms;
@@ -653,6 +658,7 @@
               '</div>' +
               '<div class="fd-map-amenities"></div>' +
               '<button type="button" class="fd-map-details-button">عرض التفاصيل والصور</button>' +
+              '<a class="fd-map-tour-button" href="/dome-tour/" hidden>جولة في كوخ الدوم</a>' +
               '<button type="button" class="fd-map-card-photo" aria-label="عرض صور الكوخ" aria-haspopup="dialog" aria-controls="fd-map-photos" hidden><img width="240" height="240" alt="" decoding="async" draggable="false"><span class="fd-map-photo-label" aria-hidden="true">عرض الصور</span></button>' +
             '</section>' +
           '</div>' +

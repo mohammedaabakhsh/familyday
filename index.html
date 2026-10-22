@@ -998,7 +998,7 @@ header{
 
 .fd-cabin-card-v2 .fd-dome-tour-link{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;box-sizing:border-box;margin-top:8px;padding:10px 12px;border-radius:10px;font:700 14px/1.4 Tajawal,sans-serif;text-decoration:none;background:#10323f;color:#a1e4ed;border:1px solid #287786;min-height:44px}
 </style>
-<link rel="stylesheet" href="resort-map.css?v=26">
+<link rel="stylesheet" href="resort-map.css?v=27">
 <style id="fd-home-map-shortcut">
 #landing .rh-home-shortcut{display:flex;align-items:center;gap:14px;margin-top:16px;padding:12px 14px;border:1px solid rgba(99,191,205,.32);border-radius:16px;background:linear-gradient(120deg,#0d2b3a,#0a202e);color:#edf5f7;text-decoration:none;text-align:right;min-width:0;}
 #landing .rh-map-copy{display:flex;flex:1;min-width:0;flex-direction:column;gap:4px;}
@@ -3200,7 +3200,7 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
       <div class="card-body fd-cabin-card-v2-body">
         ${renderResortCardSummary(c)}
         <div class="fd-card-actions"><button class="card-btn">عرض التفاصيل والصور</button>${FD_CABIN_COMPARE.cardButton(c)}</div>
-        ${c.id===1?'<a class="fd-dome-tour-link" href="/dome-tour/" onclick="event.stopPropagation()">جولة داخل الدوم <span aria-hidden="true">←</span></a>':''}
+        ${(c.id===1||c.id===12)?'<a class="fd-dome-tour-link" href="/dome-tour/" onclick="event.stopPropagation()">جولة داخل الدوم <span aria-hidden="true">←</span></a>':''}
       </div>`;
     g.appendChild(d);
   });
@@ -5305,7 +5305,7 @@ function openMDirect(c){
   window.addEventListener('pageshow',function(event){if(event.persisted) restore();});
 })();
 </script>
-<script src="resort-map.js?v=33" defer></script>
+<script src="resort-map.js?v=34" defer></script>
 <link rel="stylesheet" href="chalet-map.css?v=12">
 <script src="chalet-map.js?v=14" defer></script>
 
