@@ -1034,7 +1034,7 @@ header{
 }
 </style>
 <style>#ov.open[data-return-to-map="true"]{z-index:350}</style>
-</head>
+<style>.fd-pyramid-detail-tour{display:inline-flex;align-items:center;gap:12px;margin:0 0 18px;padding:10px 16px;min-height:44px;border:1px solid #63b6c5;border-radius:10px;color:#c8eff5;text-decoration:none;font:700 14px/1.4 Tajawal,sans-serif}.fd-pyramid-detail-tour:focus-visible{outline:3px solid #92efff;outline-offset:3px}</style></head>
 <body>
 
 <style>
@@ -3202,6 +3202,7 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
         ${renderResortCardSummary(c)}
         <div class="fd-card-actions"><button class="card-btn">عرض التفاصيل والصور</button>${FD_CABIN_COMPARE.cardButton(c)}</div>
         ${(c.id===1||c.id===12)?'<a class="fd-dome-tour-link" href="/dome-tour/" onclick="event.stopPropagation()">جولة داخل الدوم <span aria-hidden="true">←</span></a>':''}
+${c.id===2?'<a class="fd-dome-tour-link" href="/pyramid-tour/" onclick="event.stopPropagation()">جولة داخل الهرمي <span aria-hidden="true">←</span></a>':''}
       </div>`;
     g.appendChild(d);
   });
@@ -3277,6 +3278,7 @@ function renderCabinDetail(c){
         </div>
       </div>
 
+      ${c.id===2?'<a class="fd-pyramid-detail-tour" href="/pyramid-tour/?from=details">جولة في الكوخ الهرمي <span aria-hidden="true">←</span></a>':''}
       <div class="fd-cabin-times" aria-label="أوقات الدخول والخروج">
         <div><span>الدخول</span><strong>4:00 مساءً</strong></div>
         <div><span>الخروج</span><strong>12:00 ظهرًا</strong></div>
@@ -5040,7 +5042,7 @@ function openMDirect(c){
   }
   function fromHash(){
     var hash=location.hash.slice(1);
-    var mapMatch=/^map=(1|12)$/.exec(hash);
+    var mapMatch=/^map=(1|2|12)$/.exec(hash);
     if(mapMatch) return route('map',[Number(mapMatch[1])]);
     var match=/^cabin=(\d+)$/.exec(hash);
     if(match){
@@ -5320,7 +5322,7 @@ function openMDirect(c){
   window.addEventListener('pageshow',function(event){if(event.persisted) restore();});
 })();
 </script>
-<script src="resort-map.js?v=38" defer></script>
+<script src="resort-map.js?v=39" defer></script>
 <link rel="stylesheet" href="chalet-map.css?v=12">
 <script src="chalet-map.js?v=14" defer></script>
 

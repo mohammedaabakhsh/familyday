@@ -433,11 +433,12 @@
     card.querySelector('.fd-map-clear').setAttribute('aria-label', shared ? copy.gardenClear : copy.clear);
     var description = card.querySelector('.fd-map-description');
     var isDome = cabin.id === 1 || cabin.id === 12;
-    description.textContent = isDome ? '' : translateText(cabin.type || cabin.suitable || '');
+    var hasTour = isDome || cabin.id === 2;
+    description.textContent = hasTour ? '' : translateText(cabin.type || cabin.suitable || '');
     var tourButton = card.querySelector('.fd-map-tour-button');
-    tourButton.hidden = !isDome;
-    tourButton.href = '/dome-tour/?from=map&cabin=' + cabin.id;
-    tourButton.textContent = copy.tour;
+    tourButton.hidden = !hasTour;
+    tourButton.href = (cabin.id === 2 ? '/pyramid-tour/' : '/dome-tour/') + '?from=map&cabin=' + cabin.id;
+    tourButton.textContent = cabin.id === 2 ? (mapLanguage === 'en' ? 'Explore the Pyramid Cottage' : 'جولة في الكوخ الهرمي') : copy.tour;
     description.hidden = !description.textContent;
     card.querySelector('.fd-map-guest-label').textContent = shared ? copy.location : copy.capacity;
     card.querySelector('.fd-map-room-label').textContent = shared ? copy.access : copy.bedrooms;
