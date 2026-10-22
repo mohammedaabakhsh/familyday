@@ -90,7 +90,17 @@ var FD_DOME_TOUR = (function () {
       var left=['kitchen','tub','pool'].includes(p.id);
       var sx=mobile?b.left+b.width/2-box.left:(left?b.right:b.left)-box.left;
       var sy=mobile?b.bottom-box.top:b.top+b.height/2-box.top;
-      var curve=mobile?'C '+sx+' '+(sy+35)+' '+tx+' '+(ty-45)+' '+tx+' '+ty:'C '+(sx+(left?40:-40))+' '+sy+' '+tx+' '+sy+' '+tx+' '+ty;
+      var desktop=window.matchMedia('(min-width:900px)').matches;
+      var below=desktop && ['pool','outdoor'].includes(p.id);
+      var above=desktop && ['kitchen','bathroom'].includes(p.id);
+      if(below || above){
+        sx=b.left+b.width/2-box.left;
+        sy=(below?b.top:b.bottom)-box.top;
+      }
+      var curve;
+      if(below) curve='C '+sx+' '+(sy-40)+' '+tx+' '+(ty+45)+' '+tx+' '+ty;
+      else if(mobile || above) curve='C '+sx+' '+(sy+35)+' '+tx+' '+(ty-45)+' '+tx+' '+ty;
+      else curve='C '+(sx+(left?40:-40))+' '+sy+' '+tx+' '+sy+' '+tx+' '+ty;
       root.querySelector('[data-line="'+p.id+'"]').setAttribute('d','M '+sx+' '+sy+' '+curve);
       var point=root.querySelector('.dt-point[data-part="'+p.id+'"]'); point.style.left=tx+'px'; point.style.top=ty+'px';
     });
@@ -106,7 +116,7 @@ var FD_DOME_TOUR = (function () {
     if(root && cabin && cabin.id===next.id) return;
     remove(); cabin=next; selected='pool'; language='ar';
     root=document.createElement('section');root.id='dome-tour';root.className='dt-tour';root.setAttribute('aria-labelledby','dt-title');
-    root.innerHTML='<h3 id="dt-title" class="dt-title"></h3><div class="dt-stage"><div class="dt-labels">'+parts.map(function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';}).join('')+'</div><img class="dt-image" src="/imgs/dome-tour-v2.webp" width="1536" height="1024" loading="lazy" decoding="async" alt=""><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div class="dt-languages" role="group"><button type="button" data-language="ar" lang="ar">عربي</button><button type="button" data-language="en" lang="en">English</button></div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
+    root.innerHTML='<h3 id="dt-title" class="dt-title"></h3><div class="dt-stage"><div class="dt-labels">'+parts.map(function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';}).join('')+'</div><img class="dt-image" src="/imgs/dome-tour-v3.webp" width="1536" height="1024" loading="lazy" decoding="async" alt=""><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div class="dt-languages" role="group"><button type="button" data-language="ar" lang="ar">عربي</button><button type="button" data-language="en" lang="en">English</button></div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
     document.getElementById('dome-tour-host').appendChild(root);
     document.getElementById('ov').classList.add('fd-has-dome-tour');
     root.addEventListener('click',function(event){
