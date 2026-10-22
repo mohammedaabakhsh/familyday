@@ -193,3 +193,5 @@
 }
 
 .fd-map-tour-button { display: flex; align-items: center; justify-content: center; box-sizing: border-box; flex-shrink: 0; margin-top: 8px; text-decoration: none; font-family: inherit; }
+
+#fd-map-dialog .fd-map-tour-button { margin-top: 8px; }

@@ -658,7 +658,7 @@
               '</div>' +
               '<div class="fd-map-amenities"></div>' +
               '<button type="button" class="fd-map-details-button">عرض التفاصيل والصور</button>' +
-              '<a class="fd-map-tour-button" href="/dome-tour/" hidden>جولة في كوخ الدوم</a>' +
+              '<a class="fd-map-details-button fd-map-tour-button" href="/dome-tour/" hidden>جولة في كوخ الدوم</a>' +
               '<button type="button" class="fd-map-card-photo" aria-label="عرض صور الكوخ" aria-haspopup="dialog" aria-controls="fd-map-photos" hidden><img width="240" height="240" alt="" decoding="async" draggable="false"><span class="fd-map-photo-label" aria-hidden="true">عرض الصور</span></button>' +
             '</section>' +
           '</div>' +
