@@ -781,6 +781,7 @@
       if (selected) { event.preventDefault(); clearSelection(true); }
     });
     dialog.addEventListener('close', function () {
+      if (dialog.dataset.fdSuspended === 'true') return;
       if (photoDialog && photoDialog.open) photoDialog.close();
       resetGesture(); clearSelection(false);
       document.body.style.overflow = previousOverflow;
@@ -810,6 +811,19 @@
     document.body.style.overflow = 'hidden';
     measureView(true);
     if (!error.hidden) loadImage();
+  });
+
+  document.addEventListener('fd-map-suspend', function () {
+    if (!dialog || !dialog.open) return;
+    dialog.dataset.fdSuspended = 'true';
+    dialog.close();
+  });
+  document.addEventListener('fd-map-resume', function () {
+    if (!dialog || dialog.dataset.fdSuspended !== 'true') return;
+    dialog.dataset.fdSuspended = 'false';
+    dialog.showModal();
+    document.body.style.overflow = 'hidden';
+    measureView(false);
   });
 
   var observer = new MutationObserver(syncLauncher);

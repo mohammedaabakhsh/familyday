@@ -3447,10 +3447,13 @@ function updateCabinPicker(){
   var isStay=_navType==='chalet';
   var isChalet=_navType==='private-chalet';
   var noun=isChalet?'الشاليه':isStay?'القسم':'الكوخ';
-  var backLabel=isChalet?'العودة إلى الشاليه':isStay?'العودة إلى الأقسام':'العودة إلى الأكواخ';
+  var fromMap=!isChalet && !isStay && document.getElementById('ov').dataset.returnToMap==='true';
+  var backLabel=fromMap?'العودة إلى خريطة الأكواخ':isChalet?'العودة إلى الشاليه':isStay?'العودة إلى الأقسام':'العودة إلى الأكواخ';
   var back=document.querySelector('.fd-cabin-nav-back');
   back.setAttribute('aria-label',backLabel);
-  back.querySelector('span').textContent=isChalet?'الشاليه':isStay?'الأقسام':'الأكواخ';
+  var legacyBack=document.querySelector('.modal-back-btn');
+  if(legacyBack)legacyBack.textContent='❮ '+backLabel;
+  back.querySelector('span').textContent=fromMap?'الخريطة':isChalet?'الشاليه':isStay?'الأقسام':'الأكواخ';
   document.querySelector('.fd-cabin-nav').setAttribute('aria-label',isChalet?'تفاصيل الشاليه':isStay?'التنقّل بين الأقسام':'التنقّل بين الأكواخ');
   document.querySelector('#fd-cabin-nav-list ul').setAttribute('aria-label',isChalet?'الشاليه':isStay?'أقسام الاستراحة':'الأكواخ ضمن اختيارك');
   picker.setAttribute('aria-label','اختيار '+noun+': '+c.name);
@@ -5064,6 +5067,8 @@ function openMDirect(c){
       case 'faq2': call('showFaq2'); break;
       case 'contact': call('showContact',r.args); break;
       case 'cabin':
+        document.getElementById('ov').dataset.returnToMap = String(!!r.parent && r.parent.name==='map');
+        if(r.parent && r.parent.name==='map') document.dispatchEvent(new CustomEvent('fd-map-suspend'));
         if(r.args[0]>=20){
           var item=_chaletItems2.find(function(c){return c.id===r.args[0];});
           if(item) call('openMDirect',[item]);
@@ -5111,7 +5116,10 @@ function openMDirect(c){
     } else if(r.name==='map'){
       var dialog=document.getElementById('fd-map-dialog');
       if(dialog && dialog.open) dialog.close();
-    } else if(close[r.name]) call(close[r.name]);
+    } else if(close[r.name]) {
+      call(close[r.name]);
+      if(r.name==='cabin' && r.parent && r.parent.name==='map') document.dispatchEvent(new CustomEvent('fd-map-resume'));
+    }
     else if(serviceViews[r.name]) {
       call(serviceViews[r.name][1]);
       if(r.name==='sinema' && r.parent && r.parent.name==='cabin') document.getElementById('services-overlay').classList.add('hide');
@@ -5174,7 +5182,7 @@ function openMDirect(c){
   wrapOpen('showFaq2',function(){return route('faq2',[],current.name==='contact' && current.args[0]==='stay' ? current : null);});
   wrapOpen('showContact',function(type){return route('contact',[type || 'resort']);});
   function cabinRoute(id){
-    var parent=current.name==='cabin' ? current.parent : current.name==='service-sub' ? current : null;
+    var parent=current.name==='cabin' ? current.parent : (current.name==='service-sub' || current.name==='map') ? current : null;
     return route('cabin',[id],parent);
   }
   wrapOpen('openM',cabinRoute);
@@ -5305,7 +5313,7 @@ function openMDirect(c){
   window.addEventListener('pageshow',function(event){if(event.persisted) restore();});
 })();
 </script>
-<script src="resort-map.js?v=36" defer></script>
+<script src="resort-map.js?v=37" defer></script>
 <link rel="stylesheet" href="chalet-map.css?v=12">
 <script src="chalet-map.js?v=14" defer></script>
 
