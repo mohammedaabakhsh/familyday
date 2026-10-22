@@ -436,6 +436,7 @@
     description.textContent = isDome ? '' : translateText(cabin.type || cabin.suitable || '');
     var tourButton = card.querySelector('.fd-map-tour-button');
     tourButton.hidden = !isDome;
+    tourButton.href = '/dome-tour/?from=map&cabin=' + cabin.id;
     tourButton.textContent = copy.tour;
     description.hidden = !description.textContent;
     card.querySelector('.fd-map-guest-label').textContent = shared ? copy.location : copy.capacity;
@@ -811,6 +812,13 @@
     document.body.style.overflow = 'hidden';
     measureView(true);
     if (!error.hidden) loadImage();
+  });
+
+  document.addEventListener('fd-map-select-cabin', function (event) {
+    if (!dialog || !dialog.open) return;
+    var cabinId = Number(event.detail && event.detail.cabinId);
+    var location = locations.find(function (item) { return cabinFor(item).id === cabinId; });
+    if (location && selected !== location) selectLocation(location);
   });
 
   document.addEventListener('fd-map-suspend', function () {

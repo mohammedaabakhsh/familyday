@@ -91,7 +91,8 @@
 (function () {
   if (new URLSearchParams(window.location.search).get('from') !== 'map') return;
   var back = document.querySelector('.tour-back');
-  back.href = '/#map';
+  var cabinId = new URLSearchParams(window.location.search).get('cabin');
+  back.href = cabinId === '1' || cabinId === '12' ? '/#map=' + cabinId : '/#map';
   back.innerHTML = '<span aria-hidden="true">→</span> خريطة الأكواخ';
 })();
 </script>

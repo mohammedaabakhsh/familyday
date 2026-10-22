@@ -1033,6 +1033,7 @@ header{
 #contest-detail .contest-social-actions{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:12px}
 }
 </style>
+<style>#ov.open[data-return-to-map="true"]{z-index:350}</style>
 </head>
 <body>
 
@@ -5032,12 +5033,15 @@ function openMDirect(c){
     if(r.name==='dest') return base;
     if(r.name==='home') return base+'#home='+r.args[0];
     if(r.name==='cabin') return base+'#cabin='+r.args[0];
+    if(r.name==='map' && r.args.length) return base+'#map='+r.args[0];
     if(r.name==='contact') return base+'#contact='+r.args[0];
     if(['photos','map-photos','dome-gallery','cabin-compare','tour','order','service-sub','menu-cart'].indexOf(r.name)!==-1) return urlFor(r.parent);
     return base+'#'+r.name;
   }
   function fromHash(){
     var hash=location.hash.slice(1);
+    var mapMatch=/^map=(1|12)$/.exec(hash);
+    if(mapMatch) return route('map',[Number(mapMatch[1])]);
     var match=/^cabin=(\d+)$/.exec(hash);
     if(match){
       var id=Number(match[1]);
@@ -5089,7 +5093,10 @@ function openMDirect(c){
         _orderResortScope=r.args.length>3 ? !!r.args[3] : !!r.parent && ['menu','sinema','maiya','tarfihi','tawilat','jalsat'].indexOf(r.parent.name)!==-1;
         call('openOrderPopup',r.args.slice(0,2));
         break;
-      case 'map': document.getElementById('fd-map-open').click(); break;
+      case 'map':
+        document.getElementById('fd-map-open').click();
+        if(r.args.length) document.dispatchEvent(new CustomEvent('fd-map-select-cabin',{detail:{cabinId:r.args[0]}}));
+        break;
       default:
         if(serviceViews[r.name]) {
           if(r.name==='sinema' && r.parent && r.parent.name==='cabin') document.getElementById('services-overlay').classList.remove('hide');
@@ -5313,7 +5320,7 @@ function openMDirect(c){
   window.addEventListener('pageshow',function(event){if(event.persisted) restore();});
 })();
 </script>
-<script src="resort-map.js?v=37" defer></script>
+<script src="resort-map.js?v=38" defer></script>
 <link rel="stylesheet" href="chalet-map.css?v=12">
 <script src="chalet-map.js?v=14" defer></script>
 
