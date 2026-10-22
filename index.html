@@ -3448,12 +3448,12 @@ function updateCabinPicker(){
   var isChalet=_navType==='private-chalet';
   var noun=isChalet?'الشاليه':isStay?'القسم':'الكوخ';
   var fromMap=!isChalet && !isStay && document.getElementById('ov').dataset.returnToMap==='true';
-  var backLabel=fromMap?'العودة إلى خريطة الأكواخ':isChalet?'العودة إلى الشاليه':isStay?'العودة إلى الأقسام':'العودة إلى الأكواخ';
+  var backLabel=fromMap?'خريطة الأكواخ':isChalet?'العودة إلى الشاليه':isStay?'العودة إلى الأقسام':'العودة إلى الأكواخ';
   var back=document.querySelector('.fd-cabin-nav-back');
   back.setAttribute('aria-label',backLabel);
   var legacyBack=document.querySelector('.modal-back-btn');
   if(legacyBack)legacyBack.textContent='❮ '+backLabel;
-  back.querySelector('span').textContent=fromMap?'الخريطة':isChalet?'الشاليه':isStay?'الأقسام':'الأكواخ';
+  back.querySelector('span').textContent=fromMap?'خريطة الأكواخ':isChalet?'الشاليه':isStay?'الأقسام':'الأكواخ';
   document.querySelector('.fd-cabin-nav').setAttribute('aria-label',isChalet?'تفاصيل الشاليه':isStay?'التنقّل بين الأقسام':'التنقّل بين الأكواخ');
   document.querySelector('#fd-cabin-nav-list ul').setAttribute('aria-label',isChalet?'الشاليه':isStay?'أقسام الاستراحة':'الأكواخ ضمن اختيارك');
   picker.setAttribute('aria-label','اختيار '+noun+': '+c.name);

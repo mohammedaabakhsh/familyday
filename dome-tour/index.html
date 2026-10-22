@@ -83,7 +83,7 @@
 </head>
 <body>
 <div class="tour-page">
-<header class="tour-nav"><a class="tour-back" href="/#resort"><span aria-hidden="true">→</span> العودة إلى الأكواخ</a><span class="tour-brand">يوم العائلة</span></header>
+<header class="tour-nav"><a class="tour-back" href="/#resort"><span aria-hidden="true">→</span> العودة إلى الأكواخ</a></header>
 <main id="ov"><div id="dome-tour-host"></div><noscript>فعّل JavaScript لعرض الجولة التفاعلية.</noscript></main>
 
 </div>
@@ -92,7 +92,7 @@
   if (new URLSearchParams(window.location.search).get('from') !== 'map') return;
   var back = document.querySelector('.tour-back');
   back.href = '/#map';
-  back.innerHTML = '<span aria-hidden="true">→</span> العودة إلى خريطة الأكواخ';
+  back.innerHTML = '<span aria-hidden="true">→</span> خريطة الأكواخ';
 })();
 </script>
 <script src="/resort-data.js?v=11"></script>
