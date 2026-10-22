@@ -996,7 +996,7 @@ header{
 .bnav-btn.active{background:rgba(255,255,255,0.12);color:#fff;}
 .bnav-btn:active{opacity:0.7;}
 
-.fd-cabin-card-v2 .fd-dome-tour-link{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;box-sizing:border-box;margin-top:8px;text-decoration:none;background:#10323f;color:#a1e4ed;border:1px solid #287786;min-height:44px}
+.fd-cabin-card-v2 .fd-dome-tour-link{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;box-sizing:border-box;margin-top:8px;padding:10px 12px;border-radius:10px;font:700 14px/1.4 Tajawal,sans-serif;text-decoration:none;background:#10323f;color:#a1e4ed;border:1px solid #287786;min-height:44px}
 </style>
 <link rel="stylesheet" href="resort-map.css?v=26">
 <style id="fd-home-map-shortcut">
@@ -3200,7 +3200,7 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
       <div class="card-body fd-cabin-card-v2-body">
         ${renderResortCardSummary(c)}
         <div class="fd-card-actions"><button class="card-btn">عرض التفاصيل والصور</button>${FD_CABIN_COMPARE.cardButton(c)}</div>
-        ${c.id===1?'<a class="card-btn fd-dome-tour-link" href="/dome-tour/" onclick="event.stopPropagation()">جولة داخل الدوم <span aria-hidden="true">←</span></a>':''}
+        ${c.id===1?'<a class="fd-dome-tour-link" href="/dome-tour/" onclick="event.stopPropagation()">جولة داخل الدوم <span aria-hidden="true">←</span></a>':''}
       </div>`;
     g.appendChild(d);
   });
