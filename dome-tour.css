@@ -1,0 +1,68 @@
+/* Scoped to the reviewed Dome 1 tour; other cabin/map designs are unchanged. */
+#ov.fd-has-dome-tour .modal {display:block;width:min(1120px,calc(100vw - 48px));height:auto;max-height:90vh;max-height:90dvh;overflow-y:auto;scrollbar-width:thin;}
+#ov.fd-has-dome-tour .fd-cabin-nav {position:sticky;top:0;z-index:30;background:#071a28;}
+#ov.fd-has-dome-tour #galWrap {width:100%;height:auto;aspect-ratio:1;max-width:480px;margin:0 auto;border:0;}
+#ov.fd-has-dome-tour #mBody {overflow:visible;padding:24px clamp(16px,5vw,64px);}
+#ov.fd-has-dome-tour .modal-bottom-bar {position:sticky;bottom:0;z-index:25;}
+#ov .dt-tour {box-sizing:border-box;margin:24px 18px 0;padding:24px 12px 14px;border:1px solid #214b5c;border-radius:20px;background:#031c2b;color:#f4f8fa;font-family:Tajawal,sans-serif;isolation:isolate;}
+#ov .dt-tour * {box-sizing:border-box;}
+#ov .dt-title {font:700 clamp(23px,3vw,32px)/1.4 Tajawal,sans-serif;text-align:center;margin:0 0 14px;color:#f4f8fa;}
+#ov .dt-stage {position:relative;direction:ltr;}
+#ov .dt-image {display:block;width:88%;height:auto;margin:0 auto;user-select:none;}
+#ov .dt-labels {position:absolute;inset:0;z-index:4;pointer-events:none;}
+#ov .dt-label {pointer-events:auto;position:absolute;min-height:44px;width:17.5%;border:1px solid #2bbed1;border-radius:24px;background:#042130;color:#ecf8fb;cursor:pointer;font:500 clamp(13px,1.7vw,18px)/1.35 Tajawal,sans-serif;padding:7px 8px;text-align:center;transition:background .18s,border-color .18s,box-shadow .18s;}
+#ov .dt-label--kitchen {left:0;top:0;}
+#ov .dt-label--tub {left:0;top:12%;}
+#ov .dt-label--pool {left:0;top:26%;}
+#ov .dt-label--bathroom {right:0;top:0;}
+#ov .dt-label--bedroom {right:0;top:12%;}
+#ov .dt-label--outdoor {right:0;top:26%;}
+#ov .dt-label[aria-pressed=true] {background:#08637b;border-color:#55eaff;box-shadow:0 0 0 2px #20cfe629,0 0 18px #16c4dd26;color:white;}
+#ov .dt-lines {position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:2;}
+#ov .dt-lines path {fill:none;stroke:#c6e3e5;stroke-width:1.2;opacity:.55;}
+#ov .dt-lines path.is-selected {stroke:#65efff;stroke-width:2;opacity:1;}
+#ov .dt-point {position:absolute;z-index:3;transform:translate(-50%,-50%);width:44px;height:44px;border:0;background:none;padding:0;cursor:pointer;display:grid;place-items:center;}
+#ov .dt-point span {width:7px;height:7px;background:#eafafa;border:1px solid #fff;border-radius:50%;box-shadow:0 0 0 4px #001c2a33;}
+#ov .dt-point.is-selected span {width:10px;height:10px;background:#50eeff;box-shadow:0 0 0 5px #30dbed38,0 0 15px #35e6ff;}
+#ov .dt-languages {display:flex;direction:ltr;justify-content:center;gap:4px;margin:-10px auto 14px;position:relative;z-index:4;}
+#ov .dt-languages button {min-height:44px;min-width:78px;font:500 14px/1.2 Tajawal,sans-serif;cursor:pointer;border:1px solid #225064;border-radius:10px;color:#c4d9e1;background:#052232;padding:8px 12px;}
+#ov .dt-languages [aria-pressed=true] {background:#075b70;color:#fff;border-color:#20c2db;}
+#ov .dt-tour button:focus-visible {outline:3px solid #92efff;outline-offset:3px;}
+#ov .dt-details {display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:0 8px;padding:14px;border:1px solid #21566b;border-radius:16px;background:#062131;min-height:120px;}
+#ov .dt-detail-heading {flex:0 0 120px;}
+#ov .dt-detail-heading h4 {font-size:20px;line-height:1.35;margin:0 0 6px;color:#f5fbff;}
+#ov .dt-detail-heading p {font-size:13px;line-height:1.5;margin:0;color:#b2ced8;}
+#ov .dt-cards {display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:7px;flex:1;min-width:0;}
+#ov .dt-card {min-height:72px;border:1px solid #163f53;border-radius:10px;padding:9px 6px;background:#082838;text-align:center;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px;}
+#ov .dt-card svg {width:22px;height:22px;flex:0 0 auto;color:#a6dde7;}
+#ov .dt-card span {display:block;font-size:12px;color:#8ed6e3;line-height:1.4;margin-bottom:2px;}
+#ov .dt-card strong {display:block;font-size:13px;font-weight:500;line-height:1.5;color:#f0f7fa;}
+#ov .dt-card strong[dir=ltr] {font:600 15px/1.5 Arial,sans-serif;white-space:nowrap;}
+#ov .dt-note {flex:0 0 100%;font-size:13px;line-height:1.6;color:#b5cbd6;margin:0;}
+#ov .dt-occupancy {margin:12px 0 0;text-align:center;font-size:14px;line-height:1.5;color:#9edce5;}
+@media(max-width:899px){
+ #ov.fd-has-dome-tour .modal {width:100%;max-height:100vh;max-height:100dvh;}
+ #ov.fd-has-dome-tour #galWrap {max-width:100%;}
+ #ov .dt-tour {margin-inline:12px;padding-inline:8px;}
+ #ov .dt-details {display:block;}
+ #ov .dt-detail-heading {margin-bottom:12px;}
+ #ov .dt-cards {grid-template-columns:repeat(3,minmax(0,1fr));}
+}
+@media(max-width:599px){
+ #ov .dt-tour {padding:20px 0 14px;margin:18px 8px 0;border-radius:16px;}
+ #ov .dt-title {font-size:23px;margin-bottom:18px;padding:0 8px;}
+ #ov .dt-labels {position:relative;inset:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 6px;padding:0 8px;direction:rtl;}
+ #ov .dt-label {position:relative;inset:auto;width:auto;min-width:0;min-height:44px;font-size:13px;padding:7px 5px;}
+ #ov .dt-image {width:100%;}
+ #ov .dt-lines path {display:none;}
+ #ov .dt-lines path.is-selected {display:block;stroke-width:1.4;}
+ #ov .dt-point {visibility:hidden;}
+ #ov .dt-point.is-selected {visibility:visible;}
+ #ov .dt-languages {margin:-8px auto 12px;}
+ #ov .dt-details {margin:0 10px;padding:12px;min-height:210px;}
+ #ov .dt-card {padding:8px 4px;min-height:76px;}
+ #ov .dt-card strong {font-size:12px;}
+ #ov .dt-detail-heading h4 {font-size:18px;margin-bottom:3px;}
+ #ov .dt-note {margin-top:10px;}
+}
+@media(prefers-reduced-motion:reduce){#ov .dt-tour *{transition:none!important;}}
