@@ -87,6 +87,14 @@
 <main id="ov"><div id="dome-tour-host"></div><noscript>فعّل JavaScript لعرض الجولة التفاعلية.</noscript></main>
 
 </div>
+<script>
+(function () {
+  if (new URLSearchParams(window.location.search).get('from') !== 'map') return;
+  var back = document.querySelector('.tour-back');
+  back.href = '/#map';
+  back.innerHTML = '<span aria-hidden="true">→</span> العودة إلى خريطة الأكواخ';
+})();
+</script>
 <script src="/resort-data.js?v=11"></script>
 <script src="/dome-tour.js?v=6"></script>
 </body></html>
