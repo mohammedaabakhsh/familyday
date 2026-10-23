@@ -1,4 +1,4 @@
-/* Shared tour refinements. Keep mobile placement unchanged. */
+/* Shared tour layout and independent dining labels. */
 #ov .dt-card strong .dt-soundbar-line{display:block;font:inherit;color:inherit;white-space:nowrap}
 @media(min-width:900px){
  .tour-page{max-width:1480px}
@@ -33,4 +33,18 @@
  #ov .dt-stage{--rail:104px}
  #ov .dt-label{font-size:12px}
  #ov #greek-tour .dt-label--twin{width:130px;right:0}
+}
+
+@media(max-width:599px){
+ #ov #pyramid-tour .dt-labels .dt-label:last-child,
+ #ov #greek-tour .dt-labels .dt-label:last-child{grid-column:auto}
+}
+@media(min-width:600px) and (max-width:899px){
+ #ov #pyramid-tour .dt-label--dining{left:0;right:auto;top:40%;bottom:auto;width:22%}
+ #ov #greek-tour .dt-label--dining{left:0;right:auto;top:47%;bottom:auto;width:21%}
+}
+@media(min-width:900px){
+ #ov #pyramid-tour .dt-label--dining{left:0;top:24%}
+ #ov #pyramid-tour .dt-label--living{top:46%}
+ #ov #greek-tour .dt-label--dining{left:0;top:53%}
 }

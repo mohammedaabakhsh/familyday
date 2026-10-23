@@ -6,8 +6,9 @@ var FD_GREEK_TOUR = (function () {
     {id:'bedroom', ar:'غرفة نوم بسرير مزدوج', en:'Bedroom with a double bed', x:.28, y:.28},
     {id:'bathroom', ar:'الحمامات', en:'Bathrooms', x:.38, y:.22},
     {id:'twin', ar:'غرفة نوم بسريرين مفردين', en:'Bedroom with two single beds', x:.71, y:.26},
-    {id:'kitchen', ar:'ركن المطبخ', en:'Kitchenette', x:.44, y:.28},
     {id:'living', ar:'المنطقة الداخلية', en:'Indoor area', x:.56, y:.36},
+    {id:'kitchen', ar:'ركن المطبخ', en:'Kitchenette', x:.44, y:.28},
+    {id:'dining', ar:'طاولة الطعام', en:'Dining table', x:.482, y:.325},
     {id:'pool', ar:'المسبح', en:'Pool', x:.24, y:.56},
     {id:'outdoor', ar:'الجلسة الخارجية', en:'Outdoor seating', x:.73, y:.60}
   ];
@@ -75,9 +76,10 @@ var FD_GREEK_TOUR = (function () {
       if (/جاكوزي/.test(cabin.pool.label)) cards.push({value:tr('جاكوزي داخل المسبح','In-pool jacuzzi'),icon:'tub'});
       cabin.pool.facilities.forEach(function(t){cards.push({value:feature(t),icon:t==='دش خارجي'?'shower':'chair'});});
     } else if (selected === 'kitchen') {
-      cards.push({value:tr('طاولة طعام','Dining table'),icon:'dining'});
       cabin.features.kitchen.forEach(function(t){cards.push({value:feature(t),icon:kitchenIcon(t)});});
       if(cabin.minibar) note=tr('الميني بار: مشروبات وسناكس برسوم إضافية.','Minibar drinks and snacks are available at an extra charge.');
+    } else if (selected === 'dining') {
+      cards.push({value:tr('طاولة طعام','Dining table'),icon:'dining'});
     } else if (selected === 'living') {
       cards=[{value:tr('الصالة الداخلية','Indoor living room'),icon:'sofa'},{value:tr('تلفزيون ذكي','Smart TV'),icon:'tv'},{value:tr('سماعات داخلية (ساوند بار)','Soundbar'),icon:'speaker'},{value:tr('واي فاي مجاني','Free Wi-Fi'),icon:'wifi'}];
     } else if (selected === 'bedroom') {
@@ -121,7 +123,7 @@ var FD_GREEK_TOUR = (function () {
     parts.forEach(function(p){
       var button=root.querySelector('.dt-label[data-part="'+p.id+'"]'), b=button.getBoundingClientRect();
       var tx=im.left-box.left+im.width*p.x, ty=im.top-box.top+im.height*p.y;
-      var left=['kitchen','pool'].includes(p.id);
+      var left=['kitchen','dining','pool'].includes(p.id);
       var sx=mobile?b.left+b.width/2-box.left:(left?b.right:b.left)-box.left;
       var sy=mobile?b.bottom-box.top:b.top+b.height/2-box.top;
       var desktop=window.matchMedia('(min-width:900px)').matches;
@@ -136,7 +138,7 @@ var FD_GREEK_TOUR = (function () {
       else if(mobile || above) curve='C '+sx+' '+(sy+35)+' '+tx+' '+(ty-45)+' '+tx+' '+ty;
       else curve='C '+(sx+(left?40:-40))+' '+sy+' '+tx+' '+sy+' '+tx+' '+ty;
       if(desktop){
-        var side={"bedroom":"left","bathroom":"top","twin":"top","kitchen":"top","living":"right","pool":"left","outdoor":"right"}[p.id];
+        var side={"dining":"left","bedroom":"left","bathroom":"top","twin":"top","kitchen":"top","living":"right","pool":"left","outdoor":"right"}[p.id];
         if(side==='top'){
           sx=b.left+b.width/2-box.left; sy=b.bottom-box.top;
           curve='C '+sx+' '+(sy+28)+' '+tx+' '+(ty-32)+' '+tx+' '+ty;

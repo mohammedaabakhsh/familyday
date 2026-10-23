@@ -3,9 +3,9 @@ var FD_DOME_TOUR = (function () {
   'use strict';
   var root, observer, frame, cabin, selected = 'pool', language = 'ar';
   var parts = [
-    {id:'kitchen', ar:'ركن المطبخ', en:'Kitchenette', x:.44, y:.29},
-    {id:'bathroom', ar:'الحمام', en:'Bathroom', x:.55, y:.26},
     {id:'bedroom', ar:'المنطقة الداخلية', en:'Indoor area', x:.50, y:.34},
+    {id:'bathroom', ar:'الحمام', en:'Bathroom', x:.55, y:.26},
+    {id:'kitchen', ar:'ركن المطبخ', en:'Kitchenette', x:.44, y:.29},
     {id:'tub', ar:'البانيو', en:'Bathtub', x:.40, y:.37},
     {id:'pool', ar:'المسبح', en:'Pool', x:.24, y:.53},
     {id:'outdoor', ar:'الجلسة الخارجية', en:'Outdoor seating', x:.82, y:.55}

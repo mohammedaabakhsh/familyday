@@ -3,13 +3,14 @@ var FD_PYRAMID_TOUR = (function () {
   'use strict';
   var root, observer, frame, cabin, selected = 'pool', language = 'ar';
   var parts = [
-    {id:'kitchen', ar:'ركن المطبخ', en:'Kitchenette', x:.35, y:.26},
-    {id:'bathroom', ar:'الحمام', en:'Bathroom', x:.475, y:.255},
     {id:'bedroom', ar:'غرفة نوم بسرير مزدوج', en:'Bedroom with a double bed', x:.48, y:.335},
+    {id:'bathroom', ar:'الحمام', en:'Bathroom', x:.475, y:.255},
     {id:'living', ar:'المنطقة الداخلية', en:'Indoor area', x:.29, y:.335},
+    {id:'kitchen', ar:'ركن المطبخ', en:'Kitchenette', x:.35, y:.26},
+    {id:'dining', ar:'طاولة الطعام', en:'Dining table', x:.35, y:.29},
     {id:'tub', ar:'البانيو الخارجي', en:'Outdoor bathtub', x:.585, y:.36},
-    {id:'outdoor', ar:'الجلسة الخارجية', en:'Outdoor seating', x:.70, y:.51},
-    {id:'pool', ar:'المسبح', en:'Pool', x:.76, y:.68}
+    {id:'pool', ar:'المسبح', en:'Pool', x:.76, y:.68},
+    {id:'outdoor', ar:'الجلسة الخارجية', en:'Outdoor seating', x:.70, y:.51}
   ];
   var translations = {
     'موقد كهربائي':'Electric hob', 'ميكروويف':'Microwave', 'ثلاجة':'Refrigerator',
@@ -75,9 +76,10 @@ var FD_PYRAMID_TOUR = (function () {
       if (/جاكوزي/.test(cabin.pool.label)) cards.push({value:tr('جاكوزي داخل المسبح','In-pool jacuzzi'),icon:'tub'});
       cabin.pool.facilities.forEach(function(t){cards.push({value:feature(t),icon:t==='دش خارجي'?'shower':'chair'});});
     } else if (selected === 'kitchen') {
-      cards.push({value:tr('طاولة طعام','Dining table'),icon:'dining'});
       cabin.features.kitchen.forEach(function(t){cards.push({value:feature(t),icon:kitchenIcon(t)});});
       if(cabin.minibar) note=tr('الميني بار: مشروبات وسناكس برسوم إضافية.','Minibar drinks and snacks are available at an extra charge.');
+    } else if (selected === 'dining') {
+      cards.push({value:tr('طاولة طعام','Dining table'),icon:'dining'});
     } else if (selected === 'living') {
       cards=[{value:tr('الصالة الداخلية','Indoor living room'),icon:'sofa'},{value:tr('تلفزيون ذكي','Smart TV'),icon:'tv'},{value:tr('سماعات داخلية (ساوند بار)','Soundbar'),icon:'speaker'},{value:tr('واي فاي مجاني','Free Wi-Fi'),icon:'wifi'}];
     } else if (selected === 'bedroom') {
@@ -120,7 +122,7 @@ var FD_PYRAMID_TOUR = (function () {
     parts.forEach(function(p){
       var button=root.querySelector('.dt-label[data-part="'+p.id+'"]'), b=button.getBoundingClientRect();
       var tx=im.left-box.left+im.width*p.x, ty=im.top-box.top+im.height*p.y;
-      var left=['living','outdoor'].includes(p.id);
+      var left=['living','dining','outdoor'].includes(p.id);
       var sx=mobile?b.left+b.width/2-box.left:(left?b.right:b.left)-box.left;
       var sy=mobile?b.bottom-box.top:b.top+b.height/2-box.top;
       var desktop=window.matchMedia('(min-width:900px)').matches;
@@ -135,7 +137,7 @@ var FD_PYRAMID_TOUR = (function () {
       else if(mobile || above) curve='C '+sx+' '+(sy+35)+' '+tx+' '+(ty-45)+' '+tx+' '+ty;
       else curve='C '+(sx+(left?40:-40))+' '+sy+' '+tx+' '+sy+' '+tx+' '+ty;
       if(desktop){
-        var side={"kitchen":"top","bathroom":"top","bedroom":"top","living":"left","tub":"right","outdoor":"right","pool":"right"}[p.id];
+        var side={"dining":"left","kitchen":"top","bathroom":"top","bedroom":"top","living":"left","tub":"right","outdoor":"right","pool":"right"}[p.id];
         if(side==='top'){
           sx=b.left+b.width/2-box.left; sy=b.bottom-box.top;
           curve='C '+sx+' '+(sy+28)+' '+tx+' '+(ty-32)+' '+tx+' '+ty;
