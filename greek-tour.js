@@ -3,9 +3,9 @@ var FD_GREEK_TOUR = (function () {
   'use strict';
   var root, observer, frame, cabin, selected = 'pool', language = 'ar';
   var parts = [
-    {id:'bedroom', ar:'غرفة الماستر', en:'Master bedroom', x:.28, y:.28},
+    {id:'bedroom', ar:'غرفة نوم بسرير مزدوج', en:'Bedroom with a double bed', x:.28, y:.28},
     {id:'bathroom', ar:'الحمامات', en:'Bathrooms', x:.38, y:.22},
-    {id:'twin', ar:'غرفة السريرين', en:'Twin bedroom', x:.71, y:.26},
+    {id:'twin', ar:'غرفة نوم بسريرين مفردين', en:'Bedroom with two single beds', x:.71, y:.26},
     {id:'kitchen', ar:'المطبخ وطاولة الطعام', en:'Kitchen & dining', x:.44, y:.28},
     {id:'living', ar:'الصالة الداخلية', en:'Living room', x:.56, y:.36},
     {id:'pool', ar:'المسبح', en:'Pool', x:.24, y:.56},
@@ -35,6 +35,10 @@ var FD_GREEK_TOUR = (function () {
   function esc(text) { return String(text).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
   function tr(ar,en) { return language === 'ar' ? ar : en; }
   function feature(text) { return language === 'ar' ? text : (translations[text] || text); }
+  function cardValue(value) {
+    if (value === 'سماعات داخلية (ساوند بار)') return '<span class="dt-soundbar-line">سماعات داخلية</span><span class="dt-soundbar-line">(ساوند بار)</span>';
+    return esc(value);
+  }
   function details() {
     var part = parts.find(function(p){return p.id===selected;});
     var cards = [], note = '', subtitle = '';
@@ -54,14 +58,14 @@ var FD_GREEK_TOUR = (function () {
     } else if (selected === 'bedroom') {
       cards=[{label:tr('السرير','Bed'),value:tr('سرير مزدوج','Double bed'),icon:'bed'},{value:tr('حمام خاص بالغرفة','En-suite bathroom'),icon:'shower'}];
     } else if (selected === 'bathroom') {
-      cards=[{value:tr('حمام خاص بغرفة الماستر','Master en-suite bathroom'),icon:'shower'},{value:tr('حمام مشترك عند الممر','Shared bathroom off the hallway'),icon:'shower'}];
+      cards=[{value:tr('حمام خاص بغرفة نوم بسرير مزدوج','En-suite bathroom'),icon:'shower'},{value:tr('حمام مشترك عند الممر','Shared bathroom off the hallway'),icon:'shower'}];
     } else if (selected === 'twin') {
       cards=[{value:tr('سريران مفردان','Two single beds'),icon:'bed'}];
       note=tr('الحمام المشترك عند الممر خارج الغرفة.','The shared bathroom is off the hallway, outside the bedroom.');
     } else {
       cabin.features.outdoor.filter(function(t){return !/بانيو/.test(t);}).forEach(function(t){cards.push({value:feature(t),icon:'outdoor'});});
     }
-    root.querySelector('.dt-details').innerHTML='<div class="dt-detail-heading"><h4>'+esc(part[language])+'</h4>'+(subtitle?'<p>'+esc(subtitle)+'</p>':'')+'</div><div class="dt-cards">'+cards.map(function(card){return '<div class="dt-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+esc(card.value)+'</strong></div></div>';}).join('')+'</div>'+(note?'<p class="dt-note">'+esc(note)+'</p>':'');
+    root.querySelector('.dt-details').innerHTML='<div class="dt-detail-heading"><h4>'+esc(part[language])+'</h4>'+(subtitle?'<p>'+esc(subtitle)+'</p>':'')+'</div><div class="dt-cards">'+cards.map(function(card){return '<div class="dt-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+cardValue(card.value)+'</strong></div></div>';}).join('')+'</div>'+(note?'<p class="dt-note">'+esc(note)+'</p>':'');
   }
   function update() {
     root.lang=language; root.dir=language==='ar'?'rtl':'ltr';
@@ -106,6 +110,17 @@ var FD_GREEK_TOUR = (function () {
       if(below) curve='C '+sx+' '+(sy-40)+' '+tx+' '+(ty+45)+' '+tx+' '+ty;
       else if(mobile || above) curve='C '+sx+' '+(sy+35)+' '+tx+' '+(ty-45)+' '+tx+' '+ty;
       else curve='C '+(sx+(left?40:-40))+' '+sy+' '+tx+' '+sy+' '+tx+' '+ty;
+      if(desktop){
+        var side={"bedroom":"left","bathroom":"top","twin":"top","kitchen":"top","living":"right","pool":"left","outdoor":"right"}[p.id];
+        if(side==='top'){
+          sx=b.left+b.width/2-box.left; sy=b.bottom-box.top;
+          curve='C '+sx+' '+(sy+28)+' '+tx+' '+(ty-32)+' '+tx+' '+ty;
+        } else {
+          sx=(side==='left'?b.right:b.left)-box.left; sy=b.top+b.height/2-box.top;
+          var bend=sx+(side==='left'?28:-28);
+          curve='C '+bend+' '+sy+' '+(tx+(side==='left'?-28:28))+' '+ty+' '+tx+' '+ty;
+        }
+      }
       root.querySelector('[data-line="'+p.id+'"]').setAttribute('d','M '+sx+' '+sy+' '+curve);
       var point=root.querySelector('.dt-point[data-part="'+p.id+'"]'); point.style.left=tx+'px'; point.style.top=ty+'px';
     });

@@ -5,7 +5,7 @@ var FD_DOME_TOUR = (function () {
   var parts = [
     {id:'kitchen', ar:'ركن المطبخ', en:'Kitchenette', x:.44, y:.29},
     {id:'bathroom', ar:'الحمام', en:'Bathroom', x:.55, y:.26},
-    {id:'bedroom', ar:'غرفة النوم', en:'Bedroom', x:.50, y:.34},
+    {id:'bedroom', ar:'المنطقة الداخلية', en:'Indoor area', x:.50, y:.34},
     {id:'tub', ar:'البانيو', en:'Bathtub', x:.40, y:.37},
     {id:'pool', ar:'المسبح', en:'Pool', x:.24, y:.53},
     {id:'outdoor', ar:'الجلسة الخارجية', en:'Outdoor seating', x:.82, y:.55}
@@ -34,6 +34,10 @@ var FD_DOME_TOUR = (function () {
   function esc(text) { return String(text).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
   function tr(ar,en) { return language === 'ar' ? ar : en; }
   function feature(text) { return language === 'ar' ? text : (translations[text] || text); }
+  function cardValue(value) {
+    if (value === 'سماعات داخلية (ساوند بار)') return '<span class="dt-soundbar-line">سماعات داخلية</span><span class="dt-soundbar-line">(ساوند بار)</span>';
+    return esc(value);
+  }
   function details() {
     var part = parts.find(function(p){return p.id===selected;});
     var cards = [], note = '', subtitle = '';
@@ -48,7 +52,7 @@ var FD_DOME_TOUR = (function () {
       cabin.features.kitchen.forEach(function(t){cards.push({value:feature(t),icon:'kitchen'});});
       if(cabin.minibar) note=tr('الميني بار: مشروبات وسناكس برسوم إضافية.','Minibar drinks and snacks are available at an extra charge.');
     } else if (selected === 'bedroom') {
-      cards=[{label:tr('السرير','Bed'),value:tr('سرير مزدوج','Double bed'),icon:'bed'}];
+      cards=[{label:tr('السرير','Bed'),value:tr('سرير مزدوج','Double bed'),icon:'bed'},{value:tr('كنبتان','Two armchairs'),icon:'chair'},{value:tr('تلفزيون ذكي','Smart TV'),icon:'chair'},{value:tr('سماعات داخلية (ساوند بار)','Soundbar'),icon:'chair'}];
     } else if (selected === 'bathroom') {
       cards=[{value:tr('حمام خاص','Private bathroom'),icon:'shower'}];
     } else if (selected === 'tub') {
@@ -56,7 +60,7 @@ var FD_DOME_TOUR = (function () {
     } else {
       cabin.features.outdoor.forEach(function(t){cards.push({value:feature(t),icon:'outdoor'});});
     }
-    root.querySelector('.dt-details').innerHTML='<div class="dt-detail-heading"><h4>'+esc(part[language])+'</h4>'+(subtitle?'<p>'+esc(subtitle)+'</p>':'')+'</div><div class="dt-cards">'+cards.map(function(card){return '<div class="dt-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+esc(card.value)+'</strong></div></div>';}).join('')+'</div>'+(note?'<p class="dt-note">'+esc(note)+'</p>':'');
+    root.querySelector('.dt-details').innerHTML='<div class="dt-detail-heading"><h4>'+esc(part[language])+'</h4>'+(subtitle?'<p>'+esc(subtitle)+'</p>':'')+'</div><div class="dt-cards">'+cards.map(function(card){return '<div class="dt-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+cardValue(card.value)+'</strong></div></div>';}).join('')+'</div>'+(note?'<p class="dt-note">'+esc(note)+'</p>':'');
   }
   function update() {
     root.lang=language; root.dir=language==='ar'?'rtl':'ltr';
@@ -101,6 +105,17 @@ var FD_DOME_TOUR = (function () {
       if(below) curve='C '+sx+' '+(sy-40)+' '+tx+' '+(ty+45)+' '+tx+' '+ty;
       else if(mobile || above) curve='C '+sx+' '+(sy+35)+' '+tx+' '+(ty-45)+' '+tx+' '+ty;
       else curve='C '+(sx+(left?40:-40))+' '+sy+' '+tx+' '+sy+' '+tx+' '+ty;
+      if(desktop){
+        var side={"kitchen":"top","bathroom":"top","bedroom":"right","tub":"left","pool":"left","outdoor":"right"}[p.id];
+        if(side==='top'){
+          sx=b.left+b.width/2-box.left; sy=b.bottom-box.top;
+          curve='C '+sx+' '+(sy+28)+' '+tx+' '+(ty-32)+' '+tx+' '+ty;
+        } else {
+          sx=(side==='left'?b.right:b.left)-box.left; sy=b.top+b.height/2-box.top;
+          var bend=sx+(side==='left'?28:-28);
+          curve='C '+bend+' '+sy+' '+(tx+(side==='left'?-28:28))+' '+ty+' '+tx+' '+ty;
+        }
+      }
       root.querySelector('[data-line="'+p.id+'"]').setAttribute('d','M '+sx+' '+sy+' '+curve);
       var point=root.querySelector('.dt-point[data-part="'+p.id+'"]'); point.style.left=tx+'px'; point.style.top=ty+'px';
     });

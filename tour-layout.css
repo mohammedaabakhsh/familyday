@@ -1,0 +1,36 @@
+/* Shared tour refinements. Keep mobile placement unchanged. */
+#ov .dt-card strong .dt-soundbar-line{display:block;font:inherit;color:inherit;white-space:nowrap}
+@media(min-width:900px){
+ .tour-page{max-width:1480px}
+ #ov .dt-tour{grid-template-columns:minmax(240px,24%) minmax(0,1fr);column-gap:24px;min-height:min(610px,calc(100svh - 90px))}
+ #ov .dt-stage{--rail:120px;padding:66px 0 0;min-width:0}
+ #ov .dt-image{width:calc(100% - 2 * (var(--rail) + 14px));height:auto;margin:0 auto}
+ #ov .dt-label{width:var(--rail);min-height:42px;line-height:1.35;font-size:13px;padding:7px 8px;top:auto;bottom:auto;left:auto;right:auto;transform:none}
+ #ov .dt-label--kitchen,#ov .dt-label--bathroom{top:0}
+ #ov #dome-tour .dt-label--kitchen{left:25%}
+ #ov #dome-tour .dt-label--bathroom{right:25%}
+ #ov #dome-tour .dt-label--tub{left:0;top:38%}
+ #ov #dome-tour .dt-label--bedroom{right:0;top:34%}
+ #ov #dome-tour .dt-label--pool{left:0;top:70%}
+ #ov #dome-tour .dt-label--outdoor{right:0;top:70%}
+ #ov #pyramid-tour .dt-label--kitchen{left:12%;top:0}
+ #ov #pyramid-tour .dt-label--bathroom{left:50%;top:0;transform:translateX(-50%)}
+ #ov #pyramid-tour .dt-label--bedroom{right:12%;top:0}
+ #ov #pyramid-tour .dt-label--living{left:0;top:40%}
+ #ov #pyramid-tour .dt-label--tub{right:0;top:36%}
+ #ov #pyramid-tour .dt-label--outdoor{right:0;top:59%}
+ #ov #pyramid-tour .dt-label--pool{right:0;top:81%}
+ #ov #greek-tour .dt-label--bathroom{left:12%;top:0}
+ #ov #greek-tour .dt-label--kitchen{left:50%;top:0;transform:translateX(-50%)}
+ #ov #greek-tour .dt-label--twin{right:9%;top:0;width:160px}
+ #ov #greek-tour .dt-label--bedroom{left:0;top:34%}
+ #ov #greek-tour .dt-label--living{right:0;top:43%}
+ #ov #greek-tour .dt-label--pool{left:0;top:72%}
+ #ov #greek-tour .dt-label--outdoor{right:0;top:77%}
+}
+@media(min-width:900px) and (max-width:1099px){
+ #ov .dt-tour{grid-template-columns:230px minmax(0,1fr);column-gap:16px}
+ #ov .dt-stage{--rail:104px}
+ #ov .dt-label{font-size:12px}
+ #ov #greek-tour .dt-label--twin{width:130px;right:0}
+}
