@@ -148,6 +148,17 @@ var FD_GREEK_TOUR = (function () {
           curve='C '+bend+' '+sy+' '+(tx+(side==='left'?-28:28))+' '+ty+' '+tx+' '+ty;
         }
       }
+      if(mobile){
+        var labelsBox=root.querySelector('.dt-labels').getBoundingClientRect();
+        var labelsBottom=labelsBox.bottom-box.top;
+        if(sy<labelsBottom-4){
+          // Route between rows and around the label grid, never through another button.
+          var gutter=sx<box.width/2?2:box.width-2;
+          var rowGap=sy+3, belowLabels=labelsBottom+4;
+          curve='L '+sx+' '+rowGap+' L '+gutter+' '+rowGap+' L '+gutter+' '+belowLabels+
+            ' C '+gutter+' '+(belowLabels+22)+' '+tx+' '+(ty-30)+' '+tx+' '+ty;
+        }
+      }
       root.querySelector('[data-line="'+p.id+'"]').setAttribute('d','M '+sx+' '+sy+' '+curve);
       var point=root.querySelector('.dt-point[data-part="'+p.id+'"]'); point.style.left=tx+'px'; point.style.top=ty+'px';
     });
