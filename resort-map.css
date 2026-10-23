@@ -271,3 +271,9 @@
  #fd-map-dialog .fd-map-header{padding-inline:16px;gap:8px}
  #fd-map-dialog .fd-map-heading{gap:10px}
 }
+
+/* Continue the desktop column divider through the heading to the page edge. */
+@media(min-width:820px){
+ #fd-map-dialog::after{content:"";position:absolute;top:0;bottom:0;left:calc(clamp(300px,32vw,420px) - 1px);width:1px;background:#234655;pointer-events:none}
+ #fd-map-dialog .fd-map-panel{border-right:0}
+}
