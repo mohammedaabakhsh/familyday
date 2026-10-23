@@ -18,10 +18,10 @@ const data = {
           "indoor": [
             "غرفة نوم بسرير مزدوج",
             "بانيو داخلي بغرفة النوم",
-            "ركن مطبخ"
+            "ركن المطبخ"
           ],
           "outdoor": [
-            "جلسة خارجية",
+            "الجلسة الخارجية",
             "شواية"
           ],
           "kitchen": [
@@ -40,14 +40,15 @@ const data = {
           ]
         },
         "pool": {
-          "label": "مسبح خاص للكبار مع جاكوزي، بمقاس 7 × 4 م",
+          "label": "مسبح خاص للكبار مع جاكوزي، بمقاس 7 × 4 m",
           "depthCm": 140,
           "depthInLabel": true,
           "facilities": [
             "سرير تشميس داخل المسبح",
             "كراسي تشميس",
             "دش خارجي"
-          ]
+          ],
+          "depthUnit": "cm"
         },
         "minibar": true,
         "bath": {
@@ -70,13 +71,13 @@ const data = {
         "features": {
           "indoor": [
             "غرفة نوم بسرير مزدوج",
-            "صالة داخلية",
+            "الصالة الداخلية",
             "طاولة طعام",
-            "ركن مطبخ"
+            "ركن المطبخ"
           ],
           "outdoor": [
             "بانيو خارجي بخصوصية كاملة",
-            "جلسة خارجية",
+            "الجلسة الخارجية",
             "شواية"
           ],
           "kitchen": [
@@ -95,13 +96,14 @@ const data = {
           ]
         },
         "pool": {
-          "label": "مسبح خاص للكبار، بمقاس 4 × 4 م",
+          "label": "مسبح خاص للكبار، بمقاس 4 × 4 m",
           "depthCm": 140,
           "facilities": [
             "كراسي تشميس",
             "دش خارجي"
           ],
-          "depthInLabel": true
+          "depthInLabel": true,
+          "depthUnit": "cm"
         },
         "minibar": true,
         "bath": {
@@ -179,12 +181,12 @@ const data = {
           "indoor": [
             "غرفة نوم بسرير مزدوج",
             "غرفة نوم بسريرين مفردين",
-            "صالة داخلية",
+            "الصالة الداخلية",
             "طاولة طعام",
-            "ركن مطبخ"
+            "ركن المطبخ"
           ],
           "outdoor": [
-            "جلسة خارجية",
+            "الجلسة الخارجية",
             "شواية"
           ],
           "kitchen": [
@@ -203,13 +205,14 @@ const data = {
           ]
         },
         "pool": {
-          "label": "مسبح خاص للكبار، بمقاس 7 × 4 م",
+          "label": "مسبح خاص للكبار، بمقاس 7 × 4 m",
           "depthCm": 140,
           "facilities": [
             "كراسي تشميس",
             "دش خارجي"
           ],
-          "depthInLabel": true
+          "depthInLabel": true,
+          "depthUnit": "cm"
         },
         "minibar": true,
         "bath": {
@@ -589,6 +592,6 @@ function resortBathroomText(count) {
 
 // Keep measurement pairs in their approved order inside Arabic descriptions.
 function formatSpecificationText(text) {
-  if (!/\d+\s*×\s*\d+/.test(text)) return text;
-  return '<span>' + text.replace(/(\d+\s*×\s*\d+)/g, '<bdi dir="ltr">$1</bdi>') + '</span>';
+  if (!/\d+\s*×\s*\d+|\d+\s*cm/.test(text)) return text;
+  return '<span>' + text.replace(/(\d+\s*×\s*\d+(?:\s*m\b)?|\d+\s*cm\b)/g, '<bdi dir="ltr">$1</bdi>') + '</span>';
 }

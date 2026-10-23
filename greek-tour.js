@@ -7,7 +7,7 @@ var FD_GREEK_TOUR = (function () {
     {id:'bathroom', ar:'الحمامات', en:'Bathrooms', x:.38, y:.22},
     {id:'twin', ar:'غرفة نوم بسريرين مفردين', en:'Bedroom with two single beds', x:.71, y:.26},
     {id:'kitchen', ar:'ركن المطبخ', en:'Kitchenette', x:.44, y:.28},
-    {id:'living', ar:'الصالة الداخلية', en:'Living room', x:.56, y:.36},
+    {id:'living', ar:'المنطقة الداخلية', en:'Indoor area', x:.56, y:.36},
     {id:'pool', ar:'المسبح', en:'Pool', x:.24, y:.56},
     {id:'outdoor', ar:'الجلسة الخارجية', en:'Outdoor seating', x:.73, y:.60}
   ];
@@ -16,9 +16,21 @@ var FD_GREEK_TOUR = (function () {
     'غلاية':'Kettle', 'ماكينة قهوة':'Coffee maker', 'أدوات مطبخ أساسية':'Kitchen essentials',
     'ميني بار':'Minibar', 'سرير تشميس داخل المسبح':'In-pool lounger',
     'كراسي تشميس':'Sun loungers', 'دش خارجي':'Outdoor shower',
-    'جلسة خارجية':'Private outdoor seating', 'شواية':'Barbecue'
+    'الجلسة الخارجية':'Private outdoor seating', 'شواية':'Barbecue'
   };
   var icons = {
+    tv:'M3 5h18v13H3ZM8 22h8m-4-4v4',
+    speaker:'M3 9h18v7H3ZM7 11v3m10-3v3M10 12h4',
+    wifi:'M3 8a15 15 0 0 1 18 0M6 12a10 10 0 0 1 12 0M9 16a5 5 0 0 1 6 0M12 20h.01',
+    sofa:'M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4M5 15h14M3 11h2v8h14v-8h2v10H3Zm3 10v2m12-2v2',
+    hob:'M3 3h18v18H3ZM6 6h4v4H6Zm8 0h4v4h-4ZM6 14h4v4H6Zm8 0h4v4h-4Z',
+    microwave:'M2 5h20v14H2ZM5 8h10v8H5Zm13 0h1m-1 4h1m-1 4h1M5 19v2m14-2v2',
+    fridge:'M5 2h14v20H5ZM5 9h14M8 5v2m0 5v4',
+    kettle:'M7 8h9l2 11H5L7 8Zm1-3h7m-4-3v3M16 9h3a3 3 0 0 1 0 6h-2M7 10 3 8l3 7M4 22h15',
+    coffee:'M5 3h14v5H5ZM6 8v13h13M15 8v3M9 12h8v5H9Zm8 1h2v3h-2M4 21h16',
+    utensils:'M5 3v6m-3-6v6h6V3M5 9v12M17 3c-5 0-5 9 0 9s5-9 0-9Zm0 9v9',
+    minibar:'M4 3h16v18H4ZM7 6h10v12H7ZM10 9h4v4h-4m2-4V7',
+    dining:'M3 8h18v3H3Zm2 3v10m14-10v10M2 16h7m6 0h7',
     pool:'M3 18q2-2 4 0t4 0t4 0t4 0M3 22q2-2 4 0t4 0t4 0t4 0M8 15V5a2 2 0 0 1 4 0m3 10V5a2 2 0 0 1 4 0M8 8h7M8 12h7',
     size:'M4 9V4h5m6 0h5v5M4 15v5h5m6 0h5v-5M4 4l6 6m10-6-6 6M4 20l6-6m10 6-6-6',
     water:'M12 3c-2 4-6 7-6 11a6 6 0 0 0 12 0c0-4-4-7-6-11ZM9 15c0 2 1 3 3 3',
@@ -35,6 +47,19 @@ var FD_GREEK_TOUR = (function () {
   function esc(text) { return String(text).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
   function tr(ar,en) { return language === 'ar' ? ar : en; }
   function feature(text) { return language === 'ar' ? text : (translations[text] || text); }
+  function kitchenIcon(text) {
+    return {'موقد كهربائي':'hob','ميكروويف':'microwave','ثلاجة':'fridge','غلاية':'kettle','ماكينة قهوة':'coffee','أدوات مطبخ أساسية':'utensils','ميني بار':'minibar'}[text] || 'kitchen';
+  }
+  function updateBackLink() {
+    var back=document.querySelector('.tour-back');
+    if(!back) return;
+    if(!back.dataset.arLabel) back.dataset.arLabel=back.textContent.replace(/[→←]/g,'').trim();
+    var ar=back.dataset.arLabel;
+    var en={'العودة إلى الأكواخ':'Back to cabins','خريطة الأكواخ':'Cabin map','الكوخ الهرمي':'Pyramid Cottage','البيت اليوناني':'Greek House','بيت الدوم':'Dome House'}[ar] || ar;
+    back.dir=language==='ar'?'rtl':'ltr';
+    back.innerHTML='<span aria-hidden="true">'+(language==='ar'?'→':'←')+'</span> '+esc(tr(ar,en));
+    document.documentElement.lang=language;
+  }
   function cardValue(value) {
     if (value === 'سماعات داخلية (ساوند بار)') return '<span class="dt-soundbar-line">سماعات داخلية</span><span class="dt-soundbar-line">(ساوند بار)</span>';
     return esc(value);
@@ -50,11 +75,11 @@ var FD_GREEK_TOUR = (function () {
       if (/جاكوزي/.test(cabin.pool.label)) cards.push({value:tr('جاكوزي داخل المسبح','In-pool jacuzzi'),icon:'tub'});
       cabin.pool.facilities.forEach(function(t){cards.push({value:feature(t),icon:t==='دش خارجي'?'shower':'chair'});});
     } else if (selected === 'kitchen') {
-      cards.push({value:tr('طاولة طعام','Dining table'),icon:'kitchen'});
-      cabin.features.kitchen.forEach(function(t){cards.push({value:feature(t),icon:'kitchen'});});
+      cards.push({value:tr('طاولة طعام','Dining table'),icon:'dining'});
+      cabin.features.kitchen.forEach(function(t){cards.push({value:feature(t),icon:kitchenIcon(t)});});
       if(cabin.minibar) note=tr('الميني بار: مشروبات وسناكس برسوم إضافية.','Minibar drinks and snacks are available at an extra charge.');
     } else if (selected === 'living') {
-      cards=[{value:tr('صالة داخلية','Indoor living room'),icon:'chair'},{value:tr('تلفزيون ذكي','Smart TV'),icon:'chair'},{value:tr('سماعات داخلية (ساوند بار)','Soundbar'),icon:'chair'}];
+      cards=[{value:tr('الصالة الداخلية','Indoor living room'),icon:'sofa'},{value:tr('تلفزيون ذكي','Smart TV'),icon:'tv'},{value:tr('سماعات داخلية (ساوند بار)','Soundbar'),icon:'speaker'},{value:tr('واي فاي مجاني','Free Wi-Fi'),icon:'wifi'}];
     } else if (selected === 'bedroom') {
       cards=[{label:tr('السرير','Bed'),value:tr('سرير مزدوج','Double bed'),icon:'bed'}];
     } else if (selected === 'bathroom') {
@@ -82,7 +107,7 @@ var FD_GREEK_TOUR = (function () {
       root.querySelector('[data-line="'+p.id+'"]').classList.toggle('is-selected',p.id===selected);
     });
     root.querySelectorAll('[data-language]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.language===language));});
-    details(); queueLines();
+    updateBackLink(); details(); queueLines();
   }
   function queueLines() { cancelAnimationFrame(frame); frame=requestAnimationFrame(drawLines); }
   function drawLines() {
