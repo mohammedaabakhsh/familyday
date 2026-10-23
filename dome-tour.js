@@ -8,7 +8,7 @@ var FD_DOME_TOUR = (function () {
     {id:'kitchen', ar:'ركن المطبخ', en:'Kitchenette', x:.44, y:.29},
     {id:'tub', ar:'البانيو', en:'Bathtub', x:.40, y:.37},
     {id:'pool', ar:'المسبح', en:'Pool', x:.24, y:.53},
-    {id:'outdoor', ar:'الجلسة الخارجية', en:'Outdoor seating', x:.82, y:.55}
+    {id:'outdoor', ar:'المنطقة الخارجية', en:'Outdoor area', x:.82, y:.55}
   ];
   var translations = {
     'موقد كهربائي':'Electric hob', 'ميكروويف':'Microwave', 'ثلاجة':'Refrigerator',

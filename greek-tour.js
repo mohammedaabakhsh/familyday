@@ -10,7 +10,7 @@ var FD_GREEK_TOUR = (function () {
     {id:'kitchen', ar:'ركن المطبخ', en:'Kitchenette', x:.44, y:.28},
     {id:'dining', ar:'طاولة الطعام', en:'Dining table', x:.482, y:.325},
     {id:'pool', ar:'المسبح', en:'Pool', x:.24, y:.56},
-    {id:'outdoor', ar:'الجلسة الخارجية', en:'Outdoor seating', x:.73, y:.60}
+    {id:'outdoor', ar:'المنطقة الخارجية', en:'Outdoor area', x:.73, y:.60}
   ];
   var translations = {
     'موقد كهربائي':'Electric hob', 'ميكروويف':'Microwave', 'ثلاجة':'Refrigerator',

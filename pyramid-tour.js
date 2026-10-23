@@ -10,7 +10,7 @@ var FD_PYRAMID_TOUR = (function () {
     {id:'dining', ar:'طاولة الطعام', en:'Dining table', x:.35, y:.29},
     {id:'tub', ar:'البانيو الخارجي', en:'Outdoor bathtub', x:.585, y:.36},
     {id:'pool', ar:'المسبح', en:'Pool', x:.76, y:.68},
-    {id:'outdoor', ar:'الجلسة الخارجية', en:'Outdoor seating', x:.70, y:.51}
+    {id:'outdoor', ar:'المنطقة الخارجية', en:'Outdoor area', x:.70, y:.51}
   ];
   var translations = {
     'موقد كهربائي':'Electric hob', 'ميكروويف':'Microwave', 'ثلاجة':'Refrigerator',
