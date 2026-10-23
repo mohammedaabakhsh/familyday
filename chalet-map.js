@@ -149,7 +149,7 @@
   },
   {
     "key": "kitchen",
-    "name": "المطبخ وطاولة الطعام",
+    "name": "ركن المطبخ",
     "floor": "الدور الأرضي",
     "x": 65,
     "y": 24,
@@ -168,10 +168,28 @@
       "أدوات مطبخ أساسية"
     ],
     "text": "",
-    "extraShapes": [
-      "58,29 73,29 74,36 58,36"
-    ],
     "primary": []
+  },
+  {
+    "key": "dining",
+    "name": "طاولة الطعام",
+    "floor": "الدور الأرضي",
+    "x": 65,
+    "y": 33,
+    "shape": "58,29 73,29 74,36 58,36",
+    "label": [
+      "right",
+      91,
+      64
+    ],
+    "facts": [],
+    "text": "",
+    "primary": [
+      [
+        "السعة",
+        "8 أشخاص"
+      ]
+    ]
   },
   {
     "key": "living",
@@ -253,10 +271,11 @@
   "play": "Kids' Playroom",
   "pool": "Kids' Pool",
   "groundBath": "Bathroom",
-  "kitchen": "Kitchen & Dining Table",
+  "kitchen": "Kitchenette",
   "living": "Indoor Lounge",
   "shower": "Sun Lounger & Shower",
-  "majlis": "Separate Majlis"
+  "majlis": "Separate Majlis",
+  "dining": "Dining table"
 };
   var roomDetailsEn={
   "upperBath": {
@@ -372,6 +391,16 @@
       "Private entrance",
       "Private bathroom"
     ],
+    "text": ""
+  },
+  "dining": {
+    "primary": [
+      [
+        "Capacity",
+        "8 people"
+      ]
+    ],
+    "facts": [],
     "text": ""
   }
 };
@@ -493,7 +522,7 @@
     (details.primary||[]).forEach(function(f,i){
       var ar=room.primary[i][0],value=f[1],numeric=ar==='العمق';
       if(numeric)value=value.replace('سم','cm');
-      cards.push({label:f[0],value:value,numeric:numeric,icon:{'العمق':'water','السرير':'bed','الأسرّة':'bed','الحمام':'shower','السعة':'people'}[ar]||'size'});
+      cards.push({label:f[0],value:value,numeric:numeric,icon:room.key==='dining'?'dining':{'العمق':'water','السرير':'bed','الأسرّة':'bed','الحمام':'shower','السعة':'people'}[ar]||'size'});
     });
     (details.facts||[]).forEach(function(f,i){cards.push({value:f,icon:factIcon(room.facts[i])});});
     if(room.key==='groundBath')cards.push({value:labelLanguage==='en'?'Bathroom':'حمام',icon:'shower'});
@@ -517,7 +546,7 @@
   var desktopLabels={
     upperBath:['top',.27],upper:['top',.50],stairs:['top',.73],
     ground:['left',.22],play:['left',.40],pool:['left',.62],shower:['left',.83],
-    groundBath:['right',.22],kitchen:['right',.40],living:['right',.62],majlis:['right',.83]
+    groundBath:['right',.20],kitchen:['right',.35],dining:['right',.50],living:['right',.66],majlis:['right',.83]
   };
   function layoutLabels(){
     if(isMobile()){markers.forEach(function(b){b.style.left='';b.style.top='';b.style.width='';});return;}
