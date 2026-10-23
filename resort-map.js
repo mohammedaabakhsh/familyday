@@ -118,7 +118,7 @@
     ar: {
       title: 'خريطة الأكواخ', hint: 'اختر الكوخ وشاهد موقعه ومميزاته',
       languageLabel: 'لغة الخريطة', languageStatus: 'تم عرض الخريطة بالعربية',
-      close: 'إغلاق الخريطة', viewport: 'خريطة تفاعلية؛ كبّر ثم اسحب للاستكشاف، أو استخدم الأسهم للتحريك',
+      close: 'رجوع', viewport: 'خريطة تفاعلية؛ كبّر ثم اسحب للاستكشاف، أو استخدم الأسهم للتحريك',
       image: 'توزيع أكواخ المنتجع من الأعلى', error: 'تعذّر تحميل الخريطة.', retry: 'إعادة المحاولة',
       panel: 'معلومات الموقع المختار', empty: 'اختر اسم الكوخ من الخريطة', reset: 'إلغاء التكبير',
       card: 'ملخص الكوخ المختار', gardenCard: 'تفاصيل الحديقة المشتركة',
@@ -135,7 +135,7 @@
     en: {
       title: 'Cabin Map', hint: 'Choose a cabin to see its location and features',
       languageLabel: 'Map language', languageStatus: 'Map shown in English.',
-      close: 'Close map', viewport: 'Interactive map; zoom in and drag to explore, or use the arrow keys to pan.',
+      close: 'Back', viewport: 'Interactive map; zoom in and drag to explore, or use the arrow keys to pan.',
       image: 'An overhead view of the resort cabins', error: 'The map could not be loaded.', retry: 'Try again',
       panel: 'Selected location details', empty: 'Select a cabin name on the map', reset: 'Reset zoom',
       card: 'Selected cabin summary', gardenCard: 'Shared garden details',
@@ -189,6 +189,7 @@
       button.setAttribute('aria-pressed', String(button.dataset.lang === mapLanguage));
     });
     dialog.querySelector('.fd-map-close').setAttribute('aria-label', copy.close);
+    dialog.querySelector('.fd-map-back-label').textContent = copy.close;
     viewport.setAttribute('aria-label', copy.viewport);
     image.alt = copy.image;
     error.dir = direction; error.querySelector('p').textContent = copy.error;
@@ -644,7 +645,7 @@
       '<div class="fd-map-header"><div class="fd-map-heading"><div class="fd-map-title-row"><h2 id="fd-map-title">خريطة الأكواخ</h2></div>' +
       '<p id="fd-map-hint">اختر الكوخ وشاهد موقعه ومميزاته</p></div>' +
       '<div class="fd-map-header-actions"><div class="fd-map-languages" role="group" aria-label="لغة الخريطة"><button type="button" class="fd-map-language" data-lang="ar" lang="ar" aria-label="عرض الخريطة بالعربية" aria-pressed="true">AR</button><button type="button" class="fd-map-language" data-lang="en" lang="en" aria-label="Show map in English" aria-pressed="false">EN</button></div>' +
-      '<button type="button" class="fd-map-close" aria-label="إغلاق الخريطة" autofocus>' + closeIcon + '</button></div></div>' +
+      '<button type="button" class="fd-map-close" aria-label="رجوع" autofocus><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg><span class="fd-map-back-label">رجوع</span></button></div></div>' +
       '<div class="fd-map-workspace">' +
         '<div class="fd-map-viewport" tabindex="0" aria-label="خريطة تفاعلية؛ كبّر ثم اسحب للاستكشاف، أو استخدم الأسهم للتحريك">' +
           '<div class="fd-map-plane"><img class="fd-map-image" width="1254" height="1254" alt="توزيع أكواخ المنتجع من الأعلى" draggable="false" decoding="async"></div>' +

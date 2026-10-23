@@ -240,3 +240,12 @@
  .fd-map-dialog{width:100vw;height:100vh;height:100dvh;max-height:none;border:0;border-radius:0;box-shadow:none}
  .fd-map-workspace{grid-template-columns:minmax(300px,min(32vw,420px)) minmax(0,1fr)}
 }
+
+.fd-map-close{display:inline-flex;width:auto;min-height:40px;height:auto;gap:6px;padding:6px 4px;border:0;border-radius:0;background:transparent;color:#b9e6f3;font-size:14px;white-space:nowrap}
+.fd-map-header[dir="ltr"] .fd-map-close svg{transform:rotate(180deg)}
+@media(max-width:380px){
+ .fd-map-header{column-gap:8px}
+ .fd-map-header-actions{gap:5px}
+ .fd-map-header h2{font-size:17px}
+ .fd-map-close{font-size:13px}
+}
