@@ -67,3 +67,5 @@
 }
 @media(max-width:360px){.cm-marker{font-size:11px}.cm-header h2{font-size:20px}}
 @media(prefers-reduced-motion:reduce){.cm-dialog *{transition:none!important}}
+
+.cm-details[dir=ltr]{direction:ltr}
