@@ -213,3 +213,13 @@
  .fd-map-panel{flex:0 0 min(43dvh,360px);height:min(43dvh,360px);max-height:min(43dvh,360px)}
  .fd-map-viewport{min-height:0}
 }
+
+/* Separate the map heading from language/close controls and give the hint room. */
+.fd-map-header{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 12px}
+.fd-map-heading{display:contents}
+.fd-map-title-row{grid-column:1;grid-row:1}
+.fd-map-header p{grid-column:1 / -1;grid-row:2;margin:0}
+.fd-map-header-actions{grid-column:2;grid-row:1;display:flex;align-items:center;gap:8px}
+@media(max-width:819px){
+ .fd-map-panel{flex-basis:min(43dvh,330px);height:min(43dvh,330px);max-height:min(43dvh,330px)}
+}

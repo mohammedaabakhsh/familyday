@@ -12,8 +12,10 @@
     // Owner-confirmed plot directly above the two domes on the left.
     { key: 'pyramid', cabinId: 2, x: 23.25, y: 32.9, labelSide: 'left', labelRightX: 16,
       footprint: [[17.8, 24.8], [38.8, 24.8], [38.8, 38.2], [17.8, 38.2]] },
-    { key: 'dome-upper', cabinId: 12, x: 23.25, y: 43.4, labelSide: 'left', labelRightX: 16 },
-    { key: 'dome-lower', cabinId: 1, x: 23.25, y: 53.6, labelSide: 'left', labelRightX: 16 },
+    { key: 'dome-upper', cabinId: 12, x: 23.25, y: 43.4, labelSide: 'left', labelRightX: 16,
+      footprint: [[17.8, 38.2], [38.8, 38.2], [38.8, 48.6], [17.8, 48.6]] },
+    { key: 'dome-lower', cabinId: 1, x: 23.25, y: 53.6, labelSide: 'left', labelRightX: 16,
+      footprint: [[17.8, 48.6], [38.8, 48.6], [38.8, 60.3], [17.8, 59.2]] },
     // Owner's corrected aerial reference: smaller Classic above, larger Royal below.
     { key: 'classic', cabinId: 3, x: 60.2, y: 26.6, labelSide: 'right', labelLeftX: 70,
       footprint: [[39.5, 23.8], [54.4, 10.0], [64.7, 24.5], [51.3, 35.5], [43.8, 24.6]] },
@@ -638,10 +640,10 @@
     dialog.setAttribute('aria-labelledby', 'fd-map-title');
     dialog.setAttribute('aria-describedby', 'fd-map-hint');
     dialog.innerHTML =
-      '<div class="fd-map-header"><div class="fd-map-heading"><div class="fd-map-title-row"><h2 id="fd-map-title">خريطة الأكواخ</h2>' +
-      '<div class="fd-map-languages" role="group" aria-label="لغة الخريطة"><button type="button" class="fd-map-language" data-lang="ar" lang="ar" aria-label="عرض الخريطة بالعربية" aria-pressed="true">AR</button><button type="button" class="fd-map-language" data-lang="en" lang="en" aria-label="Show map in English" aria-pressed="false">EN</button></div></div>' +
+      '<div class="fd-map-header"><div class="fd-map-heading"><div class="fd-map-title-row"><h2 id="fd-map-title">خريطة الأكواخ</h2></div>' +
       '<p id="fd-map-hint">اختر الكوخ وشاهد موقعه ومميزاته</p></div>' +
-      '<button type="button" class="fd-map-close" aria-label="إغلاق الخريطة" autofocus>' + closeIcon + '</button></div>' +
+      '<div class="fd-map-header-actions"><div class="fd-map-languages" role="group" aria-label="لغة الخريطة"><button type="button" class="fd-map-language" data-lang="ar" lang="ar" aria-label="عرض الخريطة بالعربية" aria-pressed="true">AR</button><button type="button" class="fd-map-language" data-lang="en" lang="en" aria-label="Show map in English" aria-pressed="false">EN</button></div>' +
+      '<button type="button" class="fd-map-close" aria-label="إغلاق الخريطة" autofocus>' + closeIcon + '</button></div></div>' +
       '<div class="fd-map-workspace">' +
         '<div class="fd-map-viewport" tabindex="0" aria-label="خريطة تفاعلية؛ كبّر ثم اسحب للاستكشاف، أو استخدم الأسهم للتحريك">' +
           '<div class="fd-map-plane"><img class="fd-map-image" width="1254" height="1254" alt="توزيع أكواخ المنتجع من الأعلى" draggable="false" decoding="async"></div>' +
