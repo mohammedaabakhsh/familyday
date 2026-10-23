@@ -249,3 +249,25 @@
  .fd-map-header h2{font-size:17px}
  .fd-map-close{font-size:13px}
 }
+
+/* Match the resort contact/FAQ page shell and heading treatment. */
+#fd-map-dialog{background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);font-family:Tajawal,sans-serif}
+#fd-map-dialog :is(.fd-map-viewport,.fd-map-panel,.fd-map-info){background:transparent}
+#fd-map-dialog .fd-map-header{display:flex;align-items:center;justify-content:space-between;gap:12px;box-sizing:border-box;width:100%;max-width:1100px;margin-inline:auto;padding:28px 20px 22px;border:0}
+#fd-map-dialog .fd-map-heading{display:flex;align-items:center;gap:14px;flex:1;min-width:0}
+#fd-map-dialog .fd-map-heading-copy{min-width:0}
+#fd-map-dialog .fd-map-header h2{margin:0;color:#f0f5f7;font:800 24px/1.4 Tajawal,sans-serif}
+#fd-map-dialog .fd-map-header p{margin:4px 0 0;color:#9ac8d4;font:500 13px/1.5 Tajawal,sans-serif}
+#fd-map-dialog .fd-map-header-actions{display:flex;flex:none;align-items:center}
+#fd-map-dialog .fd-map-close{box-sizing:border-box;display:flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;min-width:44px;min-height:44px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;cursor:pointer}
+#fd-map-dialog .fd-map-close svg{width:9px;height:15px}
+#fd-map-dialog .fd-map-close:focus-visible{outline:2px solid #7ecfea;outline-offset:3px}
+@media(hover:hover) and (pointer:fine){#fd-map-dialog .fd-map-close:hover{background:#133343}}
+@media(max-width:599px){
+ #fd-map-dialog .fd-map-header{padding:20px 20px 18px}
+ #fd-map-dialog .fd-map-header h2{font-size:22px}
+}
+@media(max-width:360px){
+ #fd-map-dialog .fd-map-header{padding-inline:16px;gap:8px}
+ #fd-map-dialog .fd-map-heading{gap:10px}
+}
