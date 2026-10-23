@@ -277,3 +277,11 @@ height:auto;grid-template-columns:var(--detail-photo-size) minmax(0,1fr);grid-te
 #contest-detail .sw-email-button{gap:10px}
 #contest-detail .sw-email-button svg{width:20px;height:20px;flex-shrink:0}
 @media(max-width:599px){#contest-detail .sw-prize-description{font-size:14px}}
+
+/* Resort cabin details use the full desktop page, with persistent navigation/actions. */
+@media(min-width:900px){
+ #ov.fd-cabin-modern:not(.fd-stay-modern){padding:0;background:#04111e;backdrop-filter:none;align-items:stretch}
+ #ov.fd-cabin-modern:not(.fd-stay-modern) .modal{width:100%;max-width:none;height:100vh;height:100dvh;max-height:none;margin:0;border:0;border-radius:0;box-shadow:none;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto}
+ #ov.fd-cabin-modern:not(.fd-stay-modern) .gal-wrap{aspect-ratio:auto}
+ #ov.fd-cabin-modern:not(.fd-stay-modern) .gal-img{object-fit:contain}
+}
