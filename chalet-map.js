@@ -460,7 +460,7 @@
     renderDetails(room);panel.scrollTop=0;
     dialog.querySelector('.cm-announcement').textContent=tourCopy[labelLanguage].selected+roomName(room);
   }
-  function setLanguage(language){labelLanguage=language;updateText();renderDetails(selected);layoutLabels();renderView();}
+  function setLanguage(language){labelLanguage=language;updateText();renderDetails(selected);layoutLabels();renderView();dialog.querySelector('.cm-announcement').textContent=tourCopy[labelLanguage].language;}
   // Labels stay outside the illustration even while the image is zoomed.
   var desktopLabels={
     upperBath:['top',.27],upper:['top',.50],stairs:['top',.73],
