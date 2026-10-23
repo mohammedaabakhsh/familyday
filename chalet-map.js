@@ -542,7 +542,19 @@
       var sy=(top?b.bottom:b.top+b.height/2)-stage.top;
       var curve=top?'C '+sx+' '+(sy+35)+' '+x+' '+(y-45)+' '+x+' '+y
         :'C '+(sx+(side==='left'?28:-28))+' '+sy+' '+(x+(side==='left'?-28:28))+' '+y+' '+x+' '+y;
-      line.setAttribute('d','M '+sx+' '+sy+' '+curve);
+      var path='M '+sx+' '+sy+' '+curve;
+      if(mobile){
+        var labelBox=dialog.querySelector('.cm-labels').getBoundingClientRect();
+        var labelBottom=labelBox.bottom-stage.top;
+        if(b.bottom<labelBox.bottom-4){
+          // Route through the row gap and outer gutter, never through another label.
+          var rail=(b.left+b.width/2-stage.left)<stage.width/2?3:stage.width-3;
+          var gapY=sy+3,exitY=labelBottom+12;
+          path='M '+sx+' '+sy+' L '+sx+' '+gapY+' L '+rail+' '+gapY+' L '+rail+' '+exitY
+            +' C '+rail+' '+(exitY+30)+' '+x+' '+(y-45)+' '+x+' '+y;
+        }
+      }
+      line.setAttribute('d',path);
     });
   }
   function measure(){
