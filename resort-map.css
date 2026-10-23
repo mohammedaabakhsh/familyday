@@ -195,3 +195,21 @@
 .fd-map-tour-button { display: flex; align-items: center; justify-content: center; box-sizing: border-box; flex-shrink: 0; margin-top: 8px; text-decoration: none; font-family: inherit; }
 
 #fd-map-dialog .fd-map-tour-button { margin-top: 8px; }
+
+/* Match the tours' open navy canvas without changing map geometry. */
+.fd-map-viewport{background:#081c2a}
+.fd-map-leader polyline{stroke:#6cbdec}
+.fd-map-hotspot span{background:#102e42;border-color:#4583a8;color:#c9efff}
+.fd-map-hotspot span::before{background:#6cbdec}
+.fd-map-hotspot::before{background:#369fe1;border-color:#d2f4ff}
+.fd-map-hotspot[aria-pressed="true"] span{background:#176c99;border-color:#56d2ff;color:#fff}
+.fd-map-hotspot[aria-pressed="true"] span::before{background:#56d2ff}
+.fd-map-hotspot[aria-pressed="true"]::before{background:#56d2ff}
+.fd-map-highlight{border-color:#56d2ff;background:rgba(50,156,235,.24)}
+.fd-map-footprint polygon{fill:rgba(50,156,235,.24);stroke:#56d2ff}
+.fd-map-footprint-wrap.is-connected polygon{fill:rgba(50,156,235,.08);stroke:#5798c2}
+@media(max-width:819px){
+ /* Reserve the same details height before and after selection. */
+ .fd-map-panel{flex:0 0 min(43dvh,360px);height:min(43dvh,360px);max-height:min(43dvh,360px)}
+ .fd-map-viewport{min-height:0}
+}
