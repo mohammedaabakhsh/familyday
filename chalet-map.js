@@ -506,7 +506,7 @@
     if(reset||changed){view.scale=1;view.x=0;view.y=0;}
     var mobile=isMobile(),rail=clamp(view.w*.18,108,150);
     // The approved square asset has transparent margins; fit its whole visible building.
-    view.imageSize=mobile?Math.min((view.w-24)/.82,(view.h-20)/.78):Math.min((view.w-2*rail-24)/.82,(view.h-88)/.78);
+    view.imageSize=mobile?Math.min((view.w-24)/.82,(view.h-54)/.78):Math.min((view.w-2*rail-24)/.82,(view.h-88)/.78);
     view.imageSize=Math.max(1,view.imageSize);
     view.imageX=(view.w-view.imageSize)/2;
     view.imageY=(mobile?10:68)-view.imageSize*.065;
