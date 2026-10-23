@@ -90,11 +90,16 @@
 </div>
 <script>
 (function () {
-  if (new URLSearchParams(window.location.search).get('from') !== 'map') return;
-  var back = document.querySelector('.tour-back');
-  var cabinId = new URLSearchParams(window.location.search).get('cabin');
-  back.href = cabinId === '1' || cabinId === '12' ? '/#map=' + cabinId : '/#map';
-  back.innerHTML = '<span aria-hidden="true">→</span> خريطة الأكواخ';
+  var params=new URLSearchParams(window.location.search);
+  var from=params.get('from'), cabinId=params.get('cabin')==='12'?'12':'1';
+  var back=document.querySelector('.tour-back');
+  if(from==='map'){
+    back.href='/#map='+cabinId;
+    back.innerHTML='<span aria-hidden="true">→</span> خريطة الأكواخ';
+  } else if(from==='details'){
+    back.href='/#cabin='+cabinId+(params.get('return')==='map'?'&from=map':'');
+    back.innerHTML='<span aria-hidden="true">→</span> بيت الدوم';
+  }
 })();
 </script>
 <script src="/resort-data.js?v=12"></script>

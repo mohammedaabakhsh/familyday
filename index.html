@@ -3280,6 +3280,7 @@ function renderCabinDetail(c){
         </div>
       </div>
 
+      ${(c.id===1||c.id===12)?'<a class="fd-pyramid-detail-tour" href="/dome-tour/?from=details&cabin='+c.id+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">جولة في بيت الدوم <span aria-hidden="true">←</span></a>':''}
       ${c.id===2?'<a class="fd-pyramid-detail-tour" href="/pyramid-tour/?from=details">جولة في الكوخ الهرمي <span aria-hidden="true">←</span></a>':''}
       ${(c.id===4||c.id===13)?'<a class="fd-pyramid-detail-tour" href="/greek-tour/?from=details&cabin='+c.id+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">جولة في البيت اليوناني <span aria-hidden="true">←</span></a>':''}
       <div class="fd-cabin-times" aria-label="أوقات الدخول والخروج">
@@ -5892,6 +5893,38 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 <link rel="stylesheet" href="site-ui.css?v=9">
 <link rel="stylesheet" href="cabin-compare.css?v=1">
 <link rel="stylesheet" href="dome-gallery.css?v=1">
+
+
+<style id="fd-mobile-cabin-toolbar">
+@media(max-width:899px){
+ #app .cabin-page-header{padding:12px 16px 8px}
+ #app .cabin-heading-row{gap:10px}
+ #app .cabin-heading-row .fd-map-launcher{margin-inline-start:auto;padding:0;border:0;flex:none}
+ #app .cabin-heading-row #fd-map-open{min-height:44px;padding:8px 11px;border:1px solid #315967;border-radius:12px;background:#102b3a;color:#b8e6ec;font:700 12px/1.4 Tajawal,sans-serif;white-space:nowrap}
+ #app .cabin-toolbar{padding:0 16px 8px}
+ #app .cabin-toolbar .filter-section{display:flex;flex:1 1 100%;flex-wrap:nowrap;gap:4px;overflow:visible}
+ #app .cabin-toolbar .fbtn{flex:1 1 auto;min-width:0;min-height:40px;padding:6px;font-size:clamp(11px,3vw,13px);white-space:nowrap}
+ #app #grid.fd-carousel{padding-top:4px;padding-bottom:8px}
+ #app .grid-section:has(.fd-carousel){padding-bottom:12px}
+}
+@media(max-width:899px) and (max-height:760px){
+ #app #grid.fd-carousel{--slide:min(80vw,340px,max(200px,calc(100svh - 480px)))}
+ #app #grid.fd-carousel .fd-cabin-card-v2-body{padding-block:8px}
+ #app #grid.fd-carousel .fd-cabin-card-v2-heading{margin-bottom:6px}
+ #app #grid.fd-carousel .fd-cabin-card-v2-facts{margin-bottom:6px}
+}
+</style>
+<script id="fd-mobile-cabin-map-position">
+(function(){
+ var launcher=document.getElementById('fd-map-launcher');
+ var heading=document.querySelector('#app .cabin-heading-row');
+ var toolbar=document.querySelector('#app .cabin-toolbar');
+ var mobile=window.matchMedia('(max-width:899px)');
+ function placeMap(){(mobile.matches?heading:toolbar).appendChild(launcher);}
+ mobile.addEventListener('change',placeMap);
+ placeMap();
+})();
+</script>
 
 </body>
 </html><!-- test Fri Jul 17 17:12:00 +03 2026 -->
