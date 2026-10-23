@@ -248,10 +248,11 @@
   }
 
   function featuresFor(cabin) {
-    if (cabin.badge === 'مشترك') return cabin.tags.filter(function (tag) { return tag !== '|'; }).map(translateText);
-    var features = cabin.pool ? ['مسبح خاص', 'مساحة خارجية خاصة'] : [];
-    if (cabin.bath.summary) features.push(cabin.bath.summary);
-    return features.map(translateText);
+    // Keep the map summary focused; full amenities remain in cabin details.
+    if (cabin.badge !== 'مشترك') return [];
+    return cabin.tags.filter(function (tag) {
+      return tag !== '|' && tag !== 'جلسات خارجية';
+    }).map(translateText);
   }
 
   function clearSelection(restoreFocus) {
@@ -437,7 +438,7 @@
     var isDome = cabin.id === 1 || cabin.id === 12;
     var isGreek = cabin.id === 4 || cabin.id === 13;
     var hasTour = isDome || cabin.id === 2 || isGreek;
-    description.textContent = hasTour ? '' : translateText(cabin.type || cabin.suitable || '');
+    description.textContent = translateText(cabin.type || cabin.suitable || '');
     var tourButton = card.querySelector('.fd-map-tour-button');
     tourButton.hidden = !hasTour;
     tourButton.href = (isGreek ? '/greek-tour/' : cabin.id === 2 ? '/pyramid-tour/' : '/dome-tour/') + '?from=map&cabin=' + cabin.id;

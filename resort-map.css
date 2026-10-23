@@ -223,3 +223,14 @@
 @media(max-width:819px){
  .fd-map-panel{flex-basis:min(43dvh,330px);height:min(43dvh,330px);max-height:min(43dvh,330px)}
 }
+
+/* Keep complete summaries and their actions visible on compact phones. */
+@media(max-width:819px){
+ .fd-map-info{padding:10px 14px max(10px,env(safe-area-inset-bottom))}
+ .fd-map-description{margin-top:4px;font-size:12px;line-height:1.45}
+ .fd-map-facts{margin:10px 0;gap:6px}
+ .fd-map-fact{min-height:54px;padding:8px 10px}
+ .fd-map-amenities{gap:6px;margin-bottom:10px}
+ .fd-map-amenity{padding:4px 8px;font-size:11px}
+ .fd-map-details-button,.fd-map-tour-button{min-height:42px;padding:8px 12px}
+}
