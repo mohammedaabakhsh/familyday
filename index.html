@@ -3280,7 +3280,7 @@ function renderCabinDetail(c){
       </div>
 
       ${c.id===2?'<a class="fd-pyramid-detail-tour" href="/pyramid-tour/?from=details">جولة في الكوخ الهرمي <span aria-hidden="true">←</span></a>':''}
-      ${(c.id===4||c.id===13)?'<a class="fd-pyramid-detail-tour" href="/greek-tour/?from=details&cabin='+c.id+'">جولة في البيت اليوناني <span aria-hidden="true">←</span></a>':''}
+      ${(c.id===4||c.id===13)?'<a class="fd-pyramid-detail-tour" href="/greek-tour/?from=details&cabin='+c.id+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">جولة في البيت اليوناني <span aria-hidden="true">←</span></a>':''}
       <div class="fd-cabin-times" aria-label="أوقات الدخول والخروج">
         <div><span>الدخول</span><strong>4:00 مساءً</strong></div>
         <div><span>الخروج</span><strong>12:00 ظهرًا</strong></div>
@@ -5046,6 +5046,8 @@ function openMDirect(c){
     var hash=location.hash.slice(1);
     var mapMatch=/^map=(1|2|4|12|13)$/.exec(hash);
     if(mapMatch) return route('map',[Number(mapMatch[1])]);
+    var greekMapDetail=/^cabin=(4|13)&from=map$/.exec(hash);
+    if(greekMapDetail){var greekId=Number(greekMapDetail[1]);return route('cabin',[greekId],route('map',[greekId]));}
     var match=/^cabin=(\d+)$/.exec(hash);
     if(match){
       var id=Number(match[1]);
