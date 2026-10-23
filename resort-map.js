@@ -109,7 +109,7 @@
     'بانيو داخلي': 'Indoor bathtub',
     'بانيو خارجي': 'Outdoor bathtub',
     'جاكوزي داخلي': 'Indoor Jacuzzi',
-    'ألعاب أطفال متنوعة': "A variety of children's play equipment",
+    'ألعاب أطفال متنوعة': "Children's play area",
     'شاشة عرض مشتركة للأطفال': 'Shared screen for children',
     'جلسات خارجية': 'Outdoor seating',
     'يمكن ربط الكلاسيكي ورويال عبر باب داخلي بسعة تصل إلى 35 ضيفًا.': 'Classic and Royal can be connected through an internal door, with space for up to 35 guests.'
