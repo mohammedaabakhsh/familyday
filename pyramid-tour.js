@@ -58,7 +58,7 @@ var FD_PYRAMID_TOUR = (function () {
     } else if (selected === 'bedroom') {
       cards=[{label:tr('السرير','Bed'),value:tr('سرير مزدوج','Double bed'),icon:'bed'}];
     } else if (selected === 'bathroom') {
-      cards=[{value:tr('حمام خاص','Private bathroom'),icon:'shower'}];
+      cards=[{value:tr('حمام خاص بغرفة نوم','En-suite bathroom'),icon:'shower'}];
     } else if (selected === 'tub') {
       cards=[{value:tr('بانيو خارجي بخصوصية كاملة','Private outdoor bathtub'),icon:'tub'}];
     } else {
