@@ -149,7 +149,7 @@
   },
   {
     "key": "kitchen",
-    "name": "ركن المطبخ",
+    "name": "المطبخ",
     "floor": "الدور الأرضي",
     "x": 65,
     "y": 24,
@@ -271,7 +271,7 @@
   "play": "Kids' Playroom",
   "pool": "Kids' Pool",
   "groundBath": "Bathroom",
-  "kitchen": "Kitchenette",
+  "kitchen": "Kitchen",
   "living": "Indoor Lounge",
   "shower": "Sun Lounger & Shower",
   "majlis": "Separate Majlis",
