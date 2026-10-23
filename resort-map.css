@@ -234,3 +234,9 @@
  .fd-map-amenity{padding:4px 8px;font-size:11px}
  .fd-map-details-button,.fd-map-tour-button{min-height:42px;padding:8px 12px}
 }
+
+/* Present the desktop map as a full-page view, matching mobile navigation. */
+@media(min-width:820px){
+ .fd-map-dialog{width:100vw;height:100vh;height:100dvh;max-height:none;border:0;border-radius:0;box-shadow:none}
+ .fd-map-workspace{grid-template-columns:minmax(300px,min(32vw,420px)) minmax(0,1fr)}
+}
