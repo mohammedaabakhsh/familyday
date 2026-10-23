@@ -61,7 +61,7 @@ var FD_GREEK_TOUR = (function () {
       cards=[{value:tr('حمام خاص بغرفة نوم بسرير مزدوج','En-suite bathroom'),icon:'shower'},{value:tr('حمام مشترك عند الممر','Shared bathroom off the hallway'),icon:'shower'}];
     } else if (selected === 'twin') {
       cards=[{value:tr('سريران مفردان','Two single beds'),icon:'bed'}];
-      note=tr('الحمام المشترك عند الممر خارج الغرفة.','The shared bathroom is off the hallway, outside the bedroom.');
+      
     } else {
       cabin.features.outdoor.filter(function(t){return !/بانيو/.test(t);}).forEach(function(t){cards.push({value:feature(t),icon:'outdoor'});});
     }
