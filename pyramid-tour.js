@@ -3,7 +3,7 @@ var FD_PYRAMID_TOUR = (function () {
   'use strict';
   var root, observer, frame, cabin, selected = 'pool', language = 'ar';
   var parts = [
-    {id:'kitchen', ar:'المطبخ وطاولة الطعام', en:'Kitchen & dining', x:.35, y:.26},
+    {id:'kitchen', ar:'ركن المطبخ', en:'Kitchenette', x:.35, y:.26},
     {id:'bathroom', ar:'الحمام', en:'Bathroom', x:.475, y:.255},
     {id:'bedroom', ar:'غرفة النوم', en:'Bedroom', x:.48, y:.335},
     {id:'living', ar:'الصالة الداخلية', en:'Living room', x:.29, y:.335},

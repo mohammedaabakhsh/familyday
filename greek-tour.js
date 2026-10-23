@@ -6,7 +6,7 @@ var FD_GREEK_TOUR = (function () {
     {id:'bedroom', ar:'غرفة نوم بسرير مزدوج', en:'Bedroom with a double bed', x:.28, y:.28},
     {id:'bathroom', ar:'الحمامات', en:'Bathrooms', x:.38, y:.22},
     {id:'twin', ar:'غرفة نوم بسريرين مفردين', en:'Bedroom with two single beds', x:.71, y:.26},
-    {id:'kitchen', ar:'المطبخ وطاولة الطعام', en:'Kitchen & dining', x:.44, y:.28},
+    {id:'kitchen', ar:'ركن المطبخ', en:'Kitchenette', x:.44, y:.28},
     {id:'living', ar:'الصالة الداخلية', en:'Living room', x:.56, y:.36},
     {id:'pool', ar:'المسبح', en:'Pool', x:.24, y:.56},
     {id:'outdoor', ar:'الجلسة الخارجية', en:'Outdoor seating', x:.73, y:.60}
@@ -56,7 +56,7 @@ var FD_GREEK_TOUR = (function () {
     } else if (selected === 'living') {
       cards=[{value:tr('صالة داخلية','Indoor living room'),icon:'chair'},{value:tr('تلفزيون ذكي','Smart TV'),icon:'chair'},{value:tr('سماعات داخلية (ساوند بار)','Soundbar'),icon:'chair'}];
     } else if (selected === 'bedroom') {
-      cards=[{label:tr('السرير','Bed'),value:tr('سرير مزدوج','Double bed'),icon:'bed'},{value:tr('حمام خاص بالغرفة','En-suite bathroom'),icon:'shower'}];
+      cards=[{label:tr('السرير','Bed'),value:tr('سرير مزدوج','Double bed'),icon:'bed'}];
     } else if (selected === 'bathroom') {
       cards=[{value:tr('حمام خاص بغرفة نوم بسرير مزدوج','En-suite bathroom'),icon:'shower'},{value:tr('حمام مشترك عند الممر','Shared bathroom off the hallway'),icon:'shower'}];
     } else if (selected === 'twin') {
