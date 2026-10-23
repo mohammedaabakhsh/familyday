@@ -433,12 +433,13 @@
     card.querySelector('.fd-map-clear').setAttribute('aria-label', shared ? copy.gardenClear : copy.clear);
     var description = card.querySelector('.fd-map-description');
     var isDome = cabin.id === 1 || cabin.id === 12;
-    var hasTour = isDome || cabin.id === 2;
+    var isGreek = cabin.id === 4 || cabin.id === 13;
+    var hasTour = isDome || cabin.id === 2 || isGreek;
     description.textContent = hasTour ? '' : translateText(cabin.type || cabin.suitable || '');
     var tourButton = card.querySelector('.fd-map-tour-button');
     tourButton.hidden = !hasTour;
-    tourButton.href = (cabin.id === 2 ? '/pyramid-tour/' : '/dome-tour/') + '?from=map&cabin=' + cabin.id;
-    tourButton.textContent = cabin.id === 2 ? (mapLanguage === 'en' ? 'Explore the Pyramid Cottage' : 'جولة في الكوخ الهرمي') : copy.tour;
+    tourButton.href = (isGreek ? '/greek-tour/' : cabin.id === 2 ? '/pyramid-tour/' : '/dome-tour/') + '?from=map&cabin=' + cabin.id;
+    tourButton.textContent = isGreek ? (mapLanguage === 'en' ? 'Explore the Greek House' : 'جولة في البيت اليوناني') : cabin.id === 2 ? (mapLanguage === 'en' ? 'Explore the Pyramid Cottage' : 'جولة في الكوخ الهرمي') : copy.tour;
     description.hidden = !description.textContent;
     card.querySelector('.fd-map-guest-label').textContent = shared ? copy.location : copy.capacity;
     card.querySelector('.fd-map-room-label').textContent = shared ? copy.access : copy.bedrooms;
