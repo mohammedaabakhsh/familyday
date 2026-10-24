@@ -3202,9 +3202,10 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
       <div class="card-body fd-cabin-card-v2-body">
         ${renderResortCardSummary(c)}
         <div class="fd-card-actions"><button class="card-btn">عرض التفاصيل والصور</button>${FD_CABIN_COMPARE.cardButton(c)}</div>
-        ${(c.id===1||c.id===12)?'<a class="fd-dome-tour-link" href="/dome-tour/" onclick="event.stopPropagation()">جولة داخل الدوم <span aria-hidden="true">←</span></a>':''}
+        ${(c.id===1||c.id===12)?'<a class="fd-dome-tour-link" href="/dome-tour/?cabin='+c.id+'" onclick="event.stopPropagation()">جولة داخل الدوم <span aria-hidden="true">←</span></a>':''}
 ${c.id===2?'<a class="fd-dome-tour-link" href="/pyramid-tour/" onclick="event.stopPropagation()">جولة داخل الهرمي <span aria-hidden="true">←</span></a>':''}
 ${(c.id===4||c.id===13)?'<a class="fd-dome-tour-link" href="/greek-tour/?cabin='+c.id+'" onclick="event.stopPropagation()">جولة داخل اليوناني <span aria-hidden="true">←</span></a>':''}
+${c.id===5?'<a class="fd-dome-tour-link" href="/palm-tour/?cabin=5" onclick="event.stopPropagation()">جولة داخل بالم بيتش <span aria-hidden="true">←</span></a>':''}
       </div>`;
     g.appendChild(d);
   });
@@ -3284,6 +3285,7 @@ function renderCabinDetail(c){
       ${(c.id===1||c.id===12)?'<a class="fd-pyramid-detail-tour" href="/dome-tour/?from=details&cabin='+c.id+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">جولة في بيت الدوم <span aria-hidden="true">←</span></a>':''}
       ${c.id===2?'<a class="fd-pyramid-detail-tour" href="/pyramid-tour/?from=details">جولة في الكوخ الهرمي <span aria-hidden="true">←</span></a>':''}
       ${(c.id===4||c.id===13)?'<a class="fd-pyramid-detail-tour" href="/greek-tour/?from=details&cabin='+c.id+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">جولة في البيت اليوناني <span aria-hidden="true">←</span></a>':''}
+      ${c.id===5?'<a class="fd-pyramid-detail-tour" href="/palm-tour/?from=details&cabin=5'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">جولة في كوخ بالم بيتش <span aria-hidden="true">←</span></a>':''}
       <div class="fd-cabin-times" aria-label="أوقات الدخول والخروج">
         <div><span>الدخول</span><strong>4:00 مساءً</strong></div>
         <div><span>الخروج</span><strong>12:00 ظهرًا</strong></div>
@@ -5346,7 +5348,7 @@ function openMDirect(c){
   window.addEventListener('pageshow',function(event){if(event.persisted) restore();});
 })();
 </script>
-<script src="resort-map.js?v=46" defer></script>
+<script src="resort-map.js?v=47" defer></script>
 <link rel="stylesheet" href="chalet-map.css?v=22">
 <script src="chalet-map.js?v=28" defer></script>
 
