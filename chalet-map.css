@@ -135,11 +135,3 @@
  #fd-chalet-map .cm-occupancy{padding:7px 14px max(10px,env(safe-area-inset-bottom))}
 }
 @media(hover:hover) and (pointer:fine){#fd-chalet-map .cm-close:hover{background:#133343}}
-
-/* Quiet connector hierarchy: the active room has the only line on small screens. */
-#fd-chalet-map .cm-leaders path{opacity:.45}
-#fd-chalet-map .cm-leaders .is-selected path{opacity:1}
-@media(max-width:819px){
- #fd-chalet-map .cm-leaders g:not(.is-selected) path{opacity:0}
- #fd-chalet-map .cm-leaders g:not(.is-selected) circle{opacity:.5}
-}
