@@ -552,6 +552,7 @@
     upperBath:'left',ground:'left',play:'left',pool:'left',shower:'left',
     groundBath:'right',kitchen:'right',dining:'right',living:'right',majlis:'right'
   };
+  var mobileLabelSides={upperBath:'top',upper:'top',stairs:'top',ground:'left',play:'left',pool:'left',groundBath:'right',kitchen:'right',dining:'right',living:'right',shower:'bottom',majlis:'bottom'};
   var leaderPoints={
     upper:[36,13],upperBath:[27,13],ground:[26,24],play:[37,26],
     stairs:[48,22],groundBath:[54,24],kitchen:[69,24],dining:[72,33],
@@ -564,6 +565,19 @@
     var left=Math.max(rail/2+3,view.imageX+view.imageSize*.14-gap-rail/2);
     var right=Math.min(view.w-rail/2-3,view.imageX+view.imageSize*.90+gap+rail/2);
     markers.forEach(function(button){button.style.width=rail+'px';});
+    if(mobile){
+      function place(key,x,y,width){
+        var button=markers[rooms.findIndex(function(room){return room.key===key;})];
+        button.style.width=width+'px';button.style.left=x+'px';button.style.top=y+'px';
+      }
+      ['upperBath','upper','stairs'].forEach(function(key,i){place(key,view.w*(i+.5)/3,24,Math.min(104,view.w/3-12));});
+      ['shower','majlis'].forEach(function(key,i){place(key,view.w*(i?.75:.25),view.h-24,Math.min(150,view.w*.43));});
+      [['ground','play','pool'],['groundBath','kitchen','dining','living']].forEach(function(keys,side){
+        var start=72,end=view.h-76;
+        keys.forEach(function(key,i){place(key,side?right:left,start+(end-start)*i/(keys.length-1),rail);});
+      });
+      return;
+    }
     ['upper','stairs'].forEach(function(key,i){
       var button=markers[rooms.findIndex(function(room){return room.key===key;})];
       button.style.left=(view.w/2+(i?1:-1)*(rail/2+gap/2))+'px';
@@ -597,11 +611,12 @@
       var x=vp.left-stage.left+view.imageX+view.imageSize*point[0]/100;
       var y=vp.top-stage.top+view.imageY+view.imageSize*point[1]/100;
       dot.setAttribute('cx',x);dot.setAttribute('cy',y);
-      var rect=markers[i].getBoundingClientRect(),side=labelSides[room.key],top=side==='top';
-      var sx=top?rect.left+rect.width/2-stage.left:(side==='left'?rect.right:rect.left)-stage.left;
-      var sy=(top?rect.bottom:rect.top+rect.height/2)-stage.top;
-      var bend=top?Math.min(18,Math.abs(y-sy)/3):Math.min(24,Math.abs(x-sx)/3);
-      var curve=top?'C '+sx+' '+(sy+bend)+' '+x+' '+(y-bend)+' '+x+' '+y
+      var rect=markers[i].getBoundingClientRect(),side=(isMobile()?mobileLabelSides:labelSides)[room.key],top=side==='top',bottom=side==='bottom',vertical=top||bottom;
+      var sx=vertical?rect.left+rect.width/2-stage.left:(side==='left'?rect.right:rect.left)-stage.left;
+      var sy=(top?rect.bottom:bottom?rect.top:rect.top+rect.height/2)-stage.top;
+      var bend=vertical?Math.min(18,Math.abs(y-sy)/3):Math.min(24,Math.abs(x-sx)/3);
+      var direction=bottom?-1:1;
+      var curve=vertical?'C '+sx+' '+(sy+direction*bend)+' '+x+' '+(y-direction*bend)+' '+x+' '+y
         :'C '+(sx+(side==='left'?bend:-bend))+' '+sy+' '+(x+(side==='left'?-bend:bend))+' '+y+' '+x+' '+y;
       line.setAttribute('d','M '+sx+' '+sy+' '+curve);
     });
@@ -609,11 +624,11 @@
   function measure(){
     if(!dialog.open)return;
     view.w=viewport.clientWidth;view.h=viewport.clientHeight;
-    var mobile=isMobile(),rail=labelRail(),top=mobile?58:68;
-    var available=Math.min((view.w-2*rail-24)/.82,(view.h-top-24)/.78);
+    var mobile=isMobile(),rail=labelRail(),top=mobile?46:68,bottom=mobile?46:24;
+    var available=Math.min((view.w-2*rail-24)/.82,(view.h-top-bottom)/.78);
     view.imageSize=Math.max(1,mobile?available:Math.min(740,available*.86));
     view.imageX=(view.w-view.imageSize)/2;
-    view.imageY=top+Math.max(0,(view.h-top-24-view.imageSize*.78)/2)-view.imageSize*.065;
+    view.imageY=top+Math.max(0,(view.h-top-bottom-view.imageSize*.78)/2)-view.imageSize*.065;
     plane.style.width=view.w+'px';plane.style.height=view.h+'px';
     plane.querySelector('.cm-illustration').style.cssText='left:'+view.imageX+'px;top:'+view.imageY+'px;width:'+view.imageSize+'px;height:'+view.imageSize+'px';
     layoutLabels();queueLines();
