@@ -504,3 +504,51 @@
   #app2 .fd-stay-comparison { width:calc(100% - 32px); }
   #app2 .fd-stay-comparison :is(th,td) { padding:10px 7px; }
 }
+
+/* Use the approved resort/chalet presentation for both rest-house sections. */
+#app2{background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%)}
+#app2 #header2{height:auto;min-height:0;padding:28px 20px 16px!important}
+#app2 #headerTitle2,#faq2-overlay .faq-title,
+#contact-page[data-venue=stay] .cp-title,
+#ov:has(#fd-stay-detail-title) .fd-cabin-title{font:700 24px/1.4 Tajawal,sans-serif!important}
+#faq-list-stay .faq-answer{font-size:15px!important;line-height:1.6}
+#app2 #backBtn2,#faq2-overlay .faq-back,
+#contact-page[data-venue=stay] .cp-back,
+#ov:has(#fd-stay-detail-title) .fd-cabin-nav-back{
+ box-sizing:border-box;display:flex;align-items:center;justify-content:center;
+ flex:0 0 44px;width:44px;height:44px;min-width:44px;min-height:44px;max-width:44px;
+ padding:0;border:1px solid #29434f;border-radius:50%;
+ background:rgba(255,255,255,.05);color:#d6e9ef;
+}
+#app2 #backBtn2 svg,#faq2-overlay .faq-back svg,#contact-page[data-venue=stay] .cp-back svg{width:9px;height:15px}
+#ov:has(#fd-stay-detail-title) .fd-cabin-nav-back span,
+#ov:has(#fd-stay-detail-title) .fd-cabin-nav-back svg{display:none}
+#ov:has(#fd-stay-detail-title) .fd-cabin-nav-back .fd-resort-back-icon{
+ display:block;width:9px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+}
+#ov.fd-cabin-modern:has(#fd-stay-detail-title){padding:0;background:#04111e;backdrop-filter:none;align-items:stretch}
+#ov.fd-cabin-modern:has(#fd-stay-detail-title) .modal{
+ width:100%;max-width:none;height:100vh;height:100dvh;max-height:none;
+ margin:0;border:0;border-radius:0;box-shadow:none;
+}
+@media(min-width:900px){
+ #ov.fd-cabin-modern:has(#fd-stay-detail-title) .modal{
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto;
+ }
+ #ov.fd-cabin-modern:has(#fd-stay-detail-title) .gal-wrap{aspect-ratio:auto}
+ #ov.fd-cabin-modern:has(#fd-stay-detail-title) .gal-img{object-fit:contain}
+}
+@media(max-width:599px){
+ #app2 #header2{padding:20px 20px 16px!important}
+ #app2 #headerTitle2,#faq2-overlay .faq-title,
+ #contact-page[data-venue=stay] .cp-title,
+ #ov:has(#fd-stay-detail-title) .fd-cabin-title{font-size:22px!important}
+ #faq-list-stay .faq-answer{font-size:14px!important}
+}
+@media(max-width:360px){#app2 #header2{padding-inline:16px!important}}
+@media(hover:hover) and (pointer:fine){
+ #app2 #backBtn2:hover,#faq2-overlay .faq-back:hover,
+ #contact-page[data-venue=stay] .cp-back:hover,
+ #ov:has(#fd-stay-detail-title) .fd-cabin-nav-back:hover{background:#133343}
+}
+#ov:has(#fd-stay-detail-title) .fd-cabin-nav-back:focus-visible{outline:2px solid #7ecfea;outline-offset:3px}
