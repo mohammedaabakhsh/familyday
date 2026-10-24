@@ -171,3 +171,31 @@
 /* Keep swimming instructions with the pools before the other outdoor spaces. */
 #ov.fd-cabin-modern .fd-cabin-content .fd-pool-note{grid-column:1/-1;margin:4px 0 8px;}
 #ov.fd-cabin-modern .fd-cabin-feature bdi{white-space:nowrap;}
+
+/* Approved resort-wide type scale; other destinations keep their presentation. */
+#app #headerTitle,
+#ov.fd-cabin-modern:not(.fd-stay-modern) .fd-cabin-title,
+#services-overlay .svcs-title,#menu-detail .menu-title,
+#sinema-detail .cn-title,#tarfihi-detail .tg-title,#maiya-detail .wm-title,
+#tawilat-detail .tw-title,#jalsat-detail .jl-title,#hospitality-detail .hd-title,
+:is(#sharik-detail,#contest-detail) .sw-title,#walaa-detail .wl-title,
+#faq-overlay .faq-title,#contact-page[data-venue=resort] .cp-title,
+#fd-map-dialog #fd-map-title{font:700 24px/1.4 Tajawal,sans-serif!important}
+#faq-list-resort .faq-answer{font-size:15px!important;line-height:1.6}
+#ov.fd-cabin-modern:not(.fd-stay-modern) .fd-cabin-nav-back{box-sizing:border-box;flex:0 0 44px;width:44px;height:44px;min-width:44px;min-height:44px;max-width:44px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef}
+#ov.fd-cabin-modern:not(.fd-stay-modern) .fd-cabin-nav-back span{display:none}
+.fd-resort-back-icon{display:none}
+#ov.fd-cabin-modern:not(.fd-stay-modern) .fd-cabin-nav-back svg{display:none}
+#ov.fd-cabin-modern:not(.fd-stay-modern) .fd-cabin-nav-back .fd-resort-back-icon{display:block;width:9px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#ov.fd-cabin-modern:not(.fd-stay-modern) .fd-cabin-nav-back:focus-visible{outline:2px solid #7ecfea;outline-offset:3px}
+@media(hover:hover) and (pointer:fine){#ov.fd-cabin-modern:not(.fd-stay-modern) .fd-cabin-nav-back:hover{background:#133343}}
+@media(max-width:599px){
+ #app #headerTitle,#ov.fd-cabin-modern:not(.fd-stay-modern) .fd-cabin-title,
+ #services-overlay .svcs-title,#menu-detail .menu-title,
+ #sinema-detail .cn-title,#tarfihi-detail .tg-title,#maiya-detail .wm-title,
+ #tawilat-detail .tw-title,#jalsat-detail .jl-title,#hospitality-detail .hd-title,
+ :is(#sharik-detail,#contest-detail) .sw-title,#walaa-detail .wl-title,
+ #faq-overlay .faq-title,#contact-page[data-venue=resort] .cp-title,
+ #fd-map-dialog #fd-map-title{font-size:22px!important}
+ #faq-list-resort .faq-answer{font-size:14px!important}
+}

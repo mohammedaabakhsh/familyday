@@ -56,7 +56,9 @@ var FD_DOME_TOUR = (function () {
     var ar=back.dataset.arLabel;
     var en={'العودة إلى الأكواخ':'Back to cabins','خريطة الأكواخ':'Cabin map','الكوخ الهرمي':'Pyramid Cottage','البيت اليوناني':'Greek House','بيت الدوم':'Dome House'}[ar] || ar;
     back.dir=language==='ar'?'rtl':'ltr';
-    back.innerHTML='<span aria-hidden="true">'+(language==='ar'?'→':'←')+'</span> '+esc(tr(ar,en));
+    back.setAttribute('aria-label',tr(ar,en));
+    back.title=tr(ar,en);
+    back.innerHTML='<svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     document.documentElement.lang=language;
   }
   function cardValue(value) {
@@ -167,8 +169,14 @@ var FD_DOME_TOUR = (function () {
     if(root && cabin && cabin.id===next.id) return;
     remove(); cabin=next; selected='pool'; language='ar';
     root=document.createElement('section');root.id='dome-tour';root.className='dt-tour';root.setAttribute('aria-labelledby','dt-title');
-    root.innerHTML='<h3 id="dt-title" class="dt-title"></h3><div class="dt-stage"><div class="dt-labels">'+parts.map(function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';}).join('')+'</div><img class="dt-image" src="/imgs/dome-tour-v3.webp" width="1536" height="1024" loading="lazy" decoding="async" alt=""><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div class="dt-languages" role="group"><button type="button" data-language="ar" lang="ar" aria-label="العربية">AR</button><button type="button" data-language="en" lang="en" aria-label="English">EN</button></div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
+    root.innerHTML='<header class="dt-heading"><h1 id="dt-title" class="dt-title"></h1></header><div class="dt-stage"><div class="dt-labels">'+parts.map(function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';}).join('')+'</div><img class="dt-image" src="/imgs/dome-tour-v3.webp" width="1536" height="1024" loading="lazy" decoding="async" alt=""><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div class="dt-languages" role="group"><button type="button" data-language="ar" lang="ar" aria-label="العربية">AR</button><button type="button" data-language="en" lang="en" aria-label="English">EN</button></div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
     document.getElementById('dome-tour-host').appendChild(root);
+    var back=document.querySelector('.tour-back');
+    if(back){
+      root.querySelector('.dt-heading').prepend(back);
+      var nav=document.querySelector('.tour-nav');
+      if(nav) nav.remove();
+    }
     document.getElementById('ov').classList.add('fd-has-dome-tour');
     root.addEventListener('click',function(event){
       var button=event.target.closest('button');if(!button)return;

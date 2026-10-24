@@ -48,3 +48,33 @@
  #ov #pyramid-tour .dt-label--living{top:46%}
  #ov #greek-tour .dt-label--dining{left:0;top:53%}
 }
+
+/* Resort presentation: one heading row and the same page background/back control. */
+body{background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);background-attachment:fixed;color:#f0f5f7}
+#ov .dt-tour{margin-top:0;padding-top:20px}
+#ov .dt-heading{display:flex;align-items:center;gap:14px;direction:rtl;min-width:0;margin:0 8px 14px}
+#ov .dt-tour[lang=en] .dt-heading{direction:ltr}
+#ov .dt-heading .dt-title{font:700 24px/1.4 Tajawal,sans-serif;color:#f0f5f7;text-align:start;margin:0;padding:0;border:0;min-width:0}
+.tour-back{box-sizing:border-box;display:flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;min-height:44px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;text-decoration:none}
+.tour-back svg{flex:none;width:9px;height:15px}
+.tour-back[dir=ltr] svg{transform:rotate(180deg)}
+.tour-back:focus-visible{outline:2px solid #7ecfea;outline-offset:3px}
+#ov .dt-detail-heading h4{font-size:18px;font-weight:700;line-height:1.4}
+#ov .dt-detail-heading p,#ov .dt-note{font-size:14px;line-height:1.6}
+#ov .dt-card strong{font-size:14px;line-height:1.5}
+#ov .dt-card span{font-size:12px}
+#ov .dt-occupancy{font-size:13px;line-height:1.5}
+@media(hover:hover) and (pointer:fine){.tour-back:hover{background:#133343}}
+@media(min-width:900px){
+ #ov .dt-tour{min-height:min(610px,calc(100svh - 20px));padding-top:20px}
+ #ov .dt-heading{grid-area:heading;align-self:start;margin:0;padding:0 0 14px;padding-inline-end:180px;border-bottom:1px solid #234353;min-height:58px}
+ #ov .dt-languages{align-self:start;justify-self:start;margin-top:4px}
+ #ov .dt-tour[lang=en] .dt-languages{justify-self:end}
+ #ov .dt-detail-heading p,#ov .dt-note{font-size:15px}
+}
+@media(max-width:599px){
+ #ov .dt-heading .dt-title{font-size:22px}
+ #ov .dt-heading{gap:12px}
+ #ov .dt-card strong{font-size:13px}
+ #ov .dt-card strong[dir=ltr]{font-size:14px}
+}
