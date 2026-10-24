@@ -81,7 +81,7 @@ var FD_PALM_TOUR = (function () {
       cabin.features.kitchen.forEach(function(t){cards.push({value:feature(t),icon:kitchenIcon(t)});});
       if(cabin.minibar) note=tr('الميني بار: مشروبات وسناكس برسوم إضافية.','Minibar drinks and snacks are available at an extra charge.');
     } else if (selected === 'dining') {
-      cards.push({value:tr('طاولة طعام لشخصين','Dining table for two'),icon:'dining'});
+      cards.push({value:tr('طاولة طعام','Dining table'),icon:'dining'});
     } else if (selected === 'living') {
       cards=[{value:tr('الصالة الداخلية','Indoor living room'),icon:'sofa'},{value:tr('تلفزيون ذكي','Smart TV'),icon:'tv'},{value:tr('سماعات داخلية (ساوند بار)','Soundbar'),icon:'speaker'},{value:tr('واي فاي مجاني','Free Wi-Fi'),icon:'wifi'}];
     } else if (selected === 'bedroom') {
