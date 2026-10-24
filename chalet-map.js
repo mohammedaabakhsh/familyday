@@ -30,26 +30,6 @@
     ]
   },
   {
-    "key": "upperBath",
-    "name": "حمام غرفة النوم",
-    "floor": "الدور العلوي",
-    "x": 27,
-    "y": 13,
-    "shape": "23,8 30,8 30,18 23,18",
-    "label": [
-      "top",
-      24,
-      6
-    ],
-    "facts": [
-      "دش زجاجي",
-      "مغسلة",
-      "دورة مياه"
-    ],
-    "text": "",
-    "primary": []
-  },
-  {
     "key": "ground",
     "name": "غرفة النوم الأرضية",
     "floor": "الدور الأرضي",
@@ -186,8 +166,8 @@
   },
   {
     "key": "shower",
-    "name": "كرسي التشميس والمروش",
-    "floor": "المنطقة الخارجية",
+    "name": "المنطقة الخارجية",
+    "floor": "",
     "x": 22,
     "y": 68,
     "shape": "20,64 25,64 25,72 20,72",
@@ -197,7 +177,8 @@
       101
     ],
     "facts": [
-      "مظلة"
+      "كرسي تشميس",
+      "دش خارجي"
     ],
     "text": "",
     "extraShapes": [
@@ -245,22 +226,6 @@
     "facts": [],
     "text": "",
     "primary": []
-  },
-  {
-    "key": "stairs",
-    "name": "السلم",
-    "floor": "",
-    "x": 48,
-    "y": 22,
-    "shape": "44,15 51,15 51,29 44,29",
-    "label": [
-      "top",
-      76,
-      6
-    ],
-    "facts": [],
-    "text": "يربط الدور الأرضي بالدور العلوي",
-    "primary": []
   }
 ];
   var roomNamesEn={
@@ -273,7 +238,7 @@
   "groundBath": "Bathroom",
   "kitchen": "Kitchen",
   "living": "Indoor Lounge",
-  "shower": "Sun Lounger & Shower",
+  "shower": "Outdoor Area",
   "majlis": "Separate Majlis",
   "dining": "Dining table"
 };
@@ -375,7 +340,8 @@
   "shower": {
     "primary": [],
     "facts": [
-      "Umbrella"
+      "Sun lounger",
+      "Outdoor shower"
     ],
     "text": ""
   },
@@ -516,7 +482,7 @@
   icons.oven='M4 3h16v18H4ZM4 8h16M7 11h10v7H7ZM8 5h.01M12 5h.01M16 5h.01';
   icons.stairs='M2 21h5v-5h5v-5h5V6h5M3 11l12-9';
   function factIcon(text){
-    return {'تلفزيون':'tv','دش زجاجي':'shower','مغسلة':'basin','دورة مياه':'toilet','ألعاب للأطفال':'toy','إطلالة على المسبح':'window','ألعاب مائية':'pool','زحليقة مزدوجة':'slide','حاجز زجاجي':'barrier','ثلاجة':'fridge','فرن':'oven','ميكروويف':'microwave','موقد غاز وكهرباء':'hob','غلاية':'kettle','أدوات مطبخ أساسية':'utensils','باب مباشر لساحة المسبح':'door','مظلة':'outdoor','مدخل خاص':'door','حمام خاص':'shower'}[text]||'kitchen';
+    return {'تلفزيون':'tv','دش زجاجي':'shower','مغسلة':'basin','دورة مياه':'toilet','ألعاب للأطفال':'toy','إطلالة على المسبح':'window','ألعاب مائية':'pool','زحليقة مزدوجة':'slide','حاجز زجاجي':'barrier','ثلاجة':'fridge','فرن':'oven','ميكروويف':'microwave','موقد غاز وكهرباء':'hob','غلاية':'kettle','أدوات مطبخ أساسية':'utensils','باب مباشر لساحة المسبح':'door','مظلة':'outdoor','كرسي تشميس':'chair','دش خارجي':'shower','مدخل خاص':'door','حمام خاص':'shower'}[text]||'kitchen';
   }
   function renderDetails(room){
     var details=labelLanguage==='en'?roomDetailsEn[room.key]:room;
@@ -546,60 +512,46 @@
     labelLanguage=language;updateText();renderDetails(selected);measure();
     dialog.querySelector('.cm-announcement').textContent=tourCopy[labelLanguage].language;
   }
-  // Keep labels close to their room, with a stable layout for every selection.
+  // Match the resort map: compact labels on four sides and persistent connectors.
   var labelSides={
-    upper:'top',stairs:'top',
-    upperBath:'left',ground:'left',play:'left',pool:'left',shower:'left',
-    groundBath:'right',kitchen:'right',dining:'right',living:'right',majlis:'right'
+    ground:'top',upper:'top',groundBath:'top',
+    play:'left',pool:'left',kitchen:'right',dining:'right',living:'right',
+    shower:'bottom',majlis:'bottom'
   };
-  var mobileLabelSides={upperBath:'top',upper:'top',stairs:'top',ground:'left',play:'left',pool:'left',groundBath:'right',kitchen:'right',dining:'right',living:'right',shower:'bottom',majlis:'bottom'};
   var leaderPoints={
-    upper:[36,13],upperBath:[27,13],ground:[26,24],play:[37,26],
-    stairs:[48,22],groundBath:[54,24],kitchen:[69,24],dining:[72,33],
-    living:[77,46],pool:[27,53],shower:[22,68],majlis:[80,64]
+    upper:[36,13],ground:[26,24],play:[37,26],groundBath:[54,24],
+    kitchen:[69,24],dining:[72,33],living:[77,46],
+    pool:[27,53],shower:[22,68],majlis:[80,64]
   };
-  function labelRail(){return isMobile()?clamp(view.w*.21,74,86):clamp(view.w*.16,108,140);}
+  function labelRail(){return isMobile()?clamp(view.w*.19,66,78):clamp(view.w*.14,94,118);}
   function layoutLabels(){
-    var mobile=isMobile(),rail=labelRail(),gap=mobile?8:14;
+    var mobile=isMobile(),rail=labelRail(),gap=mobile?6:12;
     var visibleTop=view.imageY+view.imageSize*.065;
-    var left=Math.max(rail/2+3,view.imageX+view.imageSize*.14-gap-rail/2);
-    var right=Math.min(view.w-rail/2-3,view.imageX+view.imageSize*.90+gap+rail/2);
-    markers.forEach(function(button){button.style.width=rail+'px';});
-    if(mobile){
-      function place(key,x,y,width){
-        var button=markers[rooms.findIndex(function(room){return room.key===key;})];
-        button.style.width=width+'px';button.style.left=x+'px';button.style.top=y+'px';
-      }
-      ['upperBath','upper','stairs'].forEach(function(key,i){place(key,view.w*(i+.5)/3,24,Math.min(104,view.w/3-12));});
-      ['shower','majlis'].forEach(function(key,i){place(key,view.w*(i?.75:.25),view.h-24,Math.min(150,view.w*.43));});
-      [['ground','play','pool'],['groundBath','kitchen','dining','living']].forEach(function(keys,side){
-        var start=72,end=view.h-76;
-        keys.forEach(function(key,i){place(key,side?right:left,start+(end-start)*i/(keys.length-1),rail);});
-      });
-      return;
-    }
-    ['upper','stairs'].forEach(function(key,i){
+    var visibleBottom=view.imageY+view.imageSize*.845;
+    var left=Math.max(rail/2+4,view.imageX+view.imageSize*.14-gap-rail/2);
+    var right=Math.min(view.w-rail/2-4,view.imageX+view.imageSize*.90+gap+rail/2);
+    function place(key,x,y,width){
       var button=markers[rooms.findIndex(function(room){return room.key===key;})];
-      button.style.left=(view.w/2+(i?1:-1)*(rail/2+gap/2))+'px';
-      button.style.top=Math.max(button.offsetHeight/2+3,visibleTop-30)+'px';
+      button.style.width=width+'px';button.style.left=x+'px';button.style.top=y+'px';
+    }
+    ['ground','upper','groundBath'].forEach(function(key,i){
+      var x=mobile?view.w*(i+.5)/3:view.w/2+(i-1)*(rail+gap);
+      place(key,x,mobile?24:Math.max(24,visibleTop-28),mobile?Math.min(104,view.w/3-10):rail);
     });
-    ['left','right'].forEach(function(side){
-      var keys=side==='left'?['upperBath','ground','play','pool','shower']:['groundBath','kitchen','dining','living','majlis'];
-      var items=keys.map(function(key){
-        var i=rooms.findIndex(function(room){return room.key===key;});
-        var target=leaderPoints[key],y=view.imageY+view.imageSize*target[1]/100;
-        // The shared bathroom approaches from above the kitchen.
-        if(key==='groundBath')y=view.imageY+view.imageSize*.13;
-        return {button:markers[i],half:markers[i].offsetHeight/2,y:y};
+    ['shower','majlis'].forEach(function(key,i){
+      place(key,mobile?view.w*(i?.75:.25):view.imageX+view.imageSize*(i?.76:.26),
+        mobile?view.h-24:Math.min(view.h-24,visibleBottom+28),mobile?Math.min(120,view.w*.38):rail);
+    });
+    [['play','pool'],['kitchen','dining','living']].forEach(function(keys,side){
+      var previous=52;
+      keys.forEach(function(key){
+        var target=leaderPoints[key],factor=target[1]/100;
+        // The playroom connector approaches below the bedroom connector.
+        if(key==='play')factor=.34;
+        var y=Math.max(previous+gap+18,view.imageY+view.imageSize*factor);
+        y=Math.min(view.h-66,y);previous=y+18;
+        place(key,side?right:left,y,rail);
       });
-      var min=mobile?58:visibleTop-6,max=view.h-8;
-      items.forEach(function(item,i){
-        item.y=Math.max(item.y,min+item.half,i?items[i-1].y+items[i-1].half+item.half+gap:0);
-      });
-      for(var i=items.length-1;i>=0;i--){
-        items[i].y=Math.min(items[i].y,max-items[i].half,i<items.length-1?items[i+1].y-items[i+1].half-items[i].half-gap:Infinity);
-      }
-      items.forEach(function(item){item.button.style.left=(side==='left'?left:right)+'px';item.button.style.top=item.y+'px';});
     });
   }
   function drawLeaders(){
@@ -611,7 +563,7 @@
       var x=vp.left-stage.left+view.imageX+view.imageSize*point[0]/100;
       var y=vp.top-stage.top+view.imageY+view.imageSize*point[1]/100;
       dot.setAttribute('cx',x);dot.setAttribute('cy',y);
-      var rect=markers[i].getBoundingClientRect(),side=(isMobile()?mobileLabelSides:labelSides)[room.key],top=side==='top',bottom=side==='bottom',vertical=top||bottom;
+      var rect=markers[i].getBoundingClientRect(),side=labelSides[room.key],top=side==='top',bottom=side==='bottom',vertical=top||bottom;
       var sx=vertical?rect.left+rect.width/2-stage.left:(side==='left'?rect.right:rect.left)-stage.left;
       var sy=(top?rect.bottom:bottom?rect.top:rect.top+rect.height/2)-stage.top;
       var bend=vertical?Math.min(18,Math.abs(y-sy)/3):Math.min(24,Math.abs(x-sx)/3);
@@ -624,7 +576,7 @@
   function measure(){
     if(!dialog.open)return;
     view.w=viewport.clientWidth;view.h=viewport.clientHeight;
-    var mobile=isMobile(),rail=labelRail(),top=mobile?46:68,bottom=mobile?46:24;
+    var mobile=isMobile(),rail=labelRail(),top=mobile?50:60,bottom=mobile?50:54;
     var available=Math.min((view.w-2*rail-24)/.82,(view.h-top-bottom)/.78);
     view.imageSize=Math.max(1,mobile?available:Math.min(740,available*.86));
     view.imageX=(view.w-view.imageSize)/2;
