@@ -514,7 +514,7 @@
   }
   // Match the resort map: compact labels on four sides and persistent connectors.
   var labelSides={
-    ground:'top',upper:'top',groundBath:'top',
+    ground:'top',upper:'top',groundBath:'left',
     play:'left',pool:'left',kitchen:'right',dining:'right',living:'right',
     shower:'bottom',majlis:'bottom'
   };
@@ -528,30 +528,28 @@
     var mobile=isMobile(),rail=labelRail(),gap=mobile?6:12;
     var visibleTop=view.imageY+view.imageSize*.065;
     var visibleBottom=view.imageY+view.imageSize*.845;
-    var left=Math.max(rail/2+4,view.imageX+view.imageSize*.14-gap-rail/2);
-    var right=Math.min(view.w-rail/2-4,view.imageX+view.imageSize*.90+gap+rail/2);
+    // Share the same two columns and three rows on opposite edges.
+    var left=Math.max(rail/2+4,view.w/2-view.imageSize*.40-gap-rail/2);
+    var right=view.w-left;
+    var columnOffset=mobile?view.w*.25:view.imageSize*.25;
+    var rowWidth=mobile?Math.min(120,view.w*.38):rail;
+    var top=mobile?24:Math.max(24,visibleTop-28);
+    var bottom=mobile?view.h-24:Math.min(view.h-24,visibleBottom+28);
     function place(key,x,y,width){
       var button=markers[rooms.findIndex(function(room){return room.key===key;})];
       button.style.width=width+'px';button.style.left=x+'px';button.style.top=y+'px';
     }
-    ['ground','upper','groundBath'].forEach(function(key,i){
-      var x=mobile?view.w*(i+.5)/3:view.w/2+(i-1)*(rail+gap);
-      place(key,x,mobile?24:Math.max(24,visibleTop-28),mobile?Math.min(104,view.w/3-10):rail);
-    });
-    ['shower','majlis'].forEach(function(key,i){
-      place(key,mobile?view.w*(i?.75:.25):view.imageX+view.imageSize*(i?.76:.26),
-        mobile?view.h-24:Math.min(view.h-24,visibleBottom+28),mobile?Math.min(120,view.w*.38):rail);
-    });
-    [['play','pool'],['kitchen','dining','living']].forEach(function(keys,side){
-      var previous=52;
-      keys.forEach(function(key){
-        var target=leaderPoints[key],factor=target[1]/100;
-        // The playroom connector approaches below the bedroom connector.
-        if(key==='play')factor=.34;
-        var y=Math.max(previous+gap+18,view.imageY+view.imageSize*factor);
-        y=Math.min(view.h-66,y);previous=y+18;
-        place(key,side?right:left,y,rail);
+    [['ground','upper'],['shower','majlis']].forEach(function(keys,row){
+      keys.forEach(function(key,i){
+        place(key,view.w/2+(i?1:-1)*columnOffset,row?bottom:top,rowWidth);
       });
+    });
+    var rowStart=Math.max(68,view.imageY+view.imageSize*.25);
+    var rowGap=Math.max(44,view.imageSize*.16);
+    var lastRow=Math.min(view.h-66,rowStart+rowGap*2);
+    rowGap=(lastRow-rowStart)/2;
+    [['groundBath','play','pool'],['kitchen','dining','living']].forEach(function(keys,side){
+      keys.forEach(function(key,i){place(key,side?right:left,rowStart+i*rowGap,rail);});
     });
   }
   function drawLeaders(){
