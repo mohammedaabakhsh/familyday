@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+<base href="/">
 <meta charset="UTF-8">
 <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" href="imgs/icon.png">
@@ -1191,7 +1192,7 @@ header{
 
 <script src="campaign-data.js?v=7"></script>
 <script src="resort-campaign.js?v=5" defer></script>
-<script src="resort-features.js?v=7"></script>
+<script src="resort-features.js?v=8"></script>
 <script src="stay-design.js?v=17"></script>
 <script src="site-enhancements.js?v=1"></script>
 <script src="cabin-compare.js?v=2"></script>
@@ -5035,17 +5036,19 @@ function openMDirect(c){
   }
   function urlFor(r){
     var cleanUrl=cleanFamilyDayURL();
-    var base=cleanUrl.pathname+cleanUrl.search;
+    var base='/'+cleanUrl.search;
+    if(r.name==='map') return '/resort-map/'+cleanUrl.search+(r.args.length ? '#map='+r.args[0] : '');
+    if(r.name==='chalet-map') return '/chalet-map/'+cleanUrl.search;
     if(r.name==='dest') return base;
     if(r.name==='home') return base+'#home='+r.args[0];
     if(r.name==='cabin') return base+'#cabin='+r.args[0];
-    if(r.name==='map' && r.args.length) return base+'#map='+r.args[0];
     if(r.name==='contact') return base+'#contact='+r.args[0];
     if(['photos','map-photos','dome-gallery','cabin-compare','tour','order','service-sub','menu-cart'].indexOf(r.name)!==-1) return urlFor(r.parent);
     return base+'#'+r.name;
   }
   function fromHash(){
     var hash=location.hash.slice(1);
+    if(!hash && /^\/(resort-map|chalet-map)\/?$/.test(location.pathname)) return route(location.pathname.indexOf('resort-map')!==-1 ? 'map' : 'chalet-map');
     var mapMatch=/^map=(1|2|4|12|13)$/.exec(hash);
     if(mapMatch) return route('map',[Number(mapMatch[1])]);
     var mapDetail=/^cabin=(\d+)&from=map$/.exec(hash);
@@ -5140,6 +5143,20 @@ function openMDirect(c){
       if(r.name==='sinema' && r.parent && r.parent.name==='cabin') document.getElementById('services-overlay').classList.add('hide');
     }
   }
+  var defaultPageTitle=document.title;
+  var defaultPageDescription=document.querySelector('meta[name="description"]').content;
+  var mapPreviews={
+    map:{title:'خريطة الأكواخ | يوم العائلة',description:'استكشف مواقع الأكواخ ومميزاتها، واختر الكوخ المناسب لإقامتك.',path:'/resort-map/'},
+    'chalet-map':{title:'جولة داخل الشاليه | يوم العائلة',description:'استكشف غرف الشاليه ومرافقه في خريطة تفاعلية، وتعرّف على تفاصيل كل مساحة.',path:'/chalet-map/'}
+  };
+  function updatePagePreview(r){
+    var preview=mapPreviews[r.name] || {title:defaultPageTitle,description:defaultPageDescription,path:'/'};
+    document.title=preview.title;
+    ['meta[property="og:title"]','meta[name="twitter:title"]'].forEach(function(selector){var el=document.querySelector(selector);if(el)el.content=preview.title;});
+    ['meta[name="description"]','meta[property="og:description"]','meta[name="twitter:description"]'].forEach(function(selector){var el=document.querySelector(selector);if(el)el.content=preview.description;});
+    document.querySelector('meta[property="og:url"]').content=location.origin+preview.path;
+    document.querySelector('link[rel="canonical"]').href=location.origin+preview.path;
+  }
   function renderRoute(next){
     var before=pathFor(current), after=pathFor(next), common=0;
     while(common<before.length && common<after.length && key(before[common])===key(after[common])) common++;
@@ -5148,6 +5165,7 @@ function openMDirect(c){
       for(var i=before.length-1;i>=common;i--) closeView(before[i]);
       for(var j=common;j<after.length;j++) openView(after[j]);
       current=next;
+      updatePagePreview(next);
       document.body.style.overflow=after.some(function(r){
         return ['cabin','chalet-detail','photos','dome-gallery','tour','tawilat','walaa','map','chalet-map'].indexOf(r.name)!==-1;
       }) ? 'hidden' : '';

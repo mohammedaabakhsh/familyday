@@ -145,6 +145,7 @@ function cleanFamilyDayURL(href) {
 
 function cabinShareURL(id) {
   var url = cleanFamilyDayURL();
+  url.pathname = '/';
   url.hash = String(id) === '30' ? 'chalet-detail' : 'cabin=' + id;
   return url.href;
 }
