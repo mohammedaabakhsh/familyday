@@ -108,8 +108,8 @@
 <script>
 (function () {
  var params=new URLSearchParams(location.search),from=params.get('from'),id=5,back=document.querySelector('.tour-back');
- if(from==='map'){back.href='/#map='+id;back.innerHTML='<span aria-hidden="true">→</span> خريطة الأكواخ';}
- else if(from==='details'){back.href=(params.get('return')==='map'?'/?v=palm-tour-20261023#cabin=':'/#cabin=')+id+(params.get('return')==='map'?'&from=map':'');back.innerHTML='<span aria-hidden="true">→</span> كوخ بالم بيتش';}
+ if(from==='map'){back.href='/?v=palm-tour-20261025#map='+id;back.innerHTML='<span aria-hidden="true">→</span> خريطة الأكواخ';}
+ else if(from==='details'){back.href=(params.get('return')==='map'?'/?v=palm-tour-20261025#cabin=':'/#cabin=')+id+(params.get('return')==='map'?'&from=map':'');back.innerHTML='<span aria-hidden="true">→</span> كوخ بالم بيتش';}
 })();
 </script>
 <script src="/resort-data.js?v=12"></script>

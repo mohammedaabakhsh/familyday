@@ -5051,7 +5051,7 @@ function openMDirect(c){
   function fromHash(){
     var hash=location.hash.slice(1);
     if(!hash && /^\/(resort-map|chalet-map)\/?$/.test(location.pathname)) return route(location.pathname.indexOf('resort-map')!==-1 ? 'map' : 'chalet-map');
-    var mapMatch=/^map=(1|2|4|12|13)$/.exec(hash);
+    var mapMatch=/^map=(1|2|4|5|12|13)$/.exec(hash);
     if(mapMatch) return route('map',[Number(mapMatch[1])]);
     var mapDetail=/^cabin=(\d+)&from=map$/.exec(hash);
     if(mapDetail){var mapCabinId=Number(mapDetail[1]);if(data.resort.items.some(function(c){return c.id===mapCabinId;}))return route('cabin',[mapCabinId],route('map',[mapCabinId]));}
