@@ -123,7 +123,7 @@
  #fd-chalet-map #cm-title{font-size:22px}
  #fd-chalet-map .cm-workspace{display:flex;flex-direction:column}
  #fd-chalet-map .cm-map-side{flex:1;min-height:0}
- #fd-chalet-map .cm-panel{flex:0 0 min(40dvh,300px);height:min(40dvh,300px);border-top:1px solid #234655}
+ #fd-chalet-map .cm-panel{flex:0 0 min(45dvh,300px);height:min(45dvh,300px);border-top:1px solid #234655}
  #fd-chalet-map .cm-details{padding:12px 14px;overscroll-behavior:contain}
  #fd-chalet-map .cm-detail-heading{margin-bottom:8px}
  #fd-chalet-map .cm-detail-heading p,#fd-chalet-map .cm-note{font-size:14px}
