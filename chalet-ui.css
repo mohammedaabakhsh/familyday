@@ -149,3 +149,24 @@
 img[src*="imgs/chalet_"]{object-position:center !important;}
 
 
+
+/* Carry the approved resort typography and full desktop detail view into the chalet. */
+#chalet-faq .faq-title,#contact-page[data-venue=chalet] .cp-title,
+#ov:has(#fd-chalet-detail-title) .fd-cabin-title{font:700 24px/1.4 Tajawal,sans-serif!important}
+#chalet-faq .chalet-faq-answer{font-size:15px!important;line-height:1.6}
+#ov:has(#fd-chalet-detail-title) .fd-cabin-nav-back{box-sizing:border-box;flex:0 0 44px;width:44px;height:44px;min-width:44px;min-height:44px;max-width:44px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef}
+#ov:has(#fd-chalet-detail-title) .fd-cabin-nav-back span,#ov:has(#fd-chalet-detail-title) .fd-cabin-nav-back svg{display:none}
+#ov:has(#fd-chalet-detail-title) .fd-cabin-nav-back .fd-resort-back-icon{display:block;width:9px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#ov:has(#fd-chalet-detail-title) .fd-cabin-nav-back:focus-visible{outline:2px solid #7ecfea;outline-offset:3px}
+@media(min-width:900px){
+ #ov.fd-cabin-modern:has(#fd-chalet-detail-title){padding:0;background:#04111e;backdrop-filter:none;align-items:stretch}
+ #ov.fd-cabin-modern:has(#fd-chalet-detail-title) .modal{width:100%;max-width:none;height:100vh;height:100dvh;max-height:none;margin:0;border:0;border-radius:0;box-shadow:none;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto}
+ #ov.fd-cabin-modern:has(#fd-chalet-detail-title) .gal-wrap{aspect-ratio:auto}
+ #ov.fd-cabin-modern:has(#fd-chalet-detail-title) .gal-img{object-fit:contain}
+}
+@media(max-width:599px){
+ #chalet-faq .faq-title,#contact-page[data-venue=chalet] .cp-title,
+ #ov:has(#fd-chalet-detail-title) .fd-cabin-title{font-size:22px!important}
+ #chalet-faq .chalet-faq-answer{font-size:14px!important}
+}
+@media(hover:hover) and (pointer:fine){#ov:has(#fd-chalet-detail-title) .fd-cabin-nav-back:hover{background:#133343}}

@@ -478,7 +478,7 @@
   var ns='http://www.w3.org/2000/svg';
   function clamp(n,min,max){return Math.max(min,Math.min(max,n));}
   function roomName(room){return labelLanguage==='en'?roomNamesEn[room.key]:room.name;}
-  function isMobile(){return window.matchMedia('(max-width:899px)').matches;}
+  function isMobile(){return window.matchMedia('(max-width:819px)').matches;}
   function esc(text){return String(text).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
   function queueLines(){cancelAnimationFrame(lineFrame);lineFrame=requestAnimationFrame(drawLeaders);}
   function updateText(){
@@ -486,9 +486,12 @@
     dialog.lang=labelLanguage;
     dialog.querySelector('#cm-title').textContent=copy.title;
     dialog.querySelector('.cm-heading').dir=direction;
+    dialog.querySelector('.cm-header').dir=direction;
+    dialog.querySelector('.cm-subtitle').textContent=copy.subtitle;
     var back=dialog.querySelector('.cm-close'),backText=labelLanguage==='en'?'Back to chalet':'العودة إلى الشاليه';
     back.dir=direction;back.setAttribute('aria-label',backText);
-    back.innerHTML='<span aria-hidden="true">'+(labelLanguage==='en'?'←':'→')+'</span> '+backText;
+    back.title=backText;
+    back.innerHTML='<svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     dialog.querySelector('.cm-languages').setAttribute('aria-label',copy.languageLabel);
     dialog.querySelector('.cm-labels').dir=direction;
     dialog.querySelector('.cm-labels').setAttribute('aria-label',copy.empty);
@@ -548,55 +551,48 @@
     ground:['left',.22],play:['left',.40],pool:['left',.62],shower:['left',.83],
     groundBath:['right',.20],kitchen:['right',.35],dining:['right',.50],living:['right',.66],majlis:['right',.83]
   };
+  function labelRail(){return isMobile()?clamp(view.w*.22,74,92):clamp(view.w*.18,108,150);}
   function layoutLabels(){
-    if(isMobile()){markers.forEach(function(b){b.style.left='';b.style.top='';b.style.width='';});return;}
-    var rail=clamp(view.w*.18,108,150);
-    markers.forEach(function(b,i){
-      var p=desktopLabels[rooms[i].key],x=p[0]==='top'?view.w*p[1]:p[0]==='left'?rail/2+3:view.w-rail/2-3;
-      b.style.left=x+'px';b.style.top=(p[0]==='top'?25:Math.max(90,view.h*p[1]))+'px';b.style.width=rail+'px';
+    var mobile=isMobile(),rail=labelRail();
+    markers.forEach(function(button,i){
+      var p=desktopLabels[rooms[i].key],x,y;
+      if(p[0]==='top'){
+        var topX={upperBath:.17,upper:.50,stairs:.83};
+        x=view.w*(mobile?topX[rooms[i].key]:p[1]);y=mobile?24:25;
+      } else {
+        x=p[0]==='left'?rail/2+3:view.w-rail/2-3;
+        // Use evenly spaced rails so all 12 labels fit without changing on selection.
+        var order=p[0]==='left'?['ground','play','pool','shower']:['groundBath','kitchen','dining','living','majlis'];
+        var start=mobile?76:90,end=view.h-(mobile?24:30);
+        y=start+(end-start)*order.indexOf(rooms[i].key)/(order.length-1);
+      }
+      button.style.left=x+'px';button.style.top=y+'px';button.style.width=rail+'px';
     });
   }
   function drawLeaders(){
     if(!dialog.open)return;
-    var mobile=isMobile(),stage=dialog.querySelector('.cm-map-side').getBoundingClientRect(),vp=viewport.getBoundingClientRect();
+    var stage=dialog.querySelector('.cm-map-side').getBoundingClientRect(),vp=viewport.getBoundingClientRect();
     var svg=dialog.querySelector('.cm-leaders');svg.setAttribute('viewBox','0 0 '+stage.width+' '+stage.height);
     rooms.forEach(function(room,i){
       var g=leaders[i],line=g.querySelector('path'),dot=g.querySelector('circle');
       var x=vp.left-stage.left+view.imageX+view.imageSize*room.x/100;
       var y=vp.top-stage.top+view.imageY+view.imageSize*room.y/100;
       dot.setAttribute('cx',x);dot.setAttribute('cy',y);
-      var b=markers[i].getBoundingClientRect(),side=desktopLabels[room.key][0];
-      var top=mobile||side==='top';
-      var sx=top?b.left+b.width/2-stage.left:(side==='left'?b.right:b.left)-stage.left;
-      var sy=(top?b.bottom:b.top+b.height/2)-stage.top;
-      var curve=top?'C '+sx+' '+(sy+35)+' '+x+' '+(y-45)+' '+x+' '+y
-        :'C '+(sx+(side==='left'?28:-28))+' '+sy+' '+(x+(side==='left'?-28:28))+' '+y+' '+x+' '+y;
-      var path='M '+sx+' '+sy+' '+curve;
-      if(mobile){
-        var labelBox=dialog.querySelector('.cm-labels').getBoundingClientRect();
-        var labelBottom=labelBox.bottom-stage.top;
-        if(b.bottom<labelBox.bottom-4){
-          // Route through the row gap and outer gutter, never through another label.
-          var rail=(b.left+b.width/2-stage.left)<stage.width/2?3:stage.width-3;
-          var gapY=sy+3,exitY=labelBottom+12;
-          path='M '+sx+' '+sy+' L '+sx+' '+gapY+' L '+rail+' '+gapY+' L '+rail+' '+exitY
-            +' C '+rail+' '+(exitY+30)+' '+x+' '+(y-45)+' '+x+' '+y;
-        }
-      }
-      line.setAttribute('d',path);
+      var rect=markers[i].getBoundingClientRect(),side=desktopLabels[room.key][0],top=side==='top';
+      var sx=top?rect.left+rect.width/2-stage.left:(side==='left'?rect.right:rect.left)-stage.left;
+      var sy=(top?rect.bottom:rect.top+rect.height/2)-stage.top;
+      var curve=top?'C '+sx+' '+(sy+20)+' '+x+' '+(y-25)+' '+x+' '+y
+        :'C '+(sx+(side==='left'?20:-20))+' '+sy+' '+(x+(side==='left'?-20:20))+' '+y+' '+x+' '+y;
+      line.setAttribute('d','M '+sx+' '+sy+' '+curve);
     });
   }
   function measure(){
     if(!dialog.open)return;
-    var languages=dialog.querySelector('.cm-languages');
-    var languageHost=dialog.querySelector(isMobile()?'.cm-mobile-languages':'.cm-header');
-    if(languages.parentElement!==languageHost)languageHost.appendChild(languages);
     view.w=viewport.clientWidth;view.h=viewport.clientHeight;
-    var mobile=isMobile(),rail=clamp(view.w*.18,108,150);
-    view.imageSize=mobile?Math.min((view.w-24)/.82,(view.h-22)/.78):Math.min((view.w-2*rail-24)/.82,(view.h-88)/.78);
-    view.imageSize=Math.max(1,view.imageSize);
+    var mobile=isMobile(),rail=labelRail(),top=mobile?58:68;
+    view.imageSize=Math.max(1,Math.min((view.w-2*rail-12)/.82,(view.h-top-16)/.78));
     view.imageX=(view.w-view.imageSize)/2;
-    view.imageY=(mobile?10:68)-view.imageSize*.065;
+    view.imageY=top+Math.max(0,(view.h-top-16-view.imageSize*.78)/2)-view.imageSize*.065;
     plane.style.width=view.w+'px';plane.style.height=view.h+'px';
     plane.querySelector('.cm-illustration').style.cssText='left:'+view.imageX+'px;top:'+view.imageY+'px;width:'+view.imageSize+'px;height:'+view.imageSize+'px';
     layoutLabels();queueLines();
@@ -604,9 +600,8 @@
   function dismiss(){document.dispatchEvent(new CustomEvent('fd-chalet-map-dismiss'));}
   function create(){
     dialog=document.createElement('dialog');dialog.id='fd-chalet-map';dialog.className='cm-dialog';dialog.setAttribute('aria-labelledby','cm-title');
-    dialog.innerHTML='<nav class="cm-nav"><button type="button" class="cm-close" autofocus></button></nav>'
-      +'<div class="cm-header"><div class="cm-heading"><h2 id="cm-title">جولة داخل الشاليه</h2></div><div class="cm-languages" role="group" aria-label="لغة الجولة"><button type="button" class="cm-language" data-lang="ar" lang="ar" aria-label="العربية" aria-pressed="true">AR</button><button type="button" class="cm-language" data-lang="en" lang="en" aria-label="English" aria-pressed="false">EN</button></div></div>'
-      +'<div class="cm-workspace"><div class="cm-map-side"><div class="cm-labels" role="group"></div><div class="cm-viewport"><div class="cm-plane"><div class="cm-illustration"><img class="cm-image" width="1254" height="1254" alt="" draggable="false"><svg class="cm-regions" viewBox="0 0 100 100" aria-hidden="true"></svg></div></div><div class="cm-error" hidden><p></p><button type="button" class="cm-retry"></button></div></div><svg class="cm-leaders" aria-hidden="true"></svg></div><div class="cm-mobile-languages"></div><section id="cm-details" class="cm-details" aria-live="polite" aria-atomic="true"></section><p class="cm-occupancy"></p></div><p class="cm-announcement" role="status" aria-live="polite"></p>';
+    dialog.innerHTML='<header class="cm-header"><div class="cm-heading"><button type="button" class="cm-close" autofocus></button><div class="cm-heading-copy"><h2 id="cm-title">جولة داخل الشاليه</h2><p class="cm-subtitle"></p></div></div><div class="cm-languages" role="group" aria-label="لغة الجولة"><button type="button" class="cm-language" data-lang="ar" lang="ar" aria-label="العربية" aria-pressed="true">AR</button><button type="button" class="cm-language" data-lang="en" lang="en" aria-label="English" aria-pressed="false">EN</button></div></header>'
+      +'<div class="cm-workspace"><div class="cm-map-side"><div class="cm-labels" role="group"></div><div class="cm-viewport"><div class="cm-plane"><div class="cm-illustration"><img class="cm-image" width="1254" height="1254" alt="" draggable="false"><svg class="cm-regions" viewBox="0 0 100 100" aria-hidden="true"></svg></div></div><div class="cm-error" hidden><p></p><button type="button" class="cm-retry"></button></div></div><svg class="cm-leaders" aria-hidden="true"></svg></div><aside class="cm-panel"><section id="cm-details" class="cm-details" aria-live="polite" aria-atomic="true"></section><p class="cm-occupancy"></p></aside></div><p class="cm-announcement" role="status" aria-live="polite"></p>';
     document.body.appendChild(dialog);
     viewport=dialog.querySelector('.cm-viewport');plane=dialog.querySelector('.cm-plane');panel=dialog.querySelector('.cm-details');
     rooms.forEach(function(room){

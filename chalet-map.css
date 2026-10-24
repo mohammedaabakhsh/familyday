@@ -78,3 +78,60 @@
  .cm-occupancy{margin:7px 0 0}
 }
 @media(prefers-reduced-motion:reduce){.cm-dialog *{transition:none!important}}
+
+/* Full-page chalet map, matching the resort map on desktop and mobile. */
+#fd-chalet-map{padding:0;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow:hidden;color:#f0f5f7}
+#fd-chalet-map::backdrop{background:#04111e}
+#fd-chalet-map .cm-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1100px;padding:28px 20px 22px;border:0}
+#fd-chalet-map .cm-heading{display:flex;align-items:center;gap:14px;flex:1;min-width:0}
+#fd-chalet-map .cm-heading-copy{min-width:0}
+#fd-chalet-map #cm-title{margin:0;font:700 24px/1.4 Tajawal,sans-serif;color:#f0f5f7;text-align:start}
+#fd-chalet-map .cm-subtitle{margin:4px 0 0;color:#9ac8d4;font:500 13px/1.5 Tajawal,sans-serif}
+#fd-chalet-map .cm-close{display:flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;min-width:44px;min-height:44px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef}
+#fd-chalet-map .cm-close svg{width:9px;height:15px}
+#fd-chalet-map .cm-close[dir=ltr] svg{transform:rotate(180deg)}
+#fd-chalet-map .cm-close:focus-visible{outline:2px solid #7ecfea;outline-offset:3px}
+#fd-chalet-map .cm-languages{display:inline-flex;flex:none;align-items:center;gap:2px;padding:3px;border:1px solid #34515f;border-radius:11px;background:#102936}
+#fd-chalet-map .cm-language{min-width:32px;min-height:32px;padding:5px 8px;border:0;border-radius:7px;background:transparent;color:#a9c3cd;font:700 11px/1 Tajawal,sans-serif}
+#fd-chalet-map .cm-language[aria-pressed=true]{background:#176879;color:#fff;box-shadow:inset 0 0 0 1px #80d2da40}
+#fd-chalet-map .cm-workspace{width:100%;max-width:none;flex:1;min-height:0;margin:0;padding:0;display:grid;grid-template-columns:clamp(300px,32vw,420px) minmax(0,1fr);grid-template-rows:minmax(0,1fr);gap:0;direction:ltr}
+#fd-chalet-map .cm-map-side{display:block;grid-column:2;grid-row:1;min-height:0;overflow:hidden}
+#fd-chalet-map .cm-viewport{height:100%;margin:0;min-height:0;background:transparent}
+#fd-chalet-map .cm-labels{position:absolute;inset:0;display:block;padding:0;pointer-events:none}
+#fd-chalet-map .cm-marker{position:absolute;transform:translate(-50%,-50%);min-height:38px;border:1px solid #4583a8;border-radius:4px;background:#102e42;color:#c9efff;font:700 12px/1.3 Tajawal,sans-serif;padding:5px 6px;box-shadow:none}
+#fd-chalet-map .cm-marker[aria-pressed=true]{background:#176c99;border-color:#56d2ff;color:#fff;box-shadow:none}
+#fd-chalet-map .cm-leaders g{display:block}
+#fd-chalet-map .cm-leaders path{stroke:#6cbdec;stroke-width:1;opacity:.8}
+#fd-chalet-map .cm-leaders .is-selected path{stroke:#56d2ff;stroke-width:2;opacity:1}
+#fd-chalet-map .cm-leaders circle{fill:#369fe1;stroke:#d2f4ff}
+#fd-chalet-map .cm-leaders .is-selected circle{fill:#56d2ff;stroke:#d2f4ff;filter:none}
+#fd-chalet-map .cm-regions polygon.is-selected{fill:rgba(50,156,235,.24);stroke:#56d2ff;stroke-width:1.5}
+#fd-chalet-map .cm-panel{grid-column:1;grid-row:1;display:flex;flex-direction:column;min-width:0;min-height:0;overflow:hidden;background:transparent;direction:rtl}
+#fd-chalet-map .cm-details{flex:1;align-self:stretch;min-height:0;max-height:none;width:100%;margin:0;padding:20px;overflow:auto;border:0;border-radius:0;background:transparent}
+#fd-chalet-map .cm-detail-heading h3{font-size:18px;font-weight:700;line-height:1.4}
+#fd-chalet-map .cm-detail-heading p,#fd-chalet-map .cm-note{font-size:15px;line-height:1.6}
+#fd-chalet-map .cm-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+#fd-chalet-map .cm-card{min-height:76px}
+#fd-chalet-map .cm-card strong{font-size:14px;line-height:1.5}
+#fd-chalet-map .cm-occupancy{flex:none;margin:0;padding:12px 20px 20px;font-size:13px}
+@media(min-width:820px){
+ #fd-chalet-map::after{content:"";position:absolute;top:0;bottom:0;left:calc(clamp(300px,32vw,420px) - 1px);width:1px;background:#234655;pointer-events:none}
+}
+@media(max-width:819px){
+ #fd-chalet-map .cm-header{padding:20px 16px 18px}
+ #fd-chalet-map .cm-heading{gap:10px}
+ #fd-chalet-map #cm-title{font-size:22px}
+ #fd-chalet-map .cm-workspace{display:flex;flex-direction:column}
+ #fd-chalet-map .cm-map-side{flex:1;min-height:0}
+ #fd-chalet-map .cm-panel{flex:0 0 min(40dvh,300px);height:min(40dvh,300px);border-top:1px solid #234655}
+ #fd-chalet-map .cm-details{padding:12px 14px;overscroll-behavior:contain}
+ #fd-chalet-map .cm-detail-heading{margin-bottom:8px}
+ #fd-chalet-map .cm-detail-heading p,#fd-chalet-map .cm-note{font-size:14px}
+ #fd-chalet-map .cm-cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+ #fd-chalet-map .cm-card{min-height:65px}
+ #fd-chalet-map .cm-card strong{font-size:13px}
+ #fd-chalet-map .cm-card strong[dir=ltr]{font-size:14px}
+ #fd-chalet-map .cm-marker{min-height:30px;padding:3px 4px;font-size:10.5px}
+ #fd-chalet-map .cm-occupancy{padding:7px 14px max(10px,env(safe-area-inset-bottom))}
+}
+@media(hover:hover) and (pointer:fine){#fd-chalet-map .cm-close:hover{background:#133343}}
