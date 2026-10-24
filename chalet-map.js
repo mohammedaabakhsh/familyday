@@ -546,27 +546,46 @@
     labelLanguage=language;updateText();renderDetails(selected);measure();
     dialog.querySelector('.cm-announcement').textContent=tourCopy[labelLanguage].language;
   }
-  var desktopLabels={
-    upperBath:['top',.27],upper:['top',.50],stairs:['top',.73],
-    ground:['left',.22],play:['left',.40],pool:['left',.62],shower:['left',.83],
-    groundBath:['right',.20],kitchen:['right',.35],dining:['right',.50],living:['right',.66],majlis:['right',.83]
+  // Keep labels close to their room, with a stable layout for every selection.
+  var labelSides={
+    upper:'top',stairs:'top',
+    upperBath:'left',ground:'left',play:'left',pool:'left',shower:'left',
+    groundBath:'right',kitchen:'right',dining:'right',living:'right',majlis:'right'
   };
-  function labelRail(){return isMobile()?clamp(view.w*.22,74,92):clamp(view.w*.18,108,150);}
+  var leaderPoints={
+    upper:[36,13],upperBath:[27,13],ground:[26,24],play:[37,26],
+    stairs:[48,22],groundBath:[54,24],kitchen:[69,24],dining:[72,33],
+    living:[77,46],pool:[27,53],shower:[22,68],majlis:[80,64]
+  };
+  function labelRail(){return isMobile()?clamp(view.w*.21,74,86):clamp(view.w*.16,108,140);}
   function layoutLabels(){
-    var mobile=isMobile(),rail=labelRail();
-    markers.forEach(function(button,i){
-      var p=desktopLabels[rooms[i].key],x,y;
-      if(p[0]==='top'){
-        var topX={upperBath:.17,upper:.50,stairs:.83};
-        x=view.w*(mobile?topX[rooms[i].key]:p[1]);y=mobile?24:25;
-      } else {
-        x=p[0]==='left'?rail/2+3:view.w-rail/2-3;
-        // Use evenly spaced rails so all 12 labels fit without changing on selection.
-        var order=p[0]==='left'?['ground','play','pool','shower']:['groundBath','kitchen','dining','living','majlis'];
-        var start=mobile?76:90,end=view.h-(mobile?24:30);
-        y=start+(end-start)*order.indexOf(rooms[i].key)/(order.length-1);
+    var mobile=isMobile(),rail=labelRail(),gap=mobile?8:14;
+    var visibleTop=view.imageY+view.imageSize*.065;
+    var left=Math.max(rail/2+3,view.imageX+view.imageSize*.14-gap-rail/2);
+    var right=Math.min(view.w-rail/2-3,view.imageX+view.imageSize*.90+gap+rail/2);
+    markers.forEach(function(button){button.style.width=rail+'px';});
+    ['upper','stairs'].forEach(function(key,i){
+      var button=markers[rooms.findIndex(function(room){return room.key===key;})];
+      button.style.left=(view.w/2+(i?1:-1)*(rail/2+gap/2))+'px';
+      button.style.top=Math.max(button.offsetHeight/2+3,visibleTop-30)+'px';
+    });
+    ['left','right'].forEach(function(side){
+      var keys=side==='left'?['upperBath','ground','play','pool','shower']:['groundBath','kitchen','dining','living','majlis'];
+      var items=keys.map(function(key){
+        var i=rooms.findIndex(function(room){return room.key===key;});
+        var target=leaderPoints[key],y=view.imageY+view.imageSize*target[1]/100;
+        // The shared bathroom approaches from above the kitchen.
+        if(key==='groundBath')y=view.imageY+view.imageSize*.13;
+        return {button:markers[i],half:markers[i].offsetHeight/2,y:y};
+      });
+      var min=mobile?58:visibleTop-6,max=view.h-8;
+      items.forEach(function(item,i){
+        item.y=Math.max(item.y,min+item.half,i?items[i-1].y+items[i-1].half+item.half+gap:0);
+      });
+      for(var i=items.length-1;i>=0;i--){
+        items[i].y=Math.min(items[i].y,max-items[i].half,i<items.length-1?items[i+1].y-items[i+1].half-items[i].half-gap:Infinity);
       }
-      button.style.left=x+'px';button.style.top=y+'px';button.style.width=rail+'px';
+      items.forEach(function(item){item.button.style.left=(side==='left'?left:right)+'px';item.button.style.top=item.y+'px';});
     });
   }
   function drawLeaders(){
@@ -574,15 +593,16 @@
     var stage=dialog.querySelector('.cm-map-side').getBoundingClientRect(),vp=viewport.getBoundingClientRect();
     var svg=dialog.querySelector('.cm-leaders');svg.setAttribute('viewBox','0 0 '+stage.width+' '+stage.height);
     rooms.forEach(function(room,i){
-      var g=leaders[i],line=g.querySelector('path'),dot=g.querySelector('circle');
-      var x=vp.left-stage.left+view.imageX+view.imageSize*room.x/100;
-      var y=vp.top-stage.top+view.imageY+view.imageSize*room.y/100;
+      var g=leaders[i],line=g.querySelector('path'),dot=g.querySelector('circle'),point=leaderPoints[room.key];
+      var x=vp.left-stage.left+view.imageX+view.imageSize*point[0]/100;
+      var y=vp.top-stage.top+view.imageY+view.imageSize*point[1]/100;
       dot.setAttribute('cx',x);dot.setAttribute('cy',y);
-      var rect=markers[i].getBoundingClientRect(),side=desktopLabels[room.key][0],top=side==='top';
+      var rect=markers[i].getBoundingClientRect(),side=labelSides[room.key],top=side==='top';
       var sx=top?rect.left+rect.width/2-stage.left:(side==='left'?rect.right:rect.left)-stage.left;
       var sy=(top?rect.bottom:rect.top+rect.height/2)-stage.top;
-      var curve=top?'C '+sx+' '+(sy+20)+' '+x+' '+(y-25)+' '+x+' '+y
-        :'C '+(sx+(side==='left'?20:-20))+' '+sy+' '+(x+(side==='left'?-20:20))+' '+y+' '+x+' '+y;
+      var bend=top?Math.min(18,Math.abs(y-sy)/3):Math.min(24,Math.abs(x-sx)/3);
+      var curve=top?'C '+sx+' '+(sy+bend)+' '+x+' '+(y-bend)+' '+x+' '+y
+        :'C '+(sx+(side==='left'?bend:-bend))+' '+sy+' '+(x+(side==='left'?-bend:bend))+' '+y+' '+x+' '+y;
       line.setAttribute('d','M '+sx+' '+sy+' '+curve);
     });
   }
@@ -590,9 +610,10 @@
     if(!dialog.open)return;
     view.w=viewport.clientWidth;view.h=viewport.clientHeight;
     var mobile=isMobile(),rail=labelRail(),top=mobile?58:68;
-    view.imageSize=Math.max(1,Math.min((view.w-2*rail-12)/.82,(view.h-top-16)/.78));
+    var available=Math.min((view.w-2*rail-24)/.82,(view.h-top-24)/.78);
+    view.imageSize=Math.max(1,mobile?available:Math.min(740,available*.86));
     view.imageX=(view.w-view.imageSize)/2;
-    view.imageY=top+Math.max(0,(view.h-top-16-view.imageSize*.78)/2)-view.imageSize*.065;
+    view.imageY=top+Math.max(0,(view.h-top-24-view.imageSize*.78)/2)-view.imageSize*.065;
     plane.style.width=view.w+'px';plane.style.height=view.h+'px';
     plane.querySelector('.cm-illustration').style.cssText='left:'+view.imageX+'px;top:'+view.imageY+'px;width:'+view.imageSize+'px;height:'+view.imageSize+'px';
     layoutLabels();queueLines();
