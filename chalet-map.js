@@ -31,7 +31,7 @@
   },
   {
     "key": "ground",
-    "name": "غرفة النوم الأرضية",
+    "name": "غرفة النوم",
     "floor": "الدور الأرضي",
     "x": 28,
     "y": 24,
@@ -232,7 +232,7 @@
   "upperBath": "En-suite Bathroom",
   "upper": "Upstairs Bedroom",
   "stairs": "Stairs",
-  "ground": "Ground Floor Bedroom",
+  "ground": "Bedroom",
   "play": "Kids' Playroom",
   "pool": "Kids' Pool",
   "groundBath": "Bathroom",
@@ -514,7 +514,7 @@
   }
   // Match the resort map: compact labels on four sides and persistent connectors.
   var labelSides={
-    ground:'top',upper:'top',groundBath:'left',
+    ground:'left',upper:'top',groundBath:'right',
     play:'left',pool:'left',kitchen:'right',dining:'right',living:'right',
     shower:'bottom',majlis:'bottom'
   };
@@ -528,7 +528,7 @@
     var mobile=isMobile(),rail=labelRail(),gap=mobile?6:12;
     var visibleTop=view.imageY+view.imageSize*.065;
     var visibleBottom=view.imageY+view.imageSize*.845;
-    // Share the same two columns and three rows on opposite edges.
+    // One centered bedroom above, two aligned labels below, and ordered side rails.
     var left=Math.max(rail/2+4,view.w/2-view.imageSize*.40-gap-rail/2);
     var right=view.w-left;
     var columnOffset=mobile?view.w*.25:view.imageSize*.25;
@@ -539,17 +539,19 @@
       var button=markers[rooms.findIndex(function(room){return room.key===key;})];
       button.style.width=width+'px';button.style.left=x+'px';button.style.top=y+'px';
     }
-    [['ground','upper'],['shower','majlis']].forEach(function(keys,row){
-      keys.forEach(function(key,i){
-        place(key,view.w/2+(i?1:-1)*columnOffset,row?bottom:top,rowWidth);
-      });
+    place('upper',view.w/2,top,rowWidth);
+    ['shower','majlis'].forEach(function(key,i){
+      place(key,view.w/2+(i?1:-1)*columnOffset,bottom,rowWidth);
     });
-    var rowStart=Math.max(68,view.imageY+view.imageSize*.25);
-    var rowGap=Math.max(44,view.imageSize*.16);
-    var lastRow=Math.min(view.h-66,rowStart+rowGap*2);
-    rowGap=(lastRow-rowStart)/2;
-    [['groundBath','play','pool'],['kitchen','dining','living']].forEach(function(keys,side){
-      keys.forEach(function(key,i){place(key,side?right:left,rowStart+i*rowGap,rail);});
+    [
+      {keys:['ground','play','pool'],x:left,start:.24},
+      {keys:['groundBath','kitchen','dining','living'],x:right,start:.12}
+    ].forEach(function(side){
+      var first=Math.max(64,view.imageY+view.imageSize*side.start);
+      var step=Math.max(44,view.imageSize*.16);
+      var last=Math.min(view.h-66,first+step*(side.keys.length-1));
+      step=(last-first)/(side.keys.length-1);
+      side.keys.forEach(function(key,i){place(key,side.x,first+i*step,rail);});
     });
   }
   function drawLeaders(){
