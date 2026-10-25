@@ -3,14 +3,14 @@ var FD_FRENCH_TOUR = (function () {
   'use strict';
   var root, observer, frame, cabin, selected = 'pool', language = 'ar';
   var parts = [
- {id:'bedroom',ar:'غرفة نوم بسرير مزدوج',en:'Bedroom with a double bed',x:0.65,y:0.344},
- {id:'bathroom',ar:'الحمامات',en:'Bathrooms',x:0.557,y:0.337},
- {id:'twin',ar:'غرفة نوم بسريرين مفردين',en:'Bedroom with two single beds',x:0.635,y:0.203},
- {id:'living',ar:'المنطقة الداخلية',en:'Indoor area',x:0.35,y:0.326},
- {id:'kitchen',ar:'ركن المطبخ',en:'Kitchenette',x:0.405,y:0.179},
- {id:'dining',ar:'طاولة الطعام',en:'Dining table',x:0.434,y:0.236},
- {id:'pool',ar:'المسبح',en:'Pool',x:0.205,y:0.706},
- {id:'outdoor',ar:'المنطقة الخارجية',en:'Outdoor area',x:0.823,y:0.755}
+ {id:'bedroom',ar:'غرفة نوم بسرير مزدوج',en:'Bedroom with a double bed',x:0.632,y:0.41},
+ {id:'bathroom',ar:'الحمامات',en:'Bathrooms',x:0.552,y:0.4},
+ {id:'twin',ar:'غرفة نوم بسريرين مفردين',en:'Bedroom with two single beds',x:0.617,y:0.282},
+ {id:'living',ar:'المنطقة الداخلية',en:'Indoor area',x:0.361,y:0.399},
+ {id:'kitchen',ar:'ركن المطبخ',en:'Kitchenette',x:0.412,y:0.277},
+ {id:'dining',ar:'طاولة الطعام',en:'Dining table',x:0.441,y:0.326},
+ {id:'pool',ar:'المسبح',en:'Pool',x:0.228,y:0.698},
+ {id:'outdoor',ar:'المنطقة الخارجية',en:'Outdoor area',x:0.79,y:0.743}
  ];
   var translations = {
     'موقد كهربائي':'Electric hob', 'ميكروويف':'Microwave', 'ثلاجة':'Refrigerator',
@@ -176,7 +176,7 @@ var FD_FRENCH_TOUR = (function () {
     if(root && cabin && cabin.id===next.id) return;
     remove(); cabin=next; selected='pool'; language='ar';
     root=document.createElement('section');root.id='french-tour';root.className='dt-tour';root.setAttribute('aria-labelledby','dt-title');
-    root.innerHTML='<header class="dt-heading"><h1 id="dt-title" class="dt-title"></h1></header><div class="dt-stage"><div class="dt-labels">'+parts.map(function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';}).join('')+'</div><img class="dt-image" src="/imgs/french-tour-13-v1.webp" width="1536" height="1024" loading="lazy" decoding="async" alt=""><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div class="dt-languages" role="group"><button type="button" data-language="ar" lang="ar" aria-label="العربية">AR</button><button type="button" data-language="en" lang="en" aria-label="English">EN</button></div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
+    root.innerHTML='<header class="dt-heading"><h1 id="dt-title" class="dt-title"></h1></header><div class="dt-stage"><div class="dt-labels">'+parts.map(function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';}).join('')+'</div><img class="dt-image" src="/imgs/french-tour-13-v2.webp" width="1536" height="1024" loading="lazy" decoding="async" alt=""><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div class="dt-languages" role="group"><button type="button" data-language="ar" lang="ar" aria-label="العربية">AR</button><button type="button" data-language="en" lang="en" aria-label="English">EN</button></div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
     document.getElementById('french-tour-host').appendChild(root);
     var back=document.querySelector('.tour-back');
     if(back){
