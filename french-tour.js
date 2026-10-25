@@ -10,7 +10,7 @@ var FD_FRENCH_TOUR = (function () {
 
  {id:'bedroom',ar:'غرفة نوم بسرير مزدوج',en:'Bedroom with a double bed',x:0.632,y:0.41},
 
- {id:'bathroom',ar:'الحمامات',en:'Bathrooms',x:0.552,y:0.4},
+ {id:'bathroom',ar:'حمامات',en:'Bathrooms',x:0.552,y:0.4},
 
  {id:'twin',ar:'غرفة نوم بسريرين مفردين',en:'Bedroom with two single beds',x:0.617,y:0.282},
 
@@ -164,11 +164,11 @@ var FD_FRENCH_TOUR = (function () {
 
     } else if (selected === 'dining') {
 
-      cards.push({value:tr('طاولة طعام','Dining table'),icon:'dining'});
+      cards.push({value:tr('طاولة الطعام','Dining table'),icon:'dining'});
 
     } else if (selected === 'living') {
 
-      cards=[{value:tr('الصالة الداخلية','Indoor living room'),icon:'sofa'},{value:tr('تلفزيون ذكي','Smart TV'),icon:'tv'},{value:tr('سماعات داخلية (ساوند بار)','Soundbar'),icon:'speaker'},{value:tr('واي فاي مجاني','Free Wi-Fi'),icon:'wifi'}];
+      cards=[{value:tr('المنطقة الداخلية','Indoor area'),icon:'sofa'},{value:tr('تلفزيون ذكي','Smart TV'),icon:'tv'},{value:tr('سماعات داخلية (ساوند بار)','Soundbar'),icon:'speaker'},{value:tr('واي فاي مجاني','Free Wi-Fi'),icon:'wifi'}];
 
     } else if (selected === 'bedroom') {
 
@@ -176,7 +176,7 @@ var FD_FRENCH_TOUR = (function () {
 
     } else if (selected === 'bathroom') {
 
-      cards=[{value:tr('حمام خاص بغرفة نوم بسرير مزدوج','En-suite bathroom'),icon:'shower'},{value:tr('حمام مشترك عند الممر','Shared bathroom off the hallway'),icon:'shower'}];
+      cards=[{value:tr('حمام خاص بغرفة نوم بسرير مزدوج','En-suite bathroom in the bedroom with a double bed'),icon:'shower'},{value:tr('حمام مشترك','Shared bathroom'),icon:'shower'}];
 
     } else if (selected === 'twin') {
 

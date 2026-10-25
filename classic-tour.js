@@ -8,12 +8,12 @@ var FD_CLASSIC_TOUR = (function () {
 
   var parts = [
  {id:'kitchen',ar:'ركن المطبخ',en:'Kitchenette',x:0.175,y:0.26},
- {id:'bathroom',ar:'الحمام',en:'Bathroom',x:0.314,y:0.212},
- {id:'bedroom',ar:'غرفة النوم',en:'Bedroom',x:0.4,y:0.19},
+ {id:'bathroom',ar:'حمام',en:'Bathroom',x:0.314,y:0.212},
+ {id:'bedroom',ar:'غرفة نوم بسرير مزدوج',en:'Bedroom with a double bed',x:0.4,y:0.19},
  {id:'dining',ar:'طاولة الطعام',en:'Dining table',x:0.172,y:0.335},
- {id:'living',ar:'الصالة الداخلية',en:'Indoor living room',x:0.34,y:0.33},
+ {id:'living',ar:'المنطقة الداخلية',en:'Indoor area',x:0.34,y:0.33},
  {id:'pool',ar:'المسبح',en:'Pool',x:0.685,y:0.28},
- {id:'outdoor',ar:'الجلسة الخارجية',en:'Outdoor seating',x:0.846,y:0.655}
+ {id:'outdoor',ar:'المنطقة الخارجية',en:'Outdoor area',x:0.846,y:0.655}
  ];
 
   var translations = {
@@ -154,11 +154,11 @@ var FD_CLASSIC_TOUR = (function () {
 
     } else if (selected === 'dining') {
 
-      cards.push({value:tr('طاولة طعام','Dining table'),icon:'dining'});
+      cards.push({value:tr('طاولة الطعام','Dining table'),icon:'dining'});
 
     } else if (selected === 'living') {
 
-      cards=[{value:tr('الصالة الداخلية','Indoor living room'),icon:'sofa'},{value:tr('تلفزيون ذكي','Smart TV'),icon:'tv'},{value:tr('سماعات داخلية (ساوند بار)','Soundbar'),icon:'speaker'},{value:tr('واي فاي مجاني','Free Wi-Fi'),icon:'wifi'}];
+      cards=[{value:tr('المنطقة الداخلية','Indoor area'),icon:'sofa'},{value:tr('تلفزيون ذكي','Smart TV'),icon:'tv'},{value:tr('سماعات داخلية (ساوند بار)','Soundbar'),icon:'speaker'},{value:tr('واي فاي مجاني','Free Wi-Fi'),icon:'wifi'}];
 
     } else if (selected === 'bedroom') {
 
@@ -166,7 +166,7 @@ var FD_CLASSIC_TOUR = (function () {
 
     } else if (selected === 'bathroom') {
 
-      cards=[{value:tr('حمام واحد بمدخل من داخل الكوخ','One bathroom accessed from inside the cottage'),icon:'shower'}];
+      cards=[{value:tr('حمام خاص بغرفة نوم بسرير مزدوج','En-suite bathroom in the bedroom with a double bed'),icon:'shower'}];
 
     } else {
 

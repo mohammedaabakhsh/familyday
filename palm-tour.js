@@ -4,7 +4,7 @@ var FD_PALM_TOUR = (function () {
   var root, observer, frame, cabin, selected = 'pool', language = 'ar';
   var parts = [
  {id:'bedroom',ar:'غرفة نوم بسرير مزدوج',en:'Bedroom with a double bed',x:.35,y:.14},
- {id:'bathroom',ar:'الحمامات',en:'Bathrooms',x:.50,y:.15},
+ {id:'bathroom',ar:'حمامات',en:'Bathrooms',x:.50,y:.15},
  {id:'twin',ar:'غرفة نوم بسريرين مفردين',en:'Bedroom with two single beds',x:.69,y:.15},
  {id:'living',ar:'المنطقة الداخلية',en:'Indoor area',x:.49,y:.29},
  {id:'kitchen',ar:'ركن المطبخ',en:'Kitchenette',x:.65,y:.29},
@@ -81,13 +81,13 @@ var FD_PALM_TOUR = (function () {
       cabin.features.kitchen.forEach(function(t){cards.push({value:feature(t),icon:kitchenIcon(t)});});
       if(cabin.minibar) note=tr('الميني بار: مشروبات وسناكس برسوم إضافية.','Minibar drinks and snacks are available at an extra charge.');
     } else if (selected === 'dining') {
-      cards.push({value:tr('طاولة طعام','Dining table'),icon:'dining'});
+      cards.push({value:tr('طاولة الطعام','Dining table'),icon:'dining'});
     } else if (selected === 'living') {
-      cards=[{value:tr('الصالة الداخلية','Indoor living room'),icon:'sofa'},{value:tr('تلفزيون ذكي','Smart TV'),icon:'tv'},{value:tr('سماعات داخلية (ساوند بار)','Soundbar'),icon:'speaker'},{value:tr('واي فاي مجاني','Free Wi-Fi'),icon:'wifi'}];
+      cards=[{value:tr('المنطقة الداخلية','Indoor area'),icon:'sofa'},{value:tr('تلفزيون ذكي','Smart TV'),icon:'tv'},{value:tr('سماعات داخلية (ساوند بار)','Soundbar'),icon:'speaker'},{value:tr('واي فاي مجاني','Free Wi-Fi'),icon:'wifi'}];
     } else if (selected === 'bedroom') {
-      cards=[{label:tr('السرير','Bed'),value:tr('سرير مزدوج','Double bed'),icon:'bed'},{value:tr('حمام خاص بغرفة النوم','En-suite bathroom'),icon:'shower'}];
+      cards=[{label:tr('السرير','Bed'),value:tr('سرير مزدوج','Double bed'),icon:'bed'},{value:tr('حمام خاص بغرفة نوم بسرير مزدوج','En-suite bathroom in the bedroom with a double bed'),icon:'shower'}];
     } else if (selected === 'bathroom') {
-      cards=[{value:tr('حمام خاص بغرفة نوم بسرير مزدوج','En-suite bathroom'),icon:'shower'},{value:tr('حمام مشترك عند الممر','Shared bathroom off the hallway'),icon:'shower'}];
+      cards=[{value:tr('حمام خاص بغرفة نوم بسرير مزدوج','En-suite bathroom in the bedroom with a double bed'),icon:'shower'},{value:tr('حمام مشترك','Shared bathroom'),icon:'shower'}];
     } else if (selected === 'twin') {
       cards=[{value:tr('سريران مفردان','Two single beds'),icon:'bed'}];
       
