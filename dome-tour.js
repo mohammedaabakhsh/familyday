@@ -3,7 +3,7 @@ var FD_DOME_TOUR = (function () {
   'use strict';
   var root, observer, frame, cabin, selected = 'pool', language = 'ar';
   var parts = [
-    {id:'bedroom', ar:'غرفة نوم بسرير مزدوج', en:'Bedroom with a double bed', x:.50, y:.34},
+    {id:'bedroom', ar:'المنطقة الداخلية', en:'Indoor area', x:.50, y:.34},
     {id:'bathroom', ar:'حمام', en:'Bathroom', x:.55, y:.26},
     {id:'kitchen', ar:'ركن المطبخ', en:'Kitchenette', x:.44, y:.29},
     {id:'tub', ar:'البانيو الداخلي', en:'Indoor bathtub', x:.40, y:.37},
