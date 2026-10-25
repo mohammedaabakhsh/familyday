@@ -1,0 +1,18 @@
+/* Classic Cottage: labels follow the approved illustration. */
+#ov #classic-tour .dt-image{clip-path:polygon(4.232% 19.629%,5.339% 18.066%,51.953% 0.586%,54.492% 2.734%,57.682% 11.133%,72.721% 6.348%,73.372% 5.371%,74.219% 5.371%,96.484% 54.395%,96.940% 70.801%,96.875% 79.590%,97.852% 81.738%,97.852% 85.254%,82.292% 90.039%,82.422% 92.773%,67.448% 95.996%,66.667% 91.602%,66.471% 88.672%,13.932% 97.656%,13.346% 94.531%,3.516% 35.059%,3.646% 32.422%);filter:none}
+@media(min-width:600px){
+ #ov #classic-tour .dt-stage{padding-top:66px}
+ #ov #classic-tour .dt-label{left:auto;right:auto;bottom:auto;transform:none}
+ #ov #classic-tour .dt-label--kitchen{left:7%;top:0}
+ #ov #classic-tour .dt-label--bathroom{left:40%;top:0}
+ #ov #classic-tour .dt-label--bedroom{right:0;top:0}
+ #ov #classic-tour .dt-label--dining{left:0;top:36%}
+ #ov #classic-tour .dt-label--living{left:0;top:57%}
+ #ov #classic-tour .dt-label--pool{right:0;top:38%}
+ #ov #classic-tour .dt-label--outdoor{right:0;top:72%}
+}
+@media(min-width:600px) and (max-width:899px){
+ #ov #classic-tour .dt-image{width:68%}
+ #ov #classic-tour .dt-label{width:21%;font-size:12px}
+}
+@media(max-width:599px){#ov #classic-tour .dt-labels .dt-label:last-child{grid-column:auto}}
