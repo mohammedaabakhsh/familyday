@@ -13,7 +13,7 @@ var FD_PANORAMIC_TOUR = (function () {
  {id:'bedroom',ar:'غرفة نوم بسرير مزدوج',en:'Bedroom with a double bed',x:0.331,y:0.325},
  {id:'tub',ar:'البانيو الداخلي',en:'Indoor bathtub',x:0.301,y:0.394},
  {id:'living',ar:'المنطقة الداخلية',en:'Indoor area',x:0.722,y:0.455},
- {id:'dining',ar:'طاولة الطعام',en:'Dining table',x:0.653,y:0.24},
+ {id:'dining',ar:'طاولة الطعام',en:'Dining table',x:0.65,y:0.202},
  {id:'pool',ar:'المسبح',en:'Pool',x:0.28,y:0.6},
  {id:'outdoor',ar:'المنطقة الخارجية',en:'Outdoor area',x:0.696,y:0.669}
  ];
