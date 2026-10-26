@@ -3210,6 +3210,7 @@ ${c.id===6?'<a class="fd-dome-tour-link" href="/bohemian-tour/?cabin=6" onclick=
 ${c.id===7?'<a class="fd-dome-tour-link" href="/french-tour/?cabin=7" onclick="event.stopPropagation()">جولة داخل الفرنسي <span aria-hidden="true">←</span></a>':''}
 ${c.id===3?'<a class="fd-dome-tour-link" href="/classic-tour/?cabin=3" onclick="event.stopPropagation()">جولة داخل الكلاسيكي <span aria-hidden="true">←</span></a>':''}
 ${c.id===10?'<a class="fd-dome-tour-link" href="/panoramic-tour/?cabin=10" onclick="event.stopPropagation()">جولة داخل البانورامي <span aria-hidden="true">←</span></a>':''}
+${c.id===9?'<a class="fd-dome-tour-link" href="/royal-tour/?cabin=9" onclick="event.stopPropagation()">جولة داخل كوخ رويال <span aria-hidden="true">←</span></a>':''}
       </div>`;
     g.appendChild(d);
   });
@@ -3294,6 +3295,7 @@ function renderCabinDetail(c){
       ${c.id===7?'<a class="fd-pyramid-detail-tour" href="/french-tour/?from=details&cabin=7'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">جولة في الكوخ الفرنسي <span aria-hidden="true">←</span></a>':''}
       ${c.id===3?'<a class="fd-pyramid-detail-tour" href="/classic-tour/?from=details&cabin=3'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">جولة في الكوخ الكلاسيكي <span aria-hidden="true">←</span></a>':''}
       ${c.id===10?'<a class="fd-pyramid-detail-tour" href="/panoramic-tour/?from=details&cabin=10'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">جولة في البيت البانورامي <span aria-hidden="true">←</span></a>':''}
+${c.id===9?'<a class="fd-pyramid-detail-tour" href="/royal-tour/?from=details&cabin=9'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">جولة في كوخ رويال <span aria-hidden="true">←</span></a>':''}
       <div class="fd-cabin-times" aria-label="أوقات الدخول والخروج">
         <div><span>الدخول</span><strong>4:00 مساءً</strong></div>
         <div><span>الخروج</span><strong>12:00 ظهرًا</strong></div>

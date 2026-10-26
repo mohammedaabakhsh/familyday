@@ -1,0 +1,92 @@
+/* Shared tour layout and independent dining labels. */
+#ov .dt-card strong .dt-soundbar-line{display:block;font:inherit;color:inherit;white-space:nowrap}
+@media(min-width:900px){
+ .tour-page{max-width:1480px}
+ #ov .dt-tour{grid-template-columns:minmax(240px,24%) minmax(0,1fr);column-gap:24px;min-height:min(610px,calc(100svh - 90px))}
+ #ov .dt-stage{--rail:120px;padding:66px 0 0;min-width:0}
+ #ov .dt-image{width:calc(100% - 2 * (var(--rail) + 14px));height:auto;margin:0 auto}
+ #ov .dt-label{width:var(--rail);min-height:42px;line-height:1.35;font-size:13px;padding:7px 8px;top:auto;bottom:auto;left:auto;right:auto;transform:none}
+ #ov .dt-label--kitchen,#ov .dt-label--bathroom{top:0}
+ #ov #royal-tour .dt-label--bathroom{left:12%;top:0}
+ #ov #royal-tour .dt-label--kitchen{left:50%;top:0;transform:translateX(-50%)}
+ #ov #royal-tour .dt-label--twin{right:9%;top:0;width:160px}
+ #ov #royal-tour .dt-label--bedroom{left:0;top:34%}
+ #ov #royal-tour .dt-label--living{right:0;top:43%}
+ #ov #royal-tour .dt-label--pool{left:0;top:72%}
+ #ov #royal-tour .dt-label--outdoor{right:0;top:77%}
+}
+@media(min-width:900px) and (max-width:1099px){
+ #ov .dt-tour{grid-template-columns:230px minmax(0,1fr);column-gap:16px}
+ #ov .dt-stage{--rail:104px}
+ #ov .dt-label{font-size:12px}
+ #ov #royal-tour .dt-label--twin{width:130px;right:0}
+}
+
+@media(max-width:599px){
+ #ov #royal-tour .dt-labels .dt-label:last-child{grid-column:auto}
+}
+@media(min-width:600px) and (max-width:899px){
+ #ov #royal-tour .dt-label--dining{left:0;right:auto;top:47%;bottom:auto;width:21%}
+}
+@media(min-width:900px){
+ #ov #royal-tour .dt-label--dining{left:0;top:53%}
+}
+
+/* Resort presentation: one heading row and the same page background/back control. */
+body{background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);background-attachment:fixed;color:#f0f5f7}
+#ov .dt-tour{margin-top:0;padding-top:20px}
+#ov .dt-heading{display:flex;align-items:center;gap:14px;direction:rtl;min-width:0;margin:0 8px 14px}
+#ov .dt-tour[lang=en] .dt-heading{direction:ltr}
+#ov .dt-heading .dt-title{font:700 24px/1.4 Tajawal,sans-serif;color:#f0f5f7;text-align:start;margin:0;padding:0;border:0;min-width:0}
+.tour-back{box-sizing:border-box;display:flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;min-height:44px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;text-decoration:none}
+.tour-back svg{flex:none;width:9px;height:15px}
+.tour-back[dir=ltr] svg{transform:rotate(180deg)}
+.tour-back:focus-visible{outline:2px solid #7ecfea;outline-offset:3px}
+#ov .dt-detail-heading h4{font-size:18px;font-weight:700;line-height:1.4}
+#ov .dt-detail-heading p,#ov .dt-note{font-size:14px;line-height:1.6}
+#ov .dt-card strong{font-size:14px;line-height:1.5}
+#ov .dt-card span{font-size:12px}
+#ov .dt-occupancy{font-size:13px;line-height:1.5}
+@media(hover:hover) and (pointer:fine){.tour-back:hover{background:#133343}}
+@media(min-width:900px){
+ #ov .dt-tour{min-height:min(610px,calc(100svh - 20px));padding-top:20px}
+ #ov .dt-heading{grid-area:heading;align-self:start;margin:0;padding:0 0 14px;padding-inline-end:180px;border-bottom:1px solid #234353;min-height:58px}
+ #ov .dt-languages{align-self:start;justify-self:start;margin-top:4px}
+ #ov .dt-tour[lang=en] .dt-languages{justify-self:end}
+ #ov .dt-detail-heading p,#ov .dt-note{font-size:15px}
+}
+@media(max-width:599px){
+ #ov .dt-heading .dt-title{font-size:22px}
+ #ov .dt-heading{gap:12px}
+ #ov .dt-card strong{font-size:13px}
+ #ov .dt-card strong[dir=ltr]{font-size:14px}
+}
+
+
+
+/* Royal approved cutaway. CSS clips the image backdrop only. */
+#ov #royal-tour .dt-image,.design-image{clip-path:polygon(6.4% 64.2%,6.8% 54.3%,7.9% 52.8%,27.6% 25.2%,42.1% 2%,74.2% 18.5%,74.3% 17.7%,75.3% 18.1%,77.6% 19.5%,78.4% 18.8%,79.5% 19.5%,79.5% 20.5%,82.8% 22.6%,83.3% 21.8%,84.4% 22.3%,84.5% 23.3%,94.3% 29.2%,94.8% 28.4%,96.5% 29.6%,96.8% 39%,85.8% 65%,86.4% 65.6%,86.3% 68.8%,86.9% 69.6%,73.3% 100%,70.5% 100%,49.2% 95.7%,49% 94.7%,22.4% 78.2%,22% 78.8%,12.7% 73.6%,12.7% 69.4%,13.9% 67.8%,8.2% 65.5%,8.2% 65.9%);filter:none}
+.draft-note{font:14px/1.8 Tajawal,sans-serif;text-align:center;color:#a7bbc8;padding:0 12px 12px}
+.draft-note a{color:#8fdaed}
+@media(min-width:600px){
+ #ov #royal-tour .dt-stage{padding:70px 0 0}
+ #ov #royal-tour .dt-label{left:auto;right:auto;bottom:auto;transform:none}
+ #ov #royal-tour .dt-label--bedroom{left:0;top:0;width:160px}
+ #ov #royal-tour .dt-label--bathroom{left:44%;top:0}
+ #ov #royal-tour .dt-label--twin{right:0;top:0;width:160px}
+ #ov #royal-tour .dt-label--kitchen{left:0;top:31%}
+ #ov #royal-tour .dt-label--dining{left:0;top:49%}
+ #ov #royal-tour .dt-label--outdoor{left:0;top:79%}
+ #ov #royal-tour .dt-label--living{right:0;top:38%}
+ #ov #royal-tour .dt-label--pool{right:0;top:67%}
+}
+@media(min-width:600px) and (max-width:899px){
+ #ov #royal-tour .dt-image{width:68%}
+ #ov #royal-tour .dt-label{width:21%;font-size:12px}
+ #ov #royal-tour .dt-label--bedroom,#ov #royal-tour .dt-label--twin{width:28%}
+}
+@media(max-width:599px){
+ #ov #royal-tour .dt-image{width:100%;margin-top:12px}
+ #ov #royal-tour .dt-labels .dt-label:last-child{grid-column:auto}
+}
+
