@@ -96,7 +96,10 @@ var FD_FRENCH_TOUR = (function () {
 
   function tr(ar,en) { return language === 'ar' ? ar : en; }
 
-  function feature(text) { return language === 'ar' ? text : (translations[text] || text); }
+  function feature(text) {
+    if (text === 'جلسة خارجية' || text === 'الجلسة الخارجية') return tr('جلسات خارجية','Outdoor seating areas');
+    return language === 'ar' ? text : (translations[text] || text);
+  }
 
   function kitchenIcon(text) {
 
@@ -168,7 +171,7 @@ var FD_FRENCH_TOUR = (function () {
 
     } else if (selected === 'living') {
 
-      cards=[{value:tr('المنطقة الداخلية','Indoor area'),icon:'sofa'},{value:tr('تلفزيون ذكي','Smart TV'),icon:'tv'},{value:tr('سماعات داخلية (ساوند بار)','Soundbar'),icon:'speaker'},{value:tr('واي فاي مجاني','Free Wi-Fi'),icon:'wifi'}];
+      cards=[{value:tr('صالة داخلية','Indoor lounge'),icon:'sofa'},{value:tr('تلفزيون ذكي','Smart TV'),icon:'tv'},{value:tr('سماعات داخلية (ساوند بار)','Soundbar'),icon:'speaker'},{value:tr('واي فاي مجاني','Free Wi-Fi'),icon:'wifi'}];
 
     } else if (selected === 'bedroom') {
 
