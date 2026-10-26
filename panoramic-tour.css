@@ -1,0 +1,87 @@
+/* Shared tour layout and independent dining labels. */
+#ov .dt-card strong .dt-soundbar-line{display:block;font:inherit;color:inherit;white-space:nowrap}
+@media(min-width:900px){
+ .tour-page{max-width:1480px}
+ #ov .dt-tour{grid-template-columns:minmax(240px,24%) minmax(0,1fr);column-gap:24px;min-height:min(610px,calc(100svh - 90px))}
+ #ov .dt-stage{--rail:120px;padding:66px 0 0;min-width:0}
+ #ov .dt-image{width:calc(100% - 2 * (var(--rail) + 14px));height:auto;margin:0 auto}
+ #ov .dt-label{width:var(--rail);min-height:42px;line-height:1.35;font-size:13px;padding:7px 8px;top:auto;bottom:auto;left:auto;right:auto;transform:none}
+ #ov .dt-label--kitchen,#ov .dt-label--bathroom{top:0}
+ #ov #panoramic-tour .dt-label--bathroom{left:12%;top:0}
+ #ov #panoramic-tour .dt-label--kitchen{left:50%;top:0;transform:translateX(-50%)}
+ #ov #panoramic-tour .dt-label--twin{right:9%;top:0;width:160px}
+ #ov #panoramic-tour .dt-label--bedroom{left:0;top:34%}
+ #ov #panoramic-tour .dt-label--living{right:0;top:43%}
+ #ov #panoramic-tour .dt-label--pool{left:0;top:72%}
+ #ov #panoramic-tour .dt-label--outdoor{right:0;top:77%}
+}
+@media(min-width:900px) and (max-width:1099px){
+ #ov .dt-tour{grid-template-columns:230px minmax(0,1fr);column-gap:16px}
+ #ov .dt-stage{--rail:104px}
+ #ov .dt-label{font-size:12px}
+ #ov #panoramic-tour .dt-label--twin{width:130px;right:0}
+}
+
+@media(max-width:599px){
+ #ov #panoramic-tour .dt-labels .dt-label:last-child{grid-column:auto}
+}
+@media(min-width:600px) and (max-width:899px){
+ #ov #panoramic-tour .dt-label--dining{left:0;right:auto;top:47%;bottom:auto;width:21%}
+}
+@media(min-width:900px){
+ #ov #panoramic-tour .dt-label--dining{left:0;top:53%}
+}
+
+/* Resort presentation: one heading row and the same page background/back control. */
+body{background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);background-attachment:fixed;color:#f0f5f7}
+#ov .dt-tour{margin-top:0;padding-top:20px}
+#ov .dt-heading{display:flex;align-items:center;gap:14px;direction:rtl;min-width:0;margin:0 8px 14px}
+#ov .dt-tour[lang=en] .dt-heading{direction:ltr}
+#ov .dt-heading .dt-title{font:700 24px/1.4 Tajawal,sans-serif;color:#f0f5f7;text-align:start;margin:0;padding:0;border:0;min-width:0}
+.tour-back{box-sizing:border-box;display:flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;min-height:44px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;text-decoration:none}
+.tour-back svg{flex:none;width:9px;height:15px}
+.tour-back[dir=ltr] svg{transform:rotate(180deg)}
+.tour-back:focus-visible{outline:2px solid #7ecfea;outline-offset:3px}
+#ov .dt-detail-heading h4{font-size:18px;font-weight:700;line-height:1.4}
+#ov .dt-detail-heading p,#ov .dt-note{font-size:14px;line-height:1.6}
+#ov .dt-card strong{font-size:14px;line-height:1.5}
+#ov .dt-card span{font-size:12px}
+#ov .dt-occupancy{font-size:13px;line-height:1.5}
+@media(hover:hover) and (pointer:fine){.tour-back:hover{background:#133343}}
+@media(min-width:900px){
+ #ov .dt-tour{min-height:min(610px,calc(100svh - 20px));padding-top:20px}
+ #ov .dt-heading{grid-area:heading;align-self:start;margin:0;padding:0 0 14px;padding-inline-end:180px;border-bottom:1px solid #234353;min-height:58px}
+ #ov .dt-languages{align-self:start;justify-self:start;margin-top:4px}
+ #ov .dt-tour[lang=en] .dt-languages{justify-self:end}
+ #ov .dt-detail-heading p,#ov .dt-note{font-size:15px}
+}
+@media(max-width:599px){
+ #ov .dt-heading .dt-title{font-size:22px}
+ #ov .dt-heading{gap:12px}
+ #ov .dt-card strong{font-size:13px}
+ #ov .dt-card strong[dir=ltr]{font-size:14px}
+}
+
+
+/* Panoramic house: source-photo layout, nine independently selectable facilities. */
+#ov #panoramic-tour .dt-image{clip-path:polygon(26.237% 4.785%,47.786% 4.785%,47.786% 8.496%,53.190% 8.496%,53.190% 8.203%,72.982% 8.203%,81.510% 31.348%,81.510% 32.031%,95.182% 66.895%,94.531% 67.285%,96.810% 71.191%,96.810% 87.109%,97.135% 88.184%,97.135% 91.211%,58.008% 92.773%,58.008% 94.629%,40.690% 94.629%,40.690% 92.676%,2.018% 91.211%,2.018% 88.477%,2.279% 87.793%,2.214% 77.930%,19.336% 26.563%,19.336% 26.074%,21.224% 21.387%,22.005% 21.191%);filter:none}
+@media(min-width:600px){
+ #ov #panoramic-tour .dt-stage{padding:70px 0 0}
+ #ov #panoramic-tour .dt-label{left:auto;right:auto;bottom:auto;transform:none}
+ #ov #panoramic-tour .dt-label--twin{left:4%;right:auto;top:0;width:160px}
+ #ov #panoramic-tour .dt-label--bathroom{left:46%;right:auto;top:0}
+ #ov #panoramic-tour .dt-label--kitchen{right:4%;left:auto;top:0}
+ #ov #panoramic-tour .dt-label--bedroom{left:0;top:35%}
+ #ov #panoramic-tour .dt-label--tub{left:0;top:53%}
+ #ov #panoramic-tour .dt-label--pool{left:0;top:76%}
+ #ov #panoramic-tour .dt-label--dining{right:0;top:32%}
+ #ov #panoramic-tour .dt-label--living{right:0;top:50%}
+ #ov #panoramic-tour .dt-label--outdoor{right:0;top:78%}
+}
+@media(min-width:600px) and (max-width:899px){
+ #ov #panoramic-tour .dt-image{width:68%}
+ #ov #panoramic-tour .dt-label{width:21%;font-size:12px}
+ #ov #panoramic-tour .dt-label--twin{width:28%;left:0}
+}
+@media(min-width:900px) and (max-width:1099px){#ov #panoramic-tour .dt-label--twin{width:150px;left:0}}
+@media(max-width:599px){#ov #panoramic-tour .dt-labels .dt-label:last-child{grid-column:auto}}

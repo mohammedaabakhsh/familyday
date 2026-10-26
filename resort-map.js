@@ -441,12 +441,13 @@
     var isBohemian = cabin.id === 6;
     var isFrench = cabin.id === 7;
     var isClassic = cabin.id === 3;
-    var hasTour = isDome || cabin.id === 2 || isGreek || isPalm || isBohemian || isFrench || isClassic;
+    var isPanoramic = cabin.id === 10;
+    var hasTour = isDome || cabin.id === 2 || isGreek || isPalm || isBohemian || isFrench || isClassic || isPanoramic;
     description.textContent = translateText(cabin.type || cabin.suitable || '');
     var tourButton = card.querySelector('.fd-map-tour-button');
     tourButton.hidden = !hasTour;
-    tourButton.href = (isClassic ? '/classic-tour/' : isFrench ? '/french-tour/' : isBohemian ? '/bohemian-tour/' : isPalm ? '/palm-tour/' : isGreek ? '/greek-tour/' : cabin.id === 2 ? '/pyramid-tour/' : '/dome-tour/') + '?from=map&cabin=' + cabin.id;
-    tourButton.textContent = isClassic ? (mapLanguage === 'en' ? 'Explore the Classic Cottage' : 'جولة في الكوخ الكلاسيكي') : isFrench ? (mapLanguage === 'en' ? 'Explore the French Cottage' : 'جولة في الكوخ الفرنسي') : isBohemian ? (mapLanguage === 'en' ? 'Explore the Bohemian Cottage' : 'جولة في الكوخ البوهيمي') : isPalm ? (mapLanguage === 'en' ? 'Explore Palm Beach Cottage' : 'جولة في كوخ بالم بيتش') : isGreek ? (mapLanguage === 'en' ? 'Explore the Greek House' : 'جولة في البيت اليوناني') : cabin.id === 2 ? (mapLanguage === 'en' ? 'Explore the Pyramid Cottage' : 'جولة في الكوخ الهرمي') : copy.tour;
+    tourButton.href = (isPanoramic ? '/panoramic-tour/' : isClassic ? '/classic-tour/' : isFrench ? '/french-tour/' : isBohemian ? '/bohemian-tour/' : isPalm ? '/palm-tour/' : isGreek ? '/greek-tour/' : cabin.id === 2 ? '/pyramid-tour/' : '/dome-tour/') + '?from=map&cabin=' + cabin.id;
+    tourButton.textContent = isPanoramic ? (mapLanguage === 'en' ? 'Explore the Panoramic House' : 'جولة في البيت البانورامي') : isClassic ? (mapLanguage === 'en' ? 'Explore the Classic Cottage' : 'جولة في الكوخ الكلاسيكي') : isFrench ? (mapLanguage === 'en' ? 'Explore the French Cottage' : 'جولة في الكوخ الفرنسي') : isBohemian ? (mapLanguage === 'en' ? 'Explore the Bohemian Cottage' : 'جولة في الكوخ البوهيمي') : isPalm ? (mapLanguage === 'en' ? 'Explore Palm Beach Cottage' : 'جولة في كوخ بالم بيتش') : isGreek ? (mapLanguage === 'en' ? 'Explore the Greek House' : 'جولة في البيت اليوناني') : cabin.id === 2 ? (mapLanguage === 'en' ? 'Explore the Pyramid Cottage' : 'جولة في الكوخ الهرمي') : copy.tour;
     description.hidden = !description.textContent;
     card.querySelector('.fd-map-guest-label').textContent = shared ? copy.location : copy.capacity;
     card.querySelector('.fd-map-room-label').textContent = shared ? copy.access : copy.bedrooms;
