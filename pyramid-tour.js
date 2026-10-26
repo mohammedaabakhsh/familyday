@@ -83,7 +83,7 @@ var FD_PYRAMID_TOUR = (function () {
     } else if (selected === 'dining') {
       cards.push({value:tr('طاولة الطعام','Dining table'),icon:'dining'});
     } else if (selected === 'living') {
-      cards=[{value:tr('المنطقة الداخلية','Indoor area'),icon:'sofa'},{value:tr('تلفزيون ذكي','Smart TV'),icon:'tv'},{value:tr('سماعات داخلية (ساوند بار)','Soundbar'),icon:'speaker'},{value:tr('واي فاي مجاني','Free Wi-Fi'),icon:'wifi'}];
+      cards=[{value:tr('صالة داخلية','Indoor lounge'),icon:'sofa'},{value:tr('تلفزيون ذكي','Smart TV'),icon:'tv'},{value:tr('سماعات داخلية (ساوند بار)','Soundbar'),icon:'speaker'},{value:tr('واي فاي مجاني','Free Wi-Fi'),icon:'wifi'}];
     } else if (selected === 'bedroom') {
       cards=[{label:tr('السرير','Bed'),value:tr('سرير مزدوج','Double bed'),icon:'bed'}];
     } else if (selected === 'bathroom') {
