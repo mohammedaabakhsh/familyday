@@ -3,14 +3,14 @@ var FD_PYRAMID_TOUR = (function () {
   'use strict';
   var root, observer, frame, cabin, selected = 'pool', language = 'ar';
   var parts = [
-    {id:'bedroom', ar:'غرفة نوم بسرير مزدوج', en:'Bedroom with a double bed', x:.48, y:.335},
-    {id:'bathroom', ar:'حمام', en:'Bathroom', x:.475, y:.255},
-    {id:'living', ar:'المنطقة الداخلية', en:'Indoor area', x:.29, y:.335},
-    {id:'kitchen', ar:'ركن المطبخ', en:'Kitchenette', x:.35, y:.26},
-    {id:'dining', ar:'طاولة الطعام', en:'Dining table', x:.35, y:.29},
-    {id:'tub', ar:'البانيو الخارجي', en:'Outdoor bathtub', x:.585, y:.36},
-    {id:'pool', ar:'المسبح', en:'Pool', x:.76, y:.68},
-    {id:'outdoor', ar:'المنطقة الخارجية', en:'Outdoor area', x:.70, y:.51}
+    {id:'bedroom', ar:'غرفة نوم بسرير مزدوج', en:'Bedroom with a double bed', x:.553, y:.337},
+    {id:'bathroom', ar:'حمام', en:'Bathroom', x:.544, y:.230},
+    {id:'living', ar:'المنطقة الداخلية', en:'Indoor area', x:.334, y:.356},
+    {id:'kitchen', ar:'ركن المطبخ', en:'Kitchenette', x:.411, y:.235},
+    {id:'dining', ar:'طاولة الطعام', en:'Dining table', x:.408, y:.290},
+    {id:'tub', ar:'البانيو الخارجي', en:'Outdoor bathtub', x:.664, y:.337},
+    {id:'pool', ar:'المسبح', en:'Pool', x:.814, y:.684},
+    {id:'outdoor', ar:'المنطقة الخارجية', en:'Outdoor area', x:.750, y:.523}
   ];
   var translations = {
     'موقد كهربائي':'Electric hob', 'ميكروويف':'Microwave', 'ثلاجة':'Refrigerator',
@@ -175,7 +175,7 @@ var FD_PYRAMID_TOUR = (function () {
     if(root && cabin && cabin.id===next.id) return;
     remove(); cabin=next; selected='pool'; language='ar';
     root=document.createElement('section');root.id='pyramid-tour';root.className='dt-tour';root.setAttribute('aria-labelledby','dt-title');
-    root.innerHTML='<header class="dt-heading"><h1 id="dt-title" class="dt-title"></h1></header><div class="dt-stage"><div class="dt-labels">'+parts.map(function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';}).join('')+'</div><img class="dt-image" src="/imgs/pyramid-tour-17-v4.webp" width="1536" height="1024" loading="lazy" decoding="async" alt=""><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div class="dt-languages" role="group"><button type="button" data-language="ar" lang="ar" aria-label="العربية">AR</button><button type="button" data-language="en" lang="en" aria-label="English">EN</button></div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
+    root.innerHTML='<header class="dt-heading"><h1 id="dt-title" class="dt-title"></h1></header><div class="dt-stage"><div class="dt-labels">'+parts.map(function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';}).join('')+'</div><img class="dt-image" src="/imgs/pyramid-tour-17-approved-v5.png" width="1536" height="1024" loading="lazy" decoding="async" alt=""><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div class="dt-languages" role="group"><button type="button" data-language="ar" lang="ar" aria-label="العربية">AR</button><button type="button" data-language="en" lang="en" aria-label="English">EN</button></div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
     document.getElementById('pyramid-tour-host').appendChild(root);
     var back=document.querySelector('.tour-back');
     if(back){
