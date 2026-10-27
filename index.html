@@ -3226,7 +3226,8 @@ ${c.id===8?'<a class="fd-dome-tour-link" href="/rustic-tour/?cabin=8" onclick="e
       var imgs12=gl12.length?'<img src="'+gl12[0]+'" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;">':'';
       d12.innerHTML='<div class="card-img-wrap" data-cid="11" data-cidx="0" style="position:relative;overflow:hidden;">'+imgs12+'</div>'
         +'<div class="card-body fd-cabin-card-v2-body">'+renderResortCardSummary(c12)
-        +'<button class="card-btn">عرض التفاصيل والصور</button></div>';
+        +'<button class="card-btn">عرض التفاصيل والصور</button>'
+        +'<a class="fd-dome-tour-link" href="https://my.matterport.com/show/?m=S7Z2CF9tdwm" onclick="event.preventDefault();event.stopPropagation();open3D(this.href)">جولة ثلاثية الأبعاد للحديقة <span aria-hidden="true">←</span></a></div>';
       g.appendChild(d12);
     }
   }
