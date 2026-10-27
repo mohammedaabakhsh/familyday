@@ -3211,6 +3211,7 @@ ${c.id===7?'<a class="fd-dome-tour-link" href="/french-tour/?cabin=7" onclick="e
 ${c.id===3?'<a class="fd-dome-tour-link" href="/classic-tour/?cabin=3" onclick="event.stopPropagation()">جولة داخل الكلاسيكي <span aria-hidden="true">←</span></a>':''}
 ${c.id===10?'<a class="fd-dome-tour-link" href="/panoramic-tour/?cabin=10" onclick="event.stopPropagation()">جولة داخل البانورامي <span aria-hidden="true">←</span></a>':''}
 ${c.id===9?'<a class="fd-dome-tour-link" href="/royal-tour/?cabin=9" onclick="event.stopPropagation()">جولة داخل كوخ رويال <span aria-hidden="true">←</span></a>':''}
+${c.id===8?'<a class="fd-dome-tour-link" href="/rustic-tour/?cabin=8" onclick="event.stopPropagation()">جولة داخل الكوخ الريفي <span aria-hidden="true">←</span></a>':''}
       </div>`;
     g.appendChild(d);
   });
@@ -3296,6 +3297,7 @@ function renderCabinDetail(c){
       ${c.id===3?'<a class="fd-pyramid-detail-tour" href="/classic-tour/?from=details&cabin=3'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">جولة في الكوخ الكلاسيكي <span aria-hidden="true">←</span></a>':''}
       ${c.id===10?'<a class="fd-pyramid-detail-tour" href="/panoramic-tour/?from=details&cabin=10'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">جولة في البيت البانورامي <span aria-hidden="true">←</span></a>':''}
 ${c.id===9?'<a class="fd-pyramid-detail-tour" href="/royal-tour/?from=details&cabin=9'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">جولة في كوخ رويال <span aria-hidden="true">←</span></a>':''}
+${c.id===8?'<a class="fd-pyramid-detail-tour" href="/rustic-tour/?from=details&cabin=8'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">جولة في الكوخ الريفي <span aria-hidden="true">←</span></a>':''}
       <div class="fd-cabin-times" aria-label="أوقات الدخول والخروج">
         <div><span>الدخول</span><strong>4:00 مساءً</strong></div>
         <div><span>الخروج</span><strong>12:00 ظهرًا</strong></div>
@@ -5358,7 +5360,7 @@ function openMDirect(c){
   window.addEventListener('pageshow',function(event){if(event.persisted) restore();});
 })();
 </script>
-<script src="resort-map.js?v=52" defer></script>
+<script src="resort-map.js?v=rustic-approved-v15" defer></script>
 <link rel="stylesheet" href="chalet-map.css?v=22">
 <script src="chalet-map.js?v=28" defer></script>
 
