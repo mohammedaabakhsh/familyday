@@ -1192,7 +1192,7 @@ header{
 
 <script src="campaign-data.js?v=7"></script>
 <script src="resort-campaign.js?v=5" defer></script>
-<script src="share-pages.js?v=20261028-v1"></script>
+<script src="share-pages.js?v=hospitality-20261028-v2"></script>
 <script src="resort-features.js?v=menu-20261028-v1"></script>
 <script src="stay-design.js?v=17"></script>
 <script src="site-enhancements.js?v=1"></script>
@@ -1787,7 +1787,7 @@ function tarfihiOrder(){
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">2. ما الخدمات الإضافية وكيف أطلبها؟</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;"><p>تتوفر خدمات إضافية مثل الضيافة والتنسيقات، طاولات الطعام، الجلسات الخارجية، الألعاب المائية والترفيهية، وجلسة السينما، حسب التوفر.</p><p>يمكن طلب الخدمات المتاحة أثناء الإقامة عبر مسح رمز QR الموجود داخل الكوخ.</p><p>أما التنسيقات، فيفضّل إبلاغنا مسبقًا حتى نجهزها لك.</p><a class="fd-text-link" href="#services" onclick="event.preventDefault();showServices()">استعرض الخدمات</a></div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;"><p>تتوفر خدمات إضافية مثل الضيافة والتنسيقات والباقات، طاولات الطعام، الجلسات الخارجية، الألعاب المائية والترفيهية، وجلسة السينما، حسب التوفر.</p><p>يمكن طلب الخدمات المتاحة أثناء الإقامة عبر مسح رمز QR الموجود داخل الكوخ.</p><p>أما التنسيقات، فيفضّل إبلاغنا مسبقًا حتى نجهزها لك.</p><a class="fd-text-link" href="#services" onclick="event.preventDefault();showServices()">استعرض الخدمات</a></div>
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">3. هل يمكن ترتيب الكوخ لمناسبة خاصة؟</div>
@@ -1858,8 +1858,8 @@ function tarfihiOrder(){
     <section aria-labelledby="svcs-group-2">
       <h2 id="svcs-group-2" class="svcs-section-title">تجهيز مناسبتك</h2>
       <div class="svcs-grid">
-        <button type="button" class="svcs-card" onclick="showTansidat()" aria-label="الضيافة والتنسيقات">
-          <span class="svcs-name">الضيافة والتنسيقات</span>
+        <button type="button" class="svcs-card" onclick="showTansidat()" aria-label="الضيافة والتنسيقات والباقات">
+          <span class="svcs-name">الضيافة والتنسيقات والباقات</span>
           <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
         </button>
         <button type="button" class="svcs-card" onclick="showTawilat()" aria-label="طاولات الطعام">
@@ -1897,7 +1897,7 @@ function tarfihiOrder(){
 #hospitality-detail .hd-header{display:flex;align-items:center;gap:14px;padding:20px 20px 16px;text-align:right}
 #hospitality-detail .hd-back{display:inline-flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;cursor:pointer}
 #hospitality-detail .hd-title{margin:0;color:#f0f5f7;font-family:Tajawal,sans-serif;font-size:24px;font-weight:800;line-height:1.4}
-#hospitality-detail .hd-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 16px 14px;direction:rtl}
+#hospitality-detail .hd-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:0 16px 14px;direction:rtl}
 #hospitality-detail .hd-tab{border:1.5px solid rgba(25,167,183,.20);border-radius:14px;background:rgba(255,255,255,.055);color:rgba(255,255,255,.62);font-family:Tajawal,sans-serif;font-size:14px;font-weight:700;padding:12px 10px;cursor:pointer;transition:.2s ease}
 #hospitality-detail .hd-tab.active{color:#fff;background:rgba(25,167,183,.18);border-color:rgba(25,167,183,.65);box-shadow:0 0 18px rgba(25,167,183,.13)}
 #hospitality-detail .hd-content{padding:0 16px 36px}
@@ -1914,12 +1914,12 @@ function tarfihiOrder(){
 #hospitality-detail .hd-items{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:13px;padding-top:13px;border-top:1px solid rgba(255,255,255,.08)}
 #hospitality-detail .hd-item{display:flex;align-items:center;gap:7px;min-height:39px;padding:9px 10px;border-radius:11px;background:rgba(255,255,255,.045);font-family:Tajawal,sans-serif;font-size:12px;color:rgba(255,255,255,.76);line-height:1.45}
 #hospitality-detail .hd-check{width:18px;height:18px;border-radius:6px;display:grid;place-items:center;flex:0 0 auto;background:rgba(25,167,183,.13);color:#7ecfea;font-size:11px;font-weight:700}
-#hd-coordination-panel .hd-package-name{margin:0}
-#hd-coordination-panel .hd-package-description{margin:7px 0 0;font-family:Tajawal,sans-serif;font-size:13px;color:rgba(255,255,255,.66);line-height:1.7}
-#hd-coordination-panel .hd-package-group+.hd-package-group{margin-top:20px;padding-top:17px;border-top:1px solid rgba(255,255,255,.08)}
-#hd-coordination-panel .hd-group-title{margin:16px 0 0;font-family:Tajawal,sans-serif;font-size:14px;font-weight:700;color:#7ecfea;line-height:1.5}
-#hd-coordination-panel .hd-package-group+.hd-package-group .hd-group-title{margin-top:0}
-#hd-coordination-panel .hd-group-title+.hd-items{margin-top:10px;padding-top:0;border-top:0}
+:is(#hd-coordination-panel,#hd-packages-panel) .hd-package-name{margin:0}
+:is(#hd-coordination-panel,#hd-packages-panel) .hd-package-description{margin:7px 0 0;font-family:Tajawal,sans-serif;font-size:13px;color:rgba(255,255,255,.66);line-height:1.7}
+:is(#hd-coordination-panel,#hd-packages-panel) .hd-package-group+.hd-package-group{margin-top:20px;padding-top:17px;border-top:1px solid rgba(255,255,255,.08)}
+:is(#hd-coordination-panel,#hd-packages-panel) .hd-group-title{margin:16px 0 0;font-family:Tajawal,sans-serif;font-size:14px;font-weight:700;color:#7ecfea;line-height:1.5}
+:is(#hd-coordination-panel,#hd-packages-panel) .hd-package-group+.hd-package-group .hd-group-title{margin-top:0}
+:is(#hd-coordination-panel,#hd-packages-panel) .hd-group-title+.hd-items{margin-top:10px;padding-top:0;border-top:0}
 @media(max-width:360px){#hospitality-detail .hd-items{grid-template-columns:1fr}}
 </style>
 <div id="hospitality-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
@@ -1928,21 +1928,22 @@ function tarfihiOrder(){
     <button type="button" class="hd-back" onclick="closeHospitalityDetail()" aria-label="العودة إلى الخدمات">
       <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-    <h1 class="hd-title">الضيافة والتنسيقات</h1>
+    <h1 class="hd-title">الضيافة والتنسيقات والباقات</h1>
   </div>
 
-  <div class="hd-tabs" role="tablist" aria-label="الضيافة والتنسيقات">
-    <button id="hd-tab-hospitality" class="hd-tab active" type="button" role="tab" aria-selected="true" onclick="showHospitalityTab('hospitality')">الضيافة</button>
-    <button id="hd-tab-coordination" class="hd-tab" type="button" role="tab" aria-selected="false" onclick="showHospitalityTab('coordination')">التنسيقات</button>
+  <div class="hd-tabs" role="tablist" aria-label="الضيافة والتنسيقات والباقات">
+    <button id="hd-tab-hospitality" aria-controls="hd-hospitality-panel" class="hd-tab active" type="button" role="tab" aria-selected="true" onclick="showHospitalityTab('hospitality')">الضيافة</button>
+    <button id="hd-tab-coordination" aria-controls="hd-coordination-panel" class="hd-tab" type="button" role="tab" aria-selected="false" onclick="showHospitalityTab('coordination')">التنسيقات</button>
+    <button id="hd-tab-packages" aria-controls="hd-packages-panel" class="hd-tab" type="button" role="tab" aria-selected="false" onclick="showHospitalityTab('packages')">الباقات</button>
   </div>
 
   <div class="hd-content">
-    <div id="hd-hospitality-panel" role="tabpanel">
+    <div id="hd-hospitality-panel" role="tabpanel" aria-labelledby="hd-tab-hospitality">
       <p class="hd-intro">اختر الضيافة المناسبة لإقامتك</p>
       <div class="hd-packages">
         <div class="hd-package featured">
           <div class="hd-package-header">
-            <div class="hd-package-name">باقة الضيافة السعودية</div>
+            <div class="hd-package-name">الضيافة السعودية</div>
           </div>
           <div class="hd-items">
             <div class="hd-item"><span class="hd-check">✓</span><span>تبخير الكوخ بالعود</span></div>
@@ -1952,8 +1953,19 @@ function tarfihiOrder(){
           </div>
         </div>
         <div class="hd-package">
+          <div class="hd-package-header"><div class="hd-package-name">الضيافة العائلية</div></div>
+          <div class="hd-items">
+            <div class="hd-item"><span class="hd-check">✓</span><span>دلة قهوة سعودية مع التمر</span></div>
+            <div class="hd-item"><span class="hd-check">✓</span><span>دلة شاي مع البسكويت</span></div>
+            <div class="hd-item"><span class="hd-check">✓</span><span>4 أكواب من الموهيتو</span></div>
+            <div class="hd-item"><span class="hd-check">✓</span><span>4 أكواب من الفشار</span></div>
+            <div class="hd-item hd-item-wide"><span class="hd-check">✓</span><span>بوكس ألعاب جماعية للاستخدام أثناء الإقامة</span></div>
+            <div class="hd-item hd-item-wide"><span class="hd-check">✓</span><span>3 ألعاب مائية من اختيارك للاستخدام أثناء الإقامة</span></div>
+          </div>
+        </div>
+        <div class="hd-package">
           <div class="hd-package-header">
-            <div class="hd-package-name">باقة الاسترخاء</div>
+            <div class="hd-package-name">ضيافة الاسترخاء</div>
           </div>
           <div class="hd-items">
             <div class="hd-item hd-item-wide"><span class="hd-check">✓</span><span>روب استحمام لشخصين (للاستخدام فقط)</span></div>
@@ -1966,45 +1978,10 @@ function tarfihiOrder(){
             <div class="hd-item"><span class="hd-check">✓</span><span>ألعاب مائية لشخصين</span></div>
           </div>
         </div>
-        <div class="hd-package">
-          <div class="hd-package-header">
-            <div class="hd-package-name">باقة الضيافة العائلية</div>
-          </div>
-          <div class="hd-items">
-            <div class="hd-item hd-item-wide"><span class="hd-check">✓</span><span>4 وجبات، تشمل كل وجبة: برجر لحم أو دجاج، وبطاطس صغيرة، ومشروبًا غازيًا</span></div>
-            <div class="hd-item hd-item-wide"><span class="hd-check">✓</span><span>اختيارك: دلة قهوة سعودية مع التمر أو دلة شاي مع البسكويت</span></div>
-            <div class="hd-item"><span class="hd-check">✓</span><span>4 أكواب من الموهيتو</span></div>
-            <div class="hd-item"><span class="hd-check">✓</span><span>4 أكواب من الفشار</span></div>
-            <div class="hd-item hd-item-wide"><span class="hd-check">✓</span><span>بوكس ألعاب جماعية للاستخدام أثناء الإقامة</span></div>
-            <div class="hd-item hd-item-wide"><span class="hd-check">✓</span><span>ألعاب مائية من اختيارك للاستخدام أثناء الإقامة</span></div>
-          </div>
-        </div>
-        <div class="hd-package">
-          <div class="hd-package-header">
-            <div class="hd-package-name">باقة السينما</div>
-          </div>
-          <div class="hd-items">
-            <div class="hd-item"><span class="hd-check">✓</span><span>جلسة سينما لمدة 3 ساعات</span></div>
-            <div class="hd-item"><span class="hd-check">✓</span><span>كرسيان مريحان</span></div>
-            <div class="hd-item"><span class="hd-check">✓</span><span>كوبان من الفشار</span></div>
-            <div class="hd-item"><span class="hd-check">✓</span><span>كوبان من الموهيتو</span></div>
-          </div>
-        </div>
-        <div class="hd-package">
-          <div class="hd-package-header">
-            <div class="hd-package-name">باقة الشتاء</div>
-          </div>
-          <div class="hd-items">
-            <div class="hd-item"><span class="hd-check">✓</span><span>جلسة خارجية لـ4 أشخاص</span></div>
-            <div class="hd-item"><span class="hd-check">✓</span><span>دلة قهوة سعودية مع التمر</span></div>
-            <div class="hd-item"><span class="hd-check">✓</span><span>دلة شاي مع البسكويت</span></div>
-            <div class="hd-item"><span class="hd-check">✓</span><span>4 أكواب من الفشار</span></div>
-          </div>
-        </div>
       </div>
     </div>
     <div id="hd-coordination-panel" class="hide" role="tabpanel" aria-labelledby="hd-tab-coordination">
-      <p class="hd-intro">من تزيين بسيط إلى تجربة متكاملة لمناسبتك</p>
+      <p class="hd-intro">من تزيين بسيط إلى تنسيق متكامل لمناسبتك</p>
       <div class="hd-packages">
         <section class="hd-package featured" aria-labelledby="hd-coordination-package-1">
           <h2 class="hd-package-name" id="hd-coordination-package-1">باقة الورد</h2>
@@ -2047,6 +2024,33 @@ function tarfihiOrder(){
             </div>
           </div>
         </section>
+      </div>
+    </div>
+    <div id="hd-packages-panel" class="hide" role="tabpanel" aria-labelledby="hd-tab-packages">
+      <p class="hd-intro">باقات تجمع الضيافة والترفيه وتجهيز المناسبة</p>
+      <div class="hd-packages">
+        <div class="hd-package">
+          <div class="hd-package-header">
+            <div class="hd-package-name">باقة السينما</div>
+          </div>
+          <div class="hd-items">
+            <div class="hd-item"><span class="hd-check">✓</span><span>جلسة سينما لمدة 3 ساعات</span></div>
+            <div class="hd-item"><span class="hd-check">✓</span><span>كرسيان مريحان</span></div>
+            <div class="hd-item"><span class="hd-check">✓</span><span>كوبان من الفشار</span></div>
+            <div class="hd-item"><span class="hd-check">✓</span><span>كوبان من الموهيتو</span></div>
+          </div>
+        </div>
+        <div class="hd-package">
+          <div class="hd-package-header">
+            <div class="hd-package-name">باقة الشتاء</div>
+          </div>
+          <div class="hd-items">
+            <div class="hd-item"><span class="hd-check">✓</span><span>جلسة خارجية لـ4 أشخاص</span></div>
+            <div class="hd-item"><span class="hd-check">✓</span><span>دلة قهوة سعودية مع التمر</span></div>
+            <div class="hd-item"><span class="hd-check">✓</span><span>دلة شاي مع البسكويت</span></div>
+            <div class="hd-item"><span class="hd-check">✓</span><span>4 أكواب من الفشار</span></div>
+          </div>
+        </div>
         <section class="hd-package" aria-labelledby="hd-coordination-package-4">
           <h2 class="hd-package-name" id="hd-coordination-package-4">باقة يوم العائلة المتكاملة</h2>
           <p class="hd-package-description">تنسيق وضيافة واسترخاء وترفيه في باقة واحدة</p>
@@ -3351,7 +3355,7 @@ ${c.id===8?'<a class="fd-pyramid-detail-tour" href="/rustic-tour/?from=details&c
 
       <section class="fd-cabin-addons">
         <h3>إضافات الحجز</h3>
-        <p>الضيافة والتنسيقات، <a href="#jalsat" onclick="return openCabinService(event,'jalsat')">الجلسات الخارجية</a>، <a href="#tawilat" onclick="return openCabinService(event,'tawilat')">طاولات الطعام</a>، <a href="#sinema" onclick="return openCabinService(event,'sinema')">جلسة السينما</a>، <a href="#tarfihi" onclick="return openCabinService(event,'tarfihi')">الألعاب الترفيهية</a>، و<a href="#maiya" onclick="return openCabinService(event,'maiya')">الألعاب المائية</a>.</p>
+        <p>الضيافة والتنسيقات والباقات، <a href="#jalsat" onclick="return openCabinService(event,'jalsat')">الجلسات الخارجية</a>، <a href="#tawilat" onclick="return openCabinService(event,'tawilat')">طاولات الطعام</a>، <a href="#sinema" onclick="return openCabinService(event,'sinema')">جلسة السينما</a>، <a href="#tarfihi" onclick="return openCabinService(event,'tarfihi')">الألعاب الترفيهية</a>، و<a href="#maiya" onclick="return openCabinService(event,'maiya')">الألعاب المائية</a>.</p>
       </section>
       <div class="fd-cabin-faq-footer"><a class="fd-cabin-faq-link" href="#faq" onclick="return openAccommodationFaq(event,'faq')">الأسئلة الشائعة <span aria-hidden="true">←</span></a></div>
     </section>`;
@@ -3821,15 +3825,14 @@ function closeHospitalityDetail(){
   
 }
 function showHospitalityTab(tab){
-  var isHospitality = tab === 'hospitality';
-  document.getElementById('hd-hospitality-panel').classList.toggle('hide',!isHospitality);
-  document.getElementById('hd-coordination-panel').classList.toggle('hide',isHospitality);
-  var hospitalityBtn=document.getElementById('hd-tab-hospitality');
-  var coordinationBtn=document.getElementById('hd-tab-coordination');
-  hospitalityBtn.classList.toggle('active',isHospitality);
-  coordinationBtn.classList.toggle('active',!isHospitality);
-  hospitalityBtn.setAttribute('aria-selected',isHospitality?'true':'false');
-  coordinationBtn.setAttribute('aria-selected',isHospitality?'false':'true');
+  if(['hospitality','coordination','packages'].indexOf(tab)===-1) tab='hospitality';
+  ['hospitality','coordination','packages'].forEach(function(key){
+    var selected=key===tab;
+    document.getElementById('hd-'+key+'-panel').classList.toggle('hide',!selected);
+    var button=document.getElementById('hd-tab-'+key);
+    button.classList.toggle('active',selected);
+    button.setAttribute('aria-selected',String(selected));
+  });
 }
 function showJalsat(){ openJalsatDetail(); }
 function showSinema(){
