@@ -22,10 +22,11 @@ with sync_playwright() as p:
         assert bounds['y']+bounds['height']<height,('Index must fit opening screen',width,bounds)
         assert page.locator('#hospitality,#restaurant,#games,#water-games').count()==0
         assert page.locator('a').evaluate_all('(els)=>els.every(a=>a.getAttribute("href").startsWith("#"))')
-        assert page.locator('#coordination .package-card').count()==5
+        assert page.locator('#coordination .package-card').count()==4
         assert page.locator('#packages .package-card').count()==2
-        complete=page.locator('#coordination .package-card').filter(has_text='باقة يوم العائلة المتكاملة')
-        assert complete.locator('.inclusions li').count()==28
+        celebration=page.locator('#coordination .package-card').filter(has_text='باقة الاحتفال')
+        assert celebration.locator('.inclusions li').count()==9
+        assert 'باقة يوم العائلة المتكاملة' not in page.locator('#coordination').text_content()
         assert 'باقة يوم العائلة المتكاملة' not in page.locator('#packages').inner_text()
         assert 'ملاحظات' not in page.locator('#guide-content').text_content()
         assert page.locator('#seating .photo-card').count()==6
@@ -42,9 +43,9 @@ with sync_playwright() as p:
             assert page.locator('.contents').is_visible()
             assert page.locator('.contents').bounding_box()['y']<height
         page.locator('.contents a[href="#coordination"]').click()
-        complete.locator('summary').click()
-        assert complete.get_attribute('open') is not None
-        assert complete.locator('.inclusions').is_visible()
+        celebration.locator('summary').click()
+        assert celebration.get_attribute('open') is not None
+        assert celebration.locator('.inclusions').is_visible()
         assert page.url.endswith('#coordination')
         page.locator('details').evaluate_all('(els)=>els.forEach(el=>el.open=true)')
         page.locator('img').evaluate_all('(els)=>els.forEach(el=>el.loading="eager")')
