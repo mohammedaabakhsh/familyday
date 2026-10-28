@@ -1193,9 +1193,10 @@ header{
 <script src="campaign-data.js?v=7"></script>
 <script src="resort-campaign.js?v=5" defer></script>
 <script src="share-pages.js?v=20261028-v1"></script>
-<script src="resort-features.js?v=share-20261028-v1"></script>
+<script src="resort-features.js?v=menu-20261028-v1"></script>
 <script src="stay-design.js?v=17"></script>
 <script src="site-enhancements.js?v=1"></script>
+<script src="menu-experience.js?v=20261028-v1"></script>
 <script src="cabin-compare.js?v=2"></script>
 <script>
 
@@ -1450,6 +1451,7 @@ function openOrderPopup(itemName, showTime){
   _orderItemName = itemName;
   document.getElementById('order-cinema-note').hidden = itemName !== 'جلسة السينما';
   document.getElementById('order-item-name').textContent = itemName;
+  FD_MENU_EXPERIENCE.renderCheckout();
   document.getElementById('order-name').value = '';
   document.getElementById('order-villa').value = '';
   document.getElementById('order-notes').value = '';
@@ -4142,6 +4144,7 @@ var _menuData = {
 };
 
 function openMenuDetail(){
+  FD_MENU_EXPERIENCE.restore();
   document.getElementById('menu-detail').classList.remove('hide');
   
   _renderMenuCats();
@@ -4166,7 +4169,8 @@ function setMenuCat(cat){
   _menuCat = cat;
   _renderMenuCats();
   _renderMenuItems();
-  document.getElementById('menu-items').scrollTop = 0;
+  FD_MENU_EXPERIENCE.resetListScroll();
+  FD_MENU_EXPERIENCE.save();
 }
 
 function _renderMenuItems(){
@@ -4240,6 +4244,7 @@ function _menuCartTotals(){
 }
 
 function _updateMenuCartBar(){
+  FD_MENU_EXPERIENCE.save();
   var bar = document.getElementById('menu-cart-bar');
   var keys = Object.keys(_menuCart);
   if(keys.length === 0){ bar.style.display='none'; return; }
@@ -4834,7 +4839,7 @@ function closeWalaaDetail(){
       <span id="menu-cart-total"></span>
       <svg class="menu-cart-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
     </button>
-    <button type="button" class="menu-order-button" onclick="menuOrderNow()">إكمال الطلب عبر واتساب</button>
+    <button type="button" class="menu-order-button" onclick="menuOrderNow()">متابعة الطلب</button>
   </div>
 </div>
 
@@ -4858,7 +4863,7 @@ function closeWalaaDetail(){
     </div>
     <div style="display:flex;gap:9px;margin-top:14px;">
       <button type="button" onclick="closeMenuCartReview()" style="flex:1;padding:12px 8px;background:transparent;border:1.5px solid rgba(126,207,234,.35);border-radius:12px;font-family:Tajawal,sans-serif;font-size:14px;font-weight:700;color:#c5eaf4;cursor:pointer;">تعديل الطلب</button>
-      <button type="button" onclick="continueMenuOrder()" style="flex:1.35;padding:12px 8px;background:#147a8c;border:none;border-radius:12px;font-family:Tajawal,sans-serif;font-size:14px;font-weight:700;color:#fff;cursor:pointer;">إكمال الطلب عبر واتساب</button>
+      <button type="button" onclick="continueMenuOrder()" style="flex:1.35;padding:12px 8px;background:#147a8c;border:none;border-radius:12px;font-family:Tajawal,sans-serif;font-size:14px;font-weight:700;color:#fff;cursor:pointer;">متابعة الطلب</button>
     </div>
   </div>
 </div>
@@ -5962,6 +5967,7 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 #ov.fd-cabin-modern .fd-cabin-occupancy + .fd-cabin-suitable{margin-top:7px}
 </style>
 <link rel="stylesheet" href="site-ui.css?v=10">
+<link rel="stylesheet" href="menu-experience.css?v=20261028-v1">
 <link rel="stylesheet" href="cabin-compare.css?v=1">
 <link rel="stylesheet" href="dome-gallery.css?v=1">
 

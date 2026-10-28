@@ -1,0 +1,15 @@
+/* Keep categories reachable while browsing longer lists. */
+#menu-detail #menu-cats{position:sticky;top:0;z-index:2;padding-block:12px;background:#04111e;box-shadow:0 -12px 0 #04111e}
+#menu-detail .menu-qty-button{width:46px;height:46px;flex-basis:46px}
+#menu-detail .menu-extra{min-height:44px}
+#menu-detail .menu-qty-button:focus-visible{outline:2px solid #9ce9f0;outline-offset:3px}
+#order-popup .menu-checkout-summary{margin:0 0 20px;padding:14px;border:1px solid #315967;border-radius:14px;background:#0b2635}
+#order-popup .menu-checkout-summary h2{margin:0 0 10px;font-size:15px;color:#f4f8fa}
+#order-popup .menu-checkout-summary ul{list-style:none;margin:0;padding:0;max-height:160px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
+#order-popup .menu-checkout-summary li{display:flex;justify-content:space-between;align-items:start;gap:12px;padding:7px 0;font-size:13px;line-height:1.6;color:#c5dce5}
+#order-popup .menu-checkout-summary li strong{white-space:nowrap;color:#9edce5;font-weight:500}
+#order-popup .menu-checkout-total{display:flex;justify-content:space-between;gap:12px;margin:10px 0 0;padding-top:12px;border-top:1px solid #315967;font-size:15px;color:#f4f8fa}
+#order-popup .menu-checkout-total strong{color:#9edce5;white-space:nowrap}
+
+/* Keep the final action reachable even when the item summary makes the form scroll. */
+#order-popup.fd-menu-order .fd-order-actions{position:sticky;bottom:0;z-index:1;padding-block:12px;background:var(--fd-surface,#0c2434)}

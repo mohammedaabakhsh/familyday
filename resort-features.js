@@ -74,6 +74,7 @@ function validateResortOrder() {
 function setMenuBbqType(name, type) {
   if (type !== 'لحم' && type !== 'دجاج') return;
   _menuBbqTypes[name] = type;
+  if (window.FD_MENU_EXPERIENCE) FD_MENU_EXPERIENCE.save();
   _renderMenuItems();
 }
 
