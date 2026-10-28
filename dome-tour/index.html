@@ -95,7 +95,7 @@
   var from=params.get('from'), cabinId=params.get('cabin')==='12'?'12':'1';
   var back=document.querySelector('.tour-back');
   if(from==='map'){
-    back.href='/#map='+cabinId;
+    back.href='/resort-map/?v=map-return-20261028-v2#map='+cabinId;
     back.innerHTML='<span aria-hidden="true">→</span> خريطة الأكواخ';
   } else if(from==='details'){
     back.href='/#cabin='+cabinId+(params.get('return')==='map'?'&from=map':'');

@@ -218,7 +218,7 @@
 
  var params=new URLSearchParams(location.search),from=params.get('from'),id=10,back=document.querySelector('.tour-back');
 
- if(from==='map'){back.href='/?v=panoramic-tour-20261026#map='+id;back.innerHTML='<span aria-hidden="true">→</span> خريطة الأكواخ';}
+ if(from==='map'){back.href='/resort-map/?v=map-return-20261028-v2#map='+id;back.innerHTML='<span aria-hidden="true">→</span> خريطة الأكواخ';}
 
  else if(from==='details'){back.href=(params.get('return')==='map'?'/?v=panoramic-tour-20261026#cabin=':'/#cabin=')+id+(params.get('return')==='map'?'&from=map':'');back.innerHTML='<span aria-hidden="true">→</span> البيت البانورامي';}
 

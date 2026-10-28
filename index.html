@@ -5286,6 +5286,14 @@ function openMDirect(c){
   document.addEventListener('fd-dome-gallery-dismiss',function(){
     if(!rendering && current.name==='dome-gallery') returnTo(current.parent);
   });
+  // Remember the map selection in this entry, including native browser Back/reload.
+  document.addEventListener('fd-map-selection-change',function(event){
+    if(rendering || current.name!=='map') return;
+    var id=event.detail && event.detail.cabinId;
+    var args=data.resort.items.some(function(c){return c.id===id;}) ? [id] : [];
+    current=route('map',args,current.parent);
+    history.replaceState(Object.assign({},history.state,{fdNavigation:version,route:current}),'',urlFor(current));
+  });
   // Map photos are a separate view so Back and X return to the selected map cabin.
   document.addEventListener('fd-map-photos-request',function(event){
     var locationKey=event.detail && event.detail.locationKey;
@@ -5365,7 +5373,7 @@ function openMDirect(c){
   window.addEventListener('pageshow',function(event){if(event.persisted) restore();});
 })();
 </script>
-<script src="resort-map.js?v=rustic-approved-v15" defer></script>
+<script src="resort-map.js?v=map-return-20261028-v2" defer></script>
 <link rel="stylesheet" href="chalet-map.css?v=22">
 <script src="chalet-map.js?v=28" defer></script>
 

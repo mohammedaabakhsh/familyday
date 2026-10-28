@@ -258,6 +258,7 @@
   function clearSelection(restoreFocus) {
     var old = selected;
     selected = null;
+    document.dispatchEvent(new CustomEvent('fd-map-selection-change',{detail:{cabinId:null}}));
     markers.forEach(function (marker) { marker.setAttribute('aria-pressed', 'false'); });
     highlights.forEach(function (highlight) { highlight.hidden = true; highlight.classList.remove('is-connected'); });
     card.hidden = true;
@@ -421,6 +422,7 @@
       highlights[i].classList.toggle('is-connected', Boolean(linked));
     });
     renderSelectedLocation(location);
+    document.dispatchEvent(new CustomEvent('fd-map-selection-change',{detail:{cabinId:cabin.id}}));
   }
 
   function renderSelectedLocation(location) {
@@ -448,7 +450,7 @@
     description.textContent = translateText(cabin.type || cabin.suitable || '');
     var tourButton = card.querySelector('.fd-map-tour-button');
     tourButton.hidden = !hasTour;
-    tourButton.href = (isRustic ? '/rustic-tour/' : isRoyal ? '/royal-tour/' : isPanoramic ? '/panoramic-tour/' : isClassic ? '/classic-tour/' : isFrench ? '/french-tour/' : isBohemian ? '/bohemian-tour/' : isPalm ? '/palm-tour/' : isGreek ? '/greek-tour/' : cabin.id === 2 ? '/pyramid-tour/' : '/dome-tour/') + '?from=map&cabin=' + cabin.id;
+    tourButton.href = (isRustic ? '/rustic-tour/' : isRoyal ? '/royal-tour/' : isPanoramic ? '/panoramic-tour/' : isClassic ? '/classic-tour/' : isFrench ? '/french-tour/' : isBohemian ? '/bohemian-tour/' : isPalm ? '/palm-tour/' : isGreek ? '/greek-tour/' : cabin.id === 2 ? '/pyramid-tour/' : '/dome-tour/') + '?from=map&cabin=' + cabin.id + '&v=map-return-20261028-v2';
     tourButton.textContent = isRustic ? (mapLanguage === 'en' ? 'Explore the Rustic Cottage' : 'جولة في الكوخ الريفي') : isRoyal ? (mapLanguage === 'en' ? 'Explore the Royal Cottage' : 'جولة في كوخ رويال') : isPanoramic ? (mapLanguage === 'en' ? 'Explore the Panoramic House' : 'جولة في البيت البانورامي') : isClassic ? (mapLanguage === 'en' ? 'Explore the Classic Cottage' : 'جولة في الكوخ الكلاسيكي') : isFrench ? (mapLanguage === 'en' ? 'Explore the French Cottage' : 'جولة في الكوخ الفرنسي') : isBohemian ? (mapLanguage === 'en' ? 'Explore the Bohemian Cottage' : 'جولة في الكوخ البوهيمي') : isPalm ? (mapLanguage === 'en' ? 'Explore Palm Beach Cottage' : 'جولة في كوخ بالم بيتش') : isGreek ? (mapLanguage === 'en' ? 'Explore the Greek House' : 'جولة في البيت اليوناني') : cabin.id === 2 ? (mapLanguage === 'en' ? 'Explore the Pyramid Cottage' : 'جولة في الكوخ الهرمي') : copy.tour;
     description.hidden = !description.textContent;
     card.querySelector('.fd-map-guest-label').textContent = shared ? copy.location : copy.capacity;
