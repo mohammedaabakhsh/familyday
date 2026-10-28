@@ -48,3 +48,12 @@ cabin’s name. There is no duplicate name list or cabin-facts panel.
 Keep the administrative area excluded, and never duplicate cabin facts here.
 Notes panels are intentionally omitted from the guide; the original service pages
 retain their content.
+
+## Coordination package order
+
+The approved six packages are Rose (120), Complete Rose (350), Evening (650),
+Celebration (850), VIP (1150), and Family Day Resort (1850 SAR).
+Within each list, keep matching items in the same relative order: decorations,
+arrival arrangements, hospitality, guest-use amenities, and recreation. Stable
+`data-coordination-item` keys in the source HTML identify matching inclusions.
+Do not add amenities just because they are used as examples in a design discussion.

@@ -22,7 +22,18 @@ with sync_playwright() as p:
         assert bounds['y']+bounds['height']<height,('Index must fit opening screen',width,bounds)
         assert page.locator('#hospitality,#restaurant,#games,#water-games').count()==0
         assert page.locator('a').evaluate_all('(els)=>els.every(a=>a.getAttribute("href").startsWith("#"))')
-        assert page.locator('#coordination .package-card').count()==4
+        assert page.locator('#coordination .package-card').count()==6
+        expected_names=['باقة الورد','باقة الورد المتكاملة','باقة الأمسية','باقة الاحتفال','باقة VIP','باقة منتجع يوم العائلة']
+        assert page.locator('#coordination h3').all_text_contents()==expected_names
+        assert page.locator('#coordination .price').all_text_contents()==['120 ريال','350 ريال','650 ريال','850 ريال','1150 ريال','1850 ريال']
+        inclusions=[c.locator('.inclusions li').all_text_contents() for c in page.locator('#coordination .package-card').all()]
+        for left in inclusions:
+            for right in inclusions:
+                shared=set(left)&set(right)
+                assert [v for v in left if v in shared]==[v for v in right if v in shared]
+        assert not any('بوكيه' in v for v in inclusions[4])
+        assert any('بوكيه' in v for v in inclusions[5])
+        assert all(v in inclusions[5] for v in inclusions[4])
         assert page.locator('#packages .package-card').count()==2
         celebration=page.locator('#coordination .package-card').filter(has_text='باقة الاحتفال')
         assert celebration.locator('.inclusions li').count()==9
