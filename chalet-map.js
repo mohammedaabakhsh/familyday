@@ -439,7 +439,7 @@
 
   var dialog, viewport, plane, panel, opener, previousOverflow, selected=null, lineFrame;
   var labelLanguage='ar', markers=[], polygons=[], leaders=[];
-  var imagePath='imgs/chalet-tour-approved-v3.png';
+  var imagePath='imgs/chalet-tour-clarity-v1.png';
   var view={w:0,h:0,imageSize:0,imageX:0,imageY:0};
   var ns='http://www.w3.org/2000/svg';
   function clamp(n,min,max){return Math.max(min,Math.min(max,n));}
