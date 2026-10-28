@@ -446,12 +446,13 @@
     var isRoyal = cabin.id === 9;
     var isRustic = cabin.id === 8;
     var isPanoramic = cabin.id === 10;
-    var hasTour = isDome || cabin.id === 2 || isGreek || isPalm || isBohemian || isFrench || isClassic || isPanoramic || isRoyal || isRustic;
+    var gardenTour = shared ? 'https://my.matterport.com/show/?m=S7Z2CF9tdwm' : '';
+    var hasTour = !!gardenTour || isDome || cabin.id === 2 || isGreek || isPalm || isBohemian || isFrench || isClassic || isPanoramic || isRoyal || isRustic;
     description.textContent = translateText(cabin.type || cabin.suitable || '');
     var tourButton = card.querySelector('.fd-map-tour-button');
     tourButton.hidden = !hasTour;
-    tourButton.href = (isRustic ? '/rustic-tour/' : isRoyal ? '/royal-tour/' : isPanoramic ? '/panoramic-tour/' : isClassic ? '/classic-tour/' : isFrench ? '/french-tour/' : isBohemian ? '/bohemian-tour/' : isPalm ? '/palm-tour/' : isGreek ? '/greek-tour/' : cabin.id === 2 ? '/pyramid-tour/' : '/dome-tour/') + '?from=map&cabin=' + cabin.id + '&v=map-return-20261028-v2';
-    tourButton.textContent = isRustic ? (mapLanguage === 'en' ? 'Explore the Rustic Cottage' : 'جولة في الكوخ الريفي') : isRoyal ? (mapLanguage === 'en' ? 'Explore the Royal Cottage' : 'جولة في كوخ رويال') : isPanoramic ? (mapLanguage === 'en' ? 'Explore the Panoramic House' : 'جولة في البيت البانورامي') : isClassic ? (mapLanguage === 'en' ? 'Explore the Classic Cottage' : 'جولة في الكوخ الكلاسيكي') : isFrench ? (mapLanguage === 'en' ? 'Explore the French Cottage' : 'جولة في الكوخ الفرنسي') : isBohemian ? (mapLanguage === 'en' ? 'Explore the Bohemian Cottage' : 'جولة في الكوخ البوهيمي') : isPalm ? (mapLanguage === 'en' ? 'Explore Palm Beach Cottage' : 'جولة في كوخ بالم بيتش') : isGreek ? (mapLanguage === 'en' ? 'Explore the Greek House' : 'جولة في البيت اليوناني') : cabin.id === 2 ? (mapLanguage === 'en' ? 'Explore the Pyramid Cottage' : 'جولة في الكوخ الهرمي') : copy.tour;
+    tourButton.href = gardenTour || (isRustic ? '/rustic-tour/' : isRoyal ? '/royal-tour/' : isPanoramic ? '/panoramic-tour/' : isClassic ? '/classic-tour/' : isFrench ? '/french-tour/' : isBohemian ? '/bohemian-tour/' : isPalm ? '/palm-tour/' : isGreek ? '/greek-tour/' : cabin.id === 2 ? '/pyramid-tour/' : '/dome-tour/') + '?from=map&cabin=' + cabin.id + '&v=map-return-20261028-v2';
+    tourButton.textContent = gardenTour ? (mapLanguage === 'en' ? '3D garden tour' : 'جولة ثلاثية الأبعاد') : isRustic ? (mapLanguage === 'en' ? 'Explore the Rustic Cottage' : 'جولة في الكوخ الريفي') : isRoyal ? (mapLanguage === 'en' ? 'Explore the Royal Cottage' : 'جولة في كوخ رويال') : isPanoramic ? (mapLanguage === 'en' ? 'Explore the Panoramic House' : 'جولة في البيت البانورامي') : isClassic ? (mapLanguage === 'en' ? 'Explore the Classic Cottage' : 'جولة في الكوخ الكلاسيكي') : isFrench ? (mapLanguage === 'en' ? 'Explore the French Cottage' : 'جولة في الكوخ الفرنسي') : isBohemian ? (mapLanguage === 'en' ? 'Explore the Bohemian Cottage' : 'جولة في الكوخ البوهيمي') : isPalm ? (mapLanguage === 'en' ? 'Explore Palm Beach Cottage' : 'جولة في كوخ بالم بيتش') : isGreek ? (mapLanguage === 'en' ? 'Explore the Greek House' : 'جولة في البيت اليوناني') : cabin.id === 2 ? (mapLanguage === 'en' ? 'Explore the Pyramid Cottage' : 'جولة في الكوخ الهرمي') : copy.tour;
     description.hidden = !description.textContent;
     card.querySelector('.fd-map-guest-label').textContent = shared ? copy.location : copy.capacity;
     card.querySelector('.fd-map-room-label').textContent = shared ? copy.access : copy.bedrooms;
@@ -784,6 +785,12 @@
     dialog.querySelector('.fd-map-details-button').addEventListener('click', function () {
       if (!selected || typeof window.openM !== 'function') return;
       window.openM(cabinFor(selected).id, 'resort');
+    });
+    card.querySelector('.fd-map-tour-button').addEventListener('click', function (event) {
+      if (!selected || selected.kind !== 'shared' || typeof window.open3D !== 'function') return;
+      if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      window.open3D(this.href);
     });
     dialog.querySelector('.fd-map-close').addEventListener('click', function () { dialog.close(); });
     dialog.querySelector('.fd-map-retry').addEventListener('click', loadImage);

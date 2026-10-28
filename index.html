@@ -3585,14 +3585,20 @@ function closeM(){
   }
 }
 document.getElementById('ov').addEventListener('click',function(e){if(e.target===this)closeM();});
+function replaceTourFrame(url){
+  // A fresh frame avoids adding its previous URL to the browser's Back history.
+  var previous=document.getElementById('iframeEl'),frame=previous.cloneNode(false);
+  frame.src=url || 'about:blank';
+  previous.replaceWith(frame);
+}
 function open3D(url){
-  document.getElementById('iframeEl').src=url;
+  replaceTourFrame(url);
   document.getElementById('iframeOverlay').classList.add('open');
   document.body.style.overflow='hidden';
 }
 function closeIframe(){
   document.getElementById('iframeOverlay').classList.remove('open');
-  document.getElementById('iframeEl').src='';
+  replaceTourFrame();
   document.body.style.overflow='';
 }
 
@@ -5116,7 +5122,9 @@ function openMDirect(c){
       case 'map-photos':
         document.dispatchEvent(new CustomEvent('fd-map-photos-open',{detail:{locationKey:r.args[0]}}));
         break;
-      case 'tour': call('open3D',r.args); break;
+      case 'tour':
+        if(r.parent && r.parent.name==='map') document.dispatchEvent(new CustomEvent('fd-map-suspend'));
+        call('open3D',r.args); break;
       case 'order':
         _orderDraftScope=r.parent ? r.parent.name : r.args[0];
         _isMenuOrder=!!r.args[2];
@@ -5155,7 +5163,7 @@ function openMDirect(c){
       if(dialog && dialog.open) dialog.close();
     } else if(close[r.name]) {
       call(close[r.name]);
-      if(r.name==='cabin' && r.parent && r.parent.name==='map') document.dispatchEvent(new CustomEvent('fd-map-resume'));
+      if((r.name==='cabin' || r.name==='tour') && r.parent && r.parent.name==='map') document.dispatchEvent(new CustomEvent('fd-map-resume'));
     }
     else if(serviceViews[r.name]) {
       call(serviceViews[r.name][1]);
@@ -5373,7 +5381,7 @@ function openMDirect(c){
   window.addEventListener('pageshow',function(event){if(event.persisted) restore();});
 })();
 </script>
-<script src="resort-map.js?v=map-return-20261028-v2" defer></script>
+<script src="resort-map.js?v=garden-tour-20261028-v1" defer></script>
 <link rel="stylesheet" href="chalet-map.css?v=22">
 <script src="chalet-map.js?v=28" defer></script>
 
