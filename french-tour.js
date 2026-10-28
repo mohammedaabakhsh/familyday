@@ -8,21 +8,21 @@ var FD_FRENCH_TOUR = (function () {
 
   var parts = [
 
- {id:'bedroom',ar:'غرفة نوم بسرير مزدوج',en:'Bedroom with a double bed',x:0.632,y:0.41},
+ {id:'bedroom',ar:'غرفة نوم بسرير مزدوج',en:'Bedroom with a double bed',x:0.644,y:0.382},
 
- {id:'bathroom',ar:'حمامات',en:'Bathrooms',x:0.552,y:0.4},
+ {id:'bathroom',ar:'حمامات',en:'Bathrooms',x:0.561,y:0.375},
 
- {id:'twin',ar:'غرفة نوم بسريرين مفردين',en:'Bedroom with two single beds',x:0.617,y:0.282},
+ {id:'twin',ar:'غرفة نوم بسريرين مفردين',en:'Bedroom with two single beds',x:0.624,y:0.252},
 
- {id:'living',ar:'المنطقة الداخلية',en:'Indoor area',x:0.361,y:0.399},
+ {id:'living',ar:'المنطقة الداخلية',en:'Indoor area',x:0.35,y:0.37},
 
- {id:'kitchen',ar:'ركن المطبخ',en:'Kitchenette',x:0.412,y:0.277},
+ {id:'kitchen',ar:'ركن المطبخ',en:'Kitchenette',x:0.407,y:0.245},
 
- {id:'dining',ar:'طاولة الطعام',en:'Dining table',x:0.441,y:0.326},
+ {id:'dining',ar:'طاولة الطعام',en:'Dining table',x:0.43,y:0.292},
 
  {id:'pool',ar:'المسبح',en:'Pool',x:0.228,y:0.698},
 
- {id:'outdoor',ar:'المنطقة الخارجية',en:'Outdoor area',x:0.79,y:0.743}
+ {id:'outdoor',ar:'المنطقة الخارجية',en:'Outdoor area',x:0.819,y:0.763}
 
  ];
 
@@ -357,7 +357,7 @@ var FD_FRENCH_TOUR = (function () {
 
     root=document.createElement('section');root.id='french-tour';root.className='dt-tour';root.setAttribute('aria-labelledby','dt-title');
 
-    root.innerHTML='<header class="dt-heading"><h1 id="dt-title" class="dt-title"></h1></header><div class="dt-stage"><div class="dt-labels">'+parts.map(function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';}).join('')+'</div><img class="dt-image" src="/imgs/french-tour-13-v3.webp" width="1536" height="1024" loading="lazy" decoding="async" alt=""><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div class="dt-languages" role="group"><button type="button" data-language="ar" lang="ar" aria-label="العربية">AR</button><button type="button" data-language="en" lang="en" aria-label="English">EN</button></div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
+    root.innerHTML='<header class="dt-heading"><h1 id="dt-title" class="dt-title"></h1></header><div class="dt-stage"><div class="dt-labels">'+parts.map(function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';}).join('')+'</div><img class="dt-image" src="/imgs/french-tour-13-approved-v4.png" width="1536" height="1024" loading="lazy" decoding="async" alt=""><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div class="dt-languages" role="group"><button type="button" data-language="ar" lang="ar" aria-label="العربية">AR</button><button type="button" data-language="en" lang="en" aria-label="English">EN</button></div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
 
     document.getElementById('french-tour-host').appendChild(root);
 
