@@ -5058,6 +5058,7 @@ function openMDirect(c){
   function urlFor(r){
     var cleanUrl=cleanFamilyDayURL();
     var base='/'+cleanUrl.search;
+    if(r.name==='menu') return '/menu/'+cleanUrl.search;
     if(r.name==='map') return '/resort-map/'+cleanUrl.search+(r.args.length ? '#map='+r.args[0] : '');
     if(r.name==='chalet-map') return '/chalet-map/'+cleanUrl.search;
     if(r.name==='dest') return base;
@@ -5069,6 +5070,7 @@ function openMDirect(c){
   }
   function fromHash(){
     var hash=location.hash.slice(1);
+    if(!hash && /^\/menu\/?$/.test(location.pathname)) return route('menu');
     if(!hash && /^\/(resort-map|chalet-map)\/?$/.test(location.pathname)) return route(location.pathname.indexOf('resort-map')!==-1 ? 'map' : 'chalet-map');
     var mapMatch=/^map=(\d+)$/.exec(hash);
     if(mapMatch){
@@ -5173,10 +5175,12 @@ function openMDirect(c){
   var defaultPageTitle=document.title;
   var defaultPageDescription=document.querySelector('meta[name="description"]').content;
   var mapPreviews={
+    menu:{title:'منيو المطعم | يوم العائلة',description:'تصفح منيو مطعم يوم العائلة، واختر وجباتك وأكمل طلبك عبر واتساب. أوقات العمل من 9 صباحًا إلى 1 بعد منتصف الليل.',path:'/menu/'},
     map:{title:'خريطة الأكواخ | يوم العائلة',description:'استكشف مواقع الأكواخ ومميزاتها، واختر الكوخ المناسب لإقامتك.',path:'/resort-map/'},
     'chalet-map':{title:'جولة داخل الشاليه | يوم العائلة',description:'استكشف غرف الشاليه ومرافقه في خريطة تفاعلية، وتعرّف على تفاصيل كل مساحة.',path:'/chalet-map/'}
   };
   function updatePagePreview(r){
+    if((r.name==='menu-cart' || r.name==='order') && r.parent && r.parent.name==='menu') r=r.parent;
     var preview=mapPreviews[r.name] || {title:defaultPageTitle,description:defaultPageDescription,path:'/'};
     document.title=preview.title;
     ['meta[property="og:title"]','meta[name="twitter:title"]'].forEach(function(selector){var el=document.querySelector(selector);if(el)el.content=preview.title;});
