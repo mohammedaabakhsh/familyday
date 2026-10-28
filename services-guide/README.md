@@ -5,7 +5,7 @@ and all existing ordering screens remain unchanged. The guide is a self-containe
 reading experience: only in-page anchors, no links to other service pages.
 
 The mobile cover includes a short introduction and a five-item index:
-coordination, dining tables, cinema, outdoor seating, and packages. Hospitality,
+coordination, dining tables, cinema, outdoor seating, and packages, followed by an inline resort map. Hospitality,
 food, and games are deliberately excluded. Long lists expand inline.
 
 ## One source of content
@@ -37,3 +37,13 @@ Serve repository root, then run:
 ```
 python3 scripts/check-services-guide.py http://127.0.0.1:8023
 ```
+
+## Inline resort map
+
+`../resort-map-data.js` is the shared source for the owner-approved footprint
+coordinates, map image and cabin photos used by both maps. Cabin names and facts
+come from `../resort-data.js`. `guide-map.js` displays these inline with zoom,
+keyboard/touch selection, an accessible name list and a local details card.
+Keep the administrative area excluded, and never duplicate cabin facts here.
+Notes panels are intentionally omitted from the guide; the original service pages
+retain their content.

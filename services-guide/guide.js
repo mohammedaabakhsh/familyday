@@ -33,10 +33,12 @@
   function render(doc) {
     let html = section('coordination','01','التنسيقات','لمسة حلوة لمناسبتكم. اضغطوا على التنسيق لتفاصيله.', packages(doc,'coordination'));
     html += section('dining','02',text(doc,'.tw-title'),'للجمعة الحلوة، طاولة تلمّكم.', '<div class="feature-card"><figure>' + sourcePhoto(doc,'.tw-photo img') + '</figure><div class="feature-copy"><table><caption>الأسعار بالريال</caption><thead><tr><th scope="col">الأشخاص</th><th scope="col">' + escape(text(doc,'#tawilat-opt-plain .tw-package-name')) + '</th><th scope="col">' + escape(text(doc,'#tawilat-opt-tansiq .tw-package-name')) + '</th></tr></thead><tbody>' + Object.entries(_tawilatPrices).map(([size,p]) => '<tr><th scope="row">' + size + '</th><td>' + p.plain + '</td><td>' + p.tansiq + '</td></tr>').join('') + '</tbody></table><p class="small-note">' + escape(text(doc,'#tawilat-opt-plain .tw-package-desc')) + '، أو ' + escape(text(doc,'#tawilat-opt-tansiq .tw-package-desc')) + '.</p></div></div>');
-    html += section('cinema','03',text(doc,'.cn-title'),'فيلم، فشار، ورفقة حلوة.', '<div class="feature-card"><figure>' + sourcePhoto(doc,'.cn-photo img') + '</figure><div class="feature-copy"><div class="facts">' + Array.from(doc.querySelectorAll('.cn-stat')).map(stat => '<div><span>' + escape(text(stat,'dt')) + '</span><strong>' + escape(text(stat,'dd')) + '</strong></div>').join('') + '</div>' + items(list(doc,'.cn-inclusions li')) + '<details class="notes"><summary>ملاحظات الجلسة</summary>' + items(list(doc,'.cn-notes-list li')) + '</details></div></div>');
-    html += section('seating','04',text(doc,'.jl-title'),'اختاروا جلستكم، والباقي لحظات جميلة.', '<div class="photo-grid">' + _jalsatAllSessions.map(s => '<article class="photo-card">' + photo(s.img,s.name) + '<div class="card-copy"><h3>' + escape(s.name) + '</h3><div class="card-meta"><span>' + escape(s.persons) + '</span><strong class="price">' + escape(s.price) + '</strong></div><details class="notes"><summary>تفاصيل الجلسة</summary><p>' + escape(s.desc) + '</p></details></div></article>').join('') + '</div><p class="seating-extra">إضافة اختيارية: ' + escape(text(doc,'.jl-addon-name')) + ' · ' + escape(text(doc,'.jl-addon-price')) + '</p><details class="notes"><summary>ملاحظات الجلسات</summary>' + items(list(doc,'.jl-notes-list li')) + '</details>');
+    html += section('cinema','03',text(doc,'.cn-title'),'فيلم، فشار، ورفقة حلوة.', '<div class="feature-card"><figure>' + sourcePhoto(doc,'.cn-photo img') + '</figure><div class="feature-copy"><div class="facts">' + Array.from(doc.querySelectorAll('.cn-stat')).map(stat => '<div><span>' + escape(text(stat,'dt')) + '</span><strong>' + escape(text(stat,'dd')) + '</strong></div>').join('') + '</div>' + items(list(doc,'.cn-inclusions li')) + '</div></div>');
+    html += section('seating','04',text(doc,'.jl-title'),'اختاروا جلستكم، والباقي لحظات جميلة.', '<div class="photo-grid">' + _jalsatAllSessions.map(s => '<article class="photo-card">' + photo(s.img,s.name) + '<div class="card-copy"><h3>' + escape(s.name) + '</h3><div class="card-meta"><span>' + escape(s.persons) + '</span><strong class="price">' + escape(s.price) + '</strong></div><details class="notes"><summary>تفاصيل الجلسة</summary><p>' + escape(s.desc) + '</p></details></div></article>').join('') + '</div><p class="seating-extra">إضافة اختيارية: ' + escape(text(doc,'.jl-addon-name')) + ' · ' + escape(text(doc,'.jl-addon-price')) + '</p>');
     html += section('packages','05','الباقات','تفاصيل جاهزة لوقتكم الحلو.', packages(doc,'packages'));
+    html += section('resort-map','06','خريطة الأكواخ','اضغطوا على الكوخ أو اسمه لعرض بياناته هنا.', FD_GUIDE_MAP.markup());
     content.innerHTML = html;
+    FD_GUIDE_MAP.mount();
     content.setAttribute('aria-busy','false');
     scrollToHash();
     observeSections();
@@ -55,7 +57,7 @@
       queued = false;
       let current = '';
       document.querySelectorAll('.guide-section').forEach(s => {if(s.getBoundingClientRect().top < 140) current=s.id;});
-      if (window.scrollY > 0 && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) current = 'packages';
+      if (window.scrollY > 0 && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) current = 'resort-map';
       links.forEach(a => {if(a.hash === '#' + current) a.setAttribute('aria-current','location'); else a.removeAttribute('aria-current');});
       document.getElementById('current-section').textContent = current ? text(document,'#title-' + current) : 'دليل يوم العائلة';
     };

@@ -6,7 +6,7 @@ from playwright.sync_api import sync_playwright
 import sys
 BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8023'
 ROOT=Path(__file__).resolve().parents[1]
-SECTIONS=['coordination','dining','cinema','seating','packages']
+SECTIONS=['coordination','dining','cinema','seating','packages','resort-map']
 with sync_playwright() as p:
     browser=p.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox'])
     for width,height in [(320,740),(390,844),(430,932),(1440,1000)]:
@@ -17,7 +17,7 @@ with sync_playwright() as p:
         page.goto(BASE+'/services-guide/',wait_until='networkidle')
         page.wait_for_selector('#packages')
         assert page.locator('.guide-section').evaluate_all('(els)=>els.map(e=>e.id)')==SECTIONS
-        assert page.locator('.contents a').count()==5
+        assert page.locator('.contents a').count()==6
         bounds=page.locator('.contents').bounding_box()
         assert bounds['y']+bounds['height']<height,('Index must fit opening screen',width,bounds)
         assert page.locator('#hospitality,#restaurant,#games,#water-games').count()==0
@@ -27,6 +27,7 @@ with sync_playwright() as p:
         complete=page.locator('#coordination .package-card').filter(has_text='باقة يوم العائلة المتكاملة')
         assert complete.locator('.inclusions li').count()==28
         assert 'باقة يوم العائلة المتكاملة' not in page.locator('#packages').inner_text()
+        assert 'ملاحظات' not in page.locator('#guide-content').text_content()
         assert page.locator('#seating .photo-card').count()==6
         assert page.locator('#dining tbody tr').count()==5
         # Every index entry and the sticky return stay in this document.
@@ -49,13 +50,47 @@ with sync_playwright() as p:
         page.locator('img').evaluate_all('(els)=>els.forEach(el=>el.loading="eager")')
         page.wait_for_function('Array.from(document.images).every(i=>i.complete&&i.naturalWidth>0)')
         assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')
+        # Every physical cabin and the shared garden open correct live facts, inline.
+        cabins=page.evaluate('data.resort.items')
+        plotted=page.evaluate('FD_RESORT_MAP_DATA.locations')
+        assert len(plotted)==13
+        assert page.locator('.map-choices button').count()==13
+        for location in plotted:
+            cid=location['cabinId'];cabin=next(c for c in cabins if c['id']==cid)
+            page.locator(f'.map-choices [data-map-cabin="{cid}"]').click()
+            assert page.locator('#guide-cabin-title').inner_text()==cabin['name']
+            assert page.locator(f'svg [data-map-cabin="{cid}"]').get_attribute('aria-pressed')=='true'
+            assert page.locator('svg .is-selected').count()==1
+            if cid!=11:
+                facts=page.locator('.cabin-facts dd').all_text_contents()
+                assert facts==[f"حتى {cabin['guests']} ضيوف",str(cabin['rooms']),str(cabin['bathroom'])]
+                assert cabin['pool']['label'] in page.locator('.cabin-pool').inner_text()
+            else:
+                assert page.locator('.cabin-pool').count()==0
+            assert '/services-guide/' in page.url
+            page.locator('#close-cabin').click()
+            assert page.locator('#guide-cabin-card').is_hidden()
+        # The actual plotted label, not just the list, supports touch and keyboard.
+        page.locator('svg [data-map-cabin="13"] .map-label').click()
+        assert page.locator('#guide-cabin-title').inner_text()==next(c['name'] for c in cabins if c['id']==13)
+        page.locator('#close-cabin').click()
+        page.locator('svg [data-map-cabin="1"]').focus()
+        page.keyboard.press('Enter')
+        assert page.locator('#guide-cabin-title').inner_text()==next(c['name'] for c in cabins if c['id']==1)
+        page.locator('#close-cabin').click()
+        page.locator('#map-zoom').click()
+        assert page.locator('#map-zoom').get_attribute('aria-pressed')=='true'
+        assert page.locator('.map-scroll').evaluate('(el)=>el.scrollWidth>el.clientWidth')
+        assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')
+        page.locator('#map-zoom').click()
+        assert page.locator('#map-zoom').get_attribute('aria-pressed')=='false'
         # Force clipboard path, without invoking any external share destination.
         page.evaluate("Object.defineProperty(navigator,'share',{value:undefined,configurable:true})")
         page.locator('[data-share]').click()
         assert page.evaluate('navigator.clipboard.readText()')==BASE+'/services-guide/'
         assert not errors,errors
         assert not broken,broken
-        print(width,'PASS opening index, five sections, in-page navigation/details, images, sharing and no overflow',flush=True)
+        print(width,'PASS opening index, five services and inline map, in-page navigation/details, images, sharing and no overflow',flush=True)
         context.close()
     # A direct link resolves after source content arrives.
     page=browser.new_page(viewport={'width':390,'height':844})
