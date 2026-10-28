@@ -145,8 +145,12 @@ function cleanFamilyDayURL(href) {
 
 function cabinShareURL(id) {
   var url = cleanFamilyDayURL();
-  url.pathname = '/';
-  url.hash = String(id) === '30' ? 'chalet-detail' : 'cabin=' + id;
+  var route = String(id) === '30' ? 'chalet-detail' : 'cabin=' + id;
+  var page = (window.FD_SHARE_PAGES || []).find(function (p) { return p.route === route; });
+  url.pathname = page ? page.path : '/';
+  url.hash = page ? '' : route;
+  // A shared detail link opens on its own, without the sender's map context.
+  if (url.searchParams.get('from') === 'map') url.searchParams.delete('from');
   return url.href;
 }
 
