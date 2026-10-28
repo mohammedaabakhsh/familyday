@@ -1,14 +1,19 @@
 # Services guide
 
 Public page: `/services-guide/`. This is a separate customer catalogue; `/services/`
-and all existing ordering screens remain the ordering flow.
+and all existing ordering screens remain unchanged. The guide is a self-contained
+reading experience: only in-page anchors, no links to other service pages.
+
+The mobile cover includes a short introduction and a five-item index:
+coordination, dining tables, cinema, outdoor seating, and packages. Hospitality,
+food, and games are deliberately excluded. Long lists expand inline.
 
 ## One source of content
 
 - `index.html` remains the source for hospitality, coordination, packages, cinema,
   games, service photos, notes, restaurant hours, and static service labels.
   `guide.js` fetches that document with HTTP cache revalidation on each load and
-  reads text/attributes from the service selectors. It does **not** execute the
+  reads the selected sections’ text/attributes from the service selectors. It does **not** execute the
   fetched page's scripts, insert its HTML, or load the main application in an iframe.
 - `../service-data.js` owns the existing `_jalsatAllSessions`, `_maiyaAllGames`,
   `_tawilatPrices`, `_tawilatTables`, and `_menuData` variables. Both the main site
@@ -19,8 +24,8 @@ and all existing ordering screens remain the ordering flow.
   in sync with approved site contents. Use existing service imagery where available;
   do not invent package photos or prices.
 - If service IDs/classes change in `index.html`, update the selectors in `guide.js`
-  and run the regression check. A source failure shows an explicit retry and a
-  link to existing services instead of displaying stale prices.
+  and run the regression check. A source failure shows a clear message and a
+  retry button instead of displaying stale prices or sending readers elsewhere.
 
 Section links use stable anchors, e.g. `/services-guide/#coordination`.
 Hospitality's existing page accepts `?tab=hospitality|coordination|packages`.
@@ -30,6 +35,5 @@ Hospitality's existing page accepts `?tab=hospitality|coordination|packages`.
 Serve repository root, then run:
 
 ```
-python3 scripts/check-services-guide.py http://127.0.0.1:8022
-python3 scripts/check-menu-experience.py http://127.0.0.1:8022
+python3 scripts/check-services-guide.py http://127.0.0.1:8023
 ```
