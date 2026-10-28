@@ -26,8 +26,9 @@
       const description = card.querySelector('.hd-package-description');
       const price = card.querySelector('.hd-package-price');
       const heading = '<h3>' + escape(title) + '</h3>' + (description ? '<p>' + escape(description.textContent.trim()) + '</p>' : '');
-      const body = (price ? '<strong class="price">' + escape(price.textContent.trim()) + '</strong>' : '') + items(list(card, '.hd-item span:last-child'));
-      return key === 'coordination' ? '<details class="package-card"><summary><div>' + heading + '</div><span class="expand-icon" aria-hidden="true"></span></summary>' + body + '</details>' : '<article class="package-card">' + heading + body + '</article>';
+      const priceLabel = price ? '<strong class="price">' + escape(price.textContent.trim()) + '</strong>' : '';
+      const body = items(list(card, '.hd-item span:last-child'));
+      return key === 'coordination' ? '<details class="package-card"><summary><div>' + heading + priceLabel + '</div><span class="expand-icon" aria-hidden="true"></span></summary>' + body + '</details>' : '<article class="package-card">' + heading + priceLabel + body + '</article>';
     }).join('') + '</div>';
   }
   function render(doc) {
