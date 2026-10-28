@@ -6,9 +6,9 @@
     "key": "upper",
     "name": "غرفة النوم العلوية",
     "floor": "الدور العلوي",
-    "x": 36,
-    "y": 13,
-    "shape": "30,8 42,8 42,18 30,18",
+    "x": 36.364,
+    "y": 12.041,
+    "shape": "30.383,6.061 43.541,6.061 43.541,16.746 30.383,16.746",
     "label": [
       "top",
       50,
@@ -33,9 +33,9 @@
     "key": "ground",
     "name": "غرفة النوم",
     "floor": "الدور الأرضي",
-    "x": 28,
-    "y": 24,
-    "shape": "23,20 34,20 34,29 22,29",
+    "x": 29.107,
+    "y": 24.641,
+    "shape": "24.003,19.936 34.211,19.936 34.211,29.665 22.887,29.665",
     "label": [
       "left",
       9,
@@ -54,9 +54,9 @@
     "key": "living",
     "name": "الصالة الداخلية",
     "floor": "الدور الأرضي",
-    "x": 69,
-    "y": 46,
-    "shape": "57,37 76,37 80,57 58,57",
+    "x": 73.445,
+    "y": 50.478,
+    "shape": "61.962,38.437 80.702,38.437 86.204,61.882 63.955,61.882",
     "label": [
       "right",
       91,
@@ -79,9 +79,9 @@
     "key": "kitchen",
     "name": "المطبخ",
     "floor": "الدور الأرضي",
-    "x": 65,
-    "y": 24,
-    "shape": "57,15 70,15 72,28 57,28",
+    "x": 69.617,
+    "y": 22.568,
+    "shape": "59.490,14.753 76.316,14.753 79.426,26.954 59.490,26.954",
     "label": [
       "right",
       91,
@@ -102,9 +102,9 @@
     "key": "dining",
     "name": "طاولة الطعام",
     "floor": "الدور الأرضي",
-    "x": 65,
-    "y": 33,
-    "shape": "58,29 73,29 74,36 58,36",
+    "x": 69.378,
+    "y": 33.174,
+    "shape": "60.447,28.469 79.904,28.469 80.622,37.959 60.447,37.959",
     "label": [
       "right",
       91,
@@ -123,9 +123,9 @@
     "key": "play",
     "name": "غرفة ألعاب الأطفال",
     "floor": "الدور الأرضي",
-    "x": 38,
-    "y": 25,
-    "shape": "34,20 42,20 42,30 34,30",
+    "x": 38.836,
+    "y": 24.88,
+    "shape": "34.689,19.936 42.982,19.936 42.982,29.745 34.689,29.745",
     "label": [
       "left",
       9,
@@ -142,9 +142,9 @@
     "key": "pool",
     "name": "مسبح الأطفال",
     "floor": "المنطقة الخارجية",
-    "x": 42,
-    "y": 62,
-    "shape": "28,31 49,35 50,66 24,66",
+    "x": 36.603,
+    "y": 57.496,
+    "shape": "26.236,31.419 35.327,31.419 35.327,34.131 48.166,34.131 52.233,39.314 52.552,72.887 22.329,72.887",
     "label": [
       "bottom",
       50,
@@ -168,9 +168,9 @@
     "key": "shower",
     "name": "المنطقة الخارجية",
     "floor": "",
-    "x": 22,
-    "y": 68,
-    "shape": "20,64 25,64 25,72 20,72",
+    "x": 19.059,
+    "y": 74.322,
+    "shape": "16.029,69.697 21.930,69.697 21.930,79.426 15.789,79.426",
     "label": [
       "bottom",
       18,
@@ -182,7 +182,7 @@
     ],
     "text": "",
     "extraShapes": [
-      "27,66 40,66 40,72 27,72"
+      "22.488,73.445 40.191,73.445 40.191,79.506 22.488,79.506"
     ],
     "primary": []
   },
@@ -190,9 +190,9 @@
     "key": "majlis",
     "name": "المجلس المستقل",
     "floor": "المنطقة الخارجية",
-    "x": 70,
-    "y": 64,
-    "shape": "61,58 80,58 83,72 62,72",
+    "x": 78.309,
+    "y": 71.451,
+    "shape": "65.789,63.078 86.523,63.078 90.112,79.266 65.789,79.266",
     "label": [
       "bottom",
       82,
@@ -215,9 +215,9 @@
     "key": "groundBath",
     "name": "حمام",
     "floor": "الدور الأرضي",
-    "x": 54,
-    "y": 24,
-    "shape": "51,19 56,19 56,29 51,29",
+    "x": 57.257,
+    "y": 23.046,
+    "shape": "53.907,16.906 58.852,16.906 58.852,28.469 53.907,28.469",
     "label": [
       "right",
       91,
@@ -439,7 +439,7 @@
 
   var dialog, viewport, plane, panel, opener, previousOverflow, selected=null, lineFrame;
   var labelLanguage='ar', markers=[], polygons=[], leaders=[];
-  var imagePath='imgs/chalet-map-clean-v2.webp';
+  var imagePath='imgs/chalet-tour-approved-v3.png';
   var view={w:0,h:0,imageSize:0,imageX:0,imageY:0};
   var ns='http://www.w3.org/2000/svg';
   function clamp(n,min,max){return Math.max(min,Math.min(max,n));}
@@ -518,18 +518,14 @@
     play:'left',pool:'left',kitchen:'right',dining:'right',living:'right',
     shower:'bottom',majlis:'bottom'
   };
-  var leaderPoints={
-    upper:[36,13],ground:[26,24],play:[37,26],groundBath:[54,24],
-    kitchen:[69,24],dining:[72,33],living:[77,46],
-    pool:[27,53],shower:[22,68],majlis:[80,64]
-  };
+  var leaderPoints={"upper": [36.364, 12.041], "ground": [29.107, 24.641], "play": [38.836, 24.88], "kitchen": [69.617, 22.568], "dining": [69.378, 33.174], "living": [73.445, 50.478], "majlis": [78.309, 71.451], "pool": [36.603, 57.496], "shower": [19.059, 74.322], "groundBath": [57.257, 23.046]};
   function labelRail(){return isMobile()?clamp(view.w*.19,66,78):clamp(view.w*.14,94,118);}
   function layoutLabels(){
     var mobile=isMobile(),rail=labelRail(),gap=mobile?6:12;
-    var visibleTop=view.imageY+view.imageSize*.065;
-    var visibleBottom=view.imageY+view.imageSize*.845;
+    var visibleTop=view.imageY+view.imageSize*.045;
+    var visibleBottom=view.imageY+view.imageSize*.91;
     // One centered bedroom above, two aligned labels below, and ordered side rails.
-    var left=Math.max(rail/2+4,view.w/2-view.imageSize*.40-gap-rail/2);
+    var left=Math.max(rail/2+4,view.w/2-view.imageSize*.46-gap-rail/2);
     var right=view.w-left;
     var columnOffset=mobile?view.w*.25:view.imageSize*.25;
     var rowWidth=mobile?Math.min(120,view.w*.38):rail;
@@ -577,10 +573,10 @@
     if(!dialog.open)return;
     view.w=viewport.clientWidth;view.h=viewport.clientHeight;
     var mobile=isMobile(),rail=labelRail(),top=mobile?50:60,bottom=mobile?50:54;
-    var available=Math.min((view.w-2*rail-24)/.82,(view.h-top-bottom)/.78);
+    var available=Math.min((view.w-2*rail-24)/.94,(view.h-top-bottom)/.865);
     view.imageSize=Math.max(1,mobile?available:Math.min(740,available*.86));
-    view.imageX=(view.w-view.imageSize)/2;
-    view.imageY=top+Math.max(0,(view.h-top-bottom-view.imageSize*.78)/2)-view.imageSize*.065;
+    view.imageX=view.w/2-view.imageSize*.52;
+    view.imageY=top+Math.max(0,(view.h-top-bottom-view.imageSize*.865)/2)-view.imageSize*.045;
     plane.style.width=view.w+'px';plane.style.height=view.h+'px';
     plane.querySelector('.cm-illustration').style.cssText='left:'+view.imageX+'px;top:'+view.imageY+'px;width:'+view.imageSize+'px;height:'+view.imageSize+'px';
     layoutLabels();queueLines();
