@@ -118,9 +118,9 @@
 </div>
 <script>
 (function () {
- var from=new URLSearchParams(location.search).get('from'),back=document.querySelector('.tour-back');
+ var params=new URLSearchParams(location.search),from=params.get('from'),back=document.querySelector('.tour-back');
  if(from==='map'){back.href='/resort-map/?v=map-return-20261028-v2#map=2';back.innerHTML='<span aria-hidden="true">→</span> خريطة الأكواخ';}
- else if(from==='details'){back.href='/#cabin=2';back.innerHTML='<span aria-hidden="true">→</span> الكوخ الهرمي';}
+ else if(from==='details'){back.href='/?v=map-return-20261028-v3#cabin=2'+(params.get('return')==='map'?'&from=map':'');back.innerHTML='<span aria-hidden="true">→</span> الكوخ الهرمي';}
 })();
 </script>
 <script src="/resort-data.js?v=12"></script>

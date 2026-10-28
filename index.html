@@ -3290,7 +3290,7 @@ function renderCabinDetail(c){
       </div>
 
       ${(c.id===1||c.id===12)?'<a class="fd-pyramid-detail-tour" href="/dome-tour/?from=details&cabin='+c.id+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">جولة في بيت الدوم <span aria-hidden="true">←</span></a>':''}
-      ${c.id===2?'<a class="fd-pyramid-detail-tour" href="/pyramid-tour/?from=details">جولة في الكوخ الهرمي <span aria-hidden="true">←</span></a>':''}
+      ${c.id===2?'<a class="fd-pyramid-detail-tour" href="/pyramid-tour/?from=details&v=map-return-20261028-v3'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">جولة في الكوخ الهرمي <span aria-hidden="true">←</span></a>':''}
       ${(c.id===4||c.id===13)?'<a class="fd-pyramid-detail-tour" href="/greek-tour/?from=details&cabin='+c.id+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">جولة في البيت اليوناني <span aria-hidden="true">←</span></a>':''}
       ${c.id===5?'<a class="fd-pyramid-detail-tour" href="/palm-tour/?from=details&cabin=5'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">جولة في كوخ بالم بيتش <span aria-hidden="true">←</span></a>':''}
       ${c.id===6?'<a class="fd-pyramid-detail-tour" href="/bohemian-tour/?from=details&cabin=6'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">جولة في الكوخ البوهيمي <span aria-hidden="true">←</span></a>':''}
