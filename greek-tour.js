@@ -3,14 +3,14 @@ var FD_GREEK_TOUR = (function () {
   'use strict';
   var root, observer, frame, cabin, selected = 'pool', language = 'ar';
   var parts = [
-    {id:'bedroom', ar:'غرفة نوم بسرير مزدوج', en:'Bedroom with a double bed', x:.28, y:.28},
-    {id:'bathroom', ar:'حمامات', en:'Bathrooms', x:.38, y:.22},
-    {id:'twin', ar:'غرفة نوم بسريرين مفردين', en:'Bedroom with two single beds', x:.71, y:.26},
-    {id:'living', ar:'المنطقة الداخلية', en:'Indoor area', x:.56, y:.36},
-    {id:'kitchen', ar:'ركن المطبخ', en:'Kitchenette', x:.44, y:.28},
-    {id:'dining', ar:'طاولة الطعام', en:'Dining table', x:.482, y:.325},
-    {id:'pool', ar:'المسبح', en:'Pool', x:.24, y:.56},
-    {id:'outdoor', ar:'المنطقة الخارجية', en:'Outdoor area', x:.73, y:.60}
+    {id:'bedroom', ar:'غرفة نوم بسرير مزدوج', en:'Bedroom with a double bed', x:0.255,y:0.29},
+    {id:'bathroom', ar:'حمامات', en:'Bathrooms', x:0.358,y:0.236},
+    {id:'twin', ar:'غرفة نوم بسريرين مفردين', en:'Bedroom with two single beds', x:0.747,y:0.296},
+    {id:'living', ar:'المنطقة الداخلية', en:'Indoor area', x:0.575,y:0.392},
+    {id:'kitchen', ar:'ركن المطبخ', en:'Kitchenette', x:0.438,y:0.297},
+    {id:'dining', ar:'طاولة الطعام', en:'Dining table', x:0.488,y:0.351},
+    {id:'pool', ar:'المسبح', en:'Pool', x:0.255,y:0.606},
+    {id:'outdoor', ar:'المنطقة الخارجية', en:'Outdoor area', x:0.735,y:0.632}
   ];
   var translations = {
     'موقد كهربائي':'Electric hob', 'ميكروويف':'Microwave', 'ثلاجة':'Refrigerator',
@@ -179,8 +179,8 @@ var FD_GREEK_TOUR = (function () {
     if(root && cabin && cabin.id===next.id) return;
     remove(); cabin=next; selected='pool'; language='ar';
     root=document.createElement('section');root.id='greek-tour';root.className='dt-tour';root.setAttribute('aria-labelledby','dt-title');
-    root.innerHTML='<header class="dt-heading"><h1 id="dt-title" class="dt-title"></h1></header><div class="dt-stage"><div class="dt-labels">'+parts.map(function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';}).join('')+'</div><img class="dt-image" src="/imgs/greek-tour-10-family-v1.png" width="1536" height="1024" loading="lazy" decoding="async" alt=""><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div class="dt-languages" role="group"><button type="button" data-language="ar" lang="ar" aria-label="العربية">AR</button><button type="button" data-language="en" lang="en" aria-label="English">EN</button></div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
-    root.querySelector('.dt-image').src='/imgs/greek-tour-'+(cabin.id===13?'11':'10')+'-family-v1.png';
+    root.innerHTML='<header class="dt-heading"><h1 id="dt-title" class="dt-title"></h1></header><div class="dt-stage"><div class="dt-labels">'+parts.map(function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';}).join('')+'</div><img class="dt-image" src="/imgs/greek-tour-10-front-v1.png" width="1536" height="1024" loading="lazy" decoding="async" alt=""><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div class="dt-languages" role="group"><button type="button" data-language="ar" lang="ar" aria-label="العربية">AR</button><button type="button" data-language="en" lang="en" aria-label="English">EN</button></div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
+    root.querySelector('.dt-image').src='/imgs/greek-tour-'+(cabin.id===13?'11':'10')+'-front-v1.png';
     document.getElementById('greek-tour-host').appendChild(root);
     var back=document.querySelector('.tour-back');
     if(back){

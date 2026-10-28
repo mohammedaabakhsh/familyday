@@ -7,13 +7,13 @@ var FD_CLASSIC_TOUR = (function () {
   var root, observer, frame, cabin, selected = 'pool', language = 'ar';
 
   var parts = [
- {id:'kitchen',ar:'ركن المطبخ',en:'Kitchenette',x:0.175,y:0.26},
- {id:'bathroom',ar:'حمام',en:'Bathroom',x:0.314,y:0.212},
- {id:'bedroom',ar:'غرفة نوم بسرير مزدوج',en:'Bedroom with a double bed',x:0.4,y:0.19},
- {id:'dining',ar:'طاولة الطعام',en:'Dining table',x:0.172,y:0.335},
- {id:'living',ar:'المنطقة الداخلية',en:'Indoor area',x:0.34,y:0.33},
- {id:'pool',ar:'المسبح',en:'Pool',x:0.685,y:0.28},
- {id:'outdoor',ar:'المنطقة الخارجية',en:'Outdoor area',x:0.846,y:0.655}
+ {id:'kitchen',ar:'ركن المطبخ',en:'Kitchenette',x:0.205,y:0.2},
+ {id:'bathroom',ar:'حمام',en:'Bathroom',x:0.355,y:0.211},
+ {id:'bedroom',ar:'غرفة نوم بسرير مزدوج',en:'Bedroom with a double bed',x:0.437,y:0.216},
+ {id:'dining',ar:'طاولة الطعام',en:'Dining table',x:0.204,y:0.282},
+ {id:'living',ar:'المنطقة الداخلية',en:'Indoor area',x:0.35,y:0.314},
+ {id:'pool',ar:'المسبح',en:'Pool',x:0.755,y:0.346},
+ {id:'outdoor',ar:'المنطقة الخارجية',en:'Outdoor area',x:0.808,y:0.716}
  ];
 
   var translations = {
@@ -338,7 +338,7 @@ var FD_CLASSIC_TOUR = (function () {
 
     root=document.createElement('section');root.id='classic-tour';root.className='dt-tour';root.setAttribute('aria-labelledby','dt-title');
 
-    root.innerHTML='<header class="dt-heading"><h1 id="dt-title" class="dt-title"></h1></header><div class="dt-stage"><div class="dt-labels">'+parts.map(function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';}).join('')+'</div><img class="dt-image" src="/imgs/classic-tour-18-family-v1.png" width="1536" height="1024" loading="eager" decoding="async" alt=""><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div class="dt-languages" role="group"><button type="button" data-language="ar" lang="ar" aria-label="العربية">AR</button><button type="button" data-language="en" lang="en" aria-label="English">EN</button></div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
+    root.innerHTML='<header class="dt-heading"><h1 id="dt-title" class="dt-title"></h1></header><div class="dt-stage"><div class="dt-labels">'+parts.map(function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';}).join('')+'</div><img class="dt-image" src="/imgs/classic-tour-18-front-v1.png" width="1536" height="1024" loading="eager" decoding="async" alt=""><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div class="dt-languages" role="group"><button type="button" data-language="ar" lang="ar" aria-label="العربية">AR</button><button type="button" data-language="en" lang="en" aria-label="English">EN</button></div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
 
     document.getElementById('classic-tour-host').appendChild(root);
 
