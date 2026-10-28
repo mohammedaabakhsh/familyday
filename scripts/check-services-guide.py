@@ -50,27 +50,27 @@ with sync_playwright() as p:
         page.locator('img').evaluate_all('(els)=>els.forEach(el=>el.loading="eager")')
         page.wait_for_function('Array.from(document.images).every(i=>i.complete&&i.naturalWidth>0)')
         assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')
-        # Every physical cabin and the shared garden open correct live facts, inline.
+        # Every map label selects its cabin, showing only a name and square photo.
         cabins=page.evaluate('data.resort.items')
         plotted=page.evaluate('FD_RESORT_MAP_DATA.locations')
         assert len(plotted)==13
-        assert page.locator('.map-choices button').count()==13
+        assert page.locator('.map-choices').count()==0
         for location in plotted:
             cid=location['cabinId'];cabin=next(c for c in cabins if c['id']==cid)
-            page.locator(f'.map-choices [data-map-cabin="{cid}"]').click()
+            page.locator(f'svg [data-map-cabin="{cid}"] .map-label').click()
             assert page.locator('#guide-cabin-title').inner_text()==cabin['name']
             assert page.locator(f'svg [data-map-cabin="{cid}"]').get_attribute('aria-pressed')=='true'
             assert page.locator('svg .is-selected').count()==1
+            assert page.locator('#guide-cabin-card dl, #guide-cabin-card details, #guide-cabin-card p').count()==0
             if cid!=11:
-                facts=page.locator('.cabin-facts dd').all_text_contents()
-                assert facts==[f"حتى {cabin['guests']} ضيوف",str(cabin['rooms']),str(cabin['bathroom'])]
-                assert cabin['pool']['label'] in page.locator('.cabin-pool').inner_text()
-            else:
-                assert page.locator('.cabin-pool').count()==0
+                photo=page.locator('#guide-cabin-card .cabin-photo')
+                photo.evaluate('(el)=>el.decode()')
+                rect=photo.bounding_box()
+                assert abs(rect['width']-rect['height'])<1,(width,cid,rect)
             assert '/services-guide/' in page.url
             page.locator('#close-cabin').click()
             assert page.locator('#guide-cabin-card').is_hidden()
-        # The actual plotted label, not just the list, supports touch and keyboard.
+        # Map labels support touch and keyboard.
         page.locator('svg [data-map-cabin="13"] .map-label').click()
         assert page.locator('#guide-cabin-title').inner_text()==next(c['name'] for c in cabins if c['id']==13)
         page.locator('#close-cabin').click()

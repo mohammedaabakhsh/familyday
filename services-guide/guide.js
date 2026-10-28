@@ -36,7 +36,7 @@
     html += section('cinema','03',text(doc,'.cn-title'),'فيلم، فشار، ورفقة حلوة.', '<div class="feature-card"><figure>' + sourcePhoto(doc,'.cn-photo img') + '</figure><div class="feature-copy"><div class="facts">' + Array.from(doc.querySelectorAll('.cn-stat')).map(stat => '<div><span>' + escape(text(stat,'dt')) + '</span><strong>' + escape(text(stat,'dd')) + '</strong></div>').join('') + '</div>' + items(list(doc,'.cn-inclusions li')) + '</div></div>');
     html += section('seating','04',text(doc,'.jl-title'),'اختاروا جلستكم، والباقي لحظات جميلة.', '<div class="photo-grid">' + _jalsatAllSessions.map(s => '<article class="photo-card">' + photo(s.img,s.name) + '<div class="card-copy"><h3>' + escape(s.name) + '</h3><div class="card-meta"><span>' + escape(s.persons) + '</span><strong class="price">' + escape(s.price) + '</strong></div><details class="notes"><summary>تفاصيل الجلسة</summary><p>' + escape(s.desc) + '</p></details></div></article>').join('') + '</div><p class="seating-extra">إضافة اختيارية: ' + escape(text(doc,'.jl-addon-name')) + ' · ' + escape(text(doc,'.jl-addon-price')) + '</p>');
     html += section('packages','05','الباقات','تفاصيل جاهزة لوقتكم الحلو.', packages(doc,'packages'));
-    html += section('resort-map','06','خريطة الأكواخ','اضغطوا على الكوخ أو اسمه لعرض بياناته هنا.', FD_GUIDE_MAP.markup());
+    html += section('resort-map','06','خريطة الأكواخ','اضغطوا على الكوخ لعرض صورته.', FD_GUIDE_MAP.markup());
     content.innerHTML = html;
     FD_GUIDE_MAP.mount();
     content.setAttribute('aria-busy','false');

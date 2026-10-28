@@ -43,7 +43,8 @@ python3 scripts/check-services-guide.py http://127.0.0.1:8023
 `../resort-map-data.js` is the shared source for the owner-approved footprint
 coordinates, map image and cabin photos used by both maps. Cabin names and facts
 come from `../resort-data.js`. `guide-map.js` displays these inline with zoom,
-keyboard/touch selection, an accessible name list and a local details card.
+keyboard/touch selection on the map labels and a square photo with the selected
+cabin’s name. There is no duplicate name list or cabin-facts panel.
 Keep the administrative area excluded, and never duplicate cabin facts here.
 Notes panels are intentionally omitted from the guide; the original service pages
 retain their content.
