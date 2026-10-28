@@ -10,40 +10,40 @@
   // Only owner-confirmed locations are plotted. Add each remaining location here after confirmation.
   var locations = [
     // Owner-confirmed plot directly above the two domes on the left.
-    { key: 'pyramid', cabinId: 2, x: 23.25, y: 32.9, labelSide: 'left', labelRightX: 16,
-      footprint: [[17.8, 24.8], [38.8, 24.8], [38.8, 38.2], [17.8, 38.2]] },
-    { key: 'dome-upper', cabinId: 12, x: 23.25, y: 43.4, labelSide: 'left', labelRightX: 16,
-      footprint: [[17.8, 38.2], [38.8, 38.2], [38.8, 48.6], [17.8, 48.6]] },
-    { key: 'dome-lower', cabinId: 1, x: 23.25, y: 53.6, labelSide: 'left', labelRightX: 16,
-      footprint: [[17.8, 48.6], [38.8, 48.6], [38.8, 60.3], [17.8, 59.2]] },
+    { key: 'pyramid', cabinId: 2, x: 25.359, y: 35.008, labelSide: 'left', labelRightX: 16,
+      footprint: [[19.458, 25.199], [41.627, 25.199], [41.627, 39.793], [19.458, 39.793]] },
+    { key: 'dome-upper', cabinId: 12, x: 25.598, y: 44.896, labelSide: 'left', labelRightX: 16,
+      footprint: [[19.458, 39.793], [41.627, 39.793], [41.627, 50.638], [19.458, 50.638]] },
+    { key: 'dome-lower', cabinId: 1, x: 25.598, y: 56.140, labelSide: 'left', labelRightX: 16,
+      footprint: [[19.458, 50.638], [41.627, 50.638], [41.627, 62.121], [18.900, 62.121]] },
     // Owner's corrected aerial reference: smaller Classic above, larger Royal below.
-    { key: 'classic', cabinId: 3, x: 60.2, y: 26.6, labelSide: 'right', labelLeftX: 70,
-      footprint: [[39.5, 23.8], [54.4, 10.0], [64.7, 24.5], [51.3, 35.5], [43.8, 24.6]] },
-    { key: 'royal', cabinId: 9, x: 65.8, y: 35.5, labelSide: 'right', labelLeftX: 76,
-      footprint: [[51.3, 35.5], [64.7, 24.5], [76.7, 42.5], [64.3, 52.5]] },
+    { key: 'classic', cabinId: 3, x: 59.091, y: 21.292, labelSide: 'right', labelLeftX: 70,
+      footprint: [[42.584, 25.279], [59.330, 9.888], [67.783, 26.954], [56.300, 37.241], [47.767, 25.997]] },
+    { key: 'royal', cabinId: 9, x: 67.624, y: 35.327, labelSide: 'right', labelLeftX: 76,
+      footprint: [[56.300, 37.241], [67.783, 26.954], [82.695, 48.166], [68.022, 59.330]] },
     // Owner's plan confirms this bottom row from left to right.
-    { key: 'bohemian', cabinId: 6, x: 22.1, y: 65.2, labelSide: 'left', labelRightX: 15,
-      footprint: [[16.8, 59.2], [27.8, 59.2], [27.8, 84.3], [16.8, 84.3]] },
-    { key: 'panoramic', cabinId: 10, x: 33.2, y: 66.8, labelSide: 'bottom', labelX: 31, labelY: 91,
-      footprint: [[27.8, 60.3], [38.9, 60.3], [38.9, 84.3], [27.8, 84.3]] },
-    { key: 'rural', cabinId: 8, x: 43.7, y: 67.1, labelSide: 'bottom', labelX: 47, labelY: 91,
-      footprint: [[38.9, 60.9], [48.5, 61.8], [48.5, 84.3], [38.9, 84.3]] },
-    { key: 'french', cabinId: 7, x: 53.3, y: 67.5, labelSide: 'bottom', labelX: 63, labelY: 91,
-      footprint: [[48.5, 61.8], [56.44, 61.8], [58.2, 64.7333333333], [58.2, 84.3], [48.5, 84.3]] },
+    { key: 'bohemian', cabinId: 6, x: 24.083, y: 68.581, labelSide: 'left', labelRightX: 15,
+      footprint: [[18.900, 62.121], [30.383, 62.121], [30.383, 88.278], [18.501, 88.278]] },
+    { key: 'panoramic', cabinId: 10, x: 35.885, y: 68.820, labelSide: 'bottom', labelX: 35, labelY: 95,
+      footprint: [[30.383, 62.121], [41.946, 62.121], [41.946, 88.278], [30.383, 88.278]] },
+    { key: 'rural', cabinId: 8, x: 47.209, y: 69.059, labelSide: 'bottom', labelX: 49, labelY: 95,
+      footprint: [[41.946, 63.796], [52.233, 64.833], [52.233, 88.278], [41.946, 88.278]] },
+    { key: 'french', cabinId: 7, x: 57.257, y: 70.255, labelSide: 'bottom', labelX: 61, labelY: 95,
+      footprint: [[52.233, 64.833], [57.097, 64.593], [62.440, 68.182], [62.440, 88.278], [52.233, 88.278]] },
     // Owner-confirmed right-hand row: Greek 1, Greek 2, then Palm Beach.
     { key: 'greek-one', cabinId: 4,
-      x: 75.9, y: 51.4, labelSide: 'offset', labelX: 89.5, labelY: 69, leaderBend: [87.1, 65.1],
-      footprint: [[70.4, 48.6], [76.8, 43.5], [89.9, 63.7], [82.5, 69]] },
+      x: 82.775, y: 57.576, labelSide: 'offset', labelX: 94, labelY: 76, leaderBend: [95, 70],
+      footprint: [[76.635, 51.196], [82.695, 48.166], [96.651, 67.464], [90.271, 71.770]] },
     { key: 'greek-two', cabinId: 13,
-      x: 69.4, y: 56.8, labelSide: 'offset', labelX: 86, labelY: 76.5, leaderBend: [80.1, 71],
-      footprint: [[63.6, 54.2], [70.4, 48.6], [82.5, 69], [75, 74]] },
-    { key: 'palm-beach', cabinId: 5, x: 61.9, y: 61.4,
-      labelSide: 'offset', labelX: 79, labelY: 83.5, leaderBend: [70.5, 77.2],
-      footprint: [[55.6, 60.4], [63.6, 54.2], [75, 74], [67, 79.4]] },
+      x: 75.917, y: 62.440, labelSide: 'offset', labelX: 88, labelY: 83, leaderBend: [89, 77],
+      footprint: [[69.139, 57.496], [76.635, 51.196], [90.271, 71.770], [83.812, 76.555]] },
+    { key: 'palm-beach', cabinId: 5, x: 68.501, y: 68.581,
+      labelSide: 'offset', labelX: 80, labelY: 89, leaderBend: [82, 84],
+      footprint: [[60.447, 64.035], [69.139, 57.496], [83.812, 76.555], [75.758, 81.898]] },
     // The central shared garden uses the same details as its existing site card.
-    { key: 'shared-garden', cabinId: 11, kind: 'shared', x: 49, y: 46.5,
+    { key: 'shared-garden', cabinId: 11, kind: 'shared', x: 50.638, y: 46.013,
       labelSide: 'offset', labelX: 35, labelY: 8, leaderBend: [43, 24],
-      footprint: [[39.6, 26.6], [43.7, 25.1], [62.4, 54.4], [52.3, 61.5], [39.6, 60.6]] }
+      footprint: [[42.823, 27.512], [46.970, 26.077], [68.022, 59.330], [57.097, 64.593], [42.823, 63.557]] }
   ].filter(function (location) { return data.resort.items.some(function (item) { return item.id === location.cabinId; }); });
   if (!locations.length) return;
 
@@ -641,7 +641,7 @@
     error.hidden = true;
     plane.hidden = false;
     viewport.setAttribute('aria-busy', 'true');
-    image.src = 'imgs/resort-map-v5-transparent.png';
+    image.src = 'imgs/resort-map-v6-garden.png';
   }
 
   function createDialog() {
