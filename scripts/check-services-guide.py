@@ -111,7 +111,7 @@ with sync_playwright() as p:
     page.close()
     # Changes to the existing copy, shared price data, and images appear automatically.
     context=browser.new_context();page=context.new_page()
-    source=(ROOT/'index.html').read_text().replace('تنسيق بسيط للسرير بالورد الطبيعي على شكل قلب أو حرف واحد حسب الاختيار','تفصيل تجريبي للتحقق').replace('<dd class="cn-price">150 ريال</dd>','<dd class="cn-price">173 ريال</dd>')
+    source=(ROOT/'index.html').read_text().replace('قلب أو حرف من الورد الطبيعي على السرير، حسب اختيارك.','تفصيل تجريبي للتحقق').replace('<dd class="cn-price">150 ريال</dd>','<dd class="cn-price">173 ريال</dd>')
     data=(ROOT/'service-data.js').read_text().replace("price:'300 ريال'","price:'333 ريال'",1).replace("img:'imgs/jalsat_1.webp'","img:'imgs/jalsat_2.webp'",1)
     context.route('**/index.html',lambda r:r.fulfill(body=source,content_type='text/html'))
     context.route('**/service-data.js?*',lambda r:r.fulfill(body=data,content_type='text/javascript'))
