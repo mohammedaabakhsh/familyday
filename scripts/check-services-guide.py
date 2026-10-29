@@ -27,16 +27,18 @@ with sync_playwright() as p:
         assert page.locator('#coordination h3').all_text_contents()==expected_names
         assert page.locator('#coordination .price').all_text_contents()==['120 ريال','350 ريال','650 ريال','850 ريال','1150 ريال','1850 ريال']
         inclusions=[c.locator('.inclusions li').all_text_contents() for c in page.locator('#coordination .package-card').all()]
-        for left in inclusions:
-            for right in inclusions:
-                shared=set(left)&set(right)
-                assert [v for v in left if v in shared]==[v for v in right if v in shared]
+        # New benefits precede the inherited benefits of the immediately prior package.
+        for previous,current in zip(inclusions[2:],inclusions[3:]):
+            additions=[v for v in current if v not in previous]
+            inherited=[v for v in current if v in previous]
+            assert current==additions+inherited
+            assert inherited==[v for v in previous if v in current]
         assert not any('بوكيه' in v for v in inclusions[4])
         assert any('بوكيه' in v for v in inclusions[5])
         assert all(v in inclusions[5] for v in inclusions[4])
         assert page.locator('#packages .package-card').count()==2
         celebration=page.locator('#coordination .package-card').filter(has_text='باقة الاحتفال')
-        assert celebration.locator('.inclusions li').count()==9
+        assert celebration.locator('.inclusions li').count()==10
         assert 'باقة يوم العائلة المتكاملة' not in page.locator('#coordination').text_content()
         assert 'باقة يوم العائلة المتكاملة' not in page.locator('#packages').inner_text()
         assert 'ملاحظات' not in page.locator('#guide-content').text_content()
