@@ -27,18 +27,24 @@ with sync_playwright() as p:
         assert page.locator('#coordination h3').all_text_contents()==expected_names
         assert page.locator('#coordination .price').all_text_contents()==['120 ريال','350 ريال','650 ريال','850 ريال','1150 ريال','1850 ريال']
         inclusions=[c.locator('.inclusions li').all_text_contents() for c in page.locator('#coordination .package-card').all()]
-        # New benefits precede the inherited benefits of the immediately prior package.
-        for previous,current in zip(inclusions[2:],inclusions[3:]):
-            additions=[v for v in current if v not in previous]
-            inherited=[v for v in current if v in previous]
-            assert current==additions+inherited
-            assert inherited==[v for v in previous if v in current]
+        # VIP and resort retain the reviewed preceding package, then show their additions.
+        for previous,current in zip(inclusions[3:5],inclusions[4:6]):
+            assert current[:len(previous)]==previous
+        assert [len(v) for v in inclusions]==[3,6,11,11,17,27]
+        assert 'لعبتان مائيتان للاستخدام أثناء الإقامة' in inclusions[1]
+        for i in (2,5):
+            assert 'ألعاب مائية للاستخدام أثناء الإقامة' in inclusions[i]
+        for i in (2,3,4,5):
+            assert 'كوبان من الفشار' in inclusions[i]
+        assert all('سليبر' not in v for items in inclusions for v in items)
+        assert 'بوكس ألعاب جماعية للاستخدام أثناء الإقامة' in inclusions[2]
+        assert 'طاولة مع بوكس ألعاب جماعية للاستخدام أثناء الإقامة' in inclusions[5]
         assert not any('بوكيه' in v for v in inclusions[4])
         assert any('بوكيه' in v for v in inclusions[5])
         assert all(v in inclusions[5] for v in inclusions[4])
         assert page.locator('#packages .package-card').count()==2
         celebration=page.locator('#coordination .package-card').filter(has_text='باقة الاحتفال')
-        assert celebration.locator('.inclusions li').count()==10
+        assert celebration.locator('.inclusions li').count()==11
         assert 'باقة يوم العائلة المتكاملة' not in page.locator('#coordination').text_content()
         assert 'باقة يوم العائلة المتكاملة' not in page.locator('#packages').inner_text()
         assert 'ملاحظات' not in page.locator('#guide-content').text_content()
