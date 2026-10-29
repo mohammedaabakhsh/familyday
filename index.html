@@ -1192,7 +1192,7 @@ header{
 
 <script src="campaign-data.js?v=7"></script>
 <script src="resort-campaign.js?v=5" defer></script>
-<script src="share-pages.js?v=hospitality-20261028-v2"></script>
+<script src="share-pages.js?v=service-sections-20261030-v1"></script>
 <script src="resort-features.js?v=menu-20261028-v1"></script>
 <script src="stay-design.js?v=17"></script>
 <script src="site-enhancements.js?v=1"></script>
@@ -1787,7 +1787,7 @@ function tarfihiOrder(){
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">2. ما الخدمات الإضافية وكيف أطلبها؟</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;"><p>تتوفر خدمات إضافية مثل الضيافة والتنسيقات والباقات، طاولات الطعام، الجلسات الخارجية، الألعاب المائية والترفيهية، وجلسة السينما، حسب التوفر.</p><p>يمكن طلب الخدمات المتاحة أثناء الإقامة عبر مسح رمز QR الموجود داخل الكوخ.</p><p>أما التنسيقات، فيفضّل إبلاغنا مسبقًا حتى نجهزها لك.</p><a class="fd-text-link" href="#services" onclick="event.preventDefault();showServices()">استعرض الخدمات</a></div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;"><p>تتوفر خدمات إضافية مثل الضيافة والتنسيقات، طاولات الطعام، الجلسات الخارجية، الألعاب المائية والترفيهية، وجلسة السينما، حسب التوفر.</p><p>يمكن طلب الخدمات المتاحة أثناء الإقامة عبر مسح رمز QR الموجود داخل الكوخ.</p><p>أما التنسيقات، فيفضّل إبلاغنا مسبقًا حتى نجهزها لك.</p><a class="fd-text-link" href="#services" onclick="event.preventDefault();showServices()">استعرض الخدمات</a></div>
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">3. هل يمكن ترتيب الكوخ لمناسبة خاصة؟</div>
@@ -1842,10 +1842,6 @@ function tarfihiOrder(){
     <section aria-labelledby="svcs-group-1">
       <h2 id="svcs-group-1" class="svcs-section-title">ترفيه</h2>
       <div class="svcs-grid">
-        <button type="button" class="svcs-card" onclick="showSinema()" aria-label="جلسة السينما">
-          <span class="svcs-name">جلسة السينما</span>
-          <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
-        </button>
         <button type="button" class="svcs-card" onclick="showTarfihi()" aria-label="الألعاب الترفيهية">
           <span class="svcs-name">الألعاب الترفيهية</span>
           <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
@@ -1859,16 +1855,12 @@ function tarfihiOrder(){
     <section aria-labelledby="svcs-group-2">
       <h2 id="svcs-group-2" class="svcs-section-title">تجهيز مناسبتك</h2>
       <div class="svcs-grid">
-        <button type="button" class="svcs-card" onclick="showTansidat()" aria-label="الضيافة والتنسيقات والباقات">
-          <span class="svcs-name">الضيافة والتنسيقات والباقات</span>
+        <button type="button" class="svcs-card" onclick="showTansidat()" aria-label="الضيافة والتنسيقات">
+          <span class="svcs-name">الضيافة والتنسيقات</span>
           <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
         </button>
-        <button type="button" class="svcs-card" onclick="showTawilat()" aria-label="طاولات الطعام">
-          <span class="svcs-name">طاولات الطعام</span>
-          <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
-        </button>
-        <button type="button" class="svcs-card" onclick="showJalsat()" aria-label="الجلسات الخارجية">
-          <span class="svcs-name">الجلسات الخارجية</span>
+        <button type="button" class="svcs-card" onclick="openSetupsDetail()" aria-label="الجلسات والتجهيزات">
+          <span class="svcs-name">الجلسات والتجهيزات</span>
           <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
         </button>
       </div>
@@ -1898,7 +1890,7 @@ function tarfihiOrder(){
 #hospitality-detail .hd-header{display:flex;align-items:center;gap:14px;padding:20px 20px 16px;text-align:right}
 #hospitality-detail .hd-back{display:inline-flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;cursor:pointer}
 #hospitality-detail .hd-title{margin:0;color:#f0f5f7;font-family:Tajawal,sans-serif;font-size:24px;font-weight:800;line-height:1.4}
-#hospitality-detail .hd-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:0 16px 14px;direction:rtl}
+#hospitality-detail .hd-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:0 16px 14px;direction:rtl}
 #hospitality-detail .hd-tab{border:1.5px solid rgba(25,167,183,.20);border-radius:14px;background:rgba(255,255,255,.055);color:rgba(255,255,255,.62);font-family:Tajawal,sans-serif;font-size:14px;font-weight:700;padding:12px 10px;cursor:pointer;transition:.2s ease}
 #hospitality-detail .hd-tab.active{color:#fff;background:rgba(25,167,183,.18);border-color:rgba(25,167,183,.65);box-shadow:0 0 18px rgba(25,167,183,.13)}
 #hospitality-detail .hd-content{padding:0 16px 36px}
@@ -1913,12 +1905,12 @@ function tarfihiOrder(){
 #hospitality-detail .hd-items{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:13px;padding-top:13px;border-top:1px solid rgba(255,255,255,.08)}
 #hospitality-detail .hd-item{display:flex;align-items:center;gap:7px;min-height:39px;padding:9px 10px;border-radius:11px;background:rgba(255,255,255,.045);font-family:Tajawal,sans-serif;font-size:12px;color:rgba(255,255,255,.76);line-height:1.45}
 #hospitality-detail .hd-check{width:18px;height:18px;border-radius:6px;display:grid;place-items:center;flex:0 0 auto;background:rgba(25,167,183,.13);color:#7ecfea;font-size:11px;font-weight:700}
-:is(#hd-coordination-panel,#hd-packages-panel) .hd-package-name{margin:0}
-:is(#hd-coordination-panel,#hd-packages-panel) .hd-package-description{margin:7px 0 0;font-family:Tajawal,sans-serif;font-size:13px;color:rgba(255,255,255,.66);line-height:1.7}
-:is(#hd-coordination-panel,#hd-packages-panel) .hd-package-group+.hd-package-group{margin-top:20px;padding-top:17px;border-top:1px solid rgba(255,255,255,.08)}
-:is(#hd-coordination-panel,#hd-packages-panel) .hd-group-title{margin:16px 0 0;font-family:Tajawal,sans-serif;font-size:14px;font-weight:700;color:#7ecfea;line-height:1.5}
-:is(#hd-coordination-panel,#hd-packages-panel) .hd-package-group+.hd-package-group .hd-group-title{margin-top:0}
-:is(#hd-coordination-panel,#hd-packages-panel) .hd-group-title+.hd-items{margin-top:10px;padding-top:0;border-top:0}
+#hd-coordination-panel .hd-package-name{margin:0}
+#hd-coordination-panel .hd-package-description{margin:7px 0 0;font-family:Tajawal,sans-serif;font-size:13px;color:rgba(255,255,255,.66);line-height:1.7}
+#hd-coordination-panel .hd-package-group+.hd-package-group{margin-top:20px;padding-top:17px;border-top:1px solid rgba(255,255,255,.08)}
+#hd-coordination-panel .hd-group-title{margin:16px 0 0;font-family:Tajawal,sans-serif;font-size:14px;font-weight:700;color:#7ecfea;line-height:1.5}
+#hd-coordination-panel .hd-package-group+.hd-package-group .hd-group-title{margin-top:0}
+#hd-coordination-panel .hd-group-title+.hd-items{margin-top:10px;padding-top:0;border-top:0}
 @media(max-width:360px){#hospitality-detail .hd-items{grid-template-columns:1fr}}
 </style>
 <div id="hospitality-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
@@ -1927,13 +1919,12 @@ function tarfihiOrder(){
     <button type="button" class="hd-back" onclick="closeHospitalityDetail()" aria-label="العودة إلى الخدمات">
       <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-    <h1 class="hd-title">الضيافة والتنسيقات والباقات</h1>
+    <h1 class="hd-title">الضيافة والتنسيقات</h1>
   </div>
 
-  <div class="hd-tabs" role="tablist" aria-label="الضيافة والتنسيقات والباقات">
+  <div class="hd-tabs" role="tablist" aria-label="الضيافة والتنسيقات">
     <button id="hd-tab-hospitality" aria-controls="hd-hospitality-panel" class="hd-tab active" type="button" role="tab" aria-selected="true" onclick="showHospitalityTab('hospitality')">الضيافة</button>
     <button id="hd-tab-coordination" aria-controls="hd-coordination-panel" class="hd-tab" type="button" role="tab" aria-selected="false" onclick="showHospitalityTab('coordination')">التنسيقات</button>
-    <button id="hd-tab-packages" aria-controls="hd-packages-panel" class="hd-tab" type="button" role="tab" aria-selected="false" onclick="showHospitalityTab('packages')">الباقات</button>
   </div>
 
   <div class="hd-content">
@@ -2111,34 +2102,7 @@ function tarfihiOrder(){
         </section>
       </div>
     </div>
-    <div id="hd-packages-panel" class="hide" role="tabpanel" aria-labelledby="hd-tab-packages">
-      <p class="hd-intro">باقات تجمع الضيافة والترفيه</p>
-      <div class="hd-packages">
-        <div class="hd-package">
-          <div class="hd-package-header">
-            <div class="hd-package-name">باقة السينما</div>
-          </div>
-          <div class="hd-items">
-            <div class="hd-item"><span class="hd-check">✓</span><span>جلسة سينما لمدة 3 ساعات</span></div>
-            <div class="hd-item"><span class="hd-check">✓</span><span>كرسيان مريحان</span></div>
-            <div class="hd-item"><span class="hd-check">✓</span><span>كوبان من الفشار</span></div>
-            <div class="hd-item"><span class="hd-check">✓</span><span>كوبان من الموهيتو</span></div>
-          </div>
-        </div>
-        <div class="hd-package">
-          <div class="hd-package-header">
-            <div class="hd-package-name">باقة الشتاء</div>
-          </div>
-          <div class="hd-items">
-            <div class="hd-item"><span class="hd-check">✓</span><span>جلسة خارجية لـ4 أشخاص</span></div>
-            <div class="hd-item"><span class="hd-check">✓</span><span>دلة قهوة سعودية مع التمر</span></div>
-            <div class="hd-item"><span class="hd-check">✓</span><span>دلة شاي مع البسكويت</span></div>
-            <div class="hd-item"><span class="hd-check">✓</span><span>4 أكواب من الفشار</span></div>
-          </div>
-        </div>
 
-      </div>
-    </div>
   </div>
   </div>
 </div>
@@ -2178,12 +2142,12 @@ function tarfihiOrder(){
         </div>
 
         <section aria-labelledby="cn-inclusions-title">
-          <h2 id="cn-inclusions-title" class="cn-section-title">تشمل الجلسة</h2>
+          <h2 id="cn-inclusions-title" class="cn-section-title">باقة السينما</h2>
           <ul class="cn-inclusions">
             <li>شاشة عرض خارجية</li>
-            <li>كرسيين مريحين</li>
-            <li>فشار لشخصين</li>
-            <li>موهيتو لشخصين</li>
+            <li>كرسيان مريحان</li>
+            <li>كوبان من الفشار</li>
+            <li>كوبان من الموهيتو</li>
           </ul>
         </section>
 
@@ -2341,6 +2305,18 @@ function tarfihiOrder(){
           </div>
           <button type="button" class="jl-order-button" onclick="openOrderPopup(getJalsatOrderText())">إكمال الطلب عبر واتساب</button>
         </div>
+        <section id="winter-package" class="hd-package" aria-labelledby="winter-title">
+          <div class="hd-package-header">
+            <h2 class="hd-package-name" id="winter-title">باقة الشتاء</h2>
+          </div>
+          <div class="hd-items">
+            <div class="hd-item"><span class="hd-check">✓</span><span>جلسة خارجية لـ4 أشخاص</span></div>
+            <div class="hd-item"><span class="hd-check">✓</span><span>دلة قهوة سعودية مع التمر</span></div>
+            <div class="hd-item"><span class="hd-check">✓</span><span>دلة شاهي مع البسكويت</span></div>
+            <div class="hd-item"><span class="hd-check">✓</span><span>4 أكواب من الفشار</span></div>
+          </div>
+          <button type="button" class="jl-order-button" onclick="openOrderPopup('باقة الشتاء')">طلب باقة الشتاء</button>
+        </section>
       </div>
     </div>
   </div>
@@ -3390,7 +3366,7 @@ ${c.id===8?'<a class="fd-pyramid-detail-tour" href="/rustic-tour/?from=details&c
 
       <section class="fd-cabin-addons">
         <h3>إضافات الحجز</h3>
-        <p>الضيافة والتنسيقات والباقات، <a href="#jalsat" onclick="return openCabinService(event,'jalsat')">الجلسات الخارجية</a>، <a href="#tawilat" onclick="return openCabinService(event,'tawilat')">طاولات الطعام</a>، <a href="#sinema" onclick="return openCabinService(event,'sinema')">جلسة السينما</a>، <a href="#tarfihi" onclick="return openCabinService(event,'tarfihi')">الألعاب الترفيهية</a>، و<a href="#maiya" onclick="return openCabinService(event,'maiya')">الألعاب المائية</a>.</p>
+        <p>الضيافة والتنسيقات، <a href="#jalsat" onclick="return openCabinService(event,'jalsat')">الجلسات الخارجية</a>، <a href="#tawilat" onclick="return openCabinService(event,'tawilat')">طاولات الطعام</a>، <a href="#sinema" onclick="return openCabinService(event,'sinema')">جلسة السينما</a>، <a href="#tarfihi" onclick="return openCabinService(event,'tarfihi')">الألعاب الترفيهية</a>، و<a href="#maiya" onclick="return openCabinService(event,'maiya')">الألعاب المائية</a>.</p>
       </section>
       <div class="fd-cabin-faq-footer"><a class="fd-cabin-faq-link" href="#faq" onclick="return openAccommodationFaq(event,'faq')">الأسئلة الشائعة <span aria-hidden="true">←</span></a></div>
     </section>`;
@@ -3850,23 +3826,24 @@ function closeServiceSub(){
   _serviceSubReturn = null;
 }
 
-function showTansidat(){
+function showTansidat(tab){
   
   document.getElementById('hospitality-detail').classList.remove('hide');
-  showHospitalityTab(new URLSearchParams(location.search).get('tab') || 'hospitality');
+  showHospitalityTab(tab || 'hospitality');
 }
 function closeHospitalityDetail(){
   document.getElementById('hospitality-detail').classList.add('hide');
   
 }
 function showHospitalityTab(tab){
-  if(['hospitality','coordination','packages'].indexOf(tab)===-1) tab='hospitality';
-  ['hospitality','coordination','packages'].forEach(function(key){
+  if(['hospitality','coordination'].indexOf(tab)===-1) tab='hospitality';
+  ['hospitality','coordination'].forEach(function(key){
     var selected=key===tab;
     document.getElementById('hd-'+key+'-panel').classList.toggle('hide',!selected);
     var button=document.getElementById('hd-tab-'+key);
     button.classList.toggle('active',selected);
     button.setAttribute('aria-selected',String(selected));
+    button.tabIndex=selected ? 0 : -1;
   });
 }
 function showJalsat(){ openJalsatDetail(); }
@@ -4967,6 +4944,8 @@ function openMDirect(c){
 <script src="chalet-design.js?v=21"></script>
 <script src="dome-gallery.js?v=2"></script>
 
+<link rel="stylesheet" href="service-sections.css?v=20261030-v1">
+<script src="service-sections.js?v=20261030-v1"></script>
 <script>
 // Family Day navigation history: existing views remain the rendering layer.
 // A route has a parent; only changed layers are reopened, so Back from a
@@ -4977,14 +4956,12 @@ function openMDirect(c){
   var current = {name:'dest', args:[]};
   var rendering = false;
   var waitingForBack = false;
-  var version = 1;
+  var version = 2;
   var serviceViews = {
     hospitality:['showTansidat','closeHospitalityDetail'],
-    sinema:['openSinemaDetail','closeSinemaDetail'],
+    setups:['openSetupsDetail','closeSetupsDetail'],
     maiya:['openMaiyaDetail','closeMaiyaDetail'],
-    jalsat:['openJalsatDetail','closeJalsatDetail'],
     tarfihi:['openTarfihiDetail','closeTarfihiDetail'],
-    tawilat:['openTawilatDetail','closeTawilatDetail'],
     sharik:['showSharik','closeSharikDetail'],
     contest:['showContest','closeContestDetail'],
     walaa:['showWalaa','closeWalaaDetail'],
@@ -4992,6 +4969,13 @@ function openMDirect(c){
   };
 
   function route(name,args,parent){
+    var legacy={sinema:'cinema',tawilat:'dining',jalsat:'seating'};
+    if(legacy[name]){args=[legacy[name]];name='setups';}
+    if(name==='hospitality'){
+      if(args && args[0]==='packages'){name='setups';args=['cinema'];}
+      else args=[args && args[0]==='coordination' ? 'coordination' : 'hospitality'];
+    }
+    if(name==='setups') args=[args && ['cinema','dining','seating'].indexOf(args[0])!==-1 ? args[0] : 'cinema'];
     var r = {name:name,args:args || []};
     if(parent) r.parent = parent;
     else if(name==='home') r.parent = route('dest');
@@ -5020,6 +5004,9 @@ function openMDirect(c){
   function urlFor(r){
     var cleanUrl=cleanFamilyDayURL();
     if(cleanUrl.searchParams.get('from')==='map') cleanUrl.searchParams.delete('from');
+    cleanUrl.searchParams.delete('tab');
+    if(r.name==='hospitality' && r.args[0]==='coordination') cleanUrl.searchParams.set('tab','coordination');
+    if(r.name==='setups' && r.args[0]!=='cinema') cleanUrl.searchParams.set('tab',r.args[0]);
     var base='/'+cleanUrl.search;
     if(r.name==='map') return '/resort-map/'+cleanUrl.search+(r.args.length ? '#map='+r.args[0] : '');
     if(r.name==='chalet-map') return '/chalet-map/'+cleanUrl.search;
@@ -5059,6 +5046,8 @@ function openMDirect(c){
     }
     match=/^(home|contact)=(resort|stay|chalet)$/.exec(hash);
     if(match) return route(match[1],[match[2]]);
+    if(['sinema','tawilat','jalsat'].indexOf(hash)!==-1) return route(hash);
+    if(hash==='hospitality' || hash==='setups') return route(hash,[new URLSearchParams(location.search).get('tab')]);
     if(['resort','chalet','services','faq','faq2','map','chalet-detail','chalet-faq','chalet-map'].indexOf(hash)!==-1 || serviceViews[hash]) return route(hash);
     return route('dest');
   }
@@ -5100,9 +5089,9 @@ function openMDirect(c){
         if(r.parent && r.parent.name==='map') document.dispatchEvent(new CustomEvent('fd-map-suspend'));
         call('open3D',r.args); break;
       case 'order':
-        _orderDraftScope=r.parent ? r.parent.name : r.args[0];
+        _orderDraftScope=r.parent ? r.parent.name+(r.parent.name==='setups' ? ':'+r.parent.args[0] : '') : r.args[0];
         _isMenuOrder=!!r.args[2];
-        _orderResortScope=r.args.length>3 ? !!r.args[3] : !!r.parent && ['menu','sinema','maiya','tarfihi','tawilat','jalsat'].indexOf(r.parent.name)!==-1;
+        _orderResortScope=r.args.length>3 ? !!r.args[3] : !!r.parent && ['menu','setups','sinema','maiya','tarfihi','tawilat','jalsat'].indexOf(r.parent.name)!==-1;
         call('openOrderPopup',r.args.slice(0,2));
         break;
       case 'map':
@@ -5111,9 +5100,8 @@ function openMDirect(c){
         break;
       default:
         if(serviceViews[r.name]) {
-          if(r.name==='sinema' && r.parent && r.parent.name==='cabin') document.getElementById('services-overlay').classList.remove('hide');
-          call(serviceViews[r.name][0]);
-          if(['menu','jalsat','tawilat','sinema','tarfihi','maiya'].indexOf(r.name)!==-1) {
+          call(serviceViews[r.name][0],r.args);
+          if(['menu','setups','tarfihi','maiya'].indexOf(r.name)!==-1) {
             var back=document.querySelector('#'+r.name+'-detail button[onclick="'+serviceViews[r.name][1]+'()"]');
             if(back) back.setAttribute('aria-label',r.parent && r.parent.name==='cabin' ? (r.parent.args[0]===11 ? 'العودة إلى الحديقة' : 'العودة إلى الكوخ') : 'العودة إلى الخدمات');
           }
@@ -5141,7 +5129,6 @@ function openMDirect(c){
     }
     else if(serviceViews[r.name]) {
       call(serviceViews[r.name][1]);
-      if(r.name==='sinema' && r.parent && r.parent.name==='cabin') document.getElementById('services-overlay').classList.add('hide');
     }
   }
   var defaultPageTitle=document.title;
@@ -5167,7 +5154,7 @@ function openMDirect(c){
       current=next;
       updatePagePreview(next);
       document.body.style.overflow=after.some(function(r){
-        return ['cabin','chalet-detail','photos','dome-gallery','tour','tawilat','walaa','map','chalet-map'].indexOf(r.name)!==-1;
+        return ['cabin','chalet-detail','photos','dome-gallery','tour','setups','hospitality','walaa','map','chalet-map'].indexOf(r.name)!==-1;
       }) ? 'hidden' : '';
     } finally { rendering=false; }
   }
@@ -5222,8 +5209,20 @@ function openMDirect(c){
   wrapOpen('openMDirect',function(c){return cabinRoute(c.id);});
   wrapOpen('showServiceSub',function(){return route('service-sub',Array.from(arguments));});
   Object.keys(serviceViews).forEach(function(name){
-    wrapOpen(serviceViews[name][0],function(){return route(name,[],current.name==='service-sub' ? current : null);});
+    wrapOpen(serviceViews[name][0],function(tab){return route(name,['hospitality','setups'].indexOf(name)!==-1 ? [tab] : [],current.name==='service-sub' ? current : null);});
     wrapClose(serviceViews[name][1]);
+  });
+  // Tab changes replace this page entry, so Back returns to the caller, not every tab.
+  var originalHospitalityTab=remember('showHospitalityTab');
+  window.showHospitalityTab=function(tab){
+    if(rendering) return originalHospitalityTab(tab);
+    navigate(route('hospitality',[tab],current.name==='hospitality' ? current.parent : null),true);
+  };
+  window.selectSetupsTab=function(tab){
+    navigate(route('setups',[tab],current.name==='setups' ? current.parent : null),true);
+  };
+  ['closeSinemaDetail','closeJalsatDetail','closeTawilatDetail'].forEach(function(name){
+    window[name]=function(){window.closeSetupsDetail();};
   });
   document.addEventListener('fd-chalet-map-request',function(){
     if(!rendering && current.name!=='chalet-map') navigate(route('chalet-map',[],current));
@@ -5288,7 +5287,7 @@ function openMDirect(c){
   wrapOpen('open3D',function(url){return route('tour',[url],current);});
   wrapOpen('openOrderPopup',function(name,showTime){
     var parent=current.name==='menu-cart' ? current.parent : current;
-    return route('order',[name,!!showTime,_isMenuOrder,['menu','sinema','maiya','tarfihi','tawilat','jalsat'].indexOf(parent.name)!==-1],parent);
+    return route('order',[name,!!showTime,_isMenuOrder,['menu','setups','sinema','maiya','tarfihi','tawilat','jalsat'].indexOf(parent.name)!==-1],parent);
   });
   var originalCartReview=remember('openMenuCartReview');
   window.openMenuCartReview=function(){
@@ -5642,8 +5641,8 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
   var panelIds = [
     'splash', 'dest', 'landing', 'landing2', 'landing3', 'chalet-faq', 'app', 'app2', 'contact-page',
     'faq-overlay', 'faq2-overlay', 'services-overlay', 'hospitality-detail',
-    'sinema-detail', 'maiya-detail', 'jalsat-detail', 'sharik-detail', 'contest-detail',
-    'tarfihi-detail', 'tawilat-detail', 'walaa-detail', 'menu-detail', 'menu-cart-review',
+    'setups-detail', 'maiya-detail', 'sharik-detail', 'contest-detail',
+    'tarfihi-detail', 'walaa-detail', 'menu-detail', 'menu-cart-review',
     'ov', 'fd-dome-gallery', 'fsOverlay', 'iframeOverlay', 'order-popup'
   ];
   var modalLabels = {

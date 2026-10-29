@@ -6,7 +6,7 @@ from playwright.sync_api import sync_playwright
 import sys
 BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8023'
 ROOT=Path(__file__).resolve().parents[1]
-SECTIONS=['coordination','dining','cinema','seating','packages','resort-map']
+SECTIONS=['coordination','dining','cinema','seating','resort-map']
 with sync_playwright() as p:
     browser=p.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox'])
     for width,height in [(320,740),(390,844),(430,932),(1440,1000)]:
@@ -15,9 +15,9 @@ with sync_playwright() as p:
         page.on('pageerror',lambda e:errors.append(str(e)))
         page.on('response',lambda r:broken.append(r.url) if r.status>=400 and r.url.startswith(BASE) else None)
         page.goto(BASE+'/services-guide/',wait_until='networkidle')
-        page.wait_for_selector('#packages')
+        page.wait_for_selector('#resort-map')
         assert page.locator('.guide-section').evaluate_all('(els)=>els.map(e=>e.id)')==SECTIONS
-        assert page.locator('.contents a').count()==6
+        assert page.locator('.contents a').count()==5
         bounds=page.locator('.contents').bounding_box()
         assert bounds['y']+bounds['height']<height,('Index must fit opening screen',width,bounds)
         assert page.locator('#hospitality,#restaurant,#games,#water-games').count()==0
@@ -50,11 +50,13 @@ with sync_playwright() as p:
         assert not any('بوكيه' in v for v in inclusions[4])
         assert any('بوكيه' in v for v in inclusions[5])
         assert all(v in inclusions[5] for v in inclusions[4])
-        assert page.locator('#packages .package-card').count()==2
+        assert page.locator('#seating .package-card').count()==1
+        assert 'باقة الشتاء' in page.locator('#seating .package-card').inner_text()
+        assert 'باقة السينما' in page.locator('#cinema').inner_text()
         celebration=page.locator('#coordination .package-card').filter(has_text='باقة الاحتفال')
         assert celebration.locator('.inclusions li').count()==12
         assert 'باقة يوم العائلة المتكاملة' not in page.locator('#coordination').text_content()
-        assert 'باقة يوم العائلة المتكاملة' not in page.locator('#packages').inner_text()
+        assert page.locator('#packages').count()==0
         assert 'ملاحظات' not in page.locator('#guide-content').text_content()
         assert page.locator('#seating .photo-card').count()==6
         assert page.locator('#dining tbody tr').count()==5
@@ -118,7 +120,7 @@ with sync_playwright() as p:
         assert page.evaluate('navigator.clipboard.readText()')==BASE+'/services-guide/'
         assert not errors,errors
         assert not broken,broken
-        print(width,'PASS opening index, five services and inline map, in-page navigation/details, images, sharing and no overflow',flush=True)
+        print(width,'PASS opening index, four services and inline map, in-page navigation/details, images, sharing and no overflow',flush=True)
         context.close()
     # A direct link resolves after source content arrives.
     page=browser.new_page(viewport={'width':390,'height':844})
@@ -143,7 +145,7 @@ with sync_playwright() as p:
     assert page.locator('#retry-guide').is_visible()
     assert page.locator('.load-error a').count()==0
     context.unroute('**/index.html')
-    page.locator('#retry-guide').click();page.wait_for_selector('#packages')
+    page.locator('#retry-guide').click();page.wait_for_selector('#resort-map')
     page.evaluate("Object.defineProperty(navigator,'share',{value:undefined,configurable:true});Object.defineProperty(navigator,'clipboard',{value:undefined,configurable:true})")
     page.locator('[data-share]').click()
     assert page.locator('#share-dialog').is_visible()

@@ -19,9 +19,9 @@
   };
   const section = (id, number, title, intro, body) => '<section class="guide-section" id="' + id + '" aria-labelledby="title-' + id + '"><header class="section-heading"><span class="section-number" aria-hidden="true">' + number + '</span><h2 id="title-' + id + '">' + escape(title) + '</h2><p>' + escape(intro) + '</p></header>' + body + '<a class="back-index" href="#contents">↑ الفهرس</a></section>';
   function packages(doc, key) {
-    const panel = doc.querySelector('#hd-' + key + '-panel');
+    const panel = key === 'winter' ? doc : doc.querySelector('#hd-' + key + '-panel');
     if (!panel) throw new Error('Missing package panel');
-    return '<div class="package-grid">' + Array.from(panel.querySelectorAll('.hd-package')).map(card => {
+    return '<div class="package-grid">' + Array.from(panel.querySelectorAll(key === 'winter' ? '#winter-package' : '.hd-package')).map(card => {
       const title = text(card, '.hd-package-name');
       const description = card.querySelector('.hd-package-description');
       const price = card.querySelector('.hd-package-price');
@@ -34,10 +34,9 @@
   function render(doc) {
     let html = section('coordination','01','التنسيقات','لمسة حلوة لمناسبتكم. اضغطوا على التنسيق لتفاصيله.', packages(doc,'coordination'));
     html += section('dining','02',text(doc,'.tw-title'),'للجمعة الحلوة، طاولة تلمّكم.', '<div class="feature-card"><figure>' + sourcePhoto(doc,'.tw-photo img') + '</figure><div class="feature-copy"><table><caption>الأسعار بالريال</caption><thead><tr><th scope="col">الأشخاص</th><th scope="col">' + escape(text(doc,'#tawilat-opt-plain .tw-package-name')) + '</th><th scope="col">' + escape(text(doc,'#tawilat-opt-tansiq .tw-package-name')) + '</th></tr></thead><tbody>' + Object.entries(_tawilatPrices).map(([size,p]) => '<tr><th scope="row">' + size + '</th><td>' + p.plain + '</td><td>' + p.tansiq + '</td></tr>').join('') + '</tbody></table><p class="small-note">' + escape(text(doc,'#tawilat-opt-plain .tw-package-desc')) + '، أو ' + escape(text(doc,'#tawilat-opt-tansiq .tw-package-desc')) + '.</p></div></div>');
-    html += section('cinema','03',text(doc,'.cn-title'),'فيلم، فشار، ورفقة حلوة.', '<div class="feature-card"><figure>' + sourcePhoto(doc,'.cn-photo img') + '</figure><div class="feature-copy"><div class="facts">' + Array.from(doc.querySelectorAll('.cn-stat')).map(stat => '<div><span>' + escape(text(stat,'dt')) + '</span><strong>' + escape(text(stat,'dd')) + '</strong></div>').join('') + '</div>' + items(list(doc,'.cn-inclusions li')) + '</div></div>');
-    html += section('seating','04',text(doc,'.jl-title'),'اختاروا جلستكم، والباقي لحظات جميلة.', '<div class="photo-grid">' + _jalsatAllSessions.map(s => '<article class="photo-card">' + photo(s.img,s.name) + '<div class="card-copy"><h3>' + escape(s.name) + '</h3><div class="card-meta"><span>' + escape(s.persons) + '</span><strong class="price">' + escape(s.price) + '</strong></div><details class="notes"><summary>تفاصيل الجلسة</summary><p>' + escape(s.desc) + '</p></details></div></article>').join('') + '</div><p class="seating-extra">إضافة اختيارية: ' + escape(text(doc,'.jl-addon-name')) + ' · ' + escape(text(doc,'.jl-addon-price')) + '</p>');
-    html += section('packages','05','الباقات','تفاصيل جاهزة لوقتكم الحلو.', packages(doc,'packages'));
-    html += section('resort-map','06','خريطة الأكواخ','اضغطوا على الكوخ لعرض صورته.', FD_GUIDE_MAP.markup());
+    html += section('cinema','03',text(doc,'.cn-title'),'فيلم، فشار، ورفقة حلوة.', '<div class="feature-card"><figure>' + sourcePhoto(doc,'.cn-photo img') + '</figure><div class="feature-copy"><div class="facts">' + Array.from(doc.querySelectorAll('.cn-stat')).map(stat => '<div><span>' + escape(text(stat,'dt')) + '</span><strong>' + escape(text(stat,'dd')) + '</strong></div>').join('') + '</div>' + '<h3>' + escape(text(doc,'#cn-inclusions-title')) + '</h3>' + items(list(doc,'.cn-inclusions li')) + '</div></div>');
+    html += section('seating','04',text(doc,'.jl-title'),'اختاروا جلستكم، والباقي لحظات جميلة.', '<div class="photo-grid">' + _jalsatAllSessions.map(s => '<article class="photo-card">' + photo(s.img,s.name) + '<div class="card-copy"><h3>' + escape(s.name) + '</h3><div class="card-meta"><span>' + escape(s.persons) + '</span><strong class="price">' + escape(s.price) + '</strong></div><details class="notes"><summary>تفاصيل الجلسة</summary><p>' + escape(s.desc) + '</p></details></div></article>').join('') + '</div><p class="seating-extra">إضافة اختيارية: ' + escape(text(doc,'.jl-addon-name')) + ' · ' + escape(text(doc,'.jl-addon-price')) + '</p>' + packages(doc,'winter'));
+    html += section('resort-map','05','خريطة الأكواخ','اضغطوا على الكوخ لعرض صورته.', FD_GUIDE_MAP.markup());
     content.innerHTML = html;
     FD_GUIDE_MAP.mount();
     content.setAttribute('aria-busy','false');
@@ -45,6 +44,7 @@
     observeSections();
   }
   function scrollToHash() {
+    if(location.hash === '#packages') history.replaceState(null,'','#seating');
     const target = document.getElementById(location.hash.slice(1));
     if (target && (target.classList.contains('guide-section') || target.id === 'contents')) target.scrollIntoView({behavior:'instant',block:'start'});
   }

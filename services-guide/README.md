@@ -1,11 +1,11 @@
 # Services guide
 
 Public page: `/services-guide/`. This is a separate customer catalogue; `/services/`
-and all existing ordering screens remain unchanged. The guide is a self-contained
+and its ordering controls share the same service content. The guide is a self-contained
 reading experience: only in-page anchors, no links to other service pages.
 
-The mobile cover includes a short introduction and a five-item index:
-coordination, dining tables, cinema, outdoor seating, and packages, followed by an inline resort map. Hospitality,
+The mobile cover includes a short introduction and a four-service index:
+coordination, dining tables, cinema, and outdoor seating, followed by an inline resort map. The cinema package lives within cinema and the winter package within outdoor seating. Hospitality,
 food, and games are deliberately excluded. Long lists expand inline.
 
 ## One source of content
@@ -28,7 +28,10 @@ food, and games are deliberately excluded. Long lists expand inline.
   retry button instead of displaying stale prices or sending readers elsewhere.
 
 Section links use stable anchors, e.g. `/services-guide/#coordination`.
-Hospitality's existing page accepts `?tab=hospitality|coordination|packages`.
+Hospitality accepts `?tab=hospitality|coordination`. `/services/setups/` accepts
+`?tab=cinema|dining|seating`. The old cinema, table and seating URLs still open
+their matching tab. Legacy hospitality `?tab=packages` opens cinema. The old
+guide `#packages` anchor opens outdoor seating, where the winter package lives.
 
 ## Checks
 
@@ -54,6 +57,20 @@ retain their content.
 The approved six packages are Rose (120), Complete Rose (350), Evening (650),
 Celebration (850), VIP (1150), and Family Day Resort (1850 SAR).
 Within each list, keep matching items in the same relative order: decorations,
-arrival arrangements, hospitality, guest-use amenities, and recreation. Stable
+arrival arrangements, guest-use amenities, hospitality, and recreation. Stable
 `data-coordination-item` keys in the source HTML identify matching inclusions.
 Do not add amenities just because they are used as examples in a design discussion.
+
+## Grouped service pages
+
+`service-sections.js` mounts the existing cinema, dining and outdoor controls in
+one tabbed `/services/setups/` page. It retains the real DOM nodes and selection
+state; it does not clone forms or maintain a second catalogue. The root router
+owns tab URLs, Back behavior and caller context. `service-sections.css` scopes
+the layout to the new page. Hospitality retains only its two original panels.
+Cinema's package is the cinema service itself (same price and contents); winter
+has a single `#winter-package` source under the outdoor service.
+
+Validate navigation and controls with `scripts/check-service-sections.py` and
+`scripts/check-share-navigation.py`; validate first-response preview metadata
+and legacy aliases with `scripts/check-share-pages.py`.

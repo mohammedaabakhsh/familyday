@@ -8,7 +8,7 @@ with sync_playwright() as p:
   page=b.new_page(viewport={'width':width,'height':height});errors=[]
   page.on('pageerror',lambda e:errors.append(str(e)))
   page.goto(BASE+'/services/',wait_until='networkidle')
-  for fn,path,close in [('openMenuDetail','/menu/','closeMenuDetail'),('showSinema','/services/cinema/','closeSinemaDetail'),('showMaiya','/services/water-games/','closeMaiyaDetail'),('showTansidat','/services/hospitality/','closeHospitalityDetail'),('showJalsat','/services/outdoor-seating/','closeJalsatDetail'),('showTawilat','/services/dining-tables/','closeTawilatDetail'),('showTarfihi','/services/games/','closeTarfihiDetail')]:
+  for fn,path,close in [('openMenuDetail','/menu/','closeMenuDetail'),('showSinema','/services/setups/','closeSinemaDetail'),('showMaiya','/services/water-games/','closeMaiyaDetail'),('showTansidat','/services/hospitality/','closeHospitalityDetail'),('showJalsat','/services/setups/?tab=seating','closeJalsatDetail'),('showTawilat','/services/setups/?tab=dining','closeTawilatDetail'),('showTarfihi','/services/games/','closeTarfihiDetail')]:
    page.evaluate(fn+'()');page.wait_for_url('**'+path)
    title=page.title();page.reload(wait_until='networkidle')
    assert page.title()==title

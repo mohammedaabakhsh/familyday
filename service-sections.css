@@ -1,0 +1,19 @@
+#setups-detail{position:fixed;inset:0;z-index:10000;overflow-y:auto;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);font-family:Tajawal,sans-serif;direction:rtl;color:#f0f5f7;-webkit-overflow-scrolling:touch}
+#setups-detail .setups-shell{max-width:1100px;margin:auto;padding:24px 20px calc(32px + env(safe-area-inset-bottom,0px));box-sizing:border-box}
+#setups-detail .setups-heading{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+#setups-title{font-size:26px;line-height:1.4;margin:0;font-weight:800}
+#setups-detail .setups-back{display:grid;place-items:center;flex:0 0 38px;width:38px;height:38px;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;cursor:pointer}
+#setups-detail .setups-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:24px}
+#setups-detail .setups-tabs button{font:700 15px/1.5 Tajawal,sans-serif;border:1px solid #294b5a;border-radius:14px;background:#0a2333;color:#b6cbd5;padding:13px 8px;min-height:50px;cursor:pointer}
+#setups-detail .setups-tabs button[aria-selected=true]{color:#fff;background:#126577;border-color:#65c4d3}
+#setups-detail button:focus-visible,#hospitality-detail [role=tab]:focus-visible{outline:2px solid #8fd5e4;outline-offset:3px}
+#setups-detail :is(#sinema-detail,#tawilat-detail,#jalsat-detail){position:static!important;inset:auto!important;z-index:auto!important;background:transparent!important;overflow:visible!important}
+#setups-detail :is(.cn-header,.tw-header,.jl-header){display:none}
+#setups-detail :is(.cn-shell,.tw-shell,.jl-shell){padding:0;width:100%;max-width:none}
+#setups-detail #winter-package{margin-top:24px;padding:20px;border:1px solid #294b5a;border-radius:18px;background:#0a2333}
+#winter-package .hd-package-name{margin:0 0 14px;font-size:20px;color:#f0f5f7}
+#winter-package .hd-items{display:grid;gap:10px;margin-bottom:18px}
+#winter-package .hd-item{display:flex;align-items:flex-start;gap:8px;font-size:15px;line-height:1.7;color:#c8d9e0}
+#winter-package .hd-check{color:#80ccdc}
+@media(max-width:899px){#setups-detail .setups-shell{max-width:600px}}
+@media(max-width:360px){#setups-detail .setups-shell{padding-inline:16px}#setups-title{font-size:22px}#setups-detail .setups-tabs{gap:6px}#setups-detail .setups-tabs button{font-size:13px;padding:12px 5px}}

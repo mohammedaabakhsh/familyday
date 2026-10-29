@@ -30,7 +30,7 @@ for entry in pages:
 for path in ROOT.glob('*-tour/index.html'):
     parser=Metadata(); parser.feed(path.read_text())
     assert parser.values.get('og:title') and parser.values.get('og:description'), str(path)
-print('PASS first-response metadata: 40 routes and 10 illustrated tour pages', flush=True)
+print(f'PASS first-response metadata: {len(pages)} routes and illustrated tour pages', flush=True)
 
 with sync_playwright() as p:
     browser=p.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox'])
@@ -40,17 +40,22 @@ with sync_playwright() as p:
         for entry in pages:
             if entry['route']=='contest': continue # Already a standalone page, audited above.
             page.goto(BASE+entry['path'],wait_until='networkidle')
-            assert page.title()==entry['title'], (entry['path'],page.title())
-            assert page.url==BASE+entry['path'], (entry['path'],page.url)
+            aliases={'sinema':'cinema','tawilat':'dining','jalsat':'seating'}
+            tab=aliases.get(entry['route'])
+            expected_path='/services/setups/'+(('?tab='+tab) if tab and tab!='cinema' else '') if tab else entry['path']
+            expected_title='الجلسات والتجهيزات | يوم العائلة' if tab else entry['title']
+            assert page.title()==expected_title, (entry['path'],page.title())
+            assert page.url==BASE+expected_path, (entry['path'],page.url)
             route=page.evaluate('history.state.route')
             key=route['name']+('='+str(route['args'][0]) if route['name'] in ['home','contact','cabin'] else '')
-            assert key==entry['route'], (entry['path'],key)
+            assert key==('setups' if tab else entry['route']), (entry['path'],key)
+            if tab: assert route['args']==[tab]
             if route['name']=='cabin':
                 assert page.locator('#ov').evaluate('(e)=>e.classList.contains("open")')
                 if route['args'][0]<20: assert page.locator('#fd-cabin-detail-title').inner_text() in entry['title']
                 else: assert ('القسم الأول' if route['args'][0]==20 else 'القسم الثاني') in page.locator('#mBody').inner_text()
                 assert page.evaluate(f'cabinShareURL({route["args"][0]})')==BASE+entry['path']
-            elif route['name'] in ['menu','hospitality','sinema','maiya','jalsat','tarfihi','tawilat','sharik','walaa']:
+            elif route['name'] in ['menu','hospitality','setups','maiya','tarfihi','sharik','walaa']:
                 assert page.locator('#'+route['name']+'-detail').is_visible(), entry['path']
             assert not errors, (entry['path'],errors)
             print(width, entry['path'], 'PASS direct open, title, canonical route', flush=True)
