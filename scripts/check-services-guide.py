@@ -27,12 +27,20 @@ with sync_playwright() as p:
         assert page.locator('#coordination h3').all_text_contents()==expected_names
         assert page.locator('#coordination .price').all_text_contents()==['120 ريال','350 ريال','650 ريال','850 ريال','1150 ريال','1850 ريال']
         inclusions=[c.locator('.inclusions li').all_text_contents() for c in page.locator('#coordination .package-card').all()]
-        # VIP and resort retain the reviewed preceding package, then show their additions.
-        for previous,current in zip(inclusions[3:5],inclusions[4:6]):
-            assert current[:len(previous)]==previous
-        assert [len(v) for v in inclusions]==[3,6,11,11,17,27]
+        # Shared inclusions retain the same relative order across differently composed packages.
+        for left in inclusions:
+            for right in inclusions:
+                shared=set(left)&set(right)
+                assert [v for v in left if v in shared]==[v for v in right if v in shared]
+        assert [len(v) for v in inclusions]==[3,6,11,12,18,27]
+        assert '٢ بالون' in inclusions[0]
+        for items in inclusions[1:]:
+            assert items[0]=='تزيين السرير بالورد الطبيعي'
+        for items in inclusions[3:]:
+            assert 'عصير عنب' in items
+            assert 'عصير عنب فاخر' not in items
         assert 'لعبتان مائيتان للاستخدام أثناء الإقامة' in inclusions[1]
-        for i in (2,5):
+        for i in (2,3,4,5):
             assert 'ألعاب مائية للاستخدام أثناء الإقامة' in inclusions[i]
         for i in (2,3,4,5):
             assert 'كوبان من الفشار' in inclusions[i]
@@ -44,7 +52,7 @@ with sync_playwright() as p:
         assert all(v in inclusions[5] for v in inclusions[4])
         assert page.locator('#packages .package-card').count()==2
         celebration=page.locator('#coordination .package-card').filter(has_text='باقة الاحتفال')
-        assert celebration.locator('.inclusions li').count()==11
+        assert celebration.locator('.inclusions li').count()==12
         assert 'باقة يوم العائلة المتكاملة' not in page.locator('#coordination').text_content()
         assert 'باقة يوم العائلة المتكاملة' not in page.locator('#packages').inner_text()
         assert 'ملاحظات' not in page.locator('#guide-content').text_content()
