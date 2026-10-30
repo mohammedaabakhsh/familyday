@@ -5,6 +5,18 @@
   const locations = () => FD_RESORT_MAP_DATA.locations.filter(l=>data.resort.items.some(c=>c.id===l.cabinId));
   const cabinFor = id => data.resort.items.find(c=>c.id===id);
   const shortName = c => c.name.replace(/^(?:الكوخ|كوخ|البيت|بيت)\s+/, '');
+  const roomText = n => n===1 ? 'غرفة واحدة' : n===2 ? 'غرفتان' : n>2 ? n+' غرف' : '';
+  const guestText = n => n===1 ? 'حتى ضيف واحد' : n===2 ? 'حتى ضيفين' : n>2 && n<=10 ? 'حتى '+n+' ضيوف' : n>10 ? 'حتى '+n+' ضيفًا' : '';
+  function highlightFor(cabin) {
+    if(cabin.id===3) return 'يمكن ربطه بكوخ رويال عند حجزهما معًا';
+    if(cabin.id===9) return 'يمكن ربطه بالكوخ الكلاسيكي عند حجزهما معًا';
+    if(cabin.id===10) return 'جاكوزي داخلي';
+    if(cabin.bath && cabin.bath.summary) {
+      if(cabin.id===2 && cabin.bath.outdoorPrivacy) return cabin.bath.summary+' بخصوصية كاملة';
+      return cabin.bath.summary;
+    }
+    return '';
+  }
   function marker(location) {
     const cabin = cabinFor(location.cabinId), name = shortName(cabin);
     const width = Math.min(210, name.length * 14 + 24), height = 44;
@@ -31,8 +43,20 @@
         el.setAttribute('aria-pressed',String(selected));el.classList.toggle('is-selected',selected);
       });
       const photo=FD_RESORT_MAP_DATA.cardPhotos[id];
-      let body='<div class="cabin-card-heading"><h3 id="guide-cabin-title">'+esc(cabin.name)+'</h3><button type="button" id="close-cabin" aria-label="إغلاق الصورة">×</button></div>';
+      const highlight=highlightFor(cabin);
+      const room=roomText(cabin.rooms), guests=guestText(cabin.guests);
+      let body='<div class="cabin-card-heading"><h3 id="guide-cabin-title">'+esc(cabin.name)+'</h3><button type="button" id="close-cabin" aria-label="إغلاق تفاصيل الكوخ">×</button></div>';
       if(photo) body+='<img class="cabin-photo" src="/'+esc(photo)+'" alt="'+esc(cabin.name)+'" width="1200" height="1200">';
+      if(cabin.id===11){
+        body+='<div class="cabin-card-body"><p class="cabin-card-kicker">الحديقة المشتركة</p><div class="cabin-tag-list">'+(cabin.tags||[]).filter(t=>t!=='|').map(t=>'<span>'+esc(t)+'</span>').join('')+'</div></div>';
+      } else {
+        body+='<div class="cabin-card-body"><div class="cabin-quick-facts">';
+        if(room) body+='<div class="cabin-quick-fact"><span>الغرف</span><strong>'+esc(room)+'</strong></div>';
+        if(guests) body+='<div class="cabin-quick-fact"><span>السعة</span><strong>'+esc(guests)+'</strong></div>';
+        body+='</div>';
+        if(highlight) body+='<div class="cabin-highlight"><span>ميزة مميزة</span><strong>'+esc(highlight)+'</strong></div>';
+        body+='</div>';
+      }
       card.innerHTML=body;card.hidden=false;
       card.focus({preventScroll:true});card.scrollIntoView({behavior:'instant',block:'start'});
       card.querySelector('#close-cabin').addEventListener('click',()=>{
