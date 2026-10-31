@@ -113,6 +113,7 @@
 (function () {
  var params=new URLSearchParams(location.search),from=params.get('from'),id=5,back=document.querySelector('.tour-back');
  if(from==='map'){back.href='/resort-map/?v=map-return-20261028-v2#map='+id;back.innerHTML='<span aria-hidden="true">→</span> خريطة الأكواخ';}
+ else if(from==='guide'){back.href='/services-guide/#resort-map';back.innerHTML='<span aria-hidden="true">→</span> دليل المنتجع';}
  else if(from==='details'){back.href=(params.get('return')==='map'?'/?v=palm-tour-20261025#cabin=':'/#cabin=')+id+(params.get('return')==='map'?'&from=map':'');back.innerHTML='<span aria-hidden="true">→</span> كوخ بالم بيتش';}
 })();
 </script>
