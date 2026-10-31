@@ -8,8 +8,8 @@
   const roomText = n => n===1 ? 'غرفة واحدة' : n===2 ? 'غرفتان' : n>2 ? n+' غرف' : '';
   const guestText = n => n===1 ? 'حتى ضيف واحد' : n===2 ? 'حتى ضيفين' : n>2 && n<=10 ? 'حتى '+n+' ضيوف' : n>10 ? 'حتى '+n+' ضيفًا' : '';
   function highlightFor(cabin) {
-    if(cabin.id===3) return 'يمكن ربطه بكوخ رويال عند حجزهما معًا';
-    if(cabin.id===9) return 'يمكن ربطه بالكوخ الكلاسيكي عند حجزهما معًا';
+    if(cabin.id===3) return 'إمكانية الربط الداخلي مع كوخ رويال';
+    if(cabin.id===9) return 'إمكانية الربط الداخلي مع الكوخ الكلاسيكي';
     if(cabin.id===10) return 'جاكوزي داخلي';
     if(cabin.bath && cabin.bath.summary) {
       if(cabin.id===2 && cabin.bath.outdoorPrivacy) return cabin.bath.summary+' بخصوصية كاملة';
