@@ -99,29 +99,12 @@
       if(cabin.id===11){
         body+='<div class="cabin-card-body"><p class="cabin-card-kicker">الحديقة المشتركة</p><div class="cabin-tag-list">'+(cabin.tags||[]).filter(t=>t!=='|').map(t=>'<span>'+esc(t)+'</span>').join('')+'</div></div>';
       } else {
-        const chips=featureChips(cabin), tourUrl=tourUrlFor(cabin);
+        const tourUrl=tourUrlFor(cabin);
         body+='<div class="cabin-card-body cabin-card-body--explore">';
-        if(cabin.type) body+='<p class="cabin-explore-intro">'+esc(cabin.type)+'</p>';
-        body+='<div class="cabin-quick-facts">';
-        if(room) body+='<div class="cabin-quick-fact"><span>الغرف</span><strong>'+esc(room)+'</strong></div>';
-        if(guests) body+='<div class="cabin-quick-fact"><span>السعة</span><strong>'+esc(guests)+'</strong></div>';
+        if(tourUrl) body+='<div class="cabin-explore-actions cabin-explore-actions--single"><a class="cabin-explore-link cabin-explore-link--primary" href="'+esc(tourUrl)+'">جولة داخل الكوخ <span aria-hidden="true">←</span></a></div>';
         body+='</div>';
-        if(chips.length) body+='<div class="cabin-feature-chips" aria-label="أبرز مميزات الكوخ">'+chips.map(v=>'<span>'+esc(v)+'</span>').join('')+'</div>';
-        body+='<div class="cabin-explore-actions"><button type="button" class="cabin-explore-link cabin-explore-link--primary" data-guide-details aria-expanded="false">تفاصيل الكوخ <span aria-hidden="true">＋</span></button>';
-        if(tourUrl) body+='<a class="cabin-explore-link" href="'+esc(tourUrl)+'">جولة داخل الكوخ <span aria-hidden="true">←</span></a>';
-        body+='</div>'+inlineDetails(cabin)+'</div>';
       }
       card.innerHTML=body;card.hidden=false;
-      const detailsButton=card.querySelector('[data-guide-details]');
-      if(detailsButton){
-        detailsButton.addEventListener('click',()=>{
-          const panel=card.querySelector('[data-guide-details-panel]');
-          const open=panel.hidden;
-          panel.hidden=!open;
-          detailsButton.setAttribute('aria-expanded',String(open));
-          detailsButton.querySelector('span').textContent=open?'−':'＋';
-        });
-      }
       card.focus({preventScroll:true});card.scrollIntoView({behavior:'instant',block:'start'});
       card.querySelector('#close-cabin').addEventListener('click',()=>{
         card.hidden=true;
