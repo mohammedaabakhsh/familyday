@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#eef7f3">
+<meta name="robots" content="noindex,follow">
+<title>خدمات إقامتك | يوم العائلة</title>
+<meta name="description" content="الخدمات المتاحة أثناء إقامتك في منتجع يوم العائلة.">
+<link rel="icon" href="/imgs/img01.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#173f36;--muted:#64786f;--paper:#fffdf8;--soft:#eef7f3;--line:#d7e6de;--accent:#23735e;--accent2:#dbeee6}
+*{box-sizing:border-box}
+html{background:#edf3ef}
+body{margin:0;color:var(--ink);font:16px/1.7 Tajawal,Arial,sans-serif;background:#edf3ef}
+a{text-decoration:none;color:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+a:focus-visible{outline:3px solid #2c816b;outline-offset:3px}
+.page{width:min(100%,760px);margin:auto;background:var(--paper);min-height:100vh}
+.hero{padding:24px 22px 26px;background:linear-gradient(180deg,#e7f4ed 0%,#f8fbf7 100%);text-align:center}
+.logo{width:74px;height:74px;object-fit:contain;margin:0 auto 8px}
+.eyebrow{margin:0;color:var(--accent);font-size:12px;font-weight:800}
+h1{margin:4px 0 8px;font-size:31px;line-height:1.3}
+.hero p:last-child{margin:0;color:var(--muted);font-size:14px}
+.main{padding:24px 20px 34px}
+.section-title{margin:0 0 12px;font-size:20px}
+.primary-grid{display:grid;gap:12px}
+.service-card{display:grid;grid-template-columns:52px minmax(0,1fr) 22px;align-items:center;gap:14px;padding:17px 16px;border:1px solid var(--line);border-radius:18px;background:white}
+.service-icon{display:grid;place-items:center;width:52px;height:52px;border-radius:16px;background:var(--soft);color:var(--accent)}
+.service-icon svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.service-copy{min-width:0}
+.service-copy strong{display:block;font-size:18px;line-height:1.35}
+.service-copy span{display:block;margin-top:4px;color:var(--muted);font-size:13px;line-height:1.55}
+.arrow{font-size:22px;color:#789188}
+.extras{margin-top:30px;padding-top:24px;border-top:1px solid var(--line)}
+.extras-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:12px}
+.extras-head h2{margin:0;font-size:20px}
+.extras-head span{font-size:12px;color:var(--muted)}
+.extra-list{display:grid;gap:9px}
+.extra-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:10px;padding:13px 14px;border:1px solid var(--line);border-radius:15px;background:#fff}
+.extra-name{font-weight:700}
+.extra-price{white-space:nowrap;font-weight:800;color:var(--accent)}
+.extra-order{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:8px 13px;border-radius:11px;background:var(--accent);color:white;font-size:13px;font-weight:800}
+.note{margin:12px 2px 0;color:var(--muted);font-size:12px}
+.help{margin-top:30px;padding:20px;border-radius:18px;background:var(--soft);text-align:center}
+.help h2{margin:0 0 4px;font-size:18px}
+.help p{margin:0 0 14px;color:var(--muted);font-size:13px}
+.help-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.help-actions a{display:flex;align-items:center;justify-content:center;min-height:46px;border:1px solid #bdd8ca;border-radius:12px;background:white;font-weight:800;font-size:14px}
+.footer{padding:20px;text-align:center;color:var(--muted);font-size:12px}
+@media(min-width:640px){
+  .hero{padding:32px 36px 34px}
+  .main{padding:30px 34px 42px}
+  .primary-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .service-card{grid-template-columns:1fr;align-content:start;text-align:center;min-height:190px;padding:22px 16px}
+  .service-icon{margin:auto}
+  .arrow{display:none}
+  .service-copy strong{margin-top:2px}
+}
+@media(max-width:360px){
+  h1{font-size:27px}
+  .main{padding-inline:16px}
+  .extra-row{grid-template-columns:minmax(0,1fr) auto}
+  .extra-order{grid-column:1/-1}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="hero">
+    <img class="logo" src="/imgs/img01.webp" alt="يوم العائلة" width="148" height="148">
+    <p class="eyebrow">منتجع يوم العائلة</p>
+    <h1>خدمات إقامتك</h1>
+    <p>الخدمات المتاحة لك أثناء إقامتك، في مكان واحد.</p>
+  </header>
+
+  <main class="main">
+    <h2 class="section-title">استعرض الخدمات</h2>
+    <section class="primary-grid" aria-label="الخدمات الرئيسية">
+      <a class="service-card" href="/menu/">
+        <span class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 5h16M5 9h14l-1 10H6L5 9Zm3-4v4m8-4v4"/></svg>
+        </span>
+        <span class="service-copy"><strong>المطعم</strong><span>وجبات، مشروبات وبوكسات الشواء.</span></span>
+        <span class="arrow" aria-hidden="true">←</span>
+      </a>
+
+      <a class="service-card" href="/services/water-games/">
+        <span class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M3 16q2-2 4 0t4 0t4 0t4 0M3 20q2-2 4 0t4 0t4 0t4 0M8 12V5m8 7V5M8 8h8"/></svg>
+        </span>
+        <span class="service-copy"><strong>الألعاب المائية</strong><span>خيارات متعددة للاستخدام داخل المسبح.</span></span>
+        <span class="arrow" aria-hidden="true">←</span>
+      </a>
+
+      <a class="service-card" href="/services/games/">
+        <span class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="12" rx="3"/><path d="M8 12h4m-2-2v4m6-3h.01m2 2h.01"/></svg>
+        </span>
+        <span class="service-copy"><strong>الألعاب الترفيهية</strong><span>ألعاب جماعية تضيف وقتًا ممتعًا للإقامة.</span></span>
+        <span class="arrow" aria-hidden="true">←</span>
+      </a>
+    </section>
+
+    <section class="extras" aria-labelledby="extras-title">
+      <div class="extras-head">
+        <h2 id="extras-title">طلبات إضافية</h2>
+        <span>متاحة أثناء الإقامة</span>
+      </div>
+      <div class="extra-list">
+        <div class="extra-row">
+          <span class="extra-name">حافظة ثلج مع ثلج</span>
+          <span class="extra-price">25 ر.س</span>
+          <a class="extra-order" href="https://wa.me/966556156693?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%B7%D9%84%D8%A8%20%D8%AD%D8%A7%D9%81%D8%B8%D8%A9%20%D8%AB%D9%84%D8%AC%20%D9%85%D8%B9%20%D8%AB%D9%84%D8%AC." target="_blank" rel="noopener noreferrer">طلب</a>
+        </div>
+        <div class="extra-row">
+          <span class="extra-name">خدمة إضافية</span>
+          <span class="extra-price">10 ر.س</span>
+          <a class="extra-order" href="https://wa.me/966556156693?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%B7%D9%84%D8%A8%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A5%D8%B6%D8%A7%D9%81%D9%8A%D8%A9." target="_blank" rel="noopener noreferrer">طلب</a>
+        </div>
+      </div>
+      <p class="note">سنضيف بقية الطلبات الإضافية هنا بعد اعتمادها.</p>
+    </section>
+
+    <section class="help" aria-labelledby="help-title">
+      <h2 id="help-title">تحتاج مساعدة؟</h2>
+      <p>فريق يوم العائلة متاح للتواصل أثناء إقامتك.</p>
+      <div class="help-actions">
+        <a href="https://wa.me/966556156693" target="_blank" rel="noopener noreferrer">واتساب</a>
+        <a href="tel:+966556156693">اتصال</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">منتجع يوم العائلة · خليج سلمان، جدة</footer>
+</div>
+</body>
+</html>
