@@ -28,7 +28,7 @@
     return '<a href="#guide-cabin-card" role="button" aria-pressed="false" aria-label="'+esc(cabin.name)+': اختيار الكوخ" data-map-cabin="'+cabin.id+'"><polygon class="plot" points="'+location.footprint.map(p=>p.map(v=>v*10).join(',')).join(' ')+'"/><polyline class="leader" points="'+location.x*10+','+location.y*10+bend+' '+x+','+y+'"/><circle class="map-dot" cx="'+location.x*10+'" cy="'+location.y*10+'" r="5"/><rect class="map-label" x="'+(x-width/2)+'" y="'+(y-height/2)+'" width="'+width+'" height="'+height+'" rx="8"/><text x="'+x+'" y="'+y+'" text-anchor="middle" dominant-baseline="central">'+esc(name)+'</text></a>';
   }
   function markup() {
-    return '<div class="guide-map"><div class="map-tools"><button type="button" id="map-zoom" aria-pressed="false">تكبير الخريطة +</button><span>اضغطوا على الكوخ في الخريطة</span></div><div class="map-scroll" tabindex="0" role="region" aria-label="خريطة المنتجع؛ يمكن تمرير الصورة بعد تكبيرها"><div class="map-canvas"><img id="guide-map-image" src="/'+esc(FD_RESORT_MAP_DATA.image)+'" alt="توزيع الأكواخ والحديقة المشتركة في منتجع يوم العائلة من الأعلى" width="1254" height="1254" loading="lazy"><svg viewBox="0 0 1000 1000" aria-label="اختيار كوخ على الخريطة">'+locations().map(marker).join('')+'</svg></div></div><p class="map-image-error" hidden>تعذّر عرض الصورة. يمكنكم الاختيار من الأسماء على الخريطة.</p><article id="guide-cabin-card" class="guide-cabin-card" tabindex="-1" aria-labelledby="guide-cabin-title" hidden></article></div>';
+    return '<div class="guide-map"><div class="map-tools"><span>اضغطوا على الكوخ في الخريطة</span></div><div class="map-scroll" tabindex="0" role="region" aria-label="خريطة المنتجع؛ يمكن تمرير الصورة بعد تكبيرها"><div class="map-canvas"><img id="guide-map-image" src="/'+esc(FD_RESORT_MAP_DATA.image)+'" alt="توزيع الأكواخ والحديقة المشتركة في منتجع يوم العائلة من الأعلى" width="1254" height="1254" loading="lazy"><svg viewBox="0 0 1000 1000" aria-label="اختيار كوخ على الخريطة">'+locations().map(marker).join('')+'</svg></div></div><p class="map-image-error" hidden>تعذّر عرض الصورة. يمكنكم الاختيار من الأسماء على الخريطة.</p><article id="guide-cabin-card" class="guide-cabin-card" tabindex="-1" aria-labelledby="guide-cabin-title" hidden></article></div>';
   }
   function mount() {
     const root=document.querySelector('.guide-map');
@@ -72,14 +72,6 @@
     });
     root.querySelector('svg').addEventListener('keydown',event=>{
       if(event.key===' ' && event.target.closest('[data-map-cabin]')){event.preventDefault();event.target.closest('[data-map-cabin]').dispatchEvent(new MouseEvent('click',{bubbles:true}));}
-    });
-    const viewport=root.querySelector('.map-scroll');
-    root.querySelector('#map-zoom').addEventListener('click',event=>{
-      const zoomed=viewport.classList.toggle('is-zoomed');
-      event.currentTarget.setAttribute('aria-pressed',String(zoomed));
-      event.currentTarget.textContent=zoomed?'عرض الخريطة كاملة −':'تكبير الخريطة +';
-      viewport.scrollLeft=zoomed?(viewport.scrollWidth-viewport.clientWidth)/2:0;
-      viewport.scrollTop=zoomed?(viewport.scrollHeight-viewport.clientHeight)/2:0;
     });
     const img=root.querySelector('#guide-map-image');
     const onError=()=>{root.querySelector('.map-image-error').hidden=false;};
