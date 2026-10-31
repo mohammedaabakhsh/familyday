@@ -17,6 +17,54 @@
     }
     return '';
   }
+  const bathroomText = n => n===1 ? 'حمام واحد' : n===2 ? 'حمامان' : n>2 ? n+' حمامات' : '';
+  function tourUrlFor(cabin) {
+    const routes={1:'dome-tour',12:'dome-tour',2:'pyramid-tour',3:'classic-tour',4:'greek-tour',13:'greek-tour',5:'palm-tour',6:'bohemian-tour',7:'french-tour',8:'rustic-tour',9:'royal-tour',10:'panoramic-tour'};
+    const route=routes[cabin.id];
+    return route ? '/'+route+'/?from=guide&cabin='+cabin.id : '';
+  }
+  function unique(values) {
+    const seen=new Set();
+    return values.filter(value=>{
+      const key=String(value||'').trim();
+      if(!key || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }
+  function featureChips(cabin) {
+    const chips=[];
+    const highlight=highlightFor(cabin);
+    if(highlight) chips.push(highlight);
+    if(cabin.pool && /جاكوزي/.test(cabin.pool.label||'') && !chips.some(v=>/جاكوزي/.test(v))) chips.push('جاكوزي داخل المسبح');
+    return unique(chips).slice(0,2);
+  }
+  function detailSection(title,values) {
+    const list=unique(values);
+    if(!list.length) return '';
+    return '<section class="cabin-detail-group"><h4>'+esc(title)+'</h4><ul>'+list.map(v=>'<li>'+esc(v)+'</li>').join('')+'</ul></section>';
+  }
+  function inlineDetails(cabin) {
+    const indoor=(cabin.features && cabin.features.indoor ? cabin.features.indoor.slice() : []);
+    const bath=bathroomText(cabin.bathroom);
+    if(bath) indoor.push(bath);
+    if(cabin.features && cabin.features.stay) indoor.push.apply(indoor,cabin.features.stay);
+
+    const kitchen=cabin.features && cabin.features.kitchen ? cabin.features.kitchen.slice() : [];
+
+    const outdoor=cabin.features && cabin.features.outdoor ? cabin.features.outdoor.slice() : [];
+    if(cabin.pool){
+      if(cabin.pool.label) outdoor.push(cabin.pool.label);
+      if(cabin.pool.depthCm) outdoor.push('عمق المسبح '+cabin.pool.depthCm+' سم');
+      if(Array.isArray(cabin.pool.facilities)) outdoor.push.apply(outdoor,cabin.pool.facilities);
+    }
+
+    return '<div class="cabin-inline-details" data-guide-details-panel hidden>'
+      +detailSection('داخل الكوخ',indoor)
+      +detailSection('تجهيزات المطبخ',kitchen)
+      +detailSection('المساحة الخارجية',outdoor)
+      +'</div>';
+  }
   function marker(location) {
     const cabin = cabinFor(location.cabinId), name = shortName(cabin);
     const width = Math.min(210, name.length * 14 + 24), height = 44;
@@ -43,33 +91,26 @@
         el.setAttribute('aria-pressed',String(selected));el.classList.toggle('is-selected',selected);
       });
       const photo=FD_RESORT_MAP_DATA.cardPhotos[id];
-      const highlight=highlightFor(cabin);
       const room=roomText(cabin.rooms), guests=guestText(cabin.guests);
       let body='<div class="cabin-card-heading"><h3 id="guide-cabin-title">'+esc(cabin.name)+'</h3><button type="button" id="close-cabin" aria-label="إغلاق تفاصيل الكوخ">×</button></div>';
       if(photo) body+='<img class="cabin-photo" src="/'+esc(photo)+'" alt="'+esc(cabin.name)+'" width="1200" height="1200">';
+
       if(cabin.id===11){
         body+='<div class="cabin-card-body"><p class="cabin-card-kicker">الحديقة المشتركة</p><div class="cabin-tag-list">'+(cabin.tags||[]).filter(t=>t!=='|').map(t=>'<span>'+esc(t)+'</span>').join('')+'</div></div>';
-      } else if(cabin.id===1 || cabin.id===12) {
-        var domePath=cabin.id===12?'dome-2':'dome-1';
+      } else {
+        const chips=featureChips(cabin), tourUrl=tourUrlFor(cabin);
         body+='<div class="cabin-card-body cabin-card-body--explore">';
-        body+='<p class="cabin-explore-intro">تجربة خاصة بتصميم القبة، مناسبة لشخصين مع مساحة خارجية ومسبح خاص.</p>';
+        if(cabin.type) body+='<p class="cabin-explore-intro">'+esc(cabin.type)+'</p>';
         body+='<div class="cabin-quick-facts">';
         if(room) body+='<div class="cabin-quick-fact"><span>الغرف</span><strong>'+esc(room)+'</strong></div>';
         if(guests) body+='<div class="cabin-quick-fact"><span>السعة</span><strong>'+esc(guests)+'</strong></div>';
         body+='</div>';
-        body+='<div class="cabin-feature-chips" aria-label="أبرز مميزات بيت الدوم"><span>بانيو داخلي</span><span>جاكوزي داخل المسبح</span><span>مسبح خاص</span></div>';
-        body+='<div class="cabin-explore-actions"><button type="button" class="cabin-explore-link cabin-explore-link--primary" data-guide-details aria-expanded="false">تفاصيل الكوخ <span aria-hidden="true">＋</span></button><a class="cabin-explore-link" href="/dome-tour/?from=guide&cabin='+cabin.id+'">جولة داخل الكوخ <span aria-hidden="true">←</span></a></div>';
-        body+='<div class="cabin-inline-details" data-guide-details-panel hidden><h4>تفاصيل بيت الدوم</h4><ul><li>غرفة نوم بسرير مزدوج</li><li>بانيو داخلي بغرفة النوم</li><li>مسبح خاص للكبار مع جاكوزي</li><li>جلسة خارجية خاصة</li><li>شواية</li><li>واي فاي مجاني، تلفزيون ذكي وساوندبار</li></ul></div>';
-        body+='</div>';
-      } else {
-        body+='<div class="cabin-card-body"><div class="cabin-quick-facts">';
-        if(room) body+='<div class="cabin-quick-fact"><span>الغرف</span><strong>'+esc(room)+'</strong></div>';
-        if(guests) body+='<div class="cabin-quick-fact"><span>السعة</span><strong>'+esc(guests)+'</strong></div>';
-        body+='</div>';
-        if(highlight) body+='<div class="cabin-highlight"><span>ميزة مميزة</span><strong>'+esc(highlight)+'</strong></div>';
-        body+='</div>';
+        if(chips.length) body+='<div class="cabin-feature-chips" aria-label="أبرز مميزات الكوخ">'+chips.map(v=>'<span>'+esc(v)+'</span>').join('')+'</div>';
+        body+='<div class="cabin-explore-actions"><button type="button" class="cabin-explore-link cabin-explore-link--primary" data-guide-details aria-expanded="false">تفاصيل الكوخ <span aria-hidden="true">＋</span></button>';
+        if(tourUrl) body+='<a class="cabin-explore-link" href="'+esc(tourUrl)+'">جولة داخل الكوخ <span aria-hidden="true">←</span></a>';
+        body+='</div>'+inlineDetails(cabin)+'</div>';
       }
-            card.innerHTML=body;card.hidden=false;
+      card.innerHTML=body;card.hidden=false;
       const detailsButton=card.querySelector('[data-guide-details]');
       if(detailsButton){
         detailsButton.addEventListener('click',()=>{
