@@ -42,7 +42,8 @@
   function detailSection(title,values) {
     const list=unique(values);
     if(!list.length) return '';
-    return '<section class="cabin-detail-group"><h4>'+esc(title)+'</h4><ul>'+list.map(v=>'<li>'+esc(v)+'</li>').join('')+'</ul></section>';
+    const cls=title==='تجهيزات المطبخ' ? 'cabin-detail-group cabin-detail-group--kitchen' : 'cabin-detail-group';
+    return '<section class="'+cls+'"><h4>'+esc(title)+'</h4><ul>'+list.map(v=>'<li>'+esc(v)+'</li>').join('')+'</ul></section>';
   }
   function inlineDetails(cabin) {
     const indoor=(cabin.features && cabin.features.indoor ? cabin.features.indoor.slice() : []);
