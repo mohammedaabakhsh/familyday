@@ -106,6 +106,9 @@
   if(from==='map'){
     back.href='/resort-map/?v=map-return-20261028-v2#map='+cabinId;
     back.innerHTML='<span aria-hidden="true">→</span> خريطة الأكواخ';
+  } else if(from==='guide'){
+    back.href='/services-guide/#resort-map';
+    back.innerHTML='<span aria-hidden="true">→</span> دليل المنتجع';
   } else if(from==='details'){
     back.href='/#cabin='+cabinId+(params.get('return')==='map'?'&from=map':'');
     back.innerHTML='<span aria-hidden="true">→</span> بيت الدوم';
