@@ -1527,7 +1527,10 @@ function openTarfihiDetail(){
   panel.classList.remove('hide');
   panel.scrollTop = 0;
 }
-function closeTarfihiDetail(){ document.getElementById('tarfihi-detail').classList.add('hide'); }
+function closeTarfihiDetail(){
+  if(fdReturnToGuestServices()) return;
+  document.getElementById('tarfihi-detail').classList.add('hide');
+}
 function selectTarfihiOpt(opt){
   _tarfihiOpt = opt;
   document.querySelector('#tarfihi-detail .tg-order-button').disabled=!opt;
@@ -3919,6 +3922,7 @@ function openMaiyaDetail(){
   };
 }
 function closeMaiyaDetail(){
+  if(fdReturnToGuestServices()) return;
   document.getElementById('maiya-detail').classList.add('hide');
 }
 var _maiyaSelected = new Set();
@@ -4074,6 +4078,15 @@ function openJalsatDetail(){
 }
 function closeJalsatDetail(){ document.getElementById('jalsat-detail').classList.add('hide'); }
 
+function fdOpenedFromGuestServices(){
+  return new URLSearchParams(location.search).get('from') === 'guest';
+}
+function fdReturnToGuestServices(){
+  if(!fdOpenedFromGuestServices()) return false;
+  window.location.href = '/guest-services.html';
+  return true;
+}
+
 // ===== المنيو =====
 var _menuCat = 'ساندويتشات';
 var _menuCart = {}; // {name: {price, qty}}
@@ -4089,8 +4102,8 @@ function openMenuDetail(){
   _updateMenuCartBar();
 }
 function closeMenuDetail(){
+  if(fdReturnToGuestServices()) return;
   document.getElementById('menu-detail').classList.add('hide');
-  
 }
 
 function _renderMenuCats(){
