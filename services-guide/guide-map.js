@@ -28,7 +28,7 @@
     return '<a href="#guide-cabin-card" role="button" aria-pressed="false" aria-label="'+esc(cabin.name)+': اختيار الكوخ" data-map-cabin="'+cabin.id+'"><polygon class="plot" points="'+location.footprint.map(p=>p.map(v=>v*10).join(',')).join(' ')+'"/><polyline class="leader" points="'+location.x*10+','+location.y*10+bend+' '+x+','+y+'"/><circle class="map-dot" cx="'+location.x*10+'" cy="'+location.y*10+'" r="5"/><rect class="map-label" x="'+(x-width/2)+'" y="'+(y-height/2)+'" width="'+width+'" height="'+height+'" rx="8"/><text x="'+x+'" y="'+y+'" text-anchor="middle" dominant-baseline="central">'+esc(name)+'</text></a>';
   }
   function markup() {
-    return '<div class="guide-map"><div class="map-tools"><span>اضغطوا على الكوخ في الخريطة</span></div><div class="map-scroll" tabindex="0" role="region" aria-label="خريطة المنتجع؛ يمكن تمرير الصورة بعد تكبيرها"><div class="map-canvas"><img id="guide-map-image" src="/'+esc(FD_RESORT_MAP_DATA.image)+'" alt="توزيع الأكواخ والحديقة المشتركة في منتجع يوم العائلة من الأعلى" width="1254" height="1254" loading="lazy"><svg viewBox="0 0 1000 1000" aria-label="اختيار كوخ على الخريطة">'+locations().map(marker).join('')+'</svg></div></div><p class="map-image-error" hidden>تعذّر عرض الصورة. يمكنكم الاختيار من الأسماء على الخريطة.</p><article id="guide-cabin-card" class="guide-cabin-card" tabindex="-1" aria-labelledby="guide-cabin-title" hidden></article></div>';
+    return '<div class="guide-map"><div class="map-tools"><span>اضغطوا على الكوخ في الخريطة</span></div><div class="map-scroll" tabindex="0" role="region" aria-label="خريطة الأكواخ في منتجع يوم العائلة"><div class="map-canvas"><img id="guide-map-image" src="/'+esc(FD_RESORT_MAP_DATA.image)+'" alt="توزيع الأكواخ والحديقة المشتركة في منتجع يوم العائلة من الأعلى" width="1254" height="1254" loading="lazy"><svg viewBox="0 0 1000 1000" aria-label="اختيار كوخ على الخريطة">'+locations().map(marker).join('')+'</svg></div></div><p class="map-image-error" hidden>تعذّر عرض الصورة. يمكنكم الاختيار من الأسماء على الخريطة.</p><article id="guide-cabin-card" class="guide-cabin-card" tabindex="-1" aria-labelledby="guide-cabin-title" hidden></article></div>';
   }
   function mount() {
     const root=document.querySelector('.guide-map');
@@ -49,6 +49,17 @@
       if(photo) body+='<img class="cabin-photo" src="/'+esc(photo)+'" alt="'+esc(cabin.name)+'" width="1200" height="1200">';
       if(cabin.id===11){
         body+='<div class="cabin-card-body"><p class="cabin-card-kicker">الحديقة المشتركة</p><div class="cabin-tag-list">'+(cabin.tags||[]).filter(t=>t!=='|').map(t=>'<span>'+esc(t)+'</span>').join('')+'</div></div>';
+      } else if(cabin.id===1 || cabin.id===12) {
+        var domePath=cabin.id===12?'dome-2':'dome-1';
+        body+='<div class="cabin-card-body cabin-card-body--explore">';
+        body+='<p class="cabin-explore-intro">تجربة خاصة بتصميم القبة، مناسبة لشخصين مع مساحة خارجية ومسبح خاص.</p>';
+        body+='<div class="cabin-quick-facts">';
+        if(room) body+='<div class="cabin-quick-fact"><span>الغرف</span><strong>'+esc(room)+'</strong></div>';
+        if(guests) body+='<div class="cabin-quick-fact"><span>السعة</span><strong>'+esc(guests)+'</strong></div>';
+        body+='</div>';
+        body+='<div class="cabin-feature-chips" aria-label="أبرز مميزات بيت الدوم"><span>بانيو داخلي</span><span>جاكوزي داخل المسبح</span><span>مسبح خاص</span></div>';
+        body+='<div class="cabin-explore-actions"><a class="cabin-explore-link cabin-explore-link--primary" href="/cabins/'+domePath+'/" target="_blank" rel="noopener noreferrer">تفاصيل الكوخ <span aria-hidden="true">←</span></a><a class="cabin-explore-link" href="/dome-tour/?from=guide&cabin='+cabin.id+'">جولة داخل الكوخ <span aria-hidden="true">←</span></a></div>';
+        body+='</div>';
       } else {
         body+='<div class="cabin-card-body"><div class="cabin-quick-facts">';
         if(room) body+='<div class="cabin-quick-fact"><span>الغرف</span><strong>'+esc(room)+'</strong></div>';
