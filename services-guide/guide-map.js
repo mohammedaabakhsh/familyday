@@ -58,7 +58,8 @@
         if(guests) body+='<div class="cabin-quick-fact"><span>السعة</span><strong>'+esc(guests)+'</strong></div>';
         body+='</div>';
         body+='<div class="cabin-feature-chips" aria-label="أبرز مميزات بيت الدوم"><span>بانيو داخلي</span><span>جاكوزي داخل المسبح</span><span>مسبح خاص</span></div>';
-        body+='<div class="cabin-explore-actions"><a class="cabin-explore-link cabin-explore-link--primary" href="/cabins/'+domePath+'/" target="_blank" rel="noopener noreferrer">تفاصيل الكوخ <span aria-hidden="true">←</span></a><a class="cabin-explore-link" href="/dome-tour/?from=guide&cabin='+cabin.id+'">جولة داخل الكوخ <span aria-hidden="true">←</span></a></div>';
+        body+='<div class="cabin-explore-actions"><button type="button" class="cabin-explore-link cabin-explore-link--primary" data-guide-details aria-expanded="false">تفاصيل الكوخ <span aria-hidden="true">＋</span></button><a class="cabin-explore-link" href="/dome-tour/?from=guide&cabin='+cabin.id+'">جولة داخل الكوخ <span aria-hidden="true">←</span></a></div>';
+        body+='<div class="cabin-inline-details" data-guide-details-panel hidden><h4>تفاصيل بيت الدوم</h4><ul><li>غرفة نوم بسرير مزدوج</li><li>بانيو داخلي بغرفة النوم</li><li>مسبح خاص للكبار مع جاكوزي</li><li>جلسة خارجية خاصة</li><li>شواية</li><li>واي فاي مجاني، تلفزيون ذكي وساوندبار</li></ul></div>';
         body+='</div>';
       } else {
         body+='<div class="cabin-card-body"><div class="cabin-quick-facts">';
@@ -68,7 +69,17 @@
         if(highlight) body+='<div class="cabin-highlight"><span>ميزة مميزة</span><strong>'+esc(highlight)+'</strong></div>';
         body+='</div>';
       }
-      card.innerHTML=body;card.hidden=false;
+            card.innerHTML=body;card.hidden=false;
+      const detailsButton=card.querySelector('[data-guide-details]');
+      if(detailsButton){
+        detailsButton.addEventListener('click',()=>{
+          const panel=card.querySelector('[data-guide-details-panel]');
+          const open=panel.hidden;
+          panel.hidden=!open;
+          detailsButton.setAttribute('aria-expanded',String(open));
+          detailsButton.querySelector('span').textContent=open?'−':'＋';
+        });
+      }
       card.focus({preventScroll:true});card.scrollIntoView({behavior:'instant',block:'start'});
       card.querySelector('#close-cabin').addEventListener('click',()=>{
         card.hidden=true;
