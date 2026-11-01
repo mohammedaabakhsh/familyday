@@ -66,3 +66,18 @@
  #ov .dt-note {margin-top:10px;}
 }
 @media(prefers-reduced-motion:reduce){#ov .dt-tour *{transition:none!important;}}
+/* Active Dome mobile layout — custom per-cabin arrangement. */
+@media(max-width:599px){
+ #ov #dome-tour{margin-top:6px;padding-top:10px;padding-bottom:8px}
+ #ov #dome-tour .dt-heading{margin-bottom:5px}
+ #ov #dome-tour .dt-title{font-size:22px;margin-bottom:3px}
+ #ov #dome-tour .dt-stage{display:flex;flex-direction:column;padding:0}
+ #ov #dome-tour .dt-labels{position:relative;inset:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px 6px;padding:0 8px;direction:rtl}
+ #ov #dome-tour .dt-labels--top{order:1;margin-bottom:7px}
+ #ov #dome-tour .dt-image{order:2;width:100%;margin:9px auto 0}
+ #ov #dome-tour .dt-labels--bottom{order:3;margin-top:7px}
+ #ov #dome-tour .dt-label{position:relative;inset:auto;width:auto;min-width:0;min-height:42px;font-size:12px;line-height:1.25;padding:6px 4px;transform:none}
+ #ov #dome-tour .dt-lines{z-index:2}
+ #ov #dome-tour .dt-details{margin:8px 10px 0;padding:10px;min-height:0}
+ #ov #dome-tour .dt-occupancy{margin-top:7px}
+}
