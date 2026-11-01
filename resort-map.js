@@ -20,9 +20,9 @@
   var toolbar, fitButton, photoButton;
   var photoDialog, photoStage, photoImage, photoTitle, photoCounter, photoError, photoPrevious, photoNext, photoHint;
   var photoSources = [], photoIndex = 0, photoSwipe = null;
-  var markers = [], highlights = [], selected = null;
+  var markers = [], highlights = [], leaderRoutes = [], selected = null;
   var previousOverflow = '', pointers = new Map(), gesture = null;
-  var view = { width: 0, height: 0, size: 0, scale: 1, x: 0, y: 0 };
+  var view = { width: 0, height: 0, size: 0, scale: 1, x: 0, y: 0, labelFooter: 0 };
   var closeIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg>';
   var mapLanguage = 'ar', photoLocation = null;
   var cabinNamesEn = {
@@ -435,18 +435,51 @@
     toolbar.hidden = fitButton.hidden && connectionNote.hidden;
   }
 
+  function bottomLabelCenters(size) {
+    var centers = {};
+    if (!window.matchMedia('(max-width: 819px)').matches) return centers;
+    var row = locations.map(function (location, index) {
+      return { location: location, index: index };
+    }).filter(function (entry) {
+      return entry.location.labelSide === 'bottom';
+    }).sort(function (a, b) { return a.location.labelX - b.location.labelX; });
+    if (!row.length) return centers;
+    var right = -Infinity, gap = 10;
+    row.forEach(function (entry) {
+      entry.width = markers[entry.index].querySelector('span').offsetWidth;
+      entry.desired = size * entry.location.labelX / 100;
+      entry.center = Math.max(entry.desired, right + gap + entry.width / 2);
+      right = entry.center + entry.width / 2;
+    });
+    var first = row[0], last = row[row.length - 1];
+    var left = first.center - first.width / 2;
+    var desiredMid = (first.desired - first.width / 2 + last.desired + last.width / 2) / 2;
+    var shift = desiredMid - (left + right) / 2;
+    // Keep the expanded row centered on its plots and inside the map at overview.
+    if (right - left <= size - 8) shift = clamp(shift, 4 - left, size - 4 - right);
+    row.forEach(function (entry) { centers[entry.index] = entry.center + shift; });
+    return centers;
+  }
+
   function renderView() {
     var size = view.size * view.scale;
+    var bottomCenters = bottomLabelCenters(size);
     view.x = size <= view.width ? (view.width - size) / 2 : clamp(view.x, view.width - size, 0);
-    view.y = size <= view.height ? (view.height - size) / 2 : clamp(view.y, view.height - size, 0);
+    var mapHeight = view.height - view.labelFooter;
+    view.y = size <= mapHeight ? (mapHeight - size) / 2 : clamp(view.y, mapHeight - size, 0);
     plane.style.transform = 'translate(' + view.x + 'px,' + view.y + 'px) scale(' + view.scale + ')';
     plane.style.setProperty('--fd-map-inverse', String(1 / view.scale));
     markers.forEach(function (marker, i) {
       var location = locations[i];
       if (!location.labelSide) return;
       if (location.labelSide === 'bottom' || location.labelSide === 'offset') {
-        marker.style.setProperty('--fd-map-label-x', size * (location.labelX - location.x) / 100 + 'px');
-        marker.style.setProperty('--fd-map-label-y', size * (location.labelY - location.y) / 100 + 'px');
+        var labelX = bottomCenters[i] == null ? size * location.labelX / 100 : bottomCenters[i];
+        var labelY = location.labelSide === 'bottom' && view.labelFooter ? size + marker.querySelector('span').offsetHeight / 2 + 6 : size * location.labelY / 100;
+        marker.style.setProperty('--fd-map-label-x', labelX - size * location.x / 100 + 'px');
+        if (leaderRoutes[i] && size) {
+          leaderRoutes[i].setAttribute('points', [[location.x, location.y], location.leaderBend || [location.x, 85.7], [labelX * 100 / size, labelY * 100 / size]].map(function (point) { return point.join(','); }).join(' '));
+        }
+        marker.style.setProperty('--fd-map-label-y', labelY - size * location.y / 100 + 'px');
         return;
       }
       var left = location.labelSide === 'left';
@@ -469,7 +502,9 @@
     var centerY = view.size ? (view.height / 2 - view.y) / (view.size * view.scale) : .5;
     view.width = viewport.clientWidth;
     view.height = viewport.clientHeight;
-    view.size = Math.min(view.width, view.height);
+    // On short phones the bottom row needs its own strip, clear of Palm Beach.
+    view.labelFooter = window.matchMedia('(max-width: 819px)').matches && Math.min(view.width, view.height) < 360 ? 32 : 0;
+    view.size = Math.min(view.width, view.height - view.labelFooter);
     if (reset) { view.scale = 1; centerX = centerY = .5; }
     view.x = view.width / 2 - centerX * view.size * view.scale;
     view.y = view.height / 2 - centerY * view.size * view.scale;
@@ -661,6 +696,7 @@
         var route = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
         route.setAttribute('points', [[location.x, location.y], location.leaderBend || [location.x, 85.7], [location.labelX, location.labelY]].map(function (point) { return point.join(','); }).join(' '));
         route.setAttribute('vector-effect', 'non-scaling-stroke');
+        leaderRoutes[i] = route;
         leader.appendChild(route);
         plane.appendChild(leader);
       }
@@ -766,7 +802,12 @@
       error.hidden = false; plane.hidden = true;
       viewport.setAttribute('aria-busy', 'false');
     });
-    new ResizeObserver(function () { measureView(false); }).observe(viewport);
+    var mapResizeObserver = new ResizeObserver(function () { measureView(false); });
+    mapResizeObserver.observe(viewport);
+    // Repack when the font or language changes the actual rendered label widths.
+    markers.forEach(function (marker, i) {
+      if (locations[i].labelSide === 'bottom') mapResizeObserver.observe(marker.querySelector('span'));
+    });
     window.addEventListener('blur', resetGesture);
     updateMapText();
     loadImage();
