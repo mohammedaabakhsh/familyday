@@ -3,9 +3,9 @@ var FD_BOHO_TOUR = (function () {
   'use strict';
   var root, observer, frame, cabin, selected = 'pool', language = 'ar';
   var parts = [
- {id:'bedroom',ar:'غرفة نوم بسرير مزدوج',en:'Bedroom with a double bed',x:0.664,y:0.342},
+ {id:'bedroom',ar:'غرفة النوم الرئيسية',en:'Main bedroom',x:0.664,y:0.342},
  {id:'bathroom',ar:'حمامات',en:'Bathrooms',x:0.602,y:0.293},
- {id:'twin',ar:'غرفة نوم بسريرين مفردين',en:'Bedroom with two single beds',x:0.651,y:0.176},
+ {id:'twin',ar:'غرفة النوم الثانية',en:'Second bedroom',x:0.651,y:0.176},
  {id:'living',ar:'المنطقة الداخلية',en:'Indoor area',x:0.332,y:0.308},
  {id:'kitchen',ar:'ركن المطبخ',en:'Kitchenette',x:0.313,y:0.156},
  {id:'dining',ar:'طاولة الطعام',en:'Dining table',x:0.397,y:0.205},
@@ -71,11 +71,9 @@ var FD_BOHO_TOUR = (function () {
     return esc(value);
   }
   function details() {
-    var part = parts.find(function(p){return p.id===selected;});
-    var cards = [], note = '', subtitle = '';
+var cards = [], note = '', subtitle = '';
     if (selected === 'pool') {
-      subtitle = tr('مسبح خاص للكبار','Private adult pool');
-      var dimensions = cabin.pool.label.match(/(\d+)\s*×\s*(\d+)/);
+var dimensions = cabin.pool.label.match(/(\d+)\s*×\s*(\d+)/);
       if (dimensions) cards.push({label:tr('المقاس','Size'), value:dimensions[1]+' × '+dimensions[2]+' m', icon:'size', numeric:true});
       cards.push({label:tr('العمق','Depth'),value:String(cabin.pool.depthCm)+' cm',icon:'water',numeric:true});
       if (/جاكوزي/.test(cabin.pool.label)) cards.push({value:tr('جاكوزي داخل المسبح','In-pool jacuzzi'),icon:'tub'});
@@ -84,7 +82,7 @@ var FD_BOHO_TOUR = (function () {
       cabin.features.kitchen.forEach(function(t){cards.push({value:feature(t),icon:kitchenIcon(t)});});
       if(cabin.minibar) note=tr('الميني بار: مشروبات وسناكس برسوم إضافية.','Minibar drinks and snacks are available at an extra charge.');
     } else if (selected === 'dining') {
-      cards.push({value:tr('طاولة الطعام','Dining table'),icon:'dining'});
+      cards=[];
     } else if (selected === 'living') {
       cards=[{value:tr('صالة داخلية','Indoor lounge'),icon:'sofa'},{value:tr('تلفزيون ذكي','Smart TV'),icon:'tv'},{value:tr('سماعات داخلية (ساوند بار)','Soundbar'),icon:'speaker'},{value:tr('واي فاي مجاني','Free Wi-Fi'),icon:'wifi'}];
     } else if (selected === 'bedroom') {
@@ -97,15 +95,17 @@ var FD_BOHO_TOUR = (function () {
     } else {
       cabin.features.outdoor.filter(function(t){return !/بانيو/.test(t);}).forEach(function(t){cards.push({value:feature(t),icon:'outdoor'});});
     }
-    root.querySelector('.dt-details').innerHTML='<div class="dt-detail-heading"><h4>'+esc(part[language])+'</h4>'+(subtitle?'<p>'+esc(subtitle)+'</p>':'')+'</div><div class="dt-cards">'+cards.map(function(card){return '<div class="dt-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+cardValue(card.value)+'</strong></div></div>';}).join('')+'</div>'+(note?'<p class="dt-note">'+esc(note)+'</p>':'');
+    var detailsEl=root.querySelector('.dt-details');
+    var scrollable=cards.length>3;
+    detailsEl.classList.toggle('is-empty',cards.length===0&&!note);
+    detailsEl.innerHTML=(cards.length?'<div class="dt-cards'+(scrollable?' is-scrollable':'')+'">'+cards.map(function(card){return '<div class="dt-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+cardValue(card.value)+'</strong></div></div>';}).join('')+'</div>':'')+(scrollable?'<div class="dt-swipe-hint" aria-hidden="true"><span>↔</span> اسحب لعرض المزيد</div>':'')+(note?'<p class="dt-note">'+esc(note)+'</p>':'');
   }
   function update() {
     root.lang=language; root.dir=language==='ar'?'rtl':'ltr';
     root.querySelector('.dt-title').textContent=tr('جولة داخل الكوخ البوهيمي','Explore the Bohemian Cottage');
     root.querySelector('.dt-occupancy').textContent=tr('مناسب للعائلات · حتى '+cabin.guests+' ضيوف','Family friendly · Up to '+cabin.guests+' guests');
     root.querySelector('.dt-image').alt=tr('رسم توضيحي لتوزيع الكوخ البوهيمي ومرافقه','Illustrated layout of the Bohemian Cottage and its facilities');
-    root.querySelector('.dt-labels').setAttribute('aria-label',tr('اختر المرفق لعرض تفاصيله','Choose a facility to view its details'));
-    root.querySelector('.dt-languages').setAttribute('aria-label',tr('لغة الجولة','Tour language'));
+    root.querySelectorAll('.dt-labels').forEach(function(group){group.setAttribute('aria-label','اختر المرفق لعرض تفاصيله');});
     parts.forEach(function(p){
       var button=root.querySelector('.dt-label[data-part="'+p.id+'"]');
       button.textContent=p[language]; button.setAttribute('aria-pressed',String(p.id===selected));
@@ -113,7 +113,6 @@ var FD_BOHO_TOUR = (function () {
       point.setAttribute('aria-label',p[language]); point.classList.toggle('is-selected',p.id===selected);
       root.querySelector('[data-line="'+p.id+'"]').classList.toggle('is-selected',p.id===selected);
     });
-    root.querySelectorAll('[data-language]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.language===language));});
     updateBackLink(); details(); queueLines();
   }
   function queueLines() { cancelAnimationFrame(frame); frame=requestAnimationFrame(drawLines); }
@@ -154,14 +153,15 @@ var FD_BOHO_TOUR = (function () {
         }
       }
       if(mobile){
-        var labelsBox=root.querySelector('.dt-labels').getBoundingClientRect();
-        var labelsBottom=labelsBox.bottom-box.top;
-        if(sy<labelsBottom-4){
-          // Route between rows and around the label grid, never through another button.
-          var gutter=sx<box.width/2?2:box.width-2;
-          var rowGap=sy+3, belowLabels=labelsBottom+4;
-          curve='L '+sx+' '+rowGap+' L '+gutter+' '+rowGap+' L '+gutter+' '+belowLabels+
-            ' C '+gutter+' '+(belowLabels+22)+' '+tx+' '+(ty-30)+' '+tx+' '+ty;
+        var buttonAboveImage=b.bottom<=im.top+4;
+        var buttonBelowImage=b.top>=im.bottom-4;
+        sx=b.left+b.width/2-box.left;
+        if(buttonBelowImage){
+          sy=b.top-box.top;
+          curve='C '+sx+' '+(sy-24)+' '+tx+' '+(ty+30)+' '+tx+' '+ty;
+        } else if(buttonAboveImage){
+          sy=b.bottom-box.top;
+          curve='C '+sx+' '+(sy+24)+' '+tx+' '+(ty-30)+' '+tx+' '+ty;
         }
       }
       root.querySelector('[data-line="'+p.id+'"]').setAttribute('d','M '+sx+' '+sy+' '+curve);
@@ -179,7 +179,12 @@ var FD_BOHO_TOUR = (function () {
     if(root && cabin && cabin.id===next.id) return;
     remove(); cabin=next; selected='pool'; language='ar';
     root=document.createElement('section');root.id='bohemian-tour';root.className='dt-tour';root.setAttribute('aria-labelledby','dt-title');
-    root.innerHTML='<header class="dt-heading"><h1 id="dt-title" class="dt-title"></h1></header><div class="dt-stage"><div class="dt-labels">'+parts.map(function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';}).join('')+'</div><img class="dt-image" src="/imgs/bohemian-tour-20-clarity-v1.png" width="1536" height="1024" loading="lazy" decoding="async" alt=""><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div class="dt-languages" role="group"><button type="button" data-language="ar" lang="ar" aria-label="العربية">AR</button><button type="button" data-language="en" lang="en" aria-label="English">EN</button></div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
+    var topOrder=['bedroom','twin','bathroom','kitchen','dining','living'];
+    var bottomOrder=['outdoor','pool'];
+    var topParts=topOrder.map(function(id){return parts.find(function(p){return p.id===id;});});
+    var bottomParts=bottomOrder.map(function(id){return parts.find(function(p){return p.id===id;});});
+    var labelButton=function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';};
+    root.innerHTML='<header class="dt-heading"><h1 id="dt-title" class="dt-title"></h1></header><div class="dt-stage"><div class="dt-labels dt-labels--top">'+topParts.map(labelButton).join('')+'</div><img class="dt-image" src="/imgs/bohemian-tour-20-clarity-v1.png" width="1536" height="1024" loading="lazy" decoding="async" alt=""><div class="dt-labels dt-labels--bottom">'+bottomParts.map(labelButton).join('')+'</div><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
     document.getElementById('bohemian-tour-host').appendChild(root);
     var back=document.querySelector('.tour-back');
     if(back){
@@ -191,7 +196,6 @@ var FD_BOHO_TOUR = (function () {
     root.addEventListener('click',function(event){
       var button=event.target.closest('button');if(!button)return;
       if(button.dataset.part) selected=button.dataset.part;
-      else if(button.dataset.language) language=button.dataset.language;
       else return;
       update();
     });
