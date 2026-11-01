@@ -95,7 +95,6 @@ var FD_DOME_TOUR = (function () {
     root.querySelector('.dt-occupancy').textContent=tr('مثالي للأزواج · حتى ضيفين','Ideal for couples · Up to 2 guests');
     root.querySelector('.dt-image').alt=tr('رسم توضيحي لتوزيع بيت الدوم ومرافقه','Illustrated layout of the Dome House and its facilities');
     root.querySelectorAll('.dt-labels').forEach(function(group){group.setAttribute('aria-label','اختر المرفق لعرض تفاصيله');});
-    root.querySelector('.dt-languages').setAttribute('aria-label',tr('لغة الجولة','Tour language'));
     parts.forEach(function(p){
       var button=root.querySelector('.dt-label[data-part="'+p.id+'"]');
       button.textContent=p[language]; button.setAttribute('aria-pressed',String(p.id===selected));
@@ -103,7 +102,6 @@ var FD_DOME_TOUR = (function () {
       point.setAttribute('aria-label',p[language]); point.classList.toggle('is-selected',p.id===selected);
       root.querySelector('[data-line="'+p.id+'"]').classList.toggle('is-selected',p.id===selected);
     });
-    root.querySelectorAll('[data-language]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.language===language));});
     updateBackLink(); details(); queueLines();
   }
   function queueLines() { cancelAnimationFrame(frame); frame=requestAnimationFrame(drawLines); }
