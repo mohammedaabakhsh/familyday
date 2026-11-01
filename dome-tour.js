@@ -1,7 +1,7 @@
 /* Dome 1: a photo-informed illustrated tour. Specifications come from resort-data.js. */
 var FD_DOME_TOUR = (function () {
   'use strict';
-  var root, observer, frame, cabin, selected = 'pool', language = 'ar';
+  var root, observer, frame, cabin, selected = 'bedroom', language = 'ar';
   var parts = [
     {id:'bedroom', ar:'المنطقة الداخلية', en:'Indoor area', x:.50, y:.34},
     {id:'bathroom', ar:'حمام', en:'Bathroom', x:.55, y:.26},
@@ -165,14 +165,14 @@ var dimensions = cabin.pool.label.match(/(\d+)\s*×\s*(\d+)/);
   }
   function mount(next) {
     if(root && cabin && cabin.id===next.id) return;
-    remove(); cabin=next; selected='pool'; language='ar';
+    remove(); cabin=next; selected='bedroom'; language='ar';
     root=document.createElement('section');root.id='dome-tour';root.className='dt-tour';root.setAttribute('aria-labelledby','dt-title');
     var topOrder=['bedroom','bathroom','kitchen'];
     var bottomOrder=['outdoor','tub','pool'];
     var topParts=topOrder.map(function(id){return parts.find(function(p){return p.id===id;});});
     var bottomParts=bottomOrder.map(function(id){return parts.find(function(p){return p.id===id;});});
     var labelButton=function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';};
-    root.innerHTML='<header class="dt-heading"><h1 id="dt-title" class="dt-title"></h1></header><div class="dt-stage"><div class="dt-labels dt-labels--top">'+topParts.map(labelButton).join('')+'</div><img class="dt-image" src="/imgs/dome-tour-15-clarity-v1.png" width="1536" height="1024" loading="lazy" decoding="async" alt=""><div class="dt-labels dt-labels--bottom">'+bottomParts.map(labelButton).join('')+'</div><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
+    root.innerHTML='<header class="dt-heading"><div class="dt-heading-copy"><h1 id="dt-title" class="dt-title"></h1><p class="dt-instruction">اضغط على المرفق لعرض تفاصيله</p></div></header><div class="dt-stage"><div class="dt-labels dt-labels--top">'+topParts.map(labelButton).join('')+'</div><div class="dt-image-space"><img class="dt-image" src="/imgs/dome-tour-15-clarity-v1.png" width="1536" height="1024" loading="lazy" decoding="async" alt=""></div><div class="dt-labels dt-labels--bottom">'+bottomParts.map(labelButton).join('')+'</div><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
     root.querySelector('.dt-image').src='/imgs/dome-tour-'+(cabin.id===12?'16':'15')+'-clarity-v1.png';
     document.getElementById('dome-tour-host').appendChild(root);
     var back=document.querySelector('.tour-back');
