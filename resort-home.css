@@ -354,3 +354,23 @@
   #landing .rh-menu .rh-map-copy { gap: 2px; }
   #landing .rh-footer { margin-top: 6px; padding-top: 2px; }
 }
+
+/* Desktop keeps a generous cabin image with two balanced rows beneath it. */
+@media (min-width: 800px) {
+  #landing .rh-shell { max-width: 1040px; padding-inline: 28px; }
+  #landing .rh-shell > .rh-cabins {
+    height: clamp(240px, 42dvh, 400px);
+    padding: 28px;
+    margin-bottom: 14px;
+    border-radius: 22px;
+  }
+  #landing .rh-shell > .rh-cabins .rh-cabin-title { font-size: 34px; }
+  #landing .rh-shell > .rh-cabins .rh-cabin-caption { font-size: 14px; }
+  #landing .rh-menu { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  #landing .rh-menu .rh-home-shortcut { min-height: 72px; padding: 12px 18px; }
+  #landing .rh-menu .rh-map-title { font-size: 18px; }
+  #landing .rh-menu .rh-map-description { font-size: 13px; }
+}
+@media (min-width: 800px) and (max-height: 740px) {
+  #landing .rh-shell > .rh-cabins { height: clamp(220px, 40dvh, 290px); }
+}
