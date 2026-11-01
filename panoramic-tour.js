@@ -7,10 +7,10 @@ var FD_PANORAMIC_TOUR = (function () {
   var root, observer, frame, cabin, selected = 'pool', language = 'ar';
 
   var parts = [
- {id:'twin',ar:'غرفة نوم بسريرين مفردين',en:'Bedroom with two single beds',x:0.31,y:0.169},
+ {id:'twin',ar:'غرفة النوم',en:'Bedroom',x:0.31,y:0.169},
  {id:'bathroom',ar:'حمامات',en:'Bathrooms',x:0.429,y:0.327},
  {id:'kitchen',ar:'ركن المطبخ',en:'Kitchenette',x:0.65,y:0.202},
- {id:'bedroom',ar:'غرفة نوم بسرير مزدوج',en:'Bedroom with a double bed',x:0.331,y:0.325},
+ {id:'bedroom',ar:'غرفة النوم الرئيسية',en:'Main bedroom',x:0.331,y:0.325},
  {id:'tub',ar:'البانيو الداخلي',en:'Indoor bathtub',x:0.301,y:0.394},
  {id:'living',ar:'المنطقة الداخلية',en:'Indoor area',x:0.722,y:0.455},
  {id:'dining',ar:'طاولة الطعام',en:'Dining table',x:0.65,y:0.202},
@@ -165,7 +165,7 @@ var FD_PANORAMIC_TOUR = (function () {
 
     } else if (selected === 'bedroom') {
 
-      cards=[];
+      cards=[{value:tr('سرير مزدوج','Double bed'),icon:'bed'}];
 
     } else if (selected === 'bathroom') {
 
@@ -175,7 +175,7 @@ var FD_PANORAMIC_TOUR = (function () {
       cards=[{value:tr('بانيو مع جاكوزي بغرفة النوم','Bathtub with jacuzzi in the bedroom'),icon:'tub'}];
     } else if (selected === 'twin') {
 
-      cards=[];
+      cards=[{value:tr('سريران مفردان','Two single beds'),icon:'bed'}];
 
     } else {
 
@@ -184,14 +184,9 @@ var FD_PANORAMIC_TOUR = (function () {
     }
 
     var detailsEl=root.querySelector('.dt-details');
-    var rich=selected==='pool' || selected==='kitchen';
     detailsEl.classList.toggle('is-empty',cards.length===0&&!note);
-    detailsEl.classList.toggle('is-brief',!rich && cards.length>0);
-    if(rich){
-      detailsEl.innerHTML=(cards.length?'<div class="dt-cards">'+cards.map(function(card){return '<div class="dt-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+cardValue(card.value)+'</strong></div></div>';}).join('')+'</div>':'')+(note?'<p class="dt-note">'+esc(note)+'</p>':'');
-    } else {
-      detailsEl.innerHTML=cards.length?'<div class="dt-brief">'+cards.map(function(card){return '<span>'+cardValue(card.value)+'</span>';}).join('')+'</div>':'';
-    }
+    detailsEl.classList.remove('is-brief');
+    detailsEl.innerHTML=(cards.length?'<div class="dt-cards">'+cards.map(function(card){return '<div class="dt-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+cardValue(card.value)+'</strong></div></div>';}).join('')+'</div>':'')+(note?'<p class="dt-note">'+esc(note)+'</p>':'');
 
   }
 
