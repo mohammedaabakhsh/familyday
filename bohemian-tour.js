@@ -1,7 +1,7 @@
 /* Bohemian Cottage: approved illustrated tour; shared specifications from resort-data.js. */
 var FD_BOHO_TOUR = (function () {
   'use strict';
-  var root, observer, frame, cabin, selected = 'pool', language = 'ar';
+  var root, observer, frame, cabin, selected = 'bedroom', language = 'ar';
   var parts = [
  {id:'bedroom',ar:'غرفة النوم الرئيسية',en:'Main bedroom',x:0.664,y:0.342},
  {id:'bathroom',ar:'حمامات',en:'Bathrooms',x:0.602,y:0.293},
@@ -184,7 +184,7 @@ var dimensions = cabin.pool.label.match(/(\d+)\s*×\s*(\d+)/);
   }
   function mount(next) {
     if(root && cabin && cabin.id===next.id) return;
-    remove(); cabin=next; selected='pool'; language='ar';
+    remove(); cabin=next; selected='bedroom'; language='ar';
     root=document.createElement('section');root.id='bohemian-tour';root.className='dt-tour';root.setAttribute('aria-labelledby','dt-title');
     var topOrder=['bedroom','twin','living','bathroom','kitchen','dining'];
     var bottomOrder=['pool','outdoor'];
