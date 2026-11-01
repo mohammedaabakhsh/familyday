@@ -201,7 +201,9 @@ var FD_PANORAMIC_TOUR = (function () {
 
     root.querySelector('.dt-image').alt=tr('رسم توضيحي لتوزيع البيت البانورامي ومرافقه','Illustrated layout of the Panoramic House and its facilities');
 
-    root.querySelector('.dt-labels').setAttribute('aria-label',tr('اختر المرفق لعرض تفاصيله','Choose a facility to view its details'));
+    root.querySelectorAll('.dt-labels').forEach(function(group){
+      group.setAttribute('aria-label',tr('اختر المرفق لعرض تفاصيله','Choose a facility to view its details'));
+    });
 
     root.querySelector('.dt-languages').setAttribute('aria-label',tr('لغة الجولة','Tour language'));
 
@@ -301,22 +303,19 @@ var FD_PANORAMIC_TOUR = (function () {
 
       if(mobile){
 
-        var labelsBox=root.querySelector('.dt-labels').getBoundingClientRect();
+        // The mobile prototype places indoor controls above the illustration
+        // and outdoor controls below it, so the active connector stays short.
+        var buttonAboveImage=b.bottom<=im.top+4;
+        var buttonBelowImage=b.top>=im.bottom-4;
 
-        var labelsBottom=labelsBox.bottom-box.top;
+        sx=b.left+b.width/2-box.left;
 
-        if(sy<labelsBottom-4){
-
-          // Route between rows and around the label grid, never through another button.
-
-          var gutter=sx<box.width/2?2:box.width-2;
-
-          var rowGap=sy+3, belowLabels=labelsBottom+4;
-
-          curve='L '+sx+' '+rowGap+' L '+gutter+' '+rowGap+' L '+gutter+' '+belowLabels+
-
-            ' C '+gutter+' '+(belowLabels+22)+' '+tx+' '+(ty-30)+' '+tx+' '+ty;
-
+        if(buttonBelowImage){
+          sy=b.top-box.top;
+          curve='C '+sx+' '+(sy-26)+' '+tx+' '+(ty+34)+' '+tx+' '+ty;
+        } else if(buttonAboveImage){
+          sy=b.bottom-box.top;
+          curve='C '+sx+' '+(sy+26)+' '+tx+' '+(ty-34)+' '+tx+' '+ty;
         }
 
       }
@@ -351,7 +350,12 @@ var FD_PANORAMIC_TOUR = (function () {
 
     root=document.createElement('section');root.id='panoramic-tour';root.className='dt-tour';root.setAttribute('aria-labelledby','dt-title');
 
-    root.innerHTML='<header class="dt-heading"><h1 id="dt-title" class="dt-title"></h1></header><div class="dt-stage"><div class="dt-labels">'+parts.map(function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';}).join('')+'</div><img class="dt-image" src="/imgs/panoramic-tour-21-clarity-v1.png" width="1536" height="1024" loading="eager" decoding="async" alt=""><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div class="dt-languages" role="group"><button type="button" data-language="ar" lang="ar" aria-label="العربية">AR</button><button type="button" data-language="en" lang="en" aria-label="English">EN</button></div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
+    var outdoorIds=['pool','outdoor'];
+    var indoorParts=parts.filter(function(p){return outdoorIds.indexOf(p.id)===-1;});
+    var outdoorParts=parts.filter(function(p){return outdoorIds.indexOf(p.id)!==-1;});
+    var labelButton=function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';};
+
+    root.innerHTML='<header class="dt-heading"><h1 id="dt-title" class="dt-title"></h1></header><div class="dt-stage"><div class="dt-labels dt-labels--top">'+indoorParts.map(labelButton).join('')+'</div><img class="dt-image" src="/imgs/panoramic-tour-21-clarity-v1.png" width="1536" height="1024" loading="eager" decoding="async" alt=""><div class="dt-labels dt-labels--bottom">'+outdoorParts.map(labelButton).join('')+'</div><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div class="dt-languages" role="group"><button type="button" data-language="ar" lang="ar" aria-label="العربية">AR</button><button type="button" data-language="en" lang="en" aria-label="English">EN</button></div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
 
     document.getElementById('panoramic-tour-host').appendChild(root);
 
