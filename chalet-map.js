@@ -378,15 +378,15 @@
   };
   var tourCopy={
     "ar": {
-      "title": "جولة داخل الشاليه",
-      "close": "إغلاق الجولة",
+      "title": "استكشف الشاليه من الداخل",
+      "close": "إغلاق الاستكشاف",
       "subtitle": "اختر المرفق لعرض تفاصيله",
-      "languageLabel": "لغة الجولة",
+      "languageLabel": "لغة الاستكشاف",
       "empty": "اختر اسم الغرفة أو المرفق من الخريطة",
       "details": "مواصفات المكان المختار",
       "clear": "إلغاء اختيار المكان",
       "selected": "تم عرض مواصفات ",
-      "language": "تم عرض الجولة بالعربية",
+      "language": "تم عرض الاستكشاف بالعربية",
       "viewport": "خريطة تفاعلية، اختر اسم المكان. استخدم إصبعين أو مفتاحي + و- للتكبير والأسهم للتحريك",
       "image": "توزيع غرف الشاليه ومرافقه",
       "error": "تعذّر تحميل الرسم. الأسماء تظل متاحة للاختيار.",
@@ -487,7 +487,7 @@
     var name=roomName(room),cards=[];
     (details.primary||[]).forEach(function(f,i){
       var ar=room.primary[i][0],value=f[1],numeric=ar==='العمق';
-      if(numeric)value=value.replace('سم','cm');
+      if(numeric && labelLanguage==='en')value=value.replace('سم','cm');
       cards.push({label:f[0],value:value,numeric:numeric,icon:room.key==='dining'?'dining':{'العمق':'water','السرير':'bed','الأسرّة':'bed','الحمام':'shower','السعة':'people'}[ar]||'size'});
     });
     (details.facts||[]).forEach(function(f,i){cards.push({value:f,icon:factIcon(room.facts[i])});});
@@ -601,7 +601,7 @@
   function dismiss(){document.dispatchEvent(new CustomEvent('fd-chalet-map-dismiss'));}
   function create(){
     dialog=document.createElement('dialog');dialog.id='fd-chalet-map';dialog.className='cm-dialog';dialog.setAttribute('aria-labelledby','cm-title');
-    dialog.innerHTML='<header class="cm-header"><div class="cm-heading"><button type="button" class="cm-close" autofocus></button><div class="cm-heading-copy"><h2 id="cm-title">جولة داخل الشاليه</h2><p class="cm-subtitle"></p></div></div></header>'
+    dialog.innerHTML='<header class="cm-header"><div class="cm-heading"><button type="button" class="cm-close" autofocus></button><div class="cm-heading-copy"><h2 id="cm-title">استكشف الشاليه من الداخل</h2><p class="cm-subtitle"></p></div></div></header>'
       +'<div class="cm-workspace"><div class="cm-map-side"><div class="cm-labels" role="group"></div><div class="cm-viewport"><div class="cm-plane"><div class="cm-illustration"><img class="cm-image" width="1254" height="1254" alt="" draggable="false"><svg class="cm-regions" viewBox="0 0 100 100" aria-hidden="true"></svg></div></div><div class="cm-error" hidden><p></p><button type="button" class="cm-retry"></button></div></div><svg class="cm-leaders" aria-hidden="true"></svg></div><aside class="cm-panel"><section id="cm-details" class="cm-details" aria-live="polite" aria-atomic="true"></section><p class="cm-occupancy"></p></aside></div><p class="cm-announcement" role="status" aria-live="polite"></p>';
     document.body.appendChild(dialog);
     viewport=dialog.querySelector('.cm-viewport');plane=dialog.querySelector('.cm-plane');panel=dialog.querySelector('.cm-details');
@@ -630,6 +630,6 @@
     hide:function(){if(!dialog||!dialog.open)return;dialog.close();cancelAnimationFrame(lineFrame);document.body.style.overflow=previousOverflow;if(opener&&opener.isConnected)opener.focus({preventScroll:true});}
   };
   var grid=document.querySelector('#landing3 .rh-grid');
-  if(grid){var launcher=document.createElement('div');launcher.className='fd-chalet-map-launcher';launcher.innerHTML='<button type="button" class="fd-chalet-map-open" aria-haspopup="dialog" aria-controls="fd-chalet-map"><span><strong>جولة داخل الشاليه</strong><small>تعرف على الغرف والمرافق</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>';grid.after(launcher);}
+  if(grid){var launcher=document.createElement('div');launcher.className='fd-chalet-map-launcher';launcher.innerHTML='<button type="button" class="fd-chalet-map-open" aria-haspopup="dialog" aria-controls="fd-chalet-map"><span><strong>استكشف الشاليه من الداخل</strong><small>تعرف على الغرف والمرافق</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>';grid.after(launcher);}
   document.addEventListener('click',function(e){if(e.target.closest('.fd-chalet-map-open'))document.dispatchEvent(new CustomEvent('fd-chalet-map-request'));});
 })();

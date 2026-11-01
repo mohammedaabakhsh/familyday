@@ -1,7 +1,7 @@
 {
   "name": "يوم العائلة",
   "short_name": "يوم العائلة",
-  "start_url": "/familyday/",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#04111e",
   "theme_color": "#19a7b7",

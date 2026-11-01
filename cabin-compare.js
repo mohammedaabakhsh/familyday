@@ -56,10 +56,10 @@ var FD_CABIN_COMPARE = (function(){
       ['الضيوف',function(c){return resortGuestText(c.guests);}],
       ['غرف النوم',function(c){return resortRoomText(c.rooms);}],
       ['الأسرّة',function(c){return c.features.indoor.filter(function(t){return /^غرفة نوم/.test(t);}).join(' · ');}],
-      ['صالة داخلية',function(c){return c.features.indoor.includes('صالة داخلية')?'متوفرة':'غير متوفرة';}],
+      ['صالة داخلية',function(c){return c.livingRoom==='integrated'?'مدمجة مع غرفة النوم':c.hall?'متوفرة':'غير متوفرة';}],
       ['طاولة طعام',function(c){return c.features.indoor.includes('طاولة طعام')?'متوفرة':'غير متوفرة';}],
       ['الحمامات',function(c){return c.bathroom===1?'حمام واحد':c.bathroom===2?'حمامان':c.bathroom+' حمامات';}],
-      ['المسبح',function(c){return c.pool.label+' وعمق '+c.pool.depthCm+' سم.';}],
+      ['المسبح',function(c){return localizeSpecificationUnits(c.pool.label)+' وعمق '+c.pool.depthCm+' سم.';}],
       ['مميزات خاصة',specials]
     ].forEach(function(row){var tr=body.insertRow(),th=document.createElement('th');th.scope='row';th.textContent=row[0];tr.appendChild(th);items.forEach(function(c){
       var td=tr.insertCell(),text=row[1](c);

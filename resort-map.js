@@ -77,7 +77,7 @@
       capacity: 'السعة', bedrooms: 'غرف النوم', location: 'الموقع', access: 'الاستخدام',
       gardenLocation: 'وسط الأكواخ', gardenAccess: 'لجميع الضيوف',
       gardenConnection: 'لكل كوخ باب داخلي يفتح مباشرة على الحديقة المشتركة',
-      tour: 'جولة في كوخ الدوم', details: 'عرض التفاصيل والصور', markerAction: ': عرض المميزات',
+      tour: 'استكشف الكوخ من الداخل', details: 'عرض التفاصيل والصور', markerAction: ': عرض المميزات',
       viewPhotos: 'عرض الصور', cabinPhotos: 'عرض صور الكوخ', viewPhotosOf: 'عرض صور ',
       photosOf: 'صور ', photoClose: 'إغلاق الصور والعودة إلى الخريطة',
       photoError: 'تعذّر تحميل الصورة.', previousPhoto: 'الصورة السابقة', nextPhoto: 'الصورة التالية',
@@ -173,10 +173,6 @@
       (sub && !sub.classList.contains('hide'));
   }
 
-  function roomText(count) {
-    if (mapLanguage === 'en') return count + (count === 1 ? ' bedroom' : ' bedrooms');
-    return count === 1 ? 'غرفة نوم واحدة' : count === 2 ? 'غرفتا نوم' : count + ' غرف نوم';
-  }
 
   function roomValue(count) {
     if (mapLanguage === 'en') return count + (count === 1 ? ' bedroom' : ' bedrooms');
@@ -211,21 +207,6 @@
     return gallery && gallery.length ? gallery.slice() : cardPhotos[cabin.id] ? [cardPhotos[cabin.id]] : [];
   }
 
-  function showCardPhoto(cabin) {
-    var gallery = typeof GALLERY !== 'undefined' ? GALLERY[cabin.id] : null;
-    var source = cabin.badge === 'مشترك' ? null : cardPhotos[cabin.id] || (gallery && gallery[0]);
-    card.classList.toggle('has-photo', Boolean(source));
-    cardPhoto.parentElement.hidden = !source;
-    if (!source) return;
-    photoButton.setAttribute('aria-label', mapCopy[mapLanguage].viewPhotosOf + card.querySelector('h3').textContent);
-    cardPhoto.alt = cabinName(cabin);
-    if (cardPhoto.getAttribute('src') !== source || !cardPhoto.naturalWidth) {
-      // Never show the previous cabin's photo while the new one is loading.
-      cardPhoto.classList.remove('is-ready');
-      cardPhoto.src = source;
-    }
-    if (cardPhoto.complete && cardPhoto.naturalWidth) cardPhoto.classList.add('is-ready');
-  }
 
   function renderPhoto() {
     if (!photoSources.length) return;
@@ -386,7 +367,7 @@
     var tourButton = card.querySelector('.fd-map-tour-button');
     tourButton.hidden = !hasTour;
     tourButton.href = gardenTour || (isRustic ? '/rustic-tour/' : isRoyal ? '/royal-tour/' : isPanoramic ? '/panoramic-tour/' : isClassic ? '/classic-tour/' : isFrench ? '/french-tour/' : isBohemian ? '/bohemian-tour/' : isPalm ? '/palm-tour/' : isGreek ? '/greek-tour/' : cabin.id === 2 ? '/pyramid-tour/' : '/dome-tour/') + '?from=map&cabin=' + cabin.id + '&v=map-return-20261028-v2';
-    tourButton.textContent = gardenTour ? (mapLanguage === 'en' ? '3D garden tour' : 'جولة ثلاثية الأبعاد للحديقة') : isRustic ? (mapLanguage === 'en' ? 'Explore the Rustic Cottage' : 'جولة في الكوخ الريفي') : isRoyal ? (mapLanguage === 'en' ? 'Explore the Royal Cottage' : 'جولة في كوخ رويال') : isPanoramic ? (mapLanguage === 'en' ? 'Explore the Panoramic House' : 'جولة في البيت البانورامي') : isClassic ? (mapLanguage === 'en' ? 'Explore the Classic Cottage' : 'جولة في الكوخ الكلاسيكي') : isFrench ? (mapLanguage === 'en' ? 'Explore the French Cottage' : 'جولة في الكوخ الفرنسي') : isBohemian ? (mapLanguage === 'en' ? 'Explore the Bohemian Cottage' : 'جولة في الكوخ البوهيمي') : isPalm ? (mapLanguage === 'en' ? 'Explore Palm Beach Cottage' : 'جولة في كوخ بالم بيتش') : isGreek ? (mapLanguage === 'en' ? 'Explore the Greek House' : 'جولة في البيت اليوناني') : cabin.id === 2 ? (mapLanguage === 'en' ? 'Explore the Pyramid Cottage' : 'جولة في الكوخ الهرمي') : copy.tour;
+    tourButton.textContent = gardenTour ? (mapLanguage === 'en' ? '3D garden tour' : 'جولة ثلاثية الأبعاد للحديقة') : isRustic ? (mapLanguage === 'en' ? 'Explore the Rustic Cottage' : 'استكشف الكوخ من الداخل') : isRoyal ? (mapLanguage === 'en' ? 'Explore the Royal Cottage' : 'استكشف الكوخ من الداخل') : isPanoramic ? (mapLanguage === 'en' ? 'Explore the Panoramic House' : 'استكشف الكوخ من الداخل') : isClassic ? (mapLanguage === 'en' ? 'Explore the Classic Cottage' : 'استكشف الكوخ من الداخل') : isFrench ? (mapLanguage === 'en' ? 'Explore the French Cottage' : 'استكشف الكوخ من الداخل') : isBohemian ? (mapLanguage === 'en' ? 'Explore the Bohemian Cottage' : 'استكشف الكوخ من الداخل') : isPalm ? (mapLanguage === 'en' ? 'Explore Palm Beach Cottage' : 'استكشف الكوخ من الداخل') : isGreek ? (mapLanguage === 'en' ? 'Explore the Greek House' : 'استكشف الكوخ من الداخل') : cabin.id === 2 ? (mapLanguage === 'en' ? 'Explore the Pyramid Cottage' : 'استكشف الكوخ من الداخل') : copy.tour;
     description.hidden = !description.textContent;
     card.querySelector('.fd-map-guest-label').textContent = shared ? copy.location : copy.capacity;
     card.querySelector('.fd-map-room-label').textContent = shared ? copy.access : copy.bedrooms;
@@ -643,7 +624,7 @@
               '</div>' +
               '<div class="fd-map-amenities"></div>' +
               '<button type="button" class="fd-map-details-button">عرض التفاصيل والصور</button>' +
-              '<a class="fd-map-details-button fd-map-tour-button" href="/dome-tour/?from=map" hidden>جولة في كوخ الدوم</a>' +
+              '<a class="fd-map-details-button fd-map-tour-button" href="/dome-tour/?from=map" hidden>استكشف الكوخ من الداخل</a>' +
               '<button type="button" class="fd-map-card-photo" aria-label="عرض صور الكوخ" aria-haspopup="dialog" aria-controls="fd-map-photos" hidden><img width="240" height="240" alt="" decoding="async" draggable="false"><span class="fd-map-photo-label" aria-hidden="true">عرض الصور</span></button>' +
             '</section>' +
           '</div>' +

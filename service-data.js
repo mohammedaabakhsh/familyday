@@ -53,7 +53,7 @@ var _menuData = {
     {name:'عبوة ماء صغيرة',price:2},
     {name:'عبوة ماء كبيرة',price:3},
     {name:'كرتون ماء',price:40},
-    {name:'كوبين ثلج',price:5},
+    {name:'كوبان من الثلج',price:5},
     {name:'ثلج',price:7}
   ],
   'مشروبات ساخنة': [

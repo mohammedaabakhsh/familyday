@@ -5,66 +5,10 @@
   const locations = () => FD_RESORT_MAP_DATA.locations.filter(l=>data.resort.items.some(c=>c.id===l.cabinId));
   const cabinFor = id => data.resort.items.find(c=>c.id===id);
   const shortName = c => c.name.replace(/^(?:الكوخ|كوخ|البيت|بيت)\s+/, '');
-  const roomText = n => n===1 ? 'غرفة واحدة' : n===2 ? 'غرفتان' : n>2 ? n+' غرف' : '';
-  const guestText = n => n===1 ? 'حتى ضيف واحد' : n===2 ? 'حتى ضيفين' : n>2 && n<=10 ? 'حتى '+n+' ضيوف' : n>10 ? 'حتى '+n+' ضيفًا' : '';
-  function highlightFor(cabin) {
-    if(cabin.id===3) return 'إمكانية الربط الداخلي مع كوخ رويال';
-    if(cabin.id===9) return 'إمكانية الربط الداخلي مع الكوخ الكلاسيكي';
-    if(cabin.id===10) return 'جاكوزي داخلي';
-    if(cabin.bath && cabin.bath.summary) {
-      if(cabin.id===2 && cabin.bath.outdoorPrivacy) return cabin.bath.summary+' بخصوصية كاملة';
-      return cabin.bath.summary;
-    }
-    return '';
-  }
-  const bathroomText = n => n===1 ? 'حمام واحد' : n===2 ? 'حمامان' : n>2 ? n+' حمامات' : '';
   function tourUrlFor(cabin) {
     const routes={1:'dome-tour',12:'dome-tour',2:'pyramid-tour',3:'classic-tour',4:'greek-tour',13:'greek-tour',5:'palm-tour',6:'bohemian-tour',7:'french-tour',8:'rustic-tour',9:'royal-tour',10:'panoramic-tour'};
     const route=routes[cabin.id];
     return route ? '/'+route+'/?from=guide&cabin='+cabin.id : '';
-  }
-  function unique(values) {
-    const seen=new Set();
-    return values.filter(value=>{
-      const key=String(value||'').trim();
-      if(!key || seen.has(key)) return false;
-      seen.add(key);
-      return true;
-    });
-  }
-  function featureChips(cabin) {
-    const chips=[];
-    const highlight=highlightFor(cabin);
-    if(highlight) chips.push(highlight);
-    if(cabin.pool && /جاكوزي/.test(cabin.pool.label||'') && !chips.some(v=>/جاكوزي/.test(v))) chips.push('جاكوزي داخل المسبح');
-    return unique(chips).slice(0,2);
-  }
-  function detailSection(title,values) {
-    const list=unique(values);
-    if(!list.length) return '';
-    const cls=title==='تجهيزات المطبخ' ? 'cabin-detail-group cabin-detail-group--kitchen' : 'cabin-detail-group';
-    return '<section class="'+cls+'"><h4>'+esc(title)+'</h4><ul>'+list.map(v=>'<li>'+esc(v)+'</li>').join('')+'</ul></section>';
-  }
-  function inlineDetails(cabin) {
-    const indoor=(cabin.features && cabin.features.indoor ? cabin.features.indoor.slice() : []);
-    const bath=bathroomText(cabin.bathroom);
-    if(bath) indoor.push(bath);
-    if(cabin.features && cabin.features.stay) indoor.push.apply(indoor,cabin.features.stay);
-
-    const kitchen=cabin.features && cabin.features.kitchen ? cabin.features.kitchen.slice() : [];
-
-    const outdoor=cabin.features && cabin.features.outdoor ? cabin.features.outdoor.slice() : [];
-    if(cabin.pool){
-      if(cabin.pool.label) outdoor.push(cabin.pool.label);
-      if(cabin.pool.depthCm) outdoor.push('عمق المسبح '+cabin.pool.depthCm+' سم');
-      if(Array.isArray(cabin.pool.facilities)) outdoor.push.apply(outdoor,cabin.pool.facilities);
-    }
-
-    return '<div class="cabin-inline-details" data-guide-details-panel hidden>'
-      +detailSection('داخل الكوخ',indoor)
-      +detailSection('تجهيزات المطبخ',kitchen)
-      +detailSection('المساحة الخارجية',outdoor)
-      +'</div>';
   }
   function marker(location) {
     const cabin = cabinFor(location.cabinId), name = shortName(cabin);
@@ -92,7 +36,6 @@
         el.setAttribute('aria-pressed',String(selected));el.classList.toggle('is-selected',selected);
       });
       const photo=FD_RESORT_MAP_DATA.cardPhotos[id];
-      const room=roomText(cabin.rooms), guests=guestText(cabin.guests);
       let body='<div class="cabin-card-heading"><h3 id="guide-cabin-title">'+esc(cabin.name)+'</h3><button type="button" id="close-cabin" aria-label="إغلاق تفاصيل الكوخ">×</button></div>';
       if(photo) body+='<img class="cabin-photo" src="/'+esc(photo)+'" alt="'+esc(cabin.name)+'" width="1200" height="1200">';
 
@@ -101,7 +44,7 @@
       } else {
         const tourUrl=tourUrlFor(cabin);
         body+='<div class="cabin-card-body cabin-card-body--explore">';
-        if(tourUrl) body+='<div class="cabin-explore-actions cabin-explore-actions--single"><a class="cabin-explore-link cabin-explore-link--primary" href="'+esc(tourUrl)+'">جولة داخل الكوخ <span aria-hidden="true">←</span></a></div>';
+        if(tourUrl) body+='<div class="cabin-explore-actions cabin-explore-actions--single"><a class="cabin-explore-link cabin-explore-link--primary" href="'+esc(tourUrl)+'">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a></div>';
         body+='</div>';
       }
       card.innerHTML=body;card.hidden=false;

@@ -10,9 +10,6 @@ GALLERY[PRIVATE_CHALET.id] = Array.from({length:18}, function(_, index){
   return 'imgs/chalet_' + (index + 1) + '.webp?v=20261007';
 });
 
-function chaletEnquiryUrl(message){
-  return 'https://wa.me/966556156693?text=' + encodeURIComponent(message || 'أرغب في الاستفسار عن شاليه يوم العائلة');
-}
 
 function renderPrivateChaletDetail(){
   function features(items){
@@ -73,7 +70,7 @@ function openPrivateChalet(){
   updateCabinShareActions(PRIVATE_CHALET);
   var book = document.getElementById('modalBookBtn');
   book.href = PRIVATE_CHALET.bookUrl;
-  book.textContent = 'احجز الآن';
+  book.textContent = 'الأسعار والتوفر';
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
   resetCabinDetailView();

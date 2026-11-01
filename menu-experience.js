@@ -23,6 +23,10 @@ window.FD_MENU_EXPERIENCE = (function () {
     try {
       var saved = JSON.parse(localStorage.getItem(storageKey));
       if (!saved || saved.version !== 1 || !Array.isArray(saved.items)) return;
+      // Preserve saved quantities when the public item wording changes.
+      saved.items.forEach(function (item) {
+        if (item && item.name === 'كوبين ثلج') item.name = 'كوبان من الثلج';
+      });
       var menu = catalog(), cart = {};
       saved.items.forEach(function (item) {
         if (!item || typeof item.name !== 'string' || !Number.isSafeInteger(item.qty) || item.qty < 1) return;

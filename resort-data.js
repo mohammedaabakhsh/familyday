@@ -5,6 +5,7 @@ const data = {
     "items": [
       {
         "id": 1,
+        "livingRoom": "integrated",
         "img": 12,
         "name": "بيت الدوم 1",
         "type": "تجربة فريدة على شكل قبة مع بانيو داخلي وجاكوزي داخل المسبح",
@@ -18,6 +19,7 @@ const data = {
           "indoor": [
             "غرفة نوم بسرير مزدوج",
             "بانيو داخلي بغرفة النوم",
+            "صالة جلوس مدمجة مع غرفة النوم",
             "ركن المطبخ"
           ],
           "outdoor": [
@@ -71,7 +73,7 @@ const data = {
         "features": {
           "indoor": [
             "غرفة نوم بسرير مزدوج",
-            "الصالة الداخلية",
+            "صالة داخلية",
             "طاولة طعام",
             "ركن المطبخ"
           ],
@@ -181,7 +183,7 @@ const data = {
           "indoor": [
             "غرفة نوم بسرير مزدوج",
             "غرفة نوم بسريرين مفردين",
-            "الصالة الداخلية",
+            "صالة داخلية",
             "طاولة طعام",
             "ركن المطبخ"
           ],
@@ -591,7 +593,11 @@ function resortBathroomText(count) {
 }
 
 // Keep measurement pairs in their approved order inside Arabic descriptions.
+function localizeSpecificationUnits(text) {
+  return text.replace(/\bcm\b/g, 'سم').replace(/\bm\b/g, 'م');
+}
 function formatSpecificationText(text) {
-  if (!/\d+\s*×\s*\d+|\d+\s*cm/.test(text)) return text;
-  return '<span>' + text.replace(/(\d+\s*×\s*\d+(?:\s*m\b)?|\d+\s*cm\b)/g, '<bdi dir="ltr">$1</bdi>') + '</span>';
+  text = localizeSpecificationUnits(text);
+  if (!/\d+\s*×\s*\d+|\d+\s*سم/.test(text)) return text;
+  return '<span>' + text.replace(/(\d+\s*×\s*\d+(?:\s*م)?|\d+\s*سم)/g, '<bdi dir="ltr">$1</bdi>') + '</span>';
 }
