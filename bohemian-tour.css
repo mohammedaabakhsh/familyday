@@ -219,3 +219,10 @@ body{background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);back
  #ov #bohemian-tour .dt-details.is-empty{display:block;visibility:hidden}
  #ov #bohemian-tour .dt-occupancy{margin:0;padding:0;align-self:end}
 }
+
+/* Brief guidance beside the back control, below the tour title. */
+#ov #bohemian-tour .dt-heading-copy{min-width:0}
+#ov #bohemian-tour .dt-instruction{margin:5px 0 0;color:#a9ccd5;font-size:13px;font-weight:400;line-height:1.5;text-align:start}
+@media(max-width:599px){
+ #ov #bohemian-tour .dt-instruction{font-size:12px}
+}
