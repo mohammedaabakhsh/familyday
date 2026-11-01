@@ -160,8 +160,15 @@ var dimensions = cabin.pool.label.match(/(\d+)\s*×\s*(\d+)/);
           sy=b.top-box.top;
           curve='C '+sx+' '+(sy-24)+' '+tx+' '+(ty+30)+' '+tx+' '+ty;
         } else if(buttonAboveImage){
-          sy=b.bottom-box.top;
-          curve='C '+sx+' '+(sy+24)+' '+tx+' '+(ty-30)+' '+tx+' '+ty;
+          // Leave the inner edge into the column gutter, clear of every button.
+          var rightColumn=b.left+b.width/2>box.left+box.width/2;
+          sx=(rightColumn?b.left:b.right)-box.left;
+          sy=b.top+b.height/2-box.top;
+          var lane=box.width/2+(rightColumn?4:-4);
+          var approach=im.top-box.top-6;
+          curve='Q '+lane+' '+sy+' '+lane+' '+(sy+8)+
+            ' L '+lane+' '+approach+
+            ' C '+lane+' '+(approach+16)+' '+tx+' '+(ty-24)+' '+tx+' '+ty;
         }
       }
       root.querySelector('[data-line="'+p.id+'"]').setAttribute('d','M '+sx+' '+sy+' '+curve);

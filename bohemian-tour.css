@@ -185,12 +185,16 @@ body{background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);back
  #ov #bohemian-tour .dt-stage{
    display:grid;
    grid-template-rows:auto minmax(0,1fr) auto;
+   padding-top:clamp(12px,2dvh,20px);
    gap:8px;
    min-height:0;
  }
  #ov #bohemian-tour .dt-labels--top{
    order:0;
-   gap:12px 6px;
+   grid-template-columns:repeat(2,minmax(0,1fr));
+   grid-template-rows:repeat(3,auto);
+   grid-auto-flow:column;
+   gap:12px 24px;
    margin:0;
  }
  #ov #bohemian-tour .dt-image-space{
