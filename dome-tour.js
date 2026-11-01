@@ -67,7 +67,7 @@ var FD_DOME_TOUR = (function () {
   }
   function details() {
     var part = parts.find(function(p){return p.id===selected;});
-    var cards = [], note = '', subtitle = '';
+    var cards = [], note = '';
     if (selected === 'pool') {
       subtitle = tr('مسبح خاص للكبار','Private adult pool');
       var dimensions = cabin.pool.label.match(/(\d+)\s*×\s*(\d+)/);
@@ -87,7 +87,7 @@ var FD_DOME_TOUR = (function () {
     } else {
       cabin.features.outdoor.forEach(function(t){cards.push({value:feature(t),icon:'outdoor'});});
     }
-    root.querySelector('.dt-details').innerHTML='<div class="dt-detail-heading"><h4>'+esc(part[language])+'</h4>'+(subtitle?'<p>'+esc(subtitle)+'</p>':'')+'</div><div class="dt-cards">'+cards.map(function(card){return '<div class="dt-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+cardValue(card.value)+'</strong></div></div>';}).join('')+'</div>'+(note?'<p class="dt-note">'+esc(note)+'</p>':'');
+    root.querySelector('.dt-details').innerHTML='<div class="dt-cards">'+cards.map(function(card){return '<div class="dt-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+cardValue(card.value)+'</strong></div></div>';}).join('')+'</div>'+(note?'<p class="dt-note">'+esc(note)+'</p>':'');
   }
   function update() {
     root.lang=language; root.dir=language==='ar'?'rtl':'ltr';
@@ -142,14 +142,15 @@ var FD_DOME_TOUR = (function () {
         }
       }
       if(mobile){
-        var labelsBox=root.querySelector('.dt-labels').getBoundingClientRect();
-        var labelsBottom=labelsBox.bottom-box.top;
-        if(sy<labelsBottom-4){
-          // Route between rows and around the label grid, never through another button.
-          var gutter=sx<box.width/2?2:box.width-2;
-          var rowGap=sy+3, belowLabels=labelsBottom+4;
-          curve='L '+sx+' '+rowGap+' L '+gutter+' '+rowGap+' L '+gutter+' '+belowLabels+
-            ' C '+gutter+' '+(belowLabels+22)+' '+tx+' '+(ty-30)+' '+tx+' '+ty;
+        var buttonAboveImage=b.bottom<=im.top+4;
+        var buttonBelowImage=b.top>=im.bottom-4;
+        sx=b.left+b.width/2-box.left;
+        if(buttonBelowImage){
+          sy=b.top-box.top;
+          curve='C '+sx+' '+(sy-24)+' '+tx+' '+(ty+30)+' '+tx+' '+ty;
+        } else if(buttonAboveImage){
+          sy=b.bottom-box.top;
+          curve='C '+sx+' '+(sy+24)+' '+tx+' '+(ty-30)+' '+tx+' '+ty;
         }
       }
       root.querySelector('[data-line="'+p.id+'"]').setAttribute('d','M '+sx+' '+sy+' '+curve);

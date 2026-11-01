@@ -81,3 +81,26 @@
  #ov #dome-tour .dt-details{margin:8px 10px 0;padding:10px;min-height:0}
  #ov #dome-tour .dt-occupancy{margin-top:7px}
 }
+
+/* Dome viewport fit: keep the whole tour visible and place occupancy at the visual end. */
+@media(max-width:599px){
+ #ov #dome-tour{
+   display:flex;
+   flex-direction:column;
+   min-height:calc(100svh - 18px);
+   margin-top:4px;
+   padding-top:8px;
+   padding-bottom:4px;
+ }
+ #ov #dome-tour .dt-heading{margin-bottom:4px}
+ #ov #dome-tour .dt-labels--top{margin-top:7px;margin-bottom:5px}
+ #ov #dome-tour .dt-image{margin-top:4px}
+ #ov #dome-tour .dt-labels--bottom{margin-top:-2px;margin-bottom:0}
+ #ov #dome-tour .dt-details{margin:13px 10px 0;padding:9px;min-height:0}
+ #ov #dome-tour .dt-occupancy{
+   margin-top:auto;
+   padding-top:10px;
+   padding-bottom:2px;
+   font-size:13px;
+ }
+}
