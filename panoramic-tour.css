@@ -100,3 +100,17 @@ body{background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);back
  #ov #panoramic-tour .dt-lines{z-index:2}
  #ov #panoramic-tour .dt-languages{margin-top:8px}
 }
+
+/* Compact detail strip: only show information not already stated in the selected control. */
+#ov #panoramic-tour .dt-details.is-empty{display:none}
+@media(max-width:599px){
+ #ov #panoramic-tour .dt-details{min-height:0;margin:8px 10px 0;padding:8px 7px;display:block}
+ #ov #panoramic-tour .dt-cards{display:flex;grid-template-columns:none;gap:7px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;padding:1px 1px 5px;scrollbar-width:thin}
+ #ov #panoramic-tour .dt-card{flex:0 0 104px;min-height:62px;padding:6px 5px;scroll-snap-align:start}
+ #ov #panoramic-tour .dt-card svg{width:17px;height:17px}
+ #ov #panoramic-tour .dt-card strong{font-size:11px;line-height:1.35}
+ #ov #panoramic-tour .dt-card strong[dir=ltr]{font-size:13px}
+ #ov #panoramic-tour .dt-card span{font-size:10px;margin-bottom:1px}
+ #ov #panoramic-tour .dt-note{font-size:11px;line-height:1.45;margin:5px 2px 0}
+ #ov #panoramic-tour .dt-occupancy{margin-top:7px}
+}
