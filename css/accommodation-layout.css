@@ -1,0 +1,259 @@
+
+/* Approved refinements. Remove data-dest-photo to restore the original cards. */
+.dest-card[data-dest-photo]{position:relative;isolation:isolate;overflow:hidden;}
+.dest-card[data-dest-photo]::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(90deg,rgba(4,17,30,.18),rgba(4,17,30,.60)),var(--dest-photo);
+  background-size:cover;background-position:center 65%;opacity:.65;
+}
+.dest-card[data-dest-photo="resort"]{--dest-photo:url('../imgs/dome_1.webp');}
+.dest-card[data-dest-photo="stay"]{--dest-photo:url('../imgs/sec1_1.webp');}
+.dest-card[data-dest-photo="chalet"]{--dest-photo:url('../imgs/chalet_1.webp?v=20261007');}
+#ov .mbtn-book{color:#04111e;}
+#mBody .tag{font-size:14px;line-height:1.45;}
+#mBody .tags-lbl{font-size:14px;line-height:1.45;}
+/* Extra touch area only; keep the visible arrow and button dimensions. */
+#ov .modal-topnav-btn{position:relative;overflow:visible;}
+#ov .modal-topnav-btn::after{
+  content:"";position:absolute;left:50%;top:50%;
+  width:max(100%,44px);height:max(100%,44px);transform:translate(-50%,-50%);
+}
+@media(min-width:1024px){
+  #ov .modal{width:calc(100vw - 80px);max-width:860px;}
+  #ov .gal-wrap{height:clamp(260px,42vh,400px);}
+  #grid2{grid-template-columns:repeat(2,minmax(0,1fr));max-width:728px;}
+}
+
+
+/* Cabin index: use the same clear page heading as services and keep map access with the filters. */
+#app .cabin-page-header{
+  box-sizing:border-box;width:100%;max-width:1100px;height:auto;margin:0 auto;
+  padding:24px 20px 16px;display:block;text-align:right;position:static;top:auto;z-index:auto;
+}
+#app .cabin-heading-row{
+  display:flex;align-items:center;justify-content:flex-start;gap:14px;margin:0;
+}
+#app .cabin-heading-row #headerTitle{
+  min-width:0;margin:0;font-family:Tajawal,sans-serif;font-weight:700;
+  line-height:1.4;color:#f4f8fa;text-align:right;
+}
+#app .cabin-heading-row .back-btn{
+  flex:0 0 38px;width:38px;height:38px;padding:0;border:1px solid rgba(126,207,234,.16);
+  border-radius:50%;background:rgba(255,255,255,.06);color:#d7e8ef;
+}
+#app .section-hero.resort-hero{
+  box-sizing:border-box;width:100%;max-width:1100px;margin:0 auto;padding:0 20px 18px;
+  background:transparent;text-align:right;
+}
+#app .section-hero.resort-hero h1{
+  margin:0;color:#9fc8d2;font-size:15px;font-weight:500;line-height:1.6;
+}
+#app .cabin-toolbar{
+  box-sizing:border-box;width:100%;max-width:1100px;margin:0 auto;padding:0 20px 18px;
+  display:flex;align-items:center;gap:10px;
+}
+#app .cabin-toolbar .filter-section{
+  min-width:0;flex:1;padding:0;border:0;background:transparent;gap:8px;
+}
+#app .cabin-toolbar .fd-map-launcher{
+  flex:none;padding:0 10px 0 0;border-right:1px solid rgba(126,207,234,.15);
+}
+#app .cabin-toolbar #fd-map-open{
+  min-height:40px;padding:8px 14px;border:1px solid #315967;border-radius:12px;
+  background:#102b3a;color:#b8e6ec;font-size:13px;font-weight:700;line-height:1.4;
+  white-space:nowrap;text-decoration:none;
+}
+#app .grid-section{padding:0 20px calc(32px + env(safe-area-inset-bottom,0px));}
+#app :is(.back-btn,#fd-map-open,.fbtn):focus-visible{outline:2px solid #7ecfea;outline-offset:3px;}
+@media(max-width:599px){
+
+  #app .cabin-toolbar{gap:8px;}
+  #app .cabin-toolbar .fd-map-launcher{padding-right:8px;}
+  #app .cabin-toolbar #fd-map-open{padding-inline:11px;font-size:12px;}
+}
+@media(max-width:360px){
+  #app .cabin-page-header,#app .section-hero.resort-hero,#app .cabin-toolbar,#app .grid-section{padding-inline:16px;}
+}
+@media(min-width:900px){
+  #app .cabin-page-header{padding-top:28px;padding-bottom:18px;}
+  #app .section-hero.resort-hero{padding-bottom:20px;}
+  #app .cabin-toolbar{padding-bottom:22px;}
+}
+@media(hover:hover) and (pointer:fine){
+  #app .cabin-heading-row .back-btn:hover{background:#133343;}
+  #app .cabin-toolbar #fd-map-open:hover{border-color:#4d8997;background:#173b4c;color:#fff;}
+}
+
+
+/* Shared detail layout for the ten resort cabins; other accommodation types keep their own view. */
+#ov.fd-cabin-modern .modal{box-sizing:border-box;padding:0;}
+#ov.fd-cabin-modern .modal-handle{display:none;}
+#ov.fd-cabin-modern .modal-topnav{display:none;}
+#ov.fd-cabin-modern .fd-cabin-nav{
+  position:sticky;top:0;z-index:30;display:grid;grid-template-columns:44px minmax(0,1fr);
+  align-items:center;gap:10px;padding:12px;border-bottom:1px solid #294957;background:#071a28;
+}
+.fd-cabin-nav-controls{
+  position:relative;display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;gap:6px;min-width:0;
+}
+.fd-cabin-nav :is(button,svg){box-sizing:border-box;}
+.fd-cabin-nav button{
+  font-family:Tajawal,sans-serif;color:#e9f1f4;cursor:pointer;border:1px solid #315563;
+  border-radius:12px;background:#102b3a;transition:background .15s,border-color .15s;
+}
+.fd-cabin-nav svg{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.fd-cabin-nav-back,.fd-cabin-nav-arrow{display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;}
+.fd-cabin-nav-back span{display:none;}
+.fd-cabin-nav button.fd-cabin-nav-arrow{color:#9edce5;}
+.fd-cabin-nav button:disabled{opacity:.3;cursor:default;}
+.fd-cabin-nav button.fd-cabin-nav-picker{
+  display:flex;align-items:center;justify-content:center;gap:8px;min-width:0;min-height:56px;
+  padding:8px 10px;border-color:#356574;background:#123442;text-align:center;
+}
+.fd-cabin-nav-copy{display:flex;flex:1;flex-direction:column;gap:3px;min-width:0;}
+.fd-cabin-nav-copy strong{font-size:16px;line-height:1.35;font-weight:700;overflow-wrap:break-word;}
+#fd-cabin-nav-count{font-size:12px;line-height:1.3;font-weight:500;color:#95b8c4;}
+.fd-cabin-nav-picker svg{width:14px;height:14px;color:#8fcbd5;transition:transform .15s;}
+.fd-cabin-nav-picker[aria-expanded="true"] svg{transform:rotate(180deg);}
+.fd-cabin-nav button.fd-cabin-nav-picker:disabled{opacity:1;border-color:transparent;background:transparent;}
+.fd-cabin-nav-picker:disabled svg{display:none;}
+.fd-cabin-nav-list{
+  position:absolute;top:calc(100% + 8px);inset-inline:0;z-index:40;box-sizing:border-box;
+  max-height:min(360px,48vh);max-height:min(360px,48dvh);overflow-y:auto;overscroll-behavior:contain;
+  padding:6px;border:1px solid #356574;border-radius:14px;background:#0b2332;
+  box-shadow:0 16px 32px rgba(0,0,0,.35);scrollbar-width:thin;
+}
+.fd-cabin-nav-list[hidden]{display:none;}
+.fd-cabin-nav-list ul{list-style:none;padding:0;margin:0;display:grid;gap:4px;}
+.fd-cabin-nav-list button{
+  position:relative;display:block;width:100%;min-height:44px;padding:11px 12px 11px 36px;
+  border-color:transparent;border-radius:9px;background:transparent;text-align:right;font-size:15px;line-height:1.45;
+}
+.fd-cabin-nav-list button[aria-current="true"]{border-color:#326775;background:#153e4b;color:#9ee8ec;font-weight:700;}
+.fd-cabin-nav-list button[aria-current="true"]::after{
+  content:"";position:absolute;left:15px;top:50%;width:6px;height:11px;margin-top:-7px;
+  border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);
+}
+#ov.fd-cabin-modern .modal-inner{padding:22px 20px 18px;}
+#ov.fd-cabin-modern .fd-cabin-content{font-family:Tajawal,sans-serif;direction:rtl;color:#f4f8fa;}
+#ov.fd-cabin-modern .fd-cabin-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:18px;}
+#ov.fd-cabin-modern .fd-cabin-heading>div{min-width:0;}
+#ov.fd-cabin-modern .fd-cabin-title{margin:0;color:#f4f8fa;font-weight:700;line-height:1.4;}
+#ov.fd-cabin-modern .fd-cabin-suitable{margin:4px 0 0;color:#a9c2cc;font-size:13px;line-height:1.65;}
+#ov.fd-cabin-modern .fd-cabin-badge{
+  flex:none;margin-top:2px;padding:5px 10px;border:1px solid #2d6671;border-radius:9px;
+  background:#103440;color:#91dce4;font-size:12px;font-weight:700;line-height:1.4;
+}
+#ov.fd-cabin-modern .fd-cabin-facts{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:hidden;margin-bottom:12px;
+  border:1px solid #31515f;border-radius:14px;background:#102a39;
+}
+#ov.fd-cabin-modern .fd-cabin-facts div{min-width:0;padding:12px 7px;text-align:center;border-left:1px solid #31515f;}
+#ov.fd-cabin-modern .fd-cabin-facts div:last-child{border-left:0;}
+#ov.fd-cabin-modern .fd-cabin-facts span,#ov.fd-cabin-modern .fd-cabin-times span{display:block;color:#91aab5;font-size:11px;line-height:1.5;}
+#ov.fd-cabin-modern .fd-cabin-facts strong{display:block;margin-top:3px;color:#eef5f7;font-size:13px;font-weight:700;line-height:1.5;}
+#ov.fd-cabin-modern .fd-cabin-times{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:24px;
+  border:1px solid #294957;border-radius:14px;background:#0b2130;
+}
+#ov.fd-cabin-modern .fd-cabin-times div{padding:11px 14px;}
+#ov.fd-cabin-modern .fd-cabin-times div+div{border-right:1px solid #294957;}
+#ov.fd-cabin-modern .fd-cabin-times strong{display:block;margin-top:2px;color:#9edce5;font-size:13px;font-weight:700;line-height:1.5;}
+#ov.fd-cabin-modern .fd-cabin-section{margin:0 0 24px;}
+#ov.fd-cabin-modern .fd-cabin-section h3,#ov.fd-cabin-modern .fd-cabin-addons h3{
+  margin:0 2px 10px;color:#8bc4d1;font-size:15px;font-weight:700;line-height:1.5;
+}
+#ov.fd-cabin-modern .fd-cabin-feature-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
+#ov.fd-cabin-modern .fd-cabin-feature{
+  box-sizing:border-box;display:flex;align-items:center;min-width:0;min-height:44px;padding:10px 12px;
+  border:1px solid #315967;border-radius:12px;background:#153244;color:#e9f1f4;
+  font-size:13px;font-weight:500;line-height:1.55;
+}
+#ov.fd-cabin-modern .fd-cabin-feature--wide{grid-column:1/-1;}
+#ov.fd-cabin-modern .fd-cabin-instructions{
+  display:grid;gap:5px;margin:10px 2px 0;padding-top:10px;border-top:1px solid rgba(49,89,103,.65);
+}
+#ov.fd-cabin-modern .fd-cabin-instructions p{margin:0;color:#aebfc7;font-size:13px;line-height:1.75;}
+#ov.fd-cabin-modern .fd-cabin-instructions strong{color:#dce9ed;font-weight:700;}
+#ov.fd-cabin-modern .fd-cabin-addons{
+  margin-top:2px;padding:15px 16px;border:1px solid #294957;border-radius:14px;background:#0b2130;
+}
+#ov.fd-cabin-modern .fd-cabin-addons h3{margin:0 0 5px;}
+#ov.fd-cabin-modern .fd-cabin-addons p{margin:0;color:#bdced6;font-size:13px;line-height:1.75;}
+#ov.fd-cabin-modern .fd-shared-garden-tour{margin-bottom:0;}
+#ov.fd-cabin-modern .fd-garden-tour-btn{
+  width:100%;min-height:46px;border:1px solid #315967;border-radius:12px;
+  background:#102b3a;color:#9edce5;font-size:14px;
+}
+#ov.fd-cabin-modern .modal-bottom-bar{border-top:1px solid rgba(49,81,95,.65);background:#071a28;}
+#ov.fd-cabin-modern :is(.fd-cabin-nav button,.mbtn):focus-visible{outline:2px solid #7ecfea;outline-offset:3px;}
+@media(max-width:360px){
+  #ov.fd-cabin-modern .fd-cabin-nav{gap:6px;padding-inline:8px;}
+  .fd-cabin-nav-controls{gap:4px;}
+  .fd-cabin-nav button.fd-cabin-nav-picker{gap:4px;padding-inline:6px;}
+  #ov.fd-cabin-modern .modal-inner{padding-inline:16px;}
+  #ov.fd-cabin-modern .fd-cabin-feature-list{grid-template-columns:minmax(0,1fr);}
+  #ov.fd-cabin-modern .fd-cabin-feature--wide{grid-column:auto;}
+}
+@media(min-width:900px){
+  #ov.fd-cabin-modern .modal{
+    width:min(calc(100vw - 64px),1040px);max-width:1040px;height:min(88vh,760px);max-height:760px;
+    display:grid;grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr);
+    grid-template-rows:auto minmax(0,1fr) auto;
+    grid-template-areas:"navigation navigation" "gallery content" "actions actions";
+    overflow:hidden;border-radius:20px;
+  }
+  #ov.fd-cabin-modern .fd-cabin-nav{
+    grid-area:navigation;position:relative;grid-template-columns:minmax(140px,1fr) minmax(0,420px) minmax(140px,1fr);
+    gap:16px;padding:12px 20px;
+  }
+  .fd-cabin-nav-controls{gap:10px;}
+  .fd-cabin-nav-back{justify-self:start;gap:6px;width:auto;padding:0 12px;white-space:nowrap;}
+  .fd-cabin-nav-back span{display:block;font-size:12px;font-weight:600;}
+  .fd-cabin-nav-copy strong{font-size:18px;}
+  #ov.fd-cabin-modern .gal-wrap{grid-area:gallery;height:100%;min-height:0;border-left:1px solid #294957;}
+  #ov.fd-cabin-modern .modal-inner{grid-area:content;min-height:0;overflow-y:auto;padding:24px 28px 28px;overscroll-behavior:contain;scrollbar-width:thin;}
+  #ov.fd-cabin-modern .modal-bottom-bar{grid-area:actions;position:static;padding:14px 20px 16px;}
+
+}
+@media(hover:hover) and (pointer:fine){
+  .fd-cabin-nav button:not(:disabled):hover{border-color:#4d8997;background:#173b4c;}
+  #ov.fd-cabin-modern .fd-cabin-feature:hover{border-color:#4d8997;background:#193b4d;}
+  #ov.fd-cabin-modern .fd-garden-tour-btn:hover{border-color:#4d8997;background:#173b4c;}
+}
+
+
+/* Center each destination campaign between equal-sized side icons. */
+[data-campaign-banner][hidden]{display:none!important;}
+:is(#landing,#landing2,#landing3) .lh-offer-strip{
+  display:grid;grid-template-columns:27px minmax(0,1fr) 27px;margin-bottom:12px;
+}
+:is(#landing,#landing2,#landing3) .lh-offer-main{display:contents;}
+:is(#landing,#landing2,#landing3) .lh-offer-copy{align-items:center;text-align:center;}
+
+
+/* Keep the brand above the responsive destination choices. */
+#dest{
+  --dest-brand-top:clamp(24px,6vh,56px);
+  --dest-brand-top:clamp(24px,6svh,56px);
+  grid-template-columns:minmax(0,1fr);
+  grid-template-rows:minmax(calc(var(--dest-brand-top) + 164px),1fr) auto minmax(24px,1fr);
+  padding-block:0 !important;overflow-y:auto;overscroll-behavior:contain;
+}
+#dest:not(.hide){display:grid !important;}
+#dest > .dest-brand{
+  position:absolute;top:var(--dest-brand-top);left:50%;transform:translateX(-50%);
+  margin:0 !important;
+}
+#dest .dest-cards{width:100%;max-width:360px;display:flex;flex-direction:column;gap:14px;}
+@media(min-width:1024px){
+  #dest .dest-cards{max-width:1100px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;}
+  #dest .dest-card{min-height:180px;align-items:flex-end;}
+}
+#dest > .dest-choice-group{
+  grid-column:1;grid-row:2;display:flex;flex-direction:column;align-items:center;
+  width:100%;min-width:0;
+}
+
+
+@media(max-width:599px){#hospitality-detail .hd-title{font-size:22px}}
