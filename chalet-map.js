@@ -31,7 +31,7 @@
   },
   {
     "key": "ground",
-    "name": "غرفة النوم",
+    "name": "غرفة النوم الأرضية",
     "floor": "الدور الأرضي",
     "x": 29.107,
     "y": 24.641,
@@ -457,7 +457,6 @@
     back.dir=direction;back.setAttribute('aria-label',backText);
     back.title=backText;
     back.innerHTML='<svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-    dialog.querySelector('.cm-languages').setAttribute('aria-label',copy.languageLabel);
     dialog.querySelector('.cm-labels').dir=direction;
     dialog.querySelector('.cm-labels').setAttribute('aria-label',copy.empty);
     viewport.setAttribute('aria-label',labelLanguage==='en'?'Illustrated chalet layout. Select a room or facility.':'توزيع الشاليه، اختر الغرفة أو المرفق لعرض تفاصيله');
@@ -467,7 +466,6 @@
     dialog.querySelector('.cm-error p').textContent=copy.error;
     dialog.querySelector('.cm-retry').textContent=copy.retry;
     markers.forEach(function(b,i){b.textContent=roomName(rooms[i]);b.setAttribute('aria-label',roomName(rooms[i]));b.dir=direction;});
-    dialog.querySelectorAll('.cm-language').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.lang===labelLanguage));});
   }
   // Reuse the cabin tours' line icons and card structure.
   icons.people='M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm8-1a2.5 2.5 0 1 0 0-5M2 21v-3a6 6 0 0 1 12 0v3m2-8a5 5 0 0 1 6 5v3';
@@ -520,10 +518,6 @@
     renderDetails(room);panel.scrollTop=0;updateDetailsOverflow();queueLines();
     dialog.querySelector('.cm-announcement').textContent=tourCopy[labelLanguage].selected+roomName(room);
   }
-  function setLanguage(language){
-    labelLanguage=language;updateText();renderDetails(selected);measure();
-    dialog.querySelector('.cm-announcement').textContent=tourCopy[labelLanguage].language;
-  }
   // Match the resort map: compact labels on four sides and persistent connectors.
   var labelSides={
     ground:'left',upper:'top',groundBath:'right',
@@ -531,25 +525,36 @@
     shower:'bottom',majlis:'bottom'
   };
   var leaderPoints={"upper": [36.364, 12.041], "ground": [29.107, 24.641], "play": [38.836, 24.88], "kitchen": [69.617, 22.568], "dining": [69.378, 33.174], "living": [73.445, 50.478], "majlis": [78.309, 71.451], "pool": [36.603, 57.496], "shower": [19.059, 74.322], "groundBath": [57.257, 23.046]};
-  function labelRail(){return isMobile()?clamp(view.w*.19,66,78):clamp(view.w*.14,94,118);}
+  function labelRail(){return isMobile()?clamp(view.w*.17,54,68):clamp(view.w*.14,94,118);}
   function layoutLabels(){
     var mobile=isMobile(),rail=labelRail(),gap=mobile?6:12;
     var visibleTop=view.imageY+view.imageSize*.045;
     var visibleBottom=view.imageY+view.imageSize*.91;
-    // One centered bedroom above, two aligned labels below, and ordered side rails.
-    var left=Math.max(rail/2+4,view.w/2-view.imageSize*.46-gap-rail/2);
-    var right=view.w-left;
-    var columnOffset=mobile?view.w*.25:view.imageSize*.25;
-    var rowWidth=mobile?Math.min(120,view.w*.38):rail;
-    var top=mobile?24:Math.max(24,visibleTop-28);
-    var bottom=mobile?view.h-24:Math.min(view.h-24,visibleBottom+28);
     function place(key,x,y,width){
       var button=markers[rooms.findIndex(function(room){return room.key===key;})];
       button.style.width=width+'px';button.style.left=x+'px';button.style.top=y+'px';
     }
-    place('upper',view.w/2,top,rowWidth);
+    if(mobile){
+      // Keep labels close to the silhouette instead of the viewport edges.
+      var rowWidth=Math.min(144,view.w*.46-10);
+      var top=Math.max(22,visibleTop-24),bottom=Math.min(view.h-22,visibleBottom+24);
+      place('ground',view.w*.27,top,rowWidth);
+      place('upper',view.w*.73,top,rowWidth);
+      place('shower',view.w*.27,bottom,rowWidth);
+      place('majlis',view.w*.73,bottom,rowWidth);
+      ['play','pool'].forEach(function(key,i){
+        place(key,rail/2+2,view.imageY+view.imageSize*(i ? .57 : .30),rail);
+      });
+      ['groundBath','kitchen','dining','living'].forEach(function(key,i){
+        place(key,view.w-rail/2-2,view.imageY+view.imageSize*.17+i*Math.max(42,view.imageSize*.13),rail);
+      });
+      return;
+    }
+    var left=Math.max(rail/2+4,view.w/2-view.imageSize*.46-gap-rail/2);
+    var right=view.w-left,columnOffset=view.imageSize*.25;
+    place('upper',view.w/2,Math.max(24,visibleTop-28),rail);
     ['shower','majlis'].forEach(function(key,i){
-      place(key,view.w/2+(i?1:-1)*columnOffset,bottom,rowWidth);
+      place(key,view.w/2+(i?1:-1)*columnOffset,Math.min(view.h-24,visibleBottom+28),rail);
     });
     [
       {keys:['ground','play','pool'],x:left,start:.24},
@@ -571,7 +576,7 @@
       var x=vp.left-stage.left+view.imageX+view.imageSize*point[0]/100;
       var y=vp.top-stage.top+view.imageY+view.imageSize*point[1]/100;
       dot.setAttribute('cx',x);dot.setAttribute('cy',y);
-      var rect=markers[i].getBoundingClientRect(),side=labelSides[room.key],top=side==='top',bottom=side==='bottom',vertical=top||bottom;
+      var rect=markers[i].getBoundingClientRect(),side=isMobile()&&room.key==='ground'?'top':labelSides[room.key],top=side==='top',bottom=side==='bottom',vertical=top||bottom;
       var sx=vertical?rect.left+rect.width/2-stage.left:(side==='left'?rect.right:rect.left)-stage.left;
       var sy=(top?rect.bottom:bottom?rect.top:rect.top+rect.height/2)-stage.top;
       var bend=vertical?Math.min(18,Math.abs(y-sy)/3):Math.min(24,Math.abs(x-sx)/3);
@@ -586,7 +591,7 @@
     view.w=viewport.clientWidth;view.h=viewport.clientHeight;
     var mobile=isMobile(),rail=labelRail(),top=mobile?50:60,bottom=mobile?50:54;
     var available=Math.min((view.w-2*rail-24)/.94,(view.h-top-bottom)/.865);
-    view.imageSize=Math.max(1,mobile?available:Math.min(740,available*.86));
+    view.imageSize=Math.max(1,mobile?Math.min(view.w*1.03,(view.h-top-bottom)/.865):Math.min(740,available*.86));
     view.imageX=view.w/2-view.imageSize*.52;
     view.imageY=top+Math.max(0,(view.h-top-bottom-view.imageSize*.865)/2)-view.imageSize*.045;
     plane.style.width=view.w+'px';plane.style.height=view.h+'px';
@@ -596,7 +601,7 @@
   function dismiss(){document.dispatchEvent(new CustomEvent('fd-chalet-map-dismiss'));}
   function create(){
     dialog=document.createElement('dialog');dialog.id='fd-chalet-map';dialog.className='cm-dialog';dialog.setAttribute('aria-labelledby','cm-title');
-    dialog.innerHTML='<header class="cm-header"><div class="cm-heading"><button type="button" class="cm-close" autofocus></button><div class="cm-heading-copy"><h2 id="cm-title">جولة داخل الشاليه</h2><p class="cm-subtitle"></p></div></div><div class="cm-languages" role="group" aria-label="لغة الجولة"><button type="button" class="cm-language" data-lang="ar" lang="ar" aria-label="العربية" aria-pressed="true">AR</button><button type="button" class="cm-language" data-lang="en" lang="en" aria-label="English" aria-pressed="false">EN</button></div></header>'
+    dialog.innerHTML='<header class="cm-header"><div class="cm-heading"><button type="button" class="cm-close" autofocus></button><div class="cm-heading-copy"><h2 id="cm-title">جولة داخل الشاليه</h2><p class="cm-subtitle"></p></div></div></header>'
       +'<div class="cm-workspace"><div class="cm-map-side"><div class="cm-labels" role="group"></div><div class="cm-viewport"><div class="cm-plane"><div class="cm-illustration"><img class="cm-image" width="1254" height="1254" alt="" draggable="false"><svg class="cm-regions" viewBox="0 0 100 100" aria-hidden="true"></svg></div></div><div class="cm-error" hidden><p></p><button type="button" class="cm-retry"></button></div></div><svg class="cm-leaders" aria-hidden="true"></svg></div><aside class="cm-panel"><section id="cm-details" class="cm-details" aria-live="polite" aria-atomic="true"></section><p class="cm-occupancy"></p></aside></div><p class="cm-announcement" role="status" aria-live="polite"></p>';
     document.body.appendChild(dialog);
     viewport=dialog.querySelector('.cm-viewport');plane=dialog.querySelector('.cm-plane');panel=dialog.querySelector('.cm-details');
@@ -611,7 +616,6 @@
     viewport.addEventListener('click',function(e){var key=e.target.closest('[data-room]')?.dataset.room;if(key)select(rooms.find(function(r){return r.key===key;}));});
     dialog.querySelector('.cm-close').onclick=dismiss;
     dialog.addEventListener('cancel',function(e){e.preventDefault();dismiss();});
-    dialog.querySelectorAll('.cm-language').forEach(function(b){b.onclick=function(){setLanguage(b.dataset.lang);};});
     var img=dialog.querySelector('.cm-image'),error=dialog.querySelector('.cm-error');
     img.onload=function(){error.hidden=true;img.hidden=false;viewport.setAttribute('aria-busy','false');measure();};
     img.onerror=function(){error.hidden=false;img.hidden=true;viewport.setAttribute('aria-busy','false');};
