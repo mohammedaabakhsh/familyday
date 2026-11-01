@@ -86,69 +86,35 @@ body{background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);back
 @media(min-width:900px) and (max-width:1099px){#ov #panoramic-tour .dt-label--twin{width:150px;left:0}}
 @media(max-width:599px){#ov #panoramic-tour .dt-labels .dt-label:last-child{grid-column:auto}}
 
-/* Mobile prototype: keep the illustration between indoor and outdoor controls. */
-@media(max-width:599px){
- #ov #panoramic-tour .dt-stage{display:flex;flex-direction:column;padding:0}
- #ov #panoramic-tour .dt-labels{position:relative;inset:auto;display:grid;padding:0 8px;direction:rtl}
- #ov #panoramic-tour .dt-labels--top{order:1;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 6px;margin-bottom:10px}
- #ov #panoramic-tour .dt-image{order:2;width:96%;margin:0 auto}
- #ov #panoramic-tour .dt-labels--bottom{order:3;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:8px;padding-inline:14px}
- #ov #panoramic-tour .dt-label{position:relative;inset:auto;width:auto;min-width:0;transform:none}
- #ov #panoramic-tour .dt-labels--top .dt-label--outdoor,
- #ov #panoramic-tour .dt-labels--top .dt-label--pool{display:none}
- #ov #panoramic-tour .dt-labels--bottom .dt-label{min-height:44px}
- #ov #panoramic-tour .dt-lines{z-index:2}
- #ov #panoramic-tour .dt-languages{margin-top:8px}
-}
-
-/* Compact detail strip: only show information not already stated in the selected control. */
-#ov #panoramic-tour .dt-details.is-empty{display:none}
-@media(max-width:599px){
- #ov #panoramic-tour .dt-details{min-height:0;margin:8px 10px 0;padding:8px 7px;display:block}
- #ov #panoramic-tour .dt-cards{display:flex;grid-template-columns:none;gap:7px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;padding:1px 1px 5px;scrollbar-width:thin}
- #ov #panoramic-tour .dt-card{flex:0 0 104px;min-height:62px;padding:6px 5px;scroll-snap-align:start}
- #ov #panoramic-tour .dt-card svg{width:17px;height:17px}
- #ov #panoramic-tour .dt-card strong{font-size:11px;line-height:1.35}
- #ov #panoramic-tour .dt-card strong[dir=ltr]{font-size:13px}
- #ov #panoramic-tour .dt-card span{font-size:10px;margin-bottom:1px}
- #ov #panoramic-tour .dt-note{font-size:11px;line-height:1.45;margin:5px 2px 0}
- #ov #panoramic-tour .dt-occupancy{margin-top:7px}
-}
-
-/* Refined panoramic prototype: compact header, 3-2-2 controls, and lighter details. */
+/* Active panoramic tour layout — clean version */
 #ov #panoramic-tour .dt-title-meta{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
 #ov #panoramic-tour .dt-capacity{display:inline-flex;align-items:center;white-space:nowrap;min-height:30px;padding:4px 9px;border:1px solid #294f60;border-radius:999px;background:#082536;color:#a9dce6;font-size:11px;font-weight:600}
 #ov #panoramic-tour .dt-heading .dt-languages{display:flex;flex:0 0 auto;gap:4px;margin:0 0 0 auto;position:static}
 #ov #panoramic-tour[dir=rtl] .dt-heading .dt-languages{margin-left:0;margin-right:auto}
 #ov #panoramic-tour .dt-heading .dt-languages button{min-width:46px;min-height:36px;padding:6px 8px;border-radius:9px}
-#ov #panoramic-tour .dt-details.is-brief{min-height:0;padding:0;border:0;background:transparent}
-#ov #panoramic-tour .dt-brief{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:5px 8px;color:#cbe5eb;font-size:12px;line-height:1.45}
-#ov #panoramic-tour .dt-brief span{display:inline-flex;align-items:center}
-#ov #panoramic-tour .dt-brief span+span:before{content:'·';margin-inline:0 8px;color:#5ea8b8}
+#ov #panoramic-tour .dt-details.is-empty{display:none}
+
 @media(max-width:599px){
- #ov #panoramic-tour .dt-heading{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:8px;margin:0 8px 9px;align-items:center}
+ #ov #panoramic-tour .dt-tour{padding-bottom:8px}
+ #ov #panoramic-tour .dt-heading{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:8px;margin:0 8px 8px;align-items:center}
  #ov #panoramic-tour .dt-title-meta{display:block}
  #ov #panoramic-tour .dt-heading .dt-title{font-size:19px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
  #ov #panoramic-tour .dt-capacity{margin-top:3px;min-height:24px;padding:2px 7px;font-size:10px}
  #ov #panoramic-tour .dt-heading .dt-languages{gap:3px;margin:0}
  #ov #panoramic-tour .dt-heading .dt-languages button{min-width:40px;min-height:34px;padding:5px 6px;font-size:12px}
- #ov #panoramic-tour .dt-labels--top{grid-template-columns:repeat(6,minmax(0,1fr));gap:7px 6px;margin-bottom:8px}
+
+ #ov #panoramic-tour .dt-stage{display:flex;flex-direction:column;padding:0}
+ #ov #panoramic-tour .dt-labels{position:relative;inset:auto;display:grid;padding:0 8px;direction:rtl}
+ #ov #panoramic-tour .dt-labels--top{order:1;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;margin-bottom:6px}
  #ov #panoramic-tour .dt-labels--top .dt-label:nth-child(-n+3){grid-column:span 2}
  #ov #panoramic-tour .dt-labels--top .dt-label:nth-child(n+4){grid-column:span 3}
- #ov #panoramic-tour .dt-image{width:98%}
- #ov #panoramic-tour .dt-labels--bottom{margin-top:6px}
- #ov #panoramic-tour .dt-details.is-brief{margin:6px 10px 0;padding:0}
- #ov #panoramic-tour .dt-brief{font-size:11px;gap:3px 6px}
-}
+ #ov #panoramic-tour .dt-image{order:2;width:100%;margin:0 auto}
+ #ov #panoramic-tour .dt-labels--bottom{order:3;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:5px;padding-inline:14px}
+ #ov #panoramic-tour .dt-label{position:relative;inset:auto;width:auto;min-width:0;transform:none;font-size:12px;line-height:1.25;padding:6px 5px;min-height:42px}
+ #ov #panoramic-tour .dt-labels--bottom .dt-label{min-height:44px}
+ #ov #panoramic-tour .dt-lines{z-index:2}
 
-/* V5: unified detail cards and shorter room labels. */
-@media(max-width:599px){
- #ov #panoramic-tour .dt-label{font-size:12px;line-height:1.25;padding:6px 5px;min-height:42px}
- #ov #panoramic-tour .dt-labels--top{gap:6px;margin-bottom:6px}
- #ov #panoramic-tour .dt-image{width:100%}
- #ov #panoramic-tour .dt-labels--bottom{margin-top:5px}
- #ov #panoramic-tour .dt-details,
- #ov #panoramic-tour .dt-details.is-brief{display:block;min-height:0;margin:7px 10px 0;padding:8px;border:1px solid #21566b;border-radius:16px;background:#062131}
+ #ov #panoramic-tour .dt-details{display:block;min-height:0;margin:7px 10px 0;padding:8px;border:1px solid #21566b;border-radius:16px;background:#062131}
  #ov #panoramic-tour .dt-details.is-empty{display:none}
  #ov #panoramic-tour .dt-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;overflow:visible;padding:0}
  #ov #panoramic-tour .dt-card{min-width:0;min-height:66px;padding:7px 5px}
@@ -156,5 +122,5 @@ body{background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);back
  #ov #panoramic-tour .dt-card strong{font-size:11px;line-height:1.35}
  #ov #panoramic-tour .dt-card strong[dir=ltr]{font-size:13px}
  #ov #panoramic-tour .dt-card span{font-size:10px}
- #ov #panoramic-tour .dt-note{grid-column:1/-1;font-size:11px;line-height:1.45;margin:6px 2px 0}
+ #ov #panoramic-tour .dt-note{font-size:11px;line-height:1.45;margin:6px 2px 0}
 }
