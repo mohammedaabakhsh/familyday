@@ -167,3 +167,13 @@
    margin-top:18px;
  }
 }
+
+/* Dome reference placement: lower the detail group and keep suitability immediately after it. */
+@media(max-width:599px){
+ #ov #dome-tour .dt-details{
+   margin-top:clamp(120px,14svh,180px);
+ }
+ #ov #dome-tour .dt-occupancy{
+   margin-top:16px;
+ }
+}
