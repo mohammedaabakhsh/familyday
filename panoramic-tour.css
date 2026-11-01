@@ -85,3 +85,18 @@ body{background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);back
 }
 @media(min-width:900px) and (max-width:1099px){#ov #panoramic-tour .dt-label--twin{width:150px;left:0}}
 @media(max-width:599px){#ov #panoramic-tour .dt-labels .dt-label:last-child{grid-column:auto}}
+
+/* Mobile prototype: keep the illustration between indoor and outdoor controls. */
+@media(max-width:599px){
+ #ov #panoramic-tour .dt-stage{display:flex;flex-direction:column;padding:0}
+ #ov #panoramic-tour .dt-labels{position:relative;inset:auto;display:grid;padding:0 8px;direction:rtl}
+ #ov #panoramic-tour .dt-labels--top{order:1;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 6px;margin-bottom:10px}
+ #ov #panoramic-tour .dt-image{order:2;width:96%;margin:0 auto}
+ #ov #panoramic-tour .dt-labels--bottom{order:3;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:8px;padding-inline:14px}
+ #ov #panoramic-tour .dt-label{position:relative;inset:auto;width:auto;min-width:0;transform:none}
+ #ov #panoramic-tour .dt-labels--top .dt-label--outdoor,
+ #ov #panoramic-tour .dt-labels--top .dt-label--pool{display:none}
+ #ov #panoramic-tour .dt-labels--bottom .dt-label{min-height:44px}
+ #ov #panoramic-tour .dt-lines{z-index:2}
+ #ov #panoramic-tour .dt-languages{margin-top:8px}
+}
