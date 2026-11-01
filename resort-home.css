@@ -355,22 +355,37 @@
   #landing .rh-footer { margin-top: 6px; padding-top: 2px; }
 }
 
-/* Desktop keeps a generous cabin image with two balanced rows beneath it. */
+/* Desktop: cabin photo on the right, four stacked shortcuts on the left. */
 @media (min-width: 800px) {
-  #landing .rh-shell { max-width: 1040px; padding-inline: 28px; }
+  #landing .rh-shell {
+    max-width: 1104px;
+    padding-inline: 28px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+    column-gap: 18px;
+    align-content: start;
+  }
+  #landing .rh-intro { grid-column: 1 / -1; grid-row: 1; }
+  #landing .rh-shell > .lh-offer-strip { grid-column: 1 / -1; grid-row: 2; }
   #landing .rh-shell > .rh-cabins {
-    height: clamp(240px, 42dvh, 400px);
-    padding: 28px;
-    margin-bottom: 14px;
+    grid-column: 1;
+    grid-row: 3;
+    height: clamp(340px, 44dvh, 440px);
+    padding: 26px;
+    margin-bottom: 0;
     border-radius: 22px;
   }
   #landing .rh-shell > .rh-cabins .rh-cabin-title { font-size: 34px; }
   #landing .rh-shell > .rh-cabins .rh-cabin-caption { font-size: 14px; }
-  #landing .rh-menu { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  #landing .rh-menu {
+    grid-column: 2;
+    grid-row: 3;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
   #landing .rh-menu .rh-home-shortcut { min-height: 72px; padding: 12px 18px; }
   #landing .rh-menu .rh-map-title { font-size: 18px; }
   #landing .rh-menu .rh-map-description { font-size: 13px; }
-}
-@media (min-width: 800px) and (max-height: 740px) {
-  #landing .rh-shell > .rh-cabins { height: clamp(220px, 40dvh, 290px); }
+  #landing .rh-footer { grid-column: 1 / -1; grid-row: 4; margin-top: 16px; }
 }
