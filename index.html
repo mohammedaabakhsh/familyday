@@ -2494,7 +2494,6 @@ function tarfihiOrder(){
       </span>
     </a>
 
-    <div class="rh-grid">
       <button type="button" class="rh-cabins" onclick="showSection2()" aria-label="أقسام الاستراحة">
         <img class="rh-cabin-photo" src="imgs/sec1_1.webp" width="1200" height="1200" alt="" fetchpriority="high" decoding="async">
         <span class="rh-cabin-shade" aria-hidden="true"></span>
@@ -2507,18 +2506,22 @@ function tarfihiOrder(){
         </span>
       </button>
 
-      <button type="button" class="rh-action rh-services" onclick="showContact2()" aria-label="الحجز والموقع والتواصل">
-        <svg class="rh-action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3.1 5.2 2 2 0 0 1 5.1 3h3a2 2 0 0 1 2 1.7l.7 2.8a2 2 0 0 1-.4 2.1L9.1 10.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4l2.8.7a2 2 0 0 1 .7 1Z"/></svg>
-        <span class="rh-action-body"><span class="rh-action-title">الحجز والموقع والتواصل</span></span>
-        <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg>
-      </button>
-
-      <button type="button" class="rh-action rh-contact" onclick="showFaq2()" aria-label="الأسئلة الشائعة">
-        <svg class="rh-action-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 2-2.5 2-2.5 4m0 3h.01"/></svg>
-        <span class="rh-action-body"><span class="rh-action-title">الأسئلة الشائعة</span></span>
-        <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg>
-      </button>
-    </div>
+    <nav class="rh-menu" aria-label="خيارات الاستراحة">
+      <a class="rh-home-shortcut" href="/stay/contact/" onclick="event.preventDefault();showContact2()">
+        <span class="rh-map-copy">
+          <span class="rh-map-title">الحجز والتواصل</span>
+          <span class="rh-map-description">احجز إقامتك وتواصل معنا</span>
+        </span>
+        <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+      </a>
+      <a class="rh-home-shortcut" href="/stay/faq/" onclick="event.preventDefault();showFaq2()">
+        <span class="rh-map-copy">
+          <span class="rh-map-title">الأسئلة الشائعة</span>
+          <span class="rh-map-description">إجابات تساعدك قبل الزيارة</span>
+        </span>
+        <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+      </a>
+    </nav>
 
     <p class="stay-home-note">يمكن حجز كل قسم منفردًا أو حجز القسمين معًا</p>
   </section>
@@ -2538,20 +2541,7 @@ function tarfihiOrder(){
     </div>
 
 
-    <a class="lh-offer-strip" data-campaign-banner="chalet" href="offer/chalet.html" aria-label="تمديد عرض افتتاح الشاليه - شاهد التفاصيل">
-      <span class="lh-offer-main">
-        <span class="lh-offer-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="m8 16 8-8"/><circle cx="8" cy="8" r="1"/><circle cx="16" cy="16" r="1"/></svg></span>
-        <span class="lh-offer-copy">
-          <span class="lh-offer-title">تمديد عرض الافتتاح</span>
-          <span class="lh-offer-sub">خصم 50% لـ20 حجزًا إضافيًا فقط</span>
-        </span>
-      </span>
-      <span class="lh-offer-go" aria-hidden="true">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-      </span>
-    </a>
 
-    <div class="rh-grid">
       <button type="button" class="rh-cabins" onclick="openPrivateChalet()" aria-label="اكتشف الشاليه">
         <img class="rh-cabin-photo" src="imgs/chalet_1.webp?v=20261007" width="1200" height="1200" alt="" loading="lazy" decoding="async">
         <span class="rh-cabin-shade" aria-hidden="true"></span>
@@ -2564,18 +2554,29 @@ function tarfihiOrder(){
         </span>
       </button>
 
-      <button type="button" class="rh-action rh-services" onclick="showContact('chalet')" aria-label="الحجز والموقع والتواصل">
-        <svg class="rh-action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3.1 5.2 2 2 0 0 1 5.1 3h3a2 2 0 0 1 2 1.7l.7 2.8a2 2 0 0 1-.4 2.1L9.1 10.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4l2.8.7a2 2 0 0 1 .7 1Z"/></svg>
-        <span class="rh-action-body"><span class="rh-action-title">الحجز والموقع والتواصل</span></span>
-        <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg>
+    <nav class="rh-menu" aria-label="خيارات الشاليه">
+      <button type="button" class="rh-home-shortcut fd-chalet-map-open" aria-haspopup="dialog" aria-controls="fd-chalet-map">
+        <span class="rh-map-copy">
+          <span class="rh-map-title">جولة داخل الشاليه</span>
+          <span class="rh-map-description">تعرّف على الغرف والمرافق</span>
+        </span>
+        <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
       </button>
-
-      <button type="button" class="rh-action rh-contact" onclick="showChaletFaq()" aria-label="الأسئلة الشائعة">
-        <svg class="rh-action-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 2-2.5 2-2.5 4m0 3h.01"/></svg>
-        <span class="rh-action-body"><span class="rh-action-title">الأسئلة الشائعة</span></span>
-        <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg>
-      </button>
-    </div>
+      <a class="rh-home-shortcut" href="/chalet/contact/" onclick="event.preventDefault();showContact('chalet')">
+        <span class="rh-map-copy">
+          <span class="rh-map-title">الحجز والتواصل</span>
+          <span class="rh-map-description">احجز إقامتك وتواصل معنا</span>
+        </span>
+        <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+      </a>
+      <a class="rh-home-shortcut" href="/chalet/faq/" onclick="event.preventDefault();showChaletFaq()">
+        <span class="rh-map-copy">
+          <span class="rh-map-title">الأسئلة الشائعة</span>
+          <span class="rh-map-description">إجابات تساعدك قبل الزيارة</span>
+        </span>
+        <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+      </a>
+    </nav>
 
   </section>
 </div>
@@ -5623,7 +5624,7 @@ function openMDirect(c){
 </style>
 
 <link rel="stylesheet" href="resort-ui.css?v=10">
-<link rel="stylesheet" href="stay-ui.css?v=12">
+<link rel="stylesheet" href="stay-ui.css?v=13">
 <link rel="stylesheet" href="chalet-ui.css?v=9">
 
 <!-- Approved keyboard navigation enhancement -->

@@ -552,3 +552,99 @@
  #ov:has(#fd-stay-detail-title) .fd-cabin-nav-back:hover{background:#133343}
 }
 #ov:has(#fd-stay-detail-title) .fd-cabin-nav-back:focus-visible{outline:2px solid #7ecfea;outline-offset:3px}
+
+/* Match the approved resort home while retaining each destination's options. */
+:is(#landing2,#landing3) .rh-home-shortcut { display:flex; align-items:center; gap:14px; border:1px solid rgba(99,191,205,.32); border-radius:16px; background:linear-gradient(120deg,#0d2b3a,#0a202e); color:#edf5f7; text-decoration:none; text-align:right; min-width:0; cursor:pointer; }
+:is(#landing2,#landing3) .rh-map-copy { display:flex; flex:1; min-width:0; flex-direction:column; gap:4px; }
+:is(#landing2,#landing3) .rh-map-title { font-size:16px; font-weight:700; line-height:1.4; }
+:is(#landing2,#landing3) .rh-map-description { font-size:12px; line-height:1.5; color:#a9c3ce; }
+:is(#landing2,#landing3) .rh-home-shortcut > .rh-arrow { width:17px; height:17px; color:#83c7d2; }
+:is(#landing2,#landing3) .rh-home-shortcut:focus-visible { outline:2px solid #83c7d2; outline-offset:3px; }
+@media(hover:hover) { :is(#landing2,#landing3) .rh-home-shortcut:hover { border-color:#63bfcd; background:#103142; } }
+/* Cabin photo followed by a consistent menu within the phone viewport. */
+:is(#landing2,#landing3) .rh-shell {
+  max-width: 660px;
+  min-height: 100%;
+  padding: 16px 20px calc(12px + env(safe-area-inset-bottom, 0px));
+}
+:is(#landing2,#landing3) .rh-intro { padding: 0 0 14px; }
+:is(#landing2,#landing3) .rh-shell > .rh-cabins {
+  height: clamp(160px, 23dvh, 210px);
+  padding: 18px;
+  margin-bottom: 10px;
+  border-radius: 18px;
+}
+:is(#landing2,#landing3) .rh-shell > .rh-cabins .rh-cabin-title { font-size: 26px; }
+:is(#landing2,#landing3) .rh-shell > .rh-cabins .rh-cabin-caption { font-size: 12px; }
+:is(#landing2,#landing3) .rh-menu { display: grid; gap: 8px; }
+:is(#landing2,#landing3) .rh-menu .rh-home-shortcut {
+  width: 100%;
+  min-height: 64px;
+  margin: 0;
+  padding: 9px 14px;
+}
+:is(#landing2,#landing3) .rh-footer { margin-top: 10px; padding-top: 4px; }
+@media (min-width: 800px) {
+  :is(#landing2,#landing3) .rh-menu .rh-home-shortcut { min-height: 68px; }
+  :is(#landing2,#landing3) .rh-logo { width: 150px; height: 80px; margin-bottom: 10px; }
+  :is(#landing2,#landing3) :is(#sh-title,#ch-title) { font-size: 30px; }
+}
+@media (max-height: 740px) {
+  :is(#landing2,#landing3) .rh-shell { padding: 8px 16px calc(6px + env(safe-area-inset-bottom, 0px)); }
+  :is(#landing2,#landing3) .rh-intro { padding: 0 0 8px; }
+  :is(#landing2,#landing3) .rh-destinations { position: absolute; top: 0; inset-inline-start: 0; margin: 0; padding-inline: 8px; }
+  :is(#landing2,#landing3) .rh-logo { width: 100px; height: 48px; margin-bottom: 4px; }
+  :is(#landing2,#landing3) :is(#sh-title,#ch-title) { font-size: 24px; }
+  :is(#landing2,#landing3) .rh-subtitle { font-size: 12px; margin-top: 3px; }
+  :is(#landing2,#landing3) .rh-shell .lh-offer-strip { min-height: 44px; margin-bottom: 8px; padding: 6px 10px; }
+  :is(#landing2,#landing3) .rh-shell > .rh-cabins { height: clamp(125px, 22dvh, 160px); padding: 12px; margin-bottom: 8px; }
+  :is(#landing2,#landing3) .rh-shell > .rh-cabins .rh-cabin-title { font-size: 23px; }
+  :is(#landing2,#landing3) .rh-shell > .rh-cabins .rh-cabin-caption { font-size: 10px; }
+  :is(#landing2,#landing3) .rh-menu { gap: 6px; }
+  :is(#landing2,#landing3) .rh-menu .rh-home-shortcut { min-height: 54px; padding: 6px 12px; }
+  :is(#landing2,#landing3) .rh-menu .rh-map-title { font-size: 15px; }
+  :is(#landing2,#landing3) .rh-menu .rh-map-description { font-size: 11px; }
+  :is(#landing2,#landing3) .rh-menu .rh-map-copy { gap: 2px; }
+  :is(#landing2,#landing3) .rh-footer { margin-top: 6px; padding-top: 2px; }
+}
+
+/* Desktop: destination photo on the right, stacked shortcuts on the left. */
+@media (min-width: 800px) {
+  :is(#landing2,#landing3) .rh-shell {
+    max-width: 1104px;
+    padding-inline: 28px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+    column-gap: 18px;
+    align-content: start;
+  }
+  :is(#landing2,#landing3) .rh-intro { grid-column: 1 / -1; grid-row: 1; }
+  :is(#landing2,#landing3) .rh-shell > .lh-offer-strip { grid-column: 1 / -1; grid-row: 2; }
+  :is(#landing2,#landing3) .rh-shell > .rh-cabins {
+    grid-column: 1;
+    grid-row: 3;
+    height: clamp(340px, 44dvh, 440px);
+    padding: 26px;
+    margin-bottom: 0;
+    border-radius: 22px;
+  }
+  :is(#landing2,#landing3) .rh-shell > .rh-cabins .rh-cabin-title { font-size: 34px; }
+  :is(#landing2,#landing3) .rh-shell > .rh-cabins .rh-cabin-caption { font-size: 14px; }
+  :is(#landing2,#landing3) .rh-menu {
+    grid-column: 2;
+    grid-row: 3;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+  :is(#landing2,#landing3) .rh-menu .rh-home-shortcut { min-height: 72px; padding: 12px 18px; }
+  :is(#landing2,#landing3) .rh-menu .rh-map-title { font-size: 18px; }
+  :is(#landing2,#landing3) .rh-menu .rh-map-description { font-size: 13px; }
+  :is(#landing2,#landing3) .rh-footer { grid-column: 1 / -1; grid-row: 4; margin-top: 16px; }
+}
+
+:is(#landing2,#landing3) .stay-home-note { margin-top:10px; padding-top:10px; }
+@media (min-width:800px) {
+  :is(#landing2,#landing3) .rh-menu { grid-template-rows:none; grid-auto-rows:minmax(72px,auto); align-content:start; }
+  :is(#landing2,#landing3) .stay-home-note { grid-column:1/-1; grid-row:4; margin-top:16px; }
+}
