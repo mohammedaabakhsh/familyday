@@ -140,3 +140,21 @@ body{background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);back
  #ov #panoramic-tour .dt-details.is-brief{margin:6px 10px 0;padding:0}
  #ov #panoramic-tour .dt-brief{font-size:11px;gap:3px 6px}
 }
+
+/* V5: unified detail cards and shorter room labels. */
+@media(max-width:599px){
+ #ov #panoramic-tour .dt-label{font-size:12px;line-height:1.25;padding:6px 5px;min-height:42px}
+ #ov #panoramic-tour .dt-labels--top{gap:6px;margin-bottom:6px}
+ #ov #panoramic-tour .dt-image{width:100%}
+ #ov #panoramic-tour .dt-labels--bottom{margin-top:5px}
+ #ov #panoramic-tour .dt-details,
+ #ov #panoramic-tour .dt-details.is-brief{display:block;min-height:0;margin:7px 10px 0;padding:8px;border:1px solid #21566b;border-radius:16px;background:#062131}
+ #ov #panoramic-tour .dt-details.is-empty{display:none}
+ #ov #panoramic-tour .dt-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;overflow:visible;padding:0}
+ #ov #panoramic-tour .dt-card{min-width:0;min-height:66px;padding:7px 5px}
+ #ov #panoramic-tour .dt-card svg{width:18px;height:18px}
+ #ov #panoramic-tour .dt-card strong{font-size:11px;line-height:1.35}
+ #ov #panoramic-tour .dt-card strong[dir=ltr]{font-size:13px}
+ #ov #panoramic-tour .dt-card span{font-size:10px}
+ #ov #panoramic-tour .dt-note{grid-column:1/-1;font-size:11px;line-height:1.45;margin:6px 2px 0}
+}
