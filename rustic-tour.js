@@ -188,6 +188,8 @@ var FD_RUSTIC_TOUR = (function () {
 
     var scrollable=cards.length>3;
     root.querySelector('.dt-details').innerHTML='<div class="dt-cards'+(scrollable?' is-scrollable':'')+'">'+cards.map(function(card){return '<div class="dt-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+cardValue(card.value)+'</strong></div></div>';}).join('')+'</div>'+(scrollable?'<div class="dt-swipe-hint" aria-hidden="true"><span>↔</span> اسحب لعرض المزيد</div>':'')+(note?'<p class="dt-note">'+esc(note)+'</p>':'');
+    var activePart=parts.find(function(part){return part.id===selected;});
+    root.querySelector('.dt-details').insertAdjacentHTML('afterbegin','<h2 class="dt-selected-title">'+esc(tr(activePart.ar,activePart.en))+'</h2>');
 
   }
 

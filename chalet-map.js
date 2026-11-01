@@ -376,12 +376,11 @@
     "بين الدورين": "Between Floors",
     "المنطقة الخارجية": "Outdoor Area"
   };
-  var detailTitles={ar:{upper:"غرفة النوم",ground:"غرفة النوم",groundBath:"الحمام"},en:{upper:"Bedroom",ground:"Bedroom",groundBath:"Bathroom"}};
   var tourCopy={
     "ar": {
       "title": "جولة داخل الشاليه",
       "close": "إغلاق الجولة",
-      "subtitle": "تعرف على الغرف والمرافق",
+      "subtitle": "اختر المرفق لعرض تفاصيله",
       "languageLabel": "لغة الجولة",
       "empty": "اختر اسم الغرفة أو المرفق من الخريطة",
       "details": "مواصفات المكان المختار",
@@ -396,7 +395,7 @@
     "en": {
       "title": "Chalet Tour",
       "close": "Close tour",
-      "subtitle": "Explore the rooms and facilities",
+      "subtitle": "Select a facility to view its details",
       "languageLabel": "Tour language",
       "empty": "Select a room or facility on the map",
       "details": "Selected area details",
@@ -444,7 +443,7 @@
   var ns='http://www.w3.org/2000/svg';
   function clamp(n,min,max){return Math.max(min,Math.min(max,n));}
   function roomName(room){return labelLanguage==='en'?roomNamesEn[room.key]:room.name;}
-  function isMobile(){return window.matchMedia('(max-width:819px)').matches;}
+  function isMobile(){return window.matchMedia('(max-width:899px)').matches;}
   function esc(text){return String(text).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
   function queueLines(){cancelAnimationFrame(lineFrame);lineFrame=requestAnimationFrame(drawLeaders);}
   function updateText(){
@@ -487,7 +486,7 @@
   function renderDetails(room){
     var details=labelLanguage==='en'?roomDetailsEn[room.key]:room;
     var floor=room.floor?(labelLanguage==='en'?floorNamesEn[room.floor]:room.floor):'';
-    var name=detailTitles[labelLanguage][room.key]||roomName(room),cards=[];
+    var name=roomName(room),cards=[];
     (details.primary||[]).forEach(function(f,i){
       var ar=room.primary[i][0],value=f[1],numeric=ar==='العمق';
       if(numeric)value=value.replace('سم','cm');
@@ -497,15 +496,28 @@
     if(room.key==='groundBath')cards.push({value:labelLanguage==='en'?'Bathroom':'حمام',icon:'shower'});
     if(room.key==='stairs')cards.push({value:details.text,icon:'stairs'});
     panel.innerHTML='<div class="cm-detail-heading"><h3>'+esc(name)+'</h3>'+(floor?'<p>'+esc(floor)+'</p>':'')+'</div>'
-      +'<div class="cm-cards">'+cards.map(function(card){return '<div class="cm-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+esc(card.value)+'</strong></div></div>';}).join('')+'</div>'
+      +'<div class="cm-cards'+(cards.length>3?' is-scrollable':'')+'">'+cards.map(function(card){return '<div class="cm-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+esc(card.value)+'</strong></div></div>';}).join('')+'</div>'
+      +'<p class="cm-swipe-hint" hidden><span aria-hidden="true">↔</span> '+(labelLanguage==='en'?'Swipe for more':'اسحب لعرض المزيد')+'</p>'
       +(details.text&&room.key!=='stairs'?'<p class="cm-note">'+esc(details.text)+'</p>':'');
+  }
+  function updateDetailsOverflow(){
+    if(!dialog||!dialog.open)return;
+    var cards=panel.querySelector('.cm-cards'),hint=panel.querySelector('.cm-swipe-hint');
+    if(!cards||!hint)return;
+    var overflowing=isMobile()&&cards.scrollWidth>cards.clientWidth+1;
+    hint.hidden=!overflowing;
+    if(overflowing){
+      cards.tabIndex=0;
+      cards.setAttribute('role','region');
+      cards.setAttribute('aria-label',labelLanguage==='en'?'Facility details, scroll for more':'تفاصيل المرفق، اسحب لعرض المزيد');
+    }else{cards.removeAttribute('tabindex');cards.removeAttribute('role');cards.removeAttribute('aria-label');}
   }
   function select(room){
     selected=room;
     markers.forEach(function(b,i){b.setAttribute('aria-pressed',String(rooms[i]===room));});
     polygons.forEach(function(p){p.classList.toggle('is-selected',p.dataset.room===room.key);});
     leaders.forEach(function(g,i){g.classList.toggle('is-selected',rooms[i]===room);});
-    renderDetails(room);panel.scrollTop=0;queueLines();
+    renderDetails(room);panel.scrollTop=0;updateDetailsOverflow();queueLines();
     dialog.querySelector('.cm-announcement').textContent=tourCopy[labelLanguage].selected+roomName(room);
   }
   function setLanguage(language){
@@ -579,7 +591,7 @@
     view.imageY=top+Math.max(0,(view.h-top-bottom-view.imageSize*.865)/2)-view.imageSize*.045;
     plane.style.width=view.w+'px';plane.style.height=view.h+'px';
     plane.querySelector('.cm-illustration').style.cssText='left:'+view.imageX+'px;top:'+view.imageY+'px;width:'+view.imageSize+'px;height:'+view.imageSize+'px';
-    layoutLabels();queueLines();
+    layoutLabels();updateDetailsOverflow();queueLines();
   }
   function dismiss(){document.dispatchEvent(new CustomEvent('fd-chalet-map-dismiss'));}
   function create(){

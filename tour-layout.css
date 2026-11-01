@@ -78,3 +78,10 @@ body{background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);back
  #ov .dt-card strong{font-size:13px}
  #ov .dt-card strong[dir=ltr]{font-size:14px}
 }
+
+/* Selected facility headings belong to the desktop details card only. */
+#ov .dt-selected-title{display:none}
+@media(min-width:900px){
+ #ov .dt-details .dt-selected-title{display:block;margin:0 0 12px;color:#f0f5f7;font:700 18px/1.4 Tajawal,sans-serif;text-align:start}
+ #ov #bohemian-tour.dt-tour .dt-details.is-empty,#ov #panoramic-tour.dt-tour .dt-details.is-empty{display:block;visibility:visible}
+}
