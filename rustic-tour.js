@@ -4,12 +4,12 @@ var FD_RUSTIC_TOUR = (function () {
 
   'use strict';
 
-  var root, observer, frame, cabin, selected = 'pool', language = 'ar';
+  var root, observer, frame, cabin, selected = 'bedroom', language = 'ar';
 
   var parts = [
- {id:'bedroom',ar:'غرفة نوم بسرير مزدوج',en:'Bedroom with a double bed',x:0.61,y:0.36},
+ {id:'bedroom',ar:'غرفة النوم الرئيسية',en:'Main bedroom',x:0.61,y:0.36},
  {id:'bathroom',ar:'حمامات',en:'Bathrooms',x:0.714,y:0.336},
- {id:'twin',ar:'غرفة نوم بسريرين مفردين',en:'Bedroom with two single beds',x:0.602,y:0.233},
+ {id:'twin',ar:'غرفة النوم الثانية',en:'Second bedroom',x:0.602,y:0.233},
  {id:'kitchen',ar:'ركن المطبخ',en:'Kitchenette',x:0.38,y:0.218},
  {id:'dining',ar:'طاولة الطعام',en:'Dining table',x:0.37,y:0.283},
  {id:'living',ar:'المنطقة الداخلية',en:'Indoor area',x:0.35,y:0.354},
@@ -132,13 +132,13 @@ var FD_RUSTIC_TOUR = (function () {
 
   function details() {
 
-    var part = parts.find(function(p){return p.id===selected;});
 
-    var cards = [], note = '', subtitle = '';
+
+    var cards = [], note = '';
 
     if (selected === 'pool') {
 
-      subtitle = tr('مسبح خاص للكبار','Private adult pool');
+      note = tr('مسبح خاص للكبار','Private adult pool');
 
       var dimensions = cabin.pool.label.match(/(\d+)\s*×\s*(\d+)/);
 
@@ -186,7 +186,8 @@ var FD_RUSTIC_TOUR = (function () {
 
     }
 
-    root.querySelector('.dt-details').innerHTML='<div class="dt-detail-heading"><h4>'+esc(part[language])+'</h4>'+(subtitle?'<p>'+esc(subtitle)+'</p>':'')+'</div><div class="dt-cards">'+cards.map(function(card){return '<div class="dt-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+cardValue(card.value)+'</strong></div></div>';}).join('')+'</div>'+(note?'<p class="dt-note">'+esc(note)+'</p>':'');
+    var scrollable=cards.length>3;
+    root.querySelector('.dt-details').innerHTML='<div class="dt-cards'+(scrollable?' is-scrollable':'')+'">'+cards.map(function(card){return '<div class="dt-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+cardValue(card.value)+'</strong></div></div>';}).join('')+'</div>'+(scrollable?'<div class="dt-swipe-hint" aria-hidden="true"><span>↔</span> اسحب لعرض المزيد</div>':'')+(note?'<p class="dt-note">'+esc(note)+'</p>':'');
 
   }
 
@@ -200,9 +201,9 @@ var FD_RUSTIC_TOUR = (function () {
 
     root.querySelector('.dt-image').alt=tr('رسم توضيحي لتوزيع الكوخ الريفي ومرافقه','Illustrated layout of the Rustic Cottage and its facilities');
 
-    root.querySelector('.dt-labels').setAttribute('aria-label',tr('اختر المرفق لعرض تفاصيله','Choose a facility to view its details'));
+    root.querySelectorAll('.dt-labels').forEach(function(group){group.setAttribute('aria-label','اختر المرفق لعرض تفاصيله');});
 
-    root.querySelector('.dt-languages').setAttribute('aria-label',tr('لغة الجولة','Tour language'));
+
 
     parts.forEach(function(p){
 
@@ -218,7 +219,7 @@ var FD_RUSTIC_TOUR = (function () {
 
     });
 
-    root.querySelectorAll('[data-language]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.language===language));});
+
 
     updateBackLink(); details(); queueLines();
 
@@ -299,27 +300,24 @@ var FD_RUSTIC_TOUR = (function () {
       }
 
       if(mobile){
-
-        var labelsBox=root.querySelector('.dt-labels').getBoundingClientRect();
-
-        var labelsBottom=labelsBox.bottom-box.top;
-
-        if(sy<labelsBottom-4){
-
-          // Route between rows and around the label grid, never through another button.
-
-          var gutter=sx<box.width/2?2:box.width-2;
-
-          var rowGap=sy+3, belowLabels=labelsBottom+4;
-
-          curve='L '+sx+' '+rowGap+' L '+gutter+' '+rowGap+' L '+gutter+' '+belowLabels+
-
-            ' C '+gutter+' '+(belowLabels+22)+' '+tx+' '+(ty-30)+' '+tx+' '+ty;
-
+        var buttonAboveImage=b.bottom<=im.top+4;
+        var buttonBelowImage=b.top>=im.bottom-4;
+        sx=b.left+b.width/2-box.left;
+        if(buttonBelowImage){
+          sy=b.top-box.top;
+          curve='C '+sx+' '+(sy-24)+' '+tx+' '+(ty+30)+' '+tx+' '+ty;
+        } else if(buttonAboveImage){
+          // Leave the inner edge into the column gutter, clear of every button.
+          var rightColumn=b.left+b.width/2>box.left+box.width/2;
+          sx=(rightColumn?b.left:b.right)-box.left;
+          sy=b.top+b.height/2-box.top;
+          var lane=box.width/2+(rightColumn?4:-4);
+          var approach=im.top-box.top-6;
+          curve='Q '+lane+' '+sy+' '+lane+' '+(sy+8)+
+            ' L '+lane+' '+approach+
+            ' C '+lane+' '+(approach+16)+' '+tx+' '+(ty-24)+' '+tx+' '+ty;
         }
-
       }
-
       root.querySelector('[data-line="'+p.id+'"]').setAttribute('d','M '+sx+' '+sy+' '+curve);
 
       var point=root.querySelector('.dt-point[data-part="'+p.id+'"]'); point.style.left=tx+'px'; point.style.top=ty+'px';
@@ -346,11 +344,16 @@ var FD_RUSTIC_TOUR = (function () {
 
     if(root && cabin && cabin.id===next.id) return;
 
-    remove(); cabin=next; selected='pool'; language='ar';
+    remove(); cabin=next; selected='bedroom'; language='ar';
 
     root=document.createElement('section');root.id='rustic-tour';root.className='dt-tour';root.setAttribute('aria-labelledby','dt-title');
 
-    root.innerHTML='<header class="dt-heading"><h1 id="dt-title" class="dt-title"></h1></header><div class="dt-stage"><div class="dt-labels">'+parts.map(function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';}).join('')+'</div><img class="dt-image" src="/imgs/rustic-tour-14-clarity-v1.png" width="1536" height="1024" loading="eager" decoding="async" alt=""><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div class="dt-languages" role="group"><button type="button" data-language="ar" lang="ar" aria-label="العربية">AR</button><button type="button" data-language="en" lang="en" aria-label="English">EN</button></div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
+    var topOrder=['bedroom','twin','living','bathroom','kitchen','dining'];
+    var bottomOrder=['pool','outdoor'];
+    var topParts=topOrder.map(function(id){return parts.find(function(p){return p.id===id;});});
+    var bottomParts=bottomOrder.map(function(id){return parts.find(function(p){return p.id===id;});});
+    var labelButton=function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';};
+    root.innerHTML='<header class="dt-heading"><div class="dt-heading-copy"><h1 id="dt-title" class="dt-title"></h1><p class="dt-instruction">اضغط على المرفق لعرض تفاصيله</p></div></header><div class="dt-stage"><div class="dt-labels dt-labels--top">'+topParts.map(labelButton).join('')+'</div><div class="dt-image-space"><img class="dt-image" src="/imgs/rustic-tour-14-clarity-v1.png" width="1536" height="1024" loading="eager" decoding="async" alt=""></div><div class="dt-labels dt-labels--bottom">'+bottomParts.map(labelButton).join('')+'</div><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
 
     document.getElementById('rustic-tour-host').appendChild(root);
 
@@ -374,7 +377,7 @@ var FD_RUSTIC_TOUR = (function () {
 
       if(button.dataset.part) selected=button.dataset.part;
 
-      else if(button.dataset.language) language=button.dataset.language;
+
 
       else return;
 

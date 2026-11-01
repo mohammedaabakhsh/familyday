@@ -1,0 +1,113 @@
+/* Opt-in presentation for the six remaining cabin tours, matching Bohemian.
+   Per-cabin images, hotspots and desktop label positions stay in their own files. */
+#ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-heading-copy{min-width:0}
+#ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-instruction{margin:5px 0 0;color:#a9ccd5;font-size:13px;font-weight:400;line-height:1.5;text-align:start}
+#ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-image-space{display:contents}
+@media(min-width:600px){
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-swipe-hint{display:none}
+}
+@media(max-width:599px){
+ body{min-height:100svh;min-height:100dvh}
+ .tour-page{padding:0 8px}
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour){
+   display:grid;
+   grid-template-columns:minmax(0,1fr);
+   grid-template-rows:auto minmax(260px,1fr) 136px auto;
+   gap:12px;
+   height:100svh;
+   height:100dvh;
+   min-height:0;
+   margin:0;
+   padding:8px 0 max(12px,env(safe-area-inset-bottom));
+ }
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-heading{margin:0 8px;min-height:44px}
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-title{font-size:21px;margin:0}
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-instruction{font-size:12px}
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-stage{
+   display:grid;
+   grid-template-rows:auto minmax(0,1fr) auto;
+   padding:clamp(12px,2dvh,20px) 0 0;
+   gap:8px;
+   min-height:0;
+ }
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-labels{
+   position:relative;
+   inset:auto;
+   display:grid;
+   direction:rtl;
+   order:0;
+   grid-template-columns:repeat(3,minmax(0,1fr));
+   gap:7px 6px;
+   margin:0;
+   padding:0 8px;
+ }
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-labels .dt-label:last-child{grid-column:auto}
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-labels--top{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(3,auto);grid-auto-flow:column;gap:12px 24px}
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-labels--bottom{grid-template-columns:repeat(2,minmax(0,1fr));padding-inline:16px;gap:7px}
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-label{position:relative;inset:auto;width:auto;min-width:0;transform:none;min-height:40px;font-size:11.5px;line-height:1.2;padding:5px 4px}
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-image-space{
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   min-height:0;
+   min-width:0;
+ }
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-image{
+   width:auto;
+   height:auto;
+   max-width:94%;
+   max-height:100%;
+   margin:0;
+ }
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-details{display:block;align-self:start;min-height:0;margin:0 10px;padding:8px}
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-card{min-height:65px;padding:7px 4px}
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-card svg{width:18px;height:18px}
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-card strong{font-size:11px;line-height:1.35}
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-card span{font-size:10px}
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-note{font-size:11px;line-height:1.45;margin:6px 2px 0}
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-occupancy{margin:0;padding:0;font-size:13px;align-self:end}
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-cards.is-scrollable{
+   display:flex;
+   grid-template-columns:none;
+   overflow-x:auto;
+   direction:rtl;
+   overscroll-behavior-x:contain;
+   scroll-snap-type:x proximity;
+   -webkit-overflow-scrolling:touch;
+   scrollbar-width:none;
+   padding:1px 1px 4px;
+ }
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-cards.is-scrollable::-webkit-scrollbar{display:none}
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-cards.is-scrollable .dt-card{
+   flex:0 0 108px;
+   min-width:108px;
+   scroll-snap-align:start;
+ }
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-swipe-hint{
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   gap:6px;
+   margin:6px 0 0;
+   color:#8fcbd6;
+   font-size:11px;
+   line-height:1.2;
+ }
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-swipe-hint span{font:600 15px/1 Arial,sans-serif;color:#5fe3f3}
+}
+
+/* Same desktop canvas and capacity baseline as the approved tours. */
+@media(min-width:900px){
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-stage{padding:66px 0 0}
+ #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour) .dt-image{width:calc(100% - 2 * (var(--rail) + 14px));height:auto;margin:0 auto}
+}
+/* The single-bedroom cabins retain separate columns without a fictitious room. */
+@media(max-width:599px){
+ #ov :is(#pyramid-tour,#classic-tour) .dt-labels--top .dt-label:nth-child(1){grid-column:1;grid-row:1}
+ #ov :is(#pyramid-tour,#classic-tour) .dt-labels--top .dt-label:nth-child(2){grid-column:1;grid-row:2}
+ #ov :is(#pyramid-tour,#classic-tour) .dt-labels--top .dt-label:nth-child(3){grid-column:2;grid-row:1}
+ #ov :is(#pyramid-tour,#classic-tour) .dt-labels--top .dt-label:nth-child(4){grid-column:2;grid-row:2}
+ #ov :is(#pyramid-tour,#classic-tour) .dt-labels--top .dt-label:nth-child(5){grid-column:2;grid-row:3}
+ #ov #pyramid-tour .dt-labels--bottom{grid-template-columns:repeat(3,minmax(0,1fr));padding-inline:8px}
+}
