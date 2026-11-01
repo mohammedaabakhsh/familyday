@@ -161,3 +161,25 @@ body{background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);back
  #ov #bohemian-tour .dt-note{font-size:11px;line-height:1.45;margin:6px 2px 0}
  #ov #bohemian-tour .dt-occupancy{margin:12px 0 0;font-size:13px}
 }
+
+/* Final Bohemian mobile rhythm: ordered controls, lower details, suitability last. */
+@media(max-width:599px){
+ #ov #bohemian-tour .dt-labels--top{
+   margin-top:8px;
+   margin-bottom:8px;
+ }
+ #ov #bohemian-tour .dt-image{
+   margin-top:8px;
+ }
+ #ov #bohemian-tour .dt-labels--bottom{
+   margin-top:8px;
+ }
+ #ov #bohemian-tour .dt-details{
+   margin-top:clamp(24px,3svh,38px);
+ }
+ #ov #bohemian-tour .dt-occupancy{
+   margin-top:14px;
+   margin-bottom:0;
+   padding-bottom:2px;
+ }
+}
