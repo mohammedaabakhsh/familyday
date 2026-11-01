@@ -121,3 +121,39 @@
  }
  #ov #dome-tour .dt-details{margin-top:13px}
 }
+
+/* Dome detail carousel: large detail sets scroll horizontally on mobile. */
+@media(max-width:599px){
+ #ov #dome-tour .dt-cards.is-scrollable{
+   display:flex;
+   grid-template-columns:none;
+   gap:7px;
+   overflow-x:auto;
+   direction:rtl;
+   overscroll-behavior-x:contain;
+   scroll-snap-type:x proximity;
+   -webkit-overflow-scrolling:touch;
+   scrollbar-width:none;
+   padding:1px 1px 4px;
+ }
+ #ov #dome-tour .dt-cards.is-scrollable::-webkit-scrollbar{display:none}
+ #ov #dome-tour .dt-cards.is-scrollable .dt-card{
+   flex:0 0 108px;
+   min-width:108px;
+   scroll-snap-align:start;
+ }
+ #ov #dome-tour .dt-swipe-hint{
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   gap:6px;
+   margin:6px 0 0;
+   color:#8fcbd6;
+   font-size:11px;
+   line-height:1.2;
+ }
+ #ov #dome-tour .dt-swipe-hint span{
+   font:600 15px/1 Arial,sans-serif;
+   color:#5fe3f3;
+ }
+}

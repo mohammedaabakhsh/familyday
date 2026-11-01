@@ -85,7 +85,8 @@ var dimensions = cabin.pool.label.match(/(\d+)\s*×\s*(\d+)/);
     } else {
       cabin.features.outdoor.forEach(function(t){cards.push({value:feature(t),icon:'outdoor'});});
     }
-    root.querySelector('.dt-details').innerHTML='<div class="dt-cards">'+cards.map(function(card){return '<div class="dt-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+cardValue(card.value)+'</strong></div></div>';}).join('')+'</div>'+(note?'<p class="dt-note">'+esc(note)+'</p>':'');
+    var scrollable=cards.length>3;
+    root.querySelector('.dt-details').innerHTML='<div class="dt-cards'+(scrollable?' is-scrollable':'')+'">'+cards.map(function(card){return '<div class="dt-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+cardValue(card.value)+'</strong></div></div>';}).join('')+'</div>'+(scrollable?'<div class="dt-swipe-hint" aria-hidden="true"><span>↔</span> اسحب لعرض المزيد</div>':'')+(note?'<p class="dt-note">'+esc(note)+'</p>':'');
   }
   function update() {
     root.lang=language; root.dir=language==='ar'?'rtl':'ltr';
