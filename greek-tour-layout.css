@@ -1,0 +1,98 @@
+/* Match the approved Bohemian presentation while using two columns of room controls.
+   Loaded only by the standalone Greek tour; dome-tour.css is shared by other tours. */
+#ov #greek-tour .dt-heading-copy{min-width:0}
+#ov #greek-tour .dt-instruction{margin:5px 0 0;color:#a9ccd5;font-size:13px;font-weight:400;line-height:1.5;text-align:start}
+#ov #greek-tour .dt-image-space{display:contents}
+@media(min-width:600px){
+ #ov #greek-tour .dt-swipe-hint{display:none}
+}
+@media(max-width:599px){
+ body{min-height:100svh;min-height:100dvh}
+ .tour-page{padding:0 8px}
+ #ov #greek-tour{
+   display:grid;
+   grid-template-columns:minmax(0,1fr);
+   grid-template-rows:auto minmax(260px,1fr) 136px auto;
+   gap:12px;
+   height:100svh;
+   height:100dvh;
+   min-height:0;
+   margin:0;
+   padding:8px 0 max(12px,env(safe-area-inset-bottom));
+ }
+ #ov #greek-tour .dt-heading{margin:0 8px;min-height:44px}
+ #ov #greek-tour .dt-title{font-size:21px;margin:0}
+ #ov #greek-tour .dt-instruction{font-size:12px}
+ #ov #greek-tour .dt-stage{
+   display:grid;
+   grid-template-rows:auto minmax(0,1fr) auto;
+   padding:clamp(12px,2dvh,20px) 0 0;
+   gap:8px;
+   min-height:0;
+ }
+ #ov #greek-tour .dt-labels{
+   position:relative;
+   inset:auto;
+   display:grid;
+   direction:rtl;
+   order:0;
+   grid-template-columns:repeat(3,minmax(0,1fr));
+   gap:7px 6px;
+   margin:0;
+   padding:0 8px;
+ }
+ #ov #greek-tour .dt-labels .dt-label:last-child{grid-column:auto}
+ #ov #greek-tour .dt-labels--top{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(3,auto);grid-auto-flow:column;gap:12px 24px}
+ #ov #greek-tour .dt-labels--bottom{grid-template-columns:repeat(2,minmax(0,1fr));padding-inline:16px;gap:7px}
+ #ov #greek-tour .dt-label{position:relative;inset:auto;width:auto;min-width:0;transform:none;min-height:40px;font-size:11.5px;line-height:1.2;padding:5px 4px}
+ #ov #greek-tour .dt-image-space{
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   min-height:0;
+   min-width:0;
+ }
+ #ov #greek-tour .dt-image{
+   width:auto;
+   height:auto;
+   max-width:94%;
+   max-height:100%;
+   margin:0;
+ }
+ #ov #greek-tour .dt-details{display:block;align-self:start;min-height:0;margin:0 10px;padding:8px}
+ #ov #greek-tour .dt-cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+ #ov #greek-tour .dt-card{min-height:65px;padding:7px 4px}
+ #ov #greek-tour .dt-card svg{width:18px;height:18px}
+ #ov #greek-tour .dt-card strong{font-size:11px;line-height:1.35}
+ #ov #greek-tour .dt-card span{font-size:10px}
+ #ov #greek-tour .dt-note{font-size:11px;line-height:1.45;margin:6px 2px 0}
+ #ov #greek-tour .dt-occupancy{margin:0;padding:0;font-size:13px;align-self:end}
+ #ov #greek-tour .dt-cards.is-scrollable{
+   display:flex;
+   grid-template-columns:none;
+   overflow-x:auto;
+   direction:rtl;
+   overscroll-behavior-x:contain;
+   scroll-snap-type:x proximity;
+   -webkit-overflow-scrolling:touch;
+   scrollbar-width:none;
+   padding:1px 1px 4px;
+ }
+ #ov #greek-tour .dt-cards.is-scrollable::-webkit-scrollbar{display:none}
+ #ov #greek-tour .dt-cards.is-scrollable .dt-card{
+   flex:0 0 108px;
+   min-width:108px;
+   scroll-snap-align:start;
+ }
+ #ov #greek-tour .dt-swipe-hint{
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   gap:6px;
+   margin:6px 0 0;
+   color:#8fcbd6;
+   font-size:11px;
+   line-height:1.2;
+ }
+ #ov #greek-tour .dt-swipe-hint span{font:600 15px/1 Arial,sans-serif;color:#5fe3f3}
+}
