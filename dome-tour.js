@@ -66,11 +66,9 @@ var FD_DOME_TOUR = (function () {
     return esc(value);
   }
   function details() {
-    var part = parts.find(function(p){return p.id===selected;});
-    var cards = [], note = '';
+var cards = [], note = '';
     if (selected === 'pool') {
-      subtitle = tr('مسبح خاص للكبار','Private adult pool');
-      var dimensions = cabin.pool.label.match(/(\d+)\s*×\s*(\d+)/);
+var dimensions = cabin.pool.label.match(/(\d+)\s*×\s*(\d+)/);
       if (dimensions) cards.push({label:tr('المقاس','Size'), value:dimensions[1]+' × '+dimensions[2]+' m', icon:'size', numeric:true});
       cards.push({label:tr('العمق','Depth'),value:String(cabin.pool.depthCm)+' cm',icon:'water',numeric:true});
       if (/جاكوزي/.test(cabin.pool.label)) cards.push({value:tr('جاكوزي داخل المسبح','In-pool jacuzzi'),icon:'tub'});
@@ -186,8 +184,7 @@ var FD_DOME_TOUR = (function () {
     root.addEventListener('click',function(event){
       var button=event.target.closest('button');if(!button)return;
       if(button.dataset.part) selected=button.dataset.part;
-      else if(button.dataset.language) language=button.dataset.language;
-      else return;
+else return;
       update();
     });
     root.querySelector('.dt-image').addEventListener('load',queueLines);
