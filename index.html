@@ -52,7 +52,7 @@
 }
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link href="resort-home.css?v=7" rel="stylesheet">
+<link href="resort-home.css?v=8" rel="stylesheet">
 <style>
 .hide{display:none!important}
 /* Services page cards */
@@ -1586,10 +1586,17 @@ function tarfihiOrder(){
         </span>
         <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
       </a>
-      <a class="rh-home-shortcut" href="/cabins/" onclick="event.preventDefault();showSection('resort')">
+      <a class="rh-home-shortcut" href="/resort-map/" onclick="event.preventDefault();openResortMap()">
         <span class="rh-map-copy">
           <span class="rh-map-title">استكشف الأكواخ والجولات</span>
-          <span class="rh-map-description">تعرّف على الأكواخ وشاهد تفاصيلها وجولاتها</span>
+          <span class="rh-map-description">شاهد مواقع الأكواخ وجولاتها على الخريطة</span>
+        </span>
+        <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+      </a>
+      <a class="rh-home-shortcut" href="/cabins/" onclick="event.preventDefault();showSection('resort')">
+        <span class="rh-map-copy">
+          <span class="rh-map-title">الأكواخ</span>
+          <span class="rh-map-description">تصفّح صور الأكواخ ومواصفاتها</span>
         </span>
         <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
       </a>
