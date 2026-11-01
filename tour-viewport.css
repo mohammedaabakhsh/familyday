@@ -137,3 +137,20 @@
  #ov #panoramic-tour .dt-card strong[dir=ltr]{font-size:14px}
  #ov #panoramic-tour .dt-details.is-empty{display:block;visibility:hidden}
 }
+
+/* Connecting-cabin information sits immediately above each cabin's own capacity. */
+#ov :is(#classic-tour,#royal-tour) .dt-tour-footer{direction:rtl;align-self:end;margin:12px 0 0}
+#ov :is(#classic-tour,#royal-tour) .dt-connection-note{margin:0 8px 6px;color:#b5cbd6;font-size:12px;line-height:1.5;text-align:center}
+#ov :is(#classic-tour,#royal-tour) .dt-tour-footer .dt-occupancy{margin:0;padding:0}
+@media(min-width:900px){
+ #ov :is(#classic-tour,#royal-tour) .dt-tour-footer{grid-area:occupancy;margin:0 0 10px}
+}
+@media(max-width:599px){
+ #ov :is(#classic-tour,#royal-tour){grid-template-rows:auto minmax(210px,1fr) 136px auto}
+ #ov :is(#classic-tour,#royal-tour) .dt-tour-footer{margin:0}
+}
+@media(max-width:599px) and (max-height:620px){
+ #ov :is(#classic-tour,#royal-tour){gap:8px;grid-template-rows:auto minmax(210px,1fr) 132px auto}
+ #ov :is(#classic-tour,#royal-tour) .dt-stage{padding-top:8px;gap:6px}
+ #ov :is(#classic-tour,#royal-tour) .dt-labels--top{row-gap:8px}
+}
