@@ -135,11 +135,9 @@ var FD_PANORAMIC_TOUR = (function () {
 
     var part = parts.find(function(p){return p.id===selected;});
 
-    var cards = [], note = '', subtitle = '';
+    var cards = [], note = '';
 
     if (selected === 'pool') {
-
-      subtitle = tr('مسبح خاص للكبار','Private adult pool');
 
       var dimensions = cabin.pool.label.match(/(\d+)\s*×\s*(\d+)/);
 
@@ -159,7 +157,7 @@ var FD_PANORAMIC_TOUR = (function () {
 
     } else if (selected === 'dining') {
 
-      cards.push({value:tr('طاولة الطعام','Dining table'),icon:'dining'});
+      cards=[];
 
     } else if (selected === 'living') {
 
@@ -167,7 +165,7 @@ var FD_PANORAMIC_TOUR = (function () {
 
     } else if (selected === 'bedroom') {
 
-      cards=[{label:tr('السرير','Bed'),value:tr('سرير مزدوج','Double bed'),icon:'bed'}];
+      cards=[];
 
     } else if (selected === 'bathroom') {
 
@@ -177,9 +175,7 @@ var FD_PANORAMIC_TOUR = (function () {
       cards=[{value:tr('بانيو مع جاكوزي بغرفة النوم','Bathtub with jacuzzi in the bedroom'),icon:'tub'}];
     } else if (selected === 'twin') {
 
-      cards=[{value:tr('سريران مفردان','Two single beds'),icon:'bed'}];
-
-      
+      cards=[];
 
     } else {
 
@@ -187,7 +183,9 @@ var FD_PANORAMIC_TOUR = (function () {
 
     }
 
-    root.querySelector('.dt-details').innerHTML='<div class="dt-detail-heading"><h4>'+esc(part[language])+'</h4>'+(subtitle?'<p>'+esc(subtitle)+'</p>':'')+'</div><div class="dt-cards">'+cards.map(function(card){return '<div class="dt-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+cardValue(card.value)+'</strong></div></div>';}).join('')+'</div>'+(note?'<p class="dt-note">'+esc(note)+'</p>':'');
+    var detailsEl=root.querySelector('.dt-details');
+    detailsEl.classList.toggle('is-empty',cards.length===0&&!note);
+    detailsEl.innerHTML=(cards.length?'<div class="dt-cards">'+cards.map(function(card){return '<div class="dt-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+cardValue(card.value)+'</strong></div></div>';}).join('')+'</div>':'')+(note?'<p class="dt-note">'+esc(note)+'</p>':'');
 
   }
 
