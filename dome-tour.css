@@ -157,3 +157,13 @@
    color:#5fe3f3;
  }
 }
+
+/* Dome lower-content placement: align the detail block and suitability line with the larger-cabin rhythm. */
+@media(max-width:599px){
+ #ov #dome-tour .dt-details{
+   margin-top:62px;
+ }
+ #ov #dome-tour .dt-occupancy{
+   margin-top:18px;
+ }
+}
