@@ -135,10 +135,6 @@
     dialog.querySelector('.fd-map-header').dir = direction;
     dialog.querySelector('#fd-map-title').textContent = copy.title;
     dialog.querySelector('#fd-map-hint').textContent = copy.hint;
-    dialog.querySelector('.fd-map-languages').setAttribute('aria-label', copy.languageLabel);
-    dialog.querySelectorAll('.fd-map-language').forEach(function (button) {
-      button.setAttribute('aria-pressed', String(button.dataset.lang === mapLanguage));
-    });
     dialog.querySelector('.fd-map-close').setAttribute('aria-label', copy.close);
     viewport.setAttribute('aria-label', copy.viewport);
     image.alt = copy.image;
@@ -164,17 +160,6 @@
       label.textContent = cabinName(cabin, true); label.dir = direction;
     });
     updatePhotoText();
-  }
-
-  function setMapLanguage(language) {
-    if ((language !== 'ar' && language !== 'en') || language === mapLanguage) return;
-    var info = dialog.querySelector('.fd-map-info'), previousScroll = info.scrollTop;
-    mapLanguage = language;
-    updateMapText();
-    if (selected) renderSelectedLocation(selected);
-    info.scrollTop = previousScroll;
-    renderView();
-    dialog.querySelector('.fd-map-announcement').textContent = mapCopy[mapLanguage].languageStatus;
   }
 
   function cabinFor(location) {
@@ -638,7 +623,7 @@
       '<div class="fd-map-header"><div class="fd-map-heading">' +
       '<button type="button" class="fd-map-close" aria-label="العودة" autofocus><svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>' +
       '<div class="fd-map-heading-copy"><h2 id="fd-map-title">خريطة الأكواخ</h2><p id="fd-map-hint">اختر الكوخ وشاهد موقعه ومميزاته</p></div></div>' +
-      '<div class="fd-map-header-actions"><div class="fd-map-languages" role="group" aria-label="لغة الخريطة"><button type="button" class="fd-map-language" data-lang="ar" lang="ar" aria-label="عرض الخريطة بالعربية" aria-pressed="true">AR</button><button type="button" class="fd-map-language" data-lang="en" lang="en" aria-label="Show map in English" aria-pressed="false">EN</button></div></div></div>' +
+      '</div>' +
       '<div class="fd-map-workspace">' +
         '<div class="fd-map-viewport" tabindex="0" aria-label="خريطة تفاعلية؛ كبّر ثم اسحب للاستكشاف، أو استخدم الأسهم للتحريك">' +
           '<div class="fd-map-plane"><img class="fd-map-image" width="1254" height="1254" alt="توزيع أكواخ المنتجع من الأعلى" draggable="false" decoding="async"></div>' +
@@ -762,9 +747,6 @@
       resetGesture();
       measureView(true);
       viewport.focus({ preventScroll: true });
-    });
-    dialog.querySelectorAll('.fd-map-language').forEach(function (button) {
-      button.addEventListener('click', function () { setMapLanguage(button.dataset.lang); });
     });
     dialog.querySelector('.fd-map-clear').addEventListener('click', function () { clearSelection(true); });
     dialog.querySelector('.fd-map-details-button').addEventListener('click', function () {

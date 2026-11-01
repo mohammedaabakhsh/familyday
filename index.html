@@ -52,7 +52,7 @@
 }
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link href="resort-home.css?v=6" rel="stylesheet">
+<link href="resort-home.css?v=7" rel="stylesheet">
 <style>
 .hide{display:none!important}
 /* Services page cards */
@@ -1578,47 +1578,36 @@ function tarfihiOrder(){
       </span>
     </a>
 
-    <div class="rh-grid">
-      <button type="button" class="rh-cabins" onclick="showSection('resort')" aria-label="الأكواخ">
-        <img class="rh-cabin-photo" src="imgs/dome_1.webp" width="1200" height="1200" alt="" fetchpriority="high" decoding="async">
-        <span class="rh-cabin-shade" aria-hidden="true"></span>
-        <span class="rh-cabin-bottom">
-          <span class="rh-cabin-copy">
-            <span class="rh-cabin-title">الأكواخ</span>
-            <span class="rh-cabin-caption">أكواخ خاصة · مسابح مستقلة · حديقة مشتركة</span>
-          </span>
-          <svg class="rh-arrow rh-cabin-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg>
+    <nav class="rh-menu" aria-label="استكشف المنتجع">
+      <a class="rh-home-shortcut" href="/services/" onclick="event.preventDefault();showServices()">
+        <span class="rh-map-copy">
+          <span class="rh-map-title">الخدمات</span>
+          <span class="rh-map-description">الضيافة والترفيه وتجهيز مناسبتك</span>
         </span>
-      </button>
-
-      <button type="button" class="rh-action rh-services" onclick="showContact('resort')" aria-label="الحجز والموقع والتواصل">
-        <svg class="rh-action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3.1 5.2 2 2 0 0 1 5.1 3h3a2 2 0 0 1 2 1.7l.7 2.8a2 2 0 0 1-.4 2.1L9.1 10.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4l2.8.7a2 2 0 0 1 .7 1Z"/></svg>
-        <span class="rh-action-body"><span class="rh-action-title">الحجز والموقع والتواصل</span></span>
-        <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg>
-      </button>
-
-      <button type="button" class="rh-action rh-contact" onclick="showFaq()" aria-label="الأسئلة الشائعة">
-        <svg class="rh-action-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 2-2.5 2-2.5 4m0 3h.01"/></svg>
-        <span class="rh-action-body"><span class="rh-action-title">الأسئلة الشائعة</span></span>
-        <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg>
-      </button>
-    </div>
-
-    <a class="rh-home-shortcut rh-services-shortcut" href="#services" onclick="event.preventDefault();showServices()" aria-label="خدمات المنتجع">
-      <span class="rh-map-copy">
-        <span class="rh-map-title">الخدمات</span>
-        <span class="rh-map-description">الضيافة والترفيه وتجهيز مناسبتك</span>
-      </span>
-      <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
-    </a>
-
-    <a class="rh-home-shortcut rh-map-shortcut" href="#map" onclick="event.preventDefault();openResortMap()" aria-label="استكشف خريطة المنتجع">
-      <span class="rh-map-copy">
-        <span class="rh-map-title">استكشف خريطة المنتجع</span>
-        <span class="rh-map-description">شاهد مواقع الأكواخ والمرافق</span>
-      </span>
-      <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
-    </a>
+        <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+      </a>
+      <a class="rh-home-shortcut" href="/cabins/" onclick="event.preventDefault();showSection('resort')">
+        <span class="rh-map-copy">
+          <span class="rh-map-title">استكشف الأكواخ والجولات</span>
+          <span class="rh-map-description">تعرّف على الأكواخ وشاهد تفاصيلها وجولاتها</span>
+        </span>
+        <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+      </a>
+      <a class="rh-home-shortcut" href="/resort/contact/" onclick="event.preventDefault();showContact('resort')">
+        <span class="rh-map-copy">
+          <span class="rh-map-title">الحجز والتواصل</span>
+          <span class="rh-map-description">احجز إقامتك وتواصل معنا</span>
+        </span>
+        <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+      </a>
+      <a class="rh-home-shortcut" href="/resort/faq/" onclick="event.preventDefault();showFaq()">
+        <span class="rh-map-copy">
+          <span class="rh-map-title">الأسئلة الشائعة</span>
+          <span class="rh-map-description">إجابات تساعدك قبل الزيارة</span>
+        </span>
+        <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+      </a>
+    </nav>
 
     <div class="rh-footer">
       <a class="rh-reviews" href="https://maps.app.goo.gl/FLmawLadNaa3uYpJ8?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="تقييم الزوار: 4.7 من 5">
@@ -5356,7 +5345,7 @@ function openMDirect(c){
 })();
 </script>
 <script src="resort-map-data.js?v=20261028-v1" defer></script>
-<script src="resort-map.js?v=mobile-label-spacing-20261101-v1" defer></script>
+<script src="resort-map.js?v=arabic-map-20261101-v1" defer></script>
 <link rel="stylesheet" href="chalet-map.css?v=22">
 <script src="chalet-map.js?v=chalet-clarity-20261028-v1" defer></script>
 
