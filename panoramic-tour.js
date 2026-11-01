@@ -4,10 +4,10 @@ var FD_PANORAMIC_TOUR = (function () {
 
   'use strict';
 
-  var root, observer, frame, cabin, selected = 'pool', language = 'ar';
+  var root, observer, frame, cabin, selected = 'bedroom', language = 'ar';
 
   var parts = [
- {id:'twin',ar:'غرفة النوم',en:'Bedroom',x:0.31,y:0.169},
+ {id:'twin',ar:'غرفة النوم الثانية',en:'Second bedroom',x:0.31,y:0.169},
  {id:'bathroom',ar:'حمامات',en:'Bathrooms',x:0.429,y:0.327},
  {id:'kitchen',ar:'ركن المطبخ',en:'Kitchenette',x:0.65,y:0.202},
  {id:'bedroom',ar:'غرفة النوم الرئيسية',en:'Main bedroom',x:0.331,y:0.325},
@@ -133,7 +133,7 @@ var FD_PANORAMIC_TOUR = (function () {
 
   function details() {
 
-    var part = parts.find(function(p){return p.id===selected;});
+
 
     var cards = [], note = '';
 
@@ -186,7 +186,8 @@ var FD_PANORAMIC_TOUR = (function () {
     var detailsEl=root.querySelector('.dt-details');
     detailsEl.classList.toggle('is-empty',cards.length===0&&!note);
     detailsEl.classList.remove('is-brief');
-    detailsEl.innerHTML=(cards.length?'<div class="dt-cards">'+cards.map(function(card){return '<div class="dt-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+cardValue(card.value)+'</strong></div></div>';}).join('')+'</div>':'')+(note?'<p class="dt-note">'+esc(note)+'</p>':'');
+    var scrollable=cards.length>3;
+    detailsEl.innerHTML=(cards.length?'<div class="dt-cards'+(scrollable?' is-scrollable':'')+'">'+cards.map(function(card){return '<div class="dt-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+cardValue(card.value)+'</strong></div></div>';}).join('')+'</div>':'')+(scrollable?'<div class="dt-swipe-hint" aria-hidden="true"><span>↔</span> اسحب لعرض المزيد</div>':'')+(note?'<p class="dt-note">'+esc(note)+'</p>':'');
 
   }
 
@@ -196,7 +197,7 @@ var FD_PANORAMIC_TOUR = (function () {
 
     root.querySelector('.dt-title').textContent=tr('جولة داخل البيت البانورامي','Explore the Panoramic House');
 
-    root.querySelector('.dt-capacity').textContent=tr('حتى '+cabin.guests+' ضيفًا','Up to '+cabin.guests+' guests');
+    root.querySelector('.dt-occupancy').textContent=tr('مناسب للعائلات · حتى '+cabin.guests+' ضيفًا','Family friendly · Up to '+cabin.guests+' guests');
 
     root.querySelector('.dt-image').alt=tr('رسم توضيحي لتوزيع البيت البانورامي ومرافقه','Illustrated layout of the Panoramic House and its facilities');
 
@@ -204,7 +205,7 @@ var FD_PANORAMIC_TOUR = (function () {
       group.setAttribute('aria-label',tr('اختر المرفق لعرض تفاصيله','Choose a facility to view its details'));
     });
 
-    root.querySelector('.dt-languages').setAttribute('aria-label',tr('لغة الجولة','Tour language'));
+
 
     parts.forEach(function(p){
 
@@ -220,7 +221,7 @@ var FD_PANORAMIC_TOUR = (function () {
 
     });
 
-    root.querySelectorAll('[data-language]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.language===language));});
+
 
     updateBackLink(); details(); queueLines();
 
@@ -301,24 +302,24 @@ var FD_PANORAMIC_TOUR = (function () {
       }
 
       if(mobile){
-
-        // The mobile prototype places indoor controls above the illustration
-        // and outdoor controls below it, so the active connector stays short.
         var buttonAboveImage=b.bottom<=im.top+4;
         var buttonBelowImage=b.top>=im.bottom-4;
-
         sx=b.left+b.width/2-box.left;
-
         if(buttonBelowImage){
           sy=b.top-box.top;
-          curve='C '+sx+' '+(sy-26)+' '+tx+' '+(ty+34)+' '+tx+' '+ty;
+          curve='C '+sx+' '+(sy-24)+' '+tx+' '+(ty+30)+' '+tx+' '+ty;
         } else if(buttonAboveImage){
-          sy=b.bottom-box.top;
-          curve='C '+sx+' '+(sy+26)+' '+tx+' '+(ty-34)+' '+tx+' '+ty;
+          // Leave the inner edge into the column gutter, clear of every button.
+          var rightColumn=b.left+b.width/2>box.left+box.width/2;
+          sx=(rightColumn?b.left:b.right)-box.left;
+          sy=b.top+b.height/2-box.top;
+          var lane=box.width/2+(rightColumn?4:-4);
+          var approach=im.top-box.top-6;
+          curve='Q '+lane+' '+sy+' '+lane+' '+(sy+8)+
+            ' L '+lane+' '+approach+
+            ' C '+lane+' '+(approach+16)+' '+tx+' '+(ty-24)+' '+tx+' '+ty;
         }
-
       }
-
       root.querySelector('[data-line="'+p.id+'"]').setAttribute('d','M '+sx+' '+sy+' '+curve);
 
       var point=root.querySelector('.dt-point[data-part="'+p.id+'"]'); point.style.left=tx+'px'; point.style.top=ty+'px';
@@ -345,18 +346,16 @@ var FD_PANORAMIC_TOUR = (function () {
 
     if(root && cabin && cabin.id===next.id) return;
 
-    remove(); cabin=next; selected='pool'; language='ar';
+    remove(); cabin=next; selected='bedroom'; language='ar';
 
     root=document.createElement('section');root.id='panoramic-tour';root.className='dt-tour';root.setAttribute('aria-labelledby','dt-title');
 
-    var outdoorIds=['outdoor','pool'];
-    var indoorOrder=['bedroom','twin','bathroom','tub','kitchen','dining','living'];
-    var indoorParts=indoorOrder.map(function(id){return parts.find(function(p){return p.id===id;});}).filter(Boolean);
-    var outdoorParts=outdoorIds.map(function(id){return parts.find(function(p){return p.id===id;});}).filter(Boolean);
+    var topOrder=['bedroom','twin','living','bathroom','kitchen','dining'];
+    var bottomOrder=['outdoor','tub','pool'];
+    var topParts=topOrder.map(function(id){return parts.find(function(p){return p.id===id;});});
+    var bottomParts=bottomOrder.map(function(id){return parts.find(function(p){return p.id===id;});});
     var labelButton=function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';};
-
-    root.innerHTML='<header class="dt-heading"><div class="dt-title-meta"><h1 id="dt-title" class="dt-title"></h1><span class="dt-capacity"></span></div><div class="dt-languages" role="group"><button type="button" data-language="ar" lang="ar" aria-label="العربية">AR</button><button type="button" data-language="en" lang="en" aria-label="English">EN</button></div></header><div class="dt-stage"><div class="dt-labels dt-labels--top">'+indoorParts.map(labelButton).join('')+'</div><img class="dt-image" src="/imgs/panoramic-tour-21-clarity-v1.png" width="1536" height="1024" loading="eager" decoding="async" alt=""><div class="dt-labels dt-labels--bottom">'+outdoorParts.map(labelButton).join('')+'</div><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div>';
-
+    root.innerHTML='<header class="dt-heading"><div class="dt-heading-copy"><h1 id="dt-title" class="dt-title"></h1><p class="dt-instruction">اضغط على المرفق لعرض تفاصيله</p></div></header><div class="dt-stage"><div class="dt-labels dt-labels--top">'+topParts.map(labelButton).join('')+'</div><div class="dt-image-space"><img class="dt-image" src="/imgs/panoramic-tour-21-clarity-v1.png" width="1536" height="1024" loading="eager" decoding="async" alt=""></div><div class="dt-labels dt-labels--bottom">'+bottomParts.map(labelButton).join('')+'</div><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
     document.getElementById('panoramic-tour-host').appendChild(root);
 
     var back=document.querySelector('.tour-back');
@@ -379,7 +378,7 @@ var FD_PANORAMIC_TOUR = (function () {
 
       if(button.dataset.part) selected=button.dataset.part;
 
-      else if(button.dataset.language) language=button.dataset.language;
+
 
       else return;
 
