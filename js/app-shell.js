@@ -155,7 +155,17 @@ function closeContact(){
 
 
 var _enterMainTimer;
+var _mainNavigationReady = false;
+var _mainEntryRequested = false;
+function markMainNavigationReady(){
+  _mainNavigationReady = true;
+  // A direct link may already have dismissed the splash while restoring its route.
+  if(_mainEntryRequested && document.getElementById('splash').style.display !== 'none') enterMain();
+  _mainEntryRequested = false;
+}
 function enterMain(){
+  // Keep the existing splash until the router can handle the first destination click.
+  if(!_mainNavigationReady){ _mainEntryRequested = true; return; }
   sessionStorage.setItem('fd_visited','1');
   clearTimeout(_autoEnterTimer);
   // Hide landing immediately so it doesn't flash through fading splash

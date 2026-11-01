@@ -51,10 +51,12 @@ server running:
 ```sh
 python3 scripts/check-approved-review.py http://127.0.0.1:8023
 python3 scripts/check-share-navigation.py http://127.0.0.1:8023
+python3 scripts/check-entry-loading.py http://127.0.0.1:8023
 python3 scripts/check-share-pages.py http://127.0.0.1:8023
 python3 scripts/check-menu-experience.py http://127.0.0.1:8023
 python3 scripts/check-service-sections.py http://127.0.0.1:8023
 python3 scripts/check-services-guide.py http://127.0.0.1:8023
+python3 scripts/check-lossless-images.py http://127.0.0.1:8023
 ```
 
 Checks capture intended WhatsApp URLs locally; they do not send orders. The
@@ -63,3 +65,9 @@ review check accepts `FD_TEST_FONT_CSS` for an optional local Tajawal font fixtu
 Standalone preview files and the two guest-services entry points are retained.
 Asset paths can also be assembled dynamically; a text-search miss alone is not
 proof that an image or page is unused.
+
+The lossless-image check also requires Pillow and compares the 14 active PNG
+illustrations with approved revision `148ff44` in Git history. It verifies the
+full RGBA data, dimensions, metadata and Chromium-rendered pixels. Compression
+keeps the original PNG paths; update the comparison revision deliberately if
+the user later approves different source artwork.

@@ -400,6 +400,7 @@
       renderRoute(next);
     }
     history.replaceState({fdNavigation:version,route:next,previous:state && state.previous},'',urlFor(next));
+    markMainNavigationReady();
   });
   // Native BFCache already preserves the page and its history; do not reload it.
   window.addEventListener('pageshow',function(event){if(event.persisted) restore();});
