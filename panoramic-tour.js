@@ -350,9 +350,10 @@ var FD_PANORAMIC_TOUR = (function () {
 
     root=document.createElement('section');root.id='panoramic-tour';root.className='dt-tour';root.setAttribute('aria-labelledby','dt-title');
 
-    var outdoorIds=['pool','outdoor'];
-    var indoorParts=parts.filter(function(p){return outdoorIds.indexOf(p.id)===-1;});
-    var outdoorParts=parts.filter(function(p){return outdoorIds.indexOf(p.id)!==-1;});
+    var outdoorIds=['outdoor','pool'];
+    var indoorOrder=['bedroom','twin','bathroom','tub','kitchen','dining','living'];
+    var indoorParts=indoorOrder.map(function(id){return parts.find(function(p){return p.id===id;});}).filter(Boolean);
+    var outdoorParts=outdoorIds.map(function(id){return parts.find(function(p){return p.id===id;});}).filter(Boolean);
     var labelButton=function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';};
 
     root.innerHTML='<header class="dt-heading"><h1 id="dt-title" class="dt-title"></h1></header><div class="dt-stage"><div class="dt-labels dt-labels--top">'+indoorParts.map(labelButton).join('')+'</div><img class="dt-image" src="/imgs/panoramic-tour-21-clarity-v1.png" width="1536" height="1024" loading="eager" decoding="async" alt=""><div class="dt-labels dt-labels--bottom">'+outdoorParts.map(labelButton).join('')+'</div><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div class="dt-languages" role="group"><button type="button" data-language="ar" lang="ar" aria-label="العربية">AR</button><button type="button" data-language="en" lang="en" aria-label="English">EN</button></div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div><p class="dt-occupancy"></p>';
