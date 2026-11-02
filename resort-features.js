@@ -5,7 +5,15 @@ var _menuBbqTypes = {};
 
 function configureResortOrderForm() {
   var popup = document.getElementById('order-popup');
-  if (_orderOriginalHTML === null) _orderOriginalHTML = popup.innerHTML;
+  if (_orderOriginalHTML === null) {
+    var cabinSelect = document.getElementById('order-villa');
+    if (cabinSelect.options.length===1) {
+      Object.keys(window.FD_CABIN_NUMBERS).forEach(function (name) {
+        cabinSelect.add(new Option(name,name));
+      });
+    }
+    _orderOriginalHTML = popup.innerHTML;
+  }
   popup.innerHTML = _orderOriginalHTML;
   popup.classList.toggle('fd-resort-order', _orderResortScope);
   if (!_orderResortScope) return;

@@ -40,19 +40,37 @@ with sync_playwright() as p:
         page.evaluate('window.open=(url)=>{window.capturedGuestURL=url;return null}')
         page.locator('.send-order').click()
         assert page.evaluate('window.capturedGuestURL') is None
-        assert page.locator('#cabin-number').evaluate('(e)=>!e.validity.valid')
-        page.locator('#cabin-number').fill('١٥')
-        assert page.locator('#cabin-number').input_value() == '15'
+        assert page.locator('#guest-name').evaluate('(e)=>!e.validity.valid')
+        page.locator('#guest-name').fill('   ')
+        page.locator('.send-order').click()
+        assert page.evaluate('window.capturedGuestURL') is None
+        page.locator('#guest-name').fill('ضيف الاختبار')
+        page.locator('.send-order').click()
+        assert page.evaluate('window.capturedGuestURL') is None
+        assert page.locator('#guest-cabin').evaluate('(e)=>!e.validity.valid')
+        expected_cabins = {'البيت اليوناني 1':10,'البيت اليوناني 2':11,'كوخ بالم بيتش':12,
+                           'الكوخ الفرنسي':13,'الكوخ الريفي':14,'بيت الدوم 1':15,'بيت الدوم 2':16,
+                           'الكوخ الهرمي':17,'الكوخ الكلاسيكي':18,'كوخ رويال':19,
+                           'الكوخ البوهيمي':20,'البيت البانورامي':21}
+        assert page.locator('#guest-cabin option').count() == 13
+        for cabin_name, number in expected_cabins.items():
+            page.locator('#guest-cabin').select_option(label=cabin_name)
+            assert page.locator('#cabin-number').inner_text() == str(number)
+        page.locator('#guest-cabin').select_option('')
+        assert not page.locator('#cabin-number-row').is_visible()
+        page.locator('#guest-cabin').select_option(label='بيت الدوم 1')
         page.locator('.send-order').click()
         url = urlparse(page.evaluate('window.capturedGuestURL'))
         assert url.netloc == 'wa.me' and url.path == '/966556156693'
         message = parse_qs(url.query)['text'][0]
-        for text in ['للكوخ رقم 15', 'روب ومناشف لشخص واحد × 2 — 40 ر.س', 'بخور × 1 — 20 ر.س', 'الإجمالي: 60 ر.س', 'يرجى تأكيد التوفر والطلب.']:
+        for text in ['الاسم: ضيف الاختبار', 'الكوخ: بيت الدوم 1 (رقم 15)', 'روب ومناشف لشخص واحد × 2 — 40 ر.س', 'بخور × 1 — 20 ر.س', 'الإجمالي: 60 ر.س', 'يرجى تأكيد التوفر والطلب.']:
             assert text in message, message
         assert 'سرير إضافي' not in message
         page.reload(wait_until='networkidle')
         assert page.locator('#order-total').inner_text() == '60'
-        assert page.locator('#cabin-number').input_value() == '15'
+        assert page.locator('#cabin-number').inner_text() == '15'
+        assert page.locator('#guest-name').input_value() == 'ضيف الاختبار'
+        assert page.locator('#guest-cabin').input_value() == 'بيت الدوم 1'
         page.screenshot(path=str(OUT / f'guest-selected-{width}.png'), full_page=True)
 
         # Every service returns here through its own Back button, including cinema.
@@ -66,6 +84,8 @@ with sync_playwright() as p:
             page.locator(back).click()
             page.wait_for_url(BASE + '/guest-services/')
             assert page.locator('#order-total').inner_text() == '60'
+            assert page.locator('#guest-name').input_value() == 'ضيف الاختبار'
+            assert page.locator('#guest-cabin').input_value() == 'بيت الدوم 1'
         page.goto(BASE + '/guest-services.html?review=1', wait_until='networkidle')
         page.wait_for_url(BASE + '/guest-services/?review=1')
         assert page.locator('#order-total').inner_text() == '60'
@@ -91,10 +111,23 @@ with sync_playwright() as p:
     page.locator('button[onclick="continueMenuOrder()"]').click()
     page.locator('#order-name').fill('فحص محلي')
     page.locator('#order-villa').select_option(label='بيت الدوم 1')
+    assert page.locator('#order-cabin-num').inner_text() == '15'
     page.evaluate('window.open=(url)=>{window.capturedRestaurantURL=url;return null}')
     page.locator('button[onclick="sendOrderWhatsapp()"]').click()
     assert urlparse(page.evaluate('window.capturedRestaurantURL')).path == '/966537006531'
     print('PASS restaurant orders retain their separate WhatsApp number', flush=True)
+    context.close()
+
+    # Existing number-only drafts keep their selections when the form changes.
+    context = browser.new_context()
+    context.add_init_script("sessionStorage.setItem('familyday.guest-extras.v1',JSON.stringify({cabin:'15',quantities:{bed:2}}))")
+    page = context.new_page()
+    page.goto(BASE + '/guest-services/', wait_until='networkidle')
+    assert page.locator('#guest-cabin').input_value() == 'بيت الدوم 1'
+    assert page.locator('#cabin-number').inner_text() == '15'
+    assert page.locator('#order-total').inner_text() == '60'
+    assert page.locator('#guest-name').input_value() == ''
+    print('PASS migration of previous number-only drafts', flush=True)
     context.close()
 
     # Storage is optional: a blocked browser storage API cannot break ordering.

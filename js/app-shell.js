@@ -193,18 +193,14 @@ var _autoEnterTimer = setTimeout(function(){
 
 var _orderItemName = '';
 var _isMenuOrder = false;
-var _cabinNums = {
-  'البيت اليوناني 1':10,'البيت اليوناني 2':11,'كوخ بالم بيتش':12,'الكوخ الفرنسي':13,
-  'الكوخ الريفي':14,'بيت الدوم 1':15,'بيت الدوم 2':16,'الكوخ الهرمي':17,
-  'الكوخ الكلاسيكي':18,'كوخ رويال':19,'الكوخ البوهيمي':20,'البيت البانورامي':21
-};
+
 function updateCabinNum(){
   var villa = document.getElementById('order-villa').value;
   if(_orderResortScope && villa==='not-booked') setResortOrderError('order-time','');
   var wrap = document.getElementById('order-cabin-num-wrap');
   var numEl = document.getElementById('order-cabin-num');
-  if(villa && _cabinNums[villa]){
-    numEl.textContent = _cabinNums[villa];
+  if(villa && window.FD_CABIN_NUMBERS[villa]){
+    numEl.textContent = window.FD_CABIN_NUMBERS[villa];
     wrap.style.display = 'block';
   } else {
     wrap.style.display = 'none';
@@ -253,7 +249,7 @@ function sendOrderWhatsapp(){
     };
     timeStr = ' - الوقت: من ' + fmt12(h) + ' حتى ' + fmt12(endH);
   }
-  var cabinNum = _cabinNums[villa] ? ' (رقم ' + _cabinNums[villa] + ')' : '';
+  var cabinNum = window.FD_CABIN_NUMBERS[villa] ? ' (رقم ' + window.FD_CABIN_NUMBERS[villa] + ')' : '';
   var msg;
   if(_isMenuOrder){
     var keys = Object.keys(_menuCart);

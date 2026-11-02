@@ -5,7 +5,12 @@
   var storageKey = 'familyday.guest-extras.v1';
   var phone = '966556156693';
   var form = document.getElementById('extras-order');
-  var cabin = document.getElementById('cabin-number');
+  var guestName = document.getElementById('guest-name');
+  var cabin = document.getElementById('guest-cabin');
+  var cabinNumbers = window.FD_CABIN_NUMBERS;
+  Object.keys(cabinNumbers).forEach(function (name) {
+    cabin.add(new Option(name,name));
+  });
   var summary = document.getElementById('order-items');
   var send = form.querySelector('.send-order');
   var shortcut = document.getElementById('order-shortcut');
@@ -15,17 +20,16 @@
       price:Number(row.querySelector('.extra-price bdi').textContent), quantity:0, row:row};
   });
 
-  function latinDigits(value) {
-    return String(value).replace(/[٠-٩۰-۹]/g,function (digit) {
-      var code=digit.charCodeAt(0);
-      return String(code-(code>=1776?1776:1632));
-    });
+  function renderCabinNumber() {
+    var number = cabinNumbers[cabin.value];
+    document.getElementById('cabin-number').textContent=number?String(number):'';
+    document.getElementById('cabin-number-row').hidden=!number;
   }
   function save() {
     try {
       var quantities={};
       items.forEach(function (item) { quantities[item.id]=item.quantity; });
-      sessionStorage.setItem(storageKey,JSON.stringify({cabin:cabin.value,quantities:quantities}));
+      sessionStorage.setItem(storageKey,JSON.stringify({name:guestName.value,cabin:cabin.value,quantities:quantities}));
     } catch (_) { /* Ordering remains available when browser storage is blocked. */ }
   }
   function selectedItems() { return items.filter(function (item) { return item.quantity>0; }); }
@@ -60,8 +64,12 @@
   try {
     var draft=JSON.parse(sessionStorage.getItem(storageKey));
     if (draft && typeof draft==='object') {
-      var savedCabin=latinDigits(draft.cabin||'');
-      if (/^[0-9]{1,4}$/.test(savedCabin)) cabin.value=savedCabin;
+      if (typeof draft.name==='string') guestName.value=draft.name.slice(0,100);
+      // Preserve drafts from the former number-only field using the known cabins.
+      var savedCabin=Object.keys(cabinNumbers).find(function (name) {
+        return draft.cabin===name || String(draft.cabin)===String(cabinNumbers[name]);
+      });
+      if (savedCabin) cabin.value=savedCabin;
       items.forEach(function (item) {
         var quantity=draft.quantities && draft.quantities[item.id];
         if (Number.isInteger(quantity) && quantity>=0 && quantity<=99) item.quantity=quantity;
@@ -77,8 +85,9 @@
       });
     });
   });
-  cabin.addEventListener('input',function () {
-    cabin.value=latinDigits(cabin.value);
+  guestName.addEventListener('input',save);
+  cabin.addEventListener('change',function () {
+    renderCabinNumber();
     save();
   });
   shortcut.addEventListener('click',function () {
@@ -89,7 +98,9 @@
     var selected=selectedItems();
     if (!selected.length || !form.reportValidity()) return;
     save();
-    var lines=['السلام عليكم،','أرغب بطلب التالي للكوخ رقم '+cabin.value+':',''];
+    var lines=['السلام عليكم،','أرغب بطلب التالي:',
+      'الاسم: '+guestName.value.trim(),
+      'الكوخ: '+cabin.value+' (رقم '+cabinNumbers[cabin.value]+')',''];
     selected.forEach(function (item) {
       lines.push('• '+item.name+' × '+item.quantity+' — '+(item.quantity*item.price)+' ر.س');
     });
@@ -97,5 +108,6 @@
     // Opening a prepared message does not mean the guest has sent or confirmed it.
     window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(lines.join('\n')),'_blank','noopener,noreferrer');
   });
+  renderCabinNumber();
   render();
 })();

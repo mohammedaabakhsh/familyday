@@ -48,7 +48,9 @@ python3 -m http.server 8023 --bind 127.0.0.1
   unit prices in `index.html` are the catalog used by `guest-services.js` for
   quantities and totals. The draft is scoped to the browser tab. Extras open a
   prepared WhatsApp message to the resort; restaurant checkout keeps its own
-  number. `guest-services.html` redirects old links to this single page.
+  number. Both order forms use `js/cabin-numbers.js` for cabin names and on-site
+  numbers. Guest extras require a name and cabin selection; the number appears
+  automatically. `guest-services.html` redirects old links to this single page.
 
 Exploration layouts use a 600 px or 900 px side-layout breakpoint, depending on
 the cabin. Preserve these configurations when changing the shared renderer.

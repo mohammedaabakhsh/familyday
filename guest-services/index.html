@@ -12,8 +12,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/guest-services/guest-services.css?v=20261102-visual-v4">
-<script src="/guest-services/guest-services.js?v=20261102-visual-v2" defer></script>
+<link rel="stylesheet" href="/guest-services/guest-services.css?v=20261102-cabin-picker-v1">
+<script src="/js/cabin-numbers.js?v=20261102-v1" defer></script>
+<script src="/guest-services/guest-services.js?v=20261102-cabin-picker-v1" defer></script>
 </head>
 <body>
 <div class="page">
@@ -116,8 +117,15 @@
           <div class="order-heading"><h3>طلبك</h3><p id="order-count" role="status" aria-live="polite">لم تختر أي طلبات بعد</p></div>
           <ul id="order-items" class="order-items" hidden></ul>
           <div class="order-total"><span>الإجمالي</span><strong><bdi id="order-total">0</bdi> ر.س</strong></div>
-          <label for="cabin-number">رقم الكوخ</label>
-          <input id="cabin-number" type="text" inputmode="numeric" pattern="[0-9]{1,4}" maxlength="4" required placeholder="أدخل رقم الكوخ" autocomplete="off" aria-describedby="cabin-hint">
+          <div class="order-field">
+            <label for="guest-name">الاسم</label>
+            <input id="guest-name" type="text" required pattern=".*\S.*" maxlength="100" placeholder="أدخل اسمك" autocomplete="name">
+          </div>
+          <label for="guest-cabin">اسم الكوخ</label>
+          <select id="guest-cabin" required aria-describedby="cabin-hint">
+            <option value="">اختر الكوخ</option>
+          </select>
+          <p id="cabin-number-row" class="cabin-number" hidden>رقم الكوخ <output id="cabin-number" for="guest-cabin" dir="ltr"></output></p>
           <p id="cabin-hint" class="field-note">ليصل الطلب إلى الكوخ الصحيح.</p>
           <button class="send-order" type="submit" disabled>إرسال الطلب عبر واتساب <span aria-hidden="true">←</span></button>
           <p class="confirmation-note">يُؤكَّد الطلب حسب التوفر بعد ردّ فريق المنتجع.</p>
