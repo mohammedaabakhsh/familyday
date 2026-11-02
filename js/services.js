@@ -29,71 +29,6 @@ document.addEventListener('click', function(e){
 
 
 
-var _serviceSubReturn = null;
-
-function showServiceSub(title, subtitle, cabins, hideFilter){
-  _serviceSubReturn = 'services';
-  // Hide grid, show app if needed
-  document.getElementById('services-overlay').classList.add('hide');
-  document.getElementById('app').classList.add('show');
-  document.getElementById('landing').classList.add('hide');
-  document.getElementById('grid').parentElement.style.display = 'none';
-  document.querySelector('.fs-bar') && (document.querySelector('.fs-bar').style.display='none');
-  // Update header like resort/chalet pages
-  document.getElementById('headerTitle').innerHTML = '';
-  document.getElementById('heroLogo').style.display = 'none';
-  document.querySelector('header').style.display = 'none';
-  document.querySelector('.section-hero').style.display = 'none';
-  // Show service-sub
-  const sub = document.getElementById('service-sub');
-  sub.classList.remove('hide');
-  sub.innerHTML = `
-    <div style="background:transparent;padding:14px 20px 18px;padding-top:20px;text-align:right;position:relative;">
-      <button onclick="goBack()" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.10);border:none;color:rgba(255,255,255,0.85);cursor:pointer;margin-bottom:10px;">
-        <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <div style="font-family:Tajawal,sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,0.7);line-height:1.5;">${subtitle}</div>
-    </div>
-  ` + cabins.map(c=>`
-    <div onclick="${c._sinema ? 'openSinemaDetail()' : c._maiya ? 'openMaiyaDetail()' : 'openServiceCabin('+c.id+')'}" style="margin:0 16px;background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:14px;overflow:hidden;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);cursor:pointer;display:flex;align-items:center;">
-      <img src="${IMG[c.img]}" style="width:100px;height:90px;object-fit:cover;flex-shrink:0;" alt="${c.name}">
-      <div style="padding:12px 16px;flex:1;">
-        <div style="font-size:15px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;margin-bottom:4px;">${c.name}</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.68);font-family:'Tajawal',sans-serif;line-height:1.5;">${c.type}</div>
-      </div>
-      <div style="padding:0 14px;color:#7ecfea;font-size:18px;">←</div>
-    </div>
-  `).join('');
-  document.getElementById('filterSection').style.display = 'none';
-  document.getElementById('bottomNav').style.display = 'flex';
-  setActiveTab('services');
-}
-
-function closeServiceSub(){
-  document.getElementById('service-sub').classList.add('hide');
-  document.getElementById('service-sub').innerHTML = '';
-  document.getElementById('grid').parentElement.style.display = '';
-  document.getElementById('app').classList.remove('show');
-  document.getElementById('landing').classList.add('hide');
-  document.getElementById('bottomNav').style.display = 'none';
-  document.getElementById('services-overlay').classList.remove('hide');
-  document.getElementById('headerTitle').innerHTML = '';
-  document.getElementById('sectionTitle').textContent = '';
-  document.getElementById('sectionDesc').textContent = '';
-  document.getElementById('sectionTag').textContent = '';
-  document.getElementById('sectionTag').style.display = 'none';
-  document.getElementById('heroLogo').style.display = 'none';
-  document.getElementById('filterSection').style.display = '';
-  document.querySelector('.section-hero').style.paddingTop = '';
-  document.querySelector('header').style.background = '';
-  document.querySelector('header').style.borderBottom = '';
-  document.querySelector('.back-btn').style.color = '';
-  document.querySelector('.back-btn').style.background = '';
-  document.querySelector('.back-btn').style.borderRadius = '';
-  document.querySelector('.back-btn').style.padding = '';
-  _serviceSubReturn = null;
-}
-
 function showTansidat(tab){
 
   document.getElementById('hospitality-detail').classList.remove('hide');
@@ -115,10 +50,6 @@ function showHospitalityTab(tab){
   });
 }
 
-function openServiceCabin(id){
-  window._serviceReturn = 'sub';
-  openM(id,'resort');
-}
 
 // Compatibility entry points used by existing navigation integrations.
 function showSinema(){ openSinemaDetail(); }

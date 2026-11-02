@@ -115,7 +115,7 @@ var FD_PANORAMIC_TOUR = (function () {
 
     root.lang=language; root.dir=language==='ar'?'rtl':'ltr';
 
-    root.querySelector('.dt-title').textContent=tr('استكشف البيت البانورامي من الداخل','Explore the Panoramic House');
+    root.querySelector('.dt-title').textContent=tr('استكشف البيت البانورامي','Explore the Panoramic House');
 
     root.querySelector('.dt-occupancy').textContent=tr('مناسب للعائلات · حتى '+cabin.guests+' ضيفًا','Family friendly · Up to '+cabin.guests+' guests');
 

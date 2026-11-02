@@ -21,7 +21,9 @@
 // Crawlers read the title above; visitors use the existing view and Back navigation.
 var route="cabin=9";
 if(route.indexOf('cabin=')===0 && new URLSearchParams(location.search).get('from')==='map') route+='&from=map';
-location.replace('/'+location.search+'#'+route);
+// Preserve the caller stored in history when an in-app service URL is reloaded.
+history.replaceState(history.state,'','/'+location.search+'#'+route);
+location.reload();
 </script>
 </head>
 <body><main><h1>كوخ رويال | يوم العائلة</h1><p>أجواء ريفية ومساحات واسعة لجمعات العائلة، استعرض الصور والمرافق في يوم العائلة.</p><a href="/#cabin=9">فتح الصفحة</a></main></body>

@@ -22,7 +22,13 @@ python3 -m http.server 8023 --bind 127.0.0.1
 - `css/app-base.css`: base and service styles. `css/accommodation-layout.css`:
   destination/cabin refinements, kept in their original cascade position.
 - `share-pages.json`: public entry URLs; `scripts/build-share-pages.py` generates
-  their pages.
+  their pages. General service links keep the group preview; specific tab links
+  use their own catalog entries and open the same grouped interface. Keep titles
+  and descriptions in this catalog, then regenerate the static preview pages.
+- `site-ui.css`: shared mobile contact spacing; desktop/contact base rules live
+  in `css/app-base.css`, without JavaScript-injected contact overrides.
+- `services-guide/`: guide navigation and the temporary footer link to
+  `/guest-services/`. Removing that link later does not remove the guest page.
 - `resort-data.js`: shared cabin specifications. Keep physical cabin IDs and
   booking URLs stable; Dome and Greek units share their approved specifications.
 - `service-data.js`: menu, seating and dining prices. Hospitality and coordination

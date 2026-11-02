@@ -2,6 +2,14 @@
    Dynamic prices and galleries are shared via /service-data.js. See README.md in this folder. */
 (function () {
   'use strict';
+  const back = document.getElementById('guide-back');
+  if (document.referrer) {
+    const previous = new URL(document.referrer);
+    if (previous.origin === location.origin && previous.pathname !== location.pathname) {
+      back.href = previous.href;
+      back.setAttribute('aria-label', 'العودة إلى الصفحة السابقة');
+    }
+  }
   const content = document.getElementById('guide-content');
   const escape = value => String(value == null ? '' : value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const text = (root, selector) => {

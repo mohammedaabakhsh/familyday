@@ -68,6 +68,7 @@ with sync_playwright() as p:
         for route in routes:
             page.goto(BASE+'/'+route,wait_until='networkidle')
             assert page.locator('.dt-title').inner_text().startswith('استكشف ')
+            assert 'من الداخل' not in page.locator('.dt-title').inner_text()
             for button in page.locator('.dt-label').all():
                 button.click()
                 text=page.locator('#dt-details').inner_text()
@@ -95,7 +96,7 @@ with sync_playwright() as p:
         page.close()
     page=browser.new_page(viewport={'width':390,'height':844},reduced_motion='reduce')
     page.goto(BASE+'/chalet-map/',wait_until='networkidle')
-    assert page.locator('#cm-title').inner_text()=='استكشف الشاليه من الداخل'
+    assert page.locator('#cm-title').inner_text()=='استكشف الشاليه'
     for button in page.locator('.cm-label').all():
         button.click()
         assert not page.locator('.cm-cards').evaluate('(e)=>/\\bcm\\b/.test(e.innerText)')

@@ -21,7 +21,9 @@
 // Crawlers read the title above; visitors use the existing view and Back navigation.
 var route="faq";
 if(route.indexOf('cabin=')===0 && new URLSearchParams(location.search).get('from')==='map') route+='&from=map';
-location.replace('/'+location.search+'#'+route);
+// Preserve the caller stored in history when an in-app service URL is reloaded.
+history.replaceState(history.state,'','/'+location.search+'#'+route);
+location.reload();
 </script>
 </head>
 <body><main><h1>الأسئلة الشائعة – المنتجع | يوم العائلة</h1><p>إجابات عن الحجز وأوقات الدخول والمرافق والتعليمات في المنتجع.</p><a href="/#faq">فتح الصفحة</a></main></body>

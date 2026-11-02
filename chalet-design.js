@@ -46,7 +46,7 @@ function renderPrivateChaletDetail(){
     + section('تجهيزات المطبخ', ['موقد كهربائي', 'موقد غاز', 'فرن', 'ميكروويف', 'ثلاجة', 'غلاية', 'أدوات مطبخ أساسية'])
     + section('مميزات الإقامة', ['تلفزيون ذكي'])
     + '<section class="fd-cabin-section"><h3>زيادة عدد الضيوف</h3><div class="fd-cabin-instructions"><p>يمكن زيادة إجمالي عدد الضيوف إلى 25 ضيفًا كحد أقصى، برسوم إضافية.</p></div></section>'
-    + '<div class="fd-cabin-faq-footer"><a class="fd-cabin-faq-link" href="#chalet-faq" onclick="return openAccommodationFaq(event,\'chalet-faq\')">الأسئلة الشائعة <span aria-hidden="true">←</span></a></div>'
+    + '<div class="fd-cabin-faq-footer"><a class="fd-cabin-faq-link" href="/chalet/faq/" onclick="return openAccommodationFaq(event,\'chalet-faq\')">الأسئلة الشائعة <span aria-hidden="true">←</span></a></div>'
     + '</section>';
 }
 

@@ -51,7 +51,7 @@
 }
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link href="resort-home.css?v=4" rel="stylesheet">
+<link href="resort-home.css?v=20261102-final-v1" rel="stylesheet">
 <style>
 .hide{display:none!important}
 /* Services page cards */
@@ -1014,25 +1014,6 @@ header{
 .lh-title{font-family:'Tajawal',sans-serif;font-size:24px;font-weight:600;line-height:1.2;margin:0 0 6px;letter-spacing:0;white-space:nowrap;background:linear-gradient(90deg,#7ecfea 0%,#ffffff 40%,#ffffff 60%,#7ecfea 100%);background-size:250% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:titleShimmer 2.8s linear infinite;}
 .lh-subtitle{font-family:'Tajawal',sans-serif;font-size:15px;font-weight:400;line-height:1.4;margin:0;background:linear-gradient(90deg,#7ecfea 0%,#ffffff 40%,#ffffff 60%,#7ecfea 100%);background-size:250% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:titleShimmer 3.4s linear infinite;}
 .lh-float-csl{position:relative;z-index:10;width:100%;margin-top:40px;}
-.lh-float-csl.has-offer{margin-top:-8px;}
-.lh-offer-strip{
-  height:48px;margin:0 16px;border-radius:15px;padding:0 12px;
-  display:flex;align-items:center;justify-content:space-between;gap:10px;
-  direction:rtl;text-decoration:none;position:relative;overflow:hidden;
-  background:linear-gradient(105deg,rgba(7,132,71,.26),rgba(8,31,43,.98) 58%,rgba(7,132,71,.18));
-  border:1.5px solid rgba(67,217,135,.55);
-  box-shadow:0 0 0 1px rgba(67,217,135,.07),0 5px 18px rgba(0,0,0,.22),0 0 24px rgba(7,132,71,.18);
-  animation:offerGreenGlow 2.8s ease-in-out infinite;
-  -webkit-tap-highlight-color:transparent;transition:transform .16s ease,background .2s ease;
-}
-.lh-offer-strip:active{transform:scale(.975);background:linear-gradient(105deg,rgba(7,132,71,.38),rgba(8,31,43,.98) 58%,rgba(7,132,71,.28));}
-.lh-offer-main{display:flex;align-items:center;gap:9px;min-width:0;}
-.lh-offer-icon{width:27px;height:27px;display:grid;place-items:center;border-radius:9px;flex:0 0 auto;color:#7cf0ad;background:rgba(67,217,135,.11);}
-.lh-offer-copy{display:flex;flex-direction:column;gap:1px;min-width:0;}
-.lh-offer-title{font-family:'Tajawal',sans-serif;font-size:14px;font-weight:800;color:#effff5;line-height:1.2;white-space:nowrap;}
-.lh-offer-sub{font-family:'Tajawal',sans-serif;font-size:10px;font-weight:500;color:rgba(206,255,224,.72);line-height:1.2;white-space:nowrap;}
-.lh-offer-go{width:27px;height:27px;display:grid;place-items:center;border-radius:50%;flex:0 0 auto;color:#dfffea;background:rgba(67,217,135,.12);border:1px solid rgba(67,217,135,.28);}
-@keyframes offerGreenGlow{0%,100%{border-color:rgba(67,217,135,.34);box-shadow:0 5px 18px rgba(0,0,0,.22),0 0 13px rgba(7,132,71,.10)}50%{border-color:rgba(67,217,135,.75);box-shadow:0 5px 18px rgba(0,0,0,.22),0 0 26px rgba(7,132,71,.28)}}
 .lh-float-label{font-family:'Tajawal',sans-serif;font-size:12px;font-weight:600;color:rgba(255,255,255,0.68);text-align:center;letter-spacing:0;text-transform:uppercase;margin:0 0 12px;}
 .lh-carousel{display:flex;flex-direction:row;gap:10px;padding:8px 16px 8px;justify-content:center;}
 .lh-carousel::-webkit-scrollbar{display:none;}
@@ -1137,9 +1118,7 @@ header{
   </div>
 </div>
 
-<script src="campaign-data.js?v=1"></script>
-<script src="resort-campaign.js?v=1" defer></script>
-<script src="resort-features.js?v=1"></script>
+<script src="resort-features.js?v=20261102-final-v1"></script>
 <script>
 
 
@@ -1479,18 +1458,6 @@ function tarfihiOrder(){
       <p class="rh-subtitle">خصوصية تليق بكم… وراحة تستحقونها</p>
     </div>
 
-    <a class="lh-offer-strip" href="offer/" aria-label="عرض اليوم الوطني - شاهد التفاصيل">
-      <span class="lh-offer-main">
-        <span class="lh-offer-icon lh-offer-flag" aria-hidden="true">🇸🇦</span>
-        <span class="lh-offer-copy">
-          <span class="lh-offer-title">عرض اليوم الوطني</span>
-          <span class="lh-offer-sub">اكتشف العرضين واحجز مباشرة</span>
-        </span>
-      </span>
-      <span class="lh-offer-go" aria-hidden="true">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-      </span>
-    </a>
 
     <div class="rh-grid">
       <button type="button" class="rh-cabins" onclick="showSection('resort')" aria-label="الأكواخ">
@@ -4632,7 +4599,7 @@ function openMDirect(c){
     var r = {name:name,args:args || []};
     if(parent) r.parent = parent;
     else if(name==='home') { /* App home is a top-level destination. */ }
-    else if(name==='offers' || name==='walaa' || name==='info') r.parent = route('home',[window.fdAppVenue || 'resort']);
+    else if(name==='walaa' || name==='info') r.parent = route('home',[window.fdAppVenue || 'resort']);
     else if(name==='bookings') r.parent = route('home',[window.fdPreviewVisitVenue || window.fdAppVenue || 'resort']);
     else if(name==='search') r.parent = route('home',[(r.args[0] && r.args[0].venue) || window.fdAppVenue || 'resort']);
     else if(name==='stay-services') r.parent = route('home',['stay']);
@@ -4668,7 +4635,7 @@ function openMDirect(c){
     match=/^(home|contact)=(resort|stay)$/.exec(hash);
     if(match) return route(match[1],[match[2]]);
     if(hash==='search') return route('search',[window.fdBookingCriteria || {venue:window.fdAppVenue || 'resort',guests:2}]);
-    if(['resort','chalet','services','faq','faq2','offers','stay-services','bookings','info'].indexOf(hash)!==-1 || serviceViews[hash]) return route(hash);
+    if(['resort','chalet','services','faq','faq2','stay-services','bookings','info'].indexOf(hash)!==-1 || serviceViews[hash]) return route(hash);
     return route('home',[window.fdAppVenue || 'resort']);
   }
   function remember(name){
@@ -4683,7 +4650,7 @@ function openMDirect(c){
       case 'resort': call('showSection',['resort']); break;
       case 'chalet': call('showSection2'); break;
       case 'services': call('showServices'); break;
-      case 'offers': case 'stay-services': case 'bookings': case 'search': case 'info': var page=document.getElementById('fa-'+r.name);page.hidden=false;page.scrollTop=0;break;
+      case 'stay-services': case 'bookings': case 'search': case 'info': var page=document.getElementById('fa-'+r.name);page.hidden=false;page.scrollTop=0;break;
       case 'faq': call('showFaq'); break;
       case 'faq2': call('showFaq2'); break;
       case 'contact': call('showContact',r.args); break;
@@ -4733,7 +4700,7 @@ function openMDirect(c){
     var close={home:'goBackToDestination',resort:'goBack',chalet:'goBack2',
       services:'closeServices',faq:'closeFaq',faq2:'closeFaq2',contact:'closeContact',
       cabin:'closeM','service-sub':'goBack',photos:'closeFS',tour:'closeIframe',order:'closeOrderPopup'};
-    if(['offers','stay-services','bookings','search','info'].indexOf(r.name)!==-1){
+    if(['stay-services','bookings','search','info'].indexOf(r.name)!==-1){
       document.getElementById('fa-'+r.name).hidden=true;
     } else if(r.name==='map-photos'){
       document.dispatchEvent(new CustomEvent('fd-map-photos-close'));
@@ -4808,7 +4775,7 @@ function openMDirect(c){
   wrapOpen('openMDirect',function(c){return cabinRoute(c.id);});
   wrapOpen('showServiceSub',function(){return route('service-sub',Array.from(arguments));});
   Object.keys(serviceViews).forEach(function(name){
-    wrapOpen(serviceViews[name][0],function(){return route(name,[],['service-sub','bookings','services'].indexOf(current.name)!==-1 || name==='sharik' && current.name==='offers' ? current : null);});
+    wrapOpen(serviceViews[name][0],function(){return route(name,[],['service-sub','bookings','services'].indexOf(current.name)!==-1  ? current : null);});
     wrapClose(serviceViews[name][1]);
   });
   window.openCabinService=function(event,name){
@@ -4897,7 +4864,7 @@ function openMDirect(c){
   window.addEventListener('pageshow',function(event){if(event.persisted) restore();});
 })();
 </script>
-<script src="resort-map.js?v=arabic-map-20261101-v1" defer></script>
+<script src="resort-map.js?v=20261102-final-v1" defer></script>
 
 <style id="fd-approved-visual-refinements">
 /* Approved refinements. Remove data-dest-photo to restore the original cards. */
@@ -5125,18 +5092,6 @@ function openMDirect(c){
 }
 </style>
 
-<style id="fd-offer-banner-alignment">
-/* Preserve the green card; center its copy between equal-sized side icons. */
-#landing .lh-offer-strip{
-  display:grid;grid-template-columns:27px minmax(0,1fr) 27px;margin-bottom:12px;
-}
-#landing .lh-offer-main{display:contents;}
-#landing .lh-offer-copy{align-items:center;text-align:center;}
-#landing .lh-offer-flag{
-  font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;
-  font-size:24px;line-height:1;
-}
-</style>
 
 <style id="fd-destination-layout">
 /* Keep the brand above a separately centered, unchanged choice group. */
@@ -5162,7 +5117,7 @@ function openMDirect(c){
 @media(max-width:599px){#hospitality-detail .hd-title{font-size:22px}}
 </style>
 
-<link rel="stylesheet" href="resort-ui.css?v=5">
+<link rel="stylesheet" href="resort-ui.css?v=20261102-final-v1">
 
 <!-- Approved keyboard navigation enhancement -->
 <style id="fd-keyboard-focus">
@@ -5180,7 +5135,7 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 (function () {
   'use strict';
   var panelIds = [
-    'splash', 'dest', 'landing', 'landing2', 'app', 'app2', 'contact-page', 'fa-offers', 'fa-stay-services', 'fa-bookings', 'fa-search', 'fa-info',
+    'splash', 'dest', 'landing', 'landing2', 'app', 'app2', 'contact-page', 'fa-stay-services', 'fa-bookings', 'fa-search', 'fa-info',
     'faq-overlay', 'faq2-overlay', 'services-overlay', 'hospitality-detail',
     'sinema-detail', 'maiya-detail', 'jalsat-detail', 'sharik-detail',
     'tarfihi-detail', 'tawilat-detail', 'walaa-detail', 'menu-detail', 'menu-cart-review',
@@ -5386,7 +5341,7 @@ body.fa-app{background:var(--fa-bg)!important;color:var(--fa-ink);font-family:Ta
 .fa-app[data-fa-detail="true"] .fa-brand-row{height:66px}
 .fa-app[data-fa-modal="true"] .fa-header,.fa-app[data-fa-modal="true"] .fa-nav{visibility:hidden;pointer-events:none}
 .fa-nav{position:fixed;z-index:20000;bottom:0;left:0;right:0;padding:8px 12px calc(8px + env(safe-area-inset-bottom,0px));background:linear-gradient(transparent,rgba(7,26,38,.98) 28%)}
-.fa-nav-inner{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));max-width:600px;margin:0 auto;align-items:end;min-height:70px;padding:7px 4px 5px;background:#112c3af5;border:1px solid #33505b;border-radius:24px;box-shadow:0 12px 36px #0005;backdrop-filter:blur(20px)}
+.fa-nav-inner{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));max-width:600px;margin:0 auto;align-items:end;min-height:70px;padding:7px 4px 5px;background:#112c3af5;border:1px solid #33505b;border-radius:24px;box-shadow:0 12px 36px #0005;backdrop-filter:blur(20px)}
 .fa-nav button{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:53px;min-width:0;padding:4px 1px;border:0;border-radius:15px;background:none;color:#9fb5bf;font-size:12px;font-weight:500;line-height:1.3;cursor:pointer}
 .fa-nav button[aria-current=page]{color:#8ce0e3;background:#1b414d;font-weight:700}
 .fa-nav .fa-icon{width:23px;height:23px}
@@ -5401,15 +5356,6 @@ body.fa-app{background:var(--fa-bg)!important;color:var(--fa-ink);font-family:Ta
 .fa-welcome p{font-size:14px;line-height:1.6;color:var(--fa-muted);margin:0}
 .fa-rating{display:flex;align-items:center;gap:5px;flex:none;color:var(--fa-gold);font-size:14px;text-decoration:none;border:1px solid #63594180;border-radius:10px;padding:6px 9px;background:#e1c49508}
 .fa-rating .fa-icon{width:14px;height:14px;fill:var(--fa-gold);stroke:none}
-.fa-campaign{display:flex;position:relative;align-items:center;gap:14px;width:100%;min-height:116px;padding:19px 20px;margin:0 0 26px;border:1px solid #3c7460;border-radius:20px;background:linear-gradient(112deg,#173e36,#0f302e);color:#f1f8ed;text-align:right;cursor:pointer;overflow:hidden}
-.fa-campaign-copy{flex:1;min-width:0}
-.fa-campaign-kicker{display:block;color:#bdd5b8;font-size:12px;line-height:1.5;margin-bottom:6px}
-.fa-campaign strong{display:block;font-size:21px;font-weight:800;line-height:1.35}
-.fa-campaign-sub{display:block;color:#c1d7cb;font-size:14px;line-height:1.6;margin-top:5px}
-.fa-campaign-mark{display:flex;flex-direction:column;align-items:center;justify-content:center;align-self:stretch;border-right:1px solid #89b58b40;padding-right:16px;color:#d9e8ca;min-width:69px}
-.fa-campaign-mark b{font-size:36px;font-weight:800;line-height:1.1;letter-spacing:-1px}
-.fa-campaign-mark small{font-size:12px;margin-top:3px}
-.fa-campaign .fa-icon{width:18px;height:18px}
 .fa-section{margin:0 0 26px}
 .fa-section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
 .fa-section-head h2{margin:0;font-size:21px;line-height:1.4;font-weight:700}
@@ -5490,22 +5436,14 @@ body.fa-app{background:var(--fa-bg)!important;color:var(--fa-ink);font-family:Ta
 .fa-page-body{max-width:1100px;padding:26px 20px 36px;margin:0 auto}
 .fa-page-body>h1{font-size:24px;line-height:1.4;font-weight:800;margin:0 0 8px}
 .fa-page-intro{color:var(--fa-muted);font-size:15px;line-height:1.7;margin:0 0 24px}
-.fa-offers-grid{display:grid;gap:16px;margin-bottom:26px}
-.fa-offer-card{display:flex;flex-direction:column;gap:10px;padding:23px;border-radius:21px;border:1px solid #46644c;background:linear-gradient(130deg,#183e36,#102b2d)}
-.fa-offer-date{display:inline-flex;align-self:flex-start;color:#c9ddbd;font-size:13px;padding:5px 10px;border:1px solid #607b524d;background:#adc08c0c;border-radius:8px}
-.fa-offer-card h2{font-size:19px;font-weight:700;line-height:1.5;margin:5px 0 0}
-.fa-offer-amount{font-size:45px;line-height:1.25;font-weight:800;color:#e3d4a1;letter-spacing:-1px}
-.fa-offer-amount small{font-size:18px;font-weight:500;letter-spacing:0;margin-right:5px}
-.fa-offer-card p{color:#c5d6cc;font-size:15px;line-height:1.7;margin:0 0 4px;flex:1}
 .fa-primary{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:49px;background:var(--fa-teal);border:0;border-radius:12px;padding:12px 17px;color:#062331;text-decoration:none;font:700 16px Tajawal,sans-serif;cursor:pointer}
-.fa-offer-card .fa-primary{background:#d6ddbc;color:#173833;margin-top:5px}
 .fa-subtle-note{font-size:13px!important;color:#9fb6b1!important;text-align:center;margin:0 0 24px}
 .fa-stay-amenities{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0}
 .fa-stay-amenities>div{padding:20px 17px;border:1px solid var(--fa-border);background:var(--fa-surface);border-radius:17px;font-size:16px;color:#d9e9ec}
 .fa-stay-amenities .fa-icon{display:block;margin-bottom:13px;color:var(--fa-teal)}
-@media(min-width:700px){.fa-cabins{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible;margin:0;padding:0;gap:20px}.fa-cabin{max-width:none}.fa-home{padding-top:30px}.fa-home .fa-quick-services{gap:18px}.fa-quick-service>span:first-child{min-height:74px}.fa-offers-grid{grid-template-columns:1fr 1fr}.fa-home-footer{justify-content:flex-start;gap:32px}}
-@media(min-width:900px){:root{--fa-top:112px;--fa-bottom:102px}.fa-header{padding-inline:32px}.fa-brand-row{height:62px}.fa-venues{max-width:420px;margin:0 auto;position:absolute;left:50%;top:31px;transform:translateX(-50%);width:420px}.fa-header{height:90px}.fa-app{--fa-top:90px}.fa-home{padding:30px 20px 40px}.fa-welcome{margin-bottom:24px}.fa-welcome h1{font-size:29px}.fa-campaign{min-height:125px;padding:22px 28px}.fa-campaign strong{font-size:26px}.fa-campaign-mark{min-width:120px}.fa-campaign-mark b{font-size:43px}.fa-cabin-photo{aspect-ratio:1.6}.fa-section{margin-bottom:30px}.fa-section-head h2{font-size:24px}.fa-quick-service{font-size:16px}.fa-loyalty-note{max-width:none;margin-top:28px}.fa-app #services-overlay .svcs-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.fa-app #services-overlay .svcs-grid--single{grid-template-columns:1fr}.fa-app #ov.fd-cabin-modern .gal-wrap{height:100%;min-height:0}.fa-app #ov.fd-cabin-modern .modal{padding:20px!important;gap:0;grid-template-rows:auto minmax(0,1fr) auto}.fa-app #ov.fd-cabin-modern .gal-wrap{border-radius:0 18px 18px 0}.fa-app #ov.fd-cabin-modern .modal-inner{background:#0b2230;border-radius:18px 0 0 18px}.fa-app #ov.fd-cabin-modern .modal-bottom-bar{margin-top:10px;border:0;border-radius:14px}.fa-nav-inner{min-height:74px}.fa-nav button{font-size:13px}}
-@media(max-width:360px){.fa-header{padding-inline:16px}.fa-home{padding-inline:16px}.fa-cabins{margin-inline:-16px;padding-inline:16px}.fa-welcome h1{font-size:22px}.fa-welcome p{font-size:13px}.fa-campaign{padding:16px;gap:10px}.fa-campaign strong{font-size:19px}.fa-campaign-mark{padding-right:10px;min-width:55px}.fa-cabin{flex-basis:87%}.fa-quick-services{gap:7px}.fa-quick-service{font-size:13px}.fa-app #services-overlay .svcs-card{padding:14px 12px}.fa-nav{padding-inline:8px}.fa-nav button{font-size:11px}}
+@media(min-width:700px){.fa-cabins{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible;margin:0;padding:0;gap:20px}.fa-cabin{max-width:none}.fa-home{padding-top:30px}.fa-home .fa-quick-services{gap:18px}.fa-quick-service>span:first-child{min-height:74px}.fa-home-footer{justify-content:flex-start;gap:32px}}
+@media(min-width:900px){:root{--fa-top:112px;--fa-bottom:102px}.fa-header{padding-inline:32px}.fa-brand-row{height:62px}.fa-venues{max-width:420px;margin:0 auto;position:absolute;left:50%;top:31px;transform:translateX(-50%);width:420px}.fa-header{height:90px}.fa-app{--fa-top:90px}.fa-home{padding:30px 20px 40px}.fa-welcome{margin-bottom:24px}.fa-welcome h1{font-size:29px}.fa-cabin-photo{aspect-ratio:1.6}.fa-section{margin-bottom:30px}.fa-section-head h2{font-size:24px}.fa-quick-service{font-size:16px}.fa-loyalty-note{max-width:none;margin-top:28px}.fa-app #services-overlay .svcs-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.fa-app #services-overlay .svcs-grid--single{grid-template-columns:1fr}.fa-app #ov.fd-cabin-modern .gal-wrap{height:100%;min-height:0}.fa-app #ov.fd-cabin-modern .modal{padding:20px!important;gap:0;grid-template-rows:auto minmax(0,1fr) auto}.fa-app #ov.fd-cabin-modern .gal-wrap{border-radius:0 18px 18px 0}.fa-app #ov.fd-cabin-modern .modal-inner{background:#0b2230;border-radius:18px 0 0 18px}.fa-app #ov.fd-cabin-modern .modal-bottom-bar{margin-top:10px;border:0;border-radius:14px}.fa-nav-inner{min-height:74px}.fa-nav button{font-size:13px}}
+@media(max-width:360px){.fa-header{padding-inline:16px}.fa-home{padding-inline:16px}.fa-cabins{margin-inline:-16px;padding-inline:16px}.fa-welcome h1{font-size:22px}.fa-welcome p{font-size:13px}.fa-cabin{flex-basis:87%}.fa-quick-services{gap:7px}.fa-quick-service{font-size:13px}.fa-app #services-overlay .svcs-card{padding:14px 12px}.fa-nav{padding-inline:8px}.fa-nav button{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.fa-app *{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
 
 /* Shared page rhythm and fixes verified in the responsive preview. */
@@ -5523,7 +5461,6 @@ body.fa-app{background:var(--fa-bg)!important;color:var(--fa-ink);font-family:Ta
 .fa-app #services-overlay .svcs-grid--single{grid-template-columns:1fr}
 .fa-app #services-overlay .svcs-grid--single .svcs-card{flex-direction:row;justify-content:flex-start;min-height:82px;padding:16px 18px}
 .fa-app #services-overlay .svcs-grid--single .svcs-name{font-size:17px!important}
-.fa-offer-date{gap:5px}
 @media(max-width:360px){.fa-app .fa-cabins{scroll-padding-inline:16px}.fa-app #services-overlay .svcs-grid{gap:8px}.fa-app #services-overlay .svcs-name{font-size:14px!important}}
 @media(min-width:900px){.fa-app #services-overlay .svcs-name{font-size:18px!important}.fa-app #services-overlay .svcs-card{min-height:120px}}
 
@@ -5538,10 +5475,6 @@ body.fa-app{background:var(--fa-bg)!important;color:var(--fa-ink);font-family:Ta
 .fa-app .fa-venues button{position:relative;min-height:44px;border-radius:0;background:transparent;box-shadow:none;color:#94b0bc;padding:9px 12px}
 .fa-app .fa-venues button[aria-pressed=true]{color:#88e1e4;background:transparent;box-shadow:none}
 .fa-app .fa-venues button[aria-pressed=true]::after{content:"";position:absolute;inset:auto 20% -1px;height:3px;border-radius:4px;background:#65c6cb}
-.fa-app .fa-campaign{min-height:88px;border-radius:17px;padding:17px 20px;margin-bottom:24px}
-.fa-app .fa-campaign strong{font-size:20px}
-.fa-app .fa-campaign-sub{margin-top:4px}
-.fa-offers-heading{font-size:18px;font-weight:700;line-height:1.5;margin:0 0 16px;color:#c9deda}
 .fa-context-caption{font-size:14px;line-height:1.5;color:var(--fa-muted);margin:6px 0 0}
 .fa-app #contact-page .cp-heading{display:block!important}
 .fa-app #contact-page .fd-contact-faq-button{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:52px;border:1px solid #315967;border-radius:14px;background:#153244;color:#f0f5f7;font:700 14px Tajawal,sans-serif;text-align:right;padding:12px 16px;cursor:pointer}
@@ -5549,10 +5482,10 @@ body.fa-app{background:var(--fa-bg)!important;color:var(--fa-ink);font-family:Ta
 .fa-app[data-fa-list=true] .fa-brand{display:none}
 .fa-app[data-fa-list=true] .fa-back{display:grid}
 .fa-app[data-fa-list=true] .fa-detail-title{display:block;text-align:center}
-@media(min-width:900px){.fa-app .fa-venues{width:300px;top:27px}.fa-app .fa-campaign{min-height:94px;padding:20px 26px}.fa-app .fa-campaign strong{font-size:23px}}
+@media(min-width:900px){.fa-app .fa-venues{width:300px;top:27px}}
 
 /* Start with a stay. Browse extras now and request them from a booking. */
-.fa-app:not([data-fa-home=true]) :is(#landing,#landing2),.fa-app:not([data-fa-page=search]) #fa-search,.fa-app:not([data-fa-page=offers]) #fa-offers,.fa-app:not([data-fa-page=bookings]) #fa-bookings{visibility:hidden!important;pointer-events:none}
+.fa-app:not([data-fa-home=true]) :is(#landing,#landing2),.fa-app:not([data-fa-page=search]) #fa-search,.fa-app:not([data-fa-page=bookings]) #fa-bookings{visibility:hidden!important;pointer-events:none}
 body.fa-app[data-fa-home],body.fa-app[data-fa-detail]{--fa-top:66px}
 .fa-app .fa-header{height:calc(var(--fa-top) + env(safe-area-inset-top,0px))!important;padding-bottom:0}
 .fa-app .fa-brand-row{height:66px}
@@ -5576,10 +5509,6 @@ body.fa-app[data-fa-demo=true]{--fa-top:94px}
 .fa-book-form .fa-primary{background:#164b56;color:#fff;min-height:49px;font-size:16px}
 .fa-book-note{margin:9px 0 0;text-align:center;font-size:12px;line-height:1.5;color:#546e74}
 .fa-book-error{font-size:13px;line-height:1.5;color:#922b38;margin:0 0 10px}
-.fa-book-offer{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:46px;width:100%;padding:13px 0 0;margin-top:11px;border:0;border-top:1px solid #c8dcda;background:none;text-align:right;font-size:14px;font-weight:700;color:#235e53;cursor:pointer}
-.fa-book-offer>span:last-child{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:500;white-space:nowrap}
-.fa-book-offer .fa-icon{width:15px;height:15px}
-.fa-book-offer[hidden]{display:none!important}
 .fa-service-preview{padding:22px 0 5px;border-top:1px solid var(--fa-border)}
 .fa-service-preview h2{font-size:21px;line-height:1.5;margin:0 0 8px;font-weight:700}
 .fa-service-preview p{font-size:15px;line-height:1.8;color:var(--fa-muted);margin:0 0 9px;max-width:640px}
@@ -5589,7 +5518,6 @@ body.fa-app[data-fa-demo=true]{--fa-top:94px}
 .fa-search-summary strong{display:block;font-size:17px;margin-bottom:6px}
 .fa-search-summary span{display:block;font-size:14px;line-height:1.7;color:var(--fa-muted)}
 .fa-availability-note{font-size:14px;line-height:1.8;color:var(--fa-muted);margin:15px 0}
-.fa-page-body>.fa-book-offer{background:#10372f;color:#cfebdf;border:1px solid #315b4d;border-radius:12px;padding:12px 15px;margin:0 0 22px}
 .fa-search-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;margin-top:22px}
 .fa-search-grid .fa-cabin{max-width:none;width:100%}
 .fa-bookings-body{max-width:720px}
@@ -5629,8 +5557,8 @@ body.fa-app[data-fa-demo=true]{--fa-top:94px}
 .fa-demo-extras li span{display:block;overflow-wrap:anywhere;font-size:14px;color:var(--fa-muted);line-height:1.8;margin-top:5px}
 .fa-demo-extras>p{font-size:13px;line-height:1.6;color:#ddc9a7}
 @media(min-width:700px){.fa-search-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(min-width:900px){.fa-book-form{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr);grid-template-areas:"heading venue venue" "dates guests action" "note note note" "offer offer offer";gap:12px 22px;padding:24px}.fa-book-form h2{grid-area:heading;margin:4px 0 0}.fa-book-venues{grid-area:venue;margin:0;width:300px;justify-self:end}.fa-book-dates{grid-area:dates;margin:0}.fa-book-guests{grid-area:guests;margin:0;align-self:end;min-height:46px}.fa-search-button{grid-area:action;align-self:end}.fa-book-note{grid-area:note;margin:0;text-align:left}.fa-book-offer{grid-area:offer;margin:0;padding-top:14px}.fa-book-error{grid-column:1/-1;margin:0}.fa-service-preview h2{font-size:24px}.fa-search-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:360px){.fa-book-form{padding:16px}.fa-book-dates{gap:8px}.fa-book-form input{padding-inline:5px}.fa-book-offer{font-size:13px;gap:8px}.fa-demo-notice{font-size:11px}.fa-booking-addons button{padding:16px}}
+@media(min-width:900px){.fa-book-form{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr);grid-template-areas:"heading venue venue" "dates guests action" "note note note";gap:12px 22px;padding:24px}.fa-book-form h2{grid-area:heading;margin:4px 0 0}.fa-book-venues{grid-area:venue;margin:0;width:300px;justify-self:end}.fa-book-dates{grid-area:dates;margin:0}.fa-book-guests{grid-area:guests;margin:0;align-self:end;min-height:46px}.fa-search-button{grid-area:action;align-self:end}.fa-book-note{grid-area:note;margin:0;text-align:left}.fa-book-error{grid-column:1/-1;margin:0}.fa-service-preview h2{font-size:24px}.fa-search-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:360px){.fa-book-form{padding:16px}.fa-book-dates{gap:8px}.fa-book-form input{padding-inline:5px}.fa-demo-notice{font-size:11px}.fa-booking-addons button{padding:16px}}
 
 /* Services follow the visit stage; discovery remains available to everyone. */
 .fa-service-stage{margin:0 0 26px}
@@ -5688,13 +5616,6 @@ body.fa-app[data-fa-destination=true][data-fa-demo=true]{--fa-top:148px}
 .fa-app .fa-book-note{font-size:12px}
 .fa-app .fa-home .fa-welcome{margin-bottom:16px}
 .fa-app:not([data-fa-page=info]) #fa-info{visibility:hidden!important;pointer-events:none}
-.fa-offer-card{position:relative;overflow:hidden;isolation:isolate}
-.fa-offer-card>.fa-offer-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.19;z-index:-1;pointer-events:none}
-.fa-offer-card::before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,#08271cb5,#102d28ec);z-index:-1;pointer-events:none}
-.fa-offer-property{font-size:13px;color:#d5e6dc;font-weight:500;margin-bottom:5px}
-.fa-offer-card h2{font-size:20px}
-.fa-offer-card .fa-offer-amount{font-size:48px;line-height:1.2}
-.fa-offer-card .fa-offer-date{align-self:flex-start}
 .fa-info-body{max-width:780px}
 .fa-info-place{display:grid;grid-template-columns:88px minmax(0,1fr);align-items:center;gap:15px;padding:17px;margin:20px 0 24px;border:1px solid #31515d;background:#102b39;border-radius:18px}
 .fa-info-place>img{width:88px;height:100px;border-radius:12px;object-fit:cover}
@@ -5707,11 +5628,10 @@ body.fa-app[data-fa-destination=true][data-fa-demo=true]{--fa-top:148px}
 .fa-info-row>.fa-icon:last-child{width:17px;height:17px;color:#8ab6c0}
 .fa-info-row strong{display:block;font-size:17px;line-height:1.5;font-weight:700}
 .fa-info-row small{display:block;font-size:13px;line-height:1.8;color:var(--fa-muted);margin-top:4px}
-@media(min-width:900px){body.fa-app[data-fa-destination=true]{--fa-top:90px}body.fa-app[data-fa-destination=true][data-fa-demo=true]{--fa-top:118px}.fa-app[data-fa-destination=true] .fa-header-inner{position:relative}.fa-app[data-fa-destination=true] .fa-brand-row{height:80px}.fa-place-switch{position:absolute;top:17px;left:50%;transform:translateX(-50%);width:340px;margin:0}.fa-app .fa-book-form{grid-template-areas:"dates guests action" "note note note";padding:22px;gap:11px 22px}.fa-info-place>img{width:100px;height:100px}.fa-info-place{grid-template-columns:100px minmax(0,1fr)}.fa-offer-card{padding:27px;min-height:350px}}
+@media(min-width:900px){body.fa-app[data-fa-destination=true]{--fa-top:90px}body.fa-app[data-fa-destination=true][data-fa-demo=true]{--fa-top:118px}.fa-app[data-fa-destination=true] .fa-header-inner{position:relative}.fa-app[data-fa-destination=true] .fa-brand-row{height:80px}.fa-place-switch{position:absolute;top:17px;left:50%;transform:translateX(-50%);width:340px;margin:0}.fa-app .fa-book-form{grid-template-areas:"dates guests action" "note note note";padding:22px;gap:11px 22px}.fa-info-place>img{width:100px;height:100px}.fa-info-place{grid-template-columns:100px minmax(0,1fr)}}
 @media(max-width:360px){.fa-place-switch button{font-size:15px}.fa-info-row{padding:14px;gap:10px}.fa-info-row strong{font-size:16px}.fa-info-place{padding:14px;gap:12px;grid-template-columns:74px minmax(0,1fr)}.fa-info-place>img{width:74px;height:94px}.fa-info-place h2{font-size:18px}}
 @media(min-width:900px){.fa-app[data-fa-page=search] .fa-detail-title{visibility:hidden}}
 
-.fa-app .fa-campaign[hidden]{display:none!important}
 </style>
 <script id="familyday-app-preview-runtime">
 (function(){
@@ -5739,7 +5659,6 @@ body.fa-app[data-fa-destination=true][data-fa-demo=true]{--fa-top:148px}
   };
   paths.calendar='<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4m10-4v4M3 11h18m-13 4h3m3 0h2"/>';
   paths.info='<circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.01"/>';
-  paths.offer='<path d="M3 4h9l9 9-8 8-10-10Z"/><circle cx="7.5" cy="8" r="1"/>';
   var demoMode=new URLSearchParams(location.search).get('demo');
   // Preview scenarios only. Production must use a server-confirmed booking
   // and check-in state; a date or a device location is not proof of check-in.
@@ -5797,11 +5716,6 @@ body.fa-app[data-fa-destination=true][data-fa-demo=true]{--fa-top:148px}
   }
   function sectionHeading(title,action,label){return '<div class="fa-section-head"><h2>'+title+'</h2><button type="button" class="fa-text-btn" onclick="'+action+'">'+(label||'عرض الكل')+icon('arrow')+'</button></div>';}
   function quick(name,label,action){return '<button type="button" class="fa-quick-service" onclick="'+action+'"><span>'+icon(name)+'</span><span>'+label+'</span></button>';}
-  function campaignBanner(){
-    var expired=typeof resortCampaignState==='function' && resortCampaignState(new Date()).allExpired;
-    if(expired) return '';
-    return '<button type="button" class="fa-book-offer" onclick="fdAppNavigate(\'offers\')"><span>'+escapeText(FD_CAMPAIGN.name)+'</span><span>تفاصيل العرض'+icon('arrow')+'</span></button>';
-  }
   function renderHome(venue){
     var stay=venue==='stay';
     var items=stay?_chaletItems2:data.resort.items.filter(function(c){return c.id!==11;});
@@ -5871,21 +5785,6 @@ body.fa-app[data-fa-destination=true][data-fa-demo=true]{--fa-top:148px}
     else if(!demoExtras.some(function(x){return x.name===name;}))demoExtras.push({name:name,notes:notes});
     return true;
   };
-  function renderOffers(){
-    var state=typeof resortCampaignState==='function'?resortCampaignState(new Date()):{statuses:[],allExpired:false};
-    var html='<div class="fa-page-body"><h1>العروض</h1><p class="fa-page-intro">اكتشف عروض يوم العائلة</p><h2 class="fa-offers-heading">'+escapeText(FD_CAMPAIGN.occasion)+'</h2>';
-    if(state.allExpired){html+='<p class="fa-page-intro">انتهت عروض اليوم الوطني. تواصل معنا للتعرّف على العروض المتاحة.</p><button class="fa-primary" onclick="showContact(\'resort\')">تواصل معنا</button>';}
-    else{
-      html+='<div class="fa-offers-grid">'+FD_CAMPAIGN.offers.map(function(offer,index){
-        var ended=state.statuses[index]==='expired';
-        var msg=FD_CAMPAIGN.whatsappMessage+' — '+offer.label;
-        return '<article class="fa-offer-card"><img class="fa-offer-photo" src="'+GALLERY[index===0?1:10][0]+'" alt="" loading="lazy"><small class="fa-offer-property">منتجع يوم العائلة</small><span class="fa-offer-date">'+offer.datesHTML+'</span><h2>'+escapeText(offer.intro)+'</h2><div class="fa-offer-amount"><bdi>'+offer.amount+'</bdi><small>'+escapeText(offer.currency)+'</small></div><p>'+offer.noteHTML+'</p>'
-          +(ended?'<p>انتهى العرض</p>':'<a class="fa-primary" href="https://wa.me/'+FD_CAMPAIGN.whatsappNumber+'?text='+encodeURIComponent(msg)+'" target="_blank" rel="noopener noreferrer">'+FD_CAMPAIGN.bookingLabel+icon('arrow')+'</a>')+'</article>';
-      }).join('')+'</div><p class="fa-subtle-note">'+escapeText(FD_CAMPAIGN.terms)+'</p>';
-    }
-    html+='<button type="button" class="fa-loyalty-note" onclick="showSharik()">'+icon('gift')+'<span><strong>شارك واربح</strong><small>تعرّف على طريقة المشاركة</small></span>'+icon('arrow')+'</button></div>';
-    document.getElementById('fa-offers').innerHTML=html;
-  }
   function infoRow(symbol,title,description,action){return '<button type="button" class="fa-info-row" onclick="'+action+'">'+icon(symbol)+'<span><strong>'+title+'</strong><small>'+description+'</small></span>'+icon('arrow')+'</button>';}
   function renderInfo(){
     var stay=window.fdAppVenue==='stay',name=stay?'استراحة يوم العائلة':'منتجع يوم العائلة';
@@ -5902,7 +5801,7 @@ body.fa-app[data-fa-destination=true][data-fa-demo=true]{--fa-top:148px}
   }
   var detailRoutes=['cabin','sinema','maiya','tarfihi','jalsat','tawilat','menu','sharik','hospitality','faq','faq2','service-sub'];
   var modalRoutes=['photos','map-photos','tour','order','map'];
-  var titles={resort:'أكواخ المنتجع',chalet:'أقسام الاستراحة',search:'خيارات الإقامة',offers:'العروض',info:'المعلومات',contact:'الموقع والتواصل',services:'الخدمات والتجارب','stay-services':'مرافق الاستراحة',bookings:'إقامتي',sinema:'جلسة السينما',maiya:'الألعاب المائية',tarfihi:'الألعاب الترفيهية',jalsat:'الجلسات الخارجية',tawilat:'طاولات الطعام',menu:'المطعم',sharik:'شارك واربح',hospitality:'الضيافة والتنسيقات',faq:'الأسئلة الشائعة',faq2:'الأسئلة الشائعة','service-sub':'الخدمات'};
+  var titles={resort:'أكواخ المنتجع',chalet:'أقسام الاستراحة',search:'خيارات الإقامة',info:'المعلومات',contact:'الموقع والتواصل',services:'الخدمات والتجارب','stay-services':'مرافق الاستراحة',bookings:'إقامتي',sinema:'جلسة السينما',maiya:'الألعاب المائية',tarfihi:'الألعاب الترفيهية',jalsat:'الجلسات الخارجية',tawilat:'طاولات الطعام',menu:'المطعم',sharik:'شارك واربح',hospitality:'الضيافة والتنسيقات',faq:'الأسئلة الشائعة',faq2:'الأسئلة الشائعة','service-sub':'الخدمات'};
   function refreshServiceActions(){
     Object.keys(serviceRules).forEach(function(key){
       var rule=serviceRules[key],panel=document.getElementById(key+'-detail');if(!panel)return;
@@ -5924,7 +5823,7 @@ body.fa-app[data-fa-destination=true][data-fa-demo=true]{--fa-top:148px}
     var venue=window.fdAppVenue||'resort';
     try{sessionStorage.setItem('fd-app-preview-venue',venue);}catch(e){}
     document.querySelectorAll('[data-fa-venue]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.faVenue===venue));});
-    var active=chain.some(function(x){return x.name==='bookings';})?'bookings':chain.some(function(x){return x.name==='walaa';})?'walaa':chain.some(function(x){return x.name==='offers';})?'offers':chain.some(function(x){return x.name==='info'||x.name==='contact';})?'info':'home';
+    var active=chain.some(function(x){return x.name==='bookings';})?'bookings':chain.some(function(x){return x.name==='walaa';})?'walaa':chain.some(function(x){return x.name==='info'||x.name==='contact';})?'info':'home';
     document.querySelectorAll('[data-fa-tab]').forEach(function(b){if(b.dataset.faTab===active)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
     var contentRoute=chain.find(function(x){return modalRoutes.indexOf(x.name)===-1;})||route;
     document.body.dataset.faDetail=String(detailRoutes.indexOf(contentRoute.name)!==-1);
@@ -5939,7 +5838,6 @@ body.fa-app[data-fa-destination=true][data-fa-demo=true]{--fa-top:148px}
     var title=titles[route.name]||'يوم العائلة';
     if(route.name==='cabin'){var c=(route.args[0]>=20?_chaletItems2:data.resort.items).find(function(x){return x.id===route.args[0];});if(c)title=c.name;}
     document.getElementById('fa-detail-title').textContent=title;
-    if(route.name==='offers')renderOffers();
     if(route.name==='search')renderSearch(route.args[0]);
     if(route.name==='bookings')renderBookings();
     if(route.name==='info')renderInfo();
@@ -5954,11 +5852,11 @@ body.fa-app[data-fa-destination=true][data-fa-demo=true]{--fa-top:148px}
     header.innerHTML='<div class="fa-header-inner"><div class="fa-brand-row"><button type="button" class="fa-back" onclick="fdAppBack()" aria-label="العودة">'+icon('back')+'</button><p id="fa-detail-title" class="fa-detail-title"></p><button type="button" class="fa-brand" onclick="fdAppNavigate(\'home\')" aria-label="يوم العائلة - الرئيسية"><img src="imgs/img00.webp" alt="" width="55" height="50"><span class="fa-brand-copy"><strong>يوم العائلة</strong><span>FAMILY DAY</span></span></button><span class="fa-header-spacer" aria-hidden="true"></span></div>'+venueButtons(window.fdAppVenue)+(demoBooking?'<p class="fa-demo-notice">حجز تجريبي للمعاينة · لا تُرسل أي طلبات</p>':'')+'</div>';
     document.body.appendChild(header);
     var nav=document.createElement('nav');nav.className='fa-nav';nav.setAttribute('aria-label','أقسام التطبيق');
-    var tabs=[['home','الرئيسية','home'],['offers','العروض','offer'],['walaa','بطاقتي','card'],['bookings','إقامتي','calendar'],['info','المعلومات','info']];
+    var tabs=[['home','الرئيسية','home'],['walaa','بطاقتي','card'],['bookings','إقامتي','calendar'],['info','المعلومات','info']];
     nav.innerHTML='<div class="fa-nav-inner">'+tabs.map(function(t){return '<button type="button" data-fa-tab="'+t[0]+'"'+(t[0]==='walaa'?' class="fa-card-tab"':'')+' onclick="fdAppNavigate(\''+t[0]+'\')"'+(t[0]==='home'?' aria-current="page"':'')+'>'+(t[0]==='walaa'?'<span class="fa-card-disc">'+icon(t[2])+'</span>':icon(t[2]))+'<span>'+t[1]+'</span></button>';}).join('')+'</div>';
     document.body.appendChild(nav);
-    [['fa-offers','العروض'],['fa-stay-services','مرافق الاستراحة'],['fa-bookings','إقامتي'],['fa-search','خيارات الإقامة'],['fa-info','المعلومات']].forEach(function(pair){var page=document.createElement('section');page.id=pair[0];page.className='fa-page';page.hidden=true;page.setAttribute('aria-label',pair[1]);page.setAttribute('tabindex','-1');document.body.appendChild(page);});
-    renderChalet2();renderHome('resort');renderHome('stay');renderOffers();renderStayServices();renderBookings();renderInfo();
+    [['fa-stay-services','مرافق الاستراحة'],['fa-bookings','إقامتي'],['fa-search','خيارات الإقامة'],['fa-info','المعلومات']].forEach(function(pair){var page=document.createElement('section');page.id=pair[0];page.className='fa-page';page.hidden=true;page.setAttribute('aria-label',pair[1]);page.setAttribute('tabindex','-1');document.body.appendChild(page);});
+    renderChalet2();renderHome('resort');renderHome('stay');renderStayServices();renderBookings();renderInfo();
     document.querySelector('#services-overlay .svcs-header').insertAdjacentHTML('afterend','<p class="fa-service-intro"></p>');
     renderServiceCatalog();
     Object.keys(serviceRules).forEach(function(key){
@@ -5980,7 +5878,6 @@ body.fa-app[data-fa-destination=true][data-fa-demo=true]{--fa-top:148px}
     syncRoute(history.state&&history.state.route||{name:'home',args:[window.fdAppVenue]});
     document.addEventListener('fd-app-route',function(e){syncRoute(e.detail);});
     document.addEventListener('click',function(){requestAnimationFrame(refreshServiceActions);});
-    document.addEventListener('visibilitychange',function(){if(!document.hidden){renderOffers();document.querySelectorAll('.fa-book-offer').forEach(function(banner){if(typeof resortCampaignState==='function')banner.hidden=resortCampaignState(new Date()).allExpired;});}});
   }
   window.fdAppOpenCabin=function(id){if(id>=20){var c=_chaletItems2.find(function(x){return x.id===id;});if(c)openMDirect(c);}else openM(id,'resort');};
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();

@@ -52,14 +52,14 @@
 }
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link href="resort-home.css?v=11" rel="stylesheet">
+<link href="resort-home.css?v=20261102-final-v1" rel="stylesheet">
 <link rel="preload" as="script" href="js/app-shell.js?v=20261102-entry-ready-v1">
 <link rel="preload" as="script" href="js/gallery-data.js?v=20261102-structure-v1">
-<link rel="preload" as="script" href="js/accommodations.js?v=20261102-structure-v1">
-<link rel="preload" as="script" href="js/services.js?v=20261102-structure-v1">
+<link rel="preload" as="script" href="js/accommodations.js?v=20261102-final-v1">
+<link rel="preload" as="script" href="js/services.js?v=20261102-final-v1">
 <link rel="preload" as="script" href="js/stay-navigation.js?v=20261102-structure-v1">
-<link rel="preload" as="script" href="js/router.js?v=20261102-entry-ready-v1">
-<link rel="stylesheet" href="css/app-base.css?v=20261102-structure-v1">
+<link rel="preload" as="script" href="js/router.js?v=20261102-final-v1">
+<link rel="stylesheet" href="css/app-base.css?v=20261102-final-v1">
 <link rel="stylesheet" href="resort-map.css?v=35">
 <style id="fd-home-map-shortcut">
 #landing .rh-home-shortcut{display:flex;align-items:center;gap:14px;margin-top:16px;padding:12px 14px;border:1px solid rgba(99,191,205,.32);border-radius:16px;background:linear-gradient(120deg,#0d2b3a,#0a202e);color:#edf5f7;text-decoration:none;text-align:right;min-width:0;}
@@ -103,27 +103,9 @@
 @keyframes splashPop{0%{transform:scale(0.55);opacity:0}60%{transform:scale(1.06)}100%{transform:scale(1);opacity:1}}
 @keyframes splashFadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 
-/* Resort landing and offer banner. */
+/* Resort landing. */
 #landing{overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch!important;display:block!important;background:#030c18!important;overscroll-behavior:none;}
 #landing.hide{display:none!important;}
-.lh-offer-strip{
-  min-height:48px;margin:0 16px;border-radius:15px;padding:8px 12px;
-  display:flex;align-items:center;justify-content:space-between;gap:10px;
-  direction:rtl;text-decoration:none;position:relative;overflow:hidden;
-  background:linear-gradient(105deg,rgba(25,167,183,.26),rgba(8,22,40,.98) 58%,rgba(25,167,183,.18));
-  border:1.5px solid rgba(25,167,183,.55);
-  box-shadow:0 0 0 1px rgba(25,167,183,.07),0 5px 18px rgba(0,0,0,.22),0 0 24px rgba(25,167,183,.18);
-  animation:offerTealGlow 2.8s ease-in-out infinite;
-  -webkit-tap-highlight-color:transparent;transition:transform .16s ease,background .2s ease;
-}
-.lh-offer-strip:active{transform:scale(.975);background:linear-gradient(105deg,rgba(25,167,183,.38),rgba(8,22,40,.98) 58%,rgba(25,167,183,.28));}
-.lh-offer-main{display:flex;align-items:center;gap:9px;min-width:0;}
-.lh-offer-icon{width:27px;height:27px;display:grid;place-items:center;border-radius:9px;flex:0 0 auto;color:#7ecfea;background:rgba(25,167,183,.11);}
-.lh-offer-copy{display:flex;flex-direction:column;gap:1px;min-width:0;}
-.lh-offer-title{font-family:'Tajawal',sans-serif;font-size:14px;font-weight:800;color:#f0f5f7;line-height:1.2;white-space:normal;}
-.lh-offer-sub{font-family:'Tajawal',sans-serif;font-size:10px;font-weight:500;color:rgba(182,203,214,.72);line-height:1.2;white-space:normal;}
-.lh-offer-go{width:27px;height:27px;display:grid;place-items:center;border-radius:50%;flex:0 0 auto;color:#d6e9ef;background:rgba(25,167,183,.12);border:1px solid rgba(25,167,183,.28);}
-@keyframes offerTealGlow{0%,100%{border-color:rgba(25,167,183,.34);box-shadow:0 5px 18px rgba(0,0,0,.22),0 0 13px rgba(25,167,183,.10)}50%{border-color:rgba(25,167,183,.75);box-shadow:0 5px 18px rgba(0,0,0,.22),0 0 26px rgba(25,167,183,.28)}}
 
 </style>
 <div id="splash" style="position:fixed;inset:0;z-index:9999;background:#0B1D2E;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;transition:opacity 0.6s ease;">
@@ -210,11 +192,9 @@
   </div>
 </div>
 
-<script src="campaign-data.js?v=7"></script>
-<script src="resort-campaign.js?v=5" defer></script>
-<script src="share-pages.js?v=20261102-review-v1"></script>
-<script src="resort-features.js?v=menu-20261028-v1"></script>
-<script src="stay-design.js?v=17"></script>
+<script src="share-pages.js?v=20261102-final-v1"></script>
+<script src="resort-features.js?v=20261102-final-v1"></script>
+<script src="stay-design.js?v=20261102-final-v1"></script>
 <script src="site-enhancements.js?v=1"></script>
 <script src="menu-experience.js?v=20261102-review-v1"></script>
 <script src="cabin-compare.js?v=20261102-review-v1"></script>
@@ -235,18 +215,6 @@
       <p class="rh-subtitle">خصوصية تليق بكم… وراحة تستحقونها</p>
     </div>
 
-    <a class="lh-offer-strip" data-campaign-banner="resort" href="offer/" aria-label="عروض أكتوبر الحصرية - شاهد التفاصيل">
-      <span class="lh-offer-main">
-        <span class="lh-offer-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="m8 16 8-8"/><circle cx="8" cy="8" r="1"/><circle cx="16" cy="16" r="1"/></svg></span>
-        <span class="lh-offer-copy">
-          <span class="lh-offer-title">عروض أكتوبر الحصرية</span>
-          <span class="lh-offer-sub">أسعار تبدأ من 507 ريال وعروض إقامة ونهاية الأسبوع</span>
-        </span>
-      </span>
-      <span class="lh-offer-go" aria-hidden="true">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-      </span>
-    </a>
 
       <button type="button" class="rh-cabins" onclick="showSection('resort')" aria-label="الأكواخ">
         <img class="rh-cabin-photo" src="imgs/dome_1.webp" width="1200" height="1200" alt="" fetchpriority="high" decoding="async">
@@ -264,7 +232,7 @@
       <a class="rh-home-shortcut" href="/services/" onclick="event.preventDefault();showServices()">
         <span class="rh-map-copy">
           <span class="rh-map-title">الخدمات</span>
-          <span class="rh-map-description">الضيافة والترفيه وتجهيز مناسبتك</span>
+          <span class="rh-map-description">تعرّف على خدمات المنتجع وتجارب الترفيه</span>
         </span>
         <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
       </a>
@@ -277,8 +245,8 @@
       </a>
       <a class="rh-home-shortcut" href="/resort/contact/" onclick="event.preventDefault();showContact('resort')">
         <span class="rh-map-copy">
-          <span class="rh-map-title">الحجز والتواصل</span>
-          <span class="rh-map-description">احجز إقامتك وتواصل معنا</span>
+          <span class="rh-map-title">الحجز والموقع والتواصل</span>
+          <span class="rh-map-description">روابط الحجز - تحميل التطبيق - طرق التواصل</span>
         </span>
         <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
       </a>
@@ -587,6 +555,70 @@
 #hd-coordination-panel .hd-group-title+.hd-items{margin-top:10px;padding-top:0;border-top:0}
 @media(max-width:360px){#hospitality-detail .hd-items{grid-template-columns:1fr}}
 </style>
+
+
+<!-- SINEMA DETAIL OVERLAY -->
+<div id="sinema-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
+  <div class="cn-shell">
+    <div class="cn-header">
+      <div class="cn-heading">
+        <button type="button" class="cn-back" onclick="closeSinemaDetail()" aria-label="العودة إلى الخدمات">
+          <svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <h1 class="cn-title">جلسة السينما</h1>
+      </div>
+    </div>
+
+    <div class="cn-layout">
+      <div class="cn-photo-group">
+        <p class="cn-intro cn-intro--desktop">سهرة سينمائية في مساحتكم الخاصة</p>
+        <figure class="cn-photo">
+          <img src="imgs/cinema_1.webp" width="1200" height="1200" alt="جلسة سينما ليلية بشاشة عرض وجلسات خارجية داخل المساحة الخاصة بالكوخ" decoding="async">
+        </figure>
+      </div>
+      <div class="cn-details">
+        <div class="cn-summary">
+          <p class="cn-intro cn-intro--mobile">سهرة سينمائية في مساحتكم الخاصة</p>
+          <dl class="cn-facts" aria-label="مدة الجلسة وسعرها">
+            <div class="cn-stat">
+              <dt>مدة الجلسة</dt>
+              <dd>3 ساعات</dd>
+            </div>
+            <div class="cn-stat">
+              <dt>السعر</dt>
+              <dd class="cn-price">150 ريال</dd>
+            </div>
+          </dl>
+        </div>
+
+        <section aria-labelledby="cn-inclusions-title">
+          <h2 id="cn-inclusions-title" class="cn-section-title">باقة السينما</h2>
+          <ul class="cn-inclusions">
+            <li>شاشة عرض خارجية</li>
+            <li>كرسيان مريحان</li>
+            <li>كوبان من الفشار</li>
+            <li>كوبان من الموهيتو</li>
+          </ul>
+        </section>
+
+        <section class="cn-notes" aria-labelledby="cn-notes-title">
+          <h2 id="cn-notes-title" class="cn-section-title">تعليمات وملاحظات</h2>
+          <ul class="cn-notes-list">
+            <li>الجلسة بالحجز المسبق، ويُؤكَّد الموعد حسب التوفر.</li>
+            <li>الالتزام بوقت بداية الجلسة.</li>
+            <li>المحافظة على الشاشة وجهاز العرض.</li>
+            <li>إبلاغنا فورًا عند هبوب رياح قوية.</li>
+          </ul>
+        </section>
+
+        <div class="cn-order">
+          <button type="button" class="cn-order-button" onclick="openOrderPopup('جلسة السينما', true)">إكمال الطلب عبر واتساب</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 <div id="hospitality-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
   <div class="hd-shell">
   <div class="hd-header">
@@ -782,68 +814,6 @@
   </div>
 </div>
 
-<!-- SINEMA DETAIL OVERLAY -->
-<div id="sinema-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
-  <div class="cn-shell">
-    <div class="cn-header">
-      <div class="cn-heading">
-        <button type="button" class="cn-back" onclick="closeSinemaDetail()" aria-label="العودة إلى الخدمات">
-          <svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <h1 class="cn-title">جلسة السينما</h1>
-      </div>
-    </div>
-
-    <div class="cn-layout">
-      <div class="cn-photo-group">
-        <p class="cn-intro cn-intro--desktop">سهرة سينمائية في مساحتكم الخاصة</p>
-        <figure class="cn-photo">
-          <img src="imgs/cinema_1.webp" width="1200" height="1200" alt="جلسة سينما ليلية بشاشة عرض وجلسات خارجية داخل المساحة الخاصة بالكوخ" decoding="async">
-        </figure>
-      </div>
-      <div class="cn-details">
-        <div class="cn-summary">
-          <p class="cn-intro cn-intro--mobile">سهرة سينمائية في مساحتكم الخاصة</p>
-          <dl class="cn-facts" aria-label="مدة الجلسة وسعرها">
-            <div class="cn-stat">
-              <dt>مدة الجلسة</dt>
-              <dd>3 ساعات</dd>
-            </div>
-            <div class="cn-stat">
-              <dt>السعر</dt>
-              <dd class="cn-price">150 ريال</dd>
-            </div>
-          </dl>
-        </div>
-
-        <section aria-labelledby="cn-inclusions-title">
-          <h2 id="cn-inclusions-title" class="cn-section-title">باقة السينما</h2>
-          <ul class="cn-inclusions">
-            <li>شاشة عرض خارجية</li>
-            <li>كرسيان مريحان</li>
-            <li>كوبان من الفشار</li>
-            <li>كوبان من الموهيتو</li>
-          </ul>
-        </section>
-
-        <section class="cn-notes" aria-labelledby="cn-notes-title">
-          <h2 id="cn-notes-title" class="cn-section-title">تعليمات وملاحظات</h2>
-          <ul class="cn-notes-list">
-            <li>الجلسة بالحجز المسبق، ويُؤكَّد الموعد حسب التوفر.</li>
-            <li>الالتزام بوقت بداية الجلسة.</li>
-            <li>المحافظة على الشاشة وجهاز العرض.</li>
-            <li>إبلاغنا فورًا عند هبوب رياح قوية.</li>
-          </ul>
-        </section>
-
-        <div class="cn-order">
-          <button type="button" class="cn-order-button" onclick="openOrderPopup('جلسة السينما', true)">إكمال الطلب عبر واتساب</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
 
 
 <!-- MAIYA DETAIL OVERLAY -->
@@ -1151,18 +1121,6 @@
     </div>
 
 
-    <a class="lh-offer-strip" data-campaign-banner="stay" href="offer/stay.html" aria-label="عروض أكتوبر الحصرية للاستراحة - شاهد التفاصيل">
-      <span class="lh-offer-main">
-        <span class="lh-offer-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="m8 16 8-8"/><circle cx="8" cy="8" r="1"/><circle cx="16" cy="16" r="1"/></svg></span>
-        <span class="lh-offer-copy">
-          <span class="lh-offer-title">عروض أكتوبر الحصرية</span>
-          <span class="lh-offer-sub">القسم بـ540 ريال، والقسم الثاني مع الزحليقة بـ690 ريال</span>
-        </span>
-      </span>
-      <span class="lh-offer-go" aria-hidden="true">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-      </span>
-    </a>
 
       <button type="button" class="rh-cabins" onclick="showSection2()" aria-label="أقسام الاستراحة">
         <img class="rh-cabin-photo" src="imgs/sec1_1.webp" width="1200" height="1200" alt="" fetchpriority="high" decoding="async">
@@ -1179,8 +1137,8 @@
     <nav class="rh-menu" aria-label="خيارات الاستراحة">
       <a class="rh-home-shortcut" href="/stay/contact/" onclick="event.preventDefault();showContact2()">
         <span class="rh-map-copy">
-          <span class="rh-map-title">الحجز والتواصل</span>
-          <span class="rh-map-description">احجز إقامتك وتواصل معنا</span>
+          <span class="rh-map-title">الحجز والموقع والتواصل</span>
+          <span class="rh-map-description">روابط الحجز - تحميل التطبيق - طرق التواصل</span>
         </span>
         <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
       </a>
@@ -1234,8 +1192,8 @@
       </button>
       <a class="rh-home-shortcut" href="/chalet/contact/" onclick="event.preventDefault();showContact('chalet')">
         <span class="rh-map-copy">
-          <span class="rh-map-title">الحجز والتواصل</span>
-          <span class="rh-map-description">احجز إقامتك وتواصل معنا</span>
+          <span class="rh-map-title">الحجز والموقع والتواصل</span>
+          <span class="rh-map-description">روابط الحجز - تحميل التطبيق - طرق التواصل</span>
         </span>
         <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
       </a>
@@ -1473,7 +1431,6 @@
 
   <div class="grid-section"><div class="grid" id="grid"></div></div>
   <!-- SERVICE SUB SECTION -->
-  <div id="service-sub" class="hide" style="display:flex;flex-direction:column;gap:14px;padding-bottom:calc(80px + env(safe-area-inset-bottom,0px));"></div>
 
   
 </div>
@@ -1522,7 +1479,7 @@
 <script src="service-data.js?v=20261102-review-v1"></script>
 <script src="resort-data.js?v=20261102-review-v1"></script>
 <script src="js/gallery-data.js?v=20261102-structure-v1"></script>
-<script src="js/accommodations.js?v=20261102-structure-v1"></script>
+<script src="js/accommodations.js?v=20261102-final-v1"></script>
 
 
 <!-- FULLSCREEN GALLERY -->
@@ -1555,7 +1512,7 @@
 
 <div class="tag-tooltip" id="tag-tooltip"></div>
 
-<script src="js/services.js?v=20261102-structure-v1"></script>
+<script src="js/services.js?v=20261102-final-v1"></script>
 
 
 <!-- BOTTOM NAV -->
@@ -1873,21 +1830,21 @@
 </div>
 
 <script src="js/stay-navigation.js?v=20261102-structure-v1"></script>
-<script src="chalet-design.js?v=20261102-cleanup-v1"></script>
+<script src="chalet-design.js?v=20261102-final-v1"></script>
 <script src="dome-gallery.js?v=2"></script>
 
 <link rel="stylesheet" href="service-sections.css?v=20261102-review-v1">
 <script src="service-sections.js?v=20261102-review-v1"></script>
-<script src="js/router.js?v=20261102-entry-ready-v1"></script>
+<script src="js/router.js?v=20261102-final-v1"></script>
 <script src="resort-map-data.js?v=20261028-v1" defer></script>
-<script src="resort-map.js?v=20261102-cleanup-v1" defer></script>
+<script src="resort-map.js?v=20261102-final-v1" defer></script>
 <link rel="stylesheet" href="chalet-map.css?v=23">
-<script src="chalet-map.js?v=20261102-review-v1" defer></script>
+<script src="chalet-map.js?v=20261102-final-v1" defer></script>
 
-<link rel="stylesheet" href="css/accommodation-layout.css?v=20261102-structure-v1">
+<link rel="stylesheet" href="css/accommodation-layout.css?v=20261102-final-v1">
 
-<link rel="stylesheet" href="resort-ui.css?v=10">
-<link rel="stylesheet" href="stay-ui.css?v=13">
+<link rel="stylesheet" href="resort-ui.css?v=20261102-final-v1">
+<link rel="stylesheet" href="stay-ui.css?v=20261102-final-v1">
 <link rel="stylesheet" href="chalet-ui.css?v=9">
 
 <!-- Approved keyboard navigation enhancement -->
@@ -1901,7 +1858,7 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
   outline-offset: 3px;
 }
 </style>
-<script src="js/accessibility.js?v=20261102-structure-v1"></script>
+<script src="js/accessibility.js?v=20261102-final-v1"></script>
 
 <!-- Accommodation carousel on small screens; site-ui.css supplies the desktop grid. -->
 <style id="fd-resort-carousel-style">
@@ -1952,7 +1909,7 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 #ov.fd-cabin-modern .fd-cabin-heading:has(.fd-cabin-occupancy){display:block}
 #ov.fd-cabin-modern .fd-cabin-occupancy + .fd-cabin-suitable{margin-top:7px}
 </style>
-<link rel="stylesheet" href="site-ui.css?v=10">
+<link rel="stylesheet" href="site-ui.css?v=20261102-final-v1">
 <link rel="stylesheet" href="menu-experience.css?v=20261028-v1">
 <link rel="stylesheet" href="cabin-compare.css?v=1">
 <link rel="stylesheet" href="dome-gallery.css?v=1">

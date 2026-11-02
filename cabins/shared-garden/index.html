@@ -21,7 +21,9 @@
 // Crawlers read the title above; visitors use the existing view and Back navigation.
 var route="cabin=11";
 if(route.indexOf('cabin=')===0 && new URLSearchParams(location.search).get('from')==='map') route+='&from=map';
-location.replace('/'+location.search+'#'+route);
+// Preserve the caller stored in history when an in-app service URL is reloaded.
+history.replaceState(history.state,'','/'+location.search+'#'+route);
+location.reload();
 </script>
 </head>
 <body><main><h1>الحديقة المشتركة | يوم العائلة</h1><p>منطقة مشتركة مجهزة للعائلات، استعرض الصور والمرافق في يوم العائلة.</p><a href="/#cabin=11">فتح الصفحة</a></main></body>

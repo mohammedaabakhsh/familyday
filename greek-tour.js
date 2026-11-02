@@ -70,7 +70,7 @@ var FD_GREEK_TOUR = (function () {
   }
   function update() {
     root.lang=language; root.dir=language==='ar'?'rtl':'ltr';
-    root.querySelector('.dt-title').textContent=tr('استكشف البيت اليوناني من الداخل','Explore the Greek House');
+    root.querySelector('.dt-title').textContent=tr('استكشف البيت اليوناني','Explore the Greek House');
     root.querySelector('.dt-occupancy').textContent=tr('مناسب للعائلات · حتى '+cabin.guests+' ضيوف','Family friendly · Up to '+cabin.guests+' guests');
     root.querySelector('.dt-image').alt=tr('رسم توضيحي لتوزيع البيت اليوناني ومرافقه','Illustrated layout of the Greek House and its facilities');
     root.querySelectorAll('.dt-labels').forEach(function(group){group.setAttribute('aria-label','اختر المرفق لعرض تفاصيله');});

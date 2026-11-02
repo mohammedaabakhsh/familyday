@@ -42,7 +42,9 @@ for page in pages:
 // Crawlers read the title above; visitors use the existing view and Back navigation.
 var route={json.dumps(route)};
 if(route.indexOf('cabin=')===0 && new URLSearchParams(location.search).get('from')==='map') route+='&from=map';
-location.replace('/'+location.search+'#'+route);
+// Preserve the caller stored in history when an in-app service URL is reloaded.
+history.replaceState(history.state,'','/'+location.search+'#'+route);
+location.reload();
 </script>
 </head>
 <body><main><h1>{title}</h1><p>{description}</p><a href="/#{html.escape(route, quote=True)}">فتح الصفحة</a></main></body>

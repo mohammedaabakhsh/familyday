@@ -59,7 +59,7 @@ var FD_DOME_TOUR = (function () {
   }
   function update() {
     root.lang=language; root.dir=language==='ar'?'rtl':'ltr';
-    root.querySelector('.dt-title').textContent=tr('استكشف بيت الدوم من الداخل','Explore the Dome House');
+    root.querySelector('.dt-title').textContent=tr('استكشف بيت الدوم','Explore the Dome House');
     root.querySelector('.dt-occupancy').textContent=tr('مثالي للأزواج · حتى ضيفين','Ideal for couples · Up to 2 guests');
     root.querySelector('.dt-image').alt=tr('رسم توضيحي لتوزيع بيت الدوم ومرافقه','Illustrated layout of the Dome House and its facilities');
     root.querySelectorAll('.dt-labels').forEach(function(group){group.setAttribute('aria-label','اختر المرفق لعرض تفاصيله');});

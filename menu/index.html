@@ -21,7 +21,9 @@
 // Crawlers read the title above; visitors use the existing view and Back navigation.
 var route="menu";
 if(route.indexOf('cabin=')===0 && new URLSearchParams(location.search).get('from')==='map') route+='&from=map';
-location.replace('/'+location.search+'#'+route);
+// Preserve the caller stored in history when an in-app service URL is reloaded.
+history.replaceState(history.state,'','/'+location.search+'#'+route);
+location.reload();
 </script>
 </head>
 <body><main><h1>منيو المطعم | يوم العائلة</h1><p>تصفح منيو مطعم يوم العائلة، واختر وجباتك وأكمل طلبك عبر واتساب. أوقات العمل من 9 صباحًا إلى 1 بعد منتصف الليل.</p><a href="/#menu">فتح الصفحة</a></main></body>

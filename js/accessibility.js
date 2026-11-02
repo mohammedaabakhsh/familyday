@@ -21,7 +21,7 @@
   }
 
   function enhanceControls() {
-    document.querySelectorAll('.dest-card, #services-overlay [onclick], #service-sub [onclick], label[onclick], .tag[data-tip]').forEach(function (el) {
+    document.querySelectorAll('.dest-card, #services-overlay [onclick], label[onclick], .tag[data-tip]').forEach(function (el) {
       // Keep native buttons and their existing click bubbling; never create nested buttons.
       if (el.matches('button, a, input, select, textarea, .faq-question-row') || el.querySelector('button, a[href], input, select, textarea')) return;
       if (el.hasAttribute('data-fd-keyboard')) return;

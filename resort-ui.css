@@ -236,8 +236,11 @@
 #faq-list-resort .faq-answer p:last-child { margin:10px 0 0; }
 #faq-list-resort .fd-text-link { display:block; width:fit-content; margin-top:12px; color:var(--fd-link); text-decoration:underline; text-underline-offset:4px; }
 
-#ov.fd-cabin-modern .fd-cabin-service-link { justify-content:space-between; gap:8px; color:var(--fd-link); text-decoration:underline; text-underline-offset:4px; }
-#ov.fd-cabin-modern .fd-cabin-addons a { color:var(--fd-link); text-decoration:underline; text-underline-offset:4px; }
+#ov.fd-cabin-modern .fd-cabin-service-link { justify-content:space-between; gap:8px; color:var(--fd-link); text-decoration:none; }
+#ov.fd-cabin-modern .fd-cabin-addon-links { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+#ov.fd-cabin-modern .fd-cabin-addon-links a { display:inline-flex; align-items:center; gap:10px; min-height:44px; padding:8px 12px; box-sizing:border-box; border:1px solid #315967; border-radius:10px; color:var(--fd-link); text-decoration:none; font-size:14px; line-height:1.5; }
+#ov.fd-cabin-modern :is(.fd-cabin-addon-links a,.fd-cabin-service-link):focus-visible { outline:2px solid #7ecfea; outline-offset:3px; }
+#ov.fd-cabin-modern .fd-cabin-addon-links a:hover { background:#153244; color:#fff; }
 #ov.fd-cabin-modern .modal-bottom-bar { flex-wrap:wrap; gap:10px; }
 #ov.fd-cabin-modern .modal-bottom-bar > .mbtn { flex:1; }
 #ov.fd-cabin-modern .mbtn-wa { background:#102b3a; border:1px solid var(--fd-line); color:var(--fd-link); }

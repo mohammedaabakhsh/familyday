@@ -99,6 +99,20 @@ window.FD_SHARE_PAGES = [
     "entry": true
   },
   {
+    "route": "hospitality=hospitality",
+    "path": "/services/hospitality/packages/",
+    "title": "الضيافة | يوم العائلة",
+    "description": "تصفّح باقات الضيافة السعودية والاسترخاء والعائلية، وتعرّف على محتوياتها وأسعارها وخيارات طلبها في منتجع يوم العائلة.",
+    "entry": true
+  },
+  {
+    "route": "hospitality=coordination",
+    "path": "/services/coordination/",
+    "title": "التنسيقات | يوم العائلة",
+    "description": "تصفّح باقات تنسيق المناسبات والورد والاحتفالات، وتعرّف على تفاصيلها وأسعارها وخيارات طلبها في منتجع يوم العائلة.",
+    "entry": true
+  },
+  {
     "route": "setups",
     "path": "/services/setups/",
     "title": "الجلسات والتجهيزات | يوم العائلة",
@@ -106,7 +120,7 @@ window.FD_SHARE_PAGES = [
     "entry": true
   },
   {
-    "route": "sinema",
+    "route": "setups=cinema",
     "path": "/services/cinema/",
     "title": "جلسة السينما | يوم العائلة",
     "description": "تعرّف على جلسة السينما وتجهيزاتها وخيارات طلب الخدمة.",
@@ -120,7 +134,7 @@ window.FD_SHARE_PAGES = [
     "entry": true
   },
   {
-    "route": "jalsat",
+    "route": "setups=seating",
     "path": "/services/outdoor-seating/",
     "title": "الجلسات الخارجية | يوم العائلة",
     "description": "تصفّح الجلسات الخارجية واختر الجلسة المناسبة لعدد ضيوفك.",
@@ -134,7 +148,7 @@ window.FD_SHARE_PAGES = [
     "entry": true
   },
   {
-    "route": "tawilat",
+    "route": "setups=dining",
     "path": "/services/dining-tables/",
     "title": "طاولات الطعام | يوم العائلة",
     "description": "تصفّح تجهيزات طاولات الطعام وتنسيقاتها.",

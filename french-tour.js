@@ -125,7 +125,7 @@ var FD_FRENCH_TOUR = (function () {
 
     root.lang=language; root.dir=language==='ar'?'rtl':'ltr';
 
-    root.querySelector('.dt-title').textContent=tr('استكشف الكوخ الفرنسي من الداخل','Explore the French Cottage');
+    root.querySelector('.dt-title').textContent=tr('استكشف الكوخ الفرنسي','Explore the French Cottage');
 
     root.querySelector('.dt-occupancy').textContent=tr('مناسب للعائلات · حتى '+cabin.guests+' ضيوف','Family friendly · Up to '+cabin.guests+' guests');
 

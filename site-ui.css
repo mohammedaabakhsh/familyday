@@ -25,13 +25,30 @@
   #chalet-faq .chalet-faq-answer { font-size:13px!important; }
 
   /* Use the resort contact type sizes for all three destinations. */
-  #contact-page[data-venue] .cp-label { font-size:18px!important; }
+  #contact-page[data-venue] .cp-label { font-size:16px; margin-bottom:6px; }
   #contact-page[data-venue] .cp-intro { font-size:15px!important; }
   #contact-page[data-venue] :is(.cp-wide-name,.cp-tile-name,.fd-contact-faq-button),
   #contact-page[data-venue] .cp-primary .cp-wide-name { font-size:16px!important; }
   #contact-page[data-venue] .cp-tile-sub { font-size:13px!important; }
   #contact-page[data-venue] :is(.cp-map-sub,.cp-app-caption),
   #contact-page[data-venue] .cp-tile-sm .cp-tile-name { font-size:14px!important; }
+  #contact-page[data-venue] .cp-shell { padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px)); }
+  #contact-page[data-venue] .cp-hero { margin-bottom:12px; }
+  #contact-page[data-venue] .cp-body { gap:12px; }
+  #contact-page[data-venue] .cp-booking { padding:12px; }
+  #contact-page[data-venue] .cp-wide { min-height:44px; padding:8px 12px; border-radius:12px; }
+  #contact-page[data-venue] .cp-primary { min-height:44px; padding:8px 12px; }
+  #contact-page[data-venue] .cp-row2 { margin-top:8px; gap:8px; }
+  #contact-page[data-venue] .cp-tile { min-height:56px; padding:6px 8px; border-radius:12px; }
+  #contact-page[data-venue] .cp-tile-sub { margin-top:2px; }
+  #contact-page[data-venue] .cp-app-caption { margin-top:6px; }
+  #contact-page[data-venue] .cp-social { padding-top:10px; }
+  #contact-page[data-venue] .cp-tile-sm { min-height:44px; padding:6px; }
+  #contact-page[data-venue] .cp-map-sub { margin-top:0; }
+  #contact-page[data-venue] .cp-review { flex-direction:row; align-items:center; justify-content:space-between; gap:8px; margin-top:8px; }
+  #contact-page[data-venue] .cp-review-copy { font-size:13px; }
+  #contact-page[data-venue] .cp-review-link { padding:8px 12px; font-size:14px; }
+
 }
 
 /* Increase the controls' touch area while retaining their existing appearance. */
@@ -142,7 +159,7 @@
 
 /* Contextual FAQ access at the end of accommodation specifications. */
 #ov.fd-cabin-modern .fd-cabin-faq-footer{margin-top:24px;padding-top:12px;border-top:1px solid rgba(49,89,103,.65);}
-#ov.fd-cabin-modern .fd-cabin-faq-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:#a6dfe8;font-size:14px;font-weight:700;text-decoration:underline;text-underline-offset:4px;}
+#ov.fd-cabin-modern .fd-cabin-faq-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:#a6dfe8;font-size:14px;font-weight:700;text-decoration:none;padding:8px 12px;border:1px solid #315967;border-radius:10px;box-sizing:border-box;}
 #ov.fd-cabin-modern .fd-cabin-faq-link:hover{color:#fff;}
 #ov.fd-cabin-modern .fd-cabin-faq-link:focus-visible{outline:2px solid #7ecfea;outline-offset:4px;border-radius:4px;}
 #ov.fd-cabin-modern .fd-chalet-pool-note{grid-column:1/-1;margin:0 0 8px;}

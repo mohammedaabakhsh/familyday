@@ -118,7 +118,7 @@ var FD_RUSTIC_TOUR = (function () {
 
     root.lang=language; root.dir=language==='ar'?'rtl':'ltr';
 
-    root.querySelector('.dt-title').textContent=tr('استكشف الكوخ الريفي من الداخل','Explore the Rustic Cottage');
+    root.querySelector('.dt-title').textContent=tr('استكشف الكوخ الريفي','Explore the Rustic Cottage');
 
     root.querySelector('.dt-occupancy').textContent=tr('مناسب للعائلات · حتى '+cabin.guests+' ضيفًا','Family friendly · Up to '+cabin.guests+' guests');
 

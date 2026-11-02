@@ -26,6 +26,7 @@ for entry in pages:
     assert parser.values.get('og:url') == 'https://familydaystay.com' + entry['path'], entry['path']
     if entry['entry']:
         assert parser.values['og:title'] == entry['title'], entry['path']
+        assert parser.values['og:description'] == entry['description'], entry['path']
         assert 'og:image' not in parser.values, entry['path']
 for path in ROOT.glob('*-tour/index.html'):
     parser=Metadata(); parser.feed(path.read_text())
@@ -40,16 +41,19 @@ with sync_playwright() as p:
         for entry in pages:
             if entry['route']=='contest': continue # Already a standalone page, audited above.
             page.goto(BASE+entry['path'],wait_until='networkidle')
-            aliases={'sinema':'cinema','tawilat':'dining','jalsat':'seating'}
-            tab=aliases.get(entry['route'])
-            expected_path='/services/setups/'+(('?tab='+tab) if tab and tab!='cinema' else '') if tab else entry['path']
-            expected_title='الجلسات والتجهيزات | يوم العائلة' if tab else entry['title']
-            assert page.title()==expected_title, (entry['path'],page.title())
-            assert page.url==BASE+expected_path, (entry['path'],page.url)
+            assert page.title()==entry['title'], (entry['path'],page.title())
+            assert page.url==BASE+entry['path'], (entry['path'],page.url)
+            assert page.locator('meta[property="og:title"]').get_attribute('content')==entry['title']
+            assert page.locator('meta[property="og:description"]').get_attribute('content')==entry['description']
+            assert page.locator('link[rel="canonical"]').get_attribute('href')==BASE+entry['path']
             route=page.evaluate('history.state.route')
-            key=route['name']+('='+str(route['args'][0]) if route['name'] in ['home','contact','cabin'] else '')
-            assert key==('setups' if tab else entry['route']), (entry['path'],key)
-            if tab: assert route['args']==[tab]
+            specific=route['name'] in ['home','contact','cabin'] or (route['name'] in ['hospitality','setups'] and not route.get('overview'))
+            key=route['name']+('='+str(route['args'][0]) if specific else '')
+            assert key==entry['route'], (entry['path'],key)
+            if route['name'] in ['hospitality','setups']:
+                prefix='#hd-tab-' if route['name']=='hospitality' else '#setups-tab-'
+                assert page.locator(prefix+route['args'][0]).get_attribute('aria-selected')=='true'
+                assert page.locator(prefix+route['args'][0]).is_visible()
             if route['name']=='cabin':
                 assert page.locator('#ov').evaluate('(e)=>e.classList.contains("open")')
                 if route['args'][0]<20: assert page.locator('#fd-cabin-detail-title').inner_text() in entry['title']

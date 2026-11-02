@@ -69,7 +69,7 @@ var FD_BOHO_TOUR = (function () {
   }
   function update() {
     root.lang=language; root.dir=language==='ar'?'rtl':'ltr';
-    root.querySelector('.dt-title').textContent=tr('استكشف الكوخ البوهيمي من الداخل','Explore the Bohemian Cottage');
+    root.querySelector('.dt-title').textContent=tr('استكشف الكوخ البوهيمي','Explore the Bohemian Cottage');
     root.querySelector('.dt-occupancy').textContent=tr('مناسب للعائلات · حتى '+cabin.guests+' ضيوف','Family friendly · Up to '+cabin.guests+' guests');
     root.querySelector('.dt-image').alt=tr('رسم توضيحي لتوزيع الكوخ البوهيمي ومرافقه','Illustrated layout of the Bohemian Cottage and its facilities');
     root.querySelectorAll('.dt-labels').forEach(function(group){group.setAttribute('aria-label','اختر المرفق لعرض تفاصيله');});

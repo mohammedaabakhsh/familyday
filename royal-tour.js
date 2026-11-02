@@ -118,7 +118,7 @@ var FD_ROYAL_TOUR = (function () {
 
     root.lang=language; root.dir=language==='ar'?'rtl':'ltr';
 
-    root.querySelector('.dt-title').textContent=tr('استكشف كوخ رويال من الداخل','Explore the Royal Cottage');
+    root.querySelector('.dt-title').textContent=tr('استكشف كوخ رويال','Explore the Royal Cottage');
 
     root.querySelector('.dt-occupancy').textContent=tr('مناسب للعائلات · حتى '+cabin.guests+' ضيفًا','Family friendly · Up to '+cabin.guests+' guests');
 

@@ -167,10 +167,8 @@
   }
 
   function syncLauncher() {
-    var sub = document.getElementById('service-sub');
     launcher.hidden = typeof curSection === 'undefined' || curSection !== 'resort' ||
-      !app.classList.contains('show') || filters.style.display === 'none' ||
-      (sub && !sub.classList.contains('hide'));
+      !app.classList.contains('show') || filters.style.display === 'none';
   }
 
 
@@ -811,7 +809,5 @@
   var observer = new MutationObserver(syncLauncher);
   observer.observe(filters, { attributes: true, attributeFilter: ['style'] });
   observer.observe(app, { attributes: true, attributeFilter: ['class'] });
-  var sub = document.getElementById('service-sub');
-  if (sub) observer.observe(sub, { attributes: true, attributeFilter: ['class'] });
   syncLauncher();
 })();

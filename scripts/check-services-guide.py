@@ -16,6 +16,9 @@ with sync_playwright() as p:
         page.wait_for_selector('#resort-map')
         assert page.locator('.guide-section').evaluate_all('(els)=>els.map(e=>e.id)')==SECTIONS
         assert page.locator('.contents a').count()==6
+        assert page.locator('#guide-back').get_attribute('href')=='/resort/'
+        assert page.locator('.guest-services-link').get_attribute('href')=='/guest-services/'
+        assert context.request.get(BASE+'/guest-services/').ok
         assert page.locator('#restaurant,#games,#water-games').count()==0
         assert page.locator('.hd-package-order').count()==0
         # Content must match the main site, including ordering and every inclusion.
@@ -117,5 +120,14 @@ with sync_playwright() as p:
     assert page.locator('#share-dialog').is_visible()
     assert page.locator('#share-link').input_value()==BASE+'/services-guide/'
     page.locator('#close-share').click();assert page.locator('#share-dialog').is_hidden()
-    context.close();browser.close()
+    context.close()
+    page=browser.new_page()
+    page.goto(BASE+'/services/',wait_until='networkidle')
+    page.locator('a[href="/services-guide/"]').click()
+    page.wait_for_selector('#guide-back')
+    assert page.locator('#guide-back').get_attribute('href')==BASE+'/services/'
+    page.locator('#guide-back').click()
+    page.wait_for_url('**/services/')
+    print('PASS guide return to source and direct-entry fallback',flush=True)
+    browser.close()
     print('PASS direct anchor, automatic content/price/photo updates, retry and share fallback')

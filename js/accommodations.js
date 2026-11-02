@@ -34,14 +34,6 @@ function showSection(type){
   curSection=type;
 
   const d=data[type];
-  // Close service sub if open
-  const sub=document.getElementById('service-sub');
-  if(!sub.classList.contains('hide')){
-    sub.classList.add('hide');
-    sub.innerHTML='';
-    document.getElementById('grid').parentElement.style.display='';
-    _serviceSubReturn=null;
-  }
   document.getElementById('services-overlay').classList.add('hide');
   document.getElementById('landing').classList.add('hide');
 
@@ -142,10 +134,6 @@ function goBack(){
   document.querySelector('.back-btn').style.height = '';
   document.querySelector('.section-hero').style.display = '';
   document.querySelector('.section-hero').style.paddingTop = '';
-  if(_serviceSubReturn==='services'){
-    closeServiceSub();
-    return;
-  }
   document.getElementById('landing').classList.remove('hide');
   document.getElementById('app').classList.remove('show');
   document.getElementById('grid').innerHTML='';
@@ -322,7 +310,7 @@ ${c.id===8?'<a class="fd-pyramid-detail-tour" href="/rustic-tour/?from=details&c
       <section class="fd-cabin-section">
         <h3>خدمات متاحة</h3>
         <div class="fd-cabin-feature-list">
-          <a class="fd-cabin-feature fd-cabin-service-link" href="#menu" onclick="return openCabinService(event,'menu')">المطعم <span aria-hidden="true">←</span></a>
+          <a class="fd-cabin-feature fd-cabin-service-link" href="/menu/" onclick="return openCabinService(event,'menu')">المطعم <span aria-hidden="true">←</span></a>
           <span class="fd-cabin-feature">غرفة سائق</span>
         </div>
         <div class="fd-cabin-instructions">
@@ -335,9 +323,9 @@ ${c.id===8?'<a class="fd-pyramid-detail-tour" href="/rustic-tour/?from=details&c
 
       <section class="fd-cabin-addons">
         <h3>إضافات الحجز</h3>
-        <p>الضيافة والتنسيقات، <a href="#jalsat" onclick="return openCabinService(event,'jalsat')">الجلسات الخارجية</a>، <a href="#tawilat" onclick="return openCabinService(event,'tawilat')">طاولات الطعام</a>، <a href="#sinema" onclick="return openCabinService(event,'sinema')">جلسة السينما</a>، <a href="#tarfihi" onclick="return openCabinService(event,'tarfihi')">الألعاب الترفيهية</a>، و<a href="#maiya" onclick="return openCabinService(event,'maiya')">الألعاب المائية</a>.</p>
+        <div class="fd-cabin-addon-links"><a href="/services/hospitality/" onclick="return openCabinService(event,'hospitality')">الضيافة والتنسيقات <span aria-hidden="true">←</span></a><a href="/services/outdoor-seating/" onclick="return openCabinService(event,'jalsat')">الجلسات الخارجية <span aria-hidden="true">←</span></a><a href="/services/dining-tables/" onclick="return openCabinService(event,'tawilat')">طاولات الطعام <span aria-hidden="true">←</span></a><a href="/services/cinema/" onclick="return openCabinService(event,'sinema')">جلسة السينما <span aria-hidden="true">←</span></a><a href="/services/games/" onclick="return openCabinService(event,'tarfihi')">الألعاب الترفيهية <span aria-hidden="true">←</span></a><a href="/services/water-games/" onclick="return openCabinService(event,'maiya')">الألعاب المائية <span aria-hidden="true">←</span></a></div>
       </section>
-      <div class="fd-cabin-faq-footer"><a class="fd-cabin-faq-link" href="#faq" onclick="return openAccommodationFaq(event,'faq')">الأسئلة الشائعة <span aria-hidden="true">←</span></a></div>
+      <div class="fd-cabin-faq-footer"><a class="fd-cabin-faq-link" href="/resort/faq/" onclick="return openAccommodationFaq(event,'faq')">الأسئلة الشائعة <span aria-hidden="true">←</span></a></div>
     </section>`;
 }
 
@@ -566,10 +554,6 @@ function closeM(){
   document.getElementById('ov').classList.remove('open');
   document.getElementById('ov').classList.remove('fd-cabin-modern');
   document.body.style.overflow='';
-  if(window._serviceReturn==='sub'){
-    window._serviceReturn=null;
-    // already back in service-sub, nothing extra needed
-  }
 }
 document.getElementById('ov').addEventListener('click',function(e){if(e.target===this)closeM();});
 function replaceTourFrame(url){
