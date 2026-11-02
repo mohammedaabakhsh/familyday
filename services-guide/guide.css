@@ -192,3 +192,88 @@ dialog{border-color:#d8e7ea}
   .contents .index-number{flex-basis:31px;width:31px;height:31px}
   .guide-section{padding-inline:14px}
 }
+
+/* 2026-11-02 — Brochure hybrid: branded shell with category accents. */
+.welcome{padding-bottom:20px}
+.welcome .eyebrow{color:#19A7B7}
+.welcome h1{font-size:29px}
+.welcome .intro{max-width:650px;font-size:13.5px;line-height:1.85}
+.guide-highlights{
+  display:flex!important;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:7px;
+  margin-top:14px
+}
+.guide-highlights span{
+  display:inline-flex;
+  align-items:center;
+  min-height:31px;
+  padding:6px 10px;
+  border:1px solid #d8e7ea;
+  border-radius:999px;
+  background:#fff;
+  color:#35535f;
+  font-size:11px;
+  font-weight:700;
+  line-height:1.3
+}
+
+/* Keep the site identity consistent while allowing each brochure chapter its own accent. */
+#hospitality{--accent:#6faed7;--tint:#eef6fb}
+#coordination{--accent:#d99073;--tint:#fff2ed}
+#dining{--accent:#c7a93f;--tint:#fff9e7}
+#cinema{--accent:#9a84bf;--tint:#f6f1fb}
+#seating{--accent:#69a988;--tint:#eef8f2}
+#resort-map{--accent:#19A7B7;--tint:#eef9fa}
+
+.guide-section .section-number{
+  background:var(--tint)!important;
+  color:var(--accent)!important;
+  border:1px solid color-mix(in srgb,var(--accent) 28%,white)
+}
+.guide-section .guide-fold{border-color:color-mix(in srgb,var(--accent) 20%,#d8e7ea)}
+.guide-section .guide-fold[open]{box-shadow:0 6px 18px color-mix(in srgb,var(--accent) 7%,transparent)}
+.guide-section .guide-fold-icon{border-color:color-mix(in srgb,var(--accent) 35%,#d8e7ea)}
+.guide-section .guide-fold-icon:before,
+.guide-section .guide-fold-icon:after{background:var(--accent)}
+.guide-section .package-card{background:var(--tint);border-color:color-mix(in srgb,var(--accent) 16%,#d8e7ea)}
+.guide-section .price{color:var(--accent)}
+.guide-section .inclusions li:before{background:var(--accent)}
+.guide-section .facts>div,
+.guide-section .seating-extra{background:var(--tint)}
+
+/* Carry the chapter accents into the contents cards without turning the page into a rainbow. */
+.contents li:nth-child(1) a{--chapter:#6faed7;--chapter-tint:#eef6fb}
+.contents li:nth-child(2) a{--chapter:#d99073;--chapter-tint:#fff2ed}
+.contents li:nth-child(3) a{--chapter:#c7a93f;--chapter-tint:#fff9e7}
+.contents li:nth-child(4) a{--chapter:#9a84bf;--chapter-tint:#f6f1fb}
+.contents li:nth-child(5) a{--chapter:#69a988;--chapter-tint:#eef8f2}
+.contents li:nth-child(6) a{--chapter:#19A7B7;--chapter-tint:#eef9fa}
+.contents a{
+  border-top:3px solid var(--chapter);
+  padding-top:9px
+}
+.contents .index-number{
+  background:var(--chapter-tint);
+  color:var(--chapter)
+}
+.contents a[aria-current="location"]{
+  border-color:var(--chapter);
+  background:var(--chapter-tint)
+}
+
+#resort-map .section-heading{
+  border-color:#cfe6e9;
+  background:#fbfefe
+}
+#resort-map .section-heading .section-number{
+  background:#eef9fa!important;
+  color:#138897!important
+}
+
+@media(min-width:680px){
+  .welcome h1{font-size:34px}
+  .welcome .intro{font-size:14px}
+  .guide-highlights{justify-content:center}
+}
