@@ -25,30 +25,44 @@
   #chalet-faq .chalet-faq-answer { font-size:13px!important; }
 
   /* Use the resort contact type sizes for all three destinations. */
-  #contact-page[data-venue] .cp-label { font-size:16px; margin-bottom:6px; }
+  #contact-page[data-venue] .cp-label { font-size:16px; margin-bottom:calc(6px + var(--cp-extra-space)/4); }
   #contact-page[data-venue] .cp-intro { font-size:15px!important; }
   #contact-page[data-venue] :is(.cp-wide-name,.cp-tile-name,.fd-contact-faq-button),
   #contact-page[data-venue] .cp-primary .cp-wide-name { font-size:16px!important; }
   #contact-page[data-venue] .cp-tile-sub { font-size:13px!important; }
   #contact-page[data-venue] :is(.cp-map-sub,.cp-app-caption),
   #contact-page[data-venue] .cp-tile-sm .cp-tile-name { font-size:14px!important; }
-  #contact-page[data-venue] .cp-shell { padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px)); }
-  #contact-page[data-venue] .cp-hero { margin-bottom:12px; }
-  #contact-page[data-venue] .cp-body { gap:12px; }
-  #contact-page[data-venue] .cp-booking { padding:12px; }
-  #contact-page[data-venue] .cp-wide { min-height:44px; padding:8px 12px; border-radius:12px; }
-  #contact-page[data-venue] .cp-primary { min-height:44px; padding:8px 12px; }
+  /* Grow into taller phone screens; keep the compact controls at 640px and below.
+     A minimum height allows natural scrolling when text or a small screen needs it. */
+  #contact-page[data-venue] .cp-shell {
+    --cp-compact-height:640px;
+    --cp-extra-space:clamp(0px,calc((100dvh - var(--cp-compact-height))/12),24px);
+    display:flex;
+    flex-direction:column;
+    min-height:100dvh;
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));
+  }
+  #contact-page[data-venue] .cp-hero { margin-bottom:calc(12px + var(--cp-extra-space)/2); }
+  #contact-page[data-venue] .cp-body { flex:1; align-content:space-between; gap:calc(12px + var(--cp-extra-space)/2); }
+  #contact-page[data-venue] .cp-booking { padding:calc(12px + var(--cp-extra-space)/2); }
+  #contact-page[data-venue] .cp-wide { min-height:calc(44px + var(--cp-extra-space)); padding:8px 12px; border-radius:12px; }
+  #contact-page[data-venue] .cp-primary { padding:8px 12px; }
   #contact-page[data-venue] .cp-row2 { margin-top:8px; gap:8px; }
-  #contact-page[data-venue] .cp-tile { min-height:56px; padding:6px 8px; border-radius:12px; }
+  #contact-page[data-venue] .cp-tile { min-height:calc(56px + var(--cp-extra-space)); padding:6px 8px; border-radius:12px; }
   #contact-page[data-venue] .cp-tile-sub { margin-top:2px; }
   #contact-page[data-venue] .cp-app-caption { margin-top:6px; }
-  #contact-page[data-venue] .cp-social { padding-top:10px; }
-  #contact-page[data-venue] .cp-tile-sm { min-height:44px; padding:6px; }
+  #contact-page[data-venue] .cp-social { padding-top:calc(10px + var(--cp-extra-space)/2); }
+  #contact-page[data-venue] .cp-tile-sm { min-height:calc(44px + var(--cp-extra-space)); padding:6px; }
   #contact-page[data-venue] .cp-map-sub { margin-top:0; }
   #contact-page[data-venue] .cp-review { flex-direction:row; align-items:center; justify-content:space-between; gap:8px; margin-top:8px; }
   #contact-page[data-venue] .cp-review-copy { font-size:13px; }
   #contact-page[data-venue] .cp-review-link { padding:8px 12px; font-size:14px; }
 
+}
+
+/* Narrow phones need more room for wrapped labels before controls can grow. */
+@media (max-width:359px) {
+  #contact-page[data-venue] .cp-shell { --cp-compact-height:720px; }
 }
 
 /* Increase the controls' touch area while retaining their existing appearance. */
