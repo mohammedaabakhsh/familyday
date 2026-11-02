@@ -1,12 +1,5 @@
-/* Shared tour layout and independent dining labels. */
-#ov .dt-card strong .dt-soundbar-line{display:block;font:inherit;color:inherit;white-space:nowrap}
+/* Cabin-specific illustration, labels and layout. Shared presentation: tour-page.css and tour-layout.css. */
 @media(min-width:900px){
- .tour-page{max-width:1480px}
- #ov .dt-tour{grid-template-columns:minmax(240px,24%) minmax(0,1fr);column-gap:24px;min-height:min(610px,calc(100svh - 90px))}
- #ov .dt-stage{--rail:120px;padding:66px 0 0;min-width:0}
- #ov .dt-image{width:calc(100% - 2 * (var(--rail) + 14px));height:auto;margin:0 auto}
- #ov .dt-label{width:var(--rail);min-height:42px;line-height:1.35;font-size:13px;padding:7px 8px;top:auto;bottom:auto;left:auto;right:auto;transform:none}
- #ov .dt-label--kitchen,#ov .dt-label--bathroom{top:0}
  #ov #panoramic-tour .dt-label--bathroom{left:12%;top:0}
  #ov #panoramic-tour .dt-label--kitchen{left:50%;top:0;transform:translateX(-50%)}
  #ov #panoramic-tour .dt-label--twin{right:9%;top:0;width:160px}
@@ -16,12 +9,8 @@
  #ov #panoramic-tour .dt-label--outdoor{right:0;top:77%}
 }
 @media(min-width:900px) and (max-width:1099px){
- #ov .dt-tour{grid-template-columns:230px minmax(0,1fr);column-gap:16px}
- #ov .dt-stage{--rail:104px}
- #ov .dt-label{font-size:12px}
  #ov #panoramic-tour .dt-label--twin{width:130px;right:0}
 }
-
 @media(max-width:599px){
  #ov #panoramic-tour .dt-labels .dt-label:last-child{grid-column:auto}
 }
@@ -31,39 +20,6 @@
 @media(min-width:900px){
  #ov #panoramic-tour .dt-label--dining{left:0;top:53%}
 }
-
-/* Resort presentation: one heading row and the same page background/back control. */
-body{background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);background-attachment:fixed;color:#f0f5f7}
-#ov .dt-tour{margin-top:0;padding-top:20px}
-#ov .dt-heading{display:flex;align-items:center;gap:14px;direction:rtl;min-width:0;margin:0 8px 14px}
-#ov .dt-tour[lang=en] .dt-heading{direction:ltr}
-#ov .dt-heading .dt-title{font:700 24px/1.4 Tajawal,sans-serif;color:#f0f5f7;text-align:start;margin:0;padding:0;border:0;min-width:0}
-.tour-back{box-sizing:border-box;display:flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;min-height:44px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;text-decoration:none}
-.tour-back svg{flex:none;width:9px;height:15px}
-.tour-back[dir=ltr] svg{transform:rotate(180deg)}
-.tour-back:focus-visible{outline:2px solid #7ecfea;outline-offset:3px}
-#ov .dt-detail-heading h4{font-size:18px;font-weight:700;line-height:1.4}
-#ov .dt-detail-heading p,#ov .dt-note{font-size:14px;line-height:1.6}
-#ov .dt-card strong{font-size:14px;line-height:1.5}
-#ov .dt-card span{font-size:12px}
-#ov .dt-occupancy{font-size:13px;line-height:1.5}
-@media(hover:hover) and (pointer:fine){.tour-back:hover{background:#133343}}
-@media(min-width:900px){
- #ov .dt-tour{min-height:min(610px,calc(100svh - 20px));padding-top:20px}
- #ov .dt-heading{grid-area:heading;align-self:start;margin:0;padding:0 0 14px;padding-inline-end:180px;border-bottom:1px solid #234353;min-height:58px}
- #ov .dt-languages{align-self:start;justify-self:start;margin-top:4px}
- #ov .dt-tour[lang=en] .dt-languages{justify-self:end}
- #ov .dt-detail-heading p,#ov .dt-note{font-size:15px}
-}
-@media(max-width:599px){
- #ov .dt-heading .dt-title{font-size:22px}
- #ov .dt-heading{gap:12px}
- #ov .dt-card strong{font-size:13px}
- #ov .dt-card strong[dir=ltr]{font-size:14px}
-}
-
-
-/* Panoramic house: source-photo layout, nine independently selectable facilities. */
 #ov #panoramic-tour .dt-image{clip-path:polygon(25.521% 2.051%,26.628% 2.051%,26.758% 4.297%,46.224% 4.297%,46.224% 7.812%,74.023% 7.812%,77.214% 14.941%,78.320% 14.941%,78.451% 18.262%,77.865% 18.652%,81.576% 26.953%,82.747% 26.953%,82.878% 30.664%,82.031% 31.152%,83.073% 33.887%,96.094% 67.285%,96.029% 68.359%,97.266% 72.656%,97.396% 73.145%,97.461% 76.660%,98.177% 78.223%,98.177% 87.793%,98.568% 89.160%,98.568% 91.797%,57.747% 91.992%,57.747% 95.605%,40.951% 95.605%,40.951% 92.090%,1.497% 91.602%,1.497% 89.258%,1.888% 87.891%,1.888% 77.441%,2.799% 75.684%,2.799% 72.363%,4.036% 72.168%,4.232% 75.977%,6.250% 61.328%,6.901% 60.156%,6.901% 56.543%,8.138% 56.250%,8.268% 59.961%,8.724% 60.352%,11.784% 46.484%,12.109% 45.117%,12.109% 41.895%,13.281% 41.699%,13.477% 45.410%,13.997% 45.996%,16.341% 33.008%,16.797% 31.836%,16.797% 29.102%,17.969% 28.906%,18.099% 32.520%,18.555% 32.520%,19.922% 27.051%,18.164% 27.051%,18.164% 25.781%,20.312% 20.898%,21.029% 20.898%,21.419% 18.652%,21.419% 15.527%,22.591% 15.332%,22.721% 18.945%,23.112% 19.043%,25.391% 6.152%,25.586% 5.176%);filter:none}
 @media(min-width:600px){
  #ov #panoramic-tour .dt-stage{padding:70px 0 0}
@@ -83,37 +39,31 @@ body{background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);back
  #ov #panoramic-tour .dt-label{width:21%;font-size:12px}
  #ov #panoramic-tour .dt-label--twin{width:28%;left:0}
 }
-@media(min-width:900px) and (max-width:1099px){#ov #panoramic-tour .dt-label--twin{width:150px;left:0}}
-@media(max-width:599px){#ov #panoramic-tour .dt-labels .dt-label:last-child{grid-column:auto}}
-
-/* Active panoramic tour layout — clean version */
+@media(min-width:900px) and (max-width:1099px){
+ #ov #panoramic-tour .dt-label--twin{width:150px;left:0}
+}
+@media(max-width:599px){
+ #ov #panoramic-tour .dt-labels .dt-label:last-child{grid-column:auto}
+}
 #ov #panoramic-tour .dt-title-meta{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
 #ov #panoramic-tour .dt-capacity{display:inline-flex;align-items:center;white-space:nowrap;min-height:30px;padding:4px 9px;border:1px solid #294f60;border-radius:999px;background:#082536;color:#a9dce6;font-size:11px;font-weight:600}
-#ov #panoramic-tour .dt-heading .dt-languages{display:flex;flex:0 0 auto;gap:4px;margin:0 0 0 auto;position:static}
-#ov #panoramic-tour[dir=rtl] .dt-heading .dt-languages{margin-left:0;margin-right:auto}
-#ov #panoramic-tour .dt-heading .dt-languages button{min-width:46px;min-height:36px;padding:6px 8px;border-radius:9px}
 #ov #panoramic-tour .dt-details.is-empty{display:none}
-
 @media(max-width:599px){
  #ov #panoramic-tour .dt-tour{padding-bottom:8px}
  #ov #panoramic-tour .dt-heading{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:8px;margin:0 8px 8px;align-items:center}
  #ov #panoramic-tour .dt-title-meta{display:block}
  #ov #panoramic-tour .dt-heading .dt-title{font-size:19px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
  #ov #panoramic-tour .dt-capacity{margin-top:3px;min-height:24px;padding:2px 7px;font-size:10px}
- #ov #panoramic-tour .dt-heading .dt-languages{gap:3px;margin:0}
- #ov #panoramic-tour .dt-heading .dt-languages button{min-width:40px;min-height:34px;padding:5px 6px;font-size:12px}
-
  #ov #panoramic-tour .dt-stage{display:flex;flex-direction:column;padding:0}
  #ov #panoramic-tour .dt-labels{position:relative;inset:auto;display:grid;padding:0 8px;direction:rtl}
  #ov #panoramic-tour .dt-labels--top{order:1;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;margin-bottom:6px}
- #ov #panoramic-tour .dt-labels--top .dt-label:nth-child(-n+3){grid-column:span 2}
- #ov #panoramic-tour .dt-labels--top .dt-label:nth-child(n+4){grid-column:span 3}
+ #ov #panoramic-tour .dt-labels--top .dt-label:nth-child(-n/**/+3){grid-column:span 2}
+ #ov #panoramic-tour .dt-labels--top .dt-label:nth-child(n/**/+4){grid-column:span 3}
  #ov #panoramic-tour .dt-image{order:2;width:100%;margin:0 auto}
  #ov #panoramic-tour .dt-labels--bottom{order:3;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:5px;padding-inline:14px}
  #ov #panoramic-tour .dt-label{position:relative;inset:auto;width:auto;min-width:0;transform:none;font-size:12px;line-height:1.25;padding:6px 5px;min-height:42px}
  #ov #panoramic-tour .dt-labels--bottom .dt-label{min-height:44px}
  #ov #panoramic-tour .dt-lines{z-index:2}
-
  #ov #panoramic-tour .dt-details{display:block;min-height:0;margin:7px 10px 0;padding:8px;border:1px solid #21566b;border-radius:16px;background:#062131}
  #ov #panoramic-tour .dt-details.is-empty{display:none}
  #ov #panoramic-tour .dt-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;overflow:visible;padding:0}

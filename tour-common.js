@@ -2,13 +2,7 @@
    Cabin facts, points, labels and layouts stay in each cabin module. */
 var FD_TOUR_COMMON = (function () {
   'use strict';
-  var translations = {
-    'موقد كهربائي':'Electric hob', 'ميكروويف':'Microwave', 'ثلاجة':'Refrigerator',
-    'غلاية':'Kettle', 'ماكينة قهوة':'Coffee maker', 'أدوات مطبخ أساسية':'Kitchen essentials',
-    'ميني بار':'Minibar', 'سرير تشميس داخل المسبح':'In-pool lounger',
-    'كراسي تشميس':'Sun loungers', 'دش خارجي':'Outdoor shower',
-    'جلسة خارجية':'Private outdoor seating', 'الجلسة الخارجية':'Private outdoor seating', 'شواية':'Barbecue'
-  };
+
   var icons = {
     tv:'M3 5h18v13H3ZM8 22h8m-4-4v4',
     speaker:'M3 9h18v7H3ZM7 11v3m10-3v3M10 12h4',
@@ -43,9 +37,7 @@ var FD_TOUR_COMMON = (function () {
     if (value === 'سماعات داخلية (ساوند بار)') return '<span class="dt-soundbar-line">سماعات داخلية</span><span class="dt-soundbar-line">(ساوند بار)</span>';
     return esc(value);
   }
-  function feature(text, language) {
-    return language === 'ar' ? text : (translations[text] || text);
-  }
+
   function markup(parts, topOrder, bottomOrder, image, loading, linkedCabins) {
     var labelButton=function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';};
     var topParts=topOrder.map(function(id){return parts.find(function(p){return p.id===id;});});
@@ -114,5 +106,5 @@ var FD_TOUR_COMMON = (function () {
       point.style.left=tx+'px';point.style.top=ty+'px';
     });
   }
-  return {kitchenIcon:kitchenIcon, feature:feature, markup:markup, renderDetails:renderDetails, drawLines:drawLines};
+  return {kitchenIcon:kitchenIcon, markup:markup, renderDetails:renderDetails, drawLines:drawLines};
 })();

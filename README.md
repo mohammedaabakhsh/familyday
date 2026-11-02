@@ -37,6 +37,12 @@ python3 -m http.server 8023 --bind 127.0.0.1
 - `tour-common.js`: shared cabin exploration markup, icons, details renderer and
   connector geometry. Each `*-tour.js` owns its cabin's points, labels, content,
   image and responsive layout configuration. Load the common script first.
+- Tour and map text uses the current Arabic content directly. `tour-page.css`
+  holds the shared standalone canvas, followed by `tour-layout.css` for common
+  navigation and details styling. Cabin styles retain their illustration and
+  label positions; viewport styles retain the responsive layout differences.
+- The compact FAQ styling lives in `css/faq-mobile.css`; `resort-features.js`
+  handles category selection and accordion behavior without injecting CSS.
 - `services-guide/`: brochure backed by those shared sources; see its README.
 
 Exploration layouts use a 600 px or 900 px side-layout breakpoint, depending on
@@ -73,7 +79,12 @@ Asset paths can also be assembled dynamically; a text-search miss alone is not
 proof that an image or page is unused.
 
 The lossless-image check also requires Pillow and compares the 14 active PNG
-illustrations with approved revision `148ff44` in Git history. It verifies the
+illustrations with approved revision `148ff44`, plus the app icon and sharing
+image with revision `7bf2bde`, in Git history. It verifies the
 full RGBA data, dimensions, metadata and Chromium-rendered pixels. Compression
 keeps the original PNG paths; update the comparison revision deliberately if
 the user later approves different source artwork.
+
+The 37 unused older tour PNG variants were removed after checking static and
+dynamic image references. They remain recoverable from revision `7bf2bde`;
+current `*-clarity-v1.png` artwork and deferred pages are retained.

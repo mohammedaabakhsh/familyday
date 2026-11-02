@@ -1,12 +1,5 @@
-/* Shared tour layout and independent dining labels. */
-#ov .dt-card strong .dt-soundbar-line{display:block;font:inherit;color:inherit;white-space:nowrap}
+/* Cabin-specific illustration, labels and layout. Shared presentation: tour-page.css and tour-layout.css. */
 @media(min-width:900px){
- .tour-page{max-width:1480px}
- #ov .dt-tour{grid-template-columns:minmax(240px,24%) minmax(0,1fr);column-gap:24px;min-height:min(610px,calc(100svh - 90px))}
- #ov .dt-stage{--rail:120px;padding:66px 0 0;min-width:0}
- #ov .dt-image{width:calc(100% - 2 * (var(--rail) + 14px));height:auto;margin:0 auto}
- #ov .dt-label{width:var(--rail);min-height:42px;line-height:1.35;font-size:13px;padding:7px 8px;top:auto;bottom:auto;left:auto;right:auto;transform:none}
- #ov .dt-label--kitchen,#ov .dt-label--bathroom{top:0}
  #ov #rustic-tour .dt-label--bathroom{left:12%;top:0}
  #ov #rustic-tour .dt-label--kitchen{left:50%;top:0;transform:translateX(-50%)}
  #ov #rustic-tour .dt-label--twin{right:9%;top:0;width:160px}
@@ -16,12 +9,8 @@
  #ov #rustic-tour .dt-label--outdoor{right:0;top:77%}
 }
 @media(min-width:900px) and (max-width:1099px){
- #ov .dt-tour{grid-template-columns:230px minmax(0,1fr);column-gap:16px}
- #ov .dt-stage{--rail:104px}
- #ov .dt-label{font-size:12px}
  #ov #rustic-tour .dt-label--twin{width:130px;right:0}
 }
-
 @media(max-width:599px){
  #ov #rustic-tour .dt-labels .dt-label:last-child{grid-column:auto}
 }
@@ -31,40 +20,6 @@
 @media(min-width:900px){
  #ov #rustic-tour .dt-label--dining{left:0;top:53%}
 }
-
-/* Resort presentation: one heading row and the same page background/back control. */
-body{background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);background-attachment:fixed;color:#f0f5f7}
-#ov .dt-tour{margin-top:0;padding-top:20px}
-#ov .dt-heading{display:flex;align-items:center;gap:14px;direction:rtl;min-width:0;margin:0 8px 14px}
-#ov .dt-tour[lang=en] .dt-heading{direction:ltr}
-#ov .dt-heading .dt-title{font:700 24px/1.4 Tajawal,sans-serif;color:#f0f5f7;text-align:start;margin:0;padding:0;border:0;min-width:0}
-.tour-back{box-sizing:border-box;display:flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;min-height:44px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;text-decoration:none}
-.tour-back svg{flex:none;width:9px;height:15px}
-.tour-back[dir=ltr] svg{transform:rotate(180deg)}
-.tour-back:focus-visible{outline:2px solid #7ecfea;outline-offset:3px}
-#ov .dt-detail-heading h4{font-size:18px;font-weight:700;line-height:1.4}
-#ov .dt-detail-heading p,#ov .dt-note{font-size:14px;line-height:1.6}
-#ov .dt-card strong{font-size:14px;line-height:1.5}
-#ov .dt-card span{font-size:12px}
-#ov .dt-occupancy{font-size:13px;line-height:1.5}
-@media(hover:hover) and (pointer:fine){.tour-back:hover{background:#133343}}
-@media(min-width:900px){
- #ov .dt-tour{min-height:min(610px,calc(100svh - 20px));padding-top:20px}
- #ov .dt-heading{grid-area:heading;align-self:start;margin:0;padding:0 0 14px;padding-inline-end:180px;border-bottom:1px solid #234353;min-height:58px}
- #ov .dt-languages{align-self:start;justify-self:start;margin-top:4px}
- #ov .dt-tour[lang=en] .dt-languages{justify-self:end}
- #ov .dt-detail-heading p,#ov .dt-note{font-size:15px}
-}
-@media(max-width:599px){
- #ov .dt-heading .dt-title{font-size:22px}
- #ov .dt-heading{gap:12px}
- #ov .dt-card strong{font-size:13px}
- #ov .dt-card strong[dir=ltr]{font-size:14px}
-}
-
-
-
-
 #ov #rustic-tour .dt-image,.design-image{filter:none;clip-path:polygon(6.576% 95.898%,6.576% 92.383%,7.161% 91.602%,7.161% 72.949%,8.203% 70.898%,8.333% 70.898%,8.333% 67.383%,9.635% 66.992%,9.766% 71.289%,10.286% 71.973%,11.458% 60.156%,11.458% 58.203%,12.240% 56.543%,12.370% 53.711%,13.346% 53.125%,13.542% 57.227%,14.128% 58.008%,15.885% 46.680%,15.690% 44.727%,16.471% 43.066%,16.602% 40.527%,17.513% 40.039%,17.708% 43.848%,18.359% 44.824%,19.271% 34.863%,19.206% 33.301%,19.857% 32.129%,19.922% 29.395%,20.768% 28.906%,20.898% 32.227%,21.289% 33.398%,21.159% 25.879%,21.615% 24.609%,21.745% 21.680%,22.656% 21.484%,22.721% 24.707%,23.503% 24.121%,23.438% 27.637%,49.089% 1.172%,50.000% 0.488%,50.911% 1.270%,76.823% 27.832%,76.693% 24.316%,77.409% 24.512%,77.409% 21.680%,78.320% 21.582%,78.385% 24.707%,78.906% 25.781%,79.036% 29.199%,80.143% 29.199%,80.143% 32.520%,80.859% 33.594%,80.924% 34.863%,82.292% 40.332%,83.398% 40.527%,83.529% 44.043%,84.375% 44.922%,84.440% 46.582%,86.003% 53.125%,87.370% 53.223%,87.565% 56.836%,88.346% 58.301%,88.346% 59.961%,90.039% 67.188%,91.797% 67.188%,91.797% 71.387%,92.839% 72.949%,92.969% 91.504%,93.555% 92.285%,93.555% 95.898%,55.859% 95.898%,55.859% 96.387%,41.797% 96.387%,41.797% 95.898%)}
 .draft-note{text-align:center;color:#a7bbc8;font:14px/1.8 Tahoma,sans-serif;padding:12px}
 .draft-note a{color:#8fdaed}
@@ -91,5 +46,7 @@ body{background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);back
  #ov #rustic-tour .dt-image{width:100%;margin-top:12px}
  #ov #rustic-tour .dt-labels .dt-label:last-child{grid-column:auto}
 }
-
-@media(min-width:600px){#ov #rustic-tour .dt-label--twin{left:43%;right:auto;top:0}#ov #rustic-tour .dt-label--bathroom{left:auto;right:0;top:0}}
+@media(min-width:600px){
+ #ov #rustic-tour .dt-label--twin{left:43%;right:auto;top:0}
+ #ov #rustic-tour .dt-label--bathroom{left:auto;right:0;top:0}
+}

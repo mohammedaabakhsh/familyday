@@ -9,13 +9,17 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 BASE = sys.argv[1] if len(sys.argv) > 1 else 'http://127.0.0.1:8023'
 APPROVED_REVISION = '148ff44a5a9dfd3528b488da4110a1e299a9e62f'
-images = sorted((ROOT/'imgs').glob('*-clarity-v1.png')) + [ROOT/'imgs/resort-map-v6-garden.png']
-assert len(images) == 14
+SHARING_REVISION = '7bf2bdece3124d7ec408b1c5ef8968a14f082d12'
+images = sorted((ROOT/'imgs').glob('*-clarity-v1.png')) + [
+    ROOT/'imgs/resort-map-v6-garden.png', ROOT/'imgs/icon.png', ROOT/'imgs/og.png'
+]
+assert len(images) == 16
 originals = {}
 original_bytes = optimized_bytes = 0
 for optimized in images:
     path = str(optimized.relative_to(ROOT))
-    original = subprocess.check_output(['git', 'show', APPROVED_REVISION + ':' + path], cwd=ROOT)
+    revision = SHARING_REVISION if optimized.name in ('icon.png', 'og.png') else APPROVED_REVISION
+    original = subprocess.check_output(['git', 'show', revision + ':' + path], cwd=ROOT)
     originals[optimized.name] = original
     with Image.open(BytesIO(original)) as a, Image.open(optimized) as b:
         assert a.size == b.size, path

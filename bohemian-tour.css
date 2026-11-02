@@ -1,12 +1,5 @@
-/* Shared tour layout and independent dining labels. */
-#ov .dt-card strong .dt-soundbar-line{display:block;font:inherit;color:inherit;white-space:nowrap}
+/* Cabin-specific illustration, labels and layout. Shared presentation: tour-page.css and tour-layout.css. */
 @media(min-width:900px){
- .tour-page{max-width:1480px}
- #ov .dt-tour{grid-template-columns:minmax(240px,24%) minmax(0,1fr);column-gap:24px;min-height:min(610px,calc(100svh - 90px))}
- #ov .dt-stage{--rail:120px;padding:66px 0 0;min-width:0}
- #ov .dt-image{width:calc(100% - 2 * (var(--rail) + 14px));height:auto;margin:0 auto}
- #ov .dt-label{width:var(--rail);min-height:42px;line-height:1.35;font-size:13px;padding:7px 8px;top:auto;bottom:auto;left:auto;right:auto;transform:none}
- #ov .dt-label--kitchen,#ov .dt-label--bathroom{top:0}
  #ov #bohemian-tour .dt-label--bathroom{left:12%;top:0}
  #ov #bohemian-tour .dt-label--kitchen{left:50%;top:0;transform:translateX(-50%)}
  #ov #bohemian-tour .dt-label--twin{right:9%;top:0;width:160px}
@@ -16,12 +9,8 @@
  #ov #bohemian-tour .dt-label--outdoor{right:0;top:77%}
 }
 @media(min-width:900px) and (max-width:1099px){
- #ov .dt-tour{grid-template-columns:230px minmax(0,1fr);column-gap:16px}
- #ov .dt-stage{--rail:104px}
- #ov .dt-label{font-size:12px}
  #ov #bohemian-tour .dt-label--twin{width:130px;right:0}
 }
-
 @media(max-width:599px){
  #ov #bohemian-tour .dt-labels .dt-label:last-child{grid-column:auto}
 }
@@ -31,38 +20,6 @@
 @media(min-width:900px){
  #ov #bohemian-tour .dt-label--dining{left:0;top:53%}
 }
-
-/* Resort presentation: one heading row and the same page background/back control. */
-body{background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);background-attachment:fixed;color:#f0f5f7}
-#ov .dt-tour{margin-top:0;padding-top:20px}
-#ov .dt-heading{display:flex;align-items:center;gap:14px;direction:rtl;min-width:0;margin:0 8px 14px}
-#ov .dt-tour[lang=en] .dt-heading{direction:ltr}
-#ov .dt-heading .dt-title{font:700 24px/1.4 Tajawal,sans-serif;color:#f0f5f7;text-align:start;margin:0;padding:0;border:0;min-width:0}
-.tour-back{box-sizing:border-box;display:flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;min-height:44px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;text-decoration:none}
-.tour-back svg{flex:none;width:9px;height:15px}
-.tour-back[dir=ltr] svg{transform:rotate(180deg)}
-.tour-back:focus-visible{outline:2px solid #7ecfea;outline-offset:3px}
-#ov .dt-detail-heading h4{font-size:18px;font-weight:700;line-height:1.4}
-#ov .dt-detail-heading p,#ov .dt-note{font-size:14px;line-height:1.6}
-#ov .dt-card strong{font-size:14px;line-height:1.5}
-#ov .dt-card span{font-size:12px}
-#ov .dt-occupancy{font-size:13px;line-height:1.5}
-@media(hover:hover) and (pointer:fine){.tour-back:hover{background:#133343}}
-@media(min-width:900px){
- #ov .dt-tour{min-height:min(610px,calc(100svh - 20px));padding-top:20px}
- #ov .dt-heading{grid-area:heading;align-self:start;margin:0;padding:0 0 14px;padding-inline-end:180px;border-bottom:1px solid #234353;min-height:58px}
- #ov .dt-languages{align-self:start;justify-self:start;margin-top:4px}
- #ov .dt-tour[lang=en] .dt-languages{justify-self:end}
- #ov .dt-detail-heading p,#ov .dt-note{font-size:15px}
-}
-@media(max-width:599px){
- #ov .dt-heading .dt-title{font-size:22px}
- #ov .dt-heading{gap:12px}
- #ov .dt-card strong{font-size:13px}
- #ov .dt-card strong[dir=ltr]{font-size:14px}
-}
-
-/* Bohemian illustration: labels follow the actual room positions. */
 #ov #bohemian-tour .dt-image{clip-path:polygon(2.604% 91.406%,2.604% 88.477%,3.125% 87.402%,3.125% 66.699%,2.865% 65.527%,6.576% 57.812%,6.576% 56.543%,7.487% 55.078%,7.487% 51.562%,8.659% 51.367%,8.659% 55.566%,9.245% 56.445%,12.891% 44.629%,12.695% 43.555%,13.477% 41.992%,13.477% 38.770%,14.583% 38.574%,14.583% 42.188%,15.430% 43.457%,15.430% 44.238%,18.490% 33.594%,18.490% 29.004%,19.596% 28.809%,19.596% 32.617%,20.443% 32.910%,22.135% 26.562%,22.135% 24.902%,21.940% 24.023%,22.852% 22.656%,22.852% 19.629%,23.893% 19.531%,23.893% 22.949%,24.609% 23.340%,30.143% 6.055%,46.745% 6.055%,53.190% 0.586%,53.581% 0.586%,53.320% 5.957%,69.076% 5.957%,74.870% 22.949%,75.326% 22.754%,75.326% 19.629%,76.367% 19.531%,76.367% 22.949%,77.344% 23.926%,77.344% 25.000%,76.758% 25.000%,76.758% 27.344%,80.404% 31.445%,80.404% 29.004%,81.510% 28.809%,81.510% 32.812%,82.292% 33.496%,82.292% 34.375%,81.771% 34.375%,84.440% 40.723%,85.352% 40.527%,85.352% 39.160%,86.589% 38.965%,86.589% 42.871%,87.500% 43.945%,87.500% 45.117%,87.044% 45.117%,91.471% 53.516%,91.471% 51.562%,92.773% 51.367%,92.773% 55.957%,93.685% 57.031%,93.685% 58.594%,93.099% 58.594%,97.005% 65.625%,97.005% 66.895%,96.419% 66.895%,96.419% 87.695%,97.331% 88.965%,97.331% 91.602%,94.076% 91.992%,94.076% 91.406%,57.682% 93.555%,57.682% 95.996%,55.469% 95.996%,55.469% 97.363%,43.359% 97.363%,43.359% 95.898%,41.081% 95.898%,41.081% 93.555%,5.794% 91.699%,5.794% 91.895%);filter:none}
 @media(min-width:600px){
  #ov #bohemian-tour .dt-stage{padding:66px 0 0}
@@ -84,8 +41,6 @@ body{background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);back
 @media(min-width:900px) and (max-width:1099px){
  #ov #bohemian-tour .dt-label--twin{width:130px}
 }
-
-/* Active Bohemian mobile layout — candidate base for larger cabins. */
 #ov #bohemian-tour .dt-details.is-empty{display:none}
 @media(max-width:599px){
  #ov #bohemian-tour{margin-top:4px;padding-top:8px;padding-bottom:8px}
@@ -93,76 +48,25 @@ body{background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);back
  #ov #bohemian-tour .dt-title{font-size:21px;margin-bottom:3px}
  #ov #bohemian-tour .dt-stage{display:flex;flex-direction:column;padding:0}
  #ov #bohemian-tour .dt-labels{position:relative;inset:auto;display:grid;padding:0 8px;direction:rtl}
- #ov #bohemian-tour .dt-labels--top{
-   order:1;
-   grid-template-columns:repeat(3,minmax(0,1fr));
-   gap:6px;
-   margin-bottom:6px;
- }
+ #ov #bohemian-tour .dt-labels--top{order:1;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-bottom:6px}
  #ov #bohemian-tour .dt-image{order:2;width:94%;margin:4px auto 0}
- #ov #bohemian-tour .dt-labels--bottom{
-   order:3;
-   grid-template-columns:repeat(2,minmax(0,1fr));
-   gap:7px;
-   margin-top:4px;
-   padding-inline:16px;
- }
- #ov #bohemian-tour .dt-label{
-   position:relative;
-   inset:auto;
-   width:auto;
-   min-width:0;
-   min-height:40px;
-   font-size:11.5px;
-   line-height:1.2;
-   padding:5px 4px;
-   transform:none;
- }
+ #ov #bohemian-tour .dt-labels--bottom{order:3;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:4px;padding-inline:16px}
+ #ov #bohemian-tour .dt-label{position:relative;inset:auto;width:auto;min-width:0;min-height:40px;font-size:11.5px;line-height:1.2;padding:5px 4px;transform:none}
  #ov #bohemian-tour .dt-lines{z-index:2}
- #ov #bohemian-tour .dt-details{
-   display:block;
-   min-height:0;
-   margin:10px 10px 0;
-   padding:8px;
- }
+ #ov #bohemian-tour .dt-details{display:block;min-height:0;margin:10px 10px 0;padding:8px}
  #ov #bohemian-tour .dt-cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
  #ov #bohemian-tour .dt-card{min-height:65px;padding:7px 4px}
  #ov #bohemian-tour .dt-card svg{width:18px;height:18px}
  #ov #bohemian-tour .dt-card strong{font-size:11px;line-height:1.35}
  #ov #bohemian-tour .dt-card span{font-size:10px}
- #ov #bohemian-tour .dt-cards.is-scrollable{
-   display:flex;
-   grid-template-columns:none;
-   overflow-x:auto;
-   direction:rtl;
-   overscroll-behavior-x:contain;
-   scroll-snap-type:x proximity;
-   -webkit-overflow-scrolling:touch;
-   scrollbar-width:none;
-   padding:1px 1px 4px;
- }
+ #ov #bohemian-tour .dt-cards.is-scrollable{display:flex;grid-template-columns:none;overflow-x:auto;direction:rtl;overscroll-behavior-x:contain;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:1px 1px 4px}
  #ov #bohemian-tour .dt-cards.is-scrollable::-webkit-scrollbar{display:none}
- #ov #bohemian-tour .dt-cards.is-scrollable .dt-card{
-   flex:0 0 108px;
-   min-width:108px;
-   scroll-snap-align:start;
- }
- #ov #bohemian-tour .dt-swipe-hint{
-   display:flex;
-   align-items:center;
-   justify-content:center;
-   gap:6px;
-   margin:6px 0 0;
-   color:#8fcbd6;
-   font-size:11px;
-   line-height:1.2;
- }
+ #ov #bohemian-tour .dt-cards.is-scrollable .dt-card{flex:0 0 108px;min-width:108px;scroll-snap-align:start}
+ #ov #bohemian-tour .dt-swipe-hint{display:flex;align-items:center;justify-content:center;gap:6px;margin:6px 0 0;color:#8fcbd6;font-size:11px;line-height:1.2}
  #ov #bohemian-tour .dt-swipe-hint span{font:600 15px/1 Arial,sans-serif;color:#5fe3f3}
  #ov #bohemian-tour .dt-note{font-size:11px;line-height:1.45;margin:6px 2px 0}
  #ov #bohemian-tour .dt-occupancy{margin:12px 0 0;font-size:13px}
 }
-
-/* Keep capacity in the same viewport row for every selected facility. */
 #ov #bohemian-tour .dt-image-space{display:contents}
 @media(min-width:600px){
  #ov #bohemian-tour .dt-swipe-hint{display:none}
@@ -170,57 +74,18 @@ body{background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);back
 @media(max-width:599px){
  body{min-height:100svh;min-height:100dvh}
  .tour-page{padding:0 8px}
- #ov #bohemian-tour{
-   display:grid;
-   grid-template-columns:minmax(0,1fr);
-   grid-template-rows:auto minmax(260px,1fr) 136px auto;
-   gap:12px;
-   height:100svh;
-   height:100dvh;
-   margin:0;
-   padding:8px 0 max(12px,env(safe-area-inset-bottom));
- }
+ #ov #bohemian-tour{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(260px,1fr) 136px auto;gap:12px;height:100svh;height:100dvh;margin:0;padding:8px 0 max(12px,env(safe-area-inset-bottom))}
  #ov #bohemian-tour .dt-heading{margin:0 8px;min-height:44px}
  #ov #bohemian-tour .dt-title{margin:0}
- #ov #bohemian-tour .dt-stage{
-   display:grid;
-   grid-template-rows:auto minmax(0,1fr) auto;
-   padding-top:clamp(12px,2dvh,20px);
-   gap:8px;
-   min-height:0;
- }
- #ov #bohemian-tour .dt-labels--top{
-   order:0;
-   grid-template-columns:repeat(2,minmax(0,1fr));
-   grid-template-rows:repeat(3,auto);
-   grid-auto-flow:column;
-   gap:12px 24px;
-   margin:0;
- }
- #ov #bohemian-tour .dt-image-space{
-   display:flex;
-   align-items:center;
-   justify-content:center;
-   min-height:0;
-   min-width:0;
- }
- #ov #bohemian-tour .dt-image{
-   width:auto;
-   height:auto;
-   max-width:94%;
-   max-height:100%;
-   margin:0;
- }
+ #ov #bohemian-tour .dt-stage{display:grid;grid-template-rows:auto minmax(0,1fr) auto;padding-top:clamp(12px,2dvh,20px);gap:8px;min-height:0}
+ #ov #bohemian-tour .dt-labels--top{order:0;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(3,auto);grid-auto-flow:column;gap:12px 24px;margin:0}
+ #ov #bohemian-tour .dt-image-space{display:flex;align-items:center;justify-content:center;min-height:0;min-width:0}
+ #ov #bohemian-tour .dt-image{width:auto;height:auto;max-width:94%;max-height:100%;margin:0}
  #ov #bohemian-tour .dt-labels--bottom{order:0;margin:0}
- #ov #bohemian-tour .dt-details{
-   align-self:start;
-   margin:0 10px;
- }
+ #ov #bohemian-tour .dt-details{align-self:start;margin:0 10px}
  #ov #bohemian-tour .dt-details.is-empty{display:block;visibility:hidden}
  #ov #bohemian-tour .dt-occupancy{margin:0;padding:0;align-self:end}
 }
-
-/* Brief guidance beside the back control, below the tour title. */
 #ov #bohemian-tour .dt-heading-copy{min-width:0}
 #ov #bohemian-tour .dt-instruction{margin:5px 0 0;color:#a9ccd5;font-size:13px;font-weight:400;line-height:1.5;text-align:start}
 @media(max-width:599px){

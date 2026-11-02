@@ -228,185 +228,19 @@
     "primary": []
   }
 ];
-  var roomNamesEn={
-  "upperBath": "En-suite Bathroom",
-  "upper": "Upstairs Bedroom",
-  "stairs": "Stairs",
-  "ground": "Bedroom",
-  "play": "Kids' Playroom",
-  "pool": "Kids' Pool",
-  "groundBath": "Bathroom",
-  "kitchen": "Kitchen",
-  "living": "Indoor Lounge",
-  "shower": "Outdoor Area",
-  "majlis": "Separate Majlis",
-  "dining": "Dining table"
-};
-  var roomDetailsEn={
-  "upperBath": {
-    "primary": [],
-    "facts": [
-      "Glass-enclosed shower",
-      "Washbasin",
-      "Toilet"
-    ],
-    "text": ""
-  },
-  "upper": {
-    "primary": [
-      [
-        "Bed",
-        "Double bed"
-      ],
-      [
-        "Bathroom",
-        "Private bathroom"
-      ]
-    ],
-    "facts": [
-      "TV"
-    ],
-    "text": ""
-  },
-  "stairs": {
-    "primary": [],
-    "facts": [],
-    "text": "Connects the ground floor to the upper floor"
-  },
-  "ground": {
-    "primary": [
-      [
-        "Beds",
-        "Two single beds"
-      ]
-    ],
-    "facts": [],
-    "text": ""
-  },
-  "play": {
-    "primary": [],
-    "facts": [
-      "Children’s games",
-      "Pool view"
-    ],
-    "text": ""
-  },
-  "pool": {
-    "primary": [
-      [
-        "Depth",
-        "60 cm"
-      ]
-    ],
-    "facts": [
-      "Water play features",
-      "Double slide",
-      "Glass barrier"
-    ],
-    "text": "Children must be supervised while swimming.",
-    "note": true
-  },
-  "groundBath": {
-    "primary": [],
-    "facts": [],
-    "text": ""
-  },
-  "kitchen": {
-    "primary": [],
-    "facts": [
-      "Refrigerator",
-      "Oven",
-      "Microwave",
-      "Gas and electric hob",
-      "Kettle",
-      "Basic kitchen utensils"
-    ],
-    "text": ""
-  },
-  "living": {
-    "primary": [
-      [
-        "Capacity",
-        "15 people"
-      ]
-    ],
-    "facts": [
-      "Pool view",
-      "TV",
-      "Direct access to the pool area"
-    ],
-    "text": ""
-  },
-  "shower": {
-    "primary": [],
-    "facts": [
-      "Sun lounger",
-      "Outdoor shower"
-    ],
-    "text": ""
-  },
-  "majlis": {
-    "primary": [
-      [
-        "Capacity",
-        "10 people"
-      ]
-    ],
-    "facts": [
-      "TV",
-      "Private entrance",
-      "Private bathroom"
-    ],
-    "text": ""
-  },
-  "dining": {
-    "primary": [
-      [
-        "Capacity",
-        "8 people"
-      ]
-    ],
-    "facts": [],
-    "text": ""
-  }
-};
-  var floorNamesEn={
-    "الدور العلوي": "Upper Floor",
-    "الدور الأرضي": "Ground Floor",
-    "بين الدورين": "Between Floors",
-    "المنطقة الخارجية": "Outdoor Area"
-  };
-  var tourCopy={
-    "ar": {
-      "title": "استكشف الشاليه",
-      "close": "إغلاق الاستكشاف",
-      "subtitle": "اختر المرفق لعرض تفاصيله",
-      "languageLabel": "لغة الاستكشاف",
-      "empty": "اختر اسم الغرفة أو المرفق من الخريطة",
-      "details": "مواصفات المكان المختار",
-      "clear": "إلغاء اختيار المكان",
-      "selected": "تم عرض مواصفات ",
-      "language": "تم عرض الاستكشاف بالعربية",
-      "viewport": "خريطة تفاعلية، اختر اسم المكان. استخدم إصبعين أو مفتاحي + و- للتكبير والأسهم للتحريك",
-      "image": "توزيع غرف الشاليه ومرافقه",
-      "error": "تعذّر تحميل الرسم. الأسماء تظل متاحة للاختيار.",
-      "retry": "إعادة المحاولة"
-    },
-    "en": {
-      "title": "Chalet Tour",
-      "close": "Close tour",
-      "subtitle": "Select a facility to view its details",
-      "languageLabel": "Tour language",
-      "empty": "Select a room or facility on the map",
-      "details": "Selected area details",
-      "clear": "Clear selection",
-      "selected": "Showing details for ",
-      "language": "Tour shown in English.",
-      "viewport": "Interactive map. Select a label. Pinch or use the + and - keys to zoom, and the arrow keys to pan.",
-      "image": "Layout of the chalet's rooms and facilities",
-      "error": "The map could not be loaded. You can still select the labels.",
-      "retry": "Try again"
-    }
+
+  var tourCopy = {
+    "title": "استكشف الشاليه",
+    "close": "إغلاق الاستكشاف",
+    "subtitle": "اختر المرفق لعرض تفاصيله",
+    "empty": "اختر اسم الغرفة أو المرفق من الخريطة",
+    "details": "مواصفات المكان المختار",
+    "clear": "إلغاء اختيار المكان",
+    "selected": "تم عرض مواصفات ",
+    "viewport": "خريطة تفاعلية، اختر اسم المكان. استخدم إصبعين أو مفتاحي + و- للتكبير والأسهم للتحريك",
+    "image": "توزيع غرف الشاليه ومرافقه",
+    "error": "تعذّر تحميل الرسم. الأسماء تظل متاحة للاختيار.",
+    "retry": "إعادة المحاولة"
   };
 
   var icons = {
@@ -437,32 +271,32 @@
   }
 
   var dialog, viewport, plane, panel, opener, previousOverflow, selected=null, lineFrame;
-  var labelLanguage='ar', markers=[], polygons=[], leaders=[];
+  var markers=[], polygons=[], leaders=[];
   var imagePath='imgs/chalet-tour-clarity-v1.png';
   var view={w:0,h:0,imageSize:0,imageX:0,imageY:0};
   var ns='http://www.w3.org/2000/svg';
   function clamp(n,min,max){return Math.max(min,Math.min(max,n));}
-  function roomName(room){return labelLanguage==='en'?roomNamesEn[room.key]:room.name;}
+  function roomName(room){return room.name;}
   function isMobile(){return window.matchMedia('(max-width:899px)').matches;}
   function esc(text){return String(text).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
   function queueLines(){cancelAnimationFrame(lineFrame);lineFrame=requestAnimationFrame(drawLeaders);}
   function updateText(){
-    var copy=tourCopy[labelLanguage],direction=labelLanguage==='en'?'ltr':'rtl';
-    dialog.lang=labelLanguage;
+    var copy=tourCopy, direction='rtl';
+    dialog.lang='ar';
     dialog.querySelector('#cm-title').textContent=copy.title;
     dialog.querySelector('.cm-heading').dir=direction;
     dialog.querySelector('.cm-header').dir=direction;
     dialog.querySelector('.cm-subtitle').textContent=copy.subtitle;
-    var back=dialog.querySelector('.cm-close'),backText=labelLanguage==='en'?'Back to chalet':'العودة إلى الشاليه';
+    var back=dialog.querySelector('.cm-close'), backText='العودة إلى الشاليه';
     back.dir=direction;back.setAttribute('aria-label',backText);
     back.title=backText;
     back.innerHTML='<svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     dialog.querySelector('.cm-labels').dir=direction;
     dialog.querySelector('.cm-labels').setAttribute('aria-label',copy.empty);
-    viewport.setAttribute('aria-label',labelLanguage==='en'?'Illustrated chalet layout. Select a room or facility.':'توزيع الشاليه، اختر الغرفة أو المرفق لعرض تفاصيله');
+    viewport.setAttribute('aria-label','توزيع الشاليه، اختر الغرفة أو المرفق لعرض تفاصيله');
     dialog.querySelector('.cm-image').alt=copy.image;
-    dialog.querySelector('.cm-occupancy').textContent=labelLanguage==='en'?'Family friendly · Up to 15 guests':'مناسب للعائلات · حتى 15 ضيفًا';
-    panel.lang=labelLanguage;panel.dir=direction;panel.setAttribute('aria-label',copy.details);
+    dialog.querySelector('.cm-occupancy').textContent='مناسب للعائلات · حتى 15 ضيفًا';
+    panel.lang='ar';panel.dir=direction;panel.setAttribute('aria-label',copy.details);
     dialog.querySelector('.cm-error p').textContent=copy.error;
     dialog.querySelector('.cm-retry').textContent=copy.retry;
     markers.forEach(function(b,i){b.textContent=roomName(rooms[i]);b.setAttribute('aria-label',roomName(rooms[i]));b.dir=direction;});
@@ -482,32 +316,32 @@
     return {'تلفزيون':'tv','دش زجاجي':'shower','مغسلة':'basin','دورة مياه':'toilet','ألعاب للأطفال':'toy','إطلالة على المسبح':'window','ألعاب مائية':'pool','زحليقة مزدوجة':'slide','حاجز زجاجي':'barrier','ثلاجة':'fridge','فرن':'oven','ميكروويف':'microwave','موقد غاز وكهرباء':'hob','غلاية':'kettle','أدوات مطبخ أساسية':'utensils','باب مباشر لساحة المسبح':'door','مظلة':'outdoor','كرسي تشميس':'chair','دش خارجي':'shower','مدخل خاص':'door','حمام خاص':'shower'}[text]||'kitchen';
   }
   function renderDetails(room){
-    var details=labelLanguage==='en'?roomDetailsEn[room.key]:room;
-    var floor=room.floor?(labelLanguage==='en'?floorNamesEn[room.floor]:room.floor):'';
-    var name=roomName(room),cards=[];
+    var details=room;
+    var floor=room.floor?(room.floor):'';
+    var name=roomName(room), cards=[];
     (details.primary||[]).forEach(function(f,i){
-      var ar=room.primary[i][0],value=f[1],numeric=ar==='العمق';
-      if(numeric && labelLanguage==='en')value=value.replace('سم','cm');
+      var ar=room.primary[i][0], value=f[1], numeric=ar==='العمق';
+
       cards.push({label:f[0],value:value,numeric:numeric,icon:room.key==='dining'?'dining':{'العمق':'water','السرير':'bed','الأسرّة':'bed','الحمام':'shower','السعة':'people'}[ar]||'size'});
     });
     (details.facts||[]).forEach(function(f,i){cards.push({value:f,icon:factIcon(room.facts[i])});});
-    if(room.key==='groundBath')cards.push({value:labelLanguage==='en'?'Bathroom':'حمام',icon:'shower'});
+    if(room.key==='groundBath')cards.push({value:'حمام',icon:'shower'});
     if(room.key==='stairs')cards.push({value:details.text,icon:'stairs'});
     panel.innerHTML='<div class="cm-detail-heading"><h3>'+esc(name)+'</h3>'+(floor?'<p>'+esc(floor)+'</p>':'')+'</div>'
       +'<div class="cm-cards'+(cards.length>3?' is-scrollable':'')+'">'+cards.map(function(card){return '<div class="cm-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+esc(card.value)+'</strong></div></div>';}).join('')+'</div>'
-      +'<p class="cm-swipe-hint" hidden><span aria-hidden="true">↔</span> '+(labelLanguage==='en'?'Swipe for more':'اسحب لعرض المزيد')+'</p>'
+      +'<p class="cm-swipe-hint" hidden><span aria-hidden="true">↔</span> '+('اسحب لعرض المزيد')+'</p>'
       +(details.text&&room.key!=='stairs'?'<p class="cm-note">'+esc(details.text)+'</p>':'');
   }
   function updateDetailsOverflow(){
     if(!dialog||!dialog.open)return;
-    var cards=panel.querySelector('.cm-cards'),hint=panel.querySelector('.cm-swipe-hint');
+    var cards=panel.querySelector('.cm-cards'), hint=panel.querySelector('.cm-swipe-hint');
     if(!cards||!hint)return;
     var overflowing=isMobile()&&cards.scrollWidth>cards.clientWidth+1;
     hint.hidden=!overflowing;
     if(overflowing){
       cards.tabIndex=0;
       cards.setAttribute('role','region');
-      cards.setAttribute('aria-label',labelLanguage==='en'?'Facility details, scroll for more':'تفاصيل المرفق، اسحب لعرض المزيد');
+      cards.setAttribute('aria-label','تفاصيل المرفق، اسحب لعرض المزيد');
     }else{cards.removeAttribute('tabindex');cards.removeAttribute('role');cards.removeAttribute('aria-label');}
   }
   function select(room){
@@ -516,7 +350,7 @@
     polygons.forEach(function(p){p.classList.toggle('is-selected',p.dataset.room===room.key);});
     leaders.forEach(function(g,i){g.classList.toggle('is-selected',rooms[i]===room);});
     renderDetails(room);panel.scrollTop=0;updateDetailsOverflow();queueLines();
-    dialog.querySelector('.cm-announcement').textContent=tourCopy[labelLanguage].selected+roomName(room);
+    dialog.querySelector('.cm-announcement').textContent=tourCopy.selected+roomName(room);
   }
   // Match the resort map: compact labels on four sides and persistent connectors.
   var labelSides={
@@ -527,7 +361,7 @@
   var leaderPoints={"upper": [36.364, 12.041], "ground": [29.107, 24.641], "play": [38.836, 24.88], "kitchen": [69.617, 22.568], "dining": [69.378, 33.174], "living": [73.445, 50.478], "majlis": [78.309, 71.451], "pool": [36.603, 57.496], "shower": [19.059, 74.322], "groundBath": [57.257, 23.046]};
   function labelRail(){return isMobile()?clamp(view.w*.17,54,68):clamp(view.w*.14,94,118);}
   function layoutLabels(){
-    var mobile=isMobile(),rail=labelRail(),gap=mobile?6:12;
+    var mobile=isMobile(), rail=labelRail(), gap=mobile?6:12;
     var visibleTop=view.imageY+view.imageSize*.045;
     var visibleBottom=view.imageY+view.imageSize*.91;
     function place(key,x,y,width){
@@ -537,7 +371,7 @@
     if(mobile){
       // Keep labels close to the silhouette instead of the viewport edges.
       var rowWidth=Math.min(144,view.w*.46-10);
-      var top=Math.max(22,visibleTop-24),bottom=Math.min(view.h-22,visibleBottom+24);
+      var top=Math.max(22,visibleTop-24), bottom=Math.min(view.h-22,visibleBottom+24);
       place('ground',view.w*.27,top,rowWidth);
       place('upper',view.w*.73,top,rowWidth);
       place('shower',view.w*.27,bottom,rowWidth);
@@ -551,7 +385,7 @@
       return;
     }
     var left=Math.max(rail/2+4,view.w/2-view.imageSize*.46-gap-rail/2);
-    var right=view.w-left,columnOffset=view.imageSize*.25;
+    var right=view.w-left, columnOffset=view.imageSize*.25;
     place('upper',view.w/2,Math.max(24,visibleTop-28),rail);
     ['shower','majlis'].forEach(function(key,i){
       place(key,view.w/2+(i?1:-1)*columnOffset,Math.min(view.h-24,visibleBottom+28),rail);
@@ -569,14 +403,14 @@
   }
   function drawLeaders(){
     if(!dialog.open)return;
-    var stage=dialog.querySelector('.cm-map-side').getBoundingClientRect(),vp=viewport.getBoundingClientRect();
+    var stage=dialog.querySelector('.cm-map-side').getBoundingClientRect(), vp=viewport.getBoundingClientRect();
     var svg=dialog.querySelector('.cm-leaders');svg.setAttribute('viewBox','0 0 '+stage.width+' '+stage.height);
     rooms.forEach(function(room,i){
-      var g=leaders[i],line=g.querySelector('path'),dot=g.querySelector('circle'),point=leaderPoints[room.key];
+      var g=leaders[i], line=g.querySelector('path'), dot=g.querySelector('circle'), point=leaderPoints[room.key];
       var x=vp.left-stage.left+view.imageX+view.imageSize*point[0]/100;
       var y=vp.top-stage.top+view.imageY+view.imageSize*point[1]/100;
       dot.setAttribute('cx',x);dot.setAttribute('cy',y);
-      var rect=markers[i].getBoundingClientRect(),side=isMobile()&&room.key==='ground'?'top':labelSides[room.key],top=side==='top',bottom=side==='bottom',vertical=top||bottom;
+      var rect=markers[i].getBoundingClientRect(), side=isMobile()&&room.key==='ground'?'top':labelSides[room.key], top=side==='top', bottom=side==='bottom', vertical=top||bottom;
       var sx=vertical?rect.left+rect.width/2-stage.left:(side==='left'?rect.right:rect.left)-stage.left;
       var sy=(top?rect.bottom:bottom?rect.top:rect.top+rect.height/2)-stage.top;
       var bend=vertical?Math.min(18,Math.abs(y-sy)/3):Math.min(24,Math.abs(x-sx)/3);
@@ -589,7 +423,7 @@
   function measure(){
     if(!dialog.open)return;
     view.w=viewport.clientWidth;view.h=viewport.clientHeight;
-    var mobile=isMobile(),rail=labelRail(),top=mobile?50:60,bottom=mobile?50:54;
+    var mobile=isMobile(), rail=labelRail(), top=mobile?50:60, bottom=mobile?50:54;
     var available=Math.min((view.w-2*rail-24)/.94,(view.h-top-bottom)/.865);
     view.imageSize=Math.max(1,mobile?Math.min(view.w*1.03,(view.h-top-bottom)/.865):Math.min(740,available*.86));
     view.imageX=view.w/2-view.imageSize*.52;
@@ -609,14 +443,14 @@
       [room.shape].concat(room.extraShapes||[]).forEach(function(shape){
         var polygon=document.createElementNS(ns,'polygon');polygon.setAttribute('points',shape);polygon.dataset.room=room.key;polygon.setAttribute('vector-effect','non-scaling-stroke');dialog.querySelector('.cm-regions').appendChild(polygon);polygons.push(polygon);
       });
-      var g=document.createElementNS(ns,'g'),path=document.createElementNS(ns,'path'),dot=document.createElementNS(ns,'circle');
+      var g=document.createElementNS(ns,'g'), path=document.createElementNS(ns,'path'), dot=document.createElementNS(ns,'circle');
       dot.setAttribute('r','3.5');g.append(path,dot);dialog.querySelector('.cm-leaders').appendChild(g);leaders.push(g);
       var b=document.createElement('button');b.type='button';b.className='cm-marker';b.dataset.room=room.key;b.setAttribute('aria-controls','cm-details');b.onclick=function(){select(room);};dialog.querySelector('.cm-labels').appendChild(b);markers.push(b);
     });
     viewport.addEventListener('click',function(e){var key=e.target.closest('[data-room]')?.dataset.room;if(key)select(rooms.find(function(r){return r.key===key;}));});
     dialog.querySelector('.cm-close').onclick=dismiss;
     dialog.addEventListener('cancel',function(e){e.preventDefault();dismiss();});
-    var img=dialog.querySelector('.cm-image'),error=dialog.querySelector('.cm-error');
+    var img=dialog.querySelector('.cm-image'), error=dialog.querySelector('.cm-error');
     img.onload=function(){error.hidden=true;img.hidden=false;viewport.setAttribute('aria-busy','false');measure();};
     img.onerror=function(){error.hidden=false;img.hidden=true;viewport.setAttribute('aria-busy','false');};
     function load(){error.hidden=true;viewport.setAttribute('aria-busy','true');img.src=imagePath;}

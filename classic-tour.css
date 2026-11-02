@@ -1,4 +1,4 @@
-/* Classic Cottage: labels follow the approved illustration. */
+/* Cabin-specific illustration, labels and layout. Shared presentation: tour-page.css and tour-layout.css. */
 #ov #classic-tour .dt-image{clip-path:polygon(5.599% 92.480%,5.599% 88.477%,6.120% 87.109%,6.120% 77.051%,5.729% 75.879%,5.794% 73.047%,6.576% 72.852%,7.422% 56.738%,7.227% 55.859%,7.487% 53.418%,8.203% 53.320%,8.919% 38.965%,8.594% 38.574%,8.789% 36.426%,9.310% 36.230%,9.961% 24.023%,9.505% 23.145%,9.766% 21.191%,10.482% 12.402%,10.156% 12.109%,10.221% 9.375%,12.240% 9.277%,12.565% 10.840%,13.151% 7.324%,57.096% 7.324%,59.440% 10.059%,63.216% 10.156%,63.411% 12.598%,85.677% 12.598%,85.807% 9.277%,88.021% 9.277%,88.216% 11.621%,88.542% 12.598%,88.932% 21.094%,89.193% 23.047%,88.997% 24.121%,89.648% 36.230%,90.625% 36.523%,90.820% 38.574%,90.365% 39.551%,91.211% 53.320%,92.253% 53.711%,92.773% 55.957%,92.643% 57.031%,93.490% 72.949%,94.271% 73.047%,94.596% 75.684%,93.945% 77.148%,94.661% 88.184%,94.661% 92.480%,71.940% 92.480%,71.940% 94.824%,58.268% 94.824%,58.268% 92.480%);filter:none}
 @media(min-width:600px){
  #ov #classic-tour .dt-stage{padding-top:66px}
@@ -15,4 +15,6 @@
  #ov #classic-tour .dt-image{width:68%}
  #ov #classic-tour .dt-label{width:21%;font-size:12px}
 }
-@media(max-width:599px){#ov #classic-tour .dt-labels .dt-label:last-child{grid-column:auto}}
+@media(max-width:599px){
+ #ov #classic-tour .dt-labels .dt-label:last-child{grid-column:auto}
+}
