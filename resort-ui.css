@@ -50,7 +50,7 @@
 #menu-detail :is(.menu-item-desc,.menu-hours),
 #sinema-detail :is(.cn-intro,.cn-notes-list),
 #tarfihi-detail .tg-notes-list,
-#maiya-detail :is(.wm-notes-list,.wm-intro,.wm-order-hint),
+#maiya-detail .wm-notes-list,
 #tawilat-detail :is(.tw-intro,.tw-hint),
 #jalsat-detail :is(.jl-description,.jl-notes-list,.jl-order-hint),
 #hospitality-detail :is(.hd-intro,.hd-item),

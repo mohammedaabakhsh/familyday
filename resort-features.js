@@ -3,8 +3,9 @@ var _orderResortScope = false;
 var _orderOriginalHTML = null;
 var _menuBbqTypes = {};
 
-function configureResortOrderForm() {
+function configureResortOrderForm(itemName) {
   var popup = document.getElementById('order-popup');
+  var waterOrder = getMaiyaOrderDetails(itemName);
   if (_orderOriginalHTML === null) {
     var cabinSelect = document.getElementById('order-villa');
     if (cabinSelect.options.length===1) {
@@ -15,8 +16,9 @@ function configureResortOrderForm() {
     _orderOriginalHTML = popup.innerHTML;
   }
   popup.innerHTML = _orderOriginalHTML;
-  popup.classList.toggle('fd-resort-order', _orderResortScope);
-  if (!_orderResortScope) return;
+  popup.classList.toggle('fd-water-order', !!waterOrder);
+  popup.classList.toggle('fd-resort-order', _orderResortScope || !!waterOrder);
+  if (!_orderResortScope && !waterOrder) return;
 
   popup.firstElementChild.classList.add('fd-order-panel');
   popup.firstElementChild.firstElementChild.classList.add('fd-order-title');
@@ -36,10 +38,12 @@ function configureResortOrderForm() {
       field.addEventListener('change', function () { setResortOrderError(id, ''); });
     }
   });
-  var option = document.createElement('option');
-  option.value = 'not-booked';
-  option.textContent = 'لم أحجز كوخًا بعد';
-  document.getElementById('order-villa').appendChild(option);
+  if (!waterOrder) {
+    var option = document.createElement('option');
+    option.value = 'not-booked';
+    option.textContent = 'لم أحجز كوخًا بعد';
+    document.getElementById('order-villa').appendChild(option);
+  }
   var outputLabel = document.querySelector('#order-cabin-num-wrap label');
   outputLabel.id = 'fd-cabin-number-label';
   document.getElementById('order-cabin-num').setAttribute('aria-labelledby', outputLabel.id);
@@ -51,7 +55,31 @@ function configureResortOrderForm() {
   send.parentElement.classList.add('fd-order-actions');
   var help = send.parentElement.previousElementSibling;
   help.classList.add('fd-order-help');
-  help.firstElementChild.textContent = 'بعد تعبئة بياناتك، ستنتقل إلى واتساب لمتابعة طلبك.';
+  help.firstElementChild.textContent = waterOrder
+    ? 'تابع طلبك عبر واتساب، ويؤكّد فريق المنتجع توفر الخدمة.'
+    : 'بعد تعبئة بياناتك، ستنتقل إلى واتساب لمتابعة طلبك.';
+  if (waterOrder) {
+    var notes = document.getElementById('order-notes');
+    notes.previousElementSibling.textContent = 'ملاحظات إضافية (اختياري)';
+    notes.placeholder = 'مثل أعمار الأطفال أو أي تفاصيل تساعدنا في تجهيز طلبك';
+    notes.rows = 2;
+  }
+}
+
+function renderOrderItemSummary(itemName) {
+  var summary = document.getElementById('order-item-name');
+  summary.textContent = '';
+  var waterOrder = getMaiyaOrderDetails(itemName);
+  if (!waterOrder) { summary.textContent = itemName; return; }
+  ['باقة ألعاب مائية','3 ألعاب بـ50 ريال',
+    'للكبار: '+waterOrder.adults+' — للصغار: '+waterOrder.children].forEach(function (text) {
+    var line = document.createElement('div');
+    line.textContent = text;
+    summary.appendChild(line);
+  });
+  // Keep the distribution when a checkout URL is reloaded and then closed.
+  _maiyaQuantities = waterOrder;
+  renderMaiyaQuantities();
 }
 
 function setResortOrderError(id, text) {

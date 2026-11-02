@@ -3,11 +3,9 @@
 #maiya-detail .wm-back{display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;cursor:pointer}
 #maiya-detail .wm-title{margin:0;color:#f0f5f7;font-weight:800;line-height:1.4}
 #maiya-detail .wm-package{padding:24px 20px;border:1px solid #315967;border-radius:20px;background:linear-gradient(135deg,#123949,#0b2233)}
-#maiya-detail .wm-package h2{margin:0;font-size:18px;color:#d6e9ef}
-#maiya-detail .wm-offer{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:10px 0 14px;color:#fff;font-size:28px;font-weight:800}
+#maiya-detail .wm-offer{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0;color:#fff;font-size:28px;font-weight:800}
 #maiya-detail .wm-offer span{color:#a4d8df;font-size:18px;white-space:nowrap}
 #maiya-detail .wm-offer strong{margin-inline:4px;font-size:36px}
-#maiya-detail .wm-intro{margin:0;color:#b6cbd6;font-size:15px;line-height:1.8}
 #maiya-detail .wm-selection{margin-top:26px}
 #maiya-detail .wm-section-title{margin:0 0 14px;color:#f0f5f7;font-size:18px;font-weight:700;line-height:1.5}
 #maiya-detail .wm-category{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px;padding:14px 16px;border:1px solid #29434f;border-radius:16px;background:#0b2233;color:#d6e9ef;font-size:18px;font-weight:700}
@@ -22,10 +20,41 @@
 #maiya-detail .wm-order-summary strong{color:#8fd5e4;font-size:20px;font-weight:800;white-space:nowrap}
 #maiya-detail .wm-order-button{display:block;width:100%;min-height:52px;padding:12px 18px;border:1px solid #3aa9b9;border-radius:14px;background:#147a8c;color:#fff;font:700 18px/1.5 Tajawal,sans-serif;text-align:center;cursor:pointer}
 #maiya-detail .wm-order-button:disabled{border-color:#315967;background:#153244;color:#8caebe;cursor:not-allowed}
-#maiya-detail .wm-order-hint{margin:10px 0 0;color:#b6cbd6;font-size:13px;line-height:1.6;text-align:center}
 #maiya-detail .wm-notes{margin-top:24px;padding-top:20px;border-top:1px solid #29434f}
 #maiya-detail .wm-notes-list{display:grid;gap:8px;margin:0;padding-inline-start:18px;color:#b6cbd6;font-size:14px;line-height:1.8}
 #maiya-detail button:focus-visible{outline:2px solid #8fd5e4;outline-offset:3px}
 #maiya-detail .wm-quantity button:focus-visible{outline-offset:-4px}
 @media(hover:hover){#maiya-detail .wm-back:hover,#maiya-detail .wm-quantity button:not(:disabled):hover{background:#1c4456}#maiya-detail .wm-order-button:not(:disabled):hover{background:#168b9e}}
-@media(max-width:360px){#maiya-detail .wm-category{padding:12px}#maiya-detail .wm-package{padding:20px 16px}}
+/* Compact spacing preserves readable type and full-size quantity controls. */
+@media(max-width:599px){
+  #maiya-detail .wm-shell{padding-top:12px;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+  #maiya-detail .wm-header{margin-bottom:12px}
+  #maiya-detail .wm-package{padding:14px 16px}
+  #maiya-detail .wm-selection{margin-top:16px}
+  #maiya-detail .wm-section-title{margin-bottom:8px}
+  #maiya-detail .wm-category{margin-top:8px;padding:8px 12px}
+  #maiya-detail .wm-selection-count{margin:8px 0 12px}
+  #maiya-detail .wm-order{padding:12px}
+  #maiya-detail .wm-order-summary{margin-bottom:8px}
+  #maiya-detail .wm-notes{margin-top:14px;padding-top:12px}
+}
+@media(max-width:599px) and (max-height:650px){
+  #maiya-detail .wm-shell{padding-top:10px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px))}
+  #maiya-detail .wm-header{margin-bottom:8px}
+  #maiya-detail .wm-package{padding-block:10px}
+  #maiya-detail .wm-selection{margin-top:10px}
+  #maiya-detail .wm-category{padding-block:6px}
+  #maiya-detail .wm-notes{margin-top:10px}
+}
+/* Only the approved water-game checkout uses this compact layout for now. */
+#order-popup.fd-resort-order.fd-water-order .fd-order-panel{padding:20px!important}
+#order-popup.fd-resort-order.fd-water-order #order-item-name{margin-bottom:14px!important;padding:10px 12px;border:1px solid #315967;border-radius:12px;background:#0d293a}
+#order-popup.fd-resort-order.fd-water-order #order-item-name>div:first-child{font-weight:800}
+#order-popup.fd-resort-order.fd-water-order .fd-order-panel>div{margin-bottom:12px!important}
+#order-popup.fd-resort-order.fd-water-order .fd-order-panel>.fd-order-actions{margin-bottom:0!important}
+#order-popup.fd-resort-order.fd-water-order textarea{min-height:72px}
+@media(max-width:599px){
+  #order-popup.fd-water-order{padding:12px!important}
+  #order-popup.fd-resort-order.fd-water-order .fd-order-panel{padding:16px!important;max-height:calc(100dvh - 24px)!important}
+  #order-popup.fd-resort-order.fd-water-order .fd-order-panel>div{margin-bottom:10px!important}
+}

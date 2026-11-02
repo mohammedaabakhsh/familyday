@@ -208,10 +208,10 @@ function updateCabinNum(){
 }
 function openOrderPopup(itemName, showTime){
   FD_ORDER_DRAFTS.save();
-  configureResortOrderForm();
+  configureResortOrderForm(itemName);
   _orderItemName = itemName;
   document.getElementById('order-cinema-note').hidden = itemName !== 'جلسة السينما';
-  document.getElementById('order-item-name').textContent = itemName;
+  renderOrderItemSummary(itemName);
   FD_MENU_EXPERIENCE.renderCheckout();
   document.getElementById('order-name').value = '';
   document.getElementById('order-villa').value = '';
@@ -271,6 +271,8 @@ function sendOrderWhatsapp(){
     FD_ORDER_DRAFTS.clear();
     closeOrderPopup();
     return;
+  } else if(getMaiyaOrderDetails(_orderItemName)){
+    msg = buildMaiyaOrderMessage(_orderItemName,name,villa,document.getElementById('order-cabin-num').textContent,notes);
   } else {
     msg = 'السلام عليكم،' + '\n' + (inquiryOnly ? 'أرغب في الاستفسار عن الخدمة التالية:' : 'أرغب في طلب الخدمة التالية:') + '\n' + 'الاسم: ' + name + '\n' + 'الكوخ: ' + villa + cabinNum + '\n' + 'الخدمة: ' + _orderItemName + (timeStr ? '\n' + timeStr.replace(' - ','') : '') + (notes ? '\n' + 'ملاحظات: ' + notes : '');
   }

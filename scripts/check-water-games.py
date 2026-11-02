@@ -12,8 +12,8 @@ OUT.mkdir(parents=True, exist_ok=True)
 
 with sync_playwright() as p:
     browser = p.chromium.launch(executable_path='/usr/bin/chromium', args=['--no-sandbox'])
-    for width in [320, 390, 768, 1440]:
-        context = browser.new_context(viewport={'width':width, 'height':900})
+    for width, height in [(320,568),(360,640),(390,844),(430,932),(768,900),(1440,900)]:
+        context = browser.new_context(viewport={'width':width, 'height':height})
         if FONT.exists():
             context.route('https://fonts.googleapis.com/**', lambda r:r.fulfill(path=str(FONT),content_type='text/css'))
         page = context.new_page()
@@ -26,6 +26,16 @@ with sync_playwright() as p:
         assert panel.is_visible()
         assert panel.locator('img').count() == 0
         assert not panel.evaluate('(el)=>el.scrollWidth>el.clientWidth')
+        if width < 600:
+            assert panel.evaluate('(el)=>el.scrollHeight<=el.clientHeight+1'), (width, panel.evaluate('(el)=>[el.scrollHeight,el.clientHeight]'))
+        title, back = panel.locator('.wm-title').bounding_box(), panel.locator('.wm-back').bounding_box()
+        assert 10 <= back['x']-(title['x']+title['width']) <= 18
+        assert 'حسب التوفر' not in panel.inner_text()
+        assert 'حسب المتوفر' not in panel.inner_text()
+        assert panel.locator('#maiya-order-btn').inner_text() == 'متابعة الطلب'
+        for button in panel.locator('.wm-quantity button').all():
+            box=button.bounding_box()
+            assert box['width']>=44 and box['height']>=44
         assert page.locator('#maiya-order-btn').is_disabled()
         page.evaluate('maiyaOrderNow()')
         assert not page.locator('#order-popup').is_visible()
@@ -51,17 +61,43 @@ with sync_playwright() as p:
             page.locator('#maiya-order-btn').click()
             assert page.locator('#order-popup').is_visible()
             assert not page.locator('#order-time-wrap').is_visible()
+            assert page.locator('#order-villa option[value="not-booked"]').count() == 0
+            assert page.locator('#order-item-name>div').all_text_contents() == [
+                'باقة ألعاب مائية', '3 ألعاب بـ50 ريال', f'للكبار: {adults} — للصغار: {3-adults}']
+            assert page.locator('.fd-order-help').inner_text() == 'تابع طلبك عبر واتساب، ويؤكّد فريق المنتجع توفر الخدمة.'
+            assert page.locator('#order-notes').get_attribute('placeholder') == 'مثل أعمار الأطفال أو أي تفاصيل تساعدنا في تجهيز طلبك'
+            page.evaluate('window.open=(url)=>{window.capturedURL=url;return null}')
+            page.locator('#order-name').fill('')
+            page.locator('#order-villa').select_option('')
+            page.evaluate('window.capturedURL=null')
+            page.locator('button[onclick="sendOrderWhatsapp()"]').click()
+            assert page.evaluate('window.capturedURL') is None
             page.locator('#order-name').fill('ضيف التجربة')
             page.locator('#order-villa').select_option(label='بيت الدوم 1')
+            note='أعمار الأطفال 5 و7 سنوات' if adults==1 else ''
+            page.locator('#order-notes').fill(note)
+            if adults==1:
+                page.evaluate('closeOrderPopup()')
+                page.locator('#maiya-order-btn').click()
+                assert page.locator('#order-notes').input_value()==note
+                page.reload(wait_until='networkidle')
+                assert page.locator('#order-popup').is_visible()
+                assert page.locator('#order-item-name>div').last.inner_text() == 'للكبار: 1 — للصغار: 2'
+                page.locator('#order-name').fill('ضيف التجربة')
+                page.locator('#order-villa').select_option(label='بيت الدوم 1')
+                page.locator('#order-notes').fill(note)
+                page.screenshot(path=str(OUT / f'water-checkout-{width}.png'),full_page=True)
             page.evaluate('window.open=(url)=>{window.capturedURL=url;return null}')
             page.locator('button[onclick="sendOrderWhatsapp()"]').click()
             url = urlparse(page.evaluate('window.capturedURL'))
             assert url.path == '/966556156693'
             text = parse_qs(url.query)['text'][0]
-            for expected in ['3 ألعاب بـ50 ريال',f'عدد ألعاب الكبار: {adults}',
-                             f'عدد ألعاب الصغار: {3-adults}','حسب المتوفر',
-                             'ضيف التجربة','بيت الدوم 1 (رقم 15)']:
-                assert expected in text, text
+            expected = ('السلام عليكم، أرغب بطلب باقة ألعاب مائية.\n\n'
+                        'الاسم: ضيف التجربة\nالكوخ: بيت الدوم 1\nرقم الكوخ: 15\n\n'
+                        f'عدد ألعاب الكبار: {adults}\nعدد ألعاب الصغار: {3-adults}\n'
+                        'الإجمالي: 3 ألعاب بـ50 ريال')
+            if note: expected+='\n\nملاحظات: '+note
+            assert text==expected, text
             # Returning from checkout must retain the chosen distribution.
             if page.locator('#order-popup').is_visible():
                 page.evaluate('closeOrderPopup()')

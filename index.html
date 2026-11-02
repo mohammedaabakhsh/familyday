@@ -53,7 +53,7 @@
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link href="resort-home.css?v=20261102-final-v1" rel="stylesheet">
-<link rel="preload" as="script" href="js/app-shell.js?v=20261102-cabin-picker-v1">
+<link rel="preload" as="script" href="js/app-shell.js?v=20261102-water-review-v2">
 <link rel="preload" as="script" href="js/gallery-data.js?v=20261102-structure-v1">
 <link rel="preload" as="script" href="js/accommodations.js?v=20261102-final-v1">
 <link rel="preload" as="script" href="js/services.js?v=20261102-water-package-v1">
@@ -194,15 +194,15 @@
 
 <script src="share-pages.js?v=20261102-water-package-v1"></script>
 <link rel="stylesheet" href="css/faq-mobile.css?v=20261102-code-cleanup-v2">
-<link rel="stylesheet" href="css/water-games.css?v=20261102-v1">
-<script src="js/water-games.js?v=20261102-v1"></script>
-<script src="resort-features.js?v=20261102-water-package-v1"></script>
+<link rel="stylesheet" href="css/water-games.css?v=20261102-water-review-v2">
+<script src="js/water-games.js?v=20261102-water-review-v2"></script>
+<script src="resort-features.js?v=20261102-water-review-v2"></script>
 <script src="stay-design.js?v=20261102-final-v1"></script>
 <script src="site-enhancements.js?v=1"></script>
 <script src="menu-experience.js?v=20261102-review-v1"></script>
 <script src="cabin-compare.js?v=20261102-review-v1"></script>
 <script src="js/cabin-numbers.js?v=20261102-v1"></script>
-<script src="js/app-shell.js?v=20261102-cabin-picker-v1"></script>
+<script src="js/app-shell.js?v=20261102-water-review-v2"></script>
 
 
 
@@ -823,19 +823,17 @@
 <!-- MAIYA DETAIL OVERLAY -->
 <div id="maiya-detail" class="hide" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
   <div class="wm-shell">
-    <header class="wm-header">
+    <div class="wm-header">
       <button type="button" class="wm-back" onclick="closeMaiyaDetail()" aria-label="العودة إلى الخدمات">
         <svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
       <h1 class="wm-title">الألعاب المائية</h1>
-    </header>
-    <section class="wm-package" aria-labelledby="wm-package-title">
-      <h2 id="wm-package-title">باقة ألعاب مائية</h2>
+    </div>
+    <section class="wm-package" aria-label="باقة ألعاب مائية">
       <p class="wm-offer">3 ألعاب <span>بـ<strong>50</strong> ريال</span></p>
-      <p class="wm-intro">حدد عدد الألعاب للكبار والصغار، ونجهّز لك الباقة حسب المتوفر.</p>
     </section>
     <section class="wm-selection" aria-labelledby="wm-selection-title">
-      <h2 id="wm-selection-title" class="wm-section-title">وزّع ألعاب الباقة</h2>
+      <h2 id="wm-selection-title" class="wm-section-title">حدد عدد الألعاب للكبار والصغار</h2>
       <div class="wm-category">
         <span id="wm-adults-label">للكبار</span>
         <div class="wm-quantity" role="group" aria-labelledby="wm-adults-label">
@@ -856,14 +854,12 @@
     </section>
     <div class="wm-order">
       <div class="wm-order-summary"><span>إجمالي الباقة</span><strong>50 ريال</strong></div>
-      <button type="button" id="maiya-order-btn" class="wm-order-button" onclick="maiyaOrderNow()" disabled>إكمال الطلب عبر واتساب</button>
-      <p class="wm-order-hint">يُؤكَّد الطلب حسب التوفر بعد ردّ فريق المنتجع.</p>
+      <button type="button" id="maiya-order-btn" class="wm-order-button" onclick="maiyaOrderNow()" disabled>متابعة الطلب</button>
     </div>
     <section class="wm-notes" aria-labelledby="wm-notes-title">
-      <h2 id="wm-notes-title" class="wm-section-title">تعليمات وملاحظات</h2>
+      <h2 id="wm-notes-title" class="wm-section-title">تعليمات الاستخدام</h2>
       <ul class="wm-notes-list">
         <li>يرجى المحافظة على الألعاب وإعادتها بحالتها الأصلية.</li>
-        <li>تطبق جميع الشروط والأحكام.</li>
       </ul>
     </section>
   </div>
@@ -1814,7 +1810,7 @@
 
 <link rel="stylesheet" href="css/accommodation-layout.css?v=20261102-final-v1">
 
-<link rel="stylesheet" href="resort-ui.css?v=20261102-water-package-v1">
+<link rel="stylesheet" href="resort-ui.css?v=20261102-water-review-v2">
 <link rel="stylesheet" href="stay-ui.css?v=20261102-final-v1">
 <link rel="stylesheet" href="chalet-ui.css?v=9">
 
