@@ -117,8 +117,7 @@
 /* Keep each page's approved photo/phrase order; share the outer spacing. */
 /* Compact mobile typography for the resort services trial. */
 @media(max-width:599px) {
-  #services-overlay .svcs-title { font-size:17px; }
-  #services-overlay .svcs-header { padding-top:16px; padding-bottom:18px; }
+  #services-overlay .svcs-header { padding-bottom:18px; }
   #services-overlay .svcs-content { gap:clamp(24px,4.5vh,40px); padding-bottom:calc(20px + env(safe-area-inset-bottom,0px)); }
   #services-overlay .svcs-grid { gap:8px; }
   #services-overlay .svcs-card { min-height:48px; padding:10px 16px; border-radius:14px; }

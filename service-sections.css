@@ -11,6 +11,6 @@
 #setups-detail :is(.cn-header,.tw-header,.jl-header){display:none}
 #setups-detail :is(.cn-shell,.tw-shell,.jl-shell){padding:0;width:100%;max-width:none}
 @media(max-width:899px){#setups-detail .setups-shell{max-width:600px}}
-@media(max-width:360px){#setups-detail .setups-shell{padding-inline:16px}#setups-title{font-size:22px}#setups-detail .setups-tabs{gap:6px}#setups-detail .setups-tabs button{font-size:13px;padding:12px 5px}}
+@media(max-width:360px){#setups-detail .setups-shell{padding-inline:16px}#setups-detail .setups-tabs{gap:6px}#setups-detail .setups-tabs button{font-size:13px;padding:12px 5px}}
 
 #hospitality-detail .hd-package-note{margin:12px 0 0;font:400 13px/1.7 Tajawal,sans-serif;color:#b6cbd6}
