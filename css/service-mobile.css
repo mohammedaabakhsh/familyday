@@ -1,12 +1,5 @@
 /* Compact phone controls. Photo services retain their original image sizes and natural scrolling. */
 @media(max-width:599px){
-  #tarfihi-detail .tg-shell{display:flex;flex-direction:column;min-height:100dvh;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px))}
-  #tarfihi-detail .tg-header{margin:0}
-  #tarfihi-detail .tg-layout{display:flex;flex:1;flex-direction:column;gap:12px}
-  #tarfihi-detail .tg-details{display:contents}
-  #tarfihi-detail .tg-order-area{margin-top:auto;width:100%;box-sizing:border-box}
-  #tarfihi-detail .tg-photo{width:100%}
-  #tarfihi-detail .tg-photo img{width:100%;height:clamp(100px,calc(100dvh - 650px),200px);max-height:none;aspect-ratio:auto;object-fit:contain;background:#071c2a}
   #setups-detail :is(.cn-section-title,.tw-label,.jl-section-title),#tarfihi-detail .tg-section-title{margin-bottom:6px}
   #setups-detail :is(.cn-notes,.tw-contents,.jl-notes),#tarfihi-detail .tg-notes{padding-top:8px}
   #setups-detail :is(.cn-notes-list,.jl-notes-list),#tarfihi-detail .tg-notes-list{gap:4px;font-size:13px;line-height:1.6}
