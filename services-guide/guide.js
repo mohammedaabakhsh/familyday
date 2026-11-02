@@ -49,17 +49,32 @@
     html += section('resort-map','06','خريطة الأكواخ','اختر الكوخ على الخريطة واستكشف غرفه ومرافقه', FD_GUIDE_MAP.markup());
     content.innerHTML = html;
     FD_GUIDE_MAP.mount();
+    setupExclusiveFolds();
     content.setAttribute('aria-busy','false');
     scrollToHash();
     observeSections();
+  }
+  function closeOtherFolds(activeFold) {
+    content.querySelectorAll('.guide-fold[open]').forEach(fold => {
+      if (fold !== activeFold) fold.open = false;
+    });
+  }
+  function setupExclusiveFolds() {
+    content.querySelectorAll('.guide-fold').forEach(fold => {
+      fold.addEventListener('toggle', () => {
+        if (fold.open) closeOtherFolds(fold);
+      });
+    });
   }
   function scrollToHash() {
     if(location.hash === '#packages') history.replaceState(null,'','#seating');
     const target = document.getElementById(location.hash.slice(1));
     if (target && target.classList.contains('guide-section')) {
       const fold=target.querySelector('.guide-fold');
+      closeOtherFolds(fold || null);
       if(fold) fold.open=true;
     }
+    if (target && target.id === 'contents') closeOtherFolds(null);
     if (target && (target.classList.contains('guide-section') || target.id === 'contents')) target.scrollIntoView({behavior:'instant',block:'start'});
   }
   let observing = false;
