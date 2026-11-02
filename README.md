@@ -44,6 +44,9 @@ python3 -m http.server 8023 --bind 127.0.0.1
 - The compact FAQ styling lives in `css/faq-mobile.css`; `resort-features.js`
   handles category selection and accordion behavior without injecting CSS.
 - `services-guide/`: brochure backed by those shared sources; see its README.
+- `js/water-games.js` and `css/water-games.css`: the shared water-game bundle
+  for the site and app preview. Guests allocate 3 games between adults and
+  children for 50 SAR; checkout sends the quantities, without an item catalog.
 - `guest-services/`: in-stay service links and the extras order form. Names and
   unit prices in `index.html` are the catalog used by `guest-services.js` for
   quantities and totals. The draft is scoped to the browser tab. Extras open a
@@ -77,6 +80,7 @@ python3 scripts/check-service-sections.py http://127.0.0.1:8023
 python3 scripts/check-services-guide.py http://127.0.0.1:8023
 python3 scripts/check-lossless-images.py http://127.0.0.1:8023
 python3 scripts/check-guest-services.py http://127.0.0.1:8023
+python3 scripts/check-water-games.py http://127.0.0.1:8023
 ```
 
 Checks capture intended WhatsApp URLs locally; they do not send orders. The

@@ -111,40 +111,6 @@ function renderMenuBbq(item) {
     + '</div></article>';
 }
 
-function renderMaiyaThumbnails() {
-  var strip = document.getElementById('maiya-thumbnails');
-  strip.replaceChildren();
-  _maiyaGames.forEach(function (game, index) {
-    var button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'wm-thumbnail';
-    button.setAttribute('aria-label', 'عرض ' + game.name);
-    button.setAttribute('aria-pressed', String(index === _maiyaIdx));
-    var img = document.createElement('img');
-    img.src = game.img;
-    img.alt = '';
-    img.loading = 'lazy';
-    img.width = 64;
-    img.height = 64;
-    button.appendChild(img);
-    button.addEventListener('click', function () { maiyaGoTo(index); });
-    strip.appendChild(button);
-  });
-}
-
-function updateMaiyaThumbnail() {
-  var strip = document.getElementById('maiya-thumbnails');
-  Array.from(strip.children).forEach(function (button, index) {
-    button.setAttribute('aria-pressed', String(index === _maiyaIdx));
-  });
-  var active = strip.children[_maiyaIdx];
-  if (active) {
-    var rect = active.getBoundingClientRect(), frame = strip.getBoundingClientRect();
-    if (rect.left < frame.left) strip.scrollLeft += rect.left - frame.left;
-    else if (rect.right > frame.right) strip.scrollLeft += rect.right - frame.right;
-  }
-}
-
 // Keep Meta's click ID out of copied links and the address bar.
 function cleanFamilyDayURL(href) {
   var url = new URL(href || location.href);

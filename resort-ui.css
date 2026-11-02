@@ -50,7 +50,7 @@
 #menu-detail :is(.menu-item-desc,.menu-hours),
 #sinema-detail :is(.cn-intro,.cn-notes-list),
 #tarfihi-detail .tg-notes-list,
-#maiya-detail :is(.wm-notes-list,.wm-selection-hint,.wm-order-hint),
+#maiya-detail :is(.wm-notes-list,.wm-intro,.wm-order-hint),
 #tawilat-detail :is(.tw-intro,.tw-hint),
 #jalsat-detail :is(.jl-description,.jl-notes-list,.jl-order-hint),
 #hospitality-detail :is(.hd-intro,.hd-item),
@@ -141,14 +141,14 @@
   #walaa-detail .wl-section-title { font-size:15px; }
 
   #menu-detail :is(.menu-item-name,.menu-qty),
-  #tarfihi-detail .tg-package-name,#maiya-detail .wm-select,
+  #tarfihi-detail .tg-package-name,
   #tawilat-detail :is(.tw-package-name,.tw-size),
   #jalsat-detail :is(.jl-filter,.jl-addon-name,.jl-addon-price,.jl-total),
   #sinema-detail .cn-inclusions,#walaa-detail .wl-benefits-list,
   :is(#sharik-detail,#contest-detail) :is(.sw-prize-kicker,.sw-prize-detail,.sw-email-address),
   #tarfihi-detail .tg-summary,#maiya-detail .wm-order-summary { font-size:14px; }
 
-  #maiya-detail .wm-game-name,#jalsat-detail .jl-session-name { font-size:16px; font-weight:700; }
+  #jalsat-detail .jl-session-name { font-size:16px; font-weight:700; }
   #sinema-detail .cn-stat dd,#jalsat-detail .jl-facts dd { font-size:18px; font-weight:700; }
   #tarfihi-detail :is(.tg-package-price,.tg-summary-price),
   #maiya-detail .wm-order-summary strong,
@@ -219,10 +219,6 @@
 #menu-detail .menu-bbq .menu-item-desc { margin:0; }
 #menu-detail .menu-bbq-types { display:flex; gap:8px; }
 #menu-detail .menu-bbq-types button { flex:1; }
-#maiya-detail .wm-thumbnails { display:flex; gap:8px; max-width:100%; overflow-x:auto; padding:4px 2px 10px; margin-top:10px; scrollbar-width:thin; }
-#maiya-detail .wm-thumbnail { flex:0 0 56px; width:56px; height:56px; padding:3px; border:1px solid var(--fd-line); border-radius:10px; background:#0b2130; cursor:pointer; }
-#maiya-detail .wm-thumbnail img { display:block; width:100%; height:100%; object-fit:cover; border-radius:6px; }
-#maiya-detail .wm-thumbnail[aria-pressed="true"] { border:2px solid var(--fd-link); background:#174454; }
 
 #faq-overlay .fd-faq-shortcuts { display:grid; grid-template-columns:minmax(0,1fr); gap:10px; margin-top:22px; }
 #faq-overlay .fd-faq-shortcuts button { box-sizing:border-box; width:100%; min-width:0; min-height:48px; padding:12px 16px; border:1px solid var(--fd-line); border-radius:12px; background:#153244; color:var(--fd-text); font:700 var(--fd-copy)/1.6 Tajawal,sans-serif; text-align:right; cursor:pointer; }

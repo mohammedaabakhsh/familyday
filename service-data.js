@@ -70,23 +70,6 @@ var _menuData = {
   ]
 };
 
-var _maiyaAllGames = [
-  {name:'لعبة 1', rent:'40 ريال', comp:'170 ريال', cat:'كبار', img:'imgs/maiya_1.webp'},
-  {name:'لعبة 2', rent:'30 ريال', comp:'120 ريال', cat:'كبار', img:'imgs/maiya_2.webp'},
-  {name:'لعبة 3', rent:'10 ريال', comp:'40 ريال', cat:'كبار', img:'imgs/maiya_3.webp'},
-  {name:'لعبة 4', rent:'5 ريال', comp:'10 ريال', cat:'صغار', img:'imgs/maiya_4.webp'},
-  {name:'لعبة 5', rent:'10 ريال', comp:'20 ريال', cat:'صغار', img:'imgs/maiya_5.webp'},
-  {name:'لعبة 6', rent:'10 ريال', comp:'20 ريال', cat:'صغار', img:'imgs/maiya_6.webp'},
-  {name:'لعبة 7', rent:'15 ريال', comp:'30 ريال', cat:'صغار', img:'imgs/maiya_7.webp'},
-  {name:'لعبة 8', rent:'30 ريال', comp:'90 ريال', cat:'صغار', img:'imgs/maiya_8.webp'},
-  {name:'لعبة 9', rent:'40 ريال', comp:'150 ريال', cat:'صغار', img:'imgs/maiya_9.webp'},
-  {name:'لعبة 10', rent:'55 ريال', comp:'160 ريال', cat:'صغار', img:'imgs/maiya_10.webp'},
-  {name:'لعبة 11', rent:'40 ريال', comp:'130 ريال', cat:'صغار', img:'imgs/maiya_11.webp'},
-  {name:'لعبة 12', rent:'40 ريال', comp:'140 ريال', cat:'صغار', img:'imgs/maiya_12.webp'},
-  {name:'لعبة 13', rent:'40 ريال', comp:'150 ريال', cat:'صغار', img:'imgs/maiya_13.webp'},
-  {name:'لعبة 14', rent:'150 ريال', comp:'1200 ريال', cat:'عائلة', img:'imgs/maiya_14.webp'}
-];
-
 var _tawilatPrices = {
   6:  {tansiq:399,  plain:199},
   12: {tansiq:599,  plain:399},

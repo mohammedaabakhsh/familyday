@@ -1,0 +1,31 @@
+#maiya-detail .wm-shell{box-sizing:border-box;width:100%;max-width:640px;margin:auto;padding:24px 20px calc(32px + env(safe-area-inset-bottom,0px));font-family:Tajawal,sans-serif;text-align:right}
+#maiya-detail .wm-header{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+#maiya-detail .wm-back{display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;cursor:pointer}
+#maiya-detail .wm-title{margin:0;color:#f0f5f7;font-weight:800;line-height:1.4}
+#maiya-detail .wm-package{padding:24px 20px;border:1px solid #315967;border-radius:20px;background:linear-gradient(135deg,#123949,#0b2233)}
+#maiya-detail .wm-package h2{margin:0;font-size:18px;color:#d6e9ef}
+#maiya-detail .wm-offer{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:10px 0 14px;color:#fff;font-size:28px;font-weight:800}
+#maiya-detail .wm-offer span{color:#a4d8df;font-size:18px;white-space:nowrap}
+#maiya-detail .wm-offer strong{margin-inline:4px;font-size:36px}
+#maiya-detail .wm-intro{margin:0;color:#b6cbd6;font-size:15px;line-height:1.8}
+#maiya-detail .wm-selection{margin-top:26px}
+#maiya-detail .wm-section-title{margin:0 0 14px;color:#f0f5f7;font-size:18px;font-weight:700;line-height:1.5}
+#maiya-detail .wm-category{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px;padding:14px 16px;border:1px solid #29434f;border-radius:16px;background:#0b2233;color:#d6e9ef;font-size:18px;font-weight:700}
+#maiya-detail .wm-quantity{display:flex;align-items:center;direction:ltr;border:1px solid #315967;border-radius:12px;overflow:hidden}
+#maiya-detail .wm-quantity button{width:46px;height:46px;padding:0;border:0;background:#153244;color:#b7ebf1;font:24px/1 Arial,sans-serif;cursor:pointer}
+#maiya-detail .wm-quantity button:disabled{color:#6b8591;background:#102938;cursor:default}
+#maiya-detail .wm-quantity output{width:36px;text-align:center;font-size:20px;font-variant-numeric:tabular-nums}
+#maiya-detail .wm-selection-count{margin:12px 0 20px;color:#b6cbd6;font-size:14px;line-height:1.6}
+#maiya-detail .wm-selection-count.is-complete{color:#8fd5e4;font-weight:700}
+#maiya-detail .wm-order{padding:18px;border:1px solid #315967;border-radius:16px;background:#0d293a}
+#maiya-detail .wm-order-summary{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;color:#d6e4eb;font-size:15px;line-height:1.6}
+#maiya-detail .wm-order-summary strong{color:#8fd5e4;font-size:20px;font-weight:800;white-space:nowrap}
+#maiya-detail .wm-order-button{display:block;width:100%;min-height:52px;padding:12px 18px;border:1px solid #3aa9b9;border-radius:14px;background:#147a8c;color:#fff;font:700 18px/1.5 Tajawal,sans-serif;text-align:center;cursor:pointer}
+#maiya-detail .wm-order-button:disabled{border-color:#315967;background:#153244;color:#8caebe;cursor:not-allowed}
+#maiya-detail .wm-order-hint{margin:10px 0 0;color:#b6cbd6;font-size:13px;line-height:1.6;text-align:center}
+#maiya-detail .wm-notes{margin-top:24px;padding-top:20px;border-top:1px solid #29434f}
+#maiya-detail .wm-notes-list{display:grid;gap:8px;margin:0;padding-inline-start:18px;color:#b6cbd6;font-size:14px;line-height:1.8}
+#maiya-detail button:focus-visible{outline:2px solid #8fd5e4;outline-offset:3px}
+#maiya-detail .wm-quantity button:focus-visible{outline-offset:-4px}
+@media(hover:hover){#maiya-detail .wm-back:hover,#maiya-detail .wm-quantity button:not(:disabled):hover{background:#1c4456}#maiya-detail .wm-order-button:not(:disabled):hover{background:#168b9e}}
+@media(max-width:360px){#maiya-detail .wm-category{padding:12px}#maiya-detail .wm-package{padding:20px 16px}}
