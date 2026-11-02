@@ -8,6 +8,8 @@
   var cabin = document.getElementById('cabin-number');
   var summary = document.getElementById('order-items');
   var send = form.querySelector('.send-order');
+  var shortcut = document.getElementById('order-shortcut');
+  var shortcutTotal = document.getElementById('shortcut-total');
   var items = Array.from(document.querySelectorAll('[data-extra]')).map(function (row) {
     return {id:row.dataset.extra, name:row.querySelector('h3').textContent,
       price:Number(row.querySelector('.extra-price bdi').textContent), quantity:0, row:row};
@@ -47,8 +49,12 @@
     });
     summary.hidden=count===0;
     document.getElementById('order-count').textContent=count?'الكمية المختارة: '+count:'لم تختر أي طلبات بعد';
-    document.getElementById('order-total').textContent=String(total());
+    var totalValue=total();
+    document.getElementById('order-total').textContent=String(totalValue);
     send.disabled=count===0;
+    shortcut.hidden=count===0;
+    shortcutTotal.textContent=String(totalValue);
+    document.body.classList.toggle('has-order-shortcut',count>0);
   }
 
   try {
@@ -74,6 +80,9 @@
   cabin.addEventListener('input',function () {
     cabin.value=latinDigits(cabin.value);
     save();
+  });
+  shortcut.addEventListener('click',function () {
+    form.scrollIntoView({behavior:'smooth',block:'start'});
   });
   form.addEventListener('submit',function (event) {
     event.preventDefault();
