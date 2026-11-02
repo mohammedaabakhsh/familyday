@@ -25,6 +25,18 @@
 #maiya-detail button:focus-visible{outline:2px solid #8fd5e4;outline-offset:3px}
 #maiya-detail .wm-quantity button:focus-visible{outline-offset:-4px}
 @media(hover:hover){#maiya-detail .wm-back:hover,#maiya-detail .wm-quantity button:not(:disabled):hover{background:#1c4456}#maiya-detail .wm-order-button:not(:disabled):hover{background:#168b9e}}
+/* Match the wider, two-column service layouts on desktop. */
+@media(min-width:900px){
+  #maiya-detail .wm-shell{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-areas:"header header" "selection package" "selection notes" "selection order";gap:24px 32px;max-width:1100px;padding-top:28px}
+  #maiya-detail .wm-header{grid-area:header;margin-bottom:2px}
+  #maiya-detail .wm-package{grid-area:package;padding:28px}
+  #maiya-detail .wm-selection{grid-area:selection;display:flex;flex-direction:column;justify-content:space-between;gap:16px;margin:0;padding:28px;border:1px solid #315967;border-radius:20px;background:#0b2130}
+  #maiya-detail .wm-selection .wm-section-title{margin:0;font-size:20px}
+  #maiya-detail .wm-category{margin:0;padding:18px;background:#102b3a}
+  #maiya-detail .wm-selection-count{margin:0}
+  #maiya-detail .wm-notes{grid-area:notes;margin:0;padding:4px 0;border:0}
+  #maiya-detail .wm-order{grid-area:order;padding:24px}
+}
 /* Fill the phone viewport and leave the total and next step at the bottom. */
 @media(max-width:599px){
   #maiya-detail .wm-shell{display:flex;flex-direction:column;justify-content:space-between;gap:12px;min-height:100dvh;padding-top:12px;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px))}
