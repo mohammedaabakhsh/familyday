@@ -54,13 +54,16 @@ python3 -m http.server 8023 --bind 127.0.0.1
 - `js/water-games.js` and `css/water-games.css`: the shared water-game bundle
   for the site and app preview. Guests allocate 3 games between adults and
   children for 50 SAR; checkout sends the quantities, without an item catalog.
-- `guest-services/`: in-stay service links and the extras order form. Names and
-  unit prices in `index.html` are the catalog used by `guest-services.js` for
-  quantities and totals. The draft is scoped to the browser tab. Extras open a
-  prepared WhatsApp message to the resort; restaurant checkout keeps its own
-  number. Both order forms use `js/cabin-numbers.js` for cabin names and on-site
-  numbers. Guest extras require a name and cabin selection; the number appears
-  automatically. `guest-services.html` redirects old links to this single page.
+- `guest-services/`: in-stay ordering without leaving the page. Water games,
+  cinema, games and extras share a resort basket; the collapsible restaurant
+  menu reads `service-data.js` and has a separate basket and WhatsApp recipient.
+  The extra names and unit prices in the page HTML feed its quantity controls.
+  `guest-services.js` handles adding/updating/removing service choices, optional
+  notes and tab-scoped drafts, with migration from the previous extras draft.
+  Both forms use `js/cabin-numbers.js` and share the guest-entered name/cabin;
+  their notes and totals remain independent. No order is sent by the site:
+  WhatsApp opens a prepared message for the guest to review and send.
+  `guest-services.html` redirects old links to this single page.
 
 Exploration layouts use a 600 px or 900 px side-layout breakpoint, depending on
 the cabin. Preserve these configurations when changing the shared renderer.
