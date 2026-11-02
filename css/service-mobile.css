@@ -1,17 +1,12 @@
-/* Phone service pages share the available height; desktop layouts stay in app-base.css. */
+/* Compact phone controls. Photo services retain their original image sizes and natural scrolling. */
 @media(max-width:599px){
-  #setups-detail .setups-shell,#tarfihi-detail .tg-shell{display:flex;flex-direction:column;min-height:100dvh;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px))}
-  #setups-detail .setups-heading,#tarfihi-detail .tg-header{margin:0}
-  #setups-title{font-size:22px}
-  #setups-detail .setups-tabs{margin:0;gap:6px}
-  #setups-detail .setups-tabs button{min-height:44px;padding:8px 4px;font-size:14px}
-  #setups-detail .setups-content,#setups-detail :is(#sinema-detail,#tawilat-detail,#jalsat-detail),#setups-detail :is(.cn-shell,.tw-shell,.jl-shell){display:flex;flex:1;flex-direction:column;min-height:0}
-  #setups-detail :is(.cn-shell,.tw-shell,.jl-shell){padding:0}
-  #setups-detail :is(.cn-layout,.tw-layout,.jl-layout),#tarfihi-detail .tg-layout{display:flex;flex:1;flex-direction:column;gap:12px}
-  #setups-detail :is(.cn-details,.tw-options,.jl-details),#tarfihi-detail .tg-details{display:contents}
-  #setups-detail :is(.cn-order,.tw-footer,.jl-order),#tarfihi-detail .tg-order-area{margin-top:auto;width:100%;box-sizing:border-box}
-  #setups-detail :is(.cn-photo-group,.tw-photo-group,.jl-browser),#tarfihi-detail .tg-photo{width:100%}
-  #setups-detail :is(.cn-photo img,.tw-photo img),#tarfihi-detail .tg-photo img{width:100%;height:clamp(100px,calc(100dvh - 650px),200px);max-height:none;aspect-ratio:auto;object-fit:contain;background:#071c2a}
+  #tarfihi-detail .tg-shell{display:flex;flex-direction:column;min-height:100dvh;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px))}
+  #tarfihi-detail .tg-header{margin:0}
+  #tarfihi-detail .tg-layout{display:flex;flex:1;flex-direction:column;gap:12px}
+  #tarfihi-detail .tg-details{display:contents}
+  #tarfihi-detail .tg-order-area{margin-top:auto;width:100%;box-sizing:border-box}
+  #tarfihi-detail .tg-photo{width:100%}
+  #tarfihi-detail .tg-photo img{width:100%;height:clamp(100px,calc(100dvh - 650px),200px);max-height:none;aspect-ratio:auto;object-fit:contain;background:#071c2a}
   #setups-detail :is(.cn-section-title,.tw-label,.jl-section-title),#tarfihi-detail .tg-section-title{margin-bottom:6px}
   #setups-detail :is(.cn-notes,.tw-contents,.jl-notes),#tarfihi-detail .tg-notes{padding-top:8px}
   #setups-detail :is(.cn-notes-list,.jl-notes-list),#tarfihi-detail .tg-notes-list{gap:4px;font-size:13px;line-height:1.6}
@@ -45,17 +40,10 @@
   #setups-detail .jl-order-line{font-size:13px;line-height:1.5}
   #setups-detail .jl-order-line+.jl-order-line{margin-top:4px}
   #setups-detail .jl-total{margin:6px 0;padding-top:6px}
-  #setups-detail .tw-photo img{height:clamp(90px,calc(100dvh - 730px),150px)}
   #setups-detail .jl-layout{gap:10px}
-  #setups-detail .jl-browser{position:relative}
-  #setups-detail .jl-gallery-controls{position:absolute;inset-inline:6px;bottom:6px;margin:0;pointer-events:none}
-  #setups-detail .jl-gallery-controls button{pointer-events:auto;background:#102938eb}
-  #setups-detail .jl-counter{justify-self:center;padding:3px 9px;border-radius:10px;background:#071c2add;color:#fff}
-  #setups-detail .jl-image{height:clamp(100px,calc(100dvh - 724px),150px);aspect-ratio:auto}
 }
 @media(max-width:359px){
   #setups-detail :is(.cn-layout,.tw-layout,.jl-layout){gap:8px}
-  #setups-detail .tw-photo img{height:80px}
   #setups-detail .jl-description{font-size:12px}
   #setups-detail .jl-facts{padding:4px 0}
   #setups-detail .tw-package-desc{font-size:12px}
