@@ -28,6 +28,11 @@ with sync_playwright() as p:
         assert not panel.evaluate('(el)=>el.scrollWidth>el.clientWidth')
         if width < 600:
             assert panel.evaluate('(el)=>el.scrollHeight<=el.clientHeight+1'), (width, panel.evaluate('(el)=>[el.scrollHeight,el.clientHeight]'))
+            order_box = panel.locator('.wm-order').bounding_box()
+            bottom_gap = height-order_box['y']-order_box['height']
+            assert 9 <= bottom_gap <= 13, (width, height, bottom_gap)
+            notes_box = panel.locator('.wm-notes').bounding_box()
+            assert notes_box['y']+notes_box['height'] <= order_box['y']
         title, back = panel.locator('.wm-title').bounding_box(), panel.locator('.wm-back').bounding_box()
         assert 10 <= back['x']-(title['x']+title['width']) <= 18
         assert 'حسب التوفر' not in panel.inner_text()
@@ -63,7 +68,7 @@ with sync_playwright() as p:
             assert not page.locator('#order-time-wrap').is_visible()
             assert page.locator('#order-villa option[value="not-booked"]').count() == 0
             assert page.locator('#order-item-name>div').all_text_contents() == [
-                'باقة ألعاب مائية', '3 ألعاب بـ50 ريال', f'للكبار: {adults} — للصغار: {3-adults}']
+                'باقة ألعاب مائية', '3 ألعاب بـ50 ريال', f'للكبار: {adults}', f'للصغار: {3-adults}']
             assert page.locator('.fd-order-help').inner_text() == 'تابع طلبك عبر واتساب، ويؤكّد فريق المنتجع توفر الخدمة.'
             assert page.locator('#order-notes').get_attribute('placeholder') == 'مثل أعمار الأطفال أو أي تفاصيل تساعدنا في تجهيز طلبك'
             page.evaluate('window.open=(url)=>{window.capturedURL=url;return null}')
@@ -82,7 +87,7 @@ with sync_playwright() as p:
                 assert page.locator('#order-notes').input_value()==note
                 page.reload(wait_until='networkidle')
                 assert page.locator('#order-popup').is_visible()
-                assert page.locator('#order-item-name>div').last.inner_text() == 'للكبار: 1 — للصغار: 2'
+                assert page.locator('#order-item-name>div').all_text_contents()[-2:] == ['للكبار: 1','للصغار: 2']
                 page.locator('#order-name').fill('ضيف التجربة')
                 page.locator('#order-villa').select_option(label='بيت الدوم 1')
                 page.locator('#order-notes').fill(note)

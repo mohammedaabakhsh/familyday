@@ -72,7 +72,7 @@ function renderOrderItemSummary(itemName) {
   var waterOrder = getMaiyaOrderDetails(itemName);
   if (!waterOrder) { summary.textContent = itemName; return; }
   ['باقة ألعاب مائية','3 ألعاب بـ50 ريال',
-    'للكبار: '+waterOrder.adults+' — للصغار: '+waterOrder.children].forEach(function (text) {
+    'للكبار: '+waterOrder.adults,'للصغار: '+waterOrder.children].forEach(function (text) {
     var line = document.createElement('div');
     line.textContent = text;
     summary.appendChild(line);
