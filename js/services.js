@@ -291,7 +291,7 @@ function fdOpenedFromGuestServices(){
 }
 function fdReturnToGuestServices(){
   if(!fdOpenedFromGuestServices()) return false;
-  window.location.href = '/guest-services.html';
+  window.location.href = '/guest-services/';
   return true;
 }
 

@@ -1,0 +1,93 @@
+:root{--ink:#173f36;--muted:#61756b;--paper:#fffdf8;--soft:#eef7f3;--line:#d7e6de;--accent:#23735e}
+*{box-sizing:border-box}
+html{background:#edf3ef;color-scheme:light}
+body{margin:0;color:var(--ink);font:16px/1.6 Tajawal,Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+button{cursor:pointer}
+button:disabled{cursor:default}
+:is(a,button,input):focus-visible{outline:3px solid #23735e;outline-offset:3px}
+[hidden]{display:none!important}
+.page{width:min(100%,900px);margin:auto;background:var(--paper);min-height:100vh}
+.hero{padding:24px 20px 28px;text-align:center;background:linear-gradient(180deg,#e7f4ed,#f8fbf7)}
+.logo{display:block;margin:0 auto 12px;object-fit:contain}
+.eyebrow{margin:0;color:var(--accent);font-size:12px;font-weight:800}
+h1{margin:4px 0 8px;font-size:30px;line-height:1.3}
+.hero p:last-child{margin:0;color:var(--muted);font-size:14px}
+.main{padding:24px 20px 8px}
+h2{margin:0 0 12px;font-size:21px;line-height:1.4}
+.primary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.service-card{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:16px;border:1px solid var(--line);border-radius:18px;background:#fff}
+.service-icon{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:var(--soft);color:var(--accent)}
+.service-icon svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.service-copy strong{display:block;font-size:17px;line-height:1.4}
+.service-copy>span{display:block;margin-top:5px;color:var(--muted);font-size:12px;line-height:1.6}
+.arrow{position:absolute;top:18px;left:16px;font-size:21px;color:var(--accent)}
+.extras{margin-top:28px;padding-top:24px;border-top:1px solid var(--line)}
+.extras h2{margin-bottom:4px}
+.section-note{margin:0 0 16px;font-size:13px;color:var(--muted)}
+.extra-list{display:grid;gap:9px}
+.extra-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 14px;border:1px solid var(--line);border-radius:16px;background:#fff}
+.extra-row.is-selected{border-color:#78ae98;background:#f6fbf8}
+.extra-copy{min-width:0}
+.extra-copy h3{margin:0;font-size:16px;font-weight:700;line-height:1.5}
+.extra-note{margin:3px 0 0;font-size:12px;color:var(--muted)}
+.extra-price{margin:5px 0 0;color:var(--accent);font-size:14px;font-weight:800}
+.quantity{display:flex;align-items:center;flex-shrink:0;direction:ltr;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.quantity button{width:44px;height:44px;border:0;background:transparent;color:var(--accent);font:500 23px/1 Arial,sans-serif}
+.quantity button:disabled{color:#a5b6ad}
+.quantity button:focus-visible{outline-offset:-4px;border-radius:10px}
+.quantity output{width:26px;text-align:center;font-size:16px;font-weight:700;font-variant-numeric:tabular-nums}
+.order-box{margin-top:18px;padding:20px 16px;background:var(--soft);border:1px solid var(--line);border-radius:18px}
+.order-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.order-heading h3{margin:0;font-size:19px}
+.order-heading p{margin:0;font-size:12px;color:var(--muted)}
+.order-items{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px;font-size:13px}
+.order-items li{display:flex;justify-content:space-between;gap:12px}
+.order-items bdi{white-space:nowrap}
+.order-total{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:14px 0 18px;padding-top:14px;border-top:1px solid #cfdfd5;font-size:15px}
+.order-total strong{font-size:23px;color:var(--accent)}
+.order-box label{display:block;font-weight:700;font-size:14px;margin-bottom:6px}
+.order-box input{display:block;width:100%;min-height:48px;border:1px solid #adcbbb;border-radius:12px;padding:10px 12px;background:white;color:var(--ink);font-variant-numeric:tabular-nums}
+.order-box input::placeholder{color:#6f7e76;font-size:13px}
+.field-note{margin:5px 0 14px;color:var(--muted);font-size:12px}
+.send-order{display:flex;justify-content:center;align-items:center;gap:12px;width:100%;min-height:50px;padding:12px;border:0;border-radius:12px;background:var(--accent);color:white;font-weight:700;font-size:15px}
+.send-order:disabled{background:#d5e2d9;color:#596d61}
+.confirmation-note{margin:10px 0 0;color:var(--muted);font-size:12px;text-align:center}
+.help{margin-top:28px;padding-top:24px;border-top:1px solid var(--line);text-align:center}
+.help h2{font-size:18px;margin-bottom:4px}
+.help p{margin:0;color:var(--muted);font-size:13px}
+.help-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}
+.help-actions a{display:flex;align-items:center;justify-content:center;min-height:46px;border:1px solid #bdd8ca;border-radius:12px;background:#fff;font-weight:700;font-size:14px}
+.footer{padding:24px 16px;color:var(--muted);font-size:12px;text-align:center}
+@media(hover:hover){
+ .service-card:hover,.help-actions a:hover{border-color:#78ae98;background:#f6fbf8}
+ .quantity button:not(:disabled):hover{background:var(--soft)}
+ .send-order:not(:disabled):hover{background:#195b49}
+}
+@media(min-width:640px){
+ .hero{padding:28px 36px 32px}
+ .main{padding:28px 34px 8px}
+ .primary-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+ .service-card{padding:18px 14px}
+ .extra-row{padding:16px 20px}
+ .order-box{padding:22px}
+ .help{display:flex;justify-content:space-between;align-items:center;gap:24px;text-align:right}
+ .help-actions{min-width:250px;margin:0}
+}
+@media(min-width:840px){
+ .extras-layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);align-items:start;gap:18px}
+ .extras-layout .order-box{margin-top:0;padding:20px 16px}
+ .extra-row{padding:16px 14px}
+ .order-heading{align-items:flex-start;flex-direction:column;gap:4px}
+}
+@media(max-width:360px){
+ .main{padding-inline:14px}
+ .service-card{padding:13px 12px}
+ .service-copy strong{font-size:15px}
+ .extra-row{padding:12px;gap:8px}
+ .extra-copy h3{font-size:14px}
+ .quantity output{width:22px}
+ .order-heading{align-items:flex-start;flex-direction:column;gap:4px}
+}

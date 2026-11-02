@@ -156,7 +156,7 @@
           call(serviceViews[r.name][0],r.args);
           if(['menu','setups','tarfihi','maiya','hospitality'].indexOf(r.name)!==-1) {
             var back=document.querySelector('#'+r.name+'-detail button[onclick="'+serviceViews[r.name][1]+'()"]');
-            if(back) back.setAttribute('aria-label',r.parent && r.parent.name==='cabin' ? (r.parent.args[0]===11 ? 'العودة إلى الحديقة' : 'العودة إلى الكوخ') : 'العودة إلى الخدمات');
+            if(back) back.setAttribute('aria-label',fdOpenedFromGuestServices() ? 'العودة إلى خدمات إقامتك' : r.parent && r.parent.name==='cabin' ? (r.parent.args[0]===11 ? 'العودة إلى الحديقة' : 'العودة إلى الكوخ') : 'العودة إلى الخدمات');
           }
         }
     }
@@ -241,6 +241,7 @@
     var original=remember(name);
     window[name]=function(){
       if(rendering) return original.apply(this,arguments);
+      if(serviceViews[current.name] && serviceViews[current.name][1]===name && fdReturnToGuestServices()) return;
       returnTo(parentFor ? parentFor() : current.parent);
     };
   }

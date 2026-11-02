@@ -44,6 +44,11 @@ python3 -m http.server 8023 --bind 127.0.0.1
 - The compact FAQ styling lives in `css/faq-mobile.css`; `resort-features.js`
   handles category selection and accordion behavior without injecting CSS.
 - `services-guide/`: brochure backed by those shared sources; see its README.
+- `guest-services/`: in-stay service links and the extras order form. Names and
+  unit prices in `index.html` are the catalog used by `guest-services.js` for
+  quantities and totals. The draft is scoped to the browser tab. Extras open a
+  prepared WhatsApp message to the resort; restaurant checkout keeps its own
+  number. `guest-services.html` redirects old links to this single page.
 
 Exploration layouts use a 600 px or 900 px side-layout breakpoint, depending on
 the cabin. Preserve these configurations when changing the shared renderer.
@@ -69,6 +74,7 @@ python3 scripts/check-menu-experience.py http://127.0.0.1:8023
 python3 scripts/check-service-sections.py http://127.0.0.1:8023
 python3 scripts/check-services-guide.py http://127.0.0.1:8023
 python3 scripts/check-lossless-images.py http://127.0.0.1:8023
+python3 scripts/check-guest-services.py http://127.0.0.1:8023
 ```
 
 Checks capture intended WhatsApp URLs locally; they do not send orders. The
