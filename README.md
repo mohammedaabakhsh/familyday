@@ -22,9 +22,13 @@ python3 -m http.server 8023 --bind 127.0.0.1
 - `css/app-base.css`: base and service styles. `css/accommodation-layout.css`:
   destination/cabin refinements, kept in their original cascade position.
 - `share-pages.json`: public entry URLs; `scripts/build-share-pages.py` generates
-  their pages. General service links keep the group preview; specific tab links
+  complete entry pages from the shared `index.html`, with route-specific metadata.
+  Visitors load the app directly, without a redirect or a second document request.
+  Do not edit generated pages. After every `index.html` or `share-pages.json`
+  change, run `python3 scripts/build-share-pages.py`; use `--check` to detect stale output.
+  General service links keep the group preview; specific tab links
   use their own catalog entries and open the same grouped interface. Keep titles
-  and descriptions in this catalog, then regenerate the static preview pages.
+  and descriptions in this catalog, then regenerate the entry pages.
 - `site-ui.css`: shared mobile contact spacing; desktop/contact base rules live
   in `css/app-base.css`, without JavaScript-injected contact overrides.
 - `services-guide/`: guide navigation and the temporary footer link to
@@ -71,6 +75,7 @@ Browser checks require Python Playwright and `/usr/bin/chromium`. With the local
 server running:
 
 ```sh
+python3 scripts/build-share-pages.py --check
 python3 scripts/check-approved-review.py http://127.0.0.1:8023
 python3 scripts/check-share-navigation.py http://127.0.0.1:8023
 python3 scripts/check-entry-loading.py http://127.0.0.1:8023
