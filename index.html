@@ -272,6 +272,125 @@
   #dest .dest-card{padding-inline:12px}
 }
 </style>
+
+<style id="fd-destination-mobile-photo-panels-v2">
+/* Stronger mobile-only redesign: equal full-photo destination panels, no scrolling. */
+@media(max-width:767px){
+  #dest{
+    padding:max(8px,env(safe-area-inset-top)) 14px max(8px,env(safe-area-inset-bottom))!important;
+  }
+  #dest .dest-brand{
+    width:clamp(82px,10svh,108px)!important;
+    margin:0 auto 2px!important;
+  }
+  #dest .dest-choice-group{
+    width:min(100%,440px);
+  }
+  #dest .dest-choice-group>.shimmer-title:first-child{
+    margin:0!important;
+    font-size:clamp(21px,2.8svh,26px)!important;
+    line-height:1.2!important;
+  }
+  #dest .dest-choice-group>.shimmer-title:nth-child(2){
+    margin:2px 0 clamp(7px,1svh,11px)!important;
+    font-size:clamp(11px,1.45svh,13px)!important;
+    line-height:1.35!important;
+  }
+  #dest .dest-cards{
+    gap:clamp(7px,.95svh,10px)!important;
+  }
+  #dest .dest-card{
+    display:flex!important;
+    align-items:flex-end!important;
+    justify-content:space-between!important;
+    gap:10px!important;
+    min-height:0!important;
+    height:100%!important;
+    padding:clamp(10px,1.35svh,13px) 14px!important;
+    border:1px solid rgba(96,203,218,.34)!important;
+    border-radius:18px!important;
+    background-size:cover!important;
+    background-position:center 54%!important;
+    box-shadow:
+      0 10px 24px rgba(0,0,0,.14),
+      inset 0 0 0 1px rgba(255,255,255,.025)!important;
+  }
+  #dest .dest-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    border-radius:inherit;
+    background:
+      linear-gradient(90deg,rgba(3,13,24,.12) 0%,rgba(3,15,27,.18) 35%,rgba(2,13,24,.72) 100%),
+      linear-gradient(0deg,rgba(2,12,22,.74) 0%,rgba(2,12,22,.24) 54%,rgba(2,12,22,.03) 100%);
+  }
+  #dest .dest-card::after{display:none!important}
+  #dest .dest-card .dest-icon{display:none!important}
+  #dest .dest-card>div[style*="flex:1"]{
+    position:relative;
+    z-index:1;
+    flex:1 1 auto!important;
+    min-width:0;
+    align-self:flex-end;
+    padding:0 2px;
+    text-align:right;
+  }
+  #dest .dest-card .dest-title{
+    margin:0 0 1px!important;
+    font-size:clamp(18px,2.35svh,22px)!important;
+    font-weight:800!important;
+    line-height:1.15!important;
+    color:#fff!important;
+    text-shadow:0 2px 14px rgba(0,0,0,.38);
+  }
+  #dest .dest-card .fd-destination-location{
+    margin:0!important;
+    font-size:clamp(11px,1.45svh,13px)!important;
+    line-height:1.25!important;
+    color:#7fd3df!important;
+    font-weight:500;
+  }
+  #dest .dest-card .dest-sub{
+    margin-top:2px!important;
+    font-size:clamp(10.5px,1.38svh,12.5px)!important;
+    line-height:1.28!important;
+    color:rgba(255,255,255,.82)!important;
+    white-space:normal;
+  }
+  #dest .dest-arrow{
+    position:relative!important;
+    z-index:1!important;
+    flex:0 0 38px!important;
+    width:38px!important;
+    height:38px!important;
+    padding:11px!important;
+    box-sizing:border-box!important;
+    border:1px solid rgba(139,220,231,.30)!important;
+    border-radius:50%!important;
+    background:rgba(6,31,44,.52)!important;
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    stroke:#b6e9ef!important;
+    opacity:1!important;
+  }
+  #dest .dest-card:active{
+    transform:scale(.988)!important;
+    border-color:rgba(25,167,183,.72)!important;
+  }
+  #dest .dest-card.selected{
+    transform:none!important;
+    border-color:rgba(25,167,183,.62)!important;
+    box-shadow:0 10px 28px rgba(0,0,0,.16),0 0 0 1px rgba(25,167,183,.16)!important;
+  }
+}
+@media(max-width:380px){
+  #dest{padding-inline:11px!important}
+  #dest .dest-card{padding-inline:12px!important}
+  #dest .dest-arrow{flex-basis:36px!important;width:36px!important;height:36px!important;padding:10px!important}
+}
+</style>
 <div id="dest" class="hide" style="position:fixed;inset:0;z-index:8000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;font-family:'Tajawal',sans-serif;direction:rtl;">
   <img class="dest-brand" src="imgs/img00.webp" style="width:140px;margin-bottom:22px;opacity:0.92;filter:drop-shadow(0 0 24px rgba(25,167,183,.30));">
   <div class="dest-choice-group">
