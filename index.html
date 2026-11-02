@@ -53,13 +53,13 @@
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link href="resort-home.css?v=20261102-final-v1" rel="stylesheet">
-<link rel="preload" as="script" href="js/app-shell.js?v=20261102-water-review-v2">
+<link rel="preload" as="script" href="js/app-shell.js?v=20261103-review-v1">
 <link rel="preload" as="script" href="js/gallery-data.js?v=20261102-structure-v1">
 <link rel="preload" as="script" href="js/accommodations.js?v=20261102-final-v1">
-<link rel="preload" as="script" href="js/services.js?v=20261102-water-package-v1">
+<link rel="preload" as="script" href="js/services.js?v=20261103-review-v1">
 <link rel="preload" as="script" href="js/stay-navigation.js?v=20261102-structure-v1">
 <link rel="preload" as="script" href="js/router.js?v=20261102-guest-services-v1">
-<link rel="stylesheet" href="css/app-base.css?v=20261102-water-package-v1">
+<link rel="stylesheet" href="css/app-base.css?v=20261103-review-v1">
 <link rel="stylesheet" href="resort-map.css?v=20261102-code-cleanup-v2">
 <style id="fd-home-map-shortcut">
 #landing .rh-home-shortcut{display:flex;align-items:center;gap:14px;margin-top:16px;padding:12px 14px;border:1px solid rgba(99,191,205,.32);border-radius:16px;background:linear-gradient(120deg,#0d2b3a,#0a202e);color:#edf5f7;text-decoration:none;text-align:right;min-width:0;}
@@ -194,15 +194,17 @@
 
 <script src="share-pages.js?v=20261102-water-package-v1"></script>
 <link rel="stylesheet" href="css/faq-mobile.css?v=20261102-code-cleanup-v2">
-<link rel="stylesheet" href="css/water-games.css?v=20261102-water-desktop-v1">
+<link rel="stylesheet" href="css/water-games.css?v=20261103-review-v1">
 <script src="js/water-games.js?v=20261102-water-review-v2"></script>
-<script src="resort-features.js?v=20261102-water-height-v1"></script>
+<link rel="stylesheet" href="css/service-orders.css?v=20261103-review-v1">
+<script src="js/service-orders.js?v=20261103-review-v1"></script>
+<script src="resort-features.js?v=20261103-review-v1"></script>
 <script src="stay-design.js?v=20261102-final-v1"></script>
 <script src="site-enhancements.js?v=1"></script>
-<script src="menu-experience.js?v=20261102-review-v1"></script>
+<script src="menu-experience.js?v=20261103-review-v1"></script>
 <script src="cabin-compare.js?v=20261102-review-v1"></script>
 <script src="js/cabin-numbers.js?v=20261102-v1"></script>
-<script src="js/app-shell.js?v=20261102-water-review-v2"></script>
+<script src="js/app-shell.js?v=20261103-review-v1"></script>
 
 
 
@@ -575,14 +577,14 @@
 
     <div class="cn-layout">
       <div class="cn-photo-group">
-        <p class="cn-intro cn-intro--desktop">سهرة سينمائية في مساحتكم الخاصة</p>
+        <p class="cn-intro cn-intro--desktop">جلسة سينما خارجية في المساحة الخاصة بالكوخ</p>
         <figure class="cn-photo">
           <img src="imgs/cinema_1.webp" width="1200" height="1200" alt="جلسة سينما ليلية بشاشة عرض وجلسات خارجية داخل المساحة الخاصة بالكوخ" decoding="async">
         </figure>
       </div>
       <div class="cn-details">
         <div class="cn-summary">
-          <p class="cn-intro cn-intro--mobile">سهرة سينمائية في مساحتكم الخاصة</p>
+          <p class="cn-intro cn-intro--mobile">جلسة سينما خارجية في المساحة الخاصة بالكوخ</p>
           <dl class="cn-facts" aria-label="مدة الجلسة وسعرها">
             <div class="cn-stat">
               <dt>مدة الجلسة</dt>
@@ -596,7 +598,7 @@
         </div>
 
         <section aria-labelledby="cn-inclusions-title">
-          <h2 id="cn-inclusions-title" class="cn-section-title">باقة السينما</h2>
+          <h2 id="cn-inclusions-title" class="cn-section-title">محتويات الجلسة</h2>
           <ul class="cn-inclusions">
             <li>شاشة عرض خارجية</li>
             <li>كرسيان مريحان</li>
@@ -606,17 +608,17 @@
         </section>
 
         <section class="cn-notes" aria-labelledby="cn-notes-title">
-          <h2 id="cn-notes-title" class="cn-section-title">تعليمات وملاحظات</h2>
+          <h2 id="cn-notes-title" class="cn-section-title">تعليمات الاستخدام</h2>
           <ul class="cn-notes-list">
-            <li>الجلسة بالحجز المسبق، ويُؤكَّد الموعد حسب التوفر.</li>
-            <li>الالتزام بوقت بداية الجلسة.</li>
-            <li>المحافظة على الشاشة وجهاز العرض.</li>
-            <li>إبلاغنا فورًا عند هبوب رياح قوية.</li>
+            <li>يُرجى طلب الجلسة مسبقًا والالتزام بموعد بدايتها.</li>
+            <li>يُرجى المحافظة على الشاشة وجهاز العرض.</li>
+            <li>أبلغنا فورًا عند هبوب رياح قوية.</li>
           </ul>
         </section>
 
         <div class="cn-order">
-          <button type="button" class="cn-order-button" onclick="openOrderPopup('جلسة السينما', true)">إكمال الطلب عبر واتساب</button>
+          <div class="cn-total"><span>إجمالي الجلسة</span><strong>150 ريال</strong></div>
+          <button type="button" class="cn-order-button" onclick="openOrderPopup({type:'cinema'}, true)">متابعة الطلب</button>
         </div>
       </div>
     </div>
@@ -639,7 +641,7 @@
 
   <div class="hd-content">
     <div id="hd-hospitality-panel" role="tabpanel" aria-labelledby="hd-tab-hospitality">
-      <p class="hd-intro">اختر الضيافة المناسبة لإقامتك</p>
+      <p class="hd-intro">اختر باقة الضيافة المناسبة لإقامتك</p>
       <div class="hd-packages">
         <div class="hd-package">
           <div class="hd-package-header">
@@ -659,14 +661,15 @@
             <div class="hd-package-price">75 <span>ريال</span></div>
           </div>
           <div class="hd-items">
-            <div class="hd-item hd-item-wide"><span class="hd-check">✓</span><span>روب ومناشف لشخصين للاستخدام أثناء الإقامة</span></div>
+            <div class="hd-item hd-item-wide"><span class="hd-check">✓</span><span>روب ومناشف لشخصين</span></div>
             <div class="hd-item"><span class="hd-check">✓</span><span>مجموعة مستلزمات الاستحمام</span></div>
             <div class="hd-item"><span class="hd-check">✓</span><span>كوبان من القهوة السوداء</span></div>
             <div class="hd-item"><span class="hd-check">✓</span><span>كوبان من الموهيتو</span></div>
             <div class="hd-item"><span class="hd-check">✓</span><span>كوبان من الفشار</span></div>
-            <div class="hd-item hd-item-wide"><span class="hd-check">✓</span><span>بوكس ألعاب جماعية للاستخدام أثناء الإقامة</span></div>
-            <div class="hd-item"><span class="hd-check">✓</span><span>لعبتان مائيتان للاستخدام أثناء الإقامة</span></div>
+            <div class="hd-item hd-item-wide"><span class="hd-check">✓</span><span>بوكس الألعاب</span></div>
+            <div class="hd-item"><span class="hd-check">✓</span><span>لعبتان مائيتان</span></div>
           </div>
+        <p class="hd-package-note">الروب والمناشف وبوكس الألعاب والألعاب المائية للاستخدام أثناء الإقامة.</p>
         </div>
         <div class="hd-package">
           <div class="hd-package-header"><div class="hd-package-name">الضيافة العائلية</div><div class="hd-package-price">85 <span>ريال</span></div></div>
@@ -676,9 +679,10 @@
             <div class="hd-item"><span class="hd-check">✓</span><span>4 أكواب من الموهيتو</span></div>
             <div class="hd-item"><span class="hd-check">✓</span><span>4 أكواب من الفشار</span></div>
             <div class="hd-item"><span class="hd-check">✓</span><span>حافظة كبيرة مع الثلج</span></div>
-            <div class="hd-item hd-item-wide"><span class="hd-check">✓</span><span>بوكس ألعاب جماعية للاستخدام أثناء الإقامة</span></div>
-            <div class="hd-item hd-item-wide"><span class="hd-check">✓</span><span>ألعاب مائية للاستخدام أثناء الإقامة</span></div>
+            <div class="hd-item hd-item-wide"><span class="hd-check">✓</span><span>بوكس الألعاب</span></div>
+            <div class="hd-item hd-item-wide"><span class="hd-check">✓</span><span>ألعاب مائية</span></div>
           </div>
+        <p class="hd-package-note">بوكس الألعاب والألعاب المائية للاستخدام أثناء الإقامة.</p>
         </div>
       </div>
     </div>
@@ -693,7 +697,7 @@
           <div class="hd-items">
             <div class="hd-item" data-coordination-item="rose_bed"><span class="hd-check" aria-hidden="true">✓</span><span>تزيين السرير بالورد الطبيعي على شكل قلب أو حرف من اختيارك</span></div>
             <div class="hd-item" data-coordination-item="two_balloons"><span class="hd-check" aria-hidden="true">✓</span><span>2 بالون</span></div>
-            <div class="hd-item" data-coordination-item="cards"><span class="hd-check" aria-hidden="true">✓</span><span>كرت إهداء يناسب المناسبة.</span></div>
+            <div class="hd-item" data-coordination-item="cards"><span class="hd-check" aria-hidden="true">✓</span><span>كرت إهداء يناسب مناسبتك</span></div>
           </div>
         </section>
         <section class="hd-package" aria-labelledby="hd-coordination-package-2">
@@ -706,10 +710,11 @@
             <div class="hd-item" data-coordination-item="path_bath"><span class="hd-check" aria-hidden="true">✓</span><span>تنسيق الممر والحمام بالورد</span></div>
             <div class="hd-item" data-coordination-item="shape"><span class="hd-check" aria-hidden="true">✓</span><span>قلب أو حروف بالورد في المكان الذي تختاره</span></div>
             <div class="hd-item" data-coordination-item="two_balloons"><span class="hd-check" aria-hidden="true">✓</span><span>2 بالون</span></div>
-            <div class="hd-item" data-coordination-item="cards"><span class="hd-check" aria-hidden="true">✓</span><span>كرت إهداء يناسب المناسبة.</span></div>
-            <div class="hd-item" data-coordination-item="towels"><span class="hd-check" aria-hidden="true">✓</span><span>روب ومناشف لشخصين للاستخدام أثناء الإقامة</span></div>
-            <div class="hd-item" data-coordination-item="water_games"><span class="hd-check" aria-hidden="true">✓</span><span>لعبتان مائيتان للاستخدام أثناء الإقامة</span></div>
+            <div class="hd-item" data-coordination-item="cards"><span class="hd-check" aria-hidden="true">✓</span><span>كرت إهداء يناسب مناسبتك</span></div>
+            <div class="hd-item" data-coordination-item="towels"><span class="hd-check" aria-hidden="true">✓</span><span>روب ومناشف لشخصين</span></div>
+            <div class="hd-item" data-coordination-item="water_games"><span class="hd-check" aria-hidden="true">✓</span><span>لعبتان مائيتان</span></div>
           </div>
+        <p class="hd-package-note">الروب والمناشف والألعاب المائية للاستخدام أثناء الإقامة.</p>
         </section>
         <section class="hd-package" aria-labelledby="hd-coordination-package-3">
           <div class="hd-package-header">
@@ -722,13 +727,14 @@
             <div class="hd-item" data-coordination-item="shape"><span class="hd-check" aria-hidden="true">✓</span><span>قلب أو حروف بالورد في المكان الذي تختاره</span></div>
             <div class="hd-item" data-coordination-item="balloons_candles"><span class="hd-check" aria-hidden="true">✓</span><span>تزيين غرفة النوم بالبالونات والشموع</span></div>
             <div class="hd-item" data-coordination-item="helium"><span class="hd-check" aria-hidden="true">✓</span><span>بالونات هيليوم</span></div>
-            <div class="hd-item" data-coordination-item="cards"><span class="hd-check" aria-hidden="true">✓</span><span>كرت إهداء يناسب المناسبة.</span></div>
-            <div class="hd-item" data-coordination-item="towels"><span class="hd-check" aria-hidden="true">✓</span><span>روب ومناشف لشخصين للاستخدام أثناء الإقامة</span></div>
+            <div class="hd-item" data-coordination-item="cards"><span class="hd-check" aria-hidden="true">✓</span><span>كرت إهداء يناسب مناسبتك</span></div>
+            <div class="hd-item" data-coordination-item="towels"><span class="hd-check" aria-hidden="true">✓</span><span>روب ومناشف لشخصين</span></div>
             <div class="hd-item" data-coordination-item="mojito"><span class="hd-check" aria-hidden="true">✓</span><span>كوبان من الموهيتو</span></div>
             <div class="hd-item" data-coordination-item="popcorn"><span class="hd-check" aria-hidden="true">✓</span><span>كوبان من الفشار</span></div>
-            <div class="hd-item" data-coordination-item="group_games"><span class="hd-check" aria-hidden="true">✓</span><span>بوكس ألعاب جماعية للاستخدام أثناء الإقامة</span></div>
-            <div class="hd-item" data-coordination-item="water_games"><span class="hd-check" aria-hidden="true">✓</span><span>ألعاب مائية للاستخدام أثناء الإقامة</span></div>
+            <div class="hd-item" data-coordination-item="group_games"><span class="hd-check" aria-hidden="true">✓</span><span>بوكس الألعاب</span></div>
+            <div class="hd-item" data-coordination-item="water_games"><span class="hd-check" aria-hidden="true">✓</span><span>ألعاب مائية</span></div>
           </div>
+        <p class="hd-package-note">الروب والمناشف وبوكس الألعاب والألعاب المائية للاستخدام أثناء الإقامة.</p>
         </section>
         <section class="hd-package" aria-labelledby="hd-coordination-package-celebration">
           <div class="hd-package-header">
@@ -741,14 +747,15 @@
             <div class="hd-item" data-coordination-item="shape"><span class="hd-check" aria-hidden="true">✓</span><span>قلب أو حروف بالورد في المكان الذي تختاره</span></div>
             <div class="hd-item" data-coordination-item="balloons_candles"><span class="hd-check" aria-hidden="true">✓</span><span>تزيين غرفة النوم بالبالونات والشموع</span></div>
             <div class="hd-item" data-coordination-item="helium"><span class="hd-check" aria-hidden="true">✓</span><span>بالونات هيليوم</span></div>
-            <div class="hd-item" data-coordination-item="cards"><span class="hd-check" aria-hidden="true">✓</span><span>كرت إهداء يناسب المناسبة.</span></div>
-            <div class="hd-item" data-coordination-item="towels"><span class="hd-check" aria-hidden="true">✓</span><span>روب ومناشف لشخصين للاستخدام أثناء الإقامة</span></div>
+            <div class="hd-item" data-coordination-item="cards"><span class="hd-check" aria-hidden="true">✓</span><span>كرت إهداء يناسب مناسبتك</span></div>
+            <div class="hd-item" data-coordination-item="towels"><span class="hd-check" aria-hidden="true">✓</span><span>روب ومناشف لشخصين</span></div>
             <div class="hd-item" data-coordination-item="letters"><span class="hd-check" aria-hidden="true">✓</span><span>حرفان من بالونات الهيليوم</span></div>
             <div class="hd-item" data-coordination-item="cake"><span class="hd-check" aria-hidden="true">✓</span><span>كيكة</span></div>
             <div class="hd-item" data-coordination-item="juice"><span class="hd-check" aria-hidden="true">✓</span><span>عصير عنب</span></div>
             <div class="hd-item" data-coordination-item="popcorn"><span class="hd-check" aria-hidden="true">✓</span><span>كوبان من الفشار</span></div>
-            <div class="hd-item" data-coordination-item="water_games"><span class="hd-check" aria-hidden="true">✓</span><span>ألعاب مائية للاستخدام أثناء الإقامة</span></div>
+            <div class="hd-item" data-coordination-item="water_games"><span class="hd-check" aria-hidden="true">✓</span><span>ألعاب مائية</span></div>
           </div>
+        <p class="hd-package-note">الروب والمناشف والألعاب المائية للاستخدام أثناء الإقامة.</p>
         </section>
         <section class="hd-package" aria-labelledby="hd-coordination-package-vip">
           <div class="hd-package-header">
@@ -764,17 +771,18 @@
             <div class="hd-item" data-coordination-item="letters"><span class="hd-check" aria-hidden="true">✓</span><span>حرفان من بالونات الهيليوم</span></div>
             <div class="hd-item" data-coordination-item="table"><span class="hd-check" aria-hidden="true">✓</span><span>تنسيق الطاولة بالورد والشموع</span></div>
             <div class="hd-item" data-coordination-item="stands"><span class="hd-check" aria-hidden="true">✓</span><span>استاندات شموع</span></div>
-            <div class="hd-item" data-coordination-item="cards"><span class="hd-check" aria-hidden="true">✓</span><span>كرت إهداء يناسب المناسبة.</span></div>
+            <div class="hd-item" data-coordination-item="cards"><span class="hd-check" aria-hidden="true">✓</span><span>كرت إهداء يناسب مناسبتك</span></div>
             <div class="hd-item" data-coordination-item="oud"><span class="hd-check" aria-hidden="true">✓</span><span>تبخير المكان بالعود</span></div>
-            <div class="hd-item" data-coordination-item="towels"><span class="hd-check" aria-hidden="true">✓</span><span>روب ومناشف لشخصين للاستخدام أثناء الإقامة</span></div>
+            <div class="hd-item" data-coordination-item="towels"><span class="hd-check" aria-hidden="true">✓</span><span>روب ومناشف لشخصين</span></div>
             <div class="hd-item" data-coordination-item="bath_kit"><span class="hd-check" aria-hidden="true">✓</span><span>مجموعة مستلزمات الاستحمام</span></div>
             <div class="hd-item" data-coordination-item="saudi_coffee"><span class="hd-check" aria-hidden="true">✓</span><span>دلة قهوة سعودية مع التمر</span></div>
             <div class="hd-item" data-coordination-item="tea"><span class="hd-check" aria-hidden="true">✓</span><span>دلة شاهي مع البسكويت</span></div>
             <div class="hd-item" data-coordination-item="cake"><span class="hd-check" aria-hidden="true">✓</span><span>كيكة</span></div>
             <div class="hd-item" data-coordination-item="juice"><span class="hd-check" aria-hidden="true">✓</span><span>عصير عنب</span></div>
             <div class="hd-item" data-coordination-item="popcorn"><span class="hd-check" aria-hidden="true">✓</span><span>كوبان من الفشار</span></div>
-            <div class="hd-item" data-coordination-item="water_games"><span class="hd-check" aria-hidden="true">✓</span><span>ألعاب مائية للاستخدام أثناء الإقامة</span></div>
+            <div class="hd-item" data-coordination-item="water_games"><span class="hd-check" aria-hidden="true">✓</span><span>ألعاب مائية</span></div>
           </div>
+        <p class="hd-package-note">الروب والمناشف والألعاب المائية للاستخدام أثناء الإقامة.</p>
         </section>
         <section class="hd-package" aria-labelledby="hd-coordination-package-resort">
           <div class="hd-package-header">
@@ -794,9 +802,9 @@
             <div class="hd-item" data-coordination-item="photo"><span class="hd-check" aria-hidden="true">✓</span><span>طباعة صورة كبيرة على استاند</span></div>
             <div class="hd-item" data-coordination-item="phrase"><span class="hd-check" aria-hidden="true">✓</span><span>طباعة عبارة تخص المناسبة أو اسم الشخص</span></div>
             <div class="hd-item" data-coordination-item="bouquet"><span class="hd-check" aria-hidden="true">✓</span><span>بوكيه ورد طبيعي</span></div>
-            <div class="hd-item" data-coordination-item="cards"><span class="hd-check" aria-hidden="true">✓</span><span>كرت إهداء يناسب المناسبة.</span></div>
+            <div class="hd-item" data-coordination-item="cards"><span class="hd-check" aria-hidden="true">✓</span><span>كرت إهداء يناسب مناسبتك</span></div>
             <div class="hd-item" data-coordination-item="oud"><span class="hd-check" aria-hidden="true">✓</span><span>تبخير المكان بالعود</span></div>
-            <div class="hd-item" data-coordination-item="towels"><span class="hd-check" aria-hidden="true">✓</span><span>روب ومناشف لشخصين للاستخدام أثناء الإقامة</span></div>
+            <div class="hd-item" data-coordination-item="towels"><span class="hd-check" aria-hidden="true">✓</span><span>روب ومناشف لشخصين</span></div>
             <div class="hd-item" data-coordination-item="bath_kit"><span class="hd-check" aria-hidden="true">✓</span><span>مجموعة مستلزمات الاستحمام</span></div>
             <div class="hd-item" data-coordination-item="saudi_coffee"><span class="hd-check" aria-hidden="true">✓</span><span>دلة قهوة سعودية مع التمر</span></div>
             <div class="hd-item" data-coordination-item="tea"><span class="hd-check" aria-hidden="true">✓</span><span>دلة شاهي مع البسكويت</span></div>
@@ -807,9 +815,10 @@
             <div class="hd-item" data-coordination-item="popcorn"><span class="hd-check" aria-hidden="true">✓</span><span>كوبان من الفشار</span></div>
             <div class="hd-item" data-coordination-item="chips"><span class="hd-check" aria-hidden="true">✓</span><span>صحن شبسات متنوعة</span></div>
             <div class="hd-item" data-coordination-item="minibar"><span class="hd-check" aria-hidden="true">✓</span><span>ميني بار يشمل مشروبات غازية وشوكولاتة</span></div>
-            <div class="hd-item" data-coordination-item="group_games"><span class="hd-check" aria-hidden="true">✓</span><span>طاولة مع بوكس ألعاب جماعية للاستخدام أثناء الإقامة</span></div>
-            <div class="hd-item" data-coordination-item="water_games"><span class="hd-check" aria-hidden="true">✓</span><span>ألعاب مائية للاستخدام أثناء الإقامة</span></div>
+            <div class="hd-item" data-coordination-item="group_games"><span class="hd-check" aria-hidden="true">✓</span><span>طاولة مع بوكس الألعاب</span></div>
+            <div class="hd-item" data-coordination-item="water_games"><span class="hd-check" aria-hidden="true">✓</span><span>ألعاب مائية</span></div>
           </div>
+        <p class="hd-package-note">الروب والمناشف والطاولة وبوكس الألعاب والألعاب المائية للاستخدام أثناء الإقامة.</p>
         </section>
       </div>
     </div>
@@ -877,7 +886,7 @@
     </div>
     <div class="jl-layout">
       <div class="jl-browser">
-        <h2 id="jalsat-filter-title" class="jl-filter-title">اختر الجلسة المناسبة حسب عدد الأشخاص</h2>
+        <h2 id="jalsat-filter-title" class="jl-filter-title">اختر الجلسة حسب عدد الأشخاص</h2>
         <div class="jl-filters" role="group" aria-labelledby="jalsat-filter-title">
           <button type="button" id="jf-all" class="jl-filter is-active" onclick="setJalsatFilter('all')" aria-pressed="true">الكل</button>
           <button type="button" id="jf-2" class="jl-filter" onclick="setJalsatFilter('2')" aria-label="شخصين" aria-pressed="false">2</button>
@@ -915,19 +924,20 @@
             <span class="jl-toggle" aria-hidden="true"><span class="jl-toggle-knob"></span></span>
           </button>
         </div>
-        <div class="jl-notes">
+        <section class="jl-notes" aria-labelledby="jl-notes-title">
+          <h3 id="jl-notes-title" class="jl-section-title">تعليمات الاستخدام</h3>
           <ul class="jl-notes-list">
-            <li>متاحة حسب التوفر والحجز المسبق.</li>
+            <li>يُرجى طلب الجلسة مسبقًا.</li>
             <li>يُرجى المحافظة على تجهيزات الجلسة أثناء الاستخدام.</li>
           </ul>
-        </div>
+        </section>
         <div class="jl-order" aria-label="ملخص الطلب">
           <div aria-live="polite" aria-atomic="true">
             <div class="jl-order-line"><span id="jalsat-order-session"></span><span id="jalsat-order-base"></span></div>
             <div id="jalsat-order-addon" class="jl-order-line" hidden><span>كيك وعصير</span><span>170 ريال</span></div>
-            <div id="jalsat-total-row" class="jl-total"><span>الإجمالي</span><strong id="jalsat-total-price">300 ريال</strong></div>
+            <div id="jalsat-total-row" class="jl-total"><span>إجمالي الطلب</span><strong id="jalsat-total-price">300 ريال</strong></div>
           </div>
-          <button type="button" class="jl-order-button" onclick="openOrderPopup(getJalsatOrderText())">إكمال الطلب عبر واتساب</button>
+          <button type="button" class="jl-order-button" onclick="jalsatOrder()">متابعة الطلب</button>
         </div>
         </div>
     </div>
@@ -949,24 +959,24 @@
 <div class="sw-prize">
 <p class="sw-prize-intro">مسابقة منتجع يوم العائلة</p>
 <h2 id="contest-title" class="sw-prize-title"><span class="sw-prize-kicker">شارك بفيديو…</span><strong class="sw-prize-highlight">ويومك الجاي علينا</strong></h2>
-<p class="sw-prize-description">انشر فيديو لمنتجع يوم العائلة، وتنافس على يوم مجاني مع الفيديو الأكثر مشاهدة.</p>
+<p class="sw-prize-description">اختر فيديو من فيديوهات المسابقة وانشره على حسابك، وتنافس على يوم مجاني بالفيديو الأكثر مشاهدة.</p>
 </div>
 </section>
 <section class="sw-guidelines" aria-labelledby="contest-terms-title">
 <h2 id="contest-terms-title" class="sw-section-title">شروط المشاركة</h2>
 <ul class="sw-terms">
-<li>انشر الفيديو على إنستقرام ريلز، أو تيك توك، أو أضواء سناب شات. لا تُحتسب المشاركة بالستوري.</li>
-<li>اذكر اسم منتجع يوم العائلة في الفيديو أو الوصف، واعمل منشن لحسابنا على المنصة.</li>
-<li>يُشترط أن يكون حسابك عامًا.</li>
+<li>انشر الفيديو على إنستقرام ريلز أو تيك توك أو أضواء سناب شات؛ الستوري لا يُحتسب.</li>
+<li>اذكر اسم منتجع يوم العائلة في الفيديو أو الوصف، وأضف منشن لحسابنا على المنصة.</li>
+<li>يجب أن يكون حسابك عامًا.</li>
 </ul>
 <section class="sw-criteria" aria-labelledby="contest-criteria-title">
 <h3 id="contest-criteria-title" class="sw-section-title">معيار اختيار الفائز</h3>
-<p class="sw-step-copy">تُحسب مشاهدات كل فيديو خلال أول أسبوعين من تاريخ نشره، ويفوز صاحب الفيديو الأكثر مشاهدة بيوم مجاني في منتجع يوم العائلة.</p>
+<p class="sw-step-copy">تُحتسب مشاهدات كل فيديو خلال أول 14 يومًا من نشره، ويفوز صاحب الفيديو الأكثر مشاهدة بيوم مجاني في منتجع يوم العائلة.</p>
 </section>
 <section class="sw-criteria" aria-labelledby="contest-submit-title">
 <h3 id="contest-submit-title" class="sw-section-title">أرسل مشاركتك</h3>
 <p class="sw-step-copy">بعد نشر الفيديو، أرسل رابط مشاركتك على واتساب.</p>
-<a class="sw-email-button" href="https://wa.me/966556615018" target="_blank" rel="noopener noreferrer">أرسل مشاركتك على واتساب</a>
+<a class="sw-email-button" href="https://wa.me/966556615018?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D9%85%D8%B4%D8%A7%D8%B1%D9%83%D8%A9%20%D9%81%D9%8A%20%D9%85%D8%B3%D8%A7%D8%A8%D9%82%D8%A9%20%C2%AB%D8%B4%D8%A7%D8%B1%D9%83%20%D8%A8%D9%81%D9%8A%D8%AF%D9%8A%D9%88%E2%80%A6%20%D9%88%D9%8A%D9%88%D9%85%D9%83%20%D8%A7%D9%84%D8%AC%D8%A7%D9%8A%20%D8%B9%D9%84%D9%8A%D9%86%D8%A7%C2%BB.%0A%0A%D8%A7%D9%84%D8%A7%D8%B3%D9%85%3A%0A%D8%A7%D9%84%D9%85%D9%86%D8%B5%D8%A9%3A%0A%D8%B1%D8%A7%D8%A8%D8%B7%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%3A%0A%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE%20%D9%86%D8%B4%D8%B1%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%3A" target="_blank" rel="noopener noreferrer">أرسل مشاركتك على واتساب</a>
 </section>
 <section class="contest-social" aria-labelledby="contest-social-title">
 <h3 id="contest-social-title" class="sw-section-title">حساباتنا للمنشن</h3>
@@ -997,9 +1007,9 @@
 </section>
 </section>
 <section class="sw-contact" aria-labelledby="contest-videos-title">
-<h2 id="contest-videos-title" class="sw-section-title">اختر الفيديو اللي يعجبك</h2>
+<h2 id="contest-videos-title" class="sw-section-title">اختر فيديو للمشاركة</h2>
 <p class="sw-step-copy">حمّل الفيديو من قوقل درايف وانشره على حسابك.</p>
-<a class="sw-email-button" href="https://drive.google.com/drive/folders/16I5HHt6xZO4JKVhA9KdFB0ymcUZ5RfGj?usp=sharing" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M5 16v5h14v-5"/></svg>فيديوهات المسابقة</a>
+<a class="sw-email-button" href="https://drive.google.com/drive/folders/16I5HHt6xZO4JKVhA9KdFB0ymcUZ5RfGj?usp=sharing" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M5 16v5h14v-5"/></svg>تصفّح فيديوهات المسابقة</a>
 </section>
 </div>
 </main>
@@ -1040,7 +1050,7 @@
               <span class="sw-step-number" aria-hidden="true">2</span>
               <div>
                 <h3 class="sw-step-title">أرسل مشاركتك</h3>
-                <p class="sw-step-copy">أرسل الفيديو مع اسمك وتاريخ زيارتك ورقم جوالك.</p>
+                <p class="sw-step-copy">أرسل الفيديو بالبريد الإلكتروني مع اسمك وتاريخ زيارتك ورقم جوالك.</p>
               </div>
             </li>
           </ol>
@@ -1050,12 +1060,10 @@
         <section aria-labelledby="sharik-terms-title">
           <h2 id="sharik-terms-title" class="sw-section-title">شروط المشاركة</h2>
           <ul class="sw-terms">
-            <li>تصوير الفيديو داخل المنتجع بأسلوب إبداعي.</li>
-            <li>الفيديو بالوضع الطولي.</li>
-            <li>جودة فيديو عالية وواضحة.</li>
-            <li>خلو الفيديو من الشعارات والعلامات المائية.</li>
-            <li>يحق للمنتجع نشر جميع المشاركات.</li>
-            <li>تطبق جميع الشروط والأحكام.</li>
+            <li>صوّر تجربتك داخل المنتجع بأسلوب إبداعي.</li>
+            <li>صوّر الفيديو بالطول وبجودة واضحة.</li>
+            <li>بدون شعارات أو علامات مائية.</li>
+            <li>يحق للمنتجع نشر المشاركات.</li>
           </ul>
         </section>
         <section class="sw-criteria" aria-labelledby="sharik-criteria-title">
@@ -1065,7 +1073,7 @@
             <li>وضوح التصوير</li>
             <li>طريقة عرض التجربة</li>
           </ul>
-          <p class="sw-criteria-copy">يتم التقييم من إدارة المنتجع<br>وفق جودة المحتوى ووضوح التصوير وطريقة عرض التجربة.</p>
+          <p class="sw-criteria-copy">تقيّم إدارة المنتجع المشاركات وفق هذه المعايير.</p>
         </section>
       </div>
       <section class="sw-contact" aria-labelledby="sharik-contact-title">
@@ -1075,7 +1083,7 @@
           <button type="button" id="sharik-copy-email" class="sw-copy" onclick="copySharikEmail()">نسخ البريد</button>
         </div>
         <p id="sharik-copy-status" class="sw-copy-status" role="status"></p>
-        <a id="sharik-email-link" class="sw-email-button" href="mailto:family999day@gmail.com?subject=%D9%85%D8%B4%D8%A7%D8%B1%D9%83%D8%A9%20-%20%D8%B4%D8%A7%D8%B1%D9%83%20%D9%88%D8%A7%D8%B1%D8%A8%D8%AD%20-%20%D9%85%D9%86%D8%AA%D8%AC%D8%B9%20%D9%8A%D9%88%D9%85%20%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9">أرسل مشاركتك بالبريد</a>
+        <a id="sharik-email-link" class="sw-email-button" href="mailto:family999day@gmail.com?subject=%D9%85%D8%B4%D8%A7%D8%B1%D9%83%D8%A9%20-%20%D8%B4%D8%A7%D8%B1%D9%83%20%D9%88%D8%A7%D8%B1%D8%A8%D8%AD%20-%20%D9%85%D9%86%D8%AA%D8%AC%D8%B9%20%D9%8A%D9%88%D9%85%20%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9&amp;body=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D9%85%D8%B4%D8%A7%D8%B1%D9%83%D8%A9%20%D9%81%D9%8A%20%C2%AB%D8%B4%D8%A7%D8%B1%D9%83%20%D9%88%D8%A7%D8%B1%D8%A8%D8%AD%C2%BB.%0A%0A%D8%A7%D9%84%D8%A7%D8%B3%D9%85%3A%0A%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE%20%D8%A7%D9%84%D8%B2%D9%8A%D8%A7%D8%B1%D8%A9%3A%0A%D8%B1%D9%82%D9%85%20%D8%A7%D9%84%D8%AC%D9%88%D8%A7%D9%84%3A">أرسل مشاركتك بالبريد</a>
         <p class="sw-email-hint">أرفق الفيديو في رسالة البريد قبل الإرسال.</p>
       </section>
     </div>
@@ -1455,7 +1463,7 @@
   </div>
 </div>
 
-<script src="service-data.js?v=20261102-water-package-v1"></script>
+<script src="service-data.js?v=20261103-review-v1"></script>
 <script src="resort-data.js?v=20261102-review-v1"></script>
 <script src="js/gallery-data.js?v=20261102-structure-v1"></script>
 <script src="js/accommodations.js?v=20261102-final-v1"></script>
@@ -1491,7 +1499,7 @@
 
 <div class="tag-tooltip" id="tag-tooltip"></div>
 
-<script src="js/services.js?v=20261102-water-package-v1"></script>
+<script src="js/services.js?v=20261103-review-v1"></script>
 
 
 <!-- BOTTOM NAV -->
@@ -1502,29 +1510,17 @@
 
 
 
-<!-- Order Popup -->
-<div id="order-popup" class="hide" style="position:fixed;inset:0;z-index:10500;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;padding:24px;">
-  <div style="background:linear-gradient(160deg,rgba(14,36,58,.98) 0%,rgba(8,22,40,.96) 100%);border:1.5px solid rgba(25,167,183,.25);border-radius:20px;padding:28px 24px;width:100%;max-width:380px;max-height:90vh;overflow-y:auto;font-family:'Tajawal',sans-serif;direction:rtl;">
-    <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:6px;">تفاصيل الطلب</div>
-    <div id="order-item-name" style="font-size:13px;color:#19a7b7;margin-bottom:20px;"></div>
-    <div style="margin-bottom:14px;">
-      <label style="font-size:13px;color:rgba(255,255,255,0.7);font-weight:700;display:block;margin-bottom:6px;">الاسم</label>
-      <input id="order-name" type="text" placeholder="أدخل اسمك" style="width:100%;padding:12px 14px;border:1.5px solid #19a7b7;border-radius:12px;font-family:'Tajawal',sans-serif;font-size:14px;color:#fff;outline:none;box-sizing:border-box;background:rgba(4,17,30,.90);">
-    </div>
-    <div style="margin-bottom:14px;">
-      <label style="font-size:13px;color:rgba(255,255,255,0.7);font-weight:700;display:block;margin-bottom:6px;">اسم الكوخ</label>
-      <select id="order-villa" onchange="updateCabinNum()" style="width:100%;padding:12px 14px;border:1.5px solid #19a7b7;border-radius:12px;font-family:'Tajawal',sans-serif;font-size:14px;color:rgba(255,255,255,0.85);outline:none;box-sizing:border-box;background:rgba(4,17,30,.90);appearance:none;-webkit-appearance:none;cursor:pointer;">
-        <option value="">-- اختر الكوخ --</option>
-      </select>
-    </div>
-    <div id="order-cabin-num-wrap" style="display:none;margin-bottom:14px;">
-      <label style="font-size:13px;color:rgba(255,255,255,0.7);font-weight:700;display:block;margin-bottom:6px;">رقم الكوخ</label>
-      <div id="order-cabin-num" style="width:100%;padding:12px 14px;border:1.5px solid rgba(25,167,183,.4);border-radius:12px;font-family:'Tajawal',sans-serif;font-size:20px;font-weight:700;color:#19a7b7;box-sizing:border-box;background:rgba(4,17,30,.60);text-align:center;letter-spacing:2px;"></div>
-    </div>
-    <p id="order-cinema-note" hidden style="font-size:14px;color:#a4d8df;line-height:1.8;margin:0 0 14px;">مدة الجلسة 3 ساعات بسعر 150 ريال. يُؤكَّد الموعد حسب التوفر.</p>
-    <div style="margin-bottom:14px;" id="order-time-wrap">
-      <label style="font-size:13px;color:rgba(255,255,255,0.7);font-weight:700;display:block;margin-bottom:6px;">من ساعة كم؟</label>
-      <select id="order-time" style="width:100%;padding:12px 14px;border:1.5px solid #19a7b7;border-radius:12px;font-family:'Tajawal',sans-serif;font-size:14px;color:rgba(255,255,255,0.85);outline:none;box-sizing:border-box;background:rgba(4,17,30,.90);">
+<!-- Shared service checkout -->
+<div id="order-popup" class="hide fd-resort-order" role="dialog" aria-modal="true" aria-labelledby="order-title">
+  <div class="fd-order-panel">
+    <h2 id="order-title" class="fd-order-title">تفاصيل الطلب</h2>
+    <div id="order-item-name"></div>
+<div class="fd-order-field"><label for="order-name">الاسم</label><input id="order-name" type="text" autocomplete="name" maxlength="100" placeholder="أدخل اسمك" required aria-describedby="order-name-error"><p id="order-name-error" class="fd-field-error" aria-live="polite"></p></div>
+<div class="fd-order-field"><label for="order-villa">اسم الكوخ</label><select id="order-villa" onchange="updateCabinNum()" required aria-describedby="order-villa-error"><option value="">اختر الكوخ</option></select><p id="order-villa-error" class="fd-field-error" aria-live="polite"></p></div>
+    <div id="order-cabin-num-wrap" style="display:none"><span id="fd-cabin-number-label">رقم الكوخ</span><output id="order-cabin-num" aria-labelledby="fd-cabin-number-label"></output></div>
+    <div class="fd-order-field" id="order-time-wrap">
+      <label for="order-time">وقت بداية الجلسة</label>
+      <select id="order-time" aria-describedby="order-time-error">
         <option value="">-- اختر الساعة --</option>
         <option value="18">6:00 م</option>
         <option value="19">7:00 م</option>
@@ -1536,17 +1532,16 @@
         <option value="25">1:00 ص</option>
         <option value="26">2:00 ص</option>
       </select>
+      <p id="order-time-error" class="fd-field-error" aria-live="polite"></p>
     </div>
-    <div style="margin-bottom:24px;">
-      <label style="font-size:13px;color:rgba(255,255,255,0.7);font-weight:700;display:block;margin-bottom:6px;">ملاحظات</label>
-      <textarea id="order-notes" placeholder="أي ملاحظات إضافية (اختياري)" rows="3" style="width:100%;padding:12px 14px;border:1.5px solid #19a7b7;border-radius:12px;font-family:'Tajawal',sans-serif;font-size:14px;color:#fff;outline:none;box-sizing:border-box;resize:none;background:rgba(4,17,30,.90);"></textarea>
+    <div class="fd-order-field">
+      <label for="order-notes">ملاحظات إضافية (اختياري)</label>
+      <textarea id="order-notes" rows="2" placeholder="أضف أي تفاصيل تساعدنا في تجهيز طلبك"></textarea>
     </div>
-    <div style="background:rgba(25,167,183,0.08);border-radius:10px;padding:10px 14px;margin-bottom:16px;border:1px solid rgba(25,167,183,0.3);">
-      <div style="font-size:12px;color:rgba(255,255,255,0.65);font-family:'Tajawal',sans-serif;line-height:1.7;text-align:center;">بعد تعبئة بيانات الطلب سيتم تحويلك إلى واتساب لإتمام الحجز<br>ويمكنك أيضًا التواصل معنا عبر واتساب للاستفسار</div>
-    </div>
-    <div style="display:flex;gap:10px;">
-      <button onclick="closeOrderPopup()" style="flex:1;padding:12px;border:1.5px solid #19a7b7;border-radius:12px;background:#fff;color:#133548;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:700;cursor:pointer;">إلغاء</button>
-      <button onclick="sendOrderWhatsapp()" style="flex:2;padding:12px;border:none;border-radius:12px;background:#133548;color:#fff;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:700;cursor:pointer;">إكمال الطلب عبر واتساب</button>
+    <p class="fd-order-help">تابع طلبك عبر واتساب</p>
+    <div class="fd-order-actions">
+      <button type="button" class="fd-order-cancel" onclick="closeOrderPopup()">إلغاء</button>
+      <button type="button" class="fd-order-submit" onclick="sendOrderWhatsapp()">إكمال الطلب عبر واتساب</button>
     </div>
   </div>
 </div>
@@ -1569,19 +1564,19 @@
       </figure>
       <div class="tg-details">
         <section aria-labelledby="tg-packages-title">
-          <h2 id="tg-packages-title" class="tg-section-title">اختر باقة الألعاب المناسبة</h2>
+          <h2 id="tg-packages-title" class="tg-section-title">اختر باقة الألعاب</h2>
           <div class="tg-packages" role="group" aria-labelledby="tg-packages-title">
             <button type="button" id="tarfihi-opt-box" class="tg-package" onclick="selectTarfihiOpt('box')" aria-pressed="false">
               <span class="tg-package-check" aria-hidden="true"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4.5L4.5 8L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
               <span class="tg-package-name">بوكس الألعاب</span>
               <span class="tg-package-price">50 ريال</span>
-              <span class="tg-package-description">يضم مجموعة من الألعاب الترفيهية</span>
+              <span class="tg-package-description">مجموعة الألعاب الموضّحة أدناه</span>
             </button>
             <button type="button" id="tarfihi-opt-table" class="tg-package" onclick="selectTarfihiOpt('table')" aria-pressed="false">
               <span class="tg-package-check" aria-hidden="true"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4.5L4.5 8L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
               <span class="tg-package-name">طاولة مع بوكس الألعاب</span>
               <span class="tg-package-price">150 ريال</span>
-              <span class="tg-package-description">تشمل طاولة، أربعة كراسي، وبوكس ألعاب</span>
+              <span class="tg-package-description">طاولة و4 كراسي مع بوكس الألعاب</span>
             </button>
           </div>
         </section>
@@ -1600,11 +1595,9 @@
         </section>
 
         <section class="tg-notes" aria-labelledby="tg-notes-title">
-          <h2 id="tg-notes-title" class="tg-section-title">تعليمات وملاحظات</h2>
+          <h2 id="tg-notes-title" class="tg-section-title">تعليمات الاستخدام</h2>
           <ul class="tg-notes-list">
-            <li>متاح حسب التوفر.</li>
-            <li>يرجى المحافظة على جميع الألعاب.</li>
-            <li>تطبق جميع الشروط والأحكام.</li>
+            <li>يرجى المحافظة على الألعاب وإعادتها بحالتها الأصلية.</li>
           </ul>
         </section>
 
@@ -1614,7 +1607,7 @@
               <span id="tarfihi-summary-label">اختر الباقة لعرض الإجمالي</span>
               <span id="tarfihi-summary-price" class="tg-summary-price"></span>
             </div>
-            <button type="button" class="tg-order-button" onclick="tarfihiOrder()" disabled>إكمال الطلب عبر واتساب</button>
+            <button type="button" class="tg-order-button" onclick="tarfihiOrder()" disabled>متابعة الطلب</button>
           </div>
         </div>
       </div>
@@ -1636,7 +1629,7 @@
 
     <div class="tw-layout">
       <div class="tw-photo-group">
-        <p class="tw-intro tw-intro--desktop">جلسة طعام خارجية تناسب مختلف المناسبات</p>
+        <p class="tw-intro tw-intro--desktop">طاولات طعام خارجية مع خيار إضافة التنسيق</p>
         <div class="tw-photo">
           <img src="imgs/tawilat_1.webp" width="1200" height="1200" alt="طاولة طعام خارجية مجهزة بالكراسي وأطقم التقديم والزهور بجانب المسبح" decoding="async">
         </div>
@@ -1644,15 +1637,15 @@
 
       <div class="tw-options">
         <section aria-label="اختيار عدد الأشخاص">
-          <p class="tw-intro tw-intro--mobile">جلسة طعام خارجية تناسب مختلف المناسبات</p>
-          <div class="tw-sizes" role="group" aria-label="عدد الأشخاص">
+          <p class="tw-intro tw-intro--mobile">طاولات طعام خارجية مع خيار إضافة التنسيق</p>
+          <h2 id="tw-size-title" class="tw-label">اختر عدد الأشخاص</h2>
+          <div class="tw-sizes" role="group" aria-labelledby="tw-size-title">
             <button type="button" id="ts-6" class="tw-size is-active" onclick="setTawilatSize(6)" aria-pressed="true">6</button>
             <button type="button" id="ts-12" class="tw-size" onclick="setTawilatSize(12)" aria-pressed="false">12</button>
             <button type="button" id="ts-18" class="tw-size" onclick="setTawilatSize(18)" aria-pressed="false">18</button>
             <button type="button" id="ts-24" class="tw-size" onclick="setTawilatSize(24)" aria-pressed="false">24</button>
             <button type="button" id="ts-32" class="tw-size" onclick="setTawilatSize(32)" aria-pressed="false">32</button>
           </div>
-          <p class="tw-hint">اختر عدد الأشخاص لعرض الخيارات والأسعار</p>
         </section>
 
         <section aria-labelledby="tw-package-title">
@@ -1660,12 +1653,12 @@
           <div class="tw-packages" role="group" aria-labelledby="tw-package-title">
             <button type="button" id="tawilat-opt-plain" class="tw-package" onclick="selectTawilatOpt('plain')" aria-pressed="false">
               <span class="tw-check" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 10 3 3 7-7"/></svg></span>
-              <span class="tw-package-copy"><span class="tw-package-name">بدون تنسيق</span><span class="tw-package-desc">طاولات وكراسٍ فقط</span></span>
+              <span class="tw-package-copy"><span class="tw-package-name">بدون تنسيق</span><span class="tw-package-desc">طاولات وكراسي فقط</span></span>
               <span id="tawilat-price-plain" class="tw-package-price">199 ريال</span>
             </button>
             <button type="button" id="tawilat-opt-tansiq" class="tw-package" onclick="selectTawilatOpt('tansiq')" aria-pressed="false" aria-controls="tawilat-contents">
               <span class="tw-check" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 10 3 3 7-7"/></svg></span>
-              <span class="tw-package-copy"><span class="tw-package-name">مع تنسيق</span><span class="tw-package-desc">طاولات وكراسٍ مع تنسيق متكامل</span></span>
+              <span class="tw-package-copy"><span class="tw-package-name">مع تنسيق</span><span class="tw-package-desc">طاولات وكراسي مع التجهيزات الموضّحة أدناه</span></span>
               <span id="tawilat-price-tansiq" class="tw-package-price">399 ريال</span>
             </button>
           </div>
@@ -1682,7 +1675,7 @@
               <span id="tawilat-summary-label">اختر التجهيز لعرض الإجمالي</span>
               <span id="tawilat-summary-price"></span>
             </div>
-            <button type="button" class="tw-contact" onclick="tawilatOrder()" disabled>إكمال الطلب عبر واتساب</button>
+            <button type="button" class="tw-contact" onclick="tawilatOrder()" disabled>متابعة الطلب</button>
           </div>
         </div>
       </div>
@@ -1737,7 +1730,6 @@
         </section>
         <div class="wl-enroll">
           <a id="walaa-enroll-link" class="wl-enroll-button" href="https://loyapro.com/c/MjUyNg==" target="_blank" rel="noopener noreferrer">احصل على بطاقة الولاء</a>
-          <p class="wl-enroll-hint">سجّل بياناتك للحصول على البطاقة</p>
         </div>
       </div>
     </div>
@@ -1778,14 +1770,14 @@
       <button type="button" onclick="closeMenuCartReview()" aria-label="إغلاق مراجعة الطلب" style="width:38px;height:38px;flex:0 0 38px;border-radius:50%;background:rgba(126,207,234,.1);border:1px solid rgba(126,207,234,.24);color:#d9f3fb;font-size:25px;font-weight:300;line-height:1;cursor:pointer;">×</button>
       <div style="text-align:right;flex:1;">
         <div style="font-size:20px;font-weight:700;color:#fff;line-height:1.35;">مراجعة الطلب</div>
-        <div style="font-size:13px;color:rgba(255,255,255,.62);margin-top:3px;">تأكد من أصنافك قبل الإرسال</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.62);margin-top:3px;">راجع الأصناف والكميات قبل متابعة الطلب</div>
       </div>
     </div>
     <div id="menu-cart-review-items" style="border-top:1px solid rgba(255,255,255,.08);"></div>
     <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:15px;padding:13px 14px;background:rgba(25,167,183,.1);border:1px solid rgba(25,167,183,.28);border-radius:13px;">
       <div id="menu-cart-review-count" style="font-size:13px;color:rgba(255,255,255,.78);"></div>
       <div style="text-align:left;">
-        <div style="font-size:11px;color:rgba(255,255,255,.52);">الإجمالي</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.52);">إجمالي الطلب</div>
         <div id="menu-cart-review-total" style="font-size:17px;font-weight:700;color:#19a7b7;margin-top:1px;"></div>
       </div>
     </div>
@@ -1800,8 +1792,8 @@
 <script src="chalet-design.js?v=20261102-final-v1"></script>
 <script src="dome-gallery.js?v=2"></script>
 
-<link rel="stylesheet" href="service-sections.css?v=20261102-review-v1">
-<script src="service-sections.js?v=20261102-review-v1"></script>
+<link rel="stylesheet" href="service-sections.css?v=20261103-review-v1">
+<script src="service-sections.js?v=20261103-review-v1"></script>
 <script src="js/router.js?v=20261102-guest-services-v1"></script>
 <script src="resort-map-data.js?v=20261028-v1" defer></script>
 <script src="resort-map.js?v=20261102-code-cleanup-v2" defer></script>
@@ -1810,7 +1802,8 @@
 
 <link rel="stylesheet" href="css/accommodation-layout.css?v=20261102-final-v1">
 
-<link rel="stylesheet" href="resort-ui.css?v=20261102-water-review-v2">
+<link rel="stylesheet" href="resort-ui.css?v=20261103-review-v1">
+<link rel="stylesheet" href="css/service-mobile.css?v=20261103-review-v1">
 <link rel="stylesheet" href="stay-ui.css?v=20261102-final-v1">
 <link rel="stylesheet" href="chalet-ui.css?v=9">
 

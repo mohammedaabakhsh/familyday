@@ -363,15 +363,9 @@ function updateJalsatSummary(){
   document.getElementById('jalsat-order-addon').hidden = !_jalsatCakeAdded;
   document.getElementById('jalsat-total-price').textContent = (parseInt(s.price,10)+(_jalsatCakeAdded?170:0)) + ' ريال';
 }
-function getJalsatOrderText(){
-  var s = _jalsatSessions[_jalsatIdx];
-  if(!s) return 'جلسة أرضية';
-  var txt = s.name + (s.name.indexOf(' لـ') === -1 ? ' - ' + s.persons : '') + ' - السعر: ' + s.price;
-  if(_jalsatCakeAdded){
-    var base = parseInt(s.price);
-    txt += ' + كيك وعصير (170 ريال) - المجموع: ' + (base+170) + ' ريال';
-  }
-  return txt;
+function jalsatOrder(){
+  var session=_jalsatSessions[_jalsatIdx];
+  if(session) openOrderPopup({type:'seating',index:_jalsatAllSessions.indexOf(session),cake:_jalsatCakeAdded});
 }
 
 function jalsatGoTo(idx){
@@ -449,7 +443,7 @@ function selectTawilatOpt(opt){
 }
 function updateTawilatSummary(){
   var orderButton=document.querySelector('#tawilat-detail button[onclick="tawilatOrder()"]');
-  if(orderButton){orderButton.disabled=!_tawilatOpt;orderButton.textContent=_tawilatOpt?'إكمال الطلب عبر واتساب':'اختر التجهيز لإكمال الطلب';}
+  if(orderButton){orderButton.disabled=!_tawilatOpt;orderButton.textContent='متابعة الطلب';}
   var box = document.getElementById('tawilat-price-summary');
   var lbl = document.getElementById('tawilat-summary-label');
   var priceEl = document.getElementById('tawilat-summary-price');
@@ -460,8 +454,7 @@ function updateTawilatSummary(){
     return;
   }
   var p = _tawilatPrices[_tawilatSize][_tawilatOpt];
-  var optName = _tawilatOpt==='tansiq' ? 'مع تنسيق' : 'بدون تنسيق';
-  lbl.textContent = _tawilatSize + (_tawilatSize===6?' أشخاص':' شخصًا') + ' · ' + optName;
+  lbl.textContent = 'إجمالي الطلب';
   priceEl.textContent = p + ' ريال';
 }
 function updateTawilatContents(){
@@ -470,21 +463,18 @@ function updateTawilatContents(){
   if(section) section.classList.toggle('hide', _tawilatOpt!=='tansiq');
   if(!el || _tawilatOpt!=='tansiq') return;
   var items = [
-    'طاولات زجاجية أنيقة',
+    'طاولات زجاجية',
     'كراسي أكريليك شفافة',
     'أطقم تقديم متكاملة',
     'مناديل قماش',
     'تنسيق زهور',
-    'حاملات شموع مزودة بالشموع'
+    'حاملات شموع مع الشموع'
   ];
   el.innerHTML = items.map(function(item){ return '<li>'+item+'</li>'; }).join('');
 }
 function tawilatOrder(){
   if(!_tawilatOpt){ alert('يرجى اختيار الخيار أولاً'); return; }
-  var opt = _tawilatOpt==='tansiq' ? 'مع تنسيق' : 'بدون تنسيق';
-  var price = _tawilatPrices[_tawilatSize][_tawilatOpt];
-  var name = 'طاولات الطعام - ' + _tawilatSize + (_tawilatSize===6?' أشخاص':' شخصًا') + ' - ' + opt + ' (' + price + ' ريال)';
-  openOrderPopup(name);
+  openOrderPopup({type:'dining',size:_tawilatSize,option:_tawilatOpt});
 }
 
 // ===== بطاقة الولاء =====

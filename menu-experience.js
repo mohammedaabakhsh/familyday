@@ -26,6 +26,7 @@ window.FD_MENU_EXPERIENCE = (function () {
       // Preserve saved quantities when the public item wording changes.
       saved.items.forEach(function (item) {
         if (item && item.name === 'كوبين ثلج') item.name = 'كوبان من الثلج';
+        if (item && typeof item.name === 'string') item.name = item.name.replace(/شاي/g, 'شاهي');
       });
       var menu = catalog(), cart = {};
       saved.items.forEach(function (item) {
@@ -65,7 +66,6 @@ window.FD_MENU_EXPERIENCE = (function () {
     var previous = popup.querySelector('.menu-checkout-summary');
     if (previous) previous.remove();
     if (!_isMenuOrder) return;
-    popup.querySelector('[onclick="sendOrderWhatsapp()"]').textContent = 'الانتقال إلى واتساب';
     var summary = document.createElement('section');
     summary.className = 'menu-checkout-summary';
     summary.setAttribute('aria-labelledby', 'menu-checkout-title');
@@ -85,7 +85,7 @@ window.FD_MENU_EXPERIENCE = (function () {
     var total = document.createElement('p');
     total.className = 'menu-checkout-total';
     var label = document.createElement('span'), value = document.createElement('strong');
-    label.textContent = 'الإجمالي';
+    label.textContent = 'إجمالي الطلب';
     value.textContent = _menuCartTotals().price + ' ريال';
     total.appendChild(label); total.appendChild(value); summary.appendChild(total);
     document.getElementById('order-item-name').after(summary);

@@ -11,7 +11,10 @@ python3 -m http.server 8023 --bind 127.0.0.1
 
 - `index.html`: page content, metadata and asset loading order. Keep executable
   application code in `js/`, and large stylesheet sections in `css/`.
-- `js/app-shell.js`: FAQ, contact, splash and order-dialog actions.
+- `js/app-shell.js`: FAQ, contact and splash actions.
+- `js/service-orders.js` and `css/service-orders.css`: shared service checkout,
+  catalog-priced summaries and WhatsApp messages. Restaurant orders retain their
+  separate destination. `css/service-mobile.css` holds phone-only service layouts.
 - `js/gallery-data.js` and `js/accommodations.js`: photo sets, cabin cards and details.
 - `js/fullscreen-gallery.js`: fullscreen photo navigation.
 - `js/services.js`: service controls and restaurant ordering.
@@ -82,6 +85,7 @@ python3 scripts/check-entry-loading.py http://127.0.0.1:8023
 python3 scripts/check-share-pages.py http://127.0.0.1:8023
 python3 scripts/check-menu-experience.py http://127.0.0.1:8023
 python3 scripts/check-service-sections.py http://127.0.0.1:8023
+python3 scripts/check-service-orders.py http://127.0.0.1:8023
 python3 scripts/check-services-guide.py http://127.0.0.1:8023
 python3 scripts/check-lossless-images.py http://127.0.0.1:8023
 python3 scripts/check-guest-services.py http://127.0.0.1:8023

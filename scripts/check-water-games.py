@@ -69,7 +69,7 @@ with sync_playwright() as p:
             assert page.locator('#order-villa option[value="not-booked"]').count() == 0
             assert page.locator('#order-item-name>div').all_text_contents() == [
                 'باقة ألعاب مائية', '3 ألعاب بـ50 ريال', f'للكبار: {adults}', f'للصغار: {3-adults}']
-            assert page.locator('.fd-order-help').inner_text() == 'تابع طلبك عبر واتساب، ويؤكّد فريق المنتجع توفر الخدمة.'
+            assert page.locator('.fd-order-help').inner_text() == 'تابع طلبك عبر واتساب'
             assert page.locator('#order-notes').get_attribute('placeholder') == 'مثل أعمار الأطفال أو أي تفاصيل تساعدنا في تجهيز طلبك'
             page.evaluate('window.open=(url)=>{window.capturedURL=url;return null}')
             page.locator('#order-name').fill('')

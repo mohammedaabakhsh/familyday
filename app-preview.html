@@ -1061,9 +1061,14 @@ header{
 </div>
 
 <link rel="stylesheet" href="css/faq-mobile.css?v=20261102-code-cleanup-v2">
-<link rel="stylesheet" href="css/water-games.css?v=20261102-water-desktop-v1">
+<link rel="stylesheet" href="css/water-games.css?v=20261103-review-v1">
 <script src="js/water-games.js?v=20261102-water-review-v2"></script>
-<script src="resort-features.js?v=20261102-water-height-v1"></script>
+<link rel="stylesheet" href="css/service-orders.css?v=20261103-review-v1">
+<script src="js/cabin-numbers.js?v=20261102-v1"></script>
+<script src="site-enhancements.js?v=1"></script>
+<script src="menu-experience.js?v=20261103-review-v1"></script>
+<script src="js/service-orders.js?v=20261103-review-v1"></script>
+<script src="resort-features.js?v=20261103-review-v1"></script>
 <script>
 
 
@@ -1274,93 +1279,6 @@ var _autoEnterTimer = setTimeout(function(){
 
 
 
-
-var _orderItemName = '';
-var _isMenuOrder = false;
-var _cabinNums = {
-  'البيت اليوناني 1':10,'البيت اليوناني 2':11,'كوخ بالم بيتش':12,'الكوخ الفرنسي':13,
-  'الكوخ الريفي':14,'بيت الدوم 1':15,'بيت الدوم 2':16,'الكوخ الهرمي':17,
-  'الكوخ الكلاسيكي':18,'كوخ رويال':19,'الكوخ البوهيمي':20,'البيت البانورامي':21
-};
-function updateCabinNum(){
-  var villa = document.getElementById('order-villa').value;
-  if(_orderResortScope && villa==='not-booked') setResortOrderError('order-time','');
-  var wrap = document.getElementById('order-cabin-num-wrap');
-  var numEl = document.getElementById('order-cabin-num');
-  if(villa && _cabinNums[villa]){
-    numEl.textContent = _cabinNums[villa];
-    wrap.style.display = 'block';
-  } else {
-    wrap.style.display = 'none';
-  }
-}
-function openOrderPopup(itemName, showTime){
-  configureResortOrderForm(itemName);
-  _orderItemName = itemName;
-  renderOrderItemSummary(itemName);
-  document.getElementById('order-name').value = '';
-  document.getElementById('order-villa').value = '';
-  document.getElementById('order-notes').value = '';
-  document.getElementById('order-time').value = '';
-  document.getElementById('order-cabin-num-wrap').style.display = 'none';
-  document.getElementById('order-cabin-num').textContent = '';
-  document.getElementById('order-time-wrap').style.display = showTime ? 'block' : 'none';
-  document.getElementById('order-popup').classList.remove('hide');
-}
-function closeOrderPopup(){
-  _isMenuOrder = false;
-  document.getElementById('order-popup').classList.add('hide');
-}
-function sendOrderWhatsapp(){
-  var name = document.getElementById('order-name').value.trim();
-  var villa = document.getElementById('order-villa').value.trim();
-  if(_orderResortScope){ if(!validateResortOrder()) return; }
-  else if(!name || !villa){ alert('يرجى إدخال اسمك واختيار الكوخ'); return; }
-  var inquiryOnly=_orderResortScope && villa==='not-booked';
-  if(inquiryOnly) villa='لم أحجز كوخًا بعد';
-  var notes = document.getElementById('order-notes').value.trim();
-  var timeVal = document.getElementById('order-time').value;
-  var timeStr = '';
-  if(timeVal){
-    var h = parseInt(timeVal);
-    var endH = h + 3;
-    var fmt12 = function(n){
-      var n24 = n % 24;
-      var suffix = (n24 >= 6 && n24 < 12) ? 'ص' : (n24 < 6 ? 'ص' : 'م');
-      var h12 = n24 === 0 ? 12 : (n24 > 12 ? n24 - 12 : n24);
-      return h12 + ':00 ' + suffix;
-    };
-    timeStr = ' - الوقت: من ' + fmt12(h) + ' حتى ' + fmt12(endH);
-  }
-  var cabinNum = _cabinNums[villa] ? ' (رقم ' + _cabinNums[villa] + ')' : '';
-  var msg;
-  if(_isMenuOrder){
-    var keys = Object.keys(_menuCart);
-    var total = 0;
-    var lines = ['السلام عليكم،',inquiryOnly ? 'أرغب في الاستفسار عن الطلب التالي من المطعم:' : 'أرغب في طلب الآتي من المطعم:','الاسم: '+name,'الكوخ: '+villa+cabinNum,'','الطلب:'];
-    keys.forEach(function(k){
-      var q = _menuCart[k].qty;
-      var p = _menuCart[k].price;
-      // format extras nicely
-      var display = k.indexOf('|')!==-1 ? '  ↳ '+k.split('|')[0]+' × '+q : k+' × '+q;
-      lines.push('• '+display+' = '+(q*p)+' ريال');
-      total += q*p;
-    });
-    lines.push('','الإجمالي: '+total+' ريال');
-    if(notes) lines.push('ملاحظات: '+notes);
-    msg = lines.join('\n');
-    _isMenuOrder = false;
-    window.open('https://wa.me/966537006531?text=' + encodeURIComponent(msg), '_blank');
-    closeOrderPopup();
-    return;
-  } else if(getMaiyaOrderDetails(_orderItemName)){
-    msg = buildMaiyaOrderMessage(_orderItemName,name,villa,document.getElementById('order-cabin-num').textContent,notes);
-  } else {
-    msg = 'السلام عليكم،' + '\n' + (inquiryOnly ? 'أرغب في الاستفسار عن الخدمة التالية:' : 'أرغب في طلب الخدمة التالية:') + '\n' + 'الاسم: ' + name + '\n' + 'الكوخ: ' + villa + cabinNum + '\n' + 'الخدمة: ' + _orderItemName + (timeStr ? '\n' + timeStr.replace(' - ','') : '') + (notes ? '\n' + 'ملاحظات: ' + notes : '');
-  }
-  window.open('https://wa.me/966556156693?text=' + encodeURIComponent(msg), '_blank');
-  closeOrderPopup();
-}
 
 var _tarfihiOpt = '';
 function showTarfihi(){ openTarfihiDetail(); }
@@ -3809,40 +3727,17 @@ function closeWalaaDetail(){
 
 
 
-<!-- Order Popup -->
-<div id="order-popup" class="hide" style="position:fixed;inset:0;z-index:10500;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;padding:24px;">
-  <div style="background:linear-gradient(160deg,rgba(14,36,58,.98) 0%,rgba(8,22,40,.96) 100%);border:1.5px solid rgba(25,167,183,.25);border-radius:20px;padding:28px 24px;width:100%;max-width:380px;max-height:90vh;overflow-y:auto;font-family:'Tajawal',sans-serif;direction:rtl;">
-    <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:6px;">تفاصيل الطلب</div>
-    <div id="order-item-name" style="font-size:13px;color:#19a7b7;margin-bottom:20px;"></div>
-    <div style="margin-bottom:14px;">
-      <label style="font-size:13px;color:rgba(255,255,255,0.7);font-weight:700;display:block;margin-bottom:6px;">الاسم</label>
-      <input id="order-name" type="text" placeholder="أدخل اسمك" style="width:100%;padding:12px 14px;border:1.5px solid #19a7b7;border-radius:12px;font-family:'Tajawal',sans-serif;font-size:14px;color:#fff;outline:none;box-sizing:border-box;background:rgba(4,17,30,.90);">
-    </div>
-    <div style="margin-bottom:14px;">
-      <label style="font-size:13px;color:rgba(255,255,255,0.7);font-weight:700;display:block;margin-bottom:6px;">اسم الكوخ</label>
-      <select id="order-villa" onchange="updateCabinNum()" style="width:100%;padding:12px 14px;border:1.5px solid #19a7b7;border-radius:12px;font-family:'Tajawal',sans-serif;font-size:14px;color:rgba(255,255,255,0.85);outline:none;box-sizing:border-box;background:rgba(4,17,30,.90);appearance:none;-webkit-appearance:none;cursor:pointer;">
-        <option value="">-- اختر الكوخ --</option>
-        <option value="البيت اليوناني 1">البيت اليوناني 1</option>
-        <option value="البيت اليوناني 2">البيت اليوناني 2</option>
-        <option value="كوخ بالم بيتش">كوخ بالم بيتش</option>
-        <option value="الكوخ الفرنسي">الكوخ الفرنسي</option>
-        <option value="الكوخ الريفي">الكوخ الريفي</option>
-        <option value="بيت الدوم 1">بيت الدوم 1</option>
-        <option value="بيت الدوم 2">بيت الدوم 2</option>
-        <option value="الكوخ الهرمي">الكوخ الهرمي</option>
-        <option value="الكوخ الكلاسيكي">الكوخ الكلاسيكي</option>
-        <option value="كوخ رويال">كوخ رويال</option>
-        <option value="الكوخ البوهيمي">الكوخ البوهيمي</option>
-        <option value="البيت البانورامي">البيت البانورامي</option>
-      </select>
-    </div>
-    <div id="order-cabin-num-wrap" style="display:none;margin-bottom:14px;">
-      <label style="font-size:13px;color:rgba(255,255,255,0.7);font-weight:700;display:block;margin-bottom:6px;">رقم الكوخ</label>
-      <div id="order-cabin-num" style="width:100%;padding:12px 14px;border:1.5px solid rgba(25,167,183,.4);border-radius:12px;font-family:'Tajawal',sans-serif;font-size:20px;font-weight:700;color:#19a7b7;box-sizing:border-box;background:rgba(4,17,30,.60);text-align:center;letter-spacing:2px;"></div>
-    </div>
-    <div style="margin-bottom:14px;" id="order-time-wrap">
-      <label style="font-size:13px;color:rgba(255,255,255,0.7);font-weight:700;display:block;margin-bottom:6px;">من ساعة كم؟</label>
-      <select id="order-time" style="width:100%;padding:12px 14px;border:1.5px solid #19a7b7;border-radius:12px;font-family:'Tajawal',sans-serif;font-size:14px;color:rgba(255,255,255,0.85);outline:none;box-sizing:border-box;background:rgba(4,17,30,.90);">
+<!-- Shared service checkout -->
+<div id="order-popup" class="hide fd-resort-order" role="dialog" aria-modal="true" aria-labelledby="order-title">
+  <div class="fd-order-panel">
+    <h2 id="order-title" class="fd-order-title">تفاصيل الطلب</h2>
+    <div id="order-item-name"></div>
+<div class="fd-order-field"><label for="order-name">الاسم</label><input id="order-name" type="text" autocomplete="name" maxlength="100" placeholder="أدخل اسمك" required aria-describedby="order-name-error"><p id="order-name-error" class="fd-field-error" aria-live="polite"></p></div>
+<div class="fd-order-field"><label for="order-villa">اسم الكوخ</label><select id="order-villa" onchange="updateCabinNum()" required aria-describedby="order-villa-error"><option value="">اختر الكوخ</option></select><p id="order-villa-error" class="fd-field-error" aria-live="polite"></p></div>
+    <div id="order-cabin-num-wrap" style="display:none"><span id="fd-cabin-number-label">رقم الكوخ</span><output id="order-cabin-num" aria-labelledby="fd-cabin-number-label"></output></div>
+    <div class="fd-order-field" id="order-time-wrap">
+      <label for="order-time">وقت بداية الجلسة</label>
+      <select id="order-time" aria-describedby="order-time-error">
         <option value="">-- اختر الساعة --</option>
         <option value="18">6:00 م</option>
         <option value="19">7:00 م</option>
@@ -3854,17 +3749,16 @@ function closeWalaaDetail(){
         <option value="25">1:00 ص</option>
         <option value="26">2:00 ص</option>
       </select>
+      <p id="order-time-error" class="fd-field-error" aria-live="polite"></p>
     </div>
-    <div style="margin-bottom:24px;">
-      <label style="font-size:13px;color:rgba(255,255,255,0.7);font-weight:700;display:block;margin-bottom:6px;">ملاحظات</label>
-      <textarea id="order-notes" placeholder="أي ملاحظات إضافية (اختياري)" rows="3" style="width:100%;padding:12px 14px;border:1.5px solid #19a7b7;border-radius:12px;font-family:'Tajawal',sans-serif;font-size:14px;color:#fff;outline:none;box-sizing:border-box;resize:none;background:rgba(4,17,30,.90);"></textarea>
+    <div class="fd-order-field">
+      <label for="order-notes">ملاحظات إضافية (اختياري)</label>
+      <textarea id="order-notes" rows="2" placeholder="أضف أي تفاصيل تساعدنا في تجهيز طلبك"></textarea>
     </div>
-    <div style="background:rgba(25,167,183,0.08);border-radius:10px;padding:10px 14px;margin-bottom:16px;border:1px solid rgba(25,167,183,0.3);">
-      <div style="font-size:12px;color:rgba(255,255,255,0.65);font-family:'Tajawal',sans-serif;line-height:1.7;text-align:center;">بعد تعبئة بيانات الطلب سيتم تحويلك إلى واتساب لإتمام الحجز<br>ويمكنك أيضًا التواصل معنا عبر واتساب للاستفسار</div>
-    </div>
-    <div style="display:flex;gap:10px;">
-      <button onclick="closeOrderPopup()" style="flex:1;padding:12px;border:1.5px solid #19a7b7;border-radius:12px;background:#fff;color:#133548;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:700;cursor:pointer;">إلغاء</button>
-      <button onclick="sendOrderWhatsapp()" style="flex:2;padding:12px;border:none;border-radius:12px;background:#133548;color:#fff;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:700;cursor:pointer;">اطلبها الآن ←</button>
+    <p class="fd-order-help">تابع طلبك عبر واتساب</p>
+    <div class="fd-order-actions">
+      <button type="button" class="fd-order-cancel" onclick="closeOrderPopup()">إلغاء</button>
+      <button type="button" class="fd-order-submit" onclick="sendOrderWhatsapp()">إكمال الطلب عبر واتساب</button>
     </div>
   </div>
 </div>
@@ -4838,7 +4732,7 @@ function openMDirect(c){
 @media(max-width:599px){#hospitality-detail .hd-title{font-size:22px}}
 </style>
 
-<link rel="stylesheet" href="resort-ui.css?v=20261102-water-review-v2">
+<link rel="stylesheet" href="resort-ui.css?v=20261103-review-v1">
 
 <!-- Approved keyboard navigation enhancement -->
 <style id="fd-keyboard-focus">

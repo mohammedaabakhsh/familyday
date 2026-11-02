@@ -2,17 +2,6 @@
    The navigation router owns URLs/history; this module only groups the views. */
 (function () {
   'use strict';
-  document.querySelectorAll('#hospitality-detail .hd-package').forEach(function (card) {
-    var name = card.querySelector('.hd-package-name').textContent.trim();
-    var link = document.createElement('a');
-    link.className = 'hd-package-order';
-    link.textContent = 'اطلب الباقة عبر واتساب';
-    link.setAttribute('aria-label', link.textContent + ': ' + name);
-    link.href = 'https://wa.me/966556156693?text=' + encodeURIComponent('السلام عليكم، أرغب في طلب ' + name);
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    card.appendChild(link);
-  });
   var sections = {
     cinema: {id:'sinema-detail', label:'السينما', open:window.openSinemaDetail},
     dining: {id:'tawilat-detail', label:'طاولات الطعام', open:window.openTawilatDetail},

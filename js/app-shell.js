@@ -191,97 +191,6 @@ var _autoEnterTimer = setTimeout(function(){
 
 
 
-var _orderItemName = '';
-var _isMenuOrder = false;
-
-function updateCabinNum(){
-  var villa = document.getElementById('order-villa').value;
-  if(_orderResortScope && villa==='not-booked') setResortOrderError('order-time','');
-  var wrap = document.getElementById('order-cabin-num-wrap');
-  var numEl = document.getElementById('order-cabin-num');
-  if(villa && window.FD_CABIN_NUMBERS[villa]){
-    numEl.textContent = window.FD_CABIN_NUMBERS[villa];
-    wrap.style.display = 'block';
-  } else {
-    wrap.style.display = 'none';
-  }
-}
-function openOrderPopup(itemName, showTime){
-  FD_ORDER_DRAFTS.save();
-  configureResortOrderForm(itemName);
-  _orderItemName = itemName;
-  document.getElementById('order-cinema-note').hidden = itemName !== 'جلسة السينما';
-  renderOrderItemSummary(itemName);
-  FD_MENU_EXPERIENCE.renderCheckout();
-  document.getElementById('order-name').value = '';
-  document.getElementById('order-villa').value = '';
-  document.getElementById('order-notes').value = '';
-  document.getElementById('order-time').value = '';
-  document.getElementById('order-cabin-num-wrap').style.display = 'none';
-  document.getElementById('order-cabin-num').textContent = '';
-  document.getElementById('order-time-wrap').style.display = showTime ? 'block' : 'none';
-  FD_ORDER_DRAFTS.restore(_orderDraftScope || itemName);
-  document.getElementById('order-popup').classList.remove('hide');
-}
-function closeOrderPopup(){
-  FD_ORDER_DRAFTS.close();
-  _isMenuOrder = false;
-  document.getElementById('order-popup').classList.add('hide');
-}
-function sendOrderWhatsapp(){
-  var name = document.getElementById('order-name').value.trim();
-  var villa = document.getElementById('order-villa').value.trim();
-  if(_orderResortScope){ if(!validateResortOrder()) return; }
-  else if(!name || !villa){ alert('يرجى إدخال اسمك واختيار الكوخ'); return; }
-  var inquiryOnly=_orderResortScope && villa==='not-booked';
-  if(inquiryOnly) villa='لم أحجز كوخًا بعد';
-  var notes = document.getElementById('order-notes').value.trim();
-  var timeVal = document.getElementById('order-time').value;
-  var timeStr = '';
-  if(timeVal){
-    var h = parseInt(timeVal);
-    var endH = h + 3;
-    var fmt12 = function(n){
-      var n24 = n % 24;
-      var suffix = (n24 >= 6 && n24 < 12) ? 'ص' : (n24 < 6 ? 'ص' : 'م');
-      var h12 = n24 === 0 ? 12 : (n24 > 12 ? n24 - 12 : n24);
-      return h12 + ':00 ' + suffix;
-    };
-    timeStr = ' - الوقت: من ' + fmt12(h) + ' حتى ' + fmt12(endH);
-  }
-  var cabinNum = window.FD_CABIN_NUMBERS[villa] ? ' (رقم ' + window.FD_CABIN_NUMBERS[villa] + ')' : '';
-  var msg;
-  if(_isMenuOrder){
-    var keys = Object.keys(_menuCart);
-    var total = 0;
-    var lines = ['السلام عليكم،',inquiryOnly ? 'أرغب في الاستفسار عن الطلب التالي من المطعم:' : 'أرغب في طلب الآتي من المطعم:','الاسم: '+name,'الكوخ: '+villa+cabinNum,'','الطلب:'];
-    keys.forEach(function(k){
-      var q = _menuCart[k].qty;
-      var p = _menuCart[k].price;
-      // format extras nicely
-      var display = k.indexOf('|')!==-1 ? '  ↳ '+k.split('|')[0]+' × '+q : k+' × '+q;
-      lines.push('• '+display+' = '+(q*p)+' ريال');
-      total += q*p;
-    });
-    lines.push('','الإجمالي: '+total+' ريال');
-    if(notes) lines.push('ملاحظات: '+notes);
-    msg = lines.join('\n');
-    _isMenuOrder = false;
-    window.open('https://wa.me/966537006531?text=' + encodeURIComponent(msg), '_blank');
-    FD_ORDER_DRAFTS.clear();
-    closeOrderPopup();
-    return;
-  } else if(getMaiyaOrderDetails(_orderItemName)){
-    msg = buildMaiyaOrderMessage(_orderItemName,name,villa,document.getElementById('order-cabin-num').textContent,notes);
-  } else {
-    msg = 'السلام عليكم،' + '\n' + (inquiryOnly ? 'أرغب في الاستفسار عن الخدمة التالية:' : 'أرغب في طلب الخدمة التالية:') + '\n' + 'الاسم: ' + name + '\n' + 'الكوخ: ' + villa + cabinNum + '\n' + 'الخدمة: ' + _orderItemName + (timeStr ? '\n' + timeStr.replace(' - ','') : '') + (notes ? '\n' + 'ملاحظات: ' + notes : '');
-  }
-  if(_orderItemName === 'جلسة السينما') msg += '\nالسعر: 150 ريال لمدة 3 ساعات\nيُؤكَّد الموعد حسب التوفر.';
-  window.open('https://wa.me/966556156693?text=' + encodeURIComponent(msg), '_blank');
-  FD_ORDER_DRAFTS.clear();
-  closeOrderPopup();
-}
-
 var _tarfihiOpt = '';
 function showTarfihi(){ openTarfihiDetail(); }
 function openTarfihiDetail(){
@@ -303,11 +212,10 @@ function selectTarfihiOpt(opt){
     button.classList.toggle('is-selected', selected);
     button.setAttribute('aria-pressed', String(selected));
   });
-  document.getElementById('tarfihi-summary-label').textContent = opt==='box' ? 'بوكس الألعاب' : opt==='table' ? 'طاولة مع بوكس الألعاب' : 'اختر الباقة لعرض الإجمالي';
+  document.getElementById('tarfihi-summary-label').textContent = opt ? 'إجمالي الباقة' : 'اختر الباقة لعرض الإجمالي';
   document.getElementById('tarfihi-summary-price').textContent = opt==='box' ? '50 ريال' : opt==='table' ? '150 ريال' : '';
 }
 function tarfihiOrder(){
   if(!_tarfihiOpt){ alert('يرجى اختيار خيار أولاً'); return; }
-  var name = _tarfihiOpt==='box' ? 'بوكس الألعاب (50 ريال)' : 'طاولة مع بوكس الألعاب (150 ريال)';
-  openOrderPopup(name);
+  openOrderPopup({type:'games',option:_tarfihiOpt});
 }

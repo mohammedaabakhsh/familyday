@@ -34,7 +34,7 @@ with sync_playwright() as p:
   summary=page.locator('.menu-checkout-summary').inner_text()
   assert 'ساندويتش دجاج زنجر × 2' in summary and 'جبنة — ساندويتش دجاج زنجر × 2' in summary and 'بيبسي × 1' in summary
   send=page.locator('button[onclick="sendOrderWhatsapp()"]')
-  assert send.inner_text()=='الانتقال إلى واتساب'
+  assert send.inner_text()=='إكمال الطلب عبر واتساب'
   action=send.bounding_box();assert action['y']>=0 and action['y']+action['height']<=h,action
   page.screenshot(path=f'/tmp/menu-improved-{w}-checkout.png')
   # Required-field feedback remains usable; this cannot open WhatsApp.
@@ -46,7 +46,7 @@ with sync_playwright() as p:
   send.click()
   from urllib.parse import unquote
   url=unquote(page.evaluate('window.capturedOrderURL'))
-  assert 'الإجمالي: 29 ريال' in url and 'رقم 15' in url
+  assert 'إجمالي الطلب: 29 ريال' in url and 'رقم الكوخ: 15' in url
   page.wait_for_function('history.state.route.name==="menu"')
   # Remove an extra and a base item; deleted rows must not reappear on reload.
   page.locator('.menu-cart-trigger').click()

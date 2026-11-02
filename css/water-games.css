@@ -56,15 +56,3 @@
   #maiya-detail .wm-package{padding-block:10px}
   #maiya-detail .wm-category{padding-block:6px}
 }
-/* Only the approved water-game checkout uses this compact layout for now. */
-#order-popup.fd-resort-order.fd-water-order .fd-order-panel{padding:20px!important}
-#order-popup.fd-resort-order.fd-water-order #order-item-name{margin-bottom:14px!important;padding:10px 12px;border:1px solid #315967;border-radius:12px;background:#0d293a}
-#order-popup.fd-resort-order.fd-water-order #order-item-name>div:first-child{font-weight:800}
-#order-popup.fd-resort-order.fd-water-order .fd-order-panel>div{margin-bottom:12px!important}
-#order-popup.fd-resort-order.fd-water-order .fd-order-panel>.fd-order-actions{margin-bottom:0!important}
-#order-popup.fd-resort-order.fd-water-order textarea{min-height:72px}
-@media(max-width:599px){
-  #order-popup.fd-water-order{padding:12px!important}
-  #order-popup.fd-resort-order.fd-water-order .fd-order-panel{padding:16px!important;max-height:calc(100dvh - 24px)!important}
-  #order-popup.fd-resort-order.fd-water-order .fd-order-panel>div{margin-bottom:10px!important}
-}

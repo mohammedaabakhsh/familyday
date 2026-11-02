@@ -34,7 +34,7 @@ with sync_playwright() as p:
         assert page.locator('#setups-title').inner_text()=='الجلسات والتجهيزات'
         assert page.locator('#setups-detail [role=tab]').count()==3
         assert page.locator('#sinema-detail').is_visible()
-        assert page.locator('#cn-inclusions-title').inner_text()=='باقة السينما'
+        assert page.locator('#cn-inclusions-title').inner_text()=='محتويات الجلسة'
         assert page.locator('.cn-price').inner_text()=='150 ريال'
         assert not page.locator('#setups-tab-dining').evaluate('(el)=>!!el.closest("[inert]")')
         # Native RTL keyboard switching.

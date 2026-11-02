@@ -10,13 +10,7 @@
 #setups-detail :is(#sinema-detail,#tawilat-detail,#jalsat-detail){position:static!important;inset:auto!important;z-index:auto!important;background:transparent!important;overflow:visible!important}
 #setups-detail :is(.cn-header,.tw-header,.jl-header){display:none}
 #setups-detail :is(.cn-shell,.tw-shell,.jl-shell){padding:0;width:100%;max-width:none}
-#setups-detail #winter-package{margin-top:24px;padding:20px;border:1px solid #294b5a;border-radius:18px;background:#0a2333}
-#winter-package .hd-package-name{margin:0 0 14px;font-size:20px;color:#f0f5f7}
-#winter-package .hd-items{display:grid;gap:10px;margin-bottom:18px}
-#winter-package .hd-item{display:flex;align-items:flex-start;gap:8px;font-size:15px;line-height:1.7;color:#c8d9e0}
-#winter-package .hd-check{color:#80ccdc}
 @media(max-width:899px){#setups-detail .setups-shell{max-width:600px}}
 @media(max-width:360px){#setups-detail .setups-shell{padding-inline:16px}#setups-title{font-size:22px}#setups-detail .setups-tabs{gap:6px}#setups-detail .setups-tabs button{font-size:13px;padding:12px 5px}}
 
-#hospitality-detail .hd-package-order{display:flex;align-items:center;justify-content:center;min-height:44px;margin-top:18px;padding:10px 16px;border:1px solid #7ecfea55;border-radius:12px;background:#7ecfea18;color:#bcebf7;font:700 14px/1.5 Tajawal,sans-serif;text-align:center;text-decoration:none}
-#hospitality-detail .hd-package-order:hover{background:#7ecfea2b}
+#hospitality-detail .hd-package-note{margin:12px 0 0;font:400 13px/1.7 Tajawal,sans-serif;color:#b6cbd6}

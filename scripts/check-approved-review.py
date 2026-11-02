@@ -43,13 +43,9 @@ with sync_playwright() as p:
                 assert 'صالة جلوس مدمجة مع غرفة النوم' in page.locator('#mBody').text_content()
                 assert not page.locator('#mBody').evaluate('(e)=>/\\b(?:cm|m)\\b/.test(e.innerText)')
         page.goto(BASE+'/services/hospitality/',wait_until='networkidle')
-        for card in page.locator('#hospitality-detail .hd-package').all():
-            name=card.locator('.hd-package-name').text_content().strip()
-            link=card.locator('.hd-package-order');url=urlparse(link.get_attribute('href'))
-            assert link.text_content()=='اطلب الباقة عبر واتساب'
-            assert url.netloc=='wa.me' and url.path=='/966556156693'
-            assert name in parse_qs(url.query)['text'][0]
-        assert page.locator('.hd-package-order').count()==9
+        assert page.locator('#hospitality-detail .hd-package').count()==9
+        assert page.locator('#hospitality-detail a[href*="wa.me"]').count()==0
+        assert page.locator('#hospitality-detail .hd-package-note').count()==7
         page.screenshot(path=f'/tmp/review-hospitality-{width}.png')
         # Legacy saved cart names retain the same quantities and current price.
         page.evaluate("localStorage.setItem('familyday.menu-cart.v1',JSON.stringify({version:1,items:[{name:'كوبين ثلج',qty:3}]}))")
@@ -58,7 +54,7 @@ with sync_playwright() as p:
         page.reload(wait_until='networkidle')
         assert page.evaluate('_menuCartTotals()')=={'qty':3,'price':15}
         assert not errors, errors
-        print(width,'PASS destination layout, comparison, dome details, price links, package links and saved ice quantities',flush=True)
+        print(width,'PASS destination layout, comparison, dome details, price links, display-only packages and saved ice quantities',flush=True)
         context.close()
     routes=['dome-tour/?cabin=1','dome-tour/?cabin=12','greek-tour/?cabin=4','greek-tour/?cabin=13','pyramid-tour/','classic-tour/','palm-tour/','french-tour/','rustic-tour/','royal-tour/','bohemian-tour/','panoramic-tour/']
     for width in [320,390,800,1440]:
