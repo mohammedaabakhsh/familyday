@@ -10,10 +10,10 @@ var _jalsatAllSessions = [
 
 var _menuData = {
   'ساندويتشات': [
-    {name:'ساندويتش دجاج زنجر',price:11,cheese:true},
-    {name:'برجر لحم',price:9,cheese:true},
-    {name:'برجر دجاج',price:9,cheese:true},
-    {name:'ساندويتش ناجتس',price:5,cheese:true}
+    {name:'ساندويتش دجاج زنجر',price:11,cheesePrice:1},
+    {name:'برجر لحم',price:9,cheesePrice:1},
+    {name:'برجر دجاج',price:9,cheesePrice:1},
+    {name:'ساندويتش ناجتس',price:5,cheesePrice:1}
   ],
   'الأطباق': [
     {name:'ناجتس مع البطاطس',price:10},

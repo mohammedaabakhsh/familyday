@@ -54,16 +54,23 @@ python3 -m http.server 8023 --bind 127.0.0.1
 - `js/water-games.js` and `css/water-games.css`: the shared water-game bundle
   for the site and app preview. Guests allocate 3 games between adults and
   children for 50 SAR; checkout sends the quantities, without an item catalog.
-- `guest-services/`: in-stay ordering without leaving the page. Water games,
-  cinema, games and extras share a resort basket; the collapsible restaurant
-  menu reads `service-data.js` and has a separate basket and WhatsApp recipient.
-  The extra names and unit prices in the page HTML feed its quantity controls.
-  `guest-services.js` handles adding/updating/removing service choices, optional
-  notes and tab-scoped drafts, with migration from the previous extras draft.
-  Both forms use `js/cabin-numbers.js` and share the guest-entered name/cabin;
-  their notes and totals remain independent. No order is sent by the site:
-  WhatsApp opens a prepared message for the guest to review and send.
-  `guest-services.html` redirects old links to this single page.
+- `guest-services/`: in-stay orders on one page, with automatic selection and
+  category subtotals. The restaurant basket/recipient stays separate from resort
+  services. `service-source.js` reads the main `index.html` on each visit (as the
+  guide does) for service names, prices, contents, instructions and cinema slots.
+  It loads the menu and cabin script versions referenced by that source, so
+  updating the original services also updates this page. Do not copy their data
+  into the guest HTML/JS. Extra-item names/prices live only in the guest HTML.
+  Cheese add-on prices use each menu item's `cheesePrice` in `service-data.js`.
+  `guest-services.js` saves selections, not trusted prices, in a tab-scoped draft;
+  it migrates earlier extras drafts and blocks incomplete water bundles.
+  Names/cabins are shared between the two forms, but notes/totals remain separate.
+  The mobile shortcut jumps to the bill and hides while that bill is visible.
+  WhatsApp opens a prepared message, never sends or confirms an order.
+  **Keep `/guest-services/` permanent**, regardless of where its link is placed.
+  Its title, description, Open Graph and Twitter preview copy are intentionally
+  fixed independently from the service catalogue. Do not regenerate them from
+  service text. `guest-services.html` redirects legacy links to this same page.
 
 Exploration layouts use a 600 px or 900 px side-layout breakpoint, depending on
 the cabin. Preserve these configurations when changing the shared renderer.

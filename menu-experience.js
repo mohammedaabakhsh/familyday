@@ -11,7 +11,7 @@ window.FD_MENU_EXPERIENCE = (function () {
         if (item.bbq) {
           ['لحم', 'دجاج'].forEach(function (type) { prices[item.name + ' — ' + type] = item.price; });
         } else prices[item.name] = item.price;
-        if (item.cheese) extras['جبنة|' + item.name] = { parent: item.name, price: 1 };
+        if (item.cheesePrice) extras['جبنة|' + item.name] = { parent: item.name, price: item.cheesePrice };
       });
     });
     return { prices: prices, extras: extras };

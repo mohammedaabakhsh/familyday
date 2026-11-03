@@ -179,9 +179,9 @@ function _renderMenuItems(){
     var qty = (_menuCart[item.name] && _menuCart[item.name].qty) || 0;
     var cheeseKey = 'جبنة|'+item.name;
     var cheeseQty = (_menuCart[cheeseKey] && _menuCart[cheeseKey].qty) || 0;
-    var extrasBtn = (item.cheese && qty > 0)
+    var extrasBtn = (item.cheesePrice && qty > 0)
       ? '<div class="menu-extras">'
-        +'<button type="button" class="menu-extra'+(cheeseQty>0?' is-selected':'')+'" aria-pressed="'+(cheeseQty>0)+'" onclick="menuToggleExtra(&apos;جبنة&apos;,&apos;'+item.name+'&apos;,1)">'+(cheeseQty>0?'✓ ':'')+'إضافة جبنة · 1 ريال</button>'
+        +'<button type="button" class="menu-extra'+(cheeseQty>0?' is-selected':'')+'" aria-pressed="'+(cheeseQty>0)+'" onclick="menuToggleExtra(&apos;جبنة&apos;,&apos;'+item.name+'&apos;,'+item.cheesePrice+')">'+(cheeseQty>0?'✓ ':'')+'إضافة جبنة · '+item.cheesePrice+' ريال</button>'
         +'</div>'
       : '';
     return '<article class="menu-item'+(item.desc?' menu-item--described':'')+'" aria-label="'+item.name+'">'

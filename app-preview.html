@@ -1066,7 +1066,7 @@ header{
 <link rel="stylesheet" href="css/service-orders.css?v=20261103-review-v1">
 <script src="js/cabin-numbers.js?v=20261102-v1"></script>
 <script src="site-enhancements.js?v=1"></script>
-<script src="menu-experience.js?v=20261103-review-v1"></script>
+<script src="menu-experience.js?v=20261103-shared-menu-prices-v1"></script>
 <script src="js/service-orders.js?v=20261103-review-v1"></script>
 <script src="resort-features.js?v=20261103-review-v1"></script>
 <script>
@@ -3311,10 +3311,10 @@ var _menuCart = {}; // {name: {price, qty}}
 
 var _menuData = {
   'ساندويتشات': [
-    {name:'ساندويتش دجاج زنجر',price:11,cheese:true},
-    {name:'برجر لحم',price:9,cheese:true},
-    {name:'برجر دجاج',price:9,cheese:true},
-    {name:'ساندويتش ناجتس',price:5,cheese:true}
+    {name:'ساندويتش دجاج زنجر',price:11,cheesePrice:1},
+    {name:'برجر لحم',price:9,cheesePrice:1},
+    {name:'برجر دجاج',price:9,cheesePrice:1},
+    {name:'ساندويتش ناجتس',price:5,cheesePrice:1}
   ],
   'الأطباق': [
     {name:'ناجتس مع البطاطس',price:10},
@@ -3408,9 +3408,9 @@ function _renderMenuItems(){
     var qty = (_menuCart[item.name] && _menuCart[item.name].qty) || 0;
     var cheeseKey = 'جبنة|'+item.name;
     var cheeseQty = (_menuCart[cheeseKey] && _menuCart[cheeseKey].qty) || 0;
-    var extrasBtn = (item.cheese && qty > 0)
+    var extrasBtn = (item.cheesePrice && qty > 0)
       ? '<div class="menu-extras">'
-        +'<button type="button" class="menu-extra'+(cheeseQty>0?' is-selected':'')+'" aria-pressed="'+(cheeseQty>0)+'" onclick="menuToggleExtra(&apos;جبنة&apos;,&apos;'+item.name+'&apos;,1)">'+(cheeseQty>0?'✓ ':'')+'إضافة جبنة · 1 ريال</button>'
+        +'<button type="button" class="menu-extra'+(cheeseQty>0?' is-selected':'')+'" aria-pressed="'+(cheeseQty>0)+'" onclick="menuToggleExtra(&apos;جبنة&apos;,&apos;'+item.name+'&apos;,'+item.cheesePrice+')">'+(cheeseQty>0?'✓ ':'')+'إضافة جبنة · '+item.cheesePrice+' ريال</button>'
         +'</div>'
       : '';
     return '<article class="menu-item'+(item.desc?' menu-item--described':'')+'" aria-label="'+item.name+'">'

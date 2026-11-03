@@ -7,15 +7,22 @@
 <meta name="robots" content="noindex,follow">
 <title>خدمات إقامتك | يوم العائلة</title>
 <meta name="description" content="اختر خدمات المنتجع وطلبات المطعم من مكان واحد أثناء إقامتك.">
+<!-- Stable guest link preview: keep this copy independent from service content. -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://familydaystay.com/guest-services/">
+<meta property="og:title" content="خدمات إقامتك | يوم العائلة">
+<meta property="og:description" content="اختر خدمات المنتجع وطلبات المطعم من مكان واحد أثناء إقامتك.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="خدمات إقامتك | يوم العائلة">
+<meta name="twitter:description" content="اختر خدمات المنتجع وطلبات المطعم من مكان واحد أثناء إقامتك.">
 <link rel="canonical" href="https://familydaystay.com/guest-services/">
 <link rel="icon" href="/imgs/img01.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/guest-services/guest-services.css?v=20261103-inline-services-v1">
-<script src="/js/cabin-numbers.js?v=20261102-v1" defer></script>
-<script src="/service-data.js?v=20261103-review-v1" defer></script>
-<script src="/guest-services/guest-services.js?v=20261103-inline-services-v1" defer></script>
+<link rel="stylesheet" href="/guest-services/guest-services.css?v=20261103-simple-orders-v1">
+<script src="/guest-services/service-source.js?v=20261103-simple-orders-v1" defer></script>
+<script src="/guest-services/guest-services.js?v=20261103-simple-orders-v1" defer></script>
 </head>
 <body>
 <div class="page">
@@ -27,7 +34,13 @@
   </header>
   <main class="main">
     <noscript><p>لطلب الخدمات تواصل مع <a href="https://wa.me/966556156693">فريق المنتجع</a>، وللطعام تواصل مع <a href="https://wa.me/966537006531">المطعم</a>.</p></noscript>
-    <section class="restaurant" aria-labelledby="restaurant-title">
+    <nav class="service-nav" aria-label="انتقل إلى الخدمة">
+      <a href="#restaurant-service" data-tone="restaurant">المطعم</a><a href="#water-service" data-tone="water">المائية</a><a href="#games-service" data-tone="games">الألعاب</a><a href="#cinema-service" data-tone="cinema">السينما</a><a href="#extras-service" data-tone="extras">طلبات إضافية</a>
+    </nav>
+    <p class="page-hint">اختر ما تحتاجه؛ يظهر اختيارك مباشرة في ملخص طلبك.</p>
+    <p id="services-loading" role="status">جاري تحميل الخدمات…</p>
+    <div id="services-error" class="source-error" role="alert" hidden>تعذّر تحميل الخدمات. <button type="button" id="reload-services">إعادة المحاولة</button></div>
+    <section id="restaurant-service" class="restaurant" data-tone="restaurant" aria-labelledby="restaurant-title">
       <div class="section-heading"><h2 id="restaurant-title">المطعم</h2><span class="section-tag">طلب مستقل</span></div>
       <p class="section-note">افتح القسم واختر الأصناف والكميات. طلب المطعم يُرسل إلى المطعم مباشرة.</p>
       <div id="guest-menu" class="menu-categories"></div>
@@ -42,9 +55,9 @@
     </section>
     <div class="resort-layout">
       <div class="resort-services">
-        <section class="service-section" id="water-service" aria-labelledby="water-title">
-          <div class="section-heading"><h2 id="water-title">الألعاب المائية</h2><strong class="section-price">3 ألعاب بـ50 ريال</strong></div>
-          <p class="section-note">حدّد عدد الألعاب للكبار والصغار.</p>
+        <section class="service-section" id="water-service" data-tone="water" aria-labelledby="water-title">
+          <div class="section-heading"><h2 id="water-title">الألعاب المائية</h2><strong class="section-price"></strong></div>
+          <p class="section-note"></p>
           <div class="selection-rows">
             <div class="extra-row"><strong>للكبار</strong><div class="quantity" role="group" aria-label="عدد ألعاب الكبار">
               <button type="button" data-water="adults" data-step="-1" aria-label="تقليل عدد ألعاب الكبار" disabled>−</button><output id="water-adults" dir="ltr">0</output><button type="button" data-water="adults" data-step="1" aria-label="زيادة عدد ألعاب الكبار" disabled>+</button>
@@ -53,35 +66,29 @@
               <button type="button" data-water="children" data-step="-1" aria-label="تقليل عدد ألعاب الصغار" disabled>−</button><output id="water-children" dir="ltr">0</output><button type="button" data-water="children" data-step="1" aria-label="زيادة عدد ألعاب الصغار" disabled>+</button>
             </div></div>
           </div>
-          <p id="water-count" class="selection-status" role="status">اخترت 0 من 3</p>
-          <button id="add-water" class="add-service" type="button" disabled>إضافة إلى طلبك</button>
-          <p id="water-status" class="selection-status" role="status"></p>
-          <p class="usage-note">يرجى المحافظة على الألعاب وإعادتها بحالتها الأصلية.</p>
+          <p id="water-count" class="selection-status" role="status"></p>
+          <p class="usage-note"></p>
         </section>
-        <section class="service-section" id="cinema-service" aria-labelledby="cinema-title">
-          <div class="section-heading"><h2 id="cinema-title">جلسة السينما</h2><strong class="section-price">3 ساعات بـ150 ريال</strong></div>
-          <p class="section-note">جلسة سينما خارجية في المساحة الخاصة بالكوخ.</p>
-          <h3 class="contents-title">محتويات الجلسة</h3>
-          <ul class="contents-list"><li>شاشة عرض خارجية</li><li>كرسيان مريحان</li><li>كوبان من الفشار</li><li>كوبان من الموهيتو</li></ul>
-          <label class="field-label" for="cinema-time">وقت بداية الجلسة</label>
-          <select id="cinema-time"><option value="">اختر الوقت</option><option value="18">6:00 م</option><option value="19">7:00 م</option><option value="20">8:00 م</option><option value="21">9:00 م</option><option value="22">10:00 م</option><option value="23">11:00 م</option><option value="24">12:00 ص (منتصف الليل)</option><option value="25">1:00 ص</option><option value="26">2:00 ص</option></select>
-          <button id="add-cinema" class="add-service" type="button" disabled>إضافة إلى طلبك</button>
-          <p id="cinema-status" class="selection-status" role="status"></p>
-          <details class="usage"><summary>تعليمات الاستخدام</summary><ul><li>يُرجى طلب الجلسة مسبقًا والالتزام بموعد بدايتها.</li><li>يُرجى المحافظة على الشاشة وجهاز العرض.</li><li>أبلغنا فورًا عند هبوب رياح قوية.</li></ul></details>
-        </section>
-        <section class="service-section" id="games-service" aria-labelledby="games-title">
+        <section class="service-section" id="games-service" data-tone="games" aria-labelledby="games-title">
           <h2 id="games-title">الألعاب الترفيهية</h2>
           <fieldset class="game-options"><legend class="field-label">اختر الباقة</legend>
-            <label><input type="radio" name="games-package" value="box"><span>بوكس الألعاب<strong>50 ريال</strong></span></label>
-            <label><input type="radio" name="games-package" value="table"><span>طاولة الألعاب مع بوكس الألعاب<small>طاولة و4 كراسي مع البوكس</small><strong>150 ريال</strong></span></label>
           </fieldset>
           <h3 class="contents-title">محتويات بوكس الألعاب</h3>
-          <ul class="contents-list games-contents"><li>أونو</li><li>جاكارو</li><li>سيكونس</li><li>شطرنج</li><li>ضومنة</li><li>لعبة لا تقول</li><li>ورق بلوت</li></ul>
-          <button id="add-games" class="add-service" type="button" disabled>إضافة إلى طلبك</button>
+          <ul class="contents-list games-contents"></ul>
           <p id="games-status" class="selection-status" role="status"></p>
-          <p class="usage-note">يرجى المحافظة على الألعاب وإعادتها بحالتها الأصلية.</p>
+          <p class="usage-note"></p>
         </section>
-        <section class="service-section extras" aria-labelledby="extras-title">
+        <section class="service-section" id="cinema-service" data-tone="cinema" aria-labelledby="cinema-title">
+          <div class="section-heading"><h2 id="cinema-title">جلسة السينما</h2><strong class="section-price"></strong></div>
+          <p class="section-note"></p>
+          <h3 class="contents-title">محتويات الجلسة</h3>
+          <ul class="contents-list"></ul>
+          <label class="field-label" for="cinema-time">وقت بداية الجلسة</label>
+          <select id="cinema-time" disabled><option value="">بدون جلسة سينما</option></select>
+          <p id="cinema-status" class="selection-status" role="status"></p>
+          <details class="usage"><summary>تعليمات الاستخدام</summary><ul></ul></details>
+        </section>
+        <section class="service-section extras" id="extras-service" data-tone="extras" aria-labelledby="extras-title">
           <h2 id="extras-title">طلبات إضافية</h2>
           <p class="section-note">اختر ما تحتاجه وحدّد الكمية.</p>
         <div class="extra-list">
@@ -145,12 +152,15 @@
         </section>
       </div>
       <form id="extras-order" class="order-box resort-order" tabindex="-1">
-        <div class="order-heading"><h3>طلبك</h3><p id="order-count" role="status">لم تختر أي طلبات بعد</p></div>
+        <div class="order-heading"><h3>ملخص طلبك</h3><p id="order-count" role="status">لم تختر أي طلبات بعد</p></div>
         <ul id="order-items" class="order-items" hidden></ul>
         <div class="order-total"><span>إجمالي خدمات المنتجع</span><strong><bdi id="order-total">0</bdi> ريال</strong></div>
+        <p id="order-warning" class="order-warning" role="status" hidden></p>
+        <div class="order-details" hidden>
         <div class="customer-fields" data-scope="guest"></div>
         <button class="send-order" type="submit" disabled>إكمال الطلب عبر واتساب</button>
         <p class="confirmation-note">تابع طلبك عبر واتساب</p>
+        </div>
       </form>
     </div>
     <section class="help" aria-labelledby="help-title">
@@ -159,7 +169,7 @@
     </section>
   </main>
   <button type="button" id="order-shortcut" class="order-shortcut" aria-controls="extras-order" hidden>
-    <span>الإجمالي · <bdi id="shortcut-total">0</bdi> ريال</span><strong>متابعة الطلب <span aria-hidden="true">←</span></strong>
+    <span>خدمات المنتجع · <bdi id="shortcut-total">0</bdi> ريال</span><strong>عرض طلبك <span aria-hidden="true">←</span></strong>
   </button>
   <footer class="footer">منتجع يوم العائلة · خليج سلمان، جدة</footer>
 </div>
