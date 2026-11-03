@@ -13,7 +13,7 @@ BASE = sys.argv[1] if len(sys.argv) > 1 else 'http://127.0.0.1:8025'
 FONT = Path(os.environ.get('FD_TEST_FONT_CSS', '/nonexistent-font.css'))
 OUT = Path(os.environ.get('FD_GUEST_SCREENSHOTS', '/tmp/familyday-guest-services'))
 OUT.mkdir(parents=True, exist_ok=True)
-TITLE = 'خدمات إقامتك | يوم العائلة'
+TITLE = 'خدمات إقامتك | منتجع يوم العائلة'
 DESCRIPTION = 'اختر خدمات المنتجع وطلبات المطعم من مكان واحد أثناء إقامتك.'
 URL = 'https://familydaystay.com/guest-services/'
 
