@@ -245,7 +245,17 @@ html:has(#dest:not(.hide)),body:has(#dest:not(.hide)){
   display:flex;flex-direction:column;align-items:center;flex:1;
   width:100%;min-width:0;min-height:0;
 }
-#dest .dest-heading{font-size:24px;font-weight:700;color:#fff;margin:0 0 6px;letter-spacing:0;}
+#dest .dest-heading{position:relative;font-size:24px;font-weight:700;color:#fff;margin:0 0 6px;letter-spacing:0;}
+#dest .dest-birds{
+  position:absolute;left:-5px;top:-14px;width:30px;height:20px;
+  color:#69bcc7;pointer-events:none;animation:destBirdFlight 3.6s ease-in-out infinite;
+}
+#dest .dest-birds svg{display:block;width:100%;height:100%;overflow:visible;}
+#dest .dest-bird{transform-box:fill-box;transform-origin:center;animation:destBirdWings 1.8s ease-in-out infinite;}
+#dest .dest-bird-small{animation-delay:-.6s;}
+@keyframes destBirdFlight{0%,100%{transform:translate(0,0)}50%{transform:translate(-2px,-3px)}}
+@keyframes destBirdWings{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.65)}}
+@media(prefers-reduced-motion:reduce){#dest .dest-birds,#dest .dest-bird{animation:none;}}
 #dest .dest-description{
   font-size:14px;color:rgba(255,255,255,.68);margin:0 0 20px;
   text-align:center;line-height:1.6;animation-duration:3.4s;
