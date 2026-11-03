@@ -1,4 +1,4 @@
-"""Exercise automatic guest selection, grouped bills, source sync and fixed previews.
+"""Exercise dialog guest selection, grouped bills, source sync and fixed previews.
 Outgoing WhatsApp links are captured locally; no messages are sent.
 """
 from pathlib import Path
@@ -37,11 +37,16 @@ def menu_row(page, name):
 
 
 def open_service(page, key):
-    fold = page.locator('#' + key + '-service')
-    if not fold.evaluate('(e)=>e.open'):
-        fold.locator(':scope > summary').click()
-    expect(fold).to_have_attribute('open', '')
-    expect(page.locator('.guest-service-fold[open]')).to_have_count(1)
+    page.locator('#'+key+'-card').click()
+    expect(page.locator('#service-dialog')).to_be_visible()
+    expect(page.locator('#'+key+'-service')).to_be_visible()
+    assert page.locator('.service-panel:visible').count()==1
+
+
+def apply_service(page):
+    page.locator('#apply-selection').click()
+    expect(page.locator('#service-dialog')).to_be_hidden()
+    assert not page.evaluate('document.body.classList.contains("dialog-open")')
 
 
 def preview(page):
@@ -56,88 +61,71 @@ def preview(page):
 with sync_playwright() as p:
     browser = p.chromium.launch(executable_path='/usr/bin/chromium', args=['--no-sandbox'])
     for width in [320, 390, 768, 1440]:
-        ctx = context(browser, width)
-        page = ctx.new_page()
-        errors, documents, images = [], [], []
-        page.on('pageerror', lambda e: errors.append(str(e)))
-        page.on('request', lambda r: documents.append(r.url) if r.resource_type == 'document' else images.append(r.url) if r.resource_type == 'image' else None)
-        page.goto(BASE + '/guest-services/', wait_until='networkidle')
-        page.evaluate('document.fonts.ready');preview(page)
+        ctx=context(browser,width);page=ctx.new_page();errors=[];documents=[];images=[]
+        page.on('pageerror',lambda e:errors.append(str(e)))
+        page.on('request',lambda r:documents.append(r.url) if r.resource_type=='document' else images.append(r.url) if r.resource_type=='image' else None)
+        page.goto(BASE+'/guest-services/',wait_until='networkidle');page.evaluate('document.fonts.ready');preview(page)
         assert page.locator('#services-error').is_hidden()
-        assert page.locator('img').count() == 1  # Brand logo only.
-        assert all('/imgs/img01.webp' in url for url in images), images
-        assert page.locator('.service-card,.add-service,[id^="add-"]').count() == 0
-        assert page.locator('[data-extra] .extra-price bdi').all_text_contents() == ['20', '20', '15', '25', '30']
-        assert page.locator('.menu-row').count() == page.evaluate('Object.values(_menuData).flat().length')
-        assert page.locator('.guest-service-fold').evaluate_all('(els)=>els.map(e=>e.id)') == ['restaurant-service','water-service','games-service','cinema-service','extras-service']
-        assert page.locator('.guest-service-fold[open],.service-nav').count() == 0
-        assert len(set(page.locator('.fold-number').evaluate_all('(els)=>els.map(e=>getComputedStyle(e).backgroundColor)'))) == 5
-        assert page.locator('#extras-order .order-details').is_hidden()
-        assert page.locator('#restaurant-order').is_hidden()
-        assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')
-        page.screenshot(path=str(OUT / f'guest-empty-{width}.png'), full_page=True)
-        summary=page.locator('#water-service > summary')
-        summary.focus();page.keyboard.press('Enter')
-        expect(page.locator('#water-service')).to_have_attribute('open','')
-        page.keyboard.press('Space')
-        expect(page.locator('#water-service')).not_to_have_attribute('open','')
-        # Incomplete water bundles are visible but cannot be submitted or charged.
-        open_service(page, 'water')
+        assert page.locator('img').count()==1 and all('/imgs/img01.webp' in url for url in images)
+        assert page.locator('[data-service]').evaluate_all('(els)=>els.map(e=>e.dataset.service)')==['restaurant','water','games','cinema','extras']
+        assert page.locator('.guest-service-fold,.service-nav').count()==0
+        assert page.locator('.menu-row').count()==page.evaluate('Object.values(_menuData).flat().length')
+        assert page.locator('[data-extra] .extra-price bdi').all_text_contents()==['20','20','15','25','30']
+        assert page.locator('#service-dialog').is_hidden()
+        page.screenshot(path=str(OUT/f'tiles-empty-{width}.png'),full_page=True)
+        # Keyboard activation, modal focus containment and cancel leave the bill untouched.
+        page.locator('#water-card').focus();page.keyboard.press('Enter')
+        expect(page.locator('#service-dialog')).to_be_visible()
+        for _ in range(12):
+            page.keyboard.press('Tab')
+            assert page.evaluate("document.getElementById('service-dialog').contains(document.activeElement)")
         page.locator('[data-water="adults"][data-step="1"]').click()
-        assert page.locator('#order-total').text_content() == '0'
-        assert page.locator('#order-warning').is_visible()
-        assert page.locator('#extras-order .send-order').is_disabled()
-        page.reload(wait_until='networkidle')
-        assert page.locator('#water-adults').text_content() == '1'
-        assert page.locator('#order-warning').is_visible()
-        open_service(page, 'water')
+        assert page.locator('#apply-selection').is_disabled()
+        assert page.locator('#dialog-status').is_visible()
+        assert page.locator('#order-total').text_content()=='0'
+        page.keyboard.press('Escape')
+        expect(page.locator('#service-dialog')).to_be_hidden()
+        assert page.locator('#water-card').evaluate('(e)=>e===document.activeElement')
+        open_service(page,'water');assert page.locator('#water-adults').text_content()=='0'
+        page.locator('[data-water="adults"][data-step="1"]').click()
         page.locator('[data-water="children"][data-step="1"]').click(click_count=2)
-        assert page.locator('[data-water][data-step="1"]:disabled').count() == 2
-        assert page.locator('#order-total').text_content() == '50'
-        assert page.locator('#order-warning').is_hidden()
-        # Choosing a time/package immediately updates the bill; no add/update step.
-        open_service(page, 'cinema')
-        page.locator('#cinema-time').select_option('24')
-        open_service(page, 'games')
-        page.locator('[name="games-package"][value="table"]').check()
-        open_service(page, 'extras')
+        assert page.locator('#dialog-total').text_content()=='50'
+        assert page.locator('#order-total').text_content()=='0'
+        assert page.locator('[data-water][data-step="1"]:disabled').count()==2
+        page.screenshot(path=str(OUT/f'dialog-water-{width}.png'))
+        apply_service(page)
+        assert page.locator('#order-total').text_content()=='50'
+        assert '✓' in page.locator('#water-card .tile-selection').text_content()
+        open_service(page,'water');page.locator('[data-water="children"][data-step="-1"]').click()
+        page.locator('.dialog-cancel').click()
+        open_service(page,'water');assert page.locator('#water-children').text_content()=='2'
+        page.mouse.click(1,1);expect(page.locator('#service-dialog')).to_be_hidden()
+        open_service(page,'games');page.locator('[name="games-package"][value="table"]').check();apply_service(page)
+        open_service(page,'cinema');page.locator('#cinema-time').select_option('24');apply_service(page)
+        open_service(page,'extras')
         page.locator('[data-extra="robe"] [data-step="1"]').click(click_count=2)
-        open_service(page, 'extras')
-        page.locator('[data-extra="incense"] [data-step="1"]').click()
-        assert page.locator('#order-total').text_content() == '410'
-        assert page.locator('.guest-service-fold.is-selected').count()==4
-        assert page.locator('[data-extra=robe]').evaluate('(e)=>e.classList.contains("is-selected")')
-        assert page.locator('#cinema-time').evaluate('(e)=>e.classList.contains("is-selected")')
-        assert '✓' in page.locator('#water-service .fold-selection').text_content()
-        page.locator('#extras-service > summary').click()
-        assert page.locator('.guest-service-fold[open]').count()==0
-        page.screenshot(path=str(OUT / f'guest-collapsed-selected-{width}.png'),full_page=True)
-        assert page.locator('#order-items>.order-group').evaluate_all('(els)=>els.map(e=>e.dataset.group)') == ['water','games','cinema','extras']
-        assert page.locator('#order-items .order-group-heading>strong').all_text_contents() == ['50 ريال','150 ريال','150 ريال','60 ريال']
-        assert len(documents) == 2, documents  # Only the explicit reload above.
-        if width < 640:
-            open_service(page, 'water')
-            page.evaluate('window.scrollTo(0,0)')
-            expect(page.locator('#order-shortcut')).to_be_visible()
+        page.locator('[data-extra="incense"] [data-step="1"]').click();apply_service(page)
+        assert page.locator('#order-total').text_content()=='410'
+        assert page.locator('.service-tile.is-selected').count()==4
+        assert page.locator('#order-items>.order-group').evaluate_all('(els)=>els.map(e=>e.dataset.group)')==['water','games','cinema','extras']
+        assert page.locator('#order-items .order-group-heading>strong').all_text_contents()==['50 ريال','150 ريال','150 ريال','60 ريال']
+        assert len(documents)==1 and page.url==BASE+'/guest-services/'
+        assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')
+        if width<640:
+            page.set_viewport_size({'width':width,'height':700})
+            page.evaluate('window.scrollTo(0,0)');expect(page.locator('#order-shortcut')).to_be_visible()
             page.locator('#order-shortcut').click()
-            assert page.locator('#extras-order').evaluate('(e)=>e===document.activeElement')
-            assert abs(page.locator('#extras-order').bounding_box()['y']-14)<2
+            assert page.locator('#orders-summary').evaluate('(e)=>e===document.activeElement')
             expect(page.locator('#order-shortcut')).to_be_hidden()
-            open_service(page, 'water')
-            page.evaluate('window.scrollTo(0,0)')
-            expect(page.locator('#order-shortcut')).to_be_visible()
-            page.locator('#order-shortcut').click()
-        send = page.locator('#extras-order .send-order')
-        send.click()
+            page.set_viewport_size({'width':width,'height':900})
+        send=page.locator('#extras-order .send-order');send.click()
         assert page.evaluate('window.capturedURL') is None
-        page.locator('#guest-name').fill('   ');send.click()
-        assert page.evaluate('window.capturedURL') is None
-        page.locator('#guest-name').fill('ضيف الاختبار');send.click()
-        assert page.evaluate('window.capturedURL') is None
+        page.locator('#guest-name').fill('   ');send.click();assert page.evaluate('window.capturedURL') is None
+        page.locator('#guest-name').fill('ضيف الاختبار');send.click();assert page.evaluate('window.capturedURL') is None
         page.locator('#guest-cabin').select_option('بيت الدوم 1')
-        assert page.locator('#extras-order .cabin-number output').text_content() == '15'
+        assert page.locator('#extras-order .cabin-number output').text_content()=='15'
         page.locator('#guest-notes').fill('أعمار الأطفال 5 و7 سنوات');send.click()
-        assert captured(page, '966556156693') == '\n'.join([
+        assert captured(page,'966556156693')=='\n'.join([
             'السلام عليكم، أرغب بطلب الخدمات التالية أثناء إقامتي:', '',
             'الاسم: ضيف الاختبار', 'اسم الكوخ: بيت الدوم 1', 'رقم الكوخ: 15', '', 'الطلبات:', '',
             'الألعاب المائية — 50 ريال', '• باقة ألعاب مائية — 50 ريال', 'للكبار: 1', 'للصغار: 2', '',
@@ -145,82 +133,75 @@ with sync_playwright() as p:
             'جلسة السينما — 150 ريال', '• جلسة السينما — 150 ريال', 'مدة الجلسة: 3 ساعات', 'وقت البداية: 12:00 ص (منتصف الليل)', '',
             'طلبات إضافية — 60 ريال', '• روب ومناشف لشخص واحد × 2 — 40 ريال', '• بخور × 1 — 20 ريال',
             '', 'الإجمالي: 410 ريال', '', 'ملاحظات: أعمار الأطفال 5 و7 سنوات'])
-        if width==390:
-            page.locator('#extras-order').screenshot(path=str(OUT/'grouped-bill-mobile.png'))
-        open_service(page, 'games')
-        page.locator('[name="games-package"][value="box"]').check()
-        assert page.locator('#order-total').text_content() == '310'
-        open_service(page, 'cinema')
-        page.locator('#cinema-time').select_option('26')
-        open_service(page, 'water')
-        page.locator('[data-water="children"][data-step="-1"]').click(click_count=2)
-        assert page.locator('#order-total').text_content() == '260'
-        assert page.locator('#extras-order .send-order').is_disabled()
-        open_service(page, 'water')
-        page.locator('[data-water="adults"][data-step="1"]').click(click_count=2)
-        assert page.locator('#order-total').text_content() == '310'
-        send.click();message = captured(page, '966556156693')
+        open_service(page,'games');page.locator('[name="games-package"][value="box"]').check();apply_service(page)
+        assert page.locator('#order-total').text_content()=='310'
+        open_service(page,'cinema');page.locator('#cinema-time').select_option('26');apply_service(page)
+        open_service(page,'water');page.locator('[data-water="children"][data-step="-1"]').click(click_count=2)
+        assert page.locator('#apply-selection').is_disabled()
+        assert page.locator('#order-total').text_content()=='310'
+        page.locator('[data-water="adults"][data-step="1"]').click(click_count=2);apply_service(page)
+        send.click();message=captured(page,'966556156693')
         assert 'للكبار: 3\nللصغار: 0' in message and 'وقت البداية: 2:00 ص' in message
-        page.get_by_role('button', name='حذف روب ومناشف لشخص واحد', exact=True).click()
-        assert page.locator('[data-extra="robe"] output').text_content() == '0'
-        assert page.locator('#order-total').text_content() == '270'
-        assert page.locator('[data-group="extras"] .order-group-heading>strong').text_content() == '20 ريال'
-        # Restaurant quantities/options are independent and grouped by menu category.
-        open_service(page, 'restaurant')
-        page.locator('[data-category="ساندويتشات"] summary').click()
-        sandwich = menu_row(page, 'ساندويتش دجاج زنجر')
+        page.get_by_role('button',name='حذف روب ومناشف لشخص واحد',exact=True).click()
+        assert page.locator('#order-total').text_content()=='270'
+        open_service(page,'extras');assert page.locator('[data-extra="robe"] output').text_content()=='0';page.locator('.dialog-close').click()
+        # The restaurant also commits from the dialog, with its own recipient and bill.
+        open_service(page,'restaurant');page.locator('[data-category="ساندويتشات"] summary').click()
+        sandwich=menu_row(page,'ساندويتش دجاج زنجر')
         sandwich.locator('[data-step="1"]').click(click_count=2);sandwich.locator('[type="checkbox"]').check()
-        open_service(page, 'restaurant')
-        page.locator('[data-category="بوكسات الشواء"] summary').click()
-        bbq = menu_row(page, 'بوكس الشواء بدون فحم')
+        page.locator('[data-category="بوكسات الشواء"] summary').click();bbq=menu_row(page,'بوكس الشواء بدون فحم')
         bbq.locator('[data-step="1"]').click();bbq.locator('select').select_option(label='دجاج');bbq.locator('[data-step="1"]').click()
-        open_service(page, 'restaurant')
-        page.locator('[data-category="مشروبات باردة"] summary').click()
-        menu_row(page, 'عبوة ماء صغيرة').locator('[data-step="1"]').click(click_count=3)
-        assert page.locator('#restaurant-total').text_content() == '200'
-        assert page.locator('#order-total').text_content() == '270'
-        assert page.locator('#restaurant-items .order-group-heading h4').all_text_contents() == ['ساندويتشات','بوكسات الشواء','مشروبات باردة']
-        page.locator('#restaurant-notes').fill('بدون بصل');page.locator('#restaurant-order .send-order').click()
-        message=captured(page,'966537006531')
+        page.locator('[data-category="مشروبات باردة"] summary').click();menu_row(page,'عبوة ماء صغيرة').locator('[data-step="1"]').click(click_count=3)
+        assert page.locator('#dialog-total').text_content()=='200'
+        assert page.locator('#restaurant-order').is_hidden()
+        assert page.locator('.menu-category[open]').count()==1
+        page.screenshot(path=str(OUT/f'dialog-restaurant-{width}.png'));apply_service(page)
+        assert page.locator('#restaurant-total').text_content()=='200'
+        assert page.locator('#order-total').text_content()=='270'
+        assert page.locator('#restaurant-items .order-group-heading h4').all_text_contents()==['ساندويتشات','بوكسات الشواء','مشروبات باردة']
+        page.locator('#restaurant-notes').fill('بدون بصل');page.locator('#restaurant-order .send-order').click();message=captured(page,'966537006531')
         assert 'ساندويتشات — 24 ريال' in message and 'إضافة جبنة: 2 × 1 ريال' in message
         assert 'بوكسات الشواء — 170 ريال' in message and 'بوكس الشواء بدون فحم — دجاج × 1 — 85 ريال' in message
         assert 'مشروبات باردة — 6 ريال' in message and 'الإجمالي: 200 ريال' in message
         assert 'ملاحظات: بدون بصل' in message and 'ألعاب' not in message
-        page.screenshot(path=str(OUT / f'guest-selected-{width}.png'), full_page=True)
+        page.screenshot(path=str(OUT/f'tiles-selected-{width}.png'),full_page=True)
         page.goto(BASE+'/guest-services.html?review=1',wait_until='networkidle');page.wait_for_url(BASE+'/guest-services/?review=1');preview(page)
-        assert page.locator('#order-total').text_content() == '270'
-        assert page.locator('#restaurant-total').text_content() == '200'
-        assert page.locator('#guest-notes').input_value() == 'أعمار الأطفال 5 و7 سنوات'
-        assert page.locator('#restaurant-notes').input_value() == 'بدون بصل'
-        assert page.locator('#cinema-time').input_value() == '26'
-        assert page.locator('#water-adults').text_content() == '3'
+        assert page.locator('#service-dialog').is_hidden()
+        assert page.locator('.service-tile.is-selected').count()==5
+        assert page.locator('#order-total').text_content()=='270' and page.locator('#restaurant-total').text_content()=='200'
+        assert page.locator('#guest-notes').input_value()=='أعمار الأطفال 5 و7 سنوات'
+        assert page.locator('#restaurant-notes').input_value()=='بدون بصل'
         page.locator('#guest-notes').fill('');page.locator('#extras-order .send-order').click()
         assert 'ملاحظات:' not in captured(page,'966556156693')
-        # Removal resets the original selector as well as its summary.
-        open_service(page, 'games')
-        page.locator('[name="games-package"][value=""]').check()
+        # Removing a package in its dialog removes it from the bill only after applying.
+        open_service(page,'games');page.locator('[name="games-package"][value=""]').check()
+        assert page.locator('#apply-selection').text_content()=='حذف من الطلب';apply_service(page)
         assert page.locator('#order-total').text_content()=='220'
-        assert page.locator('#games-service .is-selected').count()==0
-        open_service(page, 'cinema')
-        page.locator('#cinema-time').select_option('')
+        open_service(page,'cinema');page.locator('#cinema-time').select_option('');apply_service(page)
         assert page.locator('#order-total').text_content()=='70'
         while page.locator('#order-items button').count():page.locator('#order-items button').first.click()
-        assert page.locator('#water-adults').text_content()=='0'
-        assert page.locator('#order-total').text_content()=='0'
-        assert page.locator('#extras-order .order-details').is_hidden()
-        assert page.locator('#order-shortcut').is_hidden()
-        assert page.locator('#restaurant-total').text_content()=='200'
-        open_service(page, 'restaurant')
+        assert page.locator('#order-total').text_content()=='0' and page.locator('#extras-order .order-details').is_hidden()
         page.get_by_role('button',name='حذف ساندويتش دجاج زنجر',exact=True).click()
         assert page.locator('#restaurant-total').text_content()=='176'
         while page.locator('#restaurant-items button').count():page.locator('#restaurant-items button').first.click()
-        assert page.locator('#restaurant-order').is_hidden()
-        page.reload(wait_until='networkidle')
-        assert page.locator('#order-total').text_content()=='0' and page.locator('#restaurant-order').is_hidden()
-        assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')
+        assert page.locator('#restaurant-order').is_hidden() and page.locator('#order-shortcut').is_hidden()
+        page.reload(wait_until='networkidle');assert page.locator('.service-tile.is-selected').count()==0
         assert not errors,errors
-        print(width,'PASS automatic choices, grouped totals/messages, shortcut jump/hide, independent orders and persistence',flush=True)
+        print(width,'PASS modal selection/apply/cancel, keyboard, grouped bills/messages, recipients, persistence and removals',flush=True)
         ctx.close()
+
+    # Small phone height: scroll only the editor body; actions remain reachable.
+    ctx=context(browser,320);page=ctx.new_page();page.set_viewport_size({'width':320,'height':568})
+    page.goto(BASE+'/guest-services/',wait_until='networkidle')
+    for key in ['water','games','cinema','extras','restaurant']:
+        open_service(page,key)
+        if key=='restaurant':page.locator('[data-category="ساندويتشات"] summary').click()
+        page.locator('.dialog-body').evaluate('(e)=>e.scrollTop=e.scrollHeight')
+        rect=page.locator('#apply-selection').bounding_box()
+        assert 0<=rect['y'] and rect['y']+rect['height']<=568
+        assert not page.locator('#service-dialog').evaluate('(e)=>e.scrollWidth>e.clientWidth')
+        page.locator('.dialog-close').click()
+    ctx.close();print('PASS short-screen dialog scroll and visible actions',flush=True)
 
     # Change only the ORIGINAL page/menu response: the guest page must update itself.
     ctx=context(browser);page=ctx.new_page()
@@ -238,20 +219,20 @@ with sync_playwright() as p:
     ctx.route('**/service-data.js?*',lambda r:r.fulfill(body=menu_source+"\n_menuData['ساندويتشات'][1].price=19;_menuData['ساندويتشات'][1].cheesePrice=3;",content_type='application/javascript'))
     requests=[];page.on('request',lambda r:requests.append(r.url))
     page.goto(BASE+'/guest-services/',wait_until='networkidle');preview(page)
-    assert page.locator('#cinema-service .section-price').text_content()=='4 ساعات بـ175 ريال'
+    assert page.locator('#cinema-card .section-price').text_content()=='4 ساعات بـ175 ريال'
     assert 'بوكس فشار كبير' in page.locator('#cinema-service .contents-list').text_content()
     assert 'بلوت جديد' in page.locator('.games-contents').text_content()
-    assert page.locator('#water-service .section-price').text_content()=='3 ألعاب بـ60 ريال'
+    assert page.locator('#water-card .section-price').text_content()=='3 ألعاب بـ60 ريال'
     open_service(page, 'water')
-    page.locator('[data-water="adults"][data-step="1"]').click(click_count=3)
+    page.locator('[data-water="adults"][data-step="1"]').click(click_count=3);apply_service(page)
     open_service(page, 'games')
-    page.locator('[name="games-package"][value="box"]').check()
+    page.locator('[name="games-package"][value="box"]').check();apply_service(page)
     open_service(page, 'cinema')
-    page.locator('#cinema-time').select_option('18')
+    page.locator('#cinema-time').select_option('18');apply_service(page)
     assert page.locator('#order-total').text_content()=='300'  # 60 + 65 + 175.
     open_service(page, 'restaurant')
     page.locator('[data-category="ساندويتشات"] summary').click();menu_row(page,'برجر لحم').locator('[data-step="1"]').click()
-    menu_row(page,'برجر لحم').locator('[type=checkbox]').check()
+    menu_row(page,'برجر لحم').locator('[type=checkbox]').check();apply_service(page)
     assert page.locator('#restaurant-total').text_content()=='22'
     page.locator('#guest-cabin').select_option('بيت الدوم 1')
     assert page.locator('#extras-order .cabin-number output').text_content()=='29'
@@ -276,6 +257,6 @@ with sync_playwright() as p:
     ctx=context(browser);ctx.add_init_script("Object.defineProperty(window,'sessionStorage',{get(){throw new Error('blocked')}})")
     page=ctx.new_page();page.goto(BASE+'/guest-services/',wait_until='networkidle')
     open_service(page, 'extras')
-    page.locator('[data-extra="bed"] [data-step="1"]').click();assert page.locator('#order-total').text_content()=='30'
+    page.locator('[data-extra="bed"] [data-step="1"]').click();apply_service(page);assert page.locator('#order-total').text_content()=='30'
     ctx.close();print('PASS source failure, legacy drafts, invalid quantities and blocked storage',flush=True)
     browser.close()

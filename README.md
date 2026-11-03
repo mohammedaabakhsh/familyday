@@ -54,11 +54,11 @@ python3 -m http.server 8023 --bind 127.0.0.1
 - `js/water-games.js` and `css/water-games.css`: the shared water-game bundle
   for the site and app preview. Guests allocate 3 games between adults and
   children for 50 SAR; checkout sends the quantities, without an item catalog.
-- `guest-services/`: in-stay orders on one page, with automatic selection and
-  category subtotals. Five guide-style sections start collapsed, with one open
-  at a time: restaurant, water games, games, cinema, extras. Selected rows and
-  closed sections show a green state and checkmark/subtotal; incomplete water
-  bundles show an amber prompt. There is no separate abbreviated index.
+- `guest-services/`: in-stay orders on one page. Five service tiles open a
+  shared native dialog: restaurant, water games, games, cinema, extras. Editing
+  uses a temporary selection; only Add/Save updates the grouped bills and the
+  tab-scoped saved order. Close, Escape and Cancel discard unapplied changes.
+  Selected tiles show a green state and subtotal; reopening edits that service.
   The restaurant basket/recipient stays separate from resort
   services. `service-source.js` reads the main `index.html` on each visit (as the
   guide does) for service names, prices, contents, instructions and cinema slots.
@@ -69,7 +69,8 @@ python3 -m http.server 8023 --bind 127.0.0.1
   `guest-services.js` saves selections, not trusted prices, in a tab-scoped draft;
   it migrates earlier extras drafts and blocks incomplete water bundles.
   Names/cabins are shared between the two forms, but notes/totals remain separate.
-  The mobile shortcut jumps to the bill and hides while that bill is visible.
+  The mobile shortcut totals both baskets, jumps to their summaries, and hides
+  while those summaries or a service dialog are visible.
   WhatsApp opens a prepared message, never sends or confirms an order.
   **Keep `/guest-services/` permanent**, regardless of where its link is placed.
   Its title, description, Open Graph and Twitter preview copy are intentionally
