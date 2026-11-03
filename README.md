@@ -80,7 +80,7 @@ python3 -m http.server 8023 --bind 127.0.0.1
   Resort WhatsApp messages use category headings without subtotals, followed by
   each service/item × quantity = price and one final order total. Water allocation
   and cinema duration/start time remain below their respective line items.
-  Each labelled summary appears only when its basket has items: a rose restaurant
+  Each labelled summary appears only when its basket has items: a pale peach restaurant
   summary and a blue-green resort summary, separated when both are present.
   The mobile review shortcut has no combined amount; it jumps to the summaries
   and hides while those summaries or a service dialog are visible. Help provides
@@ -90,6 +90,11 @@ python3 -m http.server 8023 --bind 127.0.0.1
   Its title, description, Open Graph and Twitter preview copy are intentionally
   fixed independently from the service catalogue. Do not regenerate them from
   service text. `guest-services.html` redirects legacy links to this same page.
+  Keep the guest link preview text-only: no Open Graph/Twitter image or static
+  HTML thumbnail candidates. Its accessible header logo uses CSS and the tab
+  favicon is added by browser JavaScript. External apps may cache old previews
+  or apply their own thumbnail heuristics; the image-preview robots directive
+  is advisory, not a WhatsApp control.
 
 Exploration layouts use a 600 px or 900 px side-layout breakpoint, depending on
 the cabin. Preserve these configurations when changing the shared renderer.

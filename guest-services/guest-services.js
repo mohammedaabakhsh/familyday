@@ -3,6 +3,10 @@
    Only selections and guest-entered fields are saved, never trusted prices. */
 (async function () {
   'use strict';
+  // Browser-only favicon: link scrapers should keep the guest preview text-only.
+  var favicon=document.createElement('link');
+  favicon.rel='icon';favicon.type='image/webp';favicon.href='/imgs/img01.webp';
+  document.head.appendChild(favicon);
   var storageKey = 'familyday.guest-orders.v2';
   var cabins;
   var state = {name:'', cabin:'', notes:'', restaurantNotes:'', quantities:{}, water:null, cinema:'', games:'', menu:{}};
