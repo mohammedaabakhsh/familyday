@@ -20,21 +20,22 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/guest-services/guest-services.css?v=20261103-guest-summary-v1">
+<link rel="stylesheet" href="/guest-services/guest-services.css?v=20261103-guest-header-v1">
 <script src="/guest-services/service-source.js?v=20261103-menu-message-v1" defer></script>
-<script src="/guest-services/guest-services.js?v=20261103-service-message-v1" defer></script>
+<script src="/guest-services/guest-services.js?v=20261103-guest-header-v1" defer></script>
 </head>
 <body>
 <div class="page">
   <header class="hero">
-    <img class="logo" src="/imgs/img01.webp" alt="يوم العائلة" width="94" height="94">
+    <div class="logo-frame"><img class="logo" src="/imgs/img01.webp" alt="يوم العائلة" width="176" height="176"></div>
     <p class="eyebrow">منتجع يوم العائلة</p>
     <h1>خدمات إقامتك</h1>
-    <p>كل ما تحتاجه أثناء إقامتك.</p>
+    <p>كل ما تحتاجه أثناء إقامتك</p>
   </header>
   <main class="main">
     <noscript><p>لطلب الخدمات تواصل مع <a href="https://wa.me/966556156693">فريق المنتجع</a>، وللطعام تواصل مع <a href="https://wa.me/966537006531">المطعم</a>.</p></noscript>
-    <p class="page-hint">اختر الخدمة من المربعات وأضف طلبك، ثم راجع الملخص بالأسفل.</p>
+    <p class="page-hint">اختر ما تحتاجه وأضفه إلى طلبك، ثم راجع الملخص بالأسفل.</p>
+    <p class="order-routing-note">طلب المطعم منفصل عن طلب الخدمات، ولكل منهما زر إرسال عبر واتساب.</p>
     <p id="services-loading" role="status">جاري تحميل الخدمات…</p>
     <div id="services-error" class="source-error" role="alert" hidden>تعذّر تحميل الخدمات. <button type="button" id="reload-services">إعادة المحاولة</button></div>
     <div class="service-tiles" aria-label="اختر الخدمة">
@@ -45,7 +46,7 @@
       </button>
       <button type="button" id="water-card" class="service-tile" data-service="water" data-tone="water" aria-haspopup="dialog" aria-controls="service-dialog" aria-labelledby="water-title" aria-describedby="water-default" disabled>
         <span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8c3-4 5 4 9 0s6 4 9 0M3 14c3-4 5 4 9 0s6 4 9 0M3 20c3-4 5 4 9 0s6 4 9 0"/></svg></span>
-        <span class="tile-copy"><span class="tile-title" id="water-title">الألعاب المائية</span><span class="tile-default" id="water-default"><span class="section-price"></span></span><span class="tile-selection" id="water-selection" hidden></span></span>
+        <span class="tile-copy"><span class="tile-title" id="water-title">الألعاب المائية</span><span class="tile-default" id="water-default">ألعاب مائية للكبار والصغار</span><span class="tile-selection" id="water-selection" hidden></span></span>
         <span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span>
       </button>
       <button type="button" id="games-card" class="service-tile" data-service="games" data-tone="games" aria-haspopup="dialog" aria-controls="service-dialog" aria-labelledby="games-title" aria-describedby="games-default" disabled>
@@ -55,7 +56,7 @@
       </button>
       <button type="button" id="cinema-card" class="service-tile" data-service="cinema" data-tone="cinema" aria-haspopup="dialog" aria-controls="service-dialog" aria-labelledby="cinema-title" aria-describedby="cinema-default" disabled>
         <span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="15" rx="2"/><path d="m10 8 6 4-6 4ZM8 22h8"/></svg></span>
-        <span class="tile-copy"><span class="tile-title" id="cinema-title">جلسة السينما</span><span class="tile-default" id="cinema-default"><span class="section-price"></span></span><span class="tile-selection" id="cinema-selection" hidden></span></span>
+        <span class="tile-copy"><span class="tile-title" id="cinema-title">جلسة السينما</span><span class="tile-default" id="cinema-default">تجربة سينما في المساحة الخارجية للكوخ</span><span class="tile-selection" id="cinema-selection" hidden></span></span>
         <span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span>
       </button>
       <button type="button" id="extras-card" class="service-tile" data-service="extras" data-tone="extras" aria-haspopup="dialog" aria-controls="service-dialog" aria-labelledby="extras-title" aria-describedby="extras-default" disabled>
@@ -73,7 +74,7 @@
           <div class="order-total"><span>إجمالي المطعم</span><strong><bdi id="restaurant-total">0</bdi> ريال</strong></div>
           <div class="customer-fields" data-scope="restaurant"></div>
           <button class="send-order" type="submit" disabled>إكمال طلب المطعم عبر واتساب</button>
-          <p class="confirmation-note">تابع طلبك عبر واتساب</p>
+          <p class="confirmation-note">تابع طلبك عبر واتساب المطعم</p>
         </form>
       </section>
       <section id="resort-summary" class="order-section" aria-labelledby="resort-summary-title" hidden>
@@ -86,7 +87,7 @@
           <div class="order-details">
             <div class="customer-fields" data-scope="guest"></div>
             <button class="send-order" type="submit" disabled>إكمال طلب الخدمات عبر واتساب</button>
-            <p class="confirmation-note">تابع طلبك عبر واتساب</p>
+            <p class="confirmation-note">تابع طلبك عبر واتساب الخدمات</p>
           </div>
         </form>
       </section>

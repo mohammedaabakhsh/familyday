@@ -64,6 +64,9 @@ python3 -m http.server 8023 --bind 127.0.0.1
   uses a temporary selection; only Add/Save updates the grouped bills and the
   tab-scoped saved order. Close, Escape and Cancel discard unapplied changes.
   Selected tiles show a green state and subtotal; reopening edits that service.
+  Water/cinema tiles have descriptive copy; their live prices and durations stay
+  in the dialog header, sourced from the main page. The ordering note and each
+  checkout helper distinguish restaurant orders from resort-service orders.
   The restaurant basket/recipient stays separate from resort
   services. `service-source.js` reads the main `index.html` on each visit (as the
   guide does) for service names, prices, contents, instructions and cinema slots.

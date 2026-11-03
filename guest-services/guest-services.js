@@ -338,7 +338,10 @@
     activeService=key;draft=JSON.parse(JSON.stringify(state));
     dialogTrigger=document.getElementById(key+'-card');
     document.getElementById('service-dialog-title').textContent=document.getElementById(key+'-title').textContent;
-    document.getElementById('service-dialog-subtitle').textContent=dialogTrigger.querySelector('.tile-default').textContent;
+    var subtitle=dialogTrigger.querySelector('.tile-default').textContent;
+    if(key==='water') subtitle=catalog.water.size+' ألعاب بـ'+catalog.water.price+' ريال';
+    else if(key==='cinema') subtitle=catalog.cinema.duration+' بـ'+catalog.cinema.price+' ريال';
+    document.getElementById('service-dialog-subtitle').textContent=subtitle;
     dialog.dataset.tone=key;
     document.querySelectorAll('.service-panel').forEach(function(panel){panel.hidden=panel.id!==key+'-service';});
     document.querySelectorAll('.menu-category').forEach(function(category){category.open=false;});
@@ -390,9 +393,7 @@
       var contents=section.querySelector('.contents-list');
       if(contents){contents.replaceChildren();data.contents.forEach(function(text){contents.appendChild(el('li',text));});section.querySelector('.contents-title').textContent=data.contentsTitle;}
     });
-    document.querySelector('#water-card .section-price').textContent=catalog.water.size+' ألعاب بـ'+catalog.water.price+' ريال';
     document.querySelector('#water-service .section-note').textContent=catalog.water.prompt;
-    document.querySelector('#cinema-card .section-price').textContent=catalog.cinema.duration+' بـ'+catalog.cinema.price+' ريال';
     document.querySelector('#cinema-service .section-note').textContent=catalog.cinema.intro;
     catalog.cinema.times.forEach(function(slot){time.add(new Option(slot.label,slot.value));});time.disabled=false;
     var notes=document.querySelector('#cinema-service .usage ul');catalog.cinema.notes.forEach(function(text){notes.appendChild(el('li',text));});

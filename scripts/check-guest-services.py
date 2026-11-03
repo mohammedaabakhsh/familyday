@@ -229,15 +229,15 @@ with sync_playwright() as p:
     ctx.route('**/service-data.js?*',lambda r:r.fulfill(body=menu_source+"\n_menuData['ساندويتشات'][1].price=19;_menuData['ساندويتشات'][1].cheesePrice=3;",content_type='application/javascript'))
     requests=[];page.on('request',lambda r:requests.append(r.url))
     page.goto(BASE+'/guest-services/',wait_until='networkidle');preview(page)
-    assert page.locator('#cinema-card .section-price').text_content()=='4 ساعات بـ175 ريال'
     assert 'بوكس فشار كبير' in page.locator('#cinema-service .contents-list').text_content()
     assert 'بلوت جديد' in page.locator('.games-contents').text_content()
-    assert page.locator('#water-card .section-price').text_content()=='3 ألعاب بـ60 ريال'
     open_service(page, 'water')
+    assert page.locator('#service-dialog-subtitle').text_content()=='3 ألعاب بـ60 ريال'
     page.locator('[data-water="adults"][data-step="1"]').click(click_count=3);apply_service(page)
     open_service(page, 'games')
     page.locator('[name="games-package"][value="box"]').check();apply_service(page)
     open_service(page, 'cinema')
+    assert page.locator('#service-dialog-subtitle').text_content()=='4 ساعات بـ175 ريال'
     page.locator('#cinema-time').select_option('18');apply_service(page)
     assert page.locator('#order-total').text_content()=='300'  # 60 + 65 + 175.
     open_service(page, 'restaurant')
