@@ -26,13 +26,6 @@
 /* ===== STAY (f2) FUNCTIONS ===== */
 var _chaletItems2=[];
 
-function pickDest(el, type){
-  // Flash selected state, then navigate
-  document.querySelectorAll('.dest-card').forEach(function(c){c.classList.remove('selected');});
-  el.classList.add('selected');
-  setTimeout(function(){ showDestination(type); }, 220);
-}
-
 function showDestination(type){
   document.getElementById('dest').classList.add('hide');
   var target = type==='chalet' ? 'landing3' : type==='stay' ? 'landing2' : 'landing';
