@@ -71,11 +71,11 @@ textarea{resize:vertical;min-height:80px}
 .menu-cheese{display:flex;align-items:center;min-height:44px;gap:8px}
 .menu-cheese input{width:20px;height:20px;accent-color:#117b89}
 .menu-cheese:has(:disabled){opacity:.65}
-.order-box{--order-line:#cfe5e9;--order-accent:#117b89;margin:0;padding:18px 15px;background:var(--soft);border:1px solid var(--order-line);border-radius:18px;scroll-margin-top:14px;min-width:0}
+.order-box{--order-line:#cfe5e9;--order-accent:#117b89;--order-hover:#0d6370;margin:0;padding:18px 15px;background:var(--soft);border:1px solid var(--order-line);border-radius:18px;scroll-margin-top:14px;min-width:0}
 .order-section>h2{margin:0 0 12px;font-size:22px;font-weight:800}
 .order-section:not([hidden])~.order-section:not([hidden]){margin-top:32px;padding-top:28px;border-top:1px solid var(--line)}
 .order-section[data-tone=restaurant]>h2{color:var(--section-ink)}
-.order-section[data-tone=restaurant] .order-box{--order-line:#d9ad7b;--order-accent:#944713;--muted:#665b50;background:#f7d5ae}
+.order-section[data-tone=restaurant] .order-box{--order-line:#d9ad7b;--order-accent:#944713;--order-hover:#76380f;--muted:#665b50;background:#f7d5ae}
 .order-box :is(input,select,textarea){border-color:var(--order-line)}
 .order-count{margin:0;font-size:12px;color:var(--muted)}
 .order-items{list-style:none;margin:13px 0 0;padding:0;display:grid;gap:10px;font-size:12px}
@@ -92,7 +92,7 @@ textarea{resize:vertical;min-height:80px}
 .cabin-number{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:10px 0 0;padding:10px 12px;border:1px solid var(--order-line);border-radius:12px;font-size:13px}
 .cabin-number output{font-size:20px;font-weight:800;color:var(--order-accent)}
 .order-box :is(input,textarea)::placeholder{color:#74868c;font-size:13px}
-.send-order{display:flex;justify-content:center;align-items:center;gap:12px;width:100%;min-height:50px;padding:12px;border:0;border-radius:12px;background:var(--deep);color:#fff;font-weight:700;font-size:14px}
+.send-order{display:flex;justify-content:center;align-items:center;gap:12px;width:100%;min-height:50px;padding:12px;border:0;border-radius:12px;background:var(--order-accent,var(--deep));color:#fff;font-weight:700;font-size:14px}
 .send-order:disabled{background:#d8e3e6;color:#687a80}
 .confirmation-note{margin:9px 0 0;color:var(--muted);font-size:11px;text-align:center}
 .help{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);text-align:center}
@@ -109,7 +109,7 @@ textarea{resize:vertical;min-height:80px}
 @media(hover:hover){
  .help-actions a:hover{border-color:var(--brand);background:#f7fcfd}
  .quantity button:not(:disabled):hover,.remove-item:hover{background:var(--soft)}
- .send-order:not(:disabled):hover{background:#0d2b3a}
+ .send-order:not(:disabled):hover{background:var(--order-hover,#0d2b3a)}
 }
 @media(min-width:640px){
  .hero{padding:22px 36px 24px}
