@@ -72,6 +72,10 @@ with sync_playwright() as p:
         assert page.locator('.menu-row').count()==page.evaluate('Object.values(_menuData).flat().length')
         assert page.locator('[data-extra] .extra-price bdi').all_text_contents()==['20','20','15','25','30']
         assert page.locator('#service-dialog').is_hidden()
+        assert page.locator('#orders-summary').is_hidden()
+        assert page.locator('#selection-feedback,#shortcut-total').count()==0
+        for label,href in [('واتساب خدمات المنتجع','https://wa.me/966556156693'),('اتصال بخدمات المنتجع','tel:+966556156693'),('واتساب المطعم','https://wa.me/966537006531'),('اتصال بالمطعم','tel:+966537006531')]:
+            assert page.get_by_role('link',name=label,exact=True).get_attribute('href')==href
         page.screenshot(path=str(OUT/f'tiles-empty-{width}.png'),full_page=True)
         # Keyboard activation, modal focus containment and cancel leave the bill untouched.
         page.locator('#water-card').focus();page.keyboard.press('Enter')
@@ -95,6 +99,8 @@ with sync_playwright() as p:
         page.screenshot(path=str(OUT/f'dialog-water-{width}.png'))
         apply_service(page)
         assert page.locator('#order-total').text_content()=='50'
+        assert page.get_by_role('heading',name='ملخص طلب الخدمات',exact=True).is_visible()
+        assert page.locator('#restaurant-summary').is_hidden()
         assert '✓' in page.locator('#water-card .tile-selection').text_content()
         open_service(page,'water');page.locator('[data-water="children"][data-step="-1"]').click()
         page.locator('.dialog-cancel').click()
@@ -114,11 +120,12 @@ with sync_playwright() as p:
         if width<640:
             page.set_viewport_size({'width':width,'height':700})
             page.evaluate('window.scrollTo(0,0)');expect(page.locator('#order-shortcut')).to_be_visible()
+            assert ' '.join(page.locator('#order-shortcut').inner_text().split())=='مراجعة طلباتك ↓'
             page.locator('#order-shortcut').click()
             assert page.locator('#orders-summary').evaluate('(e)=>e===document.activeElement')
             expect(page.locator('#order-shortcut')).to_be_hidden()
             page.set_viewport_size({'width':width,'height':900})
-        send=page.locator('#extras-order .send-order');send.click()
+        send=page.get_by_role('button',name='إكمال طلب الخدمات عبر واتساب',exact=True);send.click()
         assert page.evaluate('window.capturedURL') is None
         page.locator('#guest-name').fill('   ');send.click();assert page.evaluate('window.capturedURL') is None
         page.locator('#guest-name').fill('ضيف الاختبار');send.click();assert page.evaluate('window.capturedURL') is None
@@ -157,6 +164,8 @@ with sync_playwright() as p:
         assert page.locator('.menu-category[open]').count()==1
         page.screenshot(path=str(OUT/f'dialog-restaurant-{width}.png'));apply_service(page)
         assert page.locator('#restaurant-total').text_content()=='200'
+        assert page.get_by_role('heading',name='ملخص طلب المطعم',exact=True).is_visible()
+        assert page.get_by_role('heading',name='ملخص طلب الخدمات',exact=True).is_visible()
         assert page.locator('#order-total').text_content()=='270'
         assert page.locator('#restaurant-items .order-group-heading h4').all_text_contents()==['ساندويتشات','بوكسات الشواء','مشروبات باردة']
         page.locator('#restaurant-notes').fill('بدون بصل');page.locator('#restaurant-order .send-order').click();message=captured(page,'966537006531')
@@ -181,10 +190,11 @@ with sync_playwright() as p:
         assert page.locator('#order-total').text_content()=='70'
         while page.locator('#order-items button').count():page.locator('#order-items button').first.click()
         assert page.locator('#order-total').text_content()=='0' and page.locator('#extras-order .order-details').is_hidden()
+        assert page.locator('#resort-summary').is_hidden() and page.locator('#restaurant-summary').is_visible()
         page.get_by_role('button',name='حذف ساندويتش دجاج زنجر',exact=True).click()
         assert page.locator('#restaurant-total').text_content()=='176'
         while page.locator('#restaurant-items button').count():page.locator('#restaurant-items button').first.click()
-        assert page.locator('#restaurant-order').is_hidden() and page.locator('#order-shortcut').is_hidden()
+        assert page.locator('#orders-summary').is_hidden() and page.locator('#order-shortcut').is_hidden()
         page.reload(wait_until='networkidle');assert page.locator('.service-tile.is-selected').count()==0
         assert not errors,errors
         print(width,'PASS modal selection/apply/cancel, keyboard, grouped bills/messages, recipients, persistence and removals',flush=True)

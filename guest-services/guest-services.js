@@ -215,7 +215,7 @@
           var index=Array.from(target.querySelectorAll('button')).indexOf(button);
           remove(item.id);
           var buttons=target.querySelectorAll('button'),next=buttons[Math.min(index,buttons.length-1)];
-          if(next) next.focus();else if(target.id==='order-items') form.focus();else document.getElementById('restaurant-card').focus();
+          if(next) next.focus();else document.getElementById((target.id==='restaurant-items' ? 'restaurant' : item.group)+'-card').focus();
         });
         actions.appendChild(button);row.append(copy,actions);list.appendChild(row);
       });
@@ -236,7 +236,7 @@
     });
   }
   function renderMenu() {
-    var lines=menuLines();restaurantForm.hidden=!lines.length;
+    var lines=menuLines();document.getElementById('restaurant-summary').hidden=!lines.length;
     renderSummary(document.getElementById('restaurant-items'),lines,function(id){delete state.menu[id];renderOrders();save();});
     document.getElementById('restaurant-count').textContent='عدد الأصناف: '+lines.length;
     document.getElementById('restaurant-total').textContent=String(sum(lines));
@@ -256,11 +256,11 @@
     document.getElementById('games-status').textContent=data.games ? 'تم اختيار الباقة' : '';
   }
   function updateShortcut() {
-    var lines=resortLines().concat(menuLines()),rect=orderSummary.getBoundingClientRect();
-    var visible=rect.top<innerHeight-110 && rect.bottom>60;
-    shortcut.hidden=!lines.length || visible || dialog.open;
-    document.getElementById('shortcut-total').textContent=String(sum(lines));
-    document.body.classList.toggle('has-order-shortcut',!!lines.length);
+    var hasOrders=!!(resortLines().length || menuLines().length);
+    orderSummary.hidden=!hasOrders;
+    var rect=orderSummary.getBoundingClientRect(),visible=rect.top<innerHeight-110 && rect.bottom>60;
+    shortcut.hidden=!hasOrders || visible || dialog.open;
+    document.body.classList.toggle('has-order-shortcut',hasOrders);
   }
   function renderResort() {
     var lines=resortLines();
@@ -268,9 +268,9 @@
       if(id==='water') state.water=null;else if(id==='cinema' || id==='games') state[id]='';else state.quantities[id]=0;
       renderOrders();save();
     });
-    document.getElementById('order-count').textContent=lines.length ? 'عدد الاختيارات: '+lines.length : 'لم تختر أي طلبات بعد';
+    document.getElementById('order-count').textContent=lines.length ? 'عدد الاختيارات: '+lines.length : '';
     document.getElementById('order-total').textContent=String(sum(lines));
-    form.querySelector('.order-details').hidden=!lines.length;
+    document.getElementById('resort-summary').hidden=!lines.length;
     form.querySelector('.send-order').disabled=!lines.length || incompleteWater();
     var warning=document.getElementById('order-warning');warning.hidden=!incompleteWater();
     warning.textContent=incompleteWater() ? 'أكمل اختيار '+catalog.water.size+' ألعاب مائية أو احذف الباقة قبل متابعة الطلب.' : '';
@@ -304,8 +304,10 @@
     card.querySelector('.tile-default').hidden=!!lines.length;
     status.hidden=!lines.length;
     card.setAttribute('aria-describedby',key+(lines.length ? '-selection' : '-default'));
-    status.textContent=pending ? 'أكمل اختيار الألعاب' : lines.length ? '✓ في طلبك · '+sum(lines)+' ريال' : '';
-    card.querySelector('.tile-action').textContent=lines.length ? 'تعديل الاختيار ←' : 'عرض واختيار ←';
+    status.replaceChildren();
+    if(pending) status.textContent='أكمل اختيار الألعاب';
+    else if(lines.length) status.append(document.createTextNode('✓ تمت الإضافة · '),el('bdi',sum(lines)+' ريال'));
+    card.querySelector('.tile-action').textContent=lines.length ? 'تعديل الطلب ←' : 'عرض التفاصيل ←';
   }
   function serviceLines(key,data){
     return key==='restaurant' ? menuLines(data) : resortLines(data).filter(function(line){return line.group===key;});
@@ -363,8 +365,7 @@
       if(applyButton.disabled || !draft) return;
       var key=activeService==='restaurant' ? 'menu' : activeService==='extras' ? 'quantities' : activeService;
       state[key]=draft[key];
-      document.getElementById('selection-feedback').textContent='تم تحديث اختياراتك في «'+document.getElementById(activeService+'-title').textContent+'».';
-      save();closeEditor();renderOrders();
+      save();renderOrders();closeEditor();
     });
     function openLinkedService(){
       var key=location.hash.slice(1).replace(/-service$/,'');

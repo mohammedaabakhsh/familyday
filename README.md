@@ -69,8 +69,11 @@ python3 -m http.server 8023 --bind 127.0.0.1
   `guest-services.js` saves selections, not trusted prices, in a tab-scoped draft;
   it migrates earlier extras drafts and blocks incomplete water bundles.
   Names/cabins are shared between the two forms, but notes/totals remain separate.
-  The mobile shortcut totals both baskets, jumps to their summaries, and hides
-  while those summaries or a service dialog are visible.
+  Each labelled summary appears only when its basket has items: a rose restaurant
+  summary and a blue-green resort summary, separated when both are present.
+  The mobile review shortcut has no combined amount; it jumps to the summaries
+  and hides while those summaries or a service dialog are visible. Help provides
+  separately labelled WhatsApp/call links for the resort and restaurant.
   WhatsApp opens a prepared message, never sends or confirms an order.
   **Keep `/guest-services/` permanent**, regardless of where its link is placed.
   Its title, description, Open Graph and Twitter preview copy are intentionally

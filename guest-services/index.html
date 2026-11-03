@@ -20,14 +20,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/guest-services/guest-services.css?v=20261103-guest-dialogs-v1">
-<script src="/guest-services/service-source.js?v=20261103-guest-dialogs-v1" defer></script>
-<script src="/guest-services/guest-services.js?v=20261103-guest-dialogs-v1" defer></script>
+<link rel="stylesheet" href="/guest-services/guest-services.css?v=20261103-guest-summary-v1">
+<script src="/guest-services/service-source.js?v=20261103-guest-summary-v1" defer></script>
+<script src="/guest-services/guest-services.js?v=20261103-guest-summary-v1" defer></script>
 </head>
 <body>
 <div class="page">
   <header class="hero">
-    <img class="logo" src="/imgs/img01.webp" alt="يوم العائلة" width="78" height="78">
+    <img class="logo" src="/imgs/img01.webp" alt="يوم العائلة" width="94" height="94">
     <p class="eyebrow">منتجع يوم العائلة</p>
     <h1>خدمات إقامتك</h1>
     <p>كل ما تحتاجه أثناء إقامتك.</p>
@@ -41,58 +41,72 @@
       <button type="button" id="restaurant-card" class="service-tile" data-service="restaurant" data-tone="restaurant" aria-haspopup="dialog" aria-controls="service-dialog" aria-labelledby="restaurant-title" aria-describedby="restaurant-default" disabled>
         <span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v7m3-7v7M3 7h7M6.5 10v11M18 3v18m0-18c-5 3-5 9 0 9"/></svg></span>
         <span class="tile-copy"><span class="tile-title" id="restaurant-title">المطعم</span><span class="tile-default" id="restaurant-default">اختر وجبتك ومشروبك</span><span class="tile-selection" id="restaurant-selection" hidden></span></span>
-        <span class="tile-action">عرض واختيار <span aria-hidden="true">←</span></span>
+        <span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span>
       </button>
       <button type="button" id="water-card" class="service-tile" data-service="water" data-tone="water" aria-haspopup="dialog" aria-controls="service-dialog" aria-labelledby="water-title" aria-describedby="water-default" disabled>
         <span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8c3-4 5 4 9 0s6 4 9 0M3 14c3-4 5 4 9 0s6 4 9 0M3 20c3-4 5 4 9 0s6 4 9 0"/></svg></span>
         <span class="tile-copy"><span class="tile-title" id="water-title">الألعاب المائية</span><span class="tile-default" id="water-default"><span class="section-price"></span></span><span class="tile-selection" id="water-selection" hidden></span></span>
-        <span class="tile-action">عرض واختيار <span aria-hidden="true">←</span></span>
+        <span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span>
       </button>
       <button type="button" id="games-card" class="service-tile" data-service="games" data-tone="games" aria-haspopup="dialog" aria-controls="service-dialog" aria-labelledby="games-title" aria-describedby="games-default" disabled>
         <span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M7 7h.01M17 7h.01M12 12h.01M7 17h.01M17 17h.01" stroke-width="3"/></svg></span>
         <span class="tile-copy"><span class="tile-title" id="games-title">الألعاب الترفيهية</span><span class="tile-default" id="games-default">بوكس ألعاب أو طاولة مع البوكس</span><span class="tile-selection" id="games-selection" hidden></span></span>
-        <span class="tile-action">عرض واختيار <span aria-hidden="true">←</span></span>
+        <span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span>
       </button>
       <button type="button" id="cinema-card" class="service-tile" data-service="cinema" data-tone="cinema" aria-haspopup="dialog" aria-controls="service-dialog" aria-labelledby="cinema-title" aria-describedby="cinema-default" disabled>
         <span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="15" rx="2"/><path d="m10 8 6 4-6 4ZM8 22h8"/></svg></span>
         <span class="tile-copy"><span class="tile-title" id="cinema-title">جلسة السينما</span><span class="tile-default" id="cinema-default"><span class="section-price"></span></span><span class="tile-selection" id="cinema-selection" hidden></span></span>
-        <span class="tile-action">عرض واختيار <span aria-hidden="true">←</span></span>
+        <span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span>
       </button>
       <button type="button" id="extras-card" class="service-tile" data-service="extras" data-tone="extras" aria-haspopup="dialog" aria-controls="service-dialog" aria-labelledby="extras-title" aria-describedby="extras-default" disabled>
         <span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="14" rx="3"/><path d="M8 7V5a4 4 0 0 1 8 0v2M8 12v.01M16 12v.01"/></svg></span>
         <span class="tile-copy"><span class="tile-title" id="extras-title">طلبات إضافية</span><span class="tile-default" id="extras-default">مستلزمات تحتاجها أثناء الإقامة</span><span class="tile-selection" id="extras-selection" hidden></span></span>
-        <span class="tile-action">عرض واختيار <span aria-hidden="true">←</span></span>
+        <span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span>
       </button>
     </div>
-    <p id="selection-feedback" class="selection-feedback" role="status"></p>
-    <div id="orders-summary" tabindex="-1">
-      <form id="restaurant-order" class="order-box" tabindex="-1" hidden>
-        <div class="order-heading"><h3>طلب المطعم</h3><p id="restaurant-count" role="status"></p></div>
-        <ul id="restaurant-items" class="order-items"></ul>
-        <div class="order-total"><span>إجمالي المطعم</span><strong><bdi id="restaurant-total">0</bdi> ريال</strong></div>
-        <div class="customer-fields" data-scope="restaurant"></div>
-        <button class="send-order" type="submit" disabled>إكمال طلب المطعم عبر واتساب</button>
-        <p class="confirmation-note">تابع طلبك عبر واتساب</p>
-      </form>
-      <form id="extras-order" class="order-box" tabindex="-1">
-        <div class="order-heading"><h3>ملخص طلبك</h3><p id="order-count" role="status">لم تختر أي طلبات بعد</p></div>
-        <ul id="order-items" class="order-items" hidden></ul>
-        <div class="order-total"><span>إجمالي خدمات المنتجع</span><strong><bdi id="order-total">0</bdi> ريال</strong></div>
-        <p id="order-warning" class="order-warning" role="status" hidden></p>
-        <div class="order-details" hidden>
-          <div class="customer-fields" data-scope="guest"></div>
-          <button class="send-order" type="submit" disabled>إكمال الطلب عبر واتساب</button>
+    <div id="orders-summary" tabindex="-1" hidden>
+      <section id="restaurant-summary" class="order-section" data-tone="restaurant" aria-labelledby="restaurant-summary-title" hidden>
+        <h2 id="restaurant-summary-title">ملخص طلب المطعم</h2>
+        <form id="restaurant-order" class="order-box" tabindex="-1" aria-labelledby="restaurant-summary-title">
+          <p id="restaurant-count" class="order-count" role="status"></p>
+          <ul id="restaurant-items" class="order-items"></ul>
+          <div class="order-total"><span>إجمالي المطعم</span><strong><bdi id="restaurant-total">0</bdi> ريال</strong></div>
+          <div class="customer-fields" data-scope="restaurant"></div>
+          <button class="send-order" type="submit" disabled>إكمال طلب المطعم عبر واتساب</button>
           <p class="confirmation-note">تابع طلبك عبر واتساب</p>
-        </div>
-      </form>
+        </form>
+      </section>
+      <section id="resort-summary" class="order-section" aria-labelledby="resort-summary-title" hidden>
+        <h2 id="resort-summary-title">ملخص طلب الخدمات</h2>
+        <form id="extras-order" class="order-box" tabindex="-1" aria-labelledby="resort-summary-title">
+          <p id="order-count" class="order-count" role="status"></p>
+          <ul id="order-items" class="order-items" hidden></ul>
+          <div class="order-total"><span>إجمالي خدمات المنتجع</span><strong><bdi id="order-total">0</bdi> ريال</strong></div>
+          <p id="order-warning" class="order-warning" role="status" hidden></p>
+          <div class="order-details">
+            <div class="customer-fields" data-scope="guest"></div>
+            <button class="send-order" type="submit" disabled>إكمال طلب الخدمات عبر واتساب</button>
+            <p class="confirmation-note">تابع طلبك عبر واتساب</p>
+          </div>
+        </form>
+      </section>
     </div>
     <section class="help" aria-labelledby="help-title">
       <div><h2 id="help-title">تحتاج مساعدة؟</h2><p>تواصل مع فريق يوم العائلة أثناء إقامتك.</p></div>
-      <div class="help-actions"><a href="https://wa.me/966556156693" target="_blank" rel="noopener noreferrer">واتساب</a><a href="tel:+966556156693">اتصال</a></div>
+      <div class="help-contacts">
+        <div class="help-contact" role="group" aria-labelledby="resort-help-title">
+          <h3 id="resort-help-title">خدمات المنتجع</h3>
+          <div class="help-actions"><a href="https://wa.me/966556156693" target="_blank" rel="noopener noreferrer" aria-label="واتساب خدمات المنتجع">واتساب</a><a href="tel:+966556156693" aria-label="اتصال بخدمات المنتجع">اتصال</a></div>
+        </div>
+        <div class="help-contact" role="group" aria-labelledby="restaurant-help-title">
+          <h3 id="restaurant-help-title">المطعم</h3>
+          <div class="help-actions"><a href="https://wa.me/966537006531" target="_blank" rel="noopener noreferrer" aria-label="واتساب المطعم">واتساب</a><a href="tel:+966537006531" aria-label="اتصال بالمطعم">اتصال</a></div>
+        </div>
+      </div>
     </section>
   </main>
   <button type="button" id="order-shortcut" class="order-shortcut" aria-controls="orders-summary" hidden>
-    <span>إجمالي الاختيارات · <bdi id="shortcut-total">0</bdi> ريال</span><strong>عرض طلبك <span aria-hidden="true">←</span></strong>
+    مراجعة طلباتك <span aria-hidden="true">↓</span>
   </button>
   <footer class="footer">منتجع يوم العائلة · خليج سلمان، جدة</footer>
 </div>
