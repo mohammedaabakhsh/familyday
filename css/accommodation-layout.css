@@ -252,14 +252,14 @@ html:has(#dest:not(.hide)),body:has(#dest:not(.hide)){
 }
 #dest .dest-cards{
   width:100%;max-width:360px;flex:1;min-height:0;
-  display:flex;flex-direction:column;justify-content:space-evenly;gap:clamp(16px,3dvh,28px);
+  display:flex;flex-direction:column;justify-content:center;gap:20px;
 }
-#dest .dest-card{width:100%;min-height:128px;flex-shrink:0;}
+#dest .dest-card{width:100%;height:clamp(128px,20dvh,184px);min-height:128px;flex-shrink:0;}
 @media(max-width:1023px) and (max-height:700px){
   #dest{padding-inline:16px;gap:8px;}
   #dest .dest-description{margin-bottom:12px;}
   #dest .dest-cards{gap:10px;}
-  #dest .dest-card{min-height:114px;padding:12px 14px;gap:10px;}
+  #dest .dest-card{height:clamp(114px,19dvh,132px);min-height:114px;padding:12px 14px;gap:10px;}
 }
 /* Compact only the spacing and transparent logo frame on very short phones. */
 @media(max-width:479px) and (max-height:560px){
@@ -268,7 +268,7 @@ html:has(#dest:not(.hide)),body:has(#dest:not(.hide)){
   #dest .dest-heading{margin-bottom:4px;}
   #dest .dest-description{margin-bottom:8px;}
   #dest .dest-cards{gap:8px;}
-  #dest .dest-card{min-height:96px;padding:8px 10px;gap:8px;}
+  #dest .dest-card{height:auto;min-height:96px;padding:8px 10px;gap:8px;}
   #dest .dest-icon{width:32px;height:32px;border-radius:10px;}
 }
 /* Landscape phones need a row of choices rather than an off-screen third card. */
@@ -278,15 +278,17 @@ html:has(#dest:not(.hide)),body:has(#dest:not(.hide)){
   #dest > .dest-choice-group{flex:none;}
   #dest .dest-description{margin-bottom:10px;}
   #dest .dest-cards{max-width:900px;flex:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
-  #dest .dest-card{min-height:120px;padding:10px;gap:8px;}
+  #dest .dest-card{height:auto;min-height:120px;padding:10px;gap:8px;}
   #dest .dest-icon{display:none;}
 }
 @media(min-width:1024px){
   #dest{justify-content:center;gap:16px;}
+  /* Optical centering: the logo artwork carries slightly more ink on the left. */
+  #dest > .dest-brand{transform:translateX(2px);}
   #dest > .dest-choice-group{flex:none;}
   #dest .dest-description{margin-bottom:28px;}
   #dest .dest-cards{max-width:1100px;flex:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;}
-  #dest .dest-card{min-height:180px;align-items:flex-end;}
+  #dest .dest-card{height:auto;min-height:180px;align-items:flex-end;}
 }
 
 
