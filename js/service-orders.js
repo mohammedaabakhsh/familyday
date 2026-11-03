@@ -123,30 +123,23 @@ function sendOrderWhatsapp() {
   var order=serviceOrderDetails(_orderItemName,false);
   if (!order) return;
   var message, phone=_isMenuOrder ? '966537006531' : '966556156693';
-  if (getMaiyaOrderDetails(_orderItemName)) {
+  if (_isMenuOrder) {
+    message=FD_MENU_ORDER_MESSAGE.build(_menuData,function(key){
+      var item=_menuCart[key],cheese=_menuCart['جبنة|'+key];
+      return item ? {qty:item.qty,cheeseQty:cheese ? cheese.qty : 0} : null;
+    },{name:name,cabin:cabin,number:FD_CABIN_NUMBERS[cabin],notes:notes});
+    if(!message) return;
+  } else if (getMaiyaOrderDetails(_orderItemName)) {
     message=buildMaiyaOrderMessage(_orderItemName,name,cabin,FD_CABIN_NUMBERS[cabin],notes);
   } else {
     var type=_orderItemName && _orderItemName.type;
-    var request=_isMenuOrder ? 'من المطعم' : type==='games' ? 'الألعاب الترفيهية' : type==='seating' ? 'جلسة خارجية' : order.title;
+    var request=type==='games' ? 'الألعاب الترفيهية' : type==='seating' ? 'جلسة خارجية' : order.title;
     var lines=['السلام عليكم، أرغب بطلب '+request+'.','','الاسم: '+name,'الكوخ: '+cabin,'رقم الكوخ: '+FD_CABIN_NUMBERS[cabin],''];
-    if (_isMenuOrder) {
-      lines.push('الطلب:');
-      Object.keys(_menuCart).filter(function(key){return key.indexOf('|')===-1;}).forEach(function(key){
-        var item=_menuCart[key];
-        lines.push(item.qty+' × '+key+' — '+(item.qty*item.price)+' ريال');
-        Object.keys(_menuCart).filter(function(extra){return extra.split('|')[1]===key;}).forEach(function(extra){
-          var addition=_menuCart[extra];
-          lines.push('  + '+addition.qty+' × '+extra.split('|')[0]+' — '+(addition.qty*addition.price)+' ريال');
-        });
-      });
-      lines.push('','إجمالي الطلب: '+_menuCartTotals().price+' ريال');
-    } else {
-      if (type==='cinema') {
-        var hour=Number(document.getElementById('order-time').value)%24;
-        lines.push('وقت بداية الجلسة: '+(hour%12 || 12)+':00 '+(hour>=12 ? 'مساءً' : 'صباحًا'));
-      }
-      lines=lines.concat(order.message || order.summary);
+    if (type==='cinema') {
+      var hour=Number(document.getElementById('order-time').value)%24;
+      lines.push('وقت بداية الجلسة: '+(hour%12 || 12)+':00 '+(hour>=12 ? 'مساءً' : 'صباحًا'));
     }
+    lines=lines.concat(order.message || order.summary);
     if (notes) lines.push('','ملاحظات: '+notes);
     message=lines.join('\n');
   }

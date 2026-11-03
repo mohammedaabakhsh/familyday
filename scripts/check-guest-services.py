@@ -169,9 +169,9 @@ with sync_playwright() as p:
         assert page.locator('#order-total').text_content()=='270'
         assert page.locator('#restaurant-items .order-group-heading h4').all_text_contents()==['ساندويتشات','بوكسات الشواء','مشروبات باردة']
         page.locator('#restaurant-notes').fill('بدون بصل');page.locator('#restaurant-order .send-order').click();message=captured(page,'966537006531')
-        assert 'ساندويتشات — 24 ريال' in message and 'إضافة جبنة: 2 × 1 ريال' in message
-        assert 'بوكسات الشواء — 170 ريال' in message and 'بوكس الشواء بدون فحم — دجاج × 1 — 85 ريال' in message
-        assert 'مشروبات باردة — 6 ريال' in message and 'الإجمالي: 200 ريال' in message
+        assert 'ساندويتشات:\nساندويتش دجاج زنجر × 2 = 22 ريال' in message and 'إضافة جبنة × 2 = 2 ريال' in message
+        assert 'بوكسات الشواء:' in message and 'بوكس الشواء بدون فحم — دجاج × 1 = 85 ريال' in message
+        assert 'مشروبات باردة:\nعبوة ماء صغيرة × 3 = 6 ريال' in message and 'إجمالي الطلب: 200 ريال' in message
         assert 'ملاحظات: بدون بصل' in message and 'ألعاب' not in message
         page.screenshot(path=str(OUT/f'tiles-selected-{width}.png'),full_page=True)
         page.goto(BASE+'/guest-services.html?review=1',wait_until='networkidle');page.wait_for_url(BASE+'/guest-services/?review=1');preview(page)

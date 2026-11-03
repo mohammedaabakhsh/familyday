@@ -281,18 +281,27 @@
     var lines=restaurant ? menuLines() : resortLines();
     if(!lines.length || (!restaurant && incompleteWater()) || !target.reportValidity()) return;
     if(!state.name.trim() || !Object.prototype.hasOwnProperty.call(cabins,state.cabin)) return;
-    var message=[restaurant ? 'السلام عليكم، أرغب بطلب التالي من المطعم:' : 'السلام عليكم، أرغب بطلب الخدمات التالية أثناء إقامتي:',
-      '', 'الاسم: '+state.name.trim(),'اسم الكوخ: '+state.cabin,'رقم الكوخ: '+cabins[state.cabin],'','الطلبات:'];
-    groups(lines).forEach(function(group){
-      message.push('',group.title+' — '+sum(group.items)+' ريال');
-      group.items.forEach(function(item){message.push('• '+itemLabel(item)+' — '+item.price+' ريال');message=message.concat(item.details);});
-    });
-    message.push('','الإجمالي: '+sum(lines)+' ريال');
-    var notes=(restaurant ? state.restaurantNotes : state.notes).trim();
-    if(notes) message.push('','ملاحظات: '+notes);
+    var message;
+    if(restaurant){
+      message=catalog.menuMessage.build(catalog.menu,function(key){
+        var item=state.menu[key];
+        return item ? {qty:item.qty,cheeseQty:item.cheese ? item.qty : 0} : null;
+      },{name:state.name,cabin:state.cabin,number:cabins[state.cabin],notes:state.restaurantNotes});
+      if(!message) return;
+    } else {
+      var parts=['السلام عليكم، أرغب بطلب الخدمات التالية أثناء إقامتي:',
+        '', 'الاسم: '+state.name.trim(),'اسم الكوخ: '+state.cabin,'رقم الكوخ: '+cabins[state.cabin],'','الطلبات:'];
+      groups(lines).forEach(function(group){
+        parts.push('',group.title+' — '+sum(group.items)+' ريال');
+        group.items.forEach(function(item){parts.push('• '+itemLabel(item)+' — '+item.price+' ريال');parts=parts.concat(item.details);});
+      });
+      parts.push('','الإجمالي: '+sum(lines)+' ريال');
+      if(state.notes.trim()) parts.push('','ملاحظات: '+state.notes.trim());
+      message=parts.join('\n');
+    }
     save();
     // Prepare a draft only. Opening WhatsApp does not send or confirm the order.
-    window.open('https://wa.me/'+(restaurant ? '966537006531' : '966556156693')+'?text='+encodeURIComponent(message.join('\n')),'_blank','noopener,noreferrer');
+    window.open('https://wa.me/'+(restaurant ? '966537006531' : '966556156693')+'?text='+encodeURIComponent(message),'_blank','noopener,noreferrer');
   }
 
   function renderOrders(){renderResort();renderMenu();updateShortcut();}

@@ -18,6 +18,11 @@ python3 -m http.server 8023 --bind 127.0.0.1
 - `js/gallery-data.js` and `js/accommodations.js`: photo sets, cabin cards and details.
 - `js/fullscreen-gallery.js`: fullscreen photo navigation.
 - `js/services.js`: service controls and restaurant ordering.
+- `js/menu-order-message.js`: the shared restaurant WhatsApp message for the
+  public menu and guest services. Follow catalogue category/item order, use
+  category headings without subtotals, item quantity/price lines, and one final
+  total. Cheese is a separate addition priced once. Guest services loads this
+  script version from the main page alongside the menu and cabin catalogue.
 - `js/stay-navigation.js`: destination/rest-house views and touch navigation.
 - `js/router.js`: URLs, history and return destinations.
 - `js/accessibility.js`, `js/cabin-carousel.js`, `js/cabin-toolbar.js`: keyboard
@@ -107,6 +112,7 @@ python3 scripts/check-service-orders.py http://127.0.0.1:8023
 python3 scripts/check-services-guide.py http://127.0.0.1:8023
 python3 scripts/check-lossless-images.py http://127.0.0.1:8023
 python3 scripts/check-guest-services.py http://127.0.0.1:8023
+python3 scripts/check-menu-order-message.py http://127.0.0.1:8023
 python3 scripts/check-water-games.py http://127.0.0.1:8023
 ```
 

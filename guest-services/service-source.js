@@ -54,10 +54,10 @@ window.FD_GUEST_SOURCE = (function () {
       games.packages[key]={name:text(card,'.tg-package-name'),price:number(text(card,'.tg-package-price')),description:text(card,'.tg-package-description')};
     });
     if(!Number.isInteger(water.size) || !cinema.times.length || !water.name) throw new Error('Invalid service source');
-    var data=await Promise.all([loadScript(doc,'/service-data.js','_menuData'),loadScript(doc,'/js/cabin-numbers.js','FD_CABIN_NUMBERS')]);
+    var data=await Promise.all([loadScript(doc,'/service-data.js','_menuData'),loadScript(doc,'/js/cabin-numbers.js','FD_CABIN_NUMBERS'),loadScript(doc,'/js/menu-order-message.js','FD_MENU_ORDER_MESSAGE')]);
     var menu=data[0], cabins=data[1];
-    if(!menu || !Object.keys(menu).length || !cabins || !Object.keys(cabins).length) throw new Error('Menu unavailable');
-    return {water:water,cinema:cinema,games:games,menu:menu,cabins:cabins};
+    if(!menu || !Object.keys(menu).length || !cabins || !Object.keys(cabins).length || !data[2] || typeof data[2].build!=='function') throw new Error('Menu unavailable');
+    return {water:water,cinema:cinema,games:games,menu:menu,cabins:cabins,menuMessage:data[2]};
   }
   return {load:load};
 })();
