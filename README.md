@@ -74,6 +74,9 @@ python3 -m http.server 8023 --bind 127.0.0.1
   `guest-services.js` saves selections, not trusted prices, in a tab-scoped draft;
   it migrates earlier extras drafts and blocks incomplete water bundles.
   Names/cabins are shared between the two forms, but notes/totals remain separate.
+  Resort WhatsApp messages use category headings without subtotals, followed by
+  each service/item × quantity = price and one final order total. Water allocation
+  and cinema duration/start time remain below their respective line items.
   Each labelled summary appears only when its basket has items: a rose restaurant
   summary and a blue-green resort summary, separated when both are present.
   The mobile review shortcut has no combined amount; it jumps to the summaries

@@ -292,10 +292,10 @@
       var parts=['السلام عليكم، أرغب بطلب الخدمات التالية أثناء إقامتي:',
         '', 'الاسم: '+state.name.trim(),'اسم الكوخ: '+state.cabin,'رقم الكوخ: '+cabins[state.cabin],'','الطلبات:'];
       groups(lines).forEach(function(group){
-        parts.push('',group.title+' — '+sum(group.items)+' ريال');
-        group.items.forEach(function(item){parts.push('• '+itemLabel(item)+' — '+item.price+' ريال');parts=parts.concat(item.details);});
+        parts.push('',group.title+':');
+        group.items.forEach(function(item){parts.push(item.name+' × '+(item.qty || 1)+' = '+item.price+' ريال');parts=parts.concat(item.details);});
       });
-      parts.push('','الإجمالي: '+sum(lines)+' ريال');
+      parts.push('','إجمالي الطلب: '+sum(lines)+' ريال');
       if(state.notes.trim()) parts.push('','ملاحظات: '+state.notes.trim());
       message=parts.join('\n');
     }
