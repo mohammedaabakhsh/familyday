@@ -26,7 +26,27 @@
 /* ===== STAY (f2) FUNCTIONS ===== */
 var _chaletItems2=[];
 
+// Show a brief selection response, then clear it before leaving the selector.
+var _destinationOpenTimer=0;
+function clearDestinationFeedback(){
+  clearTimeout(_destinationOpenTimer);
+  _destinationOpenTimer=0;
+  document.querySelectorAll('.dest-card.is-opening').forEach(function(card){
+    card.classList.remove('is-opening');
+    card.removeAttribute('aria-busy');
+  });
+}
+function openDestinationWithFeedback(type){
+  if(_destinationOpenTimer) return;
+  var card=document.querySelector('.dest-card[data-dest-photo="'+type+'"]');
+  if(!card) return;
+  card.classList.add('is-opening');
+  card.setAttribute('aria-busy','true');
+  _destinationOpenTimer=setTimeout(function(){showDestination(type);},1000);
+}
+
 function showDestination(type){
+  clearDestinationFeedback();
   document.getElementById('dest').classList.add('hide');
   var target = type==='chalet' ? 'landing3' : type==='stay' ? 'landing2' : 'landing';
   ['landing','landing2','landing3'].forEach(function(id){
@@ -35,6 +55,7 @@ function showDestination(type){
 }
 
 function goBackToDestination(){
+  clearDestinationFeedback();
   document.getElementById('landing').classList.add('hide');
   document.getElementById('landing2').classList.add('hide');
   document.getElementById('landing3').classList.add('hide');

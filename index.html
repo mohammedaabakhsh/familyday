@@ -57,7 +57,7 @@
 <link rel="preload" as="script" href="js/gallery-data.js?v=20261102-structure-v1">
 <link rel="preload" as="script" href="js/accommodations.js?v=20261102-final-v1">
 <link rel="preload" as="script" href="js/services.js?v=20261103-shared-menu-prices-v1">
-<link rel="preload" as="script" href="js/stay-navigation.js?v=20261103-dest-press-v1">
+<link rel="preload" as="script" href="js/stay-navigation.js?v=20261103-dest-feedback-v2">
 <link rel="preload" as="script" href="js/router.js?v=20261102-guest-services-v1">
 <link rel="stylesheet" href="css/app-base.css?v=20261103-review-v1">
 <link rel="stylesheet" href="resort-map.css?v=20261102-code-cleanup-v2">
@@ -124,7 +124,7 @@
   -webkit-tap-highlight-color:transparent;
   transition:border-color 0.25s,box-shadow 0.25s,background 0.25s,transform 0.15s;
 }
-.dest-card:active{
+#dest .dest-card:is(:active,.is-opening){
   border-color:#19a7b7;
   background:linear-gradient(160deg,rgba(25,167,183,.15) 0%,rgba(14,36,58,.97) 100%);
   box-shadow:0 0 0 3px rgba(25,167,183,.18),0 8px 28px rgba(25,167,183,.16);
@@ -137,13 +137,13 @@
   transition:background 0.25s,border-color 0.25s;
 }
 .dest-card .dest-icon svg{width:22px;height:22px;}
-.dest-card:active .dest-icon{background:rgba(25,167,183,0.24);border-color:rgba(25,167,183,0.55);}
+#dest .dest-card:is(:active,.is-opening) .dest-icon{background:rgba(25,167,183,0.24);border-color:rgba(25,167,183,0.55);}
 .dest-card .dest-title{font-size:18px;font-weight:700;color:#fff;margin-bottom:2px;transition:color 0.2s;}
 .dest-card .dest-sub{font-size:13px;color:rgba(255,255,255,0.68);line-height:1.4;transition:color 0.2s;}
-.dest-card:active .dest-title{color:#7ecfea;}
-.dest-card:active .dest-sub{color:rgba(126,207,234,.60);}
+#dest .dest-card:is(:active,.is-opening) .dest-title{color:#7ecfea;}
+#dest .dest-card:is(:active,.is-opening) .dest-sub{color:rgba(126,207,234,.60);}
 .dest-arrow{transition:stroke 0.2s;}
-.dest-card:active .dest-arrow{stroke:rgba(25,167,183,.80)!important;}
+#dest .dest-card:is(:active,.is-opening) .dest-arrow{stroke:rgba(25,167,183,.80)!important;}
 </style>
 <div id="dest" class="hide">
   <img class="dest-brand" src="imgs/img00.webp" width="140" height="88" alt="يوم العائلة">
@@ -151,7 +151,7 @@
   <h1 class="shimmer-title dest-heading">اختر وجهتك</h1>
   <p class="shimmer-title dest-description">تعرّف على تفاصيل كل وجهة واختر ما يناسبك</p>
   <div class="dest-cards">
-    <div class="dest-card" data-dest-photo="resort" onclick="showDestination('resort')">
+    <div class="dest-card" data-dest-photo="resort" onclick="openDestinationWithFeedback('resort')">
       <div class="dest-icon">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#19a7b7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 13 6-7 6 7M4 11v10h8V11M7 21v-5h3v5M18 21c-1-5-1-10 0-14M18 7c-2-4-5-4-6-2M18 7c2-4 5-4 5-2M18 7c-3-1-5 0-5 2M18 7c3-1 5 0 5 2M18 7c-1-3 0-5 2-5"/></svg>
       </div>
@@ -161,7 +161,7 @@
       <div class="dest-sub"><span>أكواخ خاصة</span><span>مسابح مستقلة</span><span>حديقة مشتركة</span></div>
       <svg class="dest-arrow" width="9" height="15" viewBox="0 0 9 15" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1);"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg>
     </div>
-    <div class="dest-card" data-dest-photo="stay" onclick="showDestination('stay')">
+    <div class="dest-card" data-dest-photo="stay" onclick="openDestinationWithFeedback('stay')">
       <div class="dest-icon">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#19a7b7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 21V7h8v14M14 21V7h8v14M1 7h10M13 7h10M5 21v-5h2v5M17 21v-5h2v5M5 11h2M17 11h2M1 21h22"/></svg>
       </div>
@@ -171,7 +171,7 @@
       <div class="dest-sub"><span>قسمان مستقلان</span><span>مسابح كبيرة</span><span>سعة كبيرة</span></div>
       <svg class="dest-arrow" width="9" height="15" viewBox="0 0 9 15" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1);"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg>
     </div>
-    <div class="dest-card" data-dest-photo="chalet" onclick="showDestination('chalet')">
+    <div class="dest-card" data-dest-photo="chalet" onclick="openDestinationWithFeedback('chalet')">
       <div class="dest-icon">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#19a7b7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V3h14v18M3 3h18M5 12h14M9 7h1M14 7h1M10 21v-5h4v5M3 21h18"/></svg>
       </div>
@@ -1782,7 +1782,7 @@
   </div>
 </div>
 
-<script src="js/stay-navigation.js?v=20261103-dest-press-v1"></script>
+<script src="js/stay-navigation.js?v=20261103-dest-feedback-v2"></script>
 <script src="chalet-design.js?v=20261102-final-v1"></script>
 <script src="dome-gallery.js?v=2"></script>
 
