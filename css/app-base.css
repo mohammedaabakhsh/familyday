@@ -534,14 +534,6 @@ body{background:var(--bg);color:var(--text);font-family:'Tajawal',sans-serif;min
   100%{background-position:-50% center;}
 }
 
-.landing-explore-btn{
-  animation:btnGlow 2.2s ease-in-out infinite;
-}
-@keyframes btnGlow{
-  0%,100%{box-shadow:0 0 8px rgba(255,255,255,0.35),0 0 18px rgba(126,207,234,0.25);}
-  50%{box-shadow:0 0 18px rgba(255,255,255,0.75),0 0 36px rgba(126,207,234,0.55);}
-}
-
 /* ========= MAIN APP ========= */
 #app{display:none}
 #app.show{display:block;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);min-height:100vh;}
