@@ -17,16 +17,11 @@ h1{margin:2px 0 5px;font-size:27px;line-height:1.25;color:var(--deep)}
 .hero p:last-child{margin:0;color:var(--muted);font-size:12px}
 .main{padding:20px 18px 8px}
 h2{margin:0 0 11px;font-size:20px;line-height:1.4;color:var(--deep)}
-.section-heading{display:flex;align-items:baseline;justify-content:space-between;gap:6px 12px;flex-wrap:wrap;margin-bottom:8px}
-.section-heading h2{margin:0}
 .section-price{font-size:14px;color:#117b89;white-space:nowrap}
-.section-tag{padding:3px 10px;border-radius:8px;background:var(--soft);color:#117b89;font-size:12px;font-weight:700}
 .section-note{margin:0 0 14px;font-size:12px;color:var(--muted)}
-.service-section{margin-top:20px;padding:16px;border:1px solid var(--section-line);border-radius:18px;background:var(--section-bg);scroll-margin-top:16px}
-.restaurant{padding:16px;border:1px solid var(--section-line);border-radius:18px;background:var(--section-bg);scroll-margin-top:16px}
 .selection-rows,.extra-list{display:grid;gap:9px}
 .extra-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px;border:1px solid var(--line);border-radius:16px;background:#fff}
-.extra-row.is-selected,.menu-row.is-selected{border-color:var(--brand);background:#f4fbfc;box-shadow:0 0 0 2px rgba(25,167,183,.08)}
+.extra-row.is-selected,.menu-row.is-selected,.game-options label.is-selected,#cinema-time.is-selected{border-color:#238370;background:#e0f3ed;box-shadow:inset 0 0 0 1px #238370}
 .extra-row>strong{font-size:15px}
 .extra-copy{min-width:0}
 .extra-copy h3{margin:0;font-size:15px;font-weight:700;line-height:1.45;color:var(--deep)}
@@ -52,7 +47,6 @@ textarea{resize:vertical;min-height:80px}
 .usage ul{margin:0;padding-inline-start:18px}
 .game-options{border:0;padding:0;margin:0;display:grid;gap:9px;min-width:0}
 .game-options label{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid var(--line);border-radius:14px;cursor:pointer}
-.game-options label:has(:checked){border-color:var(--brand);background:var(--soft)}
 .game-options input{width:20px;height:20px;flex-shrink:0;accent-color:#117b89}
 .game-options label>span{font-size:14px;font-weight:700}
 .game-options strong{display:block;color:#117b89;font-size:14px}
@@ -115,8 +109,6 @@ textarea{resize:vertical;min-height:80px}
  .help-actions{min-width:250px;margin:0}
 }
 @media(min-width:840px){
- .resort-layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);align-items:start;gap:18px}
- .resort-order{margin-top:20px;padding:20px 16px;position:sticky;top:16px;max-height:calc(100dvh - 32px);overflow-y:auto}
  .extra-row{padding:16px 14px}
  .order-heading{align-items:flex-start;flex-direction:column;gap:4px}
 }
@@ -143,9 +135,6 @@ textarea{resize:vertical;min-height:80px}
 [data-tone=games]{--section-bg:#fffaf0;--section-line:#ecddb8;--section-ink:#805b18}
 [data-tone=cinema]{--section-bg:#f8f4fc;--section-line:#e1d5ee;--section-ink:#70478e}
 [data-tone=extras]{--section-bg:#f2f8f4;--section-line:#cde2d5;--section-ink:#396b4f}
-.service-section h2,.restaurant h2,.service-section .section-price{color:var(--section-ink)}
-.service-nav{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px}
-.service-nav a{display:flex;align-items:center;min-height:44px;padding:7px 12px;border:1px solid var(--section-line);border-radius:12px;background:var(--section-bg);color:var(--section-ink);font-size:13px;font-weight:700}
 .page-hint{margin:0 0 18px;color:var(--muted);font-size:12px}
 .source-error{padding:14px;border:1px solid #dfc8b0;background:#fff8ef;border-radius:12px;margin-bottom:16px;font-size:14px}
 .source-error button{min-height:44px;padding:8px;border:0;background:none;text-decoration:underline;color:var(--ink)}
@@ -161,3 +150,31 @@ textarea{resize:vertical;min-height:80px}
 .order-highlight{animation:order-focus 1.2s ease-out}
 @keyframes order-focus{0%,40%{box-shadow:0 0 0 3px rgba(25,167,183,.35)}100%{box-shadow:none}}
 @media(prefers-reduced-motion:reduce){.order-highlight{animation:none;outline:2px solid var(--brand)}}
+
+/* Guide-style folds replace the former index and always-expanded service cards. */
+.guest-service-fold{margin-bottom:12px;border:1px solid var(--line);border-radius:16px;background:#fff;scroll-margin-top:14px}
+.guest-service-fold>summary{display:flex;align-items:center;gap:12px;padding:15px;cursor:pointer;list-style:none;border-radius:15px;min-height:82px}
+.guest-service-fold>summary::-webkit-details-marker{display:none}
+.fold-number{display:grid;place-items:center;flex:0 0 34px;height:34px;border-radius:11px;background:var(--section-bg);color:var(--section-ink);font-size:13px;font-weight:800}
+.fold-copy{flex:1;min-width:0}
+.fold-title{display:block;margin:0;font-size:18px;font-weight:700;line-height:1.4;color:var(--ink)}
+.fold-default,.fold-selection{display:block;margin-top:3px;font-size:12px;line-height:1.5;color:var(--muted)}
+.fold-default .section-price{font-size:12px;font-weight:500;color:var(--muted)}
+.fold-toggle{position:relative;flex:0 0 28px;height:28px;border:1px solid #c9dfe2;border-radius:50%;color:var(--brand)}
+.fold-toggle::before,.fold-toggle::after{content:'';position:absolute;top:50%;left:50%;width:11px;height:2px;background:currentColor;transform:translate(-50%,-50%)}
+.fold-toggle::after{transform:translate(-50%,-50%) rotate(90deg)}
+.guest-service-fold[open]>summary{border-radius:15px 15px 0 0;background:var(--section-bg)}
+.guest-service-fold[open]>summary .fold-toggle::after{display:none}
+.fold-body{padding:16px;border-top:1px solid var(--line)}
+.guest-service-fold.is-selected{border-color:#238370;box-shadow:0 0 0 1px #238370}
+.guest-service-fold.is-selected>summary{background:#dff3ed}
+.guest-service-fold.is-selected .fold-selection{color:#155f4e;font-weight:700}
+.guest-service-fold.is-selected .fold-number{background:#238370;color:#fff}
+.guest-service-fold.is-pending{border-color:#c99535}
+.guest-service-fold.is-pending>summary{background:#fff4db}
+.guest-service-fold.is-pending .fold-selection{color:#805713;font-weight:700}
+.extra-row.is-selected .extra-copy h3::after,.menu-row.is-selected h3::after{content:' ✓';color:#155f4e;font-weight:800}
+.menu-category.is-selected{border-color:#238370}
+.menu-category.is-selected>summary{background:#dff3ed}
+.menu-category-count{font-size:11px;color:#155f4e;margin-inline-start:auto;padding-inline:8px}
+@media(max-width:360px){.guest-service-fold>summary{padding:13px;gap:9px}.fold-body{padding:12px}.fold-title{font-size:17px}}

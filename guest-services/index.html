@@ -20,9 +20,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/guest-services/guest-services.css?v=20261103-simple-orders-v1">
-<script src="/guest-services/service-source.js?v=20261103-simple-orders-v1" defer></script>
-<script src="/guest-services/guest-services.js?v=20261103-simple-orders-v1" defer></script>
+<link rel="stylesheet" href="/guest-services/guest-services.css?v=20261103-guest-folds-v1">
+<script src="/guest-services/service-source.js?v=20261103-guest-folds-v1" defer></script>
+<script src="/guest-services/guest-services.js?v=20261103-guest-folds-v1" defer></script>
 </head>
 <body>
 <div class="page">
@@ -34,63 +34,87 @@
   </header>
   <main class="main">
     <noscript><p>لطلب الخدمات تواصل مع <a href="https://wa.me/966556156693">فريق المنتجع</a>، وللطعام تواصل مع <a href="https://wa.me/966537006531">المطعم</a>.</p></noscript>
-    <nav class="service-nav" aria-label="انتقل إلى الخدمة">
-      <a href="#restaurant-service" data-tone="restaurant">المطعم</a><a href="#water-service" data-tone="water">المائية</a><a href="#games-service" data-tone="games">الألعاب</a><a href="#cinema-service" data-tone="cinema">السينما</a><a href="#extras-service" data-tone="extras">طلبات إضافية</a>
-    </nav>
-    <p class="page-hint">اختر ما تحتاجه؛ يظهر اختيارك مباشرة في ملخص طلبك.</p>
+    <p class="page-hint">افتح الخدمة، اختر ما تحتاجه، ثم راجع طلبك.</p>
     <p id="services-loading" role="status">جاري تحميل الخدمات…</p>
     <div id="services-error" class="source-error" role="alert" hidden>تعذّر تحميل الخدمات. <button type="button" id="reload-services">إعادة المحاولة</button></div>
-    <section id="restaurant-service" class="restaurant" data-tone="restaurant" aria-labelledby="restaurant-title">
-      <div class="section-heading"><h2 id="restaurant-title">المطعم</h2><span class="section-tag">طلب مستقل</span></div>
-      <p class="section-note">افتح القسم واختر الأصناف والكميات. طلب المطعم يُرسل إلى المطعم مباشرة.</p>
-      <div id="guest-menu" class="menu-categories"></div>
-      <form id="restaurant-order" class="order-box" hidden>
-        <div class="order-heading"><h3>طلب المطعم</h3><p id="restaurant-count" role="status"></p></div>
-        <ul id="restaurant-items" class="order-items"></ul>
-        <div class="order-total"><span>إجمالي المطعم</span><strong><bdi id="restaurant-total">0</bdi> ريال</strong></div>
-        <div class="customer-fields" data-scope="restaurant"></div>
-        <button class="send-order" type="submit" disabled>إكمال طلب المطعم عبر واتساب</button>
-        <p class="confirmation-note">تابع طلبك عبر واتساب</p>
-      </form>
-    </section>
-    <div class="resort-layout">
-      <div class="resort-services">
-        <section class="service-section" id="water-service" data-tone="water" aria-labelledby="water-title">
-          <div class="section-heading"><h2 id="water-title">الألعاب المائية</h2><strong class="section-price"></strong></div>
-          <p class="section-note"></p>
-          <div class="selection-rows">
-            <div class="extra-row"><strong>للكبار</strong><div class="quantity" role="group" aria-label="عدد ألعاب الكبار">
-              <button type="button" data-water="adults" data-step="-1" aria-label="تقليل عدد ألعاب الكبار" disabled>−</button><output id="water-adults" dir="ltr">0</output><button type="button" data-water="adults" data-step="1" aria-label="زيادة عدد ألعاب الكبار" disabled>+</button>
-            </div></div>
-            <div class="extra-row"><strong>للصغار</strong><div class="quantity" role="group" aria-label="عدد ألعاب الصغار">
-              <button type="button" data-water="children" data-step="-1" aria-label="تقليل عدد ألعاب الصغار" disabled>−</button><output id="water-children" dir="ltr">0</output><button type="button" data-water="children" data-step="1" aria-label="زيادة عدد ألعاب الصغار" disabled>+</button>
-            </div></div>
-          </div>
-          <p id="water-count" class="selection-status" role="status"></p>
-          <p class="usage-note"></p>
-        </section>
-        <section class="service-section" id="games-service" data-tone="games" aria-labelledby="games-title">
-          <h2 id="games-title">الألعاب الترفيهية</h2>
-          <fieldset class="game-options"><legend class="field-label">اختر الباقة</legend>
-          </fieldset>
-          <h3 class="contents-title">محتويات بوكس الألعاب</h3>
-          <ul class="contents-list games-contents"></ul>
-          <p id="games-status" class="selection-status" role="status"></p>
-          <p class="usage-note"></p>
-        </section>
-        <section class="service-section" id="cinema-service" data-tone="cinema" aria-labelledby="cinema-title">
-          <div class="section-heading"><h2 id="cinema-title">جلسة السينما</h2><strong class="section-price"></strong></div>
-          <p class="section-note"></p>
-          <h3 class="contents-title">محتويات الجلسة</h3>
-          <ul class="contents-list"></ul>
-          <label class="field-label" for="cinema-time">وقت بداية الجلسة</label>
-          <select id="cinema-time" disabled><option value="">بدون جلسة سينما</option></select>
-          <p id="cinema-status" class="selection-status" role="status"></p>
-          <details class="usage"><summary>تعليمات الاستخدام</summary><ul></ul></details>
-        </section>
-        <section class="service-section extras" id="extras-service" data-tone="extras" aria-labelledby="extras-title">
-          <h2 id="extras-title">طلبات إضافية</h2>
-          <p class="section-note">اختر ما تحتاجه وحدّد الكمية.</p>
+    <details id="restaurant-service" class="guest-service-fold" data-tone="restaurant" name="guest-service" aria-labelledby="restaurant-title">
+      <summary>
+        <span class="fold-number" aria-hidden="true">01</span>
+        <span class="fold-copy"><span class="fold-title" id="restaurant-title" role="heading" aria-level="2">المطعم</span><span class="fold-default">منيو المطعم وطلباته</span><span class="fold-selection" aria-live="polite" hidden></span></span>
+        <span class="fold-toggle" aria-hidden="true"></span>
+      </summary>
+      <div class="fold-body">
+        <p class="section-note">افتح القسم واختر الأصناف والكميات. طلب المطعم يُرسل إلى المطعم مباشرة.</p>
+        <div id="guest-menu" class="menu-categories"></div>
+        <form id="restaurant-order" class="order-box" hidden>
+          <div class="order-heading"><h3>طلب المطعم</h3><p id="restaurant-count" role="status"></p></div>
+          <ul id="restaurant-items" class="order-items"></ul>
+          <div class="order-total"><span>إجمالي المطعم</span><strong><bdi id="restaurant-total">0</bdi> ريال</strong></div>
+          <div class="customer-fields" data-scope="restaurant"></div>
+          <button class="send-order" type="submit" disabled>إكمال طلب المطعم عبر واتساب</button>
+          <p class="confirmation-note">تابع طلبك عبر واتساب</p>
+        </form>
+      </div>
+    </details>
+    <details id="water-service" class="guest-service-fold" data-tone="water" name="guest-service" aria-labelledby="water-title">
+      <summary>
+        <span class="fold-number" aria-hidden="true">02</span>
+        <span class="fold-copy"><span class="fold-title" id="water-title" role="heading" aria-level="2">الألعاب المائية</span><span class="fold-default"><span class="section-price"></span></span><span class="fold-selection" aria-live="polite" hidden></span></span>
+        <span class="fold-toggle" aria-hidden="true"></span>
+      </summary>
+      <div class="fold-body">
+        <p class="section-note"></p>
+        <div class="selection-rows">
+          <div class="extra-row"><strong>للكبار</strong><div class="quantity" role="group" aria-label="عدد ألعاب الكبار">
+            <button type="button" data-water="adults" data-step="-1" aria-label="تقليل عدد ألعاب الكبار" disabled>−</button><output id="water-adults" dir="ltr">0</output><button type="button" data-water="adults" data-step="1" aria-label="زيادة عدد ألعاب الكبار" disabled>+</button>
+          </div></div>
+          <div class="extra-row"><strong>للصغار</strong><div class="quantity" role="group" aria-label="عدد ألعاب الصغار">
+            <button type="button" data-water="children" data-step="-1" aria-label="تقليل عدد ألعاب الصغار" disabled>−</button><output id="water-children" dir="ltr">0</output><button type="button" data-water="children" data-step="1" aria-label="زيادة عدد ألعاب الصغار" disabled>+</button>
+          </div></div>
+        </div>
+        <p id="water-count" class="selection-status" role="status"></p>
+        <p class="usage-note"></p>
+      </div>
+    </details>
+    <details id="games-service" class="guest-service-fold" data-tone="games" name="guest-service" aria-labelledby="games-title">
+      <summary>
+        <span class="fold-number" aria-hidden="true">03</span>
+        <span class="fold-copy"><span class="fold-title" id="games-title" role="heading" aria-level="2">الألعاب الترفيهية</span><span class="fold-default">اختر باقة الألعاب المناسبة لك</span><span class="fold-selection" aria-live="polite" hidden></span></span>
+        <span class="fold-toggle" aria-hidden="true"></span>
+      </summary>
+      <div class="fold-body">
+        <fieldset class="game-options"><legend class="field-label">اختر الباقة</legend>
+        </fieldset>
+        <h3 class="contents-title">محتويات بوكس الألعاب</h3>
+        <ul class="contents-list games-contents"></ul>
+        <p id="games-status" class="selection-status" role="status"></p>
+        <p class="usage-note"></p>
+      </div>
+    </details>
+    <details id="cinema-service" class="guest-service-fold" data-tone="cinema" name="guest-service" aria-labelledby="cinema-title">
+      <summary>
+        <span class="fold-number" aria-hidden="true">04</span>
+        <span class="fold-copy"><span class="fold-title" id="cinema-title" role="heading" aria-level="2">جلسة السينما</span><span class="fold-default"><span class="section-price"></span></span><span class="fold-selection" aria-live="polite" hidden></span></span>
+        <span class="fold-toggle" aria-hidden="true"></span>
+      </summary>
+      <div class="fold-body">
+        <p class="section-note"></p>
+        <h3 class="contents-title">محتويات الجلسة</h3>
+        <ul class="contents-list"></ul>
+        <label class="field-label" for="cinema-time">وقت بداية الجلسة</label>
+        <select id="cinema-time" disabled><option value="">بدون جلسة سينما</option></select>
+        <p id="cinema-status" class="selection-status" role="status"></p>
+        <details class="usage"><summary>تعليمات الاستخدام</summary><ul></ul></details>
+      </div>
+    </details>
+    <details id="extras-service" class="guest-service-fold" data-tone="extras" name="guest-service" aria-labelledby="extras-title">
+      <summary>
+        <span class="fold-number" aria-hidden="true">05</span>
+        <span class="fold-copy"><span class="fold-title" id="extras-title" role="heading" aria-level="2">طلبات إضافية</span><span class="fold-default">مستلزمات تحتاجها أثناء الإقامة</span><span class="fold-selection" aria-live="polite" hidden></span></span>
+        <span class="fold-toggle" aria-hidden="true"></span>
+      </summary>
+      <div class="fold-body">
+        <p class="section-note">اختر ما تحتاجه وحدّد الكمية.</p>
         <div class="extra-list">
           <article class="extra-row" data-extra="robe" aria-labelledby="extra-robe">
             <div class="extra-copy">
@@ -149,20 +173,19 @@
             </div>
           </article>
         </div>
-        </section>
       </div>
-      <form id="extras-order" class="order-box resort-order" tabindex="-1">
-        <div class="order-heading"><h3>ملخص طلبك</h3><p id="order-count" role="status">لم تختر أي طلبات بعد</p></div>
-        <ul id="order-items" class="order-items" hidden></ul>
-        <div class="order-total"><span>إجمالي خدمات المنتجع</span><strong><bdi id="order-total">0</bdi> ريال</strong></div>
-        <p id="order-warning" class="order-warning" role="status" hidden></p>
-        <div class="order-details" hidden>
+    </details>
+    <form id="extras-order" class="order-box" tabindex="-1">
+      <div class="order-heading"><h3>ملخص طلبك</h3><p id="order-count" role="status">لم تختر أي طلبات بعد</p></div>
+      <ul id="order-items" class="order-items" hidden></ul>
+      <div class="order-total"><span>إجمالي خدمات المنتجع</span><strong><bdi id="order-total">0</bdi> ريال</strong></div>
+      <p id="order-warning" class="order-warning" role="status" hidden></p>
+      <div class="order-details" hidden>
         <div class="customer-fields" data-scope="guest"></div>
         <button class="send-order" type="submit" disabled>إكمال الطلب عبر واتساب</button>
         <p class="confirmation-note">تابع طلبك عبر واتساب</p>
-        </div>
-      </form>
-    </div>
+      </div>
+    </form>
     <section class="help" aria-labelledby="help-title">
       <div><h2 id="help-title">تحتاج مساعدة؟</h2><p>تواصل مع فريق يوم العائلة أثناء إقامتك.</p></div>
       <div class="help-actions"><a href="https://wa.me/966556156693" target="_blank" rel="noopener noreferrer">واتساب</a><a href="tel:+966556156693">اتصال</a></div>

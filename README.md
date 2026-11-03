@@ -55,7 +55,11 @@ python3 -m http.server 8023 --bind 127.0.0.1
   for the site and app preview. Guests allocate 3 games between adults and
   children for 50 SAR; checkout sends the quantities, without an item catalog.
 - `guest-services/`: in-stay orders on one page, with automatic selection and
-  category subtotals. The restaurant basket/recipient stays separate from resort
+  category subtotals. Five guide-style sections start collapsed, with one open
+  at a time: restaurant, water games, games, cinema, extras. Selected rows and
+  closed sections show a green state and checkmark/subtotal; incomplete water
+  bundles show an amber prompt. There is no separate abbreviated index.
+  The restaurant basket/recipient stays separate from resort
   services. `service-source.js` reads the main `index.html` on each visit (as the
   guide does) for service names, prices, contents, instructions and cinema slots.
   It loads the menu and cabin script versions referenced by that source, so
