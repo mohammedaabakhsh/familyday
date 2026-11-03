@@ -151,11 +151,11 @@
 .dest-arrow{transition:stroke 0.2s;}
 .dest-card.selected .dest-arrow{stroke:rgba(25,167,183,.80)!important;}
 </style>
-<div id="dest" class="hide" style="position:fixed;inset:0;z-index:8000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;font-family:'Tajawal',sans-serif;direction:rtl;">
-  <img class="dest-brand" src="imgs/img00.webp" style="width:140px;margin-bottom:22px;opacity:0.92;filter:drop-shadow(0 0 24px rgba(25,167,183,.30));">
+<div id="dest" class="hide">
+  <img class="dest-brand" src="imgs/img00.webp" width="140" height="88" alt="يوم العائلة">
   <div class="dest-choice-group">
-  <div class="shimmer-title" style="font-size:24px;font-weight:700;color:#fff;margin-bottom:6px;letter-spacing:0;">اختر وجهتك</div>
-  <div class="shimmer-title" style="font-size:14px;color:rgba(255,255,255,0.68);margin-bottom:28px;text-align:center;line-height:1.6;animation-duration:3.4s;">تعرّف على تفاصيل كل وجهة واختر ما يناسبك</div>
+  <h1 class="shimmer-title dest-heading">اختر وجهتك</h1>
+  <p class="shimmer-title dest-description">تعرّف على تفاصيل كل وجهة واختر ما يناسبك</p>
   <div class="dest-cards">
     <div class="dest-card" data-dest-photo="resort" onclick="pickDest(this,'resort')">
       <div class="dest-icon">
@@ -1800,7 +1800,7 @@
 <link rel="stylesheet" href="chalet-map.css?v=20261102-code-cleanup-v2">
 <script src="chalet-map.js?v=20261102-code-cleanup-v2" defer></script>
 
-<link rel="stylesheet" href="css/accommodation-layout.css?v=20261102-final-v1">
+<link rel="stylesheet" href="css/accommodation-layout.css?v=20261103-dest-viewport-v1">
 
 <link rel="stylesheet" href="resort-ui.css?v=20261103-service-headers-v1">
 <link rel="stylesheet" href="css/service-mobile.css?v=20261103-games-photo-v1">
