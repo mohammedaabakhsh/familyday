@@ -100,6 +100,11 @@
 
 <style>
 #splash{isolation:isolate;overflow:hidden}
+#splash .splash-brand{
+  display:block;position:relative;left:4px;width:min(74vw,340px);height:auto;aspect-ratio:25/14;
+  object-fit:cover;object-position:center 44%;flex-shrink:0;
+  opacity:.92;animation:splashFadeUp .5s ease .1s both;
+}
 #splash::before,#splash::after{content:"";position:absolute;pointer-events:none;z-index:-1}
 #splash::before{
   inset:-20%;
@@ -152,7 +157,7 @@
 
 </style>
 <div id="splash" style="position:fixed;inset:0;z-index:9999;background:#0B1D2E;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;transition:opacity 0.6s ease;">
-  <img src="imgs/img00.webp" style="width:140px;opacity:0.92;animation:splashFadeUp 0.5s ease 0.1s both;">
+  <img class="splash-brand" src="imgs/img00.webp" width="400" height="224" alt="يوم العائلة">
   <button id="splashBtn" onclick="enterMain()"><span class="shimmer-title">اكتشف يوم العائلة</span></button>
 </div>
 
