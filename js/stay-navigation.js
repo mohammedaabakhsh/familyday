@@ -42,7 +42,7 @@ function openDestinationWithFeedback(type){
   if(!card) return;
   card.classList.add('is-opening');
   card.setAttribute('aria-busy','true');
-  _destinationOpenTimer=setTimeout(function(){showDestination(type);},1000);
+  _destinationOpenTimer=setTimeout(function(){showDestination(type);},250);
 }
 
 function showDestination(type){
