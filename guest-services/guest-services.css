@@ -75,7 +75,7 @@ textarea{resize:vertical;min-height:80px}
 .order-section>h2{margin:0 0 12px;font-size:22px;font-weight:800}
 .order-section:not([hidden])~.order-section:not([hidden]){margin-top:32px;padding-top:28px;border-top:1px solid var(--line)}
 .order-section[data-tone=restaurant]>h2{color:var(--section-ink)}
-.order-section[data-tone=restaurant] .order-box{--order-line:#dfb9c9;--order-accent:#97506c;background:#f4dfe8}
+.order-section[data-tone=restaurant] .order-box{--order-line:#d9ad7b;--order-accent:#944713;--muted:#665b50;background:#f7d5ae}
 .order-box :is(input,select,textarea){border-color:var(--order-line)}
 .order-count{margin:0;font-size:12px;color:var(--muted)}
 .order-items{list-style:none;margin:13px 0 0;padding:0;display:grid;gap:10px;font-size:12px}
@@ -138,7 +138,7 @@ textarea{resize:vertical;min-height:80px}
 }
 
 /* Soft section colours also identify each group in the order summary. */
-[data-tone=restaurant]{--section-bg:#fcecf2;--section-line:#edccd9;--section-ink:#904764}
+[data-tone=restaurant]{--section-bg:#fff0df;--section-line:#efc394;--section-ink:#944713}
 [data-tone=water]{--section-bg:#eaf0ff;--section-line:#c9d6f2;--section-ink:#3d5c99}
 [data-tone=games]{--section-bg:#fffaf0;--section-line:#ecddb8;--section-ink:#805b18}
 [data-tone=cinema]{--section-bg:#f8f4fc;--section-line:#e1d5ee;--section-ink:#70478e}
