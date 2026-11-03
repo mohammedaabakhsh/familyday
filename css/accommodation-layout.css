@@ -3,7 +3,7 @@
 .dest-card[data-dest-photo]{position:relative;isolation:isolate;overflow:hidden;}
 .dest-card[data-dest-photo]::before{
   content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background-image:linear-gradient(180deg,rgba(12,12,12,.18) 0%,rgba(12,12,12,.42) 40%,rgba(12,12,12,.76) 100%),var(--dest-photo);
+  background-image:linear-gradient(180deg,rgba(8,28,44,.22) 0%,rgba(8,28,44,.46) 40%,rgba(8,25,39,.76) 100%),var(--dest-photo);
   background-size:cover;background-position:center var(--dest-focus,60%);
 }
 .dest-card[data-dest-photo="resort"]{--dest-photo:url('../imgs/dome_1.webp');--dest-focus:30%;}
