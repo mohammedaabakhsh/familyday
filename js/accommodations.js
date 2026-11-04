@@ -235,7 +235,7 @@ function updGal(total){
 
 function renderCabinDetail(c){
   const depthUnit='سم';
-  const indoor=c.features.indoor.concat([c.bathroom===1?'حمام واحد':c.bathroom===2?'حمامان':c.bathroom+' حمامات']);
+  const indoor=c.features.indoor.concat(c.bathroomDetails || [c.bathroom===1?'حمام واحد':c.bathroom===2?'حمامان':c.bathroom+' حمامات']);
   const poolLabel=c.pool.depthInLabel?c.pool.label+' وعمق '+c.pool.depthCm+' '+depthUnit+'.':c.pool.label;
   const wetOutdoor=c.features.outdoor.filter(function(text){return /بانيو|جاكوزي/.test(text);});
   const outdoor=c.features.outdoor.filter(function(text){return !/بانيو|جاكوزي/.test(text);});
