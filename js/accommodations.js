@@ -287,12 +287,9 @@ ${c.id===8?'<a class="fd-pyramid-detail-tour" href="/rustic-tour/?from=details&c
       <section class="fd-cabin-section">
         <h3>المنطقة الخارجية</h3>
         <div class="fd-cabin-feature-list">
-          ${renderFeatures(poolFeatures)}
-          <div class="fd-cabin-instructions fd-pool-note">
-            <p>${poolNote}</p>
-            ${hasOutdoorBath?'<p><strong>البانيو الخارجي:</strong> بخصوصية كاملة.</p>':''}
-          </div>
-          ${renderFeatures(outdoor)}
+          ${c.id===6?renderFeatures(outdoor):renderFeatures(poolFeatures)}
+          ${c.id===6?renderFeatures(poolFeatures):`<div class="fd-cabin-instructions fd-pool-note"><p>${poolNote}</p>${hasOutdoorBath?'<p><strong>البانيو الخارجي:</strong> بخصوصية كاملة.</p>':''}</div>`}
+          ${c.id===6?'':renderFeatures(outdoor)}
         </div>
       </section>
 
