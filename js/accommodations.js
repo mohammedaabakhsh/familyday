@@ -287,9 +287,9 @@ ${c.id===8?'<a class="fd-pyramid-detail-tour" href="/rustic-tour/?from=details&c
       <section class="fd-cabin-section">
         <h3>المنطقة الخارجية</h3>
         <div class="fd-cabin-feature-list">
-          ${c.id===2?renderFeatures(wetOutdoor.concat(outdoor.filter(function(item){return item!=='شواية';}))):([3,4,5,6,7,8,9,10,13].includes(c.id))?renderFeatures(outdoor.filter(function(item){return item!=='شواية';})):renderFeatures(poolFeatures)}
-          ${([2,3,4,5,6,7,8,9,10,13].includes(c.id))?renderFeatures(c.id===2?poolFeatures.filter(function(item){return !/بانيو|جاكوزي/.test(item);}):poolFeatures):`<div class="fd-cabin-instructions fd-pool-note"><p>${poolNote}</p>${hasOutdoorBath?'<p><strong>البانيو الخارجي:</strong> بخصوصية كاملة.</p>':''}</div>`}
-          ${([2,3,4,5,6,7,8,9,10,13].includes(c.id))?renderFeatures(outdoor.filter(function(item){return item==='شواية';})):renderFeatures(outdoor)}
+          ${c.id===2?renderFeatures(wetOutdoor.concat(outdoor.filter(function(item){return item!=='شواية';}))):([1,3,4,5,6,7,8,9,10,12,13].includes(c.id))?renderFeatures(outdoor.filter(function(item){return item!=='شواية';})):renderFeatures(poolFeatures)}
+          ${([1,2,3,4,5,6,7,8,9,10,12,13].includes(c.id))?renderFeatures(c.id===2?poolFeatures.filter(function(item){return !/بانيو|جاكوزي/.test(item);}):poolFeatures):`<div class="fd-cabin-instructions fd-pool-note"><p>${poolNote}</p>${hasOutdoorBath?'<p><strong>البانيو الخارجي:</strong> بخصوصية كاملة.</p>':''}</div>`}
+          ${([1,2,3,4,5,6,7,8,9,10,12,13].includes(c.id))?renderFeatures(outdoor.filter(function(item){return item==='شواية';})):renderFeatures(outdoor)}
         </div>
       </section>
 
