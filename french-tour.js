@@ -67,7 +67,7 @@ var FD_FRENCH_TOUR = (function () {
       if(cabin.pool.facilities.indexOf('دش خارجي')!==-1) cards.push({value:'دش خارجي',icon:'shower'});
     }
     var activePart=parts.find(function(part){return part.id===selected;});
-    FD_TOUR_COMMON.renderDetails(root,cards,note,activePart.ar,false);
+    FD_TOUR_COMMON.renderDetails(root,cards,note,activePart.ar,true);
   }
 
   function update() {
