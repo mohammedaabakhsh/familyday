@@ -51,6 +51,18 @@ noscript{display:block;margin:30px;text-align:center}
 <meta property="og:locale" content="ar_SA">
 <meta name="twitter:title" content="استكشف البيت البانورامي | يوم العائلة">
 <meta name="twitter:description" content="استكشف البيت البانورامي ومرافقه في تجربة استكشاف تفاعلية من منتجع يوم العائلة.">
+<style id="fd-panoramic-compact-cards">
+@media(max-width:599px){
+ #ov #panoramic-tour .dt-details:not(.is-empty){width:max-content;max-width:calc(100% - 20px);justify-self:center;box-sizing:border-box;margin-inline:auto;padding:8px 10px}
+ #ov #panoramic-tour .dt-cards:not(.is-scrollable){display:flex;justify-content:center;align-items:stretch;gap:7px;width:max-content;max-width:100%}
+ #ov #panoramic-tour .dt-cards:not(.is-scrollable) .dt-card{flex:0 0 clamp(98px,calc((100vw - 76px)/3),200px);width:clamp(98px,calc((100vw - 76px)/3),200px);min-width:0;box-sizing:border-box}
+ #ov #panoramic-tour .dt-cards.is-scrollable{display:flex;grid-template-columns:none;overflow-x:auto;direction:rtl;overscroll-behavior-x:contain;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:1px 1px 4px}
+ #ov #panoramic-tour .dt-cards.is-scrollable::-webkit-scrollbar{display:none}
+ #ov #panoramic-tour .dt-cards.is-scrollable .dt-card{flex:0 0 108px;min-width:108px;scroll-snap-align:start}
+ #ov #panoramic-tour .dt-swipe-hint{display:flex!important;align-items:center;justify-content:center;gap:6px;margin:6px 0 0;color:#8fcbd6;font-size:11px}
+ #ov #panoramic-tour .dt-card strong{overflow-wrap:normal;word-break:normal;text-wrap:balance}
+}
+</style>
 </head>
 
 <body>
@@ -77,9 +89,9 @@ noscript{display:block;margin:30px;text-align:center}
 
 </script>
 
-<script src="/resort-data.js?v=20261102-cleanup-v1"></script>
+<script src="/resort-data.js?v=20261105-unified-v1"></script>
 
 <script src="/tour-common.js?v=20261102-code-cleanup-v2"></script>
-<script src="/panoramic-tour.js?v=20261102-code-cleanup-v2"></script>
+<script src="/panoramic-tour.js?v=20261105-unified-v1"></script>
 
 </body></html>
