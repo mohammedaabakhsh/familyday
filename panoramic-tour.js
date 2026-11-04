@@ -12,7 +12,7 @@ var FD_PANORAMIC_TOUR = (function () {
  {id:'kitchen', ar:'ركن المطبخ', x:0.65, y:0.202},
  {id:'bedroom', ar:'غرفة النوم الرئيسية', x:0.331, y:0.325},
  {id:'tub', ar:'البانيو الداخلي', x:0.301, y:0.394},
- {id:'living', ar:'المنطقة الداخلية', x:0.722, y:0.455},
+ {id:'living', ar:'صالة داخلية', x:0.722, y:0.455},
  {id:'dining', ar:'طاولة الطعام', x:0.65, y:0.202},
  {id:'pool', ar:'المسبح', x:0.28, y:0.6},
  {id:'outdoor', ar:'المنطقة الخارجية', x:0.696, y:0.669}
@@ -68,13 +68,13 @@ var FD_PANORAMIC_TOUR = (function () {
 
       if (/جاكوزي/.test(cabin.pool.label)) cards.push({value:'جاكوزي داخل المسبح',icon:'tub'});
 
-      cabin.pool.facilities.forEach(function(t){cards.push({value:feature(t),icon:t==='دش خارجي'?'shower':'chair'});});
+      cabin.pool.facilities.filter(function(t){return t!=='دش خارجي';}).forEach(function(t){cards.push({value:feature(t),icon:'chair'});});
 
     } else if (selected === 'kitchen') {
 
       cabin.features.kitchen.forEach(function(t){cards.push({value:feature(t),icon:kitchenIcon(t)});});
 
-      if(cabin.minibar) note='الميني بار: مشروبات وسناكس برسوم إضافية.';
+
 
     } else if (selected === 'dining') {
 
@@ -82,7 +82,7 @@ var FD_PANORAMIC_TOUR = (function () {
 
     } else if (selected === 'living') {
 
-      cards=[{value:'صالة داخلية',icon:'sofa'},{value:'تلفزيون ذكي',icon:'tv'},{value:'سماعات داخلية (ساوند بار)',icon:'speaker'},{value:'واي فاي مجاني',icon:'wifi'}];
+      cards=[{value:'تلفزيون ذكي',icon:'tv'},{value:'سماعات داخلية (ساوند بار)',icon:'speaker'},{value:'واي فاي مجاني',icon:'wifi'}];
 
     } else if (selected === 'bedroom') {
 
@@ -90,7 +90,7 @@ var FD_PANORAMIC_TOUR = (function () {
 
     } else if (selected === 'bathroom') {
 
-      cards=[{value:'حمام خاص بغرفة نوم بسرير مزدوج',icon:'shower'},{value:'حمام مشترك',icon:'shower'}];
+      cards=[{value:'حمام خاص داخل غرفة النوم الرئيسية',icon:'shower'},{value:'حمام مشترك',icon:'shower'}];
 
     } else if (selected === 'tub') {
       cards=[{value:'بانيو مع جاكوزي بغرفة النوم',icon:'tub'}];
@@ -101,6 +101,7 @@ var FD_PANORAMIC_TOUR = (function () {
     } else {
 
       cabin.features.outdoor.filter(function(t){return !/بانيو/.test(t);}).forEach(function(t){cards.push({value:feature(t),icon:'outdoor'});});
+      if(cabin.pool.facilities.indexOf('دش خارجي')!==-1) cards.push({value:'دش خارجي',icon:'shower'});
 
     }
 
