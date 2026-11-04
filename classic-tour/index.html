@@ -62,6 +62,16 @@
 <meta property="og:locale" content="ar_SA">
 <meta name="twitter:title" content="استكشف الكوخ الكلاسيكي | يوم العائلة">
 <meta name="twitter:description" content="استكشف الكوخ الكلاسيكي ومرافقه في تجربة استكشاف تفاعلية من منتجع يوم العائلة.">
+<style id="fd-classic-compact-cards">
+@media(max-width:599px){
+ #ov #classic-tour .dt-details:not(.is-empty){width:max-content;max-width:calc(100% - 20px);justify-self:center;box-sizing:border-box;margin-inline:auto;padding:8px 10px}
+ #ov #classic-tour .dt-cards:not(.is-scrollable){display:flex;justify-content:center;gap:7px;width:max-content;max-width:100%}
+ #ov #classic-tour .dt-cards:not(.is-scrollable) .dt-card{flex:0 0 clamp(98px,calc((100vw - 76px)/3),200px);width:clamp(98px,calc((100vw - 76px)/3),200px);min-width:0;box-sizing:border-box}
+ #ov #classic-tour .dt-cards.is-scrollable{display:flex;overflow-x:auto;scroll-snap-type:x proximity;direction:rtl}
+ #ov #classic-tour .dt-cards.is-scrollable .dt-card{flex:0 0 108px;min-width:108px}
+ #ov #classic-tour .dt-swipe-hint{display:flex!important;align-items:center;justify-content:center;gap:6px;margin:6px 0 0;color:#8fcbd6;font-size:11px}
+}
+</style>
 </head>
 
 <body>
@@ -91,6 +101,6 @@
 <script src="/resort-data.js?v=20261102-cleanup-v1"></script>
 
 <script src="/tour-common.js?v=20261102-code-cleanup-v2"></script>
-<script src="/classic-tour.js?v=20261102-code-cleanup-v2"></script>
+<script src="/classic-tour.js?v=20261105-classic-v1"></script>
 
 </body></html>
