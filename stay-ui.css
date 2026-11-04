@@ -550,7 +550,7 @@
     padding-top: clamp(8px, 2dvh, 20px);
     padding-bottom: clamp(20px, 4dvh, 36px);
   }
-  :is(#landing2,#landing3) .rh-logo { margin-bottom: clamp(12px, 2.5dvh, 24px); }
+  :is(#landing2,#landing3) .rh-logo { width: clamp(120px, 22dvh, 170px); height: clamp(64px, 11.73dvh, 90px); margin-bottom: clamp(12px, 2.5dvh, 24px); }
   :is(#landing2,#landing3) .rh-subtitle { margin-top: clamp(8px, 1.4dvh, 12px); }
   :is(#landing2,#landing3) .rh-shell > .rh-cabins {
     grid-column: 1;
