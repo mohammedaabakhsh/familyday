@@ -96,3 +96,13 @@
  }
  #ov #greek-tour .dt-swipe-hint span{font:600 15px/1 Arial,sans-serif;color:#5fe3f3}
 }
+
+/* Same adaptive detail-card treatment approved for the Bohemian tour. */
+@media(max-width:599px){
+ #ov #greek-tour .dt-details:not(.is-empty){width:max-content;max-width:calc(100% - 20px);justify-self:center;box-sizing:border-box;margin-inline:auto;padding:8px 10px}
+ #ov #greek-tour .dt-details.is-empty{visibility:hidden}
+ #ov #greek-tour .dt-cards:not(.is-scrollable){display:flex;justify-content:center;align-items:stretch;gap:7px;width:max-content;max-width:100%}
+ #ov #greek-tour .dt-cards:not(.is-scrollable) .dt-card{flex:0 0 clamp(98px,calc((100vw - 76px)/3),200px);width:clamp(98px,calc((100vw - 76px)/3),200px);min-width:0;box-sizing:border-box}
+ #ov #greek-tour .dt-card strong{overflow-wrap:normal;word-break:normal;text-wrap:balance}
+ #ov #greek-tour .dt-soundbar-line{display:block}
+}
