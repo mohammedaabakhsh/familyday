@@ -5,7 +5,7 @@ var FD_PYRAMID_TOUR = (function () {
   var parts = [
     {id:'bedroom', ar:'غرفة النوم الرئيسية', x:.553, y:.337},
     {id:'bathroom', ar:'حمام', x:.544, y:.230},
-    {id:'living', ar:'المنطقة الداخلية', x:.334, y:.356},
+    {id:'living', ar:'صالة داخلية', x:.334, y:.356},
     {id:'kitchen', ar:'ركن المطبخ', x:.411, y:.235},
     {id:'dining', ar:'طاولة الطعام', x:.408, y:.290},
     {id:'tub', ar:'البانيو الخارجي', x:.664, y:.337},
@@ -38,30 +38,31 @@ var FD_PYRAMID_TOUR = (function () {
 
     var cards = [], note = '';
     if (selected === 'pool') {
-      note = 'مسبح خاص للكبار';
+      note = '';
       var dimensions = cabin.pool.label.match(/(\d+)\s*×\s*(\d+)/);
       if (dimensions) cards.push({label:'المقاس', value:dimensions[1]+' × '+dimensions[2]+' م', icon:'size', numeric:true});
       cards.push({label:'العمق',value:String(cabin.pool.depthCm)+' سم',icon:'water',numeric:true});
       if (/جاكوزي/.test(cabin.pool.label)) cards.push({value:'جاكوزي داخل المسبح',icon:'tub'});
-      cabin.pool.facilities.forEach(function(t){cards.push({value:t,icon:t==='دش خارجي'?'shower':'chair'});});
+      cabin.pool.facilities.filter(function(t){return t!=='دش خارجي';}).forEach(function(t){cards.push({value:t,icon:'chair'});});
     } else if (selected === 'kitchen') {
       cabin.features.kitchen.forEach(function(t){cards.push({value:t,icon:kitchenIcon(t)});});
-      if(cabin.minibar) note='الميني بار: مشروبات وسناكس برسوم إضافية.';
+
     } else if (selected === 'dining') {
       cards.push({value:'طاولة الطعام',icon:'dining'});
     } else if (selected === 'living') {
-      cards=[{value:'صالة داخلية',icon:'sofa'},{value:'تلفزيون ذكي',icon:'tv'},{value:'سماعات داخلية (ساوند بار)',icon:'speaker'},{value:'واي فاي مجاني',icon:'wifi'}];
+      cards=[{value:'تلفزيون ذكي',icon:'tv'},{value:'سماعات داخلية (ساوند بار)',icon:'speaker'},{value:'واي فاي مجاني',icon:'wifi'}];
     } else if (selected === 'bedroom') {
-      cards=[{label:'السرير',value:'سرير مزدوج',icon:'bed'}];
+      cards=[{value:'سرير مزدوج',icon:'bed'}];
     } else if (selected === 'bathroom') {
-      cards=[{value:'حمام خاص بغرفة نوم بسرير مزدوج',icon:'shower'}];
+      cards=[{value:'حمام خاص داخل غرفة النوم الرئيسية',icon:'shower'}];
     } else if (selected === 'tub') {
       cards=[{value:'بانيو خارجي بخصوصية كاملة',icon:'tub'}];
     } else {
-      cabin.features.outdoor.filter(function(t){return !/بانيو/.test(t);}).forEach(function(t){cards.push({value:t,icon:'outdoor'});});
+      cabin.features.outdoor.filter(function(t){return !/بانيو/.test(t);}).forEach(function(t){cards.push({value:t==='الجلسة الخارجية'?'جلسات خارجية':t,icon:'outdoor'});});
+      if(cabin.pool.facilities.indexOf('دش خارجي')!==-1) cards.push({value:'دش خارجي',icon:'shower'});
     }
     var activePart=parts.find(function(part){return part.id===selected;});
-    FD_TOUR_COMMON.renderDetails(root,cards,note,activePart.ar,false);
+    FD_TOUR_COMMON.renderDetails(root,cards,note,activePart.ar,true);
   }
   function update() {
     root.lang='ar'; root.dir='rtl';
