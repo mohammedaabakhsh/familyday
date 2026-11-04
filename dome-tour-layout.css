@@ -61,3 +61,16 @@
  #ov #dome-tour .dt-note{font-size:11px;line-height:1.45;margin:6px 2px 0}
  #ov #dome-tour .dt-occupancy{margin:0;padding:0;font-size:13px;align-self:end}
 }
+
+/* Match the approved Bohemian bottom specification cards, without changing the map. */
+@media(max-width:599px){
+ #ov #dome-tour .dt-details:not(.is-empty){width:max-content;max-width:calc(100% - 20px);justify-self:center;box-sizing:border-box;margin-inline:auto;padding:8px 10px}
+ #ov #dome-tour .dt-details.is-empty{visibility:hidden}
+ #ov #dome-tour .dt-cards:not(.is-scrollable){display:flex;justify-content:center;align-items:stretch;gap:7px;width:max-content;max-width:100%}
+ #ov #dome-tour .dt-cards:not(.is-scrollable) .dt-card{flex:0 0 clamp(98px,calc((100vw - 76px)/3),200px);width:clamp(98px,calc((100vw - 76px)/3),200px);min-width:0;box-sizing:border-box}
+ #ov #dome-tour .dt-cards.is-scrollable{display:flex;grid-template-columns:none;overflow-x:auto;direction:rtl;overscroll-behavior-x:contain;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:1px 1px 4px}
+ #ov #dome-tour .dt-cards.is-scrollable::-webkit-scrollbar{display:none}
+ #ov #dome-tour .dt-cards.is-scrollable .dt-card{flex:0 0 108px;min-width:108px;scroll-snap-align:start}
+ #ov #dome-tour .dt-card strong{overflow-wrap:normal;word-break:normal;text-wrap:balance}
+ #ov #dome-tour .dt-soundbar-line{display:block}
+}
