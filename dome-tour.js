@@ -53,7 +53,7 @@ var FD_DOME_TOUR = (function () {
     } else if (selected === 'tub') {
       cards=[{value:'بانيو داخلي بغرفة النوم',icon:'tub'}];
     } else {
-      cabin.features.outdoor.forEach(function(t){cards.push({value:t==='الجلسة الخارجية'?'جلسات خارجية':t,icon:'outdoor'});});
+      cabin.features.outdoor.forEach(function(t){cards.push({value:t,icon:'outdoor'});});
       if(cabin.pool.facilities.indexOf('دش خارجي')!==-1) cards.push({value:'دش خارجي',icon:'shower'});
     }
     var activePart=parts.find(function(part){return part.id===selected;});
