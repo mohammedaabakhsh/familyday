@@ -5,7 +5,7 @@ var FD_DOME_TOUR = (function () {
   var parts = [
     {id:'bedroom', ar:'غرفة النوم الرئيسية', x:.50, y:.34},
     {id:'bathroom', ar:'حمام', x:.55, y:.26},
-    {id:'living', ar:'صالة جلوس', x:.50, y:.34},
+    {id:'living', ar:'صالة داخلية مدمجة مع غرفة النوم', x:.43, y:.39},
     {id:'kitchen', ar:'ركن المطبخ', x:.44, y:.29},
     {id:'tub', ar:'البانيو الداخلي', x:.40, y:.37},
     {id:'pool', ar:'المسبح', x:.24, y:.53},
@@ -47,7 +47,7 @@ var FD_DOME_TOUR = (function () {
     } else if (selected === 'bedroom') {
       cards=[{value:'سرير مزدوج',icon:'bed'}];
     } else if (selected === 'living') {
-      cards=[{value:'صالة جلوس مدمجة مع غرفة النوم',icon:'sofa'},{value:'تلفزيون ذكي',icon:'tv'},{value:'سماعات داخلية (ساوند بار)',icon:'speaker'},{value:'واي فاي مجاني',icon:'wifi'}];
+      cards=[{value:'تلفزيون ذكي',icon:'tv'},{value:'سماعات داخلية (ساوند بار)',icon:'speaker'},{value:'واي فاي مجاني',icon:'wifi'}];
     } else if (selected === 'bathroom') {
       cards=[{value:'حمام خاص داخل غرفة النوم الرئيسية',icon:'shower'}];
     } else if (selected === 'tub') {
@@ -87,8 +87,8 @@ var FD_DOME_TOUR = (function () {
     if(root && cabin && cabin.id===next.id) return;
     remove(); cabin=next; selected='bedroom';
     root=document.createElement('section');root.id='dome-tour';root.className='dt-tour';root.setAttribute('aria-labelledby','dt-title');
-    var topOrder=['bedroom','bathroom','kitchen','living'];
-    var bottomOrder=['outdoor','tub','pool'];
+    var topOrder=['bedroom','bathroom','kitchen'];
+    var bottomOrder=['outdoor','living','tub','pool'];
     root.innerHTML=FD_TOUR_COMMON.markup(parts,topOrder,bottomOrder,'/imgs/dome-tour-15-clarity-v1.png','lazy',false);
     root.querySelector('.dt-image').src='/imgs/dome-tour-'+(cabin.id===12?'16':'15')+'-clarity-v1.png';
     document.getElementById('dome-tour-host').appendChild(root);
