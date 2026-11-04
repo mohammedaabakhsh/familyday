@@ -286,7 +286,7 @@ const data = {
         "guests": 10,
         "bathroom": 2,
         "hall": true,
-        "bathroomDetails": ["حمامان: حمام خاص داخل غرفة النوم الرئيسية – حمام مشترك"],
+        "bathroomDetails": ["2 حمام: حمام خاص داخل غرفة النوم الرئيسية – حمام مشترك"],
         "badge": null,
         "bookUrl": "https://familyday-sa.com/ar/listings/69cea392c17a7072098dbd3b",
         "features": {
