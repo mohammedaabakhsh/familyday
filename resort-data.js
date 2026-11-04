@@ -13,6 +13,7 @@ const data = {
         "rooms": 1,
         "guests": 2,
         "bathroom": 1,
+        "bathroomDetails": ["حمام خاص داخل غرفة النوم الرئيسية"],
         "badge": "تجربة فريدة",
         "bookUrl": "https://familyday-sa.com/ar/listings/69cea3e03a421f1c8de8cb42",
         "features": {
@@ -42,7 +43,7 @@ const data = {
           ]
         },
         "pool": {
-          "label": "مسبح خاص للكبار مع جاكوزي، بمقاس 7 × 4 m",
+          "label": "مسبح خاص للكبار مع جاكوزي، بمقاس 7 × 4 م",
           "depthCm": 140,
           "depthInLabel": true,
           "facilities": [
@@ -50,7 +51,7 @@ const data = {
             "كراسي تشميس",
             "دش خارجي"
           ],
-          "depthUnit": "cm"
+          "depthUnit": "سم"
         },
         "minibar": true,
         "bath": {
@@ -67,6 +68,7 @@ const data = {
         "rooms": 1,
         "guests": 2,
         "bathroom": 1,
+        "bathroomDetails": ["حمام خاص داخل غرفة النوم الرئيسية"],
         "hall": true,
         "badge": null,
         "bookUrl": "https://familyday-sa.com/ar/listings/69cea44391aebf200fef69ea",
@@ -98,14 +100,14 @@ const data = {
           ]
         },
         "pool": {
-          "label": "مسبح خاص للكبار، بمقاس 4 × 4 m",
+          "label": "مسبح خاص للكبار، بمقاس 4 × 4 م",
           "depthCm": 140,
           "facilities": [
             "كراسي تشميس",
             "دش خارجي"
           ],
           "depthInLabel": true,
-          "depthUnit": "cm"
+          "depthUnit": "سم"
         },
         "minibar": true,
         "bath": {
@@ -123,6 +125,7 @@ const data = {
         "rooms": 1,
         "guests": 15,
         "bathroom": 1,
+        "bathroomDetails": ["حمام خاص داخل غرفة النوم الرئيسية"],
         "hall": true,
         "badge": null,
         "bookUrl": "https://familyday-sa.com/ar/listings/69cea4d091aebf200fef69eb",
@@ -208,14 +211,14 @@ const data = {
           ]
         },
         "pool": {
-          "label": "مسبح خاص للكبار، بمقاس 7 × 4 m",
+          "label": "مسبح خاص للكبار، بمقاس 7 × 4 م",
           "depthCm": 140,
           "facilities": [
             "كراسي تشميس",
             "دش خارجي"
           ],
           "depthInLabel": true,
-          "depthUnit": "cm"
+          "depthUnit": "سم"
         },
         "minibar": true,
         "bath": {
