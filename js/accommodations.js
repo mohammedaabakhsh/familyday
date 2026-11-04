@@ -311,7 +311,7 @@ ${c.id===8?'<a class="fd-pyramid-detail-tour" href="/rustic-tour/?from=details&c
           <span class="fd-cabin-feature">غرفة سائق</span>
         </div>
         <div class="fd-cabin-instructions">
-          <p><strong>المطعم:</strong> متاح يوميًا من 9 صباحًا حتى 1 بعد منتصف الليل.</p>
+          ${c.id===6?'':'<p><strong>المطعم:</strong> متاح يوميًا من 9 صباحًا حتى 1 بعد منتصف الليل.</p>'}
           <p><strong>غرفة السائق:</strong> متاحة حسب التوفر.</p>
         </div>
       </section>
