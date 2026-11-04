@@ -41,6 +41,13 @@
 #ov #dome-tour .dt-cards.is-scrollable .dt-card{flex:0 0 108px;min-width:108px}
 #ov #dome-tour .dt-swipe-hint{display:flex!important;justify-content:center;margin-top:6px}
 }
+</style><style id="fd-dome-lounge-position">
+@media(max-width:599px){
+ #ov #dome-tour .dt-labels--bottom{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px 7px}
+ #ov #dome-tour .dt-label--living{font-size:10.5px;line-height:1.15}
+ #ov #dome-tour .dt-cards:not(.is-scrollable){display:flex;justify-content:center;gap:7px;width:max-content;max-width:100%}
+ #ov #dome-tour .dt-cards:not(.is-scrollable) .dt-card{flex:0 0 clamp(98px,calc((100vw - 76px)/3),200px);width:clamp(98px,calc((100vw - 76px)/3),200px);min-width:0}
+}
 </style></head>
 <body>
 <div class="tour-page">
@@ -65,7 +72,7 @@
   }
 })();
 </script>
-<script src="/resort-data.js?v=20261102-cleanup-v1"></script>
+<script src="/resort-data.js?v=20261105-dome-lounge-v2"></script>
 <script src="/tour-common.js?v=20261102-code-cleanup-v2"></script>
-<script src="/dome-tour.js?v=20261105-dome-unified-v1"></script>
+<script src="/dome-tour.js?v=20261105-dome-lounge-v2"></script>
 </body></html>
