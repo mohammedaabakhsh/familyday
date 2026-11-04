@@ -62,6 +62,17 @@
 <meta property="og:locale" content="ar_SA">
 <meta name="twitter:title" content="استكشف كوخ رويال | يوم العائلة">
 <meta name="twitter:description" content="استكشف كوخ رويال ومرافقه في تجربة استكشاف تفاعلية من منتجع يوم العائلة.">
+<style id="fd-tour-cards-bohemian-match">
+@media(max-width:599px){
+ #ov .dt-details:not(.is-empty){width:max-content;max-width:calc(100% - 20px);justify-self:center;box-sizing:border-box;margin-inline:auto;padding:8px 10px}
+ #ov .dt-details.is-empty{visibility:hidden}
+ #ov .dt-cards:not(.is-scrollable){display:flex;justify-content:center;align-items:stretch;gap:7px;width:max-content;max-width:100%}
+ #ov .dt-cards:not(.is-scrollable) .dt-card{flex:0 0 clamp(98px,calc((100vw - 76px)/3),200px);width:clamp(98px,calc((100vw - 76px)/3),200px);min-width:0;box-sizing:border-box}
+ #ov .dt-card strong{overflow-wrap:normal;word-break:normal;text-wrap:balance}
+ #ov .dt-swipe-hint{display:flex!important;align-items:center;justify-content:center;gap:6px;margin:6px 0 0;color:#8fcbd6;font-size:11px;line-height:1.2}
+ #ov .dt-cards.is-scrollable{display:flex;overflow-x:auto;scroll-snap-type:x proximity}
+}
+</style>
 </head>
 
 <body>
@@ -91,6 +102,6 @@
 <script src="/resort-data.js?v=20261102-cleanup-v1"></script>
 
 <script src="/tour-common.js?v=20261102-code-cleanup-v2"></script>
-<script src="/royal-tour.js?v=20261105-map-fix-v2"></script>
+<script src="/royal-tour.js?v=20261105-lower-cards-v3"></script>
 
 </body></html>
