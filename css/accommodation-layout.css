@@ -246,9 +246,9 @@ html:has(#dest:not(.hide)),body:has(#dest:not(.hide)){
   width:100%;min-width:0;min-height:0;
 }
 #dest .dest-heading{position:relative;font-size:24px;font-weight:700;color:#fff;margin:0 0 6px;letter-spacing:0;}
-.heading-with-birds{position:relative;}
+.heading-with-birds{position:relative;--heading-birds-top:-20px;}
 .heading-birds{
-  position:absolute;left:-5px;top:-14px;width:30px;height:20px;
+  position:absolute;left:-5px;top:var(--heading-birds-top,-14px);width:30px;height:20px;
   color:#69bcc7;pointer-events:none;animation:headingBirdFlight 3.6s ease-in-out infinite;
 }
 .heading-birds svg{display:block;width:100%;height:100%;overflow:visible;}
