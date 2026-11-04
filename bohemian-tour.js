@@ -48,7 +48,6 @@ var FD_BOHO_TOUR = (function () {
       cabin.pool.facilities.forEach(function(t){cards.push({value:feature(t),icon:t==='دش خارجي'?'shower':'chair'});});
     } else if (selected === 'kitchen') {
       cabin.features.kitchen.forEach(function(t){cards.push({value:feature(t),icon:kitchenIcon(t)});});
-      if(cabin.minibar) note='الميني بار: مشروبات وسناكس برسوم إضافية.';
     } else if (selected === 'dining') {
       cards=[{value:'طاولة الطعام',icon:'dining'}];
     } else if (selected === 'living') {
