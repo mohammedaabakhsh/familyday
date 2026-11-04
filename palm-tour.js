@@ -6,7 +6,7 @@ var FD_PALM_TOUR = (function () {
  {id:'bedroom', ar:'غرفة النوم الرئيسية', x:.35, y:.14},
  {id:'bathroom', ar:'حمامات', x:.50, y:.15},
  {id:'twin', ar:'غرفة النوم الثانية', x:.69, y:.15},
- {id:'living', ar:'المنطقة الداخلية', x:.49, y:.29},
+ {id:'living', ar:'صالة داخلية', x:.49, y:.29},
  {id:'kitchen', ar:'ركن المطبخ', x:.65, y:.29},
  {id:'dining', ar:'طاولة الطعام', x:.59, y:.34},
  {id:'pool', ar:'المسبح', x:.25, y:.59},
