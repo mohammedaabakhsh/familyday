@@ -499,12 +499,12 @@
 :is(#landing2,#landing3) .rh-shell > .rh-cabins {
   height: clamp(160px, 23dvh, 210px);
   padding: 18px;
-  margin-bottom: 10px;
+  margin-bottom: clamp(12px, 2.6dvh, 22px);
   border-radius: 18px;
 }
 :is(#landing2,#landing3) .rh-shell > .rh-cabins .rh-cabin-title { font-size: 26px; }
 :is(#landing2,#landing3) .rh-shell > .rh-cabins .rh-cabin-caption { font-size: 12px; }
-:is(#landing2,#landing3) .rh-menu { display: grid; gap: 8px; }
+:is(#landing2,#landing3) .rh-menu { display: grid; gap: clamp(10px, 1.9dvh, 16px); }
 :is(#landing2,#landing3) .rh-menu .rh-home-shortcut {
   width: 100%;
   min-height: 64px;
