@@ -35,6 +35,7 @@ var FD_TOUR_COMMON = (function () {
   }
   function cardValue(value) {
     if (value === 'سماعات داخلية (ساوند بار)') return '<span class="dt-soundbar-line">سماعات داخلية</span><span class="dt-soundbar-line">(ساوند بار)</span>';
+    if (value === 'حمام خاص داخل غرفة النوم الرئيسية') return '<span class="dt-soundbar-line">حمام خاص</span><span class="dt-soundbar-line">داخل غرفة النوم الرئيسية</span>';
     return esc(value);
   }
 
