@@ -341,7 +341,13 @@
     column-gap: 18px;
     align-content: start;
   }
-  #landing .rh-intro { grid-column: 1 / -1; grid-row: 1; }
+  #landing .rh-intro {
+    grid-column: 1 / -1; grid-row: 1;
+    padding-top: clamp(8px, 2dvh, 20px);
+    padding-bottom: clamp(20px, 4dvh, 36px);
+  }
+  #landing .rh-logo { margin-bottom: clamp(12px, 2.5dvh, 24px); }
+  #landing .rh-subtitle { margin-top: clamp(8px, 1.4dvh, 12px); }
   #landing .rh-shell > .rh-cabins {
     grid-column: 1;
     grid-row: 3;
