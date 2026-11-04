@@ -44,16 +44,28 @@
   min-height: 44px;
   max-width: 100%;
   margin-bottom: 8px;
-  padding: 10px 12px;
-  border: 1px solid #294653;
-  border-radius: 12px;
-  background: #0b2534;
+  padding: 0;
+  border: 0;
+  border-radius: 22px;
+  background: transparent;
   color: #d7e8ed;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.3;
   cursor: pointer;
-  transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+  transition: color .15s ease;
+}
+:is(#landing2,#landing3) .rh-back-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border: 1px solid #294653;
+  border-radius: 50%;
+  background: rgba(255,255,255,.04);
+  transition: background-color .15s ease, border-color .15s ease;
 }
 :is(#landing2,#landing3) .rh-destinations svg {
   width: 8px;
@@ -251,7 +263,7 @@
   :is(#landing2,#landing3) .rh-logo { width: 182px; height: 96px; margin-bottom: 16px; }
   :is(#landing2,#landing3) :is(#sh-title,#ch-title) { font-size: 34px; }
   :is(#landing2,#landing3) .rh-subtitle { font-size: 16px; margin-top: 8px; }
-  :is(#landing2,#landing3) .rh-destinations { top: 8px; padding-inline: 14px; }
+  :is(#landing2,#landing3) .rh-destinations { top: 8px; }
   :is(#landing2,#landing3) .rh-grid { grid-template-columns: minmax(0, 1.85fr) minmax(0, 1fr); grid-template-rows: repeat(2, 186px); gap: 18px; }
   :is(#landing2,#landing3) .rh-cabins { grid-column: 1; grid-row: 1 / 3; height: 100%; padding: 32px; border-radius: 24px; }
   :is(#landing2,#landing3) .rh-cabin-title { font-size: 36px; }
@@ -277,7 +289,8 @@
   :is(#landing2,#landing3) .rh-cabins:hover .rh-cabin-photo { transform: scale(1.035); }
   :is(#landing2,#landing3) .rh-action:hover { border-color: rgba(99,191,205,.52); background: #133346; transform: translateY(-2px); }
   :is(#landing2,#landing3) .rh-faq:hover { color: #fff; }
-  :is(#landing2,#landing3) .rh-destinations:hover { color: #fff; background: #133346; border-color: #416b7c; }
+  :is(#landing2,#landing3) .rh-destinations:hover { color: #fff; }
+  :is(#landing2,#landing3) .rh-destinations:hover .rh-back-icon { background: #133346; border-color: #416b7c; }
   :is(#landing2,#landing3) .rh-reviews:hover .rh-reviews-label { color: #d9eef5; }
 }
 :is(#landing2,#landing3) .rh-action:active { transform: scale(.985); }
@@ -520,7 +533,7 @@
 @media (max-height: 740px) {
   :is(#landing2,#landing3) .rh-shell { padding: 8px 16px calc(6px + env(safe-area-inset-bottom, 0px)); }
   :is(#landing2,#landing3) .rh-intro { padding: 0 0 8px; }
-  :is(#landing2,#landing3) .rh-destinations { position: absolute; top: 0; inset-inline-start: 0; margin: 0; padding-inline: 8px; }
+  :is(#landing2,#landing3) .rh-destinations { position: absolute; top: 0; inset-inline-start: 0; margin: 0; }
   :is(#landing2,#landing3) .rh-logo { width: 100px; height: 48px; margin-bottom: 4px; }
   :is(#landing2,#landing3) :is(#sh-title,#ch-title) { font-size: 24px; }
   :is(#landing2,#landing3) .rh-subtitle { font-size: 12px; margin-top: 3px; }
