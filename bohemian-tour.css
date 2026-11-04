@@ -91,3 +91,17 @@
 @media(max-width:599px){
  #ov #bohemian-tour .dt-instruction{font-size:12px}
 }
+
+/* Bohemian only: replace the extra swipe-instruction row with an in-row arrow. */
+@media(max-width:599px){
+ #ov #bohemian-tour .dt-swipe-hint{display:none!important}
+ #ov #bohemian-tour .dt-details:has(.dt-cards.is-scrollable){position:relative}
+ #ov #bohemian-tour .dt-details:has(.dt-cards.is-scrollable)::after{
+   content:'‹';position:absolute;left:5px;top:29px;z-index:2;
+   display:flex;align-items:center;justify-content:center;
+   width:18px;height:28px;border-radius:12px;
+   color:#5fe3f3;background:rgba(4,17,30,.82);
+   font:700 26px/1 Arial,sans-serif;pointer-events:none
+ }
+ #ov #bohemian-tour .dt-cards.is-scrollable{padding-left:19px}
+}
