@@ -92,3 +92,12 @@
  #ov #bohemian-tour .dt-instruction{font-size:12px}
 }
 
+
+/* Compact feature container: fit its actual card count without shrinking cards. */
+@media(max-width:599px){
+ #ov #bohemian-tour .dt-details:not(.is-empty){width:max-content;max-width:calc(100% - 20px);justify-self:center;box-sizing:border-box;margin-inline:auto;padding:8px 10px}
+ #ov #bohemian-tour .dt-cards:not(.is-scrollable){display:flex;justify-content:center;align-items:stretch;gap:7px;width:max-content;max-width:100%}
+ #ov #bohemian-tour .dt-cards:not(.is-scrollable) .dt-card{flex:0 0 clamp(98px,calc((100vw - 76px)/3),200px);width:clamp(98px,calc((100vw - 76px)/3),200px);min-width:0;box-sizing:border-box}
+ #ov #bohemian-tour .dt-card strong{overflow-wrap:normal;word-break:normal;text-wrap:balance}
+ #ov #bohemian-tour .dt-soundbar-line{display:block}
+}
