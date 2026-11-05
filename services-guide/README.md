@@ -37,7 +37,8 @@ continue to come from the shared sources. Print styles also support saving the
 continuous brochure as a PDF from the browser. Map selection
 supports touch and keyboard, shows a square cabin photo and an exploration link,
 and retains the shared garden's features. The map starts collapsed behind a preview; its contents remain visible when printing.
-Each chapter has a distinct colored heading and a separating margin. The closing
+Chapters share a restrained white, navy and muted teal palette; spacing and thin
+rules distinguish sections without assigning a different color to each service. The closing
 panel groups location, phone and social links in one grid.
 
 ## Checks
