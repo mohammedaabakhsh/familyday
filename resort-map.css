@@ -1,7 +1,9 @@
 /* Interactive map. Cabin facts come from the site's existing data. */
 .fd-map-launcher[hidden],.fd-map-dialog [hidden],.fd-map-photos [hidden]{display:none!important}
 .fd-map-launcher{display:flex;padding:2px 16px 4px}
-#fd-map-open{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:40px;padding:8px 16px;border:1px solid rgba(169,204,213,.18);border-radius:12px;background:rgba(169,204,213,.035);color:#b8d9e0;font:600 14px/1.4 "Tajawal", sans-serif;cursor:pointer}
+#fd-map-open{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:40px;padding:8px 16px;border:1px solid rgba(169,204,213,.18);border-radius:12px;background:rgba(169,204,213,.035);color:#b8d9e0;font:600 14px/1.4 "Tajawal", sans-serif;cursor:pointer}
+/* Keep a 44px touch area around the compact 36px button. */
+#fd-map-open::before{content:"";position:absolute;inset:-4px;border-radius:inherit;}
 #fd-map-open svg{flex:none;}
 @media(hover:hover) and (pointer:fine){#fd-map-open:hover{background:rgba(169,204,213,.09);border-color:rgba(169,204,213,.35);color:#fff;}}
 .fd-map-dialog{position:fixed;inset:0;margin:auto;padding:0;width:min(calc(100vw - 32px), 1120px);max-width:none;height:min(calc(100vh - 32px), 780px);height:min(calc(100dvh - 32px), 780px);max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);border:1px solid #234655;border-radius:20px;background:#081c2a;color:#fff;overflow:hidden;overscroll-behavior:contain;font-family:"Tajawal", sans-serif;direction:rtl;box-sizing:border-box;box-shadow:0 20px 70px rgba(0,0,0,.3)}
