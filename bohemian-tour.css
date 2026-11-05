@@ -101,3 +101,8 @@
  #ov #bohemian-tour .dt-card strong{overflow-wrap:normal;word-break:normal;text-wrap:balance}
  #ov #bohemian-tour .dt-soundbar-line{display:block}
 }
+
+/* Trial only on Bohemian: more contrast for the lower specification cards. */
+#ov #bohemian-tour .dt-details .dt-card{background:#17465a;border:1px solid #3b91a6;color:#fff}
+#ov #bohemian-tour .dt-details .dt-card svg{color:#8fe4f1;stroke:#8fe4f1}
+#ov #bohemian-tour .dt-details .dt-card strong,#ov #bohemian-tour .dt-details .dt-card span{color:#fff}
