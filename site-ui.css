@@ -185,8 +185,8 @@
 .fd-destination-location{font:500 12px/1.5 Tajawal,sans-serif;color:#a6dfe8;margin:2px 0 4px;}
 .fd-page-heading-copy{min-width:0;}
 .fd-venue-subtitle{margin:4px 0 0;color:#9ac8d4;font:500 13px/1.5 Tajawal,sans-serif;}
-/* The name trial uses existing space; the header remains 56px tall. */
-#ov.fd-cabin-modern .fd-detail-current-name{margin-inline-start:auto;max-width:calc(100% - 110px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#f0f5f7;font:700 14px/1.5 Tajawal,sans-serif;}
+/* Keep long cabin names inside their navigation header. */
+#ov.fd-cabin-modern .fd-detail-current-name{min-width:0;overflow-wrap:anywhere;}
 #tawilat-detail .tw-contact:disabled{opacity:.55;cursor:default;}
 .fd-cart-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 12px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.1);font-family:Tajawal,sans-serif;}
 .fd-cart-copy{min-width:0;display:flex;flex-direction:column;gap:4px;}

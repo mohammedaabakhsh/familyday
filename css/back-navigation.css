@@ -1,0 +1,38 @@
+/* Shared back-navigation contract. Layered important declarations take priority
+   over legacy page-specific sizes, including inline styles, without changing
+   content headings, photo navigation, or close (×) buttons. */
+@layer fd-back-navigation {
+  :root{--fd-back-circle:36px;--fd-back-gap:8px;--fd-back-ink:#d7e8ed;--fd-back-arrow:#8fc3cf;--fd-back-border:#294653;--fd-back-fill:rgba(255,255,255,.04);}
+  :is(.back-btn,.faq-back,.contact-back,.svcs-back,.menu-back,.cn-back,.tg-back,.wm-back,.tw-back,.jl-back,.hd-back,.sw-back,.wl-back,.setups-back,.fd-cabin-nav-back,.fd-map-close,.cm-close,.tour-back),.rh-back-icon,.fd-back-circle{
+    box-sizing:border-box!important;width:var(--fd-back-circle)!important;height:var(--fd-back-circle)!important;
+    min-width:var(--fd-back-circle)!important;max-width:var(--fd-back-circle)!important;min-height:var(--fd-back-circle)!important;
+    flex:0 0 var(--fd-back-circle)!important;display:flex!important;align-items:center!important;justify-content:center!important;
+    padding:0!important;border:1px solid var(--fd-back-border)!important;border-radius:50%!important;
+    background:var(--fd-back-fill)!important;color:var(--fd-back-arrow)!important;box-shadow:none!important;
+  }
+  :is(.back-btn,.faq-back,.contact-back,.svcs-back,.menu-back,.cn-back,.tg-back,.wm-back,.tw-back,.jl-back,.hd-back,.sw-back,.wl-back,.setups-back,.fd-cabin-nav-back,.fd-map-close,.cm-close,.tour-back){position:relative!important;margin-block:4px!important;cursor:pointer;touch-action:manipulation;}
+  /* A 44px touch area around the approved 36px visible circle. */
+  :is(.back-btn,.faq-back,.contact-back,.svcs-back,.menu-back,.cn-back,.tg-back,.wm-back,.tw-back,.jl-back,.hd-back,.sw-back,.wl-back,.setups-back,.fd-cabin-nav-back,.fd-map-close,.cm-close,.tour-back)::before{content:"";position:absolute;inset:-5px;border-radius:50%;}
+  :is(.back-btn,.faq-back,.contact-back,.svcs-back,.menu-back,.cn-back,.tg-back,.wm-back,.tw-back,.jl-back,.hd-back,.sw-back,.wl-back,.setups-back,.fd-cabin-nav-back,.fd-map-close,.cm-close,.tour-back) svg,.rh-back-icon svg,.fd-back-circle svg{
+    width:8px!important;height:14px!important;flex:none!important;fill:none!important;
+    stroke:currentColor!important;stroke-width:2!important;stroke-linecap:round!important;stroke-linejoin:round!important;
+    transform:none!important;
+  }
+  .fd-cabin-nav-back > svg:first-child,.fd-cabin-nav-back > span{display:none!important;}
+  .fd-cabin-nav-back > .fd-resort-back-icon{display:block!important;}
+  :is(#headerTitle,#headerTitle2,.faq-title,.cp-title,.svcs-title,.menu-title,.cn-title,.tg-title,.wm-title,.tw-title,.jl-title,.hd-title,.sw-title,.wl-title,#setups-title,.fd-detail-current-name,#fd-map-title,#cm-title,.dt-heading .dt-title),.rh-destinations,.guide-back{
+    font:600 14px/1.3 Tajawal,sans-serif!important;letter-spacing:normal!important;color:var(--fd-back-ink)!important;
+  }
+  :is(#headerTitle,#headerTitle2,.faq-title,.cp-title,.svcs-title,.menu-title,.cn-title,.tg-title,.wm-title,.tw-title,.jl-title,.hd-title,.sw-title,.wl-title,#setups-title,.fd-detail-current-name,#fd-map-title,#cm-title,.dt-heading .dt-title){
+    position:static!important;transform:none!important;margin:0!important;padding:0!important;
+    min-width:0!important;max-width:100%!important;min-height:44px!important;
+    display:flex!important;align-items:center!important;text-align:start!important;white-space:normal!important;
+  }
+  :is(.cabin-heading-row,#header2,.faq-heading,.cp-heading,.svcs-header,.menu-heading,.cn-heading,.tg-heading,.wm-header,.tw-heading,.jl-heading,.hd-header,.sw-heading,.wl-heading,.setups-heading,.fd-cabin-nav,.fd-map-heading,.cm-heading,.dt-heading){display:flex!important;align-items:flex-start!important;justify-content:flex-start!important;gap:var(--fd-back-gap)!important;min-height:44px!important;height:auto!important;}
+  .rh-destinations,.guide-back{display:inline-flex!important;align-items:center!important;gap:var(--fd-back-gap)!important;min-height:44px!important;padding:0!important;border:0!important;background:transparent!important;text-decoration:none!important;}
+  .fd-detail-current-name{flex:1!important;}
+  :is(.back-btn,.faq-back,.contact-back,.svcs-back,.menu-back,.cn-back,.tg-back,.wm-back,.tw-back,.jl-back,.hd-back,.sw-back,.wl-back,.setups-back,.fd-cabin-nav-back,.fd-map-close,.cm-close,.tour-back):focus-visible,.rh-destinations:focus-visible,.guide-back:focus-visible{outline:2px solid var(--fd-back-arrow)!important;outline-offset:4px!important;}
+  @media(hover:hover) and (pointer:fine){
+    :is(.back-btn,.faq-back,.contact-back,.svcs-back,.menu-back,.cn-back,.tg-back,.wm-back,.tw-back,.jl-back,.hd-back,.sw-back,.wl-back,.setups-back,.fd-cabin-nav-back,.fd-map-close,.cm-close,.tour-back):hover,.rh-destinations:hover .rh-back-icon,.guide-back:hover .fd-back-circle{background:#133346!important;border-color:#416b7c!important;}
+  }
+}
