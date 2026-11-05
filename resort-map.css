@@ -209,3 +209,16 @@
  #fd-map-dialog::after{content:"";position:absolute;top:0;bottom:0;left:calc(clamp(300px,32vw,420px) - 1px);width:1px;background:#234655;pointer-events:none}
  #fd-map-dialog .fd-map-panel{border-right:0}
 }
+
+/* Pilot: full, centered map before selection; compact Greek and garden summaries. */
+@media(max-width:819px){
+ #fd-map-dialog.fd-map-no-selection .fd-map-panel{display:none!important}
+ #fd-map-dialog.fd-map-no-selection .fd-map-viewport{flex:1 1 auto;min-height:0}
+ #fd-map-dialog.fd-map-pilot-compact .fd-map-panel{flex:0 0 auto;height:auto;max-height:min(35dvh,300px)}
+ #fd-map-dialog.fd-map-pilot-compact .fd-map-info{padding:10px 14px max(12px,env(safe-area-inset-bottom))}
+ #fd-map-dialog.fd-map-pilot-compact .fd-map-card:not([hidden]){min-height:0}
+ #fd-map-dialog.fd-map-pilot-compact .fd-map-facts{margin:8px 0}
+ #fd-map-dialog.fd-map-pilot-compact .fd-map-amenities{margin-bottom:8px}
+ #fd-map-dialog.fd-map-pilot-compact .fd-map-details-button{min-height:39px;margin-top:6px;padding:7px 12px}
+ #fd-map-dialog.fd-map-pilot-compact .fd-map-tour-button{min-height:39px;margin-top:6px!important;padding:7px 12px}
+}
