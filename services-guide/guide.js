@@ -51,6 +51,10 @@
       const contents = list(card, '.hd-item span:last-child');
       const body = (description ? '<p class="package-description">' + escape(description.textContent.trim()) + '</p>' : '') + items(contents) + (note ? '<p class="small-note">' + escape(note.textContent.trim()) + '</p>' : '');
       const image = packagePhotos[title] || 'imgs/dome_1.webp';
+      if (card.querySelector('#hd-coordination-package-resort')) {
+        const photos = [2,1,3,4,5,6].map(n => 'imgs/royal_' + n + '.webp');
+        return '<article class="package-card package-card--gallery" id="package-complete">' + FD_GUIDE_GALLERY.markup(photos,title) + '<div class="package-copy"><div class="package-heading">' + heading + priceLabel + '</div><details class="package-details"><summary><span>تفاصيل الباقة</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="package-details-body">' + body + '</div></details></div></article>';
+      }
       return '<article class="package-card' + (contents.length > 14 ? ' package-card--wide' : '') + '"><figure class="package-photo">' + photo(image,'من أجواء أكواخ منتجع يوم العائلة') + '<figcaption>من أجواء الأكواخ</figcaption></figure><div class="package-copy"><div class="package-heading">' + heading + priceLabel + '</div>' + body + '</div></article>';
     }).join('') + '</div>';
   }
@@ -63,6 +67,7 @@
     html += section('resort-map','06','خريطة الأكواخ','اختر الكوخ على الخريطة واستكشف غرفه ومرافقه', FD_GUIDE_MAP.markup());
     content.innerHTML = html;
     FD_GUIDE_MAP.mount();
+    FD_GUIDE_GALLERY.mount();
     content.setAttribute('aria-busy','false');
     scrollToHash();
     observeSections();
@@ -70,7 +75,7 @@
   function scrollToHash() {
     if(location.hash === '#packages') history.replaceState(null,'','#seating');
     const target = document.getElementById(location.hash.slice(1));
-    if (target && (target.classList.contains('guide-section') || target.id === 'contents')) target.scrollIntoView({behavior:'instant',block:'start'});
+    if (target && (target.classList.contains('guide-section') || target.id === 'contents' || target.id === 'package-complete')) target.scrollIntoView({behavior:'instant',block:'start'});
   }
   let observing = false;
   function observeSections() {
