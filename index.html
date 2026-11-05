@@ -96,9 +96,12 @@
 </style>
 <style>#ov.open[data-return-to-map="true"]{z-index:350}</style>
 <style>.fd-pyramid-detail-tour{display:inline-flex;align-items:center;gap:12px;margin:0 0 18px;padding:10px 16px;min-height:44px;border:1px solid #63b6c5;border-radius:10px;color:#c8eff5;text-decoration:none;font:700 14px/1.4 Tajawal,sans-serif}.fd-pyramid-detail-tour:focus-visible{outline:3px solid #92efff;outline-offset:3px}</style><style id="fd-garden-independent-facts">
-.fd-shared-garden-content .fd-cabin-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;overflow:visible!important}
-.fd-shared-garden-content .fd-cabin-facts>div{min-width:0;border:1px solid #285160!important;border-radius:12px!important;background:#102f3e!important;box-shadow:none!important;padding:12px!important;box-sizing:border-box}
-@media(max-width:420px){.fd-shared-garden-content .fd-cabin-facts{gap:9px}.fd-shared-garden-content .fd-cabin-facts>div{padding:10px!important}}
+/* Two independent, equally sized garden fact cards; no enclosing split box. */
+.fd-shared-garden-content .fd-cabin-facts{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important;background:none!important;border:0!important;box-shadow:none!important;padding:0!important;overflow:visible!important}
+.fd-shared-garden-content .fd-cabin-facts::before,.fd-shared-garden-content .fd-cabin-facts::after{content:none!important;display:none!important}
+.fd-shared-garden-content .fd-cabin-facts>div{display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:stretch!important;min-width:0!important;width:100%!important;min-height:76px!important;margin:0!important;padding:12px!important;box-sizing:border-box!important;border:1px solid #285160!important;border-radius:12px!important;background:#102f3e!important;box-shadow:none!important}
+.fd-shared-garden-content .fd-cabin-facts>div+div{border-left:1px solid #285160!important;border-right:1px solid #285160!important}
+@media(max-width:420px){.fd-shared-garden-content .fd-cabin-facts{gap:10px!important}.fd-shared-garden-content .fd-cabin-facts>div{min-height:68px!important;padding:10px!important}}
 </style>
 </head>
 <body>
