@@ -99,10 +99,10 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 .gallery-slide{display:block;flex:0 0 100%;min-width:0;width:100%;scroll-snap-align:center;scroll-snap-stop:always}
 .gallery-track:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
 .package-gallery .gallery-slide img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
-.gallery-controls{position:absolute;right:0;bottom:0;z-index:2;display:flex;align-items:center;direction:ltr;background:#000c;color:#fff}
+.gallery-controls{position:absolute;right:0;bottom:0;z-index:2;display:flex;align-items:center;direction:ltr;background:transparent;color:#fff}
 .gallery-arrow{display:grid;place-items:center;width:44px;height:44px;margin:0;padding:0;border:0;border-radius:0;background:transparent;color:inherit;cursor:pointer;touch-action:manipulation}
-.gallery-arrow svg{width:17px;height:17px}.gallery-arrow:disabled{opacity:.35;cursor:default}.gallery-arrow:focus-visible{outline:2px solid white;outline-offset:-3px}
-.gallery-count{display:block;min-width:40px;text-align:center;white-space:nowrap;font-size:13px;font-weight:700;letter-spacing:1px;line-height:1}
+.gallery-arrow svg{width:17px;height:17px;filter:drop-shadow(0 1px 2px #000b)}.gallery-arrow:disabled{opacity:.35;cursor:default}.gallery-arrow:focus-visible{outline:2px solid white;outline-offset:-3px}
+.gallery-count{display:block;min-width:40px;text-align:center;white-space:nowrap;font-size:13px;font-weight:700;letter-spacing:1px;line-height:1;text-shadow:0 1px 3px #000b}
 .package-details>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;padding:12px 0 0;color:var(--accent);font-size:15px;font-weight:700;cursor:pointer;list-style:none}
 .package-details>summary::-webkit-details-marker{display:none}.package-details>summary::marker{content:''}.package-details>summary svg{width:20px;height:20px;flex:none;transition:transform .2s}
 .package-details[open]>summary svg{transform:rotate(180deg)}.package-details>summary:focus-visible{outline:3px solid #168c99;outline-offset:3px}
