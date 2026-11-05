@@ -152,6 +152,7 @@
     connectionNote.hidden = true;
     connectionNote.textContent = '';
     syncToolbar();
+    if (dialog && dialog.open) measureView(true);
     if (restoreFocus && old) markers[locations.indexOf(old)].focus({ preventScroll: true });
   }
 
@@ -291,6 +292,7 @@
       highlights[i].hidden = !active;
     });
     renderSelectedLocation(location);
+    if (dialog && dialog.open) measureView(true);
     document.dispatchEvent(new CustomEvent('fd-map-selection-change',{detail:{cabinId:cabin.id}}));
   }
 
@@ -423,7 +425,7 @@
     view.height = viewport.clientHeight;
     // On short phones the bottom row needs its own strip, clear of Palm Beach.
     view.labelFooter = window.matchMedia('(max-width: 819px)').matches && Math.min(view.width, view.height) < 360 ? 32 : 0;
-    view.size = Math.min(view.width, view.height - view.labelFooter);
+    view.size = Math.min(view.width, view.height - view.labelFooter) * (window.matchMedia('(max-width: 819px)').matches && !selected ? 0.94 : 1);
     if (reset) { view.scale = 1; centerX = centerY = .5; }
     view.x = view.width / 2 - centerX * view.size * view.scale;
     view.y = view.height / 2 - centerY * view.size * view.scale;
