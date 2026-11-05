@@ -57,7 +57,7 @@
 <link rel="preload" as="script" href="js/stay-navigation.js?v=20261103-dest-feedback-v4">
 <link rel="preload" as="script" href="js/router.js?v=20261105-compare-cleanup-v1">
 <link rel="stylesheet" href="css/app-base.css?v=20261103-splash-motion-v1">
-<link rel="stylesheet" href="resort-map.css?v=20261105-shared-captions-v1">
+<link rel="stylesheet" href="resort-map.css?v=20261105-map-launcher-v1">
 <style id="fd-home-map-shortcut">
 #landing .rh-home-shortcut{display:flex;align-items:center;gap:14px;margin-top:16px;padding:12px 14px;border:1px solid rgba(99,191,205,.32);border-radius:16px;background:linear-gradient(120deg,#0d2b3a,#0a202e);color:#edf5f7;text-decoration:none;text-align:right;min-width:0;}
 #landing .rh-map-copy{display:flex;flex:1;min-width:0;flex-direction:column;gap:4px;}
@@ -1470,7 +1470,7 @@
       <button class="fbtn" data-f="shared">الحديقة المشتركة</button>
     </div>
     <div class="fd-map-launcher" id="fd-map-launcher" hidden>
-      <button type="button" id="fd-map-open" aria-haspopup="dialog" aria-controls="fd-map-dialog">خريطة الأكواخ</button>
+      <button type="button" id="fd-map-open" aria-haspopup="dialog" aria-controls="fd-map-dialog"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3V6Z"/><path d="M9 3v15M15 6v15"/></svg><span>عرض الخريطة</span></button>
     </div>
   </div>
 
@@ -1858,7 +1858,7 @@
 <link rel="stylesheet" href="chalet-map.css?v=20261105-shared-captions-v1">
 <script src="chalet-map.js?v=20261102-code-cleanup-v2" defer></script>
 
-<link rel="stylesheet" href="css/accommodation-layout.css?v=20261105-destination-copy-v1">
+<link rel="stylesheet" href="css/accommodation-layout.css?v=20261105-map-launcher-v1">
 
 <link rel="stylesheet" href="resort-ui.css?v=20261103-service-headers-v1">
 <link rel="stylesheet" href="css/service-mobile.css?v=20261103-games-photo-v1">
@@ -1938,7 +1938,7 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
  #app .cabin-page-header{padding:12px 16px 8px}
  #app .cabin-heading-row{gap:10px}
  #app .cabin-heading-row .fd-map-launcher{margin-inline-start:auto;padding:0;border:0;flex:none}
- #app .cabin-heading-row #fd-map-open{min-height:44px;padding:8px 11px;border:1px solid #315967;border-radius:12px;background:#102b3a;color:#b8e6ec;font:700 12px/1.4 Tajawal,sans-serif;white-space:nowrap}
+ #app .cabin-heading-row #fd-map-open{min-height:44px;padding:8px 11px;border:1px solid rgba(169,204,213,.18);border-radius:12px;background:rgba(169,204,213,.035);color:#b8d9e0;font:600 12px/1.4 Tajawal,sans-serif;white-space:nowrap}
  #app .cabin-toolbar{padding:0 16px 8px}
  #app .cabin-toolbar .filter-section{display:flex;flex:1 1 100%;flex-wrap:nowrap;gap:4px;overflow:visible}
  #app .cabin-toolbar .fbtn{flex:1 1 auto;min-width:0;min-height:40px;padding:6px;font-size:clamp(11px,3vw,13px);white-space:nowrap}
