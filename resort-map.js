@@ -319,7 +319,7 @@
     var isPanoramic = cabin.id === 10;
     var gardenTour = shared ? 'https://my.matterport.com/show/?m=S7Z2CF9tdwm' : '';
     var hasTour = !!gardenTour || isDome || cabin.id === 2 || isGreek || isPalm || isBohemian || isFrench || isClassic || isPanoramic || isRoyal || isRustic;
-    description.textContent = (cabin.type || cabin.suitable || '');
+    description.textContent = shared ? 'حديقة مشتركة تضم ألعاب أطفال وشاشة عرض وجلسات خارجية' : (cabin.type || cabin.suitable || '');
     var tourButton = card.querySelector('.fd-map-tour-button');
     tourButton.hidden = !hasTour;
     tourButton.href = gardenTour || (isRustic ? '/rustic-tour/' : isRoyal ? '/royal-tour/' : isPanoramic ? '/panoramic-tour/' : isClassic ? '/classic-tour/' : isFrench ? '/french-tour/' : isBohemian ? '/bohemian-tour/' : isPalm ? '/palm-tour/' : isGreek ? '/greek-tour/' : cabin.id === 2 ? '/pyramid-tour/' : '/dome-tour/') + '?from=map&cabin=' + cabin.id + '&v=map-return-20261028-v2';
@@ -351,7 +351,7 @@
     cardPhoto.alt = cabinName(cabin);
     var amenities = card.querySelector('.fd-map-amenities');
     amenities.replaceChildren();
-    featuresFor(cabin).forEach(function (feature) {
+    (shared ? [] : featuresFor(cabin)).forEach(function (feature) {
       var item = document.createElement('p');
       item.className = 'fd-map-amenity';
       item.textContent = feature;
