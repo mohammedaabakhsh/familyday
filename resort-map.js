@@ -284,7 +284,7 @@
     if (selected === location) { clearSelection(false); return; }
     var cabin = cabinFor(location);
     selected = location;
-    if (dialog) { dialog.classList.remove('fd-map-no-selection'); dialog.classList.toggle('fd-map-pilot-compact', cabin.id === 4 || cabin.id === 13 || cabin.id === 11); }
+    if (dialog) { dialog.classList.remove('fd-map-no-selection'); dialog.classList.add('fd-map-pilot-compact'); }
     // Highlight only the selected plot; the card still explains connecting cabins.
     markers.forEach(function (marker, i) {
       var active = locations[i] === location;
@@ -329,6 +329,24 @@
     card.querySelector('.fd-map-room-label').textContent = shared ? copy.access : copy.bedrooms;
     card.querySelector('.fd-map-guests').textContent = shared ? copy.gardenLocation : resortGuestText(cabin.guests);
     card.querySelector('.fd-map-rooms').textContent = shared ? copy.gardenAccess : roomValue(cabin.rooms);
+    // Use a third fact instead of a separate connection banner for these locations.
+    var facts = card.querySelector('.fd-map-facts');
+    var extraFact = facts.querySelector('.fd-map-fact--extra');
+    if (!extraFact) {
+      extraFact = document.createElement('div');
+      extraFact.className = 'fd-map-fact fd-map-fact--extra';
+      extraFact.innerHTML = '<span class="fd-map-fact-label"></span><strong></strong>';
+      facts.appendChild(extraFact);
+    }
+    var extraValue = shared ? 'باب داخلي لكل كوخ' :
+      cabin.id === 3 ? 'باب متصل برويال' :
+      cabin.id === 9 ? 'باب متصل بالكلاسيكي' : '';
+    extraFact.hidden = !extraValue;
+    if (extraValue) {
+      extraFact.querySelector('.fd-map-fact-label').textContent = shared ? 'الوصول' : 'الربط الداخلي';
+      extraFact.querySelector('strong').textContent = extraValue;
+    }
+    facts.classList.toggle('has-three', !!extraValue);
     photoButton.setAttribute('aria-label', copy.viewPhotosOf + cabinName(cabin));
     cardPhoto.alt = cabinName(cabin);
     var amenities = card.querySelector('.fd-map-amenities');
@@ -340,9 +358,8 @@
       amenities.appendChild(item);
     });
     amenities.hidden = !amenities.children.length;
-    connectionNote.textContent = shared ? copy.gardenConnection :
-      connection ? connection.description : '';
-    connectionNote.hidden = !shared && !connection;
+    connectionNote.textContent = '';
+    connectionNote.hidden = true;
     syncToolbar();
     empty.hidden = true;
     card.hidden = false;
