@@ -1,10 +1,10 @@
-/* Reversible two-cabin comparison trial; use existing Family Day palette. */
+/* Cabin comparison and selection controls. */
 #app #grid .fd-card-compare{flex:0 0 64px;min-height:44px;padding:6px;border:1px solid #315967;border-radius:10px;background:transparent;color:#b9e3e9;font:700 13px Tajawal,sans-serif;cursor:pointer;}
 #app #grid .fd-card-compare[aria-pressed="true"]{background:#123c49;border-color:#7ecfea;color:#fff;}
 #app #grid .fd-card-compare:disabled{opacity:.4;cursor:default;}
 .fd-compare-tray[hidden]{display:none!important;}
 .fd-compare-tray{position:fixed;z-index:150;bottom:12px;inset-inline:16px;width:auto;max-width:660px;margin-inline:auto;padding:12px 14px;border:1px solid #397181;border-radius:16px;background:#0b2534;box-shadow:0 8px 32px #0008;direction:rtl;font-family:Tajawal,sans-serif;}
-.fd-comparing .grid-section{padding-bottom:170px!important;}
+@media(min-width:900px){.fd-comparing .grid-section{padding-bottom:170px!important;}}
 .fd-compare-selection{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;}
 .fd-compare-selection button{background:#163c4a;color:#d4ebf1;border:1px solid #315967;border-radius:8px;padding:8px 10px;min-height:36px;font:500 12px Tajawal,sans-serif;cursor:pointer;}
 .fd-compare-tray-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
@@ -29,4 +29,18 @@
 .fd-compare-table td+td,.fd-compare-table th+th{border-inline-start:1px solid #254452;}
 .fd-compare-table td{font-weight:400;text-align:center;}
 :is(.fd-card-compare,.fd-compare-tray button,.fd-compare-dialog button):focus-visible{outline:2px solid #7ecfea;outline-offset:3px;}
-@media(max-width:599px){.fd-compare-dialog>header{padding:14px;}.fd-compare-dialog h2{font-size:20px;}.fd-compare-table{font-size:13px;}.fd-compare-table th,.fd-compare-table td{padding:12px 8px;}.fd-compare-table th:first-child{width:24%;font-size:12px;}.fd-compare-table thead strong{font-size:14px;}.fd-compare-table thead img{width:68px;height:68px;}.fd-compare-tray-actions p{flex-basis:100%;}.fd-compare-open{flex:1;}}
+@media(max-width:599px){.fd-compare-dialog>header{padding:14px;}.fd-compare-dialog h2{font-size:20px;}.fd-compare-table{font-size:13px;}.fd-compare-table th,.fd-compare-table td{padding:12px 8px;}.fd-compare-table th:first-child{width:24%;font-size:12px;}.fd-compare-table thead strong{font-size:14px;}.fd-compare-table thead img{width:68px;height:68px;}}
+
+/* Reserve space for the mobile comparison controls instead of covering the cards. */
+@media(max-width:899px){
+  #app.show.fd-comparing{display:flex;flex-direction:column;height:100dvh;min-height:0;overflow:hidden;}
+  #app.fd-comparing > :not(.grid-section){flex-shrink:0;}
+  #app.fd-comparing .grid-section{flex:1;min-height:0;overflow-y:auto;overscroll-behavior-y:contain;}
+  #app .fd-compare-tray{position:static;inset:auto;width:auto;max-width:none;margin:0 12px calc(8px + env(safe-area-inset-bottom,0px));padding:10px;box-shadow:none;}
+  .fd-compare-selection{gap:6px;margin-bottom:8px;}
+  .fd-compare-selection button{flex:1;min-width:0;min-height:40px;padding:6px;font-size:12px;}
+  .fd-compare-tray-actions{flex-wrap:nowrap;gap:8px;}
+  .fd-compare-tray-actions p{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;min-width:0;}
+  .fd-compare-open{flex:1;min-width:0;}
+  .fd-compare-clear{min-height:44px;flex-shrink:0;}
+}

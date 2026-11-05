@@ -31,7 +31,9 @@ var FD_CABIN_COMPARE = (function(){
     var names=tray.firstElementChild;names.replaceChildren();
     selected.forEach(function(id){var c=cabin(id);var b=button(c.name+' ×',function(){selected=selected.filter(function(x){return x!==id;});sync();});b.setAttribute('aria-label','إزالة '+c.name+' من المقارنة');names.appendChild(b);});
     tray.querySelector('[role="status"]').textContent=selected.length===1?'اختر كوخًا آخر للمقارنة':'تم اختيار كوخين';
-    tray.querySelector('.fd-compare-open').disabled=selected.length!==2;
+    var open=tray.querySelector('.fd-compare-open');
+    open.disabled=selected.length!==2;
+    open.textContent=selected.length===1?'اختر كوخًا آخر':'عرض المقارنة';
     document.querySelectorAll('[data-compare-cabin]').forEach(function(b){
       var id=Number(b.dataset.compareCabin), checked=selected.indexOf(id)!==-1;
       b.setAttribute('aria-pressed',String(checked));b.textContent=checked?'محدد ✓':'قارن';
@@ -75,6 +77,15 @@ var FD_CABIN_COMPARE = (function(){
   return {
     sync:sync,show:show,hide:function(){if(dialog&&dialog.open)dialog.close();},
     cardButton:function(c){return '<button type="button" class="fd-card-compare" data-compare-cabin="'+c.id+'" aria-label="مقارنة '+c.name+'" aria-pressed="'+(selected.indexOf(c.id)!==-1)+'" onclick="FD_CABIN_COMPARE.toggle(event,'+c.id+')">قارن</button>';},
-    toggle:function(event,id){event.stopPropagation();if(!cabin(id))return;init();var index=selected.indexOf(id);if(index!==-1)selected.splice(index,1);else if(selected.length<2)selected.push(id);sync();}
+    toggle:function(event,id){
+      event.stopPropagation();if(!cabin(id))return;init();
+      var index=selected.indexOf(id);
+      if(index!==-1)selected.splice(index,1);else if(selected.length<2)selected.push(id);
+      sync();
+      if(selected.length && matchMedia('(max-width:899px)').matches){
+        var control=document.querySelector('[data-compare-cabin="'+id+'"]');
+        if(control)control.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});
+      }
+    }
   };
 })();
