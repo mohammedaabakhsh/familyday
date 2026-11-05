@@ -98,7 +98,7 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 .gallery-track::-webkit-scrollbar{display:none}
 .gallery-slide{display:block;flex:0 0 100%;min-width:0;width:100%;scroll-snap-align:center;scroll-snap-stop:always}
 .gallery-track:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
-.package-gallery .gallery-slide img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.package-gallery .gallery-slide img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
 .gallery-controls{position:absolute;right:0;bottom:0;z-index:2;display:flex;align-items:center;direction:ltr;background:#000c;color:#fff}
 .gallery-arrow{display:grid;place-items:center;width:44px;height:44px;margin:0;padding:0;border:0;border-radius:0;background:transparent;color:inherit;cursor:pointer;touch-action:manipulation}
 .gallery-arrow svg{width:17px;height:17px}.gallery-arrow:disabled{opacity:.35;cursor:default}.gallery-arrow:focus-visible{outline:2px solid white;outline-offset:-3px}

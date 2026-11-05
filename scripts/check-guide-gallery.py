@@ -26,7 +26,7 @@ with sync_playwright() as p:
   track.focus();page.keyboard.press('Home');page.wait_for_function('document.querySelector("#package-complete .gallery-count").textContent==="1 / 6"')
   page.keyboard.press('ArrowLeft');page.wait_for_function('document.querySelector("#package-complete .gallery-count").textContent==="2 / 6"')
   track.focus();page.keyboard.press('Home');page.wait_for_function('document.querySelector("#package-complete .gallery-count").textContent==="1 / 6"')
-  assert abs(track.bounding_box()['width']/track.bounding_box()['height']-16/9)<.01
+  assert abs(track.bounding_box()['width']/track.bounding_box()['height']-4/3)<.01
   assert gallery.locator('button').count()==2
   controls=gallery.locator('.gallery-controls').bounding_box()
   assert abs(controls['x']+controls['width']-photo['x']-photo['width'])<1
@@ -42,6 +42,6 @@ with sync_playwright() as p:
   assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')
   card.evaluate('e=>e.scrollIntoView()');page.screenshot(path=str(out/f'inline-{w}.png'))
   assert not errors,errors
-  print(w,'PASS six photos, arrows/keyboard/swipe, 16:9 inline gallery, inline disclosure and no overflow',flush=True)
+  print(w,'PASS six photos, arrows/keyboard/swipe, 4:3 inline gallery, inline disclosure and no overflow',flush=True)
   page.close()
  b.close()

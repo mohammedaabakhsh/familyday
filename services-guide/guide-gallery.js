@@ -4,7 +4,7 @@
   const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const chevron = direction => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="' + (direction === 'next' ? 'm15 5-7 7 7 7' : 'm9 5 7 7-7 7') + '"/></svg>';
   function markup(photos, title) {
-    const images = photos.map((src, i) => '<div class="gallery-slide"><img src="/' + esc(src.replace(/^\//,'')) + '" alt="من أجواء أكواخ المنتجع — صورة ' + (i + 1) + '" width="1200" height="675" loading="lazy" decoding="async" draggable="false"></div>').join('');
+    const images = photos.map((src, i) => '<div class="gallery-slide"><img src="/' + esc(src.replace(/^\//,'')) + '" alt="من أجواء أكواخ المنتجع — صورة ' + (i + 1) + '" width="1200" height="900" loading="lazy" decoding="async" draggable="false"></div>').join('');
     return '<figure class="package-photo package-gallery" aria-label="صور توضيحية من أجواء الأكواخ — ' + esc(title) + '"><div class="gallery-track" tabindex="0" role="region" aria-label="اسحب لتصفح صور ' + esc(title) + '">' + images + '</div><div class="gallery-controls"><button type="button" class="gallery-arrow gallery-next" aria-label="الصورة التالية">' + chevron('next') + '</button><span class="gallery-count" role="status" aria-live="polite" aria-atomic="true" dir="ltr">1 / ' + photos.length + '</span><button type="button" class="gallery-arrow gallery-previous" aria-label="الصورة السابقة">' + chevron('previous') + '</button></div></figure>';
   }
   function bind(root) {

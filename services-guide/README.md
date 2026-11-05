@@ -24,7 +24,7 @@ The guide's footer provides contact links; each cabin links to its existing expl
 
 Stable anchors include `#hospitality` and `#coordination`; the old `#packages`
 anchor still opens seating. The pilot at `#package-complete` expands only its inclusions and note.
-`guide-gallery.js` supplies a compact 16:9 inline gallery with native swipe, keyboard navigation and grouped bottom-right arrows/counter. `packagePhotos` in `guide.js` assigns illustrative
+`guide-gallery.js` supplies a 4:3 inline gallery with native swipe, keyboard navigation and grouped bottom-right arrows/counter. `packagePhotos` in `guide.js` assigns illustrative
 cabin photos to packages; these are labelled as cabin atmosphere and can be replaced
 with dedicated service photos later. The actual dining, cinema and seating photos
 continue to come from the shared sources. Print styles also support saving the
