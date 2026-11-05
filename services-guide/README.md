@@ -1,10 +1,12 @@
 # Services guide
 
 `/services-guide/` is a shareable brochure, with a photographic cover, a compact index,
-fully visible hospitality, coordination, dining, cinema and seating chapters, and
-an inline resort map. Package photos, names and prices stay visible. The complete-experience package
-currently pilots a six-photo swipe gallery and an inline details disclosure; the
-other packages retain their expanded inclusions. Package ordering stays on `/services/hospitality/`.
+hospitality, coordination, dining, cinema and seating chapters, and
+an inline resort map. Every service uses the approved card: 4:3 photos, visible name
+and price, then a native inline disclosure for all its details. Package ordering
+stays on `/services/hospitality/`. All nine hospitality/coordination packages have
+six illustrative cabin photos. Cinema, dining and each seating option keep their
+actual source photo; single-image cards omit the gallery controls.
 The guide's footer provides contact links; each cabin links to its existing exploration.
 
 ## One source of content
@@ -23,7 +25,10 @@ The guide's footer provides contact links; each cabin links to its existing expl
   loading offers a retry instead of showing stale content.
 
 Stable anchors include `#hospitality` and `#coordination`; the old `#packages`
-anchor still opens seating. The pilot at `#package-complete` expands only its inclusions and note.
+anchor still opens seating. `#package-complete` remains a direct link to the complete-experience package.
+Cinema retains its description, duration, contents and usage instructions. Dining
+shows the lowest shared price with “تبدأ من” and keeps every price/size in its
+disclosure. Seating retains capacity, description and the optional add-on.
 `guide-gallery.js` supplies a 4:3 inline gallery with native swipe, keyboard navigation and grouped bottom-right arrows/counter. `packagePhotos` in `guide.js` assigns illustrative
 cabin photos to packages; these are labelled as cabin atmosphere and can be replaced
 with dedicated service photos later. The actual dining, cinema and seating photos
@@ -37,6 +42,7 @@ and retains the shared garden's features. The map has no collapsible heading.
 Serve the repository root, then run:
 
 ```sh
+python3 scripts/check-guide-gallery.py http://127.0.0.1:8023
 python3 scripts/check-services-guide.py http://127.0.0.1:8023
 python3 scripts/check-service-sections.py http://127.0.0.1:8023
 python3 scripts/check-share-navigation.py http://127.0.0.1:8023

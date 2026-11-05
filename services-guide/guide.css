@@ -91,8 +91,8 @@ h1,h2,h3,p,figure{margin:0}h1,h2,h3{line-height:1.4}img{display:block;max-width:
 .loading,.load-error{padding:40px 24px;text-align:center;color:var(--muted)}.load-error h2{font-size:22px}.load-error button,dialog button{border:0;background:#133548;color:white;border-radius:10px;padding:10px 18px;margin-top:14px}
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);max-width:90vw;padding:10px 18px;border-radius:12px;background:#133548;color:white;z-index:40;opacity:0;pointer-events:none}.toast.visible{opacity:1}
 dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-radius:20px;padding:24px;color:var(--ink);background:white}dialog::backdrop{background:#061c2b99}dialog h2{font-size:22px}dialog p{font-size:14px;margin:8px 0}dialog input{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;font-size:16px}
-/* One-package gallery and inline detail pilot. */
-.package-card--gallery{grid-column:1/-1;width:100%;max-width:680px;justify-self:center;scroll-margin-top:8px}
+/* Unified service cards, inline galleries and expandable details. */
+.package-card--gallery{grid-column:1/-1;width:100%;max-width:680px;margin-inline:auto;justify-self:center;scroll-margin-top:8px}
 .package-gallery{position:relative;overflow:hidden}
 .gallery-track{display:flex;direction:rtl;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .gallery-track::-webkit-scrollbar{display:none}
@@ -103,6 +103,9 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 .gallery-arrow{display:grid;place-items:center;width:44px;height:44px;margin:0;padding:0;border:0;border-radius:0;background:transparent;color:inherit;cursor:pointer;touch-action:manipulation}
 .gallery-arrow svg{width:17px;height:17px;filter:drop-shadow(0 1px 2px #000b)}.gallery-arrow:disabled{opacity:.35;cursor:default}.gallery-arrow:focus-visible{outline:2px solid white;outline-offset:-3px}
 .gallery-count{display:block;min-width:40px;text-align:center;white-space:nowrap;font-size:13px;font-weight:700;letter-spacing:1px;line-height:1;text-shadow:0 1px 3px #000b}
+.package-details-body h4{font-size:17px;line-height:1.5;margin:20px 0 0}
+.service-facts{margin:16px 0;padding:12px;background:var(--tint);border-radius:10px}.service-facts>div{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}.service-facts dt{font-size:14px;color:var(--muted)}.service-facts dd{margin:0;font-size:16px;font-weight:700;color:var(--ink)}
+.service-price-table{width:100%;border-collapse:collapse;text-align:center;font-size:14px;margin-top:16px}.service-price-table th,.service-price-table td{padding:12px 4px;border-bottom:1px solid var(--line)}.service-price-table thead{background:var(--tint);font-size:13px}.service-price-table tbody th{font-weight:500}
 .package-details>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;padding:12px 0 0;color:var(--accent);font-size:15px;font-weight:700;cursor:pointer;list-style:none}
 .package-details>summary::-webkit-details-marker{display:none}.package-details>summary::marker{content:''}.package-details>summary svg{width:20px;height:20px;flex:none;transition:transform .2s}
 .package-details[open]>summary svg{transform:rotate(180deg)}.package-details>summary:focus-visible{outline:3px solid #168c99;outline-offset:3px}

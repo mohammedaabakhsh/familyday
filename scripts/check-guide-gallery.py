@@ -1,4 +1,4 @@
-"""Exercise the one-package inline gallery and expanding details on mobile/desktop."""
+"""Exercise independent service galleries and expanding details on mobile/desktop."""
 import sys
 from pathlib import Path
 from playwright.sync_api import sync_playwright
@@ -10,6 +10,17 @@ with sync_playwright() as p:
   page=b.new_page(viewport={'width':w,'height':h},is_mobile=w<900,has_touch=w<900,reduced_motion='reduce');errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
   page.goto(BASE+'/services-guide/#package-complete',wait_until='domcontentloaded');card=page.locator('#package-complete');card.wait_for();page.evaluate('document.fonts.ready')
   gallery=card.locator('.package-gallery');track=gallery.locator('.gallery-track');count=gallery.locator('.gallery-count')
+  # Each package gallery keeps its own position when other galleries change.
+  galleries=page.locator('.package-gallery:has(.gallery-controls)')
+  assert galleries.count()==9
+  for current in galleries.all():
+   current.locator('.gallery-next').click()
+   page.wait_for_function('(el)=>el.textContent==="2 / 6"',arg=current.locator('.gallery-count').element_handle())
+  assert all(g.locator('.gallery-count').inner_text()=='2 / 6' for g in galleries.all())
+  for current in galleries.all():
+   current.locator('.gallery-previous').click()
+   page.wait_for_function('(el)=>el.textContent==="1 / 6"',arg=current.locator('.gallery-count').element_handle())
+  card.evaluate('e=>e.scrollIntoView({block:"start"})')
   page.wait_for_function('document.querySelector("#package-complete").getBoundingClientRect().top<200')
   card.locator('img').evaluate_all('els=>Promise.all(els.map(e=>{e.loading="eager";return e.decode()}))')
   assert card.locator('.price').inner_text()=='1850 ريال'
