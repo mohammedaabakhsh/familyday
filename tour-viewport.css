@@ -1,7 +1,6 @@
 /* Opt-in presentation for the remaining cabin tours, matching Bohemian.
    Per-cabin images, hotspots and desktop label positions stay in their own files. */
 #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour,#panoramic-tour) .dt-heading-copy{min-width:0}
-#ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour,#panoramic-tour) .dt-instruction{margin:5px 0 0;color:#a9ccd5;font-size:13px;font-weight:400;line-height:1.5;text-align:start}
 #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour,#panoramic-tour) .dt-image-space{display:contents}
 @media(min-width:600px){
  #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour,#panoramic-tour) .dt-swipe-hint{display:none}
@@ -22,7 +21,6 @@
  }
  #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour,#panoramic-tour) .dt-heading{margin:0 8px;min-height:44px}
  #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour,#panoramic-tour) .dt-title{font-size:21px;margin:0}
- #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour,#panoramic-tour) .dt-instruction{font-size:12px}
  #ov :is(#pyramid-tour,#classic-tour,#rustic-tour,#royal-tour,#palm-tour,#french-tour,#panoramic-tour) .dt-stage{
    display:grid;
    grid-template-rows:auto minmax(0,1fr) auto;

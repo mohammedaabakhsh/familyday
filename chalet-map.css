@@ -88,7 +88,6 @@
 #fd-chalet-map .cm-heading{display:flex;align-items:center;gap:14px;flex:1;min-width:0}
 #fd-chalet-map .cm-heading-copy{min-width:0}
 #fd-chalet-map #cm-title{margin:0;font:700 24px/1.4 Tajawal,sans-serif;color:#f0f5f7;text-align:start}
-#fd-chalet-map .cm-subtitle{margin:4px 0 0;color:#9ac8d4;font:500 13px/1.5 Tajawal,sans-serif}
 #fd-chalet-map .cm-close{display:flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;min-width:44px;min-height:44px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef}
 #fd-chalet-map .cm-close svg{width:9px;height:15px}
 #fd-chalet-map .cm-close:focus-visible{outline:2px solid #7ecfea;outline-offset:3px}
@@ -153,7 +152,6 @@
  #fd-chalet-map .cm-header{padding:0 8px 8px;border:0;gap:8px}
  #fd-chalet-map .cm-heading{gap:10px}
  #fd-chalet-map #cm-title{font-size:21px}
- #fd-chalet-map .cm-subtitle{font-size:12px;line-height:1.5}
  #fd-chalet-map .cm-workspace{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(240px,1fr) 160px auto;gap:10px;margin-top:0}
  #fd-chalet-map .cm-map-side{grid-column:1;grid-row:1;min-height:0}
  #fd-chalet-map .cm-details{grid-column:1;grid-row:2;align-self:start;width:calc(100% - 16px);margin-inline:8px;padding:8px;max-height:160px;overflow:auto}

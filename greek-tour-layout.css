@@ -1,7 +1,6 @@
 /* Match the approved Bohemian presentation while using two columns of room controls.
    Loaded only by the standalone Greek tour; dome-tour.css is shared by other tours. */
 #ov #greek-tour .dt-heading-copy{min-width:0}
-#ov #greek-tour .dt-instruction{margin:5px 0 0;color:#a9ccd5;font-size:13px;font-weight:400;line-height:1.5;text-align:start}
 #ov #greek-tour .dt-image-space{display:contents}
 @media(min-width:600px){
  #ov #greek-tour .dt-swipe-hint{display:none}
@@ -22,7 +21,6 @@
  }
  #ov #greek-tour .dt-heading{margin:0 8px;min-height:44px}
  #ov #greek-tour .dt-title{font-size:21px;margin:0}
- #ov #greek-tour .dt-instruction{font-size:12px}
  #ov #greek-tour .dt-stage{
    display:grid;
    grid-template-rows:auto minmax(0,1fr) auto;

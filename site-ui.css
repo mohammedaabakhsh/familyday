@@ -184,7 +184,6 @@
 #app #grid .fd-card-actions .card-btn{flex:1;min-width:0;margin:0;}
 .fd-destination-location{font:500 12px/1.5 Tajawal,sans-serif;color:#a6dfe8;margin:2px 0 4px;}
 .fd-page-heading-copy{min-width:0;}
-.fd-venue-subtitle{margin:4px 0 0;color:#9ac8d4;font:500 13px/1.5 Tajawal,sans-serif;}
 /* Keep long cabin names inside their navigation header. */
 #ov.fd-cabin-modern .fd-detail-current-name{min-width:0;overflow-wrap:anywhere;}
 #tawilat-detail .tw-contact:disabled{opacity:.55;cursor:default;}

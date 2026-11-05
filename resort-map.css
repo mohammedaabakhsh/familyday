@@ -11,7 +11,6 @@
 .fd-map-heading{flex:1;min-width:0}
 .fd-map-title-row{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
 .fd-map-header h2{margin:0;color:#fff;font-size:21px;font-weight:700;line-height:1.4}
-.fd-map-header p{margin:2px 0 0;color:#a9c3cd;font-size:12px;line-height:1.5}
 .fd-map-close{flex:none;width:40px;height:40px;display:grid;place-items:center;background:#142e3c;color:#e0eff3;border:1px solid #2a4655;border-radius:50%}
 .fd-map-close svg,.fd-map-clear svg{width:17px;height:17px}
 .fd-map-workspace{display:flex;flex:1;min-height:0;flex-direction:column;direction:ltr}
@@ -124,7 +123,6 @@
 @media(max-width: 380px){
  .fd-map-header{padding:max(12px, env(safe-area-inset-top)) 14px 12px}
  .fd-map-header h2{font-size:18px}
- .fd-map-header p{font-size:12px}
  .fd-map-info{padding:12px}
  .fd-map-facts{gap:6px}
  .fd-map-fact{padding-inline:9px}
@@ -157,7 +155,6 @@
 .fd-map-header{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 12px}
 .fd-map-heading{display:contents}
 .fd-map-title-row{grid-column:1;grid-row:1}
-.fd-map-header p{grid-column:1 / -1;grid-row:2;margin:0}
 .fd-map-header-actions{grid-column:2;grid-row:1;display:flex;align-items:center;gap:8px}
 @media(max-width:819px){
  .fd-map-panel{flex-basis:min(43dvh,330px);height:min(43dvh,330px);max-height:min(43dvh,330px)}
@@ -189,7 +186,6 @@
 #fd-map-dialog .fd-map-heading{display:flex;align-items:center;gap:14px;flex:1;min-width:0}
 #fd-map-dialog .fd-map-heading-copy{min-width:0}
 #fd-map-dialog .fd-map-header h2{margin:0;color:#f0f5f7;font:800 24px/1.4 Tajawal,sans-serif}
-#fd-map-dialog .fd-map-header p{margin:4px 0 0;color:#9ac8d4;font:500 13px/1.5 Tajawal,sans-serif}
 #fd-map-dialog .fd-map-header-actions{display:flex;flex:none;align-items:center}
 #fd-map-dialog .fd-map-close{box-sizing:border-box;display:flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;min-width:44px;min-height:44px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;cursor:pointer}
 #fd-map-dialog .fd-map-close svg{width:9px;height:15px}

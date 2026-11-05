@@ -30,6 +30,14 @@
   }
   :is(.cabin-heading-row,#header2,.faq-heading,.cp-heading,.svcs-header,.menu-heading,.cn-heading,.tg-heading,.wm-header,.tw-heading,.jl-heading,.hd-header,.sw-heading,.wl-heading,.setups-heading,.fd-cabin-nav,.fd-map-heading,.cm-heading,.dt-heading){display:flex!important;align-items:flex-start!important;justify-content:flex-start!important;gap:var(--fd-back-gap)!important;min-height:44px!important;height:auto!important;}
   .rh-destinations,.guide-back{display:inline-flex!important;align-items:center!important;gap:var(--fd-back-gap)!important;min-height:44px!important;padding:0!important;border:0!important;background:transparent!important;text-decoration:none!important;}
+  /* Captions sit beneath the title text, inside its reserved navigation row. */
+  :is(.dt-heading-copy > .dt-instruction,.fd-page-heading-copy > .fd-venue-subtitle,.fd-map-heading-copy > #fd-map-hint,.cm-heading-copy > .cm-subtitle){
+    margin:-10px 0 0!important;padding:0!important;
+    font:400 13px/1.5 Tajawal,sans-serif!important;color:#a9ccd5!important;text-align:start!important;
+  }
+  @media(max-width:599px){
+    :is(.dt-heading-copy > .dt-instruction,.fd-page-heading-copy > .fd-venue-subtitle,.fd-map-heading-copy > #fd-map-hint,.cm-heading-copy > .cm-subtitle){font-size:12px!important;}
+  }
   .fd-detail-current-name{flex:1!important;}
   :is(.back-btn,.faq-back,.contact-back,.svcs-back,.menu-back,.cn-back,.tg-back,.wm-back,.tw-back,.jl-back,.hd-back,.sw-back,.wl-back,.setups-back,.fd-cabin-nav-back,.fd-map-close,.cm-close,.tour-back):focus-visible,.rh-destinations:focus-visible,.guide-back:focus-visible{outline:2px solid var(--fd-back-arrow)!important;outline-offset:4px!important;}
   @media(hover:hover) and (pointer:fine){
