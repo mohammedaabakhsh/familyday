@@ -176,7 +176,7 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
     if(c.id===11) return; // rendered separately after loop
     const show=(f==='all'&&c.id!==11)||(f==='1'&&c.rooms===1)||(f==='2'&&c.rooms===2);
     const d=document.createElement('div');
-    d.className='card fd-cabin-card-v2'+(c.id===1?' fd-dome1-card-trial':'')+(show?'':' hidden');
+    d.className='card fd-cabin-card-v2'+(show?'':' hidden');
     d.onclick=()=>openM(c.id,type);
     d.innerHTML=`
       <div class="card-img-wrap" data-cid="${c.id}" data-cidx="0" style="position:relative;overflow:hidden;">
