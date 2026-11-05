@@ -1,4 +1,4 @@
-"""Exercise the one-package gallery, modal and expanding details on mobile/desktop."""
+"""Exercise the one-package inline gallery and expanding details on mobile/desktop."""
 import sys
 from pathlib import Path
 from playwright.sync_api import sync_playwright
@@ -13,7 +13,7 @@ with sync_playwright() as p:
   page.wait_for_function('document.querySelector("#package-complete").getBoundingClientRect().top<200')
   card.locator('img').evaluate_all('els=>Promise.all(els.map(e=>{e.loading="eager";return e.decode()}))')
   assert card.locator('.price').inner_text()=='1850 ريال'
-  assert card.locator('.gallery-slide').count()==6 and count.inner_text()=='1 من 6'
+  assert card.locator('.gallery-slide').count()==6 and count.inner_text()=='1 / 6'
   assert not card.locator('details').evaluate('e=>e.open')
   photo=gallery.bounding_box();before=page.locator('#dining').bounding_box()['y']
   card.locator('summary').click();assert card.locator('.inclusions').is_visible()
@@ -21,17 +21,16 @@ with sync_playwright() as p:
   assert gallery.bounding_box()['height']==photo['height']
   card.locator('summary').click();assert abs(page.locator('#dining').bounding_box()['y']-before)<1
   for i in range(2,7):
-   gallery.locator('.gallery-next').click();page.wait_for_function('(n)=>document.querySelector("#package-complete .gallery-count").textContent===n',arg=str(i)+' من 6')
+   gallery.locator('.gallery-next').click();page.wait_for_function('(n)=>document.querySelector("#package-complete .gallery-count").textContent===n',arg=str(i)+' / 6')
   assert gallery.locator('.gallery-next').is_disabled()
-  track.focus();page.keyboard.press('Home');page.wait_for_function('document.querySelector("#package-complete .gallery-count").textContent==="1 من 6"')
-  page.keyboard.press('ArrowLeft');page.wait_for_function('document.querySelector("#package-complete .gallery-count").textContent==="2 من 6"')
-  gallery.locator('.gallery-zoom').click();dialog=page.locator('.guide-photo-dialog');dialog.wait_for(state='visible')
-  assert dialog.locator('.gallery-count').inner_text()=='2 من 6'
-  dialog.locator('.gallery-next').click();page.wait_for_function('document.querySelector(".guide-photo-dialog .gallery-count").textContent==="3 من 6"')
-  dialog.locator('img').nth(2).evaluate('e=>e.decode()');page.screenshot(path=str(out/f'large-{w}.png'))
-  page.keyboard.press('Escape');dialog.wait_for(state='hidden');page.wait_for_function('document.querySelector("#package-complete .gallery-count").textContent==="3 من 6"')
-  assert page.locator('html.guide-gallery-open').count()==0
-  track.focus();page.keyboard.press('Home');page.wait_for_function('document.querySelector("#package-complete .gallery-count").textContent==="1 من 6"')
+  track.focus();page.keyboard.press('Home');page.wait_for_function('document.querySelector("#package-complete .gallery-count").textContent==="1 / 6"')
+  page.keyboard.press('ArrowLeft');page.wait_for_function('document.querySelector("#package-complete .gallery-count").textContent==="2 / 6"')
+  track.focus();page.keyboard.press('Home');page.wait_for_function('document.querySelector("#package-complete .gallery-count").textContent==="1 / 6"')
+  assert abs(track.bounding_box()['width']/track.bounding_box()['height']-16/9)<.01
+  assert gallery.locator('button').count()==2
+  controls=gallery.locator('.gallery-controls').bounding_box()
+  assert abs(controls['x']+controls['width']-photo['x']-photo['width'])<1
+  assert abs(controls['y']+controls['height']-photo['y']-photo['height'])<1
   if w<900:
    card.evaluate('e=>e.scrollIntoView({block:"start"})');page.wait_for_timeout(100)
    bounds=track.bounding_box();client=page.context.new_cdp_session(page);y=bounds['y']+bounds['height']/3
@@ -39,10 +38,10 @@ with sync_playwright() as p:
    for x in range(60,int(bounds['width'])-10,25):
     client.send('Input.dispatchTouchEvent',{'type':'touchMove','touchPoints':[{'x':bounds['x']+x,'y':y}]});page.wait_for_timeout(16)
    client.send('Input.dispatchTouchEvent',{'type':'touchEnd','touchPoints':[]});page.wait_for_timeout(350)
-   assert count.inner_text()!='1 من 6',count.inner_text();assert not dialog.is_visible()
+   assert count.inner_text()!='1 / 6',count.inner_text();assert page.locator('.guide-photo-dialog').count()==0
   assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')
   card.evaluate('e=>e.scrollIntoView()');page.screenshot(path=str(out/f'inline-{w}.png'))
   assert not errors,errors
-  print(w,'PASS six photos, arrows/keyboard/swipe, enlarge/Escape, counter sync, inline disclosure and no overflow',flush=True)
+  print(w,'PASS six photos, arrows/keyboard/swipe, 16:9 inline gallery, inline disclosure and no overflow',flush=True)
   page.close()
  b.close()
