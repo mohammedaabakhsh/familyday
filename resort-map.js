@@ -143,6 +143,7 @@
   function clearSelection(restoreFocus) {
     var old = selected;
     selected = null;
+    if (dialog) { dialog.classList.add('fd-map-no-selection'); dialog.classList.remove('fd-map-pilot-compact'); }
     document.dispatchEvent(new CustomEvent('fd-map-selection-change',{detail:{cabinId:null}}));
     markers.forEach(function (marker) { marker.setAttribute('aria-pressed', 'false'); });
     highlights.forEach(function (highlight) { highlight.hidden = true; highlight.classList.remove('is-connected'); });
@@ -282,6 +283,7 @@
     if (selected === location) { clearSelection(false); return; }
     var cabin = cabinFor(location);
     selected = location;
+    if (dialog) { dialog.classList.remove('fd-map-no-selection'); dialog.classList.toggle('fd-map-pilot-compact', cabin.id === 4 || cabin.id === 13 || cabin.id === 11); }
     // Highlight only the selected plot; the card still explains connecting cabins.
     markers.forEach(function (marker, i) {
       var active = locations[i] === location;
