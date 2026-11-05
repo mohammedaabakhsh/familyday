@@ -1938,6 +1938,11 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 
 <style id="fd-mobile-cabin-toolbar">
 @media(max-width:899px){
+ /* Lock the page to the visible viewport; only overflow inside the card area may scroll. */
+ html:has(#app.show #grid.fd-carousel),body:has(#app.show #grid.fd-carousel){overflow:hidden;overscroll-behavior:none;}
+ #app.show:has(#grid.fd-carousel){position:fixed;inset:0;display:flex;flex-direction:column;height:100vh;height:100dvh;min-height:0;overflow:hidden;overscroll-behavior:none;}
+ #app.show:has(#grid.fd-carousel)>:not(.grid-section){flex-shrink:0;}
+ #app.show:has(#grid.fd-carousel) .grid-section{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:none;}
  #app .cabin-page-header{padding:12px 16px 8px}
  #app .cabin-heading-row{gap:10px}
  #app .cabin-heading-row .fd-map-launcher{margin-inline-start:auto;padding:0;border:0;flex:none}
