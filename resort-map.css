@@ -255,3 +255,6 @@
 #fd-map-dialog .fd-map-card .fd-map-facts.has-three .fd-map-fact strong{font-size:clamp(10px,2.8vw,13px)!important;line-height:1.3!important;overflow-wrap:anywhere!important}
 #fd-map-dialog .fd-map-card .fd-map-facts.has-three .fd-map-fact-label{font-size:clamp(9px,2.5vw,11px)!important}
 #fd-map-dialog .fd-map-card .fd-map-facts>.fd-map-fact--extra[hidden]{display:none!important}
+
+/* Royal only: keep the connection value on one line without changing other cards. */
+#fd-map-dialog .fd-map-facts.is-royal-connection>.fd-map-fact--extra strong{font-size:11px!important;white-space:nowrap!important;overflow-wrap:normal!important;word-break:normal!important}
