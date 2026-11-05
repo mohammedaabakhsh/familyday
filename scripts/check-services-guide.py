@@ -41,7 +41,8 @@ with sync_playwright() as p:
         assert not page.locator('#guide-content').evaluate('(e)=>/[٠-٩]/.test(e.textContent)')
         assert page.locator('#seating .photo-card').count()==6
         assert page.locator('#dining tbody tr').count()==5
-        assert page.locator('.guide-fold[open]').count()==0
+        assert page.locator('#guide-content details').count()==0
+        assert page.locator('.package-card > .package-photo img').count()==9
         assert page.locator('#resort-map details,#resort-map .guide-fold-icon').count()==0
         assert page.locator('.map-scroll').is_visible()
         rect=page.locator('.map-scroll').bounding_box()
@@ -54,14 +55,12 @@ with sync_playwright() as p:
             assert page.url==BASE+'/services-guide/#'+name
             y=page.locator('#title-'+name).bounding_box()['y']
             assert 40<=y<height,(width,name,y)
-            if name!='resort-map': assert page.locator('#'+name+' .guide-fold').get_attribute('open') is not None
+            if name in SECTIONS[:2]: assert page.locator('#'+name+' .inclusions').first.is_visible()
             page.locator('.reading-bar a').click()
             page.wait_for_timeout(100)
         page.locator('.contents a[href="#coordination"]').click()
         package=page.locator('#coordination .package-card').first
-        package.locator('summary').click()
         assert package.locator('.inclusions').is_visible()
-        page.locator('details').evaluate_all('(els)=>els.forEach(el=>el.open=true)')
         page.locator('img').evaluate_all('(els)=>els.forEach(el=>el.loading="eager")')
         page.wait_for_function('Array.from(document.images).every(i=>i.complete&&i.naturalWidth>0)')
         assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')
@@ -95,7 +94,7 @@ with sync_playwright() as p:
         assert page.evaluate('navigator.clipboard.readText()')==BASE+'/services-guide/'
         assert not errors,errors
         assert not broken,broken
-        print(width,'PASS five shared services, visible compact map, all 13 markers, section links, images and sharing',flush=True)
+        print(width,'PASS five visible illustrated services, inline map, all 13 markers, section links, images and sharing',flush=True)
         context.close()
     context=browser.new_context();page=context.new_page()
     source=(ROOT/'index.html').read_text().replace('تبخير المكان بالعود','تفصيل ضيافة تجريبي').replace('تزيين السرير بالورد الطبيعي على شكل قلب أو حرف من اختيارك','تفصيل تنسيق تجريبي').replace('<dd class="cn-price">150 ريال</dd>','<dd class="cn-price">173 ريال</dd>')

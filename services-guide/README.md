@@ -1,8 +1,8 @@
 # Services guide
 
-`/services-guide/` is a shareable brochure, with the existing introduction,
-expandable hospitality, coordination, dining, cinema and seating sections, and
-an always-visible resort map. Package ordering stays on `/services/hospitality/`.
+`/services-guide/` is a shareable brochure, with a photographic cover, a compact index,
+fully visible hospitality, coordination, dining, cinema and seating chapters, and
+an inline resort map. Each package shows its inclusions and price without expanding it. Package ordering stays on `/services/hospitality/`.
 The guide's footer provides contact links; each cabin links to its existing exploration.
 
 ## One source of content
@@ -21,7 +21,11 @@ The guide's footer provides contact links; each cabin links to its existing expl
   loading offers a retry instead of showing stale content.
 
 Stable anchors include `#hospitality` and `#coordination`; the old `#packages`
-anchor still opens seating. Long package lists expand inline. Map selection
+anchor still opens seating. Package lists are always visible. `packagePhotos` in `guide.js` assigns illustrative
+cabin photos to packages; these are labelled as cabin atmosphere and can be replaced
+with dedicated service photos later. The actual dining, cinema and seating photos
+continue to come from the shared sources. Print styles also support saving the
+continuous brochure as a PDF from the browser. Map selection
 supports touch and keyboard, shows a square cabin photo and an exploration link,
 and retains the shared garden's features. The map has no collapsible heading.
 

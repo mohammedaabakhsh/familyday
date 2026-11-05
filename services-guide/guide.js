@@ -25,8 +25,19 @@
     if (!image) throw new Error('Missing service image: ' + selector);
     return photo(image.getAttribute('src'), image.alt);
   };
-  const section = (id, number, title, intro, body) => '<section class="guide-section" id="' + id + '" aria-labelledby="title-' + id + '"><header class="section-heading"><span class="section-number" aria-hidden="true">' + number + '</span><h2 id="title-' + id + '">' + escape(title) + '</h2><p>' + escape(intro) + '</p></header>' + body + '<a class="back-index" href="#contents">↑ الفهرس</a></section>';
-  const foldedSection = (id, number, title, intro, body) => '<section class="guide-section guide-section--folded" id="' + id + '" aria-labelledby="title-' + id + '"><details class="guide-fold"><summary><span class="section-number" aria-hidden="true">' + number + '</span><h2 id="title-' + id + '">' + escape(title) + '</h2><span class="guide-fold-icon" aria-hidden="true"></span></summary><div class="guide-fold-body"><p class="guide-fold-intro">' + escape(intro) + '</p>' + body + '<a class="back-index" href="#contents">↑ الفهرس</a></div></details></section>';
+  // Illustrative cabin photos can be replaced here without duplicating package facts or prices.
+  const packagePhotos = {
+    'الضيافة السعودية': 'imgs/classic_1.webp',
+    'ضيافة الاسترخاء': 'imgs/palm_1.webp',
+    'الضيافة العائلية': 'imgs/boho_1.webp',
+    'باقة الورد': 'imgs/french_1.webp',
+    'باقة الورد المميزة': 'imgs/greek_1.webp',
+    'باقة اللحظات': 'imgs/dome_2.webp',
+    'باقة الاحتفال': 'imgs/royal_1.webp',
+    'باقة VIP': 'imgs/classic_2.webp',
+    'التجربة المتكاملة': 'imgs/royal_2.webp'
+  };
+  const section = (id, number, title, intro, body) => '<section class="guide-section" id="' + id + '" aria-labelledby="title-' + id + '"><header class="section-heading"><span class="section-number" aria-hidden="true">' + number + '</span><div><h2 id="title-' + id + '">' + escape(title) + '</h2><p>' + escape(intro) + '</p></div></header>' + body + '</section>';
   function packages(doc, key) {
     const panel = doc.querySelector('#hd-' + key + '-panel');
     if (!panel) throw new Error('Missing package panel');
@@ -34,48 +45,31 @@
       const title = text(card, '.hd-package-name');
       const description = card.querySelector('.hd-package-description');
       const price = card.querySelector('.hd-package-price');
-      const heading = '<h3>' + escape(title) + '</h3>' + (description ? '<p>' + escape(description.textContent.trim()) + '</p>' : '');
+      const heading = '<h3>' + escape(title) + '</h3>';
       const priceLabel = price ? '<strong class="price">' + escape(price.textContent.trim()) + '</strong>' : '';
       const note = card.querySelector('.hd-package-note');
-      const body = items(list(card, '.hd-item span:last-child')) + (note ? '<p class="small-note">' + escape(note.textContent.trim()) + '</p>' : '');
-      return key === 'coordination' ? '<details class="package-card"><summary><div>' + heading + priceLabel + '</div><span class="expand-icon" aria-hidden="true"></span></summary>' + body + '</details>' : '<article class="package-card">' + heading + priceLabel + body + '</article>';
+      const contents = list(card, '.hd-item span:last-child');
+      const body = (description ? '<p class="package-description">' + escape(description.textContent.trim()) + '</p>' : '') + items(contents) + (note ? '<p class="small-note">' + escape(note.textContent.trim()) + '</p>' : '');
+      const image = packagePhotos[title] || 'imgs/dome_1.webp';
+      return '<article class="package-card' + (contents.length > 14 ? ' package-card--wide' : '') + '"><figure class="package-photo">' + photo(image,'من أجواء أكواخ منتجع يوم العائلة') + '<figcaption>من أجواء الأكواخ</figcaption></figure><div class="package-copy"><div class="package-heading">' + heading + priceLabel + '</div>' + body + '</div></article>';
     }).join('') + '</div>';
   }
   function render(doc) {
-    let html = foldedSection('hospitality','01','الضيافة',text(doc,'#hd-hospitality-panel .hd-intro'),packages(doc,'hospitality'));
-    html += foldedSection('coordination','02','التنسيقات','باقات متنوعة لتنسيق المناسبات داخل الكوخ.', packages(doc,'coordination'));
-    html += foldedSection('dining','03',text(doc,'.tw-title'),'خيارات لطاولات الطعام حسب عدد الضيوف، مع إمكانية إضافة التنسيق.', '<div class="feature-card"><figure>' + sourcePhoto(doc,'.tw-photo img') + '</figure><div class="feature-copy"><table><thead><tr><th scope="col">الأشخاص</th><th scope="col">' + escape(text(doc,'#tawilat-opt-plain .tw-package-name')) + '</th><th scope="col">' + escape(text(doc,'#tawilat-opt-tansiq .tw-package-name')) + '</th></tr></thead><tbody>' + Object.entries(_tawilatPrices).map(([size,p]) => '<tr><th scope="row">' + size + '</th><td>' + p.plain + ' ر.س</td><td>' + p.tansiq + ' ر.س</td></tr>').join('') + '</tbody></table><p class="small-note">تتوفر الطاولات والكراسي بخيارات متعددة حسب عدد الضيوف، ويمكن اختيارها مع التنسيق أو بدونه.</p></div></div>');
-    html += foldedSection('cinema','04',text(doc,'.cn-title'),text(doc,'.cn-intro'), '<div class="feature-card"><figure>' + sourcePhoto(doc,'.cn-photo img') + '</figure><div class="feature-copy"><div class="facts">' + Array.from(doc.querySelectorAll('.cn-stat')).map(stat => '<div><span>' + escape(text(stat,'dt')) + '</span><strong>' + escape(text(stat,'dd')) + '</strong></div>').join('') + '</div>' + '<h3>' + escape(text(doc,'#cn-inclusions-title')) + '</h3>' + items(list(doc,'.cn-inclusions li')) + '</div></div>');
-    html += foldedSection('seating','05',text(doc,'.jl-title'),'جلسات خارجية تُجهز داخل المساحة الخارجية الخاصة بالكوخ، بخيارات تناسب أعدادًا مختلفة.', '<div class="photo-grid">' + _jalsatAllSessions.map(s => '<article class="photo-card">' + photo(s.img,s.name) + '<div class="card-copy"><h3>' + escape(s.name) + '</h3><div class="card-meta"><span>' + escape(s.persons) + '</span><strong class="price">' + escape(s.price) + '</strong></div><details class="notes"><summary>تفاصيل الجلسة</summary><p>' + escape(s.desc) + '</p></details></div></article>').join('') + '</div><p class="seating-extra">إضافة اختيارية: ' + escape(text(doc,'.jl-addon-name')) + ' · ' + escape(text(doc,'.jl-addon-price')) + '</p>');
+    let html = section('hospitality','01','الضيافة',text(doc,'#hd-hospitality-panel .hd-intro'),packages(doc,'hospitality'));
+    html += section('coordination','02','التنسيقات','باقات متنوعة لتنسيق المناسبات داخل الكوخ.', packages(doc,'coordination'));
+    html += section('dining','03',text(doc,'.tw-title'),'خيارات لطاولات الطعام حسب عدد الضيوف، مع إمكانية إضافة التنسيق.', '<div class="feature-card"><figure>' + sourcePhoto(doc,'.tw-photo img') + '</figure><div class="feature-copy"><table><thead><tr><th scope="col">الأشخاص</th><th scope="col">' + escape(text(doc,'#tawilat-opt-plain .tw-package-name')) + '</th><th scope="col">' + escape(text(doc,'#tawilat-opt-tansiq .tw-package-name')) + '</th></tr></thead><tbody>' + Object.entries(_tawilatPrices).map(([size,p]) => '<tr><th scope="row">' + size + '</th><td>' + p.plain + ' ر.س</td><td>' + p.tansiq + ' ر.س</td></tr>').join('') + '</tbody></table><p class="small-note">تتوفر الطاولات والكراسي بخيارات متعددة حسب عدد الضيوف، ويمكن اختيارها مع التنسيق أو بدونه.</p></div></div>');
+    html += section('cinema','04',text(doc,'.cn-title'),text(doc,'.cn-intro'), '<div class="feature-card"><figure>' + sourcePhoto(doc,'.cn-photo img') + '</figure><div class="feature-copy"><div class="facts">' + Array.from(doc.querySelectorAll('.cn-stat')).map(stat => '<div><span>' + escape(text(stat,'dt')) + '</span><strong>' + escape(text(stat,'dd')) + '</strong></div>').join('') + '</div>' + '<h3>' + escape(text(doc,'#cn-inclusions-title')) + '</h3>' + items(list(doc,'.cn-inclusions li')) + '</div></div>');
+    html += section('seating','05',text(doc,'.jl-title'),'جلسات خارجية تُجهز داخل المساحة الخارجية الخاصة بالكوخ، بخيارات تناسب أعدادًا مختلفة.', '<div class="photo-grid">' + _jalsatAllSessions.map(s => '<article class="photo-card">' + photo(s.img,s.name) + '<div class="card-copy"><h3>' + escape(s.name) + '</h3><div class="card-meta"><span>' + escape(s.persons) + '</span><strong class="price">' + escape(s.price) + '</strong></div><p class="session-description">' + escape(s.desc) + '</p></div></article>').join('') + '</div><p class="seating-extra">إضافة اختيارية: ' + escape(text(doc,'.jl-addon-name')) + ' · ' + escape(text(doc,'.jl-addon-price')) + '</p>');
     html += section('resort-map','06','خريطة الأكواخ','اختر الكوخ على الخريطة واستكشف غرفه ومرافقه', FD_GUIDE_MAP.markup());
     content.innerHTML = html;
     FD_GUIDE_MAP.mount();
-    setupExclusiveFolds();
     content.setAttribute('aria-busy','false');
     scrollToHash();
     observeSections();
   }
-  function closeOtherFolds(activeFold) {
-    content.querySelectorAll('.guide-fold[open]').forEach(fold => {
-      if (fold !== activeFold) fold.open = false;
-    });
-  }
-  function setupExclusiveFolds() {
-    content.querySelectorAll('.guide-fold').forEach(fold => {
-      fold.addEventListener('toggle', () => {
-        if (fold.open) closeOtherFolds(fold);
-      });
-    });
-  }
   function scrollToHash() {
     if(location.hash === '#packages') history.replaceState(null,'','#seating');
     const target = document.getElementById(location.hash.slice(1));
-    if (target && target.classList.contains('guide-section')) {
-      const fold=target.querySelector('.guide-fold');
-      closeOtherFolds(fold || null);
-      if(fold) fold.open=true;
-    }
-    if (target && target.id === 'contents') closeOtherFolds(null);
     if (target && (target.classList.contains('guide-section') || target.id === 'contents')) target.scrollIntoView({behavior:'instant',block:'start'});
   }
   let observing = false;
