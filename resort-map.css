@@ -245,3 +245,6 @@
  #fd-map-dialog .fd-map-card .fd-map-facts.has-three .fd-map-fact strong{font-size:clamp(10px,2.7vw,13px)!important;line-height:1.3!important}
  #fd-map-dialog .fd-map-card .fd-map-facts.has-three .fd-map-fact-label{font-size:10px!important}
 }
+
+/* Keep the third card truly hidden for cabins without an internal connection. */
+#fd-map-dialog .fd-map-card .fd-map-facts>.fd-map-fact--extra[hidden]{display:none!important}
