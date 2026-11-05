@@ -106,3 +106,8 @@
 #ov #bohemian-tour .dt-details .dt-card{background:#17465a;border:1px solid #3b91a6;color:#fff}
 #ov #bohemian-tour .dt-details .dt-card svg{color:#8fe4f1;stroke:#8fe4f1}
 #ov #bohemian-tour .dt-details .dt-card strong,#ov #bohemian-tour .dt-details .dt-card span{color:#fff}
+
+/* Bohemian trial: one clear card, no outer nested frame. */
+#ov #bohemian-tour .dt-details:not(.is-empty){background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important}
+#ov #bohemian-tour .dt-details .dt-card{background:#176078!important;border:1px solid #48b5ca!important;border-radius:15px;box-shadow:0 3px 12px rgba(0,0,0,.18)}
+#ov #bohemian-tour .dt-details .dt-card svg{color:#a4edf7;stroke:#a4edf7}
