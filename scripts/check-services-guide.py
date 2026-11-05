@@ -38,6 +38,10 @@ with sync_playwright() as p:
                 assert card.locator('h3').text_content()==item['name']
                 assert card.locator('.price').text_content()==item['price']
                 assert card.locator('.inclusions li').all_text_contents()==item['items']
+        usage_notes=page.evaluate("""html=>Array.from(new DOMParser().parseFromString(html,'text/html').querySelectorAll('.hd-package-note,.cn-notes-list li'),e=>e.textContent.trim())""",source)
+        guide_text=page.locator('#guide-content').text_content()
+        assert 'تعليمات الاستخدام' not in guide_text
+        assert all(note not in guide_text for note in usage_notes)
         assert not page.locator('#guide-content').evaluate('(e)=>/[٠-٩]/.test(e.textContent)')
         assert page.locator('#seating .photo-card').count()==6
         assert page.locator('#dining tbody tr').count()==5
@@ -80,7 +84,7 @@ with sync_playwright() as p:
         expected_cinema=page.evaluate("""html=>{const d=new DOMParser().parseFromString(html,'text/html');return {
             title:d.querySelector('.cn-title').textContent.trim(),price:d.querySelector('.cn-price').textContent.trim(),
             intro:d.querySelector('.cn-intro').textContent.trim(),
-            items:Array.from(d.querySelectorAll('.cn-inclusions li,.cn-notes-list li'),e=>e.textContent.trim()),
+            items:Array.from(d.querySelectorAll('.cn-inclusions li'),e=>e.textContent.trim()),
             facts:Array.from(d.querySelectorAll('.cn-stat:not(:has(.cn-price))'),e=>[e.querySelector('dt').textContent.trim(),e.querySelector('dd').textContent.trim()])};} """,source)
         assert cinema.locator('h3').inner_text()==expected_cinema['title']
         assert cinema.locator('.price').inner_text()==expected_cinema['price']
@@ -150,7 +154,7 @@ with sync_playwright() as p:
     assert 'تفصيل تنسيق تجريبي' in page.locator('#coordination').text_content()
     assert '173 ريال' in page.locator('#cinema').text_content()
     assert '5 ساعات' in page.locator('#cinema').text_content()
-    assert 'تعليمات سينما تجريبية' in page.locator('#cinema').text_content()
+    assert 'تعليمات سينما تجريبية' not in page.locator('#cinema').text_content()
     assert '333 ريال' in page.locator('#seating .photo-card').first.text_content()
     assert page.locator('#seating .photo-card img').first.get_attribute('src')=='/imgs/jalsat_2.webp'
     context.close()

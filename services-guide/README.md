@@ -26,7 +26,8 @@ The guide's footer provides contact links; each cabin links to its existing expl
 
 Stable anchors include `#hospitality` and `#coordination`; the old `#packages`
 anchor still opens seating. `#package-complete` remains a direct link to the complete-experience package.
-Cinema retains its description, duration, contents and usage instructions. Dining
+Cinema retains its description, duration and contents. Usage instructions and
+package usage notes are intentionally omitted from this brochure. Dining
 shows the lowest shared price with “تبدأ من” and keeps every price/size in its
 disclosure. Seating retains capacity, description and the optional add-on.
 `guide-gallery.js` supplies a 4:3 inline gallery with native swipe, keyboard navigation and grouped bottom-right arrows/counter. `packagePhotos` in `guide.js` assigns illustrative
