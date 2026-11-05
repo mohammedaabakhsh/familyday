@@ -108,9 +108,9 @@ var FD_DOME_GALLERY = (function () {
     if (panel) panel.hidden = true;
   }
 
-  // Pilot the approved inline gallery on both Dome units only.
+  // Approved inline gallery shared by cabins, rest-house sections and the chalet.
   function mountInline(wrapper, cabin, sources) {
-    if (cabin.id !== 1 && cabin.id !== 12) return false;
+    if (!cabin || !sources.length) return false;
     wrapper.classList.add('fd-dome-inline');
     wrapper.ontouchstart = wrapper.ontouchend = wrapper.onclick = wrapper.onkeydown = null;
     var track = document.createElement('div');
