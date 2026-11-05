@@ -24,17 +24,14 @@
     if (!image) throw new Error('Missing service image: ' + selector);
     return {src:image.getAttribute('src'), alt:image.alt};
   };
-  function serviceCard({title, price, photos, body, id = '', label = 'تفاصيل الخدمة', imageAlt, className = '', capacity = ''}) {
-    return '<article class="package-card package-card--gallery ' + className + '"' + (id ? ' id="' + escape(id) + '"' : '') + '>'
-      + FD_GUIDE_GALLERY.markup(photos,title,imageAlt)
+  function serviceCard({title, price, photos = [], body, id = '', label = 'تفاصيل الخدمة', imageAlt, className = '', capacity = ''}) {
+    return '<article class="package-card package-card--gallery ' + className + (photos.length ? '' : ' package-card--text') + '"' + (id ? ' id="' + escape(id) + '"' : '') + '>'
+      + (photos.length ? FD_GUIDE_GALLERY.markup(photos,title,imageAlt) : '')
       + '<div class="package-copy"><div class="package-heading"><div class="service-heading-copy"><h3>' + escape(title) + '</h3>' + (capacity ? '<span class="service-capacity" aria-label="عدد الأشخاص: ' + escape(capacity) + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="9" cy="7" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 4a3 3 0 0 1 0 6m2 3a5 5 0 0 1 3 5v3"/></svg>' + escape(capacity) + '</span>' : '') + '</div><strong class="price">' + escape(price) + '</strong></div>'
       + '<details class="package-details"><summary><span>' + escape(label) + '</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="package-details-body">' + body + '</div></details></div></article>';
   }
   // Illustrative cabin photos can be replaced here without duplicating package facts or prices.
   const packagePhotos = {
-    'الضيافة السعودية': 'imgs/classic_1.webp',
-    'ضيافة الاسترخاء': 'imgs/palm_1.webp',
-    'الضيافة العائلية': 'imgs/boho_1.webp',
     'باقة الورد': 'imgs/french_1.webp',
     'باقة الورد المميزة': 'imgs/greek_1.webp',
     'باقة اللحظات': 'imgs/dome_2.webp',
@@ -54,7 +51,7 @@
       const body = (description ? '<p class="package-description">' + escape(description.textContent.trim()) + '</p>' : '') + items(contents);
       const image = packagePhotos[title] || 'imgs/dome_1.webp';
       const complete = Boolean(card.querySelector('#hd-coordination-package-resort'));
-      const photos = [image, ...[1,2,3,4,5,6].map(n => image.replace(/_\d+\.webp$/, '_' + n + '.webp')).filter(src => src !== image)].slice(0,6);
+      const photos = key === 'hospitality' ? [] : [image, ...[1,2,3,4,5,6].map(n => image.replace(/_\d+\.webp$/, '_' + n + '.webp')).filter(src => src !== image)].slice(0,6);
       return serviceCard({title,price:price ? price.textContent.trim() : '',photos,body,label:'تفاصيل الباقة',id:complete ? 'package-complete' : ''});
     }).join('') + '</div>';
   }

@@ -2,10 +2,10 @@
 
 `/services-guide/` is a shareable brochure, with a photographic cover, a compact index,
 hospitality, coordination, dining, cinema and seating chapters, and
-a compact map preview that expands inline. Every service uses the approved card: 4:3 photos, visible name
+a compact map preview that expands inline. Service cards keep a visible name
 and price, then a native inline disclosure for all its details. Package ordering
-stays on `/services/hospitality/`. All nine hospitality/coordination packages have
-six illustrative cabin photos. Cinema, dining and each seating option keep their
+stays on `/services/hospitality/`. The three hospitality packages use text-only cards without placeholder photos.
+The six coordination packages have six illustrative cabin photos. Cinema, dining and each seating option keep their
 actual source photo; single-image cards omit the gallery controls.
 The guide's footer provides contact links; each cabin links to its existing exploration.
 
@@ -37,6 +37,7 @@ continue to come from the shared sources. Print styles also support saving the
 continuous brochure as a PDF from the browser. Map selection
 supports touch and keyboard, shows a square cabin photo and an exploration link,
 and retains the shared garden's features. The map starts collapsed behind a preview; its contents remain visible when printing.
+Chapter headings stack a centered number, title and description.
 Chapters share a restrained white, navy and muted teal palette; spacing and thin
 rules distinguish sections without assigning a different color to each service. The closing
 panel groups location, phone and social links in one grid.

@@ -20,6 +20,16 @@ with sync_playwright() as p:
         assert len(set(page.locator('.section-heading').evaluate_all('(els)=>els.map(e=>getComputedStyle(e).backgroundColor)')))==1
         expected_contacts=['https://wa.me/966556156693','tel:+966556156693','https://maps.app.goo.gl/FLmawLadNaa3uYpJ8?g_st=ic','https://instagram.com/FAMILYDAYRESORT','https://www.snapchat.com/add/familyday5','https://tiktok.com/@familydayresort']
         assert page.locator('.footer-links a').evaluate_all('(els)=>els.map(e=>e.getAttribute("href"))')==expected_contacts
+        assert page.locator('#hospitality img,#hospitality .package-gallery').count()==0
+        assert page.locator('#hospitality .package-card--text').count()==3
+        for heading in page.locator('.section-heading').all():
+            number=heading.locator('.section-number').bounding_box()
+            title=heading.locator('h2').bounding_box()
+            description=heading.locator('p').bounding_box()
+            assert abs((number['x']+number['width']/2)-(title['x']+title['width']/2))<1
+            assert number['y']+number['height']<=title['y']
+            assert title['y']+title['height']<=description['y']
+            assert heading.evaluate('e=>getComputedStyle(e).textAlign')=='center'
         assert page.locator('.contents a').count()==6
         assert page.locator('#guide-back').get_attribute('href')=='/resort/'
         assert page.locator('.guest-services-link').get_attribute('href')=='/guest-services/'
@@ -53,8 +63,8 @@ with sync_playwright() as p:
         assert page.locator('#guide-content details').count()==18
         assert page.locator('#guide-content details[open]').count()==0
         assert not page.locator('#package-complete details').evaluate('e=>e.open')
-        assert page.locator('.package-card > .package-photo img').count()==62
-        assert page.locator('.gallery-controls').count()==9
+        assert page.locator('.package-card > .package-photo img').count()==44
+        assert page.locator('.gallery-controls').count()==6
         assert page.locator('#resort-map details').count()==1
         assert not page.locator('.map-scroll').is_visible()
         page.locator('.guide-map-fold>summary').click()
@@ -81,8 +91,9 @@ with sync_playwright() as p:
         for card in page.locator('.package-card').all():
             assert card.locator('.package-heading h3').is_visible()
             assert card.locator('.package-heading .price').is_visible()
-            track=card.locator('.gallery-track').bounding_box()
-            assert abs(track['width']/track['height']-4/3)<.01
+            if card.locator('.gallery-track').count():
+                track=card.locator('.gallery-track').bounding_box()
+                assert abs(track['width']/track['height']-4/3)<.01
             card.locator('summary').click()
             assert card.locator('.package-details-body').is_visible()
             card.locator('summary').click()
