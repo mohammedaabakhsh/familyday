@@ -289,9 +289,6 @@
   document.addEventListener('fd-compare-dismiss',function(){
     if(current.name==='cabin-compare')returnTo(current.parent);
   });
-  document.addEventListener('fd-compare-detail',function(event){
-    if(current.name==='cabin-compare')navigate(route('cabin',[event.detail],current.parent));
-  });
   window.openAccommodationFaq=function(event,name){
     if(event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return true;
     var expected=current.name==='chalet-detail' ? 'chalet-faq' : current.name==='cabin' ? (current.args[0]>=20 ? 'faq2' : 'faq') : null;

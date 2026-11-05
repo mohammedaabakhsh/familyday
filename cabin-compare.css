@@ -28,6 +28,5 @@
 .fd-compare-table tbody tr:nth-child(even){background:#0b2331;}
 .fd-compare-table td+td,.fd-compare-table th+th{border-inline-start:1px solid #254452;}
 .fd-compare-table td{font-weight:400;text-align:center;}
-.fd-compare-table button{min-height:44px;width:100%;padding:8px;border:1px solid #3b7785;background:#123a48;border-radius:10px;color:#e7f5f8;font:700 14px Tajawal,sans-serif;cursor:pointer;}
 :is(.fd-card-compare,.fd-compare-tray button,.fd-compare-dialog button):focus-visible{outline:2px solid #7ecfea;outline-offset:3px;}
-@media(max-width:599px){.fd-compare-dialog>header{padding:14px;}.fd-compare-dialog h2{font-size:20px;}.fd-compare-table{font-size:13px;}.fd-compare-table th,.fd-compare-table td{padding:12px 8px;}.fd-compare-table th:first-child{width:24%;font-size:12px;}.fd-compare-table thead strong{font-size:14px;}.fd-compare-table thead img{width:68px;height:68px;}.fd-compare-table button{font-size:12px;}.fd-compare-tray-actions p{flex-basis:100%;}.fd-compare-open{flex:1;}}
+@media(max-width:599px){.fd-compare-dialog>header{padding:14px;}.fd-compare-dialog h2{font-size:20px;}.fd-compare-table{font-size:13px;}.fd-compare-table th,.fd-compare-table td{padding:12px 8px;}.fd-compare-table th:first-child{width:24%;font-size:12px;}.fd-compare-table thead strong{font-size:14px;}.fd-compare-table thead img{width:68px;height:68px;}.fd-compare-tray-actions p{flex-basis:100%;}.fd-compare-open{flex:1;}}

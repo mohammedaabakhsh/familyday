@@ -1,4 +1,4 @@
-// Reversible comparison trial. Reads the same cabin facts as the detail pages.
+// Compare the same approved cabin facts used by the detail pages.
 var FD_CABIN_COMPARE = (function(){
   var selected = [], tray, dialog;
   function cabin(id){return data.resort.items.find(function(c){return c.id===id && c.id!==11;});}
@@ -41,7 +41,6 @@ var FD_CABIN_COMPARE = (function(){
   }
   function specials(c){
     var items=c.features.indoor.concat(c.features.outdoor,c.pool.facilities).filter(function(t){return /بانيو|جاكوزي|سرير تشميس داخل/.test(t);});
-    if(/جاكوزي/.test(c.pool.label))items.push('جاكوزي داخل المسبح');
     if(c.id===3||c.id===9)items.push('يمكن ربط الكلاسيكي ورويال بسعة إجمالية حتى 35 ضيفًا');
     return items.length?items.join(' · '):'—';
   }
@@ -55,7 +54,7 @@ var FD_CABIN_COMPARE = (function(){
     [
       ['الضيوف',function(c){return resortGuestText(c.guests);}],
       ['غرف النوم',function(c){return resortRoomText(c.rooms);}],
-      ['الأسرّة',function(c){return c.features.indoor.filter(function(t){return /^غرفة نوم/.test(t);}).join(' · ');}],
+      ['الأسرّة',function(c){return c.features.indoor.filter(function(t){return /سرير|أسرّة|أسرة/.test(t) && !/تشميس/.test(t);}).join(' · ') || '—';}],
       ['صالة داخلية',function(c){return c.livingRoom==='integrated'?'مدمجة مع غرفة النوم':c.hall?'متوفرة':'غير متوفرة';}],
       ['طاولة طعام',function(c){return c.features.indoor.includes('طاولة طعام')?'متوفرة':'غير متوفرة';}],
       ['الحمامات',function(c){return c.bathroom===1?'حمام واحد':c.bathroom===2?'حمامان':c.bathroom+' حمامات';}],
@@ -68,8 +67,6 @@ var FD_CABIN_COMPARE = (function(){
         else td.appendChild(document.createTextNode(part));
       });
     });});
-    var end=body.insertRow(),label=document.createElement('th');label.scope='row';label.textContent='التفاصيل';end.appendChild(label);
-    items.forEach(function(c){var td=end.insertCell();var b=button('عرض التفاصيل',function(){request('fd-compare-detail',c.id);});b.setAttribute('aria-label','عرض تفاصيل '+c.name);td.appendChild(b);});
     var scroll=dialog.lastElementChild;scroll.replaceChildren(table);scroll.scrollTop=0;
     if(!dialog.open)dialog.showModal();
     dialog.querySelector('.fd-compare-close').focus();

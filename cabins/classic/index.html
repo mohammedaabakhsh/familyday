@@ -52,12 +52,12 @@
 <link href="resort-home.css?v=20261104-back-button-v1" rel="stylesheet">
 <link rel="preload" as="script" href="js/app-shell.js?v=20261103-splash-motion-v1">
 <link rel="preload" as="script" href="js/gallery-data.js?v=20261102-structure-v1">
-<link rel="preload" as="script" href="js/accommodations.js?v=20261105-classic-v1">
+<link rel="preload" as="script" href="js/accommodations.js?v=20261105-dome1-restored-v3">
 <link rel="preload" as="script" href="js/services.js?v=20261103-shared-menu-prices-v1">
 <link rel="preload" as="script" href="js/stay-navigation.js?v=20261103-dest-feedback-v4">
-<link rel="preload" as="script" href="js/router.js?v=20261102-guest-services-v1">
+<link rel="preload" as="script" href="js/router.js?v=20261105-compare-cleanup-v1">
 <link rel="stylesheet" href="css/app-base.css?v=20261103-splash-motion-v1">
-<link rel="stylesheet" href="resort-map.css?v=20261102-code-cleanup-v2">
+<link rel="stylesheet" href="resort-map.css?v=20261105-royal-one-line-v9">
 <style id="fd-home-map-shortcut">
 #landing .rh-home-shortcut{display:flex;align-items:center;gap:14px;margin-top:16px;padding:12px 14px;border:1px solid rgba(99,191,205,.32);border-radius:16px;background:linear-gradient(120deg,#0d2b3a,#0a202e);color:#edf5f7;text-decoration:none;text-align:right;min-width:0;}
 #landing .rh-map-copy{display:flex;flex:1;min-width:0;flex-direction:column;gap:4px;}
@@ -92,7 +92,15 @@
 }
 </style>
 <style>#ov.open[data-return-to-map="true"]{z-index:350}</style>
-<style>.fd-pyramid-detail-tour{display:inline-flex;align-items:center;gap:12px;margin:0 0 18px;padding:10px 16px;min-height:44px;border:1px solid #63b6c5;border-radius:10px;color:#c8eff5;text-decoration:none;font:700 14px/1.4 Tajawal,sans-serif}.fd-pyramid-detail-tour:focus-visible{outline:3px solid #92efff;outline-offset:3px}</style></head>
+<style>.fd-pyramid-detail-tour{display:inline-flex;align-items:center;gap:12px;margin:0 0 18px;padding:10px 16px;min-height:44px;border:1px solid #63b6c5;border-radius:10px;color:#c8eff5;text-decoration:none;font:700 14px/1.4 Tajawal,sans-serif}.fd-pyramid-detail-tour:focus-visible{outline:3px solid #92efff;outline-offset:3px}</style><style id="fd-garden-independent-facts">
+/* Two independent, equally sized garden fact cards; no enclosing split box. */
+.fd-shared-garden-content .fd-cabin-facts{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important;background:none!important;border:0!important;box-shadow:none!important;padding:0!important;overflow:visible!important}
+.fd-shared-garden-content .fd-cabin-facts::before,.fd-shared-garden-content .fd-cabin-facts::after{content:none!important;display:none!important}
+.fd-shared-garden-content .fd-cabin-facts>div{display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:stretch!important;min-width:0!important;width:100%!important;min-height:76px!important;margin:0!important;padding:12px!important;box-sizing:border-box!important;border:1px solid #285160!important;border-radius:12px!important;background:#102f3e!important;box-shadow:none!important}
+.fd-shared-garden-content .fd-cabin-facts>div+div{border-left:1px solid #285160!important;border-right:1px solid #285160!important}
+@media(max-width:420px){.fd-shared-garden-content .fd-cabin-facts{gap:10px!important}.fd-shared-garden-content .fd-cabin-facts>div{min-height:68px!important;padding:10px!important}}
+</style>
+</head>
 <body>
 
 <style>
@@ -242,7 +250,7 @@
 <script src="stay-design.js?v=20261102-final-v1"></script>
 <script src="site-enhancements.js?v=1"></script>
 <script src="menu-experience.js?v=20261103-shared-menu-prices-v1"></script>
-<script src="cabin-compare.js?v=20261102-review-v1"></script>
+<script src="cabin-compare.js?v=20261105-bed-facts-v1"></script>
 <script src="js/cabin-numbers.js?v=20261102-v1"></script>
 <script src="js/app-shell.js?v=20261103-splash-motion-v1"></script>
 
@@ -1504,9 +1512,9 @@
 </div>
 
 <script src="service-data.js?v=20261103-shared-menu-prices-v1"></script>
-<script src="resort-data.js?v=20261105-classic-v1"></script>
+<script src="resort-data.js?v=20261105-dome-singular-v1"></script>
 <script src="js/gallery-data.js?v=20261102-structure-v1"></script>
-<script src="js/accommodations.js?v=20261105-classic-v1"></script>
+<script src="js/accommodations.js?v=20261105-dome1-restored-v3"></script>
 
 
 <!-- FULLSCREEN GALLERY -->
@@ -1834,9 +1842,9 @@
 
 <link rel="stylesheet" href="service-sections.css?v=20261103-service-headers-v1">
 <script src="service-sections.js?v=20261103-splash-motion-v1"></script>
-<script src="js/router.js?v=20261102-guest-services-v1"></script>
+<script src="js/router.js?v=20261105-compare-cleanup-v1"></script>
 <script src="resort-map-data.js?v=20261028-v1" defer></script>
-<script src="resort-map.js?v=20261102-code-cleanup-v2" defer></script>
+<script src="resort-map.js?v=20261105-royal-one-line-v9" defer></script>
 <link rel="stylesheet" href="chalet-map.css?v=20261102-code-cleanup-v2">
 <script src="chalet-map.js?v=20261102-code-cleanup-v2" defer></script>
 
@@ -1911,7 +1919,7 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 </style>
 <link rel="stylesheet" href="site-ui.css?v=20261103-service-headers-v1">
 <link rel="stylesheet" href="menu-experience.css?v=20261028-v1">
-<link rel="stylesheet" href="cabin-compare.css?v=1">
+<link rel="stylesheet" href="cabin-compare.css?v=20261105-bed-facts-v1">
 <link rel="stylesheet" href="dome-gallery.css?v=1">
 
 
