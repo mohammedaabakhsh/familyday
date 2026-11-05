@@ -2,7 +2,7 @@
 
 `/services-guide/` is a shareable brochure, with a photographic cover, a compact index,
 hospitality, coordination, dining, cinema and seating chapters, and
-an inline resort map. Every service uses the approved card: 4:3 photos, visible name
+a compact map preview that expands inline. Every service uses the approved card: 4:3 photos, visible name
 and price, then a native inline disclosure for all its details. Package ordering
 stays on `/services/hospitality/`. All nine hospitality/coordination packages have
 six illustrative cabin photos. Cinema, dining and each seating option keep their
@@ -29,14 +29,16 @@ anchor still opens seating. `#package-complete` remains a direct link to the com
 Cinema retains its description, duration and contents. Usage instructions and
 package usage notes are intentionally omitted from this brochure. Dining
 shows the lowest shared price with “تبدأ من” and keeps every price/size in its
-disclosure. Seating retains capacity, description and the optional add-on.
+disclosure. Seating shows capacity next to the name before expanding its description; the optional add-on remains visible.
 `guide-gallery.js` supplies a 4:3 inline gallery with native swipe, keyboard navigation and grouped bottom-right arrows/counter. `packagePhotos` in `guide.js` assigns illustrative
 cabin photos to packages; these are labelled as cabin atmosphere and can be replaced
 with dedicated service photos later. The actual dining, cinema and seating photos
 continue to come from the shared sources. Print styles also support saving the
 continuous brochure as a PDF from the browser. Map selection
 supports touch and keyboard, shows a square cabin photo and an exploration link,
-and retains the shared garden's features. The map has no collapsible heading.
+and retains the shared garden's features. The map starts collapsed behind a preview; its contents remain visible when printing.
+Each chapter has a distinct colored heading and a separating margin. The closing
+panel groups location, phone and social links in one grid.
 
 ## Checks
 

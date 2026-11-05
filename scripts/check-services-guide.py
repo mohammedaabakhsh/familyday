@@ -15,6 +15,11 @@ with sync_playwright() as p:
         page.goto(BASE+'/services-guide/',wait_until='networkidle')
         page.wait_for_selector('#resort-map')
         assert page.locator('.guide-section').evaluate_all('(els)=>els.map(e=>e.id)')==SECTIONS
+        assert page.locator('.intro p').count()==2
+        assert page.locator('.contents>p').count()==0
+        assert len(set(page.locator('.section-heading').evaluate_all('(els)=>els.map(e=>getComputedStyle(e).backgroundColor)')))==6
+        expected_contacts=['https://wa.me/966556156693','tel:+966556156693','https://maps.app.goo.gl/FLmawLadNaa3uYpJ8?g_st=ic','https://instagram.com/FAMILYDAYRESORT','https://www.snapchat.com/add/familyday5','https://tiktok.com/@familydayresort']
+        assert page.locator('.footer-links a').evaluate_all('(els)=>els.map(e=>e.getAttribute("href"))')==expected_contacts
         assert page.locator('.contents a').count()==6
         assert page.locator('#guide-back').get_attribute('href')=='/resort/'
         assert page.locator('.guest-services-link').get_attribute('href')=='/guest-services/'
@@ -45,12 +50,14 @@ with sync_playwright() as p:
         assert not page.locator('#guide-content').evaluate('(e)=>/[٠-٩]/.test(e.textContent)')
         assert page.locator('#seating .photo-card').count()==6
         assert page.locator('#dining tbody tr').count()==5
-        assert page.locator('#guide-content details').count()==17
+        assert page.locator('#guide-content details').count()==18
         assert page.locator('#guide-content details[open]').count()==0
         assert not page.locator('#package-complete details').evaluate('e=>e.open')
         assert page.locator('.package-card > .package-photo img').count()==62
         assert page.locator('.gallery-controls').count()==9
-        assert page.locator('#resort-map details,#resort-map .guide-fold-icon').count()==0
+        assert page.locator('#resort-map details').count()==1
+        assert not page.locator('.map-scroll').is_visible()
+        page.locator('.guide-map-fold>summary').click()
         assert page.locator('.map-scroll').is_visible()
         rect=page.locator('.map-scroll').bounding_box()
         canvas=page.locator('.map-canvas').bounding_box()
@@ -102,7 +109,9 @@ with sync_playwright() as p:
         for card,session in zip(page.locator('#seating .package-card').all(),page.evaluate('_jalsatAllSessions')):
             assert card.locator('h3').text_content()==session['name']
             assert card.locator('.price').text_content()==session['price']
-            assert card.locator('dd').text_content()==session['persons']
+            assert card.locator('.service-capacity').text_content()==session['persons']
+            assert card.locator('.service-capacity').is_visible()
+            assert not card.locator('details').evaluate('e=>e.open')
             assert card.locator('.session-description').text_content()==session['desc']
             assert card.locator('img').get_attribute('src')=='/'+session['img']
         page.emulate_media(media='print')
@@ -134,6 +143,11 @@ with sync_playwright() as p:
             page.locator('svg [data-map-cabin="1"]').focus();page.keyboard.press(key)
             assert page.locator('#guide-cabin-title').inner_text()=='بيت الدوم 1'
             page.locator('#close-cabin').click()
+        # Closing the map keeps it compact and reopening preserves all cabin navigation.
+        page.locator('.guide-map-fold>summary').click()
+        assert not page.locator('.map-scroll').is_visible()
+        page.locator('.guide-map-fold>summary').focus();page.keyboard.press('Enter')
+        assert page.locator('.map-scroll').is_visible()
         page.locator('#resort-map').scroll_into_view_if_needed()
         page.screenshot(path=f'/tmp/review-guide-map-{width}.png')
         page.evaluate("Object.defineProperty(navigator,'share',{value:undefined,configurable:true})")
@@ -149,7 +163,7 @@ with sync_playwright() as p:
     context.route('**/index.html',lambda r:r.fulfill(body=source,content_type='text/html'))
     context.route('**/service-data.js?*',lambda r:r.fulfill(body=data,content_type='text/javascript'))
     page.goto(BASE+'/services-guide/#cinema',wait_until='networkidle')
-    assert 40<=page.locator('#title-cinema').bounding_box()['y']<160
+    assert 40<=page.locator('#title-cinema').bounding_box()['y']<260
     assert 'تفصيل ضيافة تجريبي' in page.locator('#hospitality').text_content()
     assert 'تفصيل تنسيق تجريبي' in page.locator('#coordination').text_content()
     assert '173 ريال' in page.locator('#cinema').text_content()
