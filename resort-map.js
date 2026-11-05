@@ -347,6 +347,7 @@
       extraFact.querySelector('strong').textContent = extraValue;
     }
     facts.classList.toggle('has-three', !!extraValue);
+    facts.classList.toggle('is-royal-connection', cabin.id === 9);
     photoButton.setAttribute('aria-label', copy.viewPhotosOf + cabinName(cabin));
     cardPhoto.alt = cabinName(cabin);
     var amenities = card.querySelector('.fd-map-amenities');
