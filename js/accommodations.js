@@ -346,7 +346,7 @@ function renderSharedGardenDetail(c){
 
       <div class="fd-cabin-facts" aria-label="معلومات الحديقة المشتركة">
         <div><span>الموقع</span><strong>وسط الأكواخ</strong></div>
-        <div><span>مخصصة لـ</span><strong>العائلات والأطفال</strong></div>
+        
         <div><span>الاستخدام</span><strong>لجميع الضيوف</strong></div>
       </div>
 
@@ -354,7 +354,7 @@ function renderSharedGardenDetail(c){
         <h3>مرافق الحديقة</h3>
         <div class="fd-cabin-feature-list">${renderFeatures(features)}</div>
         <div class="fd-cabin-instructions">
-          <p><strong>الحديقة المشتركة:</strong> مساحة وسط الأكواخ تخدم العائلات المقيمة.</p>
+          
           <p><strong>الوصول:</strong> لكل كوخ باب داخلي يفتح مباشرة على الحديقة.</p>
         </div>
       </section>
