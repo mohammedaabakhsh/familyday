@@ -29,26 +29,41 @@
 #contact-page .cp-body svg{flex:none;width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 #contact-page .social-link svg{width:21px;height:21px}
 #contact-page .cp-body .cp-solid-icon,#contact-page .footer-link--snapchat svg{fill:currentColor;stroke:none}
+#contact-page .cp-brand{grid-area:brand;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:0;text-align:center;padding:4px 0}
+#contact-page .cp-brand-logo-frame{width:clamp(84px,calc((100dvh - 520px) * .9),176px);aspect-ratio:176/86;overflow:hidden;flex:none}
+#contact-page .cp-brand-logo{display:block;width:100%;aspect-ratio:1;background:url('/imgs/img01.webp') center/contain no-repeat;transform:translateY(-21.6%)}
+#contact-page .cp-brand p{margin:0;color:#b8d7df;font-size:13px;font-weight:500;line-height:1.5}
 @media(hover:hover){
  #contact-page .social-link:hover{border-color:#8fcbd6;background:#153244}
  #contact-page[data-venue] .cp-review-link:hover{background:transparent;color:#fff;text-decoration:underline}
 }
 @media(max-width:599px){
- #contact-page[data-venue] .cp-shell{padding:12px 16px max(12px,env(safe-area-inset-bottom))}
+ #contact-page[data-venue] .cp-shell{height:100dvh;padding:12px 16px max(12px,env(safe-area-inset-bottom))}
  #contact-page[data-venue] .cp-hero{margin-bottom:14px}
- #contact-page[data-venue] .cp-body{gap:20px;align-content:start}
+ #contact-page[data-venue] .cp-body{grid-template-areas:"booking" "location" "contact" "brand" "social";grid-template-rows:auto auto auto minmax(0,1fr) auto;gap:12px;align-content:stretch;min-height:0}
 }
 @media(max-width:599px) and (max-height:620px){
  #contact-page[data-venue] .cp-shell{padding-top:8px;padding-bottom:max(8px,env(safe-area-inset-bottom))}
- #contact-page[data-venue] .cp-hero{margin-bottom:10px}
- #contact-page[data-venue] .cp-body{gap:10px}
- #contact-page[data-venue] .cp-label{margin-bottom:6px}
+ #contact-page[data-venue] .cp-hero{margin-bottom:6px}
+ #contact-page[data-venue] .cp-body{gap:4px}
+ #contact-page[data-venue] .cp-label{margin-bottom:2px}
  #contact-page[data-venue] .cp-wide{min-height:44px;padding:8px 10px}
  #contact-page[data-venue] .cp-contact-links .cp-wide{padding-inline:5px}
- #contact-page[data-venue] .cp-social{padding-top:8px}
+ #contact-page[data-venue] .cp-social{padding-top:4px}
+ #contact-page[data-venue] .cp-row2{margin-top:4px}
+ #contact-page[data-venue] .cp-tile{min-height:52px;padding-block:4px}
+ #contact-page[data-venue] .cp-app-caption{margin-top:2px}
+ #contact-page .cp-brand p{font-size:12px;line-height:1.4}
+}
+@media(min-width:600px){
+ #contact-page[data-venue] .cp-body{grid-template-areas:"booking" "location" "contact" "brand" "social";grid-template-rows:auto auto auto minmax(0,1fr) auto}
+ #contact-page .cp-brand{padding:24px 0}
+}
+@media(min-width:600px) and (max-width:899px){
+ #contact-page[data-venue] .cp-shell{height:100dvh}
 }
 @media(min-width:900px){
- #contact-page[data-venue] .cp-shell{max-width:960px;min-height:0;padding:28px 24px}
+ #contact-page[data-venue] .cp-shell{max-width:960px;min-height:100dvh;padding:28px 24px}
  #contact-page[data-venue] .cp-hero{margin-bottom:28px}
- #contact-page[data-venue] .cp-body{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"booking location" "booking contact" "social social";gap:24px 40px}
+ #contact-page[data-venue] .cp-body{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"booking location" "booking contact" "brand brand" "social social";grid-template-rows:auto auto 1fr auto;gap:24px 40px}
 }
