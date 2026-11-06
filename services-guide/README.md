@@ -1,8 +1,9 @@
 # Services guide
 
-`/services-guide/` is a shareable brochure, with a photographic cover and six icon tiles inspired by `/guest-services/`.
+`/services-guide/` is a shareable brochure, with a compact introduction and service tiles inspired by `/guest-services/`.
+Hospitality spans the full row above four softly coloured service tiles; the map uses a compact link below.
 Each tile opens a full-page section in the same tab: hospitality, coordination,
-dining, cinema, seating or the map. The home screen shows only the cover, tiles and contact footer. Service cards keep a visible name
+dining, cinema, seating or the map. The home screen shows only the introduction, tiles and contact footer. Service cards keep a visible name
 and price, then a native inline disclosure for all its details. Package ordering
 stays on `/services/hospitality/`. The three hospitality packages form a compact text-only menu without placeholder photos. Each name/price row opens its full details.
 The six coordination packages have six illustrative cabin photos. Cinema, dining and each seating option keep their
@@ -42,9 +43,7 @@ continuous brochure as a PDF from the browser. Map selection
 supports touch and keyboard, shows a square cabin photo and an exploration link,
 and retains the shared garden's features. The map starts collapsed behind a preview; its contents remain visible when printing.
 Chapter headings stack a centered number between fine rules, title and description.
-Chapters share a restrained white, navy and muted teal palette; spacing and thin
-rules distinguish sections without assigning a different color to each service. The closing
-panel groups location, phone and social links in one grid.
+Section pages keep their white, navy and muted teal palette. The home tiles use soft amber, rose, sand, lavender and sage fills. The dark closing footer groups a small logo and directions with WhatsApp, a phone link and three labelled social icons.
 
 ## Checks
 

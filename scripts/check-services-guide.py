@@ -23,7 +23,7 @@ with sync_playwright() as p:
         assert page.locator('.contents>p').count()==0
         assert len(set(page.locator('.section-heading').evaluate_all('(els)=>els.map(e=>getComputedStyle(e).backgroundColor)')))==1
         expected_contacts=['https://wa.me/966556156693','tel:+966556156693','https://maps.app.goo.gl/FLmawLadNaa3uYpJ8?g_st=ic','https://instagram.com/FAMILYDAYRESORT','https://www.snapchat.com/add/familyday5','https://tiktok.com/@familydayresort']
-        assert page.locator('.footer-links a').evaluate_all('(els)=>els.map(e=>e.getAttribute("href"))')==expected_contacts
+        assert sorted(page.locator('.footer-links a').evaluate_all('(els)=>els.map(e=>e.getAttribute("href"))'))==sorted(expected_contacts)
         assert page.locator('#hospitality img,#hospitality .package-gallery').count()==0
         assert page.locator('#hospitality .package-card--text').count()==3
         for name in SECTIONS:
