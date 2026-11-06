@@ -45,7 +45,7 @@
     'باقة VIP': 'imgs/classic_2.webp',
     'التجربة المتكاملة': 'imgs/royal_2.webp'
   };
-  const section = (id, title, intro, body) => '<section class="guide-section" id="' + id + '" data-title="' + escape(title) + '" aria-labelledby="title-' + id + '"><header class="section-heading"><h2 tabindex="-1" id="title-' + id + '">' + escape(intro) + '</h2></header>' + body + '</section>';
+  const section = (id, title, intro, body, showTitle = false) => '<section class="guide-section" id="' + id + '" data-title="' + escape(title) + '" aria-labelledby="title-' + id + '"><header class="section-heading' + (showTitle ? ' section-heading--titled' : '') + '"><h2 tabindex="-1" id="title-' + id + '">' + escape(showTitle ? title : intro) + '</h2>' + (showTitle ? '<p>' + escape(intro) + '</p>' : '') + '</header>' + body + '</section>';
   function packages(doc, key) {
     const panel = doc.querySelector('#hd-' + key + '-panel');
     if (!panel) throw new Error('Missing package panel');
@@ -62,7 +62,7 @@
     }).join('') + '</div>';
   }
   function render(doc) {
-    let html = section('coordination','التنسيقات','من باقة ورد إلى تجهيز متكامل لمناسبتكم.', packages(doc,'coordination'));
+    let html = section('coordination','التنسيقات','تجهيزات متكاملة لمناسباتكم', packages(doc,'coordination'), true);
     const diningImage = sourceImage(doc,'.tw-photo img');
     const diningBody = '<table class="service-price-table"><thead><tr><th scope="col">الأشخاص</th><th scope="col">' + escape(text(doc,'#tawilat-opt-plain .tw-package-name')) + '</th><th scope="col">' + escape(text(doc,'#tawilat-opt-tansiq .tw-package-name')) + '</th></tr></thead><tbody>' + Object.entries(_tawilatPrices).map(([size,p]) => '<tr><th scope="row">' + escape(size) + '</th><td>' + escape(p.plain) + ' ر.س</td><td>' + escape(p.tansiq) + ' ر.س</td></tr>').join('') + '</tbody></table><p class="small-note">تتوفر الطاولات والكراسي بخيارات متعددة حسب عدد الضيوف، ويمكن اختيارها مع التنسيق أو بدونه.</p>';
     const diningPrice = Math.min(...Object.values(_tawilatPrices).flatMap(p => [p.plain,p.tansiq]));
@@ -96,6 +96,7 @@
     back.setAttribute('aria-label',sectionView ? 'العودة إلى التجهيزات' : homeBack.label);
     document.getElementById('guide-back-label').textContent = sectionView ? 'التجهيزات' : 'رجوع';
     document.getElementById('guide-context').textContent = title || 'منتجع يوم العائلة';
+    document.getElementById('guide-context').hidden = title === 'التنسيقات';
     document.title = title ? title + ' | يوم العائلة' : guideTitle;
     requestAnimationFrame(() => {
       if(activeSection) {

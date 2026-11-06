@@ -31,7 +31,12 @@ with sync_playwright() as p:
             visit(page,name)
             heading=page.locator('#'+name+' .section-heading')
             assert heading.locator('h2').is_visible()
-            assert heading.locator('h2').inner_text()!=page.locator('#'+name).get_attribute('data-title')
+            if name=='coordination':
+                assert heading.locator('h2').inner_text()=='التنسيقات'
+                assert heading.locator('p').inner_text()=='تجهيزات متكاملة لمناسباتكم'
+                assert page.locator('#guide-context').is_hidden()
+            else:
+                assert heading.locator('h2').inner_text()!=page.locator('#'+name).get_attribute('data-title')
             assert heading.evaluate('e=>getComputedStyle(e).textAlign')=='center'
         assert page.locator('.contents a').count()==3
         page.locator('#guide-back').click()

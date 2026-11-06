@@ -36,7 +36,7 @@ cabin photos to packages; these are labelled as cabin atmosphere and can be repl
 with dedicated service photos later. The actual dining and seating photos
 continue to come from the shared sources. Print styles also support saving the
 continuous brochure as a PDF from the browser.
-Each section opens with a short description of its options; the category name stays in the navigation header without a repeated numbered title.
+Coordination opens with a centered category heading and short description above its photos; its category label is hidden in the navigation header. Other sections retain their short opening descriptions and navigation labels.
 Section pages keep their white, navy and muted teal palette. The home tiles use soft rose, sand and sage fills. The pale blue help footer offers WhatsApp, a phone link, directions and two labelled social icons (Instagram and Snapchat) without repeating the logo.
 
 ## Checks
