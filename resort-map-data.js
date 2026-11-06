@@ -28,7 +28,7 @@ window.FD_RESORT_MAP_DATA = {
       x: 82.775, y: 57.576, labelSide: 'offset', labelX: 94, labelY: 76, leaderBend: [95, 70],
       footprint: [[74.801, 51.435], [82.536, 46.491], [95.774, 66.986], [88.596, 72.010]] },
     { key: 'greek-two', cabinId: 13,
-      x: 75.917, y: 62.440, labelSide: 'offset', labelX: 88, labelY: 83, leaderBend: [89, 77],
+      x: 75.917, y: 62.440, labelSide: 'offset', labelX: 86, labelY: 85, leaderBend: [88, 78],
       footprint: [[67.863, 57.177], [74.083, 52.233], [87.879, 72.727], [80.861, 76.954]] },
     { key: 'palm-beach', cabinId: 5, x: 68.501, y: 68.581,
       labelSide: 'offset', labelX: 74, labelY: 93, leaderBend: [72, 87],

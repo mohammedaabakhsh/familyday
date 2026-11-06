@@ -417,9 +417,8 @@
     var sideShift = Math.max(0, nextTop - 8 - (size - 4));
     roadLabels.forEach(function (entry) {
       var halfWidth = entry.label.offsetWidth / 2;
-      var roadOffset = entry.location.key === 'greek-two' ? 8 : 0;
       sideLabels[entry.index] = {
-        x: clamp(size * entry.location.labelX / 100 + roadOffset, halfWidth + 4, size - halfWidth - 4),
+        x: clamp(size * entry.location.labelX / 100, halfWidth + 4, size - halfWidth - 4),
         y: entry.y - sideShift
       };
     });
