@@ -22,7 +22,7 @@ button:disabled{cursor:default}
 .eyebrow{margin:0;color:var(--brand);font-size:12px;font-weight:800;line-height:1.4}
 h1{margin:18px 0 3px;font-size:28px;line-height:1.3;color:var(--deep)}
 .hero p:last-child{margin:0;color:var(--muted);font-size:13px}
-.main{padding:20px 18px 8px}
+.main{padding:20px 18px 0}
 h2{margin:0 0 11px;font-size:20px;line-height:1.4;color:var(--deep)}
 .section-note{margin:0 0 14px;font-size:12px;color:var(--muted)}
 .selection-rows,.extra-list{display:grid;gap:9px}
@@ -96,14 +96,15 @@ textarea{resize:vertical;min-height:80px}
 .send-order{display:flex;justify-content:center;align-items:center;gap:12px;width:100%;min-height:50px;padding:12px;border:0;border-radius:12px;background:var(--order-accent,var(--deep));color:#fff;font-weight:700;font-size:14px}
 .send-order:disabled{background:#d8e3e6;color:#687a80}
 .confirmation-note{margin:9px 0 0;color:var(--muted);font-size:11px;text-align:center}
-.help{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);text-align:center}
+.page-ending{padding-top:26px;background:linear-gradient(180deg,#fff 0%,#edf9fb 100%)}
+.help{margin:0 18px;padding-top:22px;border-top:1px solid var(--line);text-align:center}
 .help h2{font-size:18px;margin-bottom:3px}
 .help p{margin:0;color:var(--muted);font-size:12px}
 .help-contacts{display:grid;gap:22px;margin-top:20px}
 .help-contact h3{margin:0 0 10px;font-size:15px;font-weight:700}
 .help-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .help-actions a{display:flex;align-items:center;justify-content:center;min-height:46px;border:1px solid #bfdde3;border-radius:12px;background:#fff;font-weight:700;font-size:13px;color:var(--deep)}
-.footer{padding:22px 16px;color:var(--muted);font-size:11px;text-align:center}
+.footer{padding:30px 16px 22px;color:var(--muted);font-size:11px;text-align:center}
 .footer p{margin:0}
 .footer .footer-tagline{margin-bottom:8px;color:var(--deep);font-size:14px;font-weight:700;line-height:1.6}
 .order-shortcut{display:none}
@@ -114,7 +115,8 @@ textarea{resize:vertical;min-height:80px}
 }
 @media(min-width:640px){
  .hero{padding:22px 36px 24px}
- .main{padding:24px 34px 8px}
+ .main{padding:24px 34px 0}
+ .help{margin-inline:34px}
  .menu-list{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
  .extra-row{padding:15px 18px}
  .order-box{padding:21px}
@@ -131,6 +133,7 @@ textarea{resize:vertical;min-height:80px}
 }
 @media(max-width:360px){
  .main{padding-inline:14px}
+ .help{margin-inline:14px}
  .extra-row{padding:12px;gap:8px}
  .extra-copy h3{font-size:14px}
  .quantity output{width:22px}
