@@ -139,7 +139,7 @@ function showContact(type){
   }
   var contactBody = document.querySelector('#contact-page .cp-body');
   var locationGroup = contactBody.querySelector('.cp-location');
-  contactBody.insertBefore(locationGroup, contactBody.querySelector('.cp-social'));
+  contactBody.insertBefore(locationGroup, contactBody.querySelector('.cp-contact'));
   document.getElementById('contact-page').classList.add('show');
   document.getElementById('contact-page').scrollTop=0;
   document.getElementById('contact-page')._fromLanding = landing;
