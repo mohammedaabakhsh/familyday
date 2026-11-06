@@ -36,7 +36,7 @@ with dedicated service photos later. The actual dining and seating photos
 continue to come from the shared sources. Print styles also support saving the
 continuous brochure as a PDF from the browser.
 All three sections open with centered category headings and short descriptions above their photos; their category labels are hidden in the navigation header. Footer social icons match the guest-services page.
-Section pages keep their white, navy and muted teal palette. The home tiles use soft rose, sand and sage fills. The pale blue help footer offers WhatsApp, a phone link, directions and two labelled social icons (Instagram and Snapchat) without repeating the logo.
+Section pages keep their white, navy and muted teal palette. The home tiles use soft rose, sand and sage fills. The pale blue help footer follows the guest-services layout: help text, resort contact buttons, the privacy tagline, resort location and directions, and Instagram/Snapchat icons. The guest-services link remains below; there is no back-to-sections link or repeated logo.
 
 ## Checks
 
