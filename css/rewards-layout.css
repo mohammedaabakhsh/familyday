@@ -1,0 +1,48 @@
+/* One calm visual language for the three rewards pages. */
+:is(#contest-detail,#sharik-detail,#walaa-detail){background:#04111e!important}
+:is(#contest-detail,#sharik-detail) .sw-shell,
+#walaa-detail .wl-shell{max-width:680px;padding-top:24px}
+:is(#contest-detail,#sharik-detail) .sw-layout,
+#walaa-detail .wl-layout{display:flex;flex-direction:column;gap:28px;align-items:stretch}
+:is(#contest-detail,#sharik-detail) .sw-prize,
+#walaa-detail .wl-card{padding:22px 20px;border:1px solid #315967;border-radius:18px;background:#102c3a}
+:is(#contest-detail,#sharik-detail) .sw-prize-intro{margin-bottom:10px}
+:is(#contest-detail,#sharik-detail) .sw-prize-highlight{font-size:28px;margin:4px 0}
+#contest-detail .sw-prize-description{margin:14px 0 0;color:#b6cbd6;font-size:15px;line-height:1.8}
+:is(#contest-detail,#sharik-detail) .sw-guidelines,
+:is(#contest-detail,#sharik-detail) .sw-contact,
+#walaa-detail .wl-benefits{padding:0;border:0;border-radius:0;background:none}
+:is(#contest-detail,#sharik-detail) .sw-guidelines,
+#sharik-detail .sw-contact,
+#contest-detail .contest-submit{padding-top:24px;border-top:1px solid #29434f}
+:is(#contest-detail,#sharik-detail) .sw-section-title,
+#walaa-detail .wl-section-title{margin-bottom:12px}
+:is(#contest-detail,#sharik-detail) .sw-criteria,
+#contest-detail .contest-social{margin-top:24px;padding-top:24px;border-top:1px solid #29434f}
+#sharik-detail .sw-criteria-list{background:none;border-radius:0;padding:4px 0}
+:is(#contest-detail,#sharik-detail) .sw-email-button,
+#walaa-detail .wl-enroll-button{font-size:16px;border-radius:12px;background:#147a8c;border-color:#3aa9b9}
+#contest-detail .contest-videos .sw-email-button{background:transparent;color:#a9d4de;border-color:#527487;gap:10px}
+#contest-detail .contest-videos .sw-email-button svg{width:20px;height:20px;flex-shrink:0}
+#contest-detail .contest-social-grid{display:flex;flex-direction:column;gap:0}
+#contest-detail .contest-social-card{padding:14px 0;background:none;border:0;border-radius:0}
+#contest-detail .contest-social-card+.contest-social-card{border-top:1px solid #29434f}
+#contest-detail .contest-social-info{display:flex;align-items:center;justify-content:space-between;gap:10px}
+#contest-detail .contest-social-info h4{margin:0}
+#contest-detail .contest-social-handle{font-size:13px}
+#contest-detail .contest-social-actions{display:flex;gap:20px;margin-top:4px}
+#contest-detail .contest-social-actions :is(a,button){width:auto;min-height:44px;padding:8px 0;border:0;border-radius:0;background:none;color:#a9d4de;font-size:13px}
+#contest-detail .contest-copy-status:empty{display:none}
+#sharik-detail .sw-email-row{gap:12px}
+#sharik-detail .sw-copy{background:transparent;border-color:#527487;min-height:44px}
+#walaa-detail .wl-promise{margin:18px 0 24px}
+#walaa-detail .wl-promise-reward{font-size:30px}
+#walaa-detail .wl-details{gap:24px}
+#walaa-detail .wl-benefits-list{gap:10px}
+@media(hover:hover){
+  #contest-detail .contest-social-actions :is(a,button):hover{background:none;color:#fff;text-decoration:underline}
+  #contest-detail .contest-videos .sw-email-button:hover{background:#102c3a}
+}
+@media(max-width:360px){
+  :is(#contest-detail,#sharik-detail) .sw-prize,#walaa-detail .wl-card{padding:20px 14px}
+}
