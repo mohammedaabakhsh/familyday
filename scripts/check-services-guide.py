@@ -19,7 +19,9 @@ with sync_playwright() as p:
         page.goto(BASE+'/services-guide/',wait_until='networkidle')
         page.wait_for_selector('#resort-map',state='attached')
         assert page.locator('.guide-section').evaluate_all('(els)=>els.map(e=>e.id)')==SECTIONS
-        assert page.locator('.intro p').count()==2
+        assert page.locator('.intro p').count()==1
+        assert page.locator('#guide-title').inner_text()=='لحظاتكم بتفاصيل أجمل'
+        assert page.locator('.footer img,.section-number').count()==0
         assert page.locator('.contents>p').count()==0
         assert len(set(page.locator('.section-heading').evaluate_all('(els)=>els.map(e=>getComputedStyle(e).backgroundColor)')))==1
         expected_contacts=['https://wa.me/966556156693','tel:+966556156693','https://maps.app.goo.gl/FLmawLadNaa3uYpJ8?g_st=ic','https://instagram.com/FAMILYDAYRESORT','https://www.snapchat.com/add/familyday5','https://tiktok.com/@familydayresort']
@@ -28,12 +30,8 @@ with sync_playwright() as p:
         for name in SECTIONS:
             visit(page,name)
             heading=page.locator('#'+name+' .section-heading')
-            number=heading.locator('.section-number').bounding_box()
-            title=heading.locator('h2').bounding_box()
-            description=heading.locator('p').bounding_box()
-            assert abs((number['x']+number['width']/2)-(title['x']+title['width']/2))<1
-            assert number['y']+number['height']<=title['y']
-            assert title['y']+title['height']<=description['y']
+            assert heading.locator('h2').is_visible()
+            assert heading.locator('h2').inner_text()!=page.locator('#'+name).get_attribute('data-title')
             assert heading.evaluate('e=>getComputedStyle(e).textAlign')=='center'
         assert page.locator('.contents a').count()==4
         page.locator('#guide-back').click()

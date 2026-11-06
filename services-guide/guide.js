@@ -45,7 +45,7 @@
     'باقة VIP': 'imgs/classic_2.webp',
     'التجربة المتكاملة': 'imgs/royal_2.webp'
   };
-  const section = (id, number, title, intro, body) => '<section class="guide-section" id="' + id + '" aria-labelledby="title-' + id + '"><header class="section-heading"><span class="section-number" aria-hidden="true">' + number + '</span><div><h2 tabindex="-1" id="title-' + id + '">' + escape(title) + '</h2><p>' + escape(intro) + '</p></div></header>' + body + '</section>';
+  const section = (id, title, intro, body) => '<section class="guide-section" id="' + id + '" data-title="' + escape(title) + '" aria-labelledby="title-' + id + '"><header class="section-heading"><h2 tabindex="-1" id="title-' + id + '">' + escape(intro) + '</h2></header>' + body + '</section>';
   function packages(doc, key) {
     const panel = doc.querySelector('#hd-' + key + '-panel');
     if (!panel) throw new Error('Missing package panel');
@@ -62,13 +62,13 @@
     }).join('') + '</div>';
   }
   function render(doc) {
-    let html = section('coordination','01','التنسيقات','باقات متنوعة لتنسيق المناسبات داخل الكوخ.', packages(doc,'coordination'));
+    let html = section('coordination','التنسيقات','ورد وتزيين ولمسات خاصة لمناسبتكم داخل الكوخ. تصفّحوا الباقات واختاروا ما يناسبكم.', packages(doc,'coordination'));
     const diningImage = sourceImage(doc,'.tw-photo img');
     const diningBody = '<table class="service-price-table"><thead><tr><th scope="col">الأشخاص</th><th scope="col">' + escape(text(doc,'#tawilat-opt-plain .tw-package-name')) + '</th><th scope="col">' + escape(text(doc,'#tawilat-opt-tansiq .tw-package-name')) + '</th></tr></thead><tbody>' + Object.entries(_tawilatPrices).map(([size,p]) => '<tr><th scope="row">' + escape(size) + '</th><td>' + escape(p.plain) + ' ر.س</td><td>' + escape(p.tansiq) + ' ر.س</td></tr>').join('') + '</tbody></table><p class="small-note">تتوفر الطاولات والكراسي بخيارات متعددة حسب عدد الضيوف، ويمكن اختيارها مع التنسيق أو بدونه.</p>';
     const diningPrice = Math.min(...Object.values(_tawilatPrices).flatMap(p => [p.plain,p.tansiq]));
-    html += section('dining','02',text(doc,'.tw-title'),'خيارات لطاولات الطعام حسب عدد الضيوف، مع إمكانية إضافة التنسيق.', serviceCard({title:text(doc,'.tw-title'),price:'تبدأ من ' + diningPrice + ' ريال',photos:[diningImage.src],imageAlt:diningImage.alt,body:diningBody,label:'التفاصيل والأسعار'}));
-    html += section('seating','03',text(doc,'.jl-title'),'جلسات خارجية تُجهز داخل المساحة الخارجية الخاصة بالكوخ، بخيارات تناسب أعدادًا مختلفة.', '<div class="photo-grid">' + _jalsatAllSessions.map(s => serviceCard({title:s.name,price:s.price,photos:[s.img],imageAlt:s.name,className:'photo-card',capacity:s.persons,label:'تفاصيل الجلسة',body:'<p class="session-description">' + escape(s.desc) + '</p>'})).join('') + '</div><p class="seating-extra">إضافة اختيارية: ' + escape(text(doc,'.jl-addon-name')) + ' · ' + escape(text(doc,'.jl-addon-price')) + '</p>');
-    html += section('resort-map','04','خريطة الأكواخ','الأكواخ والحديقة المشتركة في نظرة واحدة.', FD_GUIDE_MAP.markup());
+    html += section('dining',text(doc,'.tw-title'),'طاولات وكراسي حسب عدد ضيوفكم، مع خيارات لإضافة التنسيق.', serviceCard({title:text(doc,'.tw-title'),price:'تبدأ من ' + diningPrice + ' ريال',photos:[diningImage.src],imageAlt:diningImage.alt,body:diningBody,label:'التفاصيل والأسعار'}));
+    html += section('seating',text(doc,'.jl-title'),'جلسات تُجهّز في المساحة الخارجية للكوخ، بخيارات تناسب عدد ضيوفكم.', '<div class="photo-grid">' + _jalsatAllSessions.map(s => serviceCard({title:s.name,price:s.price,photos:[s.img],imageAlt:s.name,className:'photo-card',capacity:s.persons,label:'تفاصيل الجلسة',body:'<p class="session-description">' + escape(s.desc) + '</p>'})).join('') + '</div><p class="seating-extra">إضافة اختيارية: ' + escape(text(doc,'.jl-addon-name')) + ' · ' + escape(text(doc,'.jl-addon-price')) + '</p>');
+    html += section('resort-map','خريطة الأكواخ','الأكواخ والحديقة المشتركة في نظرة واحدة.', FD_GUIDE_MAP.markup());
     content.innerHTML = html;
     FD_GUIDE_MAP.mount();
     FD_GUIDE_GALLERY.mount();
@@ -93,12 +93,12 @@
     const sectionView = Boolean(activeSection || pendingTile);
     document.body.dataset.guideView = sectionView ? 'section' : 'home';
     document.querySelectorAll('.guide-section').forEach(section => section.classList.toggle('is-active',section === activeSection));
-    const title = activeSection ? activeSection.querySelector('h2').textContent : pendingTile ? pendingTile.querySelector('.tile-title').textContent : '';
+    const title = activeSection ? activeSection.dataset.title : pendingTile ? pendingTile.querySelector('.tile-title').textContent : '';
     back.href = sectionView ? '#contents' : homeBack.href;
-    back.setAttribute('aria-label',sectionView ? 'العودة إلى أقسام الدليل' : homeBack.label);
-    document.getElementById('guide-back-label').textContent = sectionView ? 'الدليل' : 'رجوع';
+    back.setAttribute('aria-label',sectionView ? 'العودة إلى التجهيزات' : homeBack.label);
+    document.getElementById('guide-back-label').textContent = sectionView ? 'التجهيزات' : 'رجوع';
     document.getElementById('guide-context').textContent = title || 'منتجع يوم العائلة';
-    document.title = title ? title + ' | دليل يوم العائلة' : guideTitle;
+    document.title = title ? title + ' | يوم العائلة' : guideTitle;
     requestAnimationFrame(() => {
       if(activeSection) {
         if(focus) activeSection.querySelector('h2').focus({preventScroll:true});
@@ -140,7 +140,7 @@
       if (!response.ok) throw new Error('Service source unavailable');
       render(new DOMParser().parseFromString(await response.text(),'text/html'));
     } catch(error) {
-      content.innerHTML = '<div class="load-error"><h2>تعذّر تحميل تفاصيل الدليل</h2><p>حاولوا مرة ثانية لعرض التفاصيل هنا.</p><button type="button" id="retry-guide">إعادة المحاولة</button></div>';
+      content.innerHTML = '<div class="load-error"><h2>تعذّر تحميل التجهيزات</h2><p>حاولوا مرة ثانية لعرض التفاصيل هنا.</p><button type="button" id="retry-guide">إعادة المحاولة</button></div>';
       content.setAttribute('aria-busy','false');
       document.getElementById('retry-guide').addEventListener('click',load);
       console.error(error);
@@ -162,7 +162,7 @@
       if (navigator.share) {await navigator.share({title:document.title,url:url.href});return;}
       if (!navigator.clipboard) throw new Error('Clipboard unavailable');
       await navigator.clipboard.writeText(url.href);
-      status(id ? 'تم نسخ رابط القسم' : 'تم نسخ رابط الدليل');
+      status(id ? 'تم نسخ رابط القسم' : 'تم نسخ رابط التجهيزات');
     } catch(error) {
       if(error.name === 'AbortError') return;
       const dialog = document.getElementById('share-dialog');
