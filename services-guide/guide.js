@@ -96,8 +96,6 @@
     back.href = sectionView ? '#contents' : homeBack.href;
     back.setAttribute('aria-label',sectionView ? 'العودة إلى التجهيزات' : homeBack.label);
     document.getElementById('guide-back-label').textContent = sectionView ? 'التجهيزات' : 'رجوع';
-    document.getElementById('guide-context').textContent = title || 'منتجع يوم العائلة';
-    document.getElementById('guide-context').hidden = ['التنسيقات','طاولات الطعام','الجلسات الخارجية'].includes(title);
     document.title = title ? title + ' | يوم العائلة' : guideTitle;
     requestAnimationFrame(() => {
       if(activeSection) {

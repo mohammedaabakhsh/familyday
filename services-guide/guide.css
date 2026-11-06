@@ -9,18 +9,19 @@ h1,h2,h3,p,figure{margin:0}h1,h2,h3{line-height:1.4}img{display:block;max-width:
 .book{max-width:1120px;margin:auto;background:var(--paper);overflow:clip}
 .skip{position:fixed;top:-100px;right:12px;z-index:50;background:#fff;padding:12px}.skip:focus{top:8px}
 .topbar{display:flex;align-items:center;gap:12px;padding:12px 28px;min-height:68px;border-bottom:1px solid var(--line);--fd-back-ink:#133548;--fd-back-arrow:#386e77;--fd-back-border:#cfe1e5;--fd-back-fill:#f8fcfd}
-.topbar>span{font-size:13px;color:var(--muted)}
+
 .topbar button{display:grid;place-items:center;width:42px;height:42px;flex:none;margin-inline-start:auto;border:1px solid var(--line);border-radius:50%;background:#f7fbfc;color:var(--ink)}
 .guide-back{display:inline-flex;align-items:center;white-space:nowrap}
 /* A compact welcome leaves the services at the centre of the guide. */
-.cover{padding:30px 36px 28px;background:radial-gradient(ellipse at 50% 0%,#eaf6f4 0,transparent 70%),#fff}
+.cover{padding:18px 20px 22px;background:linear-gradient(180deg,#edf9fb 0%,#fff 100%);border-bottom:1px solid #e2eef0;line-height:1.6}
 .welcome{max-width:650px;text-align:center;margin:auto}
-.cover-logo{width:160px;height:100px;object-fit:cover;margin:0 auto 8px}
-.eyebrow{font-size:12px;color:#19a7b7;font-weight:800;line-height:1.4;margin:0 0 12px}
-.welcome h1{font-size:38px;font-weight:800;line-height:1.35}
+.cover-logo-frame{width:clamp(160px,45vw,176px);aspect-ratio:176/86;overflow:hidden;margin:0 auto 2px}
+.cover-logo{display:block;width:100%;aspect-ratio:1;background:url('/imgs/img01.webp') center/contain no-repeat;transform:translateY(-21.6%)}
+.eyebrow{font-size:12px;color:#19a7b7;font-weight:800;line-height:1.4;margin:0}
+.welcome h1{margin:18px 0 3px;font-size:28px;font-weight:700;line-height:1.3}
 .cover-tagline{margin:12px 0 16px;color:#32747e;font-size:16px}
-.intro{max-width:560px;margin:14px auto 0;color:var(--muted);font-size:14px;line-height:1.9}.intro p+p{margin-top:8px}
-.contents{max-width:900px;padding:22px 36px 36px;margin:auto;scroll-margin-top:20px}
+.intro{max-width:560px;margin:0 auto;color:#657780;font-size:13px;line-height:1.6}.intro p+p{margin-top:8px}
+.contents{max-width:900px;padding:20px 18px 36px;margin:auto;scroll-margin-top:20px}
 .contents-heading{text-align:center;margin-bottom:24px}
 .contents h2{font-size:24px}.contents-heading p{font-size:14px;color:var(--muted);margin-top:5px}
 .contents ol{display:grid;grid-template-columns:1fr;gap:14px;list-style:none;margin:0;padding:0}
@@ -150,9 +151,9 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 @media(prefers-reduced-motion:reduce){.package-details>summary svg{transition:none}}
 @media(min-width:1180px){.book{margin:24px auto;border-radius:24px;box-shadow:0 15px 60px #1335480a}}
 @media(max-width:759px){
- .topbar{padding:10px 18px;gap:10px}.topbar>span{font-size:12px}
- .cover{padding:22px 22px 16px}.welcome{padding:0}.cover-logo{width:144px;height:90px;margin-bottom:6px}.welcome h1{font-size:31px}.cover-tagline{font-size:14px;margin:10px 0 12px}.intro{font-size:13px;line-height:1.85}
- .contents{padding:24px 18px 32px}.contents h2{font-size:23px}.contents ol{grid-template-columns:1fr;gap:12px}.contents .guide-tile{min-height:164px;padding:16px 14px}.tile-title{font-size:17px}.tile-description{font-size:12px}
+ .topbar{padding:10px 18px;gap:10px}
+ .welcome{padding:0}.cover-tagline{font-size:14px;margin:10px 0 12px}
+ .contents{padding:20px 18px 32px}.contents h2{font-size:23px}.contents ol{grid-template-columns:1fr;gap:12px}.contents .guide-tile{min-height:164px;padding:16px 14px}.tile-title{font-size:17px}.tile-description{font-size:12px}
  .guide-section{padding:30px 18px 36px}.section-heading{padding:0 0 20px;margin-bottom:24px}.section-heading h2{font-size:16px}
  .package-grid,.photo-grid{grid-template-columns:1fr;gap:20px}.package-card--wide,.feature-card{display:block}.package-card--wide .package-photo{margin:0;border-radius:0}.package-copy,.feature-copy,.card-copy{padding:20px}.package-heading h3{font-size:21px}.price{font-size:21px}.inclusions li{font-size:15px}.feature-card>figure img{aspect-ratio:1}.feature-copy th,.feature-copy td{padding:12px 5px}.feature-copy thead{font-size:12px}
  .contents .guide-tile{padding:18px 16px;gap:12px;min-height:104px}.contents .tile-title{font-size:20px}.contents .tile-description{font-size:12px}.contents .tile-action{font-size:12px;gap:6px}
@@ -162,13 +163,20 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
  .guide-map-fold>summary{gap:10px;padding:12px}.map-preview{width:64px;height:64px}.guide-map-fold summary strong{font-size:16px}
 }
 @media(max-width:359px){.welcome h1{font-size:28px}.topbar{padding-inline:14px}.cover,.contents,.guide-section,.footer{padding-inline:14px}.package-copy,.feature-copy,.card-copy{padding:16px}.package-heading h3{font-size:20px}.contents .guide-tile{padding:14px 12px}.tile-title{font-size:16px}.contents .guide-tile{grid-template-columns:auto minmax(0,1fr);gap:8px 12px}.contents .tile-action{grid-column:2}}
+/* The home header follows guest services; keep the existing section navigation. */
+@media screen{
+ body:not([data-guide-view="section"]) .book{max-width:900px;margin:0 auto;border-radius:0;box-shadow:none}
+ body:not([data-guide-view="section"]) .topbar{background:#edf9fb;border-bottom:0;--fd-back-fill:transparent}
+ body:not([data-guide-view="section"]) .topbar button{width:44px;height:44px;background:transparent}
+}
+@media(min-width:640px){.cover{padding:22px 36px 24px}.contents{padding:24px 34px 36px}}
 @media(hover:hover) and (pointer:fine){.contents .guide-tile:hover{border-color:var(--tile-ink)}.social-link:hover{border-color:var(--accent);background:#fff}.contact-whatsapp:hover,.contact-phone:hover{border-color:var(--green);background:#f7fcfd}.footer-location:hover{text-decoration-thickness:2px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @page{size:A4;margin:12mm}
 @media print{
  html,body{background:white;font-size:12px;scroll-padding-top:0;print-color-adjust:exact;-webkit-print-color-adjust:exact}.book{max-width:none;margin:0;border-radius:0;box-shadow:none;overflow:visible}
  .topbar,.reading-bar,.skip,.toast,dialog,.footer-bottom,.map-tools,.cabin-card-heading button{display:none!important}
- .cover{padding:12px 0 28px;background:white}.welcome h1{font-size:30px}.welcome h1 br{display:initial}.cover-logo{width:150px;height:94px}
+ .cover{padding:12px 0 28px;background:white}.welcome h1{font-size:30px}.welcome h1 br{display:initial}.cover-logo-frame{width:176px}
  .contents{padding:0 0 24px}.contents ol{grid-template-columns:repeat(3,1fr)}.contents-heading p{display:none}
  .guide-section{padding:24px 0;break-before:page;border:0}.section-heading{break-after:avoid}.package-grid,.photo-grid{display:block}.package-card,.photo-card,.feature-card{break-inside:avoid;margin-bottom:20px}.package-card,.package-card--wide,.photo-card,.feature-card{display:grid;grid-template-columns:1fr 1.3fr;align-items:start}.package-card--wide .package-photo{margin:0;border-radius:0}.package-copy,.feature-copy,.card-copy{padding:16px}.inclusions li{font-size:12px;padding-block:3px}.inclusions li::before{top:12px}.package-heading h3,.card-copy h3{font-size:19px}.price{font-size:18px}.small-note,.session-description{font-size:11px}.map-scroll{overflow:visible}.guide-map-fold::details-content{display:block;content-visibility:visible}.guide-map-fold>summary{display:none}.footer{break-inside:avoid;background:white;color:var(--ink);border-top:1px solid var(--line)}.footer :is(a,p){color:var(--ink)}.package-card--text{display:block}
 }
