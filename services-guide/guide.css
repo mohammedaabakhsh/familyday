@@ -165,8 +165,9 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 @media(max-width:359px){.welcome h1{font-size:28px}.topbar{padding-inline:14px}.cover,.contents,.guide-section,.footer{padding-inline:14px}.package-copy,.feature-copy,.card-copy{padding:16px}.package-heading h3{font-size:20px}.contents .guide-tile{padding:14px 12px}.tile-title{font-size:16px}.contents .guide-tile{grid-template-columns:auto minmax(0,1fr);gap:8px 12px}.contents .tile-action{grid-column:2}}
 /* The home header follows guest services; keep the existing section navigation. */
 @media screen{
- body:not([data-guide-view="section"]) .book{max-width:900px;margin:0 auto;border-radius:0;box-shadow:none}
- body:not([data-guide-view="section"]) .topbar{background:#edf9fb;border-bottom:0;--fd-back-fill:transparent}
+ body:not([data-guide-view="section"]) .book{position:relative;max-width:900px;margin:0 auto;border-radius:0;box-shadow:none}
+ body:not([data-guide-view="section"]) .topbar{position:absolute;top:18px;left:18px;z-index:1;min-height:44px;padding:0;border:0;background:transparent}
+ @layer fd-back-navigation{body:not([data-guide-view="section"]) #guide-back{display:none!important}}
  body:not([data-guide-view="section"]) .topbar button{width:44px;height:44px;background:transparent}
 }
 @media(min-width:640px){.cover{padding:22px 36px 24px}.contents{padding:24px 34px 36px}}
