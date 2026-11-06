@@ -376,7 +376,6 @@
 
   function bottomLabelCenters(size) {
     var centers = {};
-    if (!window.matchMedia('(max-width: 819px)').matches) return centers;
     var row = locations.map(function (location, index) {
       return { location: location, index: index };
     }).filter(function (entry) {
@@ -405,7 +404,8 @@
     var bottomCenters = bottomLabelCenters(size);
     view.x = size <= view.width ? (view.width - size) / 2 : clamp(view.x, view.width - size, 0);
     var mapHeight = view.height - view.labelFooter;
-    view.y = size <= mapHeight ? (mapHeight - size) / 2 : clamp(view.y, mapHeight - size, 0);
+    // Keep the overview near its heading instead of centering it in a tall phone screen.
+    view.y = size <= mapHeight ? (selected ? (mapHeight - size) / 2 : Math.min(24, (mapHeight - size) / 2)) : clamp(view.y, mapHeight - size, 0);
     plane.style.transform = 'translate(' + view.x + 'px,' + view.y + 'px) scale(' + view.scale + ')';
     plane.style.setProperty('--fd-map-inverse', String(1 / view.scale));
     markers.forEach(function (marker, i) {
@@ -413,7 +413,7 @@
       if (!location.labelSide) return;
       if (location.labelSide === 'bottom' || location.labelSide === 'offset') {
         var labelX = bottomCenters[i] == null ? size * location.labelX / 100 : bottomCenters[i];
-        var labelY = location.labelSide === 'bottom' && view.labelFooter ? size + marker.querySelector('span').offsetHeight / 2 + 6 : size * location.labelY / 100;
+        var labelY = location.labelSide === 'bottom' ? size + marker.querySelector('span').offsetHeight / 2 + 10 : size * location.labelY / 100;
         marker.style.setProperty('--fd-map-label-x', labelX - size * location.x / 100 + 'px');
         if (leaderRoutes[i] && size) {
           leaderRoutes[i].setAttribute('points', [[location.x, location.y], location.leaderBend || [location.x, 85.7], [labelX * 100 / size, labelY * 100 / size]].map(function (point) { return point.join(','); }).join(' '));
@@ -441,8 +441,8 @@
     var centerY = view.size ? (view.height / 2 - view.y) / (view.size * view.scale) : .5;
     view.width = viewport.clientWidth;
     view.height = viewport.clientHeight;
-    // On short phones the bottom row needs its own strip, clear of Palm Beach.
-    view.labelFooter = window.matchMedia('(max-width: 819px)').matches && Math.min(view.width, view.height) < 360 ? 32 : 0;
+    // Reserve an external label row at every size, clear of the map boundary and Palm Beach.
+    view.labelFooter = 44;
     view.size = Math.min(view.width, view.height - view.labelFooter) * (window.matchMedia('(max-width: 819px)').matches ? (selected ? 0.92 : 0.94) : 1);
     if (reset) { view.scale = 1; centerX = centerY = .5; }
     view.x = view.width / 2 - centerX * view.size * view.scale;
