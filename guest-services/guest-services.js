@@ -323,7 +323,7 @@
       },{name:state.name,cabin:state.cabin,number:cabins[state.cabin],notes:state.restaurantNotes});
       if(!message) return;
     } else {
-      var parts=['السلام عليكم، أرغب بطلب الخدمات التالية أثناء إقامتي:',
+      var parts=['السلام عليكم، أرغب بطلب الخدمات التالية:',
         '', 'الاسم: '+state.name.trim(),'اسم الكوخ: '+state.cabin,'رقم الكوخ: '+cabins[state.cabin],'','الطلبات:'];
       groups(lines).forEach(function(group){
         parts.push('',group.title+':');
