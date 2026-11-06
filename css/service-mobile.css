@@ -9,10 +9,10 @@
   #setups-detail .cn-intro,#setups-detail .tw-intro{font-size:14px;line-height:1.5}
   #setups-detail .cn-summary{gap:8px}
   #tarfihi-detail .tg-packages{gap:8px}
-  #tarfihi-detail .tg-package{padding:10px;gap:3px 8px}
+  #tarfihi-detail .tg-package{padding:12px;gap:5px 8px}
   #tarfihi-detail .tg-package-description{font-size:13px;line-height:1.5}
   #tarfihi-detail .tg-games{max-width:none;gap:6px}
-  #tarfihi-detail .tg-games li{min-width:0;padding:5px 9px;font-size:13px}
+  #tarfihi-detail .tg-games li{min-width:0;padding:7px 3px;font-size:13px}
   #setups-detail :is(.cn-order,.jl-order),#tarfihi-detail .tg-order{padding:10px}
   #tarfihi-detail .tg-summary{margin-bottom:6px;min-height:26px}
   #setups-detail .tw-package{padding:9px 10px;gap:8px}

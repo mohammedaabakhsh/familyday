@@ -201,8 +201,8 @@
 #tarfihi-detail .tg-details{grid-area:details;display:flex;flex-direction:column;gap:24px;min-width:0}
 #tarfihi-detail .tg-section-title{margin:0 0 14px;color:#f0f5f7;font-size:18px;font-weight:700;line-height:1.5}
 #tarfihi-detail .tg-packages{display:grid;gap:12px}
-#tarfihi-detail .tg-package{display:grid;grid-template-columns:22px minmax(0,1fr) auto;grid-template-areas:"check name price" ". description description";align-items:center;gap:4px 10px;width:100%;padding:16px 14px;border:2px solid #315967;border-radius:16px;background:#153244;color:#f0f5f7;font-family:inherit;text-align:right;cursor:pointer}
-#tarfihi-detail .tg-package.is-selected{border-color:#44acba;background:#164452}
+#tarfihi-detail .tg-package{display:grid;grid-template-columns:22px minmax(0,1fr) auto;grid-template-areas:"check name price" ". description description";align-items:center;gap:4px 10px;width:100%;padding:16px 14px;border:1px solid #294957;border-radius:16px;background:#102a3a;color:#f0f5f7;font-family:inherit;text-align:right;cursor:pointer}
+#tarfihi-detail .tg-package.is-selected{border-color:#44acba;background:#164452;box-shadow:inset 0 0 0 1px #44acba}
 #tarfihi-detail .tg-package-check{grid-area:check;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border:1.5px solid #789eaf;border-radius:50%;color:#fff}
 #tarfihi-detail .tg-package-check svg{opacity:0}
 #tarfihi-detail .tg-package.is-selected .tg-package-check{border-color:#44acba;background:#218e9e}
@@ -210,8 +210,9 @@
 #tarfihi-detail .tg-package-name{grid-area:name;min-width:0;font-size:16px;font-weight:700;line-height:1.55}
 #tarfihi-detail .tg-package-description{grid-area:description;min-width:0;color:#b6cbd6;font-size:14px;line-height:1.65}
 #tarfihi-detail .tg-package-price{grid-area:price;color:#8fd5e4;font-size:18px;font-weight:800;line-height:1.5;white-space:nowrap}
-#tarfihi-detail .tg-games{display:flex;flex-wrap:wrap;gap:10px;max-width:360px;margin:0;padding:0;list-style:none}
-#tarfihi-detail .tg-games li{min-width:64px;padding:9px 12px;border:1px solid #315967;border-radius:12px;background:#102938;color:#d6e4eb;font-size:14px;line-height:1.5;text-align:center;white-space:nowrap}
+#tarfihi-detail .tg-games{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:8px;margin:0;padding:0;list-style:none}
+#tarfihi-detail .tg-games li{grid-column:span 3;min-width:0;padding:9px 4px;border:1px solid #29434f;border-radius:10px;background:#102938;color:#d6e4eb;font-size:14px;line-height:1.5;text-align:center;white-space:nowrap}
+#tarfihi-detail .tg-games li:nth-child(n+5){grid-column:span 4}
 #tarfihi-detail .tg-notes{padding-top:20px;border-top:1px solid #29434f}
 #tarfihi-detail .tg-notes-list{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none;color:#b6cbd6;font-size:14px;line-height:1.8}
 #tarfihi-detail .tg-notes-list li{position:relative;padding-inline-start:13px}
