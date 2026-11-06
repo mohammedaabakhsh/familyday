@@ -133,7 +133,7 @@ with sync_playwright() as p:
         page.locator('[data-share]').click()
         page.wait_for_function('document.querySelector("#share-status").textContent==="تم نسخ رابط القسم"')
         copied=page.evaluate('navigator.clipboard.readText()')
-        assert copied==BASE+'/services-guide/?v=2#seating',(copied,page.url)
+        assert copied==BASE+'/arrangements/#seating',(copied,page.url)
         assert not errors,errors
         assert not broken,broken
         print(width,'PASS unified service cards with complete content, visible dining prices, section links, images and sharing',flush=True)
@@ -159,7 +159,7 @@ with sync_playwright() as p:
     page.evaluate("Object.defineProperty(navigator,'share',{value:undefined,configurable:true});Object.defineProperty(navigator,'clipboard',{value:undefined,configurable:true})")
     page.locator('[data-share]').click()
     assert page.locator('#share-dialog').is_visible()
-    assert page.locator('#share-link').input_value()==BASE+'/services-guide/?v=2'
+    assert page.locator('#share-link').input_value()==BASE+'/arrangements/'
     page.locator('#close-share').click();assert page.locator('#share-dialog').is_hidden()
     context.close()
     page=browser.new_page()

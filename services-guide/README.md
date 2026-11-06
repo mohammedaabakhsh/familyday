@@ -40,6 +40,8 @@ Section pages keep their white, navy and muted teal palette. The home tiles use 
 
 ## Checks
 
+Sharing uses `/arrangements/`, a separate text-only HTML entry with its own canonical and Open Graph URL so the original guide's cached logo preview is not reused. Keep this entry free of image tags, favicon links, image metadata and stylesheets. Its `share-entry.js` redirects browsers to `/services-guide/` while preserving the section hash; link-preview clients that do not run JavaScript receive the title and description only. Existing messages and external preview caches cannot be changed by the site.
+
 Serve the repository root, then run:
 
 ```sh
