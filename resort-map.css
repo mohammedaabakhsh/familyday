@@ -270,9 +270,9 @@
  #fd-map-dialog.fd-map-no-selection::after{display:none}
 }
 @media(max-width:819px){
- /* One scroll area includes the map and all details; the card never traps scrolling. */
- #fd-map-dialog:not(.fd-map-no-selection) .fd-map-workspace{display:block;overflow-y:auto;overscroll-behavior:contain}
- #fd-map-dialog:not(.fd-map-no-selection) .fd-map-viewport{flex:none;height:max(min(calc(100vw + 24px),460px),calc(100dvh - 350px));min-height:0}
+ /* Fit the complete card first, then size the map to the remaining screen. */
+ #fd-map-dialog:not(.fd-map-no-selection) .fd-map-workspace{display:flex;flex-direction:column;overflow:hidden}
+ #fd-map-dialog:not(.fd-map-no-selection) .fd-map-viewport{flex:1 1 0;height:auto;min-height:0}
  #fd-map-dialog.fd-map-pilot-compact .fd-map-panel{height:auto;max-height:none;overflow:visible}
  #fd-map-dialog.fd-map-pilot-compact .fd-map-info{overflow:visible;padding:12px 14px max(16px,env(safe-area-inset-bottom))}
  #fd-map-dialog .fd-map-card .fd-map-facts>.fd-map-fact,

@@ -22,6 +22,7 @@
   var photoSources = [], photoIndex = 0, photoSwipe = null;
   var markers = [], highlights = [], leaderRoutes = [], selected = null;
   var previousOverflow = '', pointers = new Map(), gesture = null;
+  var pendingMapClick = false;
   var view = { width: 0, height: 0, size: 0, scale: 1, x: 0, y: 0, labelFooter: 0 };
   var closeIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg>';
   var photoLocation = null;
@@ -410,14 +411,16 @@
       return ['greek-one', 'greek-two', 'palm-beach'].indexOf(entry.location.key) !== -1;
     });
     roadLabels.forEach(function (entry) {
-      entry.y = Math.max(size * entry.location.labelY / 100, nextTop + entry.label.offsetHeight / 2);
+      var extraGap = entry.location.key === 'palm-beach' ? 6 : 0;
+      entry.y = Math.max(size * entry.location.labelY / 100, nextTop + extraGap + entry.label.offsetHeight / 2);
       nextTop = entry.y + entry.label.offsetHeight / 2 + 8;
     });
     var sideShift = Math.max(0, nextTop - 8 - (size - 4));
     roadLabels.forEach(function (entry) {
       var halfWidth = entry.label.offsetWidth / 2;
+      var roadOffset = entry.location.key === 'palm-beach' ? 34 : entry.location.key === 'greek-two' ? 8 : 0;
       sideLabels[entry.index] = {
-        x: clamp(size * entry.location.labelX / 100, halfWidth + 4, size - halfWidth - 4),
+        x: clamp(size * entry.location.labelX / 100 + roadOffset, halfWidth + 4, size - halfWidth - 4),
         y: entry.y - sideShift
       };
     });
@@ -436,7 +439,8 @@
         if (sideLabels[i]) { labelX = sideLabels[i].x; labelY = sideLabels[i].y; }
         marker.style.setProperty('--fd-map-label-x', labelX - size * location.x / 100 + 'px');
         if (leaderRoutes[i] && size) {
-          leaderRoutes[i].setAttribute('points', [[location.x, location.y], location.leaderBend || [location.x, 85.7], [labelX * 100 / size, labelY * 100 / size]].map(function (point) { return point.join(','); }).join(' '));
+          var bend = location.key === 'palm-beach' ? [90, 86] : location.leaderBend || [location.x, 85.7];
+          leaderRoutes[i].setAttribute('points', [[location.x, location.y], bend, [labelX * 100 / size, labelY * 100 / size]].map(function (point) { return point.join(','); }).join(' '));
         }
         marker.style.setProperty('--fd-map-label-y', labelY - size * location.y / 100 + 'px');
         return;
@@ -573,6 +577,8 @@
     } else {
       resetGesture();
       if (tapped) {
+        // The card can appear beneath the finger before the browser emits click.
+        pendingMapClick = true;
         var location = marker ? locations[Number(marker.dataset.mapIndex)] : locationAt(localPoint(event));
         if (location) selectLocation(location);
         else clearSelection(false);
@@ -699,6 +705,14 @@
     });
 
     viewport.addEventListener('pointerdown', pointerDown);
+    dialog.addEventListener('pointerdown', function () { pendingMapClick = false; }, true);
+    dialog.addEventListener('click', function (event) {
+      if (pendingMapClick && event.detail > 0) {
+        pendingMapClick = false;
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      }
+    }, true);
     viewport.addEventListener('pointermove', pointerMove);
     viewport.addEventListener('pointerup', pointerUp);
     viewport.addEventListener('pointercancel', pointerUp);

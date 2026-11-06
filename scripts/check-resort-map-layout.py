@@ -1,4 +1,4 @@
-"""Check map label spacing, selection, short-screen scrolling and return navigation."""
+"""Check map label spacing, selection, fixed short-screen layout and return navigation."""
 import sys
 from playwright.sync_api import sync_playwright
 
@@ -27,7 +27,9 @@ with sync_playwright() as p:
             workspace = page.locator('.fd-map-workspace')
             if width < 820:
                 assert page.locator('.fd-map-info').evaluate('e=>e.scrollHeight<=e.clientHeight+1')
-                workspace.evaluate('e=>e.scrollTop=e.scrollHeight')
+                assert workspace.evaluate('e=>e.scrollHeight<=e.clientHeight+1'), (width, key)
+                workspace.evaluate('e=>e.scrollTop=100')
+                assert workspace.evaluate('e=>e.scrollTop') == 0
                 tour = page.locator('.fd-map-tour-button').bounding_box()
                 assert tour['y'] + tour['height'] <= height, (width, key, tour)
                 workspace.evaluate('e=>e.scrollTop=0')
