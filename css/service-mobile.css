@@ -21,10 +21,10 @@
   #setups-detail .tw-footer-inner{padding:10px}
   #setups-detail .tw-summary{margin-bottom:6px}
   #setups-detail .jl-filter-title{margin-bottom:6px;font-size:14px}
-  #setups-detail .jl-filters{margin-bottom:8px;gap:6px}
+  #setups-detail .jl-filters{margin-bottom:0;gap:6px}
   #setups-detail .jl-filter{padding:6px 4px}
   #setups-detail .jl-description{margin-top:5px;font-size:13px;line-height:1.5}
-  #setups-detail .jl-facts{margin-top:6px;padding:6px 0}
+  #setups-detail .jl-facts{margin-top:12px;padding:10px 0}
   #setups-detail .jl-facts dd{font-size:16px}
   #setups-detail .jl-addon-option{min-height:48px;padding:8px 10px}
   #setups-detail .jl-order-line{font-size:13px;line-height:1.5}
@@ -35,7 +35,6 @@
 @media(max-width:359px){
   #setups-detail :is(.cn-layout,.tw-layout,.jl-layout){gap:8px}
   #setups-detail .jl-description{font-size:12px}
-  #setups-detail .jl-facts{padding:4px 0}
   #setups-detail .tw-package-desc{font-size:12px}
   #setups-detail .tw-package{padding:7px 8px}
 }
