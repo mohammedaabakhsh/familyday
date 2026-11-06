@@ -49,9 +49,35 @@ var FD_TOUR_COMMON = (function () {
     var details=root.querySelector('.dt-details'), scrollable=cards.length>3;
     if(hideEmpty) details.classList.toggle('is-empty',cards.length===0&&!note);
     var body='<div class="dt-cards'+(scrollable?' is-scrollable':'')+'">'+cards.map(function(card){return '<div class="dt-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+cardValue(card.value)+'</strong></div></div>';}).join('')+'</div>';
-    details.innerHTML=(!hideEmpty||cards.length?body:'')+(scrollable?'<div class="dt-swipe-hint" aria-hidden="true"><span>↔</span> اسحب لعرض المزيد</div>':'')+(note?'<p class="dt-note">'+esc(note)+'</p>':'');
+    details.innerHTML=(!hideEmpty||cards.length?body:'')+(scrollable?'<div class="dt-spec-navigation" role="group" aria-label="التنقل بين المواصفات" hidden><button type="button" data-spec-direction="previous" aria-label="المواصفات السابقة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button><span class="dt-spec-hint">اسحب لعرض المزيد</span><button type="button" data-spec-direction="next" aria-label="المواصفات التالية"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button></div>':'')+(note?'<p class="dt-note">'+esc(note)+'</p>':'');
     details.insertAdjacentHTML('afterbegin','<h2 class="dt-selected-title">'+esc(title)+'</h2>');
+    if (scrollable) {
+      var strip=details.querySelector('.dt-cards');
+      strip.addEventListener('scroll',function(){updateSpecNavigation(details);},{passive:true});
+      details.querySelectorAll('[data-spec-direction]').forEach(function(button){
+        button.addEventListener('click',function(){
+          var direction=getComputedStyle(strip).direction==='rtl'?-1:1;
+          var forward=button.dataset.specDirection==='next'?1:-1;
+          var card=strip.querySelector('.dt-card');
+          var step=card.getBoundingClientRect().width+(parseFloat(getComputedStyle(strip).columnGap)||0);
+          strip.scrollBy({left:direction*forward*step,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+        });
+      });
+      requestAnimationFrame(function(){updateSpecNavigation(details);});
+    }
   }
+  function updateSpecNavigation(details) {
+    var navigation=details.querySelector('.dt-spec-navigation');
+    if(!navigation)return;
+    var strip=details.querySelector('.dt-cards'), max=strip.scrollWidth-strip.clientWidth;
+    navigation.hidden=max<=1;
+    var position=Math.abs(strip.scrollLeft);
+    navigation.querySelector('[data-spec-direction="previous"]').disabled=position<=1;
+    navigation.querySelector('[data-spec-direction="next"]').disabled=position>=max-1;
+  }
+  window.addEventListener('resize',function(){
+    requestAnimationFrame(function(){document.querySelectorAll('.dt-details').forEach(updateSpecNavigation);});
+  },{passive:true});
   // Preserve each layout's label edges at mobile, tablet and desktop widths.
   function drawLines(root, parts, layout) {
     if(!root || !root.isConnected) return;

@@ -1,0 +1,12 @@
+/* Explicit navigation retains touch scrolling and all specification cards. */
+#ov .dt-spec-navigation{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:4px;direction:rtl}
+#ov .dt-spec-navigation[hidden]{display:none!important}
+#ov .dt-spec-navigation button{display:grid;place-items:center;flex:0 0 44px;width:44px;height:44px;padding:0;border:1px solid #376b7b;border-radius:50%;background:transparent;color:#bce7ee;cursor:pointer;touch-action:manipulation}
+#ov .dt-spec-navigation button:disabled{opacity:.3;cursor:default}
+#ov .dt-spec-navigation button:focus-visible{outline:2px solid #7ce2ee;outline-offset:2px}
+#ov .dt-spec-navigation svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+#ov .dt-spec-hint{font:400 11px/1.4 Tajawal,sans-serif;color:#8fcbd6}
+@media(max-width:599px){
+ #ov #pyramid-tour .dt-labels--bottom{width:100%;max-width:100%;min-width:0;box-sizing:border-box;grid-template-columns:repeat(3,minmax(0,1fr));padding-inline:8px;gap:6px}
+ #ov #pyramid-tour .dt-labels--bottom .dt-label{width:100%;min-width:0;max-width:100%;left:auto;right:auto;transform:none;white-space:normal;overflow-wrap:normal}
+}

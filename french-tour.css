@@ -45,3 +45,9 @@
  #ov #french-tour .dt-label--pool{left:0;right:auto;top:76%}
  #ov #french-tour .dt-label--outdoor{right:0;left:auto;top:79%}
 }
+
+/* French-only preview: remove excess space between mobile labels and illustration. */
+@media(max-width:599px) and (min-height:700px){
+ #ov #french-tour.dt-tour .dt-stage{grid-template-rows:auto auto auto;align-content:center;gap:12px}
+ #ov #french-tour .dt-image-space{height:min(calc((100vw - 16px) * .666667),calc(100dvh - 500px));aspect-ratio:auto}
+}
