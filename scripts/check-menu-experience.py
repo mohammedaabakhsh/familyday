@@ -16,8 +16,10 @@ with sync_playwright() as p:
   page.locator('#menu-cats button').filter(has_text='مشروبات باردة').click()
   page.locator('#menu-items button[aria-label="إضافة بيبسي"]').click()
   assert page.locator('.menu-order-button').inner_text()=='متابعة الطلب'
-  page.locator('#menu-detail').evaluate('(e)=>e.scrollTop=e.scrollHeight')
-  box=page.locator('#menu-cats').bounding_box();assert 0<=box['y']<=2,box
+  initial_y=page.locator('#menu-cats').bounding_box()['y']
+  scroll_top=page.locator('#menu-detail').evaluate('(e)=>{e.scrollTop=e.scrollHeight;return e.scrollTop}')
+  # Compact lists may fit without scrolling on desktop; longer lists still pin the categories.
+  box=page.locator('#menu-cats').bounding_box();assert abs(box['y']-max(0,initial_y-scroll_top))<=2,box
   page.screenshot(path=f'/tmp/menu-improved-{w}-sticky.png')
   page.locator('#menu-cats button').filter(has_text='وجبات خفيفة').click()
   cats=page.locator('#menu-cats').bounding_box();first=page.locator('#menu-items article').first.bounding_box()

@@ -1,6 +1,21 @@
 /* Keep categories reachable while browsing longer lists. */
-#menu-detail #menu-cats{position:sticky;top:0;z-index:2;padding-block:12px;background:#04111e;box-shadow:0 -12px 0 #04111e}
-#menu-detail .menu-qty-button{width:46px;height:46px;flex-basis:46px}
+#menu-detail .menu-header{margin-bottom:12px}
+#menu-detail .menu-hours{display:flex;align-items:flex-start;gap:6px;margin:0 44px 0 0;color:#a9ccd5;font-size:12px;line-height:1.6}
+#menu-detail .menu-hours svg{width:15px;height:15px;flex:none;margin-top:2px}
+#menu-detail .menu-hours-part{white-space:nowrap}
+#menu-detail #menu-cats{position:sticky;top:0;z-index:2;padding-block:8px;margin-bottom:16px;background:#04111e;box-shadow:0 -8px 0 #04111e}
+#menu-detail .menu-cat{position:relative;min-height:38px;padding:6px;border-radius:10px}
+/* Compact visible tabs retain a 44px touch area within the row gaps. */
+#menu-detail .menu-cat::before{content:"";position:absolute;inset:-3px 0}
+@media(max-width:360px){#menu-detail .menu-cat{padding-inline:4px;font-size:12px}}
+#menu-detail #menu-items{gap:10px}
+#menu-detail .menu-item{gap:10px;padding:12px 14px;border-radius:14px}
+#menu-detail .menu-item-name{line-height:1.4}
+#menu-detail .menu-item-price{margin-top:2px;line-height:1.4}
+#menu-detail .menu-item--described{gap:8px 10px}
+#menu-detail .menu-item:has(.menu-qty){border-color:#388797}
+#menu-detail .menu-controls{gap:6px;direction:ltr}
+#menu-detail .menu-qty-button{width:44px;height:44px;flex-basis:44px}
 #menu-detail .menu-extra{min-height:44px}
 #menu-detail .menu-qty-button:focus-visible{outline:2px solid #9ce9f0;outline-offset:3px}
 #order-popup .menu-checkout-summary{margin:0 0 20px;padding:14px;border:1px solid #315967;border-radius:14px;background:#0b2635}
