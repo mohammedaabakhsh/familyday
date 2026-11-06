@@ -254,7 +254,7 @@
 
 <script src="share-pages.js?v=20261102-water-package-v1"></script>
 <link rel="stylesheet" href="css/faq-mobile.css?v=20261102-code-cleanup-v2">
-<link rel="stylesheet" href="css/water-games.css?v=20261103-service-headers-v1">
+<link rel="stylesheet" href="css/water-games.css?v=20261106-compact-layout-v2">
 <script src="js/water-games.js?v=20261102-water-review-v2"></script>
 <link rel="stylesheet" href="css/service-orders.css?v=20261103-splash-motion-v1">
 <script src="js/menu-order-message.js?v=20261103-menu-message-v1"></script>
@@ -903,7 +903,10 @@
       <p class="wm-offer">3 ألعاب <span>بـ<strong>50</strong> ريال</span></p>
     </section>
     <section class="wm-selection" aria-labelledby="wm-selection-title">
-      <h2 id="wm-selection-title" class="wm-section-title">حدد عدد الألعاب للكبار والصغار</h2>
+      <div class="wm-selection-heading">
+        <h2 id="wm-selection-title" class="wm-section-title">حدد عدد الألعاب للكبار والصغار</h2>
+        <p id="maiya-selection-count" class="wm-selection-count" role="status" aria-live="polite" aria-atomic="true">اخترت 0 من 3</p>
+      </div>
       <div class="wm-category">
         <span id="wm-adults-label">للكبار</span>
         <div class="wm-quantity" role="group" aria-labelledby="wm-adults-label">
@@ -920,18 +923,17 @@
           <button type="button" data-water-group="children" data-step="1" onclick="changeMaiyaQuantity('children',1)" aria-label="زيادة عدد ألعاب الصغار">+</button>
         </div>
       </div>
-      <p id="maiya-selection-count" class="wm-selection-count" role="status" aria-live="polite" aria-atomic="true">اخترت 0 من 3</p>
     </section>
-    <div class="wm-order">
-      <div class="wm-order-summary"><span>إجمالي الباقة</span><strong>50 ريال</strong></div>
-      <button type="button" id="maiya-order-btn" class="wm-order-button" onclick="maiyaOrderNow()" disabled>متابعة الطلب</button>
-    </div>
     <section class="wm-notes" aria-labelledby="wm-notes-title">
       <h2 id="wm-notes-title" class="wm-section-title">تعليمات الاستخدام</h2>
       <ul class="wm-notes-list">
         <li>يرجى المحافظة على الألعاب وإعادتها بحالتها الأصلية.</li>
       </ul>
     </section>
+    <div class="wm-order">
+      <div class="wm-order-summary"><span>إجمالي الباقة</span><strong>50 ريال</strong></div>
+      <button type="button" id="maiya-order-btn" class="wm-order-button" onclick="maiyaOrderNow()" disabled>متابعة الطلب</button>
+    </div>
   </div>
 </div>
 

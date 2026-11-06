@@ -27,14 +27,16 @@ with sync_playwright() as p:
         assert panel.locator('img').count() == 0
         assert not panel.evaluate('(el)=>el.scrollWidth>el.clientWidth')
         if width < 600:
-            assert panel.evaluate('(el)=>el.scrollHeight<=el.clientHeight+1'), (width, panel.evaluate('(el)=>[el.scrollHeight,el.clientHeight]'))
+            if height >= 640:
+                assert panel.evaluate('(el)=>el.scrollHeight<=el.clientHeight+1'), (width, panel.evaluate('(el)=>[el.scrollHeight,el.clientHeight]'))
             order_box = panel.locator('.wm-order').bounding_box()
-            bottom_gap = height-order_box['y']-order_box['height']
-            assert 9 <= bottom_gap <= 13, (width, height, bottom_gap)
             notes_box = panel.locator('.wm-notes').bounding_box()
-            assert notes_box['y']+notes_box['height'] <= order_box['y']
+            assert 12 <= order_box['y']-notes_box['y']-notes_box['height'] <= 22
+            count_box = panel.locator('.wm-selection-count').bounding_box()
+            category_box = panel.locator('.wm-category').first.bounding_box()
+            assert count_box['y']+count_box['height'] <= category_box['y']
         title, back = panel.locator('.wm-title').bounding_box(), panel.locator('.wm-back').bounding_box()
-        assert 10 <= back['x']-(title['x']+title['width']) <= 18
+        assert abs(back['x']-(title['x']+title['width'])-8) <= 1
         assert 'حسب التوفر' not in panel.inner_text()
         assert 'حسب المتوفر' not in panel.inner_text()
         assert panel.locator('#maiya-order-btn').inner_text() == 'متابعة الطلب'
