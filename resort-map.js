@@ -402,10 +402,29 @@
   function renderView() {
     var size = view.size * view.scale;
     var bottomCenters = bottomLabelCenters(size);
+    // Space the three road-side labels independently of their physical plots.
+    var sideLabels = {}, nextTop = 0;
+    var roadLabels = locations.map(function (location, index) {
+      return { location: location, index: index, label: markers[index].querySelector('span') };
+    }).filter(function (entry) {
+      return ['greek-one', 'greek-two', 'palm-beach'].indexOf(entry.location.key) !== -1;
+    });
+    roadLabels.forEach(function (entry) {
+      entry.y = Math.max(size * entry.location.labelY / 100, nextTop + entry.label.offsetHeight / 2);
+      nextTop = entry.y + entry.label.offsetHeight / 2 + 8;
+    });
+    var sideShift = Math.max(0, nextTop - 8 - (size - 4));
+    roadLabels.forEach(function (entry) {
+      var halfWidth = entry.label.offsetWidth / 2;
+      sideLabels[entry.index] = {
+        x: clamp(size * entry.location.labelX / 100, halfWidth + 4, size - halfWidth - 4),
+        y: entry.y - sideShift
+      };
+    });
     view.x = size <= view.width ? (view.width - size) / 2 : clamp(view.x, view.width - size, 0);
     var mapHeight = view.height - view.labelFooter;
-    // Keep the overview near its heading instead of centering it in a tall phone screen.
-    view.y = size <= mapHeight ? (selected ? (mapHeight - size) / 2 : Math.min(24, (mapHeight - size) / 2)) : clamp(view.y, mapHeight - size, 0);
+    // Balance tall screens without pushing the overview far below its heading.
+    view.y = size <= mapHeight ? (selected ? (mapHeight - size) / 2 : Math.min(88, (mapHeight - size) / 4)) : clamp(view.y, mapHeight - size, 0);
     plane.style.transform = 'translate(' + view.x + 'px,' + view.y + 'px) scale(' + view.scale + ')';
     plane.style.setProperty('--fd-map-inverse', String(1 / view.scale));
     markers.forEach(function (marker, i) {
@@ -414,6 +433,7 @@
       if (location.labelSide === 'bottom' || location.labelSide === 'offset') {
         var labelX = bottomCenters[i] == null ? size * location.labelX / 100 : bottomCenters[i];
         var labelY = location.labelSide === 'bottom' ? size + marker.querySelector('span').offsetHeight / 2 + 10 : size * location.labelY / 100;
+        if (sideLabels[i]) { labelX = sideLabels[i].x; labelY = sideLabels[i].y; }
         marker.style.setProperty('--fd-map-label-x', labelX - size * location.x / 100 + 'px');
         if (leaderRoutes[i] && size) {
           leaderRoutes[i].setAttribute('points', [[location.x, location.y], location.leaderBend || [location.x, 85.7], [labelX * 100 / size, labelY * 100 / size]].map(function (point) { return point.join(','); }).join(' '));
@@ -553,7 +573,7 @@
     } else {
       resetGesture();
       if (tapped) {
-        var location = locationAt(localPoint(event)) || (marker ? locations[Number(marker.dataset.mapIndex)] : null);
+        var location = marker ? locations[Number(marker.dataset.mapIndex)] : locationAt(localPoint(event));
         if (location) selectLocation(location);
         else clearSelection(false);
       }
@@ -742,7 +762,7 @@
     mapResizeObserver.observe(viewport);
     // Repack when the font changes the actual rendered label widths.
     markers.forEach(function (marker, i) {
-      if (locations[i].labelSide === 'bottom') mapResizeObserver.observe(marker.querySelector('span'));
+      if (locations[i].labelSide === 'bottom' || locations[i].labelSide === 'offset') mapResizeObserver.observe(marker.querySelector('span'));
     });
     window.addEventListener('blur', resetGesture);
     updateMapText();

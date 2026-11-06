@@ -257,3 +257,28 @@
 
 /* Royal only: keep the connection value on one line without changing other cards. */
 #fd-map-dialog .fd-map-facts.is-royal-connection>.fd-map-fact--extra strong{font-size:11px!important;white-space:nowrap!important;overflow-wrap:normal!important;word-break:normal!important}
+
+/* Balanced overview and a readable selection on short phones. */
+#fd-map-dialog .fd-map-details-button.fd-map-tour-button{background:transparent;border-color:#527487;color:#b8dce5}
+#fd-map-dialog .fd-map-details-button{min-height:44px;box-sizing:border-box}
+@media(hover:hover){
+ #fd-map-dialog .fd-map-details-button.fd-map-tour-button:hover{background:#102c3a;border-color:#82b8c5;color:#fff}
+}
+@media(min-width:820px){
+ #fd-map-dialog.fd-map-no-selection .fd-map-panel{display:none}
+ #fd-map-dialog.fd-map-no-selection .fd-map-workspace{grid-template-columns:minmax(0,1fr);grid-template-areas:"map"}
+ #fd-map-dialog.fd-map-no-selection::after{display:none}
+}
+@media(max-width:819px){
+ /* One scroll area includes the map and all details; the card never traps scrolling. */
+ #fd-map-dialog:not(.fd-map-no-selection) .fd-map-workspace{display:block;overflow-y:auto;overscroll-behavior:contain}
+ #fd-map-dialog:not(.fd-map-no-selection) .fd-map-viewport{flex:none;height:max(min(calc(100vw + 24px),460px),calc(100dvh - 350px));min-height:0}
+ #fd-map-dialog.fd-map-pilot-compact .fd-map-panel{height:auto;max-height:none;overflow:visible}
+ #fd-map-dialog.fd-map-pilot-compact .fd-map-info{overflow:visible;padding:12px 14px max(16px,env(safe-area-inset-bottom))}
+ #fd-map-dialog .fd-map-card .fd-map-facts>.fd-map-fact,
+ #fd-map-dialog .fd-map-card .fd-map-facts.has-three>.fd-map-fact:not([hidden]){min-height:54px!important}
+ #fd-map-dialog.fd-map-pilot-compact .fd-map-details-button,
+ #fd-map-dialog.fd-map-pilot-compact .fd-map-tour-button{min-height:44px;padding:9px 12px}
+ #fd-map-dialog .fd-map-description{font-size:13px;line-height:1.5}
+ #fd-map-dialog .fd-map-clear{width:40px;height:40px}
+}
