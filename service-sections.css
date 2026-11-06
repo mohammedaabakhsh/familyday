@@ -15,5 +15,5 @@
 
 #hospitality-detail .hd-package-note{margin:12px 0 0;font:400 13px/1.7 Tajawal,sans-serif;color:#b6cbd6}
 
-/* Cinema and dining photos share the tab row width inside the setups page. */
-#setups-detail #sinema-detail .cn-shell,#setups-detail #tawilat-detail .tw-shell{padding-inline:0}
+/* Service photos share the tab row width inside the setups page. */
+#setups-detail #sinema-detail .cn-shell,#setups-detail #tawilat-detail .tw-shell,#setups-detail #jalsat-detail .jl-shell{padding-inline:0}

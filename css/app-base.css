@@ -138,33 +138,34 @@
 #jalsat-detail .jl-heading{display:flex;align-items:center;gap:14px}
 #jalsat-detail .jl-back{display:inline-flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;cursor:pointer}
 #jalsat-detail .jl-title{margin:0;color:#f0f5f7;font-weight:800;line-height:1.4}
-#jalsat-detail .jl-layout{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"browser" "details";gap:24px;align-items:start}
+#jalsat-detail .jl-layout{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"browser" "details";gap:20px;align-items:start}
 #jalsat-detail .jl-browser{grid-area:browser;min-width:0}
 #jalsat-detail .jl-filter-title{margin:0 0 12px;color:#d6e4eb;font-size:16px;font-weight:700;line-height:1.5}
 #jalsat-detail .jl-filters{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-bottom:18px}
 #jalsat-detail .jl-filter{min-height:44px;padding:8px 4px;border:1px solid #315967;border-radius:14px;background:#153244;color:#b6cbd6;font-family:inherit;font-size:16px;font-weight:700;line-height:1.5;cursor:pointer}
 #jalsat-detail .jl-filter.is-active{border-color:#44acba;background:#16889b;color:#fff}
-#jalsat-detail .jl-gallery{min-width:0;overflow:hidden;border:1px solid #29434f;border-radius:18px;background:#071c2a}
+#jalsat-detail .jl-gallery{position:relative;min-width:0;overflow:hidden;border-radius:18px;background:#071c2a}
 #jalsat-detail .jl-slides{display:flex;direction:rtl;transition:transform .28s ease;touch-action:pan-y pinch-zoom}
 #jalsat-detail .jl-slide{flex:0 0 100%;min-width:0}
 #jalsat-detail .jl-image{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain}
-#jalsat-detail .jl-gallery-controls{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;gap:12px;margin-top:12px}
+#jalsat-detail .jl-gallery-controls{position:absolute;inset-inline-start:8px;bottom:6px;z-index:1;display:grid;grid-template-columns:44px auto 44px;align-items:center;gap:4px;background:transparent}
 #jalsat-detail .jl-gallery-controls[hidden]{display:none}
-#jalsat-detail .jl-arrow{display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:1px solid #315967;border-radius:50%;background:#153244;color:#d6e9ef;cursor:pointer}
-#jalsat-detail .jl-arrow:disabled{opacity:.35;cursor:default}
-#jalsat-detail .jl-counter{color:#b6cbd6;font-size:14px;line-height:1.5;text-align:center}
-#jalsat-detail .jl-details{grid-area:details;display:flex;flex-direction:column;gap:24px;min-width:0}
+#jalsat-detail .jl-arrow{display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:0;border-radius:6px;background:transparent;color:#fff;cursor:pointer;filter:drop-shadow(0 1px 2px #000)}
+#jalsat-detail .jl-arrow:disabled{opacity:.45;cursor:default}
+#jalsat-detail .jl-counter{color:#fff;font-size:13px;font-weight:700;line-height:1.5;text-align:center;white-space:nowrap;text-shadow:0 1px 3px #000}
+#jalsat-detail .jl-details{grid-area:details;display:flex;flex-direction:column;gap:20px;min-width:0}
 #jalsat-detail .jl-session-name{margin:0;color:#f0f5f7;font-size:22px;font-weight:800;line-height:1.5}
 #jalsat-detail .jl-description{margin:10px 0 0;color:#b6cbd6;font-size:15px;line-height:1.8;white-space:pre-line}
-#jalsat-detail .jl-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:18px 0 0;padding:16px 0;border:1px solid #315967;border-radius:16px;background:#102938;text-align:center}
-#jalsat-detail .jl-facts>div{padding:0 12px}
-#jalsat-detail .jl-facts>div+div{border-inline-start:1px solid #315967}
-#jalsat-detail .jl-facts dt{margin:0 0 5px;color:#b6cbd6;font-size:13px;line-height:1.5}
+#jalsat-detail .jl-facts{display:flex;align-items:center;justify-content:center;gap:12px;margin:12px 0 0;padding:4px 0;text-align:center}
+#jalsat-detail .jl-facts>div{padding:0}
+#jalsat-detail .jl-facts>div+div{display:flex;align-items:center;gap:12px}
+#jalsat-detail .jl-facts>div+div::before{content:"·";color:#8aabb9;font-size:20px}
+#jalsat-detail .jl-facts dt{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 #jalsat-detail .jl-facts dd{margin:0;color:#f0f5f7;font-size:20px;font-weight:700;line-height:1.5}
 #jalsat-detail .jl-facts #jalsat-price{color:#8fd5e4;font-weight:800}
 #jalsat-detail .jl-section-title{margin:0 0 14px;color:#f0f5f7;font-size:18px;font-weight:700;line-height:1.5}
-#jalsat-detail .jl-addon-option{display:grid;grid-template-columns:minmax(0,1fr) auto 44px;align-items:center;gap:12px;width:100%;min-height:66px;padding:14px;border:1.5px solid #315967;border-radius:16px;background:#153244;color:#f0f5f7;font-family:inherit;text-align:right;cursor:pointer}
-#jalsat-detail .jl-addon-option.is-selected{border-color:#44acba;background:#164452}
+#jalsat-detail .jl-addon-option{display:grid;grid-template-columns:minmax(0,1fr) auto 44px;align-items:center;gap:12px;width:100%;min-height:66px;padding:12px;border:1px solid #294957;border-radius:14px;background:#102a3a;color:#f0f5f7;font-family:inherit;text-align:right;cursor:pointer}
+#jalsat-detail .jl-addon-option.is-selected{border-color:#44acba;background:#164452;box-shadow:inset 0 0 0 1px #44acba}
 #jalsat-detail .jl-addon-name{font-size:16px;font-weight:700;line-height:1.5}
 #jalsat-detail .jl-addon-price{color:#8fd5e4;font-size:16px;font-weight:700;line-height:1.5;white-space:nowrap}
 #jalsat-detail .jl-toggle{position:relative;width:44px;height:26px;border-radius:13px;background:#476471;transition:background .2s}
@@ -185,7 +186,8 @@
 #jalsat-detail .jl-order-button{display:block;width:100%;min-height:52px;padding:12px 18px;border:1px solid #3aa9b9;border-radius:14px;background:#147a8c;color:#fff;font-family:inherit;font-size:18px;font-weight:700;line-height:1.5;text-align:center;cursor:pointer}
 #jalsat-detail .jl-order-hint{margin:10px 0 0;color:#b6cbd6;font-size:13px;line-height:1.6;text-align:center}
 #jalsat-detail .jl-shell button:focus-visible{outline:2px solid #8fd5e4;outline-offset:3px}
-@media(hover:hover){#jalsat-detail .jl-back:hover,#jalsat-detail .jl-arrow:not(:disabled):hover{background:#1c4456}#jalsat-detail .jl-filter:hover,#jalsat-detail .jl-addon-option:hover{border-color:#8fd5e4}#jalsat-detail .jl-order-button:hover{background:#168b9e}}
+#jalsat-detail .jl-gallery-controls .jl-arrow:focus-visible{outline-offset:-4px}
+@media(hover:hover){#jalsat-detail .jl-back:hover{background:#1c4456}#jalsat-detail .jl-arrow:not(:disabled):hover{color:#b7ebf1}#jalsat-detail .jl-filter:hover,#jalsat-detail .jl-addon-option:hover{border-color:#8fd5e4}#jalsat-detail .jl-order-button:hover{background:#168b9e}}
 @media(max-width:360px){#jalsat-detail .jl-shell{padding-inline:16px}#jalsat-detail .jl-addon-option{gap:10px;padding-inline:12px}}
 @media(min-width:900px){#jalsat-detail .jl-shell{max-width:1100px;padding-top:28px}#jalsat-detail .jl-header{margin-bottom:26px}#jalsat-detail .jl-layout{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"details browser";gap:32px}#jalsat-detail .jl-browser{position:sticky;top:24px}}
 @media(prefers-reduced-motion:reduce){#jalsat-detail .jl-slides,#jalsat-detail .jl-toggle,#jalsat-detail .jl-toggle-knob{transition:none}}
