@@ -403,27 +403,33 @@
   function renderView() {
     var size = view.size * view.scale;
     var bottomCenters = bottomLabelCenters(size);
-    // Space the three road-side labels independently of their physical plots.
+    // Space the Greek labels independently of their physical plots.
     var sideLabels = {}, nextTop = 0;
     var roadLabels = locations.map(function (location, index) {
       return { location: location, index: index, label: markers[index].querySelector('span') };
     }).filter(function (entry) {
-      return ['greek-one', 'greek-two', 'palm-beach'].indexOf(entry.location.key) !== -1;
+      return ['greek-one', 'greek-two'].indexOf(entry.location.key) !== -1;
     });
     roadLabels.forEach(function (entry) {
-      var extraGap = entry.location.key === 'palm-beach' ? 6 : 0;
-      entry.y = Math.max(size * entry.location.labelY / 100, nextTop + extraGap + entry.label.offsetHeight / 2);
+      entry.y = Math.max(size * entry.location.labelY / 100, nextTop + entry.label.offsetHeight / 2);
       nextTop = entry.y + entry.label.offsetHeight / 2 + 8;
     });
     var sideShift = Math.max(0, nextTop - 8 - (size - 4));
     roadLabels.forEach(function (entry) {
       var halfWidth = entry.label.offsetWidth / 2;
-      var roadOffset = entry.location.key === 'palm-beach' ? 34 : entry.location.key === 'greek-two' ? 8 : 0;
+      var roadOffset = entry.location.key === 'greek-two' ? 8 : 0;
       sideLabels[entry.index] = {
         x: clamp(size * entry.location.labelX / 100 + roadOffset, halfWidth + 4, size - halfWidth - 4),
         y: entry.y - sideShift
       };
     });
+    // Palm Beach occupies the cleared parking area, with room below the Greek labels.
+    var palmIndex = locations.findIndex(function (location) { return location.key === 'palm-beach'; });
+    var palmLabel = markers[palmIndex].querySelector('span');
+    var lastRoad = roadLabels[roadLabels.length - 1];
+    var palmY = Math.max(size * locations[palmIndex].labelY / 100,
+      sideLabels[lastRoad.index].y + lastRoad.label.offsetHeight / 2 + palmLabel.offsetHeight / 2 + 8);
+    sideLabels[palmIndex] = { x: size * locations[palmIndex].labelX / 100, y: palmY };
     view.x = size <= view.width ? (view.width - size) / 2 : clamp(view.x, view.width - size, 0);
     var mapHeight = view.height - view.labelFooter;
     // Balance tall screens without pushing the overview far below its heading.
@@ -435,11 +441,11 @@
       if (!location.labelSide) return;
       if (location.labelSide === 'bottom' || location.labelSide === 'offset') {
         var labelX = bottomCenters[i] == null ? size * location.labelX / 100 : bottomCenters[i];
-        var labelY = location.labelSide === 'bottom' ? size + marker.querySelector('span').offsetHeight / 2 + 10 : size * location.labelY / 100;
+        var labelY = location.labelSide === 'bottom' ? Math.max(size + 10, palmY + palmLabel.offsetHeight / 2 + 8) + marker.querySelector('span').offsetHeight / 2 : size * location.labelY / 100;
         if (sideLabels[i]) { labelX = sideLabels[i].x; labelY = sideLabels[i].y; }
         marker.style.setProperty('--fd-map-label-x', labelX - size * location.x / 100 + 'px');
         if (leaderRoutes[i] && size) {
-          var bend = location.key === 'palm-beach' ? [90, 86] : location.leaderBend || [location.x, 85.7];
+          var bend = location.leaderBend || [location.x, 85.7];
           leaderRoutes[i].setAttribute('points', [[location.x, location.y], bend, [labelX * 100 / size, labelY * 100 / size]].map(function (point) { return point.join(','); }).join(' '));
         }
         marker.style.setProperty('--fd-map-label-y', labelY - size * location.y / 100 + 'px');
@@ -466,7 +472,7 @@
     view.width = viewport.clientWidth;
     view.height = viewport.clientHeight;
     // Reserve an external label row at every size, clear of the map boundary and Palm Beach.
-    view.labelFooter = 44;
+    view.labelFooter = view.height < 330 ? 64 : 44;
     view.size = Math.min(view.width, view.height - view.labelFooter) * (window.matchMedia('(max-width: 819px)').matches ? (selected ? 0.92 : 0.94) : 1);
     if (reset) { view.scale = 1; centerX = centerY = .5; }
     view.x = view.width / 2 - centerX * view.size * view.scale;

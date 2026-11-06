@@ -1,6 +1,6 @@
 // Shared, owner-approved map geometry and imagery. Both the resort map and guide read this file.
 window.FD_RESORT_MAP_DATA = {
-  image: "imgs/resort-map-v6-garden.png",
+  image: "imgs/resort-map-v7-clear-road.png",
   locations: [
     // Owner-confirmed plot directly above the two domes on the left.
     { key: 'pyramid', cabinId: 2, x: 25.359, y: 35.008, labelSide: 'left', labelRightX: 16,
@@ -31,7 +31,7 @@ window.FD_RESORT_MAP_DATA = {
       x: 75.917, y: 62.440, labelSide: 'offset', labelX: 88, labelY: 83, leaderBend: [89, 77],
       footprint: [[67.863, 57.177], [74.083, 52.233], [87.879, 72.727], [80.861, 76.954]] },
     { key: 'palm-beach', cabinId: 5, x: 68.501, y: 68.581,
-      labelSide: 'offset', labelX: 80, labelY: 89, leaderBend: [82, 84],
+      labelSide: 'offset', labelX: 74, labelY: 93, leaderBend: [72, 87],
       footprint: [[59.250, 63.238], [67.145, 57.656], [80.144, 77.592], [73.365, 82.217]] },
     // The central shared garden uses the same details as its existing site card.
     { key: 'shared-garden', cabinId: 11, kind: 'shared', x: 50.638, y: 46.013,
