@@ -14,6 +14,12 @@ function closeFaq2(){
 }
 
 function toggleResortFaq(card, question){
+  if(card.closest('#faq-list-resort') && !card.classList.contains('open')){
+    document.querySelectorAll('#faq-list-resort .faq-accordion-card.open').forEach(function(other){
+      other.classList.remove('open');
+      other.querySelector('.faq-question-row').setAttribute('aria-expanded','false');
+    });
+  }
   var isOpen = card.classList.toggle('open');
   question.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
 }
@@ -21,12 +27,15 @@ function selectResortFaqSection(sectionId){
   var list = document.getElementById('faq-list-resort');
   var section = document.getElementById(sectionId);
   if(!list || !section || section.parentElement !== list) return;
-  var shouldOpen = section.hidden;
+  list.querySelectorAll('.faq-accordion-card.open').forEach(function(card){
+    card.classList.remove('open');
+    card.querySelector('.faq-question-row').setAttribute('aria-expanded','false');
+  });
   Array.from(list.children).forEach(function(item){
-    item.hidden = !shouldOpen || item !== section;
+    item.hidden = item !== section;
   });
   document.querySelectorAll('#faq-overlay .fd-faq-shortcuts button').forEach(function(button){
-    button.setAttribute('aria-expanded', shouldOpen && button.getAttribute('aria-controls') === sectionId ? 'true' : 'false');
+    button.setAttribute('aria-expanded', button.getAttribute('aria-controls') === sectionId ? 'true' : 'false');
   });
 }
 function initResortFaqAccordion(){
@@ -37,6 +46,7 @@ function initResortFaqAccordion(){
     var question = card.children[0];
     var answer = card.children[1];
     if(!/^\d+\./.test(question.textContent.trim())) return;
+    question.textContent = question.textContent.replace(/^\s*\d+\.\s*/, '');
     card.classList.add('faq-accordion-card');
     question.classList.add('faq-question-row');
     answer.classList.add('faq-answer');
@@ -96,6 +106,7 @@ function resetResortFaq(){
   overlay.querySelectorAll('.fd-faq-shortcuts button, .faq-question-row').forEach(function(button){
     button.setAttribute('aria-expanded','false');
   });
+  selectResortFaqSection('faq-resort-booking');
   overlay.scrollTop = 0;
 }
 function showFaq(){

@@ -1,0 +1,52 @@
+/* Compact FAQ trial, scoped to the resort only. */
+#faq-overlay .faq-page-header,
+#faq-list-resort { max-width:680px; }
+#faq-overlay .faq-page-header { padding-bottom:16px!important; }
+#faq-overlay .fd-faq-shortcuts {
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:4px!important;
+  margin-top:22px!important;
+  padding:4px;
+  border:1px solid #294b59;
+  border-radius:14px;
+  background:#0b2230;
+}
+#faq-overlay .fd-faq-shortcuts button {
+  min-height:44px!important;
+  padding:8px 6px!important;
+  border:0;
+  border-radius:10px!important;
+  background:transparent;
+  font-size:14px!important;
+  text-align:center!important;
+}
+#faq-overlay .fd-faq-shortcuts button[aria-expanded="true"] { background:#147a8c; color:#fff; }
+#faq-list-resort .faq-section-title {
+  position:absolute;
+  width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip-path:inset(50%);white-space:nowrap;
+}
+#faq-list-resort .faq-grid { grid-template-columns:minmax(0,1fr); gap:0; }
+#faq-list-resort .faq-accordion-card,
+#faq-list-resort .faq-accordion-card.open {
+  background:transparent!important;
+  border:0!important;
+  border-bottom:1px solid #29434f!important;
+  border-radius:0!important;
+  overflow:visible;
+}
+#faq-list-resort .faq-question-row {
+  min-height:60px;
+  padding:17px 4px!important;
+  font-size:15px!important;
+  gap:16px;
+}
+#faq-list-resort .faq-accordion-card.open .faq-question-row { color:#9ed4df!important; }
+#faq-list-resort .faq-answer { padding:0 4px 18px!important; line-height:1.8!important; }
+#faq-list-resort .faq-answer::before { display:none; }
+#faq-list-resort .faq-chevron { font-size:0; width:20px;height:20px; }
+#faq-list-resort .faq-chevron::before {
+  content:"";width:7px;height:7px;border-right:1.5px solid currentColor;
+  border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);
+}
