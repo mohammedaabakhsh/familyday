@@ -56,7 +56,7 @@
 <link rel="preload" as="script" href="js/services.js?v=20261106-dining-inclusions-v1">
 <link rel="preload" as="script" href="js/stay-navigation.js?v=20261103-dest-feedback-v4">
 <link rel="preload" as="script" href="js/router.js?v=20261105-compare-cleanup-v1">
-<link rel="stylesheet" href="css/app-base.css?v=20261106-seating-selection-v6">
+<link rel="stylesheet" href="css/app-base.css?v=20261106-seating-controls-v7">
 <link rel="stylesheet" href="resort-map.css?v=20261106-overview-layout-v2">
 <style id="fd-home-map-shortcut">
 #landing .rh-home-shortcut{display:flex;align-items:center;gap:14px;margin-top:16px;padding:12px 14px;border:1px solid rgba(99,191,205,.32);border-radius:16px;background:linear-gradient(120deg,#0d2b3a,#0a202e);color:#edf5f7;text-decoration:none;text-align:right;min-width:0;}
@@ -974,6 +974,7 @@
       <div class="jl-browser">
         <div class="jl-gallery">
           <div id="jalsat-slides" class="jl-slides"></div>
+        </div>
         <div id="jalsat-gallery-controls" class="jl-gallery-controls">
           <button type="button" id="jalsat-prev" class="jl-arrow" onclick="jalsatGoTo(_jalsatIdx-1)" aria-label="الجلسة السابقة" disabled>
             <svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -982,7 +983,6 @@
           <button type="button" id="jalsat-next" class="jl-arrow" onclick="jalsatGoTo(_jalsatIdx+1)" aria-label="الجلسة التالية">
             <svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M7.5 1.5L1.5 7.5L7.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-        </div>
         </div>
       </div>
       <div class="jl-details">

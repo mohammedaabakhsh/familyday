@@ -148,11 +148,11 @@
 #jalsat-detail .jl-slides{display:flex;direction:rtl;transition:transform .28s ease;touch-action:pan-y pinch-zoom}
 #jalsat-detail .jl-slide{flex:0 0 100%;min-width:0}
 #jalsat-detail .jl-image{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain}
-#jalsat-detail .jl-gallery-controls{position:absolute;inset-inline-start:8px;bottom:6px;z-index:1;display:grid;grid-template-columns:44px auto 44px;align-items:center;gap:4px;background:transparent}
+#jalsat-detail .jl-gallery-controls{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;gap:16px;width:100%;max-width:240px;margin:12px auto 0}
 #jalsat-detail .jl-gallery-controls[hidden]{display:none}
-#jalsat-detail .jl-arrow{display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:0;border-radius:6px;background:transparent;color:#fff;cursor:pointer;filter:drop-shadow(0 1px 2px #000)}
+#jalsat-detail .jl-arrow{display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:1px solid #315967;border-radius:50%;background:#153244;color:#d6e9ef;cursor:pointer}
 #jalsat-detail .jl-arrow:disabled{opacity:.45;cursor:default}
-#jalsat-detail .jl-counter{color:#fff;font-size:13px;font-weight:700;line-height:1.5;text-align:center;white-space:nowrap;text-shadow:0 1px 3px #000}
+#jalsat-detail .jl-counter{color:#d6e9ef;font-size:15px;font-weight:700;line-height:1.5;text-align:center;white-space:nowrap}
 #jalsat-detail .jl-details{grid-area:details;display:flex;flex-direction:column;gap:20px;min-width:0}
 #jalsat-detail .jl-session-name{margin:0;color:#f0f5f7;font-size:22px;font-weight:800;line-height:1.5}
 #jalsat-detail .jl-description{margin:10px 0 0;color:#b6cbd6;font-size:15px;line-height:1.8;white-space:pre-line}
@@ -186,7 +186,7 @@
 #jalsat-detail .jl-order-hint{margin:10px 0 0;color:#b6cbd6;font-size:13px;line-height:1.6;text-align:center}
 #jalsat-detail .jl-shell button:focus-visible{outline:2px solid #8fd5e4;outline-offset:3px}
 #jalsat-detail .jl-gallery-controls .jl-arrow:focus-visible{outline-offset:-4px}
-@media(hover:hover){#jalsat-detail .jl-back:hover{background:#1c4456}#jalsat-detail .jl-arrow:not(:disabled):hover{color:#b7ebf1}#jalsat-detail .jl-filter:hover,#jalsat-detail .jl-addon-option:hover{border-color:#8fd5e4}#jalsat-detail .jl-order-button:hover{background:#168b9e}}
+@media(hover:hover){#jalsat-detail .jl-back:hover{background:#1c4456}#jalsat-detail .jl-arrow:not(:disabled):hover{background:#1c4456;color:#b7ebf1}#jalsat-detail .jl-filter:hover,#jalsat-detail .jl-addon-option:hover{border-color:#8fd5e4}#jalsat-detail .jl-order-button:hover{background:#168b9e}}
 @media(max-width:360px){#jalsat-detail .jl-shell{padding-inline:16px}#jalsat-detail .jl-addon-option{gap:10px;padding-inline:12px}}
 @media(min-width:900px){#jalsat-detail .jl-shell{max-width:1100px;padding-top:28px}#jalsat-detail .jl-header{margin-bottom:26px}#jalsat-detail .jl-layout{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"details browser";gap:32px}#jalsat-detail .jl-browser{position:sticky;top:24px}}
 @media(prefers-reduced-motion:reduce){#jalsat-detail .jl-slides,#jalsat-detail .jl-toggle,#jalsat-detail .jl-toggle-knob{transition:none}}
