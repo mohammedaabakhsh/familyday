@@ -14,7 +14,15 @@ button:disabled{cursor:default}
 :is(a,button,input,select,textarea,summary):focus-visible{outline:3px solid var(--brand);outline-offset:3px}
 [hidden]{display:none!important}
 .page{width:min(100%,900px);margin:auto;background:var(--paper);min-height:100vh}
-.hero{padding:18px 20px 22px;text-align:center;background:linear-gradient(180deg,#edf9fb 0%,#fff 100%);border-bottom:1px solid #e2eef0}
+.hero{position:relative;padding:18px 20px 22px;text-align:center;background:linear-gradient(180deg,#edf9fb 0%,#fff 100%);border-bottom:1px solid #e2eef0}
+.share-page{position:absolute;top:18px;left:18px;display:grid;place-items:center;width:44px;height:44px;padding:0;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink)}
+.share-status{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);max-width:90vw;padding:10px 18px;border-radius:12px;background:var(--deep);color:#fff;z-index:40;opacity:0;pointer-events:none}
+.share-status.visible{opacity:1}
+.share-dialog{width:min(440px,calc(100% - 32px));padding:24px;border:1px solid var(--line);border-radius:20px;background:#fff;color:var(--ink)}
+.share-dialog::backdrop{background:#061c2b99}
+.share-dialog h2{font-size:22px;margin:0}.share-dialog p{font-size:14px;margin:8px 0}
+.share-dialog input{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;font-size:16px}
+.share-dialog button{min-height:44px;margin-top:14px;padding:8px 18px;border:1px solid var(--line);border-radius:10px;background:var(--soft);color:var(--ink)}
 /* The square logo has transparent padding; crop that space in layout only. */
 .logo-frame{width:clamp(160px,45vw,176px);aspect-ratio:176/86;overflow:hidden;margin:0 auto 2px}
 /* Keep the visible logo out of HTML thumbnail candidates for link previews. */

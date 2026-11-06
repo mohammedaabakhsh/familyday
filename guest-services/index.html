@@ -19,7 +19,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/guest-services/guest-services.css?v=20261106-footer-guide-v2">
+<link rel="stylesheet" href="/guest-services/guest-services.css?v=20261106-share-v1">
+<script src="/guest-services/share.js?v=20261106-v1" defer></script>
 <script src="/guest-services/service-source.js?v=20261106-hospitality-v1" defer></script>
 <script src="/guest-services/guest-services.js?v=20261106-dialog-copy-v2" defer></script>
 <link rel="stylesheet" href="/css/service-switch.css?v=20261106-v1">
@@ -27,6 +28,7 @@
 <body>
 <div class="page">
   <header class="hero">
+    <button type="button" class="share-page" id="share-page" aria-label="مشاركة رابط خدمات إقامتك"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 4h6v6M20 4l-9 9M9 5H4v15h15v-5"/></svg></button>
     <div class="logo-frame"><span class="logo" role="img" aria-label="يوم العائلة"></span></div>
     <p class="eyebrow">منتجع يوم العائلة</p>
     <h1>خدمات إقامتك</h1>
@@ -238,6 +240,13 @@
     <div class="dialog-total"><span>إجمالي الاختيار</span><strong><bdi id="dialog-total">0</bdi> ريال</strong></div>
     <div class="dialog-actions"><button type="button" id="apply-selection" class="send-order" disabled>إضافة للطلب</button><button type="button" class="dialog-cancel">إلغاء</button></div>
   </footer>
+</dialog>
+<div id="share-status" class="share-status" role="status"></div>
+<dialog id="share-dialog" class="share-dialog" aria-labelledby="share-title">
+  <h2 id="share-title">رابط خدمات إقامتك</h2>
+  <p>انسخ الرابط وأرسله لمن تحب.</p>
+  <input id="share-link" type="url" readonly aria-label="رابط المشاركة" dir="ltr">
+  <button type="button" id="close-share">إغلاق</button>
 </dialog>
 <template id="customer-fields-template">
   <div class="order-field"><label data-for="name">الاسم</label><input data-field="name" type="text" required pattern=".*\S.*" maxlength="100" placeholder="أدخل اسمك" autocomplete="name"></div>
