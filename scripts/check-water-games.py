@@ -33,8 +33,8 @@ with sync_playwright() as p:
             notes_box = panel.locator('.wm-notes').bounding_box()
             assert 12 <= order_box['y']-notes_box['y']-notes_box['height'] <= 22
             count_box = panel.locator('.wm-selection-count').bounding_box()
-            category_box = panel.locator('.wm-category').first.bounding_box()
-            assert count_box['y']+count_box['height'] <= category_box['y']
+            category_box = panel.locator('.wm-category').last.bounding_box()
+            assert count_box['y'] >= category_box['y']+category_box['height']
         title, back = panel.locator('.wm-title').bounding_box(), panel.locator('.wm-back').bounding_box()
         assert abs(back['x']-(title['x']+title['width'])-8) <= 1
         assert 'حسب التوفر' not in panel.inner_text()
