@@ -18,6 +18,8 @@ with sync_playwright() as p:
         page.on('response',lambda r:broken.append(r.url) if r.status>=400 and r.url.startswith(BASE) else None)
         page.goto(BASE+'/services-guide/',wait_until='networkidle')
         page.wait_for_selector('#guide-content.is-ready',state='attached')
+        # WhatsApp can fall back to a logo favicon even without og:image.
+        assert page.locator('head link[rel*="icon"],head link[rel="image_src"],meta[property^="og:image"],meta[name^="twitter:image"]').count()==0
         assert page.locator('.guide-section').evaluate_all('(els)=>els.map(e=>e.id)')==SECTIONS
         assert page.locator('.intro p').count()==1
         assert page.locator('#guide-title').inner_text()=='تنسيقات وجلسات'
@@ -131,7 +133,7 @@ with sync_playwright() as p:
         page.locator('[data-share]').click()
         page.wait_for_function('document.querySelector("#share-status").textContent==="تم نسخ رابط القسم"')
         copied=page.evaluate('navigator.clipboard.readText()')
-        assert copied==BASE+'/services-guide/#seating',(copied,page.url)
+        assert copied==BASE+'/services-guide/?v=2#seating',(copied,page.url)
         assert not errors,errors
         assert not broken,broken
         print(width,'PASS unified service cards with complete content, visible dining prices, section links, images and sharing',flush=True)
@@ -157,16 +159,17 @@ with sync_playwright() as p:
     page.evaluate("Object.defineProperty(navigator,'share',{value:undefined,configurable:true});Object.defineProperty(navigator,'clipboard',{value:undefined,configurable:true})")
     page.locator('[data-share]').click()
     assert page.locator('#share-dialog').is_visible()
-    assert page.locator('#share-link').input_value()==BASE+'/services-guide/'
+    assert page.locator('#share-link').input_value()==BASE+'/services-guide/?v=2'
     page.locator('#close-share').click();assert page.locator('#share-dialog').is_hidden()
     context.close()
     page=browser.new_page()
     page.goto(BASE+'/services/',wait_until='networkidle')
     page.locator('a[href="/services-guide/"]').click()
-    page.wait_for_selector('#guide-back')
+    page.wait_for_url('**/services-guide/')
+    assert page.locator('#guide-back').is_hidden()
     assert page.locator('#guide-back').get_attribute('href')==BASE+'/services/'
-    page.locator('#guide-back').click()
+    page.go_back()
     page.wait_for_url('**/services/')
-    print('PASS guide return to source and direct-entry fallback',flush=True)
+    print('PASS share-only guide header and browser return to source',flush=True)
     browser.close()
     print('PASS direct anchor, automatic content/price/photo updates, retry and share fallback')

@@ -155,6 +155,8 @@
     if(!button) return;
     const id = activeSection ? (location.hash === '#package-complete' ? 'package-complete' : activeSection.id) : button.dataset.share;
     const url = new URL('/services-guide/',location.origin);
+    // Refresh previews that cached the previous logo favicon as a thumbnail.
+    url.searchParams.set('v','2');
     if(id) url.hash=id;
     try {
       if (navigator.share) {await navigator.share({title:document.title,url:url.href});return;}
