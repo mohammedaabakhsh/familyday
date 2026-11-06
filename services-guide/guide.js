@@ -25,6 +25,12 @@
     return {src:image.getAttribute('src'), alt:image.alt};
   };
   function serviceCard({title, price, photos = [], body, id = '', label = 'تفاصيل الخدمة', imageAlt, className = '', capacity = ''}) {
+    if (!photos.length) {
+      return '<article class="package-card package-card--text"><details class="package-details hospitality-details">'
+        + '<summary class="package-heading"><h3>' + escape(title) + '</h3><strong class="price">' + escape(price) + '</strong>'
+        + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>'
+        + '<div class="package-details-body">' + body + '</div></details></article>';
+    }
     return '<article class="package-card package-card--gallery ' + className + (photos.length ? '' : ' package-card--text') + '"' + (id ? ' id="' + escape(id) + '"' : '') + '>'
       + (photos.length ? FD_GUIDE_GALLERY.markup(photos,title,imageAlt) : '')
       + '<div class="package-copy"><div class="package-heading"><div class="service-heading-copy"><h3>' + escape(title) + '</h3>' + (capacity ? '<span class="service-capacity" aria-label="عدد الأشخاص: ' + escape(capacity) + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="9" cy="7" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 4a3 3 0 0 1 0 6m2 3a5 5 0 0 1 3 5v3"/></svg>' + escape(capacity) + '</span>' : '') + '</div><strong class="price">' + escape(price) + '</strong></div>'
