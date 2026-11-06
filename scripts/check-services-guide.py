@@ -69,7 +69,7 @@ with sync_playwright() as p:
         assert all(note not in guide_text for note in usage_notes)
         assert not page.locator('#guide-content').evaluate('(e)=>/[٠-٩]/.test(e.textContent)')
         assert page.locator('#seating .photo-card').count()==6
-        assert page.locator('#dining tbody tr').count()==5
+        assert page.locator('#dining .dining-price-card').count()==5
         assert page.locator('#guide-content details').count()==12
         assert page.locator('#guide-content details[open]').count()==0
         assert not page.locator('#package-complete details').evaluate('e=>e.open')
@@ -109,10 +109,10 @@ with sync_playwright() as p:
         visit(page,'dining')
         dining=page.locator('#dining .package-card')
         assert dining.locator('summary,details').count()==0
-        assert dining.locator('table').is_visible()
-        assert dining.locator('thead th').first.inner_text()=='عدد الأشخاص'
+        assert dining.locator('table,select,input,button').count()==0
+        assert dining.locator('.dining-prices').is_visible()
         expected_prices=page.evaluate('Object.entries(_tawilatPrices).map(([n,p])=>[n,p.plain+" ريال",p.tansiq+" ريال"])')
-        assert dining.locator('tbody tr').evaluate_all('(els)=>els.map(e=>Array.from(e.children,c=>c.textContent))')==expected_prices
+        assert dining.locator('.dining-price-card').evaluate_all('(els)=>els.map(e=>[e.querySelector("h3 bdi").textContent,...Array.from(e.querySelectorAll("dd"),c=>c.textContent)])')==expected_prices
         assert dining.locator('.package-heading,.price,.small-note').count()==0
         assert dining.locator('.dining-options .inclusions li').all_text_contents()==page.evaluate('_tawilatInclusions')
         assert dining.locator('.dining-options p').inner_text()=='طاولات وكراسي فقط'
