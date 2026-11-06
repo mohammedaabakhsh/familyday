@@ -26,7 +26,7 @@ with sync_playwright() as p:
         assert page.locator('.footer img,.section-number').count()==0
         assert page.locator('.contents>p').count()==0
         assert len(set(page.locator('.section-heading').evaluate_all('(els)=>els.map(e=>getComputedStyle(e).backgroundColor)')))==1
-        expected_contacts=['https://wa.me/966556156693','tel:+966556156693','https://maps.app.goo.gl/FLmawLadNaa3uYpJ8?g_st=ic','https://instagram.com/FAMILYDAYRESORT','https://www.snapchat.com/add/familyday5']
+        expected_contacts=['https://wa.me/966537009217','tel:+966537009217','https://maps.app.goo.gl/FLmawLadNaa3uYpJ8?g_st=ic','https://instagram.com/FAMILYDAYRESORT','https://www.snapchat.com/add/familyday5']
         assert sorted(page.locator('.footer-links a').evaluate_all('(els)=>els.map(e=>e.getAttribute("href"))'))==sorted(expected_contacts)
         assert page.locator('#hospitality,#cinema').count()==0
         for name in SECTIONS:
