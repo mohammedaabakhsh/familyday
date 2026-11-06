@@ -35,7 +35,7 @@ cabin photos to packages; these are labelled as cabin atmosphere and can be repl
 with dedicated service photos later. The actual dining and seating photos
 continue to come from the shared sources. Print styles also support saving the
 continuous brochure as a PDF from the browser.
-Coordination and dining open with centered category headings and short descriptions above their photos; their category labels are hidden in the navigation header. Seating retains its short opening description and navigation label.
+All three sections open with centered category headings and short descriptions above their photos; their category labels are hidden in the navigation header. Footer social icons match the guest-services page.
 Section pages keep their white, navy and muted teal palette. The home tiles use soft rose, sand and sage fills. The pale blue help footer offers WhatsApp, a phone link, directions and two labelled social icons (Instagram and Snapchat) without repeating the logo.
 
 ## Checks

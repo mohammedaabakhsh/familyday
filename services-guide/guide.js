@@ -68,7 +68,7 @@
       + '<div class="dining-options"><section><h3>بدون تنسيق</h3><p>' + escape(text(doc,'#tawilat-opt-plain .tw-package-desc')) + '</p></section><section><h3>يشمل خيار «مع تنسيق»</h3>' + items(_tawilatInclusions) + '</section></div>';
     const diningCard = '<article class="package-card package-card--gallery dining-card">' + FD_GUIDE_GALLERY.markup([diningImage.src],text(doc,'.tw-title'),diningImage.alt) + '<div class="package-copy"><div class="package-details-body">' + diningBody + '</div></div></article>';
     html += section('dining',text(doc,'.tw-title'),text(doc,'.tw-intro'),diningCard,true);
-    html += section('seating',text(doc,'.jl-title'),'جلسات نجهّزها لكم في المساحة الخارجية الخاصة بالكوخ', '<div class="photo-grid">' + _jalsatAllSessions.map(s => serviceCard({title:s.name,price:s.price,photos:[s.img],imageAlt:s.name,className:'photo-card',capacity:s.persons,label:'تفاصيل الجلسة',body:'<p class="session-description">' + escape(s.desc) + '</p>'})).join('') + '</div><p class="seating-extra">إضافة اختيارية: ' + escape(text(doc,'.jl-addon-name')) + ' · ' + escape(text(doc,'.jl-addon-price')) + '</p>');
+    html += section('seating',text(doc,'.jl-title'),'جلسات نجهّزها لكم في المساحة الخارجية الخاصة بالكوخ', '<div class="photo-grid">' + _jalsatAllSessions.map(s => serviceCard({title:s.name,price:s.price,photos:[s.img],imageAlt:s.name,className:'photo-card',capacity:s.persons,label:'تفاصيل الجلسة',body:'<p class="session-description">' + escape(s.desc) + '</p>'})).join('') + '</div><p class="seating-extra">إضافة اختيارية: ' + escape(text(doc,'.jl-addon-name')) + ' · ' + escape(text(doc,'.jl-addon-price')) + '</p>', true);
     content.innerHTML = html;
     FD_GUIDE_GALLERY.mount();
     content.setAttribute('aria-busy','false');
@@ -97,7 +97,7 @@
     back.setAttribute('aria-label',sectionView ? 'العودة إلى التجهيزات' : homeBack.label);
     document.getElementById('guide-back-label').textContent = sectionView ? 'التجهيزات' : 'رجوع';
     document.getElementById('guide-context').textContent = title || 'منتجع يوم العائلة';
-    document.getElementById('guide-context').hidden = ['التنسيقات','طاولات الطعام'].includes(title);
+    document.getElementById('guide-context').hidden = ['التنسيقات','طاولات الطعام','الجلسات الخارجية'].includes(title);
     document.title = title ? title + ' | يوم العائلة' : guideTitle;
     requestAnimationFrame(() => {
       if(activeSection) {

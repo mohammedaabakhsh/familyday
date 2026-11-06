@@ -31,12 +31,9 @@ with sync_playwright() as p:
             visit(page,name)
             heading=page.locator('#'+name+' .section-heading')
             assert heading.locator('h2').is_visible()
-            if name in ['coordination','dining']:
-                assert heading.locator('h2').inner_text()==page.locator('#'+name).get_attribute('data-title')
-                assert heading.locator('p').is_visible()
-                assert page.locator('#guide-context').is_hidden()
-            else:
-                assert heading.locator('h2').inner_text()!=page.locator('#'+name).get_attribute('data-title')
+            assert heading.locator('h2').inner_text()==page.locator('#'+name).get_attribute('data-title')
+            assert heading.locator('p').is_visible()
+            assert page.locator('#guide-context').is_hidden()
             assert heading.evaluate('e=>getComputedStyle(e).textAlign')=='center'
         assert page.locator('.contents a').count()==3
         page.locator('#guide-back').click()
