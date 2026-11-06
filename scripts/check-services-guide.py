@@ -42,6 +42,7 @@ with sync_playwright() as p:
         page.wait_for_selector('.contents:visible')
         assert page.locator('#guide-back').get_attribute('href')==BASE+'/resort/'
         assert page.locator('.guest-services-link').get_attribute('href')=='/guest-services/'
+        assert 'تصفّح خدمات إقامتك' in page.locator('.guest-services-link').inner_text()
         assert context.request.get(BASE+'/guest-services/').ok
         assert page.locator('#restaurant,#games,#water-games').count()==0
         assert page.locator('.hd-package-order').count()==0
@@ -60,7 +61,7 @@ with sync_playwright() as p:
             assert cards.count()==6
             for card,item in zip(cards.all(),expected):
                 assert card.locator('h3').text_content()==item['name']
-                assert card.locator('.price').text_content()==item['price']
+                assert card.locator('.price').text_content()==item['price']+' للباقة'
                 assert card.locator('.inclusions li').all_text_contents()==item['items']
         usage_notes=page.evaluate("""html=>Array.from(new DOMParser().parseFromString(html,'text/html').querySelectorAll('.hd-package-note,.cn-notes-list li'),e=>e.textContent.trim())""",source)
         guide_text=page.locator('#guide-content').text_content()
@@ -109,7 +110,8 @@ with sync_playwright() as p:
         dining=page.locator('#dining .package-card')
         assert dining.locator('summary,details').count()==0
         assert dining.locator('table').is_visible()
-        expected_prices=page.evaluate('Object.entries(_tawilatPrices).map(([n,p])=>[n,p.plain+" ر.س",p.tansiq+" ر.س"])')
+        assert dining.locator('thead th').first.inner_text()=='عدد الأشخاص'
+        expected_prices=page.evaluate('Object.entries(_tawilatPrices).map(([n,p])=>[n,p.plain+" ريال",p.tansiq+" ريال"])')
         assert dining.locator('tbody tr').evaluate_all('(els)=>els.map(e=>Array.from(e.children,c=>c.textContent))')==expected_prices
         assert dining.locator('.package-heading,.price,.small-note').count()==0
         assert dining.locator('.dining-options .inclusions li').all_text_contents()==page.evaluate('_tawilatInclusions')
@@ -117,7 +119,7 @@ with sync_playwright() as p:
         visit(page,'seating')
         for card,session in zip(page.locator('#seating .package-card').all(),page.evaluate('_jalsatAllSessions')):
             assert card.locator('h3').text_content()==session['name']
-            assert card.locator('.price').text_content()==session['price']
+            assert card.locator('.price').text_content()==session['price']+' للجلسة'
             assert card.locator('.service-capacity').text_content()==session['persons']
             assert card.locator('.service-capacity').is_visible()
             assert not card.locator('details').evaluate('e=>e.open')

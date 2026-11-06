@@ -24,16 +24,17 @@
     if (!image) throw new Error('Missing service image: ' + selector);
     return {src:image.getAttribute('src'), alt:image.alt};
   };
-  function serviceCard({title, price, photos = [], body, id = '', label = 'تفاصيل الخدمة', imageAlt, className = '', capacity = '', expandable = true}) {
+  function serviceCard({title, price, priceUnit = '', photos = [], body, id = '', label = 'تفاصيل الخدمة', imageAlt, className = '', capacity = '', expandable = true}) {
+    const priceMarkup = '<strong class="price">' + escape(price) + (priceUnit ? '<span class="price-unit"> ' + escape(priceUnit) + '</span>' : '') + '</strong>';
     if (!photos.length) {
       return '<article class="package-card package-card--text"><details class="package-details hospitality-details">'
-        + '<summary class="package-heading"><h3>' + escape(title) + '</h3><strong class="price">' + escape(price) + '</strong>'
+        + '<summary class="package-heading"><h3>' + escape(title) + '</h3>' + priceMarkup + ''
         + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>'
         + '<div class="package-details-body">' + body + '</div></details></article>';
     }
     return '<article class="package-card package-card--gallery ' + className + (photos.length ? '' : ' package-card--text') + '"' + (id ? ' id="' + escape(id) + '"' : '') + '>'
       + (photos.length ? FD_GUIDE_GALLERY.markup(photos,title,imageAlt) : '')
-      + '<div class="package-copy"><div class="package-heading"><div class="service-heading-copy"><h3>' + escape(title) + '</h3>' + (capacity ? '<span class="service-capacity" aria-label="عدد الأشخاص: ' + escape(capacity) + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="9" cy="7" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 4a3 3 0 0 1 0 6m2 3a5 5 0 0 1 3 5v3"/></svg>' + escape(capacity) + '</span>' : '') + '</div><strong class="price">' + escape(price) + '</strong></div>'
+      + '<div class="package-copy"><div class="package-heading"><div class="service-heading-copy"><h3>' + escape(title) + '</h3>' + (capacity ? '<span class="service-capacity" aria-label="عدد الأشخاص: ' + escape(capacity) + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="9" cy="7" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 4a3 3 0 0 1 0 6m2 3a5 5 0 0 1 3 5v3"/></svg>' + escape(capacity) + '</span>' : '') + '</div>' + priceMarkup + '</div>'
       + (expandable ? '<details class="package-details"><summary><span>' + escape(label) + '</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="package-details-body">' + body + '</div></details>' : '<div class="package-details-body">' + body + '</div>') + '</div></article>';
   }
   // Illustrative cabin photos can be replaced here without duplicating package facts or prices.
@@ -58,17 +59,17 @@
       const image = packagePhotos[title] || 'imgs/dome_1.webp';
       const complete = Boolean(card.querySelector('#hd-coordination-package-resort'));
       const photos = key === 'hospitality' ? [] : [image, ...[1,2,3,4,5,6].map(n => image.replace(/_\d+\.webp$/, '_' + n + '.webp')).filter(src => src !== image)].slice(0,6);
-      return serviceCard({title,price:price ? price.textContent.trim() : '',photos,body,label:'تفاصيل الباقة',id:complete ? 'package-complete' : ''});
+      return serviceCard({title,price:price ? price.textContent.trim() : '',priceUnit:'للباقة',photos,body,label:'تفاصيل الباقة',id:complete ? 'package-complete' : ''});
     }).join('') + '</div>';
   }
   function render(doc) {
     let html = section('coordination','التنسيقات','تجهيزات متكاملة لمناسباتكم', packages(doc,'coordination'), true);
     const diningImage = sourceImage(doc,'.tw-photo img');
-    const diningBody = '<table class="service-price-table"><thead><tr><th scope="col">الأشخاص</th><th scope="col">' + escape(text(doc,'#tawilat-opt-plain .tw-package-name')) + '</th><th scope="col">' + escape(text(doc,'#tawilat-opt-tansiq .tw-package-name')) + '</th></tr></thead><tbody>' + Object.entries(_tawilatPrices).map(([size,p]) => '<tr><th scope="row">' + escape(size) + '</th><td>' + escape(p.plain) + ' ر.س</td><td>' + escape(p.tansiq) + ' ر.س</td></tr>').join('') + '</tbody></table>'
+    const diningBody = '<table class="service-price-table"><thead><tr><th scope="col">عدد الأشخاص</th><th scope="col">' + escape(text(doc,'#tawilat-opt-plain .tw-package-name')) + '</th><th scope="col">' + escape(text(doc,'#tawilat-opt-tansiq .tw-package-name')) + '</th></tr></thead><tbody>' + Object.entries(_tawilatPrices).map(([size,p]) => '<tr><th scope="row">' + escape(size) + '</th><td>' + escape(p.plain) + ' ريال</td><td>' + escape(p.tansiq) + ' ريال</td></tr>').join('') + '</tbody></table>'
       + '<div class="dining-options"><section><h3>بدون تنسيق</h3><p>' + escape(text(doc,'#tawilat-opt-plain .tw-package-desc')) + '</p></section><section><h3>يشمل خيار «مع تنسيق»</h3>' + items(_tawilatInclusions) + '</section></div>';
     const diningCard = '<article class="package-card package-card--gallery dining-card">' + FD_GUIDE_GALLERY.markup([diningImage.src],text(doc,'.tw-title'),diningImage.alt) + '<div class="package-copy"><div class="package-details-body">' + diningBody + '</div></div></article>';
     html += section('dining',text(doc,'.tw-title'),text(doc,'.tw-intro'),diningCard,true);
-    html += section('seating',text(doc,'.jl-title'),'جلسات نجهّزها لكم في المساحة الخارجية الخاصة بالكوخ', '<div class="photo-grid">' + _jalsatAllSessions.map(s => serviceCard({title:s.name,price:s.price,photos:[s.img],imageAlt:s.name,className:'photo-card',capacity:s.persons,label:'تفاصيل الجلسة',body:'<p class="session-description">' + escape(s.desc) + '</p>'})).join('') + '</div><p class="seating-extra">إضافة اختيارية: ' + escape(text(doc,'.jl-addon-name')) + ' · ' + escape(text(doc,'.jl-addon-price')) + '</p>', true);
+    html += section('seating',text(doc,'.jl-title'),'جلسات نجهّزها لكم في المساحة الخارجية الخاصة بالكوخ', '<div class="photo-grid">' + _jalsatAllSessions.map(s => serviceCard({title:s.name,price:s.price,priceUnit:'للجلسة',photos:[s.img],imageAlt:s.name,className:'photo-card',capacity:s.persons,label:'تفاصيل الجلسة',body:'<p class="session-description">' + escape(s.desc) + '</p>'})).join('') + '</div><p class="seating-extra">إضافة اختيارية: ' + escape(text(doc,'.jl-addon-name')) + ' · ' + escape(text(doc,'.jl-addon-price')) + '</p>', true);
     content.innerHTML = html;
     FD_GUIDE_GALLERY.mount();
     content.setAttribute('aria-busy','false');

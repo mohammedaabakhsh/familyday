@@ -199,3 +199,6 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 .dining-options h3{font-size:18px;font-weight:700}
 .dining-options p{font-size:14px;color:var(--muted);margin-top:6px}
 .dining-options .inclusions{margin-top:8px}
+
+/* Explain the price unit within the existing price badge. */
+.price-unit{display:block;text-align:center;font-size:12px;font-weight:500;line-height:1.4}
