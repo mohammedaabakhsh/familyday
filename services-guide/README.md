@@ -1,6 +1,6 @@
 # Services guide
 
-`/services-guide/` is a shareable preparation catalogue titled “لحظاتكم بتفاصيل أجمل”, with a compact introduction and service tiles inspired by `/guest-services/`.
+`/services-guide/` is a shareable preparation catalogue titled “تنسيقات وجلسات”, with a compact introduction and service tiles inspired by `/guest-services/`.
 Coordination spans the full row above dining and seating tiles; the map uses a compact link below.
 Each tile opens a full-page section in the same tab: coordination, dining, seating or the map. The home screen shows only the introduction, tiles and contact footer. Service cards keep a visible name
 and price, then a native inline disclosure for all its details. Package ordering
@@ -43,7 +43,7 @@ continuous brochure as a PDF from the browser. Map selection
 supports touch and keyboard, shows a square cabin photo and an exploration link,
 and retains the shared garden's features. The map starts collapsed behind a preview; its contents remain visible when printing.
 Each section opens with a short description of its options; the category name stays in the navigation header without a repeated numbered title.
-Section pages keep their white, navy and muted teal palette. The home tiles use soft rose, sand and sage fills. The pale blue help footer offers WhatsApp, a phone link, directions and three labelled social icons without repeating the logo.
+Section pages keep their white, navy and muted teal palette. The home tiles use soft rose, sand and sage fills. The pale blue help footer offers WhatsApp, a phone link, directions and two labelled social icons (Instagram and Snapchat) without repeating the logo.
 
 ## Checks
 
