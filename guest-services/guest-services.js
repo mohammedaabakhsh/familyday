@@ -114,7 +114,6 @@
   }
   function buildHospitality() {
     document.getElementById('hospitality-title').textContent=catalog.hospitality.title;
-    document.querySelector('#hospitality-service .section-note').textContent=catalog.hospitality.intro;
     var target=document.getElementById('hospitality-packages');
     catalog.hospitality.packages.forEach(function(pack){
       var card=el('article',undefined,'hospitality-package'),heading=el('div',undefined,'hospitality-heading');
