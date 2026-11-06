@@ -1,10 +1,10 @@
-"""Check the brochure, shared source updates, inline map and sharing without orders."""
+"""Check the brochure, shared source updates and sharing without orders."""
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 import sys
 BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8023'
 ROOT=Path(__file__).resolve().parents[1]
-SECTIONS=['coordination','dining','seating','resort-map']
+SECTIONS=['coordination','dining','seating']
 def visit(page, section):
     page.evaluate('(id)=>{location.hash=id}', section)
     page.wait_for_selector('#'+section+':visible')
@@ -17,7 +17,7 @@ with sync_playwright() as p:
         page.on('pageerror',lambda e:errors.append(str(e)))
         page.on('response',lambda r:broken.append(r.url) if r.status>=400 and r.url.startswith(BASE) else None)
         page.goto(BASE+'/services-guide/',wait_until='networkidle')
-        page.wait_for_selector('#resort-map',state='attached')
+        page.wait_for_selector('#guide-content.is-ready',state='attached')
         assert page.locator('.guide-section').evaluate_all('(els)=>els.map(e=>e.id)')==SECTIONS
         assert page.locator('.intro p').count()==1
         assert page.locator('#guide-title').inner_text()=='تنسيقات وجلسات'
@@ -33,7 +33,7 @@ with sync_playwright() as p:
             assert heading.locator('h2').is_visible()
             assert heading.locator('h2').inner_text()!=page.locator('#'+name).get_attribute('data-title')
             assert heading.evaluate('e=>getComputedStyle(e).textAlign')=='center'
-        assert page.locator('.contents a').count()==4
+        assert page.locator('.contents a').count()==3
         page.locator('#guide-back').click()
         page.wait_for_selector('.contents:visible')
         assert page.locator('#guide-back').get_attribute('href')==BASE+'/resort/'
@@ -65,22 +65,12 @@ with sync_playwright() as p:
         assert not page.locator('#guide-content').evaluate('(e)=>/[٠-٩]/.test(e.textContent)')
         assert page.locator('#seating .photo-card').count()==6
         assert page.locator('#dining tbody tr').count()==5
-        assert page.locator('#guide-content details').count()==14
+        assert page.locator('#guide-content details').count()==12
         assert page.locator('#guide-content details[open]').count()==0
         assert not page.locator('#package-complete details').evaluate('e=>e.open')
         assert page.locator('.package-card > .package-photo img').count()==43
         assert page.locator('.gallery-controls').count()==6
-        assert page.locator('#resort-map details').count()==1
-        assert not page.locator('.map-scroll').is_visible()
-        visit(page,'resort-map')
-        page.locator('.guide-map-fold>summary').click()
-        assert page.locator('.map-scroll').is_visible()
-        rect=page.locator('.map-scroll').bounding_box()
-        canvas=page.locator('.map-canvas').bounding_box()
-        assert rect['width']<=600 and canvas['width']<rect['width']-12
-        assert canvas['x']>0 and canvas['x']+canvas['width']<width
-        page.locator('#guide-back').click()
-        page.wait_for_selector('.contents:visible')
+        assert page.locator('#resort-map').count()==0
         for name in SECTIONS:
             page.locator('.contents a[href="#'+name+'"]').click()
             page.wait_for_timeout(100)
@@ -104,15 +94,19 @@ with sync_playwright() as p:
             if card.locator('.gallery-track').count():
                 track=card.locator('.gallery-track').bounding_box()
                 assert abs(track['width']/track['height']-4/3)<.01
-            card.locator('summary').click()
-            assert card.locator('.package-details-body').is_visible()
-            card.locator('summary').click()
+            if card.locator('summary').count():
+                card.locator('summary').click()
+                assert card.locator('.package-details-body').is_visible()
+                card.locator('summary').click()
+            else:
+                assert card.locator('.package-details-body').is_visible()
         visit(page,'dining')
-        dining=page.locator('#dining .package-card');dining.locator('summary').click()
+        dining=page.locator('#dining .package-card')
+        assert dining.locator('summary,details').count()==0
+        assert dining.locator('table').is_visible()
         expected_prices=page.evaluate('Object.entries(_tawilatPrices).map(([n,p])=>[n,p.plain+" ر.س",p.tansiq+" ر.س"])')
         assert dining.locator('tbody tr').evaluate_all('(els)=>els.map(e=>Array.from(e.children,c=>c.textContent))')==expected_prices
         assert dining.locator('.price').text_content()=='تبدأ من '+str(page.evaluate('Math.min(...Object.values(_tawilatPrices).flatMap(p=>[p.plain,p.tansiq]))'))+' ريال'
-        dining.locator('summary').click()
         visit(page,'seating')
         for card,session in zip(page.locator('#seating .package-card').all(),page.evaluate('_jalsatAllSessions')):
             assert card.locator('h3').text_content()==session['name']
@@ -128,46 +122,14 @@ with sync_playwright() as p:
         page.locator('img').evaluate_all('(els)=>els.forEach(el=>el.loading="eager")')
         page.wait_for_function('Array.from(document.images).every(i=>i.complete&&i.naturalWidth>0)')
         assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')
-        visit(page,'resort-map')
-        cabins=page.evaluate('data.resort.items');plotted=page.evaluate('FD_RESORT_MAP_DATA.locations')
-        assert len(plotted)==13
-        for location in plotted:
-            cid=location['cabinId'];cabin=next(c for c in cabins if c['id']==cid)
-            marker=page.locator(f'svg [data-map-cabin="{cid}"]')
-            marker.locator('.map-label').click()
-            assert page.locator('#guide-cabin-title').inner_text()==cabin['name']
-            assert marker.get_attribute('aria-pressed')=='true'
-            assert page.locator('svg .is-selected').count()==1
-            if cid!=11:
-                photo=page.locator('#guide-cabin-card .cabin-photo');photo.evaluate('(el)=>el.decode()')
-                rect=photo.bounding_box();assert abs(rect['width']-rect['height'])<1
-                link=page.locator('.cabin-explore-link')
-                assert link.text_content()=='استكشف الكوخ من الداخل ←'
-                href=link.get_attribute('href')
-                assert 'from=guide' in href and 'cabin='+str(cid) in href
-                assert context.request.get(BASE+href).ok
-            page.locator('#close-cabin').click()
-            assert page.locator('#guide-cabin-card').is_hidden()
-        for key in ['Enter',' ']:
-            page.locator('svg [data-map-cabin="1"]').focus();page.keyboard.press(key)
-            assert page.locator('#guide-cabin-title').inner_text()=='بيت الدوم 1'
-            assert page.url.endswith('#resort-map')
-            page.locator('#close-cabin').click()
-        # Closing the map keeps it compact and reopening preserves all cabin navigation.
-        page.locator('.guide-map-fold>summary').click()
-        assert not page.locator('.map-scroll').is_visible()
-        page.locator('.guide-map-fold>summary').focus();page.keyboard.press('Enter')
-        assert page.locator('.map-scroll').is_visible()
-        page.locator('#resort-map').scroll_into_view_if_needed()
-        page.screenshot(path=f'/tmp/review-guide-map-{width}.png')
         page.evaluate("Object.defineProperty(navigator,'share',{value:undefined,configurable:true})")
         page.locator('[data-share]').click()
         page.wait_for_function('document.querySelector("#share-status").textContent==="تم نسخ رابط القسم"')
         copied=page.evaluate('navigator.clipboard.readText()')
-        assert copied==BASE+'/services-guide/#resort-map',(copied,page.url)
+        assert copied==BASE+'/services-guide/#seating',(copied,page.url)
         assert not errors,errors
         assert not broken,broken
-        print(width,'PASS unified service cards with complete content, inline map, all 13 markers, section links, images and sharing',flush=True)
+        print(width,'PASS unified service cards with complete content, visible dining prices, section links, images and sharing',flush=True)
         context.close()
     context=browser.new_context();page=context.new_page()
     source=(ROOT/'index.html').read_text().replace('تبخير المكان بالعود','تفصيل ضيافة تجريبي').replace('تزيين السرير بالورد الطبيعي على شكل قلب أو حرف من اختيارك','تفصيل تنسيق تجريبي').replace('<dd class="cn-price">150 ريال</dd>','<dd class="cn-price">173 ريال</dd>').replace('3 ساعات','5 ساعات').replace('أبلغنا فورًا عند هبوب رياح قوية.','تعليمات سينما تجريبية')
@@ -185,7 +147,7 @@ with sync_playwright() as p:
     context.route('**/index.html',lambda r:r.fulfill(status=503,body='unavailable'))
     page.goto(BASE+'/services-guide/',wait_until='networkidle')
     assert page.locator('#retry-guide').is_visible()
-    context.unroute('**/index.html');page.locator('#retry-guide').click();page.wait_for_selector('#resort-map',state='attached')
+    context.unroute('**/index.html');page.locator('#retry-guide').click();page.wait_for_selector('#guide-content.is-ready',state='attached')
     page.evaluate("Object.defineProperty(navigator,'share',{value:undefined,configurable:true});Object.defineProperty(navigator,'clipboard',{value:undefined,configurable:true})")
     page.locator('[data-share]').click()
     assert page.locator('#share-dialog').is_visible()

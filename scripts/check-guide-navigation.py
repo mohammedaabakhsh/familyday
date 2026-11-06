@@ -10,7 +10,7 @@ with sync_playwright() as p:
         page.goto(BASE+'/services-guide/#contents',wait_until='networkidle')
         page.wait_for_selector('#guide-content.is-ready',state='attached')
         assert page.locator('.guide-section:visible').count()==0
-        assert page.locator('.contents a').count()==4
+        assert page.locator('.contents a').count()==3
         for tile in page.locator('.contents a').all():
             tile.scroll_into_view_if_needed()
             home_y=page.evaluate('scrollY');target=tile.get_attribute('href')
@@ -44,7 +44,7 @@ with sync_playwright() as p:
         page.locator('.contents a[href="#seating"]').focus();page.keyboard.press('Enter')
         page.wait_for_selector('#seating:visible')
         page.emulate_media(media='print')
-        assert page.locator('.guide-section:visible').count()==4
+        assert page.locator('.guide-section:visible').count()==3
         assert page.locator('.cover').is_visible()
         assert all(e.is_visible() for e in page.locator('.package-details-body').all())
         assert page.locator('#hospitality,#cinema').count()==0
