@@ -3,9 +3,7 @@
   #setups-detail :is(.cn-section-title,.tw-label,.jl-section-title),#tarfihi-detail .tg-section-title{margin-bottom:6px}
   #setups-detail :is(.cn-notes,.tw-contents,.jl-notes),#tarfihi-detail .tg-notes{padding-top:8px}
   #setups-detail :is(.cn-notes-list,.jl-notes-list),#tarfihi-detail .tg-notes-list{gap:4px;font-size:13px;line-height:1.6}
-  #setups-detail .cn-facts{padding:8px 12px}
-  #setups-detail .cn-stat dt{margin-bottom:2px}
-  #setups-detail .cn-inclusions{gap:6px 12px}
+  #setups-detail .cn-inclusions{gap:9px}
   #setups-detail .cn-intro,#setups-detail .tw-intro{font-size:14px;line-height:1.5}
   #setups-detail .cn-summary{gap:8px}
   #tarfihi-detail .tg-packages{gap:8px}

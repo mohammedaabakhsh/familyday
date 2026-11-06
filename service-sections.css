@@ -14,3 +14,6 @@
 @media(max-width:360px){#setups-detail .setups-shell{padding-inline:16px}#setups-detail .setups-tabs{gap:6px}#setups-detail .setups-tabs button{font-size:13px;padding:12px 5px}}
 
 #hospitality-detail .hd-package-note{margin:12px 0 0;font:400 13px/1.7 Tajawal,sans-serif;color:#b6cbd6}
+
+/* The cinema photo shares the tab row width inside the setups page. */
+#setups-detail #sinema-detail .cn-shell{padding-inline:0}
