@@ -81,7 +81,7 @@ h1,h2,h3,p,figure{margin:0}h1,h2,h3{line-height:1.4}img{display:block;max-width:
 .facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px}
 .facts>div{padding:12px;background:var(--tint);border-radius:12px}.facts span{display:block;font-size:13px;color:var(--muted)}.facts strong{display:block;font-size:24px;color:var(--accent);line-height:1.5}
 .card-copy h3{font-size:22px;margin-bottom:12px}.card-meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px}.card-meta>span{font-size:14px;color:var(--muted)}
-.session-description{font-size:14px;line-height:1.8;color:var(--muted);margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.session-description{white-space:pre-line;font-size:14px;line-height:1.8;color:var(--muted);margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
 .seating-extra{max-width:680px;margin:20px auto 0;padding:16px 20px;background:var(--tint);border-radius:14px;font-size:15px}
 /* Keep the existing interactive map and the linked cabin tours. */
 .map-tools{max-width:600px;margin:0 auto 12px;font-size:13px;color:var(--muted)}

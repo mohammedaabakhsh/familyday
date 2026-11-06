@@ -155,7 +155,7 @@
 #jalsat-detail .jl-counter{color:#b6cbd6;font-size:14px;line-height:1.5;text-align:center}
 #jalsat-detail .jl-details{grid-area:details;display:flex;flex-direction:column;gap:24px;min-width:0}
 #jalsat-detail .jl-session-name{margin:0;color:#f0f5f7;font-size:22px;font-weight:800;line-height:1.5}
-#jalsat-detail .jl-description{margin:10px 0 0;color:#b6cbd6;font-size:15px;line-height:1.8}
+#jalsat-detail .jl-description{margin:10px 0 0;color:#b6cbd6;font-size:15px;line-height:1.8;white-space:pre-line}
 #jalsat-detail .jl-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:18px 0 0;padding:16px 0;border:1px solid #315967;border-radius:16px;background:#102938;text-align:center}
 #jalsat-detail .jl-facts>div{padding:0 12px}
 #jalsat-detail .jl-facts>div+div{border-inline-start:1px solid #315967}
