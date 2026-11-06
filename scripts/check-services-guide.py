@@ -31,9 +31,9 @@ with sync_playwright() as p:
             visit(page,name)
             heading=page.locator('#'+name+' .section-heading')
             assert heading.locator('h2').is_visible()
-            if name=='coordination':
-                assert heading.locator('h2').inner_text()=='التنسيقات'
-                assert heading.locator('p').inner_text()=='تجهيزات متكاملة لمناسباتكم'
+            if name in ['coordination','dining']:
+                assert heading.locator('h2').inner_text()==page.locator('#'+name).get_attribute('data-title')
+                assert heading.locator('p').is_visible()
                 assert page.locator('#guide-context').is_hidden()
             else:
                 assert heading.locator('h2').inner_text()!=page.locator('#'+name).get_attribute('data-title')
@@ -94,8 +94,9 @@ with sync_playwright() as p:
         # All service cards retain the approved size and visible title/price.
         for card in page.locator('.package-card').all():
             visit(page,card.evaluate('e=>e.closest(".guide-section").id'))
-            assert card.locator('.package-heading h3').is_visible()
-            assert card.locator('.package-heading .price').is_visible()
+            if card.evaluate('e=>!e.classList.contains("dining-card")'):
+                assert card.locator('.package-heading h3').is_visible()
+                assert card.locator('.package-heading .price').is_visible()
             if card.locator('.gallery-track').count():
                 track=card.locator('.gallery-track').bounding_box()
                 assert abs(track['width']/track['height']-4/3)<.01
@@ -111,7 +112,9 @@ with sync_playwright() as p:
         assert dining.locator('table').is_visible()
         expected_prices=page.evaluate('Object.entries(_tawilatPrices).map(([n,p])=>[n,p.plain+" ر.س",p.tansiq+" ر.س"])')
         assert dining.locator('tbody tr').evaluate_all('(els)=>els.map(e=>Array.from(e.children,c=>c.textContent))')==expected_prices
-        assert dining.locator('.price').text_content()=='تبدأ من '+str(page.evaluate('Math.min(...Object.values(_tawilatPrices).flatMap(p=>[p.plain,p.tansiq]))'))+' ريال'
+        assert dining.locator('.package-heading,.price,.small-note').count()==0
+        assert dining.locator('.dining-options .inclusions li').all_text_contents()==page.evaluate('_tawilatInclusions')
+        assert dining.locator('.dining-options p').inner_text()=='طاولات وكراسي فقط'
         visit(page,'seating')
         for card,session in zip(page.locator('#seating .package-card').all(),page.evaluate('_jalsatAllSessions')):
             assert card.locator('h3').text_content()==session['name']
@@ -138,13 +141,14 @@ with sync_playwright() as p:
         context.close()
     context=browser.new_context();page=context.new_page()
     source=(ROOT/'index.html').read_text().replace('تبخير المكان بالعود','تفصيل ضيافة تجريبي').replace('تزيين السرير بالورد الطبيعي على شكل قلب أو حرف من اختيارك','تفصيل تنسيق تجريبي').replace('<dd class="cn-price">150 ريال</dd>','<dd class="cn-price">173 ريال</dd>').replace('3 ساعات','5 ساعات').replace('أبلغنا فورًا عند هبوب رياح قوية.','تعليمات سينما تجريبية')
-    data=(ROOT/'service-data.js').read_text().replace("price:'300 ريال'","price:'333 ريال'",1).replace("img:'imgs/jalsat_1.webp'","img:'imgs/jalsat_2.webp'",1)
+    data=(ROOT/'service-data.js').read_text().replace('أطقم تقديم متكاملة','أطقم تقديم محدثة').replace("price:'300 ريال'","price:'333 ريال'",1).replace("img:'imgs/jalsat_1.webp'","img:'imgs/jalsat_2.webp'",1)
     context.route('**/index.html',lambda r:r.fulfill(body=source,content_type='text/html'))
     context.route('**/service-data.js?*',lambda r:r.fulfill(body=data,content_type='text/javascript'))
     page.goto(BASE+'/services-guide/#dining',wait_until='networkidle')
     assert 40<=page.locator('#title-dining').bounding_box()['y']<260
     assert page.locator('#hospitality,#cinema').count()==0
     assert 'تفصيل تنسيق تجريبي' in page.locator('#coordination').text_content()
+    assert 'أطقم تقديم محدثة' in page.locator('#dining .inclusions').inner_text()
     assert '333 ريال' in page.locator('#seating .photo-card').first.text_content()
     assert page.locator('#seating .photo-card img').first.get_attribute('src')=='/imgs/jalsat_2.webp'
     context.close()

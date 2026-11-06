@@ -64,9 +64,10 @@
   function render(doc) {
     let html = section('coordination','التنسيقات','تجهيزات متكاملة لمناسباتكم', packages(doc,'coordination'), true);
     const diningImage = sourceImage(doc,'.tw-photo img');
-    const diningBody = '<table class="service-price-table"><thead><tr><th scope="col">الأشخاص</th><th scope="col">' + escape(text(doc,'#tawilat-opt-plain .tw-package-name')) + '</th><th scope="col">' + escape(text(doc,'#tawilat-opt-tansiq .tw-package-name')) + '</th></tr></thead><tbody>' + Object.entries(_tawilatPrices).map(([size,p]) => '<tr><th scope="row">' + escape(size) + '</th><td>' + escape(p.plain) + ' ر.س</td><td>' + escape(p.tansiq) + ' ر.س</td></tr>').join('') + '</tbody></table><p class="small-note">تتوفر الطاولات والكراسي بخيارات متعددة حسب عدد الضيوف، ويمكن اختيارها مع التنسيق أو بدونه.</p>';
-    const diningPrice = Math.min(...Object.values(_tawilatPrices).flatMap(p => [p.plain,p.tansiq]));
-    html += section('dining',text(doc,'.tw-title'),'طاولة تجمعكم، بتنسيق من اختياركم.', serviceCard({title:text(doc,'.tw-title'),price:'تبدأ من ' + diningPrice + ' ريال',photos:[diningImage.src],imageAlt:diningImage.alt,body:diningBody,expandable:false}));
+    const diningBody = '<table class="service-price-table"><thead><tr><th scope="col">الأشخاص</th><th scope="col">' + escape(text(doc,'#tawilat-opt-plain .tw-package-name')) + '</th><th scope="col">' + escape(text(doc,'#tawilat-opt-tansiq .tw-package-name')) + '</th></tr></thead><tbody>' + Object.entries(_tawilatPrices).map(([size,p]) => '<tr><th scope="row">' + escape(size) + '</th><td>' + escape(p.plain) + ' ر.س</td><td>' + escape(p.tansiq) + ' ر.س</td></tr>').join('') + '</tbody></table>'
+      + '<div class="dining-options"><section><h3>بدون تنسيق</h3><p>' + escape(text(doc,'#tawilat-opt-plain .tw-package-desc')) + '</p></section><section><h3>يشمل خيار «مع تنسيق»</h3>' + items(_tawilatInclusions) + '</section></div>';
+    const diningCard = '<article class="package-card package-card--gallery dining-card">' + FD_GUIDE_GALLERY.markup([diningImage.src],text(doc,'.tw-title'),diningImage.alt) + '<div class="package-copy"><div class="package-details-body">' + diningBody + '</div></div></article>';
+    html += section('dining',text(doc,'.tw-title'),text(doc,'.tw-intro'),diningCard,true);
     html += section('seating',text(doc,'.jl-title'),'جلسات في الهواء الطلق لأوقاتكم مع من تحبون.', '<div class="photo-grid">' + _jalsatAllSessions.map(s => serviceCard({title:s.name,price:s.price,photos:[s.img],imageAlt:s.name,className:'photo-card',capacity:s.persons,label:'تفاصيل الجلسة',body:'<p class="session-description">' + escape(s.desc) + '</p>'})).join('') + '</div><p class="seating-extra">إضافة اختيارية: ' + escape(text(doc,'.jl-addon-name')) + ' · ' + escape(text(doc,'.jl-addon-price')) + '</p>');
     content.innerHTML = html;
     FD_GUIDE_GALLERY.mount();
@@ -96,7 +97,7 @@
     back.setAttribute('aria-label',sectionView ? 'العودة إلى التجهيزات' : homeBack.label);
     document.getElementById('guide-back-label').textContent = sectionView ? 'التجهيزات' : 'رجوع';
     document.getElementById('guide-context').textContent = title || 'منتجع يوم العائلة';
-    document.getElementById('guide-context').hidden = title === 'التنسيقات';
+    document.getElementById('guide-context').hidden = ['التنسيقات','طاولات الطعام'].includes(title);
     document.title = title ? title + ' | يوم العائلة' : guideTitle;
     requestAnimationFrame(() => {
       if(activeSection) {

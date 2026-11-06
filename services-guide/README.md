@@ -14,7 +14,7 @@ The guide's footer provides contact links. The cabin map is not included in this
 - `index.html` supplies package names, prices, inclusions and
   service photos. `guide.js` fetches it with cache revalidation on every load,
   reads text and attributes, and never executes the fetched scripts.
-- `../service-data.js` supplies table prices and seating information/photos.
+- `../service-data.js` supplies table prices, dining inclusions shared with the ordering page, and seating information/photos.
 - Update shared sources once, deploy them, and reload the guide. Bump their
   script cache keys at active entry points when deploying source changes.
 - If source selectors change, update `guide.js` and run the checks. Failed
@@ -29,14 +29,13 @@ Stable guide anchors include `#coordination`; the old `#packages`
 anchor still opens seating. `#package-complete` remains a direct link to the complete-experience package.
 Usage instructions and
 package usage notes are intentionally omitted from this brochure. Dining
-shows the lowest shared price with “تبدأ من” and keeps every price/size visible in its
-table. Seating shows capacity below the name before expanding its description; the optional add-on remains visible.
+shows every price/size in its table, followed by the plain option and all coordination inclusions; it has no repeated card heading or starting-price badge. Seating shows capacity below the name before expanding its description; the optional add-on remains visible.
 `guide-gallery.js` supplies a 4:3 inline gallery with native swipe, keyboard navigation and grouped bottom-right arrows/counter. `packagePhotos` in `guide.js` assigns illustrative
 cabin photos to packages; these are labelled as cabin atmosphere and can be replaced
 with dedicated service photos later. The actual dining and seating photos
 continue to come from the shared sources. Print styles also support saving the
 continuous brochure as a PDF from the browser.
-Coordination opens with a centered category heading and short description above its photos; its category label is hidden in the navigation header. Other sections retain their short opening descriptions and navigation labels.
+Coordination and dining open with centered category headings and short descriptions above their photos; their category labels are hidden in the navigation header. Seating retains its short opening description and navigation label.
 Section pages keep their white, navy and muted teal palette. The home tiles use soft rose, sand and sage fills. The pale blue help footer offers WhatsApp, a phone link, directions and two labelled social icons (Instagram and Snapchat) without repeating the logo.
 
 ## Checks

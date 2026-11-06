@@ -462,14 +462,7 @@ function updateTawilatContents(){
   var el = document.getElementById('tawilat-contents-list');
   if(section) section.classList.toggle('hide', _tawilatOpt!=='tansiq');
   if(!el || _tawilatOpt!=='tansiq') return;
-  var items = [
-    'طاولات زجاجية',
-    'كراسي أكريليك شفافة',
-    'أطقم تقديم متكاملة',
-    'مناديل قماش',
-    'تنسيق زهور',
-    'حاملات شموع مع الشموع'
-  ];
+  var items = _tawilatInclusions;
   el.innerHTML = items.map(function(item){ return '<li>'+item+'</li>'; }).join('');
 }
 function tawilatOrder(){
