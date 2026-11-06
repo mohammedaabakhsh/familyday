@@ -19,9 +19,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/guest-services/guest-services.css?v=20261106-soft-ending-v1">
+<link rel="stylesheet" href="/guest-services/guest-services.css?v=20261106-dialog-facts-v1">
 <script src="/guest-services/service-source.js?v=20261106-hospitality-v1" defer></script>
-<script src="/guest-services/guest-services.js?v=20261106-order-intro-v1" defer></script>
+<script src="/guest-services/guest-services.js?v=20261106-dialog-facts-v1" defer></script>
 <link rel="stylesheet" href="/css/service-switch.css?v=20261106-v1">
 </head>
 <body>
@@ -46,7 +46,7 @@
       </button>
       <button type="button" id="hospitality-card" class="service-tile" data-service="hospitality" data-tone="hospitality" aria-haspopup="dialog" aria-controls="service-dialog" aria-labelledby="hospitality-title" aria-describedby="hospitality-default" disabled>
         <span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h12v7a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5ZM16 9h2a3 3 0 0 1 0 6h-2M7 3v2m4-2v2M2 22h17"/></svg></span>
-        <span class="tile-copy"><span class="tile-title" id="hospitality-title">الضيافة</span><span class="tile-default" id="hospitality-default">اختر ضيافتك من ثلاث باقات</span><span class="tile-selection" id="hospitality-selection" hidden></span></span>
+        <span class="tile-copy"><span class="tile-title" id="hospitality-title">الضيافة</span><span class="tile-default" id="hospitality-default">اختر باقة الضيافة المناسبة لك</span><span class="tile-selection" id="hospitality-selection" hidden></span></span>
         <span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span>
       </button>
       <button type="button" id="water-card" class="service-tile" data-service="water" data-tone="water" aria-haspopup="dialog" aria-controls="service-dialog" aria-labelledby="water-title" aria-describedby="water-default" disabled>
@@ -70,7 +70,7 @@
         <span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span>
       </button>
     </div>
-    <nav class="service-switch" aria-label="خدمات يوم العائلة"><a class="service-switch-link" href="/services-guide/"><span class="service-switch-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8c-6-8-10-1-4 1h8c6-2 2-9-4-1ZM3 9h18v4H3ZM5 13v8h14v-8M12 9v12"/></svg></span><span class="service-switch-copy"><strong>تنسيقات الجلسات</strong><small>اختر تنسيق مناسبتك وطاولتك وجلستك</small></span><span class="service-switch-action">استكشف <span aria-hidden="true">←</span></span></a></nav>
+    <nav class="service-switch" aria-label="خدمات يوم العائلة"><a class="service-switch-link" href="/services-guide/"><span class="service-switch-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8c-6-8-10-1-4 1h8c6-2 2-9-4-1ZM3 9h18v4H3ZM5 13v8h14v-8M12 9v12"/></svg></span><span class="service-switch-copy"><strong>تنسيقات الجلسات</strong><small>اختر تنسيق مناسبتك</small></span><span class="service-switch-action">استكشف <span aria-hidden="true">←</span></span></a></nav>
     <div id="orders-summary" tabindex="-1" hidden>
       <section id="restaurant-summary" class="order-section" data-tone="restaurant" aria-labelledby="restaurant-summary-title" hidden>
         <h2 id="restaurant-summary-title">ملخص طلب المطعم</h2>
@@ -122,9 +122,9 @@
   </footer>
   </div>
 </div>
-<dialog id="service-dialog" class="service-dialog" aria-labelledby="service-dialog-title" aria-describedby="service-dialog-subtitle">
+<dialog id="service-dialog" class="service-dialog" aria-labelledby="service-dialog-title">
   <header class="dialog-header">
-    <div><h2 id="service-dialog-title" tabindex="-1"></h2><p id="service-dialog-subtitle"></p></div>
+    <div><h2 id="service-dialog-title" tabindex="-1"></h2></div>
     <button type="button" class="dialog-close" aria-label="إغلاق نافذة الخدمة">×</button>
   </header>
   <div class="dialog-body">
@@ -137,6 +137,7 @@
         <div id="hospitality-packages"></div>
       </section>
       <section id="water-service" class="service-panel" hidden>
+        <p class="service-offer"><strong id="water-offer"></strong></p>
         <p class="section-note"></p>
         <div class="selection-rows">
           <div class="extra-row"><strong>للكبار</strong><div class="quantity" role="group" aria-label="عدد ألعاب الكبار">
@@ -158,6 +159,7 @@
         <p class="usage-note"></p>
       </section>
       <section id="cinema-service" class="service-panel" hidden>
+        <dl class="service-facts"><div><dt>المدة</dt><dd id="cinema-duration"></dd></div><div><dt>السعر</dt><dd id="cinema-price"></dd></div></dl>
         <p class="section-note"></p>
         <h3 class="contents-title">محتويات الجلسة</h3>
         <ul class="contents-list"></ul>

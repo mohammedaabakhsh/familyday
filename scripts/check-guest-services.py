@@ -233,12 +233,13 @@ with sync_playwright() as p:
     assert 'بوكس فشار كبير' in page.locator('#cinema-service .contents-list').text_content()
     assert 'بلوت جديد' in page.locator('.games-contents').text_content()
     open_service(page, 'water')
-    assert page.locator('#service-dialog-subtitle').text_content()=='3 ألعاب بـ60 ريال'
+    assert page.locator('#water-offer').text_content()=='3 ألعاب بـ60 ريال'
     page.locator('[data-water="adults"][data-step="1"]').click(click_count=3);apply_service(page)
     open_service(page, 'games')
     page.locator('[name="games-package"][value="box"]').check();apply_service(page)
     open_service(page, 'cinema')
-    assert page.locator('#service-dialog-subtitle').text_content()=='4 ساعات بـ175 ريال'
+    assert page.locator('#cinema-duration').text_content()=='4 ساعات'
+    assert page.locator('#cinema-price').text_content()=='175 ريال'
     page.locator('#cinema-time').select_option('18');apply_service(page)
     assert page.locator('#order-total').text_content()=='300'  # 60 + 65 + 175.
     open_service(page, 'restaurant')

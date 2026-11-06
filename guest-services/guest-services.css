@@ -190,10 +190,10 @@ body.dialog-open{overflow:hidden}
 .service-dialog{width:min(720px,calc(100% - 24px));max-width:none;max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);margin:auto;padding:0;border:1px solid #c9dfe2;border-radius:22px;background:#fff;color:var(--ink);box-shadow:0 24px 80px #13354840;overflow:hidden}
 .service-dialog[open]{display:flex;flex-direction:column}
 .service-dialog::backdrop{background:rgba(7,28,40,.58)}
-.dialog-header{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-shrink:0;padding:18px 20px;background:var(--section-bg);border-bottom:1px solid var(--section-line)}
+.dialog-header{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-shrink:0;padding:18px 20px;background:var(--section-bg);border-bottom:1px solid var(--section-line)}
 .dialog-header h2{margin:0;font-size:21px}
 .dialog-header h2:focus{outline:none}
-.dialog-header p{margin:5px 0 0;font-size:13px;color:var(--muted)}
+
 .dialog-close{display:grid;place-items:center;width:44px;height:44px;flex-shrink:0;padding:0;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--ink);font:28px/1 Arial,sans-serif}
 .dialog-body{padding:20px;overflow-y:auto;overscroll-behavior:contain;min-height:0}
 .dialog-body .service-panel>.section-note{font-size:13px}
@@ -222,3 +222,9 @@ body.dialog-open{overflow:hidden}
 .hospitality-details .contents-list{grid-template-columns:1fr;font-size:13px;line-height:1.8;margin:4px 0 12px}.hospitality-details .usage-note{margin-bottom:12px}
 .hospitality-quantity{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px;color:var(--muted)}
 @media(max-width:360px){.hospitality-package{padding:12px}.hospitality-heading h3,.hospitality-price{font-size:15px}}
+
+.service-offer,.service-facts>div{padding:14px 16px;background:var(--section-bg);border:1px solid var(--section-line);border-radius:12px;color:var(--section-ink)}
+.service-offer{margin:0 0 16px;text-align:center;font-size:20px}
+.service-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0 0 16px}
+.service-facts dt{font-size:13px;margin-bottom:4px}
+.service-facts dd{font-size:21px;font-weight:800;margin:0;line-height:1.5}
