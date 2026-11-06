@@ -602,16 +602,24 @@
 #hospitality-detail .hd-content{padding:0 16px 36px}
 #hospitality-detail .hd-intro{font-family:Tajawal,sans-serif;font-size:12px;color:rgba(255,255,255,.58);line-height:1.7;margin:0 2px 10px}
 #hospitality-detail .hd-packages{display:flex;flex-direction:column;gap:10px}
-#hospitality-detail .hd-package{background:linear-gradient(160deg,rgba(14,36,58,.96),rgba(8,22,40,.93));border:1.5px solid rgba(25,167,183,.18);border-radius:18px;padding:17px 18px;box-shadow:0 4px 16px rgba(0,0,0,.20)}
+#hospitality-detail .hd-package{background:linear-gradient(160deg,rgba(14,36,58,.96),rgba(8,22,40,.93));border:1px solid #294957;border-radius:16px;padding:16px 18px}
 #hospitality-detail .hd-package-name{font-family:Tajawal,sans-serif;font-size:16px;font-weight:700;color:#fff;line-height:1.4}
 #hospitality-detail .hd-package-header{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
 #hospitality-detail .hd-package-price{font-family:Tajawal,sans-serif;font-size:22px;font-weight:700;color:#7ecfea;line-height:1.4;white-space:nowrap}
 #hospitality-detail .hd-package-price span{font-size:13px;font-weight:500}
 #hospitality-detail .hd-item-wide{grid-column:1/-1}
-#hospitality-detail .hd-items{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:13px;padding-top:13px;border-top:1px solid rgba(255,255,255,.08)}
-#hospitality-detail .hd-item{display:flex;align-items:center;gap:7px;min-height:39px;padding:9px 10px;border-radius:11px;background:rgba(255,255,255,.045);font-family:Tajawal,sans-serif;font-size:12px;color:rgba(255,255,255,.76);line-height:1.45}
-#hospitality-detail .hd-check{width:18px;height:18px;border-radius:6px;display:grid;place-items:center;flex:0 0 auto;background:rgba(25,167,183,.13);color:#7ecfea;font-size:11px;font-weight:700}
+#hospitality-detail .hd-items{display:grid;grid-template-columns:minmax(0,1fr);gap:9px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.08)}
+#hospitality-detail .hd-item{display:flex;align-items:flex-start;gap:8px;padding:0;font-family:Tajawal,sans-serif;font-size:14px;color:#c2d3dd;line-height:1.65}
+#hospitality-detail .hd-check{width:14px;flex:0 0 14px;color:#7ecfea;font-size:12px;font-weight:700;line-height:1.9}
 #hd-coordination-panel .hd-package-name{margin:0}
+#hospitality-detail .hd-package-details{margin-top:12px;border-top:1px solid rgba(255,255,255,.08)}
+#hospitality-detail .hd-package-details summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;padding-top:8px;color:#a4d8df;font:700 14px/1.5 Tajawal,sans-serif;cursor:pointer;list-style:none}
+#hospitality-detail .hd-package-details summary::-webkit-details-marker{display:none}
+#hospitality-detail .hd-package-details summary svg{flex:0 0 16px;width:16px;height:16px}
+#hospitality-detail .hd-package-details[open] summary svg{transform:rotate(180deg)}
+#hospitality-detail .hd-package-details summary:focus-visible{outline:2px solid #8fd5e4;outline-offset:3px;border-radius:4px}
+#hospitality-detail .hd-package-details .hd-items{margin-top:8px;padding-top:0;border-top:0}
+
 #hd-coordination-panel .hd-package-description{margin:7px 0 0;font-family:Tajawal,sans-serif;font-size:13px;color:rgba(255,255,255,.66);line-height:1.7}
 #hd-coordination-panel .hd-package-group+.hd-package-group{margin-top:20px;padding-top:17px;border-top:1px solid rgba(255,255,255,.08)}
 #hd-coordination-panel .hd-group-title{margin:16px 0 0;font-family:Tajawal,sans-serif;font-size:14px;font-weight:700;color:#7ecfea;line-height:1.5}
@@ -752,17 +760,22 @@
             <h2 class="hd-package-name" id="hd-coordination-package-1">باقة الورد</h2>
             <div class="hd-package-price">120 <span>ريال</span></div>
           </div>
+          <details class="hd-package-details">
+            <summary aria-label="تفاصيل باقة الورد"><span>تفاصيل الباقة</span><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 6 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
           <div class="hd-items">
             <div class="hd-item" data-coordination-item="rose_bed"><span class="hd-check" aria-hidden="true">✓</span><span>تزيين السرير بالورد الطبيعي على شكل قلب أو حرف من اختيارك</span></div>
             <div class="hd-item" data-coordination-item="two_balloons"><span class="hd-check" aria-hidden="true">✓</span><span>2 بالون</span></div>
             <div class="hd-item" data-coordination-item="cards"><span class="hd-check" aria-hidden="true">✓</span><span>كرت إهداء يناسب مناسبتك</span></div>
           </div>
+          </details>
         </section>
         <section class="hd-package" aria-labelledby="hd-coordination-package-2">
           <div class="hd-package-header">
             <h2 class="hd-package-name" id="hd-coordination-package-2">باقة الورد المميزة</h2>
             <div class="hd-package-price">350 <span>ريال</span></div>
           </div>
+          <details class="hd-package-details">
+            <summary aria-label="تفاصيل باقة الورد المميزة"><span>تفاصيل الباقة</span><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 6 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
           <div class="hd-items">
             <div class="hd-item" data-coordination-item="bed"><span class="hd-check" aria-hidden="true">✓</span><span>تزيين السرير بالورد الطبيعي</span></div>
             <div class="hd-item" data-coordination-item="path_bath"><span class="hd-check" aria-hidden="true">✓</span><span>تنسيق الممر والحمام بالورد</span></div>
@@ -773,12 +786,15 @@
             <div class="hd-item" data-coordination-item="water_games"><span class="hd-check" aria-hidden="true">✓</span><span>لعبتان مائيتان</span></div>
           </div>
         <p class="hd-package-note">الروب والمناشف والألعاب المائية للاستخدام أثناء الإقامة.</p>
+          </details>
         </section>
         <section class="hd-package" aria-labelledby="hd-coordination-package-3">
           <div class="hd-package-header">
             <h2 class="hd-package-name" id="hd-coordination-package-3">باقة اللحظات</h2>
             <div class="hd-package-price">650 <span>ريال</span></div>
           </div>
+          <details class="hd-package-details">
+            <summary aria-label="تفاصيل باقة اللحظات"><span>تفاصيل الباقة</span><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 6 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
           <div class="hd-items">
             <div class="hd-item" data-coordination-item="bed"><span class="hd-check" aria-hidden="true">✓</span><span>تزيين السرير بالورد الطبيعي</span></div>
             <div class="hd-item" data-coordination-item="path_bath"><span class="hd-check" aria-hidden="true">✓</span><span>تنسيق الممر والحمام بالورد</span></div>
@@ -793,12 +809,15 @@
             <div class="hd-item" data-coordination-item="water_games"><span class="hd-check" aria-hidden="true">✓</span><span>ألعاب مائية</span></div>
           </div>
         <p class="hd-package-note">الروب والمناشف وبوكس الألعاب والألعاب المائية للاستخدام أثناء الإقامة.</p>
+          </details>
         </section>
         <section class="hd-package" aria-labelledby="hd-coordination-package-celebration">
           <div class="hd-package-header">
             <h2 class="hd-package-name" id="hd-coordination-package-celebration">باقة الاحتفال</h2>
             <div class="hd-package-price">850 <span>ريال</span></div>
           </div>
+          <details class="hd-package-details">
+            <summary aria-label="تفاصيل باقة الاحتفال"><span>تفاصيل الباقة</span><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 6 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
           <div class="hd-items">
             <div class="hd-item" data-coordination-item="bed"><span class="hd-check" aria-hidden="true">✓</span><span>تزيين السرير بالورد الطبيعي</span></div>
             <div class="hd-item" data-coordination-item="path_bath"><span class="hd-check" aria-hidden="true">✓</span><span>تنسيق الممر والحمام بالورد</span></div>
@@ -814,12 +833,15 @@
             <div class="hd-item" data-coordination-item="water_games"><span class="hd-check" aria-hidden="true">✓</span><span>ألعاب مائية</span></div>
           </div>
         <p class="hd-package-note">الروب والمناشف والألعاب المائية للاستخدام أثناء الإقامة.</p>
+          </details>
         </section>
         <section class="hd-package" aria-labelledby="hd-coordination-package-vip">
           <div class="hd-package-header">
             <h2 class="hd-package-name" id="hd-coordination-package-vip">باقة VIP</h2>
             <div class="hd-package-price">1150 <span>ريال</span></div>
           </div>
+          <details class="hd-package-details">
+            <summary aria-label="تفاصيل باقة VIP"><span>تفاصيل الباقة</span><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 6 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
           <div class="hd-items">
             <div class="hd-item" data-coordination-item="bed"><span class="hd-check" aria-hidden="true">✓</span><span>تزيين السرير بالورد الطبيعي</span></div>
             <div class="hd-item" data-coordination-item="path_bath"><span class="hd-check" aria-hidden="true">✓</span><span>تنسيق الممر والحمام بالورد</span></div>
@@ -841,12 +863,15 @@
             <div class="hd-item" data-coordination-item="water_games"><span class="hd-check" aria-hidden="true">✓</span><span>ألعاب مائية</span></div>
           </div>
         <p class="hd-package-note">الروب والمناشف والألعاب المائية للاستخدام أثناء الإقامة.</p>
+          </details>
         </section>
         <section class="hd-package" aria-labelledby="hd-coordination-package-resort">
           <div class="hd-package-header">
             <h2 class="hd-package-name" id="hd-coordination-package-resort">التجربة المتكاملة</h2>
             <div class="hd-package-price">1850 <span>ريال</span></div>
           </div>
+          <details class="hd-package-details">
+            <summary aria-label="تفاصيل التجربة المتكاملة"><span>تفاصيل الباقة</span><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 6 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
           <div class="hd-items">
             <div class="hd-item" data-coordination-item="bed"><span class="hd-check" aria-hidden="true">✓</span><span>تزيين السرير بالورد الطبيعي</span></div>
             <div class="hd-item" data-coordination-item="path_bath"><span class="hd-check" aria-hidden="true">✓</span><span>تنسيق الممر والحمام بالورد</span></div>
@@ -877,6 +902,7 @@
             <div class="hd-item" data-coordination-item="water_games"><span class="hd-check" aria-hidden="true">✓</span><span>ألعاب مائية</span></div>
           </div>
         <p class="hd-package-note">الروب والمناشف والطاولة وبوكس الألعاب والألعاب المائية للاستخدام أثناء الإقامة.</p>
+          </details>
         </section>
       </div>
     </div>
