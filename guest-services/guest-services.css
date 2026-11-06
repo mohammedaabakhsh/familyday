@@ -228,3 +228,10 @@ body.dialog-open{overflow:hidden}
 .service-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0 0 16px}
 .service-facts dt{font-size:13px;margin-bottom:4px}
 .service-facts dd{font-size:21px;font-weight:800;margin:0;line-height:1.5}
+
+.footer-social{display:flex;justify-content:center;gap:12px;margin-top:16px}
+.footer-social .social-link{display:grid;place-items:center;width:44px;height:44px;border:1px solid #c8dee3;border-radius:50%;background:#ffffff9c;color:#2d6771}
+.footer-social .footer-link-icon{display:grid;place-items:center}
+.footer-social svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.footer-social .footer-link--snapchat svg{fill:currentColor;stroke:none}
+@media(hover:hover){.footer-social .social-link:hover{border-color:#2d6771;background:#fff}}
