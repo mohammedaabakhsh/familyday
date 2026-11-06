@@ -10,7 +10,7 @@ with sync_playwright() as p:
         page.goto(BASE+'/services-guide/#contents',wait_until='networkidle')
         page.wait_for_selector('#guide-content.is-ready',state='attached')
         assert page.locator('.guide-section:visible').count()==0
-        assert page.locator('.contents a').count()==6
+        assert page.locator('.contents a').count()==4
         for tile in page.locator('.contents a').all():
             tile.scroll_into_view_if_needed()
             home_y=page.evaluate('scrollY');target=tile.get_attribute('href')
@@ -36,18 +36,18 @@ with sync_playwright() as p:
         page.wait_for_timeout(150)
         assert gallery.locator('.gallery-count').inner_text()=='2 / 6'
         assert abs(gallery.locator('.gallery-track').evaluate('e=>e.scrollLeft'))>0
-        page.goto(BASE+'/services-guide/#cinema',wait_until='networkidle')
-        page.wait_for_selector('#cinema:visible')
-        page.reload(wait_until='networkidle');page.wait_for_selector('#cinema:visible')
+        page.goto(BASE+'/services-guide/#dining',wait_until='networkidle')
+        page.wait_for_selector('#dining:visible')
+        page.reload(wait_until='networkidle');page.wait_for_selector('#dining:visible')
         page.locator('#guide-back').click();page.wait_for_selector('.contents:visible')
         assert page.url.endswith('#contents')
         page.locator('.contents a[href="#seating"]').focus();page.keyboard.press('Enter')
         page.wait_for_selector('#seating:visible')
         page.emulate_media(media='print')
-        assert page.locator('.guide-section:visible').count()==6
+        assert page.locator('.guide-section:visible').count()==4
         assert page.locator('.cover').is_visible()
         assert all(e.is_visible() for e in page.locator('.package-details-body').all())
-        assert page.locator('#hospitality h3:visible').count()==3
+        assert page.locator('#hospitality,#cinema').count()==0
         page.emulate_media(media='screen')
         page.screenshot(path=f'/tmp/guide-pages-seating-{width}.png')
         page.locator('#guide-back').click();page.wait_for_selector('.contents:visible')
@@ -58,11 +58,11 @@ with sync_playwright() as p:
         page.close()
     page=browser.new_page()
     page.route('**/index.html',lambda route:route.fulfill(status=503,body='unavailable'))
-    page.goto(BASE+'/services-guide/#cinema',wait_until='networkidle')
+    page.goto(BASE+'/services-guide/#dining',wait_until='networkidle')
     assert page.locator('#retry-guide').is_visible()
     assert not page.locator('.cover').is_visible()
     page.unroute('**/index.html');page.locator('#retry-guide').click()
-    page.wait_for_selector('#cinema:visible')
+    page.wait_for_selector('#dining:visible')
     assert page.locator('.guide-section:visible').count()==1
     print('PASS direct section load failure and retry keep the correct page',flush=True)
     browser.close()

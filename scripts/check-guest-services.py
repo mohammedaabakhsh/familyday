@@ -68,7 +68,7 @@ with sync_playwright() as p:
         assert page.locator('#services-error').is_hidden()
         assert page.locator('img').count()==0 and page.get_by_role('img',name='يوم العائلة',exact=True).is_visible()
         assert all('/imgs/img01.webp' in url for url in images)
-        assert page.locator('[data-service]').evaluate_all('(els)=>els.map(e=>e.dataset.service)')==['restaurant','water','games','cinema','extras']
+        assert page.locator('[data-service]').evaluate_all('(els)=>els.map(e=>e.dataset.service)')==['restaurant','hospitality','water','games','cinema','extras']
         assert page.locator('.guest-service-fold,.service-nav').count()==0
         assert page.locator('.menu-row').count()==page.evaluate('Object.values(_menuData).flat().length')
         assert page.locator('[data-extra] .extra-price bdi').all_text_contents()==['20','20','15','25','30']
@@ -204,7 +204,7 @@ with sync_playwright() as p:
     # Small phone height: scroll only the editor body; actions remain reachable.
     ctx=context(browser,320);page=ctx.new_page();page.set_viewport_size({'width':320,'height':568})
     page.goto(BASE+'/guest-services/',wait_until='networkidle')
-    for key in ['water','games','cinema','extras','restaurant']:
+    for key in ['hospitality','water','games','cinema','extras','restaurant']:
         open_service(page,key)
         if key=='restaurant':page.locator('[data-category="ساندويتشات"] summary').click()
         page.locator('.dialog-body').evaluate('(e)=>e.scrollTop=e.scrollHeight')

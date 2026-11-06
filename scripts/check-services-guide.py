@@ -4,7 +4,7 @@ from playwright.sync_api import sync_playwright
 import sys
 BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8023'
 ROOT=Path(__file__).resolve().parents[1]
-SECTIONS=['hospitality','coordination','dining','cinema','seating','resort-map']
+SECTIONS=['coordination','dining','seating','resort-map']
 def visit(page, section):
     page.evaluate('(id)=>{location.hash=id}', section)
     page.wait_for_selector('#'+section+':visible')
@@ -24,8 +24,7 @@ with sync_playwright() as p:
         assert len(set(page.locator('.section-heading').evaluate_all('(els)=>els.map(e=>getComputedStyle(e).backgroundColor)')))==1
         expected_contacts=['https://wa.me/966556156693','tel:+966556156693','https://maps.app.goo.gl/FLmawLadNaa3uYpJ8?g_st=ic','https://instagram.com/FAMILYDAYRESORT','https://www.snapchat.com/add/familyday5','https://tiktok.com/@familydayresort']
         assert sorted(page.locator('.footer-links a').evaluate_all('(els)=>els.map(e=>e.getAttribute("href"))'))==sorted(expected_contacts)
-        assert page.locator('#hospitality img,#hospitality .package-gallery').count()==0
-        assert page.locator('#hospitality .package-card--text').count()==3
+        assert page.locator('#hospitality,#cinema').count()==0
         for name in SECTIONS:
             visit(page,name)
             heading=page.locator('#'+name+' .section-heading')
@@ -36,7 +35,7 @@ with sync_playwright() as p:
             assert number['y']+number['height']<=title['y']
             assert title['y']+title['height']<=description['y']
             assert heading.evaluate('e=>getComputedStyle(e).textAlign')=='center'
-        assert page.locator('.contents a').count()==6
+        assert page.locator('.contents a').count()==4
         page.locator('#guide-back').click()
         page.wait_for_selector('.contents:visible')
         assert page.locator('#guide-back').get_attribute('href')==BASE+'/resort/'
@@ -48,15 +47,15 @@ with sync_playwright() as p:
         source=page.evaluate("async()=>new DOMParser().parseFromString(await (await fetch('/index.html')).text(),'text/html').documentElement.outerHTML")
         catalogue=page.evaluate("""html=>{
           const doc=new DOMParser().parseFromString(html,'text/html');
-          return ['hospitality','coordination'].map(key=>Array.from(doc.querySelectorAll('#hd-'+key+'-panel .hd-package'),c=>({
+          return ['coordination'].map(key=>Array.from(doc.querySelectorAll('#hd-'+key+'-panel .hd-package'),c=>({
             name:c.querySelector('.hd-package-name').textContent.trim(),
             price:c.querySelector('.hd-package-price').textContent.trim(),
             items:Array.from(c.querySelectorAll('.hd-item span:last-child'),i=>i.textContent.trim())
           })));
         }""",source)
-        for key,expected in zip(SECTIONS[:2],catalogue):
+        for key,expected in zip(SECTIONS[:1],catalogue):
             cards=page.locator('#'+key+' .package-card')
-            assert cards.count()==(3 if key=='hospitality' else 6)
+            assert cards.count()==6
             for card,item in zip(cards.all(),expected):
                 assert card.locator('h3').text_content()==item['name']
                 assert card.locator('.price').text_content()==item['price']
@@ -68,10 +67,10 @@ with sync_playwright() as p:
         assert not page.locator('#guide-content').evaluate('(e)=>/[٠-٩]/.test(e.textContent)')
         assert page.locator('#seating .photo-card').count()==6
         assert page.locator('#dining tbody tr').count()==5
-        assert page.locator('#guide-content details').count()==18
+        assert page.locator('#guide-content details').count()==14
         assert page.locator('#guide-content details[open]').count()==0
         assert not page.locator('#package-complete details').evaluate('e=>e.open')
-        assert page.locator('.package-card > .package-photo img').count()==44
+        assert page.locator('.package-card > .package-photo img').count()==43
         assert page.locator('.gallery-controls').count()==6
         assert page.locator('#resort-map details').count()==1
         assert not page.locator('.map-scroll').is_visible()
@@ -90,7 +89,7 @@ with sync_playwright() as p:
             assert page.url==BASE+'/services-guide/#'+name
             y=page.locator('#title-'+name).bounding_box()['y']
             assert 40<=y<height,(width,name,y)
-            if name in SECTIONS[:2]: assert not page.locator('#'+name+' .inclusions').first.is_visible()
+            if name=='coordination': assert not page.locator('#'+name+' .inclusions').first.is_visible()
             page.locator('#guide-back').click()
             page.wait_for_selector('.contents:visible')
             page.wait_for_timeout(100)
@@ -110,22 +109,6 @@ with sync_playwright() as p:
             card.locator('summary').click()
             assert card.locator('.package-details-body').is_visible()
             card.locator('summary').click()
-        visit(page,'cinema')
-        cinema=page.locator('#cinema .package-card')
-        cinema.locator('summary').click()
-        expected_cinema=page.evaluate("""html=>{const d=new DOMParser().parseFromString(html,'text/html');return {
-            title:d.querySelector('.cn-title').textContent.trim(),price:d.querySelector('.cn-price').textContent.trim(),
-            intro:d.querySelector('.cn-intro').textContent.trim(),
-            items:Array.from(d.querySelectorAll('.cn-inclusions li'),e=>e.textContent.trim()),
-            facts:Array.from(d.querySelectorAll('.cn-stat:not(:has(.cn-price))'),e=>[e.querySelector('dt').textContent.trim(),e.querySelector('dd').textContent.trim()])};} """,source)
-        assert cinema.locator('h3').inner_text()==expected_cinema['title']
-        assert cinema.locator('.price').inner_text()==expected_cinema['price']
-        assert cinema.locator('.package-description').inner_text()==expected_cinema['intro']
-        assert cinema.locator('.inclusions li').all_text_contents()==expected_cinema['items']
-        assert cinema.locator('.service-facts>div').evaluate_all('(els)=>els.map(e=>[e.querySelector("dt").textContent,e.querySelector("dd").textContent])')==expected_cinema['facts']
-        cinema.evaluate('e=>e.scrollIntoView({block:"start"})')
-        page.screenshot(path=f'/tmp/review-guide-cinema-{width}.png')
-        cinema.locator('summary').click()
         visit(page,'dining')
         dining=page.locator('#dining .package-card');dining.locator('summary').click()
         expected_prices=page.evaluate('Object.entries(_tawilatPrices).map(([n,p])=>[n,p.plain+" ر.س",p.tansiq+" ر.س"])')
@@ -193,13 +176,10 @@ with sync_playwright() as p:
     data=(ROOT/'service-data.js').read_text().replace("price:'300 ريال'","price:'333 ريال'",1).replace("img:'imgs/jalsat_1.webp'","img:'imgs/jalsat_2.webp'",1)
     context.route('**/index.html',lambda r:r.fulfill(body=source,content_type='text/html'))
     context.route('**/service-data.js?*',lambda r:r.fulfill(body=data,content_type='text/javascript'))
-    page.goto(BASE+'/services-guide/#cinema',wait_until='networkidle')
-    assert 40<=page.locator('#title-cinema').bounding_box()['y']<260
-    assert 'تفصيل ضيافة تجريبي' in page.locator('#hospitality').text_content()
+    page.goto(BASE+'/services-guide/#dining',wait_until='networkidle')
+    assert 40<=page.locator('#title-dining').bounding_box()['y']<260
+    assert page.locator('#hospitality,#cinema').count()==0
     assert 'تفصيل تنسيق تجريبي' in page.locator('#coordination').text_content()
-    assert '173 ريال' in page.locator('#cinema').text_content()
-    assert '5 ساعات' in page.locator('#cinema').text_content()
-    assert 'تعليمات سينما تجريبية' not in page.locator('#cinema').text_content()
     assert '333 ريال' in page.locator('#seating .photo-card').first.text_content()
     assert page.locator('#seating .photo-card img').first.get_attribute('src')=='/imgs/jalsat_2.webp'
     context.close()

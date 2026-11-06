@@ -53,11 +53,19 @@ window.FD_GUEST_SOURCE = (function () {
       var card=node(doc,'#tarfihi-opt-'+key);
       games.packages[key]={name:text(card,'.tg-package-name'),price:number(text(card,'.tg-package-price')),description:text(card,'.tg-package-description')};
     });
+    var hospitality={title:text(doc,'#hd-tab-hospitality'),intro:text(doc,'#hd-hospitality-panel .hd-intro'),packages:[]};
+    hospitality.packages=Array.from(doc.querySelectorAll('#hd-hospitality-panel .hd-package')).map(function(card){
+      var description=card.querySelector('.hd-package-description'),note=card.querySelector('.hd-package-note');
+      var name=text(card,'.hd-package-name');
+      return {id:name,name:name,price:number(text(card,'.hd-package-price')),contents:list(card,'.hd-item span:last-child'),
+        description:description ? description.textContent.trim() : '',note:note ? note.textContent.trim() : ''};
+    });
+    if(!hospitality.packages.length || hospitality.packages.some(function(pack){return !pack.contents.length;}) || new Set(hospitality.packages.map(function(pack){return pack.id;})).size!==hospitality.packages.length) throw new Error('Invalid hospitality source');
     if(!Number.isInteger(water.size) || !cinema.times.length || !water.name) throw new Error('Invalid service source');
     var data=await Promise.all([loadScript(doc,'/service-data.js','_menuData'),loadScript(doc,'/js/cabin-numbers.js','FD_CABIN_NUMBERS'),loadScript(doc,'/js/menu-order-message.js','FD_MENU_ORDER_MESSAGE')]);
     var menu=data[0], cabins=data[1];
     if(!menu || !Object.keys(menu).length || !cabins || !Object.keys(cabins).length || !data[2] || typeof data[2].build!=='function') throw new Error('Menu unavailable');
-    return {water:water,cinema:cinema,games:games,menu:menu,cabins:cabins,menuMessage:data[2]};
+    return {hospitality:hospitality,water:water,cinema:cinema,games:games,menu:menu,cabins:cabins,menuMessage:data[2]};
   }
   return {load:load};
 })();

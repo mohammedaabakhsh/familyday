@@ -62,18 +62,13 @@
     }).join('') + '</div>';
   }
   function render(doc) {
-    let html = section('hospitality','01','الضيافة',text(doc,'#hd-hospitality-panel .hd-intro'),packages(doc,'hospitality'));
-    html += section('coordination','02','التنسيقات','باقات متنوعة لتنسيق المناسبات داخل الكوخ.', packages(doc,'coordination'));
+    let html = section('coordination','01','التنسيقات','باقات متنوعة لتنسيق المناسبات داخل الكوخ.', packages(doc,'coordination'));
     const diningImage = sourceImage(doc,'.tw-photo img');
     const diningBody = '<table class="service-price-table"><thead><tr><th scope="col">الأشخاص</th><th scope="col">' + escape(text(doc,'#tawilat-opt-plain .tw-package-name')) + '</th><th scope="col">' + escape(text(doc,'#tawilat-opt-tansiq .tw-package-name')) + '</th></tr></thead><tbody>' + Object.entries(_tawilatPrices).map(([size,p]) => '<tr><th scope="row">' + escape(size) + '</th><td>' + escape(p.plain) + ' ر.س</td><td>' + escape(p.tansiq) + ' ر.س</td></tr>').join('') + '</tbody></table><p class="small-note">تتوفر الطاولات والكراسي بخيارات متعددة حسب عدد الضيوف، ويمكن اختيارها مع التنسيق أو بدونه.</p>';
     const diningPrice = Math.min(...Object.values(_tawilatPrices).flatMap(p => [p.plain,p.tansiq]));
-    html += section('dining','03',text(doc,'.tw-title'),'خيارات لطاولات الطعام حسب عدد الضيوف، مع إمكانية إضافة التنسيق.', serviceCard({title:text(doc,'.tw-title'),price:'تبدأ من ' + diningPrice + ' ريال',photos:[diningImage.src],imageAlt:diningImage.alt,body:diningBody,label:'التفاصيل والأسعار'}));
-    const cinemaImage = sourceImage(doc,'.cn-photo img');
-    const cinemaFacts = Array.from(doc.querySelectorAll('.cn-stat')).filter(stat => !stat.querySelector('.cn-price')).map(stat => '<div><dt>' + escape(text(stat,'dt')) + '</dt><dd>' + escape(text(stat,'dd')) + '</dd></div>').join('');
-    const cinemaBody = '<p class="package-description">' + escape(text(doc,'.cn-intro')) + '</p><dl class="service-facts">' + cinemaFacts + '</dl><h4>' + escape(text(doc,'#cn-inclusions-title')) + '</h4>' + items(list(doc,'.cn-inclusions li'));
-    html += section('cinema','04',text(doc,'.cn-title'),text(doc,'.cn-intro'), serviceCard({title:text(doc,'.cn-title'),price:text(doc,'.cn-price'),photos:[cinemaImage.src],imageAlt:cinemaImage.alt,body:cinemaBody,label:'تفاصيل الجلسة'}));
-    html += section('seating','05',text(doc,'.jl-title'),'جلسات خارجية تُجهز داخل المساحة الخارجية الخاصة بالكوخ، بخيارات تناسب أعدادًا مختلفة.', '<div class="photo-grid">' + _jalsatAllSessions.map(s => serviceCard({title:s.name,price:s.price,photos:[s.img],imageAlt:s.name,className:'photo-card',capacity:s.persons,label:'تفاصيل الجلسة',body:'<p class="session-description">' + escape(s.desc) + '</p>'})).join('') + '</div><p class="seating-extra">إضافة اختيارية: ' + escape(text(doc,'.jl-addon-name')) + ' · ' + escape(text(doc,'.jl-addon-price')) + '</p>');
-    html += section('resort-map','06','خريطة الأكواخ','الأكواخ والحديقة المشتركة في نظرة واحدة.', FD_GUIDE_MAP.markup());
+    html += section('dining','02',text(doc,'.tw-title'),'خيارات لطاولات الطعام حسب عدد الضيوف، مع إمكانية إضافة التنسيق.', serviceCard({title:text(doc,'.tw-title'),price:'تبدأ من ' + diningPrice + ' ريال',photos:[diningImage.src],imageAlt:diningImage.alt,body:diningBody,label:'التفاصيل والأسعار'}));
+    html += section('seating','03',text(doc,'.jl-title'),'جلسات خارجية تُجهز داخل المساحة الخارجية الخاصة بالكوخ، بخيارات تناسب أعدادًا مختلفة.', '<div class="photo-grid">' + _jalsatAllSessions.map(s => serviceCard({title:s.name,price:s.price,photos:[s.img],imageAlt:s.name,className:'photo-card',capacity:s.persons,label:'تفاصيل الجلسة',body:'<p class="session-description">' + escape(s.desc) + '</p>'})).join('') + '</div><p class="seating-extra">إضافة اختيارية: ' + escape(text(doc,'.jl-addon-name')) + ' · ' + escape(text(doc,'.jl-addon-price')) + '</p>');
+    html += section('resort-map','04','خريطة الأكواخ','الأكواخ والحديقة المشتركة في نظرة واحدة.', FD_GUIDE_MAP.markup());
     content.innerHTML = html;
     FD_GUIDE_MAP.mount();
     FD_GUIDE_GALLERY.mount();
@@ -91,6 +86,7 @@
     return target && (target.matches('.guide-section') ? target : target.closest('.guide-section'));
   }
   function scrollToHash(focus = false) {
+    if(['#hospitality','#cinema'].includes(location.hash)){location.replace('/guest-services/'+location.hash);return;}
     activeSection = routeSection();
     const pendingHash = location.hash === '#package-complete' ? '#coordination' : location.hash === '#packages' ? '#seating' : location.hash;
     const pendingTile = !content.classList.contains('is-ready') && Array.from(document.querySelectorAll('.contents a')).find(link => link.hash === pendingHash);
@@ -111,7 +107,7 @@
         else window.scrollTo({top:0,behavior:'instant'});
       } else {
         const previous = history.state && history.state.guideHomeY;
-        const tile = document.querySelector('.contents a[href="' + (history.state && history.state.guideTile || '#hospitality') + '"]');
+        const tile = document.querySelector('.contents a[href="' + (history.state && history.state.guideTile || '#coordination') + '"]');
         if(focus) (tile || document.getElementById('contents-title')).focus({preventScroll:true});
         if(typeof previous === 'number') window.scrollTo({top:previous,behavior:'instant'});
         else if(location.hash === '#contents') document.getElementById('contents').scrollIntoView({behavior:'instant'});

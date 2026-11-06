@@ -19,9 +19,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/guest-services/guest-services.css?v=20261103-text-preview-v1">
-<script src="/guest-services/service-source.js?v=20261103-menu-message-v1" defer></script>
-<script src="/guest-services/guest-services.js?v=20261103-text-preview-v1" defer></script>
+<link rel="stylesheet" href="/guest-services/guest-services.css?v=20261106-hospitality-v1">
+<script src="/guest-services/service-source.js?v=20261106-hospitality-v1" defer></script>
+<script src="/guest-services/guest-services.js?v=20261106-hospitality-v1" defer></script>
 </head>
 <body>
 <div class="page">
@@ -41,6 +41,11 @@
       <button type="button" id="restaurant-card" class="service-tile" data-service="restaurant" data-tone="restaurant" aria-haspopup="dialog" aria-controls="service-dialog" aria-labelledby="restaurant-title" aria-describedby="restaurant-default" disabled>
         <span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v7m3-7v7M3 7h7M6.5 10v11M18 3v18m0-18c-5 3-5 9 0 9"/></svg></span>
         <span class="tile-copy"><span class="tile-title" id="restaurant-title">المطعم</span><span class="tile-default" id="restaurant-default">اختر وجبتك ومشروبك</span><span class="tile-selection" id="restaurant-selection" hidden></span></span>
+        <span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span>
+      </button>
+      <button type="button" id="hospitality-card" class="service-tile" data-service="hospitality" data-tone="hospitality" aria-haspopup="dialog" aria-controls="service-dialog" aria-labelledby="hospitality-title" aria-describedby="hospitality-default" disabled>
+        <span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h12v7a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5ZM16 9h2a3 3 0 0 1 0 6h-2M7 3v2m4-2v2M2 22h17"/></svg></span>
+        <span class="tile-copy"><span class="tile-title" id="hospitality-title">الضيافة</span><span class="tile-default" id="hospitality-default">الضيافة السعودية، الاسترخاء والعائلية</span><span class="tile-selection" id="hospitality-selection" hidden></span></span>
         <span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span>
       </button>
       <button type="button" id="water-card" class="service-tile" data-service="water" data-tone="water" aria-haspopup="dialog" aria-controls="service-dialog" aria-labelledby="water-title" aria-describedby="water-default" disabled>
@@ -122,6 +127,10 @@
       <section id="restaurant-service" class="service-panel" hidden>
         <p class="section-note">افتح القسم واختر الأصناف والكميات. طلب المطعم يُرسل إلى المطعم مباشرة.</p>
         <div id="guest-menu" class="menu-categories"></div>
+      </section>
+      <section id="hospitality-service" class="service-panel" hidden>
+        <p class="section-note"></p>
+        <div id="hospitality-packages"></div>
       </section>
       <section id="water-service" class="service-panel" hidden>
         <p class="section-note"></p>

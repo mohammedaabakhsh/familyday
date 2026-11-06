@@ -140,6 +140,7 @@ textarea{resize:vertical;min-height:80px}
 
 /* Soft section colours also identify each group in the order summary. */
 [data-tone=restaurant]{--section-bg:#fff0df;--section-line:#efc394;--section-ink:#944713}
+[data-tone=hospitality]{--section-bg:#fcf0f2;--section-line:#ecd5dc;--section-ink:#934b65}
 [data-tone=water]{--section-bg:#eaf0ff;--section-line:#c9d6f2;--section-ink:#3d5c99}
 [data-tone=games]{--section-bg:#fffaf0;--section-line:#ecddb8;--section-ink:#805b18}
 [data-tone=cinema]{--section-bg:#f8f4fc;--section-line:#e1d5ee;--section-ink:#70478e}
@@ -201,6 +202,20 @@ body.dialog-open{overflow:hidden}
 .dialog-actions{display:grid;grid-template-columns:minmax(0,1fr) 85px;gap:10px}
 .dialog-cancel{border:1px solid #bfdde3;border-radius:12px;background:#fff;color:var(--ink);min-height:50px;font-size:14px;font-weight:700}
 @media(hover:hover){.service-tile:not(:disabled):hover{border-color:var(--section-ink)}.dialog-close:hover,.dialog-cancel:hover{background:var(--soft)}}
-@media(min-width:840px){.service-tiles{grid-template-columns:repeat(5,minmax(0,1fr))}.service-tile{padding:16px 12px;min-height:202px}.tile-title{font-size:16px}}
-@media(max-width:839px){#restaurant-card{grid-column:1/-1;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;min-height:92px}}
-@media(max-width:360px){.service-tiles{gap:10px}.service-tile{padding:14px 12px}.tile-title{font-size:16px}#restaurant-card{grid-template-columns:auto 1fr}#restaurant-card .tile-action{grid-column:2}.dialog-header,.dialog-body{padding:14px}.dialog-header h2{font-size:19px}.dialog-footer{padding:12px}.dialog-actions{grid-template-columns:minmax(0,1fr) 66px}}
+@media(min-width:840px){.service-tiles{grid-template-columns:repeat(3,minmax(0,1fr))}.service-tile{padding:16px 12px;min-height:202px}.tile-title{font-size:16px}}
+@media(max-width:839px){#restaurant-card,#hospitality-card{grid-column:1/-1;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;min-height:92px}}
+@media(max-width:360px){.service-tiles{gap:10px}.service-tile{padding:14px 12px}.tile-title{font-size:16px}#restaurant-card,#hospitality-card{grid-template-columns:auto 1fr}#restaurant-card .tile-action,#hospitality-card .tile-action{grid-column:2}.dialog-header,.dialog-body{padding:14px}.dialog-header h2{font-size:19px}.dialog-footer{padding:12px}.dialog-actions{grid-template-columns:minmax(0,1fr) 66px}}
+
+/* Hospitality uses the same draft/apply ordering flow as the other services. */
+#hospitality-packages{display:grid;gap:12px}
+.hospitality-package{border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff}
+.hospitality-package.is-selected{border-color:#238370;box-shadow:inset 0 0 0 1px #238370}
+.hospitality-heading{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.hospitality-heading h3{margin:0;color:var(--ink);font-size:17px;line-height:1.5}
+.hospitality-price{flex:none;white-space:nowrap;color:var(--section-ink);font-size:17px}
+.hospitality-details{margin-top:10px;border-top:1px solid var(--line)}
+.hospitality-details>summary{display:flex;justify-content:space-between;align-items:center;min-height:44px;cursor:pointer;list-style:none;font-size:13px;font-weight:700;color:var(--section-ink)}
+.hospitality-details>summary::-webkit-details-marker{display:none}.hospitality-details>summary::after{content:'+';font:20px Arial,sans-serif}.hospitality-details[open]>summary::after{content:'−'}
+.hospitality-details .contents-list{grid-template-columns:1fr;font-size:13px;line-height:1.8;margin:4px 0 12px}.hospitality-details .usage-note{margin-bottom:12px}
+.hospitality-quantity{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px;color:var(--muted)}
+@media(max-width:360px){.hospitality-package{padding:12px}.hospitality-heading h3,.hospitality-price{font-size:15px}}
