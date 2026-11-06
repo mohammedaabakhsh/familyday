@@ -272,17 +272,17 @@
 #tawilat-detail .tw-intro{margin:0;color:#b6cbd6;font-size:14px;line-height:1.65;text-align:center}
 #tawilat-detail .tw-intro--desktop{display:none}
 #tawilat-detail .tw-intro--mobile{margin-bottom:10px}
-#tawilat-detail .tw-layout{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"photo" "options";gap:22px;align-items:start}
+#tawilat-detail .tw-layout{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"photo" "options";gap:20px;align-items:start}
 #tawilat-detail .tw-photo-group{grid-area:photo;min-width:0}
 #tawilat-detail .tw-photo{min-width:0;overflow:hidden;border-radius:18px;background:#102b3c}
-#tawilat-detail .tw-photo img{display:block;width:100%;height:clamp(240px,76vw,300px);object-fit:cover;object-position:50% 56%}
-#tawilat-detail .tw-options{grid-area:options;min-width:0;display:flex;flex-direction:column;gap:24px}
+#tawilat-detail .tw-photo img{display:block;width:100%;height:auto;max-height:420px;aspect-ratio:1;object-fit:cover;object-position:50% 56%}
+#tawilat-detail .tw-options{grid-area:options;min-width:0;display:flex;flex-direction:column;gap:20px}
 #tawilat-detail .tw-label{margin:0 0 12px;color:#f4f8fa;font-size:16px;font-weight:700;line-height:1.5}
 #tawilat-detail .tw-sizes{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
 #tawilat-detail .tw-size{min-width:0;min-height:44px;padding:10px 4px;border:1px solid #315365;border-radius:12px;background:#102a3b;color:#c8dce5;font-family:inherit;font-size:15px;font-weight:700;line-height:1.4;cursor:pointer}
 #tawilat-detail .tw-size.is-active{border-color:#299bad;background:#126575;color:#fff}
 #tawilat-detail .tw-packages{display:grid;gap:10px}
-#tawilat-detail .tw-package{box-sizing:border-box;width:100%;min-width:0;display:grid;grid-template-columns:22px minmax(0,1fr) auto;align-items:center;gap:10px;padding:15px 14px;border:1px solid #315967;border-radius:16px;background:#153244;color:#f4f8fa;font-family:inherit;text-align:right;direction:rtl;cursor:pointer}
+#tawilat-detail .tw-package{box-sizing:border-box;width:100%;min-width:0;display:grid;grid-template-columns:22px minmax(0,1fr) auto;align-items:center;gap:10px;padding:15px 14px;border:1px solid #294957;border-radius:16px;background:#102a3a;color:#f4f8fa;font-family:inherit;text-align:right;direction:rtl;cursor:pointer}
 #tawilat-detail .tw-package.is-selected{border-color:#44acba;background:#164452;box-shadow:inset 0 0 0 1px #44acba}
 #tawilat-detail .tw-check{display:flex;align-items:center;justify-content:center;width:20px;height:20px;border:1px solid #7197a7;border-radius:50%;color:#fff}
 #tawilat-detail .tw-check svg{width:14px;height:14px;opacity:0}
@@ -293,9 +293,9 @@
 #tawilat-detail .tw-package-desc{display:block;margin-top:4px;color:#c2d4de;font-size:13px;font-weight:400;line-height:1.65}
 #tawilat-detail .tw-package-price{font-size:18px;font-weight:700;line-height:1.4;color:#91d7e2;white-space:nowrap}
 #tawilat-detail .tw-contents{padding-top:18px;border-top:1px solid #284b5c}
-#tawilat-detail .tw-content-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px;margin:0;padding:0;list-style:none}
+#tawilat-detail .tw-content-list{display:grid;grid-template-columns:minmax(0,1fr);gap:9px;margin:0;padding:0;list-style:none}
 #tawilat-detail .tw-content-list li{display:flex;align-items:flex-start;gap:8px;min-width:0;color:#c4d7e1;font-size:14px;line-height:1.65}
-#tawilat-detail .tw-content-list li::before{content:"";flex:0 0 5px;width:5px;height:5px;margin-top:9px;border-radius:50%;background:#67bfce}
+#tawilat-detail .tw-content-list li::before{content:"✓";flex:0 0 14px;width:14px;color:#7ecfea;font-size:12px;font-weight:700}
 #tawilat-detail .tw-footer{position:static;box-sizing:border-box;width:100%;margin:0;padding:0;background:none}
 #tawilat-detail .tw-footer-inner{padding:12px 14px;border:1px solid #315967;border-radius:16px;background:#0d293a}
 #tawilat-detail .tw-summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:28px;margin-bottom:10px}
@@ -304,7 +304,7 @@
 #tawilat-detail .tw-contact{width:100%;min-height:46px;padding:12px;border:1px solid #2498a8;border-radius:12px;background:#137787;color:#fff;font-family:inherit;font-size:16px;font-weight:700;line-height:1.4;cursor:pointer}
 #tawilat-detail button:focus-visible{outline:2px solid #7ecfea;outline-offset:3px}
 @media(max-width:360px){#tawilat-detail .tw-shell{padding-inline:16px}#tawilat-detail .tw-package{gap:8px;padding-inline:12px}#tawilat-detail .tw-package-price{font-size:17px}}
-@media(min-width:900px){#tawilat-detail .tw-shell{max-width:1100px;padding-top:28px;padding-bottom:32px}#tawilat-detail .tw-header{margin-bottom:26px}#tawilat-detail .tw-layout{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"options photo";gap:32px}#tawilat-detail .tw-photo-group{position:sticky;top:24px}#tawilat-detail .tw-intro--desktop{display:block;margin-bottom:10px}#tawilat-detail .tw-intro--mobile{display:none}#tawilat-detail .tw-photo img{height:auto;object-fit:contain}}
+@media(min-width:900px){#tawilat-detail .tw-shell{max-width:1100px;padding-top:28px;padding-bottom:32px}#tawilat-detail .tw-header{margin-bottom:26px}#tawilat-detail .tw-layout{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"options photo";gap:32px}#tawilat-detail .tw-photo-group{position:sticky;top:24px}#tawilat-detail .tw-intro--desktop{display:block;margin-bottom:10px}#tawilat-detail .tw-intro--mobile{display:none}#tawilat-detail .tw-photo img{height:auto;max-height:none;object-fit:contain}}
 @media(hover:hover) and (pointer:fine){#tawilat-detail .tw-size:hover{border-color:#4e8293;color:#fff}#tawilat-detail .tw-package:hover{border-color:#58a6b5}#tawilat-detail .tw-contact:hover{background:#168595}}
 .phone-link{
   color:#7ecfea!important;
