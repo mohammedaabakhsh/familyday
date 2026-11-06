@@ -118,7 +118,7 @@
     catalog.hospitality.packages.forEach(function(pack){
       var card=el('article',undefined,'hospitality-package'),heading=el('div',undefined,'hospitality-heading');
       card.dataset.hospitality=pack.id;
-      heading.append(el('h3',pack.name),el('strong',pack.price+' ريال','hospitality-price'));card.appendChild(heading);
+      heading.append(el('h3',pack.name),el('strong',pack.price+' ريال للباقة','hospitality-price'));card.appendChild(heading);
       var details=el('details',undefined,'hospitality-details'),summary=el('summary','تفاصيل الباقة'),list=el('ul',undefined,'contents-list');
       pack.contents.forEach(function(item){list.appendChild(el('li',item));});
       details.appendChild(summary);
@@ -126,7 +126,7 @@
       details.appendChild(list);
       if(pack.note) details.appendChild(el('p',pack.note,'usage-note'));
       card.appendChild(details);
-      var row=el('div',undefined,'hospitality-quantity');row.appendChild(el('span','الكمية'));
+      var row=el('div',undefined,'hospitality-quantity');row.appendChild(el('span','عدد الباقات'));
       var group=counter(pack.name,function(step){
         var quantities=selection().hospitality;
         quantities[pack.id]=Math.max(0,Math.min(99,(quantities[pack.id] || 0)+step));
@@ -276,16 +276,28 @@
     restaurantForm.querySelector('.send-order').disabled=!lines.length;
     updateCard('restaurant',lines);
   }
+  function cinemaTimeRange(value) {
+    var start=Number(value),match=catalog.cinema.duration.match(/\d+(?:\.\d+)?/);
+    if(!Number.isFinite(start) || !match) return 'وقت البداية: '+time.options[time.selectedIndex].textContent;
+    var end=start+Number(match[0]);
+    function label(hour) {
+      var minutes=Math.round(hour*60),h=Math.floor(minutes/60)%24,m=minutes%60;
+      var number=new Intl.NumberFormat('ar-SA',{useGrouping:false});
+      var clock=number.format(h%12 || 12)+(m ? ':'+number.format(m).padStart(2,'٠') : '');
+      return clock+(h===0 && m===0 ? ' منتصف الليل' : h<12 ? ' صباحًا' : h===12 ? ' ظهرًا' : ' مساءً');
+    }
+    return 'من '+label(start)+' إلى '+label(end)+(Math.floor(end/24)>Math.floor(start/24) ? ' (اليوم التالي)' : '');
+  }
   function renderServiceControls() {
     var data=selection(),water=waterSelection(data), total=water.adults+water.children;
     ['adults','children'].forEach(function(key){setCounter(document.getElementById('water-'+key).parentNode,water[key],water[key]+catalog.water.size-total);});
-    document.getElementById('water-count').textContent=total===catalog.water.size ? 'اكتمل اختيار الألعاب' : total ? 'باقي '+(catalog.water.size-total)+' لإكمال باقة الألعاب' : 'اختر '+catalog.water.size+' ألعاب لإضافة الباقة';
+    document.getElementById('water-count').textContent=total===catalog.water.size ? 'اكتملت الباقة' : 'اخترت '+total+' من '+catalog.water.size;
     time.value=data.cinema;time.classList.toggle('is-selected',!!data.cinema);
     document.querySelectorAll('[name="games-package"]').forEach(function(input){
       input.checked=input.value===data.games;
       input.closest('label').classList.toggle('is-selected',!!data.games && input.checked);
     });
-    document.getElementById('cinema-status').textContent=data.cinema ? 'تم اختيار وقت الجلسة' : '';
+    document.getElementById('cinema-status').textContent=data.cinema ? cinemaTimeRange(data.cinema) : '';
     document.getElementById('games-status').textContent=data.games ? 'تم اختيار الباقة' : '';
   }
   function updateShortcut() {
@@ -429,7 +441,8 @@
     document.getElementById('water-offer').textContent=catalog.water.size+' ألعاب بـ'+catalog.water.price+' ريال';
     document.getElementById('cinema-duration').textContent=catalog.cinema.duration;
     document.getElementById('cinema-price').textContent=catalog.cinema.price+' ريال';
-    document.querySelector('#water-service .section-note').textContent=catalog.water.prompt;
+    document.querySelector('#water-service .section-note').textContent=catalog.water.size===3 ? 'وزّع الألعاب الثلاث بين الكبار والصغار' : 'وزّع '+catalog.water.size+' ألعاب بين الكبار والصغار';
+    document.querySelector('#games-service .contents-title').textContent='الألعاب المشمولة في الباقتين';
     document.querySelector('#cinema-service .section-note').textContent=catalog.cinema.intro;
     catalog.cinema.times.forEach(function(slot){time.add(new Option(slot.label,slot.value));});time.disabled=false;
     var notes=document.querySelector('#cinema-service .usage ul');catalog.cinema.notes.forEach(function(text){notes.appendChild(el('li',text));});
@@ -437,7 +450,7 @@
     ['','box','table'].forEach(function(key){
       var label=el('label'),input=el('input'),copy=el('span');input.type='radio';input.name='games-package';input.value=key;
       if(!key) copy.textContent='بدون باقة ألعاب';
-      else {var pack=catalog.games.packages[key];copy.appendChild(el('span',pack.name));if(key==='table') copy.appendChild(el('small',pack.description));copy.appendChild(el('strong',pack.price+' ريال'));}
+      else {var pack=catalog.games.packages[key];copy.appendChild(el('span',pack.name));copy.appendChild(el('small',key==='box' ? 'يشمل الألعاب الموضّحة أدناه' : pack.description));copy.appendChild(el('strong',pack.price+' ريال'));}
       label.append(input,copy);packages.appendChild(label);
     });
   }

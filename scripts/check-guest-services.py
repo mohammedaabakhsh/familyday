@@ -84,7 +84,9 @@ with sync_playwright() as p:
         for _ in range(12):
             page.keyboard.press('Tab')
             assert page.evaluate("document.getElementById('service-dialog').contains(document.activeElement)")
+        assert page.locator('#water-count').text_content()=='اخترت 0 من 3'
         page.locator('[data-water="adults"][data-step="1"]').click()
+        assert page.locator('#water-count').text_content()=='اخترت 1 من 3'
         assert page.locator('#apply-selection').is_disabled()
         assert page.locator('#dialog-status').is_visible()
         assert page.locator('#order-total').text_content()=='0'
@@ -95,6 +97,7 @@ with sync_playwright() as p:
         page.locator('[data-water="adults"][data-step="1"]').click()
         page.locator('[data-water="children"][data-step="1"]').click(click_count=2)
         assert page.locator('#dialog-total').text_content()=='50'
+        assert page.locator('#water-count').text_content()=='اكتملت الباقة'
         assert page.locator('#order-total').text_content()=='0'
         assert page.locator('[data-water][data-step="1"]:disabled').count()==2
         page.screenshot(path=str(OUT/f'dialog-water-{width}.png'))
@@ -108,7 +111,12 @@ with sync_playwright() as p:
         open_service(page,'water');assert page.locator('#water-children').text_content()=='2'
         page.mouse.click(1,1);expect(page.locator('#service-dialog')).to_be_hidden()
         open_service(page,'games');page.locator('[name="games-package"][value="table"]').check();apply_service(page)
-        open_service(page,'cinema');page.locator('#cinema-time').select_option('24');apply_service(page)
+        open_service(page,'cinema')
+        assert page.locator('#cinema-time option[value=""]').text_content()=='اختر وقت بداية الجلسة'
+        for slot,expected in [('20','من ٨ مساءً إلى ١١ مساءً'),('21','من ٩ مساءً إلى ١٢ منتصف الليل (اليوم التالي)'),('23','من ١١ مساءً إلى ٢ صباحًا (اليوم التالي)'),('26','من ٢ صباحًا إلى ٥ صباحًا'),('24','من ١٢ منتصف الليل إلى ٣ صباحًا')]:
+            page.locator('#cinema-time').select_option(slot)
+            assert page.locator('#cinema-status').text_content()==expected
+        apply_service(page)
         open_service(page,'extras')
         page.locator('[data-extra="robe"] [data-step="1"]').click(click_count=2)
         page.locator('[data-extra="incense"] [data-step="1"]').click();apply_service(page)
@@ -139,7 +147,7 @@ with sync_playwright() as p:
             'الألعاب المائية:', 'باقة ألعاب مائية × 1 = 50 ريال', 'للكبار: 1', 'للصغار: 2', '',
             'الألعاب الترفيهية:', 'طاولة مع بوكس الألعاب × 1 = 150 ريال', '',
             'جلسة السينما:', 'جلسة السينما × 1 = 150 ريال', 'مدة الجلسة: 3 ساعات', 'وقت البداية: 12:00 ص (منتصف الليل)', '',
-            'طلبات إضافية:', 'روب ومناشف لشخص واحد × 2 = 40 ريال', 'بخور × 1 = 20 ريال',
+            'طلبات إضافية:', 'روب ومناشف لشخص واحد × 2 = 40 ريال', 'تبخير الكوخ × 1 = 20 ريال',
             '', 'إجمالي الطلب: 410 ريال', '', 'ملاحظات: أعمار الأطفال 5 و7 سنوات'])
         open_service(page,'games');page.locator('[name="games-package"][value="box"]').check();apply_service(page)
         assert page.locator('#order-total').text_content()=='310'
@@ -239,6 +247,8 @@ with sync_playwright() as p:
     page.locator('[name="games-package"][value="box"]').check();apply_service(page)
     open_service(page, 'cinema')
     assert page.locator('#cinema-duration').text_content()=='4 ساعات'
+    page.locator('#cinema-time').select_option('23')
+    assert page.locator('#cinema-status').text_content()=='من ١١ مساءً إلى ٣ صباحًا (اليوم التالي)'
     assert page.locator('#cinema-price').text_content()=='175 ريال'
     page.locator('#cinema-time').select_option('18');apply_service(page)
     assert page.locator('#order-total').text_content()=='300'  # 60 + 65 + 175.
