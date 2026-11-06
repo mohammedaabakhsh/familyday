@@ -162,18 +162,25 @@ function openPrivateChalet(){
     + '<svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>'
     + '<div class="fd-page-heading-copy"><h1 id="chalet-faq-title" class="faq-title">الأسئلة الشائعة</h1><p class="fd-venue-subtitle">شاليه يوم العائلة</p></div></div>'
     + '<nav class="fd-faq-shortcuts" aria-label="أقسام الأسئلة الشائعة">'
-    + groups.map(function(group){
-      return '<button type="button" aria-controls="' + group.id + '" aria-expanded="false" onclick="selectChaletFaqSection(this.getAttribute(&quot;aria-controls&quot;))">' + group.title + '</button>';
+    + groups.map(function(group,index){
+      return '<button type="button" aria-controls="' + group.id + '" aria-expanded="false" onclick="selectChaletFaqSection(this.getAttribute(&quot;aria-controls&quot;))">' + ['الحجز','المرافق','التعليمات'][index] + '</button>';
     }).join('')
     + '</nav></header><div id="chalet-faq-list">'
     + groups.map(function(group){
       return '<section id="' + group.id + '" class="chalet-faq-section" aria-labelledby="' + group.id + '-title" hidden>'
         + '<h2 id="' + group.id + '-title" class="faq-section-title">' + group.title + '</h2><div class="chalet-faq-grid">'
         + group.items.map(function(item,index){
-          return '<details><summary><span>' + (index + 1) + '. ' + item.question + '</span><svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="chalet-faq-answer"><p>' + item.answer + '</p></div></details>';
+          return '<details name="chalet-faq-answer"><summary><span>' + item.question + '</span><span class="faq-chevron" aria-hidden="true"></span></summary><div class="chalet-faq-answer"><p>' + item.answer + '</p></div></details>';
         }).join('') + '</div></section>';
     }).join('')
     + '</div>';
+  panel.querySelectorAll('details').forEach(function(item){
+    item.addEventListener('toggle',function(){
+      if(item.open) panel.querySelectorAll('details[open]').forEach(function(other){
+        if(other !== item) other.open = false;
+      });
+    });
+  });
   document.body.appendChild(panel);
 })();
 
@@ -182,16 +189,18 @@ function resetChaletFaq(){
   panel.querySelectorAll('.chalet-faq-section').forEach(function(section){section.hidden = true;});
   panel.querySelectorAll('details').forEach(function(item){item.open = false;});
   panel.querySelectorAll('.fd-faq-shortcuts button').forEach(function(button){button.setAttribute('aria-expanded','false');});
+  selectChaletFaqSection('chalet-faq-booking');
   panel.scrollTop = 0;
 }
 function selectChaletFaqSection(id){
   var section = document.getElementById(id);
   if(!section || section.parentElement.id !== 'chalet-faq-list') return;
-  var shouldOpen = section.hidden;
-  resetChaletFaq();
-  if(!shouldOpen) return;
-  section.hidden = false;
-  document.querySelector('#chalet-faq [aria-controls="' + id + '"]').setAttribute('aria-expanded','true');
+  var panel = document.getElementById('chalet-faq');
+  panel.querySelectorAll('.chalet-faq-section').forEach(function(item){item.hidden = item !== section;});
+  panel.querySelectorAll('details').forEach(function(item){item.open = false;});
+  panel.querySelectorAll('.fd-faq-shortcuts button').forEach(function(button){
+    button.setAttribute('aria-expanded',button.getAttribute('aria-controls') === id ? 'true' : 'false');
+  });
 }
 function showChaletFaq(){
   resetChaletFaq();

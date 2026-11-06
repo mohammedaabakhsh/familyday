@@ -75,15 +75,20 @@ function resetStayFaq() {
   overlay.querySelectorAll('.faq-section').forEach(function (section) { section.hidden = true; });
   overlay.querySelectorAll('.faq-accordion-card').forEach(function (card) { card.classList.remove('open'); });
   overlay.querySelectorAll('[aria-expanded]').forEach(function (button) { button.setAttribute('aria-expanded', 'false'); });
+  selectStayFaqSection('faq-stay-booking');
   overlay.scrollTop = 0;
 }
 
 function selectStayFaqSection(id) {
   var section = document.getElementById(id);
   if (!section || section.parentElement.id !== 'faq-list-stay') return;
-  var open = section.hidden;
-  resetStayFaq();
-  if (!open) return;
-  section.hidden = false;
-  document.querySelector('#faq2-overlay [aria-controls="' + id + '"]').setAttribute('aria-expanded', 'true');
+  var overlay = document.getElementById('faq2-overlay');
+  overlay.querySelectorAll('.faq-section').forEach(function(item){ item.hidden = item !== section; });
+  overlay.querySelectorAll('.faq-accordion-card.open').forEach(function(card){
+    card.classList.remove('open');
+    card.querySelector('.faq-question-row').setAttribute('aria-expanded','false');
+  });
+  overlay.querySelectorAll('.fd-faq-shortcuts button').forEach(function(button){
+    button.setAttribute('aria-expanded', button.getAttribute('aria-controls') === id ? 'true' : 'false');
+  });
 }

@@ -1,8 +1,8 @@
-/* Compact FAQ trial, scoped to the resort only. */
-#faq-overlay .faq-page-header,
-#faq-list-resort { max-width:680px; }
-#faq-overlay .faq-page-header { padding-bottom:16px!important; }
-#faq-overlay .fd-faq-shortcuts {
+/* Shared compact FAQ layout for the resort, stay and chalet. */
+:is(#faq-overlay,#faq2-overlay,#chalet-faq) .faq-page-header,
+:is(#faq-list-resort,#faq-list-stay,#chalet-faq-list) { max-width:680px; }
+:is(#faq-overlay,#faq2-overlay,#chalet-faq) .faq-page-header { padding-bottom:16px!important; }
+:is(#faq-overlay,#faq2-overlay,#chalet-faq) .fd-faq-shortcuts {
   display:grid!important;
   grid-template-columns:repeat(3,minmax(0,1fr))!important;
   gap:4px!important;
@@ -12,7 +12,7 @@
   border-radius:14px;
   background:#0b2230;
 }
-#faq-overlay .fd-faq-shortcuts button {
+:is(#faq-overlay,#faq2-overlay,#chalet-faq) .fd-faq-shortcuts button {
   min-height:44px!important;
   padding:8px 6px!important;
   border:0;
@@ -21,32 +21,34 @@
   font-size:14px!important;
   text-align:center!important;
 }
-#faq-overlay .fd-faq-shortcuts button[aria-expanded="true"] { background:#147a8c; color:#fff; }
-#faq-list-resort .faq-section-title {
+:is(#faq-overlay,#faq2-overlay,#chalet-faq) .fd-faq-shortcuts button[aria-expanded="true"] { background:#147a8c; color:#fff; }
+:is(#faq-list-resort,#faq-list-stay,#chalet-faq-list) .faq-section-title {
   position:absolute;
   width:1px;height:1px;padding:0;margin:-1px;
   overflow:hidden;clip-path:inset(50%);white-space:nowrap;
 }
-#faq-list-resort .faq-grid { grid-template-columns:minmax(0,1fr); gap:0; }
-#faq-list-resort .faq-accordion-card,
-#faq-list-resort .faq-accordion-card.open {
+:is(#faq-list-resort,#faq-list-stay,#chalet-faq-list) :is(.faq-grid,.chalet-faq-grid) { grid-template-columns:minmax(0,1fr); gap:0; }
+:is(#faq-list-resort,#faq-list-stay,#chalet-faq-list) :is(.faq-accordion-card,details),
+:is(#faq-list-resort,#faq-list-stay,#chalet-faq-list) :is(.faq-accordion-card.open,details[open]) {
   background:transparent!important;
   border:0!important;
   border-bottom:1px solid #29434f!important;
   border-radius:0!important;
   overflow:visible;
 }
-#faq-list-resort .faq-question-row {
+:is(#faq-list-resort,#faq-list-stay,#chalet-faq-list) :is(.faq-question-row,summary) {
   min-height:60px;
   padding:17px 4px!important;
   font-size:15px!important;
   gap:16px;
 }
-#faq-list-resort .faq-accordion-card.open .faq-question-row { color:#9ed4df!important; }
-#faq-list-resort .faq-answer { padding:0 4px 18px!important; line-height:1.8!important; }
-#faq-list-resort .faq-answer::before { display:none; }
-#faq-list-resort .faq-chevron { font-size:0; width:20px;height:20px; }
-#faq-list-resort .faq-chevron::before {
+:is(#faq-list-resort,#faq-list-stay,#chalet-faq-list) :is(.faq-accordion-card.open,details[open]) :is(.faq-question-row,summary) { color:#9ed4df!important; }
+:is(#faq-list-resort,#faq-list-stay,#chalet-faq-list) :is(.faq-answer,.chalet-faq-answer) { padding:0 4px 18px!important; line-height:1.8!important; }
+:is(#faq-list-resort,#faq-list-stay,#chalet-faq-list) :is(.faq-answer,.chalet-faq-answer)::before { display:none; }
+:is(#faq-list-resort,#faq-list-stay,#chalet-faq-list) .faq-chevron { font-size:0; width:20px;height:20px; }
+:is(#faq-list-resort,#faq-list-stay,#chalet-faq-list) .faq-chevron::before {
   content:"";width:7px;height:7px;border-right:1.5px solid currentColor;
   border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);
 }
+
+#chalet-faq .faq-chevron { display:flex;align-items:center;justify-content:center; }

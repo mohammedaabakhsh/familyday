@@ -14,8 +14,9 @@ function closeFaq2(){
 }
 
 function toggleResortFaq(card, question){
-  if(card.closest('#faq-list-resort') && !card.classList.contains('open')){
-    document.querySelectorAll('#faq-list-resort .faq-accordion-card.open').forEach(function(other){
+  var list = card.closest('#faq-list-resort,#faq-list-stay');
+  if(list && !card.classList.contains('open')){
+    list.querySelectorAll('.faq-accordion-card.open').forEach(function(other){
       other.classList.remove('open');
       other.querySelector('.faq-question-row').setAttribute('aria-expanded','false');
     });
@@ -75,6 +76,7 @@ function initStayFaqAccordion(){
     var question = card.children[0];
     var answer = card.children[1];
     if(!/^\d+\./.test(question.textContent.trim())) return;
+    question.textContent = question.textContent.replace(/^\s*\d+\.\s*/, '');
     card.classList.add('faq-accordion-card');
     question.classList.add('faq-question-row');
     answer.classList.add('faq-answer');
