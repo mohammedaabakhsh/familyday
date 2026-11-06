@@ -7,7 +7,7 @@
     box-sizing:border-box!important;width:var(--fd-back-circle)!important;height:var(--fd-back-circle)!important;
     min-width:var(--fd-back-circle)!important;max-width:var(--fd-back-circle)!important;min-height:var(--fd-back-circle)!important;
     flex:0 0 var(--fd-back-circle)!important;display:flex!important;align-items:center!important;justify-content:center!important;
-    padding:0!important;border:1px solid var(--fd-back-border)!important;border-radius:50%!important;
+    padding:0!important;border:1.5px solid var(--fd-back-arrow)!important;border-radius:50%!important;
     background:var(--fd-back-fill)!important;color:var(--fd-back-arrow)!important;box-shadow:none!important;
   }
   :is(.back-btn,.faq-back,.contact-back,.svcs-back,.menu-back,.cn-back,.tg-back,.wm-back,.tw-back,.jl-back,.hd-back,.sw-back,.wl-back,.setups-back,.fd-cabin-nav-back,.fd-map-close,.cm-close,.tour-back){position:relative!important;margin-block:4px!important;cursor:pointer;touch-action:manipulation;}
@@ -39,8 +39,10 @@
     :is(.dt-heading-copy > .dt-instruction,.fd-page-heading-copy > .fd-venue-subtitle,.fd-map-heading-copy > #fd-map-hint,.cm-heading-copy > .cm-subtitle){font-size:12px!important;}
   }
   .fd-detail-current-name{flex:1!important;}
-  :is(.back-btn,.faq-back,.contact-back,.svcs-back,.menu-back,.cn-back,.tg-back,.wm-back,.tw-back,.jl-back,.hd-back,.sw-back,.wl-back,.setups-back,.fd-cabin-nav-back,.fd-map-close,.cm-close,.tour-back):focus-visible,.rh-destinations:focus-visible,.guide-back:focus-visible{outline:2px solid var(--fd-back-arrow)!important;outline-offset:4px!important;}
+  .rh-destinations:focus-visible,.guide-back:focus-visible{outline:none!important}
+  /* Keep keyboard focus visible inside the circle, without enlarging the map back button. */
+  :is(.back-btn,.faq-back,.contact-back,.svcs-back,.menu-back,.cn-back,.tg-back,.wm-back,.tw-back,.jl-back,.hd-back,.sw-back,.wl-back,.setups-back,.fd-cabin-nav-back,.fd-map-close,.cm-close,.tour-back):focus-visible,.rh-destinations:focus-visible .rh-back-icon,.guide-back:focus-visible .fd-back-circle{outline:2px solid var(--fd-back-arrow)!important;outline-offset:-2px!important;background:rgba(143,195,207,.18)!important;}
   @media(hover:hover) and (pointer:fine){
-    :is(.back-btn,.faq-back,.contact-back,.svcs-back,.menu-back,.cn-back,.tg-back,.wm-back,.tw-back,.jl-back,.hd-back,.sw-back,.wl-back,.setups-back,.fd-cabin-nav-back,.fd-map-close,.cm-close,.tour-back):hover,.rh-destinations:hover .rh-back-icon,.guide-back:hover .fd-back-circle{background:#133346!important;border-color:#416b7c!important;}
+    :is(.back-btn,.faq-back,.contact-back,.svcs-back,.menu-back,.cn-back,.tg-back,.wm-back,.tw-back,.jl-back,.hd-back,.sw-back,.wl-back,.setups-back,.fd-cabin-nav-back,.fd-map-close,.cm-close,.tour-back):hover,.rh-destinations:hover .rh-back-icon,.guide-back:hover .fd-back-circle{background:#133346!important;border-color:var(--fd-back-arrow)!important;}
   }
 }
