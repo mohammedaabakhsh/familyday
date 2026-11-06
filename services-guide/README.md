@@ -1,8 +1,8 @@
 # Services guide
 
-`/services-guide/` is a shareable brochure, with a photographic cover, a compact index,
-hospitality, coordination, dining, cinema and seating chapters, and
-a compact map preview that expands inline. Service cards keep a visible name
+`/services-guide/` is a shareable brochure, with a photographic cover and six icon tiles inspired by `/guest-services/`.
+Each tile opens a full-page section in the same tab: hospitality, coordination,
+dining, cinema, seating or the map. The home screen shows only the cover, tiles and contact footer. Service cards keep a visible name
 and price, then a native inline disclosure for all its details. Package ordering
 stays on `/services/hospitality/`. The three hospitality packages form a compact text-only menu without placeholder photos. Each name/price row opens its full details.
 The six coordination packages have six illustrative cabin photos. Cinema, dining and each seating option keep their
@@ -23,6 +23,10 @@ The guide's footer provides contact links; each cabin links to its existing expl
   script cache keys at active entry points when deploying source changes.
 - If source selectors change, update `guide.js` and run the checks. Failed
   loading offers a retry instead of showing stale content.
+
+The hash router preserves direct links, browser Back/Forward, home scroll position and keyboard focus.
+The section header returns to the tiles; direct entry has a safe home fallback.
+Sharing on a section copies that section link. All chapters remain visible in print/PDF.
 
 Stable anchors include `#hospitality` and `#coordination`; the old `#packages`
 anchor still opens seating. `#package-complete` remains a direct link to the complete-experience package.
@@ -47,6 +51,7 @@ panel groups location, phone and social links in one grid.
 Serve the repository root, then run:
 
 ```sh
+python3 scripts/check-guide-navigation.py http://127.0.0.1:8023
 python3 scripts/check-guide-gallery.py http://127.0.0.1:8023
 python3 scripts/check-services-guide.py http://127.0.0.1:8023
 python3 scripts/check-service-sections.py http://127.0.0.1:8023

@@ -18,19 +18,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="guide.css?v=20261106-menu-headings-v1">
+<link rel="stylesheet" href="guide.css?v=20261106-section-pages-v1">
 <script src="/service-data.js?v=20261103-review-v1" defer></script>
 <script src="/resort-data.js?v=20261102-review-v1" defer></script>
 <script src="/resort-map-data.js?v=20261028-v1" defer></script>
-<script src="guide-map.js?v=20261105-guide-chapters-v1" defer></script>
-<script src="guide-gallery.js?v=20261105-unified-services-v1" defer></script>
-<script src="guide.js?v=20261106-hospitality-menu-v1" defer></script>
+<script src="guide-map.js?v=20261106-section-pages-v1" defer></script>
+<script src="guide-gallery.js?v=20261106-section-pages-v1" defer></script>
+<script src="guide.js?v=20261106-section-pages-v1" defer></script>
 <link rel="stylesheet" href="/css/back-navigation.css?v=20261105-shared-captions-v1">
 </head>
 <body>
-<a class="skip" href="#guide-content">انتقل إلى الخدمات</a>
+<a class="skip" href="#contents">انتقل إلى الخدمات</a>
 <div class="book">
-<header class="topbar"><a class="guide-back" id="guide-back" href="/resort/" aria-label="العودة إلى المنتجع"><span class="fd-back-circle" aria-hidden="true"><svg viewBox="0 0 9 15"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg></span> رجوع</a><span>منتجع يوم العائلة</span><button type="button" data-share="" aria-label="مشاركة الدليل"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 4h6v6M20 4l-9 9M9 5H4v15h15v-5"/></svg></button></header>
+<header class="topbar"><a class="guide-back" id="guide-back" href="/resort/" aria-label="العودة إلى المنتجع"><span class="fd-back-circle" aria-hidden="true"><svg viewBox="0 0 9 15"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg></span><span id="guide-back-label">رجوع</span></a><span id="guide-context">منتجع يوم العائلة</span><button type="button" data-share="" aria-label="مشاركة الدليل"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 4h6v6M20 4l-9 9M9 5H4v15h15v-5"/></svg></button></header>
 <main>
 <section class="cover" aria-labelledby="guide-title">
   <div class="welcome">
@@ -45,15 +45,14 @@
     <figcaption>مساحة لكم… ووقت يجمعكم</figcaption>
   </figure>
 </section>
-  <nav class="contents" id="contents" aria-labelledby="contents-title"><div class="contents-heading"><h2 id="contents-title">تصفّحوا الدليل</h2><p>من الضيافة إلى أجمل الجلسات</p></div><ol>
-    <li><a href="#hospitality"><span class="dot sky" aria-hidden="true"></span><span>الضيافة</span><span class="leaders" aria-hidden="true"></span><span class="index-number" aria-hidden="true">01</span></a></li>
-    <li><a href="#coordination"><span class="dot coral" aria-hidden="true"></span><span>التنسيقات</span><span class="leaders" aria-hidden="true"></span><span class="index-number" aria-hidden="true">02</span></a></li>
-    <li><a href="#dining"><span class="dot yellow" aria-hidden="true"></span><span>طاولات الطعام</span><span class="leaders" aria-hidden="true"></span><span class="index-number" aria-hidden="true">03</span></a></li>
-    <li><a href="#cinema"><span class="dot purple" aria-hidden="true"></span><span>السينما</span><span class="leaders" aria-hidden="true"></span><span class="index-number" aria-hidden="true">04</span></a></li>
-    <li><a href="#seating"><span class="dot green" aria-hidden="true"></span><span>الجلسات الخارجية</span><span class="leaders" aria-hidden="true"></span><span class="index-number" aria-hidden="true">05</span></a></li>
-    <li><a href="#resort-map"><span class="dot green" aria-hidden="true"></span><span>خريطة الأكواخ</span><span class="leaders" aria-hidden="true"></span><span class="index-number" aria-hidden="true">06</span></a></li>
+  <nav class="contents" id="contents" aria-labelledby="contents-title"><div class="contents-heading"><h2 id="contents-title" tabindex="-1">تصفّحوا الدليل</h2><p>من الضيافة إلى أجمل الجلسات</p></div><ol>
+<li><a class="guide-tile" href="#hospitality"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h12v7a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5ZM16 9h2a3 3 0 0 1 0 6h-2M7 3v2m4-2v2M2 22h17"/></svg></span><span class="tile-copy"><span class="tile-title">الضيافة</span><span class="tile-description">باقات ضيافة تناسب إقامتكم</span></span><span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span></a></li>
+<li><a class="guide-tile" href="#coordination"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8c-6-8-10-1-4 1h8c6-2 2-9-4-1ZM3 9h18v4H3ZM5 13v8h14v-8M12 9v12"/></svg></span><span class="tile-copy"><span class="tile-title">التنسيقات</span><span class="tile-description">لمسات خاصة لمناسباتكم</span></span><span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span></a></li>
+<li><a class="guide-tile" href="#dining"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v6m3-6v6m3-6v6M3 7h6M6 9v12M18 3v18m0-18c-5 3-5 9 0 9"/></svg></span><span class="tile-copy"><span class="tile-title">طاولات الطعام</span><span class="tile-description">خيارات تناسب عدد ضيوفكم</span></span><span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span></a></li>
+<li><a class="guide-tile" href="#cinema"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="15" rx="2"/><path d="m10 8 6 4-6 4ZM8 22h8"/></svg></span><span class="tile-copy"><span class="tile-title">السينما</span><span class="tile-description">جلسة سينما في أجواء الكوخ</span></span><span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span></a></li>
+<li><a class="guide-tile" href="#seating"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v6M3 11v8h18v-8M3 15h18M5 19v3m14-3v3"/></svg></span><span class="tile-copy"><span class="tile-title">الجلسات الخارجية</span><span class="tile-description">جلسات تجمعكم في الهواء الطلق</span></span><span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span></a></li>
+<li><a class="guide-tile" href="#resort-map"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2ZM9 3v16m6-14v16"/></svg></span><span class="tile-copy"><span class="tile-title">خريطة الأكواخ</span><span class="tile-description">تعرّفوا على توزيع الأكواخ</span></span><span class="tile-action">استكشف الخريطة <span aria-hidden="true">←</span></span></a></li>
   </ol></nav>
-<div class="reading-bar"><a href="#contents">↑ الفهرس</a><span id="current-section">دليل يوم العائلة</span></div>
 <div id="guide-content" tabindex="-1" aria-busy="true"><p class="loading" role="status">لحظة ونجهّز الدليل…</p></div>
 <noscript><p class="loading">فعّل JavaScript لعرض تفاصيل الدليل هنا.</p></noscript>
 </main>

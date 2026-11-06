@@ -17,14 +17,16 @@
     let index = 0, frame = 0, resizeFrame = 0;
     function update() {
       frame = 0;
-      const box = track.getBoundingClientRect(), center = box.left + box.width / 2;
+      const box = track.getBoundingClientRect();
+      if(!box.width) return;
+      const center = box.left + box.width / 2;
       let nearest = Infinity;
       images.forEach((image,i) => {const r=image.getBoundingClientRect(), distance=Math.abs(r.left+r.width/2-center);if(distance<nearest){nearest=distance;index=i;}});
       count.textContent = (index + 1) + ' / ' + images.length;
       prev.disabled = index === 0; next.disabled = index === images.length - 1;
     }
     function go(to, instant) {
-      if(to<0 || to>=images.length) return;
+      if(to<0 || to>=images.length || !track.clientWidth) return;
       index = to;
       const a=track.getBoundingClientRect(), b=images[to].getBoundingClientRect();
       track.scrollTo({left:track.scrollLeft+b.left+b.width/2-a.left-a.width/2,behavior:instant || matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});

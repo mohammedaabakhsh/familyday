@@ -61,7 +61,8 @@
       event.preventDefault();select(Number(trigger.dataset.mapCabin),trigger);
     });
     root.querySelector('svg').addEventListener('keydown',event=>{
-      if(event.key===' ' && event.target.closest('[data-map-cabin]')){event.preventDefault();event.target.closest('[data-map-cabin]').dispatchEvent(new MouseEvent('click',{bubbles:true}));}
+      const trigger=event.target.closest('[data-map-cabin]');
+      if(trigger && (event.key===' ' || event.key==='Enter')){event.preventDefault();select(Number(trigger.dataset.mapCabin),trigger);}
     });
     const img=root.querySelector('#guide-map-image');
     const onError=()=>{root.querySelector('.map-image-error').hidden=false;};

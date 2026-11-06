@@ -45,7 +45,7 @@
     'باقة VIP': 'imgs/classic_2.webp',
     'التجربة المتكاملة': 'imgs/royal_2.webp'
   };
-  const section = (id, number, title, intro, body) => '<section class="guide-section" id="' + id + '" aria-labelledby="title-' + id + '"><header class="section-heading"><span class="section-number" aria-hidden="true">' + number + '</span><div><h2 id="title-' + id + '">' + escape(title) + '</h2><p>' + escape(intro) + '</p></div></header>' + body + '</section>';
+  const section = (id, number, title, intro, body) => '<section class="guide-section" id="' + id + '" aria-labelledby="title-' + id + '"><header class="section-heading"><span class="section-number" aria-hidden="true">' + number + '</span><div><h2 tabindex="-1" id="title-' + id + '">' + escape(title) + '</h2><p>' + escape(intro) + '</p></div></header>' + body + '</section>';
   function packages(doc, key) {
     const panel = doc.querySelector('#hd-' + key + '-panel');
     if (!panel) throw new Error('Missing package panel');
@@ -78,31 +78,62 @@
     FD_GUIDE_MAP.mount();
     FD_GUIDE_GALLERY.mount();
     content.setAttribute('aria-busy','false');
+    content.classList.add('is-ready');
     scrollToHash();
-    observeSections();
   }
-  function scrollToHash() {
-    if(location.hash === '#packages') history.replaceState(null,'','#seating');
-    const target = document.getElementById(location.hash.slice(1));
-    if (target && (target.classList.contains('guide-section') || target.id === 'contents' || target.id === 'package-complete')) target.scrollIntoView({behavior:'instant',block:'start'});
+  const homeBack = {href:back.href, label:back.getAttribute('aria-label')};
+  const guideTitle = document.title;
+  let activeSection = null;
+  history.scrollRestoration = 'manual';
+  function routeSection() {
+    const id = location.hash.slice(1);
+    const target = document.getElementById(id === 'packages' ? 'seating' : id);
+    return target && (target.matches('.guide-section') ? target : target.closest('.guide-section'));
   }
-  let observing = false;
-  function observeSections() {
-    if (observing) return;
-    observing = true;
-    const links = Array.from(document.querySelectorAll('.contents a'));
-    let queued = false;
-    const update = () => {
-      queued = false;
-      let current = '';
-      document.querySelectorAll('.guide-section').forEach(s => {if(s.getBoundingClientRect().top < 140) current=s.id;});
-      if (window.scrollY > 0 && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) current = 'resort-map';
-      links.forEach(a => {if(a.hash === '#' + current) a.setAttribute('aria-current','location'); else a.removeAttribute('aria-current');});
-      document.getElementById('current-section').textContent = current ? text(document,'#title-' + current) : 'دليل يوم العائلة';
-    };
-    window.addEventListener('scroll',() => {if(!queued){queued=true;requestAnimationFrame(update);}}, {passive:true});
-    update();
+  function scrollToHash(focus = false) {
+    activeSection = routeSection();
+    const pendingHash = location.hash === '#package-complete' ? '#coordination' : location.hash === '#packages' ? '#seating' : location.hash;
+    const pendingTile = !content.classList.contains('is-ready') && Array.from(document.querySelectorAll('.contents a')).find(link => link.hash === pendingHash);
+    const sectionView = Boolean(activeSection || pendingTile);
+    document.body.dataset.guideView = sectionView ? 'section' : 'home';
+    document.querySelectorAll('.guide-section').forEach(section => section.classList.toggle('is-active',section === activeSection));
+    const title = activeSection ? activeSection.querySelector('h2').textContent : pendingTile ? pendingTile.querySelector('.tile-title').textContent : '';
+    back.href = sectionView ? '#contents' : homeBack.href;
+    back.setAttribute('aria-label',sectionView ? 'العودة إلى أقسام الدليل' : homeBack.label);
+    document.getElementById('guide-back-label').textContent = sectionView ? 'الدليل' : 'رجوع';
+    document.getElementById('guide-context').textContent = title || 'منتجع يوم العائلة';
+    document.title = title ? title + ' | دليل يوم العائلة' : guideTitle;
+    requestAnimationFrame(() => {
+      if(activeSection) {
+        if(focus) activeSection.querySelector('h2').focus({preventScroll:true});
+        const target = location.hash === '#package-complete' ? document.getElementById('package-complete') : null;
+        if(target) target.scrollIntoView({behavior:'instant',block:'start'});
+        else window.scrollTo({top:0,behavior:'instant'});
+      } else {
+        const previous = history.state && history.state.guideHomeY;
+        const tile = document.querySelector('.contents a[href="' + (history.state && history.state.guideTile || '#hospitality') + '"]');
+        if(focus) (tile || document.getElementById('contents-title')).focus({preventScroll:true});
+        if(typeof previous === 'number') window.scrollTo({top:previous,behavior:'instant'});
+        else if(location.hash === '#contents') document.getElementById('contents').scrollIntoView({behavior:'instant'});
+        else window.scrollTo({top:0,behavior:'instant'});
+      }
+    });
   }
+  document.addEventListener('click',event => {
+    const link = event.target.closest('a');
+    if(!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if(link.matches('.contents a')) {
+      event.preventDefault();
+      history.replaceState({...history.state,guideHomeY:window.scrollY,guideTile:link.hash},'',location.href);
+      history.pushState({guideFromHome:true},'',link.hash);
+      scrollToHash(true);
+    } else if(link === back && activeSection) {
+      event.preventDefault();
+      if(history.state && history.state.guideFromHome) history.back();
+      else {history.replaceState(null,'','#contents');scrollToHash(true);}
+    }
+  });
+  window.addEventListener('popstate',() => scrollToHash(true));
   let loading = false;
   async function load() {
     if (loading) return;
@@ -128,11 +159,11 @@
   document.addEventListener('click',async event => {
     const button = event.target.closest('[data-share]');
     if(!button) return;
-    const id = button.dataset.share;
+    const id = activeSection ? (location.hash === '#package-complete' ? 'package-complete' : activeSection.id) : button.dataset.share;
     const url = new URL('/services-guide/',location.origin);
     if(id) url.hash=id;
     try {
-      if (!id && navigator.share) {await navigator.share({title:document.title,url:url.href});return;}
+      if (navigator.share) {await navigator.share({title:document.title,url:url.href});return;}
       if (!navigator.clipboard) throw new Error('Clipboard unavailable');
       await navigator.clipboard.writeText(url.href);
       status(id ? 'تم نسخ رابط القسم' : 'تم نسخ رابط الدليل');
@@ -144,6 +175,7 @@
     }
   });
   document.getElementById('close-share').addEventListener('click',() => document.getElementById('share-dialog').close());
-  window.addEventListener('hashchange',scrollToHash);
+  window.addEventListener('hashchange',() => scrollToHash());
+  scrollToHash();
   load();
 })();

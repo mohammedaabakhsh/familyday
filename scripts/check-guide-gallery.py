@@ -21,16 +21,16 @@ with sync_playwright() as p:
    current.locator('.gallery-previous').click()
    page.wait_for_function('(el)=>el.textContent==="1 / 6"',arg=current.locator('.gallery-count').element_handle())
   card.evaluate('e=>e.scrollIntoView({block:"start"})')
-  page.wait_for_function('document.querySelector("#package-complete").getBoundingClientRect().top<200')
+  page.wait_for_function('document.querySelector("#package-complete").getBoundingClientRect().top<innerHeight')
   card.locator('img').evaluate_all('els=>Promise.all(els.map(e=>{e.loading="eager";return e.decode()}))')
   assert card.locator('.price').inner_text()=='1850 ريال'
   assert card.locator('.gallery-slide').count()==6 and count.inner_text()=='1 / 6'
   assert not card.locator('details').evaluate('e=>e.open')
-  photo=gallery.bounding_box();before=page.locator('#dining').bounding_box()['y']
+  photo=gallery.bounding_box();before=card.bounding_box()['height']
   card.locator('summary').click();assert card.locator('.inclusions').is_visible()
-  assert page.locator('#dining').bounding_box()['y']>before+500
+  assert card.bounding_box()['height']>before+500
   assert gallery.bounding_box()['height']==photo['height']
-  card.locator('summary').click();assert abs(page.locator('#dining').bounding_box()['y']-before)<1
+  card.locator('summary').click();assert abs(card.bounding_box()['height']-before)<1
   for i in range(2,7):
    gallery.locator('.gallery-next').click();page.wait_for_function('(n)=>document.querySelector("#package-complete .gallery-count").textContent===n',arg=str(i)+' / 6')
   assert gallery.locator('.gallery-next').is_disabled()
@@ -39,6 +39,7 @@ with sync_playwright() as p:
   track.focus();page.keyboard.press('Home');page.wait_for_function('document.querySelector("#package-complete .gallery-count").textContent==="1 / 6"')
   assert abs(track.bounding_box()['width']/track.bounding_box()['height']-4/3)<.01
   assert gallery.locator('button').count()==2
+  photo=gallery.bounding_box()
   controls=gallery.locator('.gallery-controls').bounding_box()
   assert abs(controls['x']+controls['width']-photo['x']-photo['width'])<1
   assert abs(controls['y']+controls['height']-photo['y']-photo['height'])<1
