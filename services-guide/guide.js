@@ -163,7 +163,7 @@
       if (navigator.share) {await navigator.share({title:document.title,url:url.href});return;}
       if (!navigator.clipboard) throw new Error('Clipboard unavailable');
       await navigator.clipboard.writeText(url.href);
-      status(id ? 'تم نسخ رابط القسم' : 'تم نسخ رابط التجهيزات');
+      status(id ? 'تم نسخ رابط القسم' : 'تم نسخ رابط تنسيقات وجلسات');
     } catch(error) {
       if(error.name === 'AbortError') return;
       const dialog = document.getElementById('share-dialog');

@@ -45,13 +45,13 @@ var FD_DOME_TOUR = (function () {
       cabin.features.kitchen.forEach(function(t){cards.push({value:t,icon:kitchenIcon(t)});});
 
     } else if (selected === 'bedroom') {
-      cards=[{value:'سرير مزدوج',icon:'bed'}];
+      cards=resortTourCards(cabin,'bedroom');
     } else if (selected === 'living') {
-      cards=[{value:'تلفزيون ذكي',icon:'tv'},{value:'سماعات داخلية (ساوند بار)',icon:'speaker'},{value:'واي فاي مجاني',icon:'wifi'}];
+      cards=resortTourCards(cabin,'living');
     } else if (selected === 'bathroom') {
-      cards=[{value:'حمام خاص داخل غرفة النوم الرئيسية',icon:'shower'}];
+      cards=resortTourCards(cabin,'bathroom');
     } else if (selected === 'tub') {
-      cards=[{value:'بانيو داخلي بغرفة النوم',icon:'tub'}];
+      cards=resortTourCards(cabin,'tub');
     } else {
       cabin.features.outdoor.forEach(function(t){cards.push({value:/^جلسات? خارجية$/.test(t)?'جلسة خارجية':t,icon:'outdoor'});});
       if(cabin.pool.facilities.indexOf('دش خارجي')!==-1) cards.push({value:'دش خارجي',icon:'shower'});
@@ -62,7 +62,7 @@ var FD_DOME_TOUR = (function () {
   function update() {
     root.lang='ar'; root.dir='rtl';
     root.querySelector('.dt-title').textContent='استكشف بيت الدوم';
-    root.querySelector('.dt-occupancy').textContent='مثالي للأزواج · حتى ضيفين';
+    root.querySelector('.dt-occupancy').textContent=cabin.suitable+' · '+resortGuestText(cabin.guests);
     root.querySelector('.dt-image').alt='رسم توضيحي لتوزيع بيت الدوم ومرافقه';
     root.querySelectorAll('.dt-labels').forEach(function(group){group.setAttribute('aria-label','اختر المرفق لعرض تفاصيله');});
     parts.forEach(function(p){

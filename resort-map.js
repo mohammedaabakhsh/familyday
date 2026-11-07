@@ -12,7 +12,7 @@
   if (!locations.length) return;
 
   // The connecting door is confirmed in the site's FAQ; both positions are owner-confirmed.
-  var connections = [{ cabinIds: [3, 9], description: 'يمكن ربط الكلاسيكي ورويال عبر باب داخلي بسعة تصل إلى 35 ضيفًا.' }];
+  var connections = [{ cabinIds: [3, 9], description: 'يمكن ربط الكلاسيكي ورويال عبر باب داخلي بسعة تصل إلى ' + resortCombinedGuests() + ' ضيفًا.' }];
   // Existing gallery photos chosen for a clear, recognizable square thumbnail.
   // Physical instances of the same cabin type share that type's gallery.
   var cardPhotos = FD_RESORT_MAP_DATA.cardPhotos;

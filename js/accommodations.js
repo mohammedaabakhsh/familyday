@@ -325,7 +325,7 @@ ${c.id===8?'<a class="fd-pyramid-detail-tour" href="/rustic-tour/?from=details&c
         </div>
       </section>
 
-      ${(c.id===3 || c.id===9)?'<section class="fd-cabin-section fd-cabin-combined-note"><h3>حجز الكوخين معًا</h3><div class="fd-cabin-instructions"><p>يمكن ربط كوخ رويال والكوخ الكلاسيكي عبر باب داخلي عند حجزهما معًا، بسعة إجمالية تصل إلى 35 ضيفًا.</p></div></section>':''}
+      ${(c.id===3 || c.id===9)?'<section class="fd-cabin-section fd-cabin-combined-note"><h3>حجز الكوخين معًا</h3><div class="fd-cabin-instructions"><p>يمكن ربط كوخ رويال والكوخ الكلاسيكي عبر باب داخلي عند حجزهما معًا، بسعة إجمالية تصل إلى ' + resortCombinedGuests() + ' ضيفًا.</p></div></section>':''}
 
       <section class="fd-cabin-addons">
         <h3>خدمات إضافية</h3>

@@ -195,6 +195,10 @@
     var pageRoute=r;
     while(pageRoute && !sharePage(pageRoute)) pageRoute=pageRoute.parent;
     var preview=(pageRoute && sharePage(pageRoute)) || {title:defaultPageTitle,description:defaultPageDescription,path:'/'};
+    var venueRoute=r;
+    while(venueRoute && venueRoute.name!=='home') venueRoute=venueRoute.parent;
+    var schema=document.getElementById('fd-venue-schema');
+    if(schema) schema.textContent=JSON.stringify(FD_VENUE_SCHEMAS[venueRoute?venueRoute.args[0]:'brand']);
     document.title=preview.title;
     ['meta[property="og:title"]','meta[name="twitter:title"]'].forEach(function(selector){var el=document.querySelector(selector);if(el)el.content=preview.title;});
     ['meta[name="description"]','meta[property="og:description"]','meta[name="twitter:description"]'].forEach(function(selector){var el=document.querySelector(selector);if(el)el.content=preview.description;});

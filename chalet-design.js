@@ -1,12 +1,18 @@
 /* Standalone chalet; the legacy "chalet" route still belongs to the rest house. */
 var PRIVATE_CHALET = {
   id: 30,
+  guests: 15,
+  rooms: 2,
+  maxGuests: 25,
   name: 'شاليه يوم العائلة',
   location: 'جدة - المروج',
   bookUrl: 'https://familyday-sa.com/ar/listings/6abb996392a258b8171230a3',
   mapUrl: 'https://maps.app.goo.gl/np6uD3XvCQTCr4ff7',
   // Shared facts; each view keeps its approved selection and presentation.
   specifications: {
+    bedrooms: {main: {bed: 'سرير مزدوج'}, second: {bed: 'سريران مفردان'}},
+    bedroomBathroom: 'حمام خاص داخل غرفة النوم الرئيسية',
+    pool: {depthCm: 60, slide: 'زحليقة مزدوجة'},
     seating: {living: 'تتسع لـ15 شخصًا', majlis: 'يتسع لـ10 أشخاص'},
     majlisBathroom: 'حمام خاص بالمجلس المستقل',
     television: 'تلفزيون ذكي',
@@ -26,6 +32,11 @@ GALLERY[PRIVATE_CHALET.id] = Array.from({length:18}, function(_, index){
 });
 
 
+function chaletBedroomDescription(key) {
+  var room=PRIVATE_CHALET.specifications.bedrooms[key];
+  return (key==='main'?'غرفة النوم الرئيسية':'غرفة النوم الثانية')+' ب'+room.bed.replace(/^سريران مفردان$/, 'سريرين مفردين');
+}
+
 function renderPrivateChaletDetail(){
   var specifications = PRIVATE_CHALET.specifications;
   function features(items){
@@ -43,26 +54,26 @@ function renderPrivateChaletDetail(){
     + '<div class="fd-cabin-heading"><div class="fd-cabin-heading-copy"><h2 id="fd-chalet-detail-title" class="fd-cabin-title">' + PRIVATE_CHALET.name + '</h2>'
     + '<p class="fd-cabin-occupancy">شاليه من دورين</p>'
     + '<div class="fd-cabin-card-v2-facts fd-cabin-detail-facts" aria-label="معلومات الشاليه">'
-    + '<div class="fd-cabin-card-v2-fact"><span>سعة الضيوف</span><strong>حتى 15 ضيفًا</strong></div>'
-    + '<div class="fd-cabin-card-v2-fact"><span>غرف النوم</span><strong>غرفتان</strong></div></div>'
-    + '<div class="fd-stay-guest-note"><div class="fd-cabin-instructions"><p>يمكن زيادة إجمالي عدد الضيوف إلى 25 ضيفًا كحد أقصى، برسوم إضافية.</p></div></div></div></div>'
+    + '<div class="fd-cabin-card-v2-fact"><span>سعة الضيوف</span><strong>' + resortGuestText(PRIVATE_CHALET.guests) + '</strong></div>'
+    + '<div class="fd-cabin-card-v2-fact"><span>غرف النوم</span><strong>' + resortRoomText(PRIVATE_CHALET.rooms) + '</strong></div></div>'
+    + '<div class="fd-stay-guest-note"><div class="fd-cabin-instructions"><p>يمكن زيادة إجمالي عدد الضيوف إلى ' + PRIVATE_CHALET.maxGuests + ' ضيفًا كحد أقصى، برسوم إضافية.</p></div></div></div></div>'
     + '<a class="fd-pyramid-detail-tour fd-chalet-map-open" href="/chalet-map/?from=chalet-details" aria-haspopup="dialog" aria-controls="fd-chalet-map">استكشف الشاليه من الداخل <span aria-hidden="true">←</span></a>'
     + '<div class="fd-cabin-times" aria-label="أوقات الدخول والخروج"><div><span>الدخول</span><strong>4:00 مساءً</strong></div><div><span>الخروج</span><strong>12:00 ظهرًا</strong></div></div>'
     + '<section class="fd-cabin-section"><h3>المنطقة الداخلية</h3>'
     + floor('الدور الأرضي', [
-      'غرفة النوم الثانية بسريرين مفردين',
+      chaletBedroomDescription('second'),
       'الصالة الداخلية ' + specifications.seating.living,
       'طاولة طعام',
       'غرفة ألعاب الأطفال',
       'مطبخ',
       'حمام'
     ])
-    + floor('الدور العلوي', ['غرفة النوم الرئيسية بسرير مزدوج', 'حمام خاص داخل غرفة النوم الرئيسية'])
+    + floor('الدور العلوي', [chaletBedroomDescription('main'), specifications.bedroomBathroom])
     + '</section>'
     + section('المجلس المستقل', [specifications.seating.majlis, 'مدخل خاص', specifications.majlisBathroom])
     + section('المنطقة الخارجية', [
-      'مسبح أطفال بعمق 60 سم',
-      'زحليقة مزدوجة',
+      'مسبح أطفال بعمق ' + specifications.pool.depthCm + ' سم',
+      specifications.pool.slide,
       'كرسي تشميس',
       'دش خارجي'
     ])
@@ -138,11 +149,11 @@ function openPrivateChalet(){
       "items": [
         {
           "question": "كم عدد الضيوف وغرف النوم في الشاليه؟",
-          "answer": "يتسع الشاليه لاستقبال حتى 15 ضيفًا. ويمكن زيادة إجمالي عدد الضيوف إلى 25 ضيفًا كحد أقصى، برسوم إضافية. ويضم غرفتي نوم موزعتين على دورين: غرفة النوم الثانية بسريرين مفردين في الدور الأرضي، وغرفة النوم الرئيسية بسرير مزدوج وحمام خاص في الدور العلوي."
+          "answer": "يتسع الشاليه لاستقبال " + resortGuestText(PRIVATE_CHALET.guests) + ". ويمكن زيادة إجمالي عدد الضيوف إلى " + PRIVATE_CHALET.maxGuests + " ضيفًا كحد أقصى، برسوم إضافية. ويضم " + (PRIVATE_CHALET.rooms===2?"غرفتي نوم":PRIVATE_CHALET.rooms+" غرف نوم") + " موزعتين على دورين: " + chaletBedroomDescription('second') + " في الدور الأرضي، و" + chaletBedroomDescription('main') + " وحمام خاص في الدور العلوي."
         },
         {
           "question": "هل يوجد مسبح في الشاليه؟",
-          "answer": "نعم، يوجد مسبح للأطفال بعمق 60 سم مع زحليقة مزدوجة."
+          "answer": "نعم، يوجد مسبح للأطفال بعمق " + specifications.pool.depthCm + " سم مع " + specifications.pool.slide + "."
         },
         {
           "question": "ما الصالات والمجالس المتوفرة في الشاليه؟",

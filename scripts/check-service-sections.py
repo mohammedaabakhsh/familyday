@@ -18,7 +18,7 @@ with sync_playwright() as p:
         page.wait_for_url('**/services/hospitality/packages/')
         assert page.title()=='الضيافة | يوم العائلة'
         assert page.locator('#hospitality-detail [role=tab]').all_text_contents()==['الضيافة','التنسيقات']
-        assert page.locator('#hd-hospitality-panel .hd-package-price').all_text_contents()==['59 ريال','75 ريال','85 ريال']
+        assert page.locator('#hd-hospitality-panel .hd-package-price').all_text_contents()==['59 ريال للباقة','75 ريال للباقة','85 ريال للباقة']
         page.locator('#hd-tab-coordination').click()
         page.wait_for_url('**/services/coordination/')
         assert page.locator('#hd-coordination-panel .hd-package').count()==6

@@ -43,7 +43,7 @@ var FD_CABIN_COMPARE = (function(){
   }
   function specials(c){
     var items=c.features.indoor.concat(c.features.outdoor,c.pool.facilities).filter(function(t){return /بانيو|جاكوزي|سرير تشميس داخل/.test(t);});
-    if(c.id===3||c.id===9)items.push('يمكن ربط الكلاسيكي ورويال بسعة إجمالية حتى 35 ضيفًا');
+    if(c.id===3||c.id===9)items.push('يمكن ربط الكلاسيكي ورويال بسعة إجمالية حتى ' + resortCombinedGuests() + ' ضيفًا');
     return items.length?items.join(' · '):'—';
   }
   function show(ids){

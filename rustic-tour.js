@@ -55,15 +55,15 @@ var FD_RUSTIC_TOUR = (function () {
     } else if (selected === 'dining') {
       cards.push({value:'طاولة الطعام',icon:'dining'});
     } else if (selected === 'living') {
-      cards=[{value:'تلفزيون ذكي',icon:'tv'},{value:'سماعات داخلية (ساوند بار)',icon:'speaker'},{value:'واي فاي مجاني',icon:'wifi'}];
+      cards=resortTourCards(cabin,'living');
     } else if (selected === 'bedroom') {
-      cards=[{value:'سرير مزدوج',icon:'bed'}];
+      cards=resortTourCards(cabin,'bedroom');
     } else if (selected === 'bathroom') {
-      cards=[{value:'حمام خاص داخل غرفة النوم الرئيسية',icon:'shower'},{value:'حمام مشترك',icon:'shower'}];
+      cards=resortTourCards(cabin,'bathroom');
     } else if (selected === 'tub') {
-      cards=[{value:'بانيو مع جاكوزي بغرفة النوم',icon:'tub'}];
+      cards=resortTourCards(cabin,'tub');
     } else if (selected === 'twin') {
-      cards=[{value:'سريران مفردان',icon:'bed'}];
+      cards=resortTourCards(cabin,'twin');
     } else {
       cabin.features.outdoor.filter(function(t){return !/بانيو/.test(t);}).forEach(function(t){cards.push({value:feature(t),icon:'outdoor'});});
       if(cabin.pool.facilities.indexOf('دش خارجي')!==-1) cards.push({value:'دش خارجي',icon:'shower'});
@@ -75,7 +75,7 @@ var FD_RUSTIC_TOUR = (function () {
   function update() {
     root.lang='ar'; root.dir='rtl';
     root.querySelector('.dt-title').textContent='استكشف الكوخ الريفي';
-    root.querySelector('.dt-occupancy').textContent=('مناسب للعائلات · حتى '+cabin.guests+' ضيفًا');
+    root.querySelector('.dt-occupancy').textContent=cabin.suitable+' · '+resortGuestText(cabin.guests);
     root.querySelector('.dt-image').alt='رسم توضيحي لتوزيع الكوخ الريفي ومرافقه';
     root.querySelectorAll('.dt-labels').forEach(function(group){group.setAttribute('aria-label','اختر المرفق لعرض تفاصيله');});
     parts.forEach(function(p){

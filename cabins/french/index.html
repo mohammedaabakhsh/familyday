@@ -27,35 +27,34 @@
 <meta name="twitter:title" content="الكوخ الفرنسي | يوم العائلة">
 <meta name="twitter:description" content="كوخ خشبي بطراز فرنسي يتميز بالأناقة والفخامة، استعرض الصور والمرافق في يوم العائلة.">
 <!-- Schema.org Local Business -->
-<script type="application/ld+json">
+<script id="fd-venue-schema" type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Resort",
   "name": "منتجع يوم العائلة",
-  "description": "أكواخ خاصة مع مسابح مستقلة في خليج سلمان، جدة",
-  "url": "https://familydaystay.com/",
-  "image": "https://familydaystay.com/imgs/img01.webp",
+  "url": "https://familydaystay.com/resort/",
   "telephone": "+966556156693",
+  "sameAs": [
+    "https://instagram.com/FAMILYDAYRESORT",
+    "https://www.snapchat.com/add/familyday5"
+  ],
+  "image": "https://familydaystay.com/imgs/img01.webp",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "جدة",
     "addressRegion": "خليج سلمان",
     "addressCountry": "SA"
-  },
-  "sameAs": [
-    "https://instagram.com/FAMILYDAYRESORT",
-    "https://tiktok.com/@familydayresort"
-  ]
+  }
 }
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link href="resort-home.css?v=20261104-back-button-v1" rel="stylesheet">
 <link rel="preload" as="script" href="js/app-shell.js?v=20261106-all-faq-v2">
 <link rel="preload" as="script" href="js/gallery-data.js?v=20261102-structure-v1">
-<link rel="preload" as="script" href="js/accommodations.js?v=20261107-resort-final-v1">
+<link rel="preload" as="script" href="js/accommodations.js?v=20261107-final-batch-v1">
 <link rel="preload" as="script" href="js/services.js?v=20261106-dining-inclusions-v1">
-<link rel="preload" as="script" href="js/stay-navigation.js?v=20261107-pool-copy-v2">
-<link rel="preload" as="script" href="js/router.js?v=20261107-chalet-map-return-v2">
+<link rel="preload" as="script" href="js/stay-navigation.js?v=20261107-final-batch-v1">
+<link rel="preload" as="script" href="js/router.js?v=20261107-final-batch-v1">
 <link rel="stylesheet" href="css/app-base.css?v=20261106-seating-controls-v7">
 <link rel="stylesheet" href="resort-map.css?v=20261106-fixed-selection-v4">
 <style id="fd-home-map-shortcut">
@@ -249,7 +248,7 @@
   </div>
 </div>
 
-<script src="share-pages.js?v=20261102-water-package-v1"></script>
+<script src="share-pages.js?v=20261107-final-batch-v1"></script>
 <link rel="stylesheet" href="css/faq-mobile.css?v=20261102-code-cleanup-v2">
 <link rel="stylesheet" href="css/water-games.css?v=20261106-inline-offer-v3">
 <script src="js/water-games.js?v=20261102-water-review-v2"></script>
@@ -257,10 +256,10 @@
 <script src="js/menu-order-message.js?v=20261103-menu-message-v1"></script>
 <script src="js/service-orders.js?v=20261103-menu-message-v1"></script>
 <script src="resort-features.js?v=20261106-faq-v2"></script>
-<script src="stay-design.js?v=20261107-comparison-toggle-v5"></script>
+<script src="stay-design.js?v=20261107-final-batch-v1"></script>
 <script src="site-enhancements.js?v=1"></script>
 <script src="menu-experience.js?v=20261103-shared-menu-prices-v1"></script>
-<script src="cabin-compare.js?v=20261107-resort-final-v1"></script>
+<script src="cabin-compare.js?v=20261107-final-batch-v1"></script>
 <script src="js/cabin-numbers.js?v=20261102-v1"></script>
 <script src="js/app-shell.js?v=20261106-all-faq-v2"></script>
 
@@ -281,7 +280,7 @@
 
 
       <button type="button" class="rh-cabins" onclick="showSection('resort')" aria-label="الأكواخ">
-        <img class="rh-cabin-photo" src="imgs/dome_1.webp" width="1200" height="1200" alt="" fetchpriority="high" decoding="async">
+        <img loading="lazy" class="rh-cabin-photo" src="imgs/dome_1.webp" width="1200" height="1200" alt="" decoding="async">
         <span class="rh-cabin-shade" aria-hidden="true"></span>
         <span class="rh-cabin-bottom">
           <span class="rh-cabin-copy">
@@ -442,11 +441,11 @@
     <div class="faq-grid">
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">1. كم عدد الضيوف وغرف النوم في الأكواخ؟</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">تختلف سعة استقبال الضيوف حسب الكوخ، وتبدأ من ضيفين وتصل إلى 20 ضيفًا. وتتوفر أكواخ بغرفة نوم واحدة وأخرى بغرفتي نوم.</div>
+      <div data-shared-fact="resort-capacity" style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">تختلف سعة استقبال الضيوف حسب الكوخ، وتبدأ من ضيفين وتصل إلى 20 ضيفًا. وتتوفر أكواخ بغرفة نوم واحدة وأخرى بغرفتي نوم.</div>
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">2. هل يوجد خيار للمجموعات الكبيرة؟</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">نعم، يمكن ربط كوخ رويال والكوخ الكلاسيكي عبر باب داخلي عند حجزهما معًا، بسعة إجمالية تصل إلى 35 ضيفًا.</div>
+      <div data-shared-fact="resort-combined" style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">نعم، يمكن ربط كوخ رويال والكوخ الكلاسيكي عبر باب داخلي عند حجزهما معًا، بسعة إجمالية تصل إلى 35 ضيفًا.</div>
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">3. هل تختلف مميزات الأكواخ؟</div>
@@ -462,7 +461,7 @@
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">6. ما مواصفات المسابح؟</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">جميع مسابح الأكواخ خاصة بعمق 140 سم، وتختلف أبعادها بحسب تصميم الكوخ.</div>
+      <div data-shared-fact="resort-pools" style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">جميع مسابح الأكواخ خاصة بعمق 140 سم، وتختلف أبعادها بحسب تصميم الكوخ.</div>
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">7. هل الأكواخ مجهزة بوسائل ترفيه؟</div>
@@ -574,11 +573,11 @@
       <h2 id="svcs-group-3" class="svcs-section-title">عروض وامتيازات</h2>
       <div class="svcs-grid svcs-grid--rewards">
         <a class="svcs-card svcs-reward" href="#contest" onclick="event.preventDefault();showContest()" style="text-decoration:none" aria-label="شارك بفيديو… ويومك الجاي علينا">
-          <span class="svcs-name">شارك بفيديو… ويومك الجاي علينا</span>
+          <span class="svcs-copy"><span class="svcs-name">شارك بفيديو… ويومك الجاي علينا</span><span class="svcs-description">انشر الفيديو ونافس بالمشاهدات</span></span>
           <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
         </a>
         <button type="button" class="svcs-card svcs-reward" onclick="showSharik()" aria-label="شارك واربح">
-          <span class="svcs-name">شارك واربح</span>
+          <span class="svcs-copy"><span class="svcs-name">شارك واربح</span><span class="svcs-description">صوّر تجربتك وأرسلها لنا</span></span>
           <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
         </button>
         <button type="button" class="svcs-card svcs-reward" onclick="showWalaa()" aria-label="بطاقة الولاء">
@@ -644,7 +643,7 @@
       <div class="cn-photo-group">
         <p class="cn-intro cn-intro--desktop">جلسة سينما خارجية في المساحة الخاصة بالكوخ</p>
         <figure class="cn-photo">
-          <img src="imgs/cinema_1.webp" width="1200" height="1200" alt="جلسة سينما ليلية بشاشة عرض وجلسات خارجية داخل المساحة الخاصة بالكوخ" decoding="async">
+          <img loading="lazy" src="imgs/cinema_1.webp" width="1200" height="1200" alt="جلسة سينما ليلية بشاشة عرض وجلسات خارجية داخل المساحة الخاصة بالكوخ" decoding="async">
         </figure>
       </div>
       <div class="cn-details">
@@ -1208,7 +1207,7 @@
 
 
       <button type="button" class="rh-cabins" onclick="showSection2()" aria-label="أقسام الاستراحة">
-        <img class="rh-cabin-photo" src="imgs/sec1_1.webp" width="1200" height="1200" alt="" fetchpriority="high" decoding="async">
+        <img loading="lazy" class="rh-cabin-photo" src="imgs/sec1_1.webp" width="1200" height="1200" alt="" decoding="async">
         <span class="rh-cabin-shade" aria-hidden="true"></span>
         <span class="rh-cabin-bottom">
           <span class="rh-cabin-copy">
@@ -1338,7 +1337,7 @@
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">3. كم عدد الضيوف وغرف النوم في كل قسم؟</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يتسع كل قسم لاستقبال حتى 25 ضيفًا. يضم القسم الأول غرفتي نوم، ويضم القسم الثاني غرفة نوم واحدة تحتوي على 3 أسرّة. ويمكن زيادة عدد الضيوف في كل قسم إلى 70 ضيفًا كحد أقصى، برسوم إضافية.</div>
+      <div data-shared-fact="stay-capacity" style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يتسع كل قسم لاستقبال حتى 25 ضيفًا. يضم القسم الأول غرفتي نوم، ويضم القسم الثاني غرفة نوم واحدة تحتوي على 3 أسرّة. ويمكن زيادة عدد الضيوف في كل قسم إلى 70 ضيفًا كحد أقصى، برسوم إضافية.</div>
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">4. هل الاستراحة مجهزة بوسائل ترفيه؟</div>
@@ -1559,9 +1558,9 @@
 </div>
 
 <script src="service-data.js?v=20261106-seating-copy-v1"></script>
-<script src="resort-data.js?v=20261105-dome-singular-v1"></script>
+<script src="resort-data.js?v=20261107-final-batch-v1"></script>
 <script src="js/gallery-data.js?v=20261102-structure-v1"></script>
-<script src="js/accommodations.js?v=20261107-resort-final-v1"></script>
+<script src="js/accommodations.js?v=20261107-final-batch-v1"></script>
 
 
 <!-- FULLSCREEN GALLERY -->
@@ -1655,7 +1654,7 @@
 
     <div class="tg-layout">
       <figure class="tg-photo">
-        <img src="imgs/tarfihi_1.webp" width="1200" height="1200" alt="ضيوف يلعبون لعبة جماعية على طاولة داخل الكوخ" decoding="async">
+        <img loading="lazy" src="imgs/tarfihi_1.webp" width="1200" height="1200" alt="ضيوف يلعبون لعبة جماعية على طاولة داخل الكوخ" decoding="async">
       </figure>
       <div class="tg-details">
         <section aria-labelledby="tg-packages-title">
@@ -1726,7 +1725,7 @@
       <div class="tw-photo-group">
         <p class="tw-intro tw-intro--desktop">طاولة تجمعكم في المساحة الخارجية الخاصة بالكوخ</p>
         <div class="tw-photo">
-          <img src="imgs/tawilat_1.webp" width="1200" height="1200" alt="طاولة طعام خارجية مجهزة بالكراسي وأطقم التقديم والزهور بجانب المسبح" decoding="async">
+          <img loading="lazy" src="imgs/tawilat_1.webp" width="1200" height="1200" alt="طاولة طعام خارجية مجهزة بالكراسي وأطقم التقديم والزهور بجانب المسبح" decoding="async">
         </div>
       </div>
 
@@ -1882,23 +1881,25 @@
   </div>
 </div>
 
-<script src="js/stay-navigation.js?v=20261107-pool-copy-v2"></script>
-<script src="chalet-design.js?v=20261107-shared-specs-v5"></script>
+<script src="js/stay-navigation.js?v=20261107-final-batch-v1"></script>
+<script src="chalet-design.js?v=20261107-final-batch-v1"></script>
 <script src="dome-gallery.js?v=20261105-all-stays-inline-v1"></script>
 
 <link rel="stylesheet" href="service-sections.css?v=20261106-compact-tabs-v5">
 <script src="service-sections.js?v=20261103-splash-motion-v1"></script>
-<script src="js/router.js?v=20261107-chalet-map-return-v2"></script>
+<script src="js/shared-specifications.js?v=20261107-final-batch-v1"></script>
+<script src="venue-data.js?v=20261107-final-batch-v1"></script>
+<script src="js/router.js?v=20261107-final-batch-v1"></script>
 <script src="resort-map-data.js?v=20261106-greek-label-v3" defer></script>
-<script src="resort-map.js?v=20261106-greek-label-v14" defer></script>
+<script src="resort-map.js?v=20261107-final-batch-v1" defer></script>
 <link rel="stylesheet" href="chalet-map.css?v=20261107-bedroom-floor-v3">
-<script src="chalet-map.js?v=20261107-shared-specs-v5" defer></script>
+<script src="chalet-map.js?v=20261107-final-batch-v1" defer></script>
 
 <link rel="stylesheet" href="css/accommodation-layout.css?v=20261107-resort-final-v1">
 
-<link rel="stylesheet" href="resort-ui.css?v=20261103-service-headers-v1">
+<link rel="stylesheet" href="resort-ui.css?v=20261107-final-batch-v1">
 <link rel="stylesheet" href="css/service-mobile.css?v=20261106-seating-selection-v6">
-<link rel="stylesheet" href="css/services-index.css?v=20261107-fit-screen-v2">
+<link rel="stylesheet" href="css/services-index.css?v=20261107-final-batch-v1">
 <link rel="stylesheet" href="/css/rewards-layout.css?v=20261106-unified-v1">
 <link rel="stylesheet" href="stay-ui.css?v=20261107-comparison-toggle-v4">
 <link rel="stylesheet" href="chalet-ui.css?v=9">

@@ -61,7 +61,7 @@ with sync_playwright() as p:
             assert cards.count()==6
             for card,item in zip(cards.all(),expected):
                 assert card.locator('h3').text_content()==item['name']
-                assert card.locator('.price').text_content()==item['price']+' للباقة'
+                assert card.locator('.price').text_content()==item['price']
                 assert card.locator('.inclusions li').all_text_contents()==item['items']
         usage_notes=page.evaluate("""html=>Array.from(new DOMParser().parseFromString(html,'text/html').querySelectorAll('.hd-package-note,.cn-notes-list li'),e=>e.textContent.trim())""",source)
         guide_text=page.locator('#guide-content').text_content()
@@ -166,12 +166,13 @@ with sync_playwright() as p:
     context.close()
     page=browser.new_page()
     page.goto(BASE+'/services/',wait_until='networkidle')
-    page.locator('a[href="/services-guide/"]').click()
+    assert page.locator('a[href="/services-guide/"]').count()==0
+    page.goto(BASE+'/guest-services/',wait_until='networkidle')
+    page.locator('footer a[href*="services-guide"]').click()
     page.wait_for_url('**/services-guide/')
     assert page.locator('#guide-back').is_hidden()
-    assert page.locator('#guide-back').get_attribute('href')==BASE+'/services/'
     page.go_back()
-    page.wait_for_url('**/services/')
-    print('PASS share-only guide header and browser return to source',flush=True)
+    page.wait_for_url('**/guest-services/')
+    print('PASS private guide footer navigation and browser return',flush=True)
     browser.close()
     print('PASS direct anchor, automatic content/price/photo updates, retry and share fallback')

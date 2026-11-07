@@ -81,7 +81,7 @@ window.FD_SHARE_PAGES = [
     "route": "chalet-detail",
     "path": "/chalet/details/",
     "title": "مواصفات الشاليه | يوم العائلة",
-    "description": "تصفّح صور الشاليه وغرفه ومسابحه وجلساته ومعلومات الحجز.",
+    "description": "تعرّف على شاليه يوم العائلة",
     "entry": true
   },
   {

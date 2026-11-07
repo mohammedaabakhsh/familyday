@@ -13,7 +13,9 @@ const data = {
         "rooms": 1,
         "guests": 2,
         "bathroom": 1,
-        "bathroomDetails": ["حمام خاص داخل غرفة النوم الرئيسية"],
+        "bathroomDetails": [
+          "حمام خاص داخل غرفة النوم الرئيسية"
+        ],
         "badge": "تجربة فريدة",
         "bookUrl": "https://familyday-sa.com/ar/listings/69cea3e03a421f1c8de8cb42",
         "features": {
@@ -43,7 +45,65 @@ const data = {
           ]
         },
         "pool": {
-          "label": "مسبح خاص للكبار مع جاكوزي، بمقاس 7 × 4 م",
+          "label": "مسبح خاص للكبار مع جاكوزي بمقاس 7 × 4 م",
+          "depthCm": 140,
+          "depthInLabel": true,
+          "facilities": [
+            "سرير تشميس داخل المسبح",
+            "كراسي تشميس",
+            "دش خارجي"
+          ],
+          "depthUnit": "سم"
+        },
+        "minibar": true,
+        "bath": {
+          "summary": "بانيو داخلي",
+          "outdoorPrivacy": false
+        }
+      },
+      {
+        "id": 12,
+        "livingRoom": "integrated",
+        "img": 12,
+        "name": "بيت الدوم 2",
+        "type": "تجربة فريدة على شكل قبة مع بانيو داخلي وجاكوزي داخل المسبح",
+        "suitable": "مثالي للأزواج",
+        "rooms": 1,
+        "guests": 2,
+        "bathroom": 1,
+        "bathroomDetails": [
+          "حمام خاص داخل غرفة النوم الرئيسية"
+        ],
+        "badge": "تجربة فريدة",
+        "bookUrl": "https://familyday-sa.com/ar/listings/69cea40091aebf200fef69e9",
+        "features": {
+          "indoor": [
+            "غرفة النوم الرئيسية بسرير مزدوج",
+            "صالة داخلية مدمجة مع غرفة النوم",
+            "بانيو داخلي بغرفة النوم",
+            "ركن المطبخ"
+          ],
+          "outdoor": [
+            "جلسة خارجية",
+            "شواية"
+          ],
+          "kitchen": [
+            "موقد كهربائي",
+            "ميكروويف",
+            "ثلاجة",
+            "غلاية",
+            "ماكينة قهوة",
+            "أدوات مطبخ أساسية",
+            "ميني بار"
+          ],
+          "stay": [
+            "واي فاي مجاني",
+            "تلفزيون ذكي",
+            "سماعات داخلية (ساوند بار)"
+          ]
+        },
+        "pool": {
+          "label": "مسبح خاص للكبار مع جاكوزي بمقاس 7 × 4 م",
           "depthCm": 140,
           "depthInLabel": true,
           "facilities": [
@@ -68,7 +128,9 @@ const data = {
         "rooms": 1,
         "guests": 2,
         "bathroom": 1,
-        "bathroomDetails": ["حمام خاص داخل غرفة النوم الرئيسية"],
+        "bathroomDetails": [
+          "حمام خاص داخل غرفة النوم الرئيسية"
+        ],
         "hall": true,
         "badge": null,
         "bookUrl": "https://familyday-sa.com/ar/listings/69cea44391aebf200fef69ea",
@@ -100,7 +162,7 @@ const data = {
           ]
         },
         "pool": {
-          "label": "مسبح خاص للكبار، بمقاس 4 × 4 م",
+          "label": "مسبح خاص للكبار بمقاس 4 × 4 م",
           "depthCm": 140,
           "facilities": [
             "كراسي تشميس",
@@ -125,7 +187,9 @@ const data = {
         "rooms": 1,
         "guests": 15,
         "bathroom": 1,
-        "bathroomDetails": ["حمام خاص داخل غرفة النوم الرئيسية"],
+        "bathroomDetails": [
+          "حمام خاص داخل غرفة النوم الرئيسية"
+        ],
         "hall": true,
         "badge": null,
         "bookUrl": "https://familyday-sa.com/ar/listings/69cea4d091aebf200fef69eb",
@@ -156,7 +220,7 @@ const data = {
           ]
         },
         "pool": {
-          "label": "مسبح خاص للكبار، بمقاس 7 × 4 م",
+          "label": "مسبح خاص للكبار بمقاس 7 × 4 م",
           "depthCm": 140,
           "facilities": [
             "كراسي تشميس",
@@ -180,7 +244,9 @@ const data = {
         "guests": 10,
         "bathroom": 2,
         "hall": true,
-        "bathroomDetails": ["2 حمام: حمام خاص داخل غرفة النوم الرئيسية – حمام مشترك"],
+        "bathroomDetails": [
+          "حمامان: حمام خاص داخل غرفة النوم الرئيسية – حمام مشترك"
+        ],
         "badge": null,
         "bookUrl": "https://familyday-sa.com/ar/listings/69cea0ecc17a7072098dbd38",
         "features": {
@@ -211,7 +277,65 @@ const data = {
           ]
         },
         "pool": {
-          "label": "مسبح خاص للكبار، بمقاس 7 × 4 م",
+          "label": "مسبح خاص للكبار بمقاس 7 × 4 م",
+          "depthCm": 140,
+          "facilities": [
+            "كراسي تشميس",
+            "دش خارجي"
+          ],
+          "depthInLabel": true,
+          "depthUnit": "سم"
+        },
+        "minibar": true,
+        "bath": {
+          "summary": "",
+          "outdoorPrivacy": false
+        }
+      },
+      {
+        "id": 13,
+        "img": 5,
+        "name": "البيت اليوناني 2",
+        "type": "مزيج بين التراث القديم والبساطة الحديثة",
+        "suitable": "مناسب للعائلات",
+        "rooms": 2,
+        "guests": 10,
+        "bathroom": 2,
+        "hall": true,
+        "bathroomDetails": [
+          "حمامان: حمام خاص داخل غرفة النوم الرئيسية – حمام مشترك"
+        ],
+        "badge": null,
+        "bookUrl": "https://familyday-sa.com/ar/listings/69cea28b4b817e1124e35e57",
+        "features": {
+          "indoor": [
+            "غرفة النوم الرئيسية بسرير مزدوج",
+            "غرفة النوم الثانية بسريرين مفردين",
+            "صالة داخلية",
+            "ركن المطبخ",
+            "طاولة طعام"
+          ],
+          "outdoor": [
+            "جلسات خارجية",
+            "شواية"
+          ],
+          "kitchen": [
+            "موقد كهربائي",
+            "ميكروويف",
+            "ثلاجة",
+            "غلاية",
+            "ماكينة قهوة",
+            "أدوات مطبخ أساسية",
+            "ميني بار"
+          ],
+          "stay": [
+            "واي فاي مجاني",
+            "تلفزيون ذكي",
+            "سماعات داخلية (ساوند بار)"
+          ]
+        },
+        "pool": {
+          "label": "مسبح خاص للكبار بمقاس 7 × 4 م",
           "depthCm": 140,
           "facilities": [
             "كراسي تشميس",
@@ -236,7 +360,9 @@ const data = {
         "guests": 10,
         "bathroom": 2,
         "hall": true,
-        "bathroomDetails": ["2 حمام: حمام خاص داخل غرفة النوم الرئيسية – حمام مشترك"],
+        "bathroomDetails": [
+          "حمامان: حمام خاص داخل غرفة النوم الرئيسية – حمام مشترك"
+        ],
         "badge": null,
         "bookUrl": "https://familyday-sa.com/ar/listings/69cea2c891aebf200fef69e6",
         "features": {
@@ -267,7 +393,7 @@ const data = {
           ]
         },
         "pool": {
-          "label": "مسبح خاص للكبار، بمقاس 7 × 4 م",
+          "label": "مسبح خاص للكبار بمقاس 7 × 4 م",
           "depthCm": 140,
           "facilities": [
             "كراسي تشميس",
@@ -291,7 +417,9 @@ const data = {
         "guests": 10,
         "bathroom": 2,
         "hall": true,
-        "bathroomDetails": ["2 حمام: حمام خاص داخل غرفة النوم الرئيسية – حمام مشترك"],
+        "bathroomDetails": [
+          "حمامان: حمام خاص داخل غرفة النوم الرئيسية – حمام مشترك"
+        ],
         "badge": null,
         "bookUrl": "https://familyday-sa.com/ar/listings/69cea392c17a7072098dbd3b",
         "features": {
@@ -322,7 +450,7 @@ const data = {
           ]
         },
         "pool": {
-          "label": "مسبح خاص للكبار، بمقاس 7 × 4 م",
+          "label": "مسبح خاص للكبار بمقاس 7 × 4 م",
           "depthCm": 140,
           "facilities": [
             "كراسي تشميس",
@@ -346,7 +474,9 @@ const data = {
         "guests": 10,
         "bathroom": 2,
         "hall": true,
-        "bathroomDetails": ["2 حمام: حمام خاص داخل غرفة النوم الرئيسية – حمام مشترك"],
+        "bathroomDetails": [
+          "حمامان: حمام خاص داخل غرفة النوم الرئيسية – حمام مشترك"
+        ],
         "badge": null,
         "bookUrl": "https://familyday-sa.com/ar/listings/69cea2f391aebf200fef69e7",
         "features": {
@@ -377,7 +507,7 @@ const data = {
           ]
         },
         "pool": {
-          "label": "مسبح خاص للكبار، بمقاس 7 × 4 م",
+          "label": "مسبح خاص للكبار بمقاس 7 × 4 م",
           "depthCm": 140,
           "facilities": [
             "كراسي تشميس",
@@ -401,7 +531,9 @@ const data = {
         "guests": 10,
         "bathroom": 2,
         "hall": true,
-        "bathroomDetails": ["2 حمام: حمام خاص داخل غرفة النوم الرئيسية – حمام مشترك"],
+        "bathroomDetails": [
+          "حمامان: حمام خاص داخل غرفة النوم الرئيسية – حمام مشترك"
+        ],
         "badge": null,
         "bookUrl": "https://familyday-sa.com/ar/listings/69cea32191aebf200fef69e8",
         "features": {
@@ -432,7 +564,7 @@ const data = {
           ]
         },
         "pool": {
-          "label": "مسبح خاص للكبار، بمقاس 7 × 4 م",
+          "label": "مسبح خاص للكبار بمقاس 7 × 4 م",
           "depthCm": 140,
           "facilities": [
             "كراسي تشميس",
@@ -456,7 +588,9 @@ const data = {
         "guests": 20,
         "bathroom": 2,
         "hall": true,
-        "bathroomDetails": ["2 حمام: حمام خاص داخل غرفة النوم الرئيسية – حمام مشترك"],
+        "bathroomDetails": [
+          "حمامان: حمام خاص داخل غرفة النوم الرئيسية – حمام مشترك"
+        ],
         "badge": null,
         "bookUrl": "https://familyday-sa.com/ar/listings/69cea50991aebf200fef69ec",
         "features": {
@@ -487,7 +621,7 @@ const data = {
           ]
         },
         "pool": {
-          "label": "مسبح خاص للكبار، بمقاس 7 × 4 م",
+          "label": "مسبح خاص للكبار بمقاس 7 × 4 م",
           "depthCm": 140,
           "facilities": [
             "كراسي تشميس",
@@ -511,7 +645,9 @@ const data = {
         "guests": 15,
         "bathroom": 2,
         "hall": true,
-        "bathroomDetails": ["2 حمام: حمام خاص داخل غرفة النوم الرئيسية – حمام مشترك"],
+        "bathroomDetails": [
+          "حمامان: حمام خاص داخل غرفة النوم الرئيسية – حمام مشترك"
+        ],
         "badge": null,
         "bookUrl": "https://familyday-sa.com/ar/listings/69cea36a5123111b7e72de33",
         "features": {
@@ -543,7 +679,7 @@ const data = {
           ]
         },
         "pool": {
-          "label": "مسبح خاص للكبار، بمقاس 7 × 4 م",
+          "label": "مسبح خاص للكبار بمقاس 7 × 4 م",
           "depthCm": 140,
           "facilities": [
             "كراسي تشميس",
@@ -580,18 +716,7 @@ const data = {
   }
 };
 
-// Separate physical units retain the owner-confirmed shared specifications.
-(function () {
-  [
-    {sourceId: 1, id: 12, name: 'بيت الدوم 2', bookUrl: 'https://familyday-sa.com/ar/listings/69cea40091aebf200fef69e9'},
-    {sourceId: 4, id: 13, name: 'البيت اليوناني 2', bookUrl: 'https://familyday-sa.com/ar/listings/69cea28b4b817e1124e35e57'}
-  ].forEach(function (unit) {
-    var index = data.resort.items.findIndex(function (item) { return item.id === unit.sourceId; });
-    var copy = Object.assign({}, data.resort.items[index], {id: unit.id, name: unit.name, bookUrl: unit.bookUrl});
-    data.resort.items.splice(index + 1, 0, copy);
-  });
-})();
-
+// Physical units have independent records, including those with matching specifications.
 function resortGuestText(count) {
   return count === 2 ? 'حتى ضيفين' : 'حتى ' + count + (count <= 10 ? ' ضيوف' : ' ضيفًا');
 }
@@ -610,4 +735,27 @@ function formatSpecificationText(text) {
   text = localizeSpecificationUnits(text);
   if (!/\d+\s*×\s*\d+|\d+\s*سم/.test(text)) return text;
   return '<span>' + text.replace(/(\d+\s*×\s*\d+(?:\s*م)?|\d+\s*سم)/g, '<bdi dir="ltr">$1</bdi>') + '</span>';
+}
+
+// One factual source for the detail cards and illustrated room specifications.
+function resortTourCards(cabin, part) {
+  var indoor = cabin.features.indoor;
+  if (part === 'living') {
+    var rank = function(text){return /تلفزيون/.test(text)?0:/سماعات/.test(text)?1:2;};
+    return cabin.features.stay.slice().sort(function(a,b){return rank(a)-rank(b);}).map(function(text){
+      return {value:text,icon:/تلفزيون/.test(text)?'tv':/سماعات/.test(text)?'speaker':'wifi'};
+    });
+  }
+  if (part === 'bathroom') return cabin.bathroomDetails.flatMap(function(text){
+    return text.replace(/^حمامان:\s*/, '').split(' – ').map(function(value){return {value:value,icon:'shower'};});
+  });
+  if (part === 'tub') return indoor.concat(cabin.features.outdoor).filter(function(text){return /بانيو/.test(text);}).map(function(text){return {value:text,icon:'tub'};});
+  var label = part === 'twin' ? 'غرفة النوم الثانية' : 'غرفة النوم الرئيسية';
+  return indoor.filter(function(text){return text.indexOf(label)===0;}).map(function(text){
+    var value=text.slice(label.length).trim().replace(/^بـ?/, '').replace(/^سريرين مفردين$/, 'سريران مفردان');
+    return {value:value,icon:'bed'};
+  });
+}
+function resortCombinedGuests() {
+  return [3,9].reduce(function(total,id){return total+data.resort.items.find(function(c){return c.id===id;}).guests;},0);
 }

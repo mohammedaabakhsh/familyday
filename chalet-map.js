@@ -22,11 +22,11 @@
     "primary": [
       [
         "السرير",
-        "سرير مزدوج"
+        specifications.bedrooms.main.bed
       ],
       [
         "الحمام",
-        "حمام خاص داخل غرفة النوم الرئيسية"
+        specifications.bedroomBathroom
       ]
     ]
   },
@@ -47,13 +47,13 @@
     "primary": [
       [
         "الأسرّة",
-        "سريران مفردان"
+        specifications.bedrooms.second.bed
       ]
     ]
   },
   {
     "key": "living",
-    "name": "الصالة الداخلية",
+    "name": "صالة داخلية",
     "floor": "الدور الأرضي",
     "x": 73.445,
     "y": 50.478,
@@ -145,13 +145,13 @@
       101
     ],
     "facts": [
-      "زحليقة مزدوجة"
+      specifications.pool.slide
     ],
     "text": "",
     "primary": [
       [
         "العمق",
-        "60 سم"
+        specifications.pool.depthCm + ' سم'
       ]
     ]
   },
@@ -286,7 +286,7 @@
     dialog.querySelector('.cm-labels').setAttribute('aria-label',copy.empty);
     viewport.setAttribute('aria-label','توزيع الشاليه، اختر الغرفة أو المرفق لعرض تفاصيله');
     dialog.querySelector('.cm-image').alt=copy.image;
-    dialog.querySelector('.cm-occupancy').textContent='مناسب للعائلات · حتى 15 ضيفًا';
+    dialog.querySelector('.cm-occupancy').textContent='مناسب للعائلات · '+resortGuestText(PRIVATE_CHALET.guests);
     panel.lang='ar';panel.dir=direction;panel.setAttribute('aria-label',copy.details);
     dialog.querySelector('.cm-error p').textContent=copy.error;
     dialog.querySelector('.cm-retry').textContent=copy.retry;

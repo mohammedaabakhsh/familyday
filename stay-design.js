@@ -1,3 +1,8 @@
+var FD_STAY_UNITS = [
+    {id:20,img:0,name:"القسم الأول – الدور الأرضي",specs:["غرفتا نوم","مسبح للكبار","مسبح للأطفال"],type:"تتضمن مجلسًا كبيرًا ومسبحين خاصين",suitable:"مناسب للتجمعات الكبيرة",rooms:2,guests:25,maxGuests:70,bathroom:4,hall:true,badge:null,tags:["غرفة النوم الرئيسية بسرير مزدوج","غرفة النوم الثانية بسريرين مفردين","|","مجلس كبير","صالة داخلية","3 دورات مياه","|","ركن المطبخ","|","جلسة خارجية","شواية","حمام خارجي","|","مسبح خاص للكبار بمقاس 8 × 4 م وعمق متدرج من 1 إلى 2 م.","مسبح خاص للأطفال بمقاس 6 × 2 م وعمق 65 سم.","كراسي تشميس"],bookUrl:"https://familyday-sa.com/ar/listings/69cea5753a421f1c8de8cb43"},
+    {id:21,slide:true,img:5,name:"القسم الثاني – الدور العلوي",specs:["غرفة نوم","مسبح للكبار","ملعب كرة طائرة"],type:"تتضمن مجلسًا كبيرًا ومسبحًا خاصًا وملعب كرة طائرة",suitable:"مناسب للتجمعات الكبيرة",rooms:1,guests:25,maxGuests:70,bathroom:4,hall:false,badge:null,tags:["غرفة النوم الرئيسية بـ3 أسرّة","|","مجلس كبير","3 دورات مياه","|","ركن المطبخ","|","جلسة خارجية","شواية","حمام خارجي","|","مسبح خاص للكبار بمقاس 8 × 4 م وعمق متدرج من 1 إلى 2 م.","كراسي تشميس","|","ملعب كرة طائرة"],bookUrl:"https://familyday-sa.com/ar/listings/69cea610f9674d785069b3c5"}
+  ];
+
 /* Rest-house presentation. Existing section IDs, galleries and booking destinations are retained. */
 function renderStayCard(c) {
   var photos = GALLERY[c.id] || [];
@@ -7,8 +12,8 @@ function renderStayCard(c) {
     + '<div class="fd-cabin-card-v2-heading"><div><h2 class="card-name">' + c.name + '</h2>'
     + '<p class="fd-cabin-card-v2-subtitle">مناسب للتجمعات العائلية</p></div></div>'
     + '<div class="fd-cabin-card-v2-facts" aria-label="معلومات ' + c.name + '">'
-    + '<div class="fd-cabin-card-v2-fact"><span>سعة الضيوف</span><strong>حتى 25 ضيفًا</strong></div>'
-    + '<div class="fd-cabin-card-v2-fact"><span>غرف النوم</span><strong>' + (c.rooms === 2 ? 'غرفتان' : 'غرفة واحدة') + '</strong></div></div>'
+    + '<div class="fd-cabin-card-v2-fact"><span>سعة الضيوف</span><strong>' + resortGuestText(c.guests) + '</strong></div>'
+    + '<div class="fd-cabin-card-v2-fact"><span>غرف النوم</span><strong>' + resortRoomText(c.rooms) + '</strong></div></div>'
     + '<button type="button" class="card-btn">عرض التفاصيل والصور</button></div>';
 }
 
@@ -48,29 +53,30 @@ function renderStayDetail(c) {
     + '<div class="fd-cabin-heading"><div class="fd-cabin-heading-copy"><h2 id="fd-stay-detail-title" class="fd-cabin-title">' + c.name + '</h2>'
     + '<p class="fd-cabin-occupancy">مناسب للتجمعات العائلية</p>'
     + '<div class="fd-cabin-card-v2-facts fd-cabin-detail-facts" aria-label="معلومات ' + c.name + '">'
-    + '<div class="fd-cabin-card-v2-fact"><span>سعة الضيوف</span><strong>حتى 25 ضيفًا</strong></div>'
+    + '<div class="fd-cabin-card-v2-fact"><span>سعة الضيوف</span><strong>' + resortGuestText(c.guests) + '</strong></div>'
     + '<div class="fd-cabin-card-v2-fact"><span>غرف النوم</span><strong>' + resortRoomText(c.rooms) + '</strong></div></div>'
-    + '<div class="fd-stay-guest-note"><div class="fd-cabin-instructions"><p>يمكن زيادة العدد إلى 70 ضيفًا كحد أقصى، برسوم إضافية.</p></div></div></div></div>'
+    + '<div class="fd-stay-guest-note"><div class="fd-cabin-instructions"><p>يمكن زيادة العدد إلى ' + c.maxGuests + ' ضيفًا كحد أقصى، برسوم إضافية.</p></div></div></div></div>'
     + '<div class="fd-cabin-times" aria-label="أوقات الدخول والخروج"><div><span>الدخول</span><strong>4:00 مساءً</strong></div><div><span>الخروج</span><strong>12:00 ظهرًا</strong></div></div>'
     + section('المنطقة الداخلية', indoor)
     + '<section class="fd-cabin-section"><h3>المنطقة الخارجية</h3><div class="fd-cabin-feature-list">' + features(outdoor) + '</div></section>'
     + section('تجهيزات المطبخ', ['موقد كهربائي', 'ميكروويف', 'ثلاجة', 'غلاية'])
     + section('مميزات الإقامة', ['تلفزيون ذكي', 'سماعات داخلية (ساوند بار)'])
-    + (c.id === 21 ? '<section class="fd-cabin-addons"><h3>خدمات إضافية</h3><p>الزحليقة الهوائية الكبيرة — برسوم إضافية.</p></section>' : '')
+    + (c.slide ? '<section class="fd-cabin-addons"><h3>خدمات إضافية</h3><p>الزحليقة الهوائية الكبيرة — برسوم إضافية.</p></section>' : '')
     + '<div class="fd-cabin-faq-footer"><a class="fd-cabin-faq-link" href="/stay/faq/" onclick="return openAccommodationFaq(event,\'faq2\')">الأسئلة الشائعة <span aria-hidden="true">←</span></a></div>'
     + '</section>';
 }
 
 function renderStayComparison() {
+  var available=function(c,pattern){return c.tags.some(function(t){return pattern.test(t);})?'متوفر':'غير متوفر';};
   var rows = [
-    ['غرف النوم', 'غرفتان', 'غرفة واحدة'],
-    ['الأسرّة', 'مزدوج + مفردان', '3 أسرّة'],
-    ['الحمامات', '4', '4'],
-    ['مجلس كبير', 'متوفر', 'متوفر'],
-    ['مسبح الكبار', 'متوفر', 'متوفر'],
-    ['مسبح الأطفال', 'متوفر', 'غير متوفر'],
-    ['ملعب كرة الطائرة', 'غير متوفر', 'متوفر'],
-    ['الزحليقة الهوائية الكبيرة', 'غير متاحة', 'متاحة برسوم']
+    ['غرف النوم'].concat(FD_STAY_UNITS.map(function(c){return resortRoomText(c.rooms);})),
+    ['الأسرّة'].concat(FD_STAY_UNITS.map(function(c){return c.tags.filter(function(t){return /^غرفة النوم/.test(t);}).map(function(t){return t.replace(/^غرفة النوم (الرئيسية|الثانية) بـ?/, '').replace('سرير مزدوج','مزدوج').replace('سريرين مفردين','مفردان');}).join(' + ');})),
+    ['الحمامات'].concat(FD_STAY_UNITS.map(function(c){return String(c.bathroom);})),
+    ['مجلس كبير'].concat(FD_STAY_UNITS.map(function(c){return available(c,/مجلس كبير/);})),
+    ['مسبح الكبار'].concat(FD_STAY_UNITS.map(function(c){return available(c,/مسبح خاص للكبار/);})),
+    ['مسبح الأطفال'].concat(FD_STAY_UNITS.map(function(c){return available(c,/مسبح خاص للأطفال/);})),
+    ['ملعب كرة الطائرة'].concat(FD_STAY_UNITS.map(function(c){return available(c,/ملعب كرة طائرة/);})),
+    ['الزحليقة الهوائية الكبيرة'].concat(FD_STAY_UNITS.map(function(c){return c.slide?'متاحة برسوم':'غير متاحة';}))
   ];
   return '<section class="fd-stay-comparison" aria-labelledby="fd-stay-comparison-title">'
     + '<h2 id="fd-stay-comparison-title"><button type="button" class="fd-stay-comparison-toggle" aria-expanded="false" aria-controls="fd-stay-comparison-panel" onclick="toggleStayComparison(this)"><span>قارن بين القسمين</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h2>'

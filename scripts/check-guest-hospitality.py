@@ -72,7 +72,7 @@ with sync_playwright() as p:
         ctx.close();print(width,'PASS complete source content, quantities, cancel/apply, totals, cinema coexistence, WhatsApp draft, reload and removal',flush=True)
     # Restored drafts never supply prices or unknown products; names and contents stay source-backed.
     ctx=browser.new_context()
-    modified=(ROOT/'index.html').read_text().replace('59 <span>ريال</span>','63 <span>ريال</span>').replace('تبخير المكان بالعود','تفصيل ضيافة محدث')
+    modified=(ROOT/'index.html').read_text().replace('59 <span>ريال للباقة</span>','63 <span>ريال للباقة</span>').replace('تبخير المكان بالعود','تفصيل ضيافة محدث')
     ctx.route('**/index.html',lambda r:r.fulfill(body=modified,content_type='text/html'))
     draft={'hospitality':{'الضيافة السعودية':2,'ضيافة الاسترخاء':-1,'الضيافة العائلية':100,'غير موجودة':1},'price':1}
     ctx.add_init_script('sessionStorage.setItem("familyday.guest-orders.v2",'+json.dumps(json.dumps(draft))+')')
