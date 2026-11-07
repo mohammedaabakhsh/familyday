@@ -194,11 +194,14 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 @media(max-width:759px){.section-heading--titled h2{font-size:24px}.section-heading--titled p{font-size:14px}}
 
 .dining-card .service-price-table{margin-top:0}
-.dining-options{margin-top:22px;display:grid;gap:20px}
-.dining-options section+section{border-top:1px solid var(--line);padding-top:18px}
-.dining-options h3{font-size:18px;font-weight:700}
-.dining-options p{font-size:14px;color:var(--muted);margin-top:6px}
-.dining-options .inclusions{margin-top:8px}
+.dining-options{margin-top:18px;padding:14px;background:var(--tint);border-radius:12px;display:grid;gap:16px;break-inside:avoid}
+.dining-options section:first-child{display:flex;align-items:baseline;flex-wrap:wrap;gap:2px 6px}
+.dining-options section:first-child h3::after{content:":"}
+.dining-options h3{margin:0;font-size:14px;font-weight:700;line-height:1.7;color:var(--ink)}
+.dining-options p{font-size:13px;line-height:1.7;color:var(--muted);margin:0}
+.dining-options .inclusions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 12px;margin:6px 0 0}
+.dining-options .inclusions li{font-size:12px;line-height:1.7;padding-block:0;min-width:0;color:var(--muted)}
+.dining-options .inclusions li::before{top:.7em}
 
 /* Explain the price unit within the existing price badge. */
 .price-unit{display:block;text-align:center;font-size:12px;font-weight:500;line-height:1.4}
