@@ -13,17 +13,22 @@
   const desktop=matchMedia('(min-width:900px)');
   let cards=[], selected=0, frame=0, timer=0;
   const digits=new Intl.NumberFormat('en-US',{useGrouping:false});
+  function paint(){
+    const text=digits.format(selected+1)+' من '+digits.format(cards.length);
+    if(count.textContent!==text)count.textContent=text;
+    previous.disabled=selected===0;next.disabled=selected===cards.length-1;
+  }
   function update(){
     if(!cards.length||desktop.matches)return;
     const box=grid.getBoundingClientRect(), center=box.left+box.width/2;
     let distance=Infinity;
     cards.forEach((card,i)=>{const r=card.getBoundingClientRect(), d=Math.abs(r.left+r.width/2-center);if(d<distance){distance=d;selected=i;}});
-    const text=digits.format(selected+1)+' من '+digits.format(cards.length);
-    if(count.textContent!==text)count.textContent=text;
-    previous.disabled=selected===0;next.disabled=selected===cards.length-1;
+    paint();
   }
   function go(index,instant){
     if(desktop.matches||index<0||index>=cards.length||!grid.clientWidth)return;
+    // Keep layout callbacks aligned with the requested card, before scroll settles.
+    clearTimeout(timer);selected=index;paint();
     const box=grid.getBoundingClientRect(), r=cards[index].getBoundingClientRect();
     grid.scrollBy({left:r.left+r.width/2-box.left-box.width/2,behavior:instant||matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
   }
@@ -36,7 +41,7 @@
     grid.setAttribute('role','region');grid.setAttribute('aria-label',gridId==='grid2'?'تصفح أقسام الاستراحة':'تصفح الأكواخ');
     selected=0;previous.disabled=true;next.disabled=cards.length<2;
     count.textContent=digits.format(1)+' من '+digits.format(cards.length);
-    requestAnimationFrame(()=>go(0,true));
+    requestAnimationFrame(()=>go(selected,true));
   }
   previous.onclick=()=>go(selected-1);next.onclick=()=>go(selected+1);
   grid.addEventListener('scroll',()=>{clearTimeout(timer);timer=setTimeout(update,90);},{passive:true});
