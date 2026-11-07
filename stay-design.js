@@ -7,7 +7,7 @@ function renderStayCard(c) {
     + '<div class="fd-cabin-card-v2-heading"><div><h2 class="card-name">' + c.name + '</h2>'
     + '<p class="fd-cabin-card-v2-subtitle">مناسب للتجمعات العائلية</p></div></div>'
     + '<div class="fd-cabin-card-v2-facts" aria-label="معلومات ' + c.name + '">'
-    + '<div class="fd-cabin-card-v2-fact"><span>السعة</span><strong>حتى 25 ضيفًا</strong></div>'
+    + '<div class="fd-cabin-card-v2-fact"><span>سعة الضيوف</span><strong>حتى 25 ضيفًا</strong></div>'
     + '<div class="fd-cabin-card-v2-fact"><span>غرف النوم</span><strong>' + (c.rooms === 2 ? 'غرفتان' : 'غرفة واحدة') + '</strong></div></div>'
     + '<button type="button" class="card-btn">عرض التفاصيل والصور</button></div>';
 }
@@ -37,15 +37,18 @@ function renderStayDetail(c) {
   var otherOutdoor = outdoor.filter(function(text){return !/^مسبح|كراسي تشميس/.test(text);});
   var poolNotes = '<div class="fd-cabin-instructions fd-pool-note"><p>يُسمح للأطفال باستخدامه تحت إشراف ذويهم.</p></div>';
   return '<section class="fd-cabin-content" aria-labelledby="fd-stay-detail-title">'
-    + '<div class="fd-cabin-heading"><div><h2 id="fd-stay-detail-title" class="fd-cabin-title">' + c.name + '</h2>'
-    + '<p class="fd-cabin-occupancy">مناسب للتجمعات العائلية – حتى 25 ضيفًا</p></div></div>'
+    + '<div class="fd-cabin-heading"><div class="fd-cabin-heading-copy"><h2 id="fd-stay-detail-title" class="fd-cabin-title">' + c.name + '</h2>'
+    + '<p class="fd-cabin-occupancy">مناسب للتجمعات العائلية</p>'
+    + '<div class="fd-cabin-card-v2-facts fd-cabin-detail-facts" aria-label="معلومات ' + c.name + '">'
+    + '<div class="fd-cabin-card-v2-fact"><span>سعة الضيوف</span><strong>حتى 25 ضيفًا</strong></div>'
+    + '<div class="fd-cabin-card-v2-fact"><span>غرف النوم</span><strong>' + resortRoomText(c.rooms) + '</strong></div></div>'
+    + '<div class="fd-stay-guest-note"><div class="fd-cabin-instructions"><p>يمكن زيادة العدد إلى 70 ضيفًا كحد أقصى، برسوم إضافية.</p></div></div></div></div>'
     + '<div class="fd-cabin-times" aria-label="أوقات الدخول والخروج"><div><span>الدخول</span><strong>4:00 مساءً</strong></div><div><span>الخروج</span><strong>12:00 ظهرًا</strong></div></div>'
     + section('المنطقة الداخلية', indoor)
     + '<section class="fd-cabin-section"><h3>المنطقة الخارجية</h3><div class="fd-cabin-feature-list">' + features(pools) + poolNotes + features(otherOutdoor) + '</div></section>'
     + section('تجهيزات المطبخ', ['موقد كهربائي', 'ميكروويف', 'ثلاجة', 'غلاية'])
     + section('مميزات الإقامة', ['تلفزيون ذكي', 'سماعات داخلية (ساوند بار)'])
-    + '<div class="fd-cabin-section fd-stay-guest-note"><h3>زيادة عدد الضيوف</h3><div class="fd-cabin-instructions"><p>يمكن زيادة إجمالي عدد الضيوف إلى 70 ضيفًا كحد أقصى، برسوم إضافية.</p></div></div>'
-    + (c.id === 21 ? '<section class="fd-cabin-addons"><h3>إضافات الحجز</h3><p>الزحليقة الهوائية الكبيرة — برسوم إضافية.</p></section>' : '')
+    + (c.id === 21 ? '<section class="fd-cabin-addons"><h3>خدمات إضافية</h3><p>الزحليقة الهوائية الكبيرة — برسوم إضافية.</p></section>' : '')
     + '<div class="fd-cabin-faq-footer"><a class="fd-cabin-faq-link" href="/stay/faq/" onclick="return openAccommodationFaq(event,\'faq2\')">الأسئلة الشائعة <span aria-hidden="true">←</span></a></div>'
     + '</section>';
 }
