@@ -1,0 +1,25 @@
+/* Final approved homepage spacing; preserve the existing type and logo sizes. */
+#app2 #header2 .fd-page-heading-copy{min-width:0}
+#app2 #sectionHero2[hidden]{display:none!important}
+#landing2 .stay-home-note{border:0;margin:0;padding:8px 0 0}
+@media(max-width:799px){
+ :is(#landing,#landing2,#landing3) .rh-shell{
+  box-sizing:border-box;min-height:100vh;min-height:100dvh;
+  display:flex;flex-direction:column;
+  padding-bottom:calc(12px + env(safe-area-inset-bottom,0px));
+ }
+ :is(#landing,#landing2,#landing3) .rh-intro{flex:none;margin-bottom:auto;padding-bottom:12px}
+ :is(#landing,#landing2,#landing3) .rh-shell > .rh-cabins{flex:none;margin-bottom:0}
+ :is(#landing,#landing2,#landing3) .rh-menu{flex:none;margin-top:auto;padding-top:12px;gap:12px}
+ :is(#landing,#landing2,#landing3) .rh-footer{flex:none;margin-top:12px}
+ #landing2 .stay-home-note{flex:none}
+}
+@media(max-width:799px) and (max-height:740px){
+ :is(#landing,#landing2,#landing3) .rh-menu{gap:8px}
+}
+@media(min-width:800px){
+ #landing2 .stay-home-note{grid-column:1;grid-row:4;align-self:start;padding-top:10px}
+}
+@media(max-width:799px) and (max-height:600px){
+ :is(#landing,#landing2,#landing3) .rh-intro{padding-bottom:8px}
+}

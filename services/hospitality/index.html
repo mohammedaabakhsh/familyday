@@ -228,7 +228,7 @@
           </div>
         </div>
         <div class="fd-destination-location">جدة — خليج سلمان</div>
-        <div class="dest-sub"><span>قسمان مستقلان</span><span>مسابح كبيرة</span><span>سعة كبيرة</span></div>
+        <div class="dest-sub"><span>قسمان مستقلان</span><span>مسابح كبيرة</span><span>مناسبة للتجمعات العائلية</span></div>
       </div>
       <svg class="dest-arrow" width="9" height="15" viewBox="0 0 9 15" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1);"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg>
     </div>
@@ -293,13 +293,6 @@
       </button>
 
     <nav class="rh-menu" aria-label="استكشف المنتجع">
-      <a class="rh-home-shortcut" href="/services/" onclick="event.preventDefault();showServices()">
-        <span class="rh-map-copy">
-          <span class="rh-map-title">الخدمات</span>
-          <span class="rh-map-description">تعرّف على خدمات المنتجع وتجارب الترفيه</span>
-        </span>
-        <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
-      </a>
       <a class="rh-home-shortcut" href="/resort-map/" onclick="event.preventDefault();openResortMap()">
         <span class="rh-map-copy">
           <span class="rh-map-title">خريطة الأكواخ التفاعلية</span>
@@ -307,10 +300,17 @@
         </span>
         <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
       </a>
+      <a class="rh-home-shortcut" href="/services/" onclick="event.preventDefault();showServices()">
+        <span class="rh-map-copy">
+          <span class="rh-map-title">خدمات المنتجع</span>
+          <span class="rh-map-description">تعرّف على خدمات المنتجع وتجارب الترفيه</span>
+        </span>
+        <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+      </a>
       <a class="rh-home-shortcut" href="/resort/contact/" onclick="event.preventDefault();showContact('resort')">
         <span class="rh-map-copy">
           <span class="rh-map-title">الحجز والموقع والتواصل</span>
-          <span class="rh-map-description">روابط الحجز - تحميل التطبيق - طرق التواصل</span>
+          <span class="rh-map-description">احجز إقامتك وتواصل معنا</span>
         </span>
         <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
       </a>
@@ -324,10 +324,10 @@
     </nav>
 
     <div class="rh-footer">
-      <a class="rh-reviews" href="https://maps.app.goo.gl/FLmawLadNaa3uYpJ8?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="تقييم الزوار: 4.7 من 5">
+      <a class="rh-reviews" href="https://maps.app.goo.gl/FLmawLadNaa3uYpJ8?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="آراء ضيوفنا: 4.7 من 5">
         <span class="rh-stars" aria-hidden="true"><span>★</span><span>★</span><span>★</span><span>★</span><span class="rh-star-partial">★</span></span>
         <span class="rh-rating"><bdi>4.7</bdi><span>من 5</span></span>
-        <span class="rh-reviews-label">تقييم الزوار</span>
+        <span class="rh-reviews-label">آراء ضيوفنا</span>
       </a>
     </div>
   </section>
@@ -1207,23 +1207,25 @@
 
 
 
-      <button type="button" class="rh-cabins" onclick="showSection2()" aria-label="الاستراحة">
+      <button type="button" class="rh-cabins" onclick="showSection2()" aria-label="أقسام الاستراحة">
         <img class="rh-cabin-photo" src="imgs/sec1_1.webp" width="1200" height="1200" alt="" fetchpriority="high" decoding="async">
         <span class="rh-cabin-shade" aria-hidden="true"></span>
         <span class="rh-cabin-bottom">
           <span class="rh-cabin-copy">
-            <span class="rh-cabin-title">الاستراحة</span>
-            <span class="rh-cabin-caption">قسمان مستقلان · مسابح كبيرة · سعة كبيرة</span>
+            <span class="rh-cabin-title">أقسام الاستراحة</span>
+            <span class="rh-cabin-caption">قسمان مستقلان · مسابح كبيرة · مناسبة للتجمعات العائلية</span>
           </span>
           <svg class="rh-arrow rh-cabin-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg>
         </span>
       </button>
 
+    <p class="stay-home-note">يمكن حجز قسم واحد أو القسمين معًا</p>
+
     <nav class="rh-menu" aria-label="خيارات الاستراحة">
       <a class="rh-home-shortcut" href="/stay/contact/" onclick="event.preventDefault();showContact2()">
         <span class="rh-map-copy">
           <span class="rh-map-title">الحجز والموقع والتواصل</span>
-          <span class="rh-map-description">روابط الحجز - تحميل التطبيق - طرق التواصل</span>
+          <span class="rh-map-description">احجز إقامتك وتواصل معنا</span>
         </span>
         <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
       </a>
@@ -1236,7 +1238,6 @@
       </a>
     </nav>
 
-    <p class="stay-home-note">يمكن حجز كل قسم منفردًا أو حجز القسمين معًا</p>
   </section>
 </div>
 
@@ -1278,7 +1279,7 @@
       <a class="rh-home-shortcut" href="/chalet/contact/" onclick="event.preventDefault();showContact('chalet')">
         <span class="rh-map-copy">
           <span class="rh-map-title">الحجز والموقع والتواصل</span>
-          <span class="rh-map-description">روابط الحجز - تحميل التطبيق - طرق التواصل</span>
+          <span class="rh-map-description">احجز إقامتك وتواصل معنا</span>
         </span>
         <svg class="rh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
       </a>
@@ -1381,12 +1382,11 @@
         <path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </button>
-    <h1 class="header-center" id="headerTitle2"></h1>
+    <div class="fd-page-heading-copy"><h1 class="header-center" id="headerTitle2"></h1><p id="sectionTitle2" class="fd-venue-subtitle"></p></div>
   </header>
 
-  <section class="section-hero" id="sectionHero2" style="padding-top:0;">
+  <section class="section-hero" id="sectionHero2" style="padding-top:0;" hidden>
     <img id="heroLogo2" src="imgs/stay/img02.webp" style="height:80px;object-fit:contain;margin:0 auto 2px;display:none;" alt="يوم العائلة">
-    <p id="sectionTitle2"></p>
     <p id="sectionDesc2"></p>
   </section>
 
@@ -1966,6 +1966,7 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 #ov.fd-cabin-modern .fd-cabin-occupancy + .fd-cabin-suitable{margin-top:7px}
 </style>
 <link rel="stylesheet" href="site-ui.css?v=20261105-shared-captions-v1">
+<link rel="stylesheet" href="css/home-review.css?v=20261107-approved-v1">
 <link rel="stylesheet" href="css/contact-layout.css?v=20261106-brand-footer-v3">
 <link rel="stylesheet" href="css/resort-faq.css?v=20261106-all-v2">
 <link rel="stylesheet" href="css/cinema-layout.css?v=20261107-session-notes-v2">
