@@ -42,8 +42,13 @@
     const resize=new ResizeObserver(() => {cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(() => go(index,true));});resize.observe(track);
     go(index,true);
   }
-  function mount() {
-    document.querySelectorAll('.package-gallery').forEach(bind);
+  const mounted = new WeakSet();
+  function mount(scope = document) {
+    scope.querySelectorAll('.package-gallery').forEach(root => {
+      if(mounted.has(root)) return;
+      mounted.add(root);
+      bind(root);
+    });
   }
   window.FD_GUIDE_GALLERY={markup,mount};
 })();

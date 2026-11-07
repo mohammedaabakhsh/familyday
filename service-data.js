@@ -88,3 +88,14 @@ var _tawilatInclusions = [
   'تنسيق زهور',
   'حاملات شموع مع الشموع'
 ];
+
+// Real coordination photos shared by the website and the customer guide.
+var _coordinationPhotos = {
+  'hd-coordination-package-resort': [
+    'imgs/coordination/complete/01.webp',
+    'imgs/coordination/complete/02.webp',
+    'imgs/coordination/complete/03.webp',
+    'imgs/coordination/complete/04.webp',
+    'imgs/coordination/complete/05.webp'
+  ]
+};

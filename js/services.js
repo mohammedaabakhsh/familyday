@@ -483,3 +483,16 @@ function closeWalaaDetail(){
   document.body.style.overflow='';
 
 }
+
+// Use the same real package photos and gallery controls as the customer guide.
+(function () {
+  Object.keys(_coordinationPhotos).forEach(function (id) {
+    var heading = document.getElementById(id);
+    if (!heading) return;
+    var card = heading.closest('.hd-package');
+    card.insertAdjacentHTML('afterbegin', FD_GUIDE_GALLERY.markup(
+      _coordinationPhotos[id], heading.textContent.trim(), 'تنسيق باقة ' + heading.textContent.trim()
+    ));
+    FD_GUIDE_GALLERY.mount(card);
+  });
+})();

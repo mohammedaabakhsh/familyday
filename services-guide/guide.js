@@ -58,8 +58,8 @@
       const body = (description ? '<p class="package-description">' + escape(description.textContent.trim()) + '</p>' : '') + items(contents);
       const image = packagePhotos[title] || 'imgs/dome_1.webp';
       const complete = Boolean(card.querySelector('#hd-coordination-package-resort'));
-      const photos = key === 'hospitality' ? [] : [image, ...[1,2,3,4,5,6].map(n => image.replace(/_\d+\.webp$/, '_' + n + '.webp')).filter(src => src !== image)].slice(0,6);
-      return serviceCard({title,price:price ? price.textContent.trim().replace(/\s*للباقة\s*$/, '') : '',priceUnit:'للباقة',photos,body,label:'تفاصيل الباقة',id:complete ? 'package-complete' : ''});
+      const photos = key === 'hospitality' ? [] : _coordinationPhotos[card.getAttribute('aria-labelledby')] || [image, ...[1,2,3,4,5,6].map(n => image.replace(/_\d+\.webp$/, '_' + n + '.webp')).filter(src => src !== image)].slice(0,6);
+      return serviceCard({title,price:price ? price.textContent.trim().replace(/\s*للباقة\s*$/, '') : '',priceUnit:'للباقة',photos,imageAlt:complete ? 'تنسيق باقة التجربة المتكاملة' : undefined,body,label:'تفاصيل الباقة',id:complete ? 'package-complete' : ''});
     }).join('') + '</div>';
   }
   function render(doc) {
