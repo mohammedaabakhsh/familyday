@@ -13,7 +13,7 @@
 }
 #services-overlay .svcs-content {
   flex: 1 0 auto;
-  align-content: start;
+  align-content: space-between;
   gap: clamp(10px, 2.2dvh, 22px);
   padding: 0 20px calc(12px + env(safe-area-inset-bottom, 0px));
 }
