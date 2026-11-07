@@ -196,3 +196,9 @@
  #fd-chalet-map .cm-cards:not(.is-scrollable){display:flex;flex-wrap:wrap;justify-content:center}
  #fd-chalet-map .cm-cards:not(.is-scrollable) .cm-card{flex:0 0 calc((100% - 8px)/2);min-width:0}
 }
+
+/* Keep the floor visible below the approved bedroom name on phones. */
+@media(max-width:899px){
+ #fd-chalet-map .cm-detail-heading--bedroom{display:block;text-align:center;margin-bottom:8px}
+ #fd-chalet-map .cm-detail-heading--bedroom h3{display:block;font-size:14px}
+}

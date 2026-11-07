@@ -227,7 +227,8 @@
  :is(#sharik-detail,#contest-detail) .sw-title,#walaa-detail .wl-title,
  #faq-overlay .faq-title,#contact-page[data-venue=resort] .cp-title,
  #fd-map-dialog #fd-map-title{font-size:22px!important}
- :is(#faq-list-resort,#faq-list-stay) .faq-answer{font-size:14px!important}
+ :is(#faq-list-resort,#faq-list-stay) .faq-answer,
+ #chalet-faq .chalet-faq-answer{font-size:14px!important}
 }
 
 /* Match the restaurant header on phones; allow long service names to wrap. */

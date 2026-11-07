@@ -14,8 +14,7 @@ GALLERY[PRIVATE_CHALET.id] = Array.from({length:18}, function(_, index){
 function renderPrivateChaletDetail(){
   function features(items){
     return '<div class="fd-cabin-feature-list">' + items.map(function(text){
-      return '<span class="fd-cabin-feature' + (text.length > 24 ? ' fd-cabin-feature--wide' : '') + '">' + text + '</span>'
-        + (text === 'مسبح أطفال بعمق 60 سم مع ألعاب مائية' ? '<div class="fd-cabin-instructions fd-chalet-pool-note"><p>يُسمح للأطفال باستخدامه تحت إشراف ذويهم.</p></div>' : '');
+      return '<span class="fd-cabin-feature' + (text.length > 24 ? ' fd-cabin-feature--wide' : '') + '">' + text + '</span>';
     }).join('') + '</div>';
   }
   function section(title, items){
@@ -25,27 +24,34 @@ function renderPrivateChaletDetail(){
     return '<div class="fd-chalet-floor"><h4>' + title + '</h4>' + features(items) + '</div>';
   }
   return '<section class="fd-cabin-content" aria-labelledby="fd-chalet-detail-title">'
-    + '<div class="fd-cabin-heading"><div><h2 id="fd-chalet-detail-title" class="fd-cabin-title">' + PRIVATE_CHALET.name + '</h2>'
-    + '<p class="fd-cabin-occupancy">شاليه من دورين – حتى 15 ضيفًا</p></div></div>'
+    + '<div class="fd-cabin-heading"><div class="fd-cabin-heading-copy"><h2 id="fd-chalet-detail-title" class="fd-cabin-title">' + PRIVATE_CHALET.name + '</h2>'
+    + '<p class="fd-cabin-occupancy">شاليه من دورين</p>'
+    + '<div class="fd-cabin-card-v2-facts fd-cabin-detail-facts" aria-label="معلومات الشاليه">'
+    + '<div class="fd-cabin-card-v2-fact"><span>سعة الضيوف</span><strong>حتى 15 ضيفًا</strong></div>'
+    + '<div class="fd-cabin-card-v2-fact"><span>غرف النوم</span><strong>غرفتان</strong></div></div>'
+    + '<div class="fd-stay-guest-note"><div class="fd-cabin-instructions"><p>يمكن زيادة إجمالي عدد الضيوف إلى 25 ضيفًا كحد أقصى، برسوم إضافية.</p></div></div></div></div>'
+    + '<a class="fd-pyramid-detail-tour fd-chalet-map-open" href="/chalet-map/?from=chalet-details" aria-haspopup="dialog" aria-controls="fd-chalet-map">استكشف الشاليه من الداخل <span aria-hidden="true">←</span></a>'
     + '<div class="fd-cabin-times" aria-label="أوقات الدخول والخروج"><div><span>الدخول</span><strong>4:00 مساءً</strong></div><div><span>الخروج</span><strong>12:00 ظهرًا</strong></div></div>'
     + '<section class="fd-cabin-section"><h3>المنطقة الداخلية</h3>'
     + floor('الدور الأرضي', [
-      'غرفة نوم بسريرين مفردين',
-      'مجلس يتسع لـ15 شخصًا',
+      'غرفة النوم الثانية بسريرين مفردين',
+      'الصالة الداخلية تتسع لـ15 شخصًا',
       'طاولة طعام',
+      'غرفة ألعاب الأطفال',
       'مطبخ',
-      'حمام',
-      'غرفة أطفال مجهزة بالألعاب'
+      'حمام'
     ])
-    + floor('الدور العلوي', ['غرفة نوم بسرير مزدوج', 'حمام خاص'])
+    + floor('الدور العلوي', ['غرفة النوم الرئيسية بسرير مزدوج', 'حمام خاص'])
     + '</section>'
     + section('المجلس المستقل', ['يتسع لـ10 أشخاص', 'مدخل خاص', 'حمام خاص'])
     + section('المنطقة الخارجية', [
-      'مسبح أطفال بعمق 60 سم مع ألعاب مائية'
+      'مسبح أطفال بعمق 60 سم',
+      'زحليقة مزدوجة',
+      'كرسي تشميس',
+      'دش خارجي'
     ])
     + section('تجهيزات المطبخ', ['موقد كهربائي', 'موقد غاز', 'فرن', 'ميكروويف', 'ثلاجة', 'غلاية', 'أدوات مطبخ أساسية'])
     + section('مميزات الإقامة', ['تلفزيون ذكي'])
-    + '<section class="fd-cabin-section"><h3>زيادة عدد الضيوف</h3><div class="fd-cabin-instructions"><p>يمكن زيادة إجمالي عدد الضيوف إلى 25 ضيفًا كحد أقصى، برسوم إضافية.</p></div></section>'
     + '<div class="fd-cabin-faq-footer"><a class="fd-cabin-faq-link" href="/chalet/faq/" onclick="return openAccommodationFaq(event,\'chalet-faq\')">الأسئلة الشائعة <span aria-hidden="true">←</span></a></div>'
     + '</section>';
 }
@@ -115,19 +121,19 @@ function openPrivateChalet(){
       "items": [
         {
           "question": "كم عدد الضيوف وغرف النوم في الشاليه؟",
-          "answer": "يتسع الشاليه لاستقبال حتى 15 ضيفًا. ويمكن زيادة إجمالي عدد الضيوف إلى 25 ضيفًا كحد أقصى، برسوم إضافية. ويضم غرفتي نوم موزعتين على دورين: غرفة بسريرين مفردين في الدور الأرضي، وغرفة بسرير مزدوج وحمام خاص في الدور العلوي."
+          "answer": "يتسع الشاليه لاستقبال حتى 15 ضيفًا. ويمكن زيادة إجمالي عدد الضيوف إلى 25 ضيفًا كحد أقصى، برسوم إضافية. ويضم غرفتي نوم موزعتين على دورين: غرفة النوم الثانية بسريرين مفردين في الدور الأرضي، وغرفة النوم الرئيسية بسرير مزدوج وحمام خاص في الدور العلوي."
         },
         {
           "question": "هل يوجد مسبح في الشاليه؟",
-          "answer": "نعم، يوجد مسبح للأطفال بعمق 60 سم، مع ألعاب مائية."
+          "answer": "نعم، يوجد مسبح للأطفال بعمق 60 سم مع زحليقة مزدوجة."
         },
         {
-          "question": "ما المجالس المتوفرة في الشاليه؟",
-          "answer": "مجلس في الدور الأرضي يتسع لـ15 شخصًا، ومجلس مستقل بمدخل خاص يتسع لـ10 أشخاص، مع حمام."
+          "question": "ما الصالات والمجالس المتوفرة في الشاليه؟",
+          "answer": "الصالة الداخلية في الدور الأرضي تتسع لـ15 شخصًا، ومجلس مستقل بمدخل خاص يتسع لـ10 أشخاص، مع حمام."
         },
         {
           "question": "هل توجد غرفة ألعاب للأطفال؟",
-          "answer": "نعم، توجد غرفة أطفال مجهزة بالألعاب في الدور الأرضي."
+          "answer": "نعم، توجد غرفة ألعاب الأطفال في الدور الأرضي."
         },
         {
           "question": "ما تجهيزات المطبخ المتوفرة؟",

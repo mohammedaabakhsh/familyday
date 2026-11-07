@@ -57,11 +57,14 @@
   }
   function urlFor(r){
     var cleanUrl=cleanFamilyDayURL();
-    if(cleanUrl.searchParams.get('from')==='map') cleanUrl.searchParams.delete('from');
+    if(['map','chalet-details'].indexOf(cleanUrl.searchParams.get('from'))!==-1) cleanUrl.searchParams.delete('from');
     cleanUrl.searchParams.delete('tab');
     var base='/'+cleanUrl.search;
     if(r.name==='map') return '/resort-map/'+cleanUrl.search+(r.args.length ? '#map='+r.args[0] : '');
-    if(r.name==='chalet-map') return '/chalet-map/'+cleanUrl.search;
+    if(r.name==='chalet-map'){
+      if(r.parent && r.parent.name==='chalet-detail') cleanUrl.searchParams.set('from','chalet-details');
+      return '/chalet-map/'+cleanUrl.search;
+    }
     var shared=sharePage(r);
     if(shared){
       if(r.name==='cabin' && r.parent && r.parent.name==='map') cleanUrl.searchParams.set('from','map');
@@ -82,6 +85,7 @@
       if(shared) hash=shared.route;
     }
     if(/^cabin=\d+$/.test(hash) && new URLSearchParams(location.search).get('from')==='map') hash+='&from=map';
+    if((hash==='chalet-map' || (!hash && /^\/chalet-map\/?$/.test(location.pathname))) && new URLSearchParams(location.search).get('from')==='chalet-details') return route('chalet-map',[],route('chalet-detail'));
     if(!hash && /^\/(resort-map|chalet-map)\/?$/.test(location.pathname)) return route(location.pathname.indexOf('resort-map')!==-1 ? 'map' : 'chalet-map');
     var mapMatch=/^map=(\d+)$/.exec(hash);
     if(mapMatch){

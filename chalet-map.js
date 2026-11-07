@@ -4,7 +4,7 @@
   var rooms = [
   {
     "key": "upper",
-    "name": "غرفة النوم العلوية",
+    "name": "غرفة النوم الرئيسية",
     "floor": "الدور العلوي",
     "x": 36.364,
     "y": 12.041,
@@ -31,7 +31,7 @@
   },
   {
     "key": "ground",
-    "name": "غرفة النوم الأرضية",
+    "name": "غرفة النوم الثانية",
     "floor": "الدور الأرضي",
     "x": 29.107,
     "y": 24.641,
@@ -88,10 +88,10 @@
       53
     ],
     "facts": [
-      "ثلاجة",
       "موقد غاز وكهرباء",
       "فرن",
       "ميكروويف",
+      "ثلاجة",
       "غلاية",
       "أدوات مطبخ أساسية"
     ],
@@ -151,8 +151,7 @@
       101
     ],
     "facts": [
-      "زحليقة مزدوجة",
-      "حاجز زجاجي"
+      "زحليقة مزدوجة"
     ],
     "text": "",
     "primary": [
@@ -311,7 +310,7 @@
   icons.oven='M4 3h16v18H4ZM4 8h16M7 11h10v7H7ZM8 5h.01M12 5h.01M16 5h.01';
   icons.stairs='M2 21h5v-5h5v-5h5V6h5M3 11l12-9';
   function factIcon(text){
-    return {'تلفزيون':'tv','دش زجاجي':'shower','مغسلة':'basin','دورة مياه':'toilet','ألعاب للأطفال':'toy','إطلالة على المسبح':'window','ألعاب مائية':'pool','زحليقة مزدوجة':'slide','حاجز زجاجي':'barrier','ثلاجة':'fridge','فرن':'oven','ميكروويف':'microwave','موقد غاز وكهرباء':'hob','غلاية':'kettle','أدوات مطبخ أساسية':'utensils','باب مباشر لساحة المسبح':'door','مظلة':'outdoor','كرسي تشميس':'chair','دش خارجي':'shower','مدخل خاص':'door','حمام خاص':'shower'}[text]||'kitchen';
+    return {'تلفزيون':'tv','دش زجاجي':'shower','مغسلة':'basin','دورة مياه':'toilet','ألعاب للأطفال':'toy','إطلالة على المسبح':'window','ألعاب مائية':'pool','زحليقة مزدوجة':'slide','ثلاجة':'fridge','فرن':'oven','ميكروويف':'microwave','موقد غاز وكهرباء':'hob','غلاية':'kettle','أدوات مطبخ أساسية':'utensils','باب مباشر لساحة المسبح':'door','مظلة':'outdoor','كرسي تشميس':'chair','دش خارجي':'shower','مدخل خاص':'door','حمام خاص':'shower'}[text]||'kitchen';
   }
   function renderDetails(room){
     var details=room;
@@ -325,7 +324,7 @@
     (details.facts||[]).forEach(function(f,i){cards.push({value:f,icon:factIcon(room.facts[i])});});
     if(room.key==='groundBath')cards.push({value:'حمام',icon:'shower'});
     if(room.key==='stairs')cards.push({value:details.text,icon:'stairs'});
-    panel.innerHTML='<div class="cm-detail-heading"><h3>'+esc(name)+'</h3>'+(floor?'<p>'+esc(floor)+'</p>':'')+'</div>'
+    panel.innerHTML='<div class="cm-detail-heading'+(['upper','ground'].includes(room.key)?' cm-detail-heading--bedroom':'')+'"><h3>'+esc(name)+'</h3>'+(floor?'<p>'+esc(floor)+'</p>':'')+'</div>'
       +'<div class="cm-cards'+(cards.length>3?' is-scrollable':'')+'">'+cards.map(function(card){return '<div class="cm-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+esc(card.value)+'</strong></div></div>';}).join('')+'</div>'
       +(cards.length>3?'<div class="cm-spec-navigation" role="group" aria-label="التنقل بين المواصفات" hidden><button type="button" data-spec-direction="previous" aria-label="المواصفات السابقة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button><span>اسحب لعرض المزيد</span><button type="button" data-spec-direction="next" aria-label="المواصفات التالية"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button></div>':'')
       +(details.text&&room.key!=='stairs'?'<p class="cm-note">'+esc(details.text)+'</p>':'');
@@ -481,5 +480,9 @@
   };
   var grid=document.querySelector('#landing3 .rh-grid');
   if(grid){var launcher=document.createElement('div');launcher.className='fd-chalet-map-launcher';launcher.innerHTML='<button type="button" class="fd-chalet-map-open" aria-haspopup="dialog" aria-controls="fd-chalet-map"><span><strong>استكشف الشاليه من الداخل</strong><small>تعرف على الغرف والمرافق</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>';grid.after(launcher);}
-  document.addEventListener('click',function(e){if(e.target.closest('.fd-chalet-map-open'))document.dispatchEvent(new CustomEvent('fd-chalet-map-request'));});
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('.fd-chalet-map-open') || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey)return;
+    e.preventDefault();
+    document.dispatchEvent(new CustomEvent('fd-chalet-map-request'));
+  });
 })();
