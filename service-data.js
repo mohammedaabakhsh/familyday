@@ -91,6 +91,13 @@ var _tawilatInclusions = [
 
 // Real coordination photos shared by the website and the customer guide.
 var _coordinationPhotos = {
+  'hd-coordination-package-vip': [
+    'imgs/coordination/vip/01.webp',
+    'imgs/coordination/vip/02.webp',
+    'imgs/coordination/vip/03.webp',
+    'imgs/coordination/vip/04.webp',
+    'imgs/coordination/vip/05.webp'
+  ],
   'hd-coordination-package-resort': [
     'imgs/coordination/complete/01.webp',
     'imgs/coordination/complete/02.webp',
