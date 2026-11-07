@@ -4,7 +4,22 @@ var PRIVATE_CHALET = {
   name: 'شاليه يوم العائلة',
   location: 'جدة - المروج',
   bookUrl: 'https://familyday-sa.com/ar/listings/6abb996392a258b8171230a3',
-  mapUrl: 'https://maps.app.goo.gl/np6uD3XvCQTCr4ff7'
+  mapUrl: 'https://maps.app.goo.gl/np6uD3XvCQTCr4ff7',
+  // Shared facts; each view keeps its approved selection and presentation.
+  specifications: {
+    seating: {living: 'تتسع لـ15 شخصًا', majlis: 'يتسع لـ10 أشخاص'},
+    majlisBathroom: 'حمام خاص بالمجلس المستقل',
+    television: 'تلفزيون ذكي',
+    kitchen: [
+      {label: 'موقد كهربائي', sentence: 'موقدًا كهربائيًا', icon: 'hob'},
+      {label: 'موقد غاز', sentence: 'موقد غاز', icon: 'hob'},
+      {label: 'فرن', sentence: 'فرنًا', icon: 'oven'},
+      {label: 'ميكروويف', sentence: 'ميكروويف', icon: 'microwave'},
+      {label: 'ثلاجة', sentence: 'ثلاجة', icon: 'fridge'},
+      {label: 'غلاية', sentence: 'غلاية', icon: 'kettle'},
+      {label: 'أدوات مطبخ أساسية', sentence: 'أدوات مطبخ أساسية', icon: 'utensils'}
+    ]
+  }
 };
 GALLERY[PRIVATE_CHALET.id] = Array.from({length:18}, function(_, index){
   return 'imgs/chalet_' + (index + 1) + '.webp?v=20261007';
@@ -12,6 +27,7 @@ GALLERY[PRIVATE_CHALET.id] = Array.from({length:18}, function(_, index){
 
 
 function renderPrivateChaletDetail(){
+  var specifications = PRIVATE_CHALET.specifications;
   function features(items){
     return '<div class="fd-cabin-feature-list">' + items.map(function(text){
       return '<span class="fd-cabin-feature' + (text.length > 24 ? ' fd-cabin-feature--wide' : '') + '">' + text + '</span>';
@@ -35,7 +51,7 @@ function renderPrivateChaletDetail(){
     + '<section class="fd-cabin-section"><h3>المنطقة الداخلية</h3>'
     + floor('الدور الأرضي', [
       'غرفة النوم الثانية بسريرين مفردين',
-      'الصالة الداخلية تتسع لـ15 شخصًا',
+      'الصالة الداخلية ' + specifications.seating.living,
       'طاولة طعام',
       'غرفة ألعاب الأطفال',
       'مطبخ',
@@ -43,15 +59,15 @@ function renderPrivateChaletDetail(){
     ])
     + floor('الدور العلوي', ['غرفة النوم الرئيسية بسرير مزدوج', 'حمام خاص داخل غرفة النوم الرئيسية'])
     + '</section>'
-    + section('المجلس المستقل', ['يتسع لـ10 أشخاص', 'مدخل خاص', 'حمام خاص'])
+    + section('المجلس المستقل', [specifications.seating.majlis, 'مدخل خاص', specifications.majlisBathroom])
     + section('المنطقة الخارجية', [
       'مسبح أطفال بعمق 60 سم',
       'زحليقة مزدوجة',
       'كرسي تشميس',
       'دش خارجي'
     ])
-    + section('تجهيزات المطبخ', ['موقد كهربائي', 'موقد غاز', 'فرن', 'ميكروويف', 'ثلاجة', 'غلاية', 'أدوات مطبخ أساسية'])
-    + section('مميزات الإقامة', ['تلفزيون ذكي'])
+    + section('تجهيزات المطبخ', specifications.kitchen.map(function(item){return item.label;}))
+    + section('مميزات الإقامة', [specifications.television])
     + '<div class="fd-cabin-faq-footer"><a class="fd-cabin-faq-link" href="/chalet/faq/" onclick="return openAccommodationFaq(event,\'chalet-faq\')">الأسئلة الشائعة <span aria-hidden="true">←</span></a></div>'
     + '</section>';
 }
@@ -84,6 +100,7 @@ function openPrivateChalet(){
 
 (function(){
   // Keep booking, facilities, and instructions in the same FAQ structure.
+  var specifications = PRIVATE_CHALET.specifications;
   var groups = [
     {
       "id": "chalet-faq-booking",
@@ -129,7 +146,7 @@ function openPrivateChalet(){
         },
         {
           "question": "ما الصالات والمجالس المتوفرة في الشاليه؟",
-          "answer": "الصالة الداخلية في الدور الأرضي تتسع لـ15 شخصًا، ومجلس مستقل بمدخل خاص يتسع لـ10 أشخاص، مع حمام."
+          "answer": "الصالة الداخلية في الدور الأرضي " + specifications.seating.living + "، ومجلس مستقل بمدخل خاص " + specifications.seating.majlis + "، مع " + specifications.majlisBathroom + "."
         },
         {
           "question": "هل توجد غرفة ألعاب للأطفال؟",
@@ -137,7 +154,7 @@ function openPrivateChalet(){
         },
         {
           "question": "ما تجهيزات المطبخ المتوفرة؟",
-          "answer": "يشمل المطبخ موقدًا كهربائيًا، وموقد غاز، وفرنًا، وميكروويف، وثلاجة، وغلاية، وأدوات مطبخ أساسية."
+          "answer": "يشمل المطبخ " + specifications.kitchen.map(function(item){return item.sentence;}).join("، و") + "."
         }
       ]
     },

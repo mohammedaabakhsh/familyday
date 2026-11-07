@@ -1,6 +1,7 @@
 /* Owner-approved chalet illustration. Room details open in place, in one selection. */
 (function () {
   'use strict';
+  var specifications = PRIVATE_CHALET.specifications;
   var rooms = [
   {
     "key": "upper",
@@ -15,7 +16,7 @@
       6
     ],
     "facts": [
-      "تلفزيون"
+      specifications.television
     ],
     "text": "",
     "primary": [
@@ -65,13 +66,13 @@
     "facts": [
       "إطلالة على المسبح",
       "باب مباشر لساحة المسبح",
-      "تلفزيون"
+      specifications.television
     ],
     "text": "",
     "primary": [
       [
         "السعة",
-        "15 شخصًا"
+        specifications.seating.living
       ]
     ]
   },
@@ -87,14 +88,7 @@
       91,
       53
     ],
-    "facts": [
-      "موقد غاز وكهرباء",
-      "فرن",
-      "ميكروويف",
-      "ثلاجة",
-      "غلاية",
-      "أدوات مطبخ أساسية"
-    ],
+    "facts": specifications.kitchen.map(function(item){return item.label;}),
     "text": "",
     "primary": []
   },
@@ -197,14 +191,14 @@
     ],
     "facts": [
       "مدخل خاص",
-      "حمام خاص",
-      "تلفزيون"
+      specifications.majlisBathroom,
+      specifications.television
     ],
     "text": "",
     "primary": [
       [
         "السعة",
-        "10 أشخاص"
+        specifications.seating.majlis
       ]
     ]
   },
@@ -310,6 +304,10 @@
   icons.oven='M4 3h16v18H4ZM4 8h16M7 11h10v7H7ZM8 5h.01M12 5h.01M16 5h.01';
   icons.stairs='M2 21h5v-5h5v-5h5V6h5M3 11l12-9';
   function factIcon(text){
+    if(text===specifications.television)return 'tv';
+    if(text===specifications.majlisBathroom)return 'shower';
+    var kitchenItem=specifications.kitchen.find(function(item){return item.label===text;});
+    if(kitchenItem)return kitchenItem.icon;
     return {'تلفزيون':'tv','دش زجاجي':'shower','مغسلة':'basin','دورة مياه':'toilet','ألعاب للأطفال':'toy','إطلالة على المسبح':'window','ألعاب مائية':'pool','زحليقة مزدوجة':'slide','ثلاجة':'fridge','فرن':'oven','ميكروويف':'microwave','موقد غاز وكهرباء':'hob','غلاية':'kettle','أدوات مطبخ أساسية':'utensils','باب مباشر لساحة المسبح':'door','مظلة':'outdoor','كرسي تشميس':'chair','دش خارجي':'shower','مدخل خاص':'door','حمام خاص':'shower'}[text]||'kitchen';
   }
   function renderDetails(room){
@@ -319,7 +317,7 @@
     (details.primary||[]).forEach(function(f,i){
       var ar=room.primary[i][0], value=f[1], numeric=ar==='العمق';
 
-      cards.push({label:['upper','ground','dining'].includes(room.key)?'':f[0],value:room.key==='dining'?'تتّسع لـ'+value:value,numeric:numeric,icon:room.key==='dining'?'dining':{'العمق':'water','السرير':'bed','الأسرّة':'bed','الحمام':'shower','السعة':'people'}[ar]||'size'});
+      cards.push({label:['upper','ground','dining','living','majlis'].includes(room.key)?'':f[0],value:room.key==='dining'?'تتّسع لـ'+value:value,numeric:numeric,icon:room.key==='dining'?'dining':{'العمق':'water','السرير':'bed','الأسرّة':'bed','الحمام':'shower','السعة':'people'}[ar]||'size'});
     });
     (details.facts||[]).forEach(function(f,i){cards.push({value:f,icon:factIcon(room.facts[i])});});
     if(room.key==='groundBath')cards.push({value:'حمام',icon:'shower'});
