@@ -99,10 +99,10 @@ var _coordinationPhotos = {
     'imgs/coordination/vip/05.webp'
   ],
   'hd-coordination-package-resort': [
-    'imgs/coordination/complete/01.webp',
-    'imgs/coordination/complete/02.webp',
-    'imgs/coordination/complete/03.webp',
-    'imgs/coordination/complete/04.webp',
-    'imgs/coordination/complete/05.webp'
+    'imgs/coordination/complete/01-v2.webp',
+    'imgs/coordination/complete/02-v2.webp',
+    'imgs/coordination/complete/03-v2.webp',
+    'imgs/coordination/complete/04-v2.webp',
+    'imgs/coordination/complete/05-v2.webp'
   ]
 };
