@@ -208,12 +208,12 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 .price-unit{display:block;text-align:center;font-size:12px;font-weight:500;line-height:1.4}
 
 /* Read-only dining price cards: both options remain visible for every size. */
-.dining-prices{display:grid;gap:12px}
-.dining-price-card{padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;break-inside:avoid}
-.dining-price-card h3{margin:0 0 8px;font-size:16px;font-weight:700;line-height:1.5;color:var(--ink)}
-.dining-price-card dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0}
-.dining-price-card dl>div{min-width:0}
-.dining-price-card dl>div+div{border-inline-start:1px solid var(--line);padding-inline-start:12px}
+.dining-prices{display:grid;gap:10px}
+.dining-price-card{padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#fff;break-inside:avoid}
+.dining-price-card h3{margin:0 0 6px;text-align:center;font-size:16px;font-weight:700;line-height:1.5;color:var(--ink)}
+.dining-price-card dl{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin:0;text-align:center}
+.dining-price-card dl>div{min-width:0;padding-inline:6px}
+.dining-price-card dl::after{content:"";position:absolute;inset-block:0;left:50%;width:1px;background:var(--line)}
 .dining-price-card dt{font-size:12px;line-height:1.5;color:var(--muted)}
 .dining-price-card dd{margin:3px 0 0;color:var(--accent);font-size:18px;font-weight:700;line-height:1.5;white-space:nowrap}
 .dining-price-card dd span{font-size:12px;font-weight:500}
