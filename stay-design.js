@@ -30,12 +30,20 @@ function renderStayDetail(c) {
   }
   var indoor = groups.slice(0, 3).flat().map(function(text){return text.replace('3 دورات مياه','3 حمامات');});
   // Put rooms and seating first, then the kitchen and bathrooms.
-  indoor = indoor.filter(function(text){return !/حمام|ركن مطبخ/.test(text);})
-    .concat(indoor.filter(function(text){return text==='ركن مطبخ';}), indoor.filter(function(text){return /حمام/.test(text);}));
+  indoor = indoor.filter(function(text){return !/حمام|ركن المطبخ/.test(text);})
+    .concat(indoor.filter(function(text){return text==='ركن المطبخ';}), indoor.filter(function(text){return /حمام/.test(text);}));
   var outdoor = groups.slice(3).flat();
-  var pools = outdoor.filter(function(text){return /^مسبح|كراسي تشميس/.test(text);});
-  var otherOutdoor = outdoor.filter(function(text){return !/^مسبح|كراسي تشميس/.test(text);});
-  var poolNotes = '<div class="fd-cabin-instructions fd-pool-note"><p>يُسمح للأطفال باستخدامه تحت إشراف ذويهم.</p></div>';
+  // Match the resort: seating first, pools and facilities next, barbecue last.
+  function outdoorRank(text) {
+    if (/^جلسة/.test(text)) return 0;
+    if (/^مسبح/.test(text)) return 1;
+    if (/^كراسي تشميس/.test(text)) return 2;
+    if (/^ملعب/.test(text)) return 3;
+    if (/^حمام/.test(text)) return 4;
+    if (text === 'شواية') return 6;
+    return 5;
+  }
+  outdoor.sort(function(a,b){return outdoorRank(a)-outdoorRank(b);});
   return '<section class="fd-cabin-content" aria-labelledby="fd-stay-detail-title">'
     + '<div class="fd-cabin-heading"><div class="fd-cabin-heading-copy"><h2 id="fd-stay-detail-title" class="fd-cabin-title">' + c.name + '</h2>'
     + '<p class="fd-cabin-occupancy">مناسب للتجمعات العائلية</p>'
@@ -45,7 +53,7 @@ function renderStayDetail(c) {
     + '<div class="fd-stay-guest-note"><div class="fd-cabin-instructions"><p>يمكن زيادة العدد إلى 70 ضيفًا كحد أقصى، برسوم إضافية.</p></div></div></div></div>'
     + '<div class="fd-cabin-times" aria-label="أوقات الدخول والخروج"><div><span>الدخول</span><strong>4:00 مساءً</strong></div><div><span>الخروج</span><strong>12:00 ظهرًا</strong></div></div>'
     + section('المنطقة الداخلية', indoor)
-    + '<section class="fd-cabin-section"><h3>المنطقة الخارجية</h3><div class="fd-cabin-feature-list">' + features(pools) + poolNotes + features(otherOutdoor) + '</div></section>'
+    + '<section class="fd-cabin-section"><h3>المنطقة الخارجية</h3><div class="fd-cabin-feature-list">' + features(outdoor) + '</div></section>'
     + section('تجهيزات المطبخ', ['موقد كهربائي', 'ميكروويف', 'ثلاجة', 'غلاية'])
     + section('مميزات الإقامة', ['تلفزيون ذكي', 'سماعات داخلية (ساوند بار)'])
     + (c.id === 21 ? '<section class="fd-cabin-addons"><h3>خدمات إضافية</h3><p>الزحليقة الهوائية الكبيرة — برسوم إضافية.</p></section>' : '')
