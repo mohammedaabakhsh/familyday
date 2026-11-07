@@ -53,7 +53,7 @@ with sync_playwright() as p:
  page.route('**/stay-design.js*',lambda r:r.fulfill(body=source,content_type='application/javascript'))
  page.goto(BASE+'/stay/ground-floor/',wait_until='networkidle');assert all(t in page.locator('#mBody').inner_text() for t in ['حتى 26 ضيفًا','3 غرف','71 ضيفًا'])
  page.goto(BASE+'/stay/sections/',wait_until='networkidle');assert 'حتى 26 ضيفًا' in page.locator('#grid2').text_content();assert '3 غرف' in page.locator('#fd-stay-comparison-panel').text_content()
- page.goto(BASE+'/stay/faq/',wait_until='networkidle');answer=page.locator('[data-shared-fact="stay-capacity"]').text_content();assert all(t in answer for t in ['26 ضيفًا','25 ضيفًا','3 غرف نوم','71','70'])
+ page.goto(BASE+'/stay/faq/',wait_until='networkidle');answer=page.locator('[data-shared-fact="stay-capacity"]').text_content();assert all(t in answer for t in ['26 ضيفًا','25 ضيفًا','71','70']);assert 'غرف' not in answer;assert page.locator('[data-shared-fact="stay-first-rooms"]').text_content()=='3 غرف نوم'
  page.unroute('**/stay-design.js*');print('PASS rest-house card/detail/comparison/FAQ share unit capacities',flush=True)
  source=(ROOT/'chalet-design.js').read_text().replace('guests: 15','guests: 16',1).replace('depthCm: 60','depthCm: 65',1).replace("bed: 'سرير مزدوج'","bed: 'سرير تجريبي'",1)
  page.route('**/chalet-design.js*',lambda r:r.fulfill(body=source,content_type='application/javascript'))

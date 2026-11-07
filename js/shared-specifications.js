@@ -12,9 +12,12 @@
   var min=Math.min.apply(null,depths),max=Math.max.apply(null,depths);
   answer('resort-pools',(min===max?'عمق جميع مسابح الأكواخ '+min+' سم':'تتراوح أعماق مسابح الأكواخ بين '+min+' و'+max+' سم')+'، وتختلف أبعادها حسب الكوخ.');
   var first=FD_STAY_UNITS[0],second=FD_STAY_UNITS[1];
-  var capacity=first.guests===second.guests?'يتسع كل قسم لاستقبال '+resortGuestText(first.guests):'يتسع القسم الأول لاستقبال '+resortGuestText(first.guests)+'، والقسم الثاني '+resortGuestText(second.guests);
-  function roomCount(n){return n===1?'غرفة نوم واحدة':n===2?'غرفتي نوم':n+' غرف نوم';}
-  var bed=second.tags.find(function(t){return /^غرفة النوم/.test(t);}).replace(/^غرفة النوم (الرئيسية|الثانية) بـ?/, '');
-  var maximum=first.maxGuests===second.maxGuests?'في كل قسم إلى '+first.maxGuests:'في القسم الأول إلى '+first.maxGuests+'، وفي القسم الثاني إلى '+second.maxGuests;
-  answer('stay-capacity',capacity+'. يضم القسم الأول '+roomCount(first.rooms)+'، ويضم القسم الثاني '+roomCount(second.rooms)+' تحتوي على '+bed+'. ويمكن زيادة عدد الضيوف '+maximum+' ضيفًا كحد أقصى، برسوم إضافية.');
+  var capacity=first.guests===second.guests?'يتسع كل قسم '+resortGuestText(first.guests):'يتسع القسم الأول '+resortGuestText(first.guests)+'، والقسم الثاني '+resortGuestText(second.guests);
+  var maximum=first.maxGuests===second.maxGuests?'إلى '+first.maxGuests:'في القسم الأول إلى '+first.maxGuests+'، وفي القسم الثاني إلى '+second.maxGuests;
+  answer('stay-capacity',capacity+'، ويمكن زيادة العدد '+maximum+' ضيفًا كحد أقصى برسوم إضافية.');
+  // Bedroom facts appear once, in the comparison answer rather than guest capacity.
+  function roomCount(n){return n===1?'غرفة نوم':n===2?'غرفتا نوم':n+' غرف نوم';}
+  var bed=second.tags.find(function(t){return /^غرفة النوم/.test(t);}).replace(/^غرفة النوم (الرئيسية|الثانية) بـ?/, '').replace('3 أسرّة','ثلاثة أسرّة');
+  answer('stay-first-rooms',roomCount(first.rooms));
+  answer('stay-second-bedroom',roomCount(second.rooms)+' ب'+bed);
 })();

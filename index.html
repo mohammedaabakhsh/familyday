@@ -1293,76 +1293,91 @@
   <header class="faq-page-header"><div class="faq-heading">
     <button type="button" class="faq-back" onclick="closeFaq2()" aria-label="العودة"><svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     <div class="fd-page-heading-copy"><h1 id="faq-title-stay" class="faq-title">الأسئلة الشائعة</h1><p class="fd-venue-subtitle">استراحة يوم العائلة</p></div></div>
-    <nav class="fd-faq-shortcuts" aria-label="أقسام الأسئلة الشائعة"><button type="button" aria-controls="faq-stay-booking" aria-expanded="false" onclick="selectStayFaqSection('faq-stay-booking')">الحجز</button><button type="button" aria-controls="faq-stay-sections" aria-expanded="false" onclick="selectStayFaqSection('faq-stay-sections')">المرافق</button><button type="button" aria-controls="faq-stay-services" aria-expanded="false" onclick="selectStayFaqSection('faq-stay-services')">التعليمات</button></nav></header>
+    <nav class="fd-faq-shortcuts" aria-label="أقسام الأسئلة الشائعة"><button type="button" aria-controls="faq-stay-booking" aria-expanded="false" onclick="selectStayFaqSection('faq-stay-booking')">الحجز</button><button type="button" aria-controls="faq-stay-sections" aria-expanded="false" onclick="selectStayFaqSection('faq-stay-sections')">المرافق والخدمات</button><button type="button" aria-controls="faq-stay-services" aria-expanded="false" onclick="selectStayFaqSection('faq-stay-services')">التعليمات</button></nav></header>
   <div id="faq-list-stay"><section id="faq-stay-booking" class="faq-section" aria-labelledby="faq-stay-booking-title" hidden><h2 id="faq-stay-booking-title" class="faq-section-title">الحجز وأوقات الدخول</h2><div class="faq-grid">
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">1. أين تقع استراحة يوم العائلة؟</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">تقع استراحة يوم العائلة في خليج سلمان، جدة.<a class="fd-text-link" href="https://maps.app.goo.gl/i7BhZbfkRLyV68eFA?g_st=ic" target="_blank" rel="noopener noreferrer">عرض الموقع على الخريطة</a></div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">تقع استراحة يوم العائلة في جدة – خليج سلمان.<a class="fd-text-link" href="https://maps.app.goo.gl/i7BhZbfkRLyV68eFA?g_st=ic" target="_blank" rel="noopener noreferrer">موقع الاستراحة</a></div>
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">2. ما أوقات الدخول والخروج؟</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">الدخول الساعة 4:00 مساءً، والخروج الساعة 12:00 ظهرًا.</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">وقت الدخول: 4:00 مساءً<br>وقت الخروج: 12:00 ظهرًا</div>
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">3. كيف يمكنني الحجز؟</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يمكن الحجز مباشرة عبر الموقع الإلكتروني أو تطبيق يوم العائلة.<a class="fd-text-link" href="#contact=stay" onclick="event.preventDefault();showContact('stay')">عرض خيارات الحجز</a></div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يمكنك الحجز عبر الموقع الإلكتروني أو تطبيق يوم العائلة.<a class="fd-text-link" href="/stay/contact/" onclick="event.preventDefault();showContact('stay')">خيارات الحجز</a></div>
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">4. ما طرق الدفع المتاحة؟</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">تتوفر عدة طرق للدفع تشمل مدى، فيزا، Apple Pay، والتحويل البنكي، كما يمكن الدفع نقدًا أو عبر جهاز نقاط البيع في الموقع.</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">مدى، فيزا، Apple Pay، والتحويل البنكي. ويمكن الدفع في الموقع نقدًا أو عبر جهاز نقاط البيع.</div>
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">5. هل يمكن تعديل أو إلغاء الحجز؟</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يمكن التعديل أو الإلغاء قبل موعد الوصول بثلاثة أيام أو أكثر. بعد ذلك لا يمكن التعديل أو الإلغاء، بما في ذلك بسبب الأحوال الجوية.</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يمكن تعديل الحجز أو إلغاؤه قبل موعد الوصول بثلاثة أيام أو أكثر. بعد ذلك، لا يمكن التعديل أو الإلغاء، بما في ذلك بسبب الأحوال الجوية.</div>
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">6. كيف يمكنني التواصل معكم؟</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يمكنك التواصل معنا عبر الاتصال أو واتساب على الرقم: <a href="tel:+966556156693" class="phone-link">0556156693</a>، والتواصل متاح على مدار 24 ساعة.</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يمكنك الاتصال أو التواصل عبر واتساب على الرقم <a href="tel:+966556156693" class="phone-link">0556156693</a>، على مدار الساعة.</div>
     </div>
 
-</div></section><section id="faq-stay-sections" class="faq-section" aria-labelledby="faq-stay-sections-title" hidden><h2 id="faq-stay-sections-title" class="faq-section-title">الأقسام والمرافق</h2><div class="faq-grid">
+
+</div></section><section id="faq-stay-sections" class="faq-section" aria-labelledby="faq-stay-sections-title" hidden><h2 id="faq-stay-sections-title" class="faq-section-title">المرافق والخدمات</h2><div class="faq-grid">
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">1. كم عدد أقسام الاستراحة؟</div>
       <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">تضم الاستراحة قسمين مستقلين، ويمكن حجز كل قسم منفردًا أو حجز القسمين معًا.</div>
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">2. ما الفرق بين القسم الأول والقسم الثاني؟</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;"><strong>القسم الأول:</strong> غرفتان للنوم، مسبح للكبار، ومسبح للأطفال.<br><strong>القسم الثاني:</strong> غرفة نوم بثلاثة أسرّة، مسبح للكبار، وملعب كرة طائرة.</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;"><p><strong>القسم الأول – الدور الأرضي:</strong> <span data-shared-fact="stay-first-rooms">غرفتا نوم</span>، مسبح للكبار ومسبح للأطفال.</p><p><strong>القسم الثاني – الدور العلوي:</strong> <span data-shared-fact="stay-second-bedroom">غرفة نوم بثلاثة أسرّة</span>، مسبح للكبار وملعب كرة طائرة.</p></div>
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
-      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">3. كم عدد الضيوف وغرف النوم في كل قسم؟</div>
-      <div data-shared-fact="stay-capacity" style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يتسع كل قسم لاستقبال حتى 25 ضيفًا. يضم القسم الأول غرفتي نوم، ويضم القسم الثاني غرفة نوم واحدة تحتوي على 3 أسرّة. ويمكن زيادة عدد الضيوف في كل قسم إلى 70 ضيفًا كحد أقصى، برسوم إضافية.</div>
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">3. كيف أختار القسم المناسب لي؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">تصفّح صور القسمين ومواصفاتهما، واطّلع على جدول المقارنة لاختيار الأنسب لك.<a class="fd-text-link" href="/stay/sections/" onclick="event.preventDefault();showSection2()">تصفّح القسمين</a></div>
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
-      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">4. هل الاستراحة مجهزة بوسائل ترفيه؟</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">نعم، يتوفر تلفزيون ذكي وسماعات داخلية (ساوند بار).</div>
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">4. كم عدد الضيوف في كل قسم؟</div>
+      <div data-shared-fact="stay-capacity" style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يتسع كل قسم حتى 25 ضيفًا، ويمكن زيادة العدد إلى 70 ضيفًا كحد أقصى برسوم إضافية.</div>
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
-      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">5. هل توجد ألعاب للأطفال في الاستراحة؟</div>
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">5. ما مواصفات المسابح؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;"><p>يتوفر في كل قسم مسبح للكبار بمقاس 8 × 4 م، وعمق متدرج من 1 إلى 2 م.</p><p>ويضم القسم الأول أيضًا مسبحًا للأطفال بمقاس 6 × 2 م، وعمق 65 سم.</p></div>
+    </div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">6. هل يتوفر ملعب كرة طائرة؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">نعم، يتوفر ملعب كرة طائرة في القسم الثاني.</div>
+    </div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">7. هل الاستراحة مجهزة بوسائل ترفيه؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">نعم، يتوفر في كل قسم تلفزيون ذكي وسماعات داخلية (ساوند بار).</div>
+    </div>
+    <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">8. هل توجد ألعاب للأطفال في الاستراحة؟</div>
       <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">نعم، تتوفر الزحليقة الهوائية الكبيرة في القسم الثاني برسوم إضافية.</div>
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
-      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">6. ما تجهيزات المطبخ المتوفرة؟</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يشمل ركن المطبخ موقدًا كهربائيًا، وميكروويف، وثلاجة، وغلاية.</div>
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">9. ما تجهيزات المطبخ المتوفرة؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يتوفر ركن مطبخ يضم ثلاجة، وموقدًا كهربائيًا، وميكروويف، وغلاية.</div>
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
-      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">7. هل توجد شواية في الاستراحة؟</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">نعم، تتوفر شواية في الاستراحة، ويتوفر الفحم والأدوات برسوم إضافية.</div>
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">10. هل توجد شواية في الاستراحة؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">نعم، تتوفر شواية في كل قسم، ويمكن طلب الفحم وأدوات الشواء برسوم إضافية.</div>
     </div>
-
-</div></section><section id="faq-stay-services" class="faq-section" aria-labelledby="faq-stay-services-title" hidden><h2 id="faq-stay-services-title" class="faq-section-title">الخدمات والتعليمات</h2><div class="faq-grid">
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
-      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">1. هل تتوفر مواقف سيارات واسعة؟</div>
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">11. هل تتوفر مواقف سيارات؟</div>
       <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">نعم، تتوفر مواقف سيارات واسعة ومخصصة لضيوف الاستراحة.</div>
     </div>
+
+
+</div></section><section id="faq-stay-services" class="faq-section" aria-labelledby="faq-stay-services-title" hidden><h2 id="faq-stay-services-title" class="faq-section-title">التعليمات</h2><div class="faq-grid">
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
-      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">2. هل يُسمح بإحضار سماعات خارجية؟</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">لا يُسمح بإحضار سماعات خارجية، وتتوفر سماعات داخلية (ساوند بار) في الاستراحة.</div>
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">1. هل يُسمح بإحضار سماعات خارجية؟</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">نعم، يُسمح بإحضار سماعات خارجية، وتتوفر أيضًا سماعات داخلية (ساوند بار) في كل قسم.</div>
     </div>
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
-      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">3. ما تعليمات استخدام المسبح؟</div>
+      <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">2. ما تعليمات استخدام المسبح؟</div>
       <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يُرجى الإشراف على الأطفال طوال فترة استخدام المسبح.</div>
     </div>
+
     </div></section>
   </div>
 </div>
@@ -1881,7 +1896,7 @@
 
 <link rel="stylesheet" href="service-sections.css?v=20261106-compact-tabs-v5">
 <script src="service-sections.js?v=20261103-splash-motion-v1"></script>
-<script src="js/shared-specifications.js?v=20261107-resort-faq-v2"></script>
+<script src="js/shared-specifications.js?v=20261107-stay-faq-v3"></script>
 <script src="venue-data.js?v=20261107-approved-previews-v1"></script>
 <script src="js/router.js?v=20261107-approved-previews-v1"></script>
 <script src="resort-map-data.js?v=20261106-greek-label-v3" defer></script>
