@@ -377,7 +377,7 @@
 /* Square mobile detail photos for the two rest-house sections. */
 @media(max-width:899px){#ov.fd-stay-modern .gal-wrap:has(img[src*="imgs/sec1_"],img[src*="imgs/sec2_"]){height:auto;aspect-ratio:1;min-height:0;}}
 
-/* Two section columns with each feature named above its paired values. */
+/* Compact, three-column comparison with the owner's approved content. */
 #app2 .fd-stay-comparison {
   box-sizing:border-box;
   width:calc(100% - 40px);
@@ -406,42 +406,39 @@
   table-layout:fixed;
   border-collapse:collapse;
   border-spacing:0;
-  font:400 13px/1.7 Tajawal,sans-serif;
+  font:400 14px/1.6 Tajawal,sans-serif;
 }
+#app2 .fd-stay-comparison col { width:33%; }
+#app2 .fd-stay-comparison .fd-stay-comparison-label { width:34%; }
 #app2 .fd-stay-comparison :is(th,td) {
   box-sizing:border-box;
-  padding:0 14px 16px;
+  padding:14px 10px;
   border:0;
   text-align:center;
   vertical-align:middle;
-  overflow-wrap:anywhere;
+  overflow-wrap:break-word;
 }
 #app2 .fd-stay-comparison thead th {
-  width:50%;
-  padding:15px 12px;
+  padding:16px 8px;
   background:#153244;
-  color:#9edce5;
-  font-size:14px;
+  color:#e5f5f8;
   font-weight:700;
 }
 #app2 .fd-stay-comparison thead strong { display:block; }
 #app2 .fd-stay-comparison thead span {
   display:block;
-  margin-top:2px;
+  margin-top:3px;
   color:#a9c2cc;
   font-size:12px;
   font-weight:400;
 }
-#app2 .fd-stay-comparison tbody th {
-  padding:12px 14px 5px;
-  border-top:1px solid #294957;
-  color:#9edce5;
-  font-weight:600;
-}
+#app2 .fd-stay-comparison tr > :first-child { text-align:right; padding-inline-start:14px; }
+#app2 .fd-stay-comparison tbody tr { border-top:1px solid #294957; }
+#app2 .fd-stay-comparison tbody th { color:#9edce5; font-weight:600; }
 #ov.fd-cabin-modern .fd-stay-guest-note .fd-cabin-instructions { margin-top:0; }
 @media(min-width:600px) {
   #app2 .fd-stay-comparison table { font-size:15px; }
-  #app2 .fd-stay-comparison td { padding:0 18px 18px; }
+  #app2 .fd-stay-comparison :is(th,td) { padding:16px 18px; }
   #app2 .fd-stay-comparison thead th { font-size:16px; }
   #app2 .fd-stay-comparison thead span { font-size:13px; }
   #app2 .fd-stay-comparison h2 { font-size:22px; }
@@ -451,7 +448,8 @@
 }
 @media(max-width:360px) {
   #app2 .fd-stay-comparison { width:calc(100% - 32px); }
-  #app2 .fd-stay-comparison td { padding-inline:10px; }
+  #app2 .fd-stay-comparison :is(th,td) { padding-inline:6px; }
+  #app2 .fd-stay-comparison tr > :first-child { padding-inline-start:10px; }
 }
 
 /* Use the approved resort/chalet presentation for both rest-house sections. */

@@ -64,24 +64,24 @@ function renderStayDetail(c) {
 function renderStayComparison() {
   var rows = [
     ['غرف النوم', 'غرفتان', 'غرفة واحدة'],
-    ['الأسرّة', 'سرير مزدوج وسريران مفردان', '3 أسرّة'],
-    ['صالة داخلية', 'متوفرة', 'غير متوفرة'],
-    ['الحمامات', '4 حمامات', '4 حمامات'],
-    ['المسابح', 'مسبح للكبار ومسبح للأطفال', 'مسبح للكبار'],
-    ['الزحليقة الهوائية الكبيرة', 'غير متاحة', 'متاحة برسوم إضافية'],
-    ['ملعب كرة طائرة', 'غير متوفر', 'متوفر']
+    ['الأسرّة', 'مزدوج + مفردان', '3 أسرّة'],
+    ['الحمامات', '4', '4'],
+    ['مجلس كبير', 'متوفر', 'متوفر'],
+    ['مسبح الكبار', 'متوفر', 'متوفر'],
+    ['مسبح الأطفال', 'متوفر', 'غير متوفر'],
+    ['ملعب كرة الطائرة', 'غير متوفر', 'متوفر'],
+    ['الزحليقة الهوائية الكبيرة', 'غير متاحة', 'متاحة برسوم']
   ];
   return '<section class="fd-stay-comparison" aria-labelledby="fd-stay-comparison-title">'
     + '<h2 id="fd-stay-comparison-title">قارن بين القسمين</h2>'
     + '<div class="fd-stay-comparison-frame"><table aria-labelledby="fd-stay-comparison-title">'
-    + '<thead><tr><th scope="col" id="fd-stay-compare-first"><strong>القسم الأول</strong><span>الدور الأرضي</span></th>'
-    + '<th scope="col" id="fd-stay-compare-second"><strong>القسم الثاني</strong><span>الدور العلوي</span></th></tr></thead>'
-    + rows.map(function (row, index) {
-      var labelId = 'fd-stay-compare-feature-' + index;
-      return '<tbody><tr><th id="' + labelId + '" colspan="2" scope="rowgroup">' + row[0] + '</th></tr>'
-        + '<tr><td headers="fd-stay-compare-first ' + labelId + '">' + row[1] + '</td>'
-        + '<td headers="fd-stay-compare-second ' + labelId + '">' + row[2] + '</td></tr></tbody>';
-    }).join('') + '</table></div></section>';
+    + '<colgroup><col class="fd-stay-comparison-label"><col><col></colgroup>'
+    + '<thead><tr><th scope="col">البند</th>'
+    + '<th scope="col"><strong>القسم الأول</strong><span>الدور الأرضي</span></th>'
+    + '<th scope="col"><strong>القسم الثاني</strong><span>الدور العلوي</span></th></tr></thead><tbody>'
+    + rows.map(function (row) {
+      return '<tr><th scope="row">' + row[0] + '</th><td>' + row[1] + '</td><td>' + row[2] + '</td></tr>';
+    }).join('') + '</tbody></table></div></section>';
 }
 
 function resetStayFaq() {
