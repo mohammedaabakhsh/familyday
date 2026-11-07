@@ -152,7 +152,7 @@ function renderResortCardSummary(c){
   const feature=shared?'مشترك':c.bath.summary;
   const guests=resortGuestText(c.guests);
   const rooms=resortRoomText(c.rooms);
-  const facts=shared?[['الموقع','وسط الأكواخ'],['الاستخدام','لجميع الضيوف']]:[['السعة',guests],['غرف النوم',rooms]];
+  const facts=shared?[['الموقع','وسط الأكواخ'],['الاستخدام','لجميع الضيوف']]:[['سعة الضيوف',guests],['غرف النوم',rooms]];
   const subtitle=shared?'ألعاب أطفال وشاشة عرض':c.suitable;
   return `
     <div class="fd-cabin-card-v2-heading">
@@ -184,7 +184,7 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
     d.innerHTML=`
       <div class="card-img-wrap" data-cid="${c.id}" data-cidx="0" style="position:relative;overflow:hidden;">
         ${(function(){var gl=GALLERY[c.id]||[IMG[c.img]];return '<img src="'+gl[0]+'" alt="'+c.name+'" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;">';})()}
-        ${c.badge?`<div class="badge">${c.badge}</div>`:''}
+        ${c.badge&&c.badge!=='تجربة فريدة'?`<div class="badge">${c.badge}</div>`:''}
       </div>
       <div class="card-body fd-cabin-card-v2-body">
         ${renderResortCardSummary(c)}
@@ -262,9 +262,13 @@ function renderCabinDetail(c){
   return `
     <section class="fd-cabin-content" data-cabin-id="${c.id}" aria-labelledby="fd-cabin-detail-title">
       <div class="fd-cabin-heading">
-        <div>
+        <div class="fd-cabin-heading-copy">
           <h2 class="fd-cabin-title" id="fd-cabin-detail-title">${c.name}</h2>
-          <p class="fd-cabin-occupancy">${badge?badge+' – ':''}${guestsText}</p>
+          ${badge?`<p class="fd-cabin-occupancy">${badge}</p>`:''}
+          <div class="fd-cabin-card-v2-facts fd-cabin-detail-facts" aria-label="معلومات ${c.name}">
+            <div class="fd-cabin-card-v2-fact"><span>سعة الضيوف</span><strong>${guestsText}</strong></div>
+            <div class="fd-cabin-card-v2-fact"><span>غرف النوم</span><strong>${resortRoomText(c.rooms)}</strong></div>
+          </div>
           ${subtitle?`<p class="fd-cabin-suitable">${subtitle}</p>`:''}
         </div>
       </div>
@@ -324,7 +328,7 @@ ${c.id===8?'<a class="fd-pyramid-detail-tour" href="/rustic-tour/?from=details&c
       ${(c.id===3 || c.id===9)?'<section class="fd-cabin-section fd-cabin-combined-note"><h3>حجز الكوخين معًا</h3><div class="fd-cabin-instructions"><p>يمكن ربط كوخ رويال والكوخ الكلاسيكي عبر باب داخلي عند حجزهما معًا، بسعة إجمالية تصل إلى 35 ضيفًا.</p></div></section>':''}
 
       <section class="fd-cabin-addons">
-        <h3>إضافات الحجز</h3>
+        <h3>خدمات إضافية</h3>
         <div class="fd-cabin-addon-links"><a href="/services/hospitality/" onclick="return openCabinService(event,'hospitality')">الضيافة والتنسيقات <span aria-hidden="true">←</span></a><a href="/services/outdoor-seating/" onclick="return openCabinService(event,'jalsat')">الجلسات الخارجية <span aria-hidden="true">←</span></a><a href="/services/dining-tables/" onclick="return openCabinService(event,'tawilat')">طاولات الطعام <span aria-hidden="true">←</span></a><a href="/services/cinema/" onclick="return openCabinService(event,'sinema')">جلسة السينما <span aria-hidden="true">←</span></a><a href="/services/games/" onclick="return openCabinService(event,'tarfihi')">الألعاب الترفيهية <span aria-hidden="true">←</span></a><a href="/services/water-games/" onclick="return openCabinService(event,'maiya')">الألعاب المائية <span aria-hidden="true">←</span></a></div>
       </section>
       <div class="fd-cabin-faq-footer"><a class="fd-cabin-faq-link" href="/resort/faq/" onclick="return openAccommodationFaq(event,'faq')">الأسئلة الشائعة <span aria-hidden="true">←</span></a></div>

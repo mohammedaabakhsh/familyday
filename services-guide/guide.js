@@ -96,8 +96,8 @@
     document.querySelectorAll('.guide-section').forEach(section => section.classList.toggle('is-active',section === activeSection));
     const title = activeSection ? activeSection.dataset.title : pendingTile ? pendingTile.querySelector('.tile-title').textContent : '';
     back.href = sectionView ? '#contents' : homeBack.href;
-    back.setAttribute('aria-label',sectionView ? 'العودة إلى التجهيزات' : homeBack.label);
-    document.getElementById('guide-back-label').textContent = sectionView ? 'التجهيزات' : 'رجوع';
+    back.setAttribute('aria-label',sectionView ? 'العودة إلى تنسيقات وجلسات' : homeBack.label);
+    document.getElementById('guide-back-label').textContent = sectionView ? 'تنسيقات وجلسات' : 'رجوع';
     document.title = title ? title + ' | يوم العائلة' : guideTitle;
     requestAnimationFrame(() => {
       if(activeSection) {

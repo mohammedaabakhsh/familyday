@@ -54,7 +54,7 @@ var FD_CABIN_COMPARE = (function(){
     items.forEach(function(c){var th=document.createElement('th');th.scope='col';var img=document.createElement('img');img.src=GALLERY[c.id][0];img.alt='';img.width=96;img.height=96;th.appendChild(img);var name=document.createElement('strong');name.textContent=c.name;th.appendChild(name);head.appendChild(th);});
     var body=table.createTBody();
     [
-      ['الضيوف',function(c){return resortGuestText(c.guests);}],
+      ['سعة الضيوف',function(c){return resortGuestText(c.guests);}],
       ['غرف النوم',function(c){return resortRoomText(c.rooms);}],
       ['الأسرّة',function(c){return c.features.indoor.filter(function(t){return /سرير|أسرّة|أسرة/.test(t) && !/تشميس/.test(t);}).join(' · ') || '—';}],
       ['صالة داخلية',function(c){return c.livingRoom==='integrated'?'مدمجة مع غرفة النوم':c.hall?'متوفرة':'غير متوفرة';}],

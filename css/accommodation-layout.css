@@ -138,6 +138,8 @@
 #ov.fd-cabin-modern .fd-cabin-content{font-family:Tajawal,sans-serif;direction:rtl;color:#f4f8fa;}
 #ov.fd-cabin-modern .fd-cabin-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:18px;}
 #ov.fd-cabin-modern .fd-cabin-heading>div{min-width:0;}
+#ov.fd-cabin-modern .fd-cabin-heading-copy{width:100%;}
+#ov.fd-cabin-modern .fd-cabin-detail-facts{margin:14px 0;}
 #ov.fd-cabin-modern .fd-cabin-title{margin:0;color:#f4f8fa;font-weight:700;line-height:1.4;}
 #ov.fd-cabin-modern .fd-cabin-suitable{margin:4px 0 0;color:#a9c2cc;font-size:13px;line-height:1.65;}
 #ov.fd-cabin-modern .fd-cabin-badge{
