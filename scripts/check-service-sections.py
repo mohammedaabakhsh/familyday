@@ -13,10 +13,10 @@ with sync_playwright() as p:
         assert page.locator('.svcs-card',has_text='جلسة السينما').count()==0
         page.locator('.svcs-card',has_text='الضيافة والتنسيقات').click()
         assert page.url==BASE+'/services/hospitality/'
-        assert page.title()=='الضيافة والتنسيقات | يوم العائلة'
+        assert page.title()=='الضيافة والتنسيقات | منتجع يوم العائلة'
         page.locator('#hd-tab-hospitality').click()
         page.wait_for_url('**/services/hospitality/packages/')
-        assert page.title()=='الضيافة | يوم العائلة'
+        assert page.title()=='الضيافة | منتجع يوم العائلة'
         assert page.locator('#hospitality-detail [role=tab]').all_text_contents()==['الضيافة','التنسيقات']
         assert page.locator('#hd-hospitality-panel .hd-package-price').all_text_contents()==['59 ريال للباقة','75 ريال للباقة','85 ريال للباقة']
         page.locator('#hd-tab-coordination').click()
@@ -27,10 +27,10 @@ with sync_playwright() as p:
         page.locator('.hd-back').click();page.wait_for_url('**/services/')
         page.locator('.svcs-card',has_text='الجلسات والتجهيزات').click()
         assert page.url==BASE+'/services/setups/'
-        assert page.title()=='الجلسات والتجهيزات | يوم العائلة'
+        assert page.title()=='الجلسات والتجهيزات | منتجع يوم العائلة'
         page.reload(wait_until='networkidle')
         assert page.url==BASE+'/services/setups/'
-        assert page.title()=='الجلسات والتجهيزات | يوم العائلة'
+        assert page.title()=='الجلسات والتجهيزات | منتجع يوم العائلة'
         assert page.locator('#setups-title').inner_text()=='الجلسات والتجهيزات'
         assert page.locator('#setups-detail [role=tab]').count()==3
         assert page.locator('#sinema-detail').is_visible()

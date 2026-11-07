@@ -5,27 +5,27 @@
 <base href="/">
 <meta charset="UTF-8">
 <link rel="manifest" href="manifest.json">
-  <link rel="icon" type="image/png" href="imgs/icon.png">
-  <link rel="apple-touch-icon" href="imgs/icon.png">
+  <link rel="icon" type="image/png" data-page-href="imgs/icon.png">
+  <link rel="apple-touch-icon" data-page-href="imgs/icon.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="يوم العائلة">
   <meta name="theme-color" content="#19a7b7">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>شاليه يوم العائلة</title>
-<meta name="description" content="تعرّف على شاليه يوم العائلة، وتصفّح المرافق والخدمات ومعلومات الحجز.">
+<meta name="description" content="شاليه يتكوّن من دورين">
 <link rel="canonical" href="https://familydaystay.com/chalet/">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="يوم العائلة">
 <meta property="og:url" content="https://familydaystay.com/chalet/">
 <meta property="og:title" content="شاليه يوم العائلة">
-<meta property="og:description" content="تعرّف على شاليه يوم العائلة، وتصفّح المرافق والخدمات ومعلومات الحجز.">
+<meta property="og:description" content="شاليه يتكوّن من دورين">
 <meta property="og:locale" content="ar_SA">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="شاليه يوم العائلة">
-<meta name="twitter:description" content="تعرّف على شاليه يوم العائلة، وتصفّح المرافق والخدمات ومعلومات الحجز.">
+<meta name="twitter:description" content="شاليه يتكوّن من دورين">
 <!-- Schema.org Local Business -->
 <script id="fd-venue-schema" type="application/ld+json">
 {
@@ -38,7 +38,6 @@
     "https://instagram.com/FAMILYDAYRESORT",
     "https://www.snapchat.com/add/familyday5"
   ],
-  "image": "https://familydaystay.com/imgs/chalet_1.webp",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "جدة",
@@ -54,7 +53,7 @@
 <link rel="preload" as="script" href="js/accommodations.js?v=20261107-final-batch-v1">
 <link rel="preload" as="script" href="js/services.js?v=20261106-dining-inclusions-v1">
 <link rel="preload" as="script" href="js/stay-navigation.js?v=20261107-final-batch-v1">
-<link rel="preload" as="script" href="js/router.js?v=20261107-final-batch-v1">
+<link rel="preload" as="script" href="js/router.js?v=20261107-approved-previews-v1">
 <link rel="stylesheet" href="css/app-base.css?v=20261106-seating-controls-v7">
 <link rel="stylesheet" href="resort-map.css?v=20261106-fixed-selection-v4">
 <style id="fd-home-map-shortcut">
@@ -100,6 +99,8 @@
 @media(max-width:420px){.fd-shared-garden-content .fd-cabin-facts{gap:10px!important}.fd-shared-garden-content .fd-cabin-facts>div{min-height:68px!important;padding:10px!important}}
 </style>
 <link rel="stylesheet" href="/css/back-navigation.css?v=20261106-stable-ring-v2">
+<script src="/js/page-media.js?v=20261107-text-previews-v1"></script>
+<meta name="robots" content="max-image-preview:none">
 </head>
 <body>
 
@@ -162,7 +163,7 @@
 
 </style>
 <div id="splash" style="position:fixed;inset:0;z-index:9999;background:#0B1D2E;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;transition:opacity 0.6s ease;">
-  <img class="splash-brand" src="imgs/img00.webp" width="400" height="224" alt="يوم العائلة">
+  <img class="splash-brand" data-page-src="imgs/img00.webp" width="400" height="224" alt="يوم العائلة">
   <button id="splashBtn" onclick="enterMain()"><span class="shimmer-title">اكتشف يوم العائلة</span></button>
 </div>
 
@@ -200,7 +201,7 @@
 #dest .dest-card:is(:active,.is-opening) .dest-arrow{stroke:rgba(25,167,183,.80)!important;}
 </style>
 <div id="dest" class="hide">
-  <img class="dest-brand" src="imgs/img00.webp" width="140" height="88" alt="يوم العائلة">
+  <img class="dest-brand" data-page-src="imgs/img00.webp" width="140" height="88" alt="يوم العائلة">
   <div class="dest-choice-group">
   <h1 class="shimmer-title dest-heading">اختر وجهتك<span class="heading-birds" aria-hidden="true"><svg viewBox="0 0 36 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path class="heading-bird" d="M3 11Q9 6 16 9Q22 2 31 2"/><path class="heading-bird heading-bird-small" d="M12 21Q17 16 22 18Q27 12 33 12"/></svg></span></h1>
   <p class="shimmer-title dest-description">تعرّف على تفاصيل كل وجهة واختر ما يناسبك</p>
@@ -248,7 +249,7 @@
   </div>
 </div>
 
-<script src="share-pages.js?v=20261107-final-batch-v1"></script>
+<script src="share-pages.js?v=20261107-approved-previews-v1"></script>
 <link rel="stylesheet" href="css/faq-mobile.css?v=20261102-code-cleanup-v2">
 <link rel="stylesheet" href="css/water-games.css?v=20261106-inline-offer-v3">
 <script src="js/water-games.js?v=20261102-water-review-v2"></script>
@@ -273,14 +274,14 @@
         <span class="rh-back-icon" aria-hidden="true"><svg width="7" height="12" viewBox="0 0 9 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg></span>
         <span>الوجهات</span>
       </button>
-      <img src="imgs/img01.webp" width="400" height="400" alt="Family Day Resort" class="rh-logo" decoding="async">
+      <img data-page-src="imgs/img01.webp" width="400" height="400" alt="Family Day Resort" class="rh-logo" decoding="async">
       <h1 id="rh-title" class="heading-with-birds">منتجع يوم العائلة<span class="heading-birds" aria-hidden="true"><svg viewBox="0 0 36 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path class="heading-bird" d="M3 11Q9 6 16 9Q22 2 31 2"/><path class="heading-bird heading-bird-small" d="M12 21Q17 16 22 18Q27 12 33 12"/></svg></span></h1>
       <p class="rh-subtitle shimmer-title">خصوصية تليق بكم… وراحة تستحقونها</p>
     </div>
 
 
       <button type="button" class="rh-cabins" onclick="showSection('resort')" aria-label="الأكواخ">
-        <img loading="lazy" class="rh-cabin-photo" src="imgs/dome_1.webp" width="1200" height="1200" alt="" decoding="async">
+        <img loading="lazy" class="rh-cabin-photo" data-page-src="imgs/dome_1.webp" width="1200" height="1200" alt="" decoding="async">
         <span class="rh-cabin-shade" aria-hidden="true"></span>
         <span class="rh-cabin-bottom">
           <span class="rh-cabin-copy">
@@ -643,7 +644,7 @@
       <div class="cn-photo-group">
         <p class="cn-intro cn-intro--desktop">جلسة سينما خارجية في المساحة الخاصة بالكوخ</p>
         <figure class="cn-photo">
-          <img loading="lazy" src="imgs/cinema_1.webp" width="1200" height="1200" alt="جلسة سينما ليلية بشاشة عرض وجلسات خارجية داخل المساحة الخاصة بالكوخ" decoding="async">
+          <img loading="lazy" data-page-src="imgs/cinema_1.webp" width="1200" height="1200" alt="جلسة سينما ليلية بشاشة عرض وجلسات خارجية داخل المساحة الخاصة بالكوخ" decoding="async">
         </figure>
       </div>
       <div class="cn-details">
@@ -1199,7 +1200,7 @@
         <span class="rh-back-icon" aria-hidden="true"><svg width="7" height="12" viewBox="0 0 9 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg></span>
         <span>الوجهات</span>
       </button>
-      <img src="imgs/stay/img01.webp" width="400" height="400" alt="استراحة يوم العائلة" class="rh-logo" decoding="async">
+      <img data-page-src="imgs/stay/img01.webp" width="400" height="400" alt="استراحة يوم العائلة" class="rh-logo" decoding="async">
       <h1 id="sh-title" class="heading-with-birds">استراحة يوم العائلة<span class="heading-birds" aria-hidden="true"><svg viewBox="0 0 36 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path class="heading-bird" d="M3 11Q9 6 16 9Q22 2 31 2"/><path class="heading-bird heading-bird-small" d="M12 21Q17 16 22 18Q27 12 33 12"/></svg></span></h1>
       <p class="rh-subtitle shimmer-title">خصوصية تليق بكم… وراحة تستحقونها</p>
     </div>
@@ -1207,7 +1208,7 @@
 
 
       <button type="button" class="rh-cabins" onclick="showSection2()" aria-label="أقسام الاستراحة">
-        <img loading="lazy" class="rh-cabin-photo" src="imgs/sec1_1.webp" width="1200" height="1200" alt="" decoding="async">
+        <img loading="lazy" class="rh-cabin-photo" data-page-src="imgs/sec1_1.webp" width="1200" height="1200" alt="" decoding="async">
         <span class="rh-cabin-shade" aria-hidden="true"></span>
         <span class="rh-cabin-bottom">
           <span class="rh-cabin-copy">
@@ -1248,7 +1249,7 @@
         <span class="rh-back-icon" aria-hidden="true"><svg width="7" height="12" viewBox="0 0 9 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg></span>
         <span>الوجهات</span>
       </button>
-      <img src="imgs/img01.webp" width="400" height="400" alt="شاليه يوم العائلة" class="rh-logo" decoding="async">
+      <img data-page-src="imgs/img01.webp" width="400" height="400" alt="شاليه يوم العائلة" class="rh-logo" decoding="async">
       <h1 id="ch-title" class="heading-with-birds">شاليه يوم العائلة<span class="heading-birds" aria-hidden="true"><svg viewBox="0 0 36 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path class="heading-bird" d="M3 11Q9 6 16 9Q22 2 31 2"/><path class="heading-bird heading-bird-small" d="M12 21Q17 16 22 18Q27 12 33 12"/></svg></span></h1>
       <p class="rh-subtitle shimmer-title">خصوصية تليق بكم… وراحة تستحقونها</p>
     </div>
@@ -1256,7 +1257,7 @@
 
 
       <button type="button" class="rh-cabins" onclick="openPrivateChalet()" aria-label="الشاليه">
-        <img class="rh-cabin-photo" src="imgs/chalet_1.webp?v=20261007" width="1200" height="1200" alt="" loading="lazy" decoding="async">
+        <img class="rh-cabin-photo" data-page-src="imgs/chalet_1.webp?v=20261007" width="1200" height="1200" alt="" loading="lazy" decoding="async">
         <span class="rh-cabin-shade" aria-hidden="true"></span>
         <span class="rh-cabin-bottom">
           <span class="rh-cabin-copy">
@@ -1385,7 +1386,7 @@
   </header>
 
   <section class="section-hero" id="sectionHero2" style="padding-top:0;" hidden>
-    <img id="heroLogo2" src="imgs/stay/img02.webp" style="height:80px;object-fit:contain;margin:0 auto 2px;display:none;" alt="يوم العائلة">
+    <img id="heroLogo2" data-page-src="imgs/stay/img02.webp" style="height:80px;object-fit:contain;margin:0 auto 2px;display:none;" alt="يوم العائلة">
     <p id="sectionDesc2"></p>
   </section>
 
@@ -1492,7 +1493,7 @@
   </header>
 
   <section class="section-hero" id="sectionHero">
-    <img id="heroLogo" src="imgs/img03.webp" style="height:80px;object-fit:contain;margin:0 auto 2px;display:none;" alt="يوم العائلة">
+    <img id="heroLogo" data-page-src="imgs/img03.webp" style="height:80px;object-fit:contain;margin:0 auto 2px;display:none;" alt="يوم العائلة">
     <h1 id="sectionTitle"></h1>
     <p id="sectionDesc"></p>
     <div class="section-tag" id="sectionTag"></div>
@@ -1654,7 +1655,7 @@
 
     <div class="tg-layout">
       <figure class="tg-photo">
-        <img loading="lazy" src="imgs/tarfihi_1.webp" width="1200" height="1200" alt="ضيوف يلعبون لعبة جماعية على طاولة داخل الكوخ" decoding="async">
+        <img loading="lazy" data-page-src="imgs/tarfihi_1.webp" width="1200" height="1200" alt="ضيوف يلعبون لعبة جماعية على طاولة داخل الكوخ" decoding="async">
       </figure>
       <div class="tg-details">
         <section aria-labelledby="tg-packages-title">
@@ -1725,7 +1726,7 @@
       <div class="tw-photo-group">
         <p class="tw-intro tw-intro--desktop">طاولة تجمعكم في المساحة الخارجية الخاصة بالكوخ</p>
         <div class="tw-photo">
-          <img loading="lazy" src="imgs/tawilat_1.webp" width="1200" height="1200" alt="طاولة طعام خارجية مجهزة بالكراسي وأطقم التقديم والزهور بجانب المسبح" decoding="async">
+          <img loading="lazy" data-page-src="imgs/tawilat_1.webp" width="1200" height="1200" alt="طاولة طعام خارجية مجهزة بالكراسي وأطقم التقديم والزهور بجانب المسبح" decoding="async">
         </div>
       </div>
 
@@ -1888,8 +1889,8 @@
 <link rel="stylesheet" href="service-sections.css?v=20261106-compact-tabs-v5">
 <script src="service-sections.js?v=20261103-splash-motion-v1"></script>
 <script src="js/shared-specifications.js?v=20261107-final-batch-v1"></script>
-<script src="venue-data.js?v=20261107-final-batch-v1"></script>
-<script src="js/router.js?v=20261107-final-batch-v1"></script>
+<script src="venue-data.js?v=20261107-approved-previews-v1"></script>
+<script src="js/router.js?v=20261107-approved-previews-v1"></script>
 <script src="resort-map-data.js?v=20261106-greek-label-v3" defer></script>
 <script src="resort-map.js?v=20261107-final-batch-v1" defer></script>
 <link rel="stylesheet" href="chalet-map.css?v=20261107-bedroom-floor-v3">

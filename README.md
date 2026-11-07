@@ -9,7 +9,8 @@ python3 -m http.server 8023 --bind 127.0.0.1
 
 ## Where to edit
 
-- `index.html`: page content, metadata and asset loading order. Keep executable
+- `index.html`: page content and asset loading order. Root preview metadata is
+  generated from `share-extras.json`. Keep executable
   application code in `js/`, and large stylesheet sections in `css/`.
 - `js/app-shell.js`: FAQ, contact and splash actions.
 - `js/service-orders.js` and `css/service-orders.css`: shared service checkout,
@@ -32,11 +33,22 @@ python3 -m http.server 8023 --bind 127.0.0.1
 - `share-pages.json`: public entry URLs; `scripts/build-share-pages.py` generates
   complete entry pages from the shared `index.html`, with route-specific metadata.
   Visitors load the app directly, without a redirect or a second document request.
-  Do not edit generated pages. After every `index.html` or `share-pages.json`
+  Do not edit generated pages. After every `index.html`, `share-pages.json` or `share-extras.json`
   change, run `python3 scripts/build-share-pages.py`; use `--check` to detect stale output.
   General service links keep the group preview; specific tab links
   use their own catalog entries and open the same grouped interface. Keep titles
   and descriptions in this catalog, then regenerate the entry pages.
+- `share-extras.json`: approved titles/descriptions for the root, illustrated tours
+  and the two client guides. The same build script updates these standalone
+  documents and the legacy guest link. Keep empty descriptions for the two
+  rest-house sections and chalet details: these are intentional title-only links.
+- All public previews are text-only: no Open Graph/Twitter/JSON-LD image,
+  static thumbnail image or icon candidate. `js/page-media.js` restores
+  `data-page-src`/`data-page-href` in the browser, preserving original images,
+  dimensions and lazy loading. Keep this script in the head, without defer.
+  The brochure's source reader accepts `data-page-src` from the unexecuted HTML.
+  Platform thumbnail heuristics and previously cached WhatsApp previews cannot
+  be verified by local metadata checks alone.
 - `site-ui.css`: shared mobile contact spacing; desktop/contact base rules live
   in `css/app-base.css`, without JavaScript-injected contact overrides.
 - `services-guide/`: guide navigation and the temporary footer link to
@@ -117,6 +129,7 @@ python3 scripts/check-approved-review.py http://127.0.0.1:8023
 python3 scripts/check-share-navigation.py http://127.0.0.1:8023
 python3 scripts/check-entry-loading.py http://127.0.0.1:8023
 python3 scripts/check-share-pages.py http://127.0.0.1:8023
+python3 scripts/check-link-previews.py http://127.0.0.1:8023
 python3 scripts/check-menu-experience.py http://127.0.0.1:8023
 python3 scripts/check-service-sections.py http://127.0.0.1:8023
 python3 scripts/check-service-orders.py http://127.0.0.1:8023

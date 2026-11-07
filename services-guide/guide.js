@@ -22,7 +22,7 @@
   const sourceImage = (root, selector) => {
     const image = root.querySelector(selector);
     if (!image) throw new Error('Missing service image: ' + selector);
-    return {src:image.getAttribute('src'), alt:image.alt};
+    return {src:image.getAttribute('data-page-src') || image.getAttribute('src'), alt:image.alt};
   };
   function serviceCard({title, price, priceUnit = '', photos = [], body, id = '', label = 'تفاصيل الخدمة', imageAlt, className = '', capacity = '', expandable = true}) {
     const priceMarkup = '<strong class="price">' + escape(price) + (priceUnit ? '<span class="price-unit"> ' + escape(priceUnit) + '</span>' : '') + '</strong>';

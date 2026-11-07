@@ -21,7 +21,6 @@ window.FD_VENUE_SCHEMAS = {
       "https://instagram.com/FAMILYDAYRESORT",
       "https://www.snapchat.com/add/familyday5"
     ],
-    "image": "https://familydaystay.com/imgs/img01.webp",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "جدة",
@@ -39,7 +38,6 @@ window.FD_VENUE_SCHEMAS = {
       "https://instagram.com/FAMILYDAYRESORT",
       "https://www.snapchat.com/add/familyday5"
     ],
-    "image": "https://familydaystay.com/imgs/sec1_1.webp",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "جدة",
@@ -57,7 +55,6 @@ window.FD_VENUE_SCHEMAS = {
       "https://instagram.com/FAMILYDAYRESORT",
       "https://www.snapchat.com/add/familyday5"
     ],
-    "image": "https://familydaystay.com/imgs/chalet_1.webp",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "جدة",

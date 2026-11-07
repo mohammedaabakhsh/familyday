@@ -13,12 +13,12 @@ with sync_playwright() as p:
    title=page.title();page.reload(wait_until='networkidle')
    assert page.title()==title
    page.evaluate(close+'()');page.wait_for_url('**/services/')
-   assert page.title()=='خدمات المنتجع | يوم العائلة'
+   assert page.title()=='خدمات منتجع يوم العائلة'
   page.evaluate('openMenuDetail()');page.wait_for_url('**/menu/')
   page.locator('#menu-cats button').nth(1).click()
   page.locator('#menu-items button[aria-label^="إضافة"]').first.click()
   page.locator('.menu-cart-trigger').click()
-  assert page.title()=='منيو المطعم | يوم العائلة'
+  assert page.title()=='المطعم | منتجع يوم العائلة'
   page.go_back(wait_until='networkidle')
   assert page.locator('#menu-cart-review').is_hidden()
   assert page.locator('#menu-cart-bar').is_visible()
@@ -31,7 +31,7 @@ with sync_playwright() as p:
   page.goto(BASE+'/resort-map/#map=10',wait_until='networkidle')
   page.locator('.fd-map-details-button:not(.fd-map-tour-button)').click()
   page.wait_for_url('**/cabins/panoramic/?from=map')
-  assert page.title()=='البيت البانورامي | يوم العائلة'
+  assert page.title()=='البيت البانورامي | منتجع يوم العائلة'
   assert page.evaluate('cabinShareURL(10)')==BASE+'/cabins/panoramic/'
   page.reload(wait_until='networkidle')
   assert page.evaluate('history.state.route.parent.name')=='map'

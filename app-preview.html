@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <link rel="manifest" href="manifest.json">
-  <link rel="icon" type="image/png" href="imgs/icon.png">
-  <link rel="apple-touch-icon" href="imgs/icon.png">
+  <link rel="icon" type="image/png" data-page-href="imgs/icon.png">
+  <link rel="apple-touch-icon" data-page-href="imgs/icon.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="منتجع يوم العائلة">
@@ -19,15 +19,11 @@
 <meta property="og:url" content="https://mohammedaabakhsh.github.io/familyday/">
 <meta property="og:title" content="يوم العائلة | منتجع واستراحة في جدة">
 <meta property="og:description" content="تعرّف على وحدات المنتجع والاستراحة والخدمات المتاحة، واختر ما يناسبك.">
-<meta property="og:image" content="https://mohammedaabakhsh.github.io/familyday/imgs/og.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
 <meta property="og:locale" content="ar_SA">
 <!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="يوم العائلة | منتجع واستراحة في جدة">
 <meta name="twitter:description" content="اكتشف أكواخ منتجع يوم العائلة في خليج سلمان بجدة، مع مسابح خاصة وخيارات تناسب العائلات والعرسان.">
-<meta name="twitter:image" content="https://mohammedaabakhsh.github.io/familyday/imgs/og.png">
 <!-- Schema.org Local Business -->
 <script type="application/ld+json">
 {
@@ -36,7 +32,6 @@
   "name": "منتجع يوم العائلة",
   "description": "أكواخ خاصة مع مسابح مستقلة في خليج سلمان، جدة",
   "url": "https://mohammedaabakhsh.github.io/familyday/",
-  "image": "https://mohammedaabakhsh.github.io/familyday/imgs/img01.webp",
   "telephone": "+966556156693",
   "address": {
     "@type": "PostalAddress",
@@ -934,6 +929,8 @@ header{
 </style>
 <link rel="stylesheet" href="resort-map.css?v=20261102-code-cleanup-v2">
 <meta name="robots" content="noindex,nofollow">
+<script src="/js/page-media.js?v=20261107-text-previews-v1"></script>
+<meta name="robots" content="max-image-preview:none">
 </head>
 <body class="fa-app">
 
@@ -987,7 +984,7 @@ header{
 /* ===== END LANDING REDESIGN PREMIUM v2 ===== */
 </style>
 <div id="splash" style="position:fixed;inset:0;z-index:9999;background:#0B1D2E;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;transition:opacity 0.6s ease;">
-  <img src="imgs/img00.webp" style="width:140px;opacity:0.92;animation:splashFadeUp 0.5s ease 0.1s both;">
+  <img data-page-src="imgs/img00.webp" style="width:140px;opacity:0.92;animation:splashFadeUp 0.5s ease 0.1s both;">
   <button id="splashBtn" onclick="enterMain()" style="opacity:0;animation:splashFadeUp 0.4s ease 0.5s forwards;padding:16px 52px;border-radius:100px;border:1.5px solid rgba(255,255,255,0.72);background:rgba(255,255,255,0.1);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;cursor:pointer;letter-spacing:0;box-shadow:0 4px 24px rgba(0,0,0,0.18),inset 0 1px 0 rgba(255,255,255,0.18);" class="landing-explore-btn"><span class="shimmer-title">اكتشف يوم العائلة</span></button>
 </div>
 
@@ -1031,7 +1028,7 @@ header{
 .dest-card.selected .dest-arrow{stroke:rgba(25,167,183,.80)!important;}
 </style>
 <div id="dest" class="hide" style="position:fixed;inset:0;z-index:8000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;font-family:'Tajawal',sans-serif;direction:rtl;">
-  <img class="dest-brand" src="imgs/img00.webp" style="width:140px;margin-bottom:22px;opacity:0.92;filter:drop-shadow(0 0 24px rgba(25,167,183,.30));">
+  <img class="dest-brand" data-page-src="imgs/img00.webp" style="width:140px;margin-bottom:22px;opacity:0.92;filter:drop-shadow(0 0 24px rgba(25,167,183,.30));">
   <div class="dest-choice-group">
   <div class="shimmer-title" style="font-size:24px;font-weight:700;color:#fff;margin-bottom:6px;letter-spacing:0;">اختر وجهتك</div>
   <div class="shimmer-title" style="font-size:14px;color:rgba(255,255,255,0.68);margin-bottom:28px;text-align:center;line-height:1.6;animation-duration:3.4s;">تعرّف على تفاصيل كل وجهة واختر ما يناسبك</div>
@@ -1319,7 +1316,7 @@ function tarfihiOrder(){
         <svg width="7" height="12" viewBox="0 0 9 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg>
         <span>الوجهات</span>
       </button>
-      <img src="imgs/img01.webp" width="400" height="400" alt="Family Day Resort" class="rh-logo" decoding="async">
+      <img data-page-src="imgs/img01.webp" width="400" height="400" alt="Family Day Resort" class="rh-logo" decoding="async">
       <h1 id="rh-title">منتجع يوم العائلة</h1>
       <p class="rh-subtitle">خصوصية تليق بكم… وراحة تستحقونها</p>
     </div>
@@ -1327,7 +1324,7 @@ function tarfihiOrder(){
 
     <div class="rh-grid">
       <button type="button" class="rh-cabins" onclick="showSection('resort')" aria-label="الأكواخ">
-        <img class="rh-cabin-photo" src="imgs/dome_1.webp" width="1200" height="1200" alt="" fetchpriority="high" decoding="async">
+        <img class="rh-cabin-photo" data-page-src="imgs/dome_1.webp" width="1200" height="1200" alt="" fetchpriority="high" decoding="async">
         <span class="rh-cabin-shade" aria-hidden="true"></span>
         <span class="rh-cabin-bottom">
           <span class="rh-cabin-copy">
@@ -1741,7 +1738,7 @@ function tarfihiOrder(){
       <div class="cn-photo-group">
         <p class="cn-intro cn-intro--desktop">سهرة سينمائية في مساحتكم الخاصة</p>
         <figure class="cn-photo">
-          <img src="imgs/cinema_1.webp" width="1200" height="1200" alt="جلسة سينما ليلية بشاشة عرض وجلسات خارجية داخل المساحة الخاصة بالكوخ" decoding="async">
+          <img data-page-src="imgs/cinema_1.webp" width="1200" height="1200" alt="جلسة سينما ليلية بشاشة عرض وجلسات خارجية داخل المساحة الخاصة بالكوخ" decoding="async">
         </figure>
       </div>
       <div class="cn-details">
@@ -1992,7 +1989,7 @@ function tarfihiOrder(){
     <div class="lh-overlay"></div>
     <button onclick="goBackToDestination()" style="position:absolute;top:18px;left:18px;z-index:20;background:rgba(4,17,30,0.55);border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.8);font-family:'Tajawal',sans-serif;font-size:13px;font-weight:600;padding:7px 14px;border-radius:100px;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;gap:6px;"><svg width="7" height="12" viewBox="0 0 9 15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg> الوجهات</button>
     <div class="lh-logo-wrap">
-      <img src="imgs/stay/img01.webp" alt="استراحة يوم العائلة" class="lh-logo-img">
+      <img data-page-src="imgs/stay/img01.webp" alt="استراحة يوم العائلة" class="lh-logo-img">
     </div>
     <div class="lh-hero-main">
       <h1 class="lh-title">استراحة يوم العائلة</h1>
@@ -2112,7 +2109,7 @@ function tarfihiOrder(){
   </header>
 
   <section class="section-hero" id="sectionHero2" style="padding-top:0;">
-    <img id="heroLogo2" src="imgs/stay/img02.webp" style="height:80px;object-fit:contain;margin:0 auto 2px;display:none;" alt="يوم العائلة">
+    <img id="heroLogo2" data-page-src="imgs/stay/img02.webp" style="height:80px;object-fit:contain;margin:0 auto 2px;display:none;" alt="يوم العائلة">
     <h1 id="sectionTitle2"></h1>
     <p id="sectionDesc2"></p>
   </section>
@@ -2215,7 +2212,7 @@ function tarfihiOrder(){
   </header>
 
   <section class="section-hero" id="sectionHero">
-    <img id="heroLogo" src="imgs/img03.webp" style="height:80px;object-fit:contain;margin:0 auto 2px;display:none;" alt="يوم العائلة">
+    <img id="heroLogo" data-page-src="imgs/img03.webp" style="height:80px;object-fit:contain;margin:0 auto 2px;display:none;" alt="يوم العائلة">
     <h1 id="sectionTitle"></h1>
     <p id="sectionDesc"></p>
     <div class="section-tag" id="sectionTag"></div>
@@ -3778,7 +3775,7 @@ function closeWalaaDetail(){
 
     <div class="tg-layout">
       <figure class="tg-photo">
-        <img src="imgs/tarfihi_1.webp" width="1200" height="1200" alt="ضيوف يلعبون لعبة جماعية على طاولة داخل الكوخ" decoding="async">
+        <img data-page-src="imgs/tarfihi_1.webp" width="1200" height="1200" alt="ضيوف يلعبون لعبة جماعية على طاولة داخل الكوخ" decoding="async">
       </figure>
       <div class="tg-details">
         <section aria-labelledby="tg-packages-title">
@@ -3851,7 +3848,7 @@ function closeWalaaDetail(){
       <div class="tw-photo-group">
         <p class="tw-intro tw-intro--desktop">جلسة طعام خارجية تناسب مختلف المناسبات</p>
         <div class="tw-photo">
-          <img src="imgs/tawilat_1.webp" width="1200" height="1200" alt="طاولة طعام خارجية مجهزة بالكراسي وأطقم التقديم والزهور بجانب المسبح" decoding="async">
+          <img data-page-src="imgs/tawilat_1.webp" width="1200" height="1200" alt="طاولة طعام خارجية مجهزة بالكراسي وأطقم التقديم والزهور بجانب المسبح" decoding="async">
         </div>
       </div>
 

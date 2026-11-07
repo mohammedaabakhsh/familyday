@@ -188,8 +188,8 @@
       call(serviceViews[r.name][1]);
     }
   }
-  var defaultPageTitle=document.title;
-  var defaultPageDescription=document.querySelector('meta[name="description"]').content;
+  var defaultPageTitle=FD_SHARE_ROOT.title;
+  var defaultPageDescription=FD_SHARE_ROOT.description;
   function updatePagePreview(r){
     // Temporary dialogs keep the title of the underlying shareable page.
     var pageRoute=r;

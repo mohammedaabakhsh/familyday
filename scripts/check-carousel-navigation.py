@@ -1,7 +1,7 @@
 """Check that arrow requests survive layout changes in both RTL carousels."""
 import sys
 
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, expect
 
 BASE = sys.argv[1] if len(sys.argv) > 1 else 'http://127.0.0.1:8051'
 
@@ -65,11 +65,13 @@ with sync_playwright() as playwright:
                 centered(page, grid_id, 1)
                 controls.locator('button').first.click()
                 centered(page, grid_id, 0)
-                assert controls.locator('button').first.is_disabled()
+                # The scroll handler updates controls after a 90 ms debounce.
+                # Geometric centering can precede that update under CPU load.
+                expect(controls.locator('button').first).to_be_disabled(timeout=1500)
                 grid.press('ArrowLeft')
                 centered(page, grid_id, 1)
                 if total == 2:
-                    assert controls.locator('button').last.is_disabled()
+                    expect(controls.locator('button').last).to_be_disabled(timeout=1500)
 
                 # Native scrolling still updates the counter, without an arrow click.
                 grid.evaluate("e=>e.scrollTo({left:0,behavior:'instant'})")

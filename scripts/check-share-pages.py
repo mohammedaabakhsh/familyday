@@ -27,7 +27,7 @@ for entry in pages:
     source = urlopen(BASE + entry['path']).read().decode()
     parser = Metadata(); parser.feed(source)
     assert parser.values.get('og:title'), entry['path']
-    assert parser.values.get('og:description'), entry['path']
+    assert parser.values.get('og:description') == entry['description'], entry['path']
     assert parser.values.get('og:url') == 'https://familydaystay.com' + entry['path'], entry['path']
     if entry['entry']:
         assert parser.values['og:title'] == entry['title'], entry['path']
