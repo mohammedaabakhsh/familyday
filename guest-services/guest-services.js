@@ -438,6 +438,7 @@
       var contents=section.querySelector('.contents-list');
       if(contents){contents.replaceChildren();data.contents.forEach(function(text){contents.appendChild(el('li',text));});section.querySelector('.contents-title').textContent=data.contentsTitle;}
     });
+    document.getElementById('restaurant-hours').textContent=catalog.restaurantHours;
     document.getElementById('water-offer').textContent=catalog.water.size+' ألعاب بـ'+catalog.water.price+' ريال';
     document.getElementById('cinema-duration').textContent=catalog.cinema.duration;
     document.getElementById('cinema-price').textContent=catalog.cinema.price+' ريال';

@@ -246,3 +246,6 @@ body.dialog-open{overflow:hidden}
 .footer-social svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .footer-social .footer-link--snapchat svg{fill:currentColor;stroke:none}
 @media(hover:hover){.footer-social .social-link:hover{border-color:#2d6771;background:#fff}}
+
+#restaurant-service .restaurant-hours{margin:0 0 6px;color:var(--deep);font-size:14px;font-weight:600;line-height:1.7}
+.dialog-body #restaurant-service>.section-note{font-size:12px;margin-bottom:16px}
