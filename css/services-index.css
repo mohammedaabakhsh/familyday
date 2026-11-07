@@ -1,0 +1,46 @@
+/* Fit the services index to the visible screen, including mobile browser chrome. */
+#services-overlay {
+  box-sizing: border-box;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overscroll-behavior: none;
+}
+#services-overlay .svcs-header {
+  flex: 0 0 auto;
+  padding: calc(10px + env(safe-area-inset-top, 0px)) 20px 12px;
+}
+#services-overlay .svcs-content {
+  flex: 1 0 auto;
+  align-content: start;
+  gap: clamp(10px, 2.2dvh, 22px);
+  padding: 0 20px calc(12px + env(safe-area-inset-bottom, 0px));
+}
+#services-overlay .svcs-section-title {
+  margin: 0 2px 4px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+#services-overlay .svcs-grid { gap: 6px; }
+#services-overlay .svcs-card {
+  min-height: clamp(44px, 6.3dvh, 60px);
+  padding: 8px 14px;
+  border-radius: 14px;
+}
+#services-overlay .svcs-card .svcs-name { font-size: 14px; line-height: 1.4; }
+/* Short portrait screens use two columns instead of reducing the touch targets. */
+@media (max-width: 599px) and (max-height: 699px) {
+  #services-overlay .svcs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #services-overlay .svcs-grid--single { grid-template-columns: minmax(0, 1fr); }
+  #services-overlay .svcs-grid--rewards > :first-child { grid-column: 1 / -1; }
+  #services-overlay .svcs-card { gap: 6px; padding-inline: 10px; }
+}
+@media (min-width: 600px) and (max-height: 600px) {
+  #services-overlay .svcs-content { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 20px; }
+  #services-overlay .svcs-grid { grid-template-columns: minmax(0, 1fr); }
+  #services-overlay .svcs-card { min-height: 44px; }
+}
+@media (min-width: 600px) and (min-height: 601px) {
+  #services-overlay .svcs-card .svcs-name { font-size: 16px; }
+}
