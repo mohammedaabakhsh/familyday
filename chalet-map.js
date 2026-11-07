@@ -25,7 +25,7 @@
       ],
       [
         "الحمام",
-        "حمام خاص"
+        "حمام خاص داخل غرفة النوم الرئيسية"
       ]
     ]
   },
@@ -319,13 +319,13 @@
     (details.primary||[]).forEach(function(f,i){
       var ar=room.primary[i][0], value=f[1], numeric=ar==='العمق';
 
-      cards.push({label:room.key==='ground'||room.key==='dining'?'':f[0],value:room.key==='dining'?'تتّسع لـ'+value:value,numeric:numeric,icon:room.key==='dining'?'dining':{'العمق':'water','السرير':'bed','الأسرّة':'bed','الحمام':'shower','السعة':'people'}[ar]||'size'});
+      cards.push({label:['upper','ground','dining'].includes(room.key)?'':f[0],value:room.key==='dining'?'تتّسع لـ'+value:value,numeric:numeric,icon:room.key==='dining'?'dining':{'العمق':'water','السرير':'bed','الأسرّة':'bed','الحمام':'shower','السعة':'people'}[ar]||'size'});
     });
     (details.facts||[]).forEach(function(f,i){cards.push({value:f,icon:factIcon(room.facts[i])});});
     if(room.key==='groundBath')cards.push({value:'حمام',icon:'shower'});
     if(room.key==='stairs')cards.push({value:details.text,icon:'stairs'});
     panel.innerHTML='<div class="cm-detail-heading'+(['upper','ground'].includes(room.key)?' cm-detail-heading--bedroom':'')+'"><h3>'+esc(name)+'</h3>'+(floor?'<p>'+esc(floor)+'</p>':'')+'</div>'
-      +'<div class="cm-cards'+(cards.length>3?' is-scrollable':'')+'">'+cards.map(function(card){return '<div class="cm-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+esc(card.value)+'</strong></div></div>';}).join('')+'</div>'
+      +'<div class="cm-cards'+(cards.length>3?' is-scrollable':'')+'">'+cards.map(function(card){return '<div class="cm-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+(card.value==='حمام خاص داخل غرفة النوم الرئيسية'?'حمام خاص<br>داخل غرفة النوم الرئيسية':esc(card.value))+'</strong></div></div>';}).join('')+'</div>'
       +(cards.length>3?'<div class="cm-spec-navigation" role="group" aria-label="التنقل بين المواصفات" hidden><button type="button" data-spec-direction="previous" aria-label="المواصفات السابقة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button><span>اسحب لعرض المزيد</span><button type="button" data-spec-direction="next" aria-label="المواصفات التالية"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button></div>':'')
       +(details.text&&room.key!=='stairs'?'<p class="cm-note">'+esc(details.text)+'</p>':'');
     var strip=panel.querySelector('.cm-cards');
