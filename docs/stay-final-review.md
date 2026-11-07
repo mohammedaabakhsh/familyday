@@ -209,3 +209,7 @@
 طلب المالك تحويل عنوان المقارنة إلى زر يفتح الجدول ويغلقه، ورفعه قليلًا. أصبح الجدول مغلقًا عند الدخول، وزر «قارن بين القسمين» مع سهم للأسفل يفتحه، والسهم يتجه للأعلى عند الفتح. تقليل الفراغ بين أسهم القسمين والعنوان بمجموع 32 بكسل مع إبقاء الجدول ومحتواه المعتمد كما هما. الزر يدعم لوحة المفاتيح وحالتي aria-expanded وaria-controls.
 
 نجح فحص الفتح والإغلاق بالنقر وEnter وSpace عند 320 و390 و1440، ووجود الصفوف الثمانية وعدم تجاوز عرض الشاشة. نجح فحص الصفحات المولدة. راجعت صورة الزر المغلق محليًا في `/tmp/fd-stay-toggle-closed.png`.
+
+### Comparison toggle prominence follow-up
+- Centered the title and placed its chevron 10px beside it, inside a teal button with a visible border; retained the raised position and collapse behavior.
+- Verified at 320px, 390px and 1440px: alignment, adjacent arrow, opening/closing and no horizontal overflow. Share-page generation and whitespace checks passed.
