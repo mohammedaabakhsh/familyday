@@ -73,7 +73,7 @@ with sync_playwright() as p:
         assert page.locator('#guide-content details').count()==12
         assert page.locator('#guide-content details[open]').count()==0
         assert not page.locator('#package-complete details').evaluate('e=>e.open')
-        assert page.locator('.package-card > .package-photo img').count()==41
+        assert page.locator('.package-card > .package-photo img').count()==38
         assert page.locator('.gallery-controls').count()==6
         assert page.locator('#resort-map').count()==0
         for name in SECTIONS:
