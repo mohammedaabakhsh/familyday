@@ -490,7 +490,11 @@ function closeWalaaDetail(){
     var heading = document.getElementById(id);
     if (!heading) return;
     var card = heading.closest('.hd-package');
-    card.insertAdjacentHTML('afterbegin', FD_GUIDE_GALLERY.markup(
+    var summary = card.querySelector('.hd-package-details > summary');
+    if (!summary) return;
+    summary.querySelector('span').textContent = 'الصور وتفاصيل الباقة';
+    summary.setAttribute('aria-label', 'الصور وتفاصيل ' + heading.textContent.trim());
+    summary.insertAdjacentHTML('afterend', FD_GUIDE_GALLERY.markup(
       _coordinationPhotos[id], heading.textContent.trim(), 'تنسيق باقة ' + heading.textContent.trim()
     ));
     FD_GUIDE_GALLERY.mount(card);

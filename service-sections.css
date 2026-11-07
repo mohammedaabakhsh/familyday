@@ -30,5 +30,5 @@
 #hospitality-detail .gallery-arrow{display:grid;place-items:center;width:44px;height:44px;margin:0;padding:0;border:0;border-radius:0;background:transparent;color:inherit;cursor:pointer;touch-action:manipulation}
 #hospitality-detail .gallery-arrow svg{width:17px;height:17px;filter:drop-shadow(0 1px 2px #000b)}#hospitality-detail .gallery-arrow:disabled{opacity:.35;cursor:default}#hospitality-detail .gallery-arrow:focus-visible{outline:2px solid white;outline-offset:-3px}
 #hospitality-detail .gallery-count{display:block;min-width:40px;text-align:center;white-space:nowrap;font-size:13px;font-weight:700;letter-spacing:1px;line-height:1;text-shadow:0 1px 3px #000b}
-#hospitality-detail .package-gallery{margin:-16px -18px 16px;border-radius:15px 15px 0 0}
+#hospitality-detail .package-gallery{margin:12px -18px 16px;border-radius:0}
 #hospitality-detail .package-gallery img{display:block}
