@@ -50,9 +50,9 @@ with sync_playwright() as p:
         page.locator('.cm-close').click()
         page.locator('.fd-cabin-faq-link').click()
         page.locator('#chalet-faq .fd-faq-shortcuts button').nth(1).click()
-        page.locator('#chalet-faq summary', has_text='ما الصالات والمجالس').click()
+        page.locator('#chalet-faq summary', has_text='هل يوجد مجلس مستقل').click()
         answer = page.locator('#chalet-faq details[open]').inner_text()
-        assert capacity in answer and bathroom in answer
+        assert capacity in answer and bathroom.replace(" بالمجلس المستقل", "") in answer
         page.locator('#chalet-faq summary', has_text='ما تجهيزات المطبخ').click()
         answer = page.locator('#chalet-faq details[open]').inner_text()
         for word in ['موقدًا كهربائيًا', 'موقد غاز', 'فرنًا', 'ميكروويف', 'ثلاجة', 'غلاية', 'أدوات مطبخ أساسية']:

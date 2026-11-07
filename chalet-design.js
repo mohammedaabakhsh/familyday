@@ -112,6 +112,7 @@ function openPrivateChalet(){
 (function(){
   // Keep booking, facilities, and instructions in the same FAQ structure.
   var specifications = PRIVATE_CHALET.specifications;
+  var faqKitchen = specifications.kitchen.filter(function(item){return item.label==='ثلاجة';}).concat(specifications.kitchen.filter(function(item){return item.label!=='ثلاجة';}));
   var groups = [
     {
       "id": "chalet-faq-booking",
@@ -119,59 +120,71 @@ function openPrivateChalet(){
       "items": [
         {
           "question": "أين يقع شاليه يوم العائلة؟",
-          "answer": "يقع شاليه يوم العائلة في جدة - المروج.<a class=\"fd-text-link\" href=\"https://maps.app.goo.gl/np6uD3XvCQTCr4ff7\" target=\"_blank\" rel=\"noopener noreferrer\">عرض الموقع على الخريطة</a>"
+          "answer": "يقع شاليه يوم العائلة في " + PRIVATE_CHALET.location.replace(" - "," – ") + "." + "<a class=\"fd-text-link\" href=\"" + PRIVATE_CHALET.mapUrl + "\" target=\"_blank\" rel=\"noopener noreferrer\">موقع الشاليه</a>"
         },
         {
           "question": "ما أوقات الدخول والخروج؟",
-          "answer": "الدخول الساعة 4:00 مساءً، والخروج الساعة 12:00 ظهرًا."
+          "answer": "وقت الدخول: 4:00 مساءً<br>وقت الخروج: 12:00 ظهرًا"
         },
         {
           "question": "كيف يمكنني الحجز؟",
-          "answer": "يمكن الحجز مباشرة عبر الموقع الإلكتروني أو تطبيق يوم العائلة.<a class=\"fd-text-link\" href=\"#contact=chalet\" onclick=\"event.preventDefault();showContact('chalet')\">عرض خيارات الحجز</a>"
+          "answer": "يمكنك الحجز عبر الموقع الإلكتروني أو تطبيق يوم العائلة.<a class=\"fd-text-link\" href=\"/chalet/contact/\" onclick=\"event.preventDefault();showContact('chalet')\">خيارات الحجز</a>"
         },
         {
           "question": "ما طرق الدفع المتاحة؟",
-          "answer": "تتوفر عدة طرق للدفع تشمل مدى، فيزا، Apple Pay، والتحويل البنكي، كما يمكن الدفع نقدًا أو عبر جهاز نقاط البيع في الموقع."
+          "answer": "مدى، فيزا، Apple Pay، والتحويل البنكي. ويمكن الدفع في الموقع نقدًا أو عبر جهاز نقاط البيع."
         },
         {
           "question": "هل يمكن تعديل أو إلغاء الحجز؟",
-          "answer": "يمكن التعديل أو الإلغاء قبل موعد الوصول بثلاثة أيام أو أكثر. بعد ذلك لا يمكن التعديل أو الإلغاء، بما في ذلك بسبب الأحوال الجوية."
+          "answer": "يمكن تعديل الحجز أو إلغاؤه قبل موعد الوصول بثلاثة أيام أو أكثر. بعد ذلك، لا يمكن التعديل أو الإلغاء، بما في ذلك بسبب الأحوال الجوية."
         },
         {
           "question": "كيف يمكنني التواصل معكم؟",
-          "answer": "يمكنك التواصل معنا عبر الاتصال أو واتساب على الرقم: <a href=\"tel:+966556156693\" class=\"phone-link\">0556156693</a>، والتواصل متاح على مدار 24 ساعة."
+          "answer": "يمكنك الاتصال أو التواصل عبر واتساب على الرقم <a href=\"tel:+966556156693\" class=\"phone-link\">0556156693</a>، على مدار الساعة."
         }
       ]
     },
     {
       "id": "chalet-faq-facilities",
-      "title": "الشاليه والمرافق",
+      "title": "المرافق والخدمات",
       "items": [
         {
-          "question": "كم عدد الضيوف وغرف النوم في الشاليه؟",
-          "answer": "يتسع الشاليه لاستقبال " + resortGuestText(PRIVATE_CHALET.guests) + ". ويمكن زيادة إجمالي عدد الضيوف إلى " + PRIVATE_CHALET.maxGuests + " ضيفًا كحد أقصى، برسوم إضافية. ويضم " + (PRIVATE_CHALET.rooms===2?"غرفتي نوم":PRIVATE_CHALET.rooms+" غرف نوم") + " موزعتين على دورين: " + chaletBedroomDescription('second') + " في الدور الأرضي، و" + chaletBedroomDescription('main') + " وحمام خاص في الدور العلوي."
+          "question": "كم عدد الضيوف في الشاليه؟",
+          "answer": "يتسع الشاليه " + resortGuestText(PRIVATE_CHALET.guests) + "، ويمكن زيادة العدد إلى " + PRIVATE_CHALET.maxGuests + " ضيفًا كحد أقصى برسوم إضافية."
+        },
+        {
+          "question": "كم عدد غرف النوم في الشاليه؟",
+          "answer": "يضم الشاليه " + (PRIVATE_CHALET.rooms===2?"غرفتي نوم":PRIVATE_CHALET.rooms+" غرف نوم") + ":<br>الدور الأرضي: غرفة نوم ب" + specifications.bedrooms.second.bed.replace(/^سريران مفردان$/, "سريرين مفردين") + ".<br>الدور العلوي: " + chaletBedroomDescription("main") + " و" + specifications.bedroomBathroom.replace("داخل غرفة النوم الرئيسية","داخل الغرفة") + "."
         },
         {
           "question": "هل يوجد مسبح في الشاليه؟",
-          "answer": "نعم، يوجد مسبح للأطفال بعمق " + specifications.pool.depthCm + " سم مع " + specifications.pool.slide + "."
+          "answer": "نعم، يتوفر مسبح للأطفال بعمق " + specifications.pool.depthCm + " سم مع " + specifications.pool.slide + "."
         },
         {
-          "question": "ما الصالات والمجالس المتوفرة في الشاليه؟",
-          "answer": "الصالة الداخلية في الدور الأرضي " + specifications.seating.living + "، ومجلس مستقل بمدخل خاص " + specifications.seating.majlis + "، مع " + specifications.majlisBathroom + "."
+          "question": "هل يوجد مجلس مستقل في الشاليه؟",
+          "answer": "نعم، يوجد مجلس مستقل " + specifications.seating.majlis + "، بمدخل خاص و" + specifications.majlisBathroom.replace(" بالمجلس المستقل", "") + "."
         },
         {
           "question": "هل توجد غرفة ألعاب للأطفال؟",
-          "answer": "نعم، توجد غرفة ألعاب الأطفال في الدور الأرضي."
+          "answer": "نعم، توجد غرفة مجهزة بألعاب للأطفال في الدور الأرضي."
         },
         {
           "question": "ما تجهيزات المطبخ المتوفرة؟",
-          "answer": "يشمل المطبخ " + specifications.kitchen.map(function(item){return item.sentence;}).join("، و") + "."
+          "answer": "يتوفر مطبخ يضم " + faqKitchen.map(function(item){return item.sentence;}).join("، و") + "."
+        },
+        {
+          "question": "كيف أستكشف الشاليه من الداخل؟",
+          "answer": "تعرّف على غرف الشاليه ومرافقه من خلال الخريطة التفاعلية.<a class=\"fd-text-link fd-chalet-map-open\" href=\"/chalet-map/\">استكشف الشاليه من الداخل</a>"
+        },
+        {
+          "question": "أين أجد صور الشاليه ومواصفاته؟",
+          "answer": "يمكنك الاطّلاع على صور الشاليه ومرافقه وتجهيزاته من صفحة التفاصيل.<a class=\"fd-text-link\" href=\"/chalet/details/\" onclick=\"event.preventDefault();openPrivateChalet()\">عرض التفاصيل والصور</a>"
         }
       ]
     },
     {
       "id": "chalet-faq-services",
-      "title": "الخدمات والتعليمات",
+      "title": "التعليمات",
       "items": [
         {
           "question": "هل يُسمح بإحضار سماعات خارجية؟",
@@ -184,8 +197,6 @@ function openPrivateChalet(){
       ]
     }
   ];
-  groups[0].items[0].answer = 'يقع شاليه يوم العائلة في ' + PRIVATE_CHALET.location + '.'
-    + '<a class="fd-text-link" href="' + PRIVATE_CHALET.mapUrl + '" target="_blank" rel="noopener noreferrer">عرض الموقع على الخريطة</a>';
   var panel = document.createElement('div');
   panel.id = 'chalet-faq';
   panel.className = 'hide';
@@ -197,7 +208,7 @@ function openPrivateChalet(){
     + '<div class="fd-page-heading-copy"><h1 id="chalet-faq-title" class="faq-title">الأسئلة الشائعة</h1><p class="fd-venue-subtitle">شاليه يوم العائلة</p></div></div>'
     + '<nav class="fd-faq-shortcuts" aria-label="أقسام الأسئلة الشائعة">'
     + groups.map(function(group,index){
-      return '<button type="button" aria-controls="' + group.id + '" aria-expanded="false" onclick="selectChaletFaqSection(this.getAttribute(&quot;aria-controls&quot;))">' + ['الحجز','المرافق','التعليمات'][index] + '</button>';
+      return '<button type="button" aria-controls="' + group.id + '" aria-expanded="false" onclick="selectChaletFaqSection(this.getAttribute(&quot;aria-controls&quot;))">' + ['الحجز','المرافق والخدمات','التعليمات'][index] + '</button>';
     }).join('')
     + '</nav></header><div id="chalet-faq-list">'
     + groups.map(function(group){
