@@ -83,7 +83,11 @@ h1,h2,h3,p,figure{margin:0}h1,h2,h3{line-height:1.4}img{display:block;max-width:
 .facts>div{padding:12px;background:var(--tint);border-radius:12px}.facts span{display:block;font-size:13px;color:var(--muted)}.facts strong{display:block;font-size:24px;color:var(--accent);line-height:1.5}
 .card-copy h3{font-size:22px;margin-bottom:12px}.card-meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px}.card-meta>span{font-size:14px;color:var(--muted)}
 .session-description{white-space:pre-line;font-size:14px;line-height:1.8;color:var(--muted);margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
-.seating-extra{max-width:680px;margin:20px auto 0;padding:16px 20px;background:var(--tint);border-radius:14px;font-size:15px}
+.seating-extra{max-width:680px;margin:0 auto 22px;padding:16px 18px;background:#eef7f8;border:1px solid #cfe3e6;border-radius:14px}
+.seating-extra h3{margin:0 0 8px;font-size:14px;font-weight:700;color:var(--accent)}
+.seating-extra-offer{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:18px;line-height:1.5}
+.seating-extra-price{color:var(--accent);white-space:nowrap}
+.seating-extra p{margin:8px 0 0;font-size:12px;color:var(--muted);line-height:1.7}
 /* Keep the existing interactive map and the linked cabin tours. */
 .map-tools{max-width:600px;margin:0 auto 12px;font-size:13px;color:var(--muted)}
 .map-scroll{direction:ltr;position:relative;overflow:auto;width:100%;max-width:600px;margin:auto;padding:8px;background:#eef7f8;border-radius:18px;border:1px solid var(--line);overscroll-behavior-x:contain}
