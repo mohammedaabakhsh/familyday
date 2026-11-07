@@ -73,8 +73,8 @@ function renderStayComparison() {
     ['الزحليقة الهوائية الكبيرة', 'غير متاحة', 'متاحة برسوم']
   ];
   return '<section class="fd-stay-comparison" aria-labelledby="fd-stay-comparison-title">'
-    + '<h2 id="fd-stay-comparison-title">قارن بين القسمين</h2>'
-    + '<div class="fd-stay-comparison-frame"><table aria-labelledby="fd-stay-comparison-title">'
+    + '<h2 id="fd-stay-comparison-title"><button type="button" class="fd-stay-comparison-toggle" aria-expanded="false" aria-controls="fd-stay-comparison-panel" onclick="toggleStayComparison(this)"><span>قارن بين القسمين</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h2>'
+    + '<div id="fd-stay-comparison-panel" class="fd-stay-comparison-frame" hidden><table aria-labelledby="fd-stay-comparison-title">'
     + '<colgroup><col class="fd-stay-comparison-label"><col><col></colgroup>'
     + '<thead><tr><th scope="col">البند</th>'
     + '<th scope="col"><strong>القسم الأول</strong><span>الدور الأرضي</span></th>'
@@ -82,6 +82,12 @@ function renderStayComparison() {
     + rows.map(function (row) {
       return '<tr><th scope="row">' + row[0] + '</th><td>' + row[1] + '</td><td>' + row[2] + '</td></tr>';
     }).join('') + '</tbody></table></div></section>';
+}
+
+function toggleStayComparison(button) {
+  var expanded = button.getAttribute('aria-expanded') !== 'true';
+  button.setAttribute('aria-expanded', String(expanded));
+  document.getElementById(button.getAttribute('aria-controls')).hidden = !expanded;
 }
 
 function resetStayFaq() {

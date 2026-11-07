@@ -378,24 +378,37 @@
 @media(max-width:899px){#ov.fd-stay-modern .gal-wrap:has(img[src*="imgs/sec1_"],img[src*="imgs/sec2_"]){height:auto;aspect-ratio:1;min-height:0;}}
 
 /* Compact, three-column comparison with the owner's approved content. */
+#app2 .grid-section { padding-bottom:12px; }
 #app2 .fd-stay-comparison {
   box-sizing:border-box;
   width:calc(100% - 40px);
   max-width:1100px;
-  margin:20px auto 0;
+  margin:8px auto 0;
   padding-bottom:calc(32px + env(safe-area-inset-bottom,0px));
   direction:rtl;
   color:#f4f8fa;
   font-family:Tajawal,sans-serif;
 }
 #app2 .fd-stay-comparison h2 {
-  margin:0 0 14px;
+  margin:0;
   color:#f4f8fa;
   font-size:20px;
   font-weight:700;
   line-height:1.4;
 }
+#app2 .fd-stay-comparison-toggle {
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  width:100%;min-height:44px;padding:4px 0;border:0;background:transparent;
+  color:inherit;font:inherit;text-align:right;cursor:pointer;touch-action:manipulation;
+}
+#app2 .fd-stay-comparison-toggle svg {
+  flex:0 0 18px;width:18px;height:18px;fill:none;stroke:#9edce5;
+  stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;
+}
+#app2 .fd-stay-comparison-toggle[aria-expanded="true"] svg { transform:rotate(180deg); }
+#app2 .fd-stay-comparison-toggle:focus-visible { outline:2px solid #9edce5;outline-offset:4px;border-radius:4px; }
 #app2 .fd-stay-comparison-frame {
+  margin-top:12px;
   overflow:hidden;
   border:1px solid #315967;
   border-radius:16px;
