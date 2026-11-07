@@ -178,3 +178,21 @@
  #fd-chalet-map #cm-title{font-size:18px}
  #fd-chalet-map .cm-header{padding-inline:2px}
 }
+/* Approved cabin-style specification cards; illustration geometry is unchanged. */
+#fd-chalet-map .cm-details{background:transparent;border:0;box-shadow:none;padding:0}
+#fd-chalet-map .cm-card{background:#176078;border:1px solid #48b5ca;border-radius:15px;box-shadow:0 3px 12px rgba(0,0,0,.18);color:#fff}
+#fd-chalet-map .cm-card svg{color:#a4edf7;stroke:#a4edf7}
+#fd-chalet-map .cm-card strong,#fd-chalet-map .cm-card span{color:#fff}
+#fd-chalet-map .cm-spec-navigation{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:4px;direction:rtl}
+#fd-chalet-map .cm-spec-navigation button{display:grid;place-items:center;flex:0 0 44px;width:44px;height:44px;padding:0;border:1px solid #376b7b;border-radius:50%;background:transparent;color:#bce7ee;cursor:pointer;touch-action:manipulation}
+#fd-chalet-map .cm-spec-navigation button:disabled{opacity:.3;cursor:default}
+#fd-chalet-map .cm-spec-navigation svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+#fd-chalet-map .cm-spec-navigation span{font:400 11px/1.4 Tajawal,sans-serif;color:#8fcbd6}
+@media(max-width:899px){
+ #fd-chalet-map .cm-cards:not(.is-scrollable){display:flex;justify-content:center;gap:7px;padding:1px 1px 4px}
+ #fd-chalet-map .cm-cards:not(.is-scrollable) .cm-card{flex:0 0 calc((100% - 14px)/3);max-width:200px;min-width:0}
+}
+@media(min-width:900px){
+ #fd-chalet-map .cm-cards:not(.is-scrollable){display:flex;flex-wrap:wrap;justify-content:center}
+ #fd-chalet-map .cm-cards:not(.is-scrollable) .cm-card{flex:0 0 calc((100% - 8px)/2);min-width:0}
+}

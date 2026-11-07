@@ -64,8 +64,8 @@
     ],
     "facts": [
       "إطلالة على المسبح",
-      "تلفزيون",
-      "باب مباشر لساحة المسبح"
+      "باب مباشر لساحة المسبح",
+      "تلفزيون"
     ],
     "text": "",
     "primary": [
@@ -89,9 +89,9 @@
     ],
     "facts": [
       "ثلاجة",
+      "موقد غاز وكهرباء",
       "فرن",
       "ميكروويف",
-      "موقد غاز وكهرباء",
       "غلاية",
       "أدوات مطبخ أساسية"
     ],
@@ -151,18 +151,16 @@
       101
     ],
     "facts": [
-      "ألعاب مائية",
       "زحليقة مزدوجة",
       "حاجز زجاجي"
     ],
-    "text": "يجب الإشراف على الأطفال أثناء السباحة",
+    "text": "",
     "primary": [
       [
         "العمق",
         "60 سم"
       ]
-    ],
-    "note": true
+    ]
   },
   {
     "key": "shower",
@@ -199,9 +197,9 @@
       101
     ],
     "facts": [
-      "تلفزيون",
       "مدخل خاص",
-      "حمام خاص"
+      "حمام خاص",
+      "تلفزيون"
     ],
     "text": "",
     "primary": [
@@ -322,28 +320,46 @@
     (details.primary||[]).forEach(function(f,i){
       var ar=room.primary[i][0], value=f[1], numeric=ar==='العمق';
 
-      cards.push({label:f[0],value:value,numeric:numeric,icon:room.key==='dining'?'dining':{'العمق':'water','السرير':'bed','الأسرّة':'bed','الحمام':'shower','السعة':'people'}[ar]||'size'});
+      cards.push({label:room.key==='ground'||room.key==='dining'?'':f[0],value:room.key==='dining'?'تتّسع لـ'+value:value,numeric:numeric,icon:room.key==='dining'?'dining':{'العمق':'water','السرير':'bed','الأسرّة':'bed','الحمام':'shower','السعة':'people'}[ar]||'size'});
     });
     (details.facts||[]).forEach(function(f,i){cards.push({value:f,icon:factIcon(room.facts[i])});});
     if(room.key==='groundBath')cards.push({value:'حمام',icon:'shower'});
     if(room.key==='stairs')cards.push({value:details.text,icon:'stairs'});
     panel.innerHTML='<div class="cm-detail-heading"><h3>'+esc(name)+'</h3>'+(floor?'<p>'+esc(floor)+'</p>':'')+'</div>'
       +'<div class="cm-cards'+(cards.length>3?' is-scrollable':'')+'">'+cards.map(function(card){return '<div class="cm-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+esc(card.value)+'</strong></div></div>';}).join('')+'</div>'
-      +'<p class="cm-swipe-hint" hidden><span aria-hidden="true">↔</span> '+('اسحب لعرض المزيد')+'</p>'
+      +(cards.length>3?'<div class="cm-spec-navigation" role="group" aria-label="التنقل بين المواصفات" hidden><button type="button" data-spec-direction="previous" aria-label="المواصفات السابقة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button><span>اسحب لعرض المزيد</span><button type="button" data-spec-direction="next" aria-label="المواصفات التالية"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button></div>':'')
       +(details.text&&room.key!=='stairs'?'<p class="cm-note">'+esc(details.text)+'</p>':'');
+    var strip=panel.querySelector('.cm-cards');
+    strip.addEventListener('scroll',updateDetailsOverflow,{passive:true});
+    panel.querySelectorAll('[data-spec-direction]').forEach(function(button){
+      button.addEventListener('click',function(){
+        var direction=getComputedStyle(strip).direction==='rtl'?-1:1;
+        var forward=button.dataset.specDirection==='next'?1:-1;
+        var step=strip.querySelector('.cm-card').getBoundingClientRect().width+(parseFloat(getComputedStyle(strip).columnGap)||0);
+        strip.scrollBy({left:direction*forward*step,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+      });
+    });
+    requestAnimationFrame(updateDetailsOverflow);
   }
   function updateDetailsOverflow(){
     if(!dialog||!dialog.open)return;
-    var cards=panel.querySelector('.cm-cards'), hint=panel.querySelector('.cm-swipe-hint');
-    if(!cards||!hint)return;
-    var overflowing=isMobile()&&cards.scrollWidth>cards.clientWidth+1;
-    hint.hidden=!overflowing;
+    var cards=panel.querySelector('.cm-cards'), navigation=panel.querySelector('.cm-spec-navigation');
+    if(!cards)return;
+    var max=cards.scrollWidth-cards.clientWidth;
+    var overflowing=isMobile()&&max>1;
+    if(navigation){
+      navigation.hidden=!overflowing;
+      var position=Math.abs(cards.scrollLeft);
+      navigation.querySelector('[data-spec-direction="previous"]').disabled=position<=1;
+      navigation.querySelector('[data-spec-direction="next"]').disabled=position>=max-1;
+    }
     if(overflowing){
       cards.tabIndex=0;
       cards.setAttribute('role','region');
       cards.setAttribute('aria-label','تفاصيل المرفق، اسحب لعرض المزيد');
     }else{cards.removeAttribute('tabindex');cards.removeAttribute('role');cards.removeAttribute('aria-label');}
   }
+
   function select(room){
     selected=room;
     markers.forEach(function(b,i){b.setAttribute('aria-pressed',String(rooms[i]===room));});
