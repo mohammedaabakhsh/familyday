@@ -47,3 +47,6 @@
   #sinema-detail .cn-intro--desktop { display:none; }
   #sinema-detail .cn-intro--mobile { display:block; }
 }
+
+#order-time-range{margin:8px 0 0;color:#9bd4df;font-size:13px;line-height:1.6}
+#order-time-range:empty{display:none}

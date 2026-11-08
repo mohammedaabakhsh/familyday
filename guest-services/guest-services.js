@@ -211,7 +211,7 @@
       pending:incompleteWater(data),details:['للكبار: '+data.water.adults,'للصغار: '+data.water.children]});
     if(data.games){var pack=catalog.games.packages[data.games];lines.push({id:'games',group:'games',name:pack.name,price:pack.price,details:[]});}
     if(data.cinema) lines.push({id:'cinema',group:'cinema',name:catalog.cinema.name,price:catalog.cinema.price,
-      details:['مدة الجلسة: '+catalog.cinema.duration,'وقت البداية: '+time.querySelector('option[value="'+data.cinema+'"]').textContent]});
+      details:['مدة الجلسة: '+catalog.cinema.duration,'وقت بداية الجلسة: '+time.querySelector('option[value="'+data.cinema+'"]').textContent]});
     catalog.hospitality.packages.forEach(function(pack){
       var qty=data.hospitality[pack.id] || 0;
       if(qty) lines.push({id:'hospitality:'+pack.id,group:'hospitality',name:pack.name,qty:qty,price:pack.price*qty,details:[]});
@@ -285,7 +285,7 @@
   }
   function cinemaTimeRange(value) {
     var start=Number(value),match=catalog.cinema.duration.match(/\d+(?:\.\d+)?/);
-    if(!Number.isFinite(start) || !match) return 'وقت البداية: '+time.options[time.selectedIndex].textContent;
+    if(!Number.isFinite(start) || !match) return 'وقت بداية الجلسة: '+time.options[time.selectedIndex].textContent;
     var end=start+Number(match[0]);
     function label(hour) {
       var minutes=Math.round(hour*60),h=Math.floor(minutes/60)%24,m=minutes%60;

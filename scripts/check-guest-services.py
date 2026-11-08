@@ -146,7 +146,7 @@ with sync_playwright() as p:
             'الاسم: ضيف الاختبار', 'اسم الكوخ: بيت الدوم 1', 'رقم الكوخ: 15', '', 'الطلبات:', '',
             'الألعاب المائية:', 'باقة ألعاب مائية × 1 = 50 ريال', 'للكبار: 1', 'للصغار: 2', '',
             'الألعاب الترفيهية:', 'طاولة مع بوكس الألعاب × 1 = 150 ريال', '',
-            'جلسة السينما:', 'جلسة السينما × 1 = 150 ريال', 'مدة الجلسة: 3 ساعات', 'وقت البداية: 12:00 ص (منتصف الليل)', '',
+            'جلسة السينما:', 'جلسة السينما × 1 = 150 ريال', 'مدة الجلسة: 3 ساعات', 'وقت بداية الجلسة: 12:00 ص (منتصف الليل)', '',
             'طلبات إضافية:', 'روب ومناشف لشخص واحد × 2 = 40 ريال', 'تبخير الكوخ × 1 = 20 ريال',
             '', 'إجمالي الطلب: 410 ريال', '', 'ملاحظات: أعمار الأطفال 5 و7 سنوات'])
         open_service(page,'games');page.locator('[name="games-package"][value="box"]').check();apply_service(page)
@@ -157,7 +157,7 @@ with sync_playwright() as p:
         assert page.locator('#order-total').text_content()=='310'
         page.locator('[data-water="adults"][data-step="1"]').click(click_count=2);apply_service(page)
         send.click();message=captured(page,'966556156693')
-        assert 'للكبار: 3\nللصغار: 0' in message and 'وقت البداية: 2:00 ص' in message
+        assert 'للكبار: 3\nللصغار: 0' in message and 'وقت بداية الجلسة: 2:00 ص' in message
         page.get_by_role('button',name='حذف روب ومناشف لشخص واحد',exact=True).click()
         assert page.locator('#order-total').text_content()=='270'
         open_service(page,'extras');assert page.locator('[data-extra="robe"] output').text_content()=='0';page.locator('.dialog-close').click()

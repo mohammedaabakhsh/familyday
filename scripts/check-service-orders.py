@@ -28,6 +28,11 @@ with sync_playwright() as p:
     send.click();assert not page.evaluate('window.orderURL')
     assert page.locator('#order-time').get_attribute('aria-invalid')=='true'
     page.locator('#order-time').select_option(time)
+    expected_range={'20':'من ٨ مساءً إلى ١١ مساءً','24':'من ١٢ منتصف الليل إلى ٣ صباحًا','26':'من ٢ صباحًا إلى ٥ صباحًا'}[time]
+    assert page.locator('#order-time-range').inner_text()==expected_range
+    page.locator('.fd-order-cancel').click()
+    page.locator(button).click()
+    assert page.locator('#order-time-range').inner_text()==expected_range
    send.click()
    url=urlparse(page.evaluate('window.orderURL'));assert url.path=='/966556156693'
    expected='السلام عليكم، أرغب بطلب '+request+'.\n\nالاسم: محمد\nالكوخ: بيت الدوم 1\nرقم الكوخ: 15\n\n'+details

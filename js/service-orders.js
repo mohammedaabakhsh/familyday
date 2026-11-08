@@ -42,6 +42,22 @@ function serviceOrderDetails(selection, restore) {
   return null;
 }
 
+function updateCinemaTimeRange() {
+  var field=document.getElementById('order-time'), status=document.getElementById('order-time-range');
+  status.textContent='';
+  if (!_orderItemName || _orderItemName.type!=='cinema' || !field.value) return;
+  var start=Number(field.value), duration=document.querySelector('#sinema-detail .cn-stat dd').textContent.match(/\d+(?:\.\d+)?/);
+  if (!Number.isFinite(start) || !duration) return;
+  var end=start+Number(duration[0]);
+  function label(hour) {
+    var minutes=Math.round(hour*60),h=Math.floor(minutes/60)%24,m=minutes%60;
+    var number=new Intl.NumberFormat('ar-SA',{useGrouping:false});
+    var clock=number.format(h%12 || 12)+(m ? ':'+number.format(m).padStart(2,'٠') : '');
+    return clock+(h===0 && m===0 ? ' منتصف الليل' : h<12 ? ' صباحًا' : h===12 ? ' ظهرًا' : ' مساءً');
+  }
+  status.textContent='من '+label(start)+' إلى '+label(end)+(Math.floor(end/24)>Math.floor(start/24) ? ' (اليوم التالي)' : '');
+}
+
 function configureResortOrderForm(itemName) {
   var select = document.getElementById('order-villa');
   select.closest('.fd-order-field').hidden=isChaletServiceVenue();
@@ -54,7 +70,7 @@ function configureResortOrderForm(itemName) {
     setResortOrderError(id,'');
     if (field.dataset.feedbackReady) return;
     field.dataset.feedbackReady='true';
-    ['input','change'].forEach(function(event){field.addEventListener(event,function(){setResortOrderError(id,'');});});
+    ['input','change'].forEach(function(event){field.addEventListener(event,function(){setResortOrderError(id,'');if(id==='order-time') updateCinemaTimeRange();});});
   });
   document.getElementById('order-notes').placeholder = _isMenuOrder
     ? 'مثل بدون بصل أو أي تفاصيل تخص طلبك'
@@ -110,6 +126,7 @@ function openOrderPopup(selection, showTime) {
   updateCabinNum();
   document.getElementById('order-time-wrap').style.display=showTime ? 'block' : 'none';
   FD_ORDER_DRAFTS.restore(_orderDraftScope || JSON.stringify(selection));
+  updateCinemaTimeRange();
   document.getElementById('order-popup').classList.remove('hide');
   document.querySelector('#order-popup .fd-order-panel').scrollTop=0;
 }

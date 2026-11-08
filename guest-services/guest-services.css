@@ -264,3 +264,10 @@ body[data-venue="chalet"] .main{background:var(--paper)}
 body[data-venue="chalet"] .page-ending{display:flex;flex-direction:column;flex:1}
 body[data-venue="chalet"] .footer{display:flex;flex-direction:column;flex:1;padding-bottom:max(28px,env(safe-area-inset-bottom))}
 body[data-venue="chalet"] .footer-social{margin-top:auto;padding-top:28px}
+
+/* Cinema instructions use the same disclosure shape as the main site. */
+#cinema-service .usage summary{display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none}
+#cinema-service .usage summary::-webkit-details-marker{display:none}
+#cinema-service .usage summary::marker{content:""}
+#cinema-service .usage summary::after{content:"";width:7px;height:7px;margin-inline:5px;border-right:1.5px solid var(--brand);border-bottom:1.5px solid var(--brand);transform:rotate(45deg);flex-shrink:0}
+#cinema-service .usage[open] summary::after{transform:rotate(225deg)}

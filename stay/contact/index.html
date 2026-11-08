@@ -256,7 +256,7 @@
 <link rel="stylesheet" href="css/service-orders.css?v=20261103-splash-motion-v1">
 <script src="js/menu-order-message.js?v=20261103-menu-message-v1"></script>
 <script src="js/service-venue.js?v=20261108-chalet-no-photo-v2"></script>
-<script src="js/service-orders.js?v=20261108-seating-cart-v2"></script>
+<script src="js/service-orders.js?v=20261108-cinema-parity-v3"></script>
 <script src="resort-features.js?v=20261106-faq-v2"></script>
 <script src="stay-design.js?v=20261107-final-batch-v1"></script>
 <script src="site-enhancements.js?v=1"></script>
@@ -650,6 +650,7 @@
       </div>
       <div class="cn-details">
         <div class="cn-summary">
+          <p class="cn-intro cn-intro--mobile">جلسة سينما خارجية في المساحة الخاصة بالكوخ</p>
           <dl class="cn-facts" aria-label="مدة الجلسة وسعرها">
             <div class="cn-stat">
               <dt>مدة الجلسة</dt>
@@ -660,7 +661,6 @@
               <dd class="cn-price">150 ريال</dd>
             </div>
           </dl>
-          <p class="cn-intro cn-intro--mobile">جلسة سينما خارجية في المساحة الخاصة بالكوخ</p>
         </div>
 
         <section aria-labelledby="cn-inclusions-title">
@@ -1647,7 +1647,7 @@
     <div id="order-cabin-num-wrap" style="display:none"><span id="fd-cabin-number-label">رقم الكوخ</span><output id="order-cabin-num" aria-labelledby="fd-cabin-number-label"></output></div>
     <div class="fd-order-field" id="order-time-wrap">
       <label for="order-time">وقت بداية الجلسة</label>
-      <select id="order-time" aria-describedby="order-time-error">
+      <select id="order-time" aria-describedby="order-time-error order-time-range">
         <option value="">-- اختر الساعة --</option>
         <option value="18">6:00 م</option>
         <option value="19">7:00 م</option>
@@ -1659,6 +1659,7 @@
         <option value="25">1:00 ص</option>
         <option value="26">2:00 ص</option>
       </select>
+      <p id="order-time-range" role="status"></p>
       <p id="order-time-error" class="fd-field-error" aria-live="polite"></p>
     </div>
     <div class="fd-order-field">
@@ -2004,7 +2005,7 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 <link rel="stylesheet" href="css/home-review.css?v=20261107-aligned-v2">
 <link rel="stylesheet" href="css/contact-layout.css?v=20261106-brand-footer-v3">
 <link rel="stylesheet" href="css/resort-faq.css?v=20261106-all-v2">
-<link rel="stylesheet" href="css/cinema-layout.css?v=20261107-session-notes-v2">
+<link rel="stylesheet" href="css/cinema-layout.css?v=20261108-cinema-parity-v3">
 <link rel="stylesheet" href="css/games-layout.css?v=20261108-chalet-no-photo-v2">
 <link rel="stylesheet" href="css/water-layout.css?v=20261108-water-multipack-v1">
 <link rel="stylesheet" href="menu-experience.css?v=20261106-compact-menu-v2">
