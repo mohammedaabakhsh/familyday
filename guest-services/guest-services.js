@@ -43,7 +43,7 @@
   function quantity(value) { return Number.isInteger(value) && value>=0 && value<=99 ? value : 0; }
   function validWater(value) {
     return value && Number.isInteger(value.adults) && Number.isInteger(value.children) &&
-      value.adults>=0 && value.children>=0 && value.adults+value.children>0 && value.adults+value.children===catalog.water.size*(Number.isInteger(value.packages)?value.packages:1) && (value.packages===undefined || value.packages>=1 && value.packages<=20);
+      value.adults>=0 && value.children>=0 && value.adults+value.children>0 && value.adults+value.children===catalog.water.size*(Number.isInteger(value.packages)?value.packages:1) && (value.packages===undefined || Number.isInteger(value.packages) && value.packages>=1 && value.packages<=20);
   }
   function validTime(value) { return Array.from(time.options).some(function(option){return option.value===value && !!value;}); }
   function save() {
@@ -240,7 +240,7 @@
       group.items.forEach(function(item){
         var row=el('li'), copy=el('div',undefined,'order-item-copy');copy.appendChild(el('strong',itemLabel(item)));
         item.details.forEach(function(text){copy.appendChild(el('span',text));});
-        if(item.pending) copy.appendChild(el('span','أكمل اختيار '+catalog.water.size+' ألعاب أو احذف الباقة.','pending-copy'));
+        if(item.pending) copy.appendChild(el('span','أكمل اختيار '+catalog.water.size*item.qty+' ألعاب أو احذف الباقة.','pending-copy'));
         var actions=el('div',undefined,'order-item-actions');
         if(!item.pending) actions.appendChild(el('bdi',item.price+' ريال'));
         var button=el('button','حذف','remove-item');button.type='button';button.setAttribute('aria-label','حذف '+item.name);
@@ -291,9 +291,10 @@
   function renderServiceControls() {
     var data=selection(),water=waterSelection(data), total=water.adults+water.children,required=catalog.water.size*(water.packages || 1);
     document.getElementById('water-packages-count').textContent=String(water.packages || 1);
+    document.getElementById('water-offer').textContent=required+' ألعاب بـ'+catalog.water.price*(water.packages || 1)+' ريال';
     document.querySelectorAll('[data-water-packages]').forEach(function(button){button.disabled=Number(button.dataset.step)<0 ? (water.packages || 1)<=1 : (water.packages || 1)>=20;});
     ['adults','children'].forEach(function(key){setCounter(document.getElementById('water-'+key).parentNode,water[key],water[key]+required-total);});
-    document.getElementById('water-count').textContent=total===required ? 'اكتملت الباقة' : 'اخترت '+total+' من '+required;
+    document.getElementById('water-count').textContent=total===required ? 'اكتمل اختيار الألعاب' : 'اخترت '+total+' من '+required;
     time.value=data.cinema;time.classList.toggle('is-selected',!!data.cinema);
     document.querySelectorAll('[name="games-package"]').forEach(function(input){
       input.checked=input.value===data.games;
@@ -320,7 +321,7 @@
     document.getElementById('resort-summary').hidden=!lines.length;
     form.querySelector('.send-order').disabled=!lines.length || incompleteWater();
     var warning=document.getElementById('order-warning');warning.hidden=!incompleteWater();
-    warning.textContent=incompleteWater() ? 'أكمل اختيار '+catalog.water.size+' ألعاب مائية أو احذف الباقة قبل متابعة الطلب.' : '';
+    warning.textContent=incompleteWater() ? 'أكمل اختيار '+catalog.water.size*(waterSelection().packages || 1)+' ألعاب مائية أو احذف الباقة قبل متابعة الطلب.' : '';
     ['water','games','cinema','hospitality','extras'].forEach(function(key){updateCard(key,lines.filter(function(line){return line.group===key;}));});
   }
   function submit(event, restaurant) {
@@ -378,7 +379,8 @@
     if(!activeService) return;
     var lines=serviceLines(activeService,draft),previous=serviceLines(activeService,state);
     var pending=lines.some(function(line){return line.pending;});
-    document.getElementById('dialog-total').textContent=String(sum(lines));
+    // Show the selected water-package price immediately, but commit only complete distributions.
+    document.getElementById('dialog-total').textContent=String(activeService==='water' ? catalog.water.price*(waterSelection(draft).packages || 1) : sum(lines));
     applyButton.disabled=pending || (!lines.length && !previous.length);
     applyButton.textContent=previous.length ? (lines.length ? 'حفظ التعديل' : 'حذف من الطلب') : 'إضافة للطلب';
     var status=document.getElementById('dialog-status');
@@ -387,6 +389,7 @@
   function openEditor(key){
     if(dialog.open) return;
     activeService=key;draft=JSON.parse(JSON.stringify(state));
+    if(key==='water' && !draft.water) draft.water=waterSelection(draft);
     dialogTrigger=document.getElementById(key+'-card');
     document.getElementById('service-dialog-title').textContent=document.getElementById(key+'-title').textContent;
     dialog.dataset.tone=key;
@@ -441,10 +444,9 @@
       if(contents){contents.replaceChildren();data.contents.forEach(function(text){contents.appendChild(el('li',text));});section.querySelector('.contents-title').textContent=data.contentsTitle;}
     });
     document.getElementById('restaurant-hours').textContent=catalog.restaurantHours;
-    document.getElementById('water-offer').textContent=catalog.water.size+' ألعاب بـ'+catalog.water.price+' ريال';
     document.getElementById('cinema-duration').textContent=catalog.cinema.duration;
     document.getElementById('cinema-price').textContent=catalog.cinema.price+' ريال';
-    document.querySelector('#water-service .section-note').textContent=catalog.water.size===3 ? 'وزّع الألعاب الثلاث بين الكبار والصغار' : 'وزّع '+catalog.water.size+' ألعاب بين الكبار والصغار';
+    document.querySelector('#water-service .section-note').textContent='وزّع الألعاب بين الكبار والصغار';
     document.querySelector('#games-service .contents-title').textContent='الألعاب المشمولة في الباقتين';
     document.querySelector('#cinema-service .section-note').textContent=catalog.cinema.intro;
     catalog.cinema.times.forEach(function(slot){time.add(new Option(slot.label,slot.value));});time.disabled=false;
@@ -462,7 +464,7 @@
   document.querySelectorAll('[data-water]').forEach(function(button){button.addEventListener('click',function(){
     var data=selection(),water=waterSelection(data),key=button.dataset.water,step=Number(button.dataset.step),total=water.adults+water.children;
     if(step===1 && total<catalog.water.size*(water.packages || 1) || step===-1 && water[key]>0) water[key]+=step;
-    data.water=water.adults+water.children ? water : null;
+    data.water=water;
     renderEditor();
   });});
   document.querySelectorAll('[data-water-packages]').forEach(function(button){button.addEventListener('click',function(){
@@ -470,7 +472,7 @@
     if(next===water.packages)return;
     water.packages=next;
     var max=catalog.water.size*next,total=water.adults+water.children;
-    if(total>max){water.children=Math.max(0,water.children-(total-max));water.adults=Math.min(water.adults,max-water.children);}
+    if(total>max){water.adults=0;water.children=0;}
     data.water=water;renderEditor();
   });});
   time.addEventListener('change',function(){selection().cinema=time.value;renderEditor();});

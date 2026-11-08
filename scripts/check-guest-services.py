@@ -97,7 +97,7 @@ with sync_playwright() as p:
         page.locator('[data-water="adults"][data-step="1"]').click()
         page.locator('[data-water="children"][data-step="1"]').click(click_count=2)
         assert page.locator('#dialog-total').text_content()=='50'
-        assert page.locator('#water-count').text_content()=='اكتملت الباقة'
+        assert page.locator('#water-count').text_content()=='اكتمل اختيار الألعاب'
         assert page.locator('#order-total').text_content()=='0'
         assert page.locator('[data-water][data-step="1"]:disabled').count()==2
         page.screenshot(path=str(OUT/f'dialog-water-{width}.png'))
