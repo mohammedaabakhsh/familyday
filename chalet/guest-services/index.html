@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#133548"><meta name="robots" content="noindex,follow,max-image-preview:none">
+<title>خدمات إقامتك | شاليه يوم العائلة</title><meta name="description" content="الألعاب المائية والألعاب الترفيهية خلال إقامتك في شاليه يوم العائلة">
+<meta property="og:type" content="website"><meta property="og:url" content="https://familydaystay.com/chalet/guest-services/"><meta property="og:title" content="خدمات إقامتك | شاليه يوم العائلة"><meta property="og:description" content="الألعاب المائية والألعاب الترفيهية خلال إقامتك في شاليه يوم العائلة">
+<link rel="canonical" href="https://familydaystay.com/chalet/guest-services/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/guest-services/guest-services.css?v=20261107-restaurant-hours-v2">
+<style>
+.service-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.service-tile{min-height:190px}
+.help-contacts{display:block}
+.help-contact{width:100%}
+#chalet-summary{margin:20px 0;padding:20px;background:#f3f8f9;border:1px solid #d8e7ea;border-radius:18px}
+#chalet-summary h2{font-size:20px;margin:0 0 12px}
+#chalet-summary .order-field{margin:12px 0}
+#chalet-summary input,#chalet-summary select,#chalet-summary textarea{width:100%;padding:12px;border:1px solid #d4e2e5;border-radius:10px;background:white}
+#chalet-summary label{display:block;font-weight:700;margin-bottom:5px}
+#chalet-summary .send-order{width:100%;margin-top:12px}
+#chalet-summary[hidden]{display:none}
+@media(max-width:650px){.service-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.service-tile{min-height:170px}}
+</style><script src="chalet-services.js?v=1" defer></script></head>
+<body><div class="page"><header class="hero">
+<button type="button" class="share-page" id="share-page" aria-label="مشاركة رابط خدمات إقامتك"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 4h6v6M20 4l-9 9M9 5H4v15h15v-5"/></svg></button>
+<div class="logo-frame"><span class="logo" role="img" aria-label="يوم العائلة"></span></div><p class="eyebrow">شاليه يوم العائلة</p><h1>خدمات إقامتك</h1><p>كل ما تحتاجه أثناء إقامتك</p></header>
+<main class="main"><noscript>لطلب الخدمات تواصل مع <a href="https://wa.me/966556156693">فريق الخدمات</a></noscript>
+<p id="services-loading" role="status">جاري تحميل الخدمات…</p><p id="services-error" role="alert" hidden>تعذّر تحميل تفاصيل الخدمات، يمكنك التواصل مع فريق الخدمات عبر واتساب</p>
+<div class="service-tiles" aria-label="اختر الخدمة">
+<button type="button" id="water-card" class="service-tile" data-tone="water" disabled><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 8c3-4 5 4 9 0s6 4 9 0M3 14c3-4 5 4 9 0s6 4 9 0M3 20c3-4 5 4 9 0s6 4 9 0"/></svg></span><span class="tile-copy"><span class="tile-title">الألعاب المائية</span><span class="tile-default">ألعاب مائية للكبار والصغار</span></span><span class="tile-action">عرض التفاصيل ←</span></button>
+<button type="button" id="games-card" class="service-tile" data-tone="games" disabled><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M7 7h.01M17 7h.01M12 12h.01M7 17h.01M17 17h.01" stroke-width="3"/></svg></span><span class="tile-copy"><span class="tile-title">الألعاب الترفيهية</span><span class="tile-default">بوكس الألعاب الترفيهية</span></span><span class="tile-action">عرض التفاصيل ←</span></button>
+</div>
+<section id="chalet-summary" hidden><h2>ملخص طلب الخدمات</h2><p id="chosen-items"></p><p id="chosen-total"></p>
+<form id="chalet-order"><div class="order-field"><label for="guest-name">الاسم</label><input id="guest-name" required maxlength="100" autocomplete="name"></div><div class="order-field"><label for="chalet-number">رقم الشاليه</label><select id="chalet-number" required><option value="">اختر الشاليه</option><option>101</option><option>102</option><option>103</option><option>104</option><option>105</option><option>106</option><option>107</option></select></div><div class="order-field"><label for="guest-notes">ملاحظات إضافية (اختياري)</label><textarea id="guest-notes" maxlength="1000" rows="2"></textarea></div><button class="send-order" type="submit">إكمال طلب الخدمات عبر واتساب</button></form>
+</section></main>
+<div class="page-ending"><section class="help"><div><h2>تحتاج مساعدة؟</h2><p>تواصل مع فريق شاليه يوم العائلة أثناء إقامتك</p></div><div class="help-contacts"><div class="help-contact"><h3>خدمات الشاليه</h3><div class="help-actions"><a href="https://wa.me/966556156693" target="_blank" rel="noopener noreferrer">واتساب</a><a href="tel:+966556156693">اتصال</a></div></div></div></section>
+<footer class="footer"><p class="footer-tagline">خصوصية تليق بكم… وراحة تستحقونها</p><p>شاليه يوم العائلة · جدة · حي المروج</p><nav class="footer-social" aria-label="حسابات يوم العائلة"><a class="social-link footer-link--instagram" href="https://instagram.com/FAMILYDAYRESORT" target="_blank" rel="noopener noreferrer" aria-label="إنستجرام">إنستجرام</a><a class="social-link footer-link--snapchat" href="https://www.snapchat.com/add/familyday5" target="_blank" rel="noopener noreferrer" aria-label="سناب شات">سناب شات</a></nav></footer></div></div>
+<dialog id="service-dialog" class="service-dialog" aria-labelledby="service-dialog-title"><header class="dialog-header"><h2 id="service-dialog-title"></h2><button type="button" class="dialog-close" aria-label="إغلاق">×</button></header><div class="dialog-body" id="dialog-content"></div><footer class="dialog-footer"><p id="dialog-status" role="status"></p><div class="dialog-total"><span>إجمالي الاختيار</span><strong id="dialog-total">0 ريال</strong></div><div class="dialog-actions"><button type="button" class="send-order" id="apply-selection">إضافة للطلب</button><button type="button" class="dialog-cancel">إلغاء</button></div></footer></dialog>
+<div id="share-status" class="share-status" role="status"></div></body></html>
