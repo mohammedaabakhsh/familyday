@@ -44,7 +44,7 @@
 <link rel="preload" as="script" href="js/app-shell.js?v=20261108-chalet-services-v1">
 <link rel="preload" as="script" href="js/gallery-data.js?v=20261102-structure-v1">
 <link rel="preload" as="script" href="js/accommodations.js?v=20261108-chalet-services-v1">
-<link rel="preload" as="script" href="js/services.js?v=20261107-package-disclosure-v1">
+<link rel="preload" as="script" href="js/services.js?v=20261108-seating-cards-v1">
 <link rel="preload" as="script" href="js/stay-navigation.js?v=20261107-final-batch-v1">
 <link rel="preload" as="script" href="js/router.js?v=20261108-chalet-services-v1">
 <link rel="stylesheet" href="css/app-base.css?v=20261106-seating-controls-v7">
@@ -989,65 +989,45 @@
         <h1 class="jl-title">الجلسات الخارجية</h1>
       </div>
     </div>
-    <div class="jl-layout">
-      <div class="jl-browser">
-        <div class="jl-gallery">
-          <div id="jalsat-slides" class="jl-slides"></div>
-        </div>
-        <div id="jalsat-gallery-controls" class="jl-gallery-controls">
-          <button type="button" id="jalsat-prev" class="jl-arrow" onclick="jalsatGoTo(_jalsatIdx-1)" aria-label="الجلسة السابقة" disabled>
-            <svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <span id="jalsat-counter" class="jl-counter" aria-live="polite" aria-atomic="true">1 من 6</span>
-          <button type="button" id="jalsat-next" class="jl-arrow" onclick="jalsatGoTo(_jalsatIdx+1)" aria-label="الجلسة التالية">
-            <svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M7.5 1.5L1.5 7.5L7.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="jl-details">
-        <div aria-live="polite" aria-atomic="true">
-          <h2 id="jalsat-session-name" class="jl-session-name"></h2>
-          <p id="jalsat-session-desc" class="jl-description"></p>
-        </div>
-        <div class="jl-selection">
-        <h2 id="jalsat-filter-title" class="jl-filter-title">اختر عدد الأشخاص</h2>
-        <div class="jl-filters" role="group" aria-labelledby="jalsat-filter-title">
-          <button type="button" id="jf-all" class="jl-filter is-active" onclick="setJalsatFilter('all')" aria-pressed="true">الكل</button>
-          <button type="button" id="jf-2" class="jl-filter" onclick="setJalsatFilter('2')" aria-label="شخصين" aria-pressed="false">2</button>
-          <button type="button" id="jf-4" class="jl-filter" onclick="setJalsatFilter('4')" aria-label="4 أشخاص" aria-pressed="false">4</button>
-          <button type="button" id="jf-8" class="jl-filter" onclick="setJalsatFilter('8')" aria-label="8 أشخاص" aria-pressed="false">8</button>
-          <button type="button" id="jf-12" class="jl-filter" onclick="setJalsatFilter('12')" aria-label="12 شخصًا" aria-pressed="false">12</button>
-        </div>
-          <dl class="jl-facts" aria-live="polite" aria-atomic="true">
-            <div><dt>السعة</dt><dd id="jalsat-persons">شخصين</dd></div>
-            <div><dt>سعر الجلسة</dt><dd id="jalsat-price">300 ريال</dd></div>
-          </dl>
-        </div>
-        <div>
-          <h3 class="jl-section-title">إضافة اختيارية</h3>
-          <button type="button" id="jalsat-cake-label" class="jl-addon-option" onclick="toggleJalsatCake()" aria-pressed="false">
-            <span class="jl-addon-name">كيك وعصير</span>
-            <span class="jl-addon-price">170 ريال</span>
-            <span class="jl-toggle" aria-hidden="true"><span class="jl-toggle-knob"></span></span>
-          </button>
-        </div>
-        <details class="jl-notes">
-          <summary id="jl-notes-title">تعليمات الاستخدام</summary>
-          <ul class="jl-notes-list">
-            <li>يُرجى طلب الجلسة مسبقًا.</li>
-            <li>يُرجى المحافظة على تجهيزات الجلسة أثناء الاستخدام.</li>
-          </ul>
-        </details>
-        <div class="jl-order" aria-label="ملخص الطلب">
-          <div aria-live="polite" aria-atomic="true">
-            <div class="jl-order-line"><span id="jalsat-order-session"></span><span id="jalsat-order-base"></span></div>
-            <div id="jalsat-order-addon" class="jl-order-line" hidden><span>كيك وعصير</span><span>170 ريال</span></div>
-            <div id="jalsat-total-row" class="jl-total"><span>إجمالي الطلب</span><strong id="jalsat-total-price">300 ريال</strong></div>
+    <div id="jalsat-cards" class="jl-cards"></div>
+    <template id="jalsat-card-template">
+      <details class="jl-card">
+        <summary class="jl-card-summary">
+          <span class="jl-card-heading"><span class="jl-card-title"></span><span class="jl-card-persons"></span></span>
+          <span class="jl-card-price"></span>
+          <span class="jl-card-arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="jl-card-hint">الصورة والتفاصيل</span>
+        </summary>
+        <div class="jl-card-content">
+          <img class="jl-card-image" loading="lazy" decoding="async" alt="">
+          <div class="jl-card-body">
+            <p class="jl-description"></p>
+            <div>
+              <h3 class="jl-section-title">إضافة اختيارية</h3>
+              <button type="button" class="jl-addon-option" aria-pressed="false">
+                <span class="jl-addon-name">كيك وعصير</span><span class="jl-addon-price">170 ريال</span>
+                <span class="jl-toggle" aria-hidden="true"><span class="jl-toggle-knob"></span></span>
+              </button>
+            </div>
+            <div class="jl-order" aria-label="ملخص الطلب">
+              <div aria-live="polite" aria-atomic="true">
+                <div class="jl-order-line jl-card-base" hidden><span>سعر الجلسة</span><span></span></div>
+                <div class="jl-order-line jl-card-addon" hidden><span>كيك وعصير</span><span>170 ريال</span></div>
+                <div class="jl-total"><span>إجمالي الطلب</span><strong></strong></div>
+              </div>
+              <button type="button" class="jl-order-button">متابعة الطلب</button>
+            </div>
           </div>
-          <button type="button" class="jl-order-button" onclick="jalsatOrder()">متابعة الطلب</button>
         </div>
-        </div>
-    </div>
+      </details>
+    </template>
+    <details class="jl-notes">
+      <summary>تعليمات الاستخدام</summary>
+      <ul class="jl-notes-list">
+        <li>يُرجى طلب الجلسة مسبقًا.</li>
+        <li>يُرجى المحافظة على تجهيزات الجلسة أثناء الاستخدام.</li>
+      </ul>
+    </details>
   </div>
 </div>
 
@@ -1628,7 +1608,7 @@
 <div class="tag-tooltip" id="tag-tooltip"></div>
 
 <script src="services-guide/guide-gallery.js?v=20261107-complete-photos-v1"></script>
-<script src="js/services.js?v=20261107-package-disclosure-v1"></script>
+<script src="js/services.js?v=20261108-seating-cards-v1"></script>
 
 
 <!-- BOTTOM NAV -->
@@ -1934,6 +1914,7 @@
 
 <link rel="stylesheet" href="resort-ui.css?v=20261107-final-batch-v1">
 <link rel="stylesheet" href="css/service-mobile.css?v=20261106-seating-selection-v6">
+<link rel="stylesheet" href="css/seating-cards.css?v=20261108-seating-cards-v1">
 <link rel="stylesheet" href="css/services-index.css?v=20261108-chalet-services-v1">
 <link rel="stylesheet" href="/css/rewards-layout.css?v=20261106-unified-v1">
 <link rel="stylesheet" href="stay-ui.css?v=20261107-comparison-toggle-v4">

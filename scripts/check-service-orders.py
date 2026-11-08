@@ -53,13 +53,15 @@ with sync_playwright() as p:
   for i,name,people,price in [(0,'جلسة بإطار مثلث',2,300),(1,'الخيمة الهرمية',2,300),(2,'الجلسة الأرضية',4,200),(3,'جلسة أرضية بإطار خشبي لـ4 أشخاص',4,300),(4,'جلسة أرضية بإطار خشبي لـ8 أشخاص',8,550),(5,'جلسة أرضية بإطار خشبي لـ12 شخصًا',12,650)]:
    page.evaluate('(i)=>jalsatGoTo(i)',i)
    for cake in [False,True]:
-    if cake:page.locator('#jalsat-cake-label').click()
+    card=page.locator('#jalsat-card-'+str(i))
+    if cake:card.locator('.jl-addon-option').click()
     details=f'الجلسة: {name}\nعدد الأشخاص: {people}\nسعر الجلسة: {price} ريال'
     if cake:details+='\nالإضافة: كيك وعصير — 170 ريال'
     details+=f'\nإجمالي الطلب: {price+(170 if cake else 0)} ريال'
-    checkout('.jl-order-button','جلسة خارجية',details,reload=True)
-    assert page.locator('#jalsat-session-name').inner_text()==name
-    assert page.locator('#jalsat-cake-label').get_attribute('aria-pressed')==str(cake).lower()
+    checkout('#jalsat-card-'+str(i)+' .jl-order-button','جلسة خارجية',details,reload=True)
+    assert card.locator('.jl-card-title').inner_text()==name
+    assert card.get_attribute('open') is not None
+    assert card.locator('.jl-addon-option').get_attribute('aria-pressed')==str(cake).lower()
   visit('/services/hospitality/')
   assert page.locator('#hospitality-detail a[href*="wa.me"]').count()==0
   assert page.locator('#hospitality-detail .hd-package-note').count()==7

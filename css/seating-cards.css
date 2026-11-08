@@ -1,0 +1,26 @@
+/* Independent expandable sessions, using the main site's service palette. */
+#jalsat-detail .jl-cards{display:grid;gap:14px;max-width:680px;margin:0 auto 22px}
+#jalsat-detail .jl-card{min-width:0;border:1px solid #315967;border-radius:20px;background:#0c2534;overflow:hidden}
+#jalsat-detail .jl-card[open]{border-color:#508391}
+#jalsat-detail .jl-card-summary{display:grid;grid-template-columns:minmax(0,1fr) auto 34px;gap:8px 12px;align-items:center;padding:20px;cursor:pointer;list-style:none;-webkit-tap-highlight-color:transparent}
+#jalsat-detail .jl-card-summary::-webkit-details-marker{display:none}
+#jalsat-detail .jl-card-summary::marker{content:""}
+#jalsat-detail .jl-card-heading{display:flex;flex-direction:column;gap:7px;min-width:0}
+#jalsat-detail .jl-card-title{color:#f0f5f7;font-size:19px;font-weight:800;line-height:1.5}
+#jalsat-detail .jl-card-persons{color:#a6c8d2;font-size:14px;line-height:1.5}
+#jalsat-detail .jl-card-price{color:#8fd5e4;font-size:19px;font-weight:800;white-space:nowrap}
+#jalsat-detail .jl-card-arrow{display:grid;place-items:center;width:34px;height:34px;border:1px solid #426574;border-radius:50%;color:#9ccdd8;background:#133545}
+#jalsat-detail .jl-card-arrow svg{transition:transform .18s}
+#jalsat-detail .jl-card[open] .jl-card-arrow svg{transform:rotate(180deg)}
+#jalsat-detail .jl-card-hint{grid-column:1/-1;color:#9cb7c3;font-size:12px;line-height:1.5}
+#jalsat-detail .jl-card-summary:focus-visible{outline:2px solid #8fd5e4;outline-offset:-4px;border-radius:20px}
+#jalsat-detail .jl-card-image{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;background:#071c2a}
+#jalsat-detail .jl-card-body{display:grid;gap:20px;padding:20px}
+#setups-detail #jalsat-detail .jl-description{margin:0;font-size:15px;line-height:1.8}
+#setups-detail #jalsat-detail .jl-section-title{margin-bottom:9px;font-size:15px}
+#jalsat-detail .jl-card .jl-order{padding:0;border:0;border-radius:0;background:transparent}
+#jalsat-detail .jl-card .jl-total{margin:0 0 12px;padding-top:14px}
+#jalsat-detail .jl-card-addon{padding-bottom:10px}
+#jalsat-detail .jl-notes{max-width:680px;margin:0 auto}
+@media(max-width:360px){#jalsat-detail .jl-card-summary{padding:16px;gap:8px}#jalsat-detail .jl-card-title{font-size:17px}#jalsat-detail .jl-card-price{font-size:17px}#jalsat-detail .jl-card-body{padding:16px}}
+@media(prefers-reduced-motion:reduce){#jalsat-detail .jl-card-arrow svg{transition:none}}

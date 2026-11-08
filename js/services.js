@@ -71,57 +71,48 @@ var _jalsatIdx = 0;
 // _jalsatAllSessions is shared with the services guide (service-data.js).
 var _jalsatSessions = _jalsatAllSessions.slice();
 var _jalsatFilter = 'all';
+var _jalsatCakeBySession = {};
 function buildJalsatSlides(){
-  if(_jalsatFilter==='all') _jalsatSessions = _jalsatAllSessions.slice();
-  else _jalsatSessions = _jalsatAllSessions.filter(function(s){ return s.personsCat===_jalsatFilter; });
-  var container = document.getElementById('jalsat-slides');
-  container.innerHTML = '';
-  _jalsatSessions.forEach(function(s,idx){
-    var div = document.createElement('div');
-    div.className = 'jl-slide';
-    div.setAttribute('aria-hidden',idx===0?'false':'true');
-    var img = document.createElement('img');
-    img.className = 'jl-image';
-    img.src = s.img;
-    img.alt = s.name + ' - ' + s.persons;
-    img.decoding = 'async';
-    div.appendChild(img);
-    container.appendChild(div);
-  });
-  var total = _jalsatSessions.length;
-  document.getElementById('jalsat-gallery-controls').hidden = total<=1;
-  var counter = document.getElementById('jalsat-counter');
-  if(counter) counter.textContent = total>0 ? '1 من '+total : '0 من 0';
-  ['all','2','4','8','12'].forEach(function(f){
-    var btn = document.getElementById('jf-'+f);
-    if(btn){
-      btn.classList.toggle('is-active',f===_jalsatFilter);
-      btn.setAttribute('aria-pressed',f===_jalsatFilter?'true':'false');
-    }
+  // Keep the checkout restoration API while displaying independent session cards.
+  _jalsatSessions = _jalsatAllSessions.slice();
+  var container = document.getElementById('jalsat-cards');
+  if(container.children.length) return;
+  var template = document.getElementById('jalsat-card-template');
+  _jalsatSessions.forEach(function(session,index){
+    var card = template.content.firstElementChild.cloneNode(true);
+    card.id = 'jalsat-card-'+index;
+    card.querySelector('.jl-card-title').textContent = session.name;
+    card.querySelector('.jl-card-persons').textContent = session.persons;
+    card.querySelector('.jl-card-price').textContent = session.price;
+    var photo = card.querySelector('.jl-card-image');
+    photo.src = session.img;
+    photo.alt = session.name;
+    card.querySelector('.jl-description').textContent = session.desc;
+    var addon = card.querySelector('.jl-addon-option');
+    addon.setAttribute('aria-label','إضافة كيك وعصير بـ170 ريال إلى '+session.name);
+    addon.addEventListener('click',function(){toggleJalsatCake(index);});
+    card.querySelector('.jl-order-button').addEventListener('click',function(){jalsatOrder(index);});
+    container.appendChild(card);
+    renderJalsatCard(index);
   });
 }
-function setJalsatFilter(f){
-  _jalsatFilter = f;
-  buildJalsatSlides();
-  jalsatGoTo(0);
+function renderJalsatCard(index){
+  var session = _jalsatSessions[index], card = document.getElementById('jalsat-card-'+index);
+  if(!session || !card) return;
+  var cake = !!_jalsatCakeBySession[index];
+  var addon = card.querySelector('.jl-addon-option');
+  addon.classList.toggle('is-selected',cake);
+  addon.setAttribute('aria-pressed',String(cake));
+  card.querySelector('.jl-card-base').hidden = !cake;
+  card.querySelector('.jl-card-base span:last-child').textContent = session.price;
+  card.querySelector('.jl-card-addon').hidden = !cake;
+  card.querySelector('.jl-total strong').textContent = (parseInt(session.price,10)+(cake?170:0))+' ريال';
 }
 function openJalsatDetail(){
   var panel = document.getElementById('jalsat-detail');
   panel.classList.remove('hide');
   panel.scrollTop = 0;
   buildJalsatSlides();
-  jalsatGoTo(0);
-  var slides = document.getElementById('jalsat-slides');
-  var startX = 0, startY = 0;
-  slides.ontouchstart = function(e){ startX = e.touches[0].clientX; startY = e.touches[0].clientY; };
-  slides.ontouchend = function(e){
-    var dx = e.changedTouches[0].clientX - startX;
-    var dy = e.changedTouches[0].clientY - startY;
-    if(Math.abs(dx)>40 && Math.abs(dx)>Math.abs(dy)){
-      var next = Math.max(0,Math.min(_jalsatIdx+(dx<0?1:-1),_jalsatSessions.length-1));
-      if(next!==_jalsatIdx) jalsatGoTo(next);
-    }
-  };
 }
 function closeJalsatDetail(){ document.getElementById('jalsat-detail').classList.add('hide'); }
 
@@ -347,45 +338,28 @@ async function copySharikEmail(){
 
 
 var _jalsatCakeAdded = false;
-function toggleJalsatCake(){
-  _jalsatCakeAdded = !_jalsatCakeAdded;
+function toggleJalsatCake(index){
+  if(!Number.isInteger(index)) index = _jalsatIdx;
+  if(!_jalsatSessions[index]) return;
+  _jalsatIdx = index;
+  _jalsatCakeAdded = !_jalsatCakeBySession[index];
   updateJalsatSummary();
 }
 function updateJalsatSummary(){
-  var s = _jalsatSessions[_jalsatIdx];
-  if(!s) return;
-  var label = document.getElementById('jalsat-cake-label');
-  label.classList.toggle('is-selected',_jalsatCakeAdded);
-  label.setAttribute('aria-pressed',_jalsatCakeAdded?'true':'false');
-  document.getElementById('jalsat-order-session').textContent = s.name + (s.name.indexOf(' لـ') === -1 ? ' · ' + s.persons : '');
-  document.getElementById('jalsat-order-base').textContent = s.price;
-  document.getElementById('jalsat-order-base').hidden = !_jalsatCakeAdded;
-  document.getElementById('jalsat-order-addon').hidden = !_jalsatCakeAdded;
-  document.getElementById('jalsat-total-price').textContent = (parseInt(s.price,10)+(_jalsatCakeAdded?170:0)) + ' ريال';
+  _jalsatCakeBySession[_jalsatIdx] = !!_jalsatCakeAdded;
+  renderJalsatCard(_jalsatIdx);
 }
-function jalsatOrder(){
-  var session=_jalsatSessions[_jalsatIdx];
+function jalsatOrder(index){
+  if(Number.isInteger(index)) jalsatGoTo(index);
+  var session = _jalsatSessions[_jalsatIdx];
   if(session) openOrderPopup({type:'seating',index:_jalsatAllSessions.indexOf(session),cake:_jalsatCakeAdded});
 }
-
-function jalsatGoTo(idx){
-  var total = _jalsatSessions.length;
-  if(total===0) return;
-  idx = Math.max(0, Math.min(idx, total-1));
-  _jalsatCakeAdded = false;
-  _jalsatIdx = idx;
-  var slides = document.getElementById('jalsat-slides');
-  slides.style.transform = 'translateX('+(idx*100)+'%)';
-  Array.prototype.forEach.call(slides.children,function(slide,i){slide.setAttribute('aria-hidden',i===idx?'false':'true');});
-  var s = _jalsatSessions[idx];
-  var nameEl = document.getElementById('jalsat-session-name'); if(nameEl) nameEl.textContent = s.name;
-  var descEl = document.getElementById('jalsat-session-desc'); if(descEl){ descEl.textContent = s.desc||''; descEl.style.display = s.desc ? 'block' : 'none'; }
-  document.getElementById('jalsat-persons').textContent = s.persons;
-  document.getElementById('jalsat-price').textContent = s.price;
-  var counter = document.getElementById('jalsat-counter');
-  if(counter) counter.textContent = (idx+1) + ' من ' + total;
-  document.getElementById('jalsat-prev').disabled = idx===0;
-  document.getElementById('jalsat-next').disabled = idx===total-1;
+function jalsatGoTo(index){
+  if(!Number.isInteger(index) || !_jalsatSessions[index]) return;
+  buildJalsatSlides();
+  _jalsatIdx = index;
+  _jalsatCakeAdded = !!_jalsatCakeBySession[index];
+  document.getElementById('jalsat-card-'+index).open = true;
   updateJalsatSummary();
 }
 

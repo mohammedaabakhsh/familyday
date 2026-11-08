@@ -45,16 +45,16 @@ with sync_playwright() as p:
         assert page.evaluate('_tawilatSize')==12
         assert page.evaluate('_tawilatOpt')=='tansiq'
         page.locator('#setups-tab-seating').click()
-        page.locator('#jf-4').click()
-        assert page.locator('#jalsat-detail .jl-order').is_visible()
-        assert page.locator('#jalsat-order-base').inner_text()
-        page.locator('#jalsat-cake-label').click()
+        page.locator('#jalsat-card-2 summary').click()
+        assert page.locator('#jalsat-card-2 .jl-order').is_visible()
+        assert page.locator('#jalsat-card-2 .jl-total strong').inner_text()=='200 ريال'
+        page.locator('#jalsat-card-2 .jl-addon-option').click()
         selected=page.evaluate('[_jalsatFilter,_jalsatIdx,_jalsatCakeAdded]')
         page.locator('#setups-tab-dining').click()
         assert page.evaluate('[_tawilatSize,_tawilatOpt]')==[12,'tansiq']
         page.locator('#setups-tab-seating').click()
         assert page.evaluate('[_jalsatFilter,_jalsatIdx,_jalsatCakeAdded]')==selected
-        page.locator('#jalsat-detail .jl-order-button').click()
+        page.locator('#jalsat-card-2 .jl-order-button').click()
         assert page.locator('#order-popup').is_visible()
         assert page.evaluate('_orderResortScope') is True
         page.evaluate('closeOrderPopup()')
