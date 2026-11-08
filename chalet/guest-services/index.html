@@ -21,7 +21,7 @@
 #chalet-summary .send-order{width:100%;margin-top:12px}
 #chalet-summary[hidden]{display:none}
 @media(max-width:650px){.service-tiles{grid-template-columns:1fr}.service-tile{min-height:118px}}
-</style><script src="chalet-services.js?v=1" defer></script></head>
+</style><script src="chalet-services.js?v=2" defer></script></head>
 <body><div class="page"><header class="hero">
 <button type="button" class="share-page" id="share-page" aria-label="مشاركة رابط خدمات إقامتك"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 4h6v6M20 4l-9 9M9 5H4v15h15v-5"/></svg></button>
 <div class="logo-frame"><span class="logo" role="img" aria-label="يوم العائلة"></span></div><p class="eyebrow">شاليه يوم العائلة</p><h1>خدمات إقامتك</h1><p>كل ما تحتاجه أثناء إقامتك</p></header>
@@ -36,7 +36,7 @@
 <p id="order-count" class="order-count" role="status"></p><ul id="order-items" class="order-items"></ul>
 <div class="order-total"><span>إجمالي خدمات الشاليه</span><strong><bdi id="order-total">0</bdi> ريال</strong></div>
 <div class="order-details"><div class="customer-fields" data-scope="guest">
-<div class="order-field"><label for="guest-name">الاسم</label><input id="guest-name" type="text" required pattern=".*\\S.*" maxlength="100" placeholder="أدخل اسمك" autocomplete="name"></div>
+<div class="order-field"><label for="guest-name">الاسم</label><input id="guest-name" type="text" required pattern=".*\S.*" maxlength="100" placeholder="أدخل اسمك" autocomplete="name"></div>
 <div class="order-field"><label for="guest-notes">ملاحظات إضافية (اختياري)</label><textarea id="guest-notes" rows="2" maxlength="1000" placeholder="أضف أي تفاصيل تساعدنا في تجهيز طلبك"></textarea></div>
 </div><button class="send-order" type="submit">إكمال طلب الخدمات عبر واتساب</button><p class="confirmation-note">تابع طلبك عبر واتساب الخدمات</p></div></form></section></div></main>
 <div class="page-ending"><button type="button" id="order-shortcut" class="order-shortcut" aria-controls="orders-summary" hidden>مراجعة طلباتك <span aria-hidden="true">↓</span></button><section class="help"><div><h2>تحتاج مساعدة؟</h2><p>تواصل مع فريق شاليه يوم العائلة أثناء إقامتك</p></div><div class="help-contacts"><div class="help-contact"><h3>خدمات الشاليه</h3><div class="help-actions"><a href="https://wa.me/966556156693" target="_blank" rel="noopener noreferrer">واتساب</a><a href="tel:+966556156693">اتصال</a></div></div></div></section>
