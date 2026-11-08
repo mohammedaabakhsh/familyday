@@ -15,7 +15,7 @@ with sync_playwright() as p:
    page.wait_for_selector('#guide-content.is-ready',state='attached')
    assert page.locator('.load-error').count()==0
    assert page.locator('#coordination .package-card').count()==6
-   assert page.locator('#dining .dining-price-card').count()==5
+   assert page.locator('#dining .fd-dining-card').count()==5
    assert page.locator('#seating .package-card').count()==6
    assert page.locator('.seating-extra-offer strong').all_text_contents()==['كيك وعصير','170 ريال']
    for section in ['coordination','dining','seating']:

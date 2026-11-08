@@ -51,9 +51,11 @@ with sync_playwright() as p:
   visit('/services/dining-tables/')
   for size,plain,decorated in [(6,199,399),(12,399,599),(18,599,799),(24,799,999),(32,999,1199)]:
    for option,price,label in [('plain',plain,'بدون تنسيق'),('tansiq',decorated,'مع تنسيق')]:
-    page.locator('#ts-'+str(size)).click();page.locator('#tawilat-opt-'+option).click()
-    checkout('.tw-contact','طاولات الطعام',f'عدد الأشخاص: {size}\nالتجهيز: {label}\nإجمالي الطلب: {price} ريال',reload=size==32)
-    assert page.locator('#ts-'+str(size)).get_attribute('aria-pressed')=='true'
+    card=page.locator('#dining-card-'+str(size))
+    if card.get_attribute('open') is None:card.locator('summary').click()
+    card.locator('[data-option='+option+'].fd-dining-option').click()
+    checkout('#dining-card-'+str(size)+' .fd-dining-checkout','طاولات الطعام',f'عدد الأشخاص: {size}\nالتجهيز: {label}\nإجمالي الطلب: {price} ريال',reload=size==32)
+    assert page.locator('#dining-card-'+str(size)+' .fd-dining-option[data-option='+option+']').get_attribute('aria-pressed')=='true'
   visit('/services/outdoor-seating/')
   for i,name,people,price in [(0,'جلسة بإطار مثلث',2,300),(1,'الخيمة الهرمية',2,300),(2,'الجلسة الأرضية',4,200),(3,'جلسة أرضية بإطار خشبي لـ4 أشخاص',4,300),(4,'جلسة أرضية بإطار خشبي لـ8 أشخاص',8,550),(5,'جلسة أرضية بإطار خشبي لـ12 شخصًا',12,650)]:
    for cake in [False,True]:

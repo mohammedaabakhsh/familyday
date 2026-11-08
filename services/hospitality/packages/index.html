@@ -51,7 +51,7 @@
 <link rel="preload" as="script" href="js/app-shell.js?v=20261108-chalet-services-v1">
 <link rel="preload" as="script" href="js/gallery-data.js?v=20261102-structure-v1">
 <link rel="preload" as="script" href="js/accommodations.js?v=20261108-chalet-services-v1">
-<link rel="preload" as="script" href="js/services.js?v=20261108-seating-cart-v2">
+<link rel="preload" as="script" href="js/services.js?v=20261108-dining-cards-v3">
 <link rel="preload" as="script" href="js/stay-navigation.js?v=20261107-final-batch-v1">
 <link rel="preload" as="script" href="js/router.js?v=20261108-chalet-services-v1">
 <link rel="stylesheet" href="css/app-base.css?v=20261106-seating-controls-v7">
@@ -1624,7 +1624,8 @@
 <div class="tag-tooltip" id="tag-tooltip"></div>
 
 <script src="services-guide/guide-gallery.js?v=20261107-complete-photos-v1"></script>
-<script src="js/services.js?v=20261108-seating-cart-v2"></script>
+<script src="js/dining-cards.js?v=20261108-dining-cards-v1"></script>
+<script src="js/services.js?v=20261108-dining-cards-v3"></script>
 <script src="js/seating-cart.js?v=20261108-seating-summary-v3"></script>
 
 
@@ -1754,59 +1755,31 @@
       </div>
     </div>
 
-    <div class="tw-layout">
-      <div class="tw-photo-group">
-        <p class="tw-intro tw-intro--desktop">طاولة تجمعكم في المساحة الخارجية الخاصة بالكوخ</p>
-        <div class="tw-photo">
-          <img loading="lazy" data-page-src="imgs/tawilat_1.webp" width="1200" height="1200" alt="طاولة طعام خارجية مجهزة بالكراسي وأطقم التقديم والزهور بجانب المسبح" decoding="async">
-        </div>
-      </div>
-
-      <div class="tw-options">
-        <section aria-label="اختيار عدد الأشخاص">
-          <p class="tw-intro tw-intro--mobile">طاولة تجمعكم في المساحة الخارجية الخاصة بالكوخ</p>
-          <h2 id="tw-size-title" class="tw-label">اختر عدد الأشخاص</h2>
-          <div class="tw-sizes" role="group" aria-labelledby="tw-size-title">
-            <button type="button" id="ts-6" class="tw-size is-active" onclick="setTawilatSize(6)" aria-pressed="true">6</button>
-            <button type="button" id="ts-12" class="tw-size" onclick="setTawilatSize(12)" aria-pressed="false">12</button>
-            <button type="button" id="ts-18" class="tw-size" onclick="setTawilatSize(18)" aria-pressed="false">18</button>
-            <button type="button" id="ts-24" class="tw-size" onclick="setTawilatSize(24)" aria-pressed="false">24</button>
-            <button type="button" id="ts-32" class="tw-size" onclick="setTawilatSize(32)" aria-pressed="false">32</button>
-          </div>
-        </section>
-
-        <section aria-labelledby="tw-package-title">
-          <h2 id="tw-package-title" class="tw-label">اختر التجهيز</h2>
-          <div class="tw-packages" role="group" aria-labelledby="tw-package-title">
-            <button type="button" id="tawilat-opt-plain" class="tw-package" onclick="selectTawilatOpt('plain')" aria-pressed="false">
-              <span class="tw-check" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 10 3 3 7-7"/></svg></span>
-              <span class="tw-package-copy"><span class="tw-package-name">بدون تنسيق</span><span class="tw-package-desc">طاولات وكراسي فقط</span></span>
-              <span id="tawilat-price-plain" class="tw-package-price">199 ريال</span>
-            </button>
-            <button type="button" id="tawilat-opt-tansiq" class="tw-package" onclick="selectTawilatOpt('tansiq')" aria-pressed="false" aria-controls="tawilat-contents">
-              <span class="tw-check" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 10 3 3 7-7"/></svg></span>
-              <span class="tw-package-copy"><span class="tw-package-name">مع تنسيق</span><span class="tw-package-desc">طاولات وكراسي مع تجهيز الطاولة</span></span>
-              <span id="tawilat-price-tansiq" class="tw-package-price">399 ريال</span>
-            </button>
-          </div>
-        </section>
-
-        <section id="tawilat-contents" class="tw-contents hide" aria-labelledby="tw-contents-title">
-          <h2 id="tw-contents-title" class="tw-label">يشمل التنسيق</h2>
-          <ul id="tawilat-contents-list" class="tw-content-list"></ul>
-        </section>
-
-        <div class="tw-footer">
-          <div class="tw-footer-inner">
-            <div id="tawilat-price-summary" class="tw-summary" aria-live="polite" aria-atomic="true">
-              <span id="tawilat-summary-label">اختر التجهيز لعرض الإجمالي</span>
-              <span id="tawilat-summary-price"></span>
-            </div>
-            <button type="button" class="tw-contact" onclick="tawilatOrder()" disabled>متابعة الطلب</button>
+    <p class="tw-intro">طاولة تجمعكم في المساحة الخارجية الخاصة بالكوخ</p>
+    <div id="dining-cards" class="fd-dining-cards"></div>
+    <template id="dining-card-template">
+      <details class="fd-dining-card">
+        <summary class="fd-dining-summary">
+          <span class="fd-dining-heading"><span class="fd-dining-capacity"></span><span class="fd-dining-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/></svg></span></span>
+          <span class="fd-dining-prices">
+            <span class="fd-dining-price-box" data-option="plain"><span class="fd-dining-option-name">بدون تنسيق</span><strong class="fd-dining-price"></strong><span class="fd-dining-option-desc">طاولات وكراسي فقط</span></span>
+            <span class="fd-dining-price-box" data-option="tansiq"><span class="fd-dining-option-name">مع تنسيق</span><strong class="fd-dining-price"></strong><span class="fd-dining-option-desc">طاولات وكراسي مع تجهيز الطاولة</span></span>
+          </span>
+          <span class="fd-dining-hint">الصورة والتفاصيل</span>
+        </summary>
+        <div class="fd-dining-body">
+          <div class="fd-dining-image"><img loading="lazy" data-page-src="imgs/tawilat_1.webp" width="1200" height="1200" alt="طاولة طعام خارجية مجهزة بالكراسي وأطقم التقديم والزهور بجانب المسبح" decoding="async"></div>
+          <p class="fd-dining-caption">الصورة توضح التجهيز مع التنسيق</p>
+          <div class="fd-dining-copy"><h3>يشمل التنسيق</h3><ul class="fd-dining-inclusions"></ul></div>
+          <div class="fd-dining-order">
+            <p class="fd-dining-select-label">اختر التجهيز</p>
+            <div class="fd-dining-options" role="group" aria-label="اختيار تجهيز طاولة الطعام"></div>
+            <div class="fd-dining-total" aria-live="polite"><span>اختر التجهيز لعرض الإجمالي</span><strong></strong></div>
+            <button type="button" class="fd-dining-checkout" disabled>متابعة الطلب</button>
           </div>
         </div>
-      </div>
-    </div>
+      </details>
+    </template>
   </div>
 </div>
 
@@ -2004,6 +1977,7 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 <link rel="stylesheet" href="css/home-review.css?v=20261107-aligned-v2">
 <link rel="stylesheet" href="css/contact-layout.css?v=20261106-brand-footer-v3">
 <link rel="stylesheet" href="css/resort-faq.css?v=20261106-all-v2">
+<link rel="stylesheet" href="css/dining-cards.css?v=20261108-dining-cards-v1">
 <link rel="stylesheet" href="css/cinema-layout.css?v=20261108-cinema-intro-v4">
 <link rel="stylesheet" href="css/games-layout.css?v=20261108-chalet-no-photo-v2">
 <link rel="stylesheet" href="css/water-layout.css?v=20261108-water-multipack-v1">

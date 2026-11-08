@@ -41,7 +41,7 @@ with sync_playwright() as p:
         page.locator('#setups-tab-cinema').focus();page.keyboard.press('ArrowLeft')
         page.wait_for_url('**/services/dining-tables/')
         assert page.locator('#setups-tab-dining').evaluate('(el)=>el===document.activeElement')
-        page.locator('#ts-12').click();page.locator('#tawilat-opt-tansiq').click()
+        page.locator('#dining-card-12 summary').click();page.locator('#dining-card-12 .fd-dining-option[data-option=tansiq]').click()
         assert page.evaluate('_tawilatSize')==12
         assert page.evaluate('_tawilatOpt')=='tansiq'
         page.locator('#setups-tab-seating').click()
