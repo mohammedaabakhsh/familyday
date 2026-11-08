@@ -73,7 +73,7 @@ $('chalet-order').onsubmit=e=>{
  entries.forEach(item=>{parts.push('',item.title+':',item.name+' × 1 = '+item.price+' ريال',...item.details)});
  parts.push('','إجمالي الطلب: '+entries.reduce((n,e)=>n+e.price,0)+' ريال');
  if($('guest-notes').value.trim())parts.push('','ملاحظات: '+$('guest-notes').value.trim());
- window.open('https://wa.me/966556156693?text='+encodeURIComponent(parts.join('\\n')),'_blank','noopener,noreferrer');
+ window.open('https://wa.me/966556156693?text='+encodeURIComponent(parts.join('\n')),'_blank','noopener,noreferrer');
 };
 $('share-page').onclick=async()=>{const url='https://familydaystay.com/chalet/guest-services/';try{if(navigator.share)await navigator.share({title:document.title,url});else if(navigator.clipboard){await navigator.clipboard.writeText(url);$('share-status').textContent='تم نسخ الرابط';}}catch(_){}};
 try{
