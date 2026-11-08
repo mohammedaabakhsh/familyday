@@ -279,3 +279,18 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 #seating .seating-collapsed-content{background:transparent!important}
 #seating .seating-collapsed-title{color:#193c49!important}
 #seating .seating-collapsed-summary .price{color:#176078!important}
+
+/* Give each outdoor seating choice its own quiet tint, without repeating the three-color cycle. */
+#seating .seating-collapsed-card:nth-child(1){background:#eaf4f3!important;border-color:#dce6e8!important}
+#seating .seating-collapsed-card:nth-child(2){background:#edf3f7!important;border-color:#dce6e8!important}
+#seating .seating-collapsed-card:nth-child(3){background:#f5f2ec!important;border-color:#dce6e8!important}
+#seating .seating-collapsed-card:nth-child(4){background:#f0eff8!important;border-color:#dce6e8!important}
+#seating .seating-collapsed-card:nth-child(5){background:#f1f5e9!important;border-color:#dce6e8!important}
+#seating .seating-collapsed-card:nth-child(6){background:#f9eff0!important;border-color:#dce6e8!important}
+#seating .seating-collapsed-card:nth-child(7){background:#eaf3f8!important;border-color:#dce6e8!important}
+#seating .seating-collapsed-card:nth-child(8){background:#f7f2e8!important;border-color:#dce6e8!important}
+#seating .seating-collapsed-card:nth-child(9){background:#edf5f1!important;border-color:#dce6e8!important}
+#seating .seating-collapsed-card:nth-child(10){background:#f2eff5!important;border-color:#dce6e8!important}
+#seating .seating-collapsed-card:nth-child(11){background:#f7f4ee!important;border-color:#dce6e8!important}
+#seating .seating-collapsed-card:nth-child(12){background:#edf2f4!important;border-color:#dce6e8!important}
+#seating .seating-extra{margin-top:16px!important}
