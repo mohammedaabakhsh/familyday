@@ -121,7 +121,9 @@
     catalog.hospitality.packages.forEach(function(pack){
       var card=el('article',undefined,'hospitality-package'),heading=el('div',undefined,'hospitality-heading');
       card.dataset.hospitality=pack.id;
-      heading.append(el('h3',pack.name),el('strong',pack.price+' ريال للباقة','hospitality-price'));card.appendChild(heading);
+      var price=el('strong',undefined,'hospitality-price');
+      price.append(el('span',String(pack.price),'hospitality-price-number'),el('span',' ريال للباقة','hospitality-price-unit'));
+      heading.append(el('h3',pack.name),price);card.appendChild(heading);
       var details=el('details',undefined,'hospitality-details'),summary=el('summary','تفاصيل الباقة'),list=el('ul',undefined,'contents-list');
       pack.contents.forEach(function(item){list.appendChild(el('li',item));});
       details.appendChild(summary);
