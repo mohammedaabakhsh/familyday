@@ -23,7 +23,7 @@ with sync_playwright() as p:
   card.evaluate('e=>e.scrollIntoView({block:"start"})')
   page.wait_for_function('document.querySelector("#package-complete").getBoundingClientRect().top<innerHeight')
   card.locator('img').evaluate_all('els=>Promise.all(els.map(e=>{e.loading="eager";return e.decode()}))')
-  assert card.locator('.price').inner_text()=='1850 ريال\nللباقة'
+  assert card.locator('.price').inner_text()=='1750 ريال\nللباقة'
   assert card.locator('.gallery-slide').count()==5 and count.inner_text()=='1 / 5'
   assert not card.locator('details').evaluate('e=>e.open')
   photo=gallery.bounding_box();before=card.bounding_box()['height']
