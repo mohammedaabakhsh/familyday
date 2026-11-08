@@ -72,10 +72,13 @@
     diningCards.className = 'fd-dining-cards';
     Object.keys(_tawilatPrices).forEach(size => {
       const card = FD_DINING_CARDS.create(doc,Number(size),false);
-      card.querySelector('.fd-dining-image').innerHTML = FD_GUIDE_GALLERY.markup([diningImage.src],text(doc,'.tw-title'),diningImage.alt);
+      card.querySelector('.fd-dining-image').remove();
+      card.querySelector('.fd-dining-caption').remove();
+      card.querySelector('.fd-dining-hint').textContent = 'تفاصيل التجهيز';
       diningCards.appendChild(card);
     });
-    html += section('dining',text(doc,'.tw-title'),text(doc,'.tw-intro'),diningCards.outerHTML,true);
+    const diningPhoto = '<div class="dining-shared-photo">' + FD_GUIDE_GALLERY.markup([diningImage.src],text(doc,'.tw-title'),diningImage.alt) + '<p class="fd-dining-caption">' + escape(text(diningSource,'.fd-dining-caption')) + '</p></div>';
+    html += section('dining',text(doc,'.tw-title'),text(doc,'.tw-intro'),diningPhoto + diningCards.outerHTML,true);
     // The ordering page keeps each session's add-on inside an inert card template.
     const seatingTemplate = doc.querySelector('#jalsat-card-template');
     const seatingSource = seatingTemplate ? seatingTemplate.content : doc;

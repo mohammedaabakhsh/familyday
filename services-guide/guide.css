@@ -273,3 +273,7 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 }
 
 #coordination .package-usage-note{margin:14px 0 0;padding-top:12px;border-top:1px solid var(--line);font-size:12px;line-height:1.8;color:var(--muted)}
+
+#dining .dining-shared-photo{max-width:680px;margin:0 auto 20px}
+#dining .dining-shared-photo .package-photo{margin:0;border-radius:16px;overflow:hidden}
+#dining .dining-shared-photo .fd-dining-caption{margin:8px 0 0}
