@@ -5,13 +5,42 @@ const num=s=>Number((String(s).match(/\d+(?:\.\d+)?/)||[])[0]);
 let catalog,active=null,draft={},chosen={water:null,games:false};
 const dialog=$('service-dialog');
 function renderSummary(){
- const parts=[];
- if(chosen.water)parts.push('الألعاب المائية: '+chosen.water.adults+' للكبار و'+chosen.water.children+' للصغار');
- if(chosen.games)parts.push('بوكس الألعاب الترفيهية');
- $('chalet-summary').hidden=!parts.length;
- $('chosen-items').textContent=parts.join(' — ');
- $('chosen-total').textContent=parts.length?'الإجمالي: '+((chosen.water?catalog.water.price:0)+(chosen.games?catalog.games.price:0))+' ريال':'';
+ const entries=[];
+ if(chosen.water)entries.push({id:'water',title:'الألعاب المائية',name:catalog.water.name,price:catalog.water.price,details:['للكبار: '+chosen.water.adults,'للصغار: '+chosen.water.children]});
+ if(chosen.games)entries.push({id:'games',title:'الألعاب الترفيهية',name:catalog.games.name,price:catalog.games.price,details:[]});
+ const list=$('order-items');list.replaceChildren();
+ entries.forEach(item=>{
+  const group=document.createElement('li');group.className='order-group';group.dataset.tone=item.id;
+  const heading=document.createElement('div');heading.className='order-group-heading';
+  const title=document.createElement('h4');title.textContent=item.title;
+  const subtotal=document.createElement('strong');subtotal.textContent=item.price+' ريال';heading.append(title,subtotal);
+  const rows=document.createElement('ul');rows.className='order-group-items';
+  const row=document.createElement('li'),copy=document.createElement('div');copy.className='order-item-copy';
+  const name=document.createElement('strong');name.textContent=item.name+' × 1';copy.appendChild(name);
+  item.details.forEach(d=>{const span=document.createElement('span');span.textContent=d;copy.appendChild(span)});
+  const actions=document.createElement('div');actions.className='order-item-actions';
+  const amount=document.createElement('bdi');amount.textContent=item.price+' ريال';
+  const remove=document.createElement('button');remove.type='button';remove.className='remove-item';remove.textContent='حذف';remove.setAttribute('aria-label','حذف '+item.name);
+  remove.onclick=()=>{if(item.id==='water')chosen.water=null;else chosen.games=false;renderSummary()};
+  actions.append(amount,remove);row.append(copy,actions);rows.appendChild(row);group.append(heading,rows);list.appendChild(group);
+ });
+ const total=entries.reduce((n,e)=>n+e.price,0);
+ $('orders-summary').hidden=!entries.length;
+ $('order-shortcut').hidden=!entries.length;
+ $('order-count').textContent=entries.length?'عدد الاختيارات: '+entries.length:'';
+ $('order-total').textContent=String(total);
+ ['water','games'].forEach(id=>{
+  const card=$(id+'-card'), selected=entries.find(e=>e.id===id);
+  card.classList.toggle('is-selected',!!selected);
+  card.querySelector('.tile-default').hidden=!!selected;
+  let status=card.querySelector('.tile-selection');
+  if(!status){status=document.createElement('span');status.className='tile-selection';card.querySelector('.tile-copy').appendChild(status)}
+  status.hidden=!selected;
+  status.textContent=selected?'✓ تمت الإضافة · '+selected.price+' ريال':'';
+  card.querySelector('.tile-action').textContent=selected?'تعديل الطلب ←':'عرض التفاصيل ←';
+ });
 }
+$('order-shortcut').onclick=()=>$('orders-summary').scrollIntoView({behavior:'smooth',block:'start'});
 function open(type){
  active=type;draft=type==='water'?{...(chosen.water||{adults:0,children:0})}:{};
  $('service-dialog-title').textContent=type==='water'?'الألعاب المائية':'الألعاب الترفيهية';
@@ -34,7 +63,18 @@ function close(){dialog.close();active=null;}
 $('apply-selection').onclick=()=>{if(active==='water')chosen.water={...draft};else chosen.games=$('choose-games').checked;renderSummary();close();$('chalet-summary').scrollIntoView({behavior:'smooth',block:'nearest'});};
 document.querySelectorAll('.dialog-close,.dialog-cancel').forEach(b=>b.onclick=close);
 dialog.addEventListener('click',e=>{if(e.target===dialog)close()});
-$('chalet-order').onsubmit=e=>{e.preventDefault();if(!e.target.reportValidity())return;let lines=['طلب خدمات شاليه يوم العائلة','الاسم: '+$('guest-name').value.trim(),'رقم الشاليه: '+$('chalet-number').value];if(chosen.water)lines.push('الألعاب المائية: '+chosen.water.adults+' للكبار و'+chosen.water.children+' للصغار');if(chosen.games)lines.push('بوكس الألعاب الترفيهية');lines.push($('chosen-total').textContent);if($('guest-notes').value.trim())lines.push('ملاحظات: '+$('guest-notes').value.trim());window.open('https://wa.me/966556156693?text='+encodeURIComponent(lines.join('\n')),'_blank','noopener,noreferrer');};
+$('chalet-order').onsubmit=e=>{
+ e.preventDefault();if(!e.target.reportValidity())return;
+ const entries=[];
+ if(chosen.water)entries.push({title:'الألعاب المائية',name:catalog.water.name,price:catalog.water.price,details:['للكبار: '+chosen.water.adults,'للصغار: '+chosen.water.children]});
+ if(chosen.games)entries.push({title:'الألعاب الترفيهية',name:catalog.games.name,price:catalog.games.price,details:[]});
+ if(!entries.length)return;
+ const parts=['السلام عليكم، أرغب بطلب الخدمات التالية:','','الاسم: '+$('guest-name').value.trim(),'','الطلبات:'];
+ entries.forEach(item=>{parts.push('',item.title+':',item.name+' × 1 = '+item.price+' ريال',...item.details)});
+ parts.push('','إجمالي الطلب: '+entries.reduce((n,e)=>n+e.price,0)+' ريال');
+ if($('guest-notes').value.trim())parts.push('','ملاحظات: '+$('guest-notes').value.trim());
+ window.open('https://wa.me/966556156693?text='+encodeURIComponent(parts.join('\\n')),'_blank','noopener,noreferrer');
+};
 $('share-page').onclick=async()=>{const url='https://familydaystay.com/chalet/guest-services/';try{if(navigator.share)await navigator.share({title:document.title,url});else if(navigator.clipboard){await navigator.clipboard.writeText(url);$('share-status').textContent='تم نسخ الرابط';}}catch(_){}};
 try{
  const response=await fetch('/index.html',{cache:'no-cache'});if(!response.ok)throw Error('source');const doc=new DOMParser().parseFromString(await response.text(),'text/html');
