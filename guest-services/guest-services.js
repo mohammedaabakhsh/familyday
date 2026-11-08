@@ -466,10 +466,10 @@
       var notes=document.querySelector('#cinema-service .usage ul');catalog.cinema.notes.forEach(function(text){notes.appendChild(el('li',text));});
     }
     var packages=document.querySelector('.game-options');
-    [''].concat(gameOptions).forEach(function(key){
+    packages.querySelector('legend').textContent=isChalet ? 'باقة الألعاب' : 'اختر باقة الألعاب';
+    gameOptions.forEach(function(key){
       var label=el('label'),input=el('input'),copy=el('span');input.type='radio';input.name='games-package';input.value=key;
-      if(!key) copy.textContent='بدون باقة ألعاب';
-      else {var pack=catalog.games.packages[key];copy.appendChild(el('span',pack.name));copy.appendChild(el('small',key==='box' ? 'يشمل الألعاب الموضّحة أدناه' : pack.description));copy.appendChild(el('strong',pack.price+' ريال'));}
+      var pack=catalog.games.packages[key];copy.appendChild(el('span',pack.name));copy.appendChild(el('small',key==='box' ? 'يشمل الألعاب الموضّحة أدناه' : pack.description));copy.appendChild(el('strong',pack.price+' ريال'));
       label.append(input,copy);packages.appendChild(label);
     });
   }

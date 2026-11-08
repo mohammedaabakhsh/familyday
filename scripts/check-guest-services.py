@@ -191,9 +191,8 @@ with sync_playwright() as p:
         assert page.locator('#restaurant-notes').input_value()=='بدون بصل'
         page.locator('#guest-notes').fill('');page.locator('#extras-order .send-order').click()
         assert 'ملاحظات:' not in captured(page,'966556156693')
-        # Removing a package in its dialog removes it from the bill only after applying.
-        open_service(page,'games');page.locator('[name="games-package"][value=""]').check()
-        assert page.locator('#apply-selection').text_content()=='حذف من الطلب';apply_service(page)
+        # Remove games directly from the order summary.
+        page.get_by_role('button',name='حذف بوكس الألعاب',exact=True).click()
         assert page.locator('#order-total').text_content()=='220'
         open_service(page,'cinema');page.locator('#cinema-time').select_option('');apply_service(page)
         assert page.locator('#order-total').text_content()=='70'

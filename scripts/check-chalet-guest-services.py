@@ -17,7 +17,7 @@ with sync_playwright() as p:
   assert page.locator('meta[property^="og:image"],meta[name^="twitter:image"]').count()==0
   assert page.locator('[data-service]').evaluate_all('els=>els.map(e=>e.dataset.service)')==['water','games']
   assert page.locator('#restaurant-order,#guest-cabin,#cinema-service,#extras-service,#hospitality-service').count()==0
-  assert page.locator('[name="games-package"]').evaluate_all('els=>els.map(e=>e.value)')==['','box']
+  assert page.locator('[name="games-package"]').evaluate_all('els=>els.map(e=>e.value)')==['box']
   assert page.locator('.footer-bottom').count()==0
   assert page.locator('.help a[href="https://wa.me/966556156693"]').count()==1
   def click(selector,n=1):
@@ -71,7 +71,7 @@ with sync_playwright() as p:
    page.keyboard.press('Tab');assert page.evaluate('document.getElementById("service-dialog").contains(document.activeElement)')
   page.keyboard.press('Escape');assert page.evaluate('getComputedStyle(document.body).overflow')!='hidden'
   page.get_by_role('button',name='حذف باقة ألعاب مائية',exact=True).click();assert page.locator('#order-total').inner_text()=='50'
-  open_('games');page.locator('[name="games-package"][value=""]').check();assert page.locator('#apply-selection').inner_text()=='حذف من الطلب';apply()
+  page.get_by_role('button',name='حذف بوكس الألعاب',exact=True).click()
   assert page.locator('#orders-summary').is_hidden()
   if width==390:page.screenshot(path='/tmp/fd-chalet-parity-home.png',full_page=True)
   assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')
