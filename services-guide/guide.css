@@ -302,3 +302,10 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 #seating .seating-detail-hint{display:inline-flex;align-items:center;font-size:11px;font-weight:700;color:#176078;white-space:nowrap}
 #seating .seating-collapsed-chevron{width:26px!important;height:26px!important}
 @media(max-width:390px){#seating .seating-collapsed-summary{gap:7px!important;padding-inline:11px!important}#seating .seating-detail-hint{font-size:10px}}
+
+/* Details prompt occupies its own bottom row, with text next to arrow. */
+#seating .seating-collapsed-summary{display:flex!important;flex-wrap:wrap!important;align-items:center!important}
+#seating .seating-collapsed-main{flex:1 1 60%!important}
+#seating .seating-collapsed-summary>.price{margin-inline-start:auto!important}
+#seating .seating-detail-footer{display:flex;align-items:center;justify-content:center;gap:5px;flex:0 0 100%;width:100%;padding-top:7px;margin-top:2px;border-top:1px solid rgba(23,96,120,.12)}
+#seating .seating-detail-hint{font-size:11px!important}
