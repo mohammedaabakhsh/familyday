@@ -12,8 +12,8 @@
 #maiya-detail .wm-quantity button { width:44px;height:44px;background:transparent;font-size:23px; }
 #maiya-detail .wm-quantity button:disabled { background:transparent;color:#65818f; }
 #maiya-detail .wm-quantity output { width:28px;font-size:16px; }
-#maiya-detail .wm-selection-count { margin:8px 0 0;font-size:13px; }
-#maiya-detail .wm-selection-count.is-complete { color:#8fd5e4; }
+#maiya-detail .wm-selection-count { margin:8px 0 0;font-size:13px;min-height:27px;line-height:27px; }
+#maiya-detail .wm-selection-count.is-complete { color:#b8ceff;font-size:17px;font-weight:800; }
 #maiya-detail .wm-notes { margin:0;padding:0;border:0; }
 #maiya-detail .wm-notes .wm-section-title {
   position:absolute;width:1px;height:1px;padding:0;margin:-1px;
@@ -26,3 +26,7 @@
   #maiya-detail .wm-shell { gap:14px; }
   #maiya-detail .wm-category { padding:9px 12px; }
 }
+
+#maiya-detail .wm-category.is-selected{background:#123c35;border-color:#4aa58b;box-shadow:inset 0 0 0 1px #4aa58b}
+#maiya-detail.is-complete .wm-category.is-selected{background:#172e53;border-color:#8caef1;box-shadow:inset 0 0 0 1px #8caef1;color:#d5e2ff}
+#maiya-detail .wm-offer b{font-weight:inherit}

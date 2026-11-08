@@ -70,7 +70,7 @@ with sync_playwright() as p:
             assert not page.locator('#order-time-wrap').is_visible()
             assert page.locator('#order-villa option[value="not-booked"]').count() == 0
             assert page.locator('#order-item-name>div').all_text_contents() == [
-                'باقة ألعاب مائية', '3 ألعاب بـ50 ريال', f'للكبار: {adults}', f'للصغار: {3-adults}']
+                'باقة ألعاب مائية × 1', '3 ألعاب بـ50 ريال', f'للكبار: {adults}', f'للصغار: {3-adults}']
             assert page.locator('.fd-order-help').inner_text() == 'تابع طلبك عبر واتساب'
             assert page.locator('#order-notes').get_attribute('placeholder') == 'مثل أعمار الأطفال أو أي تفاصيل تساعدنا في تجهيز طلبك'
             page.evaluate('window.open=(url)=>{window.capturedURL=url;return null}')
@@ -99,10 +99,11 @@ with sync_playwright() as p:
             url = urlparse(page.evaluate('window.capturedURL'))
             assert url.path == '/966556156693'
             text = parse_qs(url.query)['text'][0]
-            expected = ('السلام عليكم، أرغب بطلب باقة ألعاب مائية.\n\n'
-                        'الاسم: ضيف التجربة\nالكوخ: بيت الدوم 1\nرقم الكوخ: 15\n\n'
-                        f'عدد ألعاب الكبار: {adults}\nعدد ألعاب الصغار: {3-adults}\n'
-                        'الإجمالي: 3 ألعاب بـ50 ريال')
+            expected = ('السلام عليكم، أرغب بطلب الخدمات التالية:\n\n'
+                        'الاسم: ضيف التجربة\nاسم الكوخ: بيت الدوم 1\nرقم الكوخ: 15\n\nالطلبات:\n\n'
+                        'الألعاب المائية:\nباقة ألعاب مائية × 1 = 50 ريال\n'
+                        f'للكبار: {adults}\nللصغار: {3-adults}\n\n'
+                        'إجمالي الطلب: 50 ريال')
             if note: expected+='\n\nملاحظات: '+note
             assert text==expected, text
             # Returning from checkout must retain the chosen distribution.

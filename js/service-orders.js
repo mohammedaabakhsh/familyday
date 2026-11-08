@@ -6,8 +6,8 @@ var _orderResortScope = false;
 function serviceOrderDetails(selection, restore) {
   var water = getMaiyaOrderDetails(selection);
   if (water) {
-    if (restore) { _maiyaQuantities = water; renderMaiyaQuantities(); }
-    return {title:'باقة ألعاب مائية', summary:['3 ألعاب بـ50 ريال','للكبار: '+water.adults,'للصغار: '+water.children]};
+    if (restore) { _maiyaPackages=water.packages; _maiyaQuantities={adults:water.adults,children:water.children}; renderMaiyaQuantities(); }
+    return {title:'باقة ألعاب مائية × '+water.packages, summary:[water.size+' ألعاب بـ'+water.price+' ريال','للكبار: '+water.adults,'للصغار: '+water.children]};
   }
   if (!selection || typeof selection !== 'object') return {title:String(selection || ''), summary:[]};
   if (selection.type === 'cinema') return {title:'جلسة السينما', summary:['مدة الجلسة: 3 ساعات','الإجمالي: 150 ريال']};
