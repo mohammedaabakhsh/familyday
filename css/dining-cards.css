@@ -37,3 +37,7 @@
 .fd-dining-card :is(summary,button):focus-visible{outline:2px solid var(--fd-dining-accent);outline-offset:-4px}
 @media(max-width:359px){.fd-dining-summary{padding:14px;gap:12px}.fd-dining-price-box{padding:10px 6px}.fd-dining-body{padding:14px}.fd-dining-price{font-size:18px}.fd-dining-inclusions{gap:8px 14px}}
 @media print{#dining .fd-dining-card{break-inside:avoid;margin-bottom:12px}#dining .fd-dining-card::details-content{content-visibility:visible}#dining .fd-dining-body{display:block}#dining .fd-dining-arrow,#dining .fd-dining-hint{display:none}}
+
+#tawilat-detail .dining-shared-photo{max-width:680px;margin:0 auto 20px}
+#tawilat-detail .dining-shared-photo .fd-dining-image{border-radius:16px}
+#tawilat-detail .dining-shared-photo .fd-dining-caption{margin:8px 0 0}

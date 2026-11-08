@@ -44,7 +44,7 @@
 <link rel="preload" as="script" href="js/app-shell.js?v=20261108-chalet-services-v1">
 <link rel="preload" as="script" href="js/gallery-data.js?v=20261102-structure-v1">
 <link rel="preload" as="script" href="js/accommodations.js?v=20261108-chalet-services-v1">
-<link rel="preload" as="script" href="js/services.js?v=20261108-dining-cards-v3">
+<link rel="preload" as="script" href="js/services.js?v=20261108-dining-photo-v4">
 <link rel="preload" as="script" href="js/stay-navigation.js?v=20261107-final-batch-v1">
 <link rel="preload" as="script" href="js/router.js?v=20261108-chalet-services-v1">
 <link rel="stylesheet" href="css/app-base.css?v=20261106-seating-controls-v7">
@@ -1618,7 +1618,7 @@
 
 <script src="services-guide/guide-gallery.js?v=20261107-complete-photos-v1"></script>
 <script src="js/dining-cards.js?v=20261108-dining-cards-v1"></script>
-<script src="js/services.js?v=20261108-dining-cards-v3"></script>
+<script src="js/services.js?v=20261108-dining-photo-v4"></script>
 <script src="js/seating-cart.js?v=20261108-seating-summary-v3"></script>
 
 
@@ -1749,6 +1749,7 @@
     </div>
 
     <p class="tw-intro">طاولة تجمعكم في المساحة الخارجية الخاصة بالكوخ</p>
+    <div id="dining-photo" class="dining-shared-photo"></div>
     <div id="dining-cards" class="fd-dining-cards"></div>
     <template id="dining-card-template">
       <details class="fd-dining-card">
@@ -1758,7 +1759,7 @@
             <span class="fd-dining-price-box" data-option="plain"><span class="fd-dining-option-name">بدون تنسيق</span><strong class="fd-dining-price"></strong><span class="fd-dining-option-desc">طاولات وكراسي فقط</span></span>
             <span class="fd-dining-price-box" data-option="tansiq"><span class="fd-dining-option-name">مع تنسيق</span><strong class="fd-dining-price"></strong><span class="fd-dining-option-desc">طاولات وكراسي مع تجهيز الطاولة</span></span>
           </span>
-          <span class="fd-dining-hint">الصورة والتفاصيل</span>
+          <span class="fd-dining-hint">تفاصيل التجهيز</span>
         </summary>
         <div class="fd-dining-body">
           <div class="fd-dining-image"><img loading="lazy" data-page-src="imgs/tawilat_1.webp" width="1200" height="1200" alt="طاولة طعام خارجية مجهزة بالكراسي وأطقم التقديم والزهور بجانب المسبح" decoding="async"></div>
@@ -1970,7 +1971,7 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 <link rel="stylesheet" href="css/home-review.css?v=20261107-aligned-v2">
 <link rel="stylesheet" href="css/contact-layout.css?v=20261106-brand-footer-v3">
 <link rel="stylesheet" href="css/resort-faq.css?v=20261106-all-v2">
-<link rel="stylesheet" href="css/dining-cards.css?v=20261108-dining-cards-v1">
+<link rel="stylesheet" href="css/dining-cards.css?v=20261108-dining-photo-v2">
 <link rel="stylesheet" href="css/cinema-layout.css?v=20261108-cinema-intro-v4">
 <link rel="stylesheet" href="css/games-layout.css?v=20261108-chalet-no-photo-v2">
 <link rel="stylesheet" href="css/water-layout.css?v=20261108-water-multipack-v1">

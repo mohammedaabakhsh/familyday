@@ -16,11 +16,11 @@ with sync_playwright() as p:
    page.goto(BASE+path,wait_until='networkidle');page.wait_for_selector('.fd-dining-card',state='attached')
    assert page.locator('.fd-dining-card').count()==5
    assert page.locator('.fd-dining-card[open]').count()==0
-   if not main:
-    assert page.locator('#dining img').count()==1
-    hero=page.locator('#dining .dining-shared-photo')
-    assert hero.is_visible()
-    assert hero.bounding_box()['y']+hero.bounding_box()['height']<=page.locator('.fd-dining-card').first.bounding_box()['y']
+   panel=page.locator('#tawilat-detail' if main else '#dining')
+   assert panel.locator('img').count()==1
+   hero=panel.locator('.dining-shared-photo')
+   assert hero.is_visible()
+   assert hero.bounding_box()['y']+hero.bounding_box()['height']<=page.locator('.fd-dining-card').first.bounding_box()['y']
    snapshot=[]
    for size,(plain,tansiq) in prices.items():
     card=page.locator('#dining-card-'+str(size))
@@ -28,11 +28,10 @@ with sync_playwright() as p:
     assert card.locator('.fd-dining-option-desc').all_text_contents()==['طاولات وكراسي فقط','طاولات وكراسي مع تجهيز الطاولة']
     assert card.locator('.fd-dining-body').is_hidden()
     card.locator('summary').click()
-    photo=card if main else page.locator('.dining-shared-photo')
+    photo=hero
     assert photo.locator('.fd-dining-caption').inner_text()=='الصورة توضح التجهيز مع التنسيق'
-    if not main:
-     assert card.locator('img').count()==0
-     assert card.locator('.fd-dining-hint').inner_text()=='تفاصيل التجهيز'
+    assert card.locator('img').count()==0
+    assert card.locator('.fd-dining-hint').inner_text()=='تفاصيل التجهيز'
     image=photo.locator('img').first;image.scroll_into_view_if_needed()
     page.wait_for_function('(e)=>e.complete && e.naturalWidth>0',arg=image.element_handle())
     assert card.locator('.fd-dining-inclusions li').all_text_contents()==page.evaluate('_tawilatInclusions')

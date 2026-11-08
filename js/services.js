@@ -369,8 +369,16 @@ var _tawilatSelections = Object.create(null);
 function buildTawilatCards(){
   var host=document.getElementById('dining-cards');
   if(host.children.length) return;
+  var source=document.getElementById('dining-card-template').content;
+  var photo=source.querySelector('.fd-dining-image').cloneNode(true);
+  var image=photo.querySelector('img');
+  image.src='/'+image.getAttribute('data-page-src').replace(/^\//,'');
+  image.removeAttribute('data-page-src');
+  document.getElementById('dining-photo').replaceChildren(photo,source.querySelector('.fd-dining-caption').cloneNode(true));
   Object.keys(_tawilatPrices).forEach(function(size){
     var card=FD_DINING_CARDS.create(document,Number(size),true);
+    card.querySelector('.fd-dining-image').remove();
+    card.querySelector('.fd-dining-caption').remove();
     card.querySelectorAll('.fd-dining-option').forEach(function(button){
       button.addEventListener('click',function(){setTawilatSize(Number(size));selectTawilatOpt(button.dataset.option);});
     });
