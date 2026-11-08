@@ -24,7 +24,7 @@ with sync_playwright() as p:
             assert page.locator('#water-children').inner_text()==str(children)
             assert page.locator('#dialog-total').inner_text()==str(pack*50)
             complete=adults+children==required
-            assert page.locator('#water-count').inner_text()==('اكتمل اختيار الألعاب' if complete else f'اخترت {adults+children} من {required}')
+            assert page.locator('#water-count').inner_text()==('✓ اكتمل اختيار الألعاب' if complete else f'اخترت {adults+children} من {required}')
             assert page.locator('#apply-selection').is_disabled()==(not complete)
             assert page.locator('#water-service .section-note').inner_text()=='وزّع الألعاب بين الكبار والصغار'
         clicks('#water-card');check(1,0,0)

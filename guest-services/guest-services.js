@@ -294,7 +294,8 @@
     document.getElementById('water-offer').textContent=required+' ألعاب بـ'+catalog.water.price*(water.packages || 1)+' ريال';
     document.querySelectorAll('[data-water-packages]').forEach(function(button){button.disabled=Number(button.dataset.step)<0 ? (water.packages || 1)<=1 : (water.packages || 1)>=20;});
     ['adults','children'].forEach(function(key){setCounter(document.getElementById('water-'+key).parentNode,water[key],water[key]+required-total);});
-    document.getElementById('water-count').textContent=total===required ? 'اكتمل اختيار الألعاب' : 'اخترت '+total+' من '+required;
+    document.getElementById('water-service').classList.toggle('is-complete',total===required);
+    document.getElementById('water-count').textContent=total===required ? '✓ اكتمل اختيار الألعاب' : 'اخترت '+total+' من '+required;
     time.value=data.cinema;time.classList.toggle('is-selected',!!data.cinema);
     document.querySelectorAll('[name="games-package"]').forEach(function(input){
       input.checked=input.value===data.games;
