@@ -32,6 +32,15 @@
         + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>'
         + '<div class="package-details-body">' + body + '</div></details></article>';
     }
+    if (className === 'photo-card') {
+      return '<article class="package-card seating-collapsed-card"><details class="seating-collapsed-details">'
+        + '<summary class="seating-collapsed-summary"><span class="seating-collapsed-title">' + escape(title) + '</span>'
+        + (capacity ? '<span class="service-capacity">' + escape(capacity) + '</span>' : '')
+        + priceMarkup
+        + '<svg class="seating-collapsed-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>'
+        + '<div class="seating-collapsed-content">' + FD_GUIDE_GALLERY.markup(photos,title,imageAlt)
+        + '<div class="package-details-body">' + body + '</div></div></details></article>';
+    }
     return '<article class="package-card package-card--gallery ' + className + (photos.length ? '' : ' package-card--text') + '"' + (id ? ' id="' + escape(id) + '"' : '') + '>'
       + (photos.length ? FD_GUIDE_GALLERY.markup(photos,title,imageAlt) : '')
       + '<div class="package-copy"><div class="package-heading"><div class="service-heading-copy"><h3>' + escape(title) + '</h3>' + (capacity ? '<span class="service-capacity" aria-label="عدد الأشخاص: ' + escape(capacity) + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="9" cy="7" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 4a3 3 0 0 1 0 6m2 3a5 5 0 0 1 3 5v3"/></svg>' + escape(capacity) + '</span>' : '') + '</div>' + priceMarkup + '</div>'
