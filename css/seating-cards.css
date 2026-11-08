@@ -41,3 +41,7 @@
 #jalsat-detail .jl-cart-item p{grid-column:1/-1;margin:0;color:#b6cbd6;font-size:14px;line-height:1.6}
 #jalsat-detail .jl-cart-item strong{color:#8fd5e4;align-self:center}
 #jalsat-detail .jl-cart-item button{min-height:44px;padding:6px 14px;border:1px solid #7b6063;border-radius:10px;background:transparent;color:#f0baba;font:700 14px Tajawal,sans-serif;cursor:pointer}
+
+#jalsat-detail .jl-intro{max-width:680px;margin:0 auto 18px;color:#b6cbd6;font-size:14px;line-height:1.8;text-align:right}
+#jalsat-detail .jl-card-price-wrap{display:flex;flex-direction:column;gap:3px}
+#jalsat-detail .jl-card-price-unit{color:#9cb7c3;font-size:11px;font-weight:500;line-height:1.4}
