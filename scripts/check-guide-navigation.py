@@ -28,13 +28,15 @@ with sync_playwright() as p:
             page.go_forward();page.wait_for_selector(target+':visible')
             page.go_back();page.wait_for_selector('.contents:visible')
         page.locator('.contents a[href="#coordination"]').click()
+        page.locator('#coordination .seating-collapsed-summary').first.click()
         gallery=page.locator('#coordination .package-gallery').first
+        photo_count=gallery.locator('img').count()
         gallery.locator('.gallery-next').click()
-        page.wait_for_function('document.querySelector("#coordination .gallery-count").textContent==="2 / 6"')
+        page.wait_for_function('(count)=>document.querySelector("#coordination .gallery-count").textContent==="2 / "+count',arg=photo_count)
         page.locator('#guide-back').click();page.wait_for_selector('.contents:visible')
         page.locator('.contents a[href="#coordination"]').click()
         page.wait_for_timeout(150)
-        assert gallery.locator('.gallery-count').inner_text()=='2 / 6'
+        assert gallery.locator('.gallery-count').inner_text()==f'2 / {photo_count}'
         assert abs(gallery.locator('.gallery-track').evaluate('e=>e.scrollLeft'))>0
         page.goto(BASE+'/services-guide/#dining',wait_until='networkidle')
         page.wait_for_selector('#dining:visible')
