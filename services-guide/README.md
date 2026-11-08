@@ -5,7 +5,7 @@ Coordination, dining and seating use matching full-width tiles stacked verticall
 Each tile opens a full-page section in the same tab: coordination, dining or seating. The home screen shows only the introduction, tiles and contact footer. Service cards keep a visible name
 and price, then a native inline disclosure for all its details. Dining shows its complete price table immediately, without a disclosure. Seating capacity appears below each session name. Package ordering
 for coordination stays on `/services/hospitality/`. Hospitality and cinema are offered through `/guest-services/`, using its shared order dialog, basket and resort WhatsApp draft.
-Coordination galleries use only the shared package photos in `service-data.js`. Celebration currently has no photos and shows “تفاصيل الباقة”; packages with photos show “الصور وتفاصيل الباقة”. No cabin-photo fallback is used. Dining and each seating option keep their actual source photo; single-image cards omit the gallery controls.
+Coordination galleries use only the shared package photos in `service-data.js`. All coordination cards show “الصور وتفاصيل الباقة”. Celebration currently has no photos; its label is kept consistent ahead of adding photos later. No cabin-photo fallback is used. Dining and each seating option keep their actual source photo; single-image cards omit the gallery controls.
 The guide's footer provides contact links. The cabin map is not included in this catalogue.
 
 ## One source of content

@@ -33,7 +33,7 @@ with sync_playwright() as p:
     gallery.locator('.gallery-previous').click()
    else:
     assert card.locator('.package-gallery,.gallery-controls').count()==0
-    assert card.locator('summary').inner_text().find('الصور')==-1
+    assert card.locator('.seating-detail-hint').inner_text()=='الصور وتفاصيل الباقة'
    # Longer disclosure labels must fit inside the card even on small phones.
    assert card.locator('.seating-detail-footer').evaluate('(el)=>{const r=el.getBoundingClientRect(),c=el.closest("article").getBoundingClientRect();return r.left>=c.left && r.right<=c.right}')
   assert page.locator('#coordination details[open]').count()==6
