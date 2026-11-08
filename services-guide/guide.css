@@ -294,3 +294,11 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 #seating .seating-collapsed-card:nth-child(11){background:#f7f4ee!important;border-color:#dce6e8!important}
 #seating .seating-collapsed-card:nth-child(12){background:#edf2f4!important;border-color:#dce6e8!important}
 #seating .seating-extra{margin-top:16px!important}
+
+/* Taller seating choices with a clearly labelled expansion affordance. */
+#seating .seating-collapsed-summary{min-height:100px!important;padding:18px 14px!important;gap:8px!important;flex-wrap:wrap!important}
+#seating .seating-collapsed-main{flex:1 1 52%!important;gap:9px!important}
+#seating .seating-collapsed-title{font-size:15px!important}
+#seating .seating-detail-hint{display:inline-flex;align-items:center;font-size:11px;font-weight:700;color:#176078;white-space:nowrap}
+#seating .seating-collapsed-chevron{width:26px!important;height:26px!important}
+@media(max-width:390px){#seating .seating-collapsed-summary{gap:7px!important;padding-inline:11px!important}#seating .seating-detail-hint{font-size:10px}}
