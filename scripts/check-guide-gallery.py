@@ -12,7 +12,7 @@ with sync_playwright() as p:
   gallery=card.locator('.package-gallery');track=gallery.locator('.gallery-track');count=gallery.locator('.gallery-count')
   # Each package gallery keeps its own position when other galleries change.
   galleries=page.locator('.package-gallery:has(.gallery-controls)')
-  assert galleries.count()==5
+  assert galleries.count()==6
   for current in galleries.all():
    current.locator('.gallery-next').click()
    page.wait_for_function('(el)=>el.textContent.startsWith("2 / ")',arg=current.locator('.gallery-count').element_handle())

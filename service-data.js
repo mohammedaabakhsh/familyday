@@ -106,7 +106,9 @@ var _coordinationPhotos = {
     'imgs/coordination/premium-rose/05.webp'
   ],
   'hd-coordination-package-1': [
-    'imgs/coordination/rose/approved-a.webp'
+    'imgs/coordination/rose/clean-front.webp',
+    'imgs/coordination/rose/clean-angle.webp',
+    'imgs/coordination/rose/clean-h.webp'
   ],
   'hd-coordination-package-vip': [
     'imgs/coordination/vip/01.webp',
