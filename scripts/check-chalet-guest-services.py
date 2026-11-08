@@ -18,7 +18,7 @@ with sync_playwright() as p:
   assert page.locator('[data-service]').evaluate_all('els=>els.map(e=>e.dataset.service)')==['water','games']
   assert page.locator('#restaurant-order,#guest-cabin,#cinema-service,#extras-service,#hospitality-service').count()==0
   assert page.locator('[name="games-package"]').evaluate_all('els=>els.map(e=>e.value)')==['','box']
-  assert page.locator('.footer-bottom a').get_attribute('href')=='/services-guide/'
+  assert page.locator('.footer-bottom').count()==0
   assert page.locator('.help a[href="https://wa.me/966556156693"]').count()==1
   def click(selector,n=1):
    for _ in range(n):page.locator(selector).click()
