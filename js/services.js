@@ -91,28 +91,23 @@ function buildJalsatSlides(){
     var addon = card.querySelector('.jl-addon-option');
     addon.setAttribute('aria-label','إضافة كيك وعصير بـ170 ريال إلى '+session.name);
     addon.addEventListener('click',function(){toggleJalsatCake(index);});
-    card.querySelector('.jl-order-button').addEventListener('click',function(){jalsatOrder(index);});
+    card.querySelector('.jl-order-button').addEventListener('click',function(){addJalsatToCart(index);});
     container.appendChild(card);
+    setupJalsatQuantity(card,index);
     renderJalsatCard(index);
   });
 }
 function renderJalsatCard(index){
   var session = _jalsatSessions[index], card = document.getElementById('jalsat-card-'+index);
   if(!session || !card) return;
-  var cake = !!_jalsatCakeBySession[index];
-  var addon = card.querySelector('.jl-addon-option');
-  addon.classList.toggle('is-selected',cake);
-  addon.setAttribute('aria-pressed',String(cake));
-  card.querySelector('.jl-card-base').hidden = !cake;
-  card.querySelector('.jl-card-base span:last-child').textContent = session.price;
-  card.querySelector('.jl-card-addon').hidden = !cake;
-  card.querySelector('.jl-total strong').textContent = (parseInt(session.price,10)+(cake?170:0))+' ريال';
+  renderJalsatSelection(index,card,session);
 }
 function openJalsatDetail(){
   var panel = document.getElementById('jalsat-detail');
   panel.classList.remove('hide');
   panel.scrollTop = 0;
   buildJalsatSlides();
+  restoreJalsatCart();
 }
 function closeJalsatDetail(){ document.getElementById('jalsat-detail').classList.add('hide'); }
 
@@ -342,10 +337,14 @@ function toggleJalsatCake(index){
   if(!Number.isInteger(index)) index = _jalsatIdx;
   if(!_jalsatSessions[index]) return;
   _jalsatIdx = index;
-  _jalsatCakeAdded = !_jalsatCakeBySession[index];
+  var draft = jalsatDraft(index);
+  draft.cakes = draft.cakes ? 0 : 1;
+  _jalsatCakeAdded = draft.cakes > 0;
   updateJalsatSummary();
 }
 function updateJalsatSummary(){
+  var draft = jalsatDraft(_jalsatIdx);
+  draft.cakes = _jalsatCakeAdded ? Math.max(1,draft.cakes) : 0;
   _jalsatCakeBySession[_jalsatIdx] = !!_jalsatCakeAdded;
   renderJalsatCard(_jalsatIdx);
 }

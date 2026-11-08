@@ -44,7 +44,7 @@
 <link rel="preload" as="script" href="js/app-shell.js?v=20261108-chalet-services-v1">
 <link rel="preload" as="script" href="js/gallery-data.js?v=20261102-structure-v1">
 <link rel="preload" as="script" href="js/accommodations.js?v=20261108-chalet-services-v1">
-<link rel="preload" as="script" href="js/services.js?v=20261108-seating-cards-v1">
+<link rel="preload" as="script" href="js/services.js?v=20261108-seating-cart-v2">
 <link rel="preload" as="script" href="js/stay-navigation.js?v=20261107-final-batch-v1">
 <link rel="preload" as="script" href="js/router.js?v=20261108-chalet-services-v1">
 <link rel="stylesheet" href="css/app-base.css?v=20261106-seating-controls-v7">
@@ -249,7 +249,7 @@
 <link rel="stylesheet" href="css/service-orders.css?v=20261103-splash-motion-v1">
 <script src="js/menu-order-message.js?v=20261103-menu-message-v1"></script>
 <script src="js/service-venue.js?v=20261108-chalet-no-photo-v2"></script>
-<script src="js/service-orders.js?v=20261108-chalet-services-v1"></script>
+<script src="js/service-orders.js?v=20261108-seating-cart-v2"></script>
 <script src="resort-features.js?v=20261106-faq-v2"></script>
 <script src="stay-design.js?v=20261107-final-batch-v1"></script>
 <script src="site-enhancements.js?v=1"></script>
@@ -1002,25 +1002,34 @@
           <img class="jl-card-image" loading="lazy" decoding="async" alt="">
           <div class="jl-card-body">
             <p class="jl-description"></p>
+            <div class="jl-quantity-row jl-session-quantity"><span>عدد الجلسات</span><div class="jl-stepper"><button type="button" data-change="-1" aria-label="تقليل عدد الجلسات">−</button><output>1</output><button type="button" data-change="1" aria-label="زيادة عدد الجلسات">+</button></div></div>
             <div>
               <h3 class="jl-section-title">إضافة اختيارية</h3>
               <button type="button" class="jl-addon-option" aria-pressed="false">
                 <span class="jl-addon-name">كيك وعصير</span><span class="jl-addon-price">170 ريال</span>
                 <span class="jl-toggle" aria-hidden="true"><span class="jl-toggle-knob"></span></span>
               </button>
+              <div class="jl-quantity-row jl-cake-quantity" hidden><span>عدد إضافات الكيك والعصير</span><div class="jl-stepper"><button type="button" data-change="-1" aria-label="تقليل عدد إضافات الكيك والعصير">−</button><output>1</output><button type="button" data-change="1" aria-label="زيادة عدد إضافات الكيك والعصير">+</button></div></div>
             </div>
             <div class="jl-order" aria-label="ملخص الطلب">
               <div aria-live="polite" aria-atomic="true">
                 <div class="jl-order-line jl-card-base" hidden><span>سعر الجلسة</span><span></span></div>
                 <div class="jl-order-line jl-card-addon" hidden><span>كيك وعصير</span><span>170 ريال</span></div>
-                <div class="jl-total"><span>إجمالي الطلب</span><strong></strong></div>
+                <div class="jl-total"><span>إجمالي الاختيار</span><strong></strong></div>
               </div>
-              <button type="button" class="jl-order-button">متابعة الطلب</button>
+              <button type="button" class="jl-order-button">أضف للطلب</button>
+              <p class="jl-added-status" role="status"></p>
             </div>
           </div>
         </div>
       </details>
     </template>
+    <section id="jalsat-cart" class="jl-cart" hidden aria-labelledby="jalsat-cart-title">
+      <h2 id="jalsat-cart-title">ملخص طلب الجلسات</h2>
+      <div id="jalsat-cart-items"></div>
+      <div class="jl-total" aria-live="polite"><span>إجمالي الطلب</span><strong id="jalsat-cart-total"></strong></div>
+      <button type="button" class="jl-order-button" id="jalsat-checkout" onclick="checkoutJalsatCart()">متابعة الطلب</button>
+    </section>
     <details class="jl-notes">
       <summary>تعليمات الاستخدام</summary>
       <ul class="jl-notes-list">
@@ -1608,7 +1617,8 @@
 <div class="tag-tooltip" id="tag-tooltip"></div>
 
 <script src="services-guide/guide-gallery.js?v=20261107-complete-photos-v1"></script>
-<script src="js/services.js?v=20261108-seating-cards-v1"></script>
+<script src="js/services.js?v=20261108-seating-cart-v2"></script>
+<script src="js/seating-cart.js?v=20261108-seating-cart-v2"></script>
 
 
 <!-- BOTTOM NAV -->
@@ -1914,7 +1924,7 @@
 
 <link rel="stylesheet" href="resort-ui.css?v=20261107-final-batch-v1">
 <link rel="stylesheet" href="css/service-mobile.css?v=20261106-seating-selection-v6">
-<link rel="stylesheet" href="css/seating-cards.css?v=20261108-seating-cards-v1">
+<link rel="stylesheet" href="css/seating-cards.css?v=20261108-seating-cart-v2">
 <link rel="stylesheet" href="css/services-index.css?v=20261108-chalet-services-v1">
 <link rel="stylesheet" href="/css/rewards-layout.css?v=20261106-unified-v1">
 <link rel="stylesheet" href="stay-ui.css?v=20261107-comparison-toggle-v4">

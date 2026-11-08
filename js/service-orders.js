@@ -11,6 +11,7 @@ function serviceOrderDetails(selection, restore) {
     return {title:'باقة ألعاب مائية × '+water.packages, summary:[water.size+' ألعاب بـ'+water.price+' ريال','للكبار: '+water.adults,'للصغار: '+water.children]};
   }
   if (!selection || typeof selection !== 'object') return {title:String(selection || ''), summary:[]};
+  if (selection.type === 'seating-cart') return getJalsatCartDetails(selection,restore);
   if (selection.type === 'cinema') return {title:'جلسة السينما', summary:['مدة الجلسة: 3 ساعات','الإجمالي: 150 ريال']};
   if (selection.type === 'games' && ['box','table'].indexOf(selection.option) !== -1) {
     var table = selection.option === 'table', price = table ? 150 : 50;

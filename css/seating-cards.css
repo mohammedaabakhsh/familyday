@@ -24,3 +24,20 @@
 #jalsat-detail .jl-notes{max-width:680px;margin:0 auto}
 @media(max-width:360px){#jalsat-detail .jl-card-summary{padding:16px;gap:8px}#jalsat-detail .jl-card-title{font-size:17px}#jalsat-detail .jl-card-price{font-size:17px}#jalsat-detail .jl-card-body{padding:16px}}
 @media(prefers-reduced-motion:reduce){#jalsat-detail .jl-card-arrow svg{transition:none}}
+#jalsat-detail .jl-card-persons{align-self:flex-start;padding:4px 11px;border:1px solid #a38a52;border-radius:9px;background:#3b3423;color:#ffe0a0;font-weight:800;font-size:15px}
+#jalsat-detail .jl-quantity-row{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#d6e9ef;font-size:15px;font-weight:700}
+#jalsat-detail .jl-quantity-row[hidden],#jalsat-detail .jl-cart[hidden]{display:none}
+#jalsat-detail .jl-cake-quantity{margin-top:12px;font-size:13px}
+#jalsat-detail .jl-stepper{display:flex;align-items:center;direction:ltr;border:1px solid #426574;background:#102a3a;border-radius:12px;overflow:hidden;flex-shrink:0}
+#jalsat-detail .jl-stepper button{width:42px;min-height:44px;border:0;background:transparent;color:#a3e2ea;font:700 23px Tajawal,sans-serif;cursor:pointer}
+#jalsat-detail .jl-stepper button:disabled{opacity:.35;cursor:default}
+#jalsat-detail .jl-stepper output{min-width:28px;text-align:center;color:#f0f5f7;font-weight:800}
+#jalsat-detail .jl-added-status{margin:9px 0 0;color:#a3e2cd;font-size:13px;line-height:1.6}
+#jalsat-detail .jl-added-status:empty{display:none}
+#jalsat-detail .jl-cart{max-width:680px;box-sizing:border-box;margin:0 auto 24px;padding:20px;border:1px solid #508391;border-radius:20px;background:#102b3a}
+#jalsat-detail .jl-cart h2{margin:0 0 16px;font-size:20px}
+#jalsat-detail .jl-cart-item{display:grid;grid-template-columns:1fr auto;gap:8px 12px;padding:16px 0;border-top:1px solid #315967}
+#jalsat-detail .jl-cart-item h3{grid-column:1/-1;margin:0;font-size:16px;line-height:1.6}
+#jalsat-detail .jl-cart-item p{grid-column:1/-1;margin:0;color:#b6cbd6;font-size:14px;line-height:1.6}
+#jalsat-detail .jl-cart-item strong{color:#8fd5e4;align-self:center}
+#jalsat-detail .jl-cart-item button{min-height:44px;padding:6px 14px;border:1px solid #7b6063;border-radius:10px;background:transparent;color:#f0baba;font:700 14px Tajawal,sans-serif;cursor:pointer}

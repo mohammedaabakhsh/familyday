@@ -49,18 +49,19 @@ with sync_playwright() as p:
         assert page.locator('#jalsat-card-2 .jl-order').is_visible()
         assert page.locator('#jalsat-card-2 .jl-total strong').inner_text()=='200 ريال'
         page.locator('#jalsat-card-2 .jl-addon-option').click()
-        selected=page.evaluate('[_jalsatFilter,_jalsatIdx,_jalsatCakeAdded]')
+        page.locator('#jalsat-card-2 .jl-order-button').click()
+        selected=page.evaluate('_jalsatCart')
         page.locator('#setups-tab-dining').click()
         assert page.evaluate('[_tawilatSize,_tawilatOpt]')==[12,'tansiq']
         page.locator('#setups-tab-seating').click()
-        assert page.evaluate('[_jalsatFilter,_jalsatIdx,_jalsatCakeAdded]')==selected
-        page.locator('#jalsat-card-2 .jl-order-button').click()
+        assert page.evaluate('_jalsatCart')==selected
+        page.locator('#jalsat-checkout').click()
         assert page.locator('#order-popup').is_visible()
         assert page.evaluate('_orderResortScope') is True
         page.evaluate('closeOrderPopup()')
         page.wait_for_selector('#order-popup',state='hidden')
         assert page.locator('#jalsat-detail').is_visible()
-        assert page.evaluate('[_jalsatFilter,_jalsatIdx,_jalsatCakeAdded]')==selected
+        assert page.evaluate('_jalsatCart')==selected
         assert not page.locator('#setups-tab-cinema').evaluate('(el)=>!!el.closest("[inert]")')
         # Browser Back leaves the page instead of walking through every tab.
         page.go_back(wait_until='networkidle');page.wait_for_url('**/services/')

@@ -51,17 +51,20 @@ with sync_playwright() as p:
     assert page.locator('#ts-'+str(size)).get_attribute('aria-pressed')=='true'
   visit('/services/outdoor-seating/')
   for i,name,people,price in [(0,'جلسة بإطار مثلث',2,300),(1,'الخيمة الهرمية',2,300),(2,'الجلسة الأرضية',4,200),(3,'جلسة أرضية بإطار خشبي لـ4 أشخاص',4,300),(4,'جلسة أرضية بإطار خشبي لـ8 أشخاص',8,550),(5,'جلسة أرضية بإطار خشبي لـ12 شخصًا',12,650)]:
-   page.evaluate('(i)=>jalsatGoTo(i)',i)
    for cake in [False,True]:
+    page.evaluate('()=>{_jalsatCart=[];saveJalsatCart();renderJalsatCart()}')
     card=page.locator('#jalsat-card-'+str(i))
-    if cake:card.locator('.jl-addon-option').click()
-    details=f'الجلسة: {name}\nعدد الأشخاص: {people}\nسعر الجلسة: {price} ريال'
-    if cake:details+='\nالإضافة: كيك وعصير — 170 ريال'
-    details+=f'\nإجمالي الطلب: {price+(170 if cake else 0)} ريال'
-    checkout('#jalsat-card-'+str(i)+' .jl-order-button','جلسة خارجية',details,reload=True)
-    assert card.locator('.jl-card-title').inner_text()==name
-    assert card.get_attribute('open') is not None
-    assert card.locator('.jl-addon-option').get_attribute('aria-pressed')==str(cake).lower()
+    if card.get_attribute('open') is None:card.locator('summary').click()
+    toggle=card.locator('.jl-addon-option')
+    if (toggle.get_attribute('aria-pressed')=='true')!=cake:toggle.click()
+    card.locator('.jl-order-button').click()
+    details=f'{name}\nعدد الأشخاص لكل جلسة: {people}\nالجلسات: 1 × {price} ريال = {price} ريال'
+    if cake:details+='\nكيك وعصير: 1 × 170 ريال = 170 ريال'
+    total=price+(170 if cake else 0)
+    details+=f'\nالمجموع: {total} ريال\n\nإجمالي الطلب: {total} ريال'
+    checkout('#jalsat-checkout','الجلسات الخارجية',details,reload=True)
+    assert page.locator('#jalsat-cart-total').inner_text()==f'{total} ريال'
+    assert page.evaluate('_jalsatCart')==[{'index':i,'quantity':1,'cakes':int(cake)}]
   visit('/services/hospitality/')
   assert page.locator('#hospitality-detail a[href*="wa.me"]').count()==0
   assert page.locator('#hospitality-detail .hd-package-note').count()==7
