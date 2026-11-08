@@ -266,3 +266,16 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 #seating .seating-collapsed-content{padding:3px 12px 14px!important;background:#fff}
 #seating .seating-collapsed-content .package-photo{border-radius:10px;overflow:hidden}
 @media(max-width:380px){#seating .seating-collapsed-summary{padding-inline:10px!important;gap:7px!important}#seating .seating-collapsed-summary .price{font-size:13px!important}}
+
+/* Outdoor seating: alternate three quiet brand-compatible surface tones. */
+#seating .photo-grid{background:transparent!important;border:0!important;border-radius:0!important;overflow:visible!important;display:grid!important;gap:9px!important}
+#seating .seating-collapsed-card{border:1px solid #dce8eb!important;border-radius:13px!important;overflow:hidden!important;box-shadow:none!important}
+#seating .seating-collapsed-card:nth-child(3n+1){background:#eaf4f3!important;border-color:#d4e8e5!important}
+#seating .seating-collapsed-card:nth-child(3n+2){background:#edf3f7!important;border-color:#dce6ee!important}
+#seating .seating-collapsed-card:nth-child(3n){background:#f5f2ec!important;border-color:#e9e3d8!important}
+#seating .seating-collapsed-card+.seating-collapsed-card{border-top-width:1px!important}
+#seating .seating-collapsed-summary{background:transparent!important}
+#seating .seating-collapsed-details[open] .seating-collapsed-summary{background:transparent!important}
+#seating .seating-collapsed-content{background:transparent!important}
+#seating .seating-collapsed-title{color:#193c49!important}
+#seating .seating-collapsed-summary .price{color:#176078!important}
