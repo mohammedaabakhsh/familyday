@@ -24,7 +24,7 @@
 #jalsat-detail .jl-notes{max-width:680px;margin:0 auto}
 @media(max-width:360px){#jalsat-detail .jl-card-summary{padding:16px;gap:8px}#jalsat-detail .jl-card-title{font-size:17px}#jalsat-detail .jl-card-price{font-size:17px}#jalsat-detail .jl-card-body{padding:16px}}
 @media(prefers-reduced-motion:reduce){#jalsat-detail .jl-card-arrow svg{transition:none}}
-#jalsat-detail .jl-card-persons{align-self:flex-start;padding:4px 11px;border:1px solid #a38a52;border-radius:9px;background:#3b3423;color:#ffe0a0;font-weight:800;font-size:15px}
+#jalsat-detail .jl-card-persons{align-self:flex-start;padding:4px 11px;border:1px solid #397987;border-radius:9px;background:#123d49;color:#8fd5e4;font-weight:800;font-size:15px}
 #jalsat-detail .jl-quantity-row{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#d6e9ef;font-size:15px;font-weight:700}
 #jalsat-detail .jl-quantity-row[hidden],#jalsat-detail .jl-cart[hidden]{display:none}
 #jalsat-detail .jl-cake-quantity{margin-top:12px;font-size:13px}
