@@ -46,6 +46,10 @@
 }
 
 /* The two reward descriptions use the existing spare vertical space. */
+#services-overlay .svcs-content > section[hidden],#tarfihi-opt-table[hidden],#order-popup .fd-order-field[hidden]{display:none!important}
+#services-overlay[data-venue="chalet"] .svcs-content{display:block}
+#services-overlay[data-venue="chalet"] .svcs-grid{grid-template-columns:minmax(0,1fr);gap:12px}
+#services-overlay[data-venue="chalet"] .svcs-section-title{margin-bottom:12px}
 #services-overlay .svcs-copy{display:flex;flex-direction:column;gap:3px;min-width:0}
 #services-overlay .svcs-description{color:#a9c3ce;font-size:12px;font-weight:400;line-height:1.4}
 @media (min-width:600px) and (max-height:450px){

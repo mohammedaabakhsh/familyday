@@ -4,6 +4,7 @@ var _isMenuOrder = false;
 var _orderResortScope = false;
 
 function serviceOrderDetails(selection, restore) {
+  if(isChaletServiceVenue() && !(getMaiyaOrderDetails(selection) || selection && selection.type==='games' && selection.option==='box')) return null;
   var water = getMaiyaOrderDetails(selection);
   if (water) {
     if (restore) { _maiyaPackages=water.packages; _maiyaQuantities={adults:water.adults,children:water.children}; renderMaiyaQuantities(); }
@@ -12,11 +13,11 @@ function serviceOrderDetails(selection, restore) {
   if (!selection || typeof selection !== 'object') return {title:String(selection || ''), summary:[]};
   if (selection.type === 'cinema') return {title:'جلسة السينما', summary:['مدة الجلسة: 3 ساعات','الإجمالي: 150 ريال']};
   if (selection.type === 'games' && ['box','table'].indexOf(selection.option) !== -1) {
-    var table = selection.option === 'table';
+    var table = selection.option === 'table', price = table ? 150 : 50;
     if (restore) selectTarfihiOpt(selection.option);
-    return {title:table ? 'طاولة مع بوكس الألعاب' : 'بوكس الألعاب',
-      summary:(table ? ['طاولة و4 كراسي مع بوكس الألعاب'] : []).concat('الإجمالي: '+(table ? 150 : 50)+' ريال'),
-      message:['الباقة: '+(table ? 'طاولة مع بوكس الألعاب' : 'بوكس الألعاب'),'الإجمالي: '+(table ? 150 : 50)+' ريال']};
+    return {title:table ? 'طاولة مع بوكس الألعاب' : 'بوكس الألعاب', price:price,
+      summary:(table ? ['طاولة و4 كراسي مع بوكس الألعاب'] : []).concat('الإجمالي: '+price+' ريال'),
+      message:['الباقة: '+(table ? 'طاولة مع بوكس الألعاب' : 'بوكس الألعاب'),'الإجمالي: '+price+' ريال']};
   }
   if (selection.type === 'dining' && Object.prototype.hasOwnProperty.call(_tawilatPrices,selection.size) && ['plain','tansiq'].indexOf(selection.option) !== -1) {
     if (restore) { setTawilatSize(selection.size); selectTawilatOpt(selection.option); }
@@ -42,6 +43,8 @@ function serviceOrderDetails(selection, restore) {
 
 function configureResortOrderForm(itemName) {
   var select = document.getElementById('order-villa');
+  select.closest('.fd-order-field').hidden=isChaletServiceVenue();
+  select.required=!isChaletServiceVenue();
   if (select.options.length === 1) {
     Object.keys(FD_CABIN_NUMBERS).forEach(function(name){ select.add(new Option(name,name)); });
   }
@@ -80,7 +83,7 @@ function validateResortOrder() {
   var timeRequired=document.getElementById('order-time-wrap').style.display !== 'none';
   var errors=[
     [name,name.value.trim() ? '' : 'اكتب اسمك'],
-    [cabin,Object.prototype.hasOwnProperty.call(FD_CABIN_NUMBERS,cabin.value) ? '' : 'اختر الكوخ'],
+    [cabin,isChaletServiceVenue() || Object.prototype.hasOwnProperty.call(FD_CABIN_NUMBERS,cabin.value) ? '' : 'اختر الكوخ'],
     [time,timeRequired && !time.value ? 'اختر وقت بداية الجلسة' : '']
   ];
   errors.forEach(function(entry){setResortOrderError(entry[0].id,entry[1]);});
@@ -90,12 +93,13 @@ function validateResortOrder() {
 }
 
 function updateCabinNum() {
-  var number=FD_CABIN_NUMBERS[document.getElementById('order-villa').value];
+  var number=isChaletServiceVenue() ? '' : FD_CABIN_NUMBERS[document.getElementById('order-villa').value];
   document.getElementById('order-cabin-num').textContent=number || '';
   document.getElementById('order-cabin-num-wrap').style.display=number ? 'flex' : 'none';
 }
 
 function openOrderPopup(selection, showTime) {
+  if(!serviceOrderDetails(selection,false)) return;
   FD_ORDER_DRAFTS.save();
   _orderItemName=selection;
   configureResortOrderForm(selection);
@@ -130,7 +134,11 @@ function sendOrderWhatsapp() {
     },{name:name,cabin:cabin,number:FD_CABIN_NUMBERS[cabin],notes:notes});
     if(!message) return;
   } else if (getMaiyaOrderDetails(_orderItemName)) {
-    message=buildMaiyaOrderMessage(_orderItemName,name,cabin,FD_CABIN_NUMBERS[cabin],notes);
+    message=buildMaiyaOrderMessage(_orderItemName,name,cabin,FD_CABIN_NUMBERS[cabin],notes,isChaletServiceVenue() ? 'chalet' : 'resort');
+  } else if(isChaletServiceVenue()) {
+    var lines=['السلام عليكم، أرغب بطلب الخدمات التالية:','','الاسم: '+name,'المكان: شاليه يوم العائلة','','الطلبات:','','الألعاب الترفيهية:',order.title+' × 1 = '+order.price+' ريال','','إجمالي الطلب: '+order.price+' ريال'];
+    if(notes) lines.push('','ملاحظات: '+notes);
+    message=lines.join('\n');
   } else {
     var type=_orderItemName && _orderItemName.type;
     var request=type==='games' ? 'الألعاب الترفيهية' : type==='seating' ? 'جلسة خارجية' : order.title;

@@ -35,6 +35,27 @@
     "entry": true
   },
   {
+    "route": "services=chalet",
+    "path": "/chalet/services/",
+    "title": "خدمات الشاليه | شاليه يوم العائلة",
+    "description": "ألعاب مائية وترفيهية لأوقاتكم في الشاليه",
+    "entry": true
+  },
+  {
+    "route": "tarfihi=chalet",
+    "path": "/chalet/services/games/",
+    "title": "الألعاب الترفيهية | شاليه يوم العائلة",
+    "description": "استمتع بوقتك مع ألعابنا الترفيهية",
+    "entry": true
+  },
+  {
+    "route": "maiya=chalet",
+    "path": "/chalet/services/water-games/",
+    "title": "الألعاب المائية | شاليه يوم العائلة",
+    "description": "استمتع بألعاب مائية للكبار والصغار",
+    "entry": true
+  },
+  {
     "route": "contact=chalet",
     "path": "/chalet/contact/",
     "title": "الحجز والموقع والتواصل | شاليه يوم العائلة",

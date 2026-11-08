@@ -579,17 +579,22 @@ function closeIframe(){
   document.body.style.overflow='';
 }
 
-function showServices(){
-
-  document.getElementById('landing').classList.add('hide');
+function showServices(venue){
+  var chalet=venue==='chalet';
+  var panel=document.getElementById('services-overlay');
+  panel.dataset.venue=chalet ? 'chalet' : 'resort';
+  panel.querySelector('.svcs-title').textContent=chalet ? 'خدمات الشاليه' : 'خدمات المنتجع';
+  panel.querySelectorAll('.svcs-content > section').forEach(function(section){section.hidden=chalet && section.getAttribute('aria-labelledby')!=='svcs-group-1';});
+  document.getElementById(chalet ? 'landing3' : 'landing').classList.add('hide');
   document.getElementById('services-overlay').classList.remove('hide');
   setActiveTab('services');
 }
 function closeServices(){
   document.getElementById('menu-detail').classList.add('hide');
   document.getElementById('services-overlay').classList.add('hide');
-  document.getElementById('landing').classList.remove('hide');
-  document.getElementById('landing').scrollTop=0;
+  var landing=document.getElementById(document.getElementById('services-overlay').dataset.venue==='chalet' ? 'landing3' : 'landing');
+  landing.classList.remove('hide');
+  landing.scrollTop=0;
   document.getElementById('bottomNav').style.display='none';
   document.querySelectorAll('.bnav-btn').forEach(function(b){b.classList.remove('active');});
 }

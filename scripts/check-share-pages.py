@@ -63,7 +63,7 @@ with sync_playwright() as p:
             assert page.locator('meta[property="og:description"]').get_attribute('content')==entry['description']
             assert page.locator('link[rel="canonical"]').get_attribute('href')==BASE+entry['path']
             route=page.evaluate('history.state.route')
-            specific=route['name'] in ['home','contact','cabin'] or (route['name'] in ['hospitality','setups'] and not route.get('overview'))
+            specific=(route['name'] in ['services','maiya','tarfihi'] and route['args']==['chalet']) or route['name'] in ['home','contact','cabin'] or (route['name'] in ['hospitality','setups'] and not route.get('overview'))
             key=route['name']+('='+str(route['args'][0]) if specific else '')
             assert key==entry['route'], (entry['path'],key)
             if route['name'] in ['hospitality','setups']:

@@ -217,6 +217,7 @@ function closeTarfihiDetail(){
   document.getElementById('tarfihi-detail').classList.add('hide');
 }
 function selectTarfihiOpt(opt){
+  if(isChaletServiceVenue() && opt==='table') opt='';
   _tarfihiOpt = opt;
   document.querySelector('#tarfihi-detail .tg-order-button').disabled=!opt;
   ['box','table'].forEach(function(key){

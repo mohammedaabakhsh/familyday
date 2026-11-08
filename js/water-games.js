@@ -81,13 +81,13 @@ function getMaiyaOrderDetails(selection){
   return {packages:order.packages,adults:order.adults,children:order.children,
     size:pack.size*order.packages,price:pack.price*order.packages};
 }
-function buildMaiyaOrderMessage(selection,name,cabin,number,notes){
+function buildMaiyaOrderMessage(selection,name,cabin,number,notes,venue){
   var order=getMaiyaOrderDetails(selection);
   if(!order) return null;
   var lines=['السلام عليكم، أرغب بطلب الخدمات التالية:','',
-    'الاسم: '+name,'اسم الكوخ: '+cabin,'رقم الكوخ: '+number,'','الطلبات:','',
+    'الاسم: '+name].concat(venue==='chalet' ? ['المكان: شاليه يوم العائلة'] : ['اسم الكوخ: '+cabin,'رقم الكوخ: '+number]).concat(['','الطلبات:','',
     'الألعاب المائية:','باقة ألعاب مائية × '+order.packages+' = '+order.price+' ريال',
-    'للكبار: '+order.adults,'للصغار: '+order.children,'','إجمالي الطلب: '+order.price+' ريال'];
+    'للكبار: '+order.adults,'للصغار: '+order.children,'','إجمالي الطلب: '+order.price+' ريال']);
   if(notes) lines.push('','ملاحظات: '+notes);
   return lines.join('\n');
 }

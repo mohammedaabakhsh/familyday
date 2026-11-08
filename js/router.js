@@ -32,14 +32,15 @@
     if(overview) r.overview=true;
     if(parent) r.parent = parent;
     else if(name==='home') r.parent = route('dest');
-    else if(name==='resort' || name==='services' || name==='faq') r.parent = route('home',['resort']);
+    else if(name==='services') r.parent = route('home',[r.args[0]==='chalet' ? 'chalet' : 'resort']);
+    else if(name==='resort' || name==='faq') r.parent = route('home',['resort']);
     else if(name==='chalet' || name==='faq2') r.parent = route('home',['stay']);
     else if(name==='chalet-detail' || name==='chalet-faq') r.parent = route('home',['chalet']);
     else if(name==='contact') r.parent = route('home',[r.args[0] || 'resort']);
     else if(name==='cabin') r.parent = route(r.args[0]>=20 ? 'chalet' : 'resort');
     else if(name==='map') r.parent = route('resort');
     else if(name==='chalet-map') r.parent = route('home',['chalet']);
-    else if(serviceViews[name]) r.parent = route('services');
+    else if(serviceViews[name]) r.parent = route('services',r.args[0]==='chalet' && ['maiya','tarfihi'].indexOf(name)!==-1 ? ['chalet'] : []);
     return r;
   }
   function key(r){ return JSON.stringify(r); }
@@ -48,8 +49,12 @@
     while(r){ list.unshift(r); r=r.parent; }
     return list;
   }
+  function serviceVenueFor(r){
+    while(r){if(r.name==='home') return r.args[0]==='chalet' ? 'chalet' : 'resort';r=r.parent;}
+    return 'resort';
+  }
   function shareKey(r){
-    var specific=['home','contact','cabin'].indexOf(r.name)!==-1 || (['hospitality','setups'].indexOf(r.name)!==-1 && !r.overview);
+    var specific=(['services','maiya','tarfihi'].indexOf(r.name)!==-1 && r.args[0]==='chalet') || ['home','contact','cabin'].indexOf(r.name)!==-1 || (['hospitality','setups'].indexOf(r.name)!==-1 && !r.overview);
     return r.name + (specific ? '='+r.args[0] : '');
   }
   function sharePage(r){
@@ -102,6 +107,8 @@
     }
     match=/^(home|contact)=(resort|stay|chalet)$/.exec(hash);
     if(match) return route(match[1],[match[2]]);
+    match=/^(services|maiya|tarfihi)=(chalet)$/.exec(hash);
+    if(match) return route(match[1],[match[2]]);
     if(['sinema','tawilat','jalsat'].indexOf(hash)!==-1) return route(hash);
     match=/^(hospitality|setups)=([a-z]+)$/.exec(hash);
     if(match) return route(match[1],[match[2]]);
@@ -123,7 +130,7 @@
       case 'chalet-detail': call('openPrivateChalet'); break;
       case 'chalet-map': FD_CHALET_MAP.show(); break;
       case 'chalet-faq': call('showChaletFaq'); break;
-      case 'services': call('showServices'); break;
+      case 'services': call('showServices',r.args); break;
       case 'faq': call('showFaq'); break;
       case 'faq2': call('showFaq2'); break;
       case 'contact': call('showContact',r.args); break;
@@ -147,6 +154,7 @@
         call('open3D',r.args); break;
       case 'order':
         _orderDraftScope=r.parent ? r.parent.name+(r.parent.name==='setups' ? ':'+r.parent.args[0] : '') : r.args[0];
+        if(serviceVenueFor(r)==='chalet') _orderDraftScope='chalet:'+_orderDraftScope;
         _isMenuOrder=!!r.args[2];
         _orderResortScope=r.args.length>3 ? !!r.args[3] : !!r.parent && ['menu','setups','sinema','maiya','tarfihi','tawilat','jalsat'].indexOf(r.parent.name)!==-1;
         call('openOrderPopup',r.args.slice(0,2));
@@ -211,6 +219,7 @@
     rendering=true;
     try{
       for(var i=before.length-1;i>=common;i--) closeView(before[i]);
+      setServiceVenue(serviceVenueFor(next));
       for(var j=common;j<after.length;j++) openView(after[j]);
       current=next;
       updatePagePreview(next);
@@ -259,7 +268,7 @@
   wrapOpen('openPrivateChalet',function(){return route('chalet-detail');});
   wrapOpen('showChaletFaq',function(){return route('chalet-faq',[],current.name==='contact' && current.args[0]==='chalet' ? current : null);});
   wrapClose('closeChaletFaq');
-  wrapOpen('showServices',function(){return route('services');});
+  wrapOpen('showServices',function(venue){return route('services',venue==='chalet' ? ['chalet'] : []);});
   wrapOpen('showFaq',function(){return route('faq');});
   wrapOpen('showFaq2',function(){return route('faq2',[],current.name==='contact' && current.args[0]==='stay' ? current : null);});
   wrapOpen('showContact',function(type){return route('contact',[type || 'resort']);});
@@ -270,7 +279,7 @@
   wrapOpen('openM',cabinRoute);
   wrapOpen('openMDirect',function(c){return cabinRoute(c.id);});
   Object.keys(serviceViews).forEach(function(name){
-    wrapOpen(serviceViews[name][0],function(tab){return route(name,['hospitality','setups'].indexOf(name)!==-1 ? [tab] : []);});
+    wrapOpen(serviceViews[name][0],function(tab){return route(name,['hospitality','setups'].indexOf(name)!==-1 ? [tab] : ['maiya','tarfihi'].indexOf(name)!==-1 && serviceVenueFor(current)==='chalet' ? ['chalet'] : []);});
     wrapClose(serviceViews[name][1]);
   });
   // Tab changes replace this page entry, so Back returns to the caller, not every tab.
