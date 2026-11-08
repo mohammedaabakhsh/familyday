@@ -33,7 +33,7 @@
         + '<div class="package-details-body">' + body + '</div></details></article>';
     }
     if (className === 'photo-card' || className === 'coordination-card') {
-      return '<article class="package-card seating-collapsed-card"' + (id ? ' id="' + escape(id) + '"' : '') + '><details class="seating-collapsed-details">'
+      return '<article class="package-card seating-collapsed-card"' + (id ? ' id="' + escape(id) + '"' : '') + '><details class="seating-collapsed-details"' + (className === 'photo-card' ? ' name="guide-seating"' : '') + '>'
         + '<summary class="seating-collapsed-summary"><span class="seating-collapsed-main"><span class="seating-collapsed-title">' + escape(title) + '</span>'
         + (capacity ? '<span class="seating-capacity-badge">' + escape(capacity) + '</span>' : '') + '</span>'
         + '<span class="seating-summary-bottom">' + priceMarkup
