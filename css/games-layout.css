@@ -1,4 +1,7 @@
 /* Guest-services package layout, adapted to the main site's dark palette. */
+#tarfihi-detail[data-venue="chalet"] .tg-photo{display:none}
+#tarfihi-detail[data-venue="chalet"] .tg-layout{grid-template-columns:minmax(0,1fr);grid-template-areas:"details"}
+#tarfihi-detail[data-venue="chalet"] .tg-shell{max-width:600px}
 #tarfihi-detail .tg-details { gap:18px; }
 #tarfihi-detail .tg-section-title { font-size:15px;margin-bottom:10px; }
 #tarfihi-detail .tg-packages { gap:9px; }

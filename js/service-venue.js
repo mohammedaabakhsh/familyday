@@ -12,6 +12,7 @@ function setServiceVenue(venue){
     _tarfihiOpt=saved.games;
     _serviceVenue=venue;
   }
+  document.getElementById('tarfihi-detail').dataset.venue=_serviceVenue;
   document.getElementById('tarfihi-opt-table').hidden=isChaletServiceVenue();
   document.getElementById('tg-games-title').textContent=isChaletServiceVenue() ? 'الألعاب المشمولة في الباقة' : 'الألعاب المشمولة في الباقتين';
   document.getElementById('tg-packages-title').textContent=isChaletServiceVenue() ? 'باقة الألعاب' : 'اختر باقة الألعاب';
