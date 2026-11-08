@@ -5,7 +5,9 @@
   var status = document.getElementById('share-status');
   var timer;
   button.addEventListener('click', async function () {
-    var url = new URL('/guest-services/', location.origin).href;
+    var canonical = document.querySelector('link[rel="canonical"]');
+    var path = canonical ? new URL(canonical.href).pathname : location.pathname;
+    var url = new URL(path, location.origin).href;
     try {
       if (navigator.share) {
         await navigator.share({title: document.title, url: url});

@@ -252,3 +252,6 @@ body.dialog-open{overflow:hidden}
 
 #restaurant-service .restaurant-hours{margin:0 0 6px;color:var(--deep);font-size:14px;font-weight:600;line-height:1.7}
 .dialog-body #restaurant-service>.section-note{font-size:12px;margin-bottom:16px}
+
+/* A venue with one help contact keeps the same full-width contact controls. */
+.help-contacts:has(>.help-contact:only-child){grid-template-columns:1fr}

@@ -7,7 +7,9 @@
   var favicon=document.createElement('link');
   favicon.rel='icon';favicon.type='image/webp';favicon.href='/imgs/img01.webp';
   document.head.appendChild(favicon);
-  var storageKey = 'familyday.guest-orders.v2';
+  var isChalet = document.body.dataset.venue==='chalet';
+  var gameOptions = isChalet ? ['box'] : ['box','table'];
+  var storageKey = isChalet ? 'familyday.chalet-guest-orders.v1' : 'familyday.guest-orders.v2';
   var cabins;
   var state = {name:'', cabin:'', notes:'', restaurantNotes:'', quantities:{}, hospitality:{}, water:null, cinema:'', games:'', menu:{}};
   var catalog;
@@ -45,23 +47,23 @@
     return value && Number.isInteger(value.adults) && Number.isInteger(value.children) &&
       value.adults>=0 && value.children>=0 && value.adults+value.children>0 && value.adults+value.children===catalog.water.size*(Number.isInteger(value.packages)?value.packages:1) && (value.packages===undefined || Number.isInteger(value.packages) && value.packages>=1 && value.packages<=20);
   }
-  function validTime(value) { return Array.from(time.options).some(function(option){return option.value===value && !!value;}); }
+  function validTime(value) { return !!time && Array.from(time.options).some(function(option){return option.value===value && !!value;}); }
   function save() {
     try { sessionStorage.setItem(storageKey,JSON.stringify(state)); }
     catch (_) { /* Ordering also works without browser storage. */ }
   }
   function restore() {
     try {
-      var saved=JSON.parse(sessionStorage.getItem(storageKey) || sessionStorage.getItem('familyday.guest-extras.v1'));
+      var saved=JSON.parse(sessionStorage.getItem(storageKey) || (!isChalet && sessionStorage.getItem('familyday.guest-extras.v1')));
       if (!saved || typeof saved!=='object') return;
       if (typeof saved.name==='string') state.name=saved.name.slice(0,100);
       state.cabin=Object.keys(cabins).find(function(name){return saved.cabin===name || String(saved.cabin)===String(cabins[name]);}) || '';
       ['notes','restaurantNotes'].forEach(function(key){if(typeof saved[key]==='string') state[key]=saved[key].slice(0,1000);});
       extras.forEach(function(item){state.quantities[item.id]=quantity(saved.quantities && saved.quantities[item.id]);});
-      catalog.hospitality.packages.forEach(function(pack){state.hospitality[pack.id]=quantity(saved.hospitality && saved.hospitality[pack.id]);});
+      if(document.getElementById('hospitality-card')) catalog.hospitality.packages.forEach(function(pack){state.hospitality[pack.id]=quantity(saved.hospitality && saved.hospitality[pack.id]);});
       if (validWater(saved.water)) state.water={adults:saved.water.adults,children:saved.water.children,packages:saved.water.packages || 1};
       if (validTime(saved.cinema)) state.cinema=saved.cinema;
-      if (['box','table'].indexOf(saved.games)!==-1) state.games=saved.games;
+      if (gameOptions.indexOf(saved.games)!==-1) state.games=saved.games;
       Object.keys(menuCatalog).forEach(function(key){
         var item=saved.menu && saved.menu[key];
         if (item && quantity(item.qty)) state.menu[key]={qty:quantity(item.qty),cheese:!!item.cheese && !!menuCatalog[key].cheesePrice};
@@ -113,6 +115,7 @@
     var row=group.closest('.extra-row,.menu-row');if(row) row.classList.toggle('is-selected',value>0);
   }
   function buildHospitality() {
+    if(!document.getElementById('hospitality-packages')) return;
     document.getElementById('hospitality-title').textContent=catalog.hospitality.title;
     var target=document.getElementById('hospitality-packages');
     catalog.hospitality.packages.forEach(function(pack){
@@ -138,6 +141,7 @@
   }
   function buildMenu() {
     var target=document.getElementById('guest-menu');
+    if(!target) return;
     Object.keys(catalog.menu).forEach(function(category,index){
       var details=el('details',undefined,'menu-category'), summary=el('summary'), list=el('div',undefined,'menu-list');
       summary.append(el('span',category),el('span','', 'menu-category-count'));
@@ -269,6 +273,7 @@
     });
   }
   function renderMenu() {
+    if(!restaurantForm) return;
     var lines=menuLines();document.getElementById('restaurant-summary').hidden=!lines.length;
     renderSummary(document.getElementById('restaurant-items'),lines,function(id){delete state.menu[id];renderOrders();save();});
     document.getElementById('restaurant-count').textContent='عدد الأصناف: '+lines.length;
@@ -296,12 +301,12 @@
     ['adults','children'].forEach(function(key){setCounter(document.getElementById('water-'+key).parentNode,water[key],water[key]+required-total);});
     document.getElementById('water-service').classList.toggle('is-complete',total===required);
     document.getElementById('water-count').textContent=total===required ? '✓ اكتمل اختيار الألعاب' : 'اخترت '+total+' من '+required;
-    time.value=data.cinema;time.classList.toggle('is-selected',!!data.cinema);
+    if(time){time.value=data.cinema;time.classList.toggle('is-selected',!!data.cinema);}
     document.querySelectorAll('[name="games-package"]').forEach(function(input){
       input.checked=input.value===data.games;
       input.closest('label').classList.toggle('is-selected',!!data.games && input.checked);
     });
-    document.getElementById('cinema-status').textContent=data.cinema ? cinemaTimeRange(data.cinema) : '';
+    if(time) document.getElementById('cinema-status').textContent=data.cinema ? cinemaTimeRange(data.cinema) : '';
     document.getElementById('games-status').textContent=data.games ? 'تم اختيار الباقة' : '';
   }
   function updateShortcut() {
@@ -329,7 +334,7 @@
     event.preventDefault();var target=restaurant ? restaurantForm : form;
     var lines=restaurant ? menuLines() : resortLines();
     if(!lines.length || (!restaurant && incompleteWater()) || !target.reportValidity()) return;
-    if(!state.name.trim() || !Object.prototype.hasOwnProperty.call(cabins,state.cabin)) return;
+    if(!state.name.trim() || (!isChalet && !Object.prototype.hasOwnProperty.call(cabins,state.cabin))) return;
     var message;
     if(restaurant){
       message=catalog.menuMessage.build(catalog.menu,function(key){
@@ -338,8 +343,10 @@
       },{name:state.name,cabin:state.cabin,number:cabins[state.cabin],notes:state.restaurantNotes});
       if(!message) return;
     } else {
-      var parts=['السلام عليكم، أرغب بطلب الخدمات التالية:',
-        '', 'الاسم: '+state.name.trim(),'اسم الكوخ: '+state.cabin,'رقم الكوخ: '+cabins[state.cabin],'','الطلبات:'];
+      var parts=['السلام عليكم، أرغب بطلب الخدمات التالية:', '', 'الاسم: '+state.name.trim()];
+      if(isChalet) parts.push('المكان: شاليه يوم العائلة');
+      else parts.push('اسم الكوخ: '+state.cabin,'رقم الكوخ: '+cabins[state.cabin]);
+      parts.push('','الطلبات:');
       groups(lines).forEach(function(group){
         parts.push('',group.title+':');
         group.items.forEach(function(item){parts.push(item.name+' × '+(item.qty || 1)+' = '+item.price+' ريال');parts=parts.concat(item.details);});
@@ -355,7 +362,9 @@
 
   function renderOrders(){renderResort();renderMenu();updateShortcut();}
   function updateCard(key, lines) {
-    var card=document.getElementById(key+'-card'),status=card.querySelector('.tile-selection');
+    var card=document.getElementById(key+'-card');
+    if(!card) return;
+    var status=card.querySelector('.tile-selection');
     var pending=lines.some(function(line){return line.pending;});
     card.classList.toggle('is-selected',!!lines.length && !pending);
     card.classList.toggle('is-pending',pending);
@@ -439,21 +448,25 @@
   function hydrateServices() {
     ['water','cinema','games'].forEach(function(key){
       var section=document.getElementById(key+'-service'), data=catalog[key];
+      if(!section) return;
       document.getElementById(key+'-title').textContent=data.title;
       var notes=section.querySelector('.usage-note');if(notes) notes.textContent=data.notes.join(' ');
       var contents=section.querySelector('.contents-list');
       if(contents){contents.replaceChildren();data.contents.forEach(function(text){contents.appendChild(el('li',text));});section.querySelector('.contents-title').textContent=data.contentsTitle;}
     });
-    document.getElementById('restaurant-hours').textContent=catalog.restaurantHours;
-    document.getElementById('cinema-duration').textContent=catalog.cinema.duration;
-    document.getElementById('cinema-price').textContent=catalog.cinema.price+' ريال';
+    var hours=document.getElementById('restaurant-hours');
+    if(hours) hours.textContent=catalog.restaurantHours;
     document.querySelector('#water-service .section-note').textContent='وزّع الألعاب بين الكبار والصغار';
-    document.querySelector('#games-service .contents-title').textContent='الألعاب المشمولة في الباقتين';
-    document.querySelector('#cinema-service .section-note').textContent=catalog.cinema.intro;
-    catalog.cinema.times.forEach(function(slot){time.add(new Option(slot.label,slot.value));});time.disabled=false;
-    var notes=document.querySelector('#cinema-service .usage ul');catalog.cinema.notes.forEach(function(text){notes.appendChild(el('li',text));});
+    document.querySelector('#games-service .contents-title').textContent=isChalet ? 'الألعاب المشمولة في الباقة' : 'الألعاب المشمولة في الباقتين';
+    if(time){
+      document.getElementById('cinema-duration').textContent=catalog.cinema.duration;
+      document.getElementById('cinema-price').textContent=catalog.cinema.price+' ريال';
+      document.querySelector('#cinema-service .section-note').textContent=catalog.cinema.intro;
+      catalog.cinema.times.forEach(function(slot){time.add(new Option(slot.label,slot.value));});time.disabled=false;
+      var notes=document.querySelector('#cinema-service .usage ul');catalog.cinema.notes.forEach(function(text){notes.appendChild(el('li',text));});
+    }
     var packages=document.querySelector('.game-options');
-    ['','box','table'].forEach(function(key){
+    [''].concat(gameOptions).forEach(function(key){
       var label=el('label'),input=el('input'),copy=el('span');input.type='radio';input.name='games-package';input.value=key;
       if(!key) copy.textContent='بدون باقة ألعاب';
       else {var pack=catalog.games.packages[key];copy.appendChild(el('span',pack.name));copy.appendChild(el('small',key==='box' ? 'يشمل الألعاب الموضّحة أدناه' : pack.description));copy.appendChild(el('strong',pack.price+' ريال'));}
@@ -476,7 +489,7 @@
     if(total>max){water.adults=0;water.children=0;}
     data.water=water;renderEditor();
   });});
-  time.addEventListener('change',function(){selection().cinema=time.value;renderEditor();});
+  if(time) time.addEventListener('change',function(){selection().cinema=time.value;renderEditor();});
   document.querySelectorAll('[name="games-package"]').forEach(function(input){input.addEventListener('change',function(){selection().games=input.value;renderEditor();});});
   extras.forEach(function(item){item.row.querySelectorAll('[data-step]').forEach(function(button){button.addEventListener('click',function(){
     var quantities=selection().quantities;
@@ -493,6 +506,6 @@
   new IntersectionObserver(updateShortcut,{rootMargin:'-60px 0px -110px 0px'}).observe(orderSummary);
   window.addEventListener('resize',updateShortcut);
   form.addEventListener('submit',function(event){submit(event,false);});
-  restaurantForm.addEventListener('submit',function(event){submit(event,true);});
+  if(restaurantForm) restaurantForm.addEventListener('submit',function(event){submit(event,true);});
   renderCabins();renderOrders();renderEditor();setupDialogs();
 })();
