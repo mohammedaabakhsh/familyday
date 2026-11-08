@@ -32,12 +32,12 @@
         + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>'
         + '<div class="package-details-body">' + body + '</div></details></article>';
     }
-    if (className === 'photo-card') {
-      return '<article class="package-card seating-collapsed-card"><details class="seating-collapsed-details">'
+    if (className === 'photo-card' || className === 'coordination-card') {
+      return '<article class="package-card seating-collapsed-card"' + (id ? ' id="' + escape(id) + '"' : '') + '><details class="seating-collapsed-details">'
         + '<summary class="seating-collapsed-summary"><span class="seating-collapsed-main"><span class="seating-collapsed-title">' + escape(title) + '</span>'
         + (capacity ? '<span class="seating-capacity-badge">' + escape(capacity) + '</span>' : '') + '</span>'
         + '<span class="seating-summary-bottom">' + priceMarkup
-        + '<span class="seating-detail-footer"><svg class="seating-collapsed-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg><span class="seating-detail-hint">الصورة والتفاصيل</span></span></span></summary>'
+        + '<span class="seating-detail-footer"><svg class="seating-collapsed-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg><span class="seating-detail-hint">' + (className === 'coordination-card' ? 'الصور والتفاصيل' : 'الصورة والتفاصيل') + '</span></span></span></summary>'
         + '<div class="seating-collapsed-content">' + FD_GUIDE_GALLERY.markup(photos,title,imageAlt)
         + '<div class="package-details-body">' + body + '</div></div></details></article>';
     }
@@ -69,7 +69,7 @@
       const complete = Boolean(card.querySelector('#hd-coordination-package-resort'));
       const sharedPhotos = _coordinationPhotos[card.getAttribute('aria-labelledby')];
       const photos = key === 'hospitality' ? [] : sharedPhotos || [image, ...[1,2,3,4,5,6].map(n => image.replace(/_\d+\.webp$/, '_' + n + '.webp')).filter(src => src !== image)].slice(0,6);
-      return serviceCard({title,price:price ? price.textContent.trim().replace(/\s*للباقة\s*$/, '') : '',priceUnit:'للباقة',photos,imageAlt:sharedPhotos ? 'تنسيق ' + title : undefined,body,label:'تفاصيل الباقة',id:complete ? 'package-complete' : ''});
+      return serviceCard({title,price:price ? price.textContent.trim().replace(/\s*للباقة\s*$/, '') : '',priceUnit:'للباقة',photos,imageAlt:sharedPhotos ? 'تنسيق ' + title : undefined,body,className:key === 'coordination' ? 'coordination-card' : '',label:'تفاصيل الباقة',id:complete ? 'package-complete' : ''});
     }).join('') + '</div>';
   }
   function render(doc) {

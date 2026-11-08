@@ -224,38 +224,50 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 .dining-price-card dd span{font-size:12px;font-weight:500}
 @media print{.dining-price-card{padding:9px 0}.dining-price-card h3 bdi{font-size:18px}.dining-price-card dd{font-size:16px}}
 
-/* Outdoor seating: clear prices and a single disclosure for photo and description. */
+/* Coordination and seating share one disclosure for photos and contents. */
 #seating .photo-grid{gap:12px}
-#seating .seating-collapsed-card{background:#f5f8f8;border:1px solid #dce7e9;border-radius:16px;overflow:hidden;transition:border-color .18s,box-shadow .18s}
-#seating .seating-collapsed-card:has(.seating-collapsed-details[open]){border-color:#45938f;box-shadow:0 0 0 1px #45938f}
-#seating .seating-collapsed-details{display:block}
-#seating .seating-collapsed-summary{display:flex;flex-direction:column;gap:15px;padding:16px;min-height:118px;cursor:pointer;list-style:none}
-#seating .seating-collapsed-summary::-webkit-details-marker{display:none}
-#seating .seating-collapsed-summary::marker{content:''}
-#seating .seating-collapsed-summary:focus-visible{outline:3px solid #168c99;outline-offset:-4px;border-radius:15px}
-#seating .seating-collapsed-main{display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:0}
-#seating .seating-collapsed-title{flex:1;min-width:0;font-size:16px;font-weight:700;line-height:1.55;color:#193c49}
-#seating .seating-capacity-badge{flex:none;white-space:nowrap;padding:4px 9px;border:1px solid #c9e0df;border-radius:7px;background:#e4f0ef;color:#285d69;font-size:11px;font-weight:700;line-height:1.4}
-#seating .seating-summary-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px}
-#seating .seating-summary-bottom .price{display:block;margin:0;padding:0;background:transparent;border:0;font-size:21px;font-weight:800;line-height:1.25;color:#176078}
-#seating .seating-summary-bottom .price-unit{display:block;margin-top:3px;text-align:right;font-size:11px;line-height:1.4;font-weight:500;color:#657e85}
-#seating .seating-detail-footer{display:inline-flex;align-items:center;gap:7px;flex:none;color:#285d69}
-#seating .seating-detail-hint{font-size:12px;font-weight:700;white-space:nowrap}
-#seating .seating-collapsed-chevron{flex:none;width:34px;height:34px;padding:8px;border:1px solid #c9e0df;border-radius:50%;background:#e4f0ef;transition:transform .18s}
-#seating .seating-collapsed-details[open] .seating-collapsed-chevron{transform:rotate(180deg);background:#d8ebe8;border-color:#78aaa5;color:#215e58}
-#seating .seating-collapsed-content{padding:0 12px 16px}
-#seating .seating-collapsed-content .package-photo{margin:0;border-radius:11px;overflow:hidden}
-#seating .seating-collapsed-content .package-details-body{padding:0 4px}
+:is(#seating,#coordination) .seating-collapsed-card{background:#f5f8f8;border:1px solid #dce7e9;border-radius:16px;overflow:hidden;transition:border-color .18s,box-shadow .18s}
+:is(#seating,#coordination) .seating-collapsed-card:has(.seating-collapsed-details[open]){border-color:#45938f;box-shadow:0 0 0 1px #45938f}
+:is(#seating,#coordination) .seating-collapsed-details{display:block}
+:is(#seating,#coordination) .seating-collapsed-summary{display:flex;flex-direction:column;gap:15px;padding:16px;min-height:118px;cursor:pointer;list-style:none}
+:is(#seating,#coordination) .seating-collapsed-summary::-webkit-details-marker{display:none}
+:is(#seating,#coordination) .seating-collapsed-summary::marker{content:''}
+:is(#seating,#coordination) .seating-collapsed-summary:focus-visible{outline:3px solid #168c99;outline-offset:-4px;border-radius:15px}
+:is(#seating,#coordination) .seating-collapsed-main{display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:0}
+:is(#seating,#coordination) .seating-collapsed-title{flex:1;min-width:0;font-size:16px;font-weight:700;line-height:1.55;color:#193c49}
+:is(#seating,#coordination) .seating-capacity-badge{flex:none;white-space:nowrap;padding:4px 9px;border:1px solid #c9e0df;border-radius:7px;background:#e4f0ef;color:#285d69;font-size:11px;font-weight:700;line-height:1.4}
+:is(#seating,#coordination) .seating-summary-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px}
+:is(#seating,#coordination) .seating-summary-bottom .price{display:block;margin:0;padding:0;background:transparent;border:0;font-size:21px;font-weight:800;line-height:1.25;color:#176078}
+:is(#seating,#coordination) .seating-summary-bottom .price-unit{display:block;margin-top:3px;text-align:right;font-size:11px;line-height:1.4;font-weight:500;color:#657e85}
+:is(#seating,#coordination) .seating-detail-footer{display:inline-flex;align-items:center;gap:7px;flex:none;color:#285d69}
+:is(#seating,#coordination) .seating-detail-hint{font-size:12px;font-weight:700;white-space:nowrap}
+:is(#seating,#coordination) .seating-collapsed-chevron{flex:none;width:34px;height:34px;padding:8px;border:1px solid #c9e0df;border-radius:50%;background:#e4f0ef;transition:transform .18s}
+:is(#seating,#coordination) .seating-collapsed-details[open] .seating-collapsed-chevron{transform:rotate(180deg);background:#d8ebe8;border-color:#78aaa5;color:#215e58}
+:is(#seating,#coordination) .seating-collapsed-content{padding:0 12px 16px}
+:is(#seating,#coordination) .seating-collapsed-content .package-photo{margin:0;border-radius:11px;overflow:hidden}
+:is(#seating,#coordination) .seating-collapsed-content .package-details-body{padding:0 4px}
 #seating .seating-extra{margin-top:16px}
 @media(max-width:359px){
- #seating .seating-collapsed-summary{padding:14px;gap:13px}
- #seating .seating-collapsed-title{font-size:15px}
- #seating .seating-detail-hint{font-size:11px}
- #seating .seating-summary-bottom{gap:8px}
+ :is(#seating,#coordination) .seating-collapsed-summary{padding:14px;gap:13px}
+ :is(#seating,#coordination) .seating-collapsed-title{font-size:15px}
+ :is(#seating,#coordination) .seating-detail-hint{font-size:11px}
+ :is(#seating,#coordination) .seating-summary-bottom{gap:8px}
 }
-@media(prefers-reduced-motion:reduce){#seating .seating-collapsed-card,#seating .seating-collapsed-chevron{transition:none}}
+@media(prefers-reduced-motion:reduce){:is(#seating,#coordination) .seating-collapsed-card,:is(#seating,#coordination) .seating-collapsed-chevron{transition:none}}
 
 /* Distinguish only the final optional cake add-on from seating cards. */
 #seating .seating-extra{background:#fff3ed!important;border:1px solid #e9d4c7!important;border-radius:14px!important}
 #seating .seating-extra h3{color:#925c46!important}
 #seating .seating-extra-price{color:#925c46!important}
+
+/* Preserve full-width package photos within the compact coordination list. */
+#coordination .package-grid{grid-template-columns:minmax(0,1fr);max-width:680px;margin-inline:auto;gap:12px}
+#coordination .seating-collapsed-content{padding:0 0 18px}
+#coordination .seating-collapsed-content .package-photo{border-radius:0}
+#coordination .seating-collapsed-content .package-details-body{padding:0 20px}
+@media print{
+ :is(#coordination,#seating) .seating-collapsed-card{display:block;box-shadow:none}
+ .seating-collapsed-details::details-content{display:block;content-visibility:visible}
+ :is(#coordination,#seating) .seating-detail-footer{display:none}
+ :is(#coordination,#seating) .seating-collapsed-summary{min-height:0;padding:12px;gap:6px}
+}
