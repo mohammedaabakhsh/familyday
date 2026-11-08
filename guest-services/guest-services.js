@@ -43,7 +43,7 @@
   function quantity(value) { return Number.isInteger(value) && value>=0 && value<=99 ? value : 0; }
   function validWater(value) {
     return value && Number.isInteger(value.adults) && Number.isInteger(value.children) &&
-      value.adults>=0 && value.children>=0 && value.adults+value.children>0 && value.adults+value.children<=catalog.water.size;
+      value.adults>=0 && value.children>=0 && value.adults+value.children>0 && value.adults+value.children===catalog.water.size*(Number.isInteger(value.packages)?value.packages:1) && (value.packages===undefined || value.packages>=1 && value.packages<=20);
   }
   function validTime(value) { return Array.from(time.options).some(function(option){return option.value===value && !!value;}); }
   function save() {
@@ -59,7 +59,7 @@
       ['notes','restaurantNotes'].forEach(function(key){if(typeof saved[key]==='string') state[key]=saved[key].slice(0,1000);});
       extras.forEach(function(item){state.quantities[item.id]=quantity(saved.quantities && saved.quantities[item.id]);});
       catalog.hospitality.packages.forEach(function(pack){state.hospitality[pack.id]=quantity(saved.hospitality && saved.hospitality[pack.id]);});
-      if (validWater(saved.water)) state.water={adults:saved.water.adults,children:saved.water.children};
+      if (validWater(saved.water)) state.water={adults:saved.water.adults,children:saved.water.children,packages:saved.water.packages || 1};
       if (validTime(saved.cinema)) state.cinema=saved.cinema;
       if (['box','table'].indexOf(saved.games)!==-1) state.games=saved.games;
       Object.keys(menuCatalog).forEach(function(key){
@@ -196,12 +196,12 @@
         details:item.cheese ? ['إضافة جبنة: '+item.qty+' × '+product.cheesePrice+' ريال'] : []};
     });
   }
-  function waterSelection(data) {return (data || state).water || {adults:0,children:0};}
-  function incompleteWater(data) {var water=(data || state).water;return !!water && water.adults+water.children!==catalog.water.size;}
+  function waterSelection(data) {return (data || state).water || {adults:0,children:0,packages:1};}
+  function incompleteWater(data) {var water=(data || state).water;return !!water && water.adults+water.children!==catalog.water.size*(water.packages || 1);}
   function resortLines(data) {
     data=data || state;
     var lines=[];
-    if(data.water) lines.push({id:'water',group:'water',name:catalog.water.name,price:incompleteWater(data) ? 0 : catalog.water.price,
+    if(data.water) lines.push({id:'water',group:'water',name:catalog.water.name,qty:data.water.packages || 1,price:incompleteWater(data) ? 0 : catalog.water.price*(data.water.packages || 1),
       pending:incompleteWater(data),details:['للكبار: '+data.water.adults,'للصغار: '+data.water.children]});
     if(data.games){var pack=catalog.games.packages[data.games];lines.push({id:'games',group:'games',name:pack.name,price:pack.price,details:[]});}
     if(data.cinema) lines.push({id:'cinema',group:'cinema',name:catalog.cinema.name,price:catalog.cinema.price,
@@ -289,9 +289,11 @@
     return 'من '+label(start)+' إلى '+label(end)+(Math.floor(end/24)>Math.floor(start/24) ? ' (اليوم التالي)' : '');
   }
   function renderServiceControls() {
-    var data=selection(),water=waterSelection(data), total=water.adults+water.children;
-    ['adults','children'].forEach(function(key){setCounter(document.getElementById('water-'+key).parentNode,water[key],water[key]+catalog.water.size-total);});
-    document.getElementById('water-count').textContent=total===catalog.water.size ? 'اكتملت الباقة' : 'اخترت '+total+' من '+catalog.water.size;
+    var data=selection(),water=waterSelection(data), total=water.adults+water.children,required=catalog.water.size*(water.packages || 1);
+    document.getElementById('water-packages-count').textContent=String(water.packages || 1);
+    document.querySelectorAll('[data-water-packages]').forEach(function(button){button.disabled=Number(button.dataset.step)<0 ? (water.packages || 1)<=1 : (water.packages || 1)>=20;});
+    ['adults','children'].forEach(function(key){setCounter(document.getElementById('water-'+key).parentNode,water[key],water[key]+required-total);});
+    document.getElementById('water-count').textContent=total===required ? 'اكتملت الباقة' : 'اخترت '+total+' من '+required;
     time.value=data.cinema;time.classList.toggle('is-selected',!!data.cinema);
     document.querySelectorAll('[name="games-package"]').forEach(function(input){
       input.checked=input.value===data.games;
@@ -380,7 +382,7 @@
     applyButton.disabled=pending || (!lines.length && !previous.length);
     applyButton.textContent=previous.length ? (lines.length ? 'حفظ التعديل' : 'حذف من الطلب') : 'إضافة للطلب';
     var status=document.getElementById('dialog-status');
-    status.textContent=pending ? 'أكمل اختيار '+catalog.water.size+' ألعاب لإضافة الباقة.' : '';
+    status.textContent=pending ? 'أكمل اختيار '+catalog.water.size*(waterSelection(draft).packages || 1)+' ألعاب لإضافة الباقة.' : '';
   }
   function openEditor(key){
     if(dialog.open) return;
@@ -459,9 +461,17 @@
   document.querySelectorAll('.customer-fields').forEach(customerFields);
   document.querySelectorAll('[data-water]').forEach(function(button){button.addEventListener('click',function(){
     var data=selection(),water=waterSelection(data),key=button.dataset.water,step=Number(button.dataset.step),total=water.adults+water.children;
-    if(step===1 && total<catalog.water.size || step===-1 && water[key]>0) water[key]+=step;
+    if(step===1 && total<catalog.water.size*(water.packages || 1) || step===-1 && water[key]>0) water[key]+=step;
     data.water=water.adults+water.children ? water : null;
     renderEditor();
+  });});
+  document.querySelectorAll('[data-water-packages]').forEach(function(button){button.addEventListener('click',function(){
+    var data=selection(),water=waterSelection(data),next=Math.max(1,Math.min(20,(water.packages || 1)+Number(button.dataset.step)));
+    if(next===water.packages)return;
+    water.packages=next;
+    var max=catalog.water.size*next,total=water.adults+water.children;
+    if(total>max){var excess=total-max;water.children=Math.max(0,water.children-excess);excess=total-max-(total-water.children-(water.adults));water.adults=Math.min(water.adults,max-water.children);}
+    data.water=water;renderEditor();
   });});
   time.addEventListener('change',function(){selection().cinema=time.value;renderEditor();});
   document.querySelectorAll('[name="games-package"]').forEach(function(input){input.addEventListener('change',function(){selection().games=input.value;renderEditor();});});
