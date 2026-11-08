@@ -34,8 +34,8 @@
     }
     if (className === 'photo-card') {
       return '<article class="package-card seating-collapsed-card"><details class="seating-collapsed-details">'
-        + '<summary class="seating-collapsed-summary"><span class="seating-collapsed-title">' + escape(title) + '</span>'
-        + (capacity ? '<span class="service-capacity">' + escape(capacity) + '</span>' : '')
+        + '<summary class="seating-collapsed-summary"><span class="seating-collapsed-main"><span class="seating-collapsed-title">' + escape(title) + '</span>'
+        + (capacity ? '<span class="seating-capacity-badge">' + escape(capacity) + '</span>' : '') + '</span>'
         + priceMarkup
         + '<svg class="seating-collapsed-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>'
         + '<div class="seating-collapsed-content">' + FD_GUIDE_GALLERY.markup(photos,title,imageAlt)
