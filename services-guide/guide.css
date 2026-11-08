@@ -339,3 +339,8 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 #seating .seating-collapsed-title{width:auto!important;flex:1 1 auto!important;min-width:0!important;font-size:15px!important}
 #seating .seating-capacity-badge{flex:0 0 auto!important;white-space:nowrap!important;background:#e4f0ef!important;color:#285d69!important;border-color:#c9e0df!important}
 #seating .seating-collapsed-summary{gap:12px!important}
+
+/* Distinguish only the final optional cake add-on from seating cards. */
+#seating .seating-extra{background:#fff3ed!important;border:1px solid #e9d4c7!important;border-radius:14px!important}
+#seating .seating-extra h3{color:#925c46!important}
+#seating .seating-extra-price{color:#925c46!important}
