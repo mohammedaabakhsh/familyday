@@ -51,7 +51,7 @@
 <link rel="preload" as="script" href="js/app-shell.js?v=20261108-chalet-services-v1">
 <link rel="preload" as="script" href="js/gallery-data.js?v=20261102-structure-v1">
 <link rel="preload" as="script" href="js/accommodations.js?v=20261108-chalet-services-v1">
-<link rel="preload" as="script" href="js/services.js?v=20261108-dining-photo-v4">
+<link rel="preload" as="script" href="js/services.js?v=20261108-dining-compact-v5">
 <link rel="preload" as="script" href="js/stay-navigation.js?v=20261107-final-batch-v1">
 <link rel="preload" as="script" href="js/router.js?v=20261108-chalet-services-v1">
 <link rel="stylesheet" href="css/app-base.css?v=20261106-seating-controls-v7">
@@ -1624,8 +1624,8 @@
 <div class="tag-tooltip" id="tag-tooltip"></div>
 
 <script src="services-guide/guide-gallery.js?v=20261107-complete-photos-v1"></script>
-<script src="js/dining-cards.js?v=20261108-dining-cards-v1"></script>
-<script src="js/services.js?v=20261108-dining-photo-v4"></script>
+<script src="js/dining-cards.js?v=20261108-dining-compact-v2"></script>
+<script src="js/services.js?v=20261108-dining-compact-v5"></script>
 <script src="js/seating-cart.js?v=20261108-seating-summary-v3"></script>
 
 
@@ -1757,29 +1757,20 @@
 
     <p class="tw-intro">طاولة تجمعكم في المساحة الخارجية الخاصة بالكوخ</p>
     <div id="dining-photo" class="dining-shared-photo"></div>
-    <div id="dining-cards" class="fd-dining-cards"></div>
+    <div id="dining-cards"></div>
+    <div id="dining-details"></div>
+    <div class="fd-dining-order">
+      <p id="dining-selection" class="fd-dining-selection" role="status">اختر السعر حسب عدد الأشخاص والتجهيز</p>
+      <div class="fd-dining-total"><span>إجمالي الطلب</span><strong>—</strong></div>
+      <button type="button" class="fd-dining-checkout" onclick="tawilatOrder()" disabled>متابعة الطلب</button>
+    </div>
     <template id="dining-card-template">
-      <details class="fd-dining-card">
-        <summary class="fd-dining-summary">
-          <span class="fd-dining-heading"><span class="fd-dining-capacity"></span><span class="fd-dining-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/></svg></span></span>
-          <span class="fd-dining-prices">
-            <span class="fd-dining-price-box" data-option="plain"><span class="fd-dining-option-name">بدون تنسيق</span><strong class="fd-dining-price"></strong><span class="fd-dining-option-desc">طاولات وكراسي فقط</span></span>
-            <span class="fd-dining-price-box" data-option="tansiq"><span class="fd-dining-option-name">مع تنسيق</span><strong class="fd-dining-price"></strong><span class="fd-dining-option-desc">طاولات وكراسي مع تجهيز الطاولة</span></span>
-          </span>
-          <span class="fd-dining-hint">تفاصيل التجهيز</span>
-        </summary>
-        <div class="fd-dining-body">
-          <div class="fd-dining-image"><img loading="lazy" data-page-src="imgs/tawilat_1.webp" width="1200" height="1200" alt="طاولة طعام خارجية مجهزة بالكراسي وأطقم التقديم والزهور بجانب المسبح" decoding="async"></div>
-          <p class="fd-dining-caption">الصورة توضح التجهيز مع التنسيق</p>
-          <div class="fd-dining-copy"><h3>يشمل التنسيق</h3><ul class="fd-dining-inclusions"></ul></div>
-          <div class="fd-dining-order">
-            <p class="fd-dining-select-label">اختر التجهيز</p>
-            <div class="fd-dining-options" role="group" aria-label="اختيار تجهيز طاولة الطعام"></div>
-            <div class="fd-dining-total" aria-live="polite"><span>اختر التجهيز لعرض الإجمالي</span><strong></strong></div>
-            <button type="button" class="fd-dining-checkout" disabled>متابعة الطلب</button>
-          </div>
-        </div>
-      </details>
+      <div class="fd-dining-image"><img loading="lazy" data-page-src="imgs/tawilat_1.webp" width="1200" height="1200" alt="طاولة طعام خارجية مجهزة بالكراسي وأطقم التقديم والزهور بجانب المسبح" decoding="async"></div>
+      <p class="fd-dining-caption">الصورة توضح التجهيز مع التنسيق</p>
+      <div class="fd-dining-info">
+        <section data-option="plain"><h3 class="fd-dining-option-name">بدون تنسيق</h3><p class="fd-dining-option-desc">طاولات وكراسي فقط</p></section>
+        <section data-option="tansiq"><h3 class="fd-dining-option-name">مع تنسيق</h3><p class="fd-dining-option-desc">طاولات وكراسي مع تجهيز الطاولة</p><ul class="fd-dining-inclusions"></ul></section>
+      </div>
     </template>
   </div>
 </div>
@@ -1978,7 +1969,7 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 <link rel="stylesheet" href="css/home-review.css?v=20261107-aligned-v2">
 <link rel="stylesheet" href="css/contact-layout.css?v=20261106-brand-footer-v3">
 <link rel="stylesheet" href="css/resort-faq.css?v=20261106-all-v2">
-<link rel="stylesheet" href="css/dining-cards.css?v=20261108-dining-photo-v2">
+<link rel="stylesheet" href="css/dining-cards.css?v=20261108-dining-compact-v3">
 <link rel="stylesheet" href="css/cinema-layout.css?v=20261108-cinema-intro-v4">
 <link rel="stylesheet" href="css/games-layout.css?v=20261108-chalet-no-photo-v2">
 <link rel="stylesheet" href="css/water-layout.css?v=20261108-water-multipack-v1">

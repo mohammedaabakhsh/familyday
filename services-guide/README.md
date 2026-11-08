@@ -3,7 +3,7 @@
 `/services-guide/` is a shareable preparation catalogue titled “تنسيقات وجلسات”, with a compact introduction and service tiles inspired by `/guest-services/`.
 Coordination, dining and seating use matching full-width tiles stacked vertically.
 Each tile opens a full-page section in the same tab: coordination, dining or seating. The home screen shows only the introduction, tiles and contact footer. Service cards keep a visible name
-and price, then a native inline disclosure for all its details. Dining has one expandable card per capacity. Both prices and the plain/decorated explanations remain visible while closed; inclusions appear on expansion. One shared photo and its decorated-setup caption sit above the dining cards on both the guide and main site. Seating capacity appears below each session name. Package ordering
+and price, then a native inline disclosure for all its details. Dining uses one compact price table with five capacity rows and two price columns. One shared photo sits above it, and preparation descriptions and inclusions appear once below. The main site makes each price a selectable button and has one checkout action; the guide displays prices without ordering controls. Seating capacity appears below each session name. Package ordering
 for coordination stays on `/services/hospitality/`. Hospitality and cinema are offered through `/guest-services/`, using its shared order dialog, basket and resort WhatsApp draft.
 Coordination galleries use only the shared package photos in `service-data.js`. All coordination cards show “الصور وتفاصيل الباقة”. Celebration currently has no photos; its label is kept consistent ahead of adding photos later. No cabin-photo fallback is used. Dining uses one shared source photo above its cards; each seating option keeps its source photo; single-image cards omit the gallery controls.
 The guide's footer provides contact links. The cabin map is not included in this catalogue.
@@ -27,7 +27,7 @@ The old `#hospitality` and `#cinema` links redirect to their guest-service order
 Stable guide anchors include `#coordination`; the old `#packages`
 anchor still opens seating. `#package-complete` remains a direct link to the complete-experience package.
 Each coordination package includes its source-backed usage note beneath its contents, when present. Dining
-uses the same `dining-card-template` and `js/dining-cards.js` renderer as the main site. All five capacities show both prices. The guide removes the ordering controls; the main site selects a preparation and opens the shared WhatsApp checkout. Multiple cards can stay open for comparison. Seating shows capacity below the name before expanding its description; the optional add-on remains visible.
+uses the same `dining-card-template` and `js/dining-cards.js` renderer as the main site. All five capacities show both prices at once, without expandable cards. Main-site selection is exclusive across all ten prices and opens the shared WhatsApp checkout. Seating shows capacity below the name before expanding its description; the optional add-on remains visible.
 `guide-gallery.js` supplies a 4:3 inline gallery with native swipe, keyboard navigation and grouped bottom-right arrows/counter. `_coordinationPhotos` in `service-data.js` keeps the main site and guide galleries aligned; packages without assigned photos remain text-only. The actual dining and seating photos
 continue to come from the shared sources. Print styles also support saving the
 continuous brochure as a PDF from the browser.

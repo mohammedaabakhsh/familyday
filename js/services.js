@@ -365,7 +365,6 @@ function jalsatGoTo(index){
 // ===== طاولات الطعام =====
 var _tawilatSize = 6;
 var _tawilatOpt = '';
-var _tawilatSelections = Object.create(null);
 function buildTawilatCards(){
   var host=document.getElementById('dining-cards');
   if(host.children.length) return;
@@ -375,15 +374,10 @@ function buildTawilatCards(){
   image.src='/'+image.getAttribute('data-page-src').replace(/^\//,'');
   image.removeAttribute('data-page-src');
   document.getElementById('dining-photo').replaceChildren(photo,source.querySelector('.fd-dining-caption').cloneNode(true));
-  Object.keys(_tawilatPrices).forEach(function(size){
-    var card=FD_DINING_CARDS.create(document,Number(size),true);
-    card.querySelector('.fd-dining-image').remove();
-    card.querySelector('.fd-dining-caption').remove();
-    card.querySelectorAll('.fd-dining-option').forEach(function(button){
-      button.addEventListener('click',function(){setTawilatSize(Number(size));selectTawilatOpt(button.dataset.option);});
-    });
-    card.querySelector('.fd-dining-checkout').addEventListener('click',function(){setTawilatSize(Number(size));tawilatOrder();});
-    host.appendChild(card);
+  host.appendChild(FD_DINING_CARDS.table(document,true));
+  document.getElementById('dining-details').appendChild(FD_DINING_CARDS.details(document));
+  host.querySelectorAll('.fd-dining-option').forEach(function(button){
+    button.addEventListener('click',function(){setTawilatSize(Number(button.dataset.size));selectTawilatOpt(button.dataset.option);});
   });
 }
 function openTawilatDetail(){
@@ -399,20 +393,21 @@ function closeTawilatDetail(){
 function setTawilatSize(n){
   if(!Object.prototype.hasOwnProperty.call(_tawilatPrices,n)) return;
   buildTawilatCards();
+  if(_tawilatSize!==Number(n)) _tawilatOpt='';
   _tawilatSize=Number(n);
-  _tawilatOpt=_tawilatSelections[n] || '';
 }
 function selectTawilatOpt(opt){
   if(['plain','tansiq',''].indexOf(opt)===-1) return;
   _tawilatOpt=opt;
-  _tawilatSelections[_tawilatSize]=opt;
-  var card=document.getElementById('dining-card-'+_tawilatSize);
-  if(!card) return;
-  card.open=true;
-  card.querySelectorAll('.fd-dining-option').forEach(function(button){button.setAttribute('aria-pressed',String(button.dataset.option===opt));});
-  card.querySelector('.fd-dining-total span').textContent=opt ? 'إجمالي الطلب' : 'اختر التجهيز لعرض الإجمالي';
-  card.querySelector('.fd-dining-total strong').textContent=opt ? _tawilatPrices[_tawilatSize][opt]+' ريال' : '';
-  card.querySelector('.fd-dining-checkout').disabled=!opt;
+  var selected;
+  document.querySelectorAll('#dining-cards .fd-dining-option').forEach(function(button){
+    var active=Number(button.dataset.size)===_tawilatSize && button.dataset.option===opt;
+    button.setAttribute('aria-pressed',String(active));
+    if(active) selected=button;
+  });
+  document.getElementById('dining-selection').textContent=selected ? selected.dataset.selection : 'اختر السعر حسب عدد الأشخاص والتجهيز';
+  document.querySelector('#tawilat-detail .fd-dining-total strong').textContent=opt ? _tawilatPrices[_tawilatSize][opt]+' ريال' : '—';
+  document.querySelector('#tawilat-detail .fd-dining-checkout').disabled=!opt;
 }
 function tawilatOrder(){
   if(!_tawilatOpt) return;

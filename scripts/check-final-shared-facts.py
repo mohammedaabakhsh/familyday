@@ -22,7 +22,6 @@ with sync_playwright() as p:
  assert not any(any(name in url for name in ['cinema_1.webp','tarfihi_1.webp','tawilat_1.webp']) for url in images)
  for fn,name,close in [('showSinema','cinema_1.webp','closeSetupsDetail'),('showTarfihi','tarfihi_1.webp','closeTarfihiDetail'),('showTawilat','tawilat_1.webp','closeSetupsDetail')]:
   cold.evaluate(fn+'()')
-  if fn=='showTawilat':cold.locator('#dining-card-6 summary').click()
   image=cold.locator('img[src*="'+name+'"]:visible');image.wait_for();cold.wait_for_function('(name)=>Array.from(document.images).some(i=>i.src.includes(name)&&i.naturalWidth>=1000)',arg=name);cold.evaluate(close+'()');cold.wait_for_timeout(100)
  cold.close()
  print('PASS unopened service photos deferred; original full-resolution photos load on opening',flush=True)

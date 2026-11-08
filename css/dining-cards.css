@@ -1,43 +1,35 @@
-/* Identical card structure; each surface retains its own palette. */
+/* Compact shared price rows; the main site offers selectable prices. */
 #tawilat-detail{--fd-dining-bg:#0c2534;--fd-dining-box:#102e3c;--fd-dining-ink:#edf5f7;--fd-dining-muted:#b6cbd6;--fd-dining-line:#315967;--fd-dining-accent:#8fd5e4;--fd-dining-badge:#123d49}
 #dining{--fd-dining-bg:#fff;--fd-dining-box:#f3f8f8;--fd-dining-ink:#153b49;--fd-dining-muted:#627780;--fd-dining-line:#d6e4e7;--fd-dining-accent:#247987;--fd-dining-badge:#edf6f7}
 #tawilat-detail .tw-intro{max-width:680px;margin:0 auto 18px;font-size:14px;line-height:1.8;text-align:right}
-.fd-dining-cards{display:grid;gap:14px;max-width:680px;margin:0 auto 24px}
-.fd-dining-card{min-width:0;border:1px solid var(--fd-dining-line);border-radius:20px;background:var(--fd-dining-bg);color:var(--fd-dining-ink);overflow:hidden;text-align:right}
-.fd-dining-summary{display:grid;gap:14px;padding:18px;cursor:pointer;list-style:none}
-.fd-dining-summary::-webkit-details-marker{display:none}
-.fd-dining-summary::marker{content:""}
-.fd-dining-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.fd-dining-capacity{padding:4px 11px;border:1px solid var(--fd-dining-line);border-radius:9px;color:var(--fd-dining-accent);background:var(--fd-dining-badge);font-size:16px;font-weight:800}
-.fd-dining-arrow{width:30px;height:30px;display:grid;place-items:center;border:1px solid var(--fd-dining-line);border-radius:50%;color:var(--fd-dining-accent);flex-shrink:0}
-.fd-dining-arrow svg{width:18px;height:18px}
-.fd-dining-card[open] .fd-dining-arrow svg{transform:rotate(180deg)}
-.fd-dining-prices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.fd-dining-price-box{display:flex;flex-direction:column;gap:5px;padding:12px 10px;border:1px solid var(--fd-dining-line);border-radius:12px;background:var(--fd-dining-box);text-align:center;min-width:0}
-.fd-dining-option-name{font-size:14px;font-weight:700}
-.fd-dining-price{font-size:20px;line-height:1.5;color:var(--fd-dining-accent);white-space:nowrap}
-.fd-dining-option-desc{font-size:12px;line-height:1.6;color:var(--fd-dining-muted)}
-.fd-dining-hint{font-size:12px;color:var(--fd-dining-muted)}
-.fd-dining-body{border-top:1px solid var(--fd-dining-line);padding:16px}
-.fd-dining-image{overflow:hidden;border-radius:12px}
+.fd-dining-table{table-layout:fixed;width:100%;max-width:680px;margin:0 auto 20px;border:1px solid var(--fd-dining-line);border-radius:16px;border-spacing:0;overflow:hidden;background:var(--fd-dining-bg);color:var(--fd-dining-ink);text-align:center}
+.fd-dining-table th:first-child{width:22%}
+.fd-dining-table thead th{padding:13px 5px;font-size:13px;line-height:1.5;font-weight:700;color:var(--fd-dining-muted);background:var(--fd-dining-box)}
+.fd-dining-table tbody :is(th,td){border-top:1px solid var(--fd-dining-line);padding:8px 6px}
+.fd-dining-table tbody td:last-child{padding-inline-end:10px}
+.fd-dining-capacity{display:inline-grid;place-items:center;min-width:36px;height:36px;border-radius:10px;background:var(--fd-dining-badge);color:var(--fd-dining-accent);font-size:18px;font-weight:800}
+.fd-dining-price-box{display:flex;align-items:center;justify-content:center;gap:5px;box-sizing:border-box;width:100%;min-height:48px;border:1px solid var(--fd-dining-line);border-radius:10px;background:var(--fd-dining-box);color:var(--fd-dining-accent);font-family:Tajawal,sans-serif}
+.fd-dining-price{font-size:19px;font-weight:800;line-height:1.5}
+.fd-dining-currency{font-size:12px;font-weight:500}
+.fd-dining-option{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.fd-dining-option[aria-pressed=true]{border-color:#8fd5e4;background:#176174;color:#fff;box-shadow:inset 0 0 0 1px #8fd5e4}
+.fd-dining-option:focus-visible,.fd-dining-checkout:focus-visible{outline:2px solid var(--fd-dining-accent);outline-offset:2px}
+.fd-dining-info{max-width:680px;margin:0 auto 20px;color:var(--fd-dining-ink);text-align:right}
+.fd-dining-info section+section{margin-top:16px;padding-top:14px;border-top:1px solid var(--fd-dining-line)}
+.fd-dining-info section:first-child{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px}
+.fd-dining-info h3{font-size:14px;line-height:1.6;margin:0;font-weight:700}
+.fd-dining-option-desc{font-size:13px;line-height:1.7;color:var(--fd-dining-muted);margin:3px 0 8px}
+.fd-dining-info section:first-child p{margin:0}
+.fd-dining-inclusions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 20px;margin:0;padding-inline-start:18px;font-size:13px;line-height:1.7;color:var(--fd-dining-muted)}
+.fd-dining-image{overflow:hidden;border-radius:16px}
 .fd-dining-image>img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
-.fd-dining-caption{margin:8px 0 18px;color:var(--fd-dining-muted);font-size:12px;line-height:1.6;text-align:center}
-.fd-dining-copy h3{font-size:15px;margin:0 0 10px}
-.fd-dining-inclusions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 20px;margin:0;padding-inline-start:18px;font-size:13px;line-height:1.7;color:var(--fd-dining-muted)}
-.fd-dining-order{border-top:1px solid var(--fd-dining-line);margin-top:20px;padding-top:16px}
-.fd-dining-select-label{font-size:15px;font-weight:700;margin:0 0 10px}
-.fd-dining-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.fd-dining-option,.fd-dining-checkout{font:700 15px/1.5 Tajawal,sans-serif;min-height:48px;border-radius:12px;padding:10px;border:1px solid var(--fd-dining-line);cursor:pointer}
-.fd-dining-option{background:var(--fd-dining-box);color:var(--fd-dining-ink)}
-.fd-dining-option[aria-pressed=true]{border-color:#8fd5e4;background:#155365;color:#fff;box-shadow:inset 0 0 0 1px #8fd5e4}
-.fd-dining-total{display:flex;justify-content:space-between;gap:12px;margin:16px 0;color:var(--fd-dining-muted);font-size:14px}
-.fd-dining-total strong{color:var(--fd-dining-accent);white-space:nowrap}
-.fd-dining-checkout{display:block;width:100%;background:#147a8c;color:#fff;border-color:#2493a5;font-size:17px}
-.fd-dining-checkout:disabled{opacity:.45;cursor:default}
-.fd-dining-card :is(summary,button):focus-visible{outline:2px solid var(--fd-dining-accent);outline-offset:-4px}
-@media(max-width:359px){.fd-dining-summary{padding:14px;gap:12px}.fd-dining-price-box{padding:10px 6px}.fd-dining-body{padding:14px}.fd-dining-price{font-size:18px}.fd-dining-inclusions{gap:8px 14px}}
-@media print{#dining .fd-dining-card{break-inside:avoid;margin-bottom:12px}#dining .fd-dining-card::details-content{content-visibility:visible}#dining .fd-dining-body{display:block}#dining .fd-dining-arrow,#dining .fd-dining-hint{display:none}}
-
+.fd-dining-caption{margin:8px 0 0;color:var(--fd-dining-muted);font-size:12px;line-height:1.6;text-align:center}
 #tawilat-detail .dining-shared-photo{max-width:680px;margin:0 auto 20px}
-#tawilat-detail .dining-shared-photo .fd-dining-image{border-radius:16px}
-#tawilat-detail .dining-shared-photo .fd-dining-caption{margin:8px 0 0}
+.fd-dining-order{box-sizing:border-box;max-width:680px;margin:0 auto;padding:16px;border:1px solid var(--fd-dining-line);border-radius:16px;background:var(--fd-dining-bg)}
+.fd-dining-selection{margin:0 0 10px;color:var(--fd-dining-muted);font-size:13px;line-height:1.6}
+.fd-dining-total{display:flex;justify-content:space-between;gap:12px;margin:0 0 14px;color:var(--fd-dining-muted);font-size:14px}
+.fd-dining-total strong{color:var(--fd-dining-accent);white-space:nowrap;font-size:18px}
+.fd-dining-checkout{display:block;width:100%;min-height:48px;padding:10px;border:1px solid #2493a5;border-radius:12px;background:#147a8c;color:#fff;font:700 17px/1.5 Tajawal,sans-serif;cursor:pointer}
+.fd-dining-checkout:disabled{opacity:.45;cursor:default}
+@media(max-width:359px){.fd-dining-table thead th{font-size:12px}.fd-dining-table tbody :is(th,td){padding:7px 4px}.fd-dining-price{font-size:17px}.fd-dining-price-box{gap:4px}.fd-dining-currency{font-size:11px}.fd-dining-inclusions{gap:6px 14px}}
+@media print{#dining .fd-dining-table,#dining .fd-dining-info{break-inside:avoid}}

@@ -68,17 +68,9 @@
     let html = section('coordination','التنسيقات','تجهيزات متكاملة لمناسباتكم', packages(doc,'coordination'), true);
     const diningSource = doc.querySelector('#dining-card-template').content;
     const diningImage = sourceImage(diningSource,'.fd-dining-image img');
-    const diningCards = document.createElement('div');
-    diningCards.className = 'fd-dining-cards';
-    Object.keys(_tawilatPrices).forEach(size => {
-      const card = FD_DINING_CARDS.create(doc,Number(size),false);
-      card.querySelector('.fd-dining-image').remove();
-      card.querySelector('.fd-dining-caption').remove();
-      card.querySelector('.fd-dining-hint').textContent = 'تفاصيل التجهيز';
-      diningCards.appendChild(card);
-    });
     const diningPhoto = '<div class="dining-shared-photo">' + FD_GUIDE_GALLERY.markup([diningImage.src],text(doc,'.tw-title'),diningImage.alt) + '<p class="fd-dining-caption">' + escape(text(diningSource,'.fd-dining-caption')) + '</p></div>';
-    html += section('dining',text(doc,'.tw-title'),text(doc,'.tw-intro'),diningPhoto + diningCards.outerHTML,true);
+    const diningBody = diningPhoto + FD_DINING_CARDS.table(doc,false).outerHTML + FD_DINING_CARDS.details(doc).outerHTML;
+    html += section('dining',text(doc,'.tw-title'),text(doc,'.tw-intro'),diningBody,true);
     // The ordering page keeps each session's add-on inside an inert card template.
     const seatingTemplate = doc.querySelector('#jalsat-card-template');
     const seatingSource = seatingTemplate ? seatingTemplate.content : doc;
