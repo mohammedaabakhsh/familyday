@@ -7,8 +7,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/guest-services/guest-services.css?v=20261107-restaurant-hours-v2">
 <style>
-.service-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.service-tile{min-height:190px}
+/* Chalet uses the same full-width service tile layout as the resort's featured tiles. */
+.service-tiles{display:grid;grid-template-columns:1fr;gap:14px}
+.service-tile{min-height:120px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center}
+.service-tile .tile-action{grid-column:3}
 .help-contacts{display:block}
 .help-contact{width:100%}
 #chalet-summary{margin:20px 0;padding:20px;background:#f3f8f9;border:1px solid #d8e7ea;border-radius:18px}
@@ -18,7 +20,7 @@
 #chalet-summary label{display:block;font-weight:700;margin-bottom:5px}
 #chalet-summary .send-order{width:100%;margin-top:12px}
 #chalet-summary[hidden]{display:none}
-@media(max-width:650px){.service-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.service-tile{min-height:170px}}
+@media(max-width:650px){.service-tiles{grid-template-columns:1fr}.service-tile{min-height:118px}}
 </style><script src="chalet-services.js?v=1" defer></script></head>
 <body><div class="page"><header class="hero">
 <button type="button" class="share-page" id="share-page" aria-label="مشاركة رابط خدمات إقامتك"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 4h6v6M20 4l-9 9M9 5H4v15h15v-5"/></svg></button>
@@ -33,6 +35,9 @@
 <form id="chalet-order"><div class="order-field"><label for="guest-name">الاسم</label><input id="guest-name" required maxlength="100" autocomplete="name"></div><div class="order-field"><label for="chalet-number">رقم الشاليه</label><select id="chalet-number" required><option value="">اختر الشاليه</option><option>101</option><option>102</option><option>103</option><option>104</option><option>105</option><option>106</option><option>107</option></select></div><div class="order-field"><label for="guest-notes">ملاحظات إضافية (اختياري)</label><textarea id="guest-notes" maxlength="1000" rows="2"></textarea></div><button class="send-order" type="submit">إكمال طلب الخدمات عبر واتساب</button></form>
 </section></main>
 <div class="page-ending"><section class="help"><div><h2>تحتاج مساعدة؟</h2><p>تواصل مع فريق شاليه يوم العائلة أثناء إقامتك</p></div><div class="help-contacts"><div class="help-contact"><h3>خدمات الشاليه</h3><div class="help-actions"><a href="https://wa.me/966556156693" target="_blank" rel="noopener noreferrer">واتساب</a><a href="tel:+966556156693">اتصال</a></div></div></div></section>
-<footer class="footer"><p class="footer-tagline">خصوصية تليق بكم… وراحة تستحقونها</p><p>شاليه يوم العائلة · جدة · حي المروج</p><nav class="footer-social" aria-label="حسابات يوم العائلة"><a class="social-link footer-link--instagram" href="https://instagram.com/FAMILYDAYRESORT" target="_blank" rel="noopener noreferrer" aria-label="إنستجرام">إنستجرام</a><a class="social-link footer-link--snapchat" href="https://www.snapchat.com/add/familyday5" target="_blank" rel="noopener noreferrer" aria-label="سناب شات">سناب شات</a></nav></footer></div></div>
+<footer class="footer"><p class="footer-tagline">خصوصية تليق بكم… وراحة تستحقونها</p><p>شاليه يوم العائلة · جدة · حي المروج</p><nav class="footer-social" aria-label="حسابات يوم العائلة">
+      <a class="social-link footer-link--instagram" href="https://instagram.com/FAMILYDAYRESORT" target="_blank" rel="noopener noreferrer" aria-label="إنستجرام" title="إنستجرام"><span class="footer-link-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></span></a>
+      <a class="social-link footer-link--snapchat" href="https://www.snapchat.com/add/familyday5" target="_blank" rel="noopener noreferrer" aria-label="سناب شات" title="سناب شات"><span class="footer-link-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.206.793c.99 0 4.347.276 5.93 3.821.529 1.193.403 3.219.299 4.847l-.003.06c-.012.18-.022.345-.03.51.075.045.203.09.401.09.3-.016.659-.12 1.033-.301.165-.088.344-.104.464-.104.182 0 .359.029.509.09.45.149.734.479.734.838.015.449-.39.839-1.213 1.168-.089.029-.209.075-.344.119-.45.135-1.139.36-1.333.81-.09.224-.061.524.12.868l.015.015c.06.136 1.526 3.475 4.791 4.014.255.044.435.27.42.509 0 .075-.015.149-.045.225-.24.569-1.273.988-3.146 1.271-.059.091-.12.375-.164.57-.029.179-.074.36-.134.553-.076.271-.27.405-.555.405h-.03c-.135 0-.313-.031-.538-.074-.36-.075-.765-.135-1.273-.135-.3 0-.599.015-.913.074-.6.104-1.123.464-1.723.884-.853.599-1.826 1.288-3.294 1.288-.06 0-.119-.015-.18-.015h-.149c-1.468 0-2.427-.675-3.279-1.288-.599-.42-1.107-.779-1.707-.884-.314-.045-.629-.074-.928-.074-.54 0-.958.089-1.272.149-.211.043-.391.074-.54.074-.374 0-.523-.224-.583-.42-.061-.192-.09-.389-.135-.567-.046-.181-.105-.494-.166-.57-1.918-.222-2.95-.642-3.189-1.226-.031-.063-.052-.15-.055-.225-.015-.243.165-.465.42-.509 3.264-.54 4.73-3.879 4.791-4.02l.016-.029c.18-.345.224-.645.119-.869-.195-.434-.884-.658-1.332-.809-.121-.029-.24-.074-.346-.119-1.107-.435-1.257-.93-1.197-1.273.09-.479.674-.793 1.168-.793.146 0 .27.029.383.074.42.194.789.3 1.104.3.234 0 .384-.06.465-.105l-.046-.569c-.098-1.626-.225-3.651.307-4.837C7.392 1.077 10.739.807 11.727.807l.419-.015h.06z"/></svg></span></a>
+    </nav></footer></div></div>
 <dialog id="service-dialog" class="service-dialog" aria-labelledby="service-dialog-title"><header class="dialog-header"><h2 id="service-dialog-title"></h2><button type="button" class="dialog-close" aria-label="إغلاق">×</button></header><div class="dialog-body" id="dialog-content"></div><footer class="dialog-footer"><p id="dialog-status" role="status"></p><div class="dialog-total"><span>إجمالي الاختيار</span><strong id="dialog-total">0 ريال</strong></div><div class="dialog-actions"><button type="button" class="send-order" id="apply-selection">إضافة للطلب</button><button type="button" class="dialog-cancel">إلغاء</button></div></footer></dialog>
 <div id="share-status" class="share-status" role="status"></div></body></html>
