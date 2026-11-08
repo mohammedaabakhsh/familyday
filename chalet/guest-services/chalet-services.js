@@ -48,7 +48,9 @@ function open(type){
  $('dialog-content').innerHTML='<p class="service-offer"><strong>'+esc(catalog.water.size)+' ألعاب بـ'+esc(catalog.water.price)+' ريال</strong></p><p class="section-note">وزّع الألعاب الثلاث بين الكبار والصغار</p><div class="selection-rows"><div class="extra-row"><strong>للكبار</strong><div class="quantity"><button type="button" data-kind="adults" data-step="-1">−</button><output id="count-adults" dir="ltr">0</output><button type="button" data-kind="adults" data-step="1">+</button></div></div><div class="extra-row"><strong>للصغار</strong><div class="quantity"><button type="button" data-kind="children" data-step="-1">−</button><output id="count-children" dir="ltr">0</output><button type="button" data-kind="children" data-step="1">+</button></div></div></div><p id="water-limit" class="selection-status"></p><p class="usage-note">'+catalog.water.notes.map(esc).join(' — ')+'</p>';
  $('dialog-content').querySelectorAll('[data-step]').forEach(b=>b.onclick=()=>{const k=b.dataset.kind,next=draft[k]+Number(b.dataset.step),other=draft[k==='adults'?'children':'adults'];if(next>=0&&next+other<=catalog.water.size){draft[k]=next;update()}});
  }else{
- $('dialog-content').innerHTML='<fieldset class="game-options"><legend class="field-label">اختر الباقة</legend><label><input type="radio" name="games-package" value="none" '+(!draft.games?'checked':'')+'><span>بدون باقة ألعاب</span></label><label><input type="radio" name="games-package" value="box" '+(draft.games?'checked':'')+'><span><span>'+esc(catalog.games.name)+'</span><small>يشمل الألعاب الموضّحة أدناه</small><strong>'+esc(catalog.games.price)+' ريال</strong></span></label></fieldset><h3 class="contents-title">'+esc(catalog.games.title)+'</h3><ul class="contents-list games-contents">'+catalog.games.contents.map(n=>'<li>'+esc(n)+'</li>').join('')+'</ul><p class="usage-note">'+catalog.games.notes.map(esc).join(' — ')+'</p>';
+ // Same panel structure, radio choices, list chips and usage note as the resort.
+ // Chalet excludes only the table-with-box package.
+ $('dialog-content').innerHTML='<section id="games-service" class="service-panel"><fieldset class="game-options"><legend class="field-label">اختر الباقة</legend><label><input type="radio" name="games-package" value="" '+(!draft.games?'checked':'')+'><span>بدون باقة ألعاب</span></label><label><input type="radio" name="games-package" value="box" '+(draft.games?'checked':'')+'><span><span>'+esc(catalog.games.name)+'</span><small>يشمل الألعاب الموضّحة أدناه</small><strong>'+esc(catalog.games.price)+' ريال</strong></span></label></fieldset><h3 class="contents-title">الألعاب المشمولة في الباقة</h3><ul class="contents-list games-contents">'+catalog.games.contents.map(n=>'<li>'+esc(n)+'</li>').join('')+'</ul><p id="games-status" class="selection-status" role="status"></p><p class="usage-note">'+esc(catalog.games.notes.join(' '))+'</p></section>';
  $('dialog-content').querySelectorAll('[name="games-package"]').forEach(input=>input.onchange=()=>{draft.games=input.value==='box';update()});
  }
  update();dialog.showModal();
@@ -67,6 +69,7 @@ function update(){
   valid=draft.games;
   price=valid?catalog.games.price:0;
   $('dialog-status').textContent='';
+  $('games-status').textContent=valid?'تم اختيار الباقة':'';
   $('dialog-content').querySelectorAll('[name="games-package"]').forEach(input=>input.closest('label').classList.toggle('is-selected',input.checked));
  }
  $('dialog-total').textContent=price+' ريال';
