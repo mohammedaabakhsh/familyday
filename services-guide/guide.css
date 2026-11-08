@@ -309,3 +309,14 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 #seating .seating-collapsed-summary>.price{margin-inline-start:auto!important}
 #seating .seating-detail-footer{display:flex;align-items:center;justify-content:center;gap:5px;flex:0 0 100%;width:100%;padding-top:7px;margin-top:2px;border-top:1px solid rgba(23,96,120,.12)}
 #seating .seating-detail-hint{font-size:11px!important}
+
+/* Seating card hierarchy: full-width name, capacity below, price and action in bottom row. */
+#seating .seating-collapsed-summary{display:flex!important;flex-direction:column!important;align-items:stretch!important;flex-wrap:nowrap!important;justify-content:center!important;gap:13px!important;padding:17px 16px!important;min-height:112px!important}
+#seating .seating-collapsed-main{display:flex!important;flex:none!important;width:100%!important;align-items:flex-start!important;gap:8px!important}
+#seating .seating-collapsed-title{display:block!important;width:100%!important;flex:none!important;font-size:15px!important;line-height:1.55!important;text-align:right!important}
+#seating .seating-summary-bottom{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;width:100%!important}
+#seating .seating-summary-bottom .price{font-size:15px!important;white-space:nowrap!important}
+#seating .seating-detail-footer{display:inline-flex!important;align-items:center!important;gap:5px!important;flex:none!important;white-space:nowrap!important}
+#seating .seating-detail-hint{font-size:11px!important}
+#seating .seating-detail-footer .seating-collapsed-chevron{flex:none!important;transform:rotate(90deg);transition:transform .2s}
+#seating .seating-collapsed-details[open] .seating-detail-footer .seating-collapsed-chevron{transform:rotate(180deg)}
