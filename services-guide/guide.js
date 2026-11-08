@@ -26,7 +26,7 @@
   };
   function serviceCard({title, price, priceUnit = '', photos = [], body, id = '', label = 'تفاصيل الخدمة', imageAlt, className = '', capacity = '', expandable = true}) {
     const priceMarkup = '<strong class="price">' + escape(price) + (priceUnit ? '<span class="price-unit"> ' + escape(priceUnit) + '</span>' : '') + '</strong>';
-    if (!photos.length) {
+    if (!photos.length && className !== 'coordination-card') {
       return '<article class="package-card package-card--text"><details class="package-details hospitality-details">'
         + '<summary class="package-heading"><h3>' + escape(title) + '</h3>' + priceMarkup + ''
         + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>'
@@ -37,8 +37,8 @@
         + '<summary class="seating-collapsed-summary"><span class="seating-collapsed-main"><span class="seating-collapsed-title">' + escape(title) + '</span>'
         + (capacity ? '<span class="seating-capacity-badge">' + escape(capacity) + '</span>' : '') + '</span>'
         + '<span class="seating-summary-bottom">' + priceMarkup
-        + '<span class="seating-detail-footer"><svg class="seating-collapsed-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg><span class="seating-detail-hint">' + (className === 'coordination-card' ? 'الصور والتفاصيل' : 'الصورة والتفاصيل') + '</span></span></span></summary>'
-        + '<div class="seating-collapsed-content">' + FD_GUIDE_GALLERY.markup(photos,title,imageAlt)
+        + '<span class="seating-detail-footer"><svg class="seating-collapsed-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg><span class="seating-detail-hint">' + (className === 'coordination-card' ? (photos.length ? 'الصور وتفاصيل الباقة' : 'تفاصيل الباقة') : 'الصورة والتفاصيل') + '</span></span></span></summary>'
+        + '<div class="seating-collapsed-content">' + (photos.length ? FD_GUIDE_GALLERY.markup(photos,title,imageAlt) : '')
         + '<div class="package-details-body">' + body + '</div></div></details></article>';
     }
     return '<article class="package-card package-card--gallery ' + className + (photos.length ? '' : ' package-card--text') + '"' + (id ? ' id="' + escape(id) + '"' : '') + '>'
@@ -46,15 +46,6 @@
       + '<div class="package-copy"><div class="package-heading"><div class="service-heading-copy"><h3>' + escape(title) + '</h3>' + (capacity ? '<span class="service-capacity" aria-label="عدد الأشخاص: ' + escape(capacity) + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="9" cy="7" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 4a3 3 0 0 1 0 6m2 3a5 5 0 0 1 3 5v3"/></svg>' + escape(capacity) + '</span>' : '') + '</div>' + priceMarkup + '</div>'
       + (expandable ? '<details class="package-details"><summary><span>' + escape(label) + '</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="package-details-body">' + body + '</div></details>' : '<div class="package-details-body">' + body + '</div>') + '</div></article>';
   }
-  // Illustrative cabin photos can be replaced here without duplicating package facts or prices.
-  const packagePhotos = {
-    'باقة الورد': 'imgs/french_1.webp',
-    'باقة الورد المميزة': 'imgs/greek_1.webp',
-    'باقة اللحظات': 'imgs/dome_2.webp',
-    'باقة الاحتفال': 'imgs/royal_1.webp',
-    'باقة VIP': 'imgs/classic_2.webp',
-    'التجربة المتكاملة': 'imgs/royal_2.webp'
-  };
   const section = (id, title, intro, body, showTitle = false) => '<section class="guide-section" id="' + id + '" data-title="' + escape(title) + '" aria-labelledby="title-' + id + '"><header class="section-heading' + (showTitle ? ' section-heading--titled' : '') + '"><h2 tabindex="-1" id="title-' + id + '">' + escape(showTitle ? title : intro) + '</h2>' + (showTitle ? '<p>' + escape(intro) + '</p>' : '') + '</header>' + body + '</section>';
   function packages(doc, key) {
     const panel = doc.querySelector('#hd-' + key + '-panel');
@@ -64,11 +55,12 @@
       const description = card.querySelector('.hd-package-description');
       const price = card.querySelector('.hd-package-price');
       const contents = list(card, '.hd-item span:last-child');
-      const body = (description ? '<p class="package-description">' + escape(description.textContent.trim()) + '</p>' : '') + items(contents);
-      const image = packagePhotos[title] || 'imgs/dome_1.webp';
+      const note = card.querySelector('.hd-package-note');
+      const body = (description ? '<p class="package-description">' + escape(description.textContent.trim()) + '</p>' : '') + items(contents)
+        + (note ? '<p class="package-usage-note">' + escape(note.textContent.trim()) + '</p>' : '');
       const complete = Boolean(card.querySelector('#hd-coordination-package-resort'));
       const sharedPhotos = _coordinationPhotos[card.getAttribute('aria-labelledby')];
-      const photos = key === 'hospitality' ? [] : sharedPhotos || [image, ...[1,2,3,4,5,6].map(n => image.replace(/_\d+\.webp$/, '_' + n + '.webp')).filter(src => src !== image)].slice(0,6);
+      const photos = key === 'hospitality' ? [] : sharedPhotos || [];
       return serviceCard({title,price:price ? price.textContent.trim().replace(/\s*للباقة\s*$/, '') : '',priceUnit:'للباقة',photos,imageAlt:sharedPhotos ? 'تنسيق ' + title : undefined,body,className:key === 'coordination' ? 'coordination-card' : '',label:'تفاصيل الباقة',id:complete ? 'package-complete' : ''});
     }).join('') + '</div>';
   }

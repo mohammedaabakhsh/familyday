@@ -5,8 +5,7 @@ Coordination, dining and seating use matching full-width tiles stacked verticall
 Each tile opens a full-page section in the same tab: coordination, dining or seating. The home screen shows only the introduction, tiles and contact footer. Service cards keep a visible name
 and price, then a native inline disclosure for all its details. Dining shows its complete price table immediately, without a disclosure. Seating capacity appears below each session name. Package ordering
 for coordination stays on `/services/hospitality/`. Hospitality and cinema are offered through `/guest-services/`, using its shared order dialog, basket and resort WhatsApp draft.
-The six coordination packages have six illustrative cabin photos. Dining and each seating option keep their
-actual source photo; single-image cards omit the gallery controls.
+Coordination galleries use only the shared package photos in `service-data.js`. Celebration currently has no photos and shows “تفاصيل الباقة”; packages with photos show “الصور وتفاصيل الباقة”. No cabin-photo fallback is used. Dining and each seating option keep their actual source photo; single-image cards omit the gallery controls.
 The guide's footer provides contact links. The cabin map is not included in this catalogue.
 
 ## One source of content
@@ -27,12 +26,9 @@ Sharing on a section copies that section link. All chapters remain visible in pr
 The old `#hospitality` and `#cinema` links redirect to their guest-service ordering panels.
 Stable guide anchors include `#coordination`; the old `#packages`
 anchor still opens seating. `#package-complete` remains a direct link to the complete-experience package.
-Usage instructions and
-package usage notes are intentionally omitted from this brochure. Dining
+Each coordination package includes its source-backed usage note beneath its contents, when present. Dining
 shows every price/size in its table, followed by the plain option and all coordination inclusions; it has no repeated card heading or starting-price badge. Seating shows capacity below the name before expanding its description; the optional add-on remains visible.
-`guide-gallery.js` supplies a 4:3 inline gallery with native swipe, keyboard navigation and grouped bottom-right arrows/counter. `packagePhotos` in `guide.js` assigns illustrative
-cabin photos to packages; these are labelled as cabin atmosphere and can be replaced
-with dedicated service photos later. The actual dining and seating photos
+`guide-gallery.js` supplies a 4:3 inline gallery with native swipe, keyboard navigation and grouped bottom-right arrows/counter. `_coordinationPhotos` in `service-data.js` keeps the main site and guide galleries aligned; packages without assigned photos remain text-only. The actual dining and seating photos
 continue to come from the shared sources. Print styles also support saving the
 continuous brochure as a PDF from the browser.
 All three sections open with centered category headings and short descriptions above their photos; their category labels are hidden in the navigation header. Footer social icons match the guest-services page.
@@ -45,6 +41,7 @@ Sharing uses `/arrangements/`, a separate text-only HTML entry with its own cano
 Serve the repository root, then run:
 
 ```sh
+python3 scripts/check-coordination-parity.py http://127.0.0.1:8023
 python3 scripts/check-guide-navigation.py http://127.0.0.1:8023
 python3 scripts/check-guide-gallery.py http://127.0.0.1:8023
 python3 scripts/check-services-guide.py http://127.0.0.1:8023

@@ -271,3 +271,5 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
  :is(#coordination,#seating) .seating-detail-footer{display:none}
  :is(#coordination,#seating) .seating-collapsed-summary{min-height:0;padding:12px;gap:6px}
 }
+
+#coordination .package-usage-note{margin:14px 0 0;padding-top:12px;border-top:1px solid var(--line);font-size:12px;line-height:1.8;color:var(--muted)}
