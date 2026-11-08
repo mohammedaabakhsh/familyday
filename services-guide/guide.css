@@ -223,3 +223,16 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 .dining-price-card dd{margin:3px 0 0;color:var(--accent);font-size:18px;font-weight:700;line-height:1.5;white-space:nowrap}
 .dining-price-card dd span{font-size:12px;font-weight:500}
 @media print{.dining-price-card{padding:9px 0}.dining-price-card h3 bdi{font-size:18px}.dining-price-card dd{font-size:16px}}
+
+/* Outdoor seating: compact rows until the visitor expands a session. */
+#seating .seating-collapsed-card{display:block;overflow:hidden}
+#seating .seating-collapsed-details{display:block}
+#seating .seating-collapsed-summary{display:flex;align-items:center;gap:10px;cursor:pointer;list-style:none;padding:15px 16px;min-height:62px}
+#seating .seating-collapsed-summary::-webkit-details-marker{display:none}
+#seating .seating-collapsed-title{font-weight:800;flex:1;min-width:0}
+#seating .seating-collapsed-summary .price{white-space:nowrap}
+#seating .seating-collapsed-chevron{width:20px;height:20px;flex:none;transition:transform .2s}
+#seating .seating-collapsed-details[open] .seating-collapsed-chevron{transform:rotate(180deg)}
+#seating .seating-collapsed-content{padding:0 12px 14px}
+#seating .seating-collapsed-content .package-photo{margin:0 0 10px}
+#seating .seating-collapsed-content .package-details-body{padding:0 4px}
