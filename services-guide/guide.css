@@ -236,3 +236,16 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 #seating .seating-collapsed-content{padding:0 12px 14px}
 #seating .seating-collapsed-content .package-photo{margin:0 0 10px}
 #seating .seating-collapsed-content .package-details-body{padding:0 4px}
+
+/* Refined seating list: light separators, teal accent and capacity beneath title. */
+#seating .photo-grid{display:block}
+#seating .seating-collapsed-card{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;margin:0!important}
+#seating .seating-collapsed-card+.seating-collapsed-card{border-top:1px solid #d9e6e8!important}
+#seating .seating-collapsed-summary{padding:14px 5px!important;gap:12px!important;min-height:76px!important}
+#seating .seating-collapsed-main{display:flex;flex:1;min-width:0;flex-direction:column;align-items:flex-start;gap:7px}
+#seating .seating-collapsed-title{font-size:16px;color:#153d4d;line-height:1.4}
+#seating .seating-capacity-badge{display:inline-flex;align-items:center;justify-content:center;border-radius:9px;background:#e0f3f2;color:#176078;border:1px solid #b6dcdd;font-size:12px;font-weight:800;padding:4px 11px;line-height:1.2}
+#seating .seating-collapsed-summary .price{color:#176078;font-weight:800}
+#seating .seating-collapsed-chevron{color:#176078;background:#e8f4f4;border-radius:50%;padding:5px;width:29px;height:29px;box-sizing:border-box}
+#seating .seating-collapsed-details[open] .seating-collapsed-summary{background:#f2f9f9;border-radius:13px}
+#seating .seating-collapsed-content{padding:8px 4px 18px!important}
