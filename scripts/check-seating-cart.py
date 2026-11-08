@@ -43,7 +43,7 @@ with sync_playwright() as p:
   page.wait_for_selector('#order-popup',state='hidden')
   assert page.locator('#jalsat-cart-total').inner_text()=='1370 ريال'
   page.locator('#jalsat-checkout').click();page.reload(wait_until='networkidle')
-  expected=['الجلسات الخارجية','جلسة بإطار مثلث','عدد الأشخاص لكل جلسة: 2','الجلسات: 2 × 300 ريال = 600 ريال','كيك وعصير: 1 × 170 ريال = 170 ريال','المجموع: 770 ريال','','الخيمة الهرمية','عدد الأشخاص لكل جلسة: 2','الجلسات: 2 × 300 ريال = 600 ريال','المجموع: 600 ريال','','إجمالي الطلب: 1370 ريال']
+  expected=['الجلسات الخارجية','جلسة بإطار مثلث','الجلسات: 2 × 300 ريال = 600 ريال','كيك وعصير: 1 × 170 ريال = 170 ريال','المجموع: 770 ريال','','الخيمة الهرمية','الجلسات: 2 × 300 ريال = 600 ريال','المجموع: 600 ريال','','إجمالي الطلب: 1370 ريال']
   assert page.locator('#order-item-name div').all_text_contents()==expected
   page.evaluate('window.orderURL=null;window.open=(url)=>{window.orderURL=url;return null}')
   page.locator('button[onclick="sendOrderWhatsapp()"]').click()

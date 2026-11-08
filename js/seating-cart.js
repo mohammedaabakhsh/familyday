@@ -67,7 +67,7 @@ function getJalsatCartDetails(selection,restore){
   items.forEach(function(item,i){
     var session=_jalsatAllSessions[item.index],base=parseInt(session.price,10),subtotal=base*item.quantity+170*item.cakes;
     if(i) lines.push('');
-    lines.push(session.name,'عدد الأشخاص لكل جلسة: '+session.personsCat,
+    lines.push(session.name,
       'الجلسات: '+item.quantity+' × '+base+' ريال = '+base*item.quantity+' ريال');
     if(item.cakes) lines.push('كيك وعصير: '+item.cakes+' × 170 ريال = '+170*item.cakes+' ريال');
     lines.push('المجموع: '+subtotal+' ريال');

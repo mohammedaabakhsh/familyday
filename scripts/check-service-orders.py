@@ -58,7 +58,7 @@ with sync_playwright() as p:
     toggle=card.locator('.jl-addon-option')
     if (toggle.get_attribute('aria-pressed')=='true')!=cake:toggle.click()
     card.locator('.jl-order-button').click()
-    details=f'{name}\nعدد الأشخاص لكل جلسة: {people}\nالجلسات: 1 × {price} ريال = {price} ريال'
+    details=f'{name}\nالجلسات: 1 × {price} ريال = {price} ريال'
     if cake:details+='\nكيك وعصير: 1 × 170 ريال = 170 ريال'
     total=price+(170 if cake else 0)
     details+=f'\nالمجموع: {total} ريال\n\nإجمالي الطلب: {total} ريال'
