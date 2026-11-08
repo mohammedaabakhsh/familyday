@@ -255,3 +255,11 @@ body.dialog-open{overflow:hidden}
 
 /* A venue with one help contact keeps the same full-width contact controls. */
 .help-contacts:has(>.help-contact:only-child){grid-template-columns:1fr}
+
+/* Let the shorter chalet page end in blue, including unused viewport space. */
+html:has(body[data-venue="chalet"]),body[data-venue="chalet"]{background:#edf9fb}
+body[data-venue="chalet"] .page{display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;background:#edf9fb}
+body[data-venue="chalet"] .main{background:var(--paper)}
+body[data-venue="chalet"] .page-ending{display:flex;flex-direction:column;flex:1}
+body[data-venue="chalet"] .footer{display:flex;flex-direction:column;flex:1;padding-bottom:max(28px,env(safe-area-inset-bottom))}
+body[data-venue="chalet"] .footer-social{margin-top:auto;padding-top:28px}
