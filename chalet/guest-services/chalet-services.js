@@ -6,7 +6,7 @@ let catalog,active=null,draft={},chosen={water:null,games:false};
 const dialog=$('service-dialog');
 function renderSummary(){
  const entries=[];
- if(chosen.water)entries.push({id:'water',title:'الألعاب المائية',name:catalog.water.name,price:catalog.water.price,details:['للكبار: '+chosen.water.adults,'للصغار: '+chosen.water.children]});
+ if(chosen.water)entries.push({id:'water',title:'الألعاب المائية',name:catalog.water.name,qty:chosen.water.packages,price:catalog.water.price*chosen.water.packages,details:['للكبار: '+chosen.water.adults,'للصغار: '+chosen.water.children]});
  if(chosen.games)entries.push({id:'games',title:'الألعاب الترفيهية',name:catalog.games.name,price:catalog.games.price,details:[]});
  const list=$('order-items');list.replaceChildren();
  entries.forEach(item=>{
@@ -16,7 +16,7 @@ function renderSummary(){
   const subtotal=document.createElement('strong');subtotal.textContent=item.price+' ريال';heading.append(title,subtotal);
   const rows=document.createElement('ul');rows.className='order-group-items';
   const row=document.createElement('li'),copy=document.createElement('div');copy.className='order-item-copy';
-  const name=document.createElement('strong');name.textContent=item.name+' × 1';copy.appendChild(name);
+  const name=document.createElement('strong');name.textContent=item.name+' × '+(item.qty||1);copy.appendChild(name);
   item.details.forEach(d=>{const span=document.createElement('span');span.textContent=d;copy.appendChild(span)});
   const actions=document.createElement('div');actions.className='order-item-actions';
   const amount=document.createElement('bdi');amount.textContent=item.price+' ريال';
@@ -41,12 +41,13 @@ function renderSummary(){
 }
 function open(type){
  active=type;
- draft=type==='water'?{...(chosen.water||{adults:0,children:0})}:{games:chosen.games};
+ draft=type==='water'?{...(chosen.water||{packages:1,adults:0,children:0})}:{games:chosen.games};
  $('service-dialog-title').textContent=type==='water'?'الألعاب المائية':'الألعاب الترفيهية';
  dialog.dataset.tone=type;
  if(type==='water'){
- $('dialog-content').innerHTML='<p class="service-offer"><strong>'+esc(catalog.water.size)+' ألعاب بـ'+esc(catalog.water.price)+' ريال</strong></p><p class="section-note">وزّع الألعاب الثلاث بين الكبار والصغار</p><div class="selection-rows"><div class="extra-row"><strong>للكبار</strong><div class="quantity"><button type="button" data-kind="adults" data-step="-1">−</button><output id="count-adults" dir="ltr">0</output><button type="button" data-kind="adults" data-step="1">+</button></div></div><div class="extra-row"><strong>للصغار</strong><div class="quantity"><button type="button" data-kind="children" data-step="-1">−</button><output id="count-children" dir="ltr">0</output><button type="button" data-kind="children" data-step="1">+</button></div></div></div><p id="water-limit" class="selection-status"></p><p class="usage-note">'+catalog.water.notes.map(esc).join(' — ')+'</p>';
- $('dialog-content').querySelectorAll('[data-step]').forEach(b=>b.onclick=()=>{const k=b.dataset.kind,next=draft[k]+Number(b.dataset.step),other=draft[k==='adults'?'children':'adults'];if(next>=0&&next+other<=catalog.water.size){draft[k]=next;update()}});
+ $('dialog-content').innerHTML='<p class="service-offer"><strong>'+esc(catalog.water.size)+' ألعاب بـ'+esc(catalog.water.price)+' ريال للباقة</strong></p><div class="extra-row water-packages-row"><strong>عدد الباقات</strong><div class="quantity"><button type="button" data-package-step="-1">−</button><output id="water-packages" dir="ltr">1</output><button type="button" data-package-step="1">+</button></div></div><p class="section-note">وزّع الألعاب بين الكبار والصغار</p><div class="selection-rows"><div class="extra-row"><strong>للكبار</strong><div class="quantity"><button type="button" data-kind="adults" data-step="-1">−</button><output id="count-adults" dir="ltr">0</output><button type="button" data-kind="adults" data-step="1">+</button></div></div><div class="extra-row"><strong>للصغار</strong><div class="quantity"><button type="button" data-kind="children" data-step="-1">−</button><output id="count-children" dir="ltr">0</output><button type="button" data-kind="children" data-step="1">+</button></div></div></div><p id="water-limit" class="selection-status"></p><p class="usage-note">'+catalog.water.notes.map(esc).join(' — ')+'</p>';
+ $('dialog-content').querySelectorAll('[data-step]').forEach(b=>b.onclick=()=>{const k=b.dataset.kind,next=draft[k]+Number(b.dataset.step),other=draft[k==='adults'?'children':'adults'];if(next>=0&&next+other<=catalog.water.size*draft.packages){draft[k]=next;update()}});
+ $('dialog-content').querySelectorAll('[data-package-step]').forEach(b=>b.onclick=()=>{const next=draft.packages+Number(b.dataset.packageStep);if(next<1||next>10)return;draft.packages=next;update()});
  }else{
  // Same panel structure, radio choices, list chips and usage note as the resort.
  // Chalet excludes only the table-with-box package.
@@ -58,13 +59,16 @@ function open(type){
 function update(){
  let price=0,valid=false;
  if(active==='water'){
-  const total=draft.adults+draft.children;
+  const total=draft.adults+draft.children,required=catalog.water.size*draft.packages;
+  $('water-packages').textContent=draft.packages;
+  $('dialog-content').querySelector('[data-package-step="-1"]').disabled=draft.packages===1;
+  $('dialog-content').querySelector('[data-package-step="1"]').disabled=draft.packages===10;
   for(const k of ['adults','children'])$('count-'+k).textContent=draft[k];
-  $('dialog-content').querySelectorAll('[data-step]').forEach(b=>{const k=b.dataset.kind;b.disabled=Number(b.dataset.step)<0?draft[k]===0:total>=catalog.water.size});
-  price=total===catalog.water.size?catalog.water.price:0;
-  valid=total===catalog.water.size;
-  $('water-limit').textContent=valid?'اكتملت الباقة':'اخترت '+total+' من '+catalog.water.size;
-  $('dialog-status').textContent=valid?'':'أكمل اختيار '+catalog.water.size+' ألعاب لإضافة الباقة.';
+  $('dialog-content').querySelectorAll('[data-step]').forEach(b=>{const k=b.dataset.kind;b.disabled=Number(b.dataset.step)<0?draft[k]===0:total>=required});
+  price=total===required?catalog.water.price*draft.packages:0;
+  valid=total===required;
+  $('water-limit').textContent=valid?'اكتملت الباقات':'اخترت '+total+' من '+required;
+  $('dialog-status').textContent=valid?'':'أكمل اختيار '+required+' ألعاب لإضافة الباقات.';
  }else{
   valid=draft.games;
   price=valid?catalog.games.price:0;
@@ -78,7 +82,7 @@ function update(){
 }
 function close(){dialog.close();active=null;}
 $('apply-selection').onclick=()=>{
- if(active==='water'){if(draft.adults+draft.children!==catalog.water.size)return;chosen.water={...draft}}
+ if(active==='water'){if(draft.adults+draft.children!==catalog.water.size*draft.packages)return;chosen.water={...draft}}
  else chosen.games=draft.games;
  renderSummary();close();
  $('orders-summary').scrollIntoView({behavior:'smooth',block:'start'});
@@ -88,11 +92,11 @@ dialog.addEventListener('click',e=>{if(e.target===dialog)close()});
 $('chalet-order').onsubmit=e=>{
  e.preventDefault();if(!e.target.reportValidity())return;
  const entries=[];
- if(chosen.water)entries.push({title:'الألعاب المائية',name:catalog.water.name,price:catalog.water.price,details:['للكبار: '+chosen.water.adults,'للصغار: '+chosen.water.children]});
+ if(chosen.water)entries.push({title:'الألعاب المائية',name:catalog.water.name,qty:chosen.water.packages,price:catalog.water.price*chosen.water.packages,details:['للكبار: '+chosen.water.adults,'للصغار: '+chosen.water.children]});
  if(chosen.games)entries.push({title:'الألعاب الترفيهية',name:catalog.games.name,price:catalog.games.price,details:[]});
  if(!entries.length)return;
  const parts=['السلام عليكم، أرغب بطلب الخدمات التالية:','','الاسم: '+$('guest-name').value.trim(),'','الطلبات:'];
- entries.forEach(item=>{parts.push('',item.title+':',item.name+' × 1 = '+item.price+' ريال',...item.details)});
+ entries.forEach(item=>{parts.push('',item.title+':',item.name+' × '+(item.qty||1)+' = '+item.price+' ريال',...item.details)});
  parts.push('','إجمالي الطلب: '+entries.reduce((n,e)=>n+e.price,0)+' ريال');
  if($('guest-notes').value.trim())parts.push('','ملاحظات: '+$('guest-notes').value.trim());
  window.open('https://wa.me/966556156693?text='+encodeURIComponent(parts.join('\n')),'_blank','noopener,noreferrer');
