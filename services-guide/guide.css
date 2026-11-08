@@ -330,3 +330,12 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 #seating .seating-detail-hint{font-size:11px!important;font-weight:700!important;line-height:1.3!important}
 #seating .seating-detail-footer .seating-collapsed-chevron{transform:none!important;width:22px!important;height:22px!important;padding:2px!important}
 #seating .seating-collapsed-details[open] .seating-detail-footer .seating-collapsed-chevron{transform:rotate(180deg)!important}
+
+/* Seating visual reset: calm uniform surfaces and inline guest count beside title. */
+#seating .seating-collapsed-card,
+#seating .seating-collapsed-card:nth-child(n){background:#f5f8f8!important;border:1px solid #dce7e9!important}
+#seating .seating-collapsed-details[open] .seating-collapsed-summary{background:transparent!important}
+#seating .seating-collapsed-main{flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:10px!important}
+#seating .seating-collapsed-title{width:auto!important;flex:1 1 auto!important;min-width:0!important;font-size:15px!important}
+#seating .seating-capacity-badge{flex:0 0 auto!important;white-space:nowrap!important;background:#e4f0ef!important;color:#285d69!important;border-color:#c9e0df!important}
+#seating .seating-collapsed-summary{gap:12px!important}
