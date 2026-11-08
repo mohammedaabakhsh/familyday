@@ -26,7 +26,6 @@ function renderSummary(){
  });
  const total=entries.reduce((n,e)=>n+e.price,0);
  $('orders-summary').hidden=!entries.length;
- $('order-shortcut').hidden=!entries.length;
  $('order-count').textContent=entries.length?'عدد الاختيارات: '+entries.length:'';
  $('order-total').textContent=String(total);
  ['water','games'].forEach(id=>{
@@ -40,27 +39,47 @@ function renderSummary(){
   card.querySelector('.tile-action').textContent=selected?'تعديل الطلب ←':'عرض التفاصيل ←';
  });
 }
-$('order-shortcut').onclick=()=>$('orders-summary').scrollIntoView({behavior:'smooth',block:'start'});
 function open(type){
- active=type;draft=type==='water'?{...(chosen.water||{adults:0,children:0})}:{};
+ active=type;
+ draft=type==='water'?{...(chosen.water||{adults:0,children:0})}:{games:chosen.games};
  $('service-dialog-title').textContent=type==='water'?'الألعاب المائية':'الألعاب الترفيهية';
+ dialog.dataset.tone=type;
  if(type==='water'){
- $('dialog-content').innerHTML='<p class="service-offer"><strong>'+esc(catalog.water.price)+' ريال للباقة</strong></p><p class="section-note">'+esc(catalog.water.name)+'</p><div class="selection-rows"><div class="extra-row"><strong>للكبار</strong><div class="quantity"><button type="button" data-kind="adults" data-step="-1">−</button><output id="count-adults">0</output><button type="button" data-kind="adults" data-step="1">+</button></div></div><div class="extra-row"><strong>للصغار</strong><div class="quantity"><button type="button" data-kind="children" data-step="-1">−</button><output id="count-children">0</output><button type="button" data-kind="children" data-step="1">+</button></div></div></div><p id="water-limit" class="selection-status"></p><ul class="contents-list">'+catalog.water.notes.map(n=>'<li>'+esc(n)+'</li>').join('')+'</ul>';
- $('dialog-content').querySelectorAll('[data-step]').forEach(b=>b.onclick=()=>{let k=b.dataset.kind, next=draft[k]+Number(b.dataset.step);if(next>=0&&next<=catalog.water.size&&next+(draft[k==='adults'?'children':'adults'])<=catalog.water.size){draft[k]=next;update();}});
+ $('dialog-content').innerHTML='<p class="service-offer"><strong>'+esc(catalog.water.size)+' ألعاب بـ'+esc(catalog.water.price)+' ريال</strong></p><p class="section-note">وزّع الألعاب الثلاث بين الكبار والصغار</p><div class="selection-rows"><div class="extra-row"><strong>للكبار</strong><div class="quantity"><button type="button" data-kind="adults" data-step="-1">−</button><output id="count-adults" dir="ltr">0</output><button type="button" data-kind="adults" data-step="1">+</button></div></div><div class="extra-row"><strong>للصغار</strong><div class="quantity"><button type="button" data-kind="children" data-step="-1">−</button><output id="count-children" dir="ltr">0</output><button type="button" data-kind="children" data-step="1">+</button></div></div></div><p id="water-limit" class="selection-status"></p><p class="usage-note">'+catalog.water.notes.map(esc).join(' — ')+'</p>';
+ $('dialog-content').querySelectorAll('[data-step]').forEach(b=>b.onclick=()=>{const k=b.dataset.kind,next=draft[k]+Number(b.dataset.step),other=draft[k==='adults'?'children':'adults'];if(next>=0&&next+other<=catalog.water.size){draft[k]=next;update()}});
  }else{
- $('dialog-content').innerHTML='<p class="section-note">'+esc(catalog.games.description)+'</p><label class="game-options"><input id="choose-games" type="checkbox" '+(chosen.games?'checked':'')+'> '+esc(catalog.games.name)+' — '+esc(catalog.games.price)+' ريال</label><h3 class="contents-title">'+esc(catalog.games.title)+'</h3><ul class="contents-list">'+catalog.games.contents.map(n=>'<li>'+esc(n)+'</li>').join('')+'</ul><ul class="contents-list">'+catalog.games.notes.map(n=>'<li>'+esc(n)+'</li>').join('')+'</ul>';
- $('choose-games').onchange=update;
+ $('dialog-content').innerHTML='<fieldset class="game-options"><legend class="field-label">اختر الباقة</legend><label><input type="radio" name="games-package" value="none" '+(!draft.games?'checked':'')+'><span>بدون باقة ألعاب</span></label><label><input type="radio" name="games-package" value="box" '+(draft.games?'checked':'')+'><span><span>'+esc(catalog.games.name)+'</span><small>يشمل الألعاب الموضّحة أدناه</small><strong>'+esc(catalog.games.price)+' ريال</strong></span></label></fieldset><h3 class="contents-title">'+esc(catalog.games.title)+'</h3><ul class="contents-list games-contents">'+catalog.games.contents.map(n=>'<li>'+esc(n)+'</li>').join('')+'</ul><p class="usage-note">'+catalog.games.notes.map(esc).join(' — ')+'</p>';
+ $('dialog-content').querySelectorAll('[name="games-package"]').forEach(input=>input.onchange=()=>{draft.games=input.value==='box';update()});
  }
  update();dialog.showModal();
 }
 function update(){
  let price=0,valid=false;
- if(active==='water'){for(const k of ['adults','children'])$('count-'+k).textContent=draft[k];let total=draft.adults+draft.children;price=total?catalog.water.price:0;valid=total>0;$('water-limit').textContent='المختار '+total+' من '+catalog.water.size;}
- else {valid=$('choose-games').checked;price=valid?catalog.games.price:0;}
- $('dialog-total').textContent=price+' ريال';$('apply-selection').disabled=!valid;
+ if(active==='water'){
+  const total=draft.adults+draft.children;
+  for(const k of ['adults','children'])$('count-'+k).textContent=draft[k];
+  $('dialog-content').querySelectorAll('[data-step]').forEach(b=>{const k=b.dataset.kind;b.disabled=Number(b.dataset.step)<0?draft[k]===0:total>=catalog.water.size});
+  price=total===catalog.water.size?catalog.water.price:0;
+  valid=total===catalog.water.size;
+  $('water-limit').textContent=valid?'اكتملت الباقة':'اخترت '+total+' من '+catalog.water.size;
+  $('dialog-status').textContent=valid?'':'أكمل اختيار '+catalog.water.size+' ألعاب لإضافة الباقة.';
+ }else{
+  valid=draft.games;
+  price=valid?catalog.games.price:0;
+  $('dialog-status').textContent='';
+  $('dialog-content').querySelectorAll('[name="games-package"]').forEach(input=>input.closest('label').classList.toggle('is-selected',input.checked));
+ }
+ $('dialog-total').textContent=price+' ريال';
+ $('apply-selection').disabled=!valid && !(active==='games'&&chosen.games);
+ $('apply-selection').textContent=(active==='water'?chosen.water:chosen.games)?(valid?'حفظ التعديل':'حذف من الطلب'):'إضافة للطلب';
 }
 function close(){dialog.close();active=null;}
-$('apply-selection').onclick=()=>{if(active==='water')chosen.water={...draft};else chosen.games=$('choose-games').checked;renderSummary();close();$('chalet-summary').scrollIntoView({behavior:'smooth',block:'nearest'});};
+$('apply-selection').onclick=()=>{
+ if(active==='water'){if(draft.adults+draft.children!==catalog.water.size)return;chosen.water={...draft}}
+ else chosen.games=draft.games;
+ renderSummary();close();
+ $('orders-summary').scrollIntoView({behavior:'smooth',block:'start'});
+};
 document.querySelectorAll('.dialog-close,.dialog-cancel').forEach(b=>b.onclick=close);
 dialog.addEventListener('click',e=>{if(e.target===dialog)close()});
 $('chalet-order').onsubmit=e=>{
