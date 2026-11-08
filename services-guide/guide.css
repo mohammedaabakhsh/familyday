@@ -249,3 +249,20 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 #seating .seating-collapsed-chevron{color:#176078;background:#e8f4f4;border-radius:50%;padding:5px;width:29px;height:29px;box-sizing:border-box}
 #seating .seating-collapsed-details[open] .seating-collapsed-summary{background:#f2f9f9;border-radius:13px}
 #seating .seating-collapsed-content{padding:8px 4px 18px!important}
+
+/* Seating v22: restrained editorial rows, compact type and subtle capacity chips. */
+#seating .photo-grid{border:1px solid #dce8eb;border-radius:16px;overflow:hidden;background:#fff}
+#seating .seating-collapsed-card{background:#fff!important;border:0!important;border-radius:0!important}
+#seating .seating-collapsed-card+.seating-collapsed-card{border-top:1px solid #e6edef!important}
+#seating .seating-collapsed-summary{padding:12px 14px!important;min-height:66px!important;gap:10px!important}
+#seating .seating-collapsed-main{gap:5px!important}
+#seating .seating-collapsed-title{font-size:14px!important;font-weight:700!important;line-height:1.4!important;letter-spacing:0!important;color:#193c49!important}
+#seating .seating-capacity-badge{font-size:10px!important;font-weight:700!important;padding:3px 9px!important;border-radius:6px!important;background:#eef6f6!important;border:1px solid #d5e9e9!important;color:#346c78!important;line-height:1.35!important}
+#seating .seating-collapsed-summary .price{font-size:14px!important;font-weight:700!important;color:#174f63!important}
+#seating .seating-collapsed-summary .price-unit{font-size:10px!important;font-weight:500!important}
+#seating .seating-collapsed-chevron{width:24px!important;height:24px!important;padding:4px!important;background:transparent!important;color:#63818b!important}
+#seating .seating-collapsed-details[open] .seating-collapsed-summary{background:#f7fafb!important;border-radius:0!important}
+#seating .seating-collapsed-details[open] .seating-collapsed-title{color:#176078!important}
+#seating .seating-collapsed-content{padding:3px 12px 14px!important;background:#fff}
+#seating .seating-collapsed-content .package-photo{border-radius:10px;overflow:hidden}
+@media(max-width:380px){#seating .seating-collapsed-summary{padding-inline:10px!important;gap:7px!important}#seating .seating-collapsed-summary .price{font-size:13px!important}}
