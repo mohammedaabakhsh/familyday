@@ -470,7 +470,7 @@
     if(next===water.packages)return;
     water.packages=next;
     var max=catalog.water.size*next,total=water.adults+water.children;
-    if(total>max){var excess=total-max;water.children=Math.max(0,water.children-excess);excess=total-max-(total-water.children-(water.adults));water.adults=Math.min(water.adults,max-water.children);}
+    if(total>max){water.children=Math.max(0,water.children-(total-max));water.adults=Math.min(water.adults,max-water.children);}
     data.water=water;renderEditor();
   });});
   time.addEventListener('change',function(){selection().cinema=time.value;renderEditor();});
