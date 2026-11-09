@@ -21,9 +21,10 @@ with sync_playwright() as p:
   assert source[5]['images'][-1]=='/imgs/coordination/complete/09-v3.webp'
   assert source[5]['images'][2]=='/imgs/coordination/complete/12-v3.webp'
   assert source[5]['images'][5]=='/imgs/coordination/complete/06-v3.webp'
-  assert source[5]['images'][9]=='/imgs/coordination/complete/13-lighting-v4.webp'
+  assert source[5]['images'][8]=='/imgs/coordination/complete/13-lighting-v4.webp'
+  assert '/imgs/coordination/complete/11-v3.webp' not in source[5]['images']
   assert '/imgs/coordination/complete/02-v3.webp' not in source[5]['images']
-  assert len(source[5]['images'])==11 and '/imgs/coordination/complete/10-v3.webp' not in source[5]['images']
+  assert len(source[5]['images'])==10 and '/imgs/coordination/complete/10-v3.webp' not in source[5]['images']
   page.goto(BASE+'/services-guide/#coordination',wait_until='networkidle')
   page.wait_for_selector('#guide-content.is-ready',state='attached')
   cards=page.locator('#coordination .package-card')

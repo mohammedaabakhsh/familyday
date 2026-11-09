@@ -134,7 +134,6 @@ var _coordinationPhotos = {
     'imgs/coordination/complete/08-v3.webp',
     'imgs/coordination/complete/06-v3.webp',
     'imgs/coordination/complete/07-v3.webp',
-    'imgs/coordination/complete/11-v3.webp',
     'imgs/coordination/complete/05-v3.webp',
     'imgs/coordination/complete/13-lighting-v4.webp',
     'imgs/coordination/complete/09-v3.webp'

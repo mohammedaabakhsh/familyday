@@ -19,8 +19,8 @@ with sync_playwright() as p:
  cold=b.new_page(viewport={'width':390,'height':740});images=[]
  cold.on('request',lambda r:images.append(r.url) if r.resource_type=='image' else None)
  cold.goto(BASE+'/chalet/',wait_until='networkidle')
- assert not any(any(name in url for name in ['cinema_1.webp','tarfihi_1.webp','tawilat_1.webp']) for url in images)
- for fn,name,close in [('showSinema','cinema_1.webp','closeSetupsDetail'),('showTarfihi','tarfihi_1.webp','closeTarfihiDetail'),('showTawilat','tawilat_1.webp','closeSetupsDetail')]:
+ assert not any(any(name in url for name in ['13-lighting-v4.webp','tarfihi_1.webp','tawilat_1.webp']) for url in images)
+ for fn,name,close in [('showSinema','13-lighting-v4.webp','closeSetupsDetail'),('showTarfihi','tarfihi_1.webp','closeTarfihiDetail'),('showTawilat','tawilat_1.webp','closeSetupsDetail')]:
   cold.evaluate(fn+'()')
   image=cold.locator('img[src*="'+name+'"]:visible');image.wait_for();cold.wait_for_function('(name)=>Array.from(document.images).some(i=>i.src.includes(name)&&i.naturalWidth>=1000)',arg=name);cold.evaluate(close+'()');cold.wait_for_timeout(100)
  cold.close()

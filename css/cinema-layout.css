@@ -46,3 +46,6 @@
 
 #order-time-range{margin:8px 0 0;color:#9bd4df;font-size:13px;line-height:1.6}
 #order-time-range:empty{display:none}
+
+/* Keep the approved cinema photograph fully visible on every screen. */
+#sinema-detail .cn-photo img{aspect-ratio:4/3;object-fit:contain}
