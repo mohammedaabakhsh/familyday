@@ -93,7 +93,9 @@
   }
   function scrollToHash(focus = false) {
     if(['#hospitality','#cinema'].includes(location.hash)){location.replace('/guest-services/'+location.hash);return;}
-    activeSection = routeSection();
+    const nextSection = routeSection();
+    if(activeSection && activeSection !== nextSection) FD_GUIDE_GALLERY.reset(activeSection);
+    activeSection = nextSection;
     const pendingHash = location.hash === '#package-complete' ? '#coordination' : location.hash === '#packages' ? '#seating' : location.hash;
     const pendingTile = !content.classList.contains('is-ready') && Array.from(document.querySelectorAll('.contents a')).find(link => link.hash === pendingHash);
     const sectionView = Boolean(activeSection || pendingTile);

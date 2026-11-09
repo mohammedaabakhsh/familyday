@@ -35,6 +35,7 @@ function showTansidat(tab){
   showHospitalityTab(tab || 'hospitality');
 }
 function closeHospitalityDetail(){
+  FD_GUIDE_GALLERY.reset(document.getElementById('hospitality-detail'));
   document.getElementById('hospitality-detail').classList.add('hide');
 
 }
@@ -42,6 +43,8 @@ function showHospitalityTab(tab){
   if(['hospitality','coordination'].indexOf(tab)===-1) tab='hospitality';
   ['hospitality','coordination'].forEach(function(key){
     var selected=key===tab;
+    var panel=document.getElementById('hd-'+key+'-panel');
+    if(!selected && !panel.classList.contains('hide')) FD_GUIDE_GALLERY.reset(panel);
     document.getElementById('hd-'+key+'-panel').classList.toggle('hide',!selected);
     var button=document.getElementById('hd-tab-'+key);
     button.classList.toggle('active',selected);

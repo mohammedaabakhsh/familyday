@@ -157,3 +157,9 @@ the user later approves different source artwork.
 The 37 unused older tour PNG variants were removed after checking static and
 dynamic image references. They remain recoverable from revision `7bf2bde`;
 current `*-clarity-v1.png` artwork and deferred pages are retained.
+
+Package photo galleries retain their current photo while their disclosure remains
+open within the same section, including scrolling and comparing other packages.
+Closing a disclosure resets only its gallery. Leaving the section resets all its
+galleries without closing disclosures. `check-guide-gallery.py` covers both the
+main site and customer guide, including tab and browser-history navigation.

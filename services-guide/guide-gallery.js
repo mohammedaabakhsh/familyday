@@ -8,14 +8,15 @@
     return '<figure class="package-photo package-gallery" aria-label="' + esc(imageAlt || 'صور توضيحية من أجواء الأكواخ — ' + title) + '"><div class="gallery-track" tabindex="0" role="region" aria-label="' + (photos.length > 1 ? 'اسحب لتصفح صور ' : 'صورة ') + esc(title) + '">' + images + '</div>' + (photos.length > 1 ? '<div class="gallery-controls"><button type="button" class="gallery-arrow gallery-next" aria-label="الصورة التالية">' + chevron('next') + '</button><span class="gallery-count" role="status" aria-live="polite" aria-atomic="true" dir="ltr">1 / ' + photos.length + '</span><button type="button" class="gallery-arrow gallery-previous" aria-label="الصورة السابقة">' + chevron('previous') + '</button></div>' : '') + '</figure>';
   }
   const resets = new WeakMap();
-  let activeCard = null;
-  function enterCard(event) {
-    const card = event.target.closest && event.target.closest('.hd-package,.seating-collapsed-card');
-    if(!card || card === activeCard) return;
-    activeCard = card;
-    document.querySelectorAll('.package-gallery').forEach(gallery => {const reset=resets.get(gallery);if(reset) reset();});
+  function reset(scope = document) {
+    if(!scope) return;
+    scope.querySelectorAll('.package-gallery').forEach(gallery => {
+      const restart = resets.get(gallery);
+      if(restart) restart();
+    });
   }
-  ['pointerdown','focusin','click'].forEach(type => document.addEventListener(type,enterCard,true));
+  // A full page departure also starts a fresh visit, including browser Back.
+  window.addEventListener('pagehide',() => reset());
   function bind(root) {
     const track = root.querySelector('.gallery-track');
     const images = Array.from(track.children);
@@ -51,12 +52,8 @@
     }
     resets.set(root,reset);
     const details=root.closest('details');
+    // Reapply on opening too: hidden tracks can retain an in-flight smooth scroll.
     if(details) details.addEventListener('toggle',reset);
-    // Scrolling away or leaving a section starts the package afresh on return.
-    const visibility=new IntersectionObserver(entries => {
-      if(entries.some(entry => !entry.isIntersecting)) reset();
-    });
-    visibility.observe(root);
     track.addEventListener('scroll',() => {if(!frame) frame=requestAnimationFrame(update);},{passive:true});
     track.addEventListener('keydown',event => {
       if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) return;
@@ -75,5 +72,5 @@
       bind(root);
     });
   }
-  window.FD_GUIDE_GALLERY={markup,mount};
+  window.FD_GUIDE_GALLERY={markup,mount,reset};
 })();
