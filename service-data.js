@@ -126,10 +126,18 @@ var _coordinationPhotos = {
     'imgs/coordination/vip/06-bouquet-v2.webp'
   ],
   'hd-coordination-package-resort': [
-    'imgs/coordination/complete/01-v2.webp',
-    'imgs/coordination/complete/02-v2.webp',
-    'imgs/coordination/complete/03-v2.webp',
-    'imgs/coordination/complete/04-v2.webp',
-    'imgs/coordination/complete/05-v2.webp'
+    'imgs/coordination/complete/01-v3.webp',
+    'imgs/coordination/complete/02-v3.webp',
+    'imgs/coordination/complete/03-v3.webp',
+    'imgs/coordination/complete/04-v3.webp',
+    'imgs/coordination/complete/05-v3.webp',
+    'imgs/coordination/complete/06-v3.webp',
+    'imgs/coordination/complete/07-v3.webp',
+    'imgs/coordination/complete/08-v3.webp',
+    'imgs/coordination/complete/09-v3.webp',
+    'imgs/coordination/complete/10-v3.webp',
+    'imgs/coordination/complete/11-v3.webp',
+    'imgs/coordination/complete/12-v3.webp',
+    'imgs/coordination/complete/13-v3.webp'
   ]
 };
