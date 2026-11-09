@@ -28,7 +28,7 @@ var PRIVATE_CHALET = {
   }
 };
 GALLERY[PRIVATE_CHALET.id] = Array.from({length:18}, function(_, index){
-  return 'imgs/chalet_' + (index + 1) + '.webp?v=20261007';
+  return 'imgs/chalet_' + (index + 1) + '.webp?v=20261110-natural-photos-v1';
 });
 
 
