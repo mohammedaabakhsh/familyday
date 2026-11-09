@@ -122,13 +122,13 @@ var _coordinationPhotos = {
     'imgs/coordination/vip/01-yellow-bed-v2.webp',
     'imgs/coordination/vip/02-yellow-heart-v2.webp',
     'imgs/coordination/vip/04-dome-celebration-v2.webp',
+    'imgs/coordination/vip/04-silver-balloons-v3.webp',
     'imgs/coordination/vip/05-purple-bath-v2.webp',
     'imgs/coordination/vip/06-bouquet-v2.webp'
   ],
   'hd-coordination-package-resort': [
     'imgs/coordination/complete/01-v3.webp',
     'imgs/coordination/complete/02-v3.webp',
-    'imgs/coordination/complete/03-v3.webp',
     'imgs/coordination/complete/04-v3.webp',
     'imgs/coordination/complete/05-v3.webp',
     'imgs/coordination/complete/06-v3.webp',
