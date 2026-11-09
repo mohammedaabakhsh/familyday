@@ -163,3 +163,9 @@ open within the same section, including scrolling and comparing other packages.
 Closing a disclosure resets only its gallery. Leaving the section resets all its
 galleries without closing disclosures. `check-guide-gallery.py` covers both the
 main site and customer guide, including tab and browser-history navigation.
+
+The retired inline guide-map script and service-switch stylesheet were removed
+after checking all static references and dynamic loaders. The current resort
+map and guide-to-guest-services link remain. Keep `sw.js`: it unregisters an
+older service worker for returning visitors. Main-page and preview logos share
+`imgs/img00.webp`; the old byte-identical logo paths remain for saved links.

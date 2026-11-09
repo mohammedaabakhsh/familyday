@@ -8,7 +8,7 @@
 }
 .dest-card[data-dest-photo="resort"]{--dest-photo:url('../imgs/dome_1.webp');--dest-focus:30%;}
 .dest-card[data-dest-photo="stay"]{--dest-photo:url('../imgs/sec1_1.webp');--dest-focus:58%;}
-.dest-card[data-dest-photo="chalet"]{--dest-photo:url('../imgs/chalet_1.webp?v=20261007');--dest-focus:62%;}
+.dest-card[data-dest-photo="chalet"]{--dest-photo:url('../imgs/chalet_1.webp?v=20261110-natural-photos-v1');--dest-focus:62%;}
 #ov .mbtn-book{color:#04111e;}
 #mBody .tag{font-size:14px;line-height:1.45;}
 #mBody .tags-lbl{font-size:14px;line-height:1.45;}
