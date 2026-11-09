@@ -280,3 +280,14 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 
 /* Match the main site: show the complete pyramid-tent photograph. */
 #seating .package-gallery .gallery-slide img[src$="/jalsat_2.webp"]{aspect-ratio:1;object-fit:contain}
+
+/* Give seating names the full card width; align capacity, price and arrow below. */
+@media screen{
+ #seating .seating-collapsed-summary{display:grid;grid-template-columns:minmax(0,1fr) auto 34px;gap:8px 12px;align-items:center;min-height:0}
+ #seating :is(.seating-collapsed-main,.seating-summary-bottom,.seating-detail-footer){display:contents}
+ #seating .seating-collapsed-title{grid-column:1/-1;grid-row:1}
+ #seating .seating-capacity-badge{grid-column:1;grid-row:2;justify-self:start}
+ #seating .price{grid-column:2;grid-row:2}
+ #seating .seating-collapsed-chevron{grid-column:3;grid-row:2}
+ #seating .seating-detail-hint{grid-column:1/-1;grid-row:3}
+}
