@@ -121,7 +121,6 @@ var _coordinationPhotos = {
   'hd-coordination-package-vip': [
     'imgs/coordination/vip/01-yellow-bed-v2.webp',
     'imgs/coordination/vip/02-yellow-heart-v2.webp',
-    'imgs/coordination/vip/03-birthday-lounge-v2.webp',
     'imgs/coordination/vip/04-dome-celebration-v2.webp',
     'imgs/coordination/vip/05-purple-bath-v2.webp',
     'imgs/coordination/vip/06-bouquet-v2.webp'
@@ -138,6 +137,7 @@ var _coordinationPhotos = {
     'imgs/coordination/complete/09-v3.webp',
     'imgs/coordination/complete/11-v3.webp',
     'imgs/coordination/complete/12-v3.webp',
-    'imgs/coordination/complete/13-v3.webp'
+    'imgs/coordination/complete/13-v3.webp',
+    'imgs/coordination/vip/03-birthday-lounge-v2.webp'
   ]
 };
