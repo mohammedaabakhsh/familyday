@@ -11,6 +11,7 @@ var FD_DINING_CARDS = (function(){
   function table(doc,orderable){
     var copy=source(doc),table=node('table','fd-dining-table');
     table.setAttribute('aria-label',orderable ? 'اختر السعر حسب عدد الأشخاص والتجهيز' : 'أسعار طاولات الطعام حسب عدد الأشخاص والتجهيز');
+    if(orderable) table.setAttribute('aria-describedby','dining-price-help');
     var head=node('thead'),heading=node('tr'),labels={};
     ['plain','tansiq'].forEach(function(option){labels[option]=copy.querySelector('[data-option="'+option+'"] .fd-dining-option-name').textContent;});
     ['الأشخاص',labels.plain,labels.tansiq].forEach(function(label){var th=node('th','',label);th.scope='col';heading.appendChild(th);});

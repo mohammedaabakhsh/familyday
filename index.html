@@ -44,7 +44,7 @@
 <link rel="preload" as="script" href="js/app-shell.js?v=20261108-chalet-services-v1">
 <link rel="preload" as="script" href="js/gallery-data.js?v=20261102-structure-v1">
 <link rel="preload" as="script" href="js/accommodations.js?v=20261108-chalet-services-v1">
-<link rel="preload" as="script" href="js/services.js?v=20261108-dining-compact-v5">
+<link rel="preload" as="script" href="js/services.js?v=20261109-dining-selection-v6">
 <link rel="preload" as="script" href="js/stay-navigation.js?v=20261107-final-batch-v1">
 <link rel="preload" as="script" href="js/router.js?v=20261108-chalet-services-v1">
 <link rel="stylesheet" href="css/app-base.css?v=20261106-seating-controls-v7">
@@ -1617,8 +1617,8 @@
 <div class="tag-tooltip" id="tag-tooltip"></div>
 
 <script src="services-guide/guide-gallery.js?v=20261107-complete-photos-v1"></script>
-<script src="js/dining-cards.js?v=20261108-dining-compact-v2"></script>
-<script src="js/services.js?v=20261108-dining-compact-v5"></script>
+<script src="js/dining-cards.js?v=20261109-dining-selection-v3"></script>
+<script src="js/services.js?v=20261109-dining-selection-v6"></script>
 <script src="js/seating-cart.js?v=20261108-seating-summary-v3"></script>
 
 
@@ -1750,10 +1750,11 @@
 
     <p class="tw-intro">طاولة تجمعكم في المساحة الخارجية الخاصة بالكوخ</p>
     <div id="dining-photo" class="dining-shared-photo"></div>
+    <p id="dining-price-help" class="fd-dining-price-help">اضغط على السعر لاختيار العدد والتجهيز</p>
     <div id="dining-cards"></div>
     <div id="dining-details"></div>
     <div class="fd-dining-order">
-      <p id="dining-selection" class="fd-dining-selection" role="status">اختر السعر حسب عدد الأشخاص والتجهيز</p>
+      <p id="dining-selection" class="fd-dining-selection" role="status"></p>
       <div class="fd-dining-total"><span>إجمالي الطلب</span><strong>—</strong></div>
       <button type="button" class="fd-dining-checkout" onclick="tawilatOrder()" disabled>متابعة الطلب</button>
     </div>
@@ -1962,7 +1963,7 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 <link rel="stylesheet" href="css/home-review.css?v=20261107-aligned-v2">
 <link rel="stylesheet" href="css/contact-layout.css?v=20261106-brand-footer-v3">
 <link rel="stylesheet" href="css/resort-faq.css?v=20261106-all-v2">
-<link rel="stylesheet" href="css/dining-cards.css?v=20261108-dining-compact-v3">
+<link rel="stylesheet" href="css/dining-cards.css?v=20261109-dining-selection-v4">
 <link rel="stylesheet" href="css/cinema-layout.css?v=20261108-cinema-intro-v4">
 <link rel="stylesheet" href="css/games-layout.css?v=20261108-chalet-no-photo-v2">
 <link rel="stylesheet" href="css/water-layout.css?v=20261108-water-multipack-v1">

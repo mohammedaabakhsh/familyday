@@ -405,7 +405,7 @@ function selectTawilatOpt(opt){
     button.setAttribute('aria-pressed',String(active));
     if(active) selected=button;
   });
-  document.getElementById('dining-selection').textContent=selected ? selected.dataset.selection : 'اختر السعر حسب عدد الأشخاص والتجهيز';
+  document.getElementById('dining-selection').textContent=selected ? selected.dataset.selection : '';
   document.querySelector('#tawilat-detail .fd-dining-total strong').textContent=opt ? _tawilatPrices[_tawilatSize][opt]+' ريال' : '—';
   document.querySelector('#tawilat-detail .fd-dining-checkout').disabled=!opt;
 }
