@@ -99,11 +99,11 @@ var _coordinationPhotos = {
     'imgs/coordination/moments/05.webp'
   ],
   'hd-coordination-package-2': [
-    'imgs/coordination/premium-rose/01.webp',
-    'imgs/coordination/premium-rose/02.webp',
-    'imgs/coordination/premium-rose/03.webp',
-    'imgs/coordination/premium-rose/04.webp',
-    'imgs/coordination/premium-rose/05.webp'
+    'imgs/coordination/premium-rose/01-bath-v2.webp',
+    'imgs/coordination/premium-rose/02-dome-v2.webp',
+    'imgs/coordination/premium-rose/03-bed-no-candles-v2.webp',
+    'imgs/coordination/premium-rose/04-anniversary-v2.webp',
+    'imgs/coordination/premium-rose/05-birthday-v2.webp'
   ],
   'hd-coordination-package-1': [
     'imgs/coordination/rose/front-a-v4.webp',
