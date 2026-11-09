@@ -16,8 +16,11 @@ with sync_playwright() as p:
   assert len(source[4]['images'])==6 and '/imgs/coordination/vip/03-birthday-lounge-v2.webp' not in source[4]['images']
   assert source[4]['images'][3]=='/imgs/coordination/vip/04-silver-balloons-v3.webp'
   assert '/imgs/coordination/complete/03-v3.webp' not in source[5]['images']
-  assert source[5]['images'][-1]=='/imgs/coordination/vip/03-birthday-lounge-v2.webp'
-  assert len(source[5]['images'])==12 and '/imgs/coordination/complete/10-v3.webp' not in source[5]['images']
+  assert source[5]['images'][0]=='/imgs/coordination/complete/01-v3.webp'
+  assert source[5]['images'][1]=='/imgs/coordination/complete/09-v3.webp'
+  assert source[5]['images'][-1]=='/imgs/coordination/complete/04-v3.webp'
+  assert '/imgs/coordination/complete/02-v3.webp' not in source[5]['images']
+  assert len(source[5]['images'])==11 and '/imgs/coordination/complete/10-v3.webp' not in source[5]['images']
   page.goto(BASE+'/services-guide/#coordination',wait_until='networkidle')
   page.wait_for_selector('#guide-content.is-ready',state='attached')
   cards=page.locator('#coordination .package-card')
