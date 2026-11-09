@@ -11,7 +11,7 @@ with sync_playwright() as p:
   source=page.locator('#hd-coordination-panel .hd-package').evaluate_all('els=>els.map(c=>({name:c.querySelector(".hd-package-name").textContent.trim(),price:c.querySelector(".hd-package-price").textContent.trim(),items:[...c.querySelectorAll(".hd-item span:last-child")].map(x=>x.textContent.trim()),images:[...c.querySelectorAll(".gallery-slide img")].map(x=>new URL(x.src).pathname),note:c.querySelector(".hd-package-note")?.textContent.trim()||"",label:c.querySelector("summary span").textContent.trim()}))')
   assert len(source)==6
   assert all(x=='•' for x in page.locator('#hd-coordination-panel .hd-check').all_text_contents())
-  assert source[3]['name']=='باقة الاحتفال' and source[3]['images']==[]
+  assert source[3]['name']=='باقة الاحتفال' and len(source[3]['images'])==5
   page.goto(BASE+'/services-guide/#coordination',wait_until='networkidle')
   page.wait_for_selector('#guide-content.is-ready',state='attached')
   cards=page.locator('#coordination .package-card')

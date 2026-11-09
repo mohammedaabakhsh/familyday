@@ -91,6 +91,13 @@ var _tawilatInclusions = [
 
 // Coordination gallery images shared by the website and the customer guide.
 var _coordinationPhotos = {
+  'hd-coordination-package-celebration': [
+    'imgs/coordination/celebration/01-lounge-v1.webp',
+    'imgs/coordination/celebration/02-anniversary-v1.webp',
+    'imgs/coordination/celebration/03-bath-room-v1.webp',
+    'imgs/coordination/celebration/04-purple-v1.webp',
+    'imgs/coordination/celebration/05-soha-v1.webp'
+  ],
   'hd-coordination-package-3': [
     'imgs/coordination/moments/02-bath-no-juice-v2.webp',
     'imgs/coordination/moments/03-candles-v2.webp',

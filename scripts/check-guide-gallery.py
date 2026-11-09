@@ -9,7 +9,7 @@ with sync_playwright() as p:
   errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
   for path,selector in [('/services/coordination/','#hd-coordination-panel .hd-package:has(.package-gallery)'),('/services-guide/#coordination','#coordination .seating-collapsed-card:has(.package-gallery)')]:
    page.goto(BASE+path,wait_until='networkidle')
-   cards=page.locator(selector);assert cards.count()==5
+   cards=page.locator(selector);assert cards.count()==6
    first=cards.nth(1);second=cards.nth(2)
    first.locator('summary').click()
    gallery=first.locator('.package-gallery');track=gallery.locator('.gallery-track');count=gallery.locator('.gallery-count')
