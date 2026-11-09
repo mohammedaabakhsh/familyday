@@ -16,10 +16,12 @@
 .fd-dining-option:focus-visible,.fd-dining-checkout:focus-visible{outline:2px solid var(--fd-dining-accent);outline-offset:2px}
 .fd-dining-info{max-width:680px;margin:0 auto 20px;color:var(--fd-dining-ink);text-align:right}
 .fd-dining-info section+section{margin-top:16px;padding-top:14px;border-top:1px solid var(--fd-dining-line)}
-.fd-dining-info section:first-child{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px}
+.fd-dining-info section{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px}
 .fd-dining-info h3{font-size:14px;line-height:1.6;margin:0;font-weight:700}
 .fd-dining-option-desc{font-size:13px;line-height:1.7;color:var(--fd-dining-muted);margin:3px 0 8px}
-.fd-dining-info section:first-child p{margin:0}
+.fd-dining-info .fd-dining-option-desc{margin:0}
+.fd-dining-includes-label{flex-basis:100%;margin:6px 0 0;font-size:13px;line-height:1.7;font-weight:700}
+.fd-dining-info .fd-dining-inclusions{flex-basis:100%;box-sizing:border-box}
 .fd-dining-inclusions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 20px;margin:0;padding-inline-start:18px;font-size:13px;line-height:1.7;color:var(--fd-dining-muted)}
 .fd-dining-image{overflow:hidden;border-radius:16px}
 .fd-dining-image>img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
