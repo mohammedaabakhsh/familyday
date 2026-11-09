@@ -264,12 +264,12 @@ function renderCabinDetail(c){
       <div class="fd-cabin-heading">
         <div class="fd-cabin-heading-copy">
           <h2 class="fd-cabin-title" id="fd-cabin-detail-title">${c.name}</h2>
+          ${subtitle?`<p class="fd-cabin-suitable">${subtitle}</p>`:''}
           ${badge?`<p class="fd-cabin-occupancy">${badge}</p>`:''}
           <div class="fd-cabin-card-v2-facts fd-cabin-detail-facts" aria-label="معلومات ${c.name}">
             <div class="fd-cabin-card-v2-fact"><span>سعة الضيوف</span><strong>${guestsText}</strong></div>
             <div class="fd-cabin-card-v2-fact"><span>غرف النوم</span><strong>${resortRoomText(c.rooms)}</strong></div>
           </div>
-          ${subtitle?`<p class="fd-cabin-suitable">${subtitle}</p>`:''}
         </div>
       </div>
 
