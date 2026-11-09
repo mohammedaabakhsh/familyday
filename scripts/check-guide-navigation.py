@@ -36,8 +36,8 @@ with sync_playwright() as p:
         page.locator('#guide-back').click();page.wait_for_selector('.contents:visible')
         page.locator('.contents a[href="#coordination"]').click()
         page.wait_for_timeout(150)
-        assert gallery.locator('.gallery-count').inner_text()==f'2 / {photo_count}'
-        assert abs(gallery.locator('.gallery-track').evaluate('e=>e.scrollLeft'))>0
+        assert gallery.locator('.gallery-count').inner_text()==f'1 / {photo_count}'
+        assert abs(gallery.locator('.gallery-track').evaluate('e=>e.scrollLeft'))<1
         page.goto(BASE+'/services-guide/#dining',wait_until='networkidle')
         page.wait_for_selector('#dining:visible')
         page.reload(wait_until='networkidle');page.wait_for_selector('#dining:visible')

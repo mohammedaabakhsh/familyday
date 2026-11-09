@@ -52,3 +52,5 @@ python3 scripts/check-share-navigation.py http://127.0.0.1:8023
 
 The guide check covers shared source updates, section links,
 layout at four widths, image loading, sharing, error recovery, and direct anchors.
+
+Package galleries restart at the first photo when reopening a package, switching to another package, or returning after its gallery leaves the viewport. This behavior is shared with the main coordination page. Multiple packages can remain expanded for comparison.

@@ -7,6 +7,15 @@
     const images = photos.map((src, i) => '<div class="gallery-slide"><img src="/' + esc(src.replace(/^\//,'')) + '" alt="' + esc(imageAlt || 'من أجواء أكواخ المنتجع') + ' — صورة ' + (i + 1) + '" width="1200" height="900" loading="lazy" decoding="async" draggable="false"></div>').join('');
     return '<figure class="package-photo package-gallery" aria-label="' + esc(imageAlt || 'صور توضيحية من أجواء الأكواخ — ' + title) + '"><div class="gallery-track" tabindex="0" role="region" aria-label="' + (photos.length > 1 ? 'اسحب لتصفح صور ' : 'صورة ') + esc(title) + '">' + images + '</div>' + (photos.length > 1 ? '<div class="gallery-controls"><button type="button" class="gallery-arrow gallery-next" aria-label="الصورة التالية">' + chevron('next') + '</button><span class="gallery-count" role="status" aria-live="polite" aria-atomic="true" dir="ltr">1 / ' + photos.length + '</span><button type="button" class="gallery-arrow gallery-previous" aria-label="الصورة السابقة">' + chevron('previous') + '</button></div>' : '') + '</figure>';
   }
+  const resets = new WeakMap();
+  let activeCard = null;
+  function enterCard(event) {
+    const card = event.target.closest && event.target.closest('.hd-package,.seating-collapsed-card');
+    if(!card || card === activeCard) return;
+    activeCard = card;
+    document.querySelectorAll('.package-gallery').forEach(gallery => {const reset=resets.get(gallery);if(reset) reset();});
+  }
+  ['pointerdown','focusin','click'].forEach(type => document.addEventListener(type,enterCard,true));
   function bind(root) {
     const track = root.querySelector('.gallery-track');
     const images = Array.from(track.children);
@@ -32,6 +41,22 @@
       track.scrollTo({left:track.scrollLeft+b.left+b.width/2-a.left-a.width/2,behavior:instant || matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
       if(instant) update();
     }
+    function reset() {
+      cancelAnimationFrame(frame);frame=0;
+      cancelAnimationFrame(resizeFrame);resizeFrame=0;
+      index=0;
+      track.scrollTo({left:0,behavior:'instant'});
+      count.textContent='1 / '+images.length;
+      prev.disabled=true;next.disabled=false;
+    }
+    resets.set(root,reset);
+    const details=root.closest('details');
+    if(details) details.addEventListener('toggle',reset);
+    // Scrolling away or leaving a section starts the package afresh on return.
+    const visibility=new IntersectionObserver(entries => {
+      if(entries.some(entry => !entry.isIntersecting)) reset();
+    });
+    visibility.observe(root);
     track.addEventListener('scroll',() => {if(!frame) frame=requestAnimationFrame(update);},{passive:true});
     track.addEventListener('keydown',event => {
       if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) return;
