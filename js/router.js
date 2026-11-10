@@ -392,7 +392,8 @@
   }
   window.addEventListener('popstate',restore);
   window.addEventListener('hashchange',restore);
-  window.addEventListener('load',function(){
+  // Routes need parsed views and deferred scripts, not completion of every photo.
+  document.addEventListener('DOMContentLoaded',function(){
     // The existing map retains its own rendering and controls.
     var mapButton=document.getElementById('fd-map-open');
     if(mapButton) mapButton.addEventListener('click',function(){
