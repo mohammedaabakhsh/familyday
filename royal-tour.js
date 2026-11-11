@@ -5,7 +5,7 @@ var FD_ROYAL_TOUR = (function () {
 
   var parts = [
  {id:'bedroom', ar:'غرفة النوم الرئيسية', x:0.292, y:0.39},
- {id:'bathroom', ar:'حمامات', x:0.333, y:0.307},
+ {id:'bathroom', ar:'حمامين', x:0.333, y:0.307},
  {id:'twin', ar:'غرفة النوم الثانية', x:0.285, y:0.178},
  {id:'kitchen', ar:'ركن المطبخ', x:0.383, y:0.16},
  {id:'dining', ar:'طاولة الطعام', x:0.5, y:0.23},

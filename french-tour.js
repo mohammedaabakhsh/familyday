@@ -5,7 +5,7 @@ var FD_FRENCH_TOUR = (function () {
 
   var parts = [
  {id:'bedroom', ar:'غرفة النوم الرئيسية', x:0.644, y:0.382},
- {id:'bathroom', ar:'حمامات', x:0.561, y:0.375},
+ {id:'bathroom', ar:'حمامين', x:0.561, y:0.375},
  {id:'twin', ar:'غرفة النوم الثانية', x:0.624, y:0.252},
  {id:'living', ar:'صالة داخلية', x:0.35, y:0.37},
  {id:'kitchen', ar:'ركن المطبخ', x:0.407, y:0.245},

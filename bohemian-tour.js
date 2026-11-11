@@ -4,7 +4,7 @@ var FD_BOHO_TOUR = (function () {
   var root, observer, frame, cabin, selected = 'bedroom';
   var parts = [
  {id:'bedroom', ar:'غرفة النوم الرئيسية', x:0.664, y:0.342},
- {id:'bathroom', ar:'حمامات', x:0.602, y:0.293},
+ {id:'bathroom', ar:'حمامين', x:0.602, y:0.293},
  {id:'twin', ar:'غرفة النوم الثانية', x:0.651, y:0.176},
  {id:'living', ar:'صالة داخلية', x:0.332, y:0.308},
  {id:'kitchen', ar:'ركن المطبخ', x:0.313, y:0.156},

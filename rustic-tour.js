@@ -5,7 +5,7 @@ var FD_RUSTIC_TOUR = (function () {
 
   var parts = [
  {id:'bedroom', ar:'غرفة النوم الرئيسية', x:0.61, y:0.36},
- {id:'bathroom', ar:'حمامات', x:0.714, y:0.336},
+ {id:'bathroom', ar:'حمامين', x:0.714, y:0.336},
  {id:'twin', ar:'غرفة النوم الثانية', x:0.602, y:0.233},
  {id:'kitchen', ar:'ركن المطبخ', x:0.38, y:0.218},
  {id:'dining', ar:'طاولة الطعام', x:0.37, y:0.283},

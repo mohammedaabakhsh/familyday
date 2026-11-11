@@ -8,7 +8,7 @@ var FD_PANORAMIC_TOUR = (function () {
 
   var parts = [
  {id:'twin', ar:'غرفة النوم الثانية', x:0.31, y:0.169},
- {id:'bathroom', ar:'حمامات', x:0.429, y:0.327},
+ {id:'bathroom', ar:'حمامين', x:0.429, y:0.327},
  {id:'kitchen', ar:'ركن المطبخ', x:0.65, y:0.202},
  {id:'bedroom', ar:'غرفة النوم الرئيسية', x:0.331, y:0.325},
  {id:'tub', ar:'البانيو الداخلي', x:0.301, y:0.394},

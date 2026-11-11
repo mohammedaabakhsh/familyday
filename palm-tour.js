@@ -4,7 +4,7 @@ var FD_PALM_TOUR = (function () {
   var root, observer, frame, cabin, selected = 'bedroom';
   var parts = [
  {id:'bedroom', ar:'غرفة النوم الرئيسية', x:.35, y:.14},
- {id:'bathroom', ar:'حمامات', x:.50, y:.15},
+ {id:'bathroom', ar:'حمامين', x:.50, y:.15},
  {id:'twin', ar:'غرفة النوم الثانية', x:.69, y:.15},
  {id:'living', ar:'صالة داخلية', x:.49, y:.29},
  {id:'kitchen', ar:'ركن المطبخ', x:.65, y:.29},

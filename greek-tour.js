@@ -4,7 +4,7 @@ var FD_GREEK_TOUR = (function () {
   var root, observer, frame, cabin, selected = 'bedroom';
   var parts = [
     {id:'bedroom', ar:'غرفة النوم الرئيسية', x:0.255, y:0.29},
-    {id:'bathroom', ar:'حمامات', x:0.358, y:0.236},
+    {id:'bathroom', ar:'حمامين', x:0.358, y:0.236},
     {id:'twin', ar:'غرفة النوم الثانية', x:0.747, y:0.296},
     {id:'living', ar:'صالة داخلية', x:0.575, y:0.392},
     {id:'kitchen', ar:'ركن المطبخ', x:0.438, y:0.297},
