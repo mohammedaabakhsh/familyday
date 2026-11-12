@@ -32,6 +32,27 @@ GALLERY[PRIVATE_CHALET.id] = Array.from({length:18}, function(_, index){
 });
 
 
+GALLERY_LABELS[PRIVATE_CHALET.id] = {
+  'chalet_1.webp': 'المسبح والمنطقة الخارجية',
+  'chalet_2.webp': 'مسبح الأطفال',
+  'chalet_3.webp': 'زحليقة المسبح',
+  'chalet_4.webp': 'الدش الخارجي',
+  'chalet_5.webp': 'الصالة الداخلية',
+  'chalet_6.webp': 'الصالة الداخلية',
+  'chalet_7.webp': 'الصالة الداخلية',
+  'chalet_8.webp': 'طاولة الطعام',
+  'chalet_9.webp': 'غرفة ألعاب الأطفال',
+  'chalet_10.webp': 'غرفة ألعاب الأطفال',
+  'chalet_11.webp': 'مدخل الغرف والدرج',
+  'chalet_12.webp': 'غرفة النوم الرئيسية',
+  'chalet_13.webp': 'غرفة النوم الرئيسية',
+  'chalet_14.webp': 'حمام غرفة النوم الرئيسية',
+  'chalet_15.webp': 'غرفة النوم الثانية',
+  'chalet_16.webp': 'المطبخ',
+  'chalet_17.webp': 'الحمام المشترك',
+  'chalet_18.webp': 'المجلس المستقل'
+};
+
 function chaletBedroomDescription(key) {
   var room=PRIVATE_CHALET.specifications.bedrooms[key];
   return (key==='main'?'غرفة النوم الرئيسية':'غرفة النوم الثانية')+' ب'+room.bed.replace(/^سريران مفردان$/, 'سريرين مفردين');

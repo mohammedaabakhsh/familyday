@@ -135,3 +135,11 @@ const GALLERY={1:[
 // Keep the shared photo sets, with the selected cover first for each second unit.
 GALLERY[12] = [GALLERY[1][5]].concat(GALLERY[1].slice(0,5),GALLERY[1].slice(6));
 GALLERY[13] = [GALLERY[4][5]].concat(GALLERY[4].slice(0,5),GALLERY[4].slice(6));
+
+// Photo labels are keyed by source filename, so reordering photos cannot mislabel them.
+var GALLERY_LABELS = {};
+function galleryPhotoLabel(sourceId, source) {
+  var labels = GALLERY_LABELS[sourceId];
+  var filename = String(source || '').split(/[?#]/)[0].split('/').pop();
+  return labels && labels[filename] || '';
+}

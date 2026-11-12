@@ -120,10 +120,11 @@ var FD_DOME_GALLERY = (function () {
     var slides = sources.map(function (src, i) {
       var slide = document.createElement('button');
       slide.type = 'button';slide.className = 'fd-dome-slide';
-      slide.setAttribute('aria-label', 'تكبير الصورة ' + (i+1) + ' من ' + sources.length + ' — ' + cabin.name);
+      var label = galleryPhotoLabel(cabin.id, src);
+      slide.setAttribute('aria-label', 'تكبير الصورة ' + (i+1) + ' من ' + sources.length + ' — ' + cabin.name + (label ? ' — ' + label : ''));
       slide.setAttribute('aria-haspopup', 'dialog');slide.setAttribute('aria-controls', 'fsOverlay');
       var img = document.createElement('img');
-      img.src = src;img.alt = cabin.name + ' — صورة ' + (i+1);img.draggable = false;
+      img.src = src;img.alt = cabin.name + ' — ' + (label || 'صورة ' + (i+1));img.draggable = false;
       img.width = 1200;img.height = 1200;img.decoding = 'async';
       slide.appendChild(img);track.appendChild(slide);
       slide.addEventListener('click', function () {openFS(sources.slice(), i, cabin.id);});
@@ -132,12 +133,22 @@ var FD_DOME_GALLERY = (function () {
     wrapper.appendChild(track);
     var controls = document.createElement('div');controls.className = 'fd-dome-controls';
     controls.innerHTML = '<button type="button" class="fd-dome-next" aria-label="الصورة التالية"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button><span class="fd-dome-count" dir="ltr" role="status" aria-live="polite" aria-atomic="true"></span><button type="button" class="fd-dome-previous" aria-label="الصورة السابقة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>';
+    var caption = null;
+    if (sources.some(function(src) { return !!galleryPhotoLabel(cabin.id, src); })) {
+      caption = document.createElement('span');caption.className = 'fd-gallery-caption';caption.dir = 'rtl';
+      caption.setAttribute('role', 'status');caption.setAttribute('aria-live', 'polite');
+      controls.insertBefore(caption, controls.firstChild);
+    }
     wrapper.appendChild(controls);
     var next = controls.querySelector('.fd-dome-next'), previous = controls.querySelector('.fd-dome-previous'), count = controls.querySelector('.fd-dome-count');
     var index = 0, frame = 0, resizeFrame = 0;
     function paint() {
       galIdx = index;
       count.textContent = (index+1) + ' / ' + sources.length;
+      if (caption) {
+        caption.textContent = galleryPhotoLabel(cabin.id, sources[index]);
+        caption.hidden = !caption.textContent;
+      }
       next.disabled = index === sources.length-1;previous.disabled = index === 0;
       slides.forEach(function (slide,i) {slide.tabIndex = i===index ? 0 : -1;slide.setAttribute('aria-hidden',String(i!==index));});
     }

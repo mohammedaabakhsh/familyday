@@ -157,3 +157,11 @@
 #galWrap.fd-dome-inline .fd-dome-count{display:block;min-width:40px;text-align:center;white-space:nowrap;font:700 13px/1 Tajawal,sans-serif;letter-spacing:1px;text-shadow:0 1px 3px #000b}
 #galWrap.fd-dome-inline button:focus-visible{outline:2px solid #9edce5;outline-offset:-3px}
 @media(min-width:900px){#galWrap.fd-dome-inline .fd-dome-slide img{object-fit:contain}}
+
+/* Small photo names appear only for accommodation sources with approved labels. */
+#galWrap.fd-dome-inline .fd-dome-controls{max-width:calc(100% - 8px)}
+#galWrap.fd-dome-inline .fd-dome-controls button{flex-shrink:0}
+#galWrap.fd-dome-inline .fd-gallery-caption{min-width:0;max-width:170px;margin-inline:6px;padding:4px 7px;border-radius:5px;background:rgba(3,14,24,.65);color:#fff;font:500 12px/1.4 Tajawal,sans-serif;text-align:right}
+#galWrap.fd-dome-inline .fd-gallery-caption[hidden]{display:none}
+.fs-photo-info{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px 12px;min-width:0;padding-inline:8px}
+.fs-photo-label{color:#fff;font:500 13px/1.4 Tajawal,sans-serif;text-align:center}

@@ -13,7 +13,7 @@ function openFS(imgs, startIdx, sourceId){
     slide.className = 'fs-slide';
     const img = document.createElement('img');
     img.src = src;
-    img.alt = 'صورة '+(i+1)+' من '+imgs.length;
+    img.alt = galleryPhotoLabel(fsSourceId, src) || 'صورة '+(i+1)+' من '+imgs.length;
     slide.appendChild(img);
     track.appendChild(slide);
   });
@@ -46,6 +46,9 @@ function moveFS(dir){fsIdx=(fsIdx+dir+fsImgs.length)%fsImgs.length;updateFS();}
 function updateFS(){
   document.getElementById('fsTrack').style.transform = `translateX(${-fsIdx * 100}%)`;
   document.getElementById('fsCounter').textContent = (fsIdx+1) + ' من ' + fsImgs.length;
+  var caption = document.getElementById('fsPhotoLabel');
+  caption.textContent = galleryPhotoLabel(fsSourceId, fsImgs[fsIdx]);
+  caption.hidden = !caption.textContent;
 
 }
 
