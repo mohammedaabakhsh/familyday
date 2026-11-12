@@ -140,7 +140,7 @@ GALLERY[13] = [GALLERY[4][5]].concat(GALLERY[4].slice(0,5),GALLERY[4].slice(6));
 var GALLERY_LABELS = {
   20: {
     'sec1_1.webp': 'مسبح الكبار',
-    'sec1_2.webp': 'المسبح والجلسة الخارجية',
+    'sec1_2.webp': 'مسبح الأطفال',
     'sec1_3.webp': 'الجلسة الخارجية',
     'sec1_4.webp': 'الجلسة الخارجية',
     'sec1_5.webp': 'الجلسة الخارجية',
