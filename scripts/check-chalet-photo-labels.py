@@ -1,4 +1,4 @@
-"""Verify chalet-only photo names follow images in inline and fullscreen galleries."""
+"""Verify chalet photo names follow images in inline and fullscreen galleries."""
 from playwright.sync_api import sync_playwright, expect
 import sys
 
@@ -49,7 +49,7 @@ with sync_playwright() as p:
         assert page.evaluate('galleryPhotoLabel(30,"/imgs/chalet_18.webp?v=new")') == LABELS[17]
         page.evaluate('GALLERY[30].reverse();openGalDirect(PRIVATE_CHALET)')
         expect(caption).to_have_text(LABELS[17])
-        for source_id in [1, 20]:
+        for source_id in [1]:
             page.evaluate('id=>openGalDirect({id:id,name:"اختبار"})', source_id)
             expect(caption).to_have_count(0)
             page.locator('.fd-dome-slide').first.click()
@@ -57,5 +57,5 @@ with sync_playwright() as p:
             page.keyboard.press('Escape')
         assert not errors, errors
         page.close()
-        print(width, 'PASS 18 photo names, fullscreen, keyboard, source reorder and chalet-only scope', flush=True)
+        print(width, 'PASS 18 photo names, fullscreen, keyboard, source reorder and unlabelled cabin scope', flush=True)
     browser.close()

@@ -137,7 +137,37 @@ GALLERY[12] = [GALLERY[1][5]].concat(GALLERY[1].slice(0,5),GALLERY[1].slice(6));
 GALLERY[13] = [GALLERY[4][5]].concat(GALLERY[4].slice(0,5),GALLERY[4].slice(6));
 
 // Photo labels are keyed by source filename, so reordering photos cannot mislabel them.
-var GALLERY_LABELS = {};
+var GALLERY_LABELS = {
+  20: {
+    'sec1_1.webp': 'مسبح الكبار',
+    'sec1_2.webp': 'المسبح والجلسة الخارجية',
+    'sec1_3.webp': 'الجلسة الخارجية',
+    'sec1_4.webp': 'الجلسة الخارجية',
+    'sec1_5.webp': 'الجلسة الخارجية',
+    'sec1_6.webp': 'المجلس الكبير',
+    'sec1_7.webp': 'الصالة الداخلية',
+    'sec1_8.webp': 'ركن المطبخ',
+    'sec1_9.webp': 'غرفة النوم الرئيسية',
+    'sec1_10.webp': 'غرفة النوم الثانية',
+    'sec1_11.webp': 'المغاسل والحمامات',
+    'sec1_12.webp': 'الحمام'
+  },
+  21: {
+    'sec2_1.webp': 'المنطقة الخارجية',
+    'sec2_2.webp': 'مسبح الكبار',
+    'sec2_3.webp': 'الألعاب الهوائية',
+    'sec2_4.webp': 'ملعب الكرة الطائرة',
+    'sec2_5.webp': 'الجلسة الخارجية',
+    'sec2_6.webp': 'مدخل الدور العلوي',
+    'sec2_7.webp': 'المجلس الكبير',
+    'sec2_8.webp': 'المجلس الكبير',
+    'sec2_9.webp': 'الممر الداخلي',
+    'sec2_10.webp': 'ركن المطبخ',
+    'sec2_11.webp': 'المجلس وركن المطبخ',
+    'sec2_12.webp': 'ركن المطبخ',
+    'sec2_13.webp': 'غرفة النوم'
+  }
+};
 function galleryPhotoLabel(sourceId, source) {
   var labels = GALLERY_LABELS[sourceId];
   var filename = String(source || '').split(/[?#]/)[0].split('/').pop();
