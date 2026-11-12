@@ -44,7 +44,7 @@
 <link rel="preload" as="script" href="js/app-shell.js?v=20261108-chalet-services-v1">
 <link rel="preload" as="script" href="js/gallery-data.js?v=20261102-structure-v1">
 <link rel="preload" as="script" href="js/accommodations.js?v=20261110-description-order-v2">
-<link rel="preload" as="script" href="js/services.js?v=20261109-gallery-lifecycle-v7">
+<link rel="preload" as="script" href="js/services.js?v=20261112-menu-focus-v1">
 <link rel="preload" as="script" href="js/stay-navigation.js?v=20261107-final-batch-v1">
 <link rel="preload" as="script" href="js/router.js?v=20261110-destination-loading-v2">
 <link rel="stylesheet" href="css/app-base.css?v=20261106-seating-controls-v7">
@@ -562,8 +562,8 @@
           <span class="svcs-name">الضيافة والتنسيقات</span>
           <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
         </button>
-        <button type="button" class="svcs-card" onclick="openSetupsDetail()" aria-label="الجلسات والتجهيزات">
-          <span class="svcs-name">الجلسات والتجهيزات</span>
+        <button type="button" class="svcs-card" onclick="openSetupsDetail()" aria-label="الجلسات والتجهيزات" aria-describedby="svcs-setups-description">
+          <span class="svcs-copy"><span class="svcs-name">الجلسات والتجهيزات</span><span class="svcs-description" id="svcs-setups-description">سينما، طاولات طعام، جلسات خارجية</span></span>
           <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
         </button>
       </div>
@@ -1622,7 +1622,7 @@
 
 <script src="services-guide/guide-gallery.js?v=20261109-gallery-lifecycle-v3"></script>
 <script src="js/dining-cards.js?v=20261109-dining-selection-v3"></script>
-<script src="js/services.js?v=20261109-gallery-lifecycle-v7"></script>
+<script src="js/services.js?v=20261112-menu-focus-v1"></script>
 <script src="js/seating-cart.js?v=20261108-seating-summary-v3"></script>
 
 

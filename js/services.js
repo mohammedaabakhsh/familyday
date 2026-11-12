@@ -162,6 +162,11 @@ function setMenuCat(cat){
 function _renderMenuItems(){
   var items = _menuData[_menuCat] || [];
   var el = document.getElementById('menu-items');
+  // Rendering replaces the buttons; retain the focused item's action, not its DOM node.
+  var focused = el.contains(document.activeElement) ? document.activeElement : null;
+  var focusRow = focused && focused.closest('.menu-item');
+  var focusName = focusRow && focusRow.getAttribute('aria-label');
+  var focusAction = focused && focused.getAttribute('onclick');
   el.innerHTML = items.map(function(item){
     if(item.bbq) return renderMenuBbq(item);
     // Regular item
@@ -188,6 +193,19 @@ function _renderMenuItems(){
       )
       +'</div>'+extrasBtn+'</article>';
   }).join('');
+  if (focusName && focusAction) {
+    var row = Array.from(el.querySelectorAll('.menu-item')).find(function(item) {
+      return item.getAttribute('aria-label') === focusName;
+    });
+    if (row) {
+      var target = Array.from(row.querySelectorAll('button')).find(function(button) {
+        return !button.disabled && button.getAttribute('onclick') === focusAction;
+      });
+      // Removing the last unit removes the minus button; return to Add on that item.
+      target = target || row.querySelector('.menu-controls button:not(:disabled)');
+      if (target) target.focus({preventScroll:true});
+    }
+  }
 }
 function menuToggleExtra(extraName, sandwichName, price){
   var key = extraName+'|'+sandwichName;

@@ -177,10 +177,13 @@
         }
         var keyFor=function(){return select ? select.value : keys[0];};
         var group=counter(item.name,function(step){
+          var focused=group.contains(document.activeElement) ? document.activeElement : null;
           var menu=selection().menu, key=keyFor(), current=menu[key] || {qty:0,cheese:false};
           var next=Math.max(0,Math.min(99,current.qty+step));
           if(next) menu[key]={qty:next,cheese:current.cheese};else delete menu[key];
           renderEditor();
+          // At zero (or the maximum), keep keyboard users on an enabled quantity control.
+          if(focused && focused.disabled) group.querySelector('button:not(:disabled)').focus({preventScroll:true});
         });row.appendChild(group);
         if(item.cheesePrice){
           var extra=el('label',undefined,'menu-cheese');checkbox=el('input');checkbox.type='checkbox';
