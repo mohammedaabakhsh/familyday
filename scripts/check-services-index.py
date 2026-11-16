@@ -20,7 +20,7 @@ for path in ['/services/hospitality/', '/services/setups/']:
 
 with sync_playwright() as p:
     browser = p.chromium.launch(executable_path='/usr/bin/chromium', args=['--no-sandbox'])
-    for width, height in [(320,568), (375,667), (390,741), (390,844),
+    for width, height in [(320,568), (375,667), (390,709), (390,741), (390,844),
                           (393,852), (768,1024), (1024,768), (1366,768), (1440,900)]:
         page = browser.new_page(viewport={'width': width, 'height': height}, reduced_motion='reduce')
         errors = []
@@ -33,7 +33,16 @@ with sync_playwright() as p:
         if height >= 667:
             assert metrics['total'] <= metrics['visible'] + 1, (width, height, metrics)
         if width < 600:
-            assert page.locator('.svcs-card').evaluate_all('(els)=>els.every(el=>Math.abs(el.getBoundingClientRect().width-els[0].getBoundingClientRect().width)<1)')
+            boxes=page.locator('.svcs-card').evaluate_all('(els)=>els.map(e=>{let r=e.getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height}})')
+            full=boxes[0]['w']
+            assert all(abs(boxes[i]['w']-full)<1 for i in [0,3,4,5,8,9,10])
+            for first,second in [(1,2),(6,7)]:
+                assert abs(boxes[first]['y']-boxes[second]['y'])<1
+                assert abs(boxes[first]['w']-boxes[second]['w'])<1
+                assert boxes[first]['w']<full*0.51
+            name_size=page.locator('.svcs-name').first.evaluate('(e)=>parseFloat(getComputedStyle(e).fontSize)')
+            assert name_size >= (15 if height<=700 else 17)
+            assert min(box['h'] for box in boxes)>=50
         assert page.locator('.svcs-card').count() == 11
         assert page.locator('.svcs-card').evaluate_all('(els)=>els.every(el=>el.getBoundingClientRect().height>=44)')
         assert page.locator('.svcs-description').count() == 11
