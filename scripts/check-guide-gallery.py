@@ -48,7 +48,7 @@ with sync_playwright() as p:
    if 'services-guide' in path:
     page.locator('#guide-back').click();page.locator('.contents a[href="#coordination"]').click()
    else:
-    page.locator('#hd-tab-hospitality').click();page.locator('#hd-tab-coordination').click()
+    page.locator('.hd-back').click();page.wait_for_url('**/services/');page.locator('.svcs-card[href="/services/coordination/"]').click()
    track.scroll_into_view_if_needed();expect_first()
    expect(second.locator('.gallery-count')).to_have_text('1 / 5')
    assert first.locator('details').evaluate('e=>e.open') and second.locator('details').evaluate('e=>e.open')

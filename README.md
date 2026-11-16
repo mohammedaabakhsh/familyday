@@ -37,8 +37,8 @@ python3 -m http.server 8023 --bind 127.0.0.1
   change, run `python3 scripts/build-share-pages.py`; use `--check` to detect stale output.
   The five occasion services have individual links and descriptions on the
   services index. The former hospitality/setups group URLs are retired; keep
-  their entry HTML absent. Shared detail views retain their service tabs and
-  use the active service title. Keep titles/descriptions in this catalog, then
+  their entry HTML absent. Each detail view displays only its own service content and title, without
+  cross-service tabs. Keep titles/descriptions in this catalog, then
   regenerate the entry pages.
 - `share-extras.json`: approved titles/descriptions for the root, illustrated tours
   and the two client guides. The same build script updates these standalone

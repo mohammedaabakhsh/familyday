@@ -47,10 +47,6 @@ function showHospitalityTab(tab){
     var panel=document.getElementById('hd-'+key+'-panel');
     if(!selected && !panel.classList.contains('hide')) FD_GUIDE_GALLERY.reset(panel);
     document.getElementById('hd-'+key+'-panel').classList.toggle('hide',!selected);
-    var button=document.getElementById('hd-tab-'+key);
-    button.classList.toggle('active',selected);
-    button.setAttribute('aria-selected',String(selected));
-    button.tabIndex=selected ? 0 : -1;
   });
 }
 

@@ -57,7 +57,6 @@
 
   /* Package photography stays complete and comfortably within the viewport. */
   #hospitality-detail .hd-shell,#setups-detail .setups-shell,#tarfihi-detail .tg-shell{padding:36px 32px 48px}
-  #hospitality-detail .hd-tabs,#setups-detail .setups-tabs{max-width:640px;margin:24px 0}
   #hospitality-detail .hd-packages{gap:18px}
   #hospitality-detail .hd-package{padding:22px 26px;border-radius:20px}
   #hospitality-detail .hd-package-name{font-size:21px}

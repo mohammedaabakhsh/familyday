@@ -36,7 +36,7 @@ with sync_playwright() as p:
   assert page.locator('#jalsat-cart-items .jl-cart-item').count()==2
   page.reload(wait_until='networkidle')
   assert page.locator('#jalsat-cart-total').inner_text()=='1370 ريال'
-  page.locator('#setups-tab-cinema').click();page.locator('#setups-tab-seating').click()
+  page.locator('.setups-back').click();page.wait_for_url('**/services/');page.locator('.svcs-card[href="/services/outdoor-seating/"]').click()
   assert page.locator('#jalsat-cart-total').inner_text()=='1370 ريال'
   page.locator('#jalsat-checkout').click()
   page.evaluate('closeOrderPopup()')

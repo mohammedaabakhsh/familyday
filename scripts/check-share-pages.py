@@ -67,9 +67,9 @@ with sync_playwright() as p:
             key=route['name']+('='+str(route['args'][0]) if specific else '')
             assert key==entry['route'], (entry['path'],key)
             if route['name'] in ['hospitality','setups']:
-                prefix='#hd-tab-' if route['name']=='hospitality' else '#setups-tab-'
-                assert page.locator(prefix+route['args'][0]).get_attribute('aria-selected')=='true'
-                assert page.locator(prefix+route['args'][0]).is_visible()
+                panels={'hospitality':'#hd-hospitality-panel','coordination':'#hd-coordination-panel','cinema':'#sinema-detail','dining':'#tawilat-detail','seating':'#jalsat-detail'}
+                assert page.locator(panels[route['args'][0]]).is_visible()
+                assert page.locator('#hospitality-detail [role=tab],#setups-detail [role=tab]').count()==0
             if route['name']=='cabin':
                 assert page.locator('#ov').evaluate('(e)=>e.classList.contains("open")')
                 if route['args'][0]<20: assert page.locator('#fd-cabin-detail-title').inner_text() in entry['title']

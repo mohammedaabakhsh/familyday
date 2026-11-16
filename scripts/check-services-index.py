@@ -32,6 +32,8 @@ with sync_playwright() as p:
         metrics = overlay.evaluate('(el)=>({visible:el.clientHeight,total:el.scrollHeight})')
         if height >= 667:
             assert metrics['total'] <= metrics['visible'] + 1, (width, height, metrics)
+        if width < 600:
+            assert page.locator('.svcs-card').evaluate_all('(els)=>els.every(el=>Math.abs(el.getBoundingClientRect().width-els[0].getBoundingClientRect().width)<1)')
         assert page.locator('.svcs-card').count() == 11
         assert page.locator('.svcs-card').evaluate_all('(els)=>els.every(el=>el.getBoundingClientRect().height>=44)')
         assert page.locator('.svcs-description').count() == 11
@@ -46,6 +48,9 @@ with sync_playwright() as p:
             page.wait_for_url(BASE + path)
             assert page.locator(panel).is_visible()
             assert page.title() == entry['title']
+            assert page.locator('#hospitality-detail [role=tab],#setups-detail [role=tab]').count() == 0
+            for _, other_panel in expected.values():
+                if other_panel != panel: assert page.locator(other_panel).is_hidden()
             page.go_back(wait_until='networkidle')
             page.wait_for_url(BASE + '/services/')
         if width in [390, 1440]:

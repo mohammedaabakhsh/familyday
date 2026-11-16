@@ -51,7 +51,7 @@
 <link rel="preload" as="script" href="js/app-shell.js?v=20261108-chalet-services-v1">
 <link rel="preload" as="script" href="js/gallery-data.js?v=20261112-stay-photo-labels-v2">
 <link rel="preload" as="script" href="js/accommodations.js?v=20261116-service-links-v1">
-<link rel="preload" as="script" href="js/services.js?v=20261116-service-pages-v1">
+<link rel="preload" as="script" href="js/services.js?v=20261116-independent-services-v2">
 <link rel="preload" as="script" href="js/stay-navigation.js?v=20261107-final-batch-v1">
 <link rel="preload" as="script" href="js/router.js?v=20261116-service-routes-v1">
 <link rel="stylesheet" href="css/app-base.css?v=20261106-seating-controls-v7">
@@ -608,9 +608,6 @@
 #hospitality-detail .hd-header{display:flex;align-items:center;gap:14px;padding:20px 20px 16px;text-align:right}
 #hospitality-detail .hd-back{display:inline-flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;cursor:pointer}
 #hospitality-detail .hd-title{margin:0;color:#f0f5f7;font-family:Tajawal,sans-serif;font-size:24px;font-weight:800;line-height:1.4}
-#hospitality-detail .hd-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:0 16px 14px;direction:rtl}
-#hospitality-detail .hd-tab{border:1.5px solid rgba(25,167,183,.20);border-radius:14px;background:rgba(255,255,255,.055);color:rgba(255,255,255,.62);font-family:Tajawal,sans-serif;font-size:14px;font-weight:700;padding:12px 10px;cursor:pointer;transition:.2s ease}
-#hospitality-detail .hd-tab.active{color:#fff;background:rgba(25,167,183,.18);border-color:rgba(25,167,183,.65);box-shadow:0 0 18px rgba(25,167,183,.13)}
 #hospitality-detail .hd-content{padding:0 16px 36px}
 #hospitality-detail .hd-intro{font-family:Tajawal,sans-serif;font-size:12px;color:rgba(255,255,255,.58);line-height:1.7;margin:0 2px 10px}
 #hospitality-detail .hd-packages{display:flex;flex-direction:column;gap:10px}
@@ -708,16 +705,11 @@
     <button type="button" class="hd-back" onclick="closeHospitalityDetail()" aria-label="العودة إلى الخدمات">
       <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-    <h1 class="hd-title">الضيافة</h1>
-  </div>
-
-  <div class="hd-tabs" role="tablist" aria-label="الضيافة والتنسيقات">
-    <button id="hd-tab-hospitality" aria-controls="hd-hospitality-panel" class="hd-tab active" type="button" role="tab" aria-selected="true" onclick="showHospitalityTab('hospitality')">الضيافة</button>
-    <button id="hd-tab-coordination" aria-controls="hd-coordination-panel" class="hd-tab" type="button" role="tab" aria-selected="false" onclick="showHospitalityTab('coordination')">التنسيقات</button>
+    <h1 id="hospitality-title" class="hd-title">الضيافة</h1>
   </div>
 
   <div class="hd-content">
-    <div id="hd-hospitality-panel" role="tabpanel" aria-labelledby="hd-tab-hospitality">
+    <div id="hd-hospitality-panel" role="region" aria-labelledby="hospitality-title">
       <p class="hd-intro">اختر باقة الضيافة المناسبة لك</p>
       <div class="hd-packages">
         <div class="hd-package">
@@ -772,7 +764,7 @@
         </div>
       </div>
     </div>
-    <div id="hd-coordination-panel" class="hide" role="tabpanel" aria-labelledby="hd-tab-coordination">
+    <div id="hd-coordination-panel" class="hide" role="region" aria-labelledby="hospitality-title">
       <p class="hd-intro">تجهيزات متكاملة لمناسباتكم</p>
       <div class="hd-packages">
         <section class="hd-package" aria-labelledby="hd-coordination-package-1">
@@ -1637,7 +1629,7 @@
 
 <script src="services-guide/guide-gallery.js?v=20261109-gallery-lifecycle-v3"></script>
 <script src="js/dining-cards.js?v=20261109-dining-selection-v3"></script>
-<script src="js/services.js?v=20261116-service-pages-v1"></script>
+<script src="js/services.js?v=20261116-independent-services-v2"></script>
 <script src="js/seating-cart.js?v=20261108-seating-summary-v3"></script>
 
 
@@ -1895,8 +1887,8 @@
 <script src="chalet-design.js?v=20261112-chalet-photo-labels-v1"></script>
 <script src="dome-gallery.js?v=20261112-chalet-photo-labels-v1"></script>
 
-<link rel="stylesheet" href="service-sections.css?v=20261107-package-disclosure-v1">
-<script src="service-sections.js?v=20261116-service-titles-v1"></script>
+<link rel="stylesheet" href="service-sections.css?v=20261116-independent-services-v2">
+<script src="service-sections.js?v=20261116-independent-services-v2"></script>
 <script src="js/shared-specifications.js?v=20261107-stay-faq-v3"></script>
 <script src="venue-data.js?v=20261107-approved-previews-v1"></script>
 <script src="js/router.js?v=20261116-service-routes-v1"></script>
@@ -1910,7 +1902,7 @@
 <link rel="stylesheet" href="resort-ui.css?v=20261107-final-batch-v1">
 <link rel="stylesheet" href="css/service-mobile.css?v=20261106-seating-selection-v6">
 <link rel="stylesheet" href="css/seating-cards.css?v=20261109-seating-summary-v6">
-<link rel="stylesheet" href="css/services-index.css?v=20261116-service-index-v1">
+<link rel="stylesheet" href="css/services-index.css?v=20261116-full-width-services-v2">
 <link rel="stylesheet" href="/css/rewards-layout.css?v=20261106-unified-v1">
 <link rel="stylesheet" href="stay-ui.css?v=20261107-comparison-toggle-v4">
 <link rel="stylesheet" href="chalet-ui.css?v=9">
@@ -2016,6 +2008,6 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 </style>
 <script id="fd-mobile-cabin-map-position" src="js/cabin-toolbar.js?v=20261102-structure-v1"></script>
 
-<link rel="stylesheet" href="/css/desktop-layout.css?v=20261116-service-index-v1" media="screen and (min-width:1024px)">
+<link rel="stylesheet" href="/css/desktop-layout.css?v=20261116-full-width-services-v2" media="screen and (min-width:1024px)">
 </body>
 </html><!-- test Fri Jul 17 17:12:00 +03 2026 -->
