@@ -46,14 +46,14 @@ window.FD_SHARE_PAGES = [
     "route": "tarfihi=chalet",
     "path": "/chalet/services/games/",
     "title": "الألعاب الترفيهية | شاليه يوم العائلة",
-    "description": "استمتع بوقتك مع ألعابنا الترفيهية",
+    "description": "تعرّف على الألعاب الترفيهية | شاليه يوم العائلة",
     "entry": true
   },
   {
     "route": "maiya=chalet",
     "path": "/chalet/services/water-games/",
     "title": "الألعاب المائية | شاليه يوم العائلة",
-    "description": "استمتع بألعاب مائية للكبار والصغار",
+    "description": "تعرّف على الألعاب المائية | شاليه يوم العائلة",
     "entry": true
   },
   {
@@ -116,77 +116,77 @@ window.FD_SHARE_PAGES = [
     "route": "hospitality=hospitality",
     "path": "/services/hospitality/packages/",
     "title": "الضيافة | منتجع يوم العائلة",
-    "description": "اختر باقة الضيافة المناسبة لك",
+    "description": "اختر باقة الضيافة المناسبة لك | منتجع يوم العائلة",
     "entry": true
   },
   {
     "route": "hospitality=coordination",
     "path": "/services/coordination/",
     "title": "التنسيقات | منتجع يوم العائلة",
-    "description": "تجهيزات متكاملة لمناسباتكم",
+    "description": "نجهّز مناسباتكم بكل تفاصيلها | منتجع يوم العائلة",
     "entry": true
   },
   {
     "route": "setups=cinema",
     "path": "/services/cinema/",
     "title": "جلسة السينما | منتجع يوم العائلة",
-    "description": "استمتع بتجربة سينما في مساحتك الخاصة",
+    "description": "استمتع بتجربة سينما في مساحتك الخاصة | منتجع يوم العائلة",
     "entry": true
   },
   {
     "route": "maiya",
     "path": "/services/water-games/",
     "title": "الألعاب المائية | منتجع يوم العائلة",
-    "description": "استمتع بألعاب مائية للكبار والصغار",
+    "description": "تعرّف على الألعاب المائية | منتجع يوم العائلة",
     "entry": true
   },
   {
     "route": "setups=seating",
     "path": "/services/outdoor-seating/",
     "title": "الجلسات الخارجية | منتجع يوم العائلة",
-    "description": "جلسات تجمعكم في مساحتكم الخارجية الخاصة",
+    "description": "جلسات تجمعكم في مساحتكم الخارجية الخاصة | منتجع يوم العائلة",
     "entry": true
   },
   {
     "route": "tarfihi",
     "path": "/services/games/",
     "title": "الألعاب الترفيهية | منتجع يوم العائلة",
-    "description": "استمتع بوقتك مع ألعابنا الترفيهية",
+    "description": "تعرّف على الألعاب الترفيهية | منتجع يوم العائلة",
     "entry": true
   },
   {
     "route": "setups=dining",
     "path": "/services/dining-tables/",
     "title": "طاولات الطعام | منتجع يوم العائلة",
-    "description": "طاولات طعام تجمعكم في مساحتكم الخاصة",
+    "description": "طاولات طعام تجمعكم في مساحتكم الخاصة | منتجع يوم العائلة",
     "entry": true
   },
   {
     "route": "sharik",
     "path": "/services/share-and-win/",
     "title": "شارك واربح | منتجع يوم العائلة",
-    "description": "صوّر تجربتك وأرسلها لنا",
+    "description": "صوّر تجربتك وأرسلها لنا | منتجع يوم العائلة",
     "entry": true
   },
   {
     "route": "walaa",
     "path": "/services/loyalty/",
     "title": "بطاقة الولاء | منتجع يوم العائلة",
-    "description": "استمتع بمزايا بطاقة الولاء",
+    "description": "استمتع بمزايا بطاقة الولاء | منتجع يوم العائلة",
     "entry": true
   },
   {
     "route": "contest",
     "path": "/contest/",
     "title": "شارك بفيديو… ويومك الجاي علينا | منتجع يوم العائلة",
-    "description": "انشر الفيديو ونافس بالمشاهدات",
+    "description": "انشر الفيديو ونافس بالمشاهدات | منتجع يوم العائلة",
     "entry": false
   },
   {
     "route": "menu",
     "path": "/menu/",
     "title": "المطعم | منتجع يوم العائلة",
-    "description": "تصفّح قائمة الطعام والمشروبات",
+    "description": "تصفح قائمة الطعام والمشروبات | منتجع يوم العائلة",
     "entry": true
   },
   {

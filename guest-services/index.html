@@ -21,8 +21,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/guest-services/guest-services.css?v=20261108-cinema-parity-v11">
 <script src="/guest-services/share.js?v=20261108-shared-venues-v2" defer></script>
-<script src="/guest-services/service-source.js?v=20261116-games-intro-v4" defer></script>
-<script src="/guest-services/guest-services.js?v=20261116-games-intro-v2" defer></script>
+<script src="/guest-services/service-source.js?v=20261116-approved-intros-v5" defer></script>
+<script src="/guest-services/guest-services.js?v=20261116-approved-intros-v3" defer></script>
 </head>
 <body>
 <div class="page">
@@ -60,7 +60,7 @@
       </button>
       <button type="button" id="cinema-card" class="service-tile" data-service="cinema" data-tone="cinema" aria-haspopup="dialog" aria-controls="service-dialog" aria-labelledby="cinema-title" aria-describedby="cinema-default" disabled>
         <span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="15" rx="2"/><path d="m10 8 6 4-6 4ZM8 22h8"/></svg></span>
-        <span class="tile-copy"><span class="tile-title" id="cinema-title">جلسة السينما</span><span class="tile-default" id="cinema-default">تجربة سينما في المساحة الخارجية للكوخ</span><span class="tile-selection" id="cinema-selection" hidden></span></span>
+        <span class="tile-copy"><span class="tile-title" id="cinema-title">جلسة السينما</span><span class="tile-default" id="cinema-default">استمتع بتجربة سينما في مساحتك الخاصة</span><span class="tile-selection" id="cinema-selection" hidden></span></span>
         <span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span>
       </button>
       <button type="button" id="extras-card" class="service-tile" data-service="extras" data-tone="extras" aria-haspopup="dialog" aria-controls="service-dialog" aria-labelledby="extras-title" aria-describedby="extras-default" disabled>
@@ -141,6 +141,7 @@
         <div id="hospitality-packages"></div>
       </section>
       <section id="water-service" class="service-panel" hidden>
+        <p class="section-note water-intro"></p>
         <p class="service-offer"><strong id="water-offer"></strong></p>
         <p class="section-note"></p>
         <div class="extra-row water-package-quantity"><strong>عدد الباقات</strong><div class="quantity" role="group" aria-label="عدد باقات الألعاب المائية"><button type="button" data-water-packages data-step="-1" aria-label="تقليل عدد الباقات">−</button><output id="water-packages-count" dir="ltr">1</output><button type="button" data-water-packages data-step="1" aria-label="زيادة عدد الباقات">+</button></div></div>

@@ -40,7 +40,7 @@ window.FD_GUEST_SOURCE = (function () {
       html=await response.text();
     } finally {clearTimeout(timer);}
     var doc=new DOMParser().parseFromString(html,'text/html');
-    var water={title:text(doc,'.wm-title'),name:node(doc,'.wm-package').getAttribute('aria-label'),
+    var water={title:text(doc,'.wm-title'),intro:text(doc,'.wm-intro'),name:node(doc,'.wm-package').getAttribute('aria-label'),
       price:number(text(doc,'.wm-offer strong')),size:number(text(doc,'.wm-offer')),
       prompt:text(doc,'#wm-selection-title'),notes:list(doc,'.wm-notes-list li')};
     var cinema={title:text(doc,'.cn-title'),name:text(doc,'.cn-title'),intro:text(doc,'.cn-intro'),
