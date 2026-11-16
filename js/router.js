@@ -127,7 +127,10 @@
       case 'chalet-detail': call('openPrivateChalet'); break;
       case 'chalet-map': FD_CHALET_MAP.show(); break;
       case 'chalet-faq': call('showChaletFaq'); break;
-      case 'services': call('showServices',r.args); break;
+      case 'services':
+        call('showServices',r.args);
+        document.querySelector('#services-overlay .svcs-back').setAttribute('aria-label',r.parent && r.parent.name==='cabin' ? 'العودة إلى تفاصيل الكوخ' : 'العودة');
+        break;
       case 'faq': call('showFaq'); break;
       case 'faq2': call('showFaq2'); break;
       case 'contact': call('showContact',r.args); break;
@@ -186,7 +189,7 @@
       var dialog=document.getElementById('fd-map-dialog');
       if(dialog && dialog.open) dialog.close();
     } else if(close[r.name]) {
-      call(close[r.name]);
+      call(close[r.name],r.name==='services' ? [!!r.parent && r.parent.name==='cabin'] : []);
       if((r.name==='cabin' || r.name==='tour') && r.parent && r.parent.name==='map') document.dispatchEvent(new CustomEvent('fd-map-resume'));
     }
     else if(serviceViews[r.name]) {
@@ -276,7 +279,7 @@
   wrapOpen('openM',cabinRoute);
   wrapOpen('openMDirect',function(c){return cabinRoute(c.id);});
   Object.keys(serviceViews).forEach(function(name){
-    wrapOpen(serviceViews[name][0],function(tab){return route(name,['hospitality','setups'].indexOf(name)!==-1 ? [tab] : ['maiya','tarfihi'].indexOf(name)!==-1 && serviceVenueFor(current)==='chalet' ? ['chalet'] : []);});
+    wrapOpen(serviceViews[name][0],function(tab){return route(name,['hospitality','setups'].indexOf(name)!==-1 ? [tab] : ['maiya','tarfihi'].indexOf(name)!==-1 && serviceVenueFor(current)==='chalet' ? ['chalet'] : [],current.name==='services' ? current : null);});
     wrapClose(serviceViews[name][1]);
   });
   // Tab changes replace this page entry, so Back returns to the caller, not every tab.
@@ -320,7 +323,7 @@
   };
   window.openCabinService=function(event,name){
     if(event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return true;
-    if(current.name!=='cabin' || ['menu','jalsat','tawilat','sinema','tarfihi','maiya','hospitality','coordination'].indexOf(name)===-1) return true;
+    if(current.name!=='cabin' || ['services','menu','jalsat','tawilat','sinema','tarfihi','maiya','hospitality','coordination'].indexOf(name)===-1) return true;
     event.preventDefault();
     navigate(name==='coordination' ? route('hospitality',['coordination'],current) : route(name,[],current));
     return false;

@@ -10,7 +10,7 @@ catalog = json.loads((ROOT / 'share-pages.json').read_text())
 expected = {
     '/services/hospitality/packages/': ('الضيافة', '#hd-hospitality-panel'),
     '/services/coordination/': ('التنسيقات', '#hd-coordination-panel'),
-    '/services/cinema/': ('السينما', '#sinema-detail'),
+    '/services/cinema/': ('جلسة السينما', '#sinema-detail'),
     '/services/dining-tables/': ('طاولات الطعام', '#tawilat-detail'),
     '/services/outdoor-seating/': ('الجلسات الخارجية', '#jalsat-detail'),
 }

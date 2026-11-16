@@ -5,7 +5,7 @@ BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8056'
 services=[
  ('hospitality/packages','الضيافة','#hd-hospitality-panel','.hd-back'),
  ('coordination','التنسيقات','#hd-coordination-panel','.hd-back'),
- ('cinema','السينما','#sinema-detail','.setups-back'),
+ ('cinema','جلسة السينما','#sinema-detail','.setups-back'),
  ('dining-tables','طاولات الطعام','#tawilat-detail','.setups-back'),
  ('outdoor-seating','الجلسات الخارجية','#jalsat-detail','.setups-back')]
 with sync_playwright() as p:
@@ -65,10 +65,12 @@ with sync_playwright() as p:
    visit(old);page.wait_for_url(BASE+'/services/'+new+'/')
   for path,_,panel,button in services:
    visit('/cabins/panoramic/')
-   page.locator('#mBody a[href="/services/'+path+'/"]').click()
+   page.locator('.fd-cabin-services-link').click();page.wait_for_url(BASE+'/services/')
+   page.locator('.svcs-card[href="/services/'+path+'/"]').click()
    page.wait_for_url(BASE+'/services/'+path+'/');page.reload(wait_until='networkidle')
    assert page.locator(panel).is_visible()
-   page.locator(button).click();page.wait_for_url(BASE+'/cabins/panoramic/')
+   page.locator(button).click();page.wait_for_url(BASE+'/services/')
+   page.locator('.svcs-back').click();page.wait_for_url(BASE+'/cabins/panoramic/')
    assert page.locator('#ov').is_visible()
   assert not errors,errors
   print(width,'PASS five isolated pages, keyboard, reload, selections, checkout, Back/Forward and cabin return',flush=True)

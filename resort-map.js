@@ -28,7 +28,7 @@
   var photoLocation = null;
 
   var mapCopy = {
-    title: 'خريطة الأكواخ',
+    title: 'خريطة الأكواخ التفاعلية',
     hint: 'اختر الكوخ وشاهد موقعه ومميزاته',
     close: 'العودة',
     viewport: 'خريطة تفاعلية؛ كبّر ثم اسحب للاستكشاف، أو استخدم الأسهم للتحريك',
@@ -607,7 +607,7 @@
     dialog.innerHTML =
       '<div class="fd-map-header"><div class="fd-map-heading">' +
       '<button type="button" class="fd-map-close" aria-label="العودة" autofocus><svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>' +
-      '<div class="fd-map-heading-copy"><h2 id="fd-map-title">خريطة الأكواخ</h2><p id="fd-map-hint">اختر الكوخ وشاهد موقعه ومميزاته</p></div></div>' +
+      '<div class="fd-map-heading-copy"><h2 id="fd-map-title">خريطة الأكواخ التفاعلية</h2><p id="fd-map-hint">اختر الكوخ وشاهد موقعه ومميزاته</p></div></div>' +
       '</div>' +
       '<div class="fd-map-workspace">' +
         '<div class="fd-map-viewport" tabindex="0" aria-label="خريطة تفاعلية؛ كبّر ثم اسحب للاستكشاف، أو استخدم الأسهم للتحريك">' +

@@ -5,7 +5,7 @@ var PRIVATE_CHALET = {
   rooms: 2,
   maxGuests: 25,
   name: 'شاليه يوم العائلة',
-  location: 'جدة - المروج',
+  location: 'جدة — حي المروج',
   bookUrl: 'https://familyday-sa.com/ar/listings/6abb996392a258b8171230a3',
   mapUrl: 'https://maps.app.goo.gl/np6uD3XvCQTCr4ff7',
   // Shared facts; each view keeps its approved selection and presentation.
@@ -141,7 +141,7 @@ function openPrivateChalet(){
       "items": [
         {
           "question": "أين يقع شاليه يوم العائلة؟",
-          "answer": "يقع شاليه يوم العائلة في " + PRIVATE_CHALET.location.replace(" - "," – ") + "." + "<a class=\"fd-text-link\" href=\"" + PRIVATE_CHALET.mapUrl + "\" target=\"_blank\" rel=\"noopener noreferrer\">موقع الشاليه</a>"
+          "answer": "يقع شاليه يوم العائلة في " + PRIVATE_CHALET.location + "." + "<a class=\"fd-text-link\" href=\"" + PRIVATE_CHALET.mapUrl + "\" target=\"_blank\" rel=\"noopener noreferrer\">موقع الشاليه</a>"
         },
         {
           "question": "ما أوقات الدخول والخروج؟",

@@ -3,7 +3,7 @@
 (function () {
   'use strict';
   var sections = {
-    cinema: {id:'sinema-detail', label:'السينما', open:window.openSinemaDetail},
+    cinema: {id:'sinema-detail', label:'جلسة السينما', open:window.openSinemaDetail},
     dining: {id:'tawilat-detail', label:'طاولات الطعام', open:window.openTawilatDetail},
     seating: {id:'jalsat-detail', label:'الجلسات الخارجية', open:window.openJalsatDetail}
   };

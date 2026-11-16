@@ -171,3 +171,5 @@ after checking all static references and dynamic loaders. The current resort
 map and guide-to-guest-services link remain. Keep `sw.js`: it unregisters an
 older service worker for returning visitors. Main-page and preview logos share
 `imgs/img00.webp`; the old byte-identical logo paths remain for saved links.
+
+Approved public wording is documented in [TERMINOLOGY.md](TERMINOLOGY.md). Cabin details link to `/services/` through the router so service browsing returns to the originating cabin.

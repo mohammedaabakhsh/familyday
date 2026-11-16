@@ -246,7 +246,7 @@ function renderCabinDetail(c){
   const outdoor=c.features.outdoor.filter(function(text){return !/بانيو|جاكوزي/.test(text);});
   const poolFeatures=[poolLabel].concat(c.pool.facilities,wetOutdoor);
   const kitchen=c.features.kitchen;
-  const stayFeatures=c.features.stay;
+  const stayFeatures=c.features.stay.concat(['غرفة سائق متاحة حسب التوفر']);
   const hasMinibar=c.minibar;
   const hasOutdoorBath=c.bath.outdoorPrivacy&&!c.bath.privacyInLabel;
   const subtitle=c.type||'';
@@ -313,24 +313,9 @@ ${c.id===8?'<a class="fd-pyramid-detail-tour" href="/rustic-tour/?from=details&c
         <div class="fd-cabin-feature-list">${renderFeatures(stayFeatures)}</div>
       </section>
 
-      <section class="fd-cabin-section">
-        <h3>خدمات متاحة</h3>
-        <div class="fd-cabin-feature-list">
-          <a class="fd-cabin-feature fd-cabin-service-link" href="/menu/" onclick="return openCabinService(event,'menu')">المطعم <span aria-hidden="true">←</span></a>
-          <span class="fd-cabin-feature">غرفة سائق</span>
-        </div>
-        <div class="fd-cabin-instructions">
-          
-          <p><strong>غرفة السائق:</strong> متاحة حسب التوفر.</p>
-        </div>
-      </section>
-
       ${(c.id===3 || c.id===9)?'<section class="fd-cabin-section fd-cabin-combined-note"><h3>حجز الكوخين معًا</h3><div class="fd-cabin-instructions"><p>يمكن ربط كوخ رويال والكوخ الكلاسيكي عبر باب داخلي عند حجزهما معًا، بسعة إجمالية تصل إلى ' + resortCombinedGuests() + ' ضيفًا.</p></div></section>':''}
 
-      <section class="fd-cabin-addons">
-        <h3>خدمات إضافية</h3>
-        <div class="fd-cabin-addon-links"><a href="/services/hospitality/packages/" onclick="return openCabinService(event,'hospitality')">الضيافة <span aria-hidden="true">←</span></a><a href="/services/coordination/" onclick="return openCabinService(event,'coordination')">التنسيقات <span aria-hidden="true">←</span></a><a href="/services/outdoor-seating/" onclick="return openCabinService(event,'jalsat')">الجلسات الخارجية <span aria-hidden="true">←</span></a><a href="/services/dining-tables/" onclick="return openCabinService(event,'tawilat')">طاولات الطعام <span aria-hidden="true">←</span></a><a href="/services/cinema/" onclick="return openCabinService(event,'sinema')">جلسة السينما <span aria-hidden="true">←</span></a><a href="/services/games/" onclick="return openCabinService(event,'tarfihi')">الألعاب الترفيهية <span aria-hidden="true">←</span></a><a href="/services/water-games/" onclick="return openCabinService(event,'maiya')">الألعاب المائية <span aria-hidden="true">←</span></a></div>
-      </section>
+      <div class="fd-cabin-services-footer"><a class="fd-cabin-services-link" href="/services/" onclick="return openCabinService(event,'services')">تصفّح خدمات المنتجع <span aria-hidden="true">←</span></a></div>
       <div class="fd-cabin-faq-footer"><a class="fd-cabin-faq-link" href="/resort/faq/" onclick="return openAccommodationFaq(event,'faq')">الأسئلة الشائعة <span aria-hidden="true">←</span></a></div>
     </section>`;
 }
@@ -452,12 +437,12 @@ function updateCabinPicker(){
   var isChalet=_navType==='private-chalet';
   var noun=isChalet?'الشاليه':isStay?'القسم':'الكوخ';
   var fromMap=!isChalet && !isStay && document.getElementById('ov').dataset.returnToMap==='true';
-  var backLabel=fromMap?'خريطة الأكواخ':isChalet?'العودة إلى الشاليه':isStay?'العودة إلى الأقسام':'العودة إلى الأكواخ';
+  var backLabel=fromMap?'خريطة الأكواخ التفاعلية':isChalet?'العودة إلى الشاليه':isStay?'العودة إلى الأقسام':'العودة إلى الأكواخ';
   var back=document.querySelector('.fd-cabin-nav-back');
   back.setAttribute('aria-label',backLabel);
   var legacyBack=document.querySelector('.modal-back-btn');
   if(legacyBack)legacyBack.textContent='❮ '+backLabel;
-  back.querySelector('span').textContent=fromMap?'خريطة الأكواخ':isChalet?'الشاليه':isStay?'الأقسام':'الأكواخ';
+  back.querySelector('span').textContent=fromMap?'خريطة الأكواخ التفاعلية':isChalet?'الشاليه':isStay?'الأقسام':'الأكواخ';
   document.querySelector('.fd-cabin-nav').setAttribute('aria-label',isChalet?'تفاصيل الشاليه':isStay?'التنقّل بين الأقسام':'التنقّل بين الأكواخ');
   document.querySelector('#fd-cabin-nav-list ul').setAttribute('aria-label',isChalet?'الشاليه':isStay?'أقسام الاستراحة':'الأكواخ ضمن اختيارك');
   picker.setAttribute('aria-label','اختيار '+noun+': '+c.name);
@@ -589,12 +574,11 @@ function showServices(venue){
   document.getElementById('services-overlay').classList.remove('hide');
   setActiveTab('services');
 }
-function closeServices(){
+function closeServices(preserveCabin){
   document.getElementById('menu-detail').classList.add('hide');
   document.getElementById('services-overlay').classList.add('hide');
   var landing=document.getElementById(document.getElementById('services-overlay').dataset.venue==='chalet' ? 'landing3' : 'landing');
-  landing.classList.remove('hide');
-  landing.scrollTop=0;
+  if(!preserveCabin){landing.classList.remove('hide');landing.scrollTop=0;}
   document.getElementById('bottomNav').style.display='none';
   document.querySelectorAll('.bnav-btn').forEach(function(b){b.classList.remove('active');});
 }

@@ -2226,7 +2226,7 @@ function tarfihiOrder(){
       <button class="fbtn" data-f="shared">الحديقة المشتركة</button>
     </div>
     <div class="fd-map-launcher" id="fd-map-launcher" hidden>
-      <button type="button" id="fd-map-open" aria-haspopup="dialog" aria-controls="fd-map-dialog">خريطة الأكواخ</button>
+      <button type="button" id="fd-map-open" aria-haspopup="dialog" aria-controls="fd-map-dialog">خريطة الأكواخ التفاعلية</button>
     </div>
   </div>
 
@@ -2276,7 +2276,7 @@ function tarfihiOrder(){
   </div>
 </div>
 
-<script src="resort-data.js?v=20261107-final-batch-v1"></script>
+<script src="resort-data.js?v=20261116-terms-v1"></script>
 <script>
 const IMG=["imgs/img04.webp","imgs/img05.webp","imgs/img06.webp","imgs/img07.webp","imgs/img08.webp","imgs/img09.webp",
   "imgs/img10.webp",
@@ -4476,7 +4476,7 @@ function openMDirect(c){
   window.addEventListener('pageshow',function(event){if(event.persisted) restore();});
 })();
 </script>
-<script src="resort-map.js?v=20261107-final-batch-v1" defer></script>
+<script src="resort-map.js?v=20261116-terms-v1" defer></script>
 
 <style id="fd-approved-visual-refinements">
 /* Approved refinements. Remove data-dest-photo to restore the original cards. */
@@ -5333,7 +5333,7 @@ body.fa-app[data-fa-destination=true][data-fa-demo=true]{--fa-top:148px}
     var items=stay?_chaletItems2:data.resort.items.filter(function(c){return c.id!==11;});
     var gridAction=stay?'showSection2()':"showSection('resort')";
     var title=stay?'استراحة يوم العائلة':'منتجع يوم العائلة';
-    var html='<div class="fa-home"><div class="fa-welcome"><div><h1 id="'+(stay?'fa-stay-title':'rh-title')+'">يوم حلو يجمعكم</h1><p>'+title+' · جدة، خليج سلمان</p></div></div>'
+    var html='<div class="fa-home"><div class="fa-welcome"><div><h1 id="'+(stay?'fa-stay-title':'rh-title')+'">يوم حلو يجمعكم</h1><p>'+title+' · جدة — خليج سلمان</p></div></div>'
       +bookingForm(venue)
       +'<section class="fa-section">'+sectionHeading(stay?'أقسام الاستراحة':'أكواخ المنتجع',gridAction)
       +'<div class="fa-cabins">'+items.map(cabinCard).join('')+'</div></section>';
@@ -5400,7 +5400,7 @@ body.fa-app[data-fa-destination=true][data-fa-demo=true]{--fa-top:148px}
   function infoRow(symbol,title,description,action){return '<button type="button" class="fa-info-row" onclick="'+action+'">'+icon(symbol)+'<span><strong>'+title+'</strong><small>'+description+'</small></span>'+icon('arrow')+'</button>';}
   function renderInfo(){
     var stay=window.fdAppVenue==='stay',name=stay?'استراحة يوم العائلة':'منتجع يوم العائلة';
-    var html='<div class="fa-page-body fa-info-body"><h1>المعلومات</h1><div class="fa-info-place"><img src="'+GALLERY[stay?20:1][0]+'" alt="'+name+'"><div><h2>'+name+'</h2><p>جدة، خليج سلمان</p><span>الدخول 4 مساءً · الخروج 12 ظهرًا</span></div></div><div class="fa-info-list">'
+    var html='<div class="fa-page-body fa-info-body"><h1>المعلومات</h1><div class="fa-info-place"><img src="'+GALLERY[stay?20:1][0]+'" alt="'+name+'"><div><h2>'+name+'</h2><p>جدة — خليج سلمان</p><span>الدخول 4 مساءً · الخروج 12 ظهرًا</span></div></div><div class="fa-info-list">'
       +infoRow('services',stay?'المرافق والخدمات':'الخدمات والتجارب',stay?'تعرّف على تجهيزات الاستراحة':'تعرّف على الضيافة والتنسيق وبقية الخدمات',"fdAppNavigate('services')")
       +infoRow('map','الموقع والتواصل','الخريطة وطرق التواصل مع الاستقبال',"fdAppNavigate('contact')")
       +infoRow('help','الأسئلة الشائعة','معلومات الحجز والإقامة والتعليمات',stay?'showFaq2()':'showFaq()')+'</div></div>';

@@ -103,7 +103,7 @@ noscript{display:block;margin:30px;text-align:center}
 
  var params=new URLSearchParams(location.search),from=params.get('from'),id=10,back=document.querySelector('.tour-back');
 
- if(from==='map'){back.href='/resort-map/?v=map-return-20261028-v2#map='+id;back.innerHTML='<span aria-hidden="true">→</span> خريطة الأكواخ';}
+ if(from==='map'){back.href='/resort-map/?v=map-return-20261028-v2#map='+id;back.innerHTML='<span aria-hidden="true">→</span> خريطة الأكواخ التفاعلية';}
  else if(from==='guide'){back.href='/services-guide/#resort-map';back.innerHTML='<span aria-hidden="true">→</span> دليل المنتجع';}
  else if(from==='details'){back.href=(params.get('return')==='map'?'/?v=panoramic-tour-20261026#cabin=':'/#cabin=')+id+(params.get('return')==='map'?'&from=map':'');back.innerHTML='<span aria-hidden="true">→</span> البيت البانورامي';}
 
@@ -111,7 +111,7 @@ noscript{display:block;margin:30px;text-align:center}
 
 </script>
 
-<script src="/resort-data.js?v=20261107-final-batch-v1"></script>
+<script src="/resort-data.js?v=20261116-terms-v1"></script>
 
 <script src="/tour-common.js?v=20261107-final-batch-v1"></script>
 <script src="/panoramic-tour.js?v=20261111-bathrooms-label"></script>
