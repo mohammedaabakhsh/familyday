@@ -50,7 +50,7 @@
 <link href="resort-home.css?v=20261104-back-button-v1" rel="stylesheet">
 <link rel="preload" as="script" href="js/app-shell.js?v=20261108-chalet-services-v1">
 <link rel="preload" as="script" href="js/gallery-data.js?v=20261112-stay-photo-labels-v2">
-<link rel="preload" as="script" href="js/accommodations.js?v=20261116-cabin-grid-v1">
+<link rel="preload" as="script" href="js/accommodations.js?v=20261116-restore-carousel-v2">
 <link rel="preload" as="script" href="js/services.js?v=20261116-independent-services-v2">
 <link rel="preload" as="script" href="js/stay-navigation.js?v=20261107-final-batch-v1">
 <link rel="preload" as="script" href="js/router.js?v=20261116-service-routes-v1">
@@ -1544,7 +1544,7 @@
     </div>
   </div>
 
-  <div class="grid-section"><div class="grid" id="grid"></div><section id="sharedGarden" class="fd-carousel fd-shared-garden" aria-labelledby="fd-shared-garden-title" hidden></section></div>
+  <div class="grid-section"><div class="grid" id="grid"></div></div>
   <!-- SERVICE SUB SECTION -->
 
 
@@ -1594,7 +1594,7 @@
 <script src="service-data.js?v=20261109-cinema-shared-v17"></script>
 <script src="resort-data.js?v=20261107-final-batch-v1"></script>
 <script src="js/gallery-data.js?v=20261112-stay-photo-labels-v2"></script>
-<script src="js/accommodations.js?v=20261116-cabin-grid-v1"></script>
+<script src="js/accommodations.js?v=20261116-restore-carousel-v2"></script>
 
 
 <!-- FULLSCREEN GALLERY -->
@@ -1923,29 +1923,29 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 <!-- Accommodation carousel on small screens; site-ui.css supplies the desktop grid. -->
 <style id="fd-resort-carousel-style">
 :is(#app,#app2) .grid-section:has(.fd-carousel){padding-inline:0!important;padding-bottom:20px}
-:is(#app #grid,#app2 #grid2,#app #sharedGarden).fd-carousel{--slide: min(80vw,340px);display:flex;direction:rtl;gap:16px;max-width:900px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;padding:8px calc((100% - var(--slide))/2) 18px;scroll-padding-inline:calc((100% - var(--slide))/2);box-sizing:border-box;align-items:flex-start;-webkit-overflow-scrolling:touch}
-:is(#app #grid,#app2 #grid2,#app #sharedGarden).fd-carousel::-webkit-scrollbar{display:none}
-:is(#app #grid,#app2 #grid2,#app #sharedGarden).fd-carousel>.card:not(.hidden){flex:0 0 var(--slide);min-width:0;scroll-snap-align:center;scroll-snap-stop:always;border-radius:22px;padding:6px;box-sizing:border-box;background:linear-gradient(165deg,#15394a,#0a1d2c 80%);border:1px solid #315967;animation:none;box-shadow:none;transform:none}
-:is(#app #grid,#app2 #grid2,#app #sharedGarden).fd-carousel .card-img-wrap{box-sizing:border-box;width:100%;align-self:center;border-radius:17px;aspect-ratio:1/1;max-height:none;flex:none}
-:is(#app #grid,#app2 #grid2,#app #sharedGarden).fd-carousel .badge{top:auto;bottom:12px;right:50%;transform:translateX(50%);white-space:nowrap}
-:is(#app #grid,#app2 #grid2,#app #sharedGarden).fd-carousel .fd-cabin-card-v2-body{padding:12px 10px 10px;flex:none}
-:is(#app #grid,#app2 #grid2,#app #sharedGarden).fd-carousel .fd-cabin-card-v2-heading{justify-content:center;text-align:center;gap:6px;margin-bottom:10px;min-height:0;align-content:flex-start}
-:is(#app #grid,#app2 #grid2,#app #sharedGarden).fd-carousel .fd-cabin-card-v2-heading>div{width:100%}
-:is(#app #grid,#app2 #grid2,#app #sharedGarden).fd-carousel .card-name{text-align:center;font-size:21px}
-:is(#app #grid,#app2 #grid2,#app #sharedGarden).fd-carousel .fd-cabin-card-v2-subtitle{font-size:13px}
-:is(#app #grid,#app2 #grid2,#app #sharedGarden).fd-carousel .fd-cabin-card-v2-feature{margin:0;font-size:11px;padding:3px 9px}
-:is(#app #grid,#app2 #grid2,#app #sharedGarden).fd-carousel .fd-cabin-card-v2-fact{background:transparent;border:0;border-radius:0;text-align:center;min-height:46px;padding:4px}
-:is(#app #grid,#app2 #grid2,#app #sharedGarden).fd-carousel .fd-cabin-card-v2-fact+div{border-right:1px solid #315160}
-:is(#app #grid,#app2 #grid2,#app #sharedGarden).fd-carousel .fd-cabin-card-v2-facts{gap:0;margin-top:0;margin-bottom:10px}
-:is(#app #grid,#app2 #grid2,#app #sharedGarden).fd-carousel .card-btn{border-radius:12px;min-height:44px;font-size:14px}
+:is(#app #grid,#app2 #grid2).fd-carousel{--slide: min(80vw,340px);display:flex;direction:rtl;gap:16px;max-width:900px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;padding:8px calc((100% - var(--slide))/2) 18px;scroll-padding-inline:calc((100% - var(--slide))/2);box-sizing:border-box;align-items:flex-start;-webkit-overflow-scrolling:touch}
+:is(#app #grid,#app2 #grid2).fd-carousel::-webkit-scrollbar{display:none}
+:is(#app #grid,#app2 #grid2).fd-carousel>.card:not(.hidden){flex:0 0 var(--slide);min-width:0;scroll-snap-align:center;scroll-snap-stop:always;border-radius:22px;padding:6px;box-sizing:border-box;background:linear-gradient(165deg,#15394a,#0a1d2c 80%);border:1px solid #315967;animation:none;box-shadow:none;transform:none}
+:is(#app #grid,#app2 #grid2).fd-carousel .card-img-wrap{box-sizing:border-box;width:100%;align-self:center;border-radius:17px;aspect-ratio:1/1;max-height:none;flex:none}
+:is(#app #grid,#app2 #grid2).fd-carousel .badge{top:auto;bottom:12px;right:50%;transform:translateX(50%);white-space:nowrap}
+:is(#app #grid,#app2 #grid2).fd-carousel .fd-cabin-card-v2-body{padding:12px 10px 10px;flex:none}
+:is(#app #grid,#app2 #grid2).fd-carousel .fd-cabin-card-v2-heading{justify-content:center;text-align:center;gap:6px;margin-bottom:10px;min-height:0;align-content:flex-start}
+:is(#app #grid,#app2 #grid2).fd-carousel .fd-cabin-card-v2-heading>div{width:100%}
+:is(#app #grid,#app2 #grid2).fd-carousel .card-name{text-align:center;font-size:21px}
+:is(#app #grid,#app2 #grid2).fd-carousel .fd-cabin-card-v2-subtitle{font-size:13px}
+:is(#app #grid,#app2 #grid2).fd-carousel .fd-cabin-card-v2-feature{margin:0;font-size:11px;padding:3px 9px}
+:is(#app #grid,#app2 #grid2).fd-carousel .fd-cabin-card-v2-fact{background:transparent;border:0;border-radius:0;text-align:center;min-height:46px;padding:4px}
+:is(#app #grid,#app2 #grid2).fd-carousel .fd-cabin-card-v2-fact+div{border-right:1px solid #315160}
+:is(#app #grid,#app2 #grid2).fd-carousel .fd-cabin-card-v2-facts{gap:0;margin-top:0;margin-bottom:10px}
+:is(#app #grid,#app2 #grid2).fd-carousel .card-btn{border-radius:12px;min-height:44px;font-size:14px}
 .fd-carousel-controls{display:flex;align-items:center;justify-content:center;direction:rtl;gap:22px;color:#d6eaf0;margin:0 auto;padding:0 16px 8px}
 .fd-carousel-controls button{direction:ltr;width:44px;height:44px;border:1px solid #315967;border-radius:50%;background:#102d3d;color:#c2e6ed;font-size:24px;cursor:pointer;display:grid;place-items:center}
 .fd-carousel-controls button:disabled{opacity:.25;cursor:default}
 .fd-carousel-controls button:focus-visible{outline:2px solid #7ecfea;outline-offset:3px}
 .fd-carousel-count{min-width:80px;text-align:center;font-size:15px;font-weight:700;font-family:Tajawal,sans-serif}
-@media(min-width:900px){:is(#app #grid,#app2 #grid2,#app #sharedGarden).fd-carousel{padding-inline:280px;scroll-padding-inline:280px;--slide:340px}}
+@media(min-width:900px){:is(#app #grid,#app2 #grid2).fd-carousel{padding-inline:280px;scroll-padding-inline:280px;--slide:340px}}
 </style>
-<script id="fd-resort-carousel-script" src="js/cabin-carousel.js?v=20261116-cabin-grid-v1"></script>
+<script id="fd-resort-carousel-script" src="js/cabin-carousel.js?v=20261116-restore-carousel-v2"></script>
 
 
 <style id="fd-cabin-clear-navigation">
@@ -2006,7 +2006,6 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
  #app #grid.fd-carousel .fd-cabin-card-v2-facts{margin-bottom:6px}
 }
 </style>
-<link rel="stylesheet" href="/css/cabin-grid.css?v=20261116-cabin-grid-v1">
 <script id="fd-mobile-cabin-map-position" src="js/cabin-toolbar.js?v=20261102-structure-v1"></script>
 
 <link rel="stylesheet" href="/css/desktop-layout.css?v=20261116-larger-services-v3" media="screen and (min-width:1024px)">

@@ -1,4 +1,4 @@
-"""Check that arrow requests survive layout changes in the rest-house RTL carousel."""
+"""Check that arrow requests survive layout changes in both RTL carousels."""
 import sys
 
 from playwright.sync_api import sync_playwright, expect
@@ -41,7 +41,7 @@ with sync_playwright() as playwright:
             errors = []
             page.on('pageerror', lambda error: errors.append(str(error)))
             page.add_init_script(OBSERVE)
-            for path, grid_id in [('/stay/sections/', 'grid2')]:
+            for path, grid_id in [('/stay/sections/', 'grid2'), ('/cabins/', 'grid')]:
                 page.goto(BASE + path, wait_until='networkidle')
                 grid = page.locator('#' + grid_id)
                 controls = page.locator('#' + grid_id + ' + .fd-carousel-controls')
@@ -80,6 +80,10 @@ with sync_playwright() as playwright:
                   document.getElementById(id).nextElementSibling
                     .querySelector('.fd-carousel-count').textContent === '1 من ' + total
                 ''', arg=[grid_id, total])
+                if grid_id == 'grid':
+                    page.locator('.fbtn[data-f="2"]').click()
+                    centered(page, grid_id, 0)
+                    assert controls.locator('.fd-carousel-count').inner_text() == '1 من 8'
             assert not errors, errors
             print(width, motion, 'PASS delayed layout, rapid arrows, keyboard, native scroll and filters', flush=True)
             page.close()

@@ -27,10 +27,7 @@ python3 -m http.server 8023 --bind 127.0.0.1
 - `js/stay-navigation.js`: destination/rest-house views and touch navigation.
 - `js/router.js`: URLs, history and return destinations.
 - `js/accessibility.js`, `js/cabin-carousel.js`, `js/cabin-toolbar.js`: keyboard
-  access, rest-house listing carousel and mobile map launcher. Resort cabins use
-  a two-column mobile grid (`css/cabin-grid.css`), keeping their existing cards
-  and room filters. The shared garden remains separate below every mobile room
-  filter; its toolbar button scrolls there. Desktop keeps its original grid.
+  access, listing carousel and mobile map launcher.
 - `css/app-base.css`: base and service styles. `css/accommodation-layout.css`:
   destination/cabin refinements, kept in their original cascade position.
 - `share-pages.json`: public entry URLs; `scripts/build-share-pages.py` generates
