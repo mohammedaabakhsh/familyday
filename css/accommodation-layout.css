@@ -329,5 +329,8 @@ html:has(#dest:not(.hide)),body:has(#dest:not(.hide)){
 #ov.fd-cabin-modern .fd-cabin-services-link{display:flex;align-items:center;justify-content:center;gap:12px;box-sizing:border-box;width:100%;min-height:48px;padding:12px 16px;border:1px solid #299bad;border-radius:12px;background:#147a8c;color:#fff;font:700 15px/1.5 Tajawal,sans-serif;text-align:center;text-decoration:none;}
 #ov.fd-cabin-modern .fd-cabin-services-link:focus-visible{outline:2px solid #7ecfea;outline-offset:3px;}
 
-/* Owner-approved description lines replace the old one-line introduction. */
-#ov.fd-cabin-modern .fd-cabin-description{white-space:pre-line;line-height:1.8;}
+/* Balance approved sentences independently without leaving a word on its own. */
+#ov.fd-cabin-modern .fd-cabin-description{white-space:normal;line-height:1.8;}
+#ov.fd-cabin-modern .fd-cabin-description-line{display:block;text-wrap:balance;}
+#ov.fd-cabin-modern .fd-cabin-title{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;}
+#ov.fd-cabin-modern .fd-cabin-title-suitability{color:#19c4c9;font-size:13px;font-weight:700;white-space:nowrap;}

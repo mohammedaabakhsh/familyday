@@ -30,6 +30,7 @@ with sync_playwright() as p:
    assert len(unit['long'].splitlines())==3
    assert not re.search('[،,]',unit['long']+unit['short'])
    assert '\n' not in unit['short']
+   assert not re.search('[٠-٩۰-۹]',unit['long']+unit['short'])
    entry=next(x for x in pages if x['path']=='/chalet/details/') if unit['id']==30 else next(x for x in pages if x['route']=='cabin='+str(unit['id']))
    assert entry['description']==unit['short'],unit['name']
    if width==390:
@@ -40,11 +41,33 @@ with sync_playwright() as p:
    intro=page.locator('#mBody .fd-cabin-description')
    assert intro.is_visible(),unit['name']
    assert intro.text_content()==unit['long'],unit['name']
-   assert intro.evaluate('e=>getComputedStyle(e).whiteSpace')=='pre-line'
+   assert intro.evaluate('e=>getComputedStyle(e).whiteSpace')=='normal'
+   assert intro.locator('.fd-cabin-description-line').count()==3
+   # Check actual line boxes after the Arabic font loads rather than only CSS.
+   page.evaluate('document.fonts.ready')
+   lines=intro.locator('.fd-cabin-description-line').evaluate_all(r"""els=>els.map(el=>{
+    const text=el.firstChild;const rows=new Map();
+    for(const match of text.textContent.matchAll(/\S+/g)){
+     const r=document.createRange();r.setStart(text,match.index);r.setEnd(text,match.index+match[0].length);
+     const top=Math.round(r.getBoundingClientRect().top);rows.set(top,(rows.get(top)||0)+1);
+    }
+    return Array.from(rows.values());
+   })""")
+   assert all(len(row)==1 or min(row)>1 for row in lines),(unit['name'],width,lines)
+   title=page.locator('#mBody .fd-cabin-title')
+   if unit['id']!=11:
+    suitable=unit.get('suitable') or 'مناسب للعائلات'
+    label=title.locator('.fd-cabin-title-suitability')
+    assert label.inner_text()=='('+suitable+')'
+    assert label.evaluate('e=>getComputedStyle(e).color')=='rgb(25, 196, 201)'
+   assert page.locator('#mBody .fd-cabin-combined-note').count()==0
+   if unit['id']==11:
+    assert page.locator('.fd-cabin-feature').filter(has_text='الوصول:').count()==1
+    assert page.locator('#mBody .fd-cabin-instructions').count()==0
    assert page.locator('#mBody').evaluate('e=>e.scrollWidth<=e.clientWidth+1'),unit['name']
    assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')
    if unit['id']==21:assert 'برسوم إضافية' in intro.inner_text() and 'برسوم إضافية' in unit['short']
-   if unit['id'] in [1,9,20,21,30] and width in [390,1440]:
+   if unit['id'] in [1,3,9,11,20,21,30] and width in [390,1440]:
     intro.scroll_into_view_if_needed();page.screenshot(path=f'/tmp/accommodation-description-{unit["id"]}-{width}.png')
   page.goto(BASE+'/resort-map/',wait_until='networkidle')
   locations=page.evaluate('FD_RESORT_MAP_DATA.locations.map(x=>({key:x.key,id:x.cabinId}))')
@@ -57,6 +80,6 @@ with sync_playwright() as p:
    assert page.locator('#fd-map-dialog').evaluate('e=>e.scrollWidth<=e.clientWidth+1')
    page.locator('.fd-map-clear').click()
   assert not errors,errors
-  print(width,'PASS all 16 approved descriptions, unchanged cards, no commas, map/share parity and layout',flush=True)
+  print(width,'PASS all 16 approved descriptions, unchanged cards, no commas, map/share parity, balanced text, title labels and layout',flush=True)
   page.close()
  b.close()

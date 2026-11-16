@@ -238,6 +238,16 @@ function updGal(total){
   if(ctr)ctr.textContent=(galIdx+1)+' من '+total;
 }
 
+// Keep each approved sentence separate so narrow screens can balance its lines.
+function renderAccommodationDescription(text){
+  return String(text).split('\n').map(function(line){
+    return '<span class="fd-cabin-description-line">'+line+'</span>';
+  }).join('\n');
+}
+function renderAccommodationTitle(name,suitable){
+  return '<span>'+name+'</span>'+(suitable?' <span class="fd-cabin-title-suitability">('+suitable+')</span>':'');
+}
+
 function renderCabinDetail(c){
   const depthUnit='سم';
   const indoor=c.features.indoor.concat(c.bathroomDetails || [c.bathroom===1?'حمام واحد':c.bathroom===2?'حمامان':c.bathroom+' حمامات']);
@@ -250,7 +260,6 @@ function renderCabinDetail(c){
   const hasMinibar=c.minibar;
   const hasOutdoorBath=c.bath.outdoorPrivacy&&!c.bath.privacyInLabel;
   const subtitle=c.description||c.type||'';
-  const badge=c.description?'':(c.suitable||'');
   const guestsText=resortGuestText(c.guests);
   const poolNote=(c.pool.depthInLabel?'':'المسبح بعمق '+c.pool.depthCm+' '+depthUnit+'، و')+'يُسمح للأطفال باستخدامه تحت إشراف ذويهم.';
   const renderFeatures=function(list){
@@ -263,9 +272,8 @@ function renderCabinDetail(c){
     <section class="fd-cabin-content" data-cabin-id="${c.id}" aria-labelledby="fd-cabin-detail-title">
       <div class="fd-cabin-heading">
         <div class="fd-cabin-heading-copy">
-          <h2 class="fd-cabin-title" id="fd-cabin-detail-title">${c.name}</h2>
-          ${subtitle?`<p class="fd-cabin-suitable fd-cabin-description">${subtitle}</p>`:''}
-          ${badge?`<p class="fd-cabin-occupancy">${badge}</p>`:''}
+          <h2 class="fd-cabin-title" id="fd-cabin-detail-title">${renderAccommodationTitle(c.name,c.suitable)}</h2>
+          ${subtitle?`<p class="fd-cabin-suitable fd-cabin-description">${renderAccommodationDescription(subtitle)}</p>`:''}
           <div class="fd-cabin-card-v2-facts fd-cabin-detail-facts" aria-label="معلومات ${c.name}">
             <div class="fd-cabin-card-v2-fact"><span>سعة الضيوف</span><strong>${guestsText}</strong></div>
             <div class="fd-cabin-card-v2-fact"><span>غرف النوم</span><strong>${resortRoomText(c.rooms)}</strong></div>
@@ -313,7 +321,6 @@ ${c.id===8?'<a class="fd-pyramid-detail-tour" href="/rustic-tour/?from=details&c
         <div class="fd-cabin-feature-list">${renderFeatures(stayFeatures)}</div>
       </section>
 
-      ${(c.id===3 || c.id===9)?'<section class="fd-cabin-section fd-cabin-combined-note"><h3>حجز الكوخين معًا</h3><div class="fd-cabin-instructions"><p>يمكن ربط كوخ رويال والكوخ الكلاسيكي عبر باب داخلي عند حجزهما معًا، بسعة إجمالية تصل إلى ' + resortCombinedGuests() + ' ضيفًا.</p></div></section>':''}
 
       <div class="fd-cabin-services-footer"><a class="fd-cabin-services-link" href="/services/" onclick="return openCabinService(event,'services')">تصفّح خدمات المنتجع <span aria-hidden="true">←</span></a></div>
       <div class="fd-cabin-faq-footer"><a class="fd-cabin-faq-link" href="/resort/faq/" onclick="return openAccommodationFaq(event,'faq')">الأسئلة الشائعة <span aria-hidden="true">←</span></a></div>
@@ -333,7 +340,7 @@ function renderSharedGardenDetail(c){
       <div class="fd-cabin-heading">
         <div>
           <h2 class="fd-cabin-title" id="fd-cabin-detail-title">${c.name}</h2>
-          <p class="fd-cabin-suitable fd-cabin-description">${c.description||c.type}</p>
+          <p class="fd-cabin-suitable fd-cabin-description">${renderAccommodationDescription(c.description||c.type)}</p>
         </div>
         <span class="fd-cabin-badge">${c.badge}</span>
       </div>
@@ -346,11 +353,7 @@ function renderSharedGardenDetail(c){
 
       <section class="fd-cabin-section">
         <h3>مرافق الحديقة</h3>
-        <div class="fd-cabin-feature-list">${renderFeatures(features)}</div>
-        <div class="fd-cabin-instructions">
-          
-          <p><strong>الوصول:</strong> لكل كوخ باب داخلي يفتح مباشرة على الحديقة.</p>
-        </div>
+        <div class="fd-cabin-feature-list">${renderFeatures(features.concat(['الوصول: لكل كوخ باب داخلي يفتح مباشرة على الحديقة']))}</div>
       </section>
 
       <section class="fd-cabin-section fd-shared-garden-tour">

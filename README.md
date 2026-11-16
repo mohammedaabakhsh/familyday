@@ -174,4 +174,4 @@ older service worker for returning visitors. Main-page and preview logos share
 
 Approved public wording is documented in [TERMINOLOGY.md](TERMINOLOGY.md). Cabin details link to `/services/` through the router so service browsing returns to the originating cabin.
 
-Accommodation copy uses `description` for the approved multi-line introduction and `type` for the approved short copy. Cabin map cards use the same short copy as `share-pages.json`. Keep original cabin cards and specifications intact and preserve the no-comma wording.
+Accommodation copy uses `description` for the approved multi-line introduction and `type` for the approved short copy. Cabin map cards use the same short copy as `share-pages.json`. Keep original cabin cards and specifications intact and preserve the no-comma wording and Western digits (0-9). Detail titles repeat the suitability in turquoise parentheses. Each approved sentence wraps independently with balanced lines.

@@ -5,8 +5,8 @@ var PRIVATE_CHALET = {
   rooms: 2,
   maxGuests: 25,
   name: 'شاليه يوم العائلة',
-  type: "شاليه من دورين للعائلات حتى ١٥ ضيفًا مع مجلس مستقل وغرفة ألعاب للأطفال ومسبح أطفال بزحليقة مزدوجة",
-  description: "شاليه من دورين للعائلات حتى ١٥ ضيفًا مع غرفتي نوم\nيضم مجلسًا مستقلًا بمدخل خاص وغرفة ألعاب للأطفال\nومسبحًا للأطفال بزحليقة مزدوجة",
+  type: "شاليه من دورين للعائلات حتى 15 ضيفًا مع مجلس مستقل وغرفة ألعاب للأطفال ومسبح أطفال بزحليقة مزدوجة",
+  description: "شاليه من دورين للعائلات حتى 15 ضيفًا مع غرفتي نوم\nيضم مجلسًا مستقلًا بمدخل خاص وغرفة ألعاب للأطفال\nومسبحًا للأطفال بزحليقة مزدوجة",
   location: 'جدة — حي المروج',
   bookUrl: 'https://familyday-sa.com/ar/listings/6abb996392a258b8171230a3',
   mapUrl: 'https://maps.app.goo.gl/np6uD3XvCQTCr4ff7',
@@ -74,8 +74,8 @@ function renderPrivateChaletDetail(){
     return '<div class="fd-chalet-floor"><h4>' + title + '</h4>' + features(items) + '</div>';
   }
   return '<section class="fd-cabin-content" aria-labelledby="fd-chalet-detail-title">'
-    + '<div class="fd-cabin-heading"><div class="fd-cabin-heading-copy"><h2 id="fd-chalet-detail-title" class="fd-cabin-title">' + PRIVATE_CHALET.name + '</h2>'
-    + '<p class="fd-cabin-suitable fd-cabin-description">' + PRIVATE_CHALET.description + '</p>'
+    + '<div class="fd-cabin-heading"><div class="fd-cabin-heading-copy"><h2 id="fd-chalet-detail-title" class="fd-cabin-title">' + renderAccommodationTitle(PRIVATE_CHALET.name,'مناسب للعائلات') + '</h2>'
+    + '<p class="fd-cabin-suitable fd-cabin-description">' + renderAccommodationDescription(PRIVATE_CHALET.description) + '</p>'
     + '<div class="fd-cabin-card-v2-facts fd-cabin-detail-facts" aria-label="معلومات الشاليه">'
     + '<div class="fd-cabin-card-v2-fact"><span>سعة الضيوف</span><strong>' + resortGuestText(PRIVATE_CHALET.guests) + '</strong></div>'
     + '<div class="fd-cabin-card-v2-fact"><span>غرف النوم</span><strong>' + resortRoomText(PRIVATE_CHALET.rooms) + '</strong></div></div>'
