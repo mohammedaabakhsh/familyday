@@ -75,7 +75,8 @@
     const seatingTemplate = doc.querySelector('#jalsat-card-template');
     const seatingSource = seatingTemplate ? seatingTemplate.content : doc;
     const seatingExtra = '<aside class="seating-extra" aria-labelledby="seating-extra-title"><h3 id="seating-extra-title">إضافة اختيارية</h3><div class="seating-extra-offer"><strong>' + escape(text(seatingSource,'.jl-addon-name')) + '</strong><strong class="seating-extra-price">' + escape(text(seatingSource,'.jl-addon-price')) + '</strong></div><p>إضافة اختيارية تُضاف قيمتها لسعر الجلسة</p></aside>';
-    html += section('seating',text(doc,'.jl-title'),'جلسات نجهّزها لكم في المساحة الخارجية الخاصة بالكوخ', '<div class="photo-grid">' + _jalsatAllSessions.map(s => serviceCard({title:s.name,price:s.price,priceUnit:'للجلسة',photos:[s.img],imageAlt:s.name,className:'photo-card',capacity:s.persons,label:'تفاصيل الجلسة',body:'<p class="session-description">' + escape(s.desc) + '</p>'})).join('') + '</div>' + seatingExtra, true);
+    const seatingUsage = '<details class="guide-usage"><summary>تعليمات الاستخدام</summary><ul>' + list(doc,'.jl-notes-list li').map(note => '<li>' + escape(note) + '</li>').join('') + '</ul></details>';
+    html += section('seating',text(doc,'.jl-title'),'جلسات نجهّزها لكم في المساحة الخارجية الخاصة بالكوخ', '<div class="photo-grid">' + _jalsatAllSessions.map(s => serviceCard({title:s.name,price:s.price,priceUnit:'للجلسة',photos:[s.img],imageAlt:s.name,className:'photo-card',capacity:s.persons,label:'تفاصيل الجلسة',body:'<p class="session-description">' + escape(s.desc) + '</p>'})).join('') + '</div>' + seatingExtra + seatingUsage, true);
     content.innerHTML = html;
     FD_GUIDE_GALLERY.mount();
     content.setAttribute('aria-busy','false');

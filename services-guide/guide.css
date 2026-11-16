@@ -264,3 +264,13 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 
 /* Match the main site: show the complete pyramid-tent photograph. */
 #seating .package-gallery .gallery-slide img[src$="/jalsat_2.webp"]{aspect-ratio:1;object-fit:contain}
+
+/* Usage instructions follow the optional extra and open like the cinema section. */
+.guide-usage{max-width:680px;margin:0 auto 22px;border-top:1px solid var(--line)}
+.guide-usage>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;padding:10px 0;list-style:none;cursor:pointer;color:var(--muted);font-size:14px}
+.guide-usage>summary::-webkit-details-marker{display:none}
+.guide-usage>summary::marker{content:''}
+.guide-usage>summary::after{content:'';width:7px;height:7px;margin-inline:5px;border-right:1.5px solid var(--accent);border-bottom:1.5px solid var(--accent);transform:rotate(45deg);flex-shrink:0}
+.guide-usage[open]>summary::after{transform:rotate(225deg)}
+.guide-usage>summary:focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:6px}
+.guide-usage>ul{display:grid;gap:6px;margin:0;padding:0 20px 12px 0;color:var(--muted);font-size:13px;line-height:1.7}

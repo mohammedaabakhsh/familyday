@@ -320,7 +320,7 @@ function showSharik(){
   var panel = document.getElementById('sharik-detail');
   panel.classList.remove('hide');
   panel.scrollTop = 0;
-  document.getElementById('sharik-copy-email').textContent = 'نسخ البريد';
+  document.getElementById('sharik-copy-email').textContent = 'نسخ الإيميل';
   document.getElementById('sharik-copy-status').textContent = '';
 }
 function closeSharikDetail(){ document.getElementById('sharik-detail').classList.add('hide');  }
@@ -345,8 +345,8 @@ async function copySharikEmail(){
     } catch (fallbackError) { copied = false; }
   }
   button.disabled = false;
-  button.textContent = copied ? 'تم النسخ' : 'نسخ البريد';
-  status.textContent = copied ? 'تم نسخ البريد الإلكتروني.' : 'حدد البريد واضغط «نسخ» لإكمال النسخ يدويًا.';
+  button.textContent = copied ? 'تم النسخ' : 'نسخ الإيميل';
+  status.textContent = copied ? 'تم نسخ الإيميل.' : 'حدد الإيميل واضغط «نسخ» لإكمال النسخ يدويًا.';
 }
 
 
