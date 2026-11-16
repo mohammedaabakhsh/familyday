@@ -249,8 +249,8 @@ function renderCabinDetail(c){
   const stayFeatures=c.features.stay.concat(['غرفة سائق متاحة حسب التوفر']);
   const hasMinibar=c.minibar;
   const hasOutdoorBath=c.bath.outdoorPrivacy&&!c.bath.privacyInLabel;
-  const subtitle=c.type||'';
-  const badge=c.suitable||'';
+  const subtitle=c.description||c.type||'';
+  const badge=c.description?'':(c.suitable||'');
   const guestsText=resortGuestText(c.guests);
   const poolNote=(c.pool.depthInLabel?'':'المسبح بعمق '+c.pool.depthCm+' '+depthUnit+'، و')+'يُسمح للأطفال باستخدامه تحت إشراف ذويهم.';
   const renderFeatures=function(list){
@@ -264,7 +264,7 @@ function renderCabinDetail(c){
       <div class="fd-cabin-heading">
         <div class="fd-cabin-heading-copy">
           <h2 class="fd-cabin-title" id="fd-cabin-detail-title">${c.name}</h2>
-          ${subtitle?`<p class="fd-cabin-suitable">${subtitle}</p>`:''}
+          ${subtitle?`<p class="fd-cabin-suitable fd-cabin-description">${subtitle}</p>`:''}
           ${badge?`<p class="fd-cabin-occupancy">${badge}</p>`:''}
           <div class="fd-cabin-card-v2-facts fd-cabin-detail-facts" aria-label="معلومات ${c.name}">
             <div class="fd-cabin-card-v2-fact"><span>سعة الضيوف</span><strong>${guestsText}</strong></div>
@@ -333,7 +333,7 @@ function renderSharedGardenDetail(c){
       <div class="fd-cabin-heading">
         <div>
           <h2 class="fd-cabin-title" id="fd-cabin-detail-title">${c.name}</h2>
-          <p class="fd-cabin-suitable">${c.type}</p>
+          <p class="fd-cabin-suitable fd-cabin-description">${c.description||c.type}</p>
         </div>
         <span class="fd-cabin-badge">${c.badge}</span>
       </div>

@@ -42,8 +42,8 @@ python3 -m http.server 8023 --bind 127.0.0.1
   regenerate the entry pages.
 - `share-extras.json`: approved titles/descriptions for the root, illustrated tours
   and the two client guides. The same build script updates these standalone
-  documents and the legacy guest link. Keep empty descriptions for the two
-  rest-house sections and chalet details: these are intentional title-only links.
+  documents and the legacy guest link. Accommodation entries use the approved short description, including both
+  rest-house sections and the chalet. Keep previews text-only.
 - All public previews are text-only: no Open Graph/Twitter/JSON-LD image,
   static thumbnail image or icon candidate. `js/page-media.js` restores
   `data-page-src`/`data-page-href` in the browser, preserving original images,
@@ -173,3 +173,5 @@ older service worker for returning visitors. Main-page and preview logos share
 `imgs/img00.webp`; the old byte-identical logo paths remain for saved links.
 
 Approved public wording is documented in [TERMINOLOGY.md](TERMINOLOGY.md). Cabin details link to `/services/` through the router so service browsing returns to the originating cabin.
+
+Accommodation copy uses `description` for the approved multi-line introduction and `type` for the approved short copy. Cabin map cards use the same short copy as `share-pages.json`. Keep original cabin cards and specifications intact and preserve the no-comma wording.

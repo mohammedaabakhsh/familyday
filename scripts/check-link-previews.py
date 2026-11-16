@@ -13,8 +13,7 @@ ROOT=Path(__file__).resolve().parents[1]
 BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8051'
 pages=json.loads((ROOT/'share-pages.json').read_text())+json.loads((ROOT/'share-extras.json').read_text())
 by_path={p['path']:p for p in pages}
-TITLE_ONLY={'/stay/ground-floor/','/stay/upper-floor/','/chalet/details/'}
-assert {p['path'] for p in pages if not p['description']}==TITLE_ONLY
+assert all(p['description'] for p in pages), 'Every entry now has its approved short description'
 assert all(p['title'].strip() for p in pages)
 class Document(HTMLParser):
  def __init__(self):super().__init__();self.meta={};self.images=[];self.schema=[];self.in_schema=False
