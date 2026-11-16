@@ -53,8 +53,12 @@ window.FD_GUEST_SOURCE = (function () {
       var card=node(doc,'#tarfihi-opt-'+key);
       games.packages[key]={name:text(card,'.tg-package-name'),price:number(text(card,'.tg-package-price')),description:text(card,'.tg-package-description')};
     });
-    var hospitality={title:text(doc,'#hd-tab-hospitality'),intro:text(doc,'#hd-hospitality-panel .hd-intro'),packages:[]};
-    hospitality.packages=Array.from(doc.querySelectorAll('#hd-hospitality-panel .hd-package')).map(function(card){
+    var hospitalityPanel=node(doc,'#hd-hospitality-panel');
+    // Follow the service content's heading, independently of navigation tabs.
+    var hospitalityHeading=doc.getElementById(hospitalityPanel.getAttribute('aria-labelledby'));
+    if(!hospitalityHeading) throw new Error('Missing hospitality heading');
+    var hospitality={title:hospitalityHeading.textContent.trim(),intro:text(hospitalityPanel,'.hd-intro'),packages:[]};
+    hospitality.packages=Array.from(hospitalityPanel.querySelectorAll('.hd-package')).map(function(card){
       var description=card.querySelector('.hd-package-description'),note=card.querySelector('.hd-package-note');
       var name=text(card,'.hd-package-name');
       return {id:name,name:name,price:number(text(card,'.hd-package-price')),contents:list(card,'.hd-item span:last-child'),

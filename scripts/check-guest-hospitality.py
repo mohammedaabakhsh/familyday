@@ -73,11 +73,15 @@ with sync_playwright() as p:
     # Restored drafts never supply prices or unknown products; names and contents stay source-backed.
     ctx=browser.new_context()
     modified=(ROOT/'index.html').read_text().replace('59 <span>ريال للباقة</span>','63 <span>ريال للباقة</span>').replace('تبخير المكان بالعود','تفصيل ضيافة محدث')
+    # External orders must follow the content heading even when navigation markup changes.
+    assert 'id="hd-tab-hospitality"' not in modified
+    modified=modified.replace('id="hospitality-title" class="hd-title"','id="hospitality-source-heading" class="hd-title"').replace('aria-labelledby="hospitality-title"','aria-labelledby="hospitality-source-heading"')
     ctx.route('**/index.html',lambda r:r.fulfill(body=modified,content_type='text/html'))
     draft={'hospitality':{'الضيافة السعودية':2,'ضيافة الاسترخاء':-1,'الضيافة العائلية':100,'غير موجودة':1},'price':1}
     ctx.add_init_script('sessionStorage.setItem("familyday.guest-orders.v2",'+json.dumps(json.dumps(draft))+')')
     page=ctx.new_page();page.goto(BASE+'/guest-services/#hospitality',wait_until='networkidle')
     expect(page.locator('#hospitality-service')).to_be_visible()
+    assert page.evaluate('(async()=> (await FD_GUEST_SOURCE.load()).hospitality.title)()')=='الضيافة'
     assert page.locator('#order-total').inner_text()=='126'
     assert 'تفصيل ضيافة محدث' in page.locator('.hospitality-package').first.text_content()
     ctx.close()

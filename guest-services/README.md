@@ -2,7 +2,7 @@
 
 The page uses one shared service dialog with a draft selection. Applying commits only the active service; cancel, Escape and backdrop dismissal discard its draft. Resort services and restaurant orders keep separate totals and WhatsApp recipients.
 
-Hospitality is read from `#hd-hospitality-panel` in the main `/index.html` by `service-source.js`. Package names, prices, inclusions and usage notes are not duplicated. Each package supports quantities, expandable contents, basket editing/removal and restoration from session storage. Restored quantities are validated against the live catalogue; saved prices and unknown names are ignored. Cinema remains in the existing guest ordering flow.
+Hospitality is read from `#hd-hospitality-panel` in the main `/index.html` by `service-source.js`. The panel’s `aria-labelledby` identifies its source heading; do not read its title from navigation tabs. Package names, prices, inclusions and usage notes are not duplicated. Each package supports quantities, expandable contents, basket editing/removal and restoration from session storage. Restored quantities are validated against the live catalogue; saved prices and unknown names are ignored. Cinema remains in the existing guest ordering flow.
 
 `/guest-services/#hospitality` and `#cinema` open the relevant dialog. Legacy guide links redirect here. WhatsApp actions only prepare a draft; they do not send a message automatically.
 
