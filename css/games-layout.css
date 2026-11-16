@@ -30,3 +30,5 @@
 #tarfihi-detail .tg-notes-list { font-size:12px;line-height:1.8;color:#9cb4c0; }
 #tarfihi-detail .tg-notes-list li { padding:0; }
 #tarfihi-detail .tg-notes-list li::before { display:none; }
+
+#tarfihi-detail .tg-intro{margin:12px 0 0;font-size:13px;line-height:1.7;color:#a7c1cc;}

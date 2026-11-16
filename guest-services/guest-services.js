@@ -462,6 +462,7 @@
     var hours=document.getElementById('restaurant-hours');
     if(hours) hours.textContent=catalog.restaurantHours;
     document.querySelector('#water-service .section-note').textContent='وزّع الألعاب بين الكبار والصغار';
+    document.querySelector('#games-service .games-intro').textContent=catalog.games.intro;
     document.querySelector('#games-service .contents-title').textContent=isChalet ? 'الألعاب المشمولة في الباقة' : 'الألعاب المشمولة في الباقتين';
     if(time){
       document.getElementById('cinema-duration').textContent=catalog.cinema.duration;

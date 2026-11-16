@@ -47,7 +47,7 @@ window.FD_GUEST_SOURCE = (function () {
       price:number(text(doc,'.cn-price')),duration:text(doc,'.cn-stat dd'),
       contentsTitle:text(doc,'#cn-inclusions-title'),contents:list(doc,'.cn-inclusions li'),notes:list(doc,'.cn-notes-list li'),
       times:Array.from(doc.querySelectorAll('#order-time option')).filter(function(option){return !!option.value;}).map(function(option){return {value:option.value,label:option.textContent.trim()};})};
-    var games={title:text(doc,'.tg-title'),contentsTitle:text(doc,'#tg-games-title'),
+    var games={title:text(doc,'.tg-title'),intro:text(doc,'.tg-intro'),contentsTitle:text(doc,'#tg-games-title'),
       contents:list(doc,'.tg-games li'),notes:list(doc,'.tg-notes-list li'),packages:{}};
     ['box','table'].forEach(function(key){
       var card=node(doc,'#tarfihi-opt-'+key);
