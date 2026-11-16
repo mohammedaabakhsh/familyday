@@ -2,6 +2,7 @@
 (function(){
   ['grid','grid2'].forEach(function(gridId){
   const grid=document.getElementById(gridId);
+  const resort=gridId==='grid';
   const noun=gridId==='grid2'?'القسم':'الكوخ';
   const controls=document.createElement('div');
   controls.className='fd-carousel-controls';
@@ -19,14 +20,14 @@
     previous.disabled=selected===0;next.disabled=selected===cards.length-1;
   }
   function update(){
-    if(!cards.length||desktop.matches)return;
+    if(!cards.length||desktop.matches||resort)return;
     const box=grid.getBoundingClientRect(), center=box.left+box.width/2;
     let distance=Infinity;
     cards.forEach((card,i)=>{const r=card.getBoundingClientRect(), d=Math.abs(r.left+r.width/2-center);if(d<distance){distance=d;selected=i;}});
     paint();
   }
   function go(index,instant){
-    if(desktop.matches||index<0||index>=cards.length||!grid.clientWidth)return;
+    if(resort||desktop.matches||index<0||index>=cards.length||!grid.clientWidth)return;
     // Keep layout callbacks aligned with the requested card, before scroll settles.
     clearTimeout(timer);selected=index;paint();
     const box=grid.getBoundingClientRect(), r=cards[index].getBoundingClientRect();
@@ -35,8 +36,8 @@
   function setup(){
     cards=Array.from(grid.querySelectorAll(':scope > .fd-cabin-card-v2:not(.hidden)'));
     const enabled=cards.length>0;
-    grid.classList.toggle('fd-carousel',enabled);controls.hidden=!enabled||desktop.matches;
-    controls.style.display=enabled&&!desktop.matches?'flex':'none';
+    grid.classList.toggle('fd-carousel',enabled);controls.hidden=!enabled||desktop.matches||resort;
+    controls.style.display=enabled&&!desktop.matches&&!resort?'flex':'none';
     if(!enabled)return;
     grid.setAttribute('role','region');grid.setAttribute('aria-label',gridId==='grid2'?'تصفح أقسام الاستراحة':'تصفح الأكواخ');
     selected=0;previous.disabled=true;next.disabled=cards.length<2;
@@ -46,7 +47,7 @@
   previous.onclick=()=>go(selected-1);next.onclick=()=>go(selected+1);
   grid.addEventListener('scroll',()=>{clearTimeout(timer);timer=setTimeout(update,90);},{passive:true});
   grid.addEventListener('keydown',event=>{
-    if(!desktop.matches && (event.key==='ArrowLeft'||event.key==='ArrowRight')){
+    if(!resort && !desktop.matches && (event.key==='ArrowLeft'||event.key==='ArrowRight')){
       event.preventDefault();go(selected+(event.key==='ArrowLeft'?1:-1));
     }
   });

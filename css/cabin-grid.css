@@ -1,0 +1,41 @@
+/* Keep the existing resort cards; use vertical browsing on phones and tablets. */
+#app #sharedGarden[hidden]{display:none!important}
+@media(max-width:899px){
+  #app .grid-section:has(#grid.fd-carousel){padding-inline:16px!important}
+  #app #grid.fd-carousel{
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;
+    width:100%;max-width:none;margin:0;padding:4px 0 8px;
+    overflow:visible;scroll-snap-type:none;scroll-padding:0;
+    align-items:stretch;
+  }
+  #app #grid.fd-carousel>.card:not(.hidden){
+    width:100%;min-width:0;max-width:none;flex:none;
+  }
+  #app #grid.fd-carousel .card-img-wrap{width:100%;aspect-ratio:1/1}
+  #app #grid.fd-carousel .fd-cabin-card-v2-body{padding:10px 8px;flex:1}
+  #app #grid.fd-carousel .card-name{font-size:17px;line-height:1.4;overflow-wrap:break-word}
+  #app #grid.fd-carousel .fd-cabin-card-v2-heading{margin-bottom:8px}
+  #app #grid.fd-carousel .fd-cabin-card-v2-heading>div{min-width:0}
+  #app #grid.fd-carousel .fd-cabin-card-v2-facts{margin-bottom:8px}
+  #app #grid.fd-carousel .fd-cabin-card-v2-fact{padding:4px 2px}
+  #app #grid .fd-card-actions{flex-wrap:wrap;gap:6px}
+  #app #grid .fd-card-actions .card-btn{flex-basis:100%;min-height:44px}
+  #app #grid .fd-card-compare{flex:1 0 100%;min-height:44px}
+  #app #grid .fd-dome-tour-link{padding-inline:5px;font-size:13px;text-align:center;line-height:1.5}
+  #app #sharedGarden.fd-carousel{
+    display:block;width:100%;max-width:none;margin:16px auto 0;padding:0;
+    overflow:visible;scroll-snap-type:none;scroll-padding:0;
+    scroll-margin-block-start:8px;
+  }
+  #app #sharedGarden.fd-carousel>.card{
+    width:100%;max-width:none;min-width:0;flex:none;
+  }
+  #app #sharedGarden .card-img-wrap{width:100%;aspect-ratio:1/1}
+  #app #sharedGarden .card-name{font-size:20px;line-height:1.5}
+  #app #sharedGarden .card-btn{min-height:44px}
+  #app.fd-comparing .grid-section{padding-bottom:160px!important}
+}
+@media(max-width:360px){
+  #app .grid-section:has(#grid.fd-carousel){padding-inline:12px!important}
+  #app #grid.fd-carousel{gap:10px}
+}

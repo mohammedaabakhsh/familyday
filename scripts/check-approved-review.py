@@ -26,7 +26,7 @@ with sync_playwright() as p:
         assert all(0<=b['x'] and b['x']+b['width']<=width for b in boxes)
         page.screenshot(path=f'/tmp/review-destinations-{width}.png')
         page.goto(BASE+'/cabins/',wait_until='networkidle')
-        assert page.locator('#grid .card-img-wrap img').evaluate_all('(els)=>els.length===13&&els.every(e=>!!e.alt)')
+        assert page.locator('#app .grid-section .card-img-wrap img').evaluate_all('(els)=>els.length===13&&els.every(e=>!!e.alt)')
         assert page.locator('#grid .fd-dome-tour-link').all_text_contents()[:12]==['استكشف الكوخ من الداخل ←']*12
         # Lounge availability must survive descriptive copy changes.
         page.evaluate("data.resort.items.find(c=>c.id===2).features.indoor=[];FD_CABIN_COMPARE.show([2,4])")

@@ -167,7 +167,11 @@ function renderResortCardSummary(c){
 var _curFilter='all';
 function render(f='all',type){
   type=type||curSection;
+  const mobileGrid=matchMedia('(max-width:899px)').matches;
+  if(mobileGrid && f==='shared') f='all';
   _curFilter=f;
+  const garden=document.getElementById('sharedGarden');
+  garden.replaceChildren();garden.hidden=true;
   const g=document.getElementById('grid');g.innerHTML='';
   const items=data[type].items;
 
@@ -202,10 +206,10 @@ ${c.id===8?'<a class="fd-dome-tour-link" href="/rustic-tour/?cabin=8" onclick="e
       </div>`;
     g.appendChild(d);
   });
-  // Always add shared garden card to grid (never filtered out)
+  // On mobile the garden remains independently available below every room filter.
   if((type||curSection)==='resort'){
     var c12=data.resort.items.find(function(x){return x.id===11;});
-    if(c12 && (f==='shared' || f==='all')){
+    if(c12 && (mobileGrid || f==='shared' || f==='all')){
       var gl12=GALLERY[11]||[];
       var d12=document.createElement('div');
       d12.className='card fd-cabin-card-v2';
@@ -215,7 +219,12 @@ ${c.id===8?'<a class="fd-dome-tour-link" href="/rustic-tour/?cabin=8" onclick="e
         +'<div class="card-body fd-cabin-card-v2-body">'+renderResortCardSummary(c12)
         +'<button class="card-btn">عرض التفاصيل والصور</button>'
         +'<a class="fd-dome-tour-link" href="https://my.matterport.com/show/?m=S7Z2CF9tdwm" onclick="event.preventDefault();event.stopPropagation();open3D(this.href)">جولة ثلاثية الأبعاد للحديقة <span aria-hidden="true">←</span></a></div>';
-      g.appendChild(d12);
+      if(mobileGrid){
+        var title=d12.querySelector('.card-name');
+        title.id='fd-shared-garden-title';
+        title.textContent='الحديقة المشتركة لجميع ضيوف المنتجع';
+        garden.appendChild(d12);garden.hidden=false;
+      } else g.appendChild(d12);
     }
   }
   FD_CABIN_COMPARE.sync();
@@ -414,7 +423,7 @@ function openM(id,type){
 var _navItems=[];var _navIdx=0;var _navType='';
 
 function filteredCabinItems(items,filter){
-  if(filter==='all') return items.slice();
+  if(filter==='all') return items.filter(function(c){return c.id!==11 || matchMedia('(min-width:900px)').matches;});
   if(filter==='1'||filter==='2') return items.filter(function(c){return c.rooms===Number(filter);});
   if(filter==='shared') return items.filter(function(c){return c.id===11;});
   return items.filter(function(c){return c.id!==11;});
@@ -599,5 +608,17 @@ function closeServices(){
   document.querySelectorAll('.bnav-btn').forEach(function(b){b.classList.remove('active');});
 }
 document.querySelectorAll('.fbtn').forEach(b=>{
-  b.addEventListener('click',function(){render(this.dataset.f)});
+  b.addEventListener('click',function(){
+    if(this.dataset.f==='shared' && matchMedia('(max-width:899px)').matches){
+      var garden=document.getElementById('sharedGarden');
+      if(!garden.hidden) garden.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
+      return;
+    }
+    render(this.dataset.f);
+  });
+});
+
+// Move the garden between the mobile footer and the original desktop grid on resize.
+matchMedia('(max-width:899px)').addEventListener('change',function(){
+  if(document.getElementById('app').classList.contains('show')) render(_curFilter,curSection);
 });
