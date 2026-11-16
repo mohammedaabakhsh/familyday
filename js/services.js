@@ -41,6 +41,7 @@ function closeHospitalityDetail(){
 }
 function showHospitalityTab(tab){
   if(['hospitality','coordination'].indexOf(tab)===-1) tab='hospitality';
+  document.querySelector('#hospitality-detail .hd-title').textContent=tab==='coordination' ? 'التنسيقات' : 'الضيافة';
   ['hospitality','coordination'].forEach(function(key){
     var selected=key===tab;
     var panel=document.getElementById('hd-'+key+'-panel');

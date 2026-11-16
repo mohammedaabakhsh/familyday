@@ -31,6 +31,30 @@
   #services-overlay[data-venue="chalet"] .svcs-content>section{grid-column:1/-1}
   #services-overlay[data-venue="chalet"] .svcs-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 
+  /* Keep the five occasion links spacious without a tall mobile-style list. */
+  @media (min-width:1200px){
+    #services-overlay:not([data-venue="chalet"]) .svcs-content{
+      grid-template-columns:minmax(0,1fr) minmax(0,1.2fr) minmax(0,1fr);
+      grid-template-areas:"food preparation rewards" "fun preparation rewards";
+      gap:20px;
+    }
+    #services-overlay:not([data-venue="chalet"]) [aria-labelledby="svcs-group-0"]{grid-area:food}
+    #services-overlay:not([data-venue="chalet"]) [aria-labelledby="svcs-group-1"]{grid-area:fun}
+    #services-overlay:not([data-venue="chalet"]) [aria-labelledby="svcs-group-2"]{grid-area:preparation}
+    #services-overlay:not([data-venue="chalet"]) [aria-labelledby="svcs-group-3"]{grid-area:rewards;align-self:start}
+    #services-overlay .svcs-card{padding:12px 14px}
+    #services-overlay .svcs-card .svcs-name{font-size:17px}
+  }
+  @media (max-width:1199px){
+    #services-overlay .svcs-header{padding:24px 24px 18px}
+    #services-overlay .svcs-content{padding:0 24px 24px;gap:16px}
+    #services-overlay .svcs-content>section{padding:16px}
+    #services-overlay .svcs-section-title{margin-bottom:12px}
+    #services-overlay .svcs-card{min-height:56px;padding:9px 12px}
+    #services-overlay .svcs-card .svcs-name{font-size:16px}
+    #services-overlay .svcs-description{font-size:12.5px;line-height:1.4}
+  }
+
   /* Package photography stays complete and comfortably within the viewport. */
   #hospitality-detail .hd-shell,#setups-detail .setups-shell,#tarfihi-detail .tg-shell{padding:36px 32px 48px}
   #hospitality-detail .hd-tabs,#setups-detail .setups-tabs{max-width:640px;margin:24px 0}

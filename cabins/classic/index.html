@@ -50,10 +50,10 @@
 <link href="resort-home.css?v=20261104-back-button-v1" rel="stylesheet">
 <link rel="preload" as="script" href="js/app-shell.js?v=20261108-chalet-services-v1">
 <link rel="preload" as="script" href="js/gallery-data.js?v=20261112-stay-photo-labels-v2">
-<link rel="preload" as="script" href="js/accommodations.js?v=20261110-description-order-v2">
-<link rel="preload" as="script" href="js/services.js?v=20261112-menu-focus-v1">
+<link rel="preload" as="script" href="js/accommodations.js?v=20261116-service-links-v1">
+<link rel="preload" as="script" href="js/services.js?v=20261116-service-pages-v1">
 <link rel="preload" as="script" href="js/stay-navigation.js?v=20261107-final-batch-v1">
-<link rel="preload" as="script" href="js/router.js?v=20261110-destination-loading-v2">
+<link rel="preload" as="script" href="js/router.js?v=20261116-service-routes-v1">
 <link rel="stylesheet" href="css/app-base.css?v=20261106-seating-controls-v7">
 <link rel="stylesheet" href="resort-map.css?v=20261106-fixed-selection-v4">
 <style id="fd-home-map-shortcut">
@@ -539,8 +539,8 @@
     <section aria-labelledby="svcs-group-0">
       <h2 id="svcs-group-0" class="svcs-section-title">طعام ومشروبات</h2>
       <div class="svcs-grid svcs-grid--single">
-        <button type="button" class="svcs-card" onclick="openMenuDetail()" aria-label="المطعم">
-          <span class="svcs-name">المطعم</span>
+        <button type="button" class="svcs-card" onclick="openMenuDetail()" aria-label="المطعم" aria-describedby="svcs-menu-description">
+          <span class="svcs-copy"><span class="svcs-name">المطعم</span><span class="svcs-description" id="svcs-menu-description">تصفّح قائمة الطعام والمشروبات</span></span>
           <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
         </button>
       </div>
@@ -548,27 +548,39 @@
     <section aria-labelledby="svcs-group-1">
       <h2 id="svcs-group-1" class="svcs-section-title">ترفيه</h2>
       <div class="svcs-grid">
-        <button type="button" class="svcs-card" onclick="showTarfihi()" aria-label="الألعاب الترفيهية">
-          <span class="svcs-name">الألعاب الترفيهية</span>
+        <button type="button" class="svcs-card" onclick="showTarfihi()" aria-label="الألعاب الترفيهية" aria-describedby="svcs-games-description">
+          <span class="svcs-copy"><span class="svcs-name">الألعاب الترفيهية</span><span class="svcs-description" id="svcs-games-description">استمتع بوقتك مع ألعابنا الترفيهية</span></span>
           <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
         </button>
-        <button type="button" class="svcs-card" onclick="showMaiya()" aria-label="الألعاب المائية">
-          <span class="svcs-name">الألعاب المائية</span>
+        <button type="button" class="svcs-card" onclick="showMaiya()" aria-label="الألعاب المائية" aria-describedby="svcs-water-description">
+          <span class="svcs-copy"><span class="svcs-name">الألعاب المائية</span><span class="svcs-description" id="svcs-water-description">استمتع بألعاب مائية للكبار والصغار</span></span>
           <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
         </button>
       </div>
     </section>
     <section aria-labelledby="svcs-group-2">
       <h2 id="svcs-group-2" class="svcs-section-title">تجهيز مناسبتك</h2>
-      <div class="svcs-grid">
-        <button type="button" class="svcs-card" onclick="showTansidat()" aria-label="الضيافة والتنسيقات">
-          <span class="svcs-name">الضيافة والتنسيقات</span>
+      <div class="svcs-grid svcs-grid--preparation">
+        <a class="svcs-card" href="/services/hospitality/packages/" onclick="return openPreparationService(event,'hospitality')" aria-label="الضيافة" aria-describedby="svcs-hospitality-description">
+          <span class="svcs-copy"><span class="svcs-name">الضيافة</span><span class="svcs-description" id="svcs-hospitality-description">اختر باقة الضيافة المناسبة لك</span></span>
           <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
-        </button>
-        <button type="button" class="svcs-card" onclick="openSetupsDetail()" aria-label="الجلسات والتجهيزات" aria-describedby="svcs-setups-description">
-          <span class="svcs-copy"><span class="svcs-name">الجلسات والتجهيزات</span><span class="svcs-description" id="svcs-setups-description">سينما، طاولات طعام، جلسات خارجية</span></span>
+        </a>
+        <a class="svcs-card" href="/services/coordination/" onclick="return openPreparationService(event,'coordination')" aria-label="التنسيقات" aria-describedby="svcs-coordination-description">
+          <span class="svcs-copy"><span class="svcs-name">التنسيقات</span><span class="svcs-description" id="svcs-coordination-description">تجهيزات متكاملة لمناسباتكم</span></span>
           <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
-        </button>
+        </a>
+        <a class="svcs-card" href="/services/cinema/" onclick="return openPreparationService(event,'cinema')" aria-label="السينما" aria-describedby="svcs-cinema-description">
+          <span class="svcs-copy"><span class="svcs-name">السينما</span><span class="svcs-description" id="svcs-cinema-description">استمتع بتجربة سينما في مساحتك الخاصة</span></span>
+          <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+        </a>
+        <a class="svcs-card" href="/services/dining-tables/" onclick="return openPreparationService(event,'dining')" aria-label="طاولات الطعام" aria-describedby="svcs-dining-description">
+          <span class="svcs-copy"><span class="svcs-name">طاولات الطعام</span><span class="svcs-description" id="svcs-dining-description">طاولات طعام تجمعكم في مساحتكم الخاصة</span></span>
+          <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+        </a>
+        <a class="svcs-card" href="/services/outdoor-seating/" onclick="return openPreparationService(event,'seating')" aria-label="الجلسات الخارجية" aria-describedby="svcs-seating-description">
+          <span class="svcs-copy"><span class="svcs-name">الجلسات الخارجية</span><span class="svcs-description" id="svcs-seating-description">جلسات تجمعكم في مساحتكم الخارجية الخاصة</span></span>
+          <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+        </a>
       </div>
     </section>
     <section aria-labelledby="svcs-group-3">
@@ -582,8 +594,8 @@
           <span class="svcs-copy"><span class="svcs-name">شارك واربح</span><span class="svcs-description">صوّر تجربتك وأرسلها لنا</span></span>
           <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
         </button>
-        <button type="button" class="svcs-card svcs-reward" onclick="showWalaa()" aria-label="بطاقة الولاء">
-          <span class="svcs-name">بطاقة الولاء</span>
+        <button type="button" class="svcs-card svcs-reward" onclick="showWalaa()" aria-label="بطاقة الولاء" aria-describedby="svcs-loyalty-description">
+          <span class="svcs-copy"><span class="svcs-name">بطاقة الولاء</span><span class="svcs-description" id="svcs-loyalty-description">استمتع بمزايا بطاقة الولاء</span></span>
           <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
         </button>
       </div>
@@ -696,7 +708,7 @@
     <button type="button" class="hd-back" onclick="closeHospitalityDetail()" aria-label="العودة إلى الخدمات">
       <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-    <h1 class="hd-title">الضيافة والتنسيقات</h1>
+    <h1 class="hd-title">الضيافة</h1>
   </div>
 
   <div class="hd-tabs" role="tablist" aria-label="الضيافة والتنسيقات">
@@ -1590,7 +1602,7 @@
 <script src="service-data.js?v=20261109-cinema-shared-v17"></script>
 <script src="resort-data.js?v=20261107-final-batch-v1"></script>
 <script src="js/gallery-data.js?v=20261112-stay-photo-labels-v2"></script>
-<script src="js/accommodations.js?v=20261110-description-order-v2"></script>
+<script src="js/accommodations.js?v=20261116-service-links-v1"></script>
 
 
 <!-- FULLSCREEN GALLERY -->
@@ -1625,7 +1637,7 @@
 
 <script src="services-guide/guide-gallery.js?v=20261109-gallery-lifecycle-v3"></script>
 <script src="js/dining-cards.js?v=20261109-dining-selection-v3"></script>
-<script src="js/services.js?v=20261112-menu-focus-v1"></script>
+<script src="js/services.js?v=20261116-service-pages-v1"></script>
 <script src="js/seating-cart.js?v=20261108-seating-summary-v3"></script>
 
 
@@ -1884,10 +1896,10 @@
 <script src="dome-gallery.js?v=20261112-chalet-photo-labels-v1"></script>
 
 <link rel="stylesheet" href="service-sections.css?v=20261107-package-disclosure-v1">
-<script src="service-sections.js?v=20261103-splash-motion-v1"></script>
+<script src="service-sections.js?v=20261116-service-titles-v1"></script>
 <script src="js/shared-specifications.js?v=20261107-stay-faq-v3"></script>
 <script src="venue-data.js?v=20261107-approved-previews-v1"></script>
-<script src="js/router.js?v=20261110-destination-loading-v2"></script>
+<script src="js/router.js?v=20261116-service-routes-v1"></script>
 <script src="resort-map-data.js?v=20261106-greek-label-v3" defer></script>
 <script src="resort-map.js?v=20261107-final-batch-v1" defer></script>
 <link rel="stylesheet" href="chalet-map.css?v=20261107-bedroom-floor-v3">
@@ -1898,7 +1910,7 @@
 <link rel="stylesheet" href="resort-ui.css?v=20261107-final-batch-v1">
 <link rel="stylesheet" href="css/service-mobile.css?v=20261106-seating-selection-v6">
 <link rel="stylesheet" href="css/seating-cards.css?v=20261109-seating-summary-v6">
-<link rel="stylesheet" href="css/services-index.css?v=20261108-chalet-services-v1">
+<link rel="stylesheet" href="css/services-index.css?v=20261116-service-index-v1">
 <link rel="stylesheet" href="/css/rewards-layout.css?v=20261106-unified-v1">
 <link rel="stylesheet" href="stay-ui.css?v=20261107-comparison-toggle-v4">
 <link rel="stylesheet" href="chalet-ui.css?v=9">
@@ -2004,6 +2016,6 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 </style>
 <script id="fd-mobile-cabin-map-position" src="js/cabin-toolbar.js?v=20261102-structure-v1"></script>
 
-<link rel="stylesheet" href="/css/desktop-layout.css?v=20261110-desktop-v1" media="screen and (min-width:1024px)">
+<link rel="stylesheet" href="/css/desktop-layout.css?v=20261116-service-index-v1" media="screen and (min-width:1024px)">
 </body>
 </html><!-- test Fri Jul 17 17:12:00 +03 2026 -->

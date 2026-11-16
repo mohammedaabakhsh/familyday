@@ -25,11 +25,8 @@
     if(legacy[name]){args=[legacy[name]];name='setups';}
     if(name==='hospitality' && args && args[0]==='packages'){name='setups';args=['cinema'];}
     var tabs={hospitality:['hospitality','coordination'],setups:['cinema','dining','seating']};
-    var overview=tabs[name] && (!args || tabs[name].indexOf(args[0])===-1);
-    if(tabs[name]) args=[overview ? tabs[name][0] : args[0]];
+    if(tabs[name]) args=[args && tabs[name].indexOf(args[0])!==-1 ? args[0] : tabs[name][0]];
     var r = {name:name,args:args || []};
-    // Group links keep their general preview; selecting a tab uses its own share URL.
-    if(overview) r.overview=true;
     if(parent) r.parent = parent;
     else if(name==='home') r.parent = route('dest');
     else if(name==='services') r.parent = route('home',[r.args[0]==='chalet' ? 'chalet' : 'resort']);
@@ -54,7 +51,7 @@
     return 'resort';
   }
   function shareKey(r){
-    var specific=(['services','maiya','tarfihi'].indexOf(r.name)!==-1 && r.args[0]==='chalet') || ['home','contact','cabin'].indexOf(r.name)!==-1 || (['hospitality','setups'].indexOf(r.name)!==-1 && !r.overview);
+    var specific=(['services','maiya','tarfihi'].indexOf(r.name)!==-1 && r.args[0]==='chalet') || ['home','contact','cabin'].indexOf(r.name)!==-1 || (['hospitality','setups'].indexOf(r.name)!==-1);
     return r.name + (specific ? '='+r.args[0] : '');
   }
   function sharePage(r){
@@ -314,11 +311,18 @@
     navigate(route(name,[],current));
     return false;
   };
+  window.openPreparationService=function(event,name){
+    var targets={hospitality:['hospitality','hospitality'],coordination:['hospitality','coordination'],cinema:['setups','cinema'],dining:['setups','dining'],seating:['setups','seating']};
+    if(event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || current.name!=='services' || !targets[name]) return true;
+    event.preventDefault();
+    navigate(route(targets[name][0],[targets[name][1]],current));
+    return false;
+  };
   window.openCabinService=function(event,name){
     if(event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return true;
-    if(current.name!=='cabin' || ['menu','jalsat','tawilat','sinema','tarfihi','maiya','hospitality'].indexOf(name)===-1) return true;
+    if(current.name!=='cabin' || ['menu','jalsat','tawilat','sinema','tarfihi','maiya','hospitality','coordination'].indexOf(name)===-1) return true;
     event.preventDefault();
-    navigate(route(name,[],current));
+    navigate(name==='coordination' ? route('hospitality',['coordination'],current) : route(name,[],current));
     return false;
   };
   wrapOpen('openFS',function(imgs,index,sourceId){return route('photos',[imgs,index || 0,sourceId == null ? null : sourceId],current);});

@@ -25,6 +25,7 @@
   var initialized = {};
   window.openSetupsDetail = function (tab) {
     tab = sections[tab] ? tab : 'cinema';
+    document.getElementById('setups-title').textContent=sections[tab].label;
     shell.classList.remove('hide');
     Object.keys(sections).forEach(function (key) {
       var selected=key===tab;

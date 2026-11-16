@@ -113,13 +113,6 @@ window.FD_SHARE_PAGES = [
     "entry": true
   },
   {
-    "route": "hospitality",
-    "path": "/services/hospitality/",
-    "title": "الضيافة والتنسيقات | منتجع يوم العائلة",
-    "description": "ضيافة وتنسيقات تناسب مناسبتك",
-    "entry": true
-  },
-  {
     "route": "hospitality=hospitality",
     "path": "/services/hospitality/packages/",
     "title": "الضيافة | منتجع يوم العائلة",
@@ -131,13 +124,6 @@ window.FD_SHARE_PAGES = [
     "path": "/services/coordination/",
     "title": "التنسيقات | منتجع يوم العائلة",
     "description": "تجهيزات متكاملة لمناسباتكم",
-    "entry": true
-  },
-  {
-    "route": "setups",
-    "path": "/services/setups/",
-    "title": "الجلسات والتجهيزات | منتجع يوم العائلة",
-    "description": "استمتع بجلستك في مساحتك الخاصة",
     "entry": true
   },
   {

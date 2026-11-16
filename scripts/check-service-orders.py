@@ -39,7 +39,7 @@ with sync_playwright() as p:
    actual=parse_qs(url.query)['text'][0];assert actual==expected,(actual,expected)
    page.wait_for_selector('#order-popup',state='hidden')
   visit('/services/games/')
-  assert page.locator('.tg-games li').count()==7
+  assert page.locator('.tg-games li').all_text_contents()==['جاكارو','سيكونس','شطرنج','ضومنة','لعبة لا تقول','ورق بلوت']
   for option,label,price in [('box','بوكس الألعاب',50),('table','طاولة مع بوكس الألعاب',150)]:
    page.locator('#tarfihi-opt-'+option).click()
    checkout('.tg-order-button','الألعاب الترفيهية',f'الباقة: {label}\nالإجمالي: {price} ريال',reload=True)
@@ -60,6 +60,7 @@ with sync_playwright() as p:
    for cake in [False,True]:
     page.evaluate('()=>{_jalsatCart=[];saveJalsatCart();renderJalsatCart()}')
     card=page.locator('#jalsat-card-'+str(i))
+    if card.get_attribute('open') is None:card.locator('summary').click()
     toggle=card.locator('.jl-addon-option')
     if (toggle.get_attribute('aria-pressed')=='true')!=cake:toggle.click()
     card.locator('.jl-order-button').click()
@@ -70,7 +71,7 @@ with sync_playwright() as p:
     checkout('#jalsat-checkout','الجلسات الخارجية',details,reload=True)
     assert page.locator('#jalsat-cart-total').inner_text()==f'{total} ريال'
     assert page.evaluate('_jalsatCart')==[{'index':i,'quantity':1,'cakes':int(cake)}]
-  visit('/services/hospitality/')
+  visit('/services/hospitality/packages/')
   assert page.locator('#hospitality-detail a[href*="wa.me"]').count()==0
   assert page.locator('#hospitality-detail .hd-package-note').count()==7
   assert page.locator('#hospitality-detail .hd-package').count()==9

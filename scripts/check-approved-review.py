@@ -42,7 +42,7 @@ with sync_playwright() as p:
             if 'dome' in path:
                 assert 'صالة جلوس مدمجة مع غرفة النوم' in page.locator('#mBody').text_content()
                 assert not page.locator('#mBody').evaluate('(e)=>/\\b(?:cm|m)\\b/.test(e.innerText)')
-        page.goto(BASE+'/services/hospitality/',wait_until='networkidle')
+        page.goto(BASE+'/services/hospitality/packages/',wait_until='networkidle')
         assert page.locator('#hospitality-detail .hd-package').count()==9
         assert page.locator('#hospitality-detail a[href*="wa.me"]').count()==0
         assert page.locator('#hospitality-detail .hd-package-note').count()==7

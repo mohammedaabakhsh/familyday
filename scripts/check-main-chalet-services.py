@@ -36,7 +36,7 @@ with sync_playwright() as p:
   click('#services-overlay button[onclick="showTarfihi()"]');route('/chalet/services/games/')
   assert page.locator('#tarfihi-opt-table').is_hidden()
   assert page.locator('#tg-games-title').inner_text()=='الألعاب المشمولة في الباقة'
-  assert page.locator('.tg-games li').count()==7
+  assert page.locator('.tg-games li').all_text_contents()==['جاكارو','سيكونس','شطرنج','ضومنة','لعبة لا تقول','ورق بلوت']
   page.evaluate("selectTarfihiOpt('table')")
   assert page.locator('.tg-order-button').is_disabled()
   assert page.evaluate("serviceOrderDetails({type:'games',option:'table'},false)") is None
@@ -66,7 +66,7 @@ with sync_playwright() as p:
   # Switching venue restores its own selections and its full list of services.
   page.evaluate("showServices()")
   route('/services/')
-  assert page.locator('#services-overlay .svcs-card:visible').count()==8
+  assert page.locator('#services-overlay .svcs-card:visible').count()==11
   page.evaluate('showTarfihi()');route('/services/games/')
   assert page.locator('#tarfihi-opt-table').is_visible()
   click('#tarfihi-opt-table');click('.tg-order-button')
