@@ -322,6 +322,8 @@ ${c.id===8?'<a class="fd-pyramid-detail-tour" href="/rustic-tour/?from=details&c
       </section>
 
 
+      ${(c.id===3 || c.id===9)?'<section class="fd-cabin-section fd-cabin-combined-note"><h3>حجز الكوخين معًا</h3><div class="fd-cabin-instructions"><p>يمكن ربط كوخ رويال والكوخ الكلاسيكي عبر باب داخلي عند حجزهما معًا، بسعة إجمالية تصل إلى ' + resortCombinedGuests() + ' ضيفًا.</p></div></section>':''}
+
       <div class="fd-cabin-services-footer"><a class="fd-cabin-services-link" href="/services/" onclick="return openCabinService(event,'services')">تصفّح خدمات المنتجع <span aria-hidden="true">←</span></a></div>
       <div class="fd-cabin-faq-footer"><a class="fd-cabin-faq-link" href="/resort/faq/" onclick="return openAccommodationFaq(event,'faq')">الأسئلة الشائعة <span aria-hidden="true">←</span></a></div>
     </section>`;

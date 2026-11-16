@@ -60,7 +60,12 @@ with sync_playwright() as p:
     label=title.locator('.fd-cabin-title-suitability')
     assert label.inner_text()=='('+suitable+')'
     assert label.evaluate('e=>getComputedStyle(e).color')=='rgb(25, 196, 201)'
-   assert page.locator('#mBody .fd-cabin-combined-note').count()==0
+   combined=page.locator('#mBody .fd-cabin-combined-note')
+   assert combined.count()==(1 if unit['id'] in [3,9] else 0)
+   if unit['id'] in [3,9]:
+    assert '35 ضيفًا' in combined.inner_text()
+    assert combined.locator('xpath=preceding-sibling::section[1]/h3').inner_text()=='مميزات الإقامة'
+    assert combined.locator('xpath=following-sibling::div[1]').get_attribute('class')=='fd-cabin-services-footer'
    if unit['id']==11:
     assert page.locator('.fd-cabin-feature').filter(has_text='الوصول:').count()==1
     assert page.locator('#mBody .fd-cabin-instructions').count()==0
