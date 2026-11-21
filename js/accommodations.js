@@ -248,6 +248,43 @@ function renderAccommodationTitle(name,suitable){
   return '<span>'+name+'</span>'+(suitable?' <span class="fd-cabin-title-suitability">('+suitable+')</span>':'');
 }
 
+// Dome 1 pilot: keep the existing specification boxes and only wrap their sections.
+function renderDomeDetailSections(content){
+  const template=document.createElement('template');
+  template.innerHTML=content;
+  const root=template.content.querySelector('.fd-cabin-content');
+  const titles={'المنطقة الداخلية':'داخل الكوخ','المنطقة الخارجية':'المنطقة الخارجية والمسبح'};
+  const sections=Array.from(root.querySelectorAll('.fd-cabin-section'));
+  sections.forEach(function(section,index){
+    const heading=section.querySelector('h3');
+    heading.textContent=titles[heading.textContent]||heading.textContent;
+    const accordion=document.createElement('details');
+    accordion.className='fd-cabin-section fd-cabin-accordion';
+    accordion.open=index===0;
+    const summary=document.createElement('summary');
+    summary.appendChild(heading);
+    accordion.appendChild(summary);
+    while(section.firstChild) accordion.appendChild(section.firstChild);
+    section.replaceWith(accordion);
+  });
+  const information=document.createElement('details');
+  information.className='fd-cabin-section fd-cabin-accordion';
+  const summary=document.createElement('summary');
+  const heading=document.createElement('h3');
+  heading.textContent='معلومات الإقامة';
+  summary.appendChild(heading);
+  information.appendChild(summary);
+  information.appendChild(root.querySelector('.fd-cabin-times'));
+  const note=document.createElement('div');
+  note.className='fd-cabin-instructions';
+  const paragraph=document.createElement('p');
+  paragraph.textContent='مسابح الأكواخ مخصصة للكبار، ويسمح للأطفال باستخدامها تحت إشراف ذويهم طوال الوقت';
+  note.appendChild(paragraph);
+  information.appendChild(note);
+  root.insertBefore(information,root.querySelector('.fd-cabin-services-footer'));
+  return template.innerHTML;
+}
+
 function renderCabinDetail(c){
   const depthUnit='سم';
   const indoor=c.features.indoor.concat(c.bathroomDetails || [c.bathroom===1?'حمام واحد':c.bathroom===2?'حمامان':c.bathroom+' حمامات']);
@@ -268,7 +305,7 @@ function renderCabinDetail(c){
     }).join('');
   };
 
-  return `
+  const content = `
     <section class="fd-cabin-content" data-cabin-id="${c.id}" aria-labelledby="fd-cabin-detail-title">
       <div class="fd-cabin-heading">
         <div class="fd-cabin-heading-copy">
@@ -327,6 +364,7 @@ ${c.id===8?'<a class="fd-pyramid-detail-tour" href="/rustic-tour/?from=details&c
       <div class="fd-cabin-services-footer"><a class="fd-cabin-services-link" href="/services/" onclick="return openCabinService(event,'services')">تصفّح خدمات المنتجع <span aria-hidden="true">←</span></a></div>
       <div class="fd-cabin-faq-footer"><a class="fd-cabin-faq-link" href="/resort/faq/" onclick="return openAccommodationFaq(event,'faq')">الأسئلة الشائعة <span aria-hidden="true">←</span></a></div>
     </section>`;
+  return c.id===1?renderDomeDetailSections(content):content;
 }
 
 function renderSharedGardenDetail(c){

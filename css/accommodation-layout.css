@@ -189,6 +189,28 @@
 }
 #ov.fd-cabin-modern .modal-bottom-bar{border-top:1px solid rgba(49,81,95,.65);background:#071a28;}
 #ov.fd-cabin-modern :is(.fd-cabin-nav button,.mbtn):focus-visible{outline:2px solid #7ecfea;outline-offset:3px;}
+/* Dome 1 section controls leave the existing specification grids unchanged. */
+#ov.fd-cabin-modern .fd-cabin-content>details.fd-cabin-section.fd-cabin-accordion{
+  margin:0;padding:0;border:0;border-bottom:1px solid rgba(49,89,103,.65);
+}
+#ov.fd-cabin-modern .fd-cabin-accordion>summary{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  min-height:52px;padding:10px 2px;box-sizing:border-box;list-style:none;cursor:pointer;
+}
+#ov.fd-cabin-modern .fd-cabin-accordion>summary::-webkit-details-marker{display:none;}
+#ov.fd-cabin-modern .fd-cabin-accordion>summary::after{
+  content:"";flex:none;width:8px;height:8px;margin-inline:8px;
+  border-right:2px solid #8bc4d1;border-bottom:2px solid #8bc4d1;transform:rotate(45deg);
+}
+#ov.fd-cabin-modern .fd-cabin-accordion[open]>summary::after{transform:rotate(225deg);}
+#ov.fd-cabin-modern .fd-cabin-accordion>summary h3{margin:0;}
+#ov.fd-cabin-modern .fd-cabin-accordion>summary:focus-visible{
+  outline:2px solid #7ecfea;outline-offset:2px;border-radius:6px;
+}
+#ov.fd-cabin-modern .fd-cabin-content>details.fd-cabin-accordion[open]{padding-bottom:18px;}
+#ov.fd-cabin-modern .fd-cabin-accordion[open]>summary{margin-bottom:8px;}
+#ov.fd-cabin-modern .fd-cabin-accordion>.fd-cabin-times{margin-bottom:0;}
+#ov.fd-cabin-modern .fd-cabin-accordion+.fd-cabin-services-footer{margin-top:24px;}
 @media(max-width:360px){
   #ov.fd-cabin-modern .fd-cabin-nav{gap:6px;padding-inline:8px;}
   .fd-cabin-nav-controls{gap:4px;}
