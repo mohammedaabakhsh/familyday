@@ -248,19 +248,18 @@ function renderAccommodationTitle(name,suitable){
   return '<span>'+name+'</span>'+(suitable?' <span class="fd-cabin-title-suitability">('+suitable+')</span>':'');
 }
 
-// Dome 1 pilot: keep the existing specification boxes and only wrap their sections.
-function renderDomeDetailSections(content){
+// Keep existing cabin specification boxes and wrap only the main sections.
+function renderCabinDetailSections(content){
   const template=document.createElement('template');
   template.innerHTML=content;
   const root=template.content.querySelector('.fd-cabin-content');
   const titles={'المنطقة الداخلية':'داخل الكوخ','المنطقة الخارجية':'المنطقة الخارجية والمسبح'};
-  const sections=Array.from(root.querySelectorAll('.fd-cabin-section'));
-  sections.forEach(function(section,index){
+  const sections=Array.from(root.querySelectorAll('.fd-cabin-section:not(.fd-cabin-combined-note)'));
+  sections.forEach(function(section){
     const heading=section.querySelector('h3');
     heading.textContent=titles[heading.textContent]||heading.textContent;
     const accordion=document.createElement('details');
     accordion.className='fd-cabin-section fd-cabin-accordion';
-    accordion.open=index===0;
     const summary=document.createElement('summary');
     summary.appendChild(heading);
     accordion.appendChild(summary);
@@ -364,7 +363,7 @@ ${c.id===8?'<a class="fd-pyramid-detail-tour" href="/rustic-tour/?from=details&c
       <div class="fd-cabin-services-footer"><a class="fd-cabin-services-link" href="/services/" onclick="return openCabinService(event,'services')">تصفّح خدمات المنتجع <span aria-hidden="true">←</span></a></div>
       <div class="fd-cabin-faq-footer"><a class="fd-cabin-faq-link" href="/resort/faq/" onclick="return openAccommodationFaq(event,'faq')">الأسئلة الشائعة <span aria-hidden="true">←</span></a></div>
     </section>`;
-  return c.id===1?renderDomeDetailSections(content):content;
+  return renderCabinDetailSections(content);
 }
 
 function renderSharedGardenDetail(c){
