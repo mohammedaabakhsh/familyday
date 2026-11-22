@@ -456,9 +456,37 @@ function closeWalaaDetail(){
     if (!summary) return;
     summary.querySelector('span').textContent = 'الصور وتفاصيل الباقة';
     summary.setAttribute('aria-label', 'الصور وتفاصيل ' + heading.textContent.trim());
-    summary.insertAdjacentHTML('afterend', FD_GUIDE_GALLERY.markup(
+    summary.insertAdjacentHTML('afterend', '<div class="fd-package-share-row"><button type="button" class="fd-package-share">مشاركة الباقة</button><span class="fd-package-share-status" role="status"></span></div>' + FD_GUIDE_GALLERY.markup(
       _coordinationPhotos[id], heading.textContent.trim(), 'تنسيق باقة ' + heading.textContent.trim()
     ));
+    card.querySelector('.fd-package-share').addEventListener('click',function(){shareCoordinationPackage(id.replace('hd-coordination-package-',''),card);});
     FD_GUIDE_GALLERY.mount(card);
   });
 })();
+
+function coordinationPackageKey(key){
+  return typeof key==='string' && Object.prototype.hasOwnProperty.call(_coordinationPhotos,'hd-coordination-package-'+key) ? 'hd-coordination-package-'+key : null;
+}
+function openCoordinationPackage(key){
+  var id=coordinationPackageKey(key),heading=id && document.getElementById(id);
+  if(!heading) return;
+  var card=heading.closest('.hd-package');card.querySelector('details').open=true;
+  requestAnimationFrame(function(){if(!document.getElementById('hd-coordination-panel').classList.contains('hide')) card.scrollIntoView({block:'start',behavior:'instant'});});
+}
+async function shareCoordinationPackage(key,card){
+  if(!coordinationPackageKey(key)) return;
+  var url=new URL('/services/coordination/',location.origin);url.searchParams.set('package',key);
+  var status=card.querySelector('.fd-package-share-status');status.textContent='';
+  var title=card.querySelector('h2').textContent.trim()+' | منتجع يوم العائلة';
+  try{
+    if(navigator.share){await navigator.share({title:title,url:url.href});return;}
+    await navigator.clipboard.writeText(url.href);status.textContent='تم نسخ رابط الباقة';
+  }catch(error){
+    if(error.name==='AbortError') return;
+    // Match existing copy behaviour without introducing a manual-link dialog.
+    var input=document.createElement('textarea');input.value=url.href;input.style.cssText='position:fixed;opacity:0;pointer-events:none';document.body.appendChild(input);
+    var focused=document.activeElement;input.select();
+    var copied=false;try{copied=document.execCommand('copy');}catch(ignore){}input.remove();
+    if(focused) focused.focus({preventScroll:true});status.textContent=copied?'تم نسخ رابط الباقة':'تعذّرت مشاركة الرابط حاول مرة أخرى';
+  }
+}

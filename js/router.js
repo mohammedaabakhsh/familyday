@@ -25,7 +25,11 @@
     if(legacy[name]){args=[legacy[name]];name='setups';}
     if(name==='hospitality' && args && args[0]==='packages'){name='setups';args=['cinema'];}
     var tabs={hospitality:['hospitality','coordination'],setups:['cinema','dining','seating']};
-    if(tabs[name]) args=[args && tabs[name].indexOf(args[0])!==-1 ? args[0] : tabs[name][0]];
+    if(tabs[name]) {
+      var packageId=name==='hospitality' && args && args[0]==='coordination' && coordinationPackageKey(args[1]) ? args[1] : null;
+      args=[args && tabs[name].indexOf(args[0])!==-1 ? args[0] : tabs[name][0]];
+      if(packageId) args.push(packageId);
+    }
     var r = {name:name,args:args || []};
     if(parent) r.parent = parent;
     else if(name==='home') r.parent = route('dest');
@@ -61,6 +65,8 @@
     var cleanUrl=cleanFamilyDayURL();
     if(['map','chalet-details'].indexOf(cleanUrl.searchParams.get('from'))!==-1) cleanUrl.searchParams.delete('from');
     cleanUrl.searchParams.delete('tab');
+    cleanUrl.searchParams.delete('package');
+    if(r.name==='hospitality' && r.args[0]==='coordination' && r.args[1]) cleanUrl.searchParams.set('package',r.args[1]);
     var base='/'+cleanUrl.search;
     if(r.name==='map') return '/resort-map/'+cleanUrl.search+(r.args.length ? '#map='+r.args[0] : '');
     if(r.name==='chalet-map'){
@@ -108,7 +114,7 @@
     if(match) return route(match[1],[match[2]]);
     if(['sinema','tawilat','jalsat'].indexOf(hash)!==-1) return route(hash);
     match=/^(hospitality|setups)=([a-z]+)$/.exec(hash);
-    if(match) return route(match[1],[match[2]]);
+    if(match) return route(match[1],[match[2],new URLSearchParams(location.search).get('package')]);
     if(hash==='hospitality' || hash==='setups') return route(hash,[new URLSearchParams(location.search).get('tab')]);
     if(['resort','chalet','services','faq','faq2','map','chalet-detail','chalet-faq','chalet-map'].indexOf(hash)!==-1 || serviceViews[hash]) return route(hash);
     return route('dest');
@@ -129,7 +135,7 @@
       case 'chalet-faq': call('showChaletFaq'); break;
       case 'services':
         call('showServices',r.args);
-        document.querySelector('#services-overlay .svcs-back').setAttribute('aria-label',r.parent && r.parent.name==='cabin' ? 'العودة إلى تفاصيل الكوخ' : 'العودة');
+        document.querySelector('#services-overlay .svcs-back').setAttribute('aria-label',r.parent && r.parent.name==='chalet-detail' ? 'العودة إلى تفاصيل الشاليه' : r.parent && r.parent.name==='cabin' ? 'العودة إلى تفاصيل الكوخ' : 'العودة');
         break;
       case 'faq': call('showFaq'); break;
       case 'faq2': call('showFaq2'); break;
@@ -166,6 +172,7 @@
       default:
         if(serviceViews[r.name]) {
           call(serviceViews[r.name][0],r.args);
+          if(r.name==='hospitality' && r.args[0]==='coordination' && r.args[1]) openCoordinationPackage(r.args[1]);
           if(['menu','setups','tarfihi','maiya','hospitality'].indexOf(r.name)!==-1) {
             var back=document.querySelector('#'+r.name+'-detail button[onclick="'+serviceViews[r.name][1]+'()"]');
             if(back) back.setAttribute('aria-label',fdOpenedFromGuestServices() ? 'العودة إلى خدمات إقامتك' : r.parent && r.parent.name==='cabin' ? (r.parent.args[0]===11 ? 'العودة إلى الحديقة' : 'العودة إلى الكوخ') : 'العودة إلى الخدمات');
@@ -189,7 +196,7 @@
       var dialog=document.getElementById('fd-map-dialog');
       if(dialog && dialog.open) dialog.close();
     } else if(close[r.name]) {
-      call(close[r.name],r.name==='services' ? [!!r.parent && r.parent.name==='cabin'] : []);
+      call(close[r.name],r.name==='services' ? [!!r.parent && ['cabin','chalet-detail'].indexOf(r.parent.name)!==-1] : []);
       if((r.name==='cabin' || r.name==='tour') && r.parent && r.parent.name==='map') document.dispatchEvent(new CustomEvent('fd-map-resume'));
     }
     else if(serviceViews[r.name]) {
@@ -320,6 +327,10 @@
     event.preventDefault();
     navigate(route(targets[name][0],[targets[name][1]],current));
     return false;
+  };
+  window.openChaletService=function(event){
+    if(event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || current.name!=='chalet-detail') return true;
+    event.preventDefault();navigate(route('services',['chalet'],current));return false;
   };
   window.openCabinService=function(event,name){
     if(event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return true;

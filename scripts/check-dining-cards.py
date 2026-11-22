@@ -23,7 +23,13 @@ with sync_playwright() as p:
    assert panel.locator('.fd-dining-inclusions li').all_text_contents()==page.evaluate('_tawilatInclusions')
    assert panel.locator('.fd-dining-option-desc').all_text_contents()==['طاولات وكراسي فقط','طاولات وكراسي مع تجهيز الطاولة']
    hero=panel.locator('.dining-shared-photo');table=panel.locator('.fd-dining-table');info=panel.locator('.fd-dining-info')
-   assert hero.bounding_box()['y']+hero.bounding_box()['height']<=table.bounding_box()['y']
+   if width<1024:
+    assert hero.bounding_box()['y']+hero.bounding_box()['height']<=table.bounding_box()['y']
+   else:
+    # Both existing desktop layouts place the photo beside the price table.
+    image_box=hero.bounding_box();price_box=table.bounding_box()
+    assert image_box['y']<=price_box['y']<image_box['y']+image_box['height']
+    assert image_box['x']>=price_box['x']+price_box['width'] or price_box['x']>=image_box['x']+image_box['width']
    assert table.bounding_box()['y']+table.bounding_box()['height']<=info.bounding_box()['y']
    assert table.bounding_box()['height']<410
    assert hero.locator('.fd-dining-caption').inner_text()=='الصورة توضح التجهيز مع التنسيق'

@@ -191,3 +191,27 @@ despite identical decoded RGBA data. Future optimizations must preserve dimensio
 source pixels and browser rendering. Do not use older artwork or lossy variants.
 `imgs/sec2_3-enhanced-20261122.webp` is an enhanced version of the existing slide
 photo, not a newly photographed original; the source `imgs/sec2_3.webp` is retained.
+
+The second approved 2026-11-22 review adds filename-based resort photo captions
+without reordering or replacing photos. `js/image-feedback.js` supplies loading
+and exact-source retry overlays for accommodation galleries and illustrated
+explorations; map loaders retain their own retry handlers. It does not change
+image-fetching strategy. Inactive fullscreen slides are inert so offscreen retry
+controls cannot receive focus.
+
+Each coordination package can be shared from its expanded details, above the
+photos. Links use `/services/coordination/?package=KEY`, where KEY is the validated
+suffix of its existing `hd-coordination-package-KEY` catalogue heading. Direct
+entry and reload open and scroll to that package. Existing five service links
+and text-only preview metadata remain unchanged. Chalet details link to their
+own `/chalet/services/` catalogue and retain their detail parent on return.
+
+Only Dome 1's listing details button is a native-link pilot. Keep every other
+listing button unchanged until the owner reviews and authorizes wider rollout.
+The share-page build also generates `sitemap.xml` and `robots.txt` from canonical
+public routes; guest ordering portals, aliases and prototypes are not listed.
+
+Run `python3 scripts/check-final-review-batch.py http://127.0.0.1:8023` to verify
+package URLs/sharing/history, captions, chalet return, FAQs, the limited pilot,
+photo retry and sitemap scope. Add `--feedback-only` after the base URL to check
+loading/failure/retry recovery independently.

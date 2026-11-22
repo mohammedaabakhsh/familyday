@@ -199,7 +199,7 @@
     photoDialog.innerHTML =
       '<div class="fd-map-photo-header"><h2 id="fd-map-photo-title"></h2>' +
         '<button type="button" class="fd-map-photo-close" aria-label="إغلاق الصور والعودة إلى الخريطة" autofocus>' + closeIcon + '</button></div>' +
-      '<div class="fd-map-photo-stage"><img class="fd-map-photo-image" alt="" decoding="async" draggable="false">' +
+      '<div class="fd-map-photo-stage"><span class="fd-map-loading" role="status">جارٍ تحميل الصورة</span><img class="fd-map-photo-image" alt="" decoding="async" draggable="false">' +
         '<div class="fd-map-photo-error" role="status" hidden><p>تعذّر تحميل الصورة.</p><button type="button" class="fd-map-photo-retry">إعادة المحاولة</button></div></div>' +
       '<div class="fd-map-photo-footer">' +
         '<button type="button" class="fd-map-photo-previous" aria-label="الصورة السابقة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>' +
@@ -611,7 +611,7 @@
       '</div>' +
       '<div class="fd-map-workspace">' +
         '<div class="fd-map-viewport" tabindex="0" aria-label="خريطة تفاعلية؛ كبّر ثم اسحب للاستكشاف، أو استخدم الأسهم للتحريك">' +
-          '<div class="fd-map-plane"><img class="fd-map-image" width="1254" height="1254" alt="توزيع أكواخ المنتجع من الأعلى" draggable="false" decoding="async"></div>' +
+          '<span class="fd-map-loading" role="status">جارٍ تحميل الصورة</span><div class="fd-map-plane"><img class="fd-map-image" width="1254" height="1254" alt="توزيع أكواخ المنتجع من الأعلى" draggable="false" decoding="async"></div>' +
           '<div class="fd-map-error" role="status" hidden><p>تعذّر تحميل الخريطة.</p><button type="button" class="fd-map-tool fd-map-retry">إعادة المحاولة</button></div>' +
         '</div>' +
         '<aside class="fd-map-panel" aria-label="معلومات الموقع المختار">' +

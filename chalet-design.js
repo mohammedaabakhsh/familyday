@@ -113,6 +113,7 @@ function renderPrivateChaletDetail(){
     + '<div class="fd-cabin-times" aria-label="أوقات الدخول والخروج"><div><span>الدخول</span><strong>4:00 مساءً</strong></div><div><span>الخروج</span><strong>12:00 ظهرًا</strong></div></div>'
     + '<div class="fd-cabin-instructions"><p>' + chaletCapacityNote() + '</p><p>يُسمح للأطفال باستخدام المسبح تحت إشراف ذويهم طوال الوقت</p></div>'
     + '</details>'
+    + '<div class="fd-cabin-services-footer"><a class="fd-cabin-services-link" href="/chalet/services/" onclick="return openChaletService(event)">تصفّح خدمات الشاليه <span aria-hidden="true">←</span></a></div>'
     + '<div class="fd-cabin-faq-footer"><a class="fd-cabin-faq-link" href="/chalet/faq/" onclick="return openAccommodationFaq(event,\'chalet-faq\')">الأسئلة الشائعة <span aria-hidden="true">←</span></a></div>'
     + '</section>';
 }
@@ -182,6 +183,8 @@ function openPrivateChalet(){
       "id": "chalet-faq-facilities",
       "title": "المرافق والخدمات",
       "items": [
+        {"question":"هل سعة الضيوف المذكورة للاستقبال أم للمبيت؟","answer":"السعة المذكورة توضح عدد الضيوف المسموح باستقبالهم ولا تعني توفر سرير لكل ضيف<br>تفاصيل غرف النوم والأسرّة موضحة في مواصفات الشاليه"},
+        {"question":"كم عدد الحمامات في الشاليه؟","answer":"يضم الشاليه 3 حمامات<br>حمام في الدور الأرضي وحمام خاص بغرفة النوم الرئيسية وحمام بالمجلس المستقل"},
         {
           "question": "كم عدد الضيوف في الشاليه؟",
           "answer": chaletCapacityNote()

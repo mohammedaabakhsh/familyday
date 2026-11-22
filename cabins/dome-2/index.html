@@ -49,11 +49,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link href="resort-home.css?v=20261104-back-button-v1" rel="stylesheet">
 <link rel="preload" as="script" href="js/app-shell.js?v=20261108-chalet-services-v1">
-<link rel="preload" as="script" href="js/gallery-data.js?v=20261122-approved-review-v1">
-<link rel="preload" as="script" href="js/accommodations.js?v=20261122-approved-review-v1">
-<link rel="preload" as="script" href="js/services.js?v=20261116-reviewed-copy-v3">
+<link rel="preload" as="script" href="js/gallery-data.js?v=20261122-final-review-v1">
+<link rel="preload" as="script" href="js/accommodations.js?v=20261122-final-review-v1">
+<link rel="preload" as="script" href="js/services.js?v=20261122-final-review-v1">
 <link rel="preload" as="script" href="js/stay-navigation.js?v=20261107-final-batch-v1">
-<link rel="preload" as="script" href="js/router.js?v=20261116-cabin-services-return-v1">
+<link rel="preload" as="script" href="js/router.js?v=20261122-final-review-v1">
 <link rel="stylesheet" href="css/app-base.css?v=20261106-seating-controls-v7">
 <link rel="stylesheet" href="resort-map.css?v=20261106-fixed-selection-v4">
 <style id="fd-home-map-shortcut">
@@ -500,7 +500,8 @@
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">15. هل تتوفر غرفة سائق؟</div>
       <div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">يمكن طلب غرفة للسائق حسب التوفر، ويُفضّل طلبها مسبقًا.</div>
     </div>
-    </div>
+    <div><div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">16. هل سعة الضيوف المذكورة للاستقبال أم للمبيت؟</div><div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">السعة المذكورة توضح عدد الضيوف المسموح باستقبالهم ولا تعني توفر سرير لكل ضيف<br>تفاصيل غرف النوم والأسرّة موضحة في مواصفات الكوخ</div></div>
+</div>
    </section>
 
    <section id="faq-resort-services" class="faq-section" aria-labelledby="faq-resort-services-title" hidden>
@@ -1393,6 +1394,7 @@
     </div>
 
 
+<div><div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">12. هل سعة الضيوف المذكورة للاستقبال أم للمبيت؟</div><div style="font-size:13px;color:rgba(255,255,255,0.75);font-family:'Tajawal',sans-serif;line-height:1.7;">السعة المذكورة توضح عدد الضيوف المسموح باستقبالهم ولا تعني توفر سرير لكل ضيف<br>تفاصيل غرف النوم والأسرّة موضحة في مواصفات قسم الاستراحة</div></div>
 </div></section><section id="faq-stay-services" class="faq-section" aria-labelledby="faq-stay-services-title" hidden><h2 id="faq-stay-services-title" class="faq-section-title">التعليمات</h2><div class="faq-grid">
     <div style="background:linear-gradient(160deg,rgba(14,36,58,.95) 0%,rgba(8,22,40,.92) 100%);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(25,167,183,.18);animation:cardBorderBreath 3.2s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.22);">
       <div style="font-size:14px;font-weight:700;color:#7ecfea;font-family:'Tajawal',sans-serif;margin-bottom:6px;">1. هل يُسمح بإحضار سماعات خارجية؟</div>
@@ -1595,8 +1597,8 @@
 
 <script src="service-data.js?v=20261109-cinema-shared-v17"></script>
 <script src="resort-data.js?v=20261122-approved-review-v1"></script>
-<script src="js/gallery-data.js?v=20261122-approved-review-v1"></script>
-<script src="js/accommodations.js?v=20261122-approved-review-v1"></script>
+<script src="js/gallery-data.js?v=20261122-final-review-v1"></script>
+<script src="js/accommodations.js?v=20261122-final-review-v1"></script>
 
 
 <!-- FULLSCREEN GALLERY -->
@@ -1621,7 +1623,9 @@
   </div>
 </div>
 
-<script src="js/fullscreen-gallery.js?v=20261112-chalet-photo-labels-v1"></script>
+<link rel="stylesheet" href="css/image-feedback.css?v=20261122-final-review-v1">
+<script src="js/image-feedback.js?v=20261122-final-review-v1"></script>
+<script src="js/fullscreen-gallery.js?v=20261122-final-review-v1"></script>
 
 
 
@@ -1630,8 +1634,8 @@
 <div class="tag-tooltip" id="tag-tooltip"></div>
 
 <script src="services-guide/guide-gallery.js?v=20261109-gallery-lifecycle-v3"></script>
-<script src="js/dining-cards.js?v=20261109-dining-selection-v3"></script>
-<script src="js/services.js?v=20261116-reviewed-copy-v3"></script>
+<script src="js/dining-cards.js?v=20261122-final-review-v1"></script>
+<script src="js/services.js?v=20261122-final-review-v1"></script>
 <script src="js/seating-cart.js?v=20261108-seating-summary-v3"></script>
 
 
@@ -1887,18 +1891,18 @@
 </div>
 
 <script src="js/stay-navigation.js?v=20261107-final-batch-v1"></script>
-<script src="chalet-design.js?v=20261122-approved-review-v1"></script>
-<script src="dome-gallery.js?v=20261112-chalet-photo-labels-v1"></script>
+<script src="chalet-design.js?v=20261122-final-review-v1"></script>
+<script src="dome-gallery.js?v=20261122-final-review-v1"></script>
 
 <link rel="stylesheet" href="service-sections.css?v=20261116-independent-services-v2">
 <script src="service-sections.js?v=20261116-terms-v1"></script>
 <script src="js/shared-specifications.js?v=20261107-stay-faq-v3"></script>
 <script src="venue-data.js?v=20261107-approved-previews-v1"></script>
-<script src="js/router.js?v=20261116-cabin-services-return-v1"></script>
+<script src="js/router.js?v=20261122-final-review-v1"></script>
 <script src="resort-map-data.js?v=20261122-approved-review-v1" defer></script>
-<script src="resort-map.js?v=20261116-approved-descriptions-v1" defer></script>
+<script src="resort-map.js?v=20261122-final-review-v1" defer></script>
 <link rel="stylesheet" href="chalet-map.css?v=20261107-bedroom-floor-v3">
-<script src="chalet-map.js?v=20261122-approved-review-v1" defer></script>
+<script src="chalet-map.js?v=20261122-final-review-v1" defer></script>
 
 <link rel="stylesheet" href="css/accommodation-layout.css?v=20261122-approved-review-v1">
 
@@ -1972,11 +1976,11 @@ html[data-fd-keyboard-mode] :is(button, a, [data-fd-keyboard], input, select, te
 #ov.fd-cabin-modern .fd-cabin-heading:has(.fd-cabin-occupancy){display:block}
 #ov.fd-cabin-modern .fd-cabin-occupancy + .fd-cabin-suitable{margin-top:7px}
 </style>
-<link rel="stylesheet" href="site-ui.css?v=20261107-all-faq-copy-v3">
+<link rel="stylesheet" href="site-ui.css?v=20261122-final-review-v1">
 <link rel="stylesheet" href="css/home-review.css?v=20261107-aligned-v2">
 <link rel="stylesheet" href="css/contact-layout.css?v=20261106-brand-footer-v3">
 <link rel="stylesheet" href="css/resort-faq.css?v=20261106-all-v2">
-<link rel="stylesheet" href="css/dining-cards.css?v=20261110-dining-description-v6">
+<link rel="stylesheet" href="css/dining-cards.css?v=20261122-final-review-v1">
 <link rel="stylesheet" href="css/cinema-layout.css?v=20261109-cinema-photo-v5">
 <link rel="stylesheet" href="css/games-layout.css?v=20261116-shared-games-intro-v1">
 <link rel="stylesheet" href="css/water-layout.css?v=20261116-approved-services-v1">

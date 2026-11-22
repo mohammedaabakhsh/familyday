@@ -127,6 +127,7 @@ var FD_DOME_GALLERY = (function () {
       img.src = src;img.alt = cabin.name + ' — ' + (label || 'صورة ' + (i+1));img.draggable = false;
       img.width = 1200;img.height = 1200;img.decoding = 'async';
       slide.appendChild(img);track.appendChild(slide);
+      FD_IMAGE_FEEDBACK.watch(img,slide,slide);
       slide.addEventListener('click', function () {openFS(sources.slice(), i, cabin.id);});
       return slide;
     });

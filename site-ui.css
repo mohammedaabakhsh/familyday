@@ -239,3 +239,13 @@
  #contest-detail .sw-heading{align-items:flex-start}
  #contest-detail .sw-title{min-width:0;white-space:normal;margin-top:6.6px}
 }
+
+/* Native-link pilot uses exactly the existing button presentation. */
+#grid a.card-btn{text-decoration:none;line-height:normal;text-align:center;}
+
+/* Package sharing lives inside the expanded details, above its original photos. */
+.fd-package-share-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:12px 0;}
+.fd-package-share{padding:6px 12px;min-height:36px;border:1px solid #315967;border-radius:8px;background:transparent;color:#a4d8df;font:700 13px/1.5 Tajawal,sans-serif;cursor:pointer;}
+.fd-package-share:focus-visible{outline:2px solid #8fd5e4;outline-offset:3px;}
+.fd-package-share-status{color:#a4d8df;font:400 13px/1.5 Tajawal,sans-serif;}
+#hd-coordination-panel .hd-package{scroll-margin-top:80px;}

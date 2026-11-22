@@ -188,7 +188,7 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
       </div>
       <div class="card-body fd-cabin-card-v2-body">
         ${renderResortCardSummary(c)}
-        <div class="fd-card-actions"><button class="card-btn">عرض التفاصيل والصور</button>${FD_CABIN_COMPARE.cardButton(c)}</div>
+        <div class="fd-card-actions">${c.id===1 ? '<a class="card-btn" href="/cabins/dome-1/" onclick="event.stopPropagation();if(!event.button &amp;&amp; !event.metaKey &amp;&amp; !event.ctrlKey &amp;&amp; !event.shiftKey &amp;&amp; !event.altKey){event.preventDefault();openM(1,&quot;resort&quot;);}">عرض التفاصيل والصور</a>' : '<button class="card-btn">عرض التفاصيل والصور</button>'}${FD_CABIN_COMPARE.cardButton(c)}</div>
         ${(c.id===1||c.id===12)?'<a class="fd-dome-tour-link" href="/dome-tour/?cabin='+c.id+'" onclick="event.stopPropagation()">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
 ${c.id===2?'<a class="fd-dome-tour-link" href="/pyramid-tour/" onclick="event.stopPropagation()">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
 ${(c.id===4||c.id===13)?'<a class="fd-dome-tour-link" href="/greek-tour/?cabin='+c.id+'" onclick="event.stopPropagation()">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}

@@ -111,6 +111,12 @@ def main():
         outputs[path] = render_entry(template, page, venues) if page.get('entry') else render_metadata(path.read_text(), page)
     # Legacy alias keeps the same preview as the canonical guest link.
     outputs[ROOT / 'guest-services.html'] = render_metadata((ROOT / 'guest-services.html').read_text(), next(p for p in extras if p['path'] == '/guest-services/'))
+    # Publish only canonical public catalogues, accommodation and tour pages.
+    # Guest ordering portals, aliases and noindex prototypes are intentionally absent.
+    public = pages + [p for p in extras if p['path'] in ['/', '/services-guide/'] or p['path'].endswith('-tour/')]
+    locations = sorted({'https://familydaystay.com' + p['path'] for p in public})
+    outputs[ROOT / 'sitemap.xml'] = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join('  <url><loc>' + html.escape(url) + '</loc></url>\n' for url in locations) + '</urlset>\n'
+    outputs[ROOT / 'robots.txt'] = 'User-agent: *\nAllow: /\n\nSitemap: https://familydaystay.com/sitemap.xml\n'
     stale = []
     for path, contents in outputs.items():
         if args.check:

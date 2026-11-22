@@ -82,6 +82,7 @@ var FD_TOUR_COMMON = (function () {
   function drawLines(root, parts, layout) {
     if(!root || !root.isConnected) return;
     var stage=root.querySelector('.dt-stage'), image=root.querySelector('.dt-image');
+    FD_IMAGE_FEEDBACK.watch(image,stage);
     var box=stage.getBoundingClientRect(), im=image.getBoundingClientRect();
     if(!box.width || !im.height) return;
     root.querySelector('.dt-lines').setAttribute('viewBox','0 0 '+box.width+' '+box.height);

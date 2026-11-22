@@ -154,6 +154,114 @@ moveGalleryCover(10,'panorama_2.webp');
 
 // Photo labels are keyed by source filename, so reordering photos cannot mislabel them.
 var GALLERY_LABELS = {
+  1: {
+    'dome_1.webp': 'الجلسة الخارجية',
+    'dome_2.webp': 'الدوم والمسبح',
+    'dome_3.webp': 'المسبح وكراسي التشميس',
+    'dome_4.webp': 'المنطقة الخارجية والمسبح',
+    'dome_5.webp': 'المسبح',
+    'dome_6.webp': 'غرفة النوم والصالة',
+    'dome_7.webp': 'غرفة النوم',
+    'dome_8.webp': 'الحمام'
+  },
+  2: {
+    'harami_1.webp': 'الجلسة الخارجية',
+    'harami_2.webp': 'واجهة الكوخ',
+    'harami_3.webp': 'المنطقة الخارجية والمسبح',
+    'harami_4.webp': 'الجلسة الخارجية',
+    'harami_5.webp': 'الصالة الداخلية وطاولة الطعام',
+    'harami_6.webp': 'ركن المطبخ',
+    'harami_7.webp': 'غرفة النوم',
+    'harami_8.webp': 'الحمام'
+  },
+  3: {
+    'classic_1.webp': 'المسبح وكراسي التشميس',
+    'classic_2.webp': 'واجهة الكوخ والمسبح',
+    'classic_3.webp': 'الجلسة الخارجية',
+    'classic_4.webp': 'المنطقة الخارجية',
+    'classic_5.webp': 'الصالة الداخلية الواسعة',
+    'classic_6.webp': 'الصالة الداخلية',
+    'classic_7.webp': 'غرفة النوم',
+    'classic_8.webp': 'الحمام'
+  },
+  4: {
+    'greek_1.webp': 'المسبح',
+    'greek_2.webp': 'واجهة الكوخ',
+    'greek_3.webp': 'واجهة الكوخ والمسبح',
+    'greek_4.webp': 'المنطقة الخارجية',
+    'greek_5.webp': 'الجلسة الخارجية',
+    'greek_6.webp': 'الصالة الداخلية',
+    'greek_7.webp': 'غرفة النوم الرئيسية',
+    'greek_8.webp': 'غرفة النوم الثانية',
+    'greek_9.webp': 'الحمام'
+  },
+  5: {
+    'palm_1.webp': 'الجلسة الخارجية والمسبح',
+    'palm_2.webp': 'واجهة الكوخ والمسبح',
+    'palm_3.webp': 'المنطقة الخارجية والمسبح',
+    'palm_4.webp': 'المنطقة الخارجية',
+    'palm_5.webp': 'الأرجوحة الخارجية',
+    'palm_6.webp': 'الصالة الداخلية وطاولة الطعام',
+    'palm_7.webp': 'غرفة النوم الرئيسية',
+    'palm_8.webp': 'غرفة النوم الثانية',
+    'palm_9.webp': 'الحمام'
+  },
+  6: {
+    'boho_1.webp': 'الجلسة الخارجية والمسبح',
+    'boho_2.webp': 'واجهة الكوخ والمسبح',
+    'boho_3.webp': 'المنطقة الخارجية والمسبح',
+    'boho_4.webp': 'الجلسة الخارجية',
+    'boho_5.webp': 'الصالة الداخلية وطاولة الطعام',
+    'boho_6.webp': 'طاولة الطعام وركن المطبخ',
+    'boho_7.webp': 'غرفة النوم الرئيسية',
+    'boho_8.webp': 'غرفة النوم الثانية',
+    'boho_9.webp': 'الحمام'
+  },
+  7: {
+    'french_1.webp': 'واجهة الكوخ والحديقة',
+    'french_2.webp': 'المنطقة الخارجية والمسبح',
+    'french_3.webp': 'واجهة الكوخ',
+    'french_4.webp': 'الجلسة الخارجية',
+    'french_5.webp': 'الصالة الداخلية',
+    'french_6.webp': 'الصالة الداخلية',
+    'french_7.webp': 'غرفة النوم الرئيسية',
+    'french_8.webp': 'غرفة النوم الثانية',
+    'french_9.webp': 'الحمام'
+  },
+  8: {
+    'rural_1.webp': 'واجهة الكوخ',
+    'rural_2.webp': 'واجهة الكوخ والمسبح',
+    'rural_3.webp': 'المنطقة الخارجية والمسبح',
+    'rural_4.webp': 'الجلسة الخارجية',
+    'rural_5.webp': 'الصالة الداخلية',
+    'rural_6.webp': 'الصالة الداخلية',
+    'rural_7.webp': 'غرفة النوم الرئيسية',
+    'rural_8.webp': 'غرفة النوم الثانية',
+    'rural_9.webp': 'الحمام'
+  },
+  9: {
+    'royal_1.webp': 'الجلسة الخارجية',
+    'royal_2.webp': 'واجهة الكوخ والجلسة الخارجية',
+    'royal_3.webp': 'الحديقة الخاصة',
+    'royal_4.webp': 'المسبح والحديقة الخاصة',
+    'royal_5.webp': 'كراسي التشميس',
+    'royal_6.webp': 'الصالة الداخلية الواسعة',
+    'royal_7.webp': 'غرفة النوم الرئيسية',
+    'royal_8.webp': 'غرفة النوم الثانية',
+    'royal_9.webp': 'الحمام'
+  },
+  10: {
+    'panorama_1.webp': 'المسبح',
+    'panorama_2.webp': 'الواجهة الزجاجية والمسبح',
+    'panorama_3.webp': 'الجلسة الخارجية',
+    'panorama_4.webp': 'الصالة الداخلية',
+    'panorama_5.webp': 'طاولة الطعام',
+    'panorama_6.webp': 'ركن المطبخ',
+    'panorama_7.webp': 'غرفة النوم',
+    'panorama_8.webp': 'غرفة النوم والبانيو الداخلي',
+    'panorama_9.webp': 'مغاسل الحمام',
+    'panorama_10.webp': 'دش الحمام'
+  },
   20: {
     'sec1_1.webp': 'مسبح الكبار',
     'sec1_2.webp': 'مسبح الأطفال',
@@ -189,3 +297,7 @@ function galleryPhotoLabel(sourceId, source) {
   var filename = String(source || '').split(/[?#]/)[0].split('/').pop();
   return labels && labels[filename] || '';
 }
+
+// The two units share source photos but retain independent gallery order.
+GALLERY_LABELS[12] = GALLERY_LABELS[1];
+GALLERY_LABELS[13] = GALLERY_LABELS[4];

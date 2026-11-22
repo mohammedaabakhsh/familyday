@@ -41,6 +41,9 @@ var FD_DINING_CARDS = (function(){
   }
   function details(doc){
     var info=source(doc).querySelector('.fd-dining-info').cloneNode(true);
+    if(doc===document) info.querySelectorAll('.fd-dining-option-name').forEach(function(heading){
+      var replacement=node('h2',heading.className,heading.textContent);heading.replaceWith(replacement);
+    });
     _tawilatInclusions.forEach(function(text){info.querySelector('.fd-dining-inclusions').appendChild(node('li','',text));});
     return info;
   }
