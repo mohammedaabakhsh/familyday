@@ -1,4 +1,4 @@
-"""Approved second-review flows: package deep links, chalet return, photo retry and pilot scope."""
+"""Approved second-review flows: package deep links, chalet return, photo retry and native details links."""
 from pathlib import Path
 from urllib.parse import urlparse,parse_qs
 from urllib.request import urlopen
@@ -13,11 +13,11 @@ with sync_playwright() as p:
  for width in ([] if '--feedback-only' in sys.argv else [320,390,1440]):
   page=b.new_page(viewport={'width':width,'height':900},reduced_motion='reduce');errors=[]
   page.on('pageerror',lambda e:errors.append(str(e)))
-  # Only Dome 1's details button is a native link, with modifier-aware behaviour.
+  # Details links are native across the resort; keep modifier-aware navigation.
   page.goto(BASE+'/cabins/',wait_until='networkidle')
-  assert page.locator('#grid a.card-btn').count()==1
-  assert page.locator('#grid button.card-btn').count()==12
-  link=page.locator('#grid a.card-btn');assert link.get_attribute('href')=='/cabins/dome-1/'
+  assert page.locator('#grid a.card-btn').count()==13
+  assert page.locator('#grid button.card-btn').count()==0
+  link=page.locator('#grid a.card-btn').first;assert link.get_attribute('href')=='/cabins/dome-1/'
   page.evaluate('window.modifiedPrevented=null;document.querySelector("a.card-btn").addEventListener("click",e=>{window.modifiedPrevented=e.defaultPrevented;e.preventDefault()},{once:true})')
   link.dispatch_event('click',{'ctrlKey':True,'button':0})
   assert page.evaluate('window.modifiedPrevented') is False and page.url.endswith('/cabins/')
@@ -76,7 +76,7 @@ with sync_playwright() as p:
    assert 'تفاصيل غرف النوم والأسرّة موضحة في مواصفات '+noun in panel.text_content()
    if venue=='chalet':assert 'يضم الشاليه 3 حمامات' in panel.text_content()
   assert not errors,errors
-  print(width,'PASS package links/share/reload/Back, all captions, chalet return, FAQs and one-button pilot',flush=True)
+  print(width,'PASS package links/share/reload/Back, all captions, chalet return, FAQs and native details links',flush=True)
   page.close()
  # Feedback: pending and failed image, exact-source retry, fullscreen retry, existing map retries.
  page=b.new_page(viewport={'width':390,'height':844},reduced_motion='reduce');failed=set()

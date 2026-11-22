@@ -1,0 +1,13 @@
+/* Same compact icon as accommodation details, opposite the back/title group. */
+#ov .dt-heading.fd-exploration-heading{padding-inline-end:0;position:relative;}
+.fd-exploration-heading{position:relative;}
+.fd-exploration-heading :is(.dt-heading-copy,.cm-heading-copy){min-width:0;flex:1;}
+.fd-exploration-share{box-sizing:border-box;display:flex;align-items:center;justify-content:center;flex:0 0 36px;width:36px;height:36px;min-height:36px;margin:4px 0;margin-inline-start:auto;padding:7px;border:1px solid #315967;border-radius:10px;background:transparent;color:#a9ccd5;cursor:pointer;touch-action:manipulation;position:relative;}
+.fd-exploration-share::before{content:"";position:absolute;inset:-4px;}
+.fd-exploration-share svg{display:block;width:20px;height:20px;flex:none;}
+.fd-exploration-share:disabled{opacity:.5;}
+.fd-exploration-share:focus-visible{outline:2px solid #8fc3cf;outline-offset:3px;}
+.fd-exploration-share-status{position:absolute;inset-inline-end:0;top:100%;z-index:10;max-width:90%;padding:5px 9px;border-radius:6px;background:#133343;color:#d7e8ed;font:400 12px/1.6 Tajawal,sans-serif;}
+.fd-exploration-share-status:empty{display:none;}
+.fd-exploration-copy-buffer{position:fixed;inset:0 auto auto 0;opacity:0;pointer-events:none;}
+@media(hover:hover) and (pointer:fine){.fd-exploration-share:hover{background:#133343;}}

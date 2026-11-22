@@ -206,12 +206,22 @@ entry and reload open and scroll to that package. Existing five service links
 and text-only preview metadata remain unchanged. Chalet details link to their
 own `/chalet/services/` catalogue and retain their detail parent on return.
 
-Only Dome 1's listing details button is a native-link pilot. Keep every other
-listing button unchanged until the owner reviews and authorizes wider rollout.
+The owner approved extending the Dome 1 native-link pilot to every resort cabin,
+both rest-house sections and the chalet detail entry. Preserve their canonical
+hrefs and normal router navigation while allowing modified clicks and browser
+link actions. Illustrated cabin tours and the chalet map share their exploration
+URL from the header; Dome 2 and Greek 2 retain their specific cabin query.
+`js/exploration-share.js` provides native sharing with the existing clipboard
+fallback, without return/map context in the shared link.
 The share-page build also generates `sitemap.xml` and `robots.txt` from canonical
 public routes; guest ordering portals, aliases and prototypes are not listed.
 
 Run `python3 scripts/check-final-review-batch.py http://127.0.0.1:8023` to verify
-package URLs/sharing/history, captions, chalet return, FAQs, the limited pilot,
+package URLs/sharing/history, captions, chalet return, FAQs, native detail links,
 photo retry and sitemap scope. Add `--feedback-only` after the base URL to check
 loading/failure/retry recovery independently.
+
+Run `python3 scripts/check-native-details-and-exploration-share.py http://127.0.0.1:8023`
+to check all 16 accommodation entry links and sharing for all 12 illustrated
+cabin tours plus the chalet exploration on mobile and desktop. The check
+intercepts native shares and clipboard writes; it sends no messages.

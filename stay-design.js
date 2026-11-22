@@ -14,7 +14,7 @@ function renderStayCard(c) {
     + '<div class="fd-cabin-card-v2-facts" aria-label="معلومات ' + c.name + '">'
     + '<div class="fd-cabin-card-v2-fact"><span>سعة الضيوف</span><strong>' + resortGuestText(c.guests) + '</strong></div>'
     + '<div class="fd-cabin-card-v2-fact"><span>غرف النوم</span><strong>' + resortRoomText(c.rooms) + '</strong></div></div>'
-    + '<button type="button" class="card-btn">عرض التفاصيل والصور</button></div>';
+    + '<a class="card-btn" href="' + accommodationDetailsPath(c.id) + '" onclick="return openAccommodationDetailsLink(event,' + c.id + ')">عرض التفاصيل والصور</a></div>';
 }
 
 function renderStayDetail(c) {

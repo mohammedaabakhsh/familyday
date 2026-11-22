@@ -240,8 +240,9 @@
  #contest-detail .sw-title{min-width:0;white-space:normal;margin-top:6.6px}
 }
 
-/* Native-link pilot uses exactly the existing button presentation. */
-#grid a.card-btn{text-decoration:none;line-height:normal;text-align:center;}
+/* Native details links retain the original card-button presentation. */
+:is(#grid,#grid2) a.card-btn{text-decoration:none;line-height:normal;text-align:center;}
+#landing3 a.rh-cabins{text-decoration:none;font-size:13.3333px;}
 
 /* Package sharing lives inside the expanded details, above its original photos. */
 .fd-package-share-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:12px 0;}

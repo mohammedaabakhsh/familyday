@@ -147,6 +147,13 @@ function goBack(){
 
 
 
+// Native links share the canonical entry catalog used by the router and previews.
+function accommodationDetailsPath(id){
+  var route=Number(id)===30 ? 'chalet-detail' : 'cabin='+id;
+  var entry=FD_SHARE_PAGES.find(function(page){return page.route===route;});
+  return entry ? entry.path : '/';
+}
+
 function renderResortCardSummary(c){
   const shared=c.id===11;
   const feature=shared?'مشترك':c.bath.summary;
@@ -188,7 +195,7 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
       </div>
       <div class="card-body fd-cabin-card-v2-body">
         ${renderResortCardSummary(c)}
-        <div class="fd-card-actions">${c.id===1 ? '<a class="card-btn" href="/cabins/dome-1/" onclick="event.stopPropagation();if(!event.button &amp;&amp; !event.metaKey &amp;&amp; !event.ctrlKey &amp;&amp; !event.shiftKey &amp;&amp; !event.altKey){event.preventDefault();openM(1,&quot;resort&quot;);}">عرض التفاصيل والصور</a>' : '<button class="card-btn">عرض التفاصيل والصور</button>'}${FD_CABIN_COMPARE.cardButton(c)}</div>
+        <div class="fd-card-actions"><a class="card-btn" href="${accommodationDetailsPath(c.id)}" onclick="return openAccommodationDetailsLink(event,${c.id})">عرض التفاصيل والصور</a>${FD_CABIN_COMPARE.cardButton(c)}</div>
         ${(c.id===1||c.id===12)?'<a class="fd-dome-tour-link" href="/dome-tour/?cabin='+c.id+'" onclick="event.stopPropagation()">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
 ${c.id===2?'<a class="fd-dome-tour-link" href="/pyramid-tour/" onclick="event.stopPropagation()">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
 ${(c.id===4||c.id===13)?'<a class="fd-dome-tour-link" href="/greek-tour/?cabin='+c.id+'" onclick="event.stopPropagation()">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
@@ -213,7 +220,7 @@ ${c.id===8?'<a class="fd-dome-tour-link" href="/rustic-tour/?cabin=8" onclick="e
       var imgs12=gl12.length?'<img src="'+gl12[0]+'" alt="'+c12.name+'" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;">':'';
       d12.innerHTML='<div class="card-img-wrap" data-cid="11" data-cidx="0" style="position:relative;overflow:hidden;">'+imgs12+'</div>'
         +'<div class="card-body fd-cabin-card-v2-body">'+renderResortCardSummary(c12)
-        +'<button class="card-btn">عرض التفاصيل والصور</button>'
+        +'<a class="card-btn" href="'+accommodationDetailsPath(c12.id)+'" onclick="return openAccommodationDetailsLink(event,'+c12.id+')">عرض التفاصيل والصور</a>'
         +'<a class="fd-dome-tour-link" href="https://my.matterport.com/show/?m=S7Z2CF9tdwm" onclick="event.preventDefault();event.stopPropagation();open3D(this.href)">جولة ثلاثية الأبعاد للحديقة <span aria-hidden="true">←</span></a></div>';
       g.appendChild(d12);
     }

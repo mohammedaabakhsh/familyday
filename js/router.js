@@ -313,6 +313,17 @@
   document.addEventListener('fd-compare-dismiss',function(){
     if(current.name==='cabin-compare')returnTo(current.parent);
   });
+  window.openAccommodationDetailsLink=function(event,id){
+    event.stopPropagation();
+    if(event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return true;
+    var unit=Number(id)>=20 && Number(id)!==30 ? FD_STAY_UNITS.find(function(item){return item.id===Number(id);}) : null;
+    if(Number(id)>=20 && Number(id)!==30 && !unit) return true;
+    event.preventDefault();
+    if(Number(id)===30) openPrivateChalet();
+    else if(unit) openMDirect(unit);
+    else openM(Number(id),'resort');
+    return false;
+  };
   window.openAccommodationFaq=function(event,name){
     if(event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return true;
     var expected=current.name==='chalet-detail' ? 'chalet-faq' : current.name==='cabin' ? (current.args[0]>=20 ? 'faq2' : 'faq') : null;
