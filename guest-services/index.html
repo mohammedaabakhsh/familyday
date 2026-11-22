@@ -16,13 +16,13 @@
 <meta name="twitter:title" content="خدمات إقامتك | منتجع يوم العائلة">
 <meta name="twitter:description" content="اختر خدمات المنتجع وطلبات المطعم من مكان واحد أثناء إقامتك.">
 <link rel="canonical" href="https://familydaystay.com/guest-services/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/tajawal/tajawal-arabic-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/tajawal/tajawal-arabic-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/tajawal.css?v=20261122-pdf2-v1">
 <link rel="stylesheet" href="/guest-services/guest-services.css?v=20261108-cinema-parity-v11">
 <script src="/guest-services/share.js?v=20261108-shared-venues-v2" defer></script>
 <script src="/guest-services/service-source.js?v=20261116-approved-intros-v5" defer></script>
-<script src="/guest-services/guest-services.js?v=20261122-approved-review-v1" defer></script>
+<script src="/guest-services/guest-services.js?v=20261122-approved-pdf2-v1" defer></script>
 </head>
 <body>
 <div class="page">
@@ -50,7 +50,7 @@
       </button>
       <button type="button" id="water-card" class="service-tile" data-service="water" data-tone="water" aria-haspopup="dialog" aria-controls="service-dialog" aria-labelledby="water-title" aria-describedby="water-default" disabled>
         <span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8c3-4 5 4 9 0s6 4 9 0M3 14c3-4 5 4 9 0s6 4 9 0M3 20c3-4 5 4 9 0s6 4 9 0"/></svg></span>
-        <span class="tile-copy"><span class="tile-title" id="water-title">الألعاب المائية</span><span class="tile-default" id="water-default">ألعاب مائية للكبار والصغار</span><span class="tile-selection" id="water-selection" hidden></span></span>
+        <span class="tile-copy"><span class="tile-title" id="water-title">الألعاب المائية</span><span class="tile-default" id="water-default">ألعاب مائية للكبار والأطفال</span><span class="tile-selection" id="water-selection" hidden></span></span>
         <span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span>
       </button>
       <button type="button" id="games-card" class="service-tile" data-service="games" data-tone="games" aria-haspopup="dialog" aria-controls="service-dialog" aria-labelledby="games-title" aria-describedby="games-default" disabled>
@@ -60,7 +60,7 @@
       </button>
       <button type="button" id="cinema-card" class="service-tile" data-service="cinema" data-tone="cinema" aria-haspopup="dialog" aria-controls="service-dialog" aria-labelledby="cinema-title" aria-describedby="cinema-default" disabled>
         <span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="15" rx="2"/><path d="m10 8 6 4-6 4ZM8 22h8"/></svg></span>
-        <span class="tile-copy"><span class="tile-title" id="cinema-title">جلسة السينما</span><span class="tile-default" id="cinema-default">استمتع بتجربة سينما في مساحتك الخاصة</span><span class="tile-selection" id="cinema-selection" hidden></span></span>
+        <span class="tile-copy"><span class="tile-title" id="cinema-title">جلسة السينما</span><span class="tile-default" id="cinema-default">استمتع بتجربة سينما في مساحتكم الخاصة</span><span class="tile-selection" id="cinema-selection" hidden></span></span>
         <span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span>
       </button>
       <button type="button" id="extras-card" class="service-tile" data-service="extras" data-tone="extras" aria-haspopup="dialog" aria-controls="service-dialog" aria-labelledby="extras-title" aria-describedby="extras-default" disabled>
@@ -149,8 +149,8 @@
           <div class="extra-row"><strong>للكبار</strong><div class="quantity" role="group" aria-label="عدد ألعاب الكبار">
             <button type="button" data-water="adults" data-step="-1" aria-label="تقليل عدد ألعاب الكبار" disabled>−</button><output id="water-adults" dir="ltr">0</output><button type="button" data-water="adults" data-step="1" aria-label="زيادة عدد ألعاب الكبار" disabled>+</button>
           </div></div>
-          <div class="extra-row"><strong>للصغار</strong><div class="quantity" role="group" aria-label="عدد ألعاب الصغار">
-            <button type="button" data-water="children" data-step="-1" aria-label="تقليل عدد ألعاب الصغار" disabled>−</button><output id="water-children" dir="ltr">0</output><button type="button" data-water="children" data-step="1" aria-label="زيادة عدد ألعاب الصغار" disabled>+</button>
+          <div class="extra-row"><strong>للأطفال</strong><div class="quantity" role="group" aria-label="عدد ألعاب الأطفال">
+            <button type="button" data-water="children" data-step="-1" aria-label="تقليل عدد ألعاب الأطفال" disabled>−</button><output id="water-children" dir="ltr">0</output><button type="button" data-water="children" data-step="1" aria-label="زيادة عدد ألعاب الأطفال" disabled>+</button>
           </div></div>
         </div>
         <p id="water-count" class="selection-status" role="status"></p>

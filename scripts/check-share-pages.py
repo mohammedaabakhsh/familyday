@@ -72,7 +72,7 @@ with sync_playwright() as p:
                 assert page.locator('#hospitality-detail [role=tab],#setups-detail [role=tab]').count()==0
             if route['name']=='cabin':
                 assert page.locator('#ov').evaluate('(e)=>e.classList.contains("open")')
-                if route['args'][0]<20: assert page.locator('#fd-cabin-detail-title').inner_text() in entry['title']
+                if route['args'][0]<20: assert page.locator('#fd-cabin-detail-title').evaluate('(e)=>e.firstChild.textContent.trim()') in entry['title']
                 else: assert ('القسم الأول' if route['args'][0]==20 else 'القسم الثاني') in page.locator('#mBody').inner_text()
                 assert page.evaluate(f'cabinShareURL({route["args"][0]})')==BASE+entry['path']
             elif route['name'] in ['menu','hospitality','setups','maiya','tarfihi','sharik','walaa']:

@@ -18,7 +18,7 @@ with sync_playwright() as p:
         def games(group, step, n=1): clicks(f'[data-water="{group}"][data-step="{step}"]', n)
         def check(pack, adults, children):
             required=pack*3
-            assert page.locator('#water-offer').inner_text()==f'{required} ألعاب بـ{pack*50} ريال'
+            assert page.locator('#water-offer').inner_text()==('باقة ' if pack==1 else 'إجمالي الباقات: ')+f'{required} ألعاب بـ{pack*50} ريال'
             assert page.locator('#water-packages-count').inner_text()==str(pack)
             assert page.locator('#water-adults').inner_text()==str(adults)
             assert page.locator('#water-children').inner_text()==str(children)
@@ -26,7 +26,7 @@ with sync_playwright() as p:
             complete=adults+children==required
             assert page.locator('#water-count').inner_text()==('✓ اكتمل اختيار الألعاب' if complete else f'اخترت {adults+children} من {required}')
             assert page.locator('#apply-selection').is_disabled()==(not complete)
-            assert page.locator('#water-service .section-note').inner_text()=='وزّع الألعاب بين الكبار والصغار'
+            assert page.locator('#water-service .section-note:not(.water-intro)').inner_text()=='وزّع الألعاب بين الكبار والأطفال'
         clicks('#water-card');check(1,0,0)
         assert page.locator('[data-water-packages][data-step="-1"]').is_disabled()
         packages(1);check(2,0,0)
@@ -44,7 +44,7 @@ with sync_playwright() as p:
             assert url.hostname=='wa.me' and url.path=='/966556156693'
             text=parse_qs(url.query)['text'][0]
             expected=('السلام عليكم، أرغب بطلب الخدمات التالية:\n\nالاسم: ضيف التجربة\nاسم الكوخ: بيت الدوم 1\nرقم الكوخ: 15\n\nالطلبات:\n\nالألعاب المائية:\n'
-                      f'باقة ألعاب مائية × {pack} = {pack*50} ريال\nللكبار: {adults}\nللصغار: {children}\n\nإجمالي الطلب: {pack*50} ريال\n\nملاحظات: ألعاب مناسبة للأطفال')
+                      f'باقة ألعاب مائية × {pack} = {pack*50} ريال\nللكبار: {adults}\nللأطفال: {children}\n\nإجمالي الطلب: {pack*50} ريال\n\nملاحظات: ألعاب مناسبة للأطفال')
             assert text==expected, text
         message(2,4,2)
         page.reload(wait_until='networkidle');clicks('#water-card');check(2,4,2)

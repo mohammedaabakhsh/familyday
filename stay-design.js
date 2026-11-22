@@ -62,7 +62,7 @@ function renderStayDetail(c) {
     + section('مميزات الإقامة', ['تلفزيون ذكي', 'سماعات داخلية (ساوند بار)'])
     + '<details class="fd-cabin-section fd-cabin-accordion"><summary><h3>معلومات الإقامة</h3></summary>'
     + '<div class="fd-cabin-times" aria-label="أوقات الدخول والخروج"><div><span>الدخول</span><strong>4:00 مساءً</strong></div><div><span>الخروج</span><strong>12:00 ظهرًا</strong></div></div>'
-    + '<div class="fd-cabin-instructions"><p>سعة القسم للتجمعات ' + c.guests + ' ضيفًا ويمكن استقبال حتى ' + c.maxGuests + ' ضيفًا برسوم إضافية</p><p>يُسمح للأطفال باستخدام المسابح تحت إشراف ذويهم طوال الوقت</p></div>'
+    + '<div class="fd-cabin-instructions"><p>سعة القسم للتجمعات ' + c.guests + ' ضيفًا ويمكن استقبال حتى ' + c.maxGuests + ' ضيفًا برسوم إضافية</p><p>يُرجى إشراف الأهل على الأطفال في المسبح طوال الوقت</p></div>'
     + '</details>'
     + (c.slide ? '<section class="fd-cabin-addons"><h3>خدمات إضافية</h3><p>الزحليقة الهوائية الكبيرة — برسوم إضافية.</p></section>' : '')
     + '<div class="fd-cabin-faq-footer"><a class="fd-cabin-faq-link" href="/stay/faq/" onclick="return openAccommodationFaq(event,\'faq2\')">الأسئلة الشائعة <span aria-hidden="true">←</span></a></div>'
@@ -78,8 +78,8 @@ function renderStayComparison() {
     ['مجلس كبير'].concat(FD_STAY_UNITS.map(function(c){return available(c,/مجلس كبير/);})),
     ['مسبح الكبار'].concat(FD_STAY_UNITS.map(function(c){return available(c,/مسبح خاص للكبار/);})),
     ['مسبح الأطفال'].concat(FD_STAY_UNITS.map(function(c){return available(c,/مسبح خاص للأطفال/);})),
-    ['ملعب كرة الطائرة'].concat(FD_STAY_UNITS.map(function(c){return available(c,/ملعب كرة طائرة/);})),
-    ['الزحليقة الهوائية الكبيرة'].concat(FD_STAY_UNITS.map(function(c){return c.slide?'متاحة برسوم':'غير متاحة';}))
+    ['ملعب كرة طائرة'].concat(FD_STAY_UNITS.map(function(c){return available(c,/ملعب كرة طائرة/);})),
+    ['الزحليقة الهوائية الكبيرة'].concat(FD_STAY_UNITS.map(function(c){return c.slide?'متاحة برسوم إضافية':'غير متاحة';}))
   ];
   return '<section class="fd-stay-comparison" aria-labelledby="fd-stay-comparison-title">'
     + '<h2 id="fd-stay-comparison-title"><button type="button" class="fd-stay-comparison-toggle" aria-expanded="false" aria-controls="fd-stay-comparison-panel" onclick="toggleStayComparison(this)"><span>قارن بين القسمين</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h2>'
@@ -120,4 +120,12 @@ function selectStayFaqSection(id) {
   overlay.querySelectorAll('.fd-faq-shortcuts button').forEach(function(button){
     button.setAttribute('aria-expanded', button.getAttribute('aria-controls') === id ? 'true' : 'false');
   });
+}
+
+// Preserve native modified-click behavior for the existing comparison shortcut.
+function openStayComparisonShortcut(event) {
+  if(event && (event.button!==0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)) return true;
+  if(event) event.preventDefault();
+  showSection2('comparison');
+  return false;
 }

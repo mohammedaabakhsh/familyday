@@ -249,7 +249,7 @@ const data = {
         "bathroom": 2,
         "hall": true,
         "bathroomDetails": [
-          "حمامان: حمام خاص داخل غرفة النوم الرئيسية – حمام مشترك"
+          "حمام خاص بغرفة النوم الرئيسية وحمام مشترك"
         ],
         "badge": null,
         "bookUrl": "https://familyday-sa.com/ar/listings/69cea0ecc17a7072098dbd38",
@@ -308,7 +308,7 @@ const data = {
         "bathroom": 2,
         "hall": true,
         "bathroomDetails": [
-          "حمامان: حمام خاص داخل غرفة النوم الرئيسية – حمام مشترك"
+          "حمام خاص بغرفة النوم الرئيسية وحمام مشترك"
         ],
         "badge": null,
         "bookUrl": "https://familyday-sa.com/ar/listings/69cea28b4b817e1124e35e57",
@@ -367,7 +367,7 @@ const data = {
         "bathroom": 2,
         "hall": true,
         "bathroomDetails": [
-          "حمامان: حمام خاص داخل غرفة النوم الرئيسية – حمام مشترك"
+          "حمام خاص بغرفة النوم الرئيسية وحمام مشترك"
         ],
         "badge": null,
         "bookUrl": "https://familyday-sa.com/ar/listings/69cea2c891aebf200fef69e6",
@@ -425,7 +425,7 @@ const data = {
         "bathroom": 2,
         "hall": true,
         "bathroomDetails": [
-          "حمامان: حمام خاص داخل غرفة النوم الرئيسية – حمام مشترك"
+          "حمام خاص بغرفة النوم الرئيسية وحمام مشترك"
         ],
         "badge": null,
         "bookUrl": "https://familyday-sa.com/ar/listings/69cea392c17a7072098dbd3b",
@@ -483,7 +483,7 @@ const data = {
         "bathroom": 2,
         "hall": true,
         "bathroomDetails": [
-          "حمامان: حمام خاص داخل غرفة النوم الرئيسية – حمام مشترك"
+          "حمام خاص بغرفة النوم الرئيسية وحمام مشترك"
         ],
         "badge": null,
         "bookUrl": "https://familyday-sa.com/ar/listings/69cea2f391aebf200fef69e7",
@@ -541,7 +541,7 @@ const data = {
         "bathroom": 2,
         "hall": true,
         "bathroomDetails": [
-          "حمامان: حمام خاص داخل غرفة النوم الرئيسية – حمام مشترك"
+          "حمام خاص بغرفة النوم الرئيسية وحمام مشترك"
         ],
         "badge": null,
         "bookUrl": "https://familyday-sa.com/ar/listings/69cea32191aebf200fef69e8",
@@ -599,7 +599,7 @@ const data = {
         "bathroom": 2,
         "hall": true,
         "bathroomDetails": [
-          "حمامان: حمام خاص داخل غرفة النوم الرئيسية – حمام مشترك"
+          "حمام خاص بغرفة النوم الرئيسية وحمام مشترك"
         ],
         "badge": null,
         "bookUrl": "https://familyday-sa.com/ar/listings/69cea50991aebf200fef69ec",
@@ -644,7 +644,7 @@ const data = {
           "summary": "",
           "outdoorPrivacy": false
         },
-        "description": "أكبر أكواخ المنتجع بأجواء ريفية ومساحات واسعة لجمعتكم\nمناسب للتجمعات العائلية حتى 20 ضيفًا مع غرفتي نوم وحمامين\nويمكن ربطه بالكوخ الكلاسيكي عبر باب داخلي عند حجزهما معًا بسعة إجمالية حتى 35 ضيفًا"
+        "description": "أكبر أكواخ المنتجع بطابع خشبي أنيق ومساحات واسعة لجمعتكم\nمناسب للتجمعات العائلية حتى 20 ضيفًا مع غرفتي نوم وحمامين\nويمكن ربطه بالكوخ الكلاسيكي عبر باب داخلي عند حجزهما معًا بسعة إجمالية حتى 35 ضيفًا"
       },
       {
         "id": 10,
@@ -657,7 +657,7 @@ const data = {
         "bathroom": 2,
         "hall": true,
         "bathroomDetails": [
-          "حمامان: حمام خاص داخل غرفة النوم الرئيسية – حمام مشترك"
+          "حمام خاص بغرفة النوم الرئيسية وحمام مشترك"
         ],
         "badge": null,
         "bookUrl": "https://familyday-sa.com/ar/listings/69cea36a5123111b7e72de33",
@@ -723,7 +723,7 @@ const data = {
           "|",
           "جلسات خارجية"
         ],
-        "description": "حديقة مشتركة وسط الأكواخ متاحة لجميع ضيوف المنتجع\nتضم ألعاب أطفال وشاشة عرض\nولكل كوخ باب داخلي يفتح عليها مباشرة"
+        "description": "حديقة مشتركة وسط الأكواخ متاحة لجميع ضيوف المنتجع\nتضم ألعاب أطفال وشاشة عرض\nولكل كوخ باب خاص يفتح على الحديقة مباشرة"
       }
     ]
   }
@@ -746,8 +746,11 @@ function localizeSpecificationUnits(text) {
 }
 function formatSpecificationText(text) {
   text = localizeSpecificationUnits(text);
-  if (!/\d+\s*×\s*\d+|\d+\s*سم/.test(text)) return text;
-  return '<span>' + text.replace(/(\d+\s*×\s*\d+(?:\s*م)?|\d+\s*سم)/g, '<bdi dir="ltr">$1</bdi>') + '</span>';
+  if (!/\d+\s*×\s*\d+|\d+\s*(?:سم|م)(?:[ .،]|$)/.test(text)) return text;
+  return '<span>' + text.replace(/(\d+(?:\.\d+)?(?:\s*×\s*\d+(?:\.\d+)?)?)(\s*(?:سم|م)(?=$|[\s.,،<]))?/g, function(match,number,unit){
+    var digits='<bdi dir="ltr">'+number+'</bdi>';
+    return unit ? '<span class="fd-measurement" style="white-space:nowrap">'+digits+unit+'</span>' : digits;
+  }) + '</span>';
 }
 
 // One factual source for the detail cards and illustrated room specifications.
@@ -760,7 +763,8 @@ function resortTourCards(cabin, part) {
     });
   }
   if (part === 'bathroom') return cabin.bathroomDetails.flatMap(function(text){
-    return text.replace(/^حمامان:\s*/, '').split(' – ').map(function(value){return {value:value,icon:'shower'};});
+    var values=text==='حمام خاص بغرفة النوم الرئيسية وحمام مشترك' ? ['حمام خاص داخل غرفة النوم الرئيسية','حمام مشترك'] : text.replace(/^حمامان:\s*/, '').split(' – ');
+    return values.map(function(value){return {value:value,icon:'shower'};});
   });
   if (part === 'tub') return indoor.concat(cabin.features.outdoor).filter(function(text){return /بانيو/.test(text);}).map(function(text){return {value:text,icon:'tub'};});
   var label = part === 'twin' ? 'غرفة النوم الثانية' : 'غرفة النوم الرئيسية';

@@ -38,7 +38,7 @@
     grid.classList.toggle('fd-carousel',enabled);controls.hidden=!enabled||desktop.matches;
     controls.style.display=enabled&&!desktop.matches?'flex':'none';
     if(!enabled)return;
-    grid.setAttribute('role','region');grid.setAttribute('aria-label',gridId==='grid2'?'تصفح أقسام الاستراحة':'تصفح الأكواخ');
+    grid.setAttribute('role','region');grid.setAttribute('aria-label',gridId==='grid2'?'تصفّح أقسام الاستراحة':'تصفّح الأكواخ');
     selected=0;previous.disabled=true;next.disabled=cards.length<2;
     count.textContent=digits.format(1)+' من '+digits.format(cards.length);
     requestAnimationFrame(()=>go(selected,true));

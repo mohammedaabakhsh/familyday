@@ -8,7 +8,7 @@ function serviceOrderDetails(selection, restore) {
   var water = getMaiyaOrderDetails(selection);
   if (water) {
     if (restore) { _maiyaPackages=water.packages; _maiyaQuantities={adults:water.adults,children:water.children}; renderMaiyaQuantities(); }
-    return {title:'باقة ألعاب مائية × '+water.packages, summary:[water.size+' ألعاب بـ'+water.price+' ريال','للكبار: '+water.adults,'للصغار: '+water.children]};
+    return {title:'باقة ألعاب مائية × '+water.packages, summary:[water.size+' ألعاب بـ'+water.price+' ريال','للكبار: '+water.adults,'للأطفال: '+water.children]};
   }
   if (!selection || typeof selection !== 'object') return {title:String(selection || ''), summary:[]};
   if (selection.type === 'seating-cart') return getJalsatCartDetails(selection,restore);
@@ -23,7 +23,7 @@ function serviceOrderDetails(selection, restore) {
   if (selection.type === 'dining' && Object.prototype.hasOwnProperty.call(_tawilatPrices,selection.size) && ['plain','tansiq'].indexOf(selection.option) !== -1) {
     if (restore) { setTawilatSize(selection.size); selectTawilatOpt(selection.option); }
     return {title:'طاولات الطعام', summary:['عدد الأشخاص: '+selection.size,
-      'التجهيز: '+(selection.option === 'tansiq' ? 'مع تنسيق' : 'بدون تنسيق'),
+      'التجهيز: '+(selection.option === 'tansiq' ? 'تجهيز مع تنسيق' : 'تجهيز أساسي'),
       'إجمالي الطلب: '+_tawilatPrices[selection.size][selection.option]+' ريال']};
   }
   if (selection.type === 'seating' && Number.isInteger(selection.index) && _jalsatAllSessions[selection.index]) {

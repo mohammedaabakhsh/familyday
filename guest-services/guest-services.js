@@ -211,7 +211,7 @@
     data=data || state;
     var lines=[];
     if(data.water) lines.push({id:'water',group:'water',name:catalog.water.name,qty:data.water.packages || 1,price:incompleteWater(data) ? 0 : catalog.water.price*(data.water.packages || 1),
-      pending:incompleteWater(data),details:['للكبار: '+data.water.adults,'للصغار: '+data.water.children]});
+      pending:incompleteWater(data),details:['للكبار: '+data.water.adults,'للأطفال: '+data.water.children]});
     if(data.games){var pack=catalog.games.packages[data.games];lines.push({id:'games',group:'games',name:pack.name,price:pack.price,details:[]});}
     if(data.cinema) lines.push({id:'cinema',group:'cinema',name:catalog.cinema.name,price:catalog.cinema.price,
       details:['مدة الجلسة: '+catalog.cinema.duration,'وقت بداية الجلسة: '+time.querySelector('option[value="'+data.cinema+'"]').textContent]});
@@ -301,7 +301,7 @@
   function renderServiceControls() {
     var data=selection(),water=waterSelection(data), total=water.adults+water.children,required=catalog.water.size*(water.packages || 1);
     document.getElementById('water-packages-count').textContent=String(water.packages || 1);
-    document.getElementById('water-offer').textContent=required+' ألعاب بـ'+catalog.water.price*(water.packages || 1)+' ريال';
+    document.getElementById('water-offer').textContent=((water.packages || 1)===1?'باقة ':'إجمالي الباقات: ')+required+' ألعاب بـ'+catalog.water.price*(water.packages || 1)+' ريال';
     document.querySelectorAll('[data-water-packages]').forEach(function(button){button.disabled=Number(button.dataset.step)<0 ? (water.packages || 1)<=1 : (water.packages || 1)>=20;});
     ['adults','children'].forEach(function(key){setCounter(document.getElementById('water-'+key).parentNode,water[key],water[key]+required-total);});
     document.getElementById('water-service').classList.toggle('is-complete',total===required);
@@ -395,6 +395,7 @@
     var lines=serviceLines(activeService,draft),previous=serviceLines(activeService,state);
     var pending=lines.some(function(line){return line.pending;});
     // Show the selected water-package price immediately, but commit only complete distributions.
+    document.querySelector('.dialog-total>span').textContent=activeService==='water'?'إجمالي الباقات':'إجمالي الاختيار';
     document.getElementById('dialog-total').textContent=String(activeService==='water' ? catalog.water.price*(waterSelection(draft).packages || 1) : sum(lines));
     applyButton.disabled=pending || (!lines.length && !previous.length);
     applyButton.textContent=previous.length ? (lines.length ? 'حفظ التعديل' : 'حذف من الطلب') : 'إضافة للطلب';
@@ -462,7 +463,7 @@
     var hours=document.getElementById('restaurant-hours');
     if(hours) hours.textContent=catalog.restaurantHours;
     document.querySelector('#water-service .water-intro').textContent=catalog.water.intro;
-    document.querySelector('#water-service .section-note:not(.water-intro)').textContent='وزّع الألعاب بين الكبار والصغار';
+    document.querySelector('#water-service .section-note:not(.water-intro)').textContent='وزّع الألعاب بين الكبار والأطفال';
     document.querySelector('#games-service .games-intro').textContent=catalog.games.intro;
     document.querySelector('#games-service .contents-title').textContent=isChalet ? 'الألعاب المشمولة في الباقة' : 'الألعاب المشمولة في الباقتين';
     if(time){

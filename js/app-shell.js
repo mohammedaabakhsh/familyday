@@ -230,6 +230,6 @@ function selectTarfihiOpt(opt){
   document.getElementById('tarfihi-summary-price').textContent = opt==='box' ? '50 ريال' : opt==='table' ? '150 ريال' : '';
 }
 function tarfihiOrder(){
-  if(!_tarfihiOpt){ alert('يرجى اختيار خيار أولاً'); return; }
+  if(!_tarfihiOpt){ alert('يُرجى اختيار خيار أولاً'); return; }
   openOrderPopup({type:'games',option:_tarfihiOpt});
 }

@@ -65,6 +65,8 @@
     var cleanUrl=cleanFamilyDayURL();
     if(['map','chalet-details'].indexOf(cleanUrl.searchParams.get('from'))!==-1) cleanUrl.searchParams.delete('from');
     cleanUrl.searchParams.delete('tab');
+    cleanUrl.searchParams.delete('compare');
+    if(r.name==='chalet' && r.args[0]==='comparison') cleanUrl.searchParams.set('compare','1');
     cleanUrl.searchParams.delete('package');
     if(r.name==='hospitality' && r.args[0]==='coordination' && r.args[1]) cleanUrl.searchParams.set('package',r.args[1]);
     var base='/'+cleanUrl.search;
@@ -92,6 +94,7 @@
       var shared=FD_SHARE_PAGES.find(function(p){return p.path===pathname;});
       if(shared) hash=shared.route;
     }
+    if(hash==='chalet' && new URLSearchParams(location.search).get('compare')==='1') return route('chalet',['comparison']);
     if(/^cabin=\d+$/.test(hash) && new URLSearchParams(location.search).get('from')==='map') hash+='&from=map';
     if((hash==='chalet-map' || (!hash && /^\/chalet-map\/?$/.test(location.pathname))) && new URLSearchParams(location.search).get('from')==='chalet-details') return route('chalet-map',[],route('chalet-detail'));
     if(!hash && /^\/(resort-map|chalet-map)\/?$/.test(location.pathname)) return route(location.pathname.indexOf('resort-map')!==-1 ? 'map' : 'chalet-map');
@@ -129,7 +132,7 @@
       case 'dest': call('goBackToDestination'); break;
       case 'home': call('showDestination',r.args); break;
       case 'resort': call('showSection',['resort']); break;
-      case 'chalet': call('showSection2'); break;
+      case 'chalet': call('showSection2',r.args); break;
       case 'chalet-detail': call('openPrivateChalet'); break;
       case 'chalet-map': FD_CHALET_MAP.show(); break;
       case 'chalet-faq': call('showChaletFaq'); break;
@@ -271,7 +274,7 @@
   }
   wrapOpen('showDestination',function(type){return route('home',[type]);});
   wrapOpen('showSection',function(){return route('resort');});
-  wrapOpen('showSection2',function(){return route('chalet');});
+  wrapOpen('showSection2',function(view){return route('chalet',view==='comparison'?['comparison']:[]);});
   wrapOpen('openPrivateChalet',function(){return route('chalet-detail');});
   wrapOpen('showChaletFaq',function(){return route('chalet-faq',[],current.name==='contact' && current.args[0]==='chalet' ? current : null);});
   wrapClose('closeChaletFaq');

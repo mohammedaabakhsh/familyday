@@ -165,3 +165,14 @@
 #galWrap.fd-dome-inline .fd-gallery-caption[hidden]{display:none}
 .fs-photo-info{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px 12px;min-width:0;padding-inline:8px}
 .fs-photo-label{color:#fff;font:500 13px/1.4 Tajawal,sans-serif;text-align:center}
+
+/* Desktop photo controls: large side arrows; mobile corner controls stay unchanged. */
+@media(min-width:900px){
+ #galWrap.fd-dome-inline .fd-dome-controls{inset:0;max-width:none;display:block;pointer-events:none}
+ #galWrap.fd-dome-inline .fd-dome-controls button{position:absolute;top:50%;transform:translateY(-50%);width:56px;height:56px;border:1px solid #ffffff4d;border-radius:50%;background:rgba(3,18,29,.68);pointer-events:auto}
+ #galWrap.fd-dome-inline .fd-dome-controls .fd-dome-next{left:16px;right:auto}
+ #galWrap.fd-dome-inline .fd-dome-controls .fd-dome-previous{right:16px;left:auto}
+ #galWrap.fd-dome-inline .fd-dome-controls svg{width:25px;height:25px}
+ #galWrap.fd-dome-inline .fd-dome-count{position:absolute;right:16px;bottom:14px}
+ #galWrap.fd-dome-inline .fd-gallery-caption{position:absolute;right:70px;bottom:7px}
+}

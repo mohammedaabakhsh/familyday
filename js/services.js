@@ -457,7 +457,7 @@ function closeWalaaDetail(){
     summary.querySelector('span').textContent = 'الصور وتفاصيل الباقة';
     summary.setAttribute('aria-label', 'الصور وتفاصيل ' + heading.textContent.trim());
     summary.insertAdjacentHTML('afterend', '<div class="fd-package-share-row"><button type="button" class="fd-package-share">مشاركة الباقة</button><span class="fd-package-share-status" role="status"></span></div>' + FD_GUIDE_GALLERY.markup(
-      _coordinationPhotos[id], heading.textContent.trim(), 'تنسيق باقة ' + heading.textContent.trim()
+      _coordinationPhotos[id], heading.textContent.trim(), 'تنسيق ' + heading.textContent.trim()
     ));
     card.querySelector('.fd-package-share').addEventListener('click',function(){shareCoordinationPackage(id.replace('hd-coordination-package-',''),card);});
     FD_GUIDE_GALLERY.mount(card);

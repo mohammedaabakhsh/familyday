@@ -42,13 +42,13 @@
     gardenCard: 'تفاصيل الحديقة المشتركة',
     clear: 'إلغاء اختيار الكوخ',
     gardenClear: 'إلغاء اختيار الحديقة',
-    capacity: 'السعة',
+    capacity: 'سعة الضيوف',
     bedrooms: 'غرف النوم',
     location: 'الموقع',
     access: 'الاستخدام',
     gardenLocation: 'وسط الأكواخ',
     gardenAccess: 'لجميع الضيوف',
-    gardenConnection: 'لكل كوخ باب داخلي يفتح مباشرة على الحديقة المشتركة',
+    gardenConnection: 'لكل كوخ باب خاص يفتح على الحديقة مباشرة',
     tour: 'استكشف مرافق الكوخ من الداخل',
     details: 'عرض التفاصيل والصور',
     markerAction: ': عرض المميزات',
@@ -339,9 +339,9 @@
       extraFact.innerHTML = '<span class="fd-map-fact-label"></span><strong></strong>';
       facts.appendChild(extraFact);
     }
-    var extraValue = shared ? 'باب داخلي لكل كوخ' :
-      cabin.id === 3 ? 'باب متصل برويال' :
-      cabin.id === 9 ? 'باب متصل بالكلاسيكي' : '';
+    var extraValue = shared ? 'باب خاص لكل كوخ' :
+      cabin.id === 3 ? 'باب داخلي متصل برويال' :
+      cabin.id === 9 ? 'باب داخلي متصل بالكلاسيكي' : '';
     extraFact.hidden = !extraValue;
     if (extraValue) {
       extraFact.querySelector('.fd-map-fact-label').textContent = shared ? 'الوصول' : 'الربط الداخلي';
@@ -349,6 +349,7 @@
     }
     facts.classList.toggle('has-three', !!extraValue);
     facts.classList.toggle('is-royal-connection', cabin.id === 9);
+    facts.classList.toggle('has-cabin-connection', cabin.id === 3 || cabin.id === 9);
     photoButton.setAttribute('aria-label', copy.viewPhotosOf + cabinName(cabin));
     cardPhoto.alt = cabinName(cabin);
     var amenities = card.querySelector('.fd-map-amenities');
@@ -623,7 +624,7 @@
               '<div class="fd-map-card-top"><h3></h3><button type="button" class="fd-map-clear" aria-label="إلغاء اختيار الكوخ">' + closeIcon + '</button></div>' +
               '<p class="fd-map-description" hidden></p>' +
               '<div class="fd-map-facts">' +
-                '<div class="fd-map-fact"><span class="fd-map-fact-label fd-map-guest-label">السعة</span><strong class="fd-map-guests"></strong></div>' +
+                '<div class="fd-map-fact"><span class="fd-map-fact-label fd-map-guest-label">سعة الضيوف</span><strong class="fd-map-guests"></strong></div>' +
                 '<div class="fd-map-fact"><span class="fd-map-fact-label fd-map-room-label">غرف النوم</span><strong class="fd-map-rooms"></strong></div>' +
               '</div>' +
               '<div class="fd-map-amenities"></div>' +

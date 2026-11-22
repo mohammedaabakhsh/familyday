@@ -36,7 +36,7 @@ var FD_TOUR_COMMON = (function () {
   function cardValue(value) {
     if (value === 'سماعات داخلية (ساوند بار)') return '<span class="dt-soundbar-line">سماعات داخلية</span><span class="dt-soundbar-line">(ساوند بار)</span>';
     if (value === 'حمام خاص داخل غرفة النوم الرئيسية') return '<span class="dt-soundbar-line">حمام خاص</span><span class="dt-soundbar-line">داخل غرفة النوم الرئيسية</span>';
-    return esc(value);
+    return formatSpecificationText(esc(value));
   }
 
   function markup(parts, topOrder, bottomOrder, image, loading, linkedCabins) {
@@ -48,7 +48,7 @@ var FD_TOUR_COMMON = (function () {
   function renderDetails(root, cards, note, title, hideEmpty) {
     var details=root.querySelector('.dt-details'), scrollable=cards.length>3;
     if(hideEmpty) details.classList.toggle('is-empty',cards.length===0&&!note);
-    var body='<div class="dt-cards'+(scrollable?' is-scrollable':'')+'">'+cards.map(function(card){return card.icon==='minibar'?'<div class="dt-card dt-card--minibar"><div><strong>'+esc(FD_RESORT_NOTES.minibarTitle)+'</strong><span class="dt-minibar-line">'+esc(FD_RESORT_NOTES.minibarContents)+'</span><span class="dt-minibar-line">'+esc(FD_RESORT_NOTES.minibarFee)+'</span></div></div>':'<div class="dt-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+cardValue(card.value)+'</strong></div></div>';}).join('')+'</div>';
+    var body='<div class="dt-cards'+(scrollable?' is-scrollable':'')+'">'+cards.map(function(card){return card.icon==='minibar'?'<div class="dt-card dt-card--minibar"><div><strong>'+esc(FD_RESORT_NOTES.minibarTitle)+'</strong><span class="dt-minibar-line">'+esc(FD_RESORT_NOTES.minibarContents)+'</span><span class="dt-minibar-line">'+esc(FD_RESORT_NOTES.minibarFee)+'</span></div></div>':'<div class="dt-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong>'+cardValue(card.value)+'</strong></div></div>';}).join('')+'</div>';
     details.innerHTML=(!hideEmpty||cards.length?body:'')+(scrollable?'<div class="dt-spec-navigation" role="group" aria-label="التنقل بين المواصفات" hidden><button type="button" data-spec-direction="previous" aria-label="المواصفات السابقة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button><span class="dt-spec-hint">اسحب لعرض المزيد</span><button type="button" data-spec-direction="next" aria-label="المواصفات التالية"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button></div>':'')+(note?'<p class="dt-note">'+esc(note)+'</p>':'');
     details.insertAdjacentHTML('afterbegin','<h2 class="dt-selected-title">'+esc(title)+'</h2>');
     if (scrollable) {

@@ -376,3 +376,8 @@ html:has(#dest:not(.hide)),body:has(#dest:not(.hide)){
 #ov.fd-cabin-modern .fd-cabin-share:disabled{opacity:.5}
 #ov.fd-cabin-modern .fd-cabin-share-status{position:absolute;inset-inline-end:16px;top:100%;z-index:5;padding:5px 9px;border-radius:6px;background:#133343;color:#d7e8ed;font-size:12px}
 #ov.fd-cabin-modern .fd-cabin-share-status:empty{display:none}
+
+@media(min-width:900px){
+ #ov.fd-cabin-modern .fd-cabin-services-link[href="/services/"]{background:transparent;border-color:#63b6c5;color:#c8eff5}
+}
+.fd-stay-comparison{scroll-margin-top:80px}

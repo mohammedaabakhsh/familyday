@@ -41,6 +41,7 @@ function renderMaiyaQuantities(){
   var pack=getMaiyaPackage(),required=pack.size*_maiyaPackages,price=pack.price*_maiyaPackages;
   var total=_maiyaQuantities.adults+_maiyaQuantities.children,complete=total===required;
   document.getElementById('wm-packages').textContent=String(_maiyaPackages);
+  document.getElementById('wm-package-label').textContent=_maiyaPackages===1?'باقة ':'إجمالي الباقات: ';
   document.getElementById('wm-offer-size').textContent=String(required);
   document.querySelector('.wm-offer strong').textContent=String(price);
   document.getElementById('wm-total').textContent=price+' ريال';
@@ -71,7 +72,7 @@ function getMaiyaOrderDetails(selection){
   var pack=getMaiyaPackage(),order=selection;
   if(typeof selection==='string'){
     // Keep already-open single-package checkouts from the previous version working.
-    var match=selection.match(/^باقة ألعاب مائية\n(\d+) ألعاب بـ\d+ ريال\nللكبار: (\d+) — للصغار: (\d+)$/);
+    var match=selection.match(/^باقة ألعاب مائية\n(\d+) ألعاب بـ\d+ ريال\nللكبار: (\d+) — (?:للصغار|للأطفال): (\d+)$/);
     if(!match || Number(match[1])!==pack.size) return null;
     order={type:'water',packages:1,adults:Number(match[2]),children:Number(match[3])};
   }
@@ -87,7 +88,7 @@ function buildMaiyaOrderMessage(selection,name,cabin,number,notes,venue){
   var lines=['السلام عليكم، أرغب بطلب الخدمات التالية:','',
     'الاسم: '+name].concat(venue==='chalet' ? ['المكان: شاليه يوم العائلة'] : ['اسم الكوخ: '+cabin,'رقم الكوخ: '+number]).concat(['','الطلبات:','',
     'الألعاب المائية:','باقة ألعاب مائية × '+order.packages+' = '+order.price+' ريال',
-    'للكبار: '+order.adults,'للصغار: '+order.children,'','إجمالي الطلب: '+order.price+' ريال']);
+    'للكبار: '+order.adults,'للأطفال: '+order.children,'','إجمالي الطلب: '+order.price+' ريال']);
   if(notes) lines.push('','ملاحظات: '+notes);
   return lines.join('\n');
 }

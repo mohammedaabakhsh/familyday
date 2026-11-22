@@ -22,7 +22,7 @@ with sync_playwright() as p:
         assert main.locator('#wm-packages').inner_text()==str(pack)
         assert main.locator('#wm-adults').inner_text()==str(adults)
         assert main.locator('#wm-children').inner_text()==str(children)
-        assert main.locator('.wm-offer').inner_text()==f'{pack*3} ألعاب بـ{pack*50} ريال'
+        assert main.locator('.wm-offer').inner_text()==('باقة ' if pack==1 else 'إجمالي الباقات: ')+f'{pack*3} ألعاب بـ{pack*50} ريال'
         assert main.locator('#wm-total').inner_text()==f'{pack*50} ريال'
         complete=adults+children==pack*3
         assert main.locator('#maiya-selection-count').inner_text()==('✓ اكتمل اختيار الألعاب' if complete else f'اخترت {adults+children} من {pack*3}')
@@ -38,7 +38,7 @@ with sync_playwright() as p:
     for count,adults,children in [(2,4,2),(3,4,5)]:
         if count==3:packages(1);games('children',1,3);check(count,adults,children)
         main.locator('#maiya-order-btn').click()
-        expected=[f'باقة ألعاب مائية × {count}',f'{count*3} ألعاب بـ{count*50} ريال',f'للكبار: {adults}',f'للصغار: {children}']
+        expected=[f'باقة ألعاب مائية × {count}',f'{count*3} ألعاب بـ{count*50} ريال',f'للكبار: {adults}',f'للأطفال: {children}']
         assert main.locator('#order-item-name>div').all_text_contents()==expected
         main.locator('#order-name').fill('ضيف التجربة');main.locator('#order-villa').select_option(label='بيت الدوم 1');main.locator('#order-notes').fill('ملاحظة التجربة')
         main.reload(wait_until='networkidle')
@@ -69,7 +69,7 @@ with sync_playwright() as p:
     main.evaluate("for(let i=0;i<60;i++)changeMaiyaQuantity('children',1)");check(20,0,60)
     assert main.locator('[data-water-group][data-step="1"]:disabled').count()==2
     main.locator('#maiya-order-btn').click()
-    assert main.locator('#order-item-name>div').all_text_contents()==['باقة ألعاب مائية × 20','60 ألعاب بـ1000 ريال','للكبار: 0','للصغار: 60']
+    assert main.locator('#order-item-name>div').all_text_contents()==['باقة ألعاب مائية × 20','60 ألعاب بـ1000 ريال','للكبار: 0','للأطفال: 60']
     main.evaluate('closeOrderPopup()');main.locator('#order-popup').wait_for(state='hidden');main.evaluate('for(let i=0;i<19;i++)changeMaiyaPackages(-1)');check(1,0,0)
     assert main.locator('[data-water-packages][data-step="-1"]').is_disabled()
     assert main.evaluate("getMaiyaOrderDetails('باقة ألعاب مائية\\n3 ألعاب بـ50 ريال\\nللكبار: 1 — للصغار: 2').packages")==1

@@ -282,3 +282,7 @@
  #fd-map-dialog .fd-map-description{font-size:13px;line-height:1.5}
  #fd-map-dialog .fd-map-clear{width:40px;height:40px}
 }
+
+/* Only the linked cabins trade bedroom-card width for their door description. */
+#fd-map-dialog .fd-map-card .fd-map-facts.has-three.has-cabin-connection{grid-template-columns:minmax(0,1fr) minmax(0,.75fr) minmax(0,1.65fr)!important}
+#fd-map-dialog .fd-map-card .fd-map-facts.has-cabin-connection>.fd-map-fact--extra strong{white-space:normal!important;overflow-wrap:normal!important;word-break:normal!important}

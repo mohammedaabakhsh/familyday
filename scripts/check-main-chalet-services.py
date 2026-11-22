@@ -59,7 +59,7 @@ with sync_playwright() as p:
   click('#maiya-order-btn');page.reload(wait_until='networkidle')
   assert page.locator('#order-popup').is_visible()
   assert '6 ألعاب بـ100 ريال' in page.locator('#order-item-name').inner_text()
-  send(prefix+'الألعاب المائية:\nباقة ألعاب مائية × 2 = 100 ريال\nللكبار: 4\nللصغار: 2\n\nإجمالي الطلب: 100 ريال\n\nملاحظات: عند الوصول')
+  send(prefix+'الألعاب المائية:\nباقة ألعاب مائية × 2 = 100 ريال\nللكبار: 4\nللأطفال: 2\n\nإجمالي الطلب: 100 ريال\n\nملاحظات: عند الوصول')
   click('.wm-back');route('/chalet/services/')
   click('.svcs-back');route('/chalet/')
   assert page.locator('#landing3').is_visible() and page.locator('#landing').is_hidden()

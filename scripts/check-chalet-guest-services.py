@@ -32,7 +32,7 @@ with sync_playwright() as p:
   open_('games');assert page.locator('.game-options .is-selected').count()==0
   page.keyboard.press('Escape');assert page.locator('#games-card').evaluate('e=>document.activeElement===e')
   open_('water');click('[data-water-packages][data-step="1"]')
-  assert page.locator('#water-offer').inner_text()=='6 ألعاب بـ100 ريال'
+  assert page.locator('#water-offer').inner_text()=='إجمالي الباقات: 6 ألعاب بـ100 ريال'
   assert page.locator('#dialog-total').inner_text()=='100'
   assert page.locator('#apply-selection').is_disabled()
   click('[data-water="adults"][data-step="1"]',4);click('[data-water="children"][data-step="1"]',2)
@@ -51,7 +51,7 @@ with sync_playwright() as p:
   page.locator('#guest-name').fill('ضيف التجربة');page.locator('#guest-notes').fill('ملاحظة للشاليه')
   click('#extras-order .send-order');url=urlparse(page.evaluate('window.capturedURL'))
   assert url.hostname=='wa.me' and url.path=='/966556156693'
-  expected='السلام عليكم، أرغب بطلب الخدمات التالية:\n\nالاسم: ضيف التجربة\nالمكان: شاليه يوم العائلة\n\nالطلبات:\n\nالألعاب المائية:\nباقة ألعاب مائية × 2 = 100 ريال\nللكبار: 4\nللصغار: 2\n\nالألعاب الترفيهية:\nبوكس الألعاب × 1 = 50 ريال\n\nإجمالي الطلب: 150 ريال\n\nملاحظات: ملاحظة للشاليه'
+  expected='السلام عليكم، أرغب بطلب الخدمات التالية:\n\nالاسم: ضيف التجربة\nالمكان: شاليه يوم العائلة\n\nالطلبات:\n\nالألعاب المائية:\nباقة ألعاب مائية × 2 = 100 ريال\nللكبار: 4\nللأطفال: 2\n\nالألعاب الترفيهية:\nبوكس الألعاب × 1 = 50 ريال\n\nإجمالي الطلب: 150 ريال\n\nملاحظات: ملاحظة للشاليه'
   assert parse_qs(url.query)['text'][0]==expected
   open_('water');click('[data-water-packages][data-step="1"]');click('.dialog-cancel');assert page.locator('#order-total').inner_text()=='150'
   page.reload(wait_until='networkidle');assert page.locator('#order-total').inner_text()=='150'

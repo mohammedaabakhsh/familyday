@@ -323,7 +323,7 @@
     if(room.key==='groundBath')cards.push({value:'حمام',icon:'shower'});
     if(room.key==='stairs')cards.push({value:details.text,icon:'stairs'});
     panel.innerHTML='<div class="cm-detail-heading'+(['upper','ground'].includes(room.key)?' cm-detail-heading--bedroom':'')+'"><h3>'+esc(name)+'</h3>'+(floor?'<p>'+esc(floor)+'</p>':'')+'</div>'
-      +'<div class="cm-cards'+(cards.length>3?' is-scrollable':'')+'">'+cards.map(function(card){return '<div class="cm-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong'+(card.numeric?' dir="ltr"':'')+'>'+(card.value==='حمام خاص داخل غرفة النوم الرئيسية'?'حمام خاص<br>داخل غرفة النوم الرئيسية':esc(card.value))+'</strong></div></div>';}).join('')+'</div>'
+      +'<div class="cm-cards'+(cards.length>3?' is-scrollable':'')+'">'+cards.map(function(card){return '<div class="cm-card">'+icon(card.icon)+'<div>'+(card.label?'<span>'+esc(card.label)+'</span>':'')+'<strong>'+(card.value==='حمام خاص داخل غرفة النوم الرئيسية'?'حمام خاص<br>داخل غرفة النوم الرئيسية':formatSpecificationText(esc(card.value)))+'</strong></div></div>';}).join('')+'</div>'
       +(cards.length>3?'<div class="cm-spec-navigation" role="group" aria-label="التنقل بين المواصفات" hidden><button type="button" data-spec-direction="previous" aria-label="المواصفات السابقة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button><span>اسحب لعرض المزيد</span><button type="button" data-spec-direction="next" aria-label="المواصفات التالية"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button></div>':'')
       +(details.text&&room.key!=='stairs'?'<p class="cm-note">'+esc(details.text)+'</p>':'');
     var strip=panel.querySelector('.cm-cards');
@@ -478,7 +478,7 @@
     hide:function(){if(!dialog||!dialog.open)return;dialog.close();cancelAnimationFrame(lineFrame);document.body.style.overflow=previousOverflow;if(opener&&opener.isConnected)opener.focus({preventScroll:true});}
   };
   var grid=document.querySelector('#landing3 .rh-grid');
-  if(grid){var launcher=document.createElement('div');launcher.className='fd-chalet-map-launcher';launcher.innerHTML='<button type="button" class="fd-chalet-map-open" aria-haspopup="dialog" aria-controls="fd-chalet-map"><span><strong>استكشف الشاليه من الداخل</strong><small>تعرف على الغرف والمرافق</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>';grid.after(launcher);}
+  if(grid){var launcher=document.createElement('div');launcher.className='fd-chalet-map-launcher';launcher.innerHTML='<button type="button" class="fd-chalet-map-open" aria-haspopup="dialog" aria-controls="fd-chalet-map"><span><strong>استكشف الشاليه من الداخل</strong><small>تعرّف على الغرف والمرافق</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>';grid.after(launcher);}
   document.addEventListener('click',function(e){
     if(!e.target.closest('.fd-chalet-map-open') || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey)return;
     e.preventDefault();

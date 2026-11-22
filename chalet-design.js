@@ -111,7 +111,7 @@ function renderPrivateChaletDetail(){
     + section('تجهيزات المطبخ', specifications.kitchen.map(function(item){return item.label;}))
     + '<details class="fd-cabin-section fd-cabin-accordion"><summary><h3>معلومات الإقامة</h3></summary>'
     + '<div class="fd-cabin-times" aria-label="أوقات الدخول والخروج"><div><span>الدخول</span><strong>4:00 مساءً</strong></div><div><span>الخروج</span><strong>12:00 ظهرًا</strong></div></div>'
-    + '<div class="fd-cabin-instructions"><p>' + chaletCapacityNote() + '</p><p>يُسمح للأطفال باستخدام المسبح تحت إشراف ذويهم طوال الوقت</p></div>'
+    + '<div class="fd-cabin-instructions"><p>' + chaletCapacityNote() + '</p><p>يُرجى إشراف الأهل على الأطفال في المسبح طوال الوقت</p></div>'
     + '</details>'
     + '<div class="fd-cabin-services-footer"><a class="fd-cabin-services-link" href="/chalet/services/" onclick="return openChaletService(event)">تصفّح خدمات الشاليه <span aria-hidden="true">←</span></a></div>'
     + '<div class="fd-cabin-faq-footer"><a class="fd-cabin-faq-link" href="/chalet/faq/" onclick="return openAccommodationFaq(event,\'chalet-faq\')">الأسئلة الشائعة <span aria-hidden="true">←</span></a></div>'
@@ -194,6 +194,10 @@ function openPrivateChalet(){
           "answer": "يضم الشاليه " + (PRIVATE_CHALET.rooms===2?"غرفتي نوم":PRIVATE_CHALET.rooms+" غرف نوم") + ":<br>الدور الأرضي: غرفة نوم ب" + specifications.bedrooms.second.bed.replace(/^سريران مفردان$/, "سريرين مفردين") + ".<br>الدور العلوي: " + chaletBedroomDescription("main") + " و" + specifications.bedroomBathroom.replace("داخل غرفة النوم الرئيسية","داخل الغرفة") + "."
         },
         {
+          "question": "هل المسبح بخصوصية كاملة؟",
+          "answer": "نعم جميع المسابح خاصة ومحجوبة عن الأنظار من الخارج"
+        },
+        {
           "question": "هل يوجد مسبح في الشاليه؟",
           "answer": "نعم، يتوفر مسبح للأطفال بعمق " + specifications.pool.depthCm + " سم مع " + specifications.pool.slide + "."
         },
@@ -211,7 +215,7 @@ function openPrivateChalet(){
         },
         {
           "question": "كيف أستكشف الشاليه من الداخل؟",
-          "answer": "تعرّف على غرف الشاليه ومرافقه من خلال الخريطة التفاعلية.<a class=\"fd-text-link fd-chalet-map-open\" href=\"/chalet-map/\">استكشف الشاليه من الداخل</a>"
+          "answer": "اضغط على «استكشف الشاليه من الداخل» للتعرّف على غرفه ومرافقه.<a class=\"fd-text-link fd-chalet-map-open\" href=\"/chalet-map/\">استكشف الشاليه من الداخل</a>"
         },
         {
           "question": "أين أجد صور الشاليه ومواصفاته؟",
@@ -229,7 +233,7 @@ function openPrivateChalet(){
         },
         {
           "question": "ما تعليمات استخدام المسبح؟",
-          "answer": "يُرجى الإشراف على الأطفال طوال فترة استخدام المسبح."
+          "answer": "يُرجى إشراف الأهل على الأطفال في المسبح طوال الوقت."
         }
       ]
     }

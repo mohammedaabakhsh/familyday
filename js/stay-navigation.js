@@ -64,7 +64,7 @@ function goBackToDestination(){
   document.getElementById('dest').classList.remove('hide');
 }
 
-function showSection2(){
+function showSection2(view){
   curSection='chalet';
 
   document.getElementById('landing2').classList.add('hide');
@@ -85,13 +85,20 @@ function showSection2(){
   var hero2=document.getElementById('sectionHero2');
   hero2.className='section-hero resort-hero';
   var st2=document.getElementById('sectionTitle2');
-  st2.textContent='اختر القسم المناسب لتجمّعك';
+  st2.textContent='اختر القسم المناسب لتجمّعكم';
   st2.removeAttribute('style');
   document.getElementById('sectionDesc2').textContent='';
   document.getElementById('headerTitle2').textContent='أقسام الاستراحة';
   app2.scrollTop=0;
   _chaletItems2=[];
   renderChalet2();
+  if(view==='comparison') requestAnimationFrame(function(){
+    var button=document.querySelector('.fd-stay-comparison-toggle');
+    if(!button) return;
+    if(button.getAttribute('aria-expanded')!=='true') toggleStayComparison(button);
+    button.focus({preventScroll:true});
+    button.closest('.fd-stay-comparison').scrollIntoView({block:'start'});
+  });
 }
 
 function goBack2(){

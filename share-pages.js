@@ -18,7 +18,7 @@ window.FD_SHARE_PAGES = [
     "route": "home=stay",
     "path": "/stay/",
     "title": "استراحة يوم العائلة",
-    "description": "قسمان مستقلان بمسابح خاصة للتجمّعات العائلية",
+    "description": "قسمان مستقلان بمسابح خاصة للتجمعات الكبيرة",
     "entry": true
   },
   {
@@ -32,7 +32,7 @@ window.FD_SHARE_PAGES = [
     "route": "home=chalet",
     "path": "/chalet/",
     "title": "شاليه يوم العائلة",
-    "description": "شاليه يتكوّن من دورين",
+    "description": "شاليه من دورين بمجلس مستقل ومسبح أطفال بزحليقة مزدوجة",
     "entry": true
   },
   {

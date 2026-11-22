@@ -32,10 +32,10 @@ with sync_playwright() as p:
     assert image_box['x']>=price_box['x']+price_box['width'] or price_box['x']>=image_box['x']+image_box['width']
    assert table.bounding_box()['y']+table.bounding_box()['height']<=info.bounding_box()['y']
    assert table.bounding_box()['height']<410
-   assert hero.locator('.fd-dining-caption').inner_text()=='الصورة توضح التجهيز مع التنسيق'
+   assert hero.locator('.fd-dining-caption').inner_text()=='الصورة توضح التجهيز مع تنسيق'
    image=hero.locator('img');image.scroll_into_view_if_needed()
    page.wait_for_function('(e)=>e.complete && e.naturalWidth>0',arg=image.element_handle())
-   assert table.locator('thead th').all_text_contents()==['الأشخاص','بدون تنسيق','مع تنسيق']
+   assert table.locator('thead th').all_text_contents()==['الأشخاص','تجهيز أساسي','تجهيز مع تنسيق']
    if main:
     assert panel.locator('.fd-dining-option').count()==10
     assert panel.locator('.fd-dining-option[aria-pressed=true]').count()==0
@@ -49,7 +49,7 @@ with sync_playwright() as p:
     assert row.locator('.fd-dining-capacity').inner_text()==str(size)
     snapshot.append(row.inner_text())
     if main:
-     for option,price,label in [('plain',plain,'بدون تنسيق'),('tansiq',tansiq,'مع تنسيق')]:
+     for option,price,label in [('plain',plain,'تجهيز أساسي'),('tansiq',tansiq,'تجهيز مع تنسيق')]:
       button=row.locator('.fd-dining-option[data-option='+option+']')
       button.click()
       assert panel.locator('.fd-dining-option[aria-pressed=true]').count()==1

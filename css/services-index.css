@@ -55,3 +55,6 @@
   #services-overlay .svcs-description { font-size:13px; line-height:1.4; }
   #services-overlay[data-venue="chalet"] .svcs-section-title { margin-bottom:8px; }
 }
+
+/* Cinema remains a resort service after moving its card into entertainment. */
+#services-overlay[data-venue="chalet"] .svcs-card[href="/services/cinema/"]{display:none!important}

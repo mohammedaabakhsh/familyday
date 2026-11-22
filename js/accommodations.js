@@ -284,7 +284,7 @@ function renderCabinDetailSections(content){
   const note=document.createElement('div');
   note.className='fd-cabin-instructions';
   const paragraph=document.createElement('p');
-  paragraph.textContent='مسابح الأكواخ مخصصة للكبار، ويسمح للأطفال باستخدامها تحت إشراف ذويهم طوال الوقت';
+  paragraph.textContent='مسابح الأكواخ مخصصة للكبار. يُرجى إشراف الأهل على الأطفال في المسبح طوال الوقت';
   note.appendChild(paragraph);
   information.appendChild(note);
   root.insertBefore(information,root.querySelector('.fd-cabin-combined-note')||root.querySelector('.fd-cabin-services-footer'));
@@ -304,7 +304,7 @@ function renderCabinDetail(c){
   const hasOutdoorBath=c.bath.outdoorPrivacy&&!c.bath.privacyInLabel;
   const subtitle=c.description||c.type||'';
   const guestsText=resortGuestText(c.guests);
-  const poolNote=(c.pool.depthInLabel?'':'المسبح بعمق '+c.pool.depthCm+' '+depthUnit+'، و')+'يُسمح للأطفال باستخدامه تحت إشراف ذويهم.';
+  const poolNote=(c.pool.depthInLabel?'':'المسبح بعمق '+c.pool.depthCm+' '+depthUnit+'. ')+'يُرجى إشراف الأهل على الأطفال في المسبح طوال الوقت.';
   const renderFeatures=function(list){
     return list.map(function(name){
       return '<span class="fd-cabin-feature'+(name.length>24?' fd-cabin-feature--wide':'')+'">'+formatSpecificationText(name)+'</span>';
@@ -399,12 +399,12 @@ function renderSharedGardenDetail(c){
 
       <section class="fd-cabin-section">
         <h3>مرافق الحديقة</h3>
-        <div class="fd-cabin-feature-list">${renderFeatures(features.concat(['الوصول: لكل كوخ باب داخلي يفتح مباشرة على الحديقة']))}</div>
+        <div class="fd-cabin-feature-list">${renderFeatures(features.concat(['الوصول: لكل كوخ باب خاص يفتح على الحديقة مباشرة']))}</div>
       </section>
 
       <section class="fd-cabin-section fd-shared-garden-tour">
-        <h3>الجولة الافتراضية</h3>
-        <button type="button" onclick="open3D('https://my.matterport.com/show/?m=S7Z2CF9tdwm')" class="mbtn fd-garden-tour-btn">جولة ثلاثية الأبعاد</button>
+        <h3>جولة ثلاثية الأبعاد للحديقة</h3>
+        <button type="button" onclick="open3D('https://my.matterport.com/show/?m=S7Z2CF9tdwm')" class="mbtn fd-garden-tour-btn">جولة ثلاثية الأبعاد للحديقة</button>
       </section>
     </section>`;
 }
