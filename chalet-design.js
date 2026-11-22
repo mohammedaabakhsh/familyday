@@ -15,6 +15,7 @@ var PRIVATE_CHALET = {
     bedrooms: {main: {bed: 'سرير مزدوج'}, second: {bed: 'سريران مفردان'}},
     bedroomBathroom: 'حمام خاص داخل غرفة النوم الرئيسية',
     pool: {depthCm: 60, slide: 'زحليقة مزدوجة'},
+    diningCapacity: 8,
     seating: {living: 'تتسع لـ15 شخصًا', majlis: 'يتسع لـ10 أشخاص'},
     majlisBathroom: 'حمام خاص بالمجلس المستقل',
     television: 'تلفزيون ذكي',
@@ -32,6 +33,8 @@ var PRIVATE_CHALET = {
 GALLERY[PRIVATE_CHALET.id] = Array.from({length:18}, function(_, index){
   return 'imgs/chalet_' + (index + 1) + '.webp?v=20261110-natural-photos-v1';
 });
+moveGalleryCover(PRIVATE_CHALET.id,'chalet_2.webp');
+
 
 
 GALLERY_LABELS[PRIVATE_CHALET.id] = {
@@ -60,6 +63,11 @@ function chaletBedroomDescription(key) {
   return (key==='main'?'غرفة النوم الرئيسية':'غرفة النوم الثانية')+' ب'+room.bed.replace(/^سريران مفردان$/, 'سريرين مفردين');
 }
 
+
+function chaletCapacityNote(){
+  return 'الشاليه يتسع لـ'+PRIVATE_CHALET.guests+' ضيفًا ويمكن استقبال حتى '+PRIVATE_CHALET.maxGuests+' ضيفًا برسوم إضافية';
+}
+
 function renderPrivateChaletDetail(){
   var specifications = PRIVATE_CHALET.specifications;
   function features(items){
@@ -85,7 +93,7 @@ function renderPrivateChaletDetail(){
     + floor('الدور الأرضي', [
       chaletBedroomDescription('second'),
       'الصالة الداخلية ' + specifications.seating.living,
-      'طاولة طعام',
+      'طاولة طعام لـ' + specifications.diningCapacity + ' أشخاص',
       'غرفة ألعاب الأطفال',
       'مطبخ',
       'حمام'
@@ -103,7 +111,7 @@ function renderPrivateChaletDetail(){
     + section('مميزات الإقامة', [specifications.television])
     + '<details class="fd-cabin-section fd-cabin-accordion"><summary><h3>معلومات الإقامة</h3></summary>'
     + '<div class="fd-cabin-times" aria-label="أوقات الدخول والخروج"><div><span>الدخول</span><strong>4:00 مساءً</strong></div><div><span>الخروج</span><strong>12:00 ظهرًا</strong></div></div>'
-    + '<div class="fd-cabin-instructions"><p>الشاليه يتسع لـ' + PRIVATE_CHALET.guests + ' ضيفًا ويمكن استقبال حتى ' + PRIVATE_CHALET.maxGuests + ' ضيفًا برسوم إضافية</p><p>يُسمح للأطفال باستخدام المسبح تحت إشراف ذويهم طوال الوقت</p></div>'
+    + '<div class="fd-cabin-instructions"><p>' + chaletCapacityNote() + '</p><p>يُسمح للأطفال باستخدام المسبح تحت إشراف ذويهم طوال الوقت</p></div>'
     + '</details>'
     + '<div class="fd-cabin-faq-footer"><a class="fd-cabin-faq-link" href="/chalet/faq/" onclick="return openAccommodationFaq(event,\'chalet-faq\')">الأسئلة الشائعة <span aria-hidden="true">←</span></a></div>'
     + '</section>';
@@ -176,7 +184,7 @@ function openPrivateChalet(){
       "items": [
         {
           "question": "كم عدد الضيوف في الشاليه؟",
-          "answer": "يتسع الشاليه " + resortGuestText(PRIVATE_CHALET.guests) + "، ويمكن زيادة العدد إلى " + PRIVATE_CHALET.maxGuests + " ضيفًا كحد أقصى برسوم إضافية."
+          "answer": chaletCapacityNote()
         },
         {
           "question": "كم عدد غرف النوم في الشاليه؟",

@@ -1,6 +1,6 @@
 var FD_STAY_UNITS = [
-    {id:20,img:0,name:"القسم الأول – الدور الأرضي",specs:["غرفتا نوم","مسبح للكبار","مسبح للأطفال"],type:"قسم أرضي لجمعتكم حتى 25 ضيفًا مع مجلس كبير وغرفتي نوم ومسبحين للكبار والأطفال",description:"قسم في الدور الأرضي بمجلس كبير وجلسة خارجية لجمعتكم\nمناسب للتجمعات العائلية حتى 25 ضيفًا مع غرفتي نوم\nويضم مسبحين خاصين للكبار والأطفال",suitable:"مناسب للتجمعات الكبيرة",rooms:2,guests:25,maxGuests:70,bathroom:4,hall:true,badge:null,tags:["غرفة النوم الرئيسية بسرير مزدوج","غرفة النوم الثانية بسريرين مفردين","|","مجلس كبير","صالة داخلية","3 دورات مياه","|","ركن المطبخ","|","جلسة خارجية","شواية","حمام خارجي","|","مسبح خاص للكبار بمقاس 8 × 4 م وعمق متدرج من 1 إلى 2 م.","مسبح خاص للأطفال بمقاس 6 × 2 م وعمق 65 سم.","كراسي تشميس"],bookUrl:"https://familyday-sa.com/ar/listings/69cea5753a421f1c8de8cb43"},
-    {id:21,slide:true,img:5,name:"القسم الثاني – الدور العلوي",specs:["غرفة نوم","مسبح للكبار","ملعب كرة طائرة"],type:"قسم علوي حتى 25 ضيفًا مع مجلس كبير ومسبح للكبار وملعب كرة طائرة وزحليقة هوائية كبيرة برسوم إضافية",description:"قسم في الدور العلوي بمجلس كبير وغرفة نوم وجلسة خارجية لجمعتكم\nمناسب للتجمعات العائلية حتى 25 ضيفًا مع مسبح خاص للكبار وملعب كرة طائرة\nوتتوفر الزحليقة الهوائية الكبيرة برسوم إضافية",suitable:"مناسب للتجمعات الكبيرة",rooms:1,guests:25,maxGuests:70,bathroom:4,hall:false,badge:null,tags:["غرفة النوم الرئيسية بـ3 أسرّة","|","مجلس كبير","3 دورات مياه","|","ركن المطبخ","|","جلسة خارجية","شواية","حمام خارجي","|","مسبح خاص للكبار بمقاس 8 × 4 م وعمق متدرج من 1 إلى 2 م.","كراسي تشميس","|","ملعب كرة طائرة"],bookUrl:"https://familyday-sa.com/ar/listings/69cea610f9674d785069b3c5"}
+    {id:20,img:0,name:"القسم الأول – الدور الأرضي",specs:["غرفتا نوم","مسبح للكبار","مسبح للأطفال"],type:"قسم أرضي لجمعتكم حتى 25 ضيفًا مع مجلس كبير وغرفتي نوم ومسبحين للكبار والأطفال",description:"قسم في الدور الأرضي بمجلس كبير وجلسة خارجية لجمعتكم\nمناسب للتجمعات الكبيرة حتى 25 ضيفًا مع غرفتي نوم\nويضم مسبحين خاصين للكبار والأطفال",suitable:"مناسب للتجمعات الكبيرة",rooms:2,guests:25,maxGuests:70,bathroom:4,hall:true,badge:null,tags:["غرفة النوم الرئيسية بسرير مزدوج","غرفة النوم الثانية بسريرين مفردين","|","مجلس كبير","صالة داخلية","3 دورات مياه","|","ركن المطبخ","|","جلسة خارجية","شواية","حمام خارجي","|","مسبح خاص للكبار بمقاس 8 × 4 م وعمق متدرج من 1 إلى 2 م.","مسبح خاص للأطفال بمقاس 6 × 2 م وعمق 65 سم.","كراسي تشميس"],bookUrl:"https://familyday-sa.com/ar/listings/69cea5753a421f1c8de8cb43"},
+    {id:21,slide:true,img:5,name:"القسم الثاني – الدور العلوي",specs:["غرفة نوم","مسبح للكبار","ملعب كرة طائرة"],type:"قسم علوي حتى 25 ضيفًا مع مجلس كبير ومسبح للكبار وملعب كرة طائرة وزحليقة هوائية كبيرة برسوم إضافية",description:"قسم في الدور العلوي بمجلس كبير وغرفة نوم وجلسة خارجية لجمعتكم\nمناسب للتجمعات الكبيرة حتى 25 ضيفًا مع مسبح خاص للكبار وملعب كرة طائرة\nوتتوفر الزحليقة الهوائية الكبيرة برسوم إضافية",suitable:"مناسب للتجمعات الكبيرة",rooms:1,guests:25,maxGuests:70,bathroom:4,hall:false,badge:null,tags:["غرفة النوم الرئيسية بـ3 أسرّة","|","مجلس كبير","3 دورات مياه","|","ركن المطبخ","|","جلسة خارجية","شواية","حمام خارجي","|","مسبح خاص للكبار بمقاس 8 × 4 م وعمق متدرج من 1 إلى 2 م.","كراسي تشميس","|","ملعب كرة طائرة"],bookUrl:"https://familyday-sa.com/ar/listings/69cea610f9674d785069b3c5"}
   ];
 
 /* Rest-house presentation. Existing section IDs, galleries and booking destinations are retained. */
@@ -10,7 +10,7 @@ function renderStayCard(c) {
     + '<img class="card-img" src="' + photos[0] + '" alt="' + c.name + '" loading="lazy" width="800" height="800">'
     + '</div><div class="card-body fd-cabin-card-v2-body">'
     + '<div class="fd-cabin-card-v2-heading"><div><h2 class="card-name">' + c.name + '</h2>'
-    + '<p class="fd-cabin-card-v2-subtitle">مناسب للتجمعات العائلية</p></div></div>'
+    + '<p class="fd-cabin-card-v2-subtitle">مناسب للتجمعات الكبيرة</p></div></div>'
     + '<div class="fd-cabin-card-v2-facts" aria-label="معلومات ' + c.name + '">'
     + '<div class="fd-cabin-card-v2-fact"><span>سعة الضيوف</span><strong>' + resortGuestText(c.guests) + '</strong></div>'
     + '<div class="fd-cabin-card-v2-fact"><span>غرف النوم</span><strong>' + resortRoomText(c.rooms) + '</strong></div></div>'
@@ -57,12 +57,12 @@ function renderStayDetail(c) {
     + '<div class="fd-cabin-card-v2-fact"><span>غرف النوم</span><strong>' + resortRoomText(c.rooms) + '</strong></div></div>'
     + '</div></div>'
     + section('داخل القسم', indoor)
-    + section('المنطقة الخارجية والمسبح', outdoor)
+    + section(c.id===20?'المنطقة الخارجية والمسابح':'المنطقة الخارجية والمسبح', outdoor)
     + section('تجهيزات المطبخ', ['موقد كهربائي', 'ميكروويف', 'ثلاجة', 'غلاية'])
     + section('مميزات الإقامة', ['تلفزيون ذكي', 'سماعات داخلية (ساوند بار)'])
     + '<details class="fd-cabin-section fd-cabin-accordion"><summary><h3>معلومات الإقامة</h3></summary>'
     + '<div class="fd-cabin-times" aria-label="أوقات الدخول والخروج"><div><span>الدخول</span><strong>4:00 مساءً</strong></div><div><span>الخروج</span><strong>12:00 ظهرًا</strong></div></div>'
-    + '<div class="fd-cabin-instructions"><p>القسم يتسع لـ' + c.guests + ' ضيفًا ويمكن استقبال حتى ' + c.maxGuests + ' ضيفًا برسوم إضافية</p><p>يُسمح للأطفال باستخدام المسابح تحت إشراف ذويهم طوال الوقت</p></div>'
+    + '<div class="fd-cabin-instructions"><p>سعة القسم للتجمعات ' + c.guests + ' ضيفًا ويمكن استقبال حتى ' + c.maxGuests + ' ضيفًا برسوم إضافية</p><p>يُسمح للأطفال باستخدام المسابح تحت إشراف ذويهم طوال الوقت</p></div>'
     + '</details>'
     + (c.slide ? '<section class="fd-cabin-addons"><h3>خدمات إضافية</h3><p>الزحليقة الهوائية الكبيرة — برسوم إضافية.</p></section>' : '')
     + '<div class="fd-cabin-faq-footer"><a class="fd-cabin-faq-link" href="/stay/faq/" onclick="return openAccommodationFaq(event,\'faq2\')">الأسئلة الشائعة <span aria-hidden="true">←</span></a></div>'

@@ -130,11 +130,27 @@ const GALLERY={1:[
   ]
 ,
   20:["imgs/sec1_1.webp","imgs/sec1_2.webp","imgs/sec1_3.webp","imgs/sec1_4.webp","imgs/sec1_5.webp","imgs/sec1_6.webp","imgs/sec1_7.webp","imgs/sec1_8.webp","imgs/sec1_9.webp","imgs/sec1_10.webp","imgs/sec1_11.webp","imgs/sec1_12.webp"],
-  21:["imgs/sec2_1.webp?v=20261002b","imgs/sec2_2.webp?v=20261002b","imgs/sec2_3.webp?v=20261002b","imgs/sec2_4.webp?v=20261002b","imgs/sec2_5.webp?v=20261002b","imgs/sec2_6.webp?v=20261002b","imgs/sec2_7.webp?v=20261002b","imgs/sec2_8.webp?v=20261002b","imgs/sec2_9.webp?v=20261002b","imgs/sec2_10.webp?v=20261002b","imgs/sec2_11.webp?v=20261002b","imgs/sec2_12.webp?v=20261002b","imgs/sec2_13.webp?v=20261002b"]
+  21:["imgs/sec2_1.webp?v=20261002b","imgs/sec2_2.webp?v=20261002b","imgs/sec2_3-enhanced-20261122.webp?v=20261002b","imgs/sec2_4.webp?v=20261002b","imgs/sec2_5.webp?v=20261002b","imgs/sec2_6.webp?v=20261002b","imgs/sec2_7.webp?v=20261002b","imgs/sec2_8.webp?v=20261002b","imgs/sec2_9.webp?v=20261002b","imgs/sec2_10.webp?v=20261002b","imgs/sec2_11.webp?v=20261002b","imgs/sec2_12.webp?v=20261002b","imgs/sec2_13.webp?v=20261002b"]
 };
 // Keep the shared photo sets, with the selected cover first for each second unit.
 GALLERY[12] = [GALLERY[1][5]].concat(GALLERY[1].slice(0,5),GALLERY[1].slice(6));
 GALLERY[13] = [GALLERY[4][5]].concat(GALLERY[4].slice(0,5),GALLERY[4].slice(6));
+
+
+// Move the selected cover only; preserve every remaining photo's relative order.
+function moveGalleryCover(id,filename){
+  var photos=GALLERY[id],index=photos.findIndex(function(src){return src.split('?')[0].split('/').pop()===filename;});
+  if(index>0) GALLERY[id]=[photos[index]].concat(photos.slice(0,index),photos.slice(index+1));
+}
+moveGalleryCover(1,'dome_6.webp');
+moveGalleryCover(12,'dome_7.webp');
+moveGalleryCover(2,'harami_3.webp');
+moveGalleryCover(3,'classic_5.webp');
+moveGalleryCover(4,'greek_2.webp');
+moveGalleryCover(5,'palm_3.webp');
+moveGalleryCover(6,'boho_3.webp');
+moveGalleryCover(9,'royal_6.webp');
+moveGalleryCover(10,'panorama_2.webp');
 
 // Photo labels are keyed by source filename, so reordering photos cannot mislabel them.
 var GALLERY_LABELS = {
@@ -155,7 +171,7 @@ var GALLERY_LABELS = {
   21: {
     'sec2_1.webp': 'المنطقة الخارجية',
     'sec2_2.webp': 'مسبح الكبار',
-    'sec2_3.webp': 'الألعاب الهوائية',
+    'sec2_3-enhanced-20261122.webp': 'الزحليقة الهوائية الكبيرة برسوم إضافية',
     'sec2_4.webp': 'ملعب الكرة الطائرة',
     'sec2_5.webp': 'الجلسة الخارجية',
     'sec2_6.webp': 'مدخل الدور العلوي',

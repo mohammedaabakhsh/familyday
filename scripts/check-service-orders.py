@@ -28,7 +28,7 @@ with sync_playwright() as p:
     send.click();assert not page.evaluate('window.orderURL')
     assert page.locator('#order-time').get_attribute('aria-invalid')=='true'
     page.locator('#order-time').select_option(time)
-    expected_range={'20':'من ٨ مساءً إلى ١١ مساءً','24':'من ١٢ منتصف الليل إلى ٣ صباحًا','26':'من ٢ صباحًا إلى ٥ صباحًا'}[time]
+    expected_range={'20':'من 8 مساءً إلى 11 مساءً','24':'من 12 منتصف الليل إلى 3 صباحًا','26':'من 2 صباحًا إلى 5 صباحًا'}[time]
     assert page.locator('#order-time-range').inner_text()==expected_range
     page.locator('.fd-order-cancel').click()
     page.locator(button).click()

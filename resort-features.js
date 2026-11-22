@@ -63,39 +63,54 @@ function updateCabinShareActions(cabin) {
     bar.appendChild(inquiry);
   }
   inquiry.href = 'https://wa.me/966556156693?text=' + encodeURIComponent('السلام عليكم، أرغب في الاستفسار عن ' + cabin.name + '.');
-  var sharing = document.getElementById('fd-cabin-sharing');
-  if (!sharing) {
-    sharing = document.createElement('div');
-    sharing.id = 'fd-cabin-sharing';
-    sharing.className = 'fd-cabin-sharing';
-    sharing.innerHTML = '<div class="fd-cabin-share-links"><button type="button" onclick="copyCabinLink()">نسخ الرابط</button><a target="_blank" rel="noopener noreferrer">مشاركة عبر واتساب</a></div><p class="fd-cabin-copy-status" role="status"></p>';
-    bar.appendChild(sharing);
-  }
-  sharing.dataset.cabinId = cabin.id;
-  sharing.querySelector('a').href = 'https://wa.me/?text=' + encodeURIComponent(cabin.name + '\n' + cabinShareURL(cabin.id));
-  sharing.querySelector('[role="status"]').textContent = '';
+  var button = document.getElementById('fd-cabin-share');
+  button.hidden = false;
+  button.disabled = false;
+  button.dataset.cabinId = cabin.id;
+  button.dataset.cabinName = cabin.name;
+  document.getElementById('fd-cabin-share-status').textContent = '';
 }
 
-async function copyCabinLink() {
-  var sharing = document.getElementById('fd-cabin-sharing');
-  var id = sharing.dataset.cabinId;
-  var url = cabinShareURL(id);
-  var copied = false;
+async function copyCabinURL(url) {
   try {
     await navigator.clipboard.writeText(url);
-    copied = true;
+    return true;
   } catch (_) {
     var input = document.createElement('textarea');
     input.value = url;
     input.readOnly = true;
     input.className = 'fd-copy-buffer';
-    sharing.appendChild(input);
+    document.querySelector('.fd-cabin-nav').appendChild(input);
     input.select();
+    var copied = false;
     try { copied = document.execCommand('copy'); } catch (_) {}
     input.remove();
-    sharing.querySelector('button').focus();
+    return copied;
   }
-  if (sharing.dataset.cabinId === id) {
-    sharing.querySelector('[role="status"]').textContent = copied ? 'تم نسخ الرابط' : 'تعذر النسخ، يمكنك نسخ الرابط من شريط العنوان.';
+}
+
+async function shareCabin() {
+  var button = document.getElementById('fd-cabin-share');
+  var status = document.getElementById('fd-cabin-share-status');
+  var id = button.dataset.cabinId;
+  var url = cabinShareURL(id);
+  status.textContent = '';
+  button.disabled = true;
+  try {
+    if (navigator.share) {
+      try {
+        await navigator.share({title:button.dataset.cabinName, url:url});
+        return;
+      } catch (error) {
+        if (error.name === 'AbortError') return;
+      }
+    }
+    var copied = await copyCabinURL(url);
+    if (button.dataset.cabinId === id) {
+      status.textContent = copied ? 'تم نسخ الرابط' : 'تعذر النسخ يمكنك نسخ الرابط من شريط العنوان';
+    }
+  } finally {
+    button.disabled = false;
+    if(button.dataset.cabinId===id && !button.hidden && button.getClientRects().length) button.focus({preventScroll:true});
   }
 }

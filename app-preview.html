@@ -1065,8 +1065,8 @@ header{
 <script src="site-enhancements.js?v=1"></script>
 <script src="menu-experience.js?v=20261103-shared-menu-prices-v1"></script>
 <script src="js/menu-order-message.js?v=20261103-menu-message-v1"></script>
-<script src="js/service-orders.js?v=20261103-menu-message-v1"></script>
-<script src="resort-features.js?v=20261103-review-v1"></script>
+<script src="js/service-orders.js?v=20261122-approved-review-v1"></script>
+<script src="resort-features.js?v=20261122-approved-review-v1"></script>
 <script>
 
 
@@ -2276,7 +2276,7 @@ function tarfihiOrder(){
   </div>
 </div>
 
-<script src="resort-data.js?v=20261116-description-layout-v2"></script>
+<script src="resort-data.js?v=20261122-approved-review-v1"></script>
 <script>
 const IMG=["imgs/img04.webp","imgs/img05.webp","imgs/img06.webp","imgs/img07.webp","imgs/img08.webp","imgs/img09.webp",
   "imgs/img10.webp",
@@ -4729,7 +4729,7 @@ function openMDirect(c){
 @media(max-width:599px){#hospitality-detail .hd-title{font-size:22px}}
 </style>
 
-<link rel="stylesheet" href="resort-ui.css?v=20261107-final-batch-v1">
+<link rel="stylesheet" href="resort-ui.css?v=20261122-approved-review-v1">
 
 <!-- Approved keyboard navigation enhancement -->
 <style id="fd-keyboard-focus">
@@ -5293,7 +5293,7 @@ body.fa-app[data-fa-destination=true][data-fa-demo=true]{--fa-top:148px}
   window.fdBookingCriteria=bookingCriteria;
   function todayISO(){return new Date(Date.now()+3*3600000).toISOString().slice(0,10);}
   function nextDay(iso,days){var d=new Date(iso+'T12:00:00Z');d.setUTCDate(d.getUTCDate()+days);return d.toISOString().slice(0,10);}
-  function dateLabel(iso){return iso?new Intl.DateTimeFormat('ar-SA-u-ca-gregory',{day:'numeric',month:'short'}).format(new Date(iso+'T12:00:00Z')):'اختر الموعد';}
+  function dateLabel(iso){return iso?new Intl.DateTimeFormat('ar-SA-u-ca-gregory-nu-latn',{day:'numeric',month:'short'}).format(new Date(iso+'T12:00:00Z')):'اختر الموعد';}
   function guestLabel(number){var n=Number(number);return n===1?'ضيف واحد':n===2?'ضيفان':n+(n>=3&&n<=10?' ضيوف':' ضيفًا');}
   function saveCriteria(){window.fdBookingCriteria=bookingCriteria;try{sessionStorage.setItem('fd-booking-criteria',JSON.stringify(bookingCriteria));}catch(e){}}
   function venueButtons(venue){return '<div class="fa-place-switch" role="group" aria-label="اختيار المكان"><button type="button" data-fa-venue="resort" aria-pressed="'+(venue==='resort')+'" onclick="fdChooseBookingVenue(\'resort\')">المنتجع</button><button type="button" data-fa-venue="stay" aria-pressed="'+(venue==='stay')+'" onclick="fdChooseBookingVenue(\'stay\')">الاستراحة</button></div>';}

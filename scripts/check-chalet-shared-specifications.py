@@ -11,8 +11,9 @@ with sync_playwright() as p:
         page = browser.new_page(viewport={'width': width, 'height': 740}, reduced_motion='reduce')
         if fixture:
             # Change only the shared fact declaration in a browser-only response.
-            edited = source.replace("'يتسع لـ10 أشخاص'", "'يتسع لـ11 شخصًا'").replace("'حمام خاص بالمجلس المستقل'", "'حمام خاص بالمجلس المستقل — تحقق'")
+            edited = source.replace('diningCapacity: 8', 'diningCapacity: 9').replace("'يتسع لـ10 أشخاص'", "'يتسع لـ11 شخصًا'").replace("'حمام خاص بالمجلس المستقل'", "'حمام خاص بالمجلس المستقل — تحقق'")
             page.route('**/chalet-design.js*', lambda route: route.fulfill(body=edited, content_type='application/javascript'))
+        dining_capacity = 9 if fixture else 8
         capacity = 'يتسع لـ11 شخصًا' if fixture else 'يتسع لـ10 أشخاص'
         bathroom = 'حمام خاص بالمجلس المستقل' + (' — تحقق' if fixture else '')
         errors = []
@@ -22,11 +23,11 @@ with sync_playwright() as p:
             summary.click()
         details = page.locator('#mBody').inner_text()
         assert capacity in details and bathroom in details
-        assert 'إطلالة' not in details and '8 أشخاص' not in details
+        assert 'إطلالة' not in details and 'طاولة طعام لـ'+str(dining_capacity)+' أشخاص' in details
         kitchen = page.locator('.fd-cabin-section').filter(has=page.locator('h3', has_text='تجهيزات المطبخ')).locator('.fd-cabin-feature').all_text_contents()
         assert kitchen == ['موقد كهربائي', 'موقد غاز', 'فرن', 'ميكروويف', 'ثلاجة', 'غلاية', 'أدوات مطبخ أساسية']
         page.locator('#ov .fd-chalet-map-open').click()
-        for key, expected in [('living', 'تتسع لـ15 شخصًا'), ('majlis', capacity)]:
+        for key, expected in [('dining', 'تتّسع لـ'+str(dining_capacity)+' أشخاص'), ('living', 'تتسع لـ15 شخصًا'), ('majlis', capacity)]:
             page.locator('.cm-marker[data-room="' + key + '"]').click()
             assert page.locator('.cm-card span').count() == 0
             assert page.locator('.cm-card strong').first.inner_text() == expected

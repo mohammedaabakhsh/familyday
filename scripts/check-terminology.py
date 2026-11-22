@@ -16,7 +16,7 @@ with sync_playwright() as p:
    content=page.locator('#mBody')
    name=page.locator('#fd-cabin-detail-title').inner_text()
    heading=content.locator('.fd-cabin-section').filter(has=page.get_by_role('heading',name='مميزات الإقامة',exact=True))
-   assert 'غرفة سائق متاحة حسب التوفر' in heading.inner_text()
+   assert 'غرفة سائق خارجية متاحة حسب التوفر' in heading.text_content()
    assert content.locator('h3',has_text='خدمات متاحة').count()==0
    assert content.locator('h3',has_text='خدمات إضافية').count()==0
    shortcut=content.get_by_role('link',name='تصفّح خدمات المنتجع')

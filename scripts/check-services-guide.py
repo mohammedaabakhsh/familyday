@@ -60,20 +60,21 @@ with sync_playwright() as p:
             cards=page.locator('#'+key+' .package-card')
             assert cards.count()==6
             for card,item in zip(cards.all(),expected):
-                assert card.locator('h3').text_content()==item['name']
+                assert card.locator('.seating-collapsed-title').text_content()==item['name']
                 assert card.locator('.price').text_content()==item['price']
                 assert card.locator('.inclusions li').all_text_contents()==item['items']
-        usage_notes=page.evaluate("""html=>Array.from(new DOMParser().parseFromString(html,'text/html').querySelectorAll('.hd-package-note,.cn-notes-list li'),e=>e.textContent.trim())""",source)
         guide_text=page.locator('#guide-content').text_content()
-        assert 'تعليمات الاستخدام' not in guide_text
-        assert all(note not in guide_text for note in usage_notes)
+        assert page.locator('#seating .guide-usage summary').inner_text()=='تعليمات الاستخدام'
+        seating_notes=page.evaluate("html=>Array.from(new DOMParser().parseFromString(html,'text/html').querySelectorAll('.jl-notes-list li'),e=>e.textContent.trim())",source)
+        assert page.locator('#seating .guide-usage li').all_text_contents()==seating_notes
         assert not page.locator('#guide-content').evaluate('(e)=>/[٠-٩]/.test(e.textContent)')
-        assert page.locator('#seating .photo-card').count()==6
-        assert page.locator('#dining .dining-price-card').count()==5
-        assert page.locator('#guide-content details').count()==12
+        assert page.locator('#seating .package-card').count()==6
+        assert page.locator('#dining .fd-dining-row').count()==len(page.evaluate('Object.keys(_tawilatPrices)'))
+        assert page.locator('#guide-content .package-card details').count()==12
+        assert page.locator('#guide-content .guide-usage').count()==1
         assert page.locator('#guide-content details[open]').count()==0
         assert not page.locator('#package-complete details').evaluate('e=>e.open')
-        assert page.locator('.package-card > .package-photo img').count()==36
+        assert page.locator('.package-card .package-photo img').count()==page.evaluate('Object.values(_coordinationPhotos).reduce((n,photos)=>n+photos.length,0)+_jalsatAllSessions.length')
         assert page.locator('.gallery-controls').count()==6
         assert page.locator('#resort-map').count()==0
         for name in SECTIONS:
@@ -94,34 +95,37 @@ with sync_playwright() as p:
         # All service cards retain the approved size and visible title/price.
         for card in page.locator('.package-card').all():
             visit(page,card.evaluate('e=>e.closest(".guide-section").id'))
-            if card.evaluate('e=>!e.classList.contains("dining-card")'):
-                assert card.locator('.package-heading h3').is_visible()
-                assert card.locator('.package-heading .price').is_visible()
+            summary=card.locator('summary')
+            if summary.count():
+                assert card.locator('.seating-collapsed-title').is_visible()
+                assert card.locator('.price').is_visible()
+                summary.click()
             if card.locator('.gallery-track').count():
-                track=card.locator('.gallery-track').bounding_box()
-                assert abs(track['width']/track['height']-4/3)<.01
-            if card.locator('summary').count():
-                card.locator('summary').click()
-                assert card.locator('.package-details-body').is_visible()
-                card.locator('summary').click()
-            else:
-                assert card.locator('.package-details-body').is_visible()
+                image=card.locator('.gallery-slide img').first
+                image.evaluate('e=>e.decode()')
+                photo=image.bounding_box()
+                assert photo['width']>0 and photo['height']>0
+                assert photo['width']<=card.bounding_box()['width']+1
+                if width<900:
+                    ratio=1 if image.get_attribute('src').endswith('/jalsat_2.webp') else 4/3
+                    assert abs(photo['width']/photo['height']-ratio)<.01
+                else: assert image.evaluate('e=>getComputedStyle(e).objectFit')=='contain'
+            assert card.locator('.package-details-body').is_visible()
+            if summary.count():summary.click()
         visit(page,'dining')
-        dining=page.locator('#dining .package-card')
-        assert dining.locator('summary,details').count()==0
-        assert dining.locator('table,select,input,button').count()==0
-        assert dining.locator('.dining-prices').is_visible()
-        expected_prices=page.evaluate('Object.entries(_tawilatPrices).map(([n,p])=>[n,p.plain+" ريال",p.tansiq+" ريال"])')
-        assert dining.locator('.dining-price-card').evaluate_all('(els)=>els.map(e=>[e.querySelector("h3 bdi").textContent,...Array.from(e.querySelectorAll("dd"),c=>c.textContent)])')==expected_prices
-        assert dining.locator('.package-heading,.price,.small-note').count()==0
-        assert dining.locator('.dining-options .inclusions li').all_text_contents()==page.evaluate('_tawilatInclusions')
-        assert dining.locator('.dining-options p').inner_text()=='طاولات وكراسي فقط'
+        dining=page.locator('#dining')
+        assert dining.locator('summary,details,select,input,button').count()==0
+        assert dining.locator('.fd-dining-table').is_visible()
+        expected_prices=page.evaluate('Object.entries(_tawilatPrices).map(([n,p])=>[n,String(p.plain),String(p.tansiq)])')
+        assert dining.locator('.fd-dining-row').evaluate_all('(els)=>els.map(e=>[e.querySelector(".fd-dining-capacity").textContent,...Array.from(e.querySelectorAll(".fd-dining-price"),c=>c.textContent)])')==expected_prices
+        assert dining.locator('.fd-dining-inclusions li').all_text_contents()==page.evaluate('_tawilatInclusions')
+        assert dining.locator('[data-option="plain"] p').inner_text()=='طاولات وكراسي فقط'
         visit(page,'seating')
         for card,session in zip(page.locator('#seating .package-card').all(),page.evaluate('_jalsatAllSessions')):
-            assert card.locator('h3').text_content()==session['name']
+            assert card.locator('.seating-collapsed-title').text_content()==session['name']
             assert card.locator('.price').text_content()==session['price']+' للجلسة'
-            assert card.locator('.service-capacity').text_content()==session['persons']
-            assert card.locator('.service-capacity').is_visible()
+            assert card.locator('.seating-capacity-badge').text_content()==session['persons']
+            assert card.locator('.seating-capacity-badge').is_visible()
             assert not card.locator('details').evaluate('e=>e.open')
             assert card.locator('.session-description').text_content()==session['desc']
             assert card.locator('img').get_attribute('src')=='/'+session['img']
@@ -141,7 +145,7 @@ with sync_playwright() as p:
         print(width,'PASS unified service cards with complete content, visible dining prices, section links, images and sharing',flush=True)
         context.close()
     context=browser.new_context();page=context.new_page()
-    source=(ROOT/'index.html').read_text().replace('تبخير المكان بالعود','تفصيل ضيافة تجريبي').replace('تزيين السرير بالورد الطبيعي على شكل قلب أو حرف من اختيارك','تفصيل تنسيق تجريبي').replace('<dd class="cn-price">150 ريال</dd>','<dd class="cn-price">173 ريال</dd>').replace('3 ساعات','5 ساعات').replace('أبلغنا فورًا عند هبوب رياح قوية.','تعليمات سينما تجريبية')
+    source=(ROOT/'index.html').read_text().replace('تبخير المكان بالعود','تفصيل ضيافة تجريبي').replace('تزيين السرير بالورد الطبيعي','تفصيل تنسيق تجريبي').replace('<dd class="cn-price">150 ريال</dd>','<dd class="cn-price">173 ريال</dd>').replace('3 ساعات','5 ساعات').replace('أبلغنا فورًا عند هبوب رياح قوية.','تعليمات سينما تجريبية')
     data=(ROOT/'service-data.js').read_text().replace('أطقم تقديم متكاملة','أطقم تقديم محدثة').replace("price:'300 ريال'","price:'333 ريال'",1).replace("img:'imgs/jalsat_1.webp'","img:'imgs/jalsat_2.webp'",1)
     context.route('**/index.html',lambda r:r.fulfill(body=source,content_type='text/html'))
     context.route('**/service-data.js?*',lambda r:r.fulfill(body=data,content_type='text/javascript'))
@@ -149,9 +153,9 @@ with sync_playwright() as p:
     assert 40<=page.locator('#title-dining').bounding_box()['y']<260
     assert page.locator('#hospitality,#cinema').count()==0
     assert 'تفصيل تنسيق تجريبي' in page.locator('#coordination').text_content()
-    assert 'أطقم تقديم محدثة' in page.locator('#dining .inclusions').inner_text()
-    assert '333 ريال' in page.locator('#seating .photo-card').first.text_content()
-    assert page.locator('#seating .photo-card img').first.get_attribute('src')=='/imgs/jalsat_2.webp'
+    assert 'أطقم تقديم محدثة' in page.locator('#dining .fd-dining-inclusions').inner_text()
+    assert '333 ريال' in page.locator('#seating .package-card').first.text_content()
+    assert page.locator('#seating .package-card img').first.get_attribute('src')=='/imgs/jalsat_2.webp'
     context.close()
     context=browser.new_context();page=context.new_page()
     context.route('**/index.html',lambda r:r.fulfill(status=503,body='unavailable'))

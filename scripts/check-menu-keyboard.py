@@ -79,9 +79,16 @@ with sync_playwright() as p:
             context.close()
         page = browser.new_page(viewport={'width': width, 'height': 900})
         page.goto(BASE + '/services/', wait_until='networkidle')
-        card = page.get_by_role('button', name='الجلسات والتجهيزات', exact=True)
-        expect(card.locator('.svcs-description')).to_have_text('سينما، طاولات طعام، جلسات خارجية')
-        assert card.get_attribute('aria-describedby') == 'svcs-setups-description'
+        # The occasion services have separate links and retain their own titles.
+        for path, title in [('hospitality/packages','الضيافة'),('coordination','التنسيقات'),('cinema','جلسة السينما'),('dining-tables','طاولات الطعام'),('outdoor-seating','الجلسات الخارجية')]:
+            card = page.locator('.svcs-card[href="/services/'+path+'/"]')
+            expect(card.locator('.svcs-name')).to_have_text(title)
+            descriptions={'التنسيقات':'نجهّز مناسباتكم بكل تفاصيلها','جلسة السينما':'استمتع بتجربة سينما في مساحتك الخاصة','الجلسات الخارجية':'جلسات تجمعكم في مساحتكم الخارجية الخاصة'}
+            if title in descriptions:
+                expect(card.locator('.svcs-description')).to_have_text(descriptions[title])
+                assert card.get_attribute('aria-describedby') == card.locator('.svcs-description').get_attribute('id')
+            else: assert card.locator('.svcs-description').count() == 0
+        assert page.get_by_role('button', name='الجلسات والتجهيزات', exact=True).count() == 0
         assert not page.evaluate('document.documentElement.scrollWidth > innerWidth')
         page.screenshot(path=f'/tmp/services-description-{width}.png', full_page=True)
         page.close()

@@ -128,6 +128,7 @@ server running:
 ```sh
 python3 scripts/build-share-pages.py --check
 python3 scripts/check-approved-review.py http://127.0.0.1:8023
+python3 scripts/check-review-completion.py http://127.0.0.1:8023
 python3 scripts/check-share-navigation.py http://127.0.0.1:8023
 python3 scripts/check-entry-loading.py http://127.0.0.1:8023
 python3 scripts/check-share-pages.py http://127.0.0.1:8023
@@ -149,9 +150,10 @@ Standalone preview files and the two guest-services entry points are retained.
 Asset paths can also be assembled dynamically; a text-search miss alone is not
 proof that an image or page is unused.
 
-The lossless-image check also requires Pillow and compares the 14 active PNG
-illustrations with approved revision `148ff44`, plus the app icon and sharing
-image with revision `7bf2bde`, in Git history. It verifies the
+The lossless-image check also requires Pillow. It compares the 13 cabin/chalet
+illustrations and the retained legacy resort map with revision `148ff44`, the
+current road map with `1d716aff`, and the app icon and sharing image with
+`7bf2bde`. All comparison revisions are in Git history. It verifies the
 full RGBA data, dimensions, metadata and Chromium-rendered pixels. Compression
 keeps the original PNG paths; update the comparison revision deliberately if
 the user later approves different source artwork.
@@ -175,3 +177,17 @@ older service worker for returning visitors. Main-page and preview logos share
 Approved public wording is documented in [TERMINOLOGY.md](TERMINOLOGY.md). Cabin details link to `/services/` through the router so service browsing returns to the originating cabin.
 
 Accommodation copy uses `description` for the approved multi-line introduction and `type` for the approved short copy. Cabin map cards use the same short copy as `share-pages.json`. Keep original cabin cards and specifications intact and preserve the no-comma wording and Western digits (0-9). Detail titles repeat the suitability in turquoise parentheses. Each approved sentence wraps independently with balanced lines.
+
+The approved 2026-11-22 review keeps all interface digits in 0-9, including
+Arabic-language cinema ranges and dates. Accommodation sharing uses one
+`#fd-cabin-share` button in the detail header: native sharing with a clipboard
+fallback, always using the canonical detail URL. Contact/availability actions
+remain in the bottom bar. The gallery cover helper moves only the chosen image
+and preserves the relative order of all other gallery photos.
+
+Current illustrations retain the approved PNGs. Lossless WebP conversions were
+tested but not adopted: Chromium handled the translucent pixels differently
+despite identical decoded RGBA data. Future optimizations must preserve dimensions,
+source pixels and browser rendering. Do not use older artwork or lossy variants.
+`imgs/sec2_3-enhanced-20261122.webp` is an enhanced version of the existing slide
+photo, not a newly photographed original; the source `imgs/sec2_3.webp` is retained.

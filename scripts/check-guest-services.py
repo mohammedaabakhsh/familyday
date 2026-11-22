@@ -113,7 +113,7 @@ with sync_playwright() as p:
         open_service(page,'games');page.locator('[name="games-package"][value="table"]').check();apply_service(page)
         open_service(page,'cinema')
         assert page.locator('#cinema-time option[value=""]').text_content()=='اختر وقت بداية الجلسة'
-        for slot,expected in [('20','من ٨ مساءً إلى ١١ مساءً'),('21','من ٩ مساءً إلى ١٢ منتصف الليل (اليوم التالي)'),('23','من ١١ مساءً إلى ٢ صباحًا (اليوم التالي)'),('26','من ٢ صباحًا إلى ٥ صباحًا'),('24','من ١٢ منتصف الليل إلى ٣ صباحًا')]:
+        for slot,expected in [('20','من 8 مساءً إلى 11 مساءً'),('21','من 9 مساءً إلى 12 منتصف الليل (اليوم التالي)'),('23','من 11 مساءً إلى 2 صباحًا (اليوم التالي)'),('26','من 2 صباحًا إلى 5 صباحًا'),('24','من 12 منتصف الليل إلى 3 صباحًا')]:
             page.locator('#cinema-time').select_option(slot)
             assert page.locator('#cinema-status').text_content()==expected
         apply_service(page)
@@ -247,7 +247,7 @@ with sync_playwright() as p:
     open_service(page, 'cinema')
     assert page.locator('#cinema-duration').text_content()=='4 ساعات'
     page.locator('#cinema-time').select_option('23')
-    assert page.locator('#cinema-status').text_content()=='من ١١ مساءً إلى ٣ صباحًا (اليوم التالي)'
+    assert page.locator('#cinema-status').text_content()=='من 11 مساءً إلى 3 صباحًا (اليوم التالي)'
     assert page.locator('#cinema-price').text_content()=='175 ريال'
     page.locator('#cinema-time').select_option('18');apply_service(page)
     assert page.locator('#order-total').text_content()=='300'  # 60 + 65 + 175.

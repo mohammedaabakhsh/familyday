@@ -40,7 +40,7 @@ with sync_playwright() as p:
             assert page.locator('#modalBookBtn').inner_text()=='الأسعار والتوفر'
             assert page.locator('#modalBookBtn').get_attribute('href').startswith('https://familyday-sa.com/')
             if 'dome' in path:
-                assert 'صالة جلوس مدمجة مع غرفة النوم' in page.locator('#mBody').text_content()
+                assert 'صالة داخلية مدمجة مع غرفة النوم' in page.locator('#mBody').text_content()
                 assert not page.locator('#mBody').evaluate('(e)=>/\\b(?:cm|m)\\b/.test(e.innerText)')
         page.goto(BASE+'/services/hospitality/packages/',wait_until='networkidle')
         assert page.locator('#hospitality-detail .hd-package').count()==9
@@ -69,7 +69,8 @@ with sync_playwright() as p:
                 button.click()
                 text=page.locator('#dt-details').inner_text()
                 assert text.strip(), (route,button.inner_text())
-                assert 'كنبتان' not in text and 'الصالة الداخلية' not in text
+                assert 'كنبتان' not in text
+                if button.inner_text()=='الصالة الداخلية': assert 'الصالة الداخلية' in page.locator('#dt-details .dt-selected-title').text_content()
                 assert not page.locator('#dt-details').evaluate('(e)=>/\\b(?:cm|m)\\b/.test(e.innerText)')
                 if button.inner_text()=='طاولة الطعام': assert 'طاولة الطعام' in text
             assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')

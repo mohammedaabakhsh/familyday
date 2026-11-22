@@ -73,11 +73,15 @@ with sync_playwright() as p:
  for path in ['/cabins/dome-1/','/cabins/greek-2/','/stay/ground-floor/','/stay/upper-floor/','/chalet/details/']:
   page.goto(BASE+path+'?fbclid=test',wait_until='networkidle')
   page.evaluate("Object.defineProperty(navigator,'clipboard',{value:{writeText:async text=>window.copied=text},configurable:true})")
-  page.locator('#fd-cabin-sharing button').click()
+  page.evaluate("Object.defineProperty(navigator,'share',{value:undefined,configurable:true})")
+  page.locator('#fd-cabin-share').click()
   assert page.evaluate('window.copied')==BASE+path
-  link=page.locator('#fd-cabin-sharing a').get_attribute('href')
-  text=parse_qs(urlparse(link).query)['text'][0];assert BASE+path in text and 'fbclid' not in text
- print('PASS cabin, section and chalet copy buttons and WhatsApp payloads retain canonical URLs',flush=True)
+  assert page.locator('#fd-cabin-share-status').inner_text()=='تم نسخ الرابط'
+  page.evaluate("Object.defineProperty(navigator,'share',{value:async value=>window.shared=value,configurable:true})")
+  page.locator('#fd-cabin-share').click()
+  assert page.evaluate('window.shared.url')==BASE+path
+  assert page.locator('#fd-cabin-sharing').count()==0
+ print('PASS single cabin, section and chalet share buttons retain canonical URLs for native share and clipboard',flush=True)
  # The two client links are fixed, including native share, clipboard and manual fallback.
  for path,button,expected in [('/guest-services/','#share-page','/guest-services/'),('/services-guide/','[data-share]','/arrangements/')]:
   page.goto(BASE+path,wait_until='networkidle')

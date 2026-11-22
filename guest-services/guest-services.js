@@ -292,8 +292,8 @@
     var end=start+Number(match[0]);
     function label(hour) {
       var minutes=Math.round(hour*60),h=Math.floor(minutes/60)%24,m=minutes%60;
-      var number=new Intl.NumberFormat('ar-SA',{useGrouping:false});
-      var clock=number.format(h%12 || 12)+(m ? ':'+number.format(m).padStart(2,'٠') : '');
+      var number=new Intl.NumberFormat('ar-SA-u-nu-latn',{useGrouping:false});
+      var clock=number.format(h%12 || 12)+(m ? ':'+number.format(m).padStart(2,'0') : '');
       return clock+(h===0 && m===0 ? ' منتصف الليل' : h<12 ? ' صباحًا' : h===12 ? ' ظهرًا' : ' مساءً');
     }
     return 'من '+label(start)+' إلى '+label(end)+(Math.floor(end/24)>Math.floor(start/24) ? ' (اليوم التالي)' : '');

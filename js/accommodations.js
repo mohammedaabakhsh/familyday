@@ -49,7 +49,7 @@ function showSection(type){
   document.querySelector('.back-btn').style.height = '38px';
   document.getElementById('sectionTag').style.display='none';
   document.getElementById('heroLogo').style.display='none';
-  document.getElementById('headerTitle').textContent='الأكواخ';
+  document.getElementById('headerTitle').innerHTML='الأكواخ <small class="fd-cabin-total">('+d.items.filter(function(c){return c.guests>0;}).length+' + حديقة مشتركة)</small>';
   document.getElementById('headerTitle').removeAttribute('style');
   document.getElementById('sectionDesc').textContent='';
   const hero=document.querySelector('.section-hero');
@@ -292,7 +292,7 @@ function renderCabinDetail(c){
   const outdoor=c.features.outdoor.filter(function(text){return !/بانيو|جاكوزي/.test(text);});
   const poolFeatures=[poolLabel].concat(c.pool.facilities,wetOutdoor);
   const kitchen=c.features.kitchen;
-  const stayFeatures=c.features.stay.concat(['غرفة سائق متاحة حسب التوفر']);
+  const stayFeatures=c.features.stay.concat([FD_RESORT_NOTES.driverRoom]);
   const hasMinibar=c.minibar;
   const hasOutdoorBath=c.bath.outdoorPrivacy&&!c.bath.privacyInLabel;
   const subtitle=c.description||c.type||'';
@@ -349,7 +349,7 @@ ${c.id===8?'<a class="fd-pyramid-detail-tour" href="/rustic-tour/?from=details&c
       <section class="fd-cabin-section">
         <h3>تجهيزات المطبخ</h3>
         <div class="fd-cabin-feature-list">${renderFeatures(kitchen)}</div>
-        ${hasMinibar?'<div class="fd-cabin-instructions"><p><strong>الميني بار:</strong> مشروبات وسناكس برسوم إضافية.</p></div>':''}
+        ${hasMinibar?'<div class="fd-cabin-instructions"><p><strong>الميني بار:</strong> '+FD_RESORT_NOTES.minibarContents+' '+FD_RESORT_NOTES.minibarFee+'.</p></div>':''}
       </section>
 
       <section class="fd-cabin-section">
@@ -420,6 +420,8 @@ function openM(id,type){
   if(_navIdx===-1){_navItems=[c];_navIdx=0;}
   updateNavUI();
   if(id===11){
+    document.getElementById('fd-cabin-share').hidden=true;
+    document.getElementById('fd-cabin-share-status').textContent='';
     document.getElementById('modalBottomBar').style.display='none';document.getElementById('navBtns').style.display='none';
     openGal(11,type);
     document.getElementById('mBody').innerHTML=renderSharedGardenDetail(c);

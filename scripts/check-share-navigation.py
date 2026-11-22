@@ -45,9 +45,10 @@ with sync_playwright() as p:
   # Copies and WhatsApp links share the cabin's canonical URL, not the map context.
   page.goto(BASE+'/cabins/greek-2/?fbclid=test',wait_until='networkidle')
   assert 'fbclid' not in page.url
-  link=page.locator('#fd-cabin-sharing a').get_attribute('href')
-  from urllib.parse import unquote
-  assert BASE+'/cabins/greek-2/' in unquote(link)
+  page.evaluate("Object.defineProperty(navigator,'share',{value:async value=>window.shared=value,configurable:true})")
+  page.locator('#fd-cabin-share').click()
+  assert page.evaluate('window.shared.url')==BASE+'/cabins/greek-2/'
+  assert page.locator('#fd-cabin-sharing').count()==0
   assert not errors,errors
   page.screenshot(path=f'/tmp/share-navigation-{width}.png')
   print(width,'PASS service entry/reload/Back, cart, FAQ, map/details/tour return, cabin sharing',flush=True)

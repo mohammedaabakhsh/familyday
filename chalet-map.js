@@ -109,7 +109,7 @@
     "primary": [
       [
         "السعة",
-        "8 أشخاص"
+        specifications.diningCapacity + ' أشخاص'
       ]
     ]
   },

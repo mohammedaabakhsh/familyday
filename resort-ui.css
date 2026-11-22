@@ -211,12 +211,7 @@
 #ov.fd-cabin-modern .mbtn-wa { background:#102b3a; border:1px solid var(--fd-line); color:var(--fd-link); }
 #ov.fd-cabin-modern .mbtn-wa:hover { background:#173b4c; }
 #ov.fd-cabin-modern .modal-bottom-bar > .mbtn-wa:not(.fd-cabin-inquiry) { display:none; }
-#ov:not(.fd-cabin-modern) :is(.fd-cabin-inquiry,.fd-cabin-sharing) { display:none; }
-#ov.fd-cabin-modern .fd-cabin-sharing { flex:0 0 100%; width:100%; }
-#ov.fd-cabin-modern .fd-cabin-share-links { display:flex; justify-content:center; gap:8px 24px; flex-wrap:wrap; }
-#ov.fd-cabin-modern .fd-cabin-share-links :is(a,button) { display:inline-flex; align-items:center; justify-content:center; min-height:32px; margin:0; padding:4px 0; border:0; background:none; color:var(--fd-link); font:500 13px/1.5 Tajawal,sans-serif; text-decoration:underline; text-underline-offset:4px; cursor:pointer; }
-#ov.fd-cabin-modern .fd-cabin-copy-status { margin:4px 0 0; color:var(--fd-link); font-size:13px; text-align:center; }
-#ov.fd-cabin-modern .fd-cabin-copy-status:empty { display:none; }
+#ov:not(.fd-cabin-modern) .fd-cabin-inquiry { display:none; }
 .fd-copy-buffer { position:fixed; top:0; left:-9999px; }
 
 #landing .lh-offer-strip[hidden] { display:none!important; }

@@ -76,3 +76,8 @@ body{background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);back
  #ov .dt-details .dt-selected-title{display:block;margin:0 0 12px;color:#f0f5f7;font:700 18px/1.4 Tajawal,sans-serif;text-align:start}
  #ov #bohemian-tour.dt-tour .dt-details.is-empty,#ov #panoramic-tour.dt-tour .dt-details.is-empty{display:block;visibility:visible}
 }
+
+/* Keep the added lounge label from covering the kitchen on tablets. */
+@media(min-width:600px) and (max-width:899px){
+ #ov #dome-tour .dt-label--living{left:0;top:39%}
+}

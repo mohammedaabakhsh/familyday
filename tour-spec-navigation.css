@@ -10,3 +10,7 @@
  #ov #pyramid-tour .dt-labels--bottom{width:100%;max-width:100%;min-width:0;box-sizing:border-box;grid-template-columns:repeat(3,minmax(0,1fr));padding-inline:8px;gap:6px}
  #ov #pyramid-tour .dt-labels--bottom .dt-label{width:100%;min-width:0;max-width:100%;left:auto;right:auto;transform:none;white-space:normal;overflow-wrap:normal}
 }
+
+/* Approved text-only minibar card uses the former icon space. */
+.dt-tour .dt-card--minibar>div{width:100%;text-align:center}
+.dt-tour .dt-card--minibar .dt-minibar-line{display:block;font-size:11px;line-height:1.35;color:inherit}

@@ -772,3 +772,6 @@ function resortTourCards(cabin, part) {
 function resortCombinedGuests() {
   return [3,9].reduce(function(total,id){return total+data.resort.items.find(function(c){return c.id===id;}).guests;},0);
 }
+
+// Owner-approved shared wording; venue-specific facts remain independent.
+var FD_RESORT_NOTES = Object.freeze({driverRoom:'غرفة سائق خارجية متاحة حسب التوفر',minibarTitle:'ميني بار',minibarContents:'مشروبات وسناكس',minibarFee:'برسوم إضافية'});

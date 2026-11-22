@@ -364,3 +364,15 @@ html:has(#dest:not(.hide)),body:has(#dest:not(.hide)){
 #ov.fd-cabin-modern .fd-cabin-description-line{display:block;text-wrap:balance;}
 #ov.fd-cabin-modern .fd-cabin-title{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;}
 #ov.fd-cabin-modern .fd-cabin-title-suitability{color:#19c4c9;font-size:13px;font-weight:700;white-space:nowrap;}
+
+/* The approved count remains on the title line. */
+#app .cabin-heading-row #headerTitle:has(.fd-cabin-total){gap:4px;flex-shrink:0}
+#app .fd-cabin-total{font-size:11px;line-height:1.3;font-weight:500;white-space:nowrap}
+@media(max-width:360px){#app .cabin-heading-row #fd-map-open span{display:none}}
+/* One share action at the left of the existing RTL detail header. */
+#ov.fd-cabin-modern .fd-cabin-nav{position:relative}
+#ov.fd-cabin-modern .fd-cabin-share{display:flex;align-items:center;justify-content:center;flex:0 0 36px;width:36px;height:36px;min-height:36px;margin:4px 0;margin-inline-start:auto;padding:7px;border:1px solid #315967;border-radius:10px;background:transparent;color:#a9ccd5}
+#ov.fd-cabin-modern .fd-cabin-share[hidden]{display:none}
+#ov.fd-cabin-modern .fd-cabin-share:disabled{opacity:.5}
+#ov.fd-cabin-modern .fd-cabin-share-status{position:absolute;inset-inline-end:16px;top:100%;z-index:5;padding:5px 9px;border-radius:6px;background:#133343;color:#d7e8ed;font-size:12px}
+#ov.fd-cabin-modern .fd-cabin-share-status:empty{display:none}
