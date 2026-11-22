@@ -30,8 +30,8 @@ function renderStayDetail(c) {
     }).join('');
   }
   function section(title, list, note) {
-    return '<section class="fd-cabin-section"><h3>' + title + '</h3><div class="fd-cabin-feature-list">'
-      + features(list) + '</div>' + (note ? '<div class="fd-cabin-instructions">' + note + '</div>' : '') + '</section>';
+    return '<details class="fd-cabin-section fd-cabin-accordion"><summary><h3>' + title + '</h3></summary><div class="fd-cabin-feature-list">'
+      + features(list) + '</div>' + (note ? '<div class="fd-cabin-instructions">' + note + '</div>' : '') + '</details>';
   }
   var indoor = groups.slice(0, 3).flat().map(function(text){return text.replace('3 دورات مياه','3 حمامات');});
   // Put rooms and seating first, then the kitchen and bathrooms.
@@ -55,12 +55,15 @@ function renderStayDetail(c) {
     + '<div class="fd-cabin-card-v2-facts fd-cabin-detail-facts" aria-label="معلومات ' + c.name + '">'
     + '<div class="fd-cabin-card-v2-fact"><span>سعة الضيوف</span><strong>' + resortGuestText(c.guests) + '</strong></div>'
     + '<div class="fd-cabin-card-v2-fact"><span>غرف النوم</span><strong>' + resortRoomText(c.rooms) + '</strong></div></div>'
-    + '<div class="fd-stay-guest-note"><div class="fd-cabin-instructions"><p>يمكن زيادة العدد إلى ' + c.maxGuests + ' ضيفًا كحد أقصى، برسوم إضافية.</p></div></div></div></div>'
-    + '<div class="fd-cabin-times" aria-label="أوقات الدخول والخروج"><div><span>الدخول</span><strong>4:00 مساءً</strong></div><div><span>الخروج</span><strong>12:00 ظهرًا</strong></div></div>'
-    + section('المنطقة الداخلية', indoor)
-    + '<section class="fd-cabin-section"><h3>المنطقة الخارجية</h3><div class="fd-cabin-feature-list">' + features(outdoor) + '</div></section>'
+    + '</div></div>'
+    + section('داخل القسم', indoor)
+    + section('المنطقة الخارجية والمسبح', outdoor)
     + section('تجهيزات المطبخ', ['موقد كهربائي', 'ميكروويف', 'ثلاجة', 'غلاية'])
     + section('مميزات الإقامة', ['تلفزيون ذكي', 'سماعات داخلية (ساوند بار)'])
+    + '<details class="fd-cabin-section fd-cabin-accordion"><summary><h3>معلومات الإقامة</h3></summary>'
+    + '<div class="fd-cabin-times" aria-label="أوقات الدخول والخروج"><div><span>الدخول</span><strong>4:00 مساءً</strong></div><div><span>الخروج</span><strong>12:00 ظهرًا</strong></div></div>'
+    + '<div class="fd-cabin-instructions"><p>القسم يتسع لـ' + c.guests + ' ضيفًا ويمكن استقبال حتى ' + c.maxGuests + ' ضيفًا برسوم إضافية</p><p>يُسمح للأطفال باستخدام المسابح تحت إشراف ذويهم طوال الوقت</p></div>'
+    + '</details>'
     + (c.slide ? '<section class="fd-cabin-addons"><h3>خدمات إضافية</h3><p>الزحليقة الهوائية الكبيرة — برسوم إضافية.</p></section>' : '')
     + '<div class="fd-cabin-faq-footer"><a class="fd-cabin-faq-link" href="/stay/faq/" onclick="return openAccommodationFaq(event,\'faq2\')">الأسئلة الشائعة <span aria-hidden="true">←</span></a></div>'
     + '</section>';

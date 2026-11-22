@@ -211,9 +211,13 @@
 #ov.fd-cabin-modern .fd-cabin-accordion[open]>summary{margin-bottom:8px;}
 #ov.fd-cabin-modern .fd-cabin-accordion>.fd-cabin-times{margin-bottom:0;}
 #ov.fd-cabin-modern .fd-cabin-accordion+.fd-cabin-services-footer{margin-top:24px;}
-/* The expanded combined-booking note shares the preceding section's divider. */
-#ov.fd-cabin-modern .fd-cabin-content>details.fd-cabin-accordion+section.fd-cabin-combined-note{
+/* Visible accommodation notes share the preceding section's divider. */
+#ov.fd-cabin-modern .fd-cabin-content>details.fd-cabin-accordion+section.fd-cabin-combined-note,
+#ov.fd-cabin-modern .fd-cabin-content>details.fd-cabin-accordion+section.fd-cabin-addons{
   margin:0;padding-top:20px;border-top:0;
+}
+#ov.fd-cabin-modern .fd-cabin-content[aria-labelledby="fd-stay-detail-title"]>.fd-cabin-accordion+.fd-cabin-faq-footer{
+  margin-top:0;border-top:0;
 }
 @media(max-width:360px){
   #ov.fd-cabin-modern .fd-cabin-nav{gap:6px;padding-inline:8px;}
