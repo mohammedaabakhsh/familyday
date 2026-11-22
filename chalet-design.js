@@ -68,7 +68,7 @@ function renderPrivateChaletDetail(){
     }).join('') + '</div>';
   }
   function section(title, items){
-    return '<section class="fd-cabin-section"><h3>' + title + '</h3>' + features(items) + '</section>';
+    return '<details class="fd-cabin-section fd-cabin-accordion"><summary><h3>' + title + '</h3></summary>' + features(items) + '</details>';
   }
   function floor(title, items){
     return '<div class="fd-chalet-floor"><h4>' + title + '</h4>' + features(items) + '</div>';
@@ -79,10 +79,9 @@ function renderPrivateChaletDetail(){
     + '<div class="fd-cabin-card-v2-facts fd-cabin-detail-facts" aria-label="معلومات الشاليه">'
     + '<div class="fd-cabin-card-v2-fact"><span>سعة الضيوف</span><strong>' + resortGuestText(PRIVATE_CHALET.guests) + '</strong></div>'
     + '<div class="fd-cabin-card-v2-fact"><span>غرف النوم</span><strong>' + resortRoomText(PRIVATE_CHALET.rooms) + '</strong></div></div>'
-    + '<div class="fd-stay-guest-note"><div class="fd-cabin-instructions"><p>يمكن زيادة إجمالي عدد الضيوف إلى ' + PRIVATE_CHALET.maxGuests + ' ضيفًا كحد أقصى، برسوم إضافية.</p></div></div></div></div>'
+    + '</div></div>'
     + '<a class="fd-pyramid-detail-tour fd-chalet-map-open" href="/chalet-map/?from=chalet-details" aria-haspopup="dialog" aria-controls="fd-chalet-map">استكشف الشاليه من الداخل <span aria-hidden="true">←</span></a>'
-    + '<div class="fd-cabin-times" aria-label="أوقات الدخول والخروج"><div><span>الدخول</span><strong>4:00 مساءً</strong></div><div><span>الخروج</span><strong>12:00 ظهرًا</strong></div></div>'
-    + '<section class="fd-cabin-section"><h3>المنطقة الداخلية</h3>'
+    + '<details class="fd-cabin-section fd-cabin-accordion"><summary><h3>داخل الشاليه</h3></summary>'
     + floor('الدور الأرضي', [
       chaletBedroomDescription('second'),
       'الصالة الداخلية ' + specifications.seating.living,
@@ -92,9 +91,9 @@ function renderPrivateChaletDetail(){
       'حمام'
     ])
     + floor('الدور العلوي', [chaletBedroomDescription('main'), specifications.bedroomBathroom])
-    + '</section>'
+    + '</details>'
     + section('المجلس المستقل', [specifications.seating.majlis, 'مدخل خاص', specifications.majlisBathroom])
-    + section('المنطقة الخارجية', [
+    + section('المنطقة الخارجية والمسبح', [
       'مسبح أطفال بعمق ' + specifications.pool.depthCm + ' سم',
       specifications.pool.slide,
       'كرسي تشميس',
@@ -102,6 +101,10 @@ function renderPrivateChaletDetail(){
     ])
     + section('تجهيزات المطبخ', specifications.kitchen.map(function(item){return item.label;}))
     + section('مميزات الإقامة', [specifications.television])
+    + '<details class="fd-cabin-section fd-cabin-accordion"><summary><h3>معلومات الإقامة</h3></summary>'
+    + '<div class="fd-cabin-times" aria-label="أوقات الدخول والخروج"><div><span>الدخول</span><strong>4:00 مساءً</strong></div><div><span>الخروج</span><strong>12:00 ظهرًا</strong></div></div>'
+    + '<div class="fd-cabin-instructions"><p>يمكن زيادة العدد حتى ' + PRIVATE_CHALET.maxGuests + ' ضيفًا برسوم إضافية</p><p>يُسمح للأطفال باستخدام المسبح تحت إشراف ذويهم طوال الوقت</p></div>'
+    + '</details>'
     + '<div class="fd-cabin-faq-footer"><a class="fd-cabin-faq-link" href="/chalet/faq/" onclick="return openAccommodationFaq(event,\'chalet-faq\')">الأسئلة الشائعة <span aria-hidden="true">←</span></a></div>'
     + '</section>';
 }

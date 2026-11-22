@@ -18,6 +18,8 @@ with sync_playwright() as p:
         errors = []
         page.on('pageerror', lambda e: errors.append(str(e)))
         page.goto(BASE + '/chalet/details/', wait_until='networkidle')
+        for summary in page.locator('#mBody details.fd-cabin-accordion > summary').all():
+            summary.click()
         details = page.locator('#mBody').inner_text()
         assert capacity in details and bathroom in details
         assert 'إطلالة' not in details and '8 أشخاص' not in details
