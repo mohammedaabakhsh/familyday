@@ -103,7 +103,7 @@ function renderPrivateChaletDetail(){
     + section('مميزات الإقامة', [specifications.television])
     + '<details class="fd-cabin-section fd-cabin-accordion"><summary><h3>معلومات الإقامة</h3></summary>'
     + '<div class="fd-cabin-times" aria-label="أوقات الدخول والخروج"><div><span>الدخول</span><strong>4:00 مساءً</strong></div><div><span>الخروج</span><strong>12:00 ظهرًا</strong></div></div>'
-    + '<div class="fd-cabin-instructions"><p>يمكن زيادة العدد حتى ' + PRIVATE_CHALET.maxGuests + ' ضيفًا برسوم إضافية</p><p>يُسمح للأطفال باستخدام المسبح تحت إشراف ذويهم طوال الوقت</p></div>'
+    + '<div class="fd-cabin-instructions"><p>الشاليه يتسع لـ' + PRIVATE_CHALET.guests + ' ضيفًا ويمكن استقبال حتى ' + PRIVATE_CHALET.maxGuests + ' ضيفًا برسوم إضافية</p><p>يُسمح للأطفال باستخدام المسبح تحت إشراف ذويهم طوال الوقت</p></div>'
     + '</details>'
     + '<div class="fd-cabin-faq-footer"><a class="fd-cabin-faq-link" href="/chalet/faq/" onclick="return openAccommodationFaq(event,\'chalet-faq\')">الأسئلة الشائعة <span aria-hidden="true">←</span></a></div>'
     + '</section>';
