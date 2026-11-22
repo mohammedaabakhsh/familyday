@@ -49,7 +49,7 @@
     gardenLocation: 'وسط الأكواخ',
     gardenAccess: 'لجميع الضيوف',
     gardenConnection: 'لكل كوخ باب داخلي يفتح مباشرة على الحديقة المشتركة',
-    tour: 'استكشف الكوخ من الداخل',
+    tour: 'استكشف مرافق الكوخ من الداخل',
     details: 'عرض التفاصيل والصور',
     markerAction: ': عرض المميزات',
     viewPhotos: 'عرض الصور',
@@ -628,7 +628,7 @@
               '</div>' +
               '<div class="fd-map-amenities"></div>' +
               '<button type="button" class="fd-map-details-button">عرض التفاصيل والصور</button>' +
-              '<a class="fd-map-details-button fd-map-tour-button" href="/dome-tour/?from=map" hidden>استكشف الكوخ من الداخل</a>' +
+              '<a class="fd-map-details-button fd-map-tour-button" href="/dome-tour/?from=map" hidden>استكشف مرافق الكوخ من الداخل</a>' +
               '<button type="button" class="fd-map-card-photo" aria-label="عرض صور الكوخ" aria-haspopup="dialog" aria-controls="fd-map-photos" hidden><img width="240" height="240" alt="" decoding="async" draggable="false"><span class="fd-map-photo-label" aria-hidden="true">عرض الصور</span></button>' +
             '</section>' +
           '</div>' +

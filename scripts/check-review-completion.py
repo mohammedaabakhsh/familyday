@@ -28,7 +28,7 @@ with sync_playwright() as p:
         errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
         page.goto(BASE+'/cabins/',wait_until='networkidle');page.evaluate('document.fonts.ready')
         title=page.locator('#headerTitle');count=title.locator('.fd-cabin-total')
-        assert ' '.join(title.text_content().split())=='الأكواخ (12 + حديقة مشتركة)'
+        assert ' '.join(title.text_content().split())=='الأكواخ (12 كوخ خاص + حديقة مشتركة)'
         a=title.bounding_box();b=count.bounding_box();m=page.locator('#fd-map-open').bounding_box()
         assert a['y']<=b['y'] and b['y']+b['height']<=a['y']+a['height']
         assert width>=900 or m['x']+m['width']<a['x']

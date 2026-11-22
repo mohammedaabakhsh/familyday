@@ -10,7 +10,7 @@ window.FD_SHARE_PAGES = [
   {
     "route": "contact=resort",
     "path": "/resort/contact/",
-    "title": "الحجز والموقع والتواصل | منتجع يوم العائلة",
+    "title": "الموقع والتواصل | منتجع يوم العائلة",
     "description": "احجز إقامتك وتواصل معنا",
     "entry": true
   },
@@ -24,7 +24,7 @@ window.FD_SHARE_PAGES = [
   {
     "route": "contact=stay",
     "path": "/stay/contact/",
-    "title": "الحجز والموقع والتواصل | استراحة يوم العائلة",
+    "title": "الموقع والتواصل | استراحة يوم العائلة",
     "description": "احجز إقامتك وتواصل معنا",
     "entry": true
   },
@@ -59,7 +59,7 @@ window.FD_SHARE_PAGES = [
   {
     "route": "contact=chalet",
     "path": "/chalet/contact/",
-    "title": "الحجز والموقع والتواصل | شاليه يوم العائلة",
+    "title": "الموقع والتواصل | شاليه يوم العائلة",
     "description": "احجز إقامتك وتواصل معنا",
     "entry": true
   },

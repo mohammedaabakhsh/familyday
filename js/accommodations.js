@@ -49,7 +49,7 @@ function showSection(type){
   document.querySelector('.back-btn').style.height = '38px';
   document.getElementById('sectionTag').style.display='none';
   document.getElementById('heroLogo').style.display='none';
-  document.getElementById('headerTitle').innerHTML='الأكواخ <small class="fd-cabin-total">('+d.items.filter(function(c){return c.guests>0;}).length+' + حديقة مشتركة)</small>';
+  document.getElementById('headerTitle').innerHTML='الأكواخ <small class="fd-cabin-total">('+d.items.filter(function(c){return c.guests>0;}).length+' كوخ خاص + حديقة مشتركة)</small>';
   document.getElementById('headerTitle').removeAttribute('style');
   document.getElementById('sectionDesc').textContent='';
   const hero=document.querySelector('.section-hero');
@@ -196,16 +196,16 @@ document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
       <div class="card-body fd-cabin-card-v2-body">
         ${renderResortCardSummary(c)}
         <div class="fd-card-actions"><a class="card-btn" href="${accommodationDetailsPath(c.id)}" onclick="return openAccommodationDetailsLink(event,${c.id})">عرض التفاصيل والصور</a>${FD_CABIN_COMPARE.cardButton(c)}</div>
-        ${(c.id===1||c.id===12)?'<a class="fd-dome-tour-link" href="/dome-tour/?cabin='+c.id+'" onclick="event.stopPropagation()">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
-${c.id===2?'<a class="fd-dome-tour-link" href="/pyramid-tour/" onclick="event.stopPropagation()">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
-${(c.id===4||c.id===13)?'<a class="fd-dome-tour-link" href="/greek-tour/?cabin='+c.id+'" onclick="event.stopPropagation()">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
-${c.id===5?'<a class="fd-dome-tour-link" href="/palm-tour/?cabin=5" onclick="event.stopPropagation()">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
-${c.id===6?'<a class="fd-dome-tour-link" href="/bohemian-tour/?cabin=6" onclick="event.stopPropagation()">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
-${c.id===7?'<a class="fd-dome-tour-link" href="/french-tour/?cabin=7" onclick="event.stopPropagation()">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
-${c.id===3?'<a class="fd-dome-tour-link" href="/classic-tour/?cabin=3" onclick="event.stopPropagation()">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
-${c.id===10?'<a class="fd-dome-tour-link" href="/panoramic-tour/?cabin=10" onclick="event.stopPropagation()">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
-${c.id===9?'<a class="fd-dome-tour-link" href="/royal-tour/?cabin=9" onclick="event.stopPropagation()">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
-${c.id===8?'<a class="fd-dome-tour-link" href="/rustic-tour/?cabin=8" onclick="event.stopPropagation()">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
+        ${(c.id===1||c.id===12)?'<a class="fd-dome-tour-link" href="/dome-tour/?cabin='+c.id+'" onclick="event.stopPropagation()">استكشف مرافق الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
+${c.id===2?'<a class="fd-dome-tour-link" href="/pyramid-tour/" onclick="event.stopPropagation()">استكشف مرافق الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
+${(c.id===4||c.id===13)?'<a class="fd-dome-tour-link" href="/greek-tour/?cabin='+c.id+'" onclick="event.stopPropagation()">استكشف مرافق الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
+${c.id===5?'<a class="fd-dome-tour-link" href="/palm-tour/?cabin=5" onclick="event.stopPropagation()">استكشف مرافق الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
+${c.id===6?'<a class="fd-dome-tour-link" href="/bohemian-tour/?cabin=6" onclick="event.stopPropagation()">استكشف مرافق الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
+${c.id===7?'<a class="fd-dome-tour-link" href="/french-tour/?cabin=7" onclick="event.stopPropagation()">استكشف مرافق الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
+${c.id===3?'<a class="fd-dome-tour-link" href="/classic-tour/?cabin=3" onclick="event.stopPropagation()">استكشف مرافق الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
+${c.id===10?'<a class="fd-dome-tour-link" href="/panoramic-tour/?cabin=10" onclick="event.stopPropagation()">استكشف مرافق الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
+${c.id===9?'<a class="fd-dome-tour-link" href="/royal-tour/?cabin=9" onclick="event.stopPropagation()">استكشف مرافق الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
+${c.id===8?'<a class="fd-dome-tour-link" href="/rustic-tour/?cabin=8" onclick="event.stopPropagation()">استكشف مرافق الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
       </div>`;
     g.appendChild(d);
   });
@@ -324,16 +324,16 @@ function renderCabinDetail(c){
         </div>
       </div>
 
-      ${(c.id===1||c.id===12)?'<a class="fd-pyramid-detail-tour" href="/dome-tour/?from=details&cabin='+c.id+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
-      ${c.id===2?'<a class="fd-pyramid-detail-tour" href="/pyramid-tour/?from=details&v=map-return-20261028-v3'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
-      ${(c.id===4||c.id===13)?'<a class="fd-pyramid-detail-tour" href="/greek-tour/?from=details&cabin='+c.id+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
-      ${c.id===5?'<a class="fd-pyramid-detail-tour" href="/palm-tour/?from=details&cabin=5'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
-      ${c.id===6?'<a class="fd-pyramid-detail-tour" href="/bohemian-tour/?from=details&cabin=6'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
-      ${c.id===7?'<a class="fd-pyramid-detail-tour" href="/french-tour/?from=details&cabin=7'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
-      ${c.id===3?'<a class="fd-pyramid-detail-tour" href="/classic-tour/?from=details&cabin=3'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
-      ${c.id===10?'<a class="fd-pyramid-detail-tour" href="/panoramic-tour/?from=details&cabin=10'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
-${c.id===9?'<a class="fd-pyramid-detail-tour" href="/royal-tour/?from=details&cabin=9'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
-${c.id===8?'<a class="fd-pyramid-detail-tour" href="/rustic-tour/?from=details&cabin=8'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">استكشف الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
+      ${(c.id===1||c.id===12)?'<a class="fd-pyramid-detail-tour" href="/dome-tour/?from=details&cabin='+c.id+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">استكشف مرافق الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
+      ${c.id===2?'<a class="fd-pyramid-detail-tour" href="/pyramid-tour/?from=details&v=map-return-20261028-v3'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">استكشف مرافق الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
+      ${(c.id===4||c.id===13)?'<a class="fd-pyramid-detail-tour" href="/greek-tour/?from=details&cabin='+c.id+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">استكشف مرافق الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
+      ${c.id===5?'<a class="fd-pyramid-detail-tour" href="/palm-tour/?from=details&cabin=5'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">استكشف مرافق الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
+      ${c.id===6?'<a class="fd-pyramid-detail-tour" href="/bohemian-tour/?from=details&cabin=6'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">استكشف مرافق الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
+      ${c.id===7?'<a class="fd-pyramid-detail-tour" href="/french-tour/?from=details&cabin=7'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">استكشف مرافق الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
+      ${c.id===3?'<a class="fd-pyramid-detail-tour" href="/classic-tour/?from=details&cabin=3'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">استكشف مرافق الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
+      ${c.id===10?'<a class="fd-pyramid-detail-tour" href="/panoramic-tour/?from=details&cabin=10'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">استكشف مرافق الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
+${c.id===9?'<a class="fd-pyramid-detail-tour" href="/royal-tour/?from=details&cabin=9'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">استكشف مرافق الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
+${c.id===8?'<a class="fd-pyramid-detail-tour" href="/rustic-tour/?from=details&cabin=8'+(document.getElementById('ov').dataset.returnToMap==='true'?'&return=map':'')+'">استكشف مرافق الكوخ من الداخل <span aria-hidden="true">←</span></a>':''}
       <div class="fd-cabin-times" aria-label="أوقات الدخول والخروج">
         <div><span>الدخول</span><strong>4:00 مساءً</strong></div>
         <div><span>الخروج</span><strong>12:00 ظهرًا</strong></div>

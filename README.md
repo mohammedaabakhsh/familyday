@@ -225,3 +225,17 @@ Run `python3 scripts/check-native-details-and-exploration-share.py http://127.0.
 to check all 16 accommodation entry links and sharing for all 12 illustrated
 cabin tours plus the chalet exploration on mobile and desktop. The check
 intercepts native shares and clipboard writes; it sends no messages.
+
+The owner-approved PDF review batch keeps the design and data intact. Venue contact
+entry labels, headings and preview titles read `الموقع والتواصل`. The cabin count
+stays on the existing title line as `الأكواخ (12 كوخ خاص + حديقة مشتركة)`, using the
+existing dynamic count. Cabin exploration links, including map cards, read
+`استكشف مرافق الكوخ من الداخل`. Chalet details retain the TV specification once
+inside `داخل الشاليه` and no longer show a separate single-item amenities section;
+map TV facts and the other venues' amenities sections remain intact.
+
+The accompanying read-only link audit checked 62 entry variants at phone and
+desktop widths, 122 unique URLs, the 13 resort map selections, package links and
+sharing. Internal targets resolved and all 30 external HTTP destinations returned
+200, with the 15 accommodation landing pages identifying the expected units.
+Phone, mail and WhatsApp links were checked without sending messages or orders.

@@ -99,6 +99,7 @@ function renderPrivateChaletDetail(){
       'حمام'
     ])
     + floor('الدور العلوي', [chaletBedroomDescription('main'), specifications.bedroomBathroom])
+    + features([specifications.television])
     + '</details>'
     + section('المجلس المستقل', [specifications.seating.majlis, 'مدخل خاص', specifications.majlisBathroom])
     + section('المنطقة الخارجية والمسبح', [
@@ -108,7 +109,6 @@ function renderPrivateChaletDetail(){
       'دش خارجي'
     ])
     + section('تجهيزات المطبخ', specifications.kitchen.map(function(item){return item.label;}))
-    + section('مميزات الإقامة', [specifications.television])
     + '<details class="fd-cabin-section fd-cabin-accordion"><summary><h3>معلومات الإقامة</h3></summary>'
     + '<div class="fd-cabin-times" aria-label="أوقات الدخول والخروج"><div><span>الدخول</span><strong>4:00 مساءً</strong></div><div><span>الخروج</span><strong>12:00 ظهرًا</strong></div></div>'
     + '<div class="fd-cabin-instructions"><p>' + chaletCapacityNote() + '</p><p>يُسمح للأطفال باستخدام المسبح تحت إشراف ذويهم طوال الوقت</p></div>'
