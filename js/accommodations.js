@@ -280,7 +280,7 @@ function renderCabinDetailSections(content){
   paragraph.textContent='مسابح الأكواخ مخصصة للكبار، ويسمح للأطفال باستخدامها تحت إشراف ذويهم طوال الوقت';
   note.appendChild(paragraph);
   information.appendChild(note);
-  root.insertBefore(information,root.querySelector('.fd-cabin-services-footer'));
+  root.insertBefore(information,root.querySelector('.fd-cabin-combined-note')||root.querySelector('.fd-cabin-services-footer'));
   return template.innerHTML;
 }
 

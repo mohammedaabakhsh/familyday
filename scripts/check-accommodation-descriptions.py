@@ -64,7 +64,7 @@ with sync_playwright() as p:
    assert combined.count()==(1 if unit['id'] in [3,9] else 0)
    if unit['id'] in [3,9]:
     assert '35 ضيفًا' in combined.inner_text()
-    assert combined.locator('xpath=preceding-sibling::section[1]/h3').inner_text()=='مميزات الإقامة'
+    assert combined.locator('xpath=preceding-sibling::*[1]/summary/h3').inner_text()=='معلومات الإقامة'
     assert combined.locator('xpath=following-sibling::div[1]').get_attribute('class')=='fd-cabin-services-footer'
    if unit['id']==11:
     assert page.locator('.fd-cabin-feature').filter(has_text='الوصول:').count()==1
