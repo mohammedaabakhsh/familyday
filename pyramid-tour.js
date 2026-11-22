@@ -5,7 +5,7 @@ var FD_PYRAMID_TOUR = (function () {
   var parts = [
     {id:'bedroom', ar:'غرفة النوم الرئيسية', x:.553, y:.337},
     {id:'bathroom', ar:'حمام', x:.544, y:.230},
-    {id:'living', ar:'صالة داخلية', x:.334, y:.356},
+    {id:'living', ar:'الصالة الداخلية', x:.334, y:.356},
     {id:'kitchen', ar:'ركن المطبخ', x:.411, y:.235},
     {id:'dining', ar:'طاولة الطعام', x:.408, y:.290},
     {id:'tub', ar:'البانيو الخارجي', x:.664, y:.337},
