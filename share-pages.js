@@ -130,7 +130,7 @@ window.FD_SHARE_PAGES = [
     "route": "setups=cinema",
     "path": "/services/cinema/",
     "title": "جلسة السينما | منتجع يوم العائلة",
-    "description": "استمتع بتجربة سينما في مساحتك الخاصة | منتجع يوم العائلة",
+    "description": "استمتع بتجربة سينما في مساحتكم الخاصة | منتجع يوم العائلة",
     "entry": true
   },
   {
