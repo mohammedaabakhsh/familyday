@@ -108,3 +108,6 @@ main:has(.tour-view){width:100%;max-width:1200px;padding-top:calc(var(--header) 
 @media(max-width:360px){.resort-home .resort-overview .facts-strip>div{font-size:10px;gap:4px;padding-inline:0;white-space:nowrap}.resort-home .resort-overview .facts-strip .icon{width:16px;height:16px}}
 @media(min-width:1000px) and (min-height:700px){body.resort-home #main{height:100dvh;min-height:0;padding-top:82px;padding-bottom:102px}body.resort-home #main>.view{height:100%;min-height:0}.resort-home .resort-overview{height:100%;min-height:0}.resort-home .resort-intro{flex:0 0 auto}.resort-home .resort-overview .hero{flex:1;min-height:0}.resort-home .resort-overview .hero-content{height:100%;min-height:0}.resort-home .resort-overview .facts-strip{flex:0 0 auto}}
 .resort-compare .resort-comparison-table thead th{vertical-align:top}.resort-compare .resort-comparison-table thead strong{display:block;min-height:3.4em;line-height:1.7}
+
+/* Position within the chosen cabin filter; the garden remains shared for every choice. */
+.cabin-browse-summary{grid-column:1/-1;text-align:center;display:flex;flex-direction:column;gap:4px;padding-top:3px;font-size:12px;line-height:1.7;color:var(--muted)}.cabin-browse-summary p:last-child{font-size:11px;color:var(--teal)}
