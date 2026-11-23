@@ -76,3 +76,15 @@ Verified all 12 cabin detail pages have the exact previous/next cabin names and 
 The resort chooser header shows “منتجع يوم العائلة” only as the Back label, without a central brand repetition; cabin headers similarly omit the central brand while retaining list/map Back and sharing. The chooser label fits the narrow mobile width and the carousel screen retains its no-scroll layout.
 
 Traversed the full 12-cabin sequence, both directions, with constant browser history length and each new detail starting at page top. App Back and browser Back return to the original filtered list, including after reload. Direct details, a nested interior exploration and a Royal map origin followed by a sibling cabin return to safe parents; map selection is preserved. Resort contact content still renders. Chromium reported no page errors. All changes remain under preview/.
+
+## Approved resort review changes (20261123-resort-v14)
+
+Implemented only the six reviewed decisions: restore guest reviews in the one-screen overview; complete/improve the comparison table; restrict detail Previous/Next to the chosen bedroom filter; unify the interior-exploration CTA; rename the detail services CTA to match its unchanged destination; and remove automatic comparison selections. The original rating value (4.7/5) and Google Maps review link are retained without claiming a live rating lookup.
+
+The overview fits without horizontal or vertical document overflow at 320×568, 320×740, 375×667, 390×667/701/744/844, 430×932 and desktop 1440×900; the review link is above the bottom navigation. Compact type/spacing preserve a useful photo area.
+
+Traversed the All, one-bedroom and two-bedroom detail sequences, including reload and nested exploration, and returned to the exact original list filter. A direct cabin link after a filtered visit browses all cabins. The per-history-entry bedroom context survives sibling replacement without altering published unit/tour URL shapes.
+
+Comparison checks cover zero selections, one selection (second-cabin prompt), two and three selected cabins, rejecting a fourth, clearing all choices, reload with no automatic choices, and carrying explicit card selections into comparison. Verified all original comparison row concepts, the integrated Dome living room, dining availability, indoor bath, combined Royal/Classic capacity of 35, pool depth of 140 cm and the original bed specifications. Two-cabin tables fit at widths 320, 390 and 1440; three-cabin overflow remains inside its table region. Checkbox focus is retained after updates.
+
+All 12 cabin detail specification titles/items/times remain unchanged from catalog. All 12 show the approved exploration wording and services label with the same destination routes. Chalet/rest-house booking/services wording and resort contact remain intact. Chromium reported no page errors in the interaction checks. All changed files are under preview/.
