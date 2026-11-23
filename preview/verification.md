@@ -48,3 +48,7 @@ The usual mobile logo frame was reduced slightly from 180px to 170px. The logo n
 ## Entry visual-weight refinement
 
 The usual mobile logo frame is now 155px (148px on small widths; 180px desktop), with the original PNG untouched. The heading is 25px on usual mobile widths. Heading and descriptive line were verified as solid white with no animation or gradient; the privacy/comfort promise is the sole animated color-sweep element. All three cards remain unchanged and no JavaScript errors were observed.
+
+## Resort introduction copy revision
+
+Only the resort overview removes its repeated name from the compact header. Its main heading now reads “دليلكم لمنتجع يوم العائلة”. A two-line description introduces the resort itself without repeating the numbers/pool/garden strip or giving browsing instructions. Exact two-line rendering was checked at 320×568, 390×744, 390×844 and 1440×900. Existing hero image, overlay copy, three facts and five tabs were verified unchanged, with no horizontal overflow or extra scrolling at the tested usual phone heights.
