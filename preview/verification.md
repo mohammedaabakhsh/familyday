@@ -44,3 +44,7 @@ Publication checks are recorded in the task response after the deployment is ava
 ## Entry logo size and source correction
 
 The usual mobile logo frame was reduced slightly from 180px to 170px. The logo now uses the repository's original 400×400 PNG from before WebP conversion, restored byte-for-byte under `preview/brand/`. No artificial upscaling, logo redesign or additional lossy compression was applied. Display was verified at 390×844 with 2× device pixel density; all three destination cards and the existing tagline remain. See `brand/README.md` for source provenance and the native-resolution limit.
+
+## Entry visual-weight refinement
+
+The usual mobile logo frame is now 155px (148px on small widths; 180px desktop), with the original PNG untouched. The heading is 25px on usual mobile widths. Heading and descriptive line were verified as solid white with no animation or gradient; the privacy/comfort promise is the sole animated color-sweep element. All three cards remain unchanged and no JavaScript errors were observed.
