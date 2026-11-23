@@ -10,3 +10,5 @@ html body #ov .dt-heading,html body #fd-chalet-map .cm-header,html body #fd-map-
  html body #ov .dt-tour>.dt-details{grid-row:3!important}
  html body #ov .dt-tour>.dt-occupancy,html body #ov .dt-tour>.dt-tour-footer{grid-row:4!important}
 }
+/* Map summaries omit facts already shown below and keep connection sentences separate. */
+#fd-map-card .fd-map-description{white-space:pre-line}

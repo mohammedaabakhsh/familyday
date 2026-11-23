@@ -114,3 +114,13 @@ Interaction checks cover repeated venue-tab switching without growing history, d
 Chalet ordering checks use only games/water services: box-only games selection, required three-game water distribution, source total of 100 ريال for one of each package, and a mocked WhatsApp draft containing the chalet location rather than a cabin number. No message was sent. The resort cart does not expose chalet orders. Rest-house service content stays limited to its existing charcoal/BBQ inquiry.
 
 The previous resort regression checks still pass for all bedroom-filtered cabin sequences and the final unnumbered shared-garden stop, reload, carousel position and map/list origin. Production source files, public URLs and root site remain untouched. All implementation changes are under preview/.
+
+## Resort compactness and information restoration (20261123-resort-v18)
+
+Implemented the approved resort-only adjustments: remove repeated central header branding and the visible map title; unify inner page headings at 22px mobile/24px desktop; compact service directory rows and rename its heading; restore the original iPhone/Android/external-booking/write-review links; keep Information as the bottom-tab label; remove repeated FAQ CTAs from the 12 cabin details and garden; and simplify only map-card summaries with separate Royal/Classic connection lines.
+
+The contact page has no horizontal/vertical document overflow at 320×568/740, 390×667/744/844 and 430×932. Its final social actions remain above the raised services icon; desktop 1440×900 was also checked. The four restored external URLs match the original markup. No external booking, app-install, review submission or message was performed. Services retain all 11 entries, original destinations and descriptions with 54px minimum row height.
+
+All 13 map selections display the expected source-backed summary. Numeric capacity/bedroom repetition is removed from these summaries, and Royal/Classic have a deliberate newline with `white-space: pre-line`. Original fact boxes, map selection/navigation, geometry, pictures and tours remain. The map-to-details/Back flow works. Versioned script/data/style URLs prevent an older cached map adapter from masking the change.
+
+The catalog is identical to the previous release after excluding the newly captured contact-link object. All 12 original cabin descriptions/specifications and garden facts are untouched. Chalet/rest-house detail FAQ shortcuts, heading sizing and contact layout remain as in venues-v17. All 68 preview route bodies and representative versioned chalet/Dome/Greek visual frames render without script errors. All changed files remain under preview/.

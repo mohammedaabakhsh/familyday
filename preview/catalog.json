@@ -1203,6 +1203,12 @@
         "البيت البانورامي": 21
       },
       "restaurantHours": "أوقات العمل: من 9 صباحًا إلى 1 بعد منتصف الليل"
+    },
+    "resortContact": {
+      "booking": "https://familyday-sa.com/ar",
+      "iphone": "https://apps.apple.com/sa/app/%D9%8A%D9%88%D9%85-%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9/id6475359813",
+      "android": "https://play.google.com/store/apps/details?id=com.familydaysa",
+      "review": "https://search.google.com/local/writereview?placeid=ChIJkfXGX69nwRURYJSW6ifyHqY"
     }
   },
   "units": [

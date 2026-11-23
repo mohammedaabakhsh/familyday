@@ -45,7 +45,7 @@ Resort Back links use the page hierarchy: main sections return to the resort, an
 
 Resort cabin cards place suitability beside the name and show the source bath summary only when present. Details and a compact comparison toggle share a row; a full-width exploration action stays in the same card. The shared garden uses the same visual structure with its real virtual tour and no bedroom, capacity or comparison claims.
 
-Resort cabin details omit the price/availability CTA. The filled turquoise exploration button precedes the unchanged specifications; the services button follows specifications and cabin-specific notes, immediately before FAQ. Chalet and rest-house details follow the same specification/services/FAQ order without a reservation CTA. The chalet retains its source ground/upper-floor grouping, and the rest house supports Previous/Next between its two sections.
+Resort cabin details omit the price/availability CTA. The filled turquoise exploration button precedes the unchanged specifications; the services button follows specifications and cabin-specific notes. In the resort-only compactness trial, FAQ is reached from Information rather than repeated below every cabin/garden. Chalet and rest-house details follow the same specification/services/FAQ order without a reservation CTA. The chalet retains its source ground/upper-floor grouping, and the rest house supports Previous/Next between its two sections.
 
 Resort chooser and unit headers omit the repeated central brand name. The chooser Back label reads “منتجع يوم العائلة”; unit Back remains contextual to the cabin list/map. The 12 cabin details include Previous/Next links after FAQ, following catalog order within the chosen bedroom filter, with the shared garden as the final unnumbered stop. A direct unit link browses all cabins. Cabin switches replace the current detail history entry, preserve the list/map origin, and start the next detail at its first photo and page top.
 
@@ -64,3 +64,11 @@ The rest house chooser uses the same card language as the resort, with suitabili
 Contact pages use the venue-specific source map, phone and socials without repeated location/service shortcuts. Chalet services remain games and water games only, with source package restrictions and a venue-specific cart. The rest house retains only its existing charcoal/BBQ WhatsApp inquiry. Repeated chalet-service shortcuts were removed from the main directory while published preview aliases still work. The missing phone in the captured chalet/stay contact FAQ answer is filled from the same venue phone.
 
 No photos were copied or recompressed. Original production files and URLs remain unchanged while this complete preview is reviewed. Final promotion and retirement of the old implementation are separate from this preview publication.
+
+## Resort-only compactness trial (resort-v18)
+
+Resort inner-page headings share a compact 22px mobile/24px desktop scale; the venue overview keeps its accepted typography. The services directory reads “خدمات منتجع يوم العائلة” and uses 54px minimum plain rows with 16px titles. Repeated central resort branding is removed from inner headers; the map header also omits its duplicate visible title while Back/sharing and accessible page labeling remain. Chalet and rest-house layout/content are unchanged.
+
+The resort Information contact page restores its original App Store, Google Play, external booking and Google write-review links, alongside venue map, phone/WhatsApp, FAQ and socials. Links are captured from the original contact markup under `source.resortContact`. Compact two-column action/app rows retain all actions without adding a repeated brand/logo block.
+
+`resort-map-copy.json` holds source-backed editorial summaries for the map only. Capacity and bedroom counts remain in their existing fact boxes; Royal/Classic connection copy starts on its own line. The original cabin descriptions, room data, map geometry and interactive engine remain unchanged. Visual snapshot scripts/data/styles carry release-version queries so returning preview visitors receive the updated map adapter.
