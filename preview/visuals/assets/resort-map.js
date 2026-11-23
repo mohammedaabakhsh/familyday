@@ -1,0 +1,828 @@
+/* Locations are physical instances; content is read from the live cabin data. */
+(function () {
+  'use strict';
+  var launcher = document.getElementById('fd-map-launcher');
+  var openButton = document.getElementById('fd-map-open');
+  var filters = document.getElementById('filterSection');
+  var app = document.getElementById('app');
+  if (!launcher || !openButton || !filters || !app || typeof data === 'undefined') return;
+
+  // Only owner-confirmed locations are plotted. Add each remaining location here after confirmation.
+  var locations = FD_RESORT_MAP_DATA.locations.filter(function (location) { return data.resort.items.some(function (item) { return item.id === location.cabinId; }); });
+  if (!locations.length) return;
+
+  // The connecting door is confirmed in the site's FAQ; both positions are owner-confirmed.
+  var connections = [{ cabinIds: [3, 9], description: 'يمكن ربط الكلاسيكي ورويال عبر باب داخلي بسعة تصل إلى ' + resortCombinedGuests() + ' ضيفًا.' }];
+  // Existing gallery photos chosen for a clear, recognizable square thumbnail.
+  // Physical instances of the same cabin type share that type's gallery.
+  var cardPhotos = FD_RESORT_MAP_DATA.cardPhotos;
+  var dialog, viewport, plane, card, cardPhoto, empty, image, error, connectionNote;
+  var toolbar, fitButton, photoButton;
+  var photoDialog, photoStage, photoImage, photoTitle, photoCounter, photoError, photoPrevious, photoNext, photoHint;
+  var photoSources = [], photoIndex = 0, photoSwipe = null;
+  var markers = [], highlights = [], leaderRoutes = [], selected = null;
+  var previousOverflow = '', pointers = new Map(), gesture = null;
+  var pendingMapClick = false;
+  var view = { width: 0, height: 0, size: 0, scale: 1, x: 0, y: 0, labelFooter: 0 };
+  var closeIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg>';
+  var photoLocation = null;
+
+  var mapCopy = {
+    title: 'خريطة الأكواخ التفاعلية',
+    hint: 'اختر الكوخ وشاهد موقعه ومميزاته',
+    close: 'العودة',
+    viewport: 'خريطة تفاعلية؛ كبّر ثم اسحب للاستكشاف، أو استخدم الأسهم للتحريك',
+    image: 'توزيع أكواخ المنتجع من الأعلى',
+    error: 'تعذّر تحميل الخريطة.',
+    retry: 'إعادة المحاولة',
+    panel: 'معلومات الموقع المختار',
+    empty: 'اختر اسم الكوخ من الخريطة',
+    reset: 'إلغاء التكبير',
+    card: 'ملخص الكوخ المختار',
+    gardenCard: 'تفاصيل الحديقة المشتركة',
+    clear: 'إلغاء اختيار الكوخ',
+    gardenClear: 'إلغاء اختيار الحديقة',
+    capacity: 'سعة الضيوف',
+    bedrooms: 'غرف النوم',
+    location: 'الموقع',
+    access: 'الاستخدام',
+    gardenLocation: 'وسط الأكواخ',
+    gardenAccess: 'لجميع الضيوف',
+    gardenConnection: 'لكل كوخ باب خاص يفتح على الحديقة مباشرة',
+    tour: 'استكشف مرافق الكوخ من الداخل',
+    details: 'عرض التفاصيل والصور',
+    markerAction: ': عرض المميزات',
+    viewPhotos: 'عرض الصور',
+    cabinPhotos: 'عرض صور الكوخ',
+    viewPhotosOf: 'عرض صور ',
+    photosOf: 'صور ',
+    photoClose: 'إغلاق الصور والعودة إلى الخريطة',
+    photoError: 'تعذّر تحميل الصورة.',
+    previousPhoto: 'الصورة السابقة',
+    nextPhoto: 'الصورة التالية',
+    photoHint: 'اسحب للتنقل بين الصور',
+    photoImage: '، الصورة ',
+    photoOf: ' من '
+  };
+
+  function cabinName(cabin, compact) {
+    return compact ? cabin.name.replace(/^(?:الكوخ|كوخ|البيت|بيت)\s+/, '') : cabin.name;
+  }
+
+  function updatePhotoText() {
+    if (!photoDialog) return;
+    var copy = mapCopy, direction = 'rtl';
+    photoDialog.lang = 'ar';
+    photoDialog.querySelector('.fd-map-photo-header').dir = direction;
+    photoDialog.querySelector('.fd-map-photo-position').dir = direction;
+    photoError.dir = direction;
+    photoDialog.querySelector('.fd-map-photo-close').setAttribute('aria-label', copy.photoClose);
+    photoError.querySelector('p').textContent = copy.photoError;
+    photoDialog.querySelector('.fd-map-photo-retry').textContent = copy.retry;
+    photoPrevious.setAttribute('aria-label', copy.previousPhoto);
+    photoNext.setAttribute('aria-label', copy.nextPhoto);
+    photoHint.textContent = copy.photoHint;
+    if (photoLocation) photoTitle.textContent = copy.photosOf + cabinName(cabinFor(photoLocation));
+    photoImage.alt = photoTitle.textContent + copy.photoImage + (photoIndex + 1);
+    photoCounter.textContent = (photoIndex + 1) + copy.photoOf + photoSources.length;
+  }
+
+  function updateMapText() {
+    var copy = mapCopy, direction = 'rtl';
+    dialog.lang = 'ar';
+    dialog.querySelector('.fd-map-header').dir = direction;
+    dialog.querySelector('#fd-map-title').textContent = copy.title;
+    dialog.querySelector('#fd-map-hint').textContent = copy.hint;
+    dialog.querySelector('.fd-map-close').setAttribute('aria-label', copy.close);
+    viewport.setAttribute('aria-label', copy.viewport);
+    image.alt = copy.image;
+    error.dir = direction; error.querySelector('p').textContent = copy.error;
+    dialog.querySelector('.fd-map-retry').textContent = copy.retry;
+    var panel = dialog.querySelector('.fd-map-panel');
+    panel.dir = direction; panel.setAttribute('aria-label', copy.panel);
+    empty.querySelector('p').textContent = copy.empty;
+    fitButton.setAttribute('aria-label', copy.reset);
+    fitButton.querySelector('span').textContent = copy.reset;
+    card.setAttribute('aria-label', copy.card);
+    card.querySelector('.fd-map-clear').setAttribute('aria-label', copy.clear);
+    card.querySelector('.fd-map-guest-label').textContent = copy.capacity;
+    card.querySelector('.fd-map-room-label').textContent = copy.bedrooms;
+    card.querySelector('.fd-map-details-button').textContent = copy.details;
+    card.querySelector('.fd-map-tour-button').textContent = copy.tour;
+    card.querySelector('.fd-map-photo-label').textContent = copy.viewPhotos;
+    photoButton.setAttribute('aria-label', selected ? copy.viewPhotosOf + cabinName(cabinFor(selected)) : copy.cabinPhotos);
+    if (selected) cardPhoto.alt = cabinName(cabinFor(selected));
+    markers.forEach(function (marker, i) {
+      var cabin = cabinFor(locations[i]), label = marker.querySelector('span');
+      marker.setAttribute('aria-label', cabinName(cabin) + copy.markerAction);
+      label.textContent = cabinName(cabin, true); label.dir = direction;
+    });
+    updatePhotoText();
+  }
+
+  function cabinFor(location) {
+    return data.resort.items.find(function (item) { return item.id === location.cabinId; });
+  }
+
+  function syncLauncher() {
+    launcher.hidden = typeof curSection === 'undefined' || curSection !== 'resort' ||
+      !app.classList.contains('show') || filters.style.display === 'none';
+  }
+
+  function roomValue(count) {
+    return count === 1 ? 'غرفة واحدة' : count === 2 ? 'غرفتان' : count + ' غرف';
+  }
+
+  function featuresFor(cabin) {
+    // Keep the map summary focused; full amenities remain in cabin details.
+    if (cabin.badge !== 'مشترك') return [];
+    return cabin.tags.filter(function (tag) {
+      return tag !== '|' && tag !== 'جلسات خارجية';
+    });
+  }
+
+  function clearSelection(restoreFocus) {
+    var old = selected;
+    selected = null;
+    if (dialog) { dialog.classList.add('fd-map-no-selection'); dialog.classList.remove('fd-map-pilot-compact'); }
+    document.dispatchEvent(new CustomEvent('fd-map-selection-change',{detail:{cabinId:null}}));
+    markers.forEach(function (marker) { marker.setAttribute('aria-pressed', 'false'); });
+    highlights.forEach(function (highlight) { highlight.hidden = true; highlight.classList.remove('is-connected'); });
+    card.hidden = true;
+    empty.hidden = false;
+    connectionNote.hidden = true;
+    connectionNote.textContent = '';
+    syncToolbar();
+    if (dialog && dialog.open) measureView(true);
+    if (restoreFocus && old) markers[locations.indexOf(old)].focus({ preventScroll: true });
+  }
+
+  function photosFor(cabin) {
+    if (cabin.badge === 'مشترك') return [];
+    var gallery = typeof GALLERY !== 'undefined' ? GALLERY[cabin.id] : null;
+    return gallery && gallery.length ? gallery.slice() : cardPhotos[cabin.id] ? [cardPhotos[cabin.id]] : [];
+  }
+
+  function renderPhoto() {
+    if (!photoSources.length) return;
+    photoSwipe = null;
+    photoError.hidden = true;
+    photoStage.setAttribute('aria-busy', 'true');
+    photoImage.classList.remove('is-ready');
+    updatePhotoText();
+    photoImage.src = photoSources[photoIndex];
+    photoPrevious.hidden = photoNext.hidden = photoHint.hidden = photoSources.length < 2;
+    if (photoImage.complete && photoImage.naturalWidth) {
+      photoImage.classList.add('is-ready');
+      photoStage.setAttribute('aria-busy', 'false');
+    }
+    // Warm only the adjacent photos; keep the site's original gallery order.
+    if (photoSources.length > 1) {
+      [-1, 1].forEach(function (direction) {
+        var preload = new Image();
+        preload.src = photoSources[(photoIndex + direction + photoSources.length) % photoSources.length];
+      });
+    }
+  }
+
+  function movePhoto(direction) {
+    if (photoSources.length < 2) return;
+    photoIndex = (photoIndex + direction + photoSources.length) % photoSources.length;
+    renderPhoto();
+  }
+
+  function createPhotoDialog() {
+    photoDialog = document.createElement('dialog');
+    photoDialog.id = 'fd-map-photos';
+    photoDialog.className = 'fd-map-photos';
+    photoDialog.setAttribute('aria-labelledby', 'fd-map-photo-title');
+    photoDialog.innerHTML =
+      '<div class="fd-map-photo-header"><h2 id="fd-map-photo-title"></h2>' +
+        '<button type="button" class="fd-map-photo-close" aria-label="إغلاق الصور والعودة إلى الخريطة" autofocus>' + closeIcon + '</button></div>' +
+      '<div class="fd-map-photo-stage"><span class="fd-map-loading" role="status">جارٍ تحميل الصورة</span><img class="fd-map-photo-image" alt="" decoding="async" draggable="false">' +
+        '<div class="fd-map-photo-error" role="status" hidden><p>تعذّر تحميل الصورة.</p><button type="button" class="fd-map-photo-retry">إعادة المحاولة</button></div></div>' +
+      '<div class="fd-map-photo-footer">' +
+        '<button type="button" class="fd-map-photo-previous" aria-label="الصورة السابقة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>' +
+        '<div class="fd-map-photo-position"><p class="fd-map-photo-counter" role="status" aria-live="polite" aria-atomic="true"></p><p class="fd-map-photo-hint">اسحب للتنقل بين الصور</p></div>' +
+        '<button type="button" class="fd-map-photo-next" aria-label="الصورة التالية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div>';
+    document.body.appendChild(photoDialog);
+    photoStage = photoDialog.querySelector('.fd-map-photo-stage');
+    photoImage = photoDialog.querySelector('.fd-map-photo-image');
+    photoTitle = photoDialog.querySelector('h2');
+    photoCounter = photoDialog.querySelector('.fd-map-photo-counter');
+    photoError = photoDialog.querySelector('.fd-map-photo-error');
+    photoPrevious = photoDialog.querySelector('.fd-map-photo-previous');
+    photoNext = photoDialog.querySelector('.fd-map-photo-next');
+    photoHint = photoDialog.querySelector('.fd-map-photo-hint');
+    photoImage.addEventListener('load', function () {
+      photoImage.classList.add('is-ready');
+      photoError.hidden = true;
+      photoStage.setAttribute('aria-busy', 'false');
+    });
+    photoImage.addEventListener('error', function () {
+      photoImage.classList.remove('is-ready');
+      photoError.hidden = false;
+      photoStage.setAttribute('aria-busy', 'false');
+    });
+    photoPrevious.addEventListener('click', function () { movePhoto(-1); });
+    photoNext.addEventListener('click', function () { movePhoto(1); });
+    photoDialog.querySelector('.fd-map-photo-retry').addEventListener('click', renderPhoto);
+    photoDialog.querySelector('.fd-map-photo-close').addEventListener('click', function () { photoDialog.close(); });
+    photoDialog.addEventListener('cancel', function (event) { event.stopPropagation(); });
+    photoDialog.addEventListener('close', function () {
+      photoSwipe = null;
+      // The map stays open, zoomed and selected beneath this native modal.
+      if (dialog.open && !photoButton.hidden) photoButton.focus({ preventScroll: true });
+      document.dispatchEvent(new CustomEvent('fd-map-photos-dismiss'));
+    });
+    photoDialog.addEventListener('keydown', function (event) {
+      if (event.key === 'ArrowRight') movePhoto(1);
+      else if (event.key === 'ArrowLeft') movePhoto(-1);
+      else if (event.key === 'Home') { photoIndex = 0; renderPhoto(); }
+      else if (event.key === 'End') { photoIndex = photoSources.length - 1; renderPhoto(); }
+      else return;
+      event.preventDefault();
+      event.stopPropagation();
+    });
+    photoStage.addEventListener('pointerdown', function (event) {
+      if (!event.isPrimary) { photoSwipe = null; return; }
+      if (event.button !== 0 || event.target.closest('button')) return;
+      photoSwipe = { id: event.pointerId, x: event.clientX, y: event.clientY };
+      photoStage.setPointerCapture(event.pointerId);
+    });
+    photoStage.addEventListener('pointerup', function (event) {
+      if (!photoSwipe || photoSwipe.id !== event.pointerId) return;
+      var dx = event.clientX - photoSwipe.x, dy = event.clientY - photoSwipe.y;
+      photoSwipe = null;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2) movePhoto(dx < 0 ? 1 : -1);
+    });
+    ['pointercancel', 'lostpointercapture'].forEach(function (type) {
+      photoStage.addEventListener(type, function () { photoSwipe = null; });
+    });
+    updatePhotoText();
+  }
+
+  document.addEventListener('fd-map-photos-open', function (event) {
+    var key = event.detail && event.detail.locationKey;
+    var location = locations.find(function (item) { return item.key === key && item.kind !== 'shared'; });
+    if (!location || !dialog || !dialog.open) return;
+    var sources = photosFor(cabinFor(location));
+    if (!sources.length) return;
+    if (selected !== location) selectLocation(location);
+    photoLocation = location;
+    if (!photoDialog) createPhotoDialog();
+    photoSources = sources;
+    // Start with the thumbnail that the guest actually pressed.
+    photoIndex = Math.max(0, photoSources.indexOf(cardPhoto.getAttribute('src')));
+    renderPhoto();
+    if (!photoDialog.open) photoDialog.showModal();
+  });
+  document.addEventListener('fd-map-photos-close', function () {
+    if (photoDialog && photoDialog.open) photoDialog.close();
+  });
+
+  function selectLocation(location) {
+    if (selected === location) { clearSelection(false); return; }
+    var cabin = cabinFor(location);
+    selected = location;
+    if (dialog) { dialog.classList.remove('fd-map-no-selection'); dialog.classList.add('fd-map-pilot-compact'); }
+    // Highlight only the selected plot; the card still explains connecting cabins.
+    markers.forEach(function (marker, i) {
+      var active = locations[i] === location;
+      marker.setAttribute('aria-pressed', String(active));
+      highlights[i].hidden = !active;
+    });
+    renderSelectedLocation(location);
+    if (dialog && dialog.open) measureView(true);
+    document.dispatchEvent(new CustomEvent('fd-map-selection-change',{detail:{cabinId:cabin.id}}));
+  }
+
+  function renderSelectedLocation(location) {
+    var cabin = cabinFor(location), copy = mapCopy;
+    var shared = location.kind === 'shared';
+    var connection = connections.find(function (item) { return item.cabinIds.indexOf(cabin.id) !== -1; });
+    card.classList.toggle('is-classic', cabin.id === 3);
+    card.classList.toggle('is-shared', shared);
+    card.querySelector('h3').textContent = cabinName(cabin);
+    card.classList.remove('has-photo');
+    photoButton.hidden = true;
+    card.setAttribute('aria-label', shared ? copy.gardenCard : copy.card);
+    card.querySelector('.fd-map-clear').setAttribute('aria-label', shared ? copy.gardenClear : copy.clear);
+    var description = card.querySelector('.fd-map-description');
+    var isDome = cabin.id === 1 || cabin.id === 12;
+    var isGreek = cabin.id === 4 || cabin.id === 13;
+    var isPalm = cabin.id === 5;
+    var isBohemian = cabin.id === 6;
+    var isFrench = cabin.id === 7;
+    var isClassic = cabin.id === 3;
+    var isRoyal = cabin.id === 9;
+    var isRustic = cabin.id === 8;
+    var isPanoramic = cabin.id === 10;
+    var gardenTour = shared ? 'https://my.matterport.com/show/?m=S7Z2CF9tdwm' : '';
+    var hasTour = !!gardenTour || isDome || cabin.id === 2 || isGreek || isPalm || isBohemian || isFrench || isClassic || isPanoramic || isRoyal || isRustic;
+    description.textContent = cabin.type || cabin.suitable || '';
+    var tourButton = card.querySelector('.fd-map-tour-button');
+    tourButton.hidden = !hasTour;
+    tourButton.href = gardenTour || (isRustic ? '/rustic-tour/' : isRoyal ? '/royal-tour/' : isPanoramic ? '/panoramic-tour/' : isClassic ? '/classic-tour/' : isFrench ? '/french-tour/' : isBohemian ? '/bohemian-tour/' : isPalm ? '/palm-tour/' : isGreek ? '/greek-tour/' : cabin.id === 2 ? '/pyramid-tour/' : '/dome-tour/') + '?from=map&cabin=' + cabin.id + '&v=map-return-20261028-v2';
+    tourButton.textContent = gardenTour ? 'جولة ثلاثية الأبعاد للحديقة' : copy.tour;
+    description.hidden = !description.textContent;
+    card.querySelector('.fd-map-guest-label').textContent = shared ? copy.location : copy.capacity;
+    card.querySelector('.fd-map-room-label').textContent = shared ? copy.access : copy.bedrooms;
+    card.querySelector('.fd-map-guests').textContent = shared ? copy.gardenLocation : resortGuestText(cabin.guests);
+    card.querySelector('.fd-map-rooms').textContent = shared ? copy.gardenAccess : roomValue(cabin.rooms);
+    // Use a third fact instead of a separate connection banner for these locations.
+    var facts = card.querySelector('.fd-map-facts');
+    var extraFact = facts.querySelector('.fd-map-fact--extra');
+    if (!extraFact) {
+      extraFact = document.createElement('div');
+      extraFact.className = 'fd-map-fact fd-map-fact--extra';
+      extraFact.innerHTML = '<span class="fd-map-fact-label"></span><strong></strong>';
+      facts.appendChild(extraFact);
+    }
+    var extraValue = shared ? 'باب خاص لكل كوخ' :
+      cabin.id === 3 ? 'باب داخلي متصل برويال' :
+      cabin.id === 9 ? 'باب داخلي متصل بالكلاسيكي' : '';
+    extraFact.hidden = !extraValue;
+    if (extraValue) {
+      extraFact.querySelector('.fd-map-fact-label').textContent = shared ? 'الوصول' : 'الربط الداخلي';
+      extraFact.querySelector('strong').textContent = extraValue;
+    }
+    facts.classList.toggle('has-three', !!extraValue);
+    facts.classList.toggle('is-royal-connection', cabin.id === 9);
+    facts.classList.toggle('has-cabin-connection', cabin.id === 3 || cabin.id === 9);
+    photoButton.setAttribute('aria-label', copy.viewPhotosOf + cabinName(cabin));
+    cardPhoto.alt = cabinName(cabin);
+    var amenities = card.querySelector('.fd-map-amenities');
+    amenities.replaceChildren();
+    (shared ? [] : featuresFor(cabin)).forEach(function (feature) {
+      var item = document.createElement('p');
+      item.className = 'fd-map-amenity';
+      item.textContent = feature;
+      amenities.appendChild(item);
+    });
+    amenities.hidden = !amenities.children.length;
+    connectionNote.textContent = '';
+    connectionNote.hidden = true;
+    syncToolbar();
+    empty.hidden = true;
+    card.hidden = false;
+  }
+
+  function clamp(value, min, max) { return Math.max(min, Math.min(max, value)); }
+
+  function syncToolbar() {
+    if (!toolbar) return;
+    fitButton.hidden = view.scale <= 1.001;
+    toolbar.hidden = fitButton.hidden && connectionNote.hidden;
+  }
+
+  function bottomLabelCenters(size) {
+    var centers = {};
+    var row = locations.map(function (location, index) {
+      return { location: location, index: index };
+    }).filter(function (entry) {
+      return entry.location.labelSide === 'bottom';
+    }).sort(function (a, b) { return a.location.labelX - b.location.labelX; });
+    if (!row.length) return centers;
+    var right = -Infinity, gap = 10;
+    row.forEach(function (entry) {
+      entry.width = markers[entry.index].querySelector('span').offsetWidth;
+      entry.desired = size * entry.location.labelX / 100;
+      entry.center = Math.max(entry.desired, right + gap + entry.width / 2);
+      right = entry.center + entry.width / 2;
+    });
+    var first = row[0], last = row[row.length - 1];
+    var left = first.center - first.width / 2;
+    var desiredMid = (first.desired - first.width / 2 + last.desired + last.width / 2) / 2;
+    var shift = desiredMid - (left + right) / 2;
+    // Keep the expanded row centered on its plots and inside the map at overview.
+    if (right - left <= size - 8) shift = clamp(shift, 4 - left, size - 4 - right);
+    row.forEach(function (entry) { centers[entry.index] = entry.center + shift; });
+    return centers;
+  }
+
+  function renderView() {
+    var size = view.size * view.scale;
+    var bottomCenters = bottomLabelCenters(size);
+    // Space the Greek labels independently of their physical plots.
+    var sideLabels = {}, nextTop = 0;
+    var roadLabels = locations.map(function (location, index) {
+      return { location: location, index: index, label: markers[index].querySelector('span') };
+    }).filter(function (entry) {
+      return ['greek-one', 'greek-two'].indexOf(entry.location.key) !== -1;
+    });
+    roadLabels.forEach(function (entry) {
+      entry.y = Math.max(size * entry.location.labelY / 100, nextTop + entry.label.offsetHeight / 2);
+      nextTop = entry.y + entry.label.offsetHeight / 2 + 8;
+    });
+    var sideShift = Math.max(0, nextTop - 8 - (size - 4));
+    roadLabels.forEach(function (entry) {
+      var halfWidth = entry.label.offsetWidth / 2;
+      sideLabels[entry.index] = {
+        x: clamp(size * entry.location.labelX / 100, halfWidth + 4, size - halfWidth - 4),
+        y: entry.y - sideShift
+      };
+    });
+    // Palm Beach occupies the cleared parking area, with room below the Greek labels.
+    var palmIndex = locations.findIndex(function (location) { return location.key === 'palm-beach'; });
+    var palmLabel = markers[palmIndex].querySelector('span');
+    var lastRoad = roadLabels[roadLabels.length - 1];
+    var palmY = Math.max(size * locations[palmIndex].labelY / 100,
+      sideLabels[lastRoad.index].y + lastRoad.label.offsetHeight / 2 + palmLabel.offsetHeight / 2 + 8);
+    sideLabels[palmIndex] = { x: size * locations[palmIndex].labelX / 100, y: palmY };
+    view.x = size <= view.width ? (view.width - size) / 2 : clamp(view.x, view.width - size, 0);
+    var mapHeight = view.height - view.labelFooter;
+    // Balance tall screens without pushing the overview far below its heading.
+    view.y = size <= mapHeight ? (selected ? (mapHeight - size) / 2 : Math.min(88, (mapHeight - size) / 4)) : clamp(view.y, mapHeight - size, 0);
+    plane.style.transform = 'translate(' + view.x + 'px,' + view.y + 'px) scale(' + view.scale + ')';
+    plane.style.setProperty('--fd-map-inverse', String(1 / view.scale));
+    markers.forEach(function (marker, i) {
+      var location = locations[i];
+      if (!location.labelSide) return;
+      if (location.labelSide === 'bottom' || location.labelSide === 'offset') {
+        var labelX = bottomCenters[i] == null ? size * location.labelX / 100 : bottomCenters[i];
+        var labelY = location.labelSide === 'bottom' ? Math.max(size + 10, palmY + palmLabel.offsetHeight / 2 + 8) + marker.querySelector('span').offsetHeight / 2 : size * location.labelY / 100;
+        if (sideLabels[i]) { labelX = sideLabels[i].x; labelY = sideLabels[i].y; }
+        marker.style.setProperty('--fd-map-label-x', labelX - size * location.x / 100 + 'px');
+        if (leaderRoutes[i] && size) {
+          var bend = location.leaderBend || [location.x, 85.7];
+          leaderRoutes[i].setAttribute('points', [[location.x, location.y], bend, [labelX * 100 / size, labelY * 100 / size]].map(function (point) { return point.join(','); }).join(' '));
+        }
+        marker.style.setProperty('--fd-map-label-y', labelY - size * location.y / 100 + 'px');
+        return;
+      }
+      var left = location.labelSide === 'left';
+      var offset = size * (left ? location.x - location.labelRightX : location.labelLeftX - location.x) / 100;
+      // Keep each full road label inside the image at the overview scale.
+      if (view.scale === 1) {
+        var space = left ? location.x : 100 - location.x;
+        var available = size * space / 100 - marker.querySelector('span').offsetWidth - 4;
+        offset = Math.min(offset, available);
+      }
+      marker.style.setProperty('--fd-map-label-offset', Math.max(10, offset) + 'px');
+    });
+    viewport.classList.toggle('is-zoomed', view.scale > 1);
+    syncToolbar();
+  }
+
+  function measureView(reset) {
+    if (!dialog.open || !viewport.clientWidth || !viewport.clientHeight) return;
+    var centerX = view.size ? (view.width / 2 - view.x) / (view.size * view.scale) : .5;
+    var centerY = view.size ? (view.height / 2 - view.y) / (view.size * view.scale) : .5;
+    view.width = viewport.clientWidth;
+    view.height = viewport.clientHeight;
+    // Reserve an external label row at every size, clear of the map boundary and Palm Beach.
+    view.labelFooter = view.height < 330 ? 64 : 44;
+    view.size = Math.min(view.width, view.height - view.labelFooter) * (window.matchMedia('(max-width: 819px)').matches ? (selected ? 0.92 : 0.94) : 1);
+    if (reset) { view.scale = 1; centerX = centerY = .5; }
+    view.x = view.width / 2 - centerX * view.size * view.scale;
+    view.y = view.height / 2 - centerY * view.size * view.scale;
+    plane.style.width = plane.style.height = view.size + 'px';
+    renderView();
+  }
+
+  function zoomTo(scale, x, y) {
+    var next = clamp(scale, 1, 3);
+    var ratio = next / view.scale;
+    view.x = x - (x - view.x) * ratio;
+    view.y = y - (y - view.y) * ratio;
+    view.scale = next;
+    renderView();
+  }
+
+  function localPoint(event) {
+    var bounds = viewport.getBoundingClientRect();
+    return { x: event.clientX - bounds.left, y: event.clientY - bounds.top };
+  }
+
+  function insideFootprint(x, y, points) {
+    var inside = false;
+    for (var i = 0, j = points.length - 1; i < points.length; j = i++) {
+      var a = points[i], b = points[j];
+      if ((a[1] > y) !== (b[1] > y) &&
+          x < (b[0] - a[0]) * (y - a[1]) / (b[1] - a[1]) + a[0]) inside = !inside;
+    }
+    return inside;
+  }
+
+  function locationAt(point) {
+    if (!view.size) return null;
+    var x = (point.x - view.x) * 100 / (view.size * view.scale);
+    var y = (point.y - view.y) * 100 / (view.size * view.scale);
+    return locations.find(function (location) {
+      return location.footprint ? insideFootprint(x, y, location.footprint) :
+        Math.hypot(location.x - x, location.y - y) < 5.2;
+    }) || null;
+  }
+
+  function pinchState() {
+    var points = Array.from(pointers.values());
+    return { x: (points[0].x + points[1].x) / 2, y: (points[0].y + points[1].y) / 2,
+      distance: Math.hypot(points[1].x - points[0].x, points[1].y - points[0].y) };
+  }
+
+  function resetGesture() {
+    pointers.clear();
+    gesture = null;
+    if (viewport) viewport.classList.remove('is-dragging');
+  }
+
+  function pointerDown(event) {
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    var button = event.target.closest('button');
+    if (button && !button.classList.contains('fd-map-hotspot')) return;
+    var point = localPoint(event);
+    pointers.set(event.pointerId, point);
+    viewport.setPointerCapture(event.pointerId);
+    if (pointers.size === 1) {
+      gesture = { start: point, last: point, moved: false, pinched: false,
+        marker: event.target.closest('.fd-map-hotspot') };
+    } else if (pointers.size === 2) {
+      gesture.pinched = true;
+      gesture.pinch = pinchState();
+    }
+  }
+
+  function pointerMove(event) {
+    if (!gesture || !pointers.has(event.pointerId)) return;
+    var point = localPoint(event);
+    pointers.set(event.pointerId, point);
+    if (pointers.size >= 2) {
+      var next = pinchState(), previous = gesture.pinch;
+      if (!previous) { gesture.pinch = next; return; }
+      var scale = clamp(view.scale * next.distance / Math.max(previous.distance, 1), 1, 3);
+      var ratio = scale / view.scale;
+      view.x = next.x - (previous.x - view.x) * ratio;
+      view.y = next.y - (previous.y - view.y) * ratio;
+      view.scale = scale;
+      gesture.pinch = next;
+      gesture.moved = true;
+      renderView();
+    } else {
+      if (Math.hypot(point.x - gesture.start.x, point.y - gesture.start.y) > 5) gesture.moved = true;
+      if (gesture.moved) {
+        view.x += point.x - gesture.last.x;
+        view.y += point.y - gesture.last.y;
+        viewport.classList.add('is-dragging');
+        renderView();
+      }
+      gesture.last = point;
+    }
+  }
+
+  function pointerUp(event) {
+    if (!gesture || !pointers.has(event.pointerId)) return;
+    var tapped = !gesture.moved && !gesture.pinched && event.type === 'pointerup';
+    var marker = gesture.marker;
+    pointers.delete(event.pointerId);
+    if (pointers.size) {
+      var remaining = Array.from(pointers.values())[0];
+      gesture.last = gesture.start = remaining;
+      gesture.pinch = null;
+      gesture.pinched = true;
+    } else {
+      resetGesture();
+      if (tapped) {
+        // The card can appear beneath the finger before the browser emits click.
+        pendingMapClick = true;
+        var location = marker ? locations[Number(marker.dataset.mapIndex)] : locationAt(localPoint(event));
+        if (location) selectLocation(location);
+        else clearSelection(false);
+      }
+    }
+  }
+
+  function loadImage() {
+    error.hidden = true;
+    plane.hidden = false;
+    viewport.setAttribute('aria-busy', 'true');
+    image.src = FD_RESORT_MAP_DATA.image;
+  }
+
+  function createDialog() {
+    dialog = document.createElement('dialog');
+    dialog.id = 'fd-map-dialog';
+    dialog.className = 'fd-map-dialog';
+    dialog.setAttribute('aria-labelledby', 'fd-map-title');
+    dialog.setAttribute('aria-describedby', 'fd-map-hint');
+    dialog.innerHTML =
+      '<div class="fd-map-header"><div class="fd-map-heading">' +
+      '<button type="button" class="fd-map-close" aria-label="العودة" autofocus><svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>' +
+      '<div class="fd-map-heading-copy"><h2 id="fd-map-title">خريطة الأكواخ التفاعلية</h2><p id="fd-map-hint">اختر الكوخ وشاهد موقعه ومميزاته</p></div></div>' +
+      '</div>' +
+      '<div class="fd-map-workspace">' +
+        '<div class="fd-map-viewport" tabindex="0" aria-label="خريطة تفاعلية؛ كبّر ثم اسحب للاستكشاف، أو استخدم الأسهم للتحريك">' +
+          '<span class="fd-map-loading" role="status">جارٍ تحميل الصورة</span><div class="fd-map-plane"><img class="fd-map-image" width="1254" height="1254" alt="توزيع أكواخ المنتجع من الأعلى" draggable="false" decoding="async"></div>' +
+          '<div class="fd-map-error" role="status" hidden><p>تعذّر تحميل الخريطة.</p><button type="button" class="fd-map-tool fd-map-retry">إعادة المحاولة</button></div>' +
+        '</div>' +
+        '<aside class="fd-map-panel" aria-label="معلومات الموقع المختار">' +
+          '<div class="fd-map-toolbar" hidden><button type="button" class="fd-map-tool fd-map-fit" aria-label="إلغاء التكبير" hidden>' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 8h5V3m13 5h-5V3M3 16h5v5m13-5h-5v5"/></svg><span>إلغاء التكبير</span></button><p class="fd-map-connection" hidden></p></div>' +
+          '<div class="fd-map-info" aria-live="polite" aria-atomic="true">' +
+            '<div class="fd-map-empty"><p>اختر اسم الكوخ من الخريطة</p></div>' +
+            '<section id="fd-map-card" class="fd-map-card" aria-label="ملخص الكوخ المختار" hidden>' +
+              '<div class="fd-map-card-top"><h3></h3><button type="button" class="fd-map-clear" aria-label="إلغاء اختيار الكوخ">' + closeIcon + '</button></div>' +
+              '<p class="fd-map-description" hidden></p>' +
+              '<div class="fd-map-facts">' +
+                '<div class="fd-map-fact"><span class="fd-map-fact-label fd-map-guest-label">سعة الضيوف</span><strong class="fd-map-guests"></strong></div>' +
+                '<div class="fd-map-fact"><span class="fd-map-fact-label fd-map-room-label">غرف النوم</span><strong class="fd-map-rooms"></strong></div>' +
+              '</div>' +
+              '<div class="fd-map-amenities"></div>' +
+              '<button type="button" class="fd-map-details-button">عرض التفاصيل والصور</button>' +
+              '<a class="fd-map-details-button fd-map-tour-button" href="/dome-tour/?from=map" hidden>استكشف مرافق الكوخ من الداخل</a>' +
+              '<button type="button" class="fd-map-card-photo" aria-label="عرض صور الكوخ" aria-haspopup="dialog" aria-controls="fd-map-photos" hidden><img width="240" height="240" alt="" decoding="async" draggable="false"><span class="fd-map-photo-label" aria-hidden="true">عرض الصور</span></button>' +
+            '</section>' +
+          '</div>' +
+        '</aside>' +
+      '</div><p class="fd-map-announcement" role="status" aria-live="polite"></p>';
+    document.body.appendChild(dialog);
+    viewport = dialog.querySelector('.fd-map-viewport');
+    plane = dialog.querySelector('.fd-map-plane');
+    card = dialog.querySelector('.fd-map-card');
+    photoButton = card.querySelector('.fd-map-card-photo');
+    cardPhoto = card.querySelector('.fd-map-card-photo img');
+    photoButton.addEventListener('click', function () {
+      if (selected) document.dispatchEvent(new CustomEvent('fd-map-photos-request', { detail: { locationKey: selected.key } }));
+    });
+    cardPhoto.addEventListener('load', function () { cardPhoto.classList.add('is-ready'); });
+    cardPhoto.addEventListener('error', function () {
+      cardPhoto.classList.remove('is-ready');
+      cardPhoto.parentElement.hidden = true;
+      card.classList.remove('has-photo');
+    });
+    empty = dialog.querySelector('.fd-map-empty');
+    image = dialog.querySelector('.fd-map-image');
+    error = dialog.querySelector('.fd-map-error');
+    connectionNote = dialog.querySelector('.fd-map-toolbar .fd-map-connection');
+    toolbar = dialog.querySelector('.fd-map-toolbar');
+    fitButton = dialog.querySelector('.fd-map-fit');
+
+    locations.forEach(function (location, i) {
+      var cabin = cabinFor(location);
+      if (location.labelSide === 'bottom' || location.labelSide === 'offset') {
+        var leader = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        leader.setAttribute('class', 'fd-map-leader');
+        leader.setAttribute('viewBox', '0 0 100 100');
+        leader.setAttribute('aria-hidden', 'true');
+        var route = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+        route.setAttribute('points', [[location.x, location.y], location.leaderBend || [location.x, 85.7], [location.labelX, location.labelY]].map(function (point) { return point.join(','); }).join(' '));
+        route.setAttribute('vector-effect', 'non-scaling-stroke');
+        leaderRoutes[i] = route;
+        leader.appendChild(route);
+        plane.appendChild(leader);
+      }
+      var highlight;
+      if (location.footprint) {
+        highlight = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        highlight.setAttribute('class', 'fd-map-footprint');
+        highlight.setAttribute('viewBox', '0 0 100 100');
+        highlight.setAttribute('aria-hidden', 'true');
+        var outline = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+        outline.setAttribute('points', location.footprint.map(function (point) { return point.join(','); }).join(' '));
+        outline.setAttribute('vector-effect', 'non-scaling-stroke');
+        highlight.appendChild(outline);
+        // HTML wrappers preserve the same hidden-property behavior as the dome outlines.
+        var wrapper = document.createElement('div');
+        wrapper.className = 'fd-map-footprint-wrap';
+        wrapper.appendChild(highlight);
+        highlight = wrapper;
+      } else {
+        highlight = document.createElement('div');
+        highlight.className = 'fd-map-highlight';
+        highlight.style.left = location.x + '%'; highlight.style.top = location.y + '%';
+      }
+      highlight.hidden = true;
+      plane.appendChild(highlight);
+      highlights.push(highlight);
+      var marker = document.createElement('button');
+      marker.type = 'button'; marker.className = 'fd-map-hotspot' + (location.labelSide ? ' fd-map-hotspot--label-' + location.labelSide : '');
+      marker.dataset.mapIndex = String(i);
+      marker.dataset.locationKey = location.key;
+      marker.style.left = location.x + '%'; marker.style.top = location.y + '%';
+      marker.setAttribute('aria-label', cabin.name + ': عرض المميزات');
+      marker.setAttribute('aria-pressed', 'false'); marker.setAttribute('aria-controls', 'fd-map-card');
+      var label = document.createElement('span');
+      // Compact map names; full names remain in the detail card and accessible label.
+      label.textContent = cabin.name.replace(/^(?:الكوخ|كوخ|البيت|بيت)\s+/, '');
+      marker.appendChild(label);
+      // Pointer gestures are handled once on pointerup; keyboard/assistive clicks have detail=0.
+      marker.addEventListener('click', function (event) { if (event.detail === 0) selectLocation(location); });
+      plane.appendChild(marker); markers.push(marker);
+    });
+
+    viewport.addEventListener('pointerdown', pointerDown);
+    dialog.addEventListener('pointerdown', function () { pendingMapClick = false; }, true);
+    dialog.addEventListener('click', function (event) {
+      if (pendingMapClick && event.detail > 0) {
+        pendingMapClick = false;
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      }
+    }, true);
+    viewport.addEventListener('pointermove', pointerMove);
+    viewport.addEventListener('pointerup', pointerUp);
+    viewport.addEventListener('pointercancel', pointerUp);
+    viewport.addEventListener('lostpointercapture', function (event) {
+      if (pointers.has(event.pointerId)) resetGesture();
+    });
+    viewport.addEventListener('keydown', function (event) {
+      if (event.target !== viewport) return;
+      if (event.key === '+' || event.key === '=') zoomTo(view.scale + .5, view.width / 2, view.height / 2);
+      else if (event.key === '-') zoomTo(view.scale - .5, view.width / 2, view.height / 2);
+      else if (event.key === 'Home') measureView(true);
+      else if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].indexOf(event.key) !== -1) {
+        view.x += event.key === 'ArrowLeft' ? 40 : event.key === 'ArrowRight' ? -40 : 0;
+        view.y += event.key === 'ArrowUp' ? 40 : event.key === 'ArrowDown' ? -40 : 0;
+        renderView();
+      } else return;
+      event.preventDefault();
+    });
+    fitButton.addEventListener('click', function () {
+      resetGesture();
+      measureView(true);
+      viewport.focus({ preventScroll: true });
+    });
+    dialog.querySelector('.fd-map-clear').addEventListener('click', function () { clearSelection(true); });
+    dialog.querySelector('.fd-map-details-button').addEventListener('click', function () {
+      if (!selected || typeof window.openM !== 'function') return;
+      window.openM(cabinFor(selected).id, 'resort');
+    });
+    card.querySelector('.fd-map-tour-button').addEventListener('click', function (event) {
+      if (!selected || selected.kind !== 'shared' || typeof window.open3D !== 'function') return;
+      if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      window.open3D(this.href);
+    });
+    dialog.querySelector('.fd-map-close').addEventListener('click', function () { dialog.close(); });
+    dialog.querySelector('.fd-map-retry').addEventListener('click', loadImage);
+    dialog.addEventListener('click', function (event) {
+      if (event.target !== dialog) return;
+      var bounds = dialog.getBoundingClientRect();
+      if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
+    });
+    dialog.addEventListener('cancel', function (event) {
+      if (selected) { event.preventDefault(); clearSelection(true); }
+    });
+    dialog.addEventListener('close', function () {
+      if (dialog.dataset.fdSuspended === 'true') return;
+      if (photoDialog && photoDialog.open) photoDialog.close();
+      resetGesture(); clearSelection(false);
+      document.body.style.overflow = previousOverflow;
+      openButton.focus({ preventScroll: true });
+    });
+    image.addEventListener('load', function () {
+      error.hidden = true; plane.hidden = false;
+      viewport.setAttribute('aria-busy', 'false'); measureView(false);
+    });
+    image.addEventListener('error', function () {
+      error.hidden = false; plane.hidden = true;
+      viewport.setAttribute('aria-busy', 'false');
+    });
+    var mapResizeObserver = new ResizeObserver(function () { measureView(false); });
+    mapResizeObserver.observe(viewport);
+    // Repack when the font changes the actual rendered label widths.
+    markers.forEach(function (marker, i) {
+      if (locations[i].labelSide === 'bottom' || locations[i].labelSide === 'offset') mapResizeObserver.observe(marker.querySelector('span'));
+    });
+    window.addEventListener('blur', resetGesture);
+    updateMapText();
+    loadImage();
+  }
+
+  openButton.addEventListener('click', function () {
+    if (!dialog) createDialog();
+    if (dialog.open) return;
+    previousOverflow = document.body.style.overflow;
+    // Every opening starts with no cabin, outline or connection note selected.
+    clearSelection(false);
+    dialog.showModal();
+    document.body.style.overflow = 'hidden';
+    measureView(true);
+    if (!error.hidden) loadImage();
+  });
+
+  document.addEventListener('fd-map-select-cabin', function (event) {
+    if (!dialog || !dialog.open) return;
+    var cabinId = Number(event.detail && event.detail.cabinId);
+    var location = locations.find(function (item) { return cabinFor(item).id === cabinId; });
+    if (location && selected !== location) selectLocation(location);
+  });
+
+  document.addEventListener('fd-map-suspend', function () {
+    if (!dialog || !dialog.open) return;
+    dialog.dataset.fdSuspended = 'true';
+    dialog.close();
+  });
+  document.addEventListener('fd-map-resume', function () {
+    if (!dialog || dialog.dataset.fdSuspended !== 'true') return;
+    dialog.dataset.fdSuspended = 'false';
+    dialog.showModal();
+    document.body.style.overflow = 'hidden';
+    measureView(false);
+  });
+
+  var observer = new MutationObserver(syncLauncher);
+  observer.observe(filters, { attributes: true, attributeFilter: ['style'] });
+  observer.observe(app, { attributes: true, attributeFilter: ['class'] });
+  syncLauncher();
+})();

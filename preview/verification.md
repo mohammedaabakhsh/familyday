@@ -15,3 +15,11 @@ Verified locally on 2026-11-23 before publication, with Chromium/Playwright. Pro
 - Every generated entry has a single preview canonical URL, preview Open Graph URL and `noindex,nofollow` metadata. Original production sitemap, robots, links, navigation and assets are unchanged.
 
 Publication checks are recorded in the task response after the deployment is available.
+
+## Layout revision after owner review
+
+- Replaced the two-row brand header with a compact RTL header; Back is at the far right and destination navigation is grouped on the right on standard screens.
+- Maps and illustrated explorations use a focused viewport with the bottom navigation hidden only for those screens. Returning restores the regular navigation. Duplicate headings inside visual documents are hidden.
+- Corrected the mobile illustration grid: hiding the duplicate heading no longer shifts the stage into the automatic heading row. All ten cabin tours measured approximately 355 px image width versus 352 px in the original at the same 390 × 844 viewport; every room control was exercised.
+- Restored the original resort map implementation, label placement, pan/zoom and compact selection cards inside an isolated preview visual document. Cabin details, tours, map selection restoration and shared-garden actions remain in the preview.
+- Service directories use full-width text rows without thumbnail photos or decorative icon tiles. Important existing descriptions remain. Actual service/package detail photos remain available inside their pages.

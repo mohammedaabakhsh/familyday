@@ -1,6 +1,6 @@
 // Keep all document navigation in this standalone preview, including Back/share.
 (function(){
- document.querySelectorAll('.tour-back,.fd-exploration-share,.cm-close').forEach(function(e){e.style.setProperty('display','none','important');});
+ document.querySelectorAll('.tour-back,.fd-exploration-share,.cm-close,.dt-heading,.cm-header,.fd-map-header').forEach(function(e){e.style.setProperty('display','none','important');});
  function navigate(path){parent.postMessage({type:'familyday-preview-navigate',path:path},location.origin);}
  document.addEventListener('click',function(event){
   var a=event.target.closest('a[href]');if(!a)return;
@@ -13,5 +13,5 @@
   else if(u.hash==='#resort'){path='/cabins/';u.hash='';}
   navigate(path+u.search+u.hash);
  },true);
- document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!location.pathname.includes('chalet-map'))navigate('/cabins/');});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!location.pathname.includes('chalet-map')&&!location.pathname.includes('resort-map'))navigate('/cabins/');});
 })();

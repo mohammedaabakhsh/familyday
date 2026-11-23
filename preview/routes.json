@@ -1,5 +1,5 @@
 {
-  "version": "20261123-complete-v3",
+  "version": "20261123-space-v4",
   "routes": [
     "/preview/",
     "/preview/arrangements/",
@@ -171,6 +171,18 @@
     {
       "path": "/resort-data.js",
       "sha256": "89ac0ce174a3810bf606548f9f0c89ab784acd72d7ec0cd7014af29a3e4aa2f8"
+    },
+    {
+      "path": "/resort-map-data.js",
+      "sha256": "f4a85b755a54d0d0d0f6a230744990c1ec694589da09908f108512e065a263a9"
+    },
+    {
+      "path": "/resort-map.css",
+      "sha256": "1d6f454eec0a9d910482bf84c89b6804f64422244472ac30e03a43b8d04dcd52"
+    },
+    {
+      "path": "/resort-map.js",
+      "sha256": "635a3506d118ebf8c2a3a617310e118eaa89a492405818909a1e2b30ab9ca5b7"
     },
     {
       "path": "/royal-tour.css",

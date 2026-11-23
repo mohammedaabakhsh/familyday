@@ -32,3 +32,7 @@ Original image/font files are referenced without recompression. Illustrated-tour
 3. `python preview/build-site.py` regenerates preview route entries and illustrated-tour snapshots from local sources. It writes only `preview/`; retain `visuals/bridge.js` and `visuals/frame.css`.
 
 `routes.json` inventories the public preview routes and source hashes; `catalog.json` records its source revision. The test evidence for this implementation is summarized in `verification.md`.
+
+## Focused exploration layout
+
+The revised header puts Arabic Back/destination navigation on the right. Cabin tours, chalet exploration and the resort map occupy the viewport beneath one compact title bar; the regular bottom tabs return after leaving an exploration. The resort map uses an isolated copy of the original map engine and label layout. Service directories use plain full-width rows; service/package photos remain inside details.
