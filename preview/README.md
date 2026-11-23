@@ -46,3 +46,5 @@ Resort Back links use the page hierarchy: main sections return to the resort, an
 Resort cabin cards place suitability beside the name and show the source bath summary only when present. Details and a compact comparison toggle share a row; a full-width exploration action stays in the same card. The shared garden uses the same visual structure with its real virtual tour and no bedroom, capacity or comparison claims.
 
 Resort cabin details omit the price/availability CTA. The filled turquoise exploration button precedes the unchanged specifications; the services button follows specifications and cabin-specific notes, immediately before FAQ. Chalet and rest-house details retain their previous layout.
+
+Resort chooser and unit headers omit the repeated central brand name. The chooser Back label reads “منتجع يوم العائلة”; unit Back remains contextual to the cabin list/map. The 12 cabin details include Previous/Next links after FAQ, following catalog order with disabled endpoints and no garden in the sequence. Cabin switches replace the current detail history entry, preserve the list/map origin, and start the next detail at its first photo and page top.

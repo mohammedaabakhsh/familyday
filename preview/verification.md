@@ -68,3 +68,11 @@ The missing resortContact renderer from the previous card revision was restored 
 Repeated resort/cabins/information/services tab changes leave browser history length unchanged. Tested arrows from cabin list to details, details to exploration and back, direct list-to-exploration, map selection to Royal details and back to the same cabin query, main sections to resort, and resort to destination selection. Direct opens and reloads retain safe parents. Filter selection is restored on return. Chalet/rest-house booking links and detail layouts remain unchanged.
 
 All 68 preview route bodies were rendered in Chromium with script-error monitoring; no script errors or loading-error states remained. Production files are unchanged.
+
+## Resort cabin browsing revision (20261123-resort-v13)
+
+Verified all 12 cabin detail pages have the exact previous/next cabin names and original preview-prefixed detail paths in catalog order. The first Previous and final Next controls are inactive; garden, chalet and rest-house pages have no cabin-sequence controls. Controls follow FAQ and remain reachable above the bottom bar at 320×740, 390×844, 430×932 and 1440×1000. Long names fit without horizontal overflow.
+
+The resort chooser header shows “منتجع يوم العائلة” only as the Back label, without a central brand repetition; cabin headers similarly omit the central brand while retaining list/map Back and sharing. The chooser label fits the narrow mobile width and the carousel screen retains its no-scroll layout.
+
+Traversed the full 12-cabin sequence, both directions, with constant browser history length and each new detail starting at page top. App Back and browser Back return to the original filtered list, including after reload. Direct details, a nested interior exploration and a Royal map origin followed by a sibling cabin return to safe parents; map selection is preserved. Resort contact content still renders. Chromium reported no page errors. All changes remain under preview/.
