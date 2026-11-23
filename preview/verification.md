@@ -32,3 +32,11 @@ Publication checks are recorded in the task response after the deployment is ava
 - Filter and horizontal position survive header Back, browser Back and a detail-page reload. Back labels match the real source screen. Map → cabin details → Back restores the map selection. Entry → resort → cabins → cabin → Back unwinds to each correct screen without a list/detail loop. Direct unit links fall back to the cabin chooser within the preview.
 - Resort contact retains map/phone/WhatsApp, FAQ and social links while removing the duplicate services shortcut and location/venue headings. WhatsApp links resolve to the source number.
 - No JavaScript errors or horizontal document overflow were observed in these checks. All edits remain under `preview/`.
+
+## Destination entry branding revision
+
+- Entry page uses the same original `img01.webp` logo as the production contact section, enlarged through its existing transparent framing technique; no logo artwork was modified.
+- The original privacy/comfort tagline appears above the unchanged destination heading, description and three cards.
+- Text uses the original 2.8-second blue/white light-sweep gradient; motion was verified to advance and to stop under reduced-motion preferences.
+- Entry layouts checked at 320×568, 390×744, 390×844 and 1440×900; no horizontal overflow. Both tested usual phone heights show all three cards without vertical scrolling. Existing resort five-tab navigation was checked after entry.
+- Functional edits are limited to the destination-entry markup and scoped entry CSS; other generated pages only receive the cache-version update.
