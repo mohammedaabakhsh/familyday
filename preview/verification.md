@@ -52,3 +52,9 @@ The usual mobile logo frame is now 155px (148px on small widths; 180px desktop),
 ## Resort introduction copy revision
 
 Only the resort overview removes its repeated name from the compact header. Its main heading now reads “دليلكم لمنتجع يوم العائلة”. A two-line description introduces the resort itself without repeating the numbers/pool/garden strip or giving browsing instructions. Exact two-line rendering was checked at 320×568, 390×744, 390×844 and 1440×900. Existing hero image, overlay copy, three facts and five tabs were verified unchanged, with no horizontal overflow or extra scrolling at the tested usual phone heights.
+
+## Resort chooser card revision (20261123-resort-v11)
+
+Verified four filters on a single row at widths 320, 390, 430 and 1440. Suitability appears beside names rather than over photos. Bath feature labels come directly from catalog raw.bath.summary (Dome 1/2, Pyramid, Panoramic); other cards have no invented feature. Details, exploration and the three-cabin comparison limit work within preview routes; the garden opens its own details and original Matterport tour. Bedroom filters return only matching cabins; All includes the 12 cabins and garden.
+
+At 320×740, 390×744, 390×844 and 430×932 the chooser fits without document scrolling or controls behind the footer. At 390×667 scrolling remains available to keep the photo usable. Desktop retains a grid. Browser/contextual Back and reload restore the new garden filter; Back from details/exploration restores the bedroom filter and in-memory comparison selection. Chalet and rest-house cards retain their existing layout. Chromium reported no script errors.
