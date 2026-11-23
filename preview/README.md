@@ -10,3 +10,7 @@ Unlisted preview at `/preview/`. This folder does not replace or modify the live
 - No new booking forms, submissions, analytics or account storage.
 
 `catalog.json` is a snapshot of approved production content at the `sourceRevision` included in that file. The helper `build-data.py` can rebuild the snapshot from a local server using Python Playwright; it writes only this folder. Photos are referenced at their original paths and are not recompressed.
+
+## Chalet navigation trial
+
+The default entry is now `#destinations`, a single chalet destination card. Entering the chalet shows four venue-scoped bottom tabs: chalet overview, details, services (gold) and information. A separate “الوجهات” link returns to the entry. The chalet overview no longer repeats the unit card or service listings; the details tab opens the unit directly. Existing resort/rest-house preview hashes remain available with their earlier presentation. All changes remain inside this preview folder.
