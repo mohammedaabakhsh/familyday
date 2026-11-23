@@ -36,3 +36,9 @@ Original image/font files are referenced without recompression. Illustrated-tour
 ## Focused exploration layout
 
 The revised header puts Arabic Back/destination navigation on the right. Cabin tours, chalet exploration and the resort map occupy the viewport beneath one compact title bar; the regular bottom tabs return after leaving an exploration. The resort map uses an isolated copy of the original map engine and label layout. Service directories use plain full-width rows; service/package photos remain inside details.
+
+## Resort-only navigation trial
+
+Only resort screens use the new five-item navigation (resort, cabins, gold services, information, map). The resort introduction sits above its photo; duplicate cabin/map shortcuts were removed from the overview. The shared garden is a card in the cabin carousel/grid, after the 12 cabins, and remains available with bedroom filters. Comparison is alongside the cabin heading. Resort contact removes repeated venue/location headings and the duplicate in-stay-services shortcut.
+
+Resort Back links use the actual previous preview entry when available, labeled with its destination. Direct opens retain safe in-preview parent fallbacks. Resort filters, carousel position, gallery index and scroll are saved by history entry in `familyday.preview.navigation.v5` session storage (UI state only); the other venues retain their prior visible layouts and four tabs. Usual mobile heights fit the resort overview, cabin chooser and contact page without vertical scrolling; shorter screens retain scrolling rather than making the cards too small.

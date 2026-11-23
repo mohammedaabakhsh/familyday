@@ -23,3 +23,12 @@ Publication checks are recorded in the task response after the deployment is ava
 - Corrected the mobile illustration grid: hiding the duplicate heading no longer shifts the stage into the automatic heading row. All ten cabin tours measured approximately 355 px image width versus 352 px in the original at the same 390 × 844 viewport; every room control was exercised.
 - Restored the original resort map implementation, label placement, pan/zoom and compact selection cards inside an isolated preview visual document. Cabin details, tours, map selection restoration and shared-garden actions remain in the preview.
 - Service directories use full-width text rows without thumbnail photos or decorative icon tiles. Important existing descriptions remain. Actual service/package detail photos remain available inside their pages.
+
+## Resort-only navigation revision
+
+- Resort overview, cabin chooser and contact page fit the usual mobile viewport heights without vertical page scrolling. Responsive checks covered 320×568, 360×740, 390×744, 390×844, 430×932, 768×1024 and 1440×900. Short screens retain scrolling to preserve usable cards. Carousel controls clear the bottom navigation.
+- Resort has five tabs with services centered in gold and the map as the fifth destination. Chalet/rest-house pages retain four tabs and their prior presentations.
+- The cabin carousel contains 12 cabins plus the shared garden as its last card (13 total); garden remains accessible under either bedroom filter. Comparison moved alongside the chooser heading and repeated location text/map shortcuts were removed.
+- Filter and horizontal position survive header Back, browser Back and a detail-page reload. Back labels match the real source screen. Map → cabin details → Back restores the map selection. Entry → resort → cabins → cabin → Back unwinds to each correct screen without a list/detail loop. Direct unit links fall back to the cabin chooser within the preview.
+- Resort contact retains map/phone/WhatsApp, FAQ and social links while removing the duplicate services shortcut and location/venue headings. WhatsApp links resolve to the source number.
+- No JavaScript errors or horizontal document overflow were observed in these checks. All edits remain under `preview/`.
