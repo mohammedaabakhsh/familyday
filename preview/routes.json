@@ -1,0 +1,216 @@
+{
+  "version": "20261123-complete-v3",
+  "routes": [
+    "/preview/",
+    "/preview/arrangements/",
+    "/preview/bohemian-tour/",
+    "/preview/cabins/",
+    "/preview/cabins/bohemian/",
+    "/preview/cabins/classic/",
+    "/preview/cabins/dome-1/",
+    "/preview/cabins/dome-2/",
+    "/preview/cabins/french/",
+    "/preview/cabins/greek-1/",
+    "/preview/cabins/greek-2/",
+    "/preview/cabins/palm-beach/",
+    "/preview/cabins/panoramic/",
+    "/preview/cabins/pyramid/",
+    "/preview/cabins/royal/",
+    "/preview/cabins/rustic/",
+    "/preview/cabins/shared-garden/",
+    "/preview/chalet-map/",
+    "/preview/chalet/",
+    "/preview/chalet/checkout/",
+    "/preview/chalet/contact/",
+    "/preview/chalet/details/",
+    "/preview/chalet/faq/",
+    "/preview/chalet/guest-services/",
+    "/preview/chalet/order/",
+    "/preview/chalet/services/",
+    "/preview/chalet/services/games/",
+    "/preview/chalet/services/water-games/",
+    "/preview/classic-tour/",
+    "/preview/contest/",
+    "/preview/dome-tour/",
+    "/preview/french-tour/",
+    "/preview/greek-tour/",
+    "/preview/guest-services/",
+    "/preview/menu/",
+    "/preview/palm-tour/",
+    "/preview/panoramic-tour/",
+    "/preview/pyramid-tour/",
+    "/preview/resort-map/",
+    "/preview/resort/",
+    "/preview/resort/checkout/",
+    "/preview/resort/compare/",
+    "/preview/resort/contact/",
+    "/preview/resort/faq/",
+    "/preview/resort/order/",
+    "/preview/royal-tour/",
+    "/preview/rustic-tour/",
+    "/preview/services-guide/",
+    "/preview/services/",
+    "/preview/services/cinema/",
+    "/preview/services/coordination/",
+    "/preview/services/dining-tables/",
+    "/preview/services/games/",
+    "/preview/services/hospitality/packages/",
+    "/preview/services/loyalty/",
+    "/preview/services/outdoor-seating/",
+    "/preview/services/share-and-win/",
+    "/preview/services/water-games/",
+    "/preview/stay/",
+    "/preview/stay/checkout/",
+    "/preview/stay/compare/",
+    "/preview/stay/contact/",
+    "/preview/stay/faq/",
+    "/preview/stay/ground-floor/",
+    "/preview/stay/order/",
+    "/preview/stay/sections/",
+    "/preview/stay/services/",
+    "/preview/stay/upper-floor/"
+  ],
+  "unitCount": 16,
+  "sources": [
+    {
+      "path": "/bohemian-tour.css",
+      "sha256": "30b2c72b8ff0ab60e063dad9e9fbeeb956bbf783ef912e24c0eb4d93738eb2b7"
+    },
+    {
+      "path": "/bohemian-tour.js",
+      "sha256": "5b465d4209b9432b949f5f16cb6c083d51b014f38606dabd8b56d6e95072feae"
+    },
+    {
+      "path": "/chalet-map.css",
+      "sha256": "1e7c312dfaeeb5bc24c51043a03facacc1d0852f6de8adb0d814f68a812eb1b1"
+    },
+    {
+      "path": "/chalet-map.js",
+      "sha256": "e30ce51cec0478c989d899f50fcf7df3a949b079d58b071e59f78663095af8cf"
+    },
+    {
+      "path": "/classic-tour.css",
+      "sha256": "a72a60d49aaf4389080e8ac594a41f1f95a744dae65903b5d777b223dc0c19e6"
+    },
+    {
+      "path": "/classic-tour.js",
+      "sha256": "23c45822437b243190d5548f304cf59055c63b22cd025500a418815bbf668c94"
+    },
+    {
+      "path": "/css/back-navigation.css",
+      "sha256": "834bdb848f741ef0185f5f22b91d497ea68a55cf3bb34eaa7eac2d01864420ad"
+    },
+    {
+      "path": "/css/exploration-share.css",
+      "sha256": "3e796ce0a916ac1a16a635f29e9340b1bc639142c630eba9575d656cd666e601"
+    },
+    {
+      "path": "/css/image-feedback.css",
+      "sha256": "236c8b091ea0aaf26f970d0582398a99f551d68c61f74968317b8109297e84e0"
+    },
+    {
+      "path": "/css/tajawal.css",
+      "sha256": "63e1c01678f45bb83983243a5b67716d42b710a8ac01e150e2af0972476ec14f"
+    },
+    {
+      "path": "/dome-tour-layout.css",
+      "sha256": "add5f71636bb93c0b3a9ce07208f58de009b3fde73b216099b89b455f2015153"
+    },
+    {
+      "path": "/dome-tour.css",
+      "sha256": "0d6b967e6cc815b1a46da142a87a3d4036f65de940ecccafb28067ea54322adc"
+    },
+    {
+      "path": "/dome-tour.js",
+      "sha256": "b5bd70eb7e626100fc67fe802c12f35b2d99b8ada9e4d39e738396b0d9f9d868"
+    },
+    {
+      "path": "/french-tour.css",
+      "sha256": "efabfb1b6aacbfc10c7fce3509d8c9373a2a7ce7f2755ca890b2d55d24bfec46"
+    },
+    {
+      "path": "/french-tour.js",
+      "sha256": "cb9de35ca0d6cc7db5797153bd39b76ed822a10a227f657b705b9f9c5d856a63"
+    },
+    {
+      "path": "/greek-tour-layout.css",
+      "sha256": "abc21c8203c72482a853e2bc906605fd4259dd33dbe8f888602e305c222db273"
+    },
+    {
+      "path": "/greek-tour.js",
+      "sha256": "10c795889ab74975ad4bba0b2947f509b2db0d49c6dab3bb5e7075fc880bd7f9"
+    },
+    {
+      "path": "/js/exploration-share.js",
+      "sha256": "4df790a6a09633238ca1fd4aac1a432e1f98830376e644635974b7316abdbf8d"
+    },
+    {
+      "path": "/js/image-feedback.js",
+      "sha256": "744d428e71aec101ed6a43206150207a52db786b405e61c0558993c7d0c844c0"
+    },
+    {
+      "path": "/palm-tour.css",
+      "sha256": "14562d38db02fced9235cbc8b9af2414670ea1eee0fb07f9f07f6eeb0e1160ac"
+    },
+    {
+      "path": "/palm-tour.js",
+      "sha256": "d09288a8e44c34c74a96593cd49cc844764c432ed98e38be7e421a84515909cc"
+    },
+    {
+      "path": "/panoramic-tour.css",
+      "sha256": "c75e08bea7281ffb872c2cf452ffa002d6767764b41a8eb2a3f19a1dd388085a"
+    },
+    {
+      "path": "/panoramic-tour.js",
+      "sha256": "b5ffc02552297c3935ce2e6f6a6e752bfdcce5dc0fcaba096a5788c8233ed5f1"
+    },
+    {
+      "path": "/pyramid-tour.js",
+      "sha256": "a9349732c685b9302c3c7d38f74e2f385c1c97ff471d0f70ad1937514be301ec"
+    },
+    {
+      "path": "/resort-data.js",
+      "sha256": "89ac0ce174a3810bf606548f9f0c89ab784acd72d7ec0cd7014af29a3e4aa2f8"
+    },
+    {
+      "path": "/royal-tour.css",
+      "sha256": "193aa9220962e23e61e2649826253dceed47684e03d11c89e572e5651dc2828d"
+    },
+    {
+      "path": "/royal-tour.js",
+      "sha256": "43696ee387d654a777f9b2e6cb3d95babb56c94a4a4545a02fc2f45d88f74f31"
+    },
+    {
+      "path": "/rustic-tour.css",
+      "sha256": "a4ad0d6747c780fbaf5e00b4a1501df4d17ae82832f96c938bfa690f2df1f825"
+    },
+    {
+      "path": "/rustic-tour.js",
+      "sha256": "e91507316d204a581ef667b0b2ee5d0915494c378cfc9b37c35c11e23693a00f"
+    },
+    {
+      "path": "/tour-common.js",
+      "sha256": "424c7a2a88acb253c4bd5632b1df4e8134d3e9d3eb6cc153db3eb77f68ab8dfc"
+    },
+    {
+      "path": "/tour-image-edges.css",
+      "sha256": "b12c4c6a67b575653eb628661f90c1185655e27d2f7c424118cc142995e8333b"
+    },
+    {
+      "path": "/tour-layout.css",
+      "sha256": "b203a47b66d923bf3b162c3ec7ee47cc33da3293cb5cb20b05589e962bf4d766"
+    },
+    {
+      "path": "/tour-page.css",
+      "sha256": "11eece958d8716d787789a83808ab372e3e79b1937b94aa6138ce2cd5f7106da"
+    },
+    {
+      "path": "/tour-spec-navigation.css",
+      "sha256": "82f14a1f202ff27362c216162fa1088570cd34375943364b3fc14e5b9ab26869"
+    },
+    {
+      "path": "/tour-viewport.css",
+      "sha256": "ed007a59d14aa6d4926fe863ce22a2b10ec07357526eddecdedb0aa0b6a4be16"
+    }
+  ]
+}

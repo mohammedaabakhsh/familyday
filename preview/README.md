@@ -1,16 +1,34 @@
-# Independent Family Day interface preview
+# Family Day complete independent preview
 
-Unlisted preview at `/preview/`. This folder does not replace or modify the live site's routes, navigation, data or styles. Remove the folder to remove the preview.
+Live preview: `https://familydaystay.com/preview/`.
 
-- Three resort cabins: Dome 1, Royal and Panoramic.
-- One chalet and the rest house's ground-floor section.
-- Original high-resolution source photos, approved specifications and venue-specific services.
-- Navigation stays in hash routes inside this preview. Sharing uses original canonical public URLs. Existing booking and order flows open their original pages.
-- `noindex,nofollow` on the preview document. This is an unlisted public page, not an authenticated private page.
-- No new booking forms, submissions, analytics or account storage.
+The original public website and every published production URL are unchanged. All implementation, route entries, data snapshots and illustrated-tour code for this experiment are inside `preview/`. Delete this folder to remove the experiment. The production UI does not link to it; its pages have `noindex,nofollow` (unlisted, not authenticated/private).
 
-`catalog.json` is a snapshot of approved production content at the `sourceRevision` included in that file. The helper `build-data.py` can rebuild the snapshot from a local server using Python Playwright; it writes only this folder. Photos are referenced at their original paths and are not recompressed.
+## Coverage
 
-## Chalet navigation trial
+- Three destination entries and venue-scoped bottom navigation, with services highlighted in gold.
+- All 12 cabins, the shared garden, both rest-house sections and the chalet (16 detail pages), their original galleries, approved descriptions, closed specification accordions and FAQs.
+- Original bedroom-count filters, horizontal mobile cabin cards, desktop grid, cabin comparison and rest-house comparison.
+- Interactive resort map based on approved `resort-map-data.js` coordinates/footprints, and 10 original cabin exploration modules plus the chalet's interactive illustration. Paired domes/Greek cabins retain their separate illustrations through query parameters. Garden Matterport remains the original external tour.
+- All 11 resort service categories, all coordination/hospitality packages and photos, all six outdoor seating sessions, dining-table capacities and preparations, games, water-package distribution and cinema time slots.
+- Full restaurant menu and variants/cheese selections, in-stay extras, venue-specific baskets, totals, editing/removal, customer details and WhatsApp draft preparation. Prices are recalculated from the catalog, never trusted from session storage.
+- Restaurant, coordinator and general service orders remain separate, with their source phone numbers. Chalet permits only its actual water/games services; resort promotions stay resort-only. Rest-house extras are informational/contact-based; no prices or offerings were invented.
+- Both video campaigns (terms, download links, email/WhatsApp and social accounts), loyalty benefits/enrollment, social/contact/map links, all FAQs and preview-specific sharing.
 
-The default entry is now `#destinations`, a single chalet destination card. Entering the chalet shows four venue-scoped bottom tabs: chalet overview, details, services (gold) and information. A separate “الوجهات” link returns to the entry. The chalet overview no longer repeats the unit card or service listings; the details tab opens the unit directly. Existing resort/rest-house preview hashes remain available with their earlier presentation. All changes remain inside this preview folder.
+## Routes and isolation
+
+An original path such as `/cabins/dome-1/` has an independent preview at `/preview/cabins/dome-1/`. The original path is not redirected or modified. Preview navigation and sharing use the prefixed paths; reloads and direct opens work on GitHub Pages using generated route entry files. Existing first-prototype hash links are handled as aliases where applicable.
+
+All internal document links stay under `/preview/`. Deliberate external actions remain the original business integrations: WhatsApp drafts (the visitor must send), email, phone, Google Maps, social accounts, contest video downloads, loyalty enrollment, the existing reservation provider and Matterport. There is no new booking backend, automated sending, payment, analytics, confirmed-order database or invented availability.
+
+Selections and customer-entered draft fields are stored only in browser `sessionStorage` under the new key `familyday.preview.v3`; production storage is not read or changed. No personal draft fields are put in share links.
+
+Original image/font files are referenced without recompression. Illustrated-tour JS/CSS are snapshotted inside `visuals/assets` and receive a local theme/bridge; their source specifications and room positions are preserved. Only static assets are shared with production; no legacy website documents are embedded.
+
+## Rebuilding
+
+1. Serve the repository locally (`python -m http.server 8058`).
+2. `python preview/build-data.py http://127.0.0.1:8058` captures current authoritative production presentation/data into `catalog.json`.
+3. `python preview/build-site.py` regenerates preview route entries and illustrated-tour snapshots from local sources. It writes only `preview/`; retain `visuals/bridge.js` and `visuals/frame.css`.
+
+`routes.json` inventories the public preview routes and source hashes; `catalog.json` records its source revision. The test evidence for this implementation is summarized in `verification.md`.
