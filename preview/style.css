@@ -56,15 +56,15 @@ main:has(.tour-view){width:100%;max-width:1200px;padding-top:calc(var(--header) 
 .resort-scope .context-back>span:last-child{max-width:112px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}@media(max-width:360px){.resort-scope .context-back>span:last-child{max-width:90px}}
 .resort-scope #announcer{position:fixed;top:0;left:0}
 /* Entry page only: use the original contact-page logo and light sweep. */
-.destination-flow .all-destinations .destination-brand{width:180px;aspect-ratio:176/86;overflow:hidden;margin:0 auto 9px}
+.destination-flow .all-destinations .destination-brand{width:170px;aspect-ratio:176/86;overflow:hidden;margin:0 auto 9px}
 .destination-flow .destination-brand img{display:block;width:100%;height:auto;max-width:none;aspect-ratio:1;object-fit:contain;transform:translateY(-21.6%)}
 .destination-flow .all-destinations .destination-promise{font-size:15px;line-height:1.8;color:#c3dce1;margin:0 0 21px}
 .destination-flow .all-destinations .destination-description{margin-top:7px}
 @supports (-webkit-background-clip:text) or (background-clip:text){.destination-flow .entry-shimmer{background:linear-gradient(90deg,#7ecfea 0%,#fff 40%,#fff 60%,#7ecfea 100%);background-size:250% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:entryTitleShimmer 2.8s linear infinite}}
 @keyframes entryTitleShimmer{0%{background-position:150% center}100%{background-position:-50% center}}
-@media(max-width:360px){.destination-flow .all-destinations .destination-brand{width:172px;margin-bottom:7px}.destination-flow .all-destinations .destination-promise{font-size:13px;margin-bottom:17px}}
+@media(max-width:360px){.destination-flow .all-destinations .destination-brand{width:162px;margin-bottom:7px}.destination-flow .all-destinations .destination-promise{font-size:13px;margin-bottom:17px}}
 @media(prefers-reduced-motion:reduce){.destination-flow .entry-shimmer{animation:none;background:none;-webkit-text-fill-color:currentColor}}
 .destination-flow #announcer{position:fixed;top:0;left:0}
 @media(max-width:999px) and (min-height:700px) and (max-height:800px){.destination-flow main{padding-top:6px;padding-bottom:6px}.destination-flow .all-destinations .destination-promise{margin-bottom:13px}.destination-flow .all-destinations .destination-intro{margin-bottom:16px}.destination-flow .destination-preview-note{padding-top:8px}}
 
-@media(min-width:1000px){.destination-flow .all-destinations .destination-brand{width:210px}}
+@media(min-width:1000px){.destination-flow .all-destinations .destination-brand{width:200px}}
