@@ -1,5 +1,5 @@
 {
-  "version": "20261123-resort-v16",
+  "version": "20261123-venues-v17",
   "routes": [
     "/preview/",
     "/preview/arrangements/",
