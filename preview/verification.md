@@ -92,3 +92,11 @@ All 12 cabin detail specification titles/items/times remain unchanged from catal
 ## Cabin browsing count (20261123-resort-v15)
 
 Verified totals of 12 for All, 4 for one bedroom and 8 for two bedrooms, each followed by “+ الحديقة المشتركة”. The position line updates after Previous/Next and survives reload with the chosen filter. List Back retains the original filter. A direct Pyramid link shows position 3 of 12 and All context. Position/total lines fit at mobile widths 320 and 390, remain above the bottom navigation at full scroll, and use English digits. Garden/chalet/rest-house detail pages are unchanged. No Chromium page errors occurred.
+
+## Shared garden as an actual browsing stop (20261123-resort-v16)
+
+Corrects the previous interpretation of “+ الحديقة المشتركة”. For All, one-bedroom and two-bedroom choices, the matching cabin cards are followed by the real shared-garden card. The carousel counts only 12/4/8 cabins; on the garden card it shows “الحديقة المشتركة” instead of a numbered 13th/5th/9th cabin.
+
+The last cabin detail has an active Next link to the existing shared-garden detail route. The garden's Previous returns to the last cabin in the same group; its browsing position displays the garden name, never a cabin number. The per-entry filter and original list/map source survive these replacements and reload. The independent garden-only filter remains a standalone garden detail without an unrelated cabin sequence.
+
+Verified carousel and detail transitions for all three groups, garden-card entry, reload on garden, Previous to the matching last cabin, Back to the preserved list/filter/position, and the independent garden filter. At width 320 the summary has no horizontal overflow and is reachable above the bottom bar. The chalet and rest-house views are unchanged. Chromium reported no page errors.
