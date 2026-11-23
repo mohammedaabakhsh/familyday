@@ -58,3 +58,13 @@ Only the resort overview removes its repeated name from the compact header. Its 
 Verified four filters on a single row at widths 320, 390, 430 and 1440. Suitability appears beside names rather than over photos. Bath feature labels come directly from catalog raw.bath.summary (Dome 1/2, Pyramid, Panoramic); other cards have no invented feature. Details, exploration and the three-cabin comparison limit work within preview routes; the garden opens its own details and original Matterport tour. Bedroom filters return only matching cabins; All includes the 12 cabins and garden.
 
 At 320×740, 390×744, 390×844 and 430×932 the chooser fits without document scrolling or controls behind the footer. At 390×667 scrolling remains available to keep the photo usable. Desktop retains a grid. Browser/contextual Back and reload restore the new garden filter; Back from details/exploration restores the bedroom filter and in-memory comparison selection. Chalet and rest-house cards retain their existing layout. Chromium reported no script errors.
+
+## Resort detail and navigation revision (20261123-resort-v12)
+
+All 12 cabin details were checked against catalog specification titles, items, notes and check-in/out values; data and spec markup are unchanged. Price/availability links are removed from these details only. The filled turquoise exploration button comes before specifications; services and FAQ come after specifications and special notes. Bottom actions are reachable above the fixed navigation.
+
+The missing resortContact renderer from the previous card revision was restored from the accepted resort-v10 implementation. Touch checks at 320, 390 and 430 CSS pixels verify the whole information slot resolves to its contact link, actual contact content renders, and both icon/label taps work. The services tab retains its separate route and gold appearance.
+
+Repeated resort/cabins/information/services tab changes leave browser history length unchanged. Tested arrows from cabin list to details, details to exploration and back, direct list-to-exploration, map selection to Royal details and back to the same cabin query, main sections to resort, and resort to destination selection. Direct opens and reloads retain safe parents. Filter selection is restored on return. Chalet/rest-house booking links and detail layouts remain unchanged.
+
+All 68 preview route bodies were rendered in Chromium with script-error monitoring; no script errors or loading-error states remained. Production files are unchanged.
