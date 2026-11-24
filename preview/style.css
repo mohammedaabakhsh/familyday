@@ -134,7 +134,7 @@ main:has(.tour-view){width:100%;max-width:1200px;padding-top:calc(var(--header) 
 @media(max-width:999px) and (min-height:568px) and (max-height:620px){.venue-contact-panel .page-heading{margin-bottom:8px}.venue-contact-panel .page-heading h1{font-size:23px}.venue-contact-panel .info-links{gap:8px}.venue-contact-panel .quick-link{min-height:60px;padding:10px 12px}.venue-contact-panel .explore-link{margin-top:10px;min-height:44px;padding:10px 12px}.venue-contact-panel .resort-social{padding-top:8px}.venue-contact-panel .resort-social h2{font-size:15px;margin-bottom:4px}}
 
 /* Resort-only refinement: compact, consistent inner-page headings and service rows. */
-.resort-scope:not(.resort-home) #main h1{font-size:22px;line-height:1.5}.resort-services .page-heading{margin-bottom:16px}.resort-services .service-group h2{font-size:15px;line-height:1.6;margin:18px 0 8px}.resort-services .services-list{gap:8px}.resort-services .service-card{min-height:54px;padding:12px 14px;gap:10px;border-radius:12px}.resort-services .service-card h3{font-size:16px;line-height:1.55}.resort-services .service-card p{font-size:12px;line-height:1.6;margin-top:3px}.resort-services .section-heading h2{font-size:16px}.resort-services .section-heading{margin-top:18px}.resort-services .explore-link{font-size:14px;min-height:48px;padding:12px 14px}.resort-unit .detail-actions:empty{display:none}
+.resort-scope:not(.resort-home) #main h1{font-size:20px;line-height:1.5}.resort-services .page-heading{margin-bottom:16px}.resort-services .service-group h2{font-size:15px;line-height:1.6;margin:18px 0 8px}.resort-services .services-list{gap:8px}.resort-services .service-card{min-height:54px;padding:12px 14px;gap:10px;border-radius:12px}.resort-services .service-card h3{font-size:16px;line-height:1.55}.resort-services .service-card p{font-size:12px;line-height:1.6;margin-top:3px}.resort-services .section-heading h2{font-size:16px}.resort-services .section-heading{margin-top:18px}.resort-services .explore-link{font-size:14px;min-height:48px;padding:12px 14px}.resort-unit .detail-actions:empty{display:none}
 /* Resort information: distribute spare height between related action groups. */
 .resort-contact-expanded{display:flex;flex-direction:column;justify-content:space-between;gap:18px;max-width:720px}
 .resort-contact-expanded>.page-heading{margin:0}
@@ -177,7 +177,7 @@ main:has(.tour-view){width:100%;max-width:1200px;padding-top:calc(var(--header) 
  .resort-social-icon .icon{width:22px;height:22px}
 }
 @media(max-width:360px){.resort-contact-expanded .button{font-size:12px;padding-inline:8px}.resort-contact-actions{gap:6px}.resort-review-row p{font-size:11px}.resort-app-link{gap:7px;padding-inline:7px}.resort-contact-expanded .resort-information-faq{font-size:13px}.resort-app-link strong{font-size:12px}}
-@media(min-width:1000px){.resort-scope:not(.resort-home) #main h1{font-size:24px}.resort-contact-expanded{gap:20px}.resort-contact-expanded .button{min-height:48px}.resort-contact-expanded .quick-link{min-height:60px}.resort-app-link{min-height:60px}}
+@media(min-width:1000px){.resort-scope:not(.resort-home) #main h1{font-size:22px}.resort-contact-expanded{gap:20px}.resort-contact-expanded .button{min-height:48px}.resort-contact-expanded .quick-link{min-height:60px}.resort-app-link{min-height:60px}}
 
 /* Compact resort specifications: long room and outdoor details get their own row. */
 .resort-unit .spec-compact .spec-list{gap:8px}
@@ -189,3 +189,13 @@ main:has(.tour-view){width:100%;max-width:1200px;padding-top:calc(var(--header) 
 :is(.resort-tour,.resort-map) .tour-view{display:flex;flex-direction:column}
 :is(.resort-tour,.resort-map) #main h1.resort-visual-title{flex:0 0 auto;margin:0;padding:8px 16px 6px;font-size:14px;font-weight:700;line-height:1.5;text-align:center}
 :is(.resort-tour,.resort-map) .tour-frame{flex:1;min-height:0;background:transparent}
+
+/* Resort heading hierarchy: modest sizes and a shared starting point beneath the header. */
+body.resort-scope:not(.focused-view) #main{padding-top:calc(64px + env(safe-area-inset-top,0px) + 12px)}
+.resort-scope #main .page-heading{display:flex;flex-direction:column;margin-top:0}
+.resort-scope #main .page-heading h1{order:-1;margin-top:0}
+.resort-scope #main .page-heading>.eyebrow{margin-top:5px}
+.resort-home .resort-intro h1{font-size:22px;line-height:1.5}
+.resort-home .resort-overview .hero h2{font-size:26px}
+@media(max-width:999px) and (max-height:740px){.resort-home .resort-intro h1{font-size:21px}.resort-home .resort-overview .hero h2{font-size:24px}}
+@media(min-width:1000px){.resort-home .resort-intro h1{font-size:26px}.resort-home .resort-overview .hero h2{font-size:36px}}
