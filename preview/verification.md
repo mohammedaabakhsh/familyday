@@ -227,3 +227,10 @@ Browser checks at 320×568, 390×844, 430×932 and 1440×900 covered all categor
 ## Shared-garden card and facility rows (20261124-resort-v34)
 
 The garden card now explicitly reads ألعاب أطفال وشاشة عرض مشتركة. In garden details, the same four original facility facts render as full-width compact specification rows with no check icons or list markers, matching the cabin row dimensions/spacing. Source facilities/photos/tour and other cabin layouts remain unchanged. Browser checks at 320×568, 390×844 and 1440×900 verify exact card copy, all four source facts, stacked full-width rows, no icons/markers or horizontal overflow, intact garden tour URL and unaffected cabin specifications. All edits remain under preview/.
+
+
+## Consistent resort Back label and garden fact icons (20261124-resort-v35)
+
+The resort cabin chooser now labels its Back link المنتجع, matching the services, contact and map sections. Existing contextual rules remain: cabin details return to الأكواخ or الخريطة according to origin, service details to خدمات المنتجع, and the resort home to الوجهات. Other destinations' labels are unchanged. Added the existing location-pin and guests icons above the garden's الموقع/وسط الأكواخ and الاستخدام/لجميع الضيوف facts, reusing cabin fact icon size/color/layout. The four facility rows remain icon-free.
+
+Browser checks verified the text, accessible label, href and actual destination for seven resort Back routes. Clicking the actual map details button and Back restores the selected map cabin with الخريطة as the label. At 320×568, 390×844 and 1440×900, both garden fact icons are turquoise and above their labels, all source text and the four icon-free facility rows remain intact, and there is no horizontal overflow. Source catalog, editorial copy, share metadata and original files/portals are unchanged. Syntax/diff checks pass; changes remain under preview/.
