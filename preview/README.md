@@ -94,3 +94,6 @@ The shared room terminology is applied to visible native text in all three desti
 All native resort inclusion lists omit decorative checkmarks, including dining, games, cinema, hospitality, coordination and loyalty. Source text is retained and other destinations keep their current presentation.
 
 Resort service photos use one full available width with consistent 12px inner gutters. The original square photos stay square; 4:3 cinema/coordination photos keep their complete natural proportions. Image containers fit the image instead of enforcing a square with colored letterbox bars. No image is cropped, edited, recompressed or replaced. `guide-copy.json.serviceImageSizes` records audited intrinsic dimensions for the 43 original service image assets; packagePhotos writes matching width/height attributes to reserve the correct layout while loading. Galleries and photo enlargement retain the original files. Update that dimension inventory when replacing source service photos.
+
+
+Resort service contents now use two compact items per row (resort-v41), with 8px/10px padding and the existing 13px type. Long descriptions span both columns for readability. This affects games, cinema, dining and package contents; photos, item text, prices and checkmark-free styling remain intact. Other destinations and the garden specification rows are unchanged.
