@@ -97,3 +97,10 @@ Resort service photos use one full available width with consistent 12px inner gu
 
 
 Resort service contents now use two compact items per row (resort-v41), with 8px/10px padding and the existing 13px type. Long descriptions span both columns for readability. This affects games, cinema, dining and package contents; photos, item text, prices and checkmark-free styling remain intact. Other destinations and the garden specification rows are unchanged.
+
+
+## Panoramic floating-card trial (resort-v42)
+
+Only Panoramic exploration and its selected card on the resort map load `visuals/panoramic-trial.css` and `panoramic-trial.js`. The source illustration, hotspots, leader lines, room facts, notes and navigation are retained. Exploration places the selected facility title and its facts inside one compact rounded card; map selection uses the same inset card styling, keeping the existing desktop side column. Other cabin selections keep their accepted layout.
+
+Add `?layout=previous` to Panoramic exploration or `?cabin=10&layout=previous` to the resort map to compare the previous layout; the option carries through map/Panoramic links. Set the controller's `enabled` flag to false to restore the previous default without editing source engines or drawings. Both trial assets are injected by `build-site.py`, not the original production pages.
