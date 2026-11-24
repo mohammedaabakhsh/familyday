@@ -130,3 +130,8 @@ All twelve resort cabins now use the accepted Panoramic facility-card presentati
 The new default map uses `resort-map-trial.js`/`.css`: measured pill labels remain inside the image, Panoramic moves below Bohemian, Rural/French/Palm share a spaced bottom-road row, selected leaders are emphasized, and source footprints remain exact. The selected summary is a rounded card for every cabin/garden with two primary facts, an optional full-width connection/access strip, and adjacent details/exploration actions. Explicit zoom/Fit controls supplement original gestures; on short phones they hide during selection to reserve room for labels.
 
 `/preview/resort-map/?layout=before` preserves the preceding v45 map and its Panoramic card via `comparison-v45.js` and the frozen Panoramic stylesheet. `layout=before` on other explorations preserves their prior presentation. `layout=previous` retains the earlier source layout. Comparison mode stays on map/tour links. All adapters are preview-only and are injected by `build-site.py`; original production engines/data/images are untouched.
+
+
+### Compact connecting-cabin summaries and lower Panoramic label (resort-v47)
+
+Classic and Royal use a single-line compact description with their internal-door connection in parentheses. Their redundant third connection fact is hidden in the new map only, leaving the same two equal primary facts as other cabins. The source descriptions and comparison modes are unchanged. Panoramic now joins Rural, French and Palm along the bottom road instead of the left edge. If the four measured names cannot fit, the selected short-phone map uses two balanced rows; all labels stay inside the image. Physical coordinates and leader origins remain unchanged.

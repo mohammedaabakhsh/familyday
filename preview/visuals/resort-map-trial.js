@@ -6,8 +6,8 @@
  document.documentElement.classList.add('resort-map-trial');
  var placements={
   'shared-garden':[36,8],classic:[80,22],royal:[84,36],pyramid:[11,35],
-  'dome-upper':[11,45],'dome-lower':[11,56],bohemian:[11,68],panoramic:[13,81],
-  rural:[31,94],french:[57,94],'palm-beach':[83,94],'greek-one':[89,64],'greek-two':[89,76]
+  'dome-upper':[11,45],'dome-lower':[11,56],bohemian:[11,68],panoramic:[20,94],
+  rural:[42,94],french:[64,94],'palm-beach':[86,94],'greek-one':[89,64],'greek-two':[89,76]
  };
  function clamp(n,a,b){return Math.max(a,Math.min(b,n));}
  function overlaps(a,b){return Math.abs(a.x-b.x)<(a.w+b.w)/2+5&&Math.abs(a.y-b.y)<(a.h+b.h)/2+5;}
@@ -32,11 +32,17 @@
     return {i:i,w:w,h:h,x:clamp(size*location.labelX/100,w/2+4,size-w/2-4),y:clamp(size*location.labelY/100,h/2+4,size-h/2-4)};
    });
    // Reserve the bottom road row before arranging the side labels around it.
-   var road=boxes.filter(function(box){return ['rural','french','palm-beach'].includes(locations[box.i].key);});
-   var roadRight=0;
-   road.forEach(function(box){box.x=Math.max(box.x,roadRight+7+box.w/2);box.y=size-box.h/2-4;box.priority=0;roadRight=box.x+box.w/2;});
-   var roadShift=Math.max(0,roadRight-(size-4));
-   road.forEach(function(box){box.x-=roadShift;});
+   var road=boxes.filter(function(box){return ['panoramic','rural','french','palm-beach'].includes(locations[box.i].key);});
+   var roadWidth=road.reduce(function(sum,box){return sum+box.w;},0)+(road.length-1)*7;
+   if(roadWidth<=size-8){
+    var roadRight=0;
+    road.forEach(function(box){box.x=Math.max(box.x,roadRight+7+box.w/2);box.y=size-box.h/2-4;box.priority=0;roadRight=box.x+box.w/2;});
+    var roadShift=Math.max(0,roadRight-(size-4));
+    road.forEach(function(box){box.x-=roadShift;});
+   } else {
+    // Keep complete names readable on short selected maps instead of squeezing four pills.
+    road.forEach(function(box,i){box.x=size*(i%2?.75:.25);box.y=size-box.h/2-4-(i<2?box.h+7:0);box.priority=0;});
+   }
    // Resolve labels as actual measured text boxes, including short-phone selections.
    var placed=[],tools=viewport.querySelector('.resort-map-tools');
    if(tools&&tools.offsetWidth&&view.scale===1){
@@ -88,6 +94,15 @@
    var garden=card.classList.contains('is-shared');
    card.querySelector('.fd-map-details-button').textContent='التفاصيل والصور';
    card.querySelector('.fd-map-tour-button').textContent=garden?'جولة الحديقة':'استكشف الكوخ';
+   var marker=document.querySelector('.fd-map-hotspot[aria-pressed="true"]');
+   var key=marker&&marker.dataset.locationKey;
+   if(key==='classic'||key==='royal'){
+    card.querySelector('.fd-map-description').textContent=key==='classic'?
+     'صالة واسعة للعائلات (متصل برويال بباب داخلي)':
+     'أكبر أكواخ المنتجع (متصل بالكلاسيكي بباب داخلي)';
+    card.querySelector('.fd-map-fact--extra').hidden=true;
+    card.querySelector('.fd-map-facts').classList.remove('has-three','has-cabin-connection','is-royal-connection');
+   }
   }
   document.addEventListener('fd-map-selection-change',updateCard);updateCard();
  }
