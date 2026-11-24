@@ -205,3 +205,27 @@ body.legacy-resort-services #main{width:100%;max-width:none;height:100dvh;min-he
 .legacy-resort-services #main>.view,.legacy-services-view{height:100%;min-height:0;animation:none}
 .legacy-services-frame{display:block;width:100%;height:100%;border:0;background:transparent}
 .legacy-resort-services #cart-shortcut{display:none!important}
+
+/* Restaurant trial: the preview introduces the service; the existing guest page handles orders. */
+.restaurant-guide{max-width:720px;margin-inline:auto}
+.restaurant-guide .page-heading{margin-bottom:20px}
+.restaurant-guide .page-heading .eyebrow{display:none}
+.restaurant-guide .page-heading p{margin-top:8px}
+.restaurant-hours{display:flex;align-items:center;gap:10px;padding:15px 16px;background:var(--surface-soft);border:1px solid var(--line);border-radius:12px;margin-bottom:20px}
+.restaurant-hours .icon{color:var(--teal);width:20px;height:20px}
+.restaurant-hours p{font-size:13px;line-height:1.8;color:var(--muted)}
+.restaurant-overview{padding:20px;border:1px solid var(--line);border-radius:16px;background:var(--surface);margin-bottom:22px}
+.restaurant-overview h2{font-size:16px;line-height:1.5;margin:0 0 16px}
+.restaurant-categories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px 14px;list-style:none;margin:0;padding:0}
+.restaurant-categories li{display:flex;align-items:center;gap:8px;font-size:14px;line-height:1.7;color:#c4d8df}
+.restaurant-categories li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--teal);flex:none}
+.restaurant-order-link{min-height:50px}
+@media(max-width:360px){.restaurant-overview{padding:16px}.restaurant-categories{gap:13px 10px}.restaurant-categories li{font-size:13px}.restaurant-hours{padding:12px}}
+.resort-service #main:has(.restaurant-guide){padding-bottom:calc(108px + env(safe-area-inset-bottom,0px))}
+@media(max-width:999px) and (max-height:740px){
+ .restaurant-guide .page-heading{margin-bottom:14px}
+ .restaurant-hours{padding:10px;margin-bottom:14px}.restaurant-hours p{font-size:12px;line-height:1.6}
+ .restaurant-overview{padding:14px;margin-bottom:14px}.restaurant-overview h2{margin-bottom:12px}
+ .restaurant-categories{gap:10px}.restaurant-categories li{font-size:13px}
+ .restaurant-order-link{min-height:48px}
+}
