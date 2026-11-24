@@ -11,7 +11,7 @@ paths.apple='<path d="M16.7 3.4c.8-1 1.2-2.2 1.1-3.4-1.2.1-2.6.8-3.4 1.7-.7.8-1.
 paths.instagram='<rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/>';
 paths.snapchat='<path d="M12.206.793c.99 0 4.347.276 5.93 3.821.529 1.193.403 3.219.299 4.847l-.003.06c-.012.18-.022.345-.03.51.075.045.203.09.401.09.3-.016.659-.12 1.033-.301.165-.088.344-.104.464-.104.182 0 .359.029.509.09.45.149.734.479.734.838.015.449-.39.839-1.213 1.168-.089.029-.209.075-.344.119-.45.135-1.139.36-1.333.81-.09.224-.061.524.12.868l.015.015c.06.136 1.526 3.475 4.791 4.014.255.044.435.27.42.509 0 .075-.015.149-.045.225-.24.569-1.273.988-3.146 1.271-.059.091-.12.375-.164.57-.029.179-.074.36-.134.553-.076.271-.27.405-.555.405h-.03c-.135 0-.313-.031-.538-.074-.36-.075-.765-.135-1.273-.135-.3 0-.599.015-.913.074-.6.104-1.123.464-1.723.884-.853.599-1.826 1.288-3.294 1.288-.06 0-.119-.015-.18-.015h-.149c-1.468 0-2.427-.675-3.279-1.288-.599-.42-1.107-.779-1.707-.884-.314-.045-.629-.074-.928-.074-.54 0-.958.089-1.272.149-.211.043-.391.074-.54.074-.374 0-.523-.224-.583-.42-.061-.192-.09-.389-.135-.567-.046-.181-.105-.494-.166-.57-1.918-.222-2.95-.642-3.189-1.226-.031-.063-.052-.15-.055-.225-.015-.243.165-.465.42-.509 3.264-.54 4.73-3.879 4.791-4.02l.016-.029c.18-.345.224-.645.119-.869-.195-.434-.884-.658-1.332-.809-.121-.029-.24-.074-.346-.119-1.107-.435-1.257-.93-1.197-1.273.09-.479.674-.793 1.168-.793.146 0 .27.029.383.074.42.194.789.3 1.104.3.234 0 .384-.06.465-.105l-.046-.569c-.098-1.626-.225-3.651.307-4.837C7.392 1.077 10.739.807 11.727.807l.419-.015h.06z"/>';
 const icon=(n,cl='')=>`<svg class="icon ${cl}" viewBox="0 0 24 24" aria-hidden="true">${paths[n]||paths.spark}</svg>`;
-const ROOT='/preview/',VERSION='20261124-resort-v37';
+const ROOT='/preview/',VERSION='20261124-resort-v38';
 const main=$('#main'),viewer=$('#viewer');
 let legacyServiceLayer='',catalog,shareMetadata={},guideCopy={},route,photoIndex=0,filter=0,modalPhotos=null,returnFocus=null,toastTimer,compare=new Set();
 const scrollPositions=new Map();let previousURL=location.href;
@@ -107,13 +107,13 @@ function render(){if(viewer.open)viewer.close();resortGuideAlias();route=parse()
 function shell(){
  const entry=route.type==='destinations',focused=['map','tour'].includes(route.type),v=route.venue;
  document.body.className=(entry?'destination-flow':focused?'complete-flow focused-view':'complete-flow')+(!entry?` ${v}-scope ${v}-${route.type}${usesOriginalResortServices()?' legacy-resort-services':''}`:'');
- const active=v==='stay'&&route.type==='compare'?'compare':route.type==='map'?'map':route.type==='unit'||['stays','tour','compare'].includes(route.type)?'stays':['services','service','guide','guest','cart','checkout'].includes(route.type)?'services':route.type==='faq'&&v==='resort'?'faq':['contact','faq'].includes(route.type)?'info':'home';
+ const active=v==='stay'&&route.type==='compare'?'compare':route.type==='map'?'map':route.type==='unit'||['stays','tour','compare'].includes(route.type)?'stays':['services','service','guide','guest','cart','checkout'].includes(route.type)?'services':['contact','faq'].includes(route.type)?'info':'home';
  const nav=$('#bottom-nav');nav.hidden=entry||focused;
  const tabs=[[`/${v}/`,'home',labels[v],'home'],[listPath(),'bed',v==='resort'?'الأكواخ':v==='stay'?'القسمان':'التفاصيل','stays'],[servicesPath(),'services','الخدمات','services'],[`/${v}/contact/`,'info','المعلومات','info']];
- if(v==='resort'){tabs.push(['/resort/faq/','faq','الأسئلة','faq'],['/resort-map/','map','الخريطة','map']);tabs.unshift([null,'pin','الموقع','location-preview']);}
+ if(v==='resort'){tabs.splice(2,0,['/resort-map/','map','الخريطة','map']);tabs.push([null,'pin','الموقع','location-preview']);}
  if(v==='chalet')tabs.push(['/chalet-map/','map','استكشف','map']);
  if(v==='stay')tabs.push(['/stay/compare/','users','المقارنة','compare']);
- nav.classList.toggle('six-items',tabs.length===6);nav.classList.toggle('seven-items',tabs.length===7);
+ nav.classList.toggle('six-items',tabs.length===6);
  nav.innerHTML=entry?'':tabs.map(([path,i,title,k])=>k==='location-preview'?`<button type="button" class="nav-location-preview" disabled aria-label="الموقع"><span class="nav-icon">${icon(i)}</span><span class="nav-label">${safe(title)}</span></button>`:`<a href="${prefix(path)}" data-section-tab ${k==='map'?`aria-label="${v==='chalet'?'استكشف مرافق الشاليه من الداخل':'خريطة الأكواخ التفاعلية'}"`:''} class="${k==='services'?'nav-services':''}" ${active===k?'aria-current="page"':''}><span class="nav-icon">${icon(i)}</span><span class="nav-label">${title}</span></a>`).join('');
  if(entry){$('.header-wrap').innerHTML='';return;}
  const tourUnit=explorationUnit();
