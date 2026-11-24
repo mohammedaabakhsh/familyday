@@ -301,6 +301,11 @@ body.legacy-resort-services #main{width:100%;max-width:none;height:100dvh;min-he
 .resort-scope .bottom-nav.six-items{grid-template-columns:repeat(6,minmax(0,1fr))}
 
 
-/* Location remains an unwired visual placeholder. */
-.resort-scope .bottom-nav .nav-location-preview{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px;min-width:0;min-height:54px;padding:0;border:0;border-radius:0;position:relative;background:transparent;color:var(--muted);font-size:11px;font-weight:500;opacity:1;cursor:default;isolation:isolate}
-@media(max-width:360px){.resort-scope .bottom-nav .nav-location-preview{font-size:10px}}
+
+
+
+/* Resort service photos share a width and retain their complete original aspect ratio, without letterboxing. */
+.resort-service .service-guide .package-body,.resort-service .dining-guide-details{padding-inline:12px}
+.resort-service :is(.service-guide,.dining-guide) .package-gallery{align-items:flex-start;margin:6px 0 14px;background:transparent}
+.resort-service :is(.service-guide,.dining-guide) .package-gallery .package-image{width:100%;flex:0 0 100%;height:auto;aspect-ratio:auto;align-self:flex-start;padding:0;border:0;background:transparent;box-shadow:none}
+.resort-service :is(.service-guide,.dining-guide) .package-image img{display:block;width:100%;height:auto;max-height:none;aspect-ratio:auto;object-fit:contain}

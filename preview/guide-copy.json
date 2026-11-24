@@ -277,5 +277,179 @@
         }
       ]
     }
+  },
+  "serviceImageSizes": {
+    "/imgs/tawilat_1.webp": [
+      2400,
+      2400
+    ],
+    "/imgs/tarfihi_1.webp": [
+      2400,
+      2400
+    ],
+    "/imgs/coordination/complete/13-lighting-v4.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/rose/front-a-v4.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/rose/wood-heart-v4.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/rose/angle-h-v4.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/premium-rose/02-dome-v2.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/premium-rose/01-bath-v2.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/premium-rose/03-bed-no-candles-v2.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/premium-rose/04-anniversary-v2.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/premium-rose/05-birthday-v2.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/moments/02-bath-no-juice-v2.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/moments/03-candles-v2.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/moments/01-shady-v2.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/moments/04-pale-balloons-v2.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/moments/05-love-v2.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/complete/10-v3.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/celebration/01-lounge-v1.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/celebration/02-anniversary-v1.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/celebration/03-bath-room-v1.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/celebration/04-purple-v1.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/celebration/05-soha-v1.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/vip/01-yellow-bed-v2.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/vip/02-yellow-heart-v2.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/vip/04-dome-celebration-v2.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/vip/04-silver-balloons-v3.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/vip/05-purple-bath-v2.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/vip/06-bouquet-v2.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/complete/01-v3.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/complete/04-v3.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/complete/12-v3.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/vip/03-birthday-lounge-v2.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/complete/08-v3.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/complete/06-v3.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/complete/07-v3.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/complete/05-v3.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/coordination/complete/09-v3.webp": [
+      1448,
+      1086
+    ],
+    "/imgs/jalsat_1.webp": [
+      1200,
+      1200
+    ],
+    "/imgs/jalsat_2.webp": [
+      1200,
+      1200
+    ],
+    "/imgs/jalsat_3.webp": [
+      1200,
+      1200
+    ],
+    "/imgs/jalsat_4.webp": [
+      1200,
+      1200
+    ],
+    "/imgs/jalsat_5.webp": [
+      1200,
+      1200
+    ],
+    "/imgs/jalsat_6.webp": [
+      1200,
+      1200
+    ]
   }
 }
