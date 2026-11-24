@@ -434,6 +434,177 @@
           ]
         }
       ]
+    },
+    "stay": {
+      "groups": [
+        {
+          "id": "booking",
+          "label": "الحجز",
+          "title": "الحجز وأوقات الدخول",
+          "items": [
+            {
+              "id": "stay-location",
+              "sources": [
+                "أين تقع استراحة يوم العائلة؟",
+                "كيف يمكنني التواصل معكم؟"
+              ],
+              "question": "أين تقع الاستراحة وكيف أتواصل معكم؟",
+              "links": [
+                {
+                  "path": "/stay/contact/",
+                  "text": "الموقع والتواصل"
+                }
+              ]
+            },
+            {
+              "id": "stay-times",
+              "sources": [
+                "ما أوقات الدخول والخروج؟"
+              ]
+            },
+            {
+              "id": "stay-booking",
+              "sources": [
+                "كيف يمكنني الحجز؟",
+                "ما طرق الدفع المتاحة؟"
+              ],
+              "question": "كيف أحجز وما طرق الدفع؟",
+              "links": [
+                {
+                  "path": "/stay/contact/",
+                  "text": "الحجز والتطبيقات"
+                }
+              ]
+            },
+            {
+              "id": "stay-cancel",
+              "sources": [
+                "هل يمكن تعديل أو إلغاء الحجز؟"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cabins",
+          "label": "القسمان",
+          "title": "الأقسام والمرافق",
+          "items": [
+            {
+              "id": "stay-sections",
+              "sources": [
+                "كم عدد أقسام الاستراحة؟",
+                "هل لكل قسم مدخل مستقل عن القسم الآخر؟"
+              ],
+              "question": "هل قسما الاستراحة مستقلان ويمكن حجزهما معًا؟"
+            },
+            {
+              "id": "stay-compare",
+              "sources": [
+                "ما الفرق بين القسم الأول والقسم الثاني؟",
+                "كيف أختار القسم المناسب لي؟"
+              ],
+              "question": "ما الفرق بين القسمين وكيف أختار المناسب؟",
+              "links": [
+                {
+                  "path": "/stay/compare/",
+                  "text": "قارن بين القسمين"
+                },
+                {
+                  "path": "/stay/sections/",
+                  "text": "صور القسمين وتفاصيلهما"
+                }
+              ]
+            },
+            {
+              "id": "stay-capacity",
+              "sources": [
+                "كم عدد الضيوف في كل قسم؟",
+                "هل سعة الضيوف المذكورة للاستقبال أم للمبيت؟"
+              ],
+              "question": "كم سعة كل قسم للاستقبال والمبيت؟"
+            },
+            {
+              "id": "stay-pool",
+              "sources": [
+                "ما مواصفات المسابح؟",
+                "هل المسبح بخصوصية كاملة؟"
+              ],
+              "question": "ما مواصفات المسابح وخصوصيتها؟"
+            },
+            {
+              "id": "stay-volleyball",
+              "sources": [
+                "هل يتوفر ملعب كرة طائرة؟"
+              ]
+            },
+            {
+              "id": "stay-entertainment",
+              "sources": [
+                "هل الاستراحة مجهزة بوسائل ترفيه؟"
+              ]
+            },
+            {
+              "id": "stay-kitchen",
+              "sources": [
+                "ما تجهيزات المطبخ المتوفرة؟"
+              ]
+            },
+            {
+              "id": "stay-grill",
+              "sources": [
+                "هل توجد شواية في الاستراحة؟"
+              ],
+              "answers": [
+                "نعم، تتوفر شواية في كل قسم."
+              ]
+            },
+            {
+              "id": "stay-parking",
+              "sources": [
+                "هل تتوفر مواقف سيارات؟"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "services",
+          "label": "الخدمات",
+          "title": "الخدمات والمرافق الإضافية",
+          "items": [
+            {
+              "id": "stay-slide",
+              "sources": [
+                "هل توجد ألعاب للأطفال في الاستراحة؟"
+              ],
+              "links": [
+                {
+                  "path": "/stay/services/",
+                  "text": "الزحليقة الهوائية الكبيرة"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rules",
+          "label": "التعليمات",
+          "title": "تعليمات الإقامة والسلامة",
+          "items": [
+            {
+              "id": "stay-speakers",
+              "sources": [
+                "هل يُسمح بإحضار سماعات خارجية؟"
+              ]
+            },
+            {
+              "id": "stay-safety",
+              "sources": [
+                "ما تعليمات استخدام المسبح؟"
+              ]
+            }
+          ]
+        }
+      ]
     }
   },
   "serviceImageSizes": {
@@ -616,6 +787,22 @@
       "iphone": "https://apps.apple.com/sa/app/%D9%8A%D9%88%D9%85-%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9/id6475359813",
       "android": "https://play.google.com/store/apps/details?id=com.familydaysa",
       "review": "https://search.google.com/local/writereview?placeid=ChIJBx9eaoVnwRURtljowMtrzV4"
+    },
+    "stay": {
+      "booking": "https://familyday-sa.com/ar",
+      "iphone": "https://apps.apple.com/sa/app/%D9%8A%D9%88%D9%85-%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9/id6475359813",
+      "android": "https://play.google.com/store/apps/details?id=com.familydaysa",
+      "review": "https://search.google.com/local/writereview?placeid=ChIJ9cqaFpNnwRURFlcvpptWW_4"
     }
+  },
+  "stayService": {
+    "id": "large-slide",
+    "name": "الزحليقة الهوائية الكبيرة",
+    "description": "متاحة في القسم الثاني – الدور العلوي، برسوم إضافية.",
+    "image": "/imgs/sec2_3-enhanced-20261122.webp?v=20261002b",
+    "dimensions": [
+      1254,
+      1254
+    ]
   }
 }

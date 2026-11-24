@@ -1,0 +1,373 @@
+{
+  "errors": [],
+  "routes": [
+    {
+      "path": "/preview/stay/",
+      "heading": "دليلكم لاستراحة يوم العائلة",
+      "share": {
+        "text": "http://127.0.0.1:8112/preview/stay/?share=text-v50"
+      }
+    },
+    {
+      "path": "/preview/stay/checkout/",
+      "heading": "خدمات الاستراحة",
+      "share": {
+        "text": "http://127.0.0.1:8112/preview/stay/services/?share=text-v50"
+      }
+    },
+    {
+      "path": "/preview/stay/compare/",
+      "heading": "مقارنة قسمي الاستراحة",
+      "share": {
+        "text": "http://127.0.0.1:8112/preview/stay/compare/?share=text-v50"
+      }
+    },
+    {
+      "path": "/preview/stay/contact/",
+      "heading": "الموقع والتواصل",
+      "share": {
+        "text": "http://127.0.0.1:8112/preview/stay/contact/?share=text-v50"
+      }
+    },
+    {
+      "path": "/preview/stay/faq/",
+      "heading": "الأسئلة الشائعة",
+      "share": {
+        "text": "http://127.0.0.1:8112/preview/stay/faq/?share=text-v50"
+      }
+    },
+    {
+      "path": "/preview/stay/ground-floor/",
+      "heading": "القسم الأول – الدور الأرضي (مناسب للتجمعات الكبيرة)",
+      "share": {
+        "text": "http://127.0.0.1:8112/preview/stay/ground-floor/?share=text-v50"
+      }
+    },
+    {
+      "path": "/preview/stay/order/",
+      "heading": "خدمات الاستراحة",
+      "share": {
+        "text": "http://127.0.0.1:8112/preview/stay/services/?share=text-v50"
+      }
+    },
+    {
+      "path": "/preview/stay/sections/",
+      "heading": "اختر قسمكم",
+      "share": {
+        "text": "http://127.0.0.1:8112/preview/stay/sections/?share=text-v50"
+      }
+    },
+    {
+      "path": "/preview/stay/services/",
+      "heading": "خدمات الاستراحة",
+      "share": {
+        "text": "http://127.0.0.1:8112/preview/stay/services/?share=text-v50"
+      }
+    },
+    {
+      "path": "/preview/stay/upper-floor/",
+      "heading": "القسم الثاني – الدور العلوي (مناسب للتجمعات الكبيرة)",
+      "share": {
+        "text": "http://127.0.0.1:8112/preview/stay/upper-floor/?share=text-v50"
+      }
+    }
+  ],
+  "viewports": [
+    {
+      "width": 320,
+      "height": 568,
+      "path": "/stay/"
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "path": "/stay/sections/"
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "path": "/stay/ground-floor/"
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "path": "/stay/upper-floor/"
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "path": "/stay/compare/"
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "path": "/stay/services/"
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "path": "/stay/contact/"
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "path": "/stay/faq/"
+    },
+    {
+      "width": 375,
+      "height": 667,
+      "path": "/stay/"
+    },
+    {
+      "width": 375,
+      "height": 667,
+      "path": "/stay/sections/"
+    },
+    {
+      "width": 375,
+      "height": 667,
+      "path": "/stay/ground-floor/"
+    },
+    {
+      "width": 375,
+      "height": 667,
+      "path": "/stay/upper-floor/"
+    },
+    {
+      "width": 375,
+      "height": 667,
+      "path": "/stay/compare/"
+    },
+    {
+      "width": 375,
+      "height": 667,
+      "path": "/stay/services/"
+    },
+    {
+      "width": 375,
+      "height": 667,
+      "path": "/stay/contact/"
+    },
+    {
+      "width": 375,
+      "height": 667,
+      "path": "/stay/faq/"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "path": "/stay/"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "path": "/stay/sections/"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "path": "/stay/ground-floor/"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "path": "/stay/upper-floor/"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "path": "/stay/compare/"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "path": "/stay/services/"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "path": "/stay/contact/"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "path": "/stay/faq/"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "path": "/stay/"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "path": "/stay/sections/"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "path": "/stay/ground-floor/"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "path": "/stay/upper-floor/"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "path": "/stay/compare/"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "path": "/stay/services/"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "path": "/stay/contact/"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "path": "/stay/faq/"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "path": "/stay/"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "path": "/stay/sections/"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "path": "/stay/ground-floor/"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "path": "/stay/upper-floor/"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "path": "/stay/compare/"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "path": "/stay/services/"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "path": "/stay/contact/"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "path": "/stay/faq/"
+    }
+  ],
+  "galleries": {
+    "20": 12,
+    "21": 13
+  },
+  "allSectionFactsRetained": true,
+  "originalContactLinks": [
+    {
+      "text": "احجز عبر الموقع\n      \n      ←",
+      "href": "https://familyday-sa.com/ar"
+    },
+    {
+      "text": "تطبيق iPhone\n        التنزيل من App Store",
+      "href": "https://apps.apple.com/sa/app/%D9%8A%D9%88%D9%85-%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9/id6475359813"
+    },
+    {
+      "text": "تطبيق Android\n        التنزيل من Google Play",
+      "href": "https://play.google.com/store/apps/details?id=com.familydaysa"
+    },
+    {
+      "text": "موقع الاستراحة\n        جدة — خليج سلمان\n      \n      ←",
+      "href": "https://maps.app.goo.gl/i7BhZbfkRLyV68eFA?g_st=ic"
+    },
+    {
+      "text": "قيّم تجربتك",
+      "href": "https://search.google.com/local/writereview?placeid=ChIJ9cqaFpNnwRURFlcvpptWW_4"
+    },
+    {
+      "text": "تواصل عبر واتساب\n      \n      ←",
+      "href": "https://wa.me/966556156693"
+    },
+    {
+      "text": "اتصال هاتفي\n      \n      ←",
+      "href": "tel:+966556156693"
+    },
+    {
+      "text": "",
+      "href": "https://instagram.com/FAMILYDAYRESORT"
+    },
+    {
+      "text": "",
+      "href": "https://www.snapchat.com/add/familyday5"
+    }
+  ],
+  "service": {
+    "name": "الزحليقة الهوائية الكبيرة",
+    "section": 2,
+    "imageNaturalSize": [
+      1254,
+      1254
+    ],
+    "externalOrderingDeferred": true,
+    "charcoalRemoved": true,
+    "priceNotInvented": true
+  },
+  "faq": {
+    "sourceQuestions": 22,
+    "entries": 16,
+    "groups": 4,
+    "arabicDigitSearch": true,
+    "clearRestoresGroup": true
+  },
+  "navigation": {
+    "spaEntryStyled": true,
+    "faqBackPreserved": true,
+    "chooserBackPreserved": true
+  },
+  "regressions": [
+    "/resort/",
+    "/cabins/",
+    "/resort/contact/",
+    "/resort/faq/",
+    "/chalet/",
+    "/chalet/contact/",
+    "/chalet-map/"
+  ],
+  "catalogSha256": "79848e6e550232c66732b2af92795dc42bd1cbfc530a117f1496ce2a22394ac8",
+  "finalRefinements": {
+    "comparisonHeaders": [
+      {
+        "text": "القسم الأول",
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "text": "القسم الثاني",
+        "lines": 1,
+        "overflow": false
+      }
+    ],
+    "serviceFaqEntries": 1,
+    "splitCardTitles": [
+      "الدور الأرضي",
+      "الدور العلوي"
+    ]
+  },
+  "textOnlyMetadataRoutes": 58
+}

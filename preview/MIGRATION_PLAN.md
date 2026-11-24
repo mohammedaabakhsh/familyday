@@ -49,3 +49,5 @@
 لا تحذف مجلدات الصور أو الخطوط باعتبارها من الواجهة القديمة؛ الجديد وبوابات الطلب ما زالوا يستخدمونها.
 
 Chalet v51: preserve the existing `/chalet/guest-services/` public ordering portal at cutover. New chalet service guides hand off there; its data still comes from the existing shared guest-services source module and `/index.html`. The production data extraction prerequisite therefore also protects chalet orders. New `/preview/chalet/order/` and `/preview/chalet/checkout/` resolve to the informational service directory. Chalet original canonical/share URLs remain unchanged; no root cutover has happened.
+
+Rest-house v53: no external service-ordering portal exists in this release. Keep `/stay/services/` as an informational guide for the large inflatable slide only; build its order handoff later when authorized. Do not route it to the resort/chalet ordering portals or restore charcoal ordering. The preview `/stay/order/` and `/stay/checkout/` aliases resolve to `/stay/services/`. Existing section, comparison, contact, FAQ, booking and share destinations retain their paths.
