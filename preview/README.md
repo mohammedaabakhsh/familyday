@@ -116,3 +116,8 @@ The preview-only Panoramic snapshot groups the existing dining-table fact into K
 Dining is now the first Kitchen fact. The indoor-tub button occupies the former dining slot in the six top controls; Outdoor and Pool share the two equal bottom slots. Original hotspot coordinates and source facts remain. On larger layouts the tub uses the former dining label position and right-side leader routing. The comparison URL retains the original arrangement.
 
 Panoramic specification arrows use immediate bounded steps rather than queuing smooth relative scrolling. Source touch scrolling, snap behavior, navigation labels, disabled boundary states and other tours remain intact; the branch is scoped to Panoramic outside `layout=previous` in the generated common snapshot.
+
+
+### Swipe-like Panoramic specification arrows (resort-v45)
+
+Replaced the immediate arrow jump with a 280ms horizontal slide. Consecutive clicks accumulate bounded destinations and reversing retargets the current slide without queuing animations. Native snap is suspended only during an arrow slide and restored afterward; pointer/touch/wheel input and resize cancel it so visitors can scroll directly. Reduced-motion preferences retain the instant move. Other tours and the original comparison layout are unchanged.
