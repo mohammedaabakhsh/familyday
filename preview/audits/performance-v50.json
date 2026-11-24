@@ -1,0 +1,27 @@
+{
+  "before": {
+    "beforeOpening": {
+      "complete": false,
+      "src": "http://127.0.0.1:8111/imgs/coordination/complete/13-lighting-v4.webp",
+      "loading": "lazy"
+    },
+    "openToDecodedMs": 3854
+  },
+  "after": {
+    "beforeOpening": {
+      "complete": false,
+      "src": "http://127.0.0.1:8111/preview/media/service-7d2ca2d506cd.webp",
+      "loading": "eager"
+    },
+    "openToDecodedMs": 333
+  },
+  "progressiveZoom": "display image first, original after decode",
+  "share": "plain text only; semantic query preserved; transient context removed",
+  "directory": "all service handoffs passed",
+  "networkProfile": {
+    "latencyMs": 120,
+    "downloadBytesPerSecond": 524288,
+    "browserCache": "disabled",
+    "closedDetailsReadingMs": 500
+  }
+}

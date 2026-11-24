@@ -1,0 +1,392 @@
+[
+  {
+    "width": 390,
+    "path": "/resort/",
+    "components": {
+      ".header": {
+        "width": 390,
+        "height": 64,
+        "radius": "0px",
+        "padding": "8px 16px",
+        "margin": "0px",
+        "font": "16px",
+        "lineHeight": "normal"
+      },
+      "#bottom-nav": {
+        "width": 366,
+        "height": 72,
+        "radius": "22px",
+        "padding": "8px 5px",
+        "margin": "0px",
+        "font": "16px",
+        "lineHeight": "normal"
+      },
+      ".nav-services .nav-icon": {
+        "width": 54,
+        "height": 54,
+        "radius": "50%",
+        "padding": "0px",
+        "margin": "0px",
+        "font": "11px",
+        "lineHeight": "normal"
+      },
+      ".hero": {
+        "width": 350,
+        "height": 469,
+        "radius": "21px",
+        "padding": "0px",
+        "margin": "0px",
+        "font": "16px",
+        "lineHeight": "normal"
+      }
+    }
+  },
+  {
+    "width": 390,
+    "path": "/cabins/",
+    "components": {
+      ".header": {
+        "width": 390,
+        "height": 64,
+        "radius": "0px",
+        "padding": "8px 16px",
+        "margin": "0px",
+        "font": "16px",
+        "lineHeight": "normal"
+      },
+      "#bottom-nav": {
+        "width": 366,
+        "height": 72,
+        "radius": "22px",
+        "padding": "8px 5px",
+        "margin": "0px",
+        "font": "16px",
+        "lineHeight": "normal"
+      },
+      ".nav-services .nav-icon": {
+        "width": 54,
+        "height": 54,
+        "radius": "50%",
+        "padding": "0px",
+        "margin": "0px",
+        "font": "11px",
+        "lineHeight": "normal"
+      },
+      ".unit-card": {
+        "width": 328,
+        "height": 519,
+        "radius": "17px",
+        "padding": "0px",
+        "margin": "0px",
+        "font": "16px",
+        "lineHeight": "normal"
+      },
+      ".button.primary": {
+        "width": 226,
+        "height": 42,
+        "radius": "11px",
+        "padding": "9px 12px",
+        "margin": "0px",
+        "font": "14px",
+        "lineHeight": "21px"
+      }
+    }
+  },
+  {
+    "width": 390,
+    "path": "/services/cinema/",
+    "components": {
+      ".header": {
+        "width": 390,
+        "height": 64,
+        "radius": "0px",
+        "padding": "8px 16px",
+        "margin": "0px",
+        "font": "16px",
+        "lineHeight": "normal"
+      },
+      "#bottom-nav": {
+        "width": 366,
+        "height": 72,
+        "radius": "22px",
+        "padding": "8px 5px",
+        "margin": "0px",
+        "font": "16px",
+        "lineHeight": "normal"
+      },
+      ".nav-services .nav-icon": {
+        "width": 54,
+        "height": 54,
+        "radius": "50%",
+        "padding": "0px",
+        "margin": "0px",
+        "font": "11px",
+        "lineHeight": "normal"
+      },
+      ".button.primary": {
+        "width": 350,
+        "height": 50,
+        "radius": "11px",
+        "padding": "12px 19px",
+        "margin": "20px 0px 0px",
+        "font": "15px",
+        "lineHeight": "22.5px"
+      },
+      ".fact-box": {
+        "width": 171,
+        "height": 100,
+        "radius": "12px",
+        "padding": "17px 12px",
+        "margin": "0px",
+        "font": "16px",
+        "lineHeight": "normal"
+      },
+      ".package": {
+        "width": 350,
+        "height": 62,
+        "radius": "14px",
+        "padding": "0px",
+        "margin": "0px 0px 12px",
+        "font": "16px",
+        "lineHeight": "normal"
+      },
+      ".page-heading": {
+        "width": 350,
+        "height": 60.1875,
+        "radius": "0px",
+        "padding": "0px",
+        "margin": "0px 0px 20px",
+        "font": "16px",
+        "lineHeight": "normal"
+      }
+    }
+  },
+  {
+    "width": 390,
+    "path": "/resort-map/",
+    "components": {
+      ".header": {
+        "width": 390,
+        "height": 58,
+        "radius": "0px",
+        "padding": "5px 16px",
+        "margin": "0px",
+        "font": "16px",
+        "lineHeight": "normal"
+      },
+      "#bottom-nav": {
+        "width": 0,
+        "height": 0,
+        "radius": "22px",
+        "padding": "8px 5px",
+        "margin": "0px",
+        "font": "16px",
+        "lineHeight": "normal"
+      },
+      ".nav-services .nav-icon": {
+        "width": 0,
+        "height": 0,
+        "radius": "50%",
+        "padding": "0px",
+        "margin": "0px",
+        "font": "11px",
+        "lineHeight": "normal"
+      }
+    }
+  },
+  {
+    "width": 1440,
+    "path": "/resort/",
+    "components": {
+      ".header": {
+        "width": 1440,
+        "height": 64,
+        "radius": "0px",
+        "padding": "8px 32px",
+        "margin": "0px",
+        "font": "16px",
+        "lineHeight": "normal"
+      },
+      "#bottom-nav": {
+        "width": 600,
+        "height": 72,
+        "radius": "22px",
+        "padding": "8px 5px",
+        "margin": "0px",
+        "font": "16px",
+        "lineHeight": "normal"
+      },
+      ".nav-services .nav-icon": {
+        "width": 54,
+        "height": 54,
+        "radius": "50%",
+        "padding": "0px",
+        "margin": "0px",
+        "font": "11px",
+        "lineHeight": "normal"
+      },
+      ".hero": {
+        "width": 900,
+        "height": 501.0000305175781,
+        "radius": "21px",
+        "padding": "0px",
+        "margin": "0px",
+        "font": "16px",
+        "lineHeight": "normal"
+      }
+    }
+  },
+  {
+    "width": 1440,
+    "path": "/cabins/",
+    "components": {
+      ".header": {
+        "width": 1440,
+        "height": 64,
+        "radius": "0px",
+        "padding": "8px 32px",
+        "margin": "0px",
+        "font": "16px",
+        "lineHeight": "normal"
+      },
+      "#bottom-nav": {
+        "width": 600,
+        "height": 72,
+        "radius": "22px",
+        "padding": "8px 5px",
+        "margin": "0px",
+        "font": "16px",
+        "lineHeight": "normal"
+      },
+      ".nav-services .nav-icon": {
+        "width": 54,
+        "height": 54,
+        "radius": "50%",
+        "padding": "0px",
+        "margin": "0px",
+        "font": "11px",
+        "lineHeight": "normal"
+      },
+      ".unit-card": {
+        "width": 360.65625,
+        "height": 462.890625,
+        "radius": "17px",
+        "padding": "0px",
+        "margin": "0px",
+        "font": "16px",
+        "lineHeight": "normal"
+      },
+      ".button.primary": {
+        "width": 258.65625,
+        "height": 42,
+        "radius": "11px",
+        "padding": "9px 12px",
+        "margin": "0px",
+        "font": "14px",
+        "lineHeight": "21px"
+      }
+    }
+  },
+  {
+    "width": 1440,
+    "path": "/services/cinema/",
+    "components": {
+      ".header": {
+        "width": 1440,
+        "height": 64,
+        "radius": "0px",
+        "padding": "8px 32px",
+        "margin": "0px",
+        "font": "16px",
+        "lineHeight": "normal"
+      },
+      "#bottom-nav": {
+        "width": 600,
+        "height": 72,
+        "radius": "22px",
+        "padding": "8px 5px",
+        "margin": "0px",
+        "font": "16px",
+        "lineHeight": "normal"
+      },
+      ".nav-services .nav-icon": {
+        "width": 54,
+        "height": 54,
+        "radius": "50%",
+        "padding": "0px",
+        "margin": "0px",
+        "font": "11px",
+        "lineHeight": "normal"
+      },
+      ".button.primary": {
+        "width": 720,
+        "height": 50,
+        "radius": "11px",
+        "padding": "12px 19px",
+        "margin": "20px 0px 0px",
+        "font": "15px",
+        "lineHeight": "22.5px"
+      },
+      ".fact-box": {
+        "width": 356,
+        "height": 100,
+        "radius": "12px",
+        "padding": "17px 12px",
+        "margin": "0px",
+        "font": "16px",
+        "lineHeight": "normal"
+      },
+      ".package": {
+        "width": 720,
+        "height": 62,
+        "radius": "14px",
+        "padding": "0px",
+        "margin": "0px 0px 12px",
+        "font": "16px",
+        "lineHeight": "normal"
+      },
+      ".page-heading": {
+        "width": 720,
+        "height": 63.1875,
+        "radius": "0px",
+        "padding": "0px",
+        "margin": "0px 0px 20px",
+        "font": "16px",
+        "lineHeight": "normal"
+      }
+    }
+  },
+  {
+    "width": 1440,
+    "path": "/resort-map/",
+    "components": {
+      ".header": {
+        "width": 1440,
+        "height": 58,
+        "radius": "0px",
+        "padding": "5px 32px",
+        "margin": "0px",
+        "font": "16px",
+        "lineHeight": "normal"
+      },
+      "#bottom-nav": {
+        "width": 0,
+        "height": 0,
+        "radius": "22px",
+        "padding": "8px 5px",
+        "margin": "0px",
+        "font": "16px",
+        "lineHeight": "normal"
+      },
+      ".nav-services .nav-icon": {
+        "width": 0,
+        "height": 0,
+        "radius": "50%",
+        "padding": "0px",
+        "margin": "0px",
+        "font": "11px",
+        "lineHeight": "normal"
+      }
+    }
+  }
+]

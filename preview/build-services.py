@@ -51,6 +51,10 @@ def build_services(root,preview,copyasset,version):
  html+=''.join('<script src="'+copyasset(path)+'"></script>' for path in scripts)
  html+='<script src="/preview/services-bridge.js?v='+version+'"></script></body></html>'
  (out/'index.html').write_text(preview_links(html))
+ # Keep the approved directory markup/theme, without mounting unused order panels/scripts.
+ directory_styles=''.join('<link rel="stylesheet" href="'+copyasset(path)+'">' for path in ['css/tajawal.css','css/app-base.css','css/services-index.css'])
+ directory_html='<!doctype html><html lang="ar" dir="rtl"><head><base href="/"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,max-image-preview:none"><title>خدمات المنتجع</title>'+directory_styles+theme+'<style>#services-overlay .svcs-description{color:#b6cbd6!important}</style></head><body class="original-service-ui">'+directory+'<script src="/preview/services-directory.js?v='+version+'"></script></body></html>'
+ (out/'directory.html').write_text(preview_links(directory_html))
  # Original independent guest and occasion guides retain their own controls/forms.
  for name,sourcepath in [('guest','guest-services/index.html'),('guide','services-guide/index.html')]:
   text=(root/sourcepath).read_text();base='/'+str(Path(sourcepath).parent)+'/'

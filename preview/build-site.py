@@ -19,15 +19,22 @@ for venue,faq in guidecopy['faqs'].items():
 TEMPLATE=(PREVIEW/'index.html').read_text()
 TEMPLATE=re.sub(r'<link rel="canonical"[^>]*>','',TEMPLATE)
 TEMPLATE=re.sub(r'<meta property="og:(?:url|image)"[^>]*>','',TEMPLATE)
-TEMPLATE=re.sub(r'<link rel="stylesheet" href="\./style.css\?[^\"]+">','<link rel="stylesheet" href="/preview/style.css?v=20261124-resort-v49">',TEMPLATE)
-TEMPLATE=re.sub(r'<script type="module" src="\./app.js\?[^\"]+"></script>','<script type="module" src="/preview/app.js?v=20261124-resort-v49"></script>',TEMPLATE)
-TEMPLATE=re.sub(r'(/preview/(?:app.js|style.css)\?v=)[^\"]+',r'\g<1>20261124-resort-v49',TEMPLATE)
+TEMPLATE=re.sub(r'<link rel="stylesheet" href="\./style.css\?[^\"]+">','<link rel="stylesheet" href="/preview/style.css?v=20261124-resort-v50">',TEMPLATE)
+TEMPLATE=re.sub(r'<script type="module" src="\./app.js\?[^\"]+"></script>','<script type="module" src="/preview/app.js?v=20261124-resort-v50"></script>',TEMPLATE)
+TEMPLATE=re.sub(r'(/preview/(?:app.js|style.css)\?v=)[^\"]+',r'\g<1>20261124-resort-v50',TEMPLATE)
 TEMPLATE=TEMPLATE.replace('href="#destinations"','href="/preview/"')
 TEMPLATE=TEMPLATE.replace('<meta property="og:description" content="تصوّر مستقل لواجهة يوم العائلة">','<meta property="og:description" content="اكتشف وجهات يوم العائلة وخدماتها">')
 TEMPLATE=re.sub(r'<body[^>]*>','<body class="complete-flow">',TEMPLATE)
+TEMPLATE=re.sub(r'<link\b[^>]*rel="icon"[^>]*>','<link rel="icon" type="image/png" data-page-href="/imgs/icon.png">',TEMPLATE)
+TEMPLATE=re.sub(r'<script\b[^>]*src="/preview/text-only-head.js[^\"]*"[^>]*></script>','',TEMPLATE)
+TEMPLATE=TEMPLATE.replace('</head>','<script src="/preview/text-only-head.js?v=20261124-resort-v50" defer></script></head>')
 TEMPLATE=re.sub(r'<header class="header">.*?</header>','<header class="header"><div class="header-wrap"><nav class="header-start" aria-label="الوجهات"><a class="destination-return" href="/preview/">الوجهات</a></nav><span class="header-identity">يوم العائلة</span><div class="header-actions" id="header-actions"></div></div></header>',TEMPLATE,flags=re.S)
 (PREVIEW/'index.html').write_text(TEMPLATE)
 sharepages=json.loads((ROOT/'share-pages.json').read_text());extras=json.loads((ROOT/'share-extras.json').read_text())
+media=json.loads((PREVIEW/'media-manifest.json').read_text()) if (PREVIEW/'media-manifest.json').exists() else {'images':{}}
+legacy_routes={p['route']:p['path'] for p in sharepages}
+(PREVIEW/'runtime-config.json').write_text(json.dumps({'serviceImages':{path:entry['src'] for path,entry in media['images'].items()},'legacyRoutes':legacy_routes},ensure_ascii=False,indent=2)+'\n')
+(PREVIEW/'route-compatibility.json').write_text(json.dumps({'status':'prepared-not-promoted','previewPrefix':'/preview/','routes':[{'currentPublishedPath':p['path'],'previewPath':'/preview'+p['path'],'finalPath':p['path'],'title':p['title'],'promotionPolicy':'preserve-published-portal' if p['path'] in ['/guest-services/','/services-guide/','/arrangements/'] else 'replace-interface-preserve-path'} for p in sharepages+extras],'legacyHashes':legacy_routes,'externalPortals':['/guest-services/','/arrangements/','/services-guide/'],'cutoverBlockers':[{'consumer':path,'dependency':'/index.html','resolution':'Extract the existing source catalog before replacing the production index.'} for path in ['/guest-services/service-source.js','/services-guide/guide.js']]},ensure_ascii=False,indent=2)+'\n')
 paths={p['path'] for p in sharepages}
 paths.update(p['path'] for p in json.loads((ROOT/'share-extras.json').read_text()))
 paths.update(['/cabins/','/resort-map/','/chalet-map/','/guest-services/','/chalet/guest-services/','/services-guide/','/arrangements/','/resort/compare/','/stay/compare/','/stay/services/'])
@@ -68,7 +75,7 @@ for path in sorted(paths):
 assets=PREVIEW/'visuals/assets';assets.mkdir(parents=True,exist_ok=True);copied=set()
 def copyasset(path):
  path=path.lstrip('/').split('?')[0]
- if path in copied:return '/preview/visuals/assets/'+path+'?v=20261124-resort-v49'
+ if path in copied:return '/preview/visuals/assets/'+path+'?v=20261124-resort-v50'
  copied.add(path);src=ROOT/path;dst=assets/path;dst.parent.mkdir(parents=True,exist_ok=True)
  text=src.read_text()
  if path=='resort-data.js':text=room_wording(text)
@@ -119,7 +126,7 @@ def copyasset(path):
   a=text.index('  function url(kind)');b=text.index('  async function copy',a)
   text=text[:a]+'''  function url(kind){ return new URL('/preview/'+(kind==='chalet'?'chalet-map/':location.pathname.split('/visuals/')[1])+location.search.replace(/([?&])from=[^&]*/g,'$1').replace(/[?&]$/,''),location.origin).href; }\n'''+text[b:]
  dst.write_text(text)
- return '/preview/visuals/assets/'+path+'?v=20261124-resort-v49'
+ return '/preview/visuals/assets/'+path+'?v=20261124-resort-v50'
 for name in ['dome','pyramid','classic','greek','palm','bohemian','french','rustic','royal','panoramic']:
  src=ROOT/(name+'-tour/index.html');html=src.read_text()
  html=html.replace('<html lang="ar" dir="rtl">','<html class="resort-visual" lang="ar" dir="rtl">')
@@ -127,18 +134,18 @@ for name in ['dome','pyramid','classic','greek','palm','bohemian','french','rust
  html=re.sub(r'<link rel="canonical"[^>]*>','',html)
  html=html.replace('content="https://familydaystay.com/'+name+'-tour/"','content="https://familydaystay.com/preview/'+name+'-tour/"')
  html=re.sub(r'<meta name="robots"[^>]*>','',html)
- html=html.replace('</head>','<meta name="robots" content="noindex,nofollow"><link rel="stylesheet" href="/preview/visuals/frame.css?v=20261124-resort-v49"></head>')
- if name!='panoramic':html=html.replace('</head>','<link rel="stylesheet" href="/preview/visuals/resort-tour.css?v=20261124-resort-v49"><script src="/preview/visuals/resort-tour.js?v=20261124-resort-v49"></script></head>')
- if name=='panoramic':html=html.replace('</head>','<link rel="stylesheet" href="/preview/visuals/panoramic-trial.css?v=20261124-resort-v49"></head>')
- trialscript='<script src="/preview/visuals/panoramic-trial.js?v=20261124-resort-v49"></script>' if name=='panoramic' else ''
- html=html.replace('</body>',trialscript+'<script src="/preview/visuals/bridge.js?v=20261124-resort-v49"></script></body>')
+ html=html.replace('</head>','<meta name="robots" content="noindex,nofollow"><link rel="stylesheet" href="/preview/visuals/frame.css?v=20261124-resort-v50"></head>')
+ if name!='panoramic':html=html.replace('</head>','<link rel="stylesheet" href="/preview/visuals/resort-tour.css?v=20261124-resort-v50"><script src="/preview/visuals/resort-tour.js?v=20261124-resort-v50"></script></head>')
+ if name=='panoramic':html=html.replace('</head>','<link rel="stylesheet" href="/preview/visuals/panoramic-trial.css?v=20261124-resort-v50"></head>')
+ trialscript='<script src="/preview/visuals/panoramic-trial.js?v=20261124-resort-v50"></script>' if name=='panoramic' else ''
+ html=html.replace('</body>',trialscript+'<script src="/preview/visuals/bridge.js?v=20261124-resort-v50"></script></body>')
  out=PREVIEW/'visuals'/(name+'-tour')/'index.html';out.parent.mkdir(parents=True,exist_ok=True);out.write_text(html)
 # The chalet's original illustration is a dialog module; use it in a dedicated
 # preview document rather than its original redirect-to-home entry.
 chaletdata=assets/'chalet-preview-data.js';chaletdata.write_text('var PRIVATE_CHALET='+room_wording(json.dumps(data['source']['chalet'],ensure_ascii=False))+';')
 chaletassets=['resort-data.js','tour-common.js','js/exploration-share.js','chalet-map.js']
 chaletcss=['css/tajawal.css','chalet-map.css','css/exploration-share.css','css/image-feedback.css']
-chalethtml='<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>استكشف الشاليه من الداخل</title>'+''.join('<link rel="stylesheet" href="'+copyasset(p)+'">' for p in chaletcss)+'<link rel="stylesheet" href="/preview/visuals/frame.css?v=20261124-resort-v49"></head><body><script src="/preview/visuals/assets/chalet-preview-data.js?v=20261124-resort-v49"></script>'+''.join('<script src="'+copyasset(p)+'"></script>' for p in chaletassets)+'<script>FD_CHALET_MAP.show();document.addEventListener("fd-chalet-map-dismiss",()=>parent.postMessage({type:"familyday-preview-navigate",path:"/chalet/details/"},location.origin));</script><script src="/preview/visuals/bridge.js?v=20261124-resort-v49"></script></body></html>'
+chalethtml='<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>استكشف الشاليه من الداخل</title>'+''.join('<link rel="stylesheet" href="'+copyasset(p)+'">' for p in chaletcss)+'<link rel="stylesheet" href="/preview/visuals/frame.css?v=20261124-resort-v50"></head><body><script src="/preview/visuals/assets/chalet-preview-data.js?v=20261124-resort-v50"></script>'+''.join('<script src="'+copyasset(p)+'"></script>' for p in chaletassets)+'<script>FD_CHALET_MAP.show();document.addEventListener("fd-chalet-map-dismiss",()=>parent.postMessage({type:"familyday-preview-navigate",path:"/chalet/details/"},location.origin));</script><script src="/preview/visuals/bridge.js?v=20261124-resort-v50"></script></body></html>'
 out=PREVIEW/'visuals/chalet-map/index.html';out.parent.mkdir(parents=True,exist_ok=True);out.write_text(chalethtml)
 # Original resort-map engine, in its own preview document. Parent adapters keep
 # cabin details, exploration links and shared-garden navigation in the new UI.
@@ -146,10 +153,10 @@ mapdata=assets/'map-preview-data.js'
 mapdata.write_text('var FD_PREVIEW_MAP_DESCRIPTIONS='+json.dumps(json.loads((PREVIEW/'resort-map-copy.json').read_text()),ensure_ascii=False)+';var curSection="resort";var GALLERY='+json.dumps({u['id']:u['images'] for u in data['units']},ensure_ascii=False)+';var FD_PREVIEW_UNITS='+json.dumps({u['id']:u['path'] for u in data['units']},ensure_ascii=False)+';')
 mapcss=['css/tajawal.css','resort-map.css','css/back-navigation.css','css/image-feedback.css']
 mapassets=['resort-data.js','resort-map-data.js','resort-map.js']
-maphtml='<!doctype html><html class="resort-visual" lang="ar" dir="rtl"><head><base href="/"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>خريطة الأكواخ التفاعلية</title>'+''.join('<link rel="stylesheet" href="'+copyasset(p)+'">' for p in mapcss)+'<link rel="stylesheet" href="/preview/visuals/frame.css?v=20261124-resort-v49"></head><body><div id="app" class="show" hidden><div id="filterSection"></div><div id="fd-map-launcher"><button id="fd-map-open" type="button">الخريطة</button></div></div><script src="/preview/visuals/assets/map-preview-data.js?v=20261124-resort-v49"></script><script>window.openM=function(id){parent.postMessage({type:"familyday-preview-navigate",path:FD_PREVIEW_UNITS[id]},location.origin)};window.open3D=function(url){parent.postMessage({type:"familyday-preview-virtual",url:url},location.origin)};document.addEventListener("fd-map-photos-request",function(e){document.dispatchEvent(new CustomEvent("fd-map-photos-open",{detail:e.detail}))});</script>'+''.join('<script src="'+copyasset(p)+'"></script>' for p in mapassets)+'<script>document.getElementById("fd-map-open").click();var originalMap=document.getElementById("fd-map-dialog");originalMap.addEventListener("close",function(){parent.postMessage({type:"familyday-preview-navigate",path:"/cabins/"},location.origin)});var initialMapCabin=new URLSearchParams(location.search).get("cabin");if(initialMapCabin)document.dispatchEvent(new CustomEvent("fd-map-select-cabin",{detail:{cabinId:Number(initialMapCabin)}}));document.addEventListener("fd-map-selection-change",function(e){parent.postMessage({type:"familyday-preview-map-selection",cabinId:e.detail.cabinId},location.origin)});</script><script src="/preview/visuals/bridge.js?v=20261124-resort-v49"></script></body></html>'
-maphtml=maphtml.replace('</head>','<link rel="stylesheet" href="/preview/visuals/panoramic-trial.css?v=20261124-resort-v49"><link rel="stylesheet" href="/preview/visuals/resort-map-trial.css?v=20261124-resort-v49"><script src="/preview/visuals/resort-map-trial.js?v=20261124-resort-v49"></script></head>').replace('<script src="/preview/visuals/bridge.js','<script src="/preview/visuals/comparison-v45.js?v=20261124-resort-v49"></script><script src="/preview/visuals/bridge.js')
+maphtml='<!doctype html><html class="resort-visual" lang="ar" dir="rtl"><head><base href="/"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>خريطة الأكواخ التفاعلية</title>'+''.join('<link rel="stylesheet" href="'+copyasset(p)+'">' for p in mapcss)+'<link rel="stylesheet" href="/preview/visuals/frame.css?v=20261124-resort-v50"></head><body><div id="app" class="show" hidden><div id="filterSection"></div><div id="fd-map-launcher"><button id="fd-map-open" type="button">الخريطة</button></div></div><script src="/preview/visuals/assets/map-preview-data.js?v=20261124-resort-v50"></script><script>window.openM=function(id){parent.postMessage({type:"familyday-preview-navigate",path:FD_PREVIEW_UNITS[id]},location.origin)};window.open3D=function(url){parent.postMessage({type:"familyday-preview-virtual",url:url},location.origin)};document.addEventListener("fd-map-photos-request",function(e){document.dispatchEvent(new CustomEvent("fd-map-photos-open",{detail:e.detail}))});</script>'+''.join('<script src="'+copyasset(p)+'"></script>' for p in mapassets)+'<script>document.getElementById("fd-map-open").click();var originalMap=document.getElementById("fd-map-dialog");originalMap.addEventListener("close",function(){parent.postMessage({type:"familyday-preview-navigate",path:"/cabins/"},location.origin)});var initialMapCabin=new URLSearchParams(location.search).get("cabin");if(initialMapCabin)document.dispatchEvent(new CustomEvent("fd-map-select-cabin",{detail:{cabinId:Number(initialMapCabin)}}));document.addEventListener("fd-map-selection-change",function(e){parent.postMessage({type:"familyday-preview-map-selection",cabinId:e.detail.cabinId},location.origin)});</script><script src="/preview/visuals/bridge.js?v=20261124-resort-v50"></script></body></html>'
+maphtml=maphtml.replace('</head>','<link rel="stylesheet" href="/preview/visuals/panoramic-trial.css?v=20261124-resort-v50"><link rel="stylesheet" href="/preview/visuals/resort-map-trial.css?v=20261124-resort-v50"><script src="/preview/visuals/resort-map-trial.js?v=20261124-resort-v50"></script></head>').replace('<script src="/preview/visuals/bridge.js','<script src="/preview/visuals/comparison-v45.js?v=20261124-resort-v50"></script><script src="/preview/visuals/bridge.js')
 out=PREVIEW/'visuals/resort-map/index.html';out.parent.mkdir(parents=True,exist_ok=True);out.write_text(maphtml)
-SourceFileLoader('preview_service_builder',str(PREVIEW/'build-services.py')).load_module().build_services(ROOT,PREVIEW,copyasset,'20261124-resort-v49')
+SourceFileLoader('preview_service_builder',str(PREVIEW/'build-services.py')).load_module().build_services(ROOT,PREVIEW,copyasset,'20261124-resort-v50')
 (PREVIEW/'guest-services.html').write_text(text_only_metadata(TEMPLATE,'/guest-services/',sharecopy['/guest-services/']))
-(PREVIEW/'routes.json').write_text(json.dumps({'version':'20261124-resort-v49','routes':manifest,'unitCount':len(data['units']),'sources':[{'path':'/'+p,'sha256':hashlib.sha256((ROOT/p).read_bytes()).hexdigest()} for p in sorted(copied|{'index.html','js/app-shell.js'})]},ensure_ascii=False,indent=2)+'\n')
-print(json.dumps({'entryRoutes':len(manifest),'visualDocuments':15,'visualAssets':len(copied)}))
+(PREVIEW/'routes.json').write_text(json.dumps({'version':'20261124-resort-v50','routes':manifest,'unitCount':len(data['units']),'sources':[{'path':'/'+p,'sha256':hashlib.sha256((ROOT/p).read_bytes()).hexdigest()} for p in sorted(copied|{'index.html','js/app-shell.js'})]},ensure_ascii=False,indent=2)+'\n')
+print(json.dumps({'entryRoutes':len(manifest),'visualDocuments':16,'visualAssets':len(copied)}))

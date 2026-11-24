@@ -1,0 +1,106 @@
+{
+  "version": "resort-v50",
+  "scope": "approved resort reference; do not apply other venue facts",
+  "fontFamily": "Tajawal, Arial, sans-serif",
+  "colors": {
+    "background": "#071a26",
+    "surface": "#102b39",
+    "surfaceSoft": "#0b2230",
+    "border": "#244550",
+    "cardBorder": "#315967",
+    "text": "#f1f7f8",
+    "muted": "#a4bbc5",
+    "accent": "#6dced2",
+    "serviceGold": "#e1c495"
+  },
+  "type": {
+    "innerPageTitle": {
+      "mobile": 20,
+      "desktop": 22,
+      "lineHeight": 1.5,
+      "weight": 800
+    },
+    "serviceDirectoryTitle": {
+      "mobile": 20,
+      "desktop": 22,
+      "lineHeight": 1.5,
+      "weight": 700
+    },
+    "overviewIntro": {
+      "mobile": 22,
+      "desktop": 26,
+      "lineHeight": 1.5,
+      "weight": 800
+    },
+    "overviewHero": {
+      "mobile": 26,
+      "desktop": 36,
+      "lineHeight": 1.4,
+      "weight": 800
+    },
+    "cabinCardName": {
+      "mobile": 21,
+      "desktop": 21,
+      "weight": 800
+    },
+    "serviceCategory": {
+      "size": 13
+    },
+    "serviceRowTitle": {
+      "size": 16,
+      "weight": 700
+    },
+    "focusedMapTourTitle": {
+      "size": 14,
+      "weight": 700
+    },
+    "selectedFacilityTitle": {
+      "size": 13,
+      "weight": 700
+    },
+    "facilityValue": {
+      "size": 12
+    },
+    "facilityLabel": {
+      "size": 10
+    },
+    "bottomNavigation": {
+      "size": 11,
+      "smallMobile": 10
+    }
+  },
+  "navigation": {
+    "resortRtlOrder": [
+      "المنتجع",
+      "الأكواخ",
+      "الخريطة",
+      "الخدمات",
+      "المعلومات",
+      "الموقع"
+    ],
+    "equalColumns": 6,
+    "serviceCircle": 54,
+    "focusedViewsHideBar": true
+  },
+  "media": {
+    "keepOriginals": true,
+    "displayDerivativeQuality": 92,
+    "preservePixelDimensions": true,
+    "preserveAspectRatio": true,
+    "noColoredLetterbox": true,
+    "firstServiceImage": "eager and decoded before disclosure when possible",
+    "zoom": "cached display photo then original after decode"
+  },
+  "references": [
+    "style.css",
+    "services-theme.css",
+    "visuals/resort-tour.css",
+    "visuals/resort-tour.js",
+    "visuals/panoramic-trial.css",
+    "visuals/panoramic-trial.js",
+    "visuals/resort-map-trial.css",
+    "visuals/resort-map-trial.js",
+    "audits/design-measurements-v50.json",
+    "audits/component-measurements-v50.json"
+  ]
+}

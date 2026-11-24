@@ -1,0 +1,2321 @@
+[
+  {
+    "width": 320,
+    "path": "/resort/",
+    "frame": "/preview/resort/",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "",
+        "text": "دليلكم لمنتجع يوم العائلة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "21px",
+        "weight": "800",
+        "lineHeight": "31.5px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H2",
+        "classes": "",
+        "text": "منتجع يوم العائلة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "24px",
+        "weight": "800",
+        "lineHeight": "33.6px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المنتجع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(154, 225, 225)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الأكواخ",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخريطة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخدمات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(225, 196, 149)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المعلومات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الموقع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "path": "/cabins/",
+    "frame": "/preview/cabins/",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "",
+        "text": "اختر كوخكم",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "20px",
+        "weight": "800",
+        "lineHeight": "30px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "بيت الدوم 1",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "18px",
+        "weight": "800",
+        "lineHeight": "27px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "بيت الدوم 2",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "18px",
+        "weight": "800",
+        "lineHeight": "27px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "الكوخ الهرمي",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "18px",
+        "weight": "800",
+        "lineHeight": "27px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "الكوخ الكلاسيكي",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "18px",
+        "weight": "800",
+        "lineHeight": "27px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "البيت اليوناني 1",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "18px",
+        "weight": "800",
+        "lineHeight": "27px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "البيت اليوناني 2",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "18px",
+        "weight": "800",
+        "lineHeight": "27px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "كوخ بالم بيتش",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "18px",
+        "weight": "800",
+        "lineHeight": "27px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "الكوخ البوهيمي",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "18px",
+        "weight": "800",
+        "lineHeight": "27px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "الكوخ الفرنسي",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "18px",
+        "weight": "800",
+        "lineHeight": "27px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "الكوخ الريفي",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "18px",
+        "weight": "800",
+        "lineHeight": "27px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "كوخ رويال",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "18px",
+        "weight": "800",
+        "lineHeight": "27px",
+        "color": "rgb(241, 247, 248)"
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "path": "/cabins/panoramic/",
+    "frame": "/preview/cabins/panoramic/",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "",
+        "text": "البيت البانورامي (مناسب للعائلات)",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "20px",
+        "weight": "800",
+        "lineHeight": "30px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المنتجع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الأكواخ",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(154, 225, 225)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخريطة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخدمات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(225, 196, 149)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المعلومات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الموقع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "path": "/services/",
+    "frame": "/preview/services/",
+    "elements": [
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المنتجع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الأكواخ",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخريطة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخدمات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(154, 225, 225)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المعلومات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الموقع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "path": "/services/",
+    "frame": "/preview/visuals/services/directory.html",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "svcs-title",
+        "text": "خدمات المنتجع",
+        "font": "Tajawal, sans-serif",
+        "size": "20px",
+        "weight": "700",
+        "lineHeight": "30px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H2",
+        "classes": "svcs-section-title",
+        "text": "طعام ومشروبات",
+        "font": "Tajawal, sans-serif",
+        "size": "13px",
+        "weight": "700",
+        "lineHeight": "19.5px",
+        "color": "rgb(109, 206, 210)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "svcs-name",
+        "text": "المطعم",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "16px",
+        "weight": "700",
+        "lineHeight": "22.4px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "svcs-name",
+        "text": "طاولات الطعام",
+        "font": "Tajawal, sans-serif",
+        "size": "16px",
+        "weight": "700",
+        "lineHeight": "22.4px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H2",
+        "classes": "svcs-section-title",
+        "text": "ترفيه",
+        "font": "Tajawal, sans-serif",
+        "size": "13px",
+        "weight": "700",
+        "lineHeight": "19.5px",
+        "color": "rgb(109, 206, 210)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "svcs-name",
+        "text": "الألعاب الترفيهية",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "16px",
+        "weight": "700",
+        "lineHeight": "22.4px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "svcs-name",
+        "text": "الألعاب المائية",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "16px",
+        "weight": "700",
+        "lineHeight": "22.4px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "svcs-name",
+        "text": "جلسة السينما",
+        "font": "Tajawal, sans-serif",
+        "size": "16px",
+        "weight": "700",
+        "lineHeight": "22.4px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "svcs-description",
+        "text": "استمتع بتجربة سينما في مساحتكم الخاصة",
+        "font": "Tajawal, sans-serif",
+        "size": "13px",
+        "weight": "400",
+        "lineHeight": "22.75px",
+        "color": "rgb(182, 203, 214)"
+      },
+      {
+        "tag": "H2",
+        "classes": "svcs-section-title",
+        "text": "تجهيز مناسبتك",
+        "font": "Tajawal, sans-serif",
+        "size": "13px",
+        "weight": "700",
+        "lineHeight": "19.5px",
+        "color": "rgb(109, 206, 210)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "svcs-name",
+        "text": "الضيافة",
+        "font": "Tajawal, sans-serif",
+        "size": "16px",
+        "weight": "700",
+        "lineHeight": "22.4px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "svcs-name",
+        "text": "التنسيقات",
+        "font": "Tajawal, sans-serif",
+        "size": "16px",
+        "weight": "700",
+        "lineHeight": "22.4px",
+        "color": "rgb(241, 247, 248)"
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "path": "/services/cinema/",
+    "frame": "/preview/services/cinema/",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "",
+        "text": "جلسة السينما",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "20px",
+        "weight": "800",
+        "lineHeight": "30px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المنتجع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الأكواخ",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخريطة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخدمات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(154, 225, 225)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المعلومات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الموقع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "path": "/resort/contact/",
+    "frame": "/preview/resort/contact/",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "",
+        "text": "الموقع والتواصل",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "20px",
+        "weight": "800",
+        "lineHeight": "30px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المنتجع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الأكواخ",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخريطة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخدمات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(225, 196, 149)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المعلومات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(154, 225, 225)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الموقع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "path": "/resort/faq/",
+    "frame": "/preview/resort/faq/",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "",
+        "text": "الأسئلة الشائعة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "20px",
+        "weight": "800",
+        "lineHeight": "30px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المنتجع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الأكواخ",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخريطة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخدمات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(225, 196, 149)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المعلومات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(154, 225, 225)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الموقع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "10px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "path": "/resort-map/",
+    "frame": "/preview/resort-map/",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "resort-visual-title",
+        "text": "خريطة الأكواخ التفاعلية",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "14px",
+        "weight": "700",
+        "lineHeight": "21px",
+        "color": "rgb(241, 247, 248)"
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "path": "/resort-map/",
+    "frame": "/preview/visuals/resort-map/",
+    "elements": []
+  },
+  {
+    "width": 320,
+    "path": "/classic-tour/",
+    "frame": "/preview/classic-tour/",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "resort-visual-title",
+        "text": "استكشف الكوخ الكلاسيكي",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "14px",
+        "weight": "700",
+        "lineHeight": "21px",
+        "color": "rgb(241, 247, 248)"
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "path": "/classic-tour/",
+    "frame": "/preview/visuals/classic-tour/",
+    "elements": [
+      {
+        "tag": "H2",
+        "classes": "dt-selected-title",
+        "text": "غرفة النوم الرئيسية",
+        "font": "Tajawal, sans-serif",
+        "size": "13px",
+        "weight": "700",
+        "lineHeight": "19.5px",
+        "color": "rgb(241, 247, 248)"
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "path": "/resort/",
+    "frame": "/preview/resort/",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "",
+        "text": "دليلكم لمنتجع يوم العائلة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "22px",
+        "weight": "800",
+        "lineHeight": "33px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H2",
+        "classes": "",
+        "text": "منتجع يوم العائلة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "26px",
+        "weight": "800",
+        "lineHeight": "36.4px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المنتجع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(154, 225, 225)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الأكواخ",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخريطة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخدمات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(225, 196, 149)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المعلومات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الموقع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "path": "/cabins/",
+    "frame": "/preview/cabins/",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "",
+        "text": "اختر كوخكم",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "20px",
+        "weight": "800",
+        "lineHeight": "30px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "بيت الدوم 1",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "21px",
+        "weight": "800",
+        "lineHeight": "31.5px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "بيت الدوم 2",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "21px",
+        "weight": "800",
+        "lineHeight": "31.5px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "الكوخ الهرمي",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "21px",
+        "weight": "800",
+        "lineHeight": "31.5px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "الكوخ الكلاسيكي",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "21px",
+        "weight": "800",
+        "lineHeight": "31.5px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "البيت اليوناني 1",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "21px",
+        "weight": "800",
+        "lineHeight": "31.5px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "البيت اليوناني 2",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "21px",
+        "weight": "800",
+        "lineHeight": "31.5px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "كوخ بالم بيتش",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "21px",
+        "weight": "800",
+        "lineHeight": "31.5px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "الكوخ البوهيمي",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "21px",
+        "weight": "800",
+        "lineHeight": "31.5px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "الكوخ الفرنسي",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "21px",
+        "weight": "800",
+        "lineHeight": "31.5px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "الكوخ الريفي",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "21px",
+        "weight": "800",
+        "lineHeight": "31.5px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "كوخ رويال",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "21px",
+        "weight": "800",
+        "lineHeight": "31.5px",
+        "color": "rgb(241, 247, 248)"
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "path": "/cabins/panoramic/",
+    "frame": "/preview/cabins/panoramic/",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "",
+        "text": "البيت البانورامي (مناسب للعائلات)",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "20px",
+        "weight": "800",
+        "lineHeight": "30px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المنتجع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الأكواخ",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(154, 225, 225)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخريطة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخدمات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(225, 196, 149)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المعلومات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الموقع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "path": "/services/",
+    "frame": "/preview/services/",
+    "elements": [
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المنتجع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الأكواخ",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخريطة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخدمات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(154, 225, 225)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المعلومات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الموقع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "path": "/services/",
+    "frame": "/preview/visuals/services/directory.html",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "svcs-title",
+        "text": "خدمات المنتجع",
+        "font": "Tajawal, sans-serif",
+        "size": "20px",
+        "weight": "700",
+        "lineHeight": "30px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H2",
+        "classes": "svcs-section-title",
+        "text": "طعام ومشروبات",
+        "font": "Tajawal, sans-serif",
+        "size": "13px",
+        "weight": "700",
+        "lineHeight": "19.5px",
+        "color": "rgb(109, 206, 210)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "svcs-name",
+        "text": "المطعم",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "16px",
+        "weight": "700",
+        "lineHeight": "22.4px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "svcs-name",
+        "text": "طاولات الطعام",
+        "font": "Tajawal, sans-serif",
+        "size": "16px",
+        "weight": "700",
+        "lineHeight": "22.4px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H2",
+        "classes": "svcs-section-title",
+        "text": "ترفيه",
+        "font": "Tajawal, sans-serif",
+        "size": "13px",
+        "weight": "700",
+        "lineHeight": "19.5px",
+        "color": "rgb(109, 206, 210)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "svcs-name",
+        "text": "الألعاب الترفيهية",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "16px",
+        "weight": "700",
+        "lineHeight": "22.4px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "svcs-name",
+        "text": "الألعاب المائية",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "16px",
+        "weight": "700",
+        "lineHeight": "22.4px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "svcs-name",
+        "text": "جلسة السينما",
+        "font": "Tajawal, sans-serif",
+        "size": "16px",
+        "weight": "700",
+        "lineHeight": "22.4px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "svcs-description",
+        "text": "استمتع بتجربة سينما في مساحتكم الخاصة",
+        "font": "Tajawal, sans-serif",
+        "size": "13px",
+        "weight": "400",
+        "lineHeight": "22.75px",
+        "color": "rgb(182, 203, 214)"
+      },
+      {
+        "tag": "H2",
+        "classes": "svcs-section-title",
+        "text": "تجهيز مناسبتك",
+        "font": "Tajawal, sans-serif",
+        "size": "13px",
+        "weight": "700",
+        "lineHeight": "19.5px",
+        "color": "rgb(109, 206, 210)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "svcs-name",
+        "text": "الضيافة",
+        "font": "Tajawal, sans-serif",
+        "size": "16px",
+        "weight": "700",
+        "lineHeight": "22.4px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "svcs-name",
+        "text": "التنسيقات",
+        "font": "Tajawal, sans-serif",
+        "size": "16px",
+        "weight": "700",
+        "lineHeight": "22.4px",
+        "color": "rgb(241, 247, 248)"
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "path": "/services/cinema/",
+    "frame": "/preview/services/cinema/",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "",
+        "text": "جلسة السينما",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "20px",
+        "weight": "800",
+        "lineHeight": "30px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المنتجع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الأكواخ",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخريطة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخدمات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(154, 225, 225)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المعلومات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الموقع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "path": "/resort/contact/",
+    "frame": "/preview/resort/contact/",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "",
+        "text": "الموقع والتواصل",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "20px",
+        "weight": "800",
+        "lineHeight": "30px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المنتجع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الأكواخ",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخريطة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخدمات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(225, 196, 149)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المعلومات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(154, 225, 225)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الموقع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "path": "/resort/faq/",
+    "frame": "/preview/resort/faq/",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "",
+        "text": "الأسئلة الشائعة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "20px",
+        "weight": "800",
+        "lineHeight": "30px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المنتجع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الأكواخ",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخريطة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخدمات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(225, 196, 149)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المعلومات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(154, 225, 225)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الموقع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "path": "/resort-map/",
+    "frame": "/preview/resort-map/",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "resort-visual-title",
+        "text": "خريطة الأكواخ التفاعلية",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "14px",
+        "weight": "700",
+        "lineHeight": "21px",
+        "color": "rgb(241, 247, 248)"
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "path": "/resort-map/",
+    "frame": "/preview/visuals/resort-map/",
+    "elements": []
+  },
+  {
+    "width": 390,
+    "path": "/classic-tour/",
+    "frame": "/preview/classic-tour/",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "resort-visual-title",
+        "text": "استكشف الكوخ الكلاسيكي",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "14px",
+        "weight": "700",
+        "lineHeight": "21px",
+        "color": "rgb(241, 247, 248)"
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "path": "/classic-tour/",
+    "frame": "/preview/visuals/classic-tour/",
+    "elements": [
+      {
+        "tag": "H2",
+        "classes": "dt-selected-title",
+        "text": "غرفة النوم الرئيسية",
+        "font": "Tajawal, sans-serif",
+        "size": "13px",
+        "weight": "700",
+        "lineHeight": "19.5px",
+        "color": "rgb(241, 247, 248)"
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "path": "/resort/",
+    "frame": "/preview/resort/",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "",
+        "text": "دليلكم لمنتجع يوم العائلة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "26px",
+        "weight": "800",
+        "lineHeight": "39px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H2",
+        "classes": "",
+        "text": "منتجع يوم العائلة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "36px",
+        "weight": "800",
+        "lineHeight": "50.4px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المنتجع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(154, 225, 225)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الأكواخ",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخريطة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخدمات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(225, 196, 149)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المعلومات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الموقع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "path": "/cabins/",
+    "frame": "/preview/cabins/",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "",
+        "text": "اختر كوخكم",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "22px",
+        "weight": "800",
+        "lineHeight": "33px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "بيت الدوم 1",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "21px",
+        "weight": "800",
+        "lineHeight": "31.5px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "بيت الدوم 2",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "21px",
+        "weight": "800",
+        "lineHeight": "31.5px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "الكوخ الهرمي",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "21px",
+        "weight": "800",
+        "lineHeight": "31.5px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "الكوخ الكلاسيكي",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "21px",
+        "weight": "800",
+        "lineHeight": "31.5px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "البيت اليوناني 1",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "21px",
+        "weight": "800",
+        "lineHeight": "31.5px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "البيت اليوناني 2",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "21px",
+        "weight": "800",
+        "lineHeight": "31.5px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "كوخ بالم بيتش",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "21px",
+        "weight": "800",
+        "lineHeight": "31.5px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "الكوخ البوهيمي",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "21px",
+        "weight": "800",
+        "lineHeight": "31.5px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "الكوخ الفرنسي",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "21px",
+        "weight": "800",
+        "lineHeight": "31.5px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "الكوخ الريفي",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "21px",
+        "weight": "800",
+        "lineHeight": "31.5px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H3",
+        "classes": "",
+        "text": "كوخ رويال",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "21px",
+        "weight": "800",
+        "lineHeight": "31.5px",
+        "color": "rgb(241, 247, 248)"
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "path": "/cabins/panoramic/",
+    "frame": "/preview/cabins/panoramic/",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "",
+        "text": "البيت البانورامي (مناسب للعائلات)",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "22px",
+        "weight": "800",
+        "lineHeight": "33px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المنتجع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الأكواخ",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(154, 225, 225)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخريطة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخدمات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(225, 196, 149)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المعلومات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الموقع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "path": "/services/",
+    "frame": "/preview/services/",
+    "elements": [
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المنتجع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الأكواخ",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخريطة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخدمات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(154, 225, 225)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المعلومات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الموقع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "path": "/services/",
+    "frame": "/preview/visuals/services/directory.html",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "svcs-title",
+        "text": "خدمات المنتجع",
+        "font": "Tajawal, sans-serif",
+        "size": "22px",
+        "weight": "700",
+        "lineHeight": "33px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H2",
+        "classes": "svcs-section-title",
+        "text": "طعام ومشروبات",
+        "font": "Tajawal, sans-serif",
+        "size": "13px",
+        "weight": "500",
+        "lineHeight": "19.5px",
+        "color": "rgb(109, 206, 210)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "svcs-name",
+        "text": "المطعم",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "16px",
+        "weight": "700",
+        "lineHeight": "22.4px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "svcs-name",
+        "text": "طاولات الطعام",
+        "font": "Tajawal, sans-serif",
+        "size": "16px",
+        "weight": "700",
+        "lineHeight": "22.4px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "H2",
+        "classes": "svcs-section-title",
+        "text": "ترفيه",
+        "font": "Tajawal, sans-serif",
+        "size": "13px",
+        "weight": "500",
+        "lineHeight": "19.5px",
+        "color": "rgb(109, 206, 210)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "svcs-name",
+        "text": "الألعاب الترفيهية",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "16px",
+        "weight": "700",
+        "lineHeight": "22.4px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "svcs-name",
+        "text": "الألعاب المائية",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "16px",
+        "weight": "700",
+        "lineHeight": "22.4px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "svcs-name",
+        "text": "جلسة السينما",
+        "font": "Tajawal, sans-serif",
+        "size": "16px",
+        "weight": "700",
+        "lineHeight": "22.4px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "svcs-description",
+        "text": "استمتع بتجربة سينما في مساحتكم الخاصة",
+        "font": "Tajawal, sans-serif",
+        "size": "13px",
+        "weight": "400",
+        "lineHeight": "22.75px",
+        "color": "rgb(182, 203, 214)"
+      },
+      {
+        "tag": "H2",
+        "classes": "svcs-section-title",
+        "text": "تجهيز مناسبتك",
+        "font": "Tajawal, sans-serif",
+        "size": "13px",
+        "weight": "500",
+        "lineHeight": "19.5px",
+        "color": "rgb(109, 206, 210)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "svcs-name",
+        "text": "الضيافة",
+        "font": "Tajawal, sans-serif",
+        "size": "16px",
+        "weight": "700",
+        "lineHeight": "22.4px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "svcs-name",
+        "text": "التنسيقات",
+        "font": "Tajawal, sans-serif",
+        "size": "16px",
+        "weight": "700",
+        "lineHeight": "22.4px",
+        "color": "rgb(241, 247, 248)"
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "path": "/services/cinema/",
+    "frame": "/preview/services/cinema/",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "",
+        "text": "جلسة السينما",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "22px",
+        "weight": "800",
+        "lineHeight": "33px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المنتجع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الأكواخ",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخريطة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخدمات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(154, 225, 225)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المعلومات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الموقع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "path": "/resort/contact/",
+    "frame": "/preview/resort/contact/",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "",
+        "text": "الموقع والتواصل",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "22px",
+        "weight": "800",
+        "lineHeight": "33px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المنتجع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الأكواخ",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخريطة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخدمات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(225, 196, 149)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المعلومات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(154, 225, 225)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الموقع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "path": "/resort/faq/",
+    "frame": "/preview/resort/faq/",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "",
+        "text": "الأسئلة الشائعة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "22px",
+        "weight": "800",
+        "lineHeight": "33px",
+        "color": "rgb(241, 247, 248)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المنتجع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الأكواخ",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخريطة",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الخدمات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(225, 196, 149)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "المعلومات",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(154, 225, 225)"
+      },
+      {
+        "tag": "SPAN",
+        "classes": "nav-label",
+        "text": "الموقع",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "11px",
+        "weight": "500",
+        "lineHeight": "normal",
+        "color": "rgb(164, 187, 197)"
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "path": "/resort-map/",
+    "frame": "/preview/resort-map/",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "resort-visual-title",
+        "text": "خريطة الأكواخ التفاعلية",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "14px",
+        "weight": "700",
+        "lineHeight": "21px",
+        "color": "rgb(241, 247, 248)"
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "path": "/resort-map/",
+    "frame": "/preview/visuals/resort-map/",
+    "elements": []
+  },
+  {
+    "width": 1440,
+    "path": "/classic-tour/",
+    "frame": "/preview/classic-tour/",
+    "elements": [
+      {
+        "tag": "H1",
+        "classes": "resort-visual-title",
+        "text": "استكشف الكوخ الكلاسيكي",
+        "font": "Tajawal, Arial, sans-serif",
+        "size": "14px",
+        "weight": "700",
+        "lineHeight": "21px",
+        "color": "rgb(241, 247, 248)"
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "path": "/classic-tour/",
+    "frame": "/preview/visuals/classic-tour/",
+    "elements": [
+      {
+        "tag": "H2",
+        "classes": "dt-selected-title",
+        "text": "غرفة النوم الرئيسية",
+        "font": "Tajawal, sans-serif",
+        "size": "13px",
+        "weight": "700",
+        "lineHeight": "19.5px",
+        "color": "rgb(241, 247, 248)"
+      }
+    ]
+  }
+]
