@@ -134,3 +134,9 @@ Browser checks passed for all 12 cabins at 320×568, 390×844, 430×932 and 1440
 ## Remove duplicate resort services action (20261124-resort-v20)
 
 Removed the repeated services shortcut from resort cabin details. The bottom Services tab remains the access point. Checked all 13 resort detail/garden routes: no detail-action links or empty visible action spacing, cabin navigation and specifications retained, and bottom Services opens all 11 service entries. Chalet and both rest-house sections retain their existing services/FAQ actions. Browser rendering and JavaScript syntax passed without errors; changes are limited to preview/.
+
+## Resort contact hierarchy and social icons (20261124-resort-v21)
+
+Reordered resort Information into location, website booking with its app links, WhatsApp/phone, review, FAQ and social accounts. Available portrait height is distributed across the action groups instead of accumulated above the social row. Instagram and Snapchat use the original site's SVG artwork in centered circular links with accessible account names, retaining the exact original account destinations. Compact short-phone spacing keeps every action above the raised navigation icon.
+
+Verified original map, booking, app, review and social URLs; FAQ opens and contextual Back returns. Layout passes at 320×568/740, 390×667/744/844, 430×932, landscape 844×390 and desktop 1440×900. Portrait phone pages fit one viewport without horizontal/vertical document overflow or overlap with the raised services icon. Spare vertical space is distributed evenly between top-level groups. Visually inspected 390px and 320px screenshots. Other two venue contact pages retain their existing layout and text-based social actions. Catalog data is unchanged; JavaScript syntax, browser errors and diff whitespace checks passed. Changes remain under preview/.
