@@ -104,3 +104,8 @@ Resort service contents now use two compact items per row (resort-v41), with 8px
 Only Panoramic exploration and its selected card on the resort map load `visuals/panoramic-trial.css` and `panoramic-trial.js`. The source illustration, hotspots, leader lines, room facts, notes and navigation are retained. Exploration places the selected facility title and its facts inside one compact rounded card; map selection uses the same inset card styling, keeping the existing desktop side column. Other cabin selections keep their accepted layout.
 
 Add `?layout=previous` to Panoramic exploration or `?cabin=10&layout=previous` to the resort map to compare the previous layout; the option carries through map/Panoramic links. Set the controller's `enabled` flag to false to restore the previous default without editing source engines or drawings. Both trial assets are injected by `build-site.py`, not the original production pages.
+
+
+### Panoramic Kitchen grouping (resort-v43)
+
+The preview-only Panoramic snapshot groups the existing dining-table fact into Kitchen, leaving eight selectable facilities and one Kitchen hotspot/leader at the original coordinates. Kitchen retains every source appliance and minibar disclosure with its existing scrolling controls. All text within the floating facility cards now uses the same light color; icon turquoise and the surrounding layout remain. `layout=previous` keeps the original nine selections and separate dining entry. The adapter is generated in `build-site.py`; do not edit the production module.

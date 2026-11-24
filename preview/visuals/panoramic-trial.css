@@ -7,7 +7,8 @@ html.panoramic-details-trial #ov #panoramic-tour .dt-card{background:#153744!imp
 html.panoramic-details-trial #ov #panoramic-tour .dt-cards:not(.is-scrollable) .dt-card:only-child{flex-direction:row;gap:10px;min-height:42px!important}
 html.panoramic-details-trial #ov #panoramic-tour .dt-card svg{width:18px!important;height:18px!important;color:#6dced2}
 html.panoramic-details-trial #ov #panoramic-tour .dt-card strong{font-size:12px!important;line-height:1.45!important;color:#f1f7f8!important}
-html.panoramic-details-trial #ov #panoramic-tour .dt-card span{font-size:10px!important;color:#a4bbc5!important}
+html.panoramic-details-trial #ov #panoramic-tour .dt-card span{font-size:10px!important;color:#f1f7f8!important}
+html.panoramic-details-trial #ov #panoramic-tour .dt-card strong span{font:inherit!important}
 html.panoramic-details-trial #ov #panoramic-tour .dt-note{font-size:12px!important;line-height:1.6!important;margin:8px 0 0!important;color:#a4bbc5}
 html.panoramic-details-trial #ov #panoramic-tour .dt-spec-navigation{margin-top:8px}
 html.panoramic-map-trial #fd-map-dialog::after{display:none!important}
