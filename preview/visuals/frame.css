@@ -12,3 +12,5 @@ html body #ov .dt-heading,html body #fd-chalet-map .cm-header,html body #fd-map-
 }
 /* Map summaries omit facts already shown below and keep connection sentences separate. */
 #fd-map-card .fd-map-description{white-space:pre-line}
+/* The parent title sits directly above the room controls; remove their extra top inset. */
+@media(max-width:599px){html body #ov .dt-tour>.dt-stage{padding-top:0!important}}

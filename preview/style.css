@@ -183,3 +183,10 @@ main:has(.tour-view){width:100%;max-width:1200px;padding-top:calc(var(--header) 
 .resort-unit .spec-compact .spec-list{gap:8px}
 .resort-unit .spec-compact .spec-item{display:flex;align-items:center;min-height:44px;padding:10px 12px;line-height:1.55}
 .resort-unit .spec-stacked .spec-list{grid-template-columns:minmax(0,1fr)}
+
+/* A single specification divider and a centered heading above exploration controls. */
+.resort-unit .specs~.cabin-switcher{border-top:0;padding-top:0}
+.resort-tour .tour-view{display:flex;flex-direction:column}
+.resort-tour #main .resort-tour-title{flex:0 0 auto;margin:0;padding:8px 16px 6px;font-size:17px;font-weight:700;line-height:1.5;text-align:center}
+.resort-tour .tour-frame{flex:1;min-height:0}
+@media(min-width:1000px){.resort-tour #main .resort-tour-title{font-size:18px}}

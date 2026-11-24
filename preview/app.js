@@ -9,7 +9,7 @@ paths.apple='<path d="M16.7 3.4c.8-1 1.2-2.2 1.1-3.4-1.2.1-2.6.8-3.4 1.7-.7.8-1.
 paths.instagram='<rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/>';
 paths.snapchat='<path d="M12.206.793c.99 0 4.347.276 5.93 3.821.529 1.193.403 3.219.299 4.847l-.003.06c-.012.18-.022.345-.03.51.075.045.203.09.401.09.3-.016.659-.12 1.033-.301.165-.088.344-.104.464-.104.182 0 .359.029.509.09.45.149.734.479.734.838.015.449-.39.839-1.213 1.168-.089.029-.209.075-.344.119-.45.135-1.139.36-1.333.81-.09.224-.061.524.12.868l.015.015c.06.136 1.526 3.475 4.791 4.014.255.044.435.27.42.509 0 .075-.015.149-.045.225-.24.569-1.273.988-3.146 1.271-.059.091-.12.375-.164.57-.029.179-.074.36-.134.553-.076.271-.27.405-.555.405h-.03c-.135 0-.313-.031-.538-.074-.36-.075-.765-.135-1.273-.135-.3 0-.599.015-.913.074-.6.104-1.123.464-1.723.884-.853.599-1.826 1.288-3.294 1.288-.06 0-.119-.015-.18-.015h-.149c-1.468 0-2.427-.675-3.279-1.288-.599-.42-1.107-.779-1.707-.884-.314-.045-.629-.074-.928-.074-.54 0-.958.089-1.272.149-.211.043-.391.074-.54.074-.374 0-.523-.224-.583-.42-.061-.192-.09-.389-.135-.567-.046-.181-.105-.494-.166-.57-1.918-.222-2.95-.642-3.189-1.226-.031-.063-.052-.15-.055-.225-.015-.243.165-.465.42-.509 3.264-.54 4.73-3.879 4.791-4.02l.016-.029c.18-.345.224-.645.119-.869-.195-.434-.884-.658-1.332-.809-.121-.029-.24-.074-.346-.119-1.107-.435-1.257-.93-1.197-1.273.09-.479.674-.793 1.168-.793.146 0 .27.029.383.074.42.194.789.3 1.104.3.234 0 .384-.06.465-.105l-.046-.569c-.098-1.626-.225-3.651.307-4.837C7.392 1.077 10.739.807 11.727.807l.419-.015h.06z"/>';
 const icon=(n,cl='')=>`<svg class="icon ${cl}" viewBox="0 0 24 24" aria-hidden="true">${paths[n]||paths.spark}</svg>`;
-const ROOT='/preview/',VERSION='20261124-resort-v21';
+const ROOT='/preview/',VERSION='20261124-resort-v22';
 const main=$('#main'),viewer=$('#viewer');
 let catalog,route,photoIndex=0,filter=0,modalPhotos=null,returnFocus=null,toastTimer,compare=new Set();
 const scrollPositions=new Map();let previousURL=location.href;
@@ -21,6 +21,7 @@ const safe=s=>esc(digit(s));
 const number=s=>Number(String(s).match(/\d+(?:\.\d+)?/)?.[0]||0);
 const unit=id=>catalog.units.find(u=>u.id===Number(id));
 const currentUnit=()=>catalog.units.find(u=>u.path===route.path);
+const explorationUnit=()=>catalog.units.find(u=>u.tour&&u.id!==11&&new URL(u.tour,'https://familydaystay.com').pathname===route.path&&(route.params.get('cabin')?u.id===Number(route.params.get('cabin')):true));
 const venue=()=>catalog.venues[route.venue];
 const unitsFor=(v=route.venue)=>catalog.units.filter(u=>u.venue===v&&u.id!==11);
 const serviceBy=id=>catalog.services.find(s=>s.id===id);
@@ -110,7 +111,7 @@ function shell(){
  if(v==='stay')tabs.push(['/stay/compare/','users','المقارنة','compare']);
  nav.innerHTML=entry?'':tabs.map(([path,i,title,k])=>`<a href="${prefix(path)}" data-section-tab ${k==='map'?`aria-label="${v==='chalet'?'استكشف مرافق الشاليه من الداخل':'خريطة الأكواخ التفاعلية'}"`:''} class="${k==='services'?'nav-services':''}" ${active===k?'aria-current="page"':''}><span class="nav-icon">${icon(i)}</span><span class="nav-label">${title}</span></a>`).join('');
  if(entry){$('.header-wrap').innerHTML='';return;}
- const tourUnit=catalog.units.find(u=>u.tour&&u.id!==11&&new URL(u.tour,'https://familydaystay.com').pathname===route.path&&(route.params.get('cabin')?u.id===Number(route.params.get('cabin')):true));
+ const tourUnit=explorationUnit();
  let back=route.type==='tour'?(route.path==='/chalet-map/'?(route.params.get('from')==='chalet-details'?unit(30).path:'/chalet/'):route.params.get('from')==='map'?'/resort-map/?cabin='+(tourUnit?.id||1):tourUnit?.path||`/${v}/`):route.type==='unit'?v==='chalet'?'/chalet/':listPath():route.type==='service'?servicesPath():route.type==='checkout'?`/${v}/order/`:route.type==='faq'?`/${v}/contact/`:`/${v}/`;
  if(route.type==='compare')back=listPath();
  if(['guide','guest','cart'].includes(route.type))back=servicesPath();
@@ -118,7 +119,7 @@ function shell(){
  const title=route.type==='map'?'خريطة الأكواخ التفاعلية':route.type==='tour'?(v==='chalet'?'استكشف الشاليه':'استكشف '+(tourUnit?.name||'الكوخ')):venue().name;
  const target=contextualBack(route.type==='home'?'/':back),href=target.url;
  const backLabel=route.type==='stays'&&new URL(href).pathname===prefix(`/${v}/`)?venue().name:target.label;
- const quietHeader=['home','stays','unit'].includes(route.type)||v==='resort'&&route.type!=='tour';
+ const quietHeader=['home','stays','unit'].includes(route.type)||v==='resort';
  $('.header-wrap').innerHTML=`<nav class="header-start" aria-label="الرجوع"><a class="context-back" href="${safe(href)}" ${target.native?'data-history-back':'data-parent-back'} aria-label="العودة إلى ${safe(backLabel)}"><span class="icon-button">${icon('right')}</span><span>${safe(backLabel)}</span></a></nav>${quietHeader?'<span class="header-identity" aria-hidden="true"></span>':`<a class="header-identity" href="${prefix('/'+v+'/')}">${safe(title)}</a>`}<div class="header-actions" id="header-actions"><button class="icon-button" data-share="${safe(route.path+location.search)}" aria-label="مشاركة الصفحة">${icon('share')}</button></div>`;
 }
 
@@ -299,7 +300,7 @@ function comparison(){
 }
 
 function resortMap(){return `<div class="tour-view map-original"><h1 class="sr-only">خريطة الأكواخ التفاعلية</h1><iframe class="tour-frame" id="tour-frame" src="${ROOT}visuals/resort-map/${location.search}" title="خريطة الأكواخ التفاعلية" allow="clipboard-write; web-share; fullscreen" allowfullscreen></iframe></div>`;}
-function tour(){const chalet=route.path==='/chalet-map/';return `<div class="tour-view"><div class="sr-only"><h1>${chalet?'استكشف الشاليه من الداخل':'استكشف مرافق الكوخ من الداخل'}</h1></div><iframe class="tour-frame" id="tour-frame" src="${ROOT}visuals${route.path}${location.search}" title="${chalet?'خريطة الشاليه':'استكشاف الكوخ'}" allow="clipboard-write; web-share; fullscreen" allowfullscreen></iframe></div>`;}
+function tour(){const chalet=route.path==='/chalet-map/',title=chalet?'استكشف الشاليه من الداخل':'استكشف '+(explorationUnit()?.name||'مرافق الكوخ من الداخل');return `<div class="tour-view">${chalet?`<div class="sr-only"><h1>${safe(title)}</h1></div>`:`<h1 class="resort-tour-title">${safe(title)}</h1>`}<iframe class="tour-frame" id="tour-frame" src="${ROOT}visuals${route.path}${location.search}" title="${chalet?'خريطة الشاليه':'استكشاف الكوخ'}" allow="clipboard-write; web-share; fullscreen" allowfullscreen></iframe></div>`;}
 function guide(){return `${heading('تجهيز مناسبتكم','نجهّز مناسباتكم بكل تفاصيلها')}<div class="services-list">${['coordination','dining','seating','hospitality','cinema'].map(id=>serviceCard(serviceBy(id))).join('')}</div>${link('/guest-services/',`<span>${icon('services')}خدمات إقامتك</span>${icon('arrow')}`,'explore-link')}`;}
 function guestServices(){const chalet=route.venue==='chalet';return `${heading('خدمات إقامتك',venue().name)}<div class="services-list">${(chalet?['water','games']:['hospitality','water','games','cinema','menu']).map(id=>serviceCard(serviceBy(id))).join('')}</div>${chalet?'':`<section class="content-section"><h2>طلبات إضافية</h2>${catalog.source.extras.map(p=>`<article class="extra-product"><div><h3>${safe(p.name)}</h3><p class="note">${safe(p.description)}</p><strong>${money(p.price)}</strong></div>${qtyControl('extra:'+p.id,draft('extras')[p.id]||1,1)}${orderButton('extras:'+p.id)}</article>`).join('')}</section>`}`;}
 function unavailable(){return `<div class="error-state"><h1>الصفحة غير موجودة</h1><p>اختر وجهتك للمتابعة</p>${link('/','الوجهات','button primary')}</div>`;}
