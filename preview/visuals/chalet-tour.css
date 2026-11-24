@@ -23,3 +23,8 @@ html.chalet-details-trial #fd-chalet-map .cm-leaders .is-selected path{opacity:1
  html.chalet-details-trial #fd-chalet-map .cm-leaders g:not(.is-selected){visibility:hidden}
  html.chalet-details-trial #fd-chalet-map .cm-cards.is-scrollable .cm-card{flex:0 0 108px;min-width:108px}
 }
+/* Keep all ten labels readable on short phones; allow the details to scroll into view. */
+@media(max-width:899px) and (max-height:550px){
+ html.chalet-details-trial #fd-chalet-map{overflow-y:auto!important}
+ html.chalet-details-trial #fd-chalet-map .cm-workspace{flex:0 0 auto;grid-template-rows:280px max-content auto}
+}

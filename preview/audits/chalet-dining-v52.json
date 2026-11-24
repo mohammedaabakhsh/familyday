@@ -1,0 +1,31 @@
+{
+  "sizes": [
+    {
+      "width": 320,
+      "height": 568,
+      "states": 10
+    },
+    {
+      "width": 375,
+      "height": 667,
+      "states": 10
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "states": 10
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "states": 10
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "states": 10
+    }
+  ],
+  "errors": [],
+  "overlaps": []
+}
