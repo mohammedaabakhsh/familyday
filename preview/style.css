@@ -300,3 +300,10 @@ body.legacy-resort-services #main{width:100%;max-width:none;height:100dvh;min-he
 /* Resort-only six-item navigation trial; preserve the raised service button's size and hit area. */
 .resort-scope .bottom-nav.six-items{grid-template-columns:repeat(6,minmax(0,1fr))}
 @media(max-width:374px){.resort-scope .bottom-nav.six-items{grid-template-columns:repeat(2,minmax(0,1fr)) 54px repeat(3,minmax(0,1fr))}}
+
+
+/* Seven-item resort layout trial: location is an unwired visual placeholder. */
+.resort-scope .bottom-nav.seven-items{grid-template-columns:repeat(3,minmax(0,1fr)) 54px repeat(3,minmax(0,1fr))}
+@media(max-width:409px){.resort-scope .bottom-nav.seven-items{grid-template-columns:repeat(3,minmax(0,1fr)) 54px minmax(0,1.22fr) minmax(0,.84fr) minmax(0,.94fr)}}
+.resort-scope .bottom-nav .nav-location-preview{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px;min-width:0;min-height:54px;padding:0;border:0;border-radius:0;position:relative;background:transparent;color:var(--muted);font-size:11px;font-weight:500;opacity:1;cursor:default;isolation:isolate}
+@media(max-width:360px){.resort-scope .bottom-nav .nav-location-preview{font-size:10px}}
