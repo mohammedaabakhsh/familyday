@@ -22,7 +22,7 @@
    var size=view.size*view.scale;
    viewport.classList.toggle('has-selection',!!selected);
    view.x=size<=view.width?(view.width-size)/2:clamp(view.x,view.width-size,0);
-   view.y=size<=view.height?(view.height-size)/2:clamp(view.y,view.height-size,0);
+   view.y=size<=view.height?((selected||view.scale>1)?(view.height-size)/2:Math.min(12,(view.height-size)/2)):clamp(view.y,view.height-size,0);
    plane.style.transform='translate('+view.x+'px,'+view.y+'px) scale('+view.scale+')';
    plane.style.setProperty('--fd-map-inverse',String(1/view.scale));
    plane.style.setProperty('--map-label-font',clamp(size/28,8.5,11.5)+'px');

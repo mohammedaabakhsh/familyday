@@ -140,3 +140,8 @@ Classic and Royal use a single-line compact description with their internal-door
 ### Map toolbar removal (resort-v48)
 
 Removed the added zoom-out/zoom-in/Fit group and its styling/label-obstacle logic from the new map. The original gesture and keyboard map engine remains; cabin summaries and the lower Panoramic label are retained.
+
+
+### Initial map alignment (resort-v49)
+
+The unselected overview at normal zoom now starts 12px below the map viewport's top, directly beneath the page title. It returns to that position after clearing a selection. Selected-card fitting and zoom/pan retain their prior alignment.

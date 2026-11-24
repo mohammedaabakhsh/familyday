@@ -331,3 +331,8 @@ Browser checks at 320×568, 390×844, 430×932 and 1440×900 confirmed both desc
 ## Removed added map controls (20261124-resort-v48)
 
 Deleted the added top control group, its styles and obsolete obstacle reservation. At 320×568, 390×844 and 1440×900, browser checks confirmed no toolbar is created, Greek/Classic selection and compact summaries still work, native keyboard zoom/Fit remains functional, and there is no document overflow or browser error. Build, JavaScript syntax and diff checks pass; original production files remain unchanged.
+
+
+## Raised initial overview (20261124-resort-v49)
+
+Replaced vertical centering for the normal, unselected overview with a maximum 12px top inset. Selected and zoomed states retain their previous positioning. At 320×568, 390×844, 430×932 and 1440×900, browser checks confirmed the map plane starts within 13px of the title's iframe boundary both on opening and after clearing selection. Panoramic selection remains functional, with no document overflow or browser errors. Visually inspected the mobile opening. Syntax/build/diff checks pass; all edits remain under preview/.
