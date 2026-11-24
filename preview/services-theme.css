@@ -1,0 +1,46 @@
+/* Original service layouts and controls, dressed in the preview's palette and type scale. */
+:root{--bg:#071a26;--fd-surface:#102b39;--fd-line:#244550;--fd-ink:#f1f7f8;--fd-muted:#a4bbc5;--fd-accent:#6dced2;color-scheme:dark}
+html,body{margin:0!important;background:transparent!important;color:var(--fd-ink)!important;font-family:Tajawal,Arial,sans-serif!important}
+*{box-sizing:border-box}button,input,select,textarea{font-family:inherit!important}a,button{touch-action:manipulation}button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid #e1c495!important;outline-offset:3px}
+body.original-service-ui>:is(#services-overlay,#hospitality-detail,#sinema-detail,#maiya-detail,#jalsat-detail,#contest-detail,#sharik-detail,#tarfihi-detail,#tawilat-detail,#walaa-detail,#menu-detail,#setups-detail){background:transparent!important}
+.original-service-ui :is(.svcs-back,.hd-back,.setups-back,.menu-back,.wm-back,.tg-back,.cn-back,.jl-back,.sw-back,.wl-back){display:none!important}
+.original-service-ui :is(.svcs-header,.hd-header,.setups-heading,.menu-shell,.wm-shell,.tg-shell,.sw-shell,.wl-shell){max-width:980px;margin-inline:auto}
+.original-service-ui :is(.svcs-header,.hd-header,.setups-heading){padding:12px 20px 16px!important;gap:0!important}
+.original-service-ui :is(.svcs-title,.hd-title,#setups-title,.menu-title,.wm-title,.tg-title,.sw-title,.wl-title){font-size:20px!important;line-height:1.5!important;color:var(--fd-ink)!important}
+.original-service-ui :is(.menu-shell,.wm-shell,.tg-shell){padding-top:12px!important}
+.original-service-ui :is(.menu-heading,.wm-heading,.tg-heading){gap:0!important}
+.original-service-ui .menu-hours{margin-inline:0!important;margin-top:5px!important;color:var(--fd-muted)!important}
+.original-service-ui :is(.svcs-card,.menu-item,.hd-package,.tg-package,.wm-package,.jl-card,.fd-dining-info,.sw-card,.wl-card){background:#102b39!important;border-color:#315967!important;box-shadow:none!important}
+.original-service-ui :is(.svcs-name,.menu-item-name,.hd-package-name,.jl-card-title){font-size:16px!important;color:var(--fd-ink)!important}
+.original-service-ui :is(.svcs-description,.menu-item-desc,.hd-intro,.wm-intro,.tg-intro,.cn-intro,.sw-intro){color:var(--fd-muted)!important;font-size:13px!important;line-height:1.75!important}
+.original-service-ui :is(.svcs-section-title,.menu-item-price,.hd-package-price,.fd-dining-price,.jl-card-price){color:var(--fd-accent)!important}
+.original-service-ui :is(.menu-cat,.tg-package){border-color:#3e6975!important}
+.original-service-ui :is(.menu-cat.is-active,.tg-package.is-selected,.fd-dining-option[aria-pressed=true],.jl-addon-option.is-selected){background:#20606c!important;border-color:var(--fd-accent)!important}
+.original-service-ui #menu-cats{background:#071a26!important;box-shadow:0 -8px 0 #071a26!important}
+.original-service-ui :is(.menu-order-button,.tg-order-button,.cn-order-button,.wm-order-button,.fd-dining-checkout,.jl-order-button,.jl-checkout,.fd-order-submit){background:var(--fd-accent)!important;border-color:var(--fd-accent)!important;color:#05202a!important;font-size:14px!important;font-weight:700!important}
+.original-service-ui :is(.menu-qty-button,.fd-cart-plus,.fd-cart-minus){background:#20606c!important;border-color:#5cabb6!important;color:var(--fd-ink)!important}
+.original-service-ui #menu-cart-bar{background:#102b39!important;border-color:#315967!important}
+.original-service-ui .fd-order-panel{background:#102b39!important;border-color:#315967!important;color:var(--fd-ink)!important}
+.original-service-ui .fd-order-title{font-size:20px!important}.original-service-ui .fd-order-field :is(input,select,textarea){background:#0b2230!important;color:var(--fd-ink)!important;border-color:#3e6975!important}
+.original-service-ui .fd-order-field label{color:var(--fd-ink)!important}.original-service-ui #menu-cart-review>div{background:#102b39!important;border-color:#315967!important}
+.original-service-ui .hd-content{padding-bottom:24px!important}.original-service-ui #services-overlay .svcs-content{padding-bottom:24px!important}
+.original-service-ui :is(.setups-content,.setups-shell){background:transparent!important}
+.original-service-ui .cn-title{display:none!important}
+.original-service-ui .menu-checkout-summary,.original-service-ui .fd-order-summary{background:#0b2230!important;border-color:#315967!important}
+.original-guest-ui,.original-guide-ui{--ink:#f1f7f8;--muted:#a4bbc5;--surface:#102b39;--accent:#6dced2}
+:is(.original-guest-ui,.original-guide-ui) :is(.share-page,.logo-frame,.hero>.eyebrow,.page-share){display:none!important}
+:is(.original-guest-ui,.original-guide-ui) .hero{background:transparent!important;padding-top:12px!important}
+:is(.original-guest-ui,.original-guide-ui) h1{font-size:20px!important;line-height:1.5!important}
+:is(.original-guest-ui,.original-guide-ui) :is(.service-card,.product-card,.order-panel,.service-dialog,.modal-panel,.service-editor){background:#102b39!important;color:#f1f7f8!important;border-color:#315967!important}
+@media(max-width:360px){.original-service-ui :is(.svcs-header,.hd-header,.setups-heading){padding-inline:15px!important}}
+@media(min-width:1000px){.original-service-ui :is(.svcs-title,.hd-title,#setups-title,.menu-title,.wm-title,.tg-title,.sw-title,.wl-title){font-size:22px!important}}
+:root{--paper:#071a26;--soft:#102b39;--line:#315967;--deep:#f1f7f8;--green:#6dced2;--tint:#0b2230;--brand:#6dced2;--ink:#f1f7f8;--muted:#a4bbc5;--accent:#6dced2}
+:is(.original-guest-ui,.original-guide-ui) :is(.page,.book){background:transparent!important}
+.original-guest-ui .service-tile{background:#102b39!important;border-color:#315967!important;color:#f1f7f8!important}
+.original-guest-ui :is(.tile-title,.dialog-header h2){color:#f1f7f8!important}.original-guest-ui :is(.tile-action,.tile-icon){color:#6dced2!important}
+.original-guest-ui .tile-icon{background:#173c48!important}.original-guest-ui :is(.extra-row,.menu-row,.game-options label,.order-box,.service-dialog,.dialog-footer,.dialog-header,.selection-card){background:#102b39!important;border-color:#315967!important;color:#f1f7f8!important}
+.original-guest-ui :is(input,select,textarea){background:#0b2230!important;color:#f1f7f8!important;border-color:#3e6975!important}
+.original-guide-ui .topbar{display:none!important}
+.original-guest-ui .hero{border-color:#244550!important;text-align:right;padding-inline:20px!important}
+.original-guest-ui .hero h1{margin-top:0!important}
+.original-guide-ui :is(.card,.price-card,.package-card,.session-card,.price-table,.package-gallery){background:#102b39!important;border-color:#315967!important}

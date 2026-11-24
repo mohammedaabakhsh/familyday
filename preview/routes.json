@@ -1,5 +1,5 @@
 {
-  "version": "20261124-resort-v25",
+  "version": "20261124-resort-v26",
   "routes": [
     "/preview/",
     "/preview/arrangements/",
@@ -97,20 +97,68 @@
       "sha256": "23c45822437b243190d5548f304cf59055c63b22cd025500a418815bbf668c94"
     },
     {
+      "path": "/css/app-base.css",
+      "sha256": "70e15c31e3f3e97a0544c7fcef936d26931f0432c01167ffa54df03316e758ac"
+    },
+    {
       "path": "/css/back-navigation.css",
       "sha256": "834bdb848f741ef0185f5f22b91d497ea68a55cf3bb34eaa7eac2d01864420ad"
+    },
+    {
+      "path": "/css/cinema-layout.css",
+      "sha256": "54ab7521b9acbf858040fc66a3c4678a56c671783d9f1d67c2cb3d476c84c412"
+    },
+    {
+      "path": "/css/desktop-layout.css",
+      "sha256": "229a412b9f610bc2e885c19d755a217e67081725eeb247a12a565bcd6b7de9dd"
+    },
+    {
+      "path": "/css/dining-cards.css",
+      "sha256": "3ad7231ff2d86c560464effc8af9d07a673d94fb1d5a5ecf83d3d1479456bdfd"
     },
     {
       "path": "/css/exploration-share.css",
       "sha256": "3e796ce0a916ac1a16a635f29e9340b1bc639142c630eba9575d656cd666e601"
     },
     {
+      "path": "/css/games-layout.css",
+      "sha256": "08c3838c0b18b45d58d619fd93ef6018f7399577294a26e8f8c071f32159b7d0"
+    },
+    {
       "path": "/css/image-feedback.css",
       "sha256": "236c8b091ea0aaf26f970d0582398a99f551d68c61f74968317b8109297e84e0"
     },
     {
+      "path": "/css/rewards-layout.css",
+      "sha256": "235b4f1e39d4cb9ea9eda8b0decfd4b70017de3998427658d186aabc2421b733"
+    },
+    {
+      "path": "/css/seating-cards.css",
+      "sha256": "357441eecbd848d58359afe208b4e32b9d94df121b7a1fb6e7e27d09d73a1bc3"
+    },
+    {
+      "path": "/css/service-mobile.css",
+      "sha256": "2bfd5bd26350032be78d2a6232894b74d2ae8f0efc290c103b1953c2f1b456b2"
+    },
+    {
+      "path": "/css/service-orders.css",
+      "sha256": "6f851808a3b77a6d13ecb1f9785c8ff35863d4f70f158089846abc2536adb7b3"
+    },
+    {
+      "path": "/css/services-index.css",
+      "sha256": "e6055c4834fed18ecf1379a6ca2074a0ba4554b8a28e3489f2623a05f414bba8"
+    },
+    {
       "path": "/css/tajawal.css",
       "sha256": "63e1c01678f45bb83983243a5b67716d42b710a8ac01e150e2af0972476ec14f"
+    },
+    {
+      "path": "/css/water-games.css",
+      "sha256": "553b647942c179cdca95716074a6faca55b17b907c7d3118f6457a3c15aa8404"
+    },
+    {
+      "path": "/css/water-layout.css",
+      "sha256": "8296bb7382295b4084a08c41e7d313b28adc2deb2978e27c4857cb3f4cef4a92"
     },
     {
       "path": "/dome-tour-layout.css",
@@ -141,12 +189,76 @@
       "sha256": "10c795889ab74975ad4bba0b2947f509b2db0d49c6dab3bb5e7075fc880bd7f9"
     },
     {
+      "path": "/guest-services/guest-services.css",
+      "sha256": "207545d3740a44c6e0ab8ded3731b255151478ecf82109d0344cdb5dc7e61a36"
+    },
+    {
+      "path": "/guest-services/guest-services.js",
+      "sha256": "764201e456e8522b73cbe23fd4b422b96f2ce1fc37ca23b50dfad95edc893e09"
+    },
+    {
+      "path": "/guest-services/service-source.js",
+      "sha256": "2782686b4d695aa8ea5ddecc6d9674b6105ec9f598d090e4af911dbb8ebe8ebc"
+    },
+    {
+      "path": "/guest-services/share.js",
+      "sha256": "a207ab25177d5b69bb1e8a4cc37bc0755c9a2157b7024561d3c15b2652c4323b"
+    },
+    {
+      "path": "/index.html",
+      "sha256": "0767c307b60736b7e7dfe29c6569d95186e089e7211f5d5f9af61cad4beec3e1"
+    },
+    {
+      "path": "/js/app-shell.js",
+      "sha256": "cf909f399729e213a89727dc74dd9c7131d9d25d16bca4844ead360fed5a51b8"
+    },
+    {
+      "path": "/js/cabin-numbers.js",
+      "sha256": "de9f89492816117eafe3b8b0e186c324fd9f8b7ed84ada2b862ed53ad4965829"
+    },
+    {
+      "path": "/js/dining-cards.js",
+      "sha256": "a80c8a1fcbc623019426cc46184f52f6dc0b109570afbd848e39571726be4097"
+    },
+    {
       "path": "/js/exploration-share.js",
       "sha256": "4df790a6a09633238ca1fd4aac1a432e1f98830376e644635974b7316abdbf8d"
     },
     {
       "path": "/js/image-feedback.js",
       "sha256": "744d428e71aec101ed6a43206150207a52db786b405e61c0558993c7d0c844c0"
+    },
+    {
+      "path": "/js/menu-order-message.js",
+      "sha256": "78e54cc83d01bb6b5a44de14d4ce709d8f900517d6f09b1bda0d7a63067abaa9"
+    },
+    {
+      "path": "/js/seating-cart.js",
+      "sha256": "5e9ffbf128472e54a325737e266389d8dac5836bac5f8199f6d9bd733fa4af2b"
+    },
+    {
+      "path": "/js/service-orders.js",
+      "sha256": "6843ff8266097bf08f497cfcd3bf9213be0e8130aa30945904c02f651e38c859"
+    },
+    {
+      "path": "/js/service-venue.js",
+      "sha256": "8ca26b79c8fa1c06a9c2973467f5c971641e4a58033efa2b04e3c8cd2ff0923f"
+    },
+    {
+      "path": "/js/services.js",
+      "sha256": "eebb5567e81db174ddec0a20d0f967e412fb1ae8b33c923f071654219c49a178"
+    },
+    {
+      "path": "/js/water-games.js",
+      "sha256": "b148c022d2d25bef84d09445def184ea38bfa3903db5b3961a4d04d74b93b298"
+    },
+    {
+      "path": "/menu-experience.css",
+      "sha256": "18d7d64bbd9d1017e724fbf545a27c1123f85d3dd9caa1aa86bed10b15b3f89b"
+    },
+    {
+      "path": "/menu-experience.js",
+      "sha256": "6bc72212967bdf5a1e750647639507188422ddb7c08dfaeb554a037a5362464a"
     },
     {
       "path": "/palm-tour.css",
@@ -173,6 +285,10 @@
       "sha256": "89ac0ce174a3810bf606548f9f0c89ab784acd72d7ec0cd7014af29a3e4aa2f8"
     },
     {
+      "path": "/resort-features.js",
+      "sha256": "09319c1729458f4593960ebe7b1d32f1d7fd98eff692d3cd3ea185e07e572691"
+    },
+    {
       "path": "/resort-map-data.js",
       "sha256": "f4a85b755a54d0d0d0f6a230744990c1ec694589da09908f108512e065a263a9"
     },
@@ -183,6 +299,10 @@
     {
       "path": "/resort-map.js",
       "sha256": "635a3506d118ebf8c2a3a617310e118eaa89a492405818909a1e2b30ab9ca5b7"
+    },
+    {
+      "path": "/resort-ui.css",
+      "sha256": "8d4ea306da5bed226c260c071f87bb53e1435d6f194dca58cfc0ed0fbb6320e3"
     },
     {
       "path": "/royal-tour.css",
@@ -199,6 +319,34 @@
     {
       "path": "/rustic-tour.js",
       "sha256": "e91507316d204a581ef667b0b2ee5d0915494c378cfc9b37c35c11e23693a00f"
+    },
+    {
+      "path": "/service-data.js",
+      "sha256": "a06fa4c109d16002ba6cfa256b6df45254bd2b33a6bcde7d1d1f71e60507b703"
+    },
+    {
+      "path": "/service-sections.css",
+      "sha256": "4c1b21e9913a10019624e33115ea3e0e9e2b8eadbbe03305541ed0c9c18395ac"
+    },
+    {
+      "path": "/service-sections.js",
+      "sha256": "81bdcf6e687bf5fde0ed1227bbeae5f7663dda9d7aee42981aedc1f2c3ced8fb"
+    },
+    {
+      "path": "/services-guide/guide-gallery.js",
+      "sha256": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4"
+    },
+    {
+      "path": "/services-guide/guide.css",
+      "sha256": "2e4164a051b4ef782483e5ebb342f877b6d055fd836996aee6554fd1ba263f35"
+    },
+    {
+      "path": "/services-guide/guide.js",
+      "sha256": "36ebefa0334e87198608011c4791e9faec422ef19c2adc0486359f7585b6fd6e"
+    },
+    {
+      "path": "/site-enhancements.js",
+      "sha256": "d289086c3df96aec29895873928e970385aad87cfaf0ce415ea863cefaf8bed0"
     },
     {
       "path": "/tour-common.js",

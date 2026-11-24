@@ -1,0 +1,175 @@
+/* Shared checkout. Route state stores selections; prices always come from the catalog. */
+var _orderItemName = '';
+var _isMenuOrder = false;
+var _orderResortScope = false;
+
+function serviceOrderDetails(selection, restore) {
+  if(isChaletServiceVenue() && !(getMaiyaOrderDetails(selection) || selection && selection.type==='games' && selection.option==='box')) return null;
+  var water = getMaiyaOrderDetails(selection);
+  if (water) {
+    if (restore) { _maiyaPackages=water.packages; _maiyaQuantities={adults:water.adults,children:water.children}; renderMaiyaQuantities(); }
+    return {title:'باقة ألعاب مائية × '+water.packages, summary:[water.size+' ألعاب بـ'+water.price+' ريال','للكبار: '+water.adults,'للأطفال: '+water.children]};
+  }
+  if (!selection || typeof selection !== 'object') return {title:String(selection || ''), summary:[]};
+  if (selection.type === 'seating-cart') return getJalsatCartDetails(selection,restore);
+  if (selection.type === 'cinema') return {title:'جلسة السينما', summary:['مدة الجلسة: 3 ساعات','الإجمالي: 150 ريال']};
+  if (selection.type === 'games' && ['box','table'].indexOf(selection.option) !== -1) {
+    var table = selection.option === 'table', price = table ? 150 : 50;
+    if (restore) selectTarfihiOpt(selection.option);
+    return {title:table ? 'طاولة مع بوكس الألعاب' : 'بوكس الألعاب', price:price,
+      summary:(table ? ['طاولة و4 كراسي مع بوكس الألعاب'] : []).concat('الإجمالي: '+price+' ريال'),
+      message:['الباقة: '+(table ? 'طاولة مع بوكس الألعاب' : 'بوكس الألعاب'),'الإجمالي: '+price+' ريال']};
+  }
+  if (selection.type === 'dining' && Object.prototype.hasOwnProperty.call(_tawilatPrices,selection.size) && ['plain','tansiq'].indexOf(selection.option) !== -1) {
+    if (restore) { setTawilatSize(selection.size); selectTawilatOpt(selection.option); }
+    return {title:'طاولات الطعام', summary:['عدد الأشخاص: '+selection.size,
+      'التجهيز: '+(selection.option === 'tansiq' ? 'تجهيز مع تنسيق' : 'تجهيز أساسي'),
+      'إجمالي الطلب: '+_tawilatPrices[selection.size][selection.option]+' ريال']};
+  }
+  if (selection.type === 'seating' && Number.isInteger(selection.index) && _jalsatAllSessions[selection.index]) {
+    var session = _jalsatAllSessions[selection.index];
+    if (restore) {
+      if (_jalsatSessions.indexOf(session) === -1) { _jalsatFilter='all'; buildJalsatSlides(); }
+      jalsatGoTo(_jalsatSessions.indexOf(session));
+      _jalsatCakeAdded = !!selection.cake;
+      updateJalsatSummary();
+    }
+    var lines=['عدد الأشخاص: '+session.personsCat,'سعر الجلسة: '+session.price];
+    if (selection.cake) lines.push('كيك وعصير: 170 ريال');
+    lines.push('إجمالي الطلب: '+(parseInt(session.price,10)+(selection.cake ? 170 : 0))+' ريال');
+    return {title:session.name,summary:lines,message:['الجلسة: '+session.name].concat(lines.map(function(line){return line==='كيك وعصير: 170 ريال' ? 'الإضافة: كيك وعصير — 170 ريال' : line;}))};
+  }
+  return null;
+}
+
+function updateCinemaTimeRange() {
+  var field=document.getElementById('order-time'), status=document.getElementById('order-time-range');
+  status.textContent='';
+  if (!_orderItemName || _orderItemName.type!=='cinema' || !field.value) return;
+  var start=Number(field.value), duration=document.querySelector('#sinema-detail .cn-stat dd').textContent.match(/\d+(?:\.\d+)?/);
+  if (!Number.isFinite(start) || !duration) return;
+  var end=start+Number(duration[0]);
+  function label(hour) {
+    var minutes=Math.round(hour*60),h=Math.floor(minutes/60)%24,m=minutes%60;
+    var number=new Intl.NumberFormat('ar-SA-u-nu-latn',{useGrouping:false});
+    var clock=number.format(h%12 || 12)+(m ? ':'+number.format(m).padStart(2,'0') : '');
+    return clock+(h===0 && m===0 ? ' منتصف الليل' : h<12 ? ' صباحًا' : h===12 ? ' ظهرًا' : ' مساءً');
+  }
+  status.textContent='من '+label(start)+' إلى '+label(end)+(Math.floor(end/24)>Math.floor(start/24) ? ' (اليوم التالي)' : '');
+}
+
+function configureResortOrderForm(itemName) {
+  var select = document.getElementById('order-villa');
+  select.closest('.fd-order-field').hidden=isChaletServiceVenue();
+  select.required=!isChaletServiceVenue();
+  if (select.options.length === 1) {
+    Object.keys(FD_CABIN_NUMBERS).forEach(function(name){ select.add(new Option(name,name)); });
+  }
+  ['order-name','order-villa','order-time'].forEach(function(id){
+    var field=document.getElementById(id);
+    setResortOrderError(id,'');
+    if (field.dataset.feedbackReady) return;
+    field.dataset.feedbackReady='true';
+    ['input','change'].forEach(function(event){field.addEventListener(event,function(){setResortOrderError(id,'');if(id==='order-time') updateCinemaTimeRange();});});
+  });
+  document.getElementById('order-notes').placeholder = _isMenuOrder
+    ? 'مثل بدون بصل أو أي تفاصيل تخص طلبك'
+    : getMaiyaOrderDetails(itemName) ? 'مثل أعمار الأطفال أو أي تفاصيل تساعدنا في تجهيز طلبك'
+    : 'أضف أي تفاصيل تساعدنا في تجهيز طلبك';
+}
+
+function renderOrderItemSummary(selection) {
+  var summary=document.getElementById('order-item-name');
+  summary.replaceChildren();
+  var details=serviceOrderDetails(selection,true);
+  if (!details) return;
+  [details.title].concat(details.summary).forEach(function(text){
+    var line=document.createElement('div');line.textContent=text;summary.appendChild(line);
+  });
+}
+
+function setResortOrderError(id, text) {
+  var field=document.getElementById(id), error=document.getElementById(id+'-error');
+  error.textContent=text;
+  if (text) field.setAttribute('aria-invalid','true');
+  else field.removeAttribute('aria-invalid');
+}
+
+function validateResortOrder() {
+  var name=document.getElementById('order-name'), cabin=document.getElementById('order-villa'), time=document.getElementById('order-time');
+  var timeRequired=document.getElementById('order-time-wrap').style.display !== 'none';
+  var errors=[
+    [name,name.value.trim() ? '' : 'اكتب اسمك'],
+    [cabin,isChaletServiceVenue() || Object.prototype.hasOwnProperty.call(FD_CABIN_NUMBERS,cabin.value) ? '' : 'اختر الكوخ'],
+    [time,timeRequired && !time.value ? 'اختر وقت بداية الجلسة' : '']
+  ];
+  errors.forEach(function(entry){setResortOrderError(entry[0].id,entry[1]);});
+  var first=errors.find(function(entry){return entry[1];});
+  if(first) first[0].focus();
+  return !first;
+}
+
+function updateCabinNum() {
+  var number=isChaletServiceVenue() ? '' : FD_CABIN_NUMBERS[document.getElementById('order-villa').value];
+  document.getElementById('order-cabin-num').textContent=number || '';
+  document.getElementById('order-cabin-num-wrap').style.display=number ? 'flex' : 'none';
+}
+
+function openOrderPopup(selection, showTime) {
+  if(!serviceOrderDetails(selection,false)) return;
+  FD_ORDER_DRAFTS.save();
+  _orderItemName=selection;
+  configureResortOrderForm(selection);
+  renderOrderItemSummary(selection);
+  FD_MENU_EXPERIENCE.renderCheckout();
+  ['order-name','order-villa','order-notes','order-time'].forEach(function(id){document.getElementById(id).value='';});
+  updateCabinNum();
+  document.getElementById('order-time-wrap').style.display=showTime ? 'block' : 'none';
+  FD_ORDER_DRAFTS.restore(_orderDraftScope || JSON.stringify(selection));
+  updateCinemaTimeRange();
+  document.getElementById('order-popup').classList.remove('hide');
+  document.querySelector('#order-popup .fd-order-panel').scrollTop=0;
+}
+
+function closeOrderPopup() {
+  FD_ORDER_DRAFTS.close();
+  _isMenuOrder=false;
+  document.getElementById('order-popup').classList.add('hide');
+}
+
+function sendOrderWhatsapp() {
+  if (!validateResortOrder()) return;
+  var name=document.getElementById('order-name').value.trim();
+  var cabin=document.getElementById('order-villa').value;
+  var notes=document.getElementById('order-notes').value.trim();
+  var order=serviceOrderDetails(_orderItemName,false);
+  if (!order) return;
+  var message, phone=_isMenuOrder ? '966537006531' : '966556156693';
+  if (_isMenuOrder) {
+    message=FD_MENU_ORDER_MESSAGE.build(_menuData,function(key){
+      var item=_menuCart[key],cheese=_menuCart['جبنة|'+key];
+      return item ? {qty:item.qty,cheeseQty:cheese ? cheese.qty : 0} : null;
+    },{name:name,cabin:cabin,number:FD_CABIN_NUMBERS[cabin],notes:notes});
+    if(!message) return;
+  } else if (getMaiyaOrderDetails(_orderItemName)) {
+    message=buildMaiyaOrderMessage(_orderItemName,name,cabin,FD_CABIN_NUMBERS[cabin],notes,isChaletServiceVenue() ? 'chalet' : 'resort');
+  } else if(isChaletServiceVenue()) {
+    var lines=['السلام عليكم، أرغب بطلب الخدمات التالية:','','الاسم: '+name,'المكان: شاليه يوم العائلة','','الطلبات:','','الألعاب الترفيهية:',order.title+' × 1 = '+order.price+' ريال','','إجمالي الطلب: '+order.price+' ريال'];
+    if(notes) lines.push('','ملاحظات: '+notes);
+    message=lines.join('\n');
+  } else {
+    var type=_orderItemName && _orderItemName.type;
+    var request=type==='games' ? 'الألعاب الترفيهية' : type==='seating' ? 'جلسة خارجية' : order.title;
+    var lines=['السلام عليكم، أرغب بطلب '+request+'.','','الاسم: '+name,'الكوخ: '+cabin,'رقم الكوخ: '+FD_CABIN_NUMBERS[cabin],''];
+    if (type==='cinema') {
+      var hour=Number(document.getElementById('order-time').value)%24;
+      lines.push('وقت بداية الجلسة: '+(hour%12 || 12)+':00 '+(hour>=12 ? 'مساءً' : 'صباحًا'));
+    }
+    lines=lines.concat(order.message || order.summary);
+    if (notes) lines.push('','ملاحظات: '+notes);
+    message=lines.join('\n');
+  }
+  window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(message),'_blank');
+  FD_ORDER_DRAFTS.clear();
+  closeOrderPopup();
+}
