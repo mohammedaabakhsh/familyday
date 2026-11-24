@@ -254,7 +254,7 @@ body.legacy-resort-services #main{width:100%;max-width:none;height:100dvh;min-he
 .service-guide-prices article{padding:16px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
 .service-guide-prices h2{font-size:15px;line-height:1.6;margin-bottom:8px}.service-guide-prices strong{display:block;color:var(--teal);font-size:19px;line-height:1.5}.service-guide-prices p{font-size:12px;line-height:1.7;color:var(--muted);margin-top:7px}
 .service-guide .package{margin:0 0 12px}.service-guide .package summary{min-height:60px;font-size:15px;line-height:1.65;padding:12px 14px;gap:10px}.service-guide .package summary>.icon{flex-shrink:0}
-.service-guide .package-price{max-width:94px;font-size:13px;flex-shrink:0}.service-guide .package summary .muted{display:block}
+.service-guide .package-price{max-width:94px;font-size:13px;flex-shrink:0}.service-guide .package summary .service-guide-capacity{display:block;color:var(--teal);font-size:11px}
 .service-guide .package-image{width:100%;flex:0 0 100%;aspect-ratio:1/1}.service-guide .package-gallery{margin-inline:0}
 .service-guide .inclusions{margin-block:14px}.service-guide .inclusions li{font-size:13px;padding:10px 12px}
 .service-guide .note{font-size:13px;line-height:1.8}.service-guide .share-text{display:flex;align-items:center;gap:8px;font-size:13px}
