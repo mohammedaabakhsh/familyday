@@ -229,3 +229,20 @@ body.legacy-resort-services #main{width:100%;max-width:none;height:100dvh;min-he
  .restaurant-categories{gap:10px}.restaurant-categories li{font-size:13px}
  .restaurant-order-link{min-height:48px}
 }
+
+/* Dining guide: source prices remain readable information, with ordering kept outside the preview. */
+.dining-guide{max-width:720px;margin-inline:auto}.dining-guide .page-heading{margin-bottom:18px}.dining-guide .page-heading>.eyebrow{display:none}
+.dining-guide-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:18px}
+.dining-guide-options>div{padding:13px;border:1px solid var(--line);border-radius:12px;background:var(--surface-soft)}
+.dining-guide-options h2{font-size:14px;line-height:1.5;margin-bottom:5px;color:var(--teal)}.dining-guide-options p{font-size:12px;line-height:1.7;color:var(--muted)}
+.dining-guide-prices{margin-bottom:16px}.dining-guide-prices table{width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed;border:0;text-align:center;font-size:14px}
+.dining-guide-table{border:1px solid #315967;border-radius:12px;overflow:hidden}.dining-guide-currency{text-align:left;font-size:11px;line-height:1.5;color:var(--muted);margin-top:6px}
+.dining-guide-prices th,.dining-guide-prices td{padding:10px 7px;line-height:1.5;border-bottom:1px solid var(--line)}
+.dining-guide-prices thead th{font-size:12px;font-weight:700;background:#173c48;color:#d2f0f0}.dining-guide-prices thead th:first-child{width:26%}
+.dining-guide-prices tbody th{font-weight:700;color:var(--teal)}.dining-guide-prices tbody tr:nth-child(odd){background:var(--surface)}.dining-guide-prices tbody tr:nth-child(even){background:var(--surface-soft)}.dining-guide-prices tr:last-child>*{border-bottom:0}
+.dining-guide-details{margin-bottom:18px;border:1px solid var(--line);border-radius:12px;padding:0 14px;background:var(--surface-soft)}
+.dining-guide-details summary{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:46px;cursor:pointer;list-style:none;font-size:13px;font-weight:700}.dining-guide-details summary::-webkit-details-marker{display:none}.dining-guide-details summary .icon{width:16px;height:16px;color:var(--teal)}.dining-guide-details[open] summary .icon{transform:rotate(180deg)}
+.dining-guide-details figure{margin:0 0 14px}.dining-guide-details .package-gallery{margin:0}.dining-guide-details .package-image{width:100%}.dining-guide-details figcaption{font-size:11px;line-height:1.7;color:var(--muted);padding-top:6px}.dining-guide-details .inclusions{padding-bottom:14px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.dining-guide-link{min-height:50px}.resort-service #main:has(.dining-guide){padding-bottom:calc(108px + env(safe-area-inset-bottom,0px))}
+@media(max-width:360px){.dining-guide-options{gap:8px}.dining-guide-options>div{padding:10px}.dining-guide-options h2{font-size:13px}.dining-guide-prices th,.dining-guide-prices td{padding:9px 5px}.dining-guide-details{padding-inline:11px}}
+@media(max-width:999px) and (max-height:740px){.dining-guide .page-heading,.dining-guide-options{margin-bottom:12px}.dining-guide-prices{margin-bottom:12px}.dining-guide-details{margin-bottom:12px}.dining-guide-options>div{padding-block:10px}.dining-guide-prices th,.dining-guide-prices td{padding-block:8px}}
