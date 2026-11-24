@@ -295,3 +295,8 @@ body.legacy-resort-services #main{width:100%;max-width:none;height:100dvh;min-he
 /* Garden facilities use the same compact full-width rows as cabin specifications. */
 .resort-unit .garden-facilities{list-style:none;margin:14px 0 22px;padding:0;grid-template-columns:minmax(0,1fr);gap:8px}
 .resort-unit .garden-facilities .spec-item{display:flex;align-items:center;min-height:44px;padding:10px 12px;line-height:1.55}
+
+
+/* Resort-only six-item navigation trial; preserve the raised service button's size and hit area. */
+.resort-scope .bottom-nav.six-items{grid-template-columns:repeat(6,minmax(0,1fr))}
+@media(max-width:374px){.resort-scope .bottom-nav.six-items{grid-template-columns:repeat(2,minmax(0,1fr)) 54px repeat(3,minmax(0,1fr))}}
