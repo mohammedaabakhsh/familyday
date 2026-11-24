@@ -206,3 +206,10 @@ Browser checks at 320×568, 390×844 and 1440×900 verified all eight service gu
 ## Outdoor seating capacity labels (20261124-resort-v31)
 
 Removed the leading middle dot from all six preview outdoor seating capacity labels and colored the standalone labels with the existing turquoise token. Browser checks at 320×568, 390×844 and 1440×900 confirm exact source capacity text, computed turquoise color, unchanged source prices/external link and no horizontal overflow. Original portals and other service layouts are unchanged.
+
+
+## Native offers and loyalty pages (20261124-resort-v32)
+
+Restyled only the three resort offer/privilege pages: contest, share-and-win and loyalty. Each now uses the native guide shell, matching the service heading sizes, surfaces, typography and spacing. Both contests show the original reward and participation steps, with expandable source conditions/selection criteria; the original contest social accounts retain visit/copy actions. The original Drive, WhatsApp participation draft, email draft and loyalty enrollment URLs are unchanged. Email copying is retained. Loyalty shows four informational reservation slots with only the free fourth slot in gold; no progress or earned status is invented. No external service-portal handoff was added.
+
+Compared every original paragraph, heading and list item in the three production panels with the new DOM, including collapsed content, and compared every outgoing link exactly. Browser checks at 320×568, 390×844, 430×932 and 1440×900 confirm no horizontal overflow, working disclosures and final actions clear of the fixed footer after scrolling. Verified four loyalty slots and gold reward, copied all three social handles/email using a mocked clipboard, and checked directory navigation/contextual Back for all three. Visually inspected the mobile layouts. No message/email/order was sent and enrollment was not submitted. Syntax/browser/diff checks passed; original files, catalog, sharing metadata and both service portals are unchanged. All changes remain under preview/.
