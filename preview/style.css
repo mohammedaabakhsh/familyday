@@ -290,3 +290,8 @@ body.legacy-resort-services #main{width:100%;max-width:none;height:100dvh;min-he
 .faq-guide .faq-answer{padding:0 2px 16px}.faq-guide .faq-answer p{font-size:13px;line-height:1.85;padding:0;margin:0}.faq-guide .faq-answer p+p{margin-top:9px}.faq-answer-links{display:flex;align-items:center;flex-wrap:wrap;gap:8px 18px;margin-top:12px}.faq-guide .faq-answer .text-link{font-size:12px;white-space:normal;margin:0;min-height:32px}
 .resort-scope #main:has(.faq-guide){padding-bottom:calc(108px + env(safe-area-inset-bottom,0px))}
 @media(max-width:360px){.faq-categories button{font-size:12px}.faq-guide .faq summary{font-size:13px;padding-block:13px}.faq-guide .page-heading{margin-bottom:12px}}
+
+
+/* Garden facilities use the same compact full-width rows as cabin specifications. */
+.resort-unit .garden-facilities{list-style:none;margin:14px 0 22px;padding:0;grid-template-columns:minmax(0,1fr);gap:8px}
+.resort-unit .garden-facilities .spec-item{display:flex;align-items:center;min-height:44px;padding:10px 12px;line-height:1.55}
