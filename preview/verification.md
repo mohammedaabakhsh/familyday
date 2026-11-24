@@ -255,3 +255,10 @@ Browser checks at 320×568, 360×740, 375×812, 390×844, 430×932 and 1440×900
 Removed the standalone FAQ slot; its existing page and Information-page shortcut remain intact. Resort FAQ once again highlights المعلومات. The exact right-to-left bar order is المنتجع، الأكواخ، الخريطة، الخدمات، المعلومات، الموقع. Location remains the same disabled visual-only placeholder, with no page, content or action. The seven-column trial rules are retired. The six-item layout balances three columns on the right against two wider columns on the left so Services stays centered (within 2px including the existing inter-item gaps), keeping the original 54px circle, 72px bar, colors and typography.
 
 Browser checks at 320×568, 360×740, 375×812, 390×844, 430×932 and 1440×900 verified exact DOM/visual order, fitting labels, preserved dimensions, no horizontal overflow and no standalone FAQ link. Followed Information → FAQ and confirmed all 22 entries and Information highlighting. Checked existing services, map and cabin navigation, focused-map hiding and unchanged five-item chalet/stay bars. Visually inspected 320px and 390px views. Source data, FAQ content, original portals and share metadata are unchanged. All changes remain under preview/.
+
+
+## Equal-width resort navigation (20261124-resort-v39)
+
+Replaced the asymmetric side widths with six equal columns at every viewport, as requested. The order remains المنتجع، الأكواخ، الخريطة، الخدمات، المعلومات، الموقع. Services stays centered within its own fourth slot and naturally sits to the left of the screen center; its existing raised 54px gold circle and the 72px bar are unchanged. No label, icon, route, FAQ shortcut or location-placeholder behavior changed.
+
+Browser checks at 320×568, 360×740, 375×812, 390×844, 430×932 and 1440×900 verified all six slot widths and center-to-center gaps are equal within subpixel rounding, all labels fit, there is no horizontal overflow, and the original bar/circle dimensions are retained. Checked Information → FAQ and Services navigation. Original sources, data, editorial/share copy and other destinations are unchanged; all edits remain under preview/.

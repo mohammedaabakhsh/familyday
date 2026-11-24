@@ -297,8 +297,8 @@ body.legacy-resort-services #main{width:100%;max-width:none;height:100dvh;min-he
 .resort-unit .garden-facilities .spec-item{display:flex;align-items:center;min-height:44px;padding:10px 12px;line-height:1.55}
 
 
-/* Three items on the right and two on the left keep Services centered in the six-item bar. */
-.resort-scope .bottom-nav.six-items{grid-template-columns:repeat(3,minmax(0,1fr)) 54px repeat(2,minmax(0,1.5fr))}
+/* All six resort slots use equal widths; Services follows its natural position. */
+.resort-scope .bottom-nav.six-items{grid-template-columns:repeat(6,minmax(0,1fr))}
 
 
 /* Location remains an unwired visual placeholder. */
