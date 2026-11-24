@@ -25,8 +25,8 @@ var FD_PANORAMIC_TOUR = (function () {
     sides:{"twin":"top","bathroom":"top","kitchen":"top","bedroom":"left","tub":"left","living":"right","dining":"right","pool":"left","outdoor":"right"},
     mobileGutter:true
   };
-  var mergedKitchen=new URLSearchParams(location.search).get('layout')!=='previous';
-  if(mergedKitchen){parts=parts.filter(function(part){return part.id!=='dining';});lineLayout.sides.tub='right';}
+  var mergeDining=(new URLSearchParams(location.search).get('layout')!=='previous')&&parts.some(function(p){return p.id==='dining';});
+  if(mergeDining)parts=parts.filter(function(p){return p.id!=='dining';});
   var kitchenIcon=FD_TOUR_COMMON.kitchenIcon;
 
   function feature(text) {
@@ -74,7 +74,7 @@ var FD_PANORAMIC_TOUR = (function () {
 
     } else if (selected === 'kitchen') {
 
-      if(mergedKitchen) cards.push({value:'طاولة الطعام',icon:'dining'});
+      if(mergeDining)cards.push({value:'طاولة الطعام',icon:'dining'});
       cabin.features.kitchen.forEach(function(t){cards.push({value:feature(t),icon:kitchenIcon(t)});});
 
 
@@ -169,8 +169,10 @@ var FD_PANORAMIC_TOUR = (function () {
     root=document.createElement('section');root.id='panoramic-tour';root.className='dt-tour';root.setAttribute('aria-labelledby','dt-title');
 
     var topOrder=['bedroom','twin','living','bathroom','kitchen','dining'];
-    if(mergedKitchen) topOrder=topOrder.map(function(id){return id==='dining'?'tub':id;});
-    var bottomOrder=mergedKitchen?['outdoor','pool']:['outdoor','tub','pool'];
+    var bottomOrder=['outdoor','tub','pool'];
+    if(mergeDining)topOrder=topOrder.filter(function(id){return id!=='dining';});
+    if(window.FD_RESORT_TOUR_LAYOUT){var arranged=FD_RESORT_TOUR_LAYOUT(parts);topOrder=arranged.top;bottomOrder=arranged.bottom;}
+    else if(mergeDining){topOrder.push('tub');bottomOrder=['outdoor','pool'];lineLayout.sides.tub='right';}
     root.innerHTML=FD_TOUR_COMMON.markup(parts,topOrder,bottomOrder,'/imgs/panoramic-tour-21-clarity-v1.png','eager',false);
     document.getElementById('panoramic-tour-host').appendChild(root);
 

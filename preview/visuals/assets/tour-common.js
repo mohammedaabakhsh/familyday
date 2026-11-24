@@ -40,7 +40,7 @@ var FD_TOUR_COMMON = (function () {
   }
 
   function markup(parts, topOrder, bottomOrder, image, loading, linkedCabins) {
-    var labelButton=function(p){return '<button type="button" class="dt-label dt-label--'+p.id+'" data-part="'+p.id+'" aria-controls="dt-details"></button>';};
+    var labelButton=function(p){var slot=p.previewSlot;return '<button type="button" class="dt-label dt-label--'+p.id+'" '+(slot?'style="--tour-column:'+slot.column+';--tour-row:'+slot.row+';--tour-span:'+(slot.span||1)+'" data-layout-edge="'+slot.edge+'" ':'')+'data-part="'+p.id+'" aria-controls="dt-details"></button>';};
     var topParts=topOrder.map(function(id){return parts.find(function(p){return p.id===id;});});
     var bottomParts=bottomOrder.map(function(id){return parts.find(function(p){return p.id===id;});});
     return '<header class="dt-heading"><div class="dt-heading-copy"><h1 id="dt-title" class="dt-title"></h1><p class="dt-instruction">اختر المرفق لعرض تفاصيله</p></div></header><div class="dt-stage"><div class="dt-labels dt-labels--top">'+topParts.map(labelButton).join('')+'</div><div class="dt-image-space"><img class="dt-image" src="'+esc(image)+'" width="1536" height="1024" loading="'+loading+'" decoding="async" alt=""></div><div class="dt-labels dt-labels--bottom">'+bottomParts.map(labelButton).join('')+'</div><svg class="dt-lines" aria-hidden="true">'+parts.map(function(p){return '<path data-line="'+p.id+'"/>';}).join('')+'</svg>'+parts.map(function(p){return '<button type="button" class="dt-point" data-part="'+p.id+'" tabindex="-1" aria-controls="dt-details"><span></span></button>';}).join('')+'</div><div id="dt-details" class="dt-details" role="region" aria-live="polite" aria-atomic="true"></div>'+(linkedCabins?'<footer class="dt-tour-footer"><p class="dt-connection-note">يمكن ربط الكلاسيكي ورويال عبر باب داخلي بسعة تصل إلى ' + resortCombinedGuests() + ' ضيفًا.</p><p class="dt-occupancy"></p></footer>':'<p class="dt-occupancy"></p>');
@@ -60,8 +60,9 @@ var FD_TOUR_COMMON = (function () {
           var forward=button.dataset.specDirection==='next'?1:-1;
           var card=strip.querySelector('.dt-card');
           var step=card.getBoundingClientRect().width+(parseFloat(getComputedStyle(strip).columnGap)||0);
-          if(root.id==='panoramic-tour' && window.FD_PANORAMIC_SCROLL){
-            window.FD_PANORAMIC_SCROLL(strip,direction,forward*step,function(){updateSpecNavigation(details);});
+          var slide=window.FD_RESORT_SCROLL||window.FD_PANORAMIC_SCROLL;
+          if(slide){
+            slide(strip,direction,forward*step,function(){updateSpecNavigation(details);});
           } else {
           strip.scrollBy({left:direction*forward*step,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
           }
@@ -88,6 +89,7 @@ var FD_TOUR_COMMON = (function () {
     var stage=root.querySelector('.dt-stage'), image=root.querySelector('.dt-image');
     FD_IMAGE_FEEDBACK.watch(image,stage);
     FD_EXPLORATION_SHARE.mount(root.querySelector('.dt-heading'),'cabin');
+    if(window.FD_RESORT_DRAW_LINES&&FD_RESORT_DRAW_LINES(root,parts))return;
     var box=stage.getBoundingClientRect(), im=image.getBoundingClientRect();
     if(!box.width || !im.height) return;
     root.querySelector('.dt-lines').setAttribute('viewBox','0 0 '+box.width+' '+box.height);

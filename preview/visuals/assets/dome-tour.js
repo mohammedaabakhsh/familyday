@@ -18,6 +18,8 @@ var FD_DOME_TOUR = (function () {
     sides:{"kitchen":"top","bathroom":"top","bedroom":"right","living":"right","tub":"left","pool":"left","outdoor":"right"},
     mobileGutter:false
   };
+  var mergeDining=(!!window.FD_RESORT_TOUR_LAYOUT)&&parts.some(function(p){return p.id==='dining';});
+  if(mergeDining)parts=parts.filter(function(p){return p.id!=='dining';});
   var kitchenIcon=FD_TOUR_COMMON.kitchenIcon;
 
   function updateBackLink() {
@@ -42,6 +44,7 @@ var FD_DOME_TOUR = (function () {
       if (/جاكوزي/.test(cabin.pool.label)) cards.push({value:'جاكوزي داخل المسبح',icon:'tub'});
       cabin.pool.facilities.filter(function(t){return t!=='دش خارجي';}).forEach(function(t){cards.push({value:t,icon:'chair'});});
     } else if (selected === 'kitchen') {
+      if(mergeDining)cards.push({value:'طاولة الطعام',icon:'dining'});
       cabin.features.kitchen.forEach(function(t){cards.push({value:t,icon:kitchenIcon(t)});});
 
     } else if (selected === 'bedroom') {
@@ -89,6 +92,8 @@ var FD_DOME_TOUR = (function () {
     root=document.createElement('section');root.id='dome-tour';root.className='dt-tour';root.setAttribute('aria-labelledby','dt-title');
     var topOrder=['bedroom','bathroom','kitchen'];
     var bottomOrder=['outdoor','living','tub','pool'];
+    if(mergeDining)topOrder=topOrder.filter(function(id){return id!=='dining';});
+    if(window.FD_RESORT_TOUR_LAYOUT){var arranged=FD_RESORT_TOUR_LAYOUT(parts);topOrder=arranged.top;bottomOrder=arranged.bottom;}
     root.innerHTML=FD_TOUR_COMMON.markup(parts,topOrder,bottomOrder,'/imgs/dome-tour-15-clarity-v1.png','lazy',false);
     root.querySelector('.dt-image').src='/imgs/dome-tour-'+(cabin.id===12?'16':'15')+'-clarity-v1.png';
     document.getElementById('dome-tour-host').appendChild(root);

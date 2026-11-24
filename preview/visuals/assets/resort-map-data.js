@@ -53,3 +53,5 @@ window.FD_RESORT_MAP_DATA = {
     10: 'imgs/panorama_2.webp'
   }
 };
+
+if(window.FD_RESORT_MAP_LAYOUT)FD_RESORT_MAP_LAYOUT.prepare(FD_RESORT_MAP_DATA);

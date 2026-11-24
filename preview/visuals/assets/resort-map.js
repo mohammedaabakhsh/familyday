@@ -402,6 +402,7 @@
   }
 
   function renderView() {
+    if(window.FD_RESORT_MAP_LAYOUT){FD_RESORT_MAP_LAYOUT.render(view,viewport,plane,markers,locations,leaderRoutes,selected,syncToolbar);return;}
     var size = view.size * view.scale;
     var bottomCenters = bottomLabelCenters(size);
     // Space the Greek labels independently of their physical plots.
@@ -472,8 +473,9 @@
     view.width = viewport.clientWidth;
     view.height = viewport.clientHeight;
     // Reserve an external label row at every size, clear of the map boundary and Palm Beach.
-    view.labelFooter = view.height < 330 ? 64 : 44;
+    view.labelFooter = window.FD_RESORT_MAP_LAYOUT?0:(view.height < 330 ? 64 : 44);
     view.size = Math.min(view.width, view.height - view.labelFooter) * (window.matchMedia('(max-width: 819px)').matches ? (selected ? 0.92 : 0.94) : 1);
+    if(window.FD_RESORT_MAP_LAYOUT)view.size=Math.max(1,Math.min(view.width-16,view.height-16));
     if (reset) { view.scale = 1; centerX = centerY = .5; }
     view.x = view.width / 2 - centerX * view.size * view.scale;
     view.y = view.height / 2 - centerY * view.size * view.scale;

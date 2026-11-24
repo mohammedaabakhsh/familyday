@@ -1,0 +1,33 @@
+/* A reversible map treatment; the source comparison uses none of these selectors. */
+html.resort-map-trial #fd-map-dialog::after{display:none!important}
+html.resort-map-trial #fd-map-dialog .fd-map-workspace{gap:0}
+html.resort-map-trial #fd-map-dialog .fd-map-viewport{background:transparent!important;min-height:120px}
+html.resort-map-trial #fd-map-dialog .fd-map-hotspot span{font-size:var(--map-label-font,11px);line-height:1.3;min-height:var(--map-label-height,24px);padding:3px 6px;border-radius:8px;border:1px solid #477781;background:#102b39;color:#d8edef;box-shadow:0 2px 8px #0002}
+html.resort-map-trial #fd-map-dialog .fd-map-hotspot::before{background:#6dced2;border-color:#d8f7f8;box-shadow:0 0 0 3px #0c35434d}
+html.resort-map-trial #fd-map-dialog .fd-map-hotspot[aria-pressed=true] span{background:#20606c;border-color:#6dced2;color:#fff}
+html.resort-map-trial #fd-map-dialog .fd-map-leader polyline{stroke:#72b6c0;stroke-width:1;opacity:.4}
+html.resort-map-trial #fd-map-dialog .has-selection .fd-map-leader:not(.is-selected) polyline{opacity:.15}
+html.resort-map-trial #fd-map-dialog .fd-map-leader.is-selected polyline{stroke:#80e1e4;stroke-width:1.7;opacity:1}
+html.resort-map-trial #fd-map-dialog .fd-map-footprint polygon{fill:#6dced22b;stroke:#80e1e4}
+html.resort-map-trial #fd-map-dialog .fd-map-panel{width:calc(100% - 24px);max-width:560px;align-self:center;margin:8px auto 12px;border:0!important;background:transparent!important;overflow:visible;max-height:none}
+html.resort-map-trial #fd-map-dialog .fd-map-toolbar{display:none!important}
+html.resort-map-trial #fd-map-dialog .fd-map-info{padding:0!important;background:transparent!important;overflow:visible}
+html.resort-map-trial #fd-map-dialog .fd-map-card:not([hidden]){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;min-height:0;box-sizing:border-box;padding:14px;background:#102b39;border:1px solid #315967;border-radius:18px;box-shadow:0 8px 28px #0003}
+html.resort-map-trial #fd-map-dialog :is(.fd-map-card-top,.fd-map-description,.fd-map-facts,.fd-map-amenities){grid-column:1/-1}
+html.resort-map-trial #fd-map-dialog .fd-map-card h3{font-size:19px;line-height:1.4}
+html.resort-map-trial #fd-map-dialog .fd-map-clear{width:36px;height:36px}
+html.resort-map-trial #fd-map-dialog .fd-map-description{margin:0;color:#c3d8df;font-size:12px;line-height:1.5}
+html.resort-map-trial #fd-map-dialog .fd-map-card .fd-map-facts{width:100%!important;max-width:none!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important;margin:2px 0!important}
+html.resort-map-trial #fd-map-dialog .fd-map-card .fd-map-facts.has-three{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+html.resort-map-trial #fd-map-dialog .fd-map-card .fd-map-facts>.fd-map-fact:not([hidden]){min-height:50px!important;padding:7px!important;background:#153744;border-color:#315765;grid-column:auto!important;grid-row:auto!important}
+html.resort-map-trial #fd-map-dialog .fd-map-card .fd-map-facts>.fd-map-fact--extra:not([hidden]){grid-column:1/-1!important;grid-row:2!important;min-height:32px!important;flex-direction:row!important;gap:8px!important}
+html.resort-map-trial #fd-map-dialog .fd-map-fact--extra :is(span,strong){width:auto!important;white-space:normal!important;font-size:11px!important}
+html.resort-map-trial #fd-map-dialog .fd-map-fact-label{color:#8ddddf}
+html.resort-map-trial #fd-map-dialog .fd-map-details-button{display:flex;align-items:center;justify-content:center;width:100%;min-height:44px;margin:2px 0 0!important;padding:10px 6px!important;border-color:#6dced2;background:#6dced2;color:#05202a;font-size:12px;line-height:1.4;text-align:center}
+html.resort-map-trial #fd-map-dialog .fd-map-tour-button{border-color:#527d88;background:transparent;color:#d1e9ec}
+html.resort-map-trial #fd-map-dialog .resort-map-tools{position:absolute;z-index:6;left:12px;top:10px;display:flex;gap:6px;direction:ltr;padding:4px;background:#071a26de;border:1px solid #315967;border-radius:14px;touch-action:manipulation}
+html.resort-map-trial #fd-map-dialog .resort-map-tools button{display:grid;place-items:center;width:44px;height:44px;min-height:44px;border:0;border-radius:9px;background:#102b39;color:#bde8eb;font:500 21px/1 Tajawal,sans-serif;touch-action:manipulation}
+@media(min-width:820px){html.resort-map-trial #fd-map-dialog .fd-map-panel{width:auto;max-width:none;margin:16px;align-self:center;height:auto;max-height:calc(100% - 32px)}}
+@media(max-width:819px){html.resort-map-trial #fd-map-dialog .fd-map-panel{max-height:calc(100% - 132px);overflow:auto;border-radius:18px}}
+@media(max-height:620px){html.resort-map-trial #fd-map-dialog .fd-map-card:not([hidden]){padding:10px;gap:6px}html.resort-map-trial #fd-map-dialog .fd-map-card h3{font-size:17px}html.resort-map-trial #fd-map-dialog .resort-map-tools{top:3px;left:6px}}
+@media(max-height:620px){html.resort-map-trial #fd-map-dialog .has-selection .resort-map-tools{display:none}}

@@ -121,3 +121,12 @@ Panoramic specification arrows use immediate bounded steps rather than queuing s
 ### Swipe-like Panoramic specification arrows (resort-v45)
 
 Replaced the immediate arrow jump with a 280ms horizontal slide. Consecutive clicks accumulate bounded destinations and reversing retargets the current slide without queuing animations. Native snap is suspended only during an arrow slide and restored afterward; pointer/touch/wheel input and resize cancel it so visitors can scroll directly. Reduced-motion preferences retain the instant move. Other tours and the original comparison layout are unchanged.
+
+
+## Shared cabin explorations and map redesign trial (resort-v46)
+
+All twelve resort cabins now use the accepted Panoramic facility-card presentation and swipe-like specification navigation. Panoramic itself retains its approved v45 implementation as the reference. `resort-tour.js`/`.css` supply the remaining nine tour modules (including separate Dome/Greek instances). Source photos, room facts, paid minibar disclosure and hotspot coordinates are unchanged. Only cabins with an existing Dining part merge that fact first into Kitchen; Dome receives no dining fact. Mobile indoor controls are arranged by their actual room positions, with balanced rows and two outdoor/pool controls below. Selected leaders leave label edges through reserved outer gutters; other mobile leaders are hidden until selected. Desktop source positions remain.
+
+The new default map uses `resort-map-trial.js`/`.css`: measured pill labels remain inside the image, Panoramic moves below Bohemian, Rural/French/Palm share a spaced bottom-road row, selected leaders are emphasized, and source footprints remain exact. The selected summary is a rounded card for every cabin/garden with two primary facts, an optional full-width connection/access strip, and adjacent details/exploration actions. Explicit zoom/Fit controls supplement original gestures; on short phones they hide during selection to reserve room for labels.
+
+`/preview/resort-map/?layout=before` preserves the preceding v45 map and its Panoramic card via `comparison-v45.js` and the frozen Panoramic stylesheet. `layout=before` on other explorations preserves their prior presentation. `layout=previous` retains the earlier source layout. Comparison mode stays on map/tour links. All adapters are preview-only and are injected by `build-site.py`; original production engines/data/images are untouched.
