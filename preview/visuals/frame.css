@@ -14,3 +14,7 @@ html body #ov .dt-heading,html body #fd-chalet-map .cm-header,html body #fd-map-
 #fd-map-card .fd-map-description{white-space:pre-line}
 /* The parent title sits directly above the room controls; remove their extra top inset. */
 @media(max-width:599px){html body #ov .dt-tour>.dt-stage{padding-top:0!important}}
+
+/* Let resort drawings share the parent's page background without a separate canvas. */
+html.resort-visual,html.resort-visual body{background:transparent!important}
+html.resort-visual #fd-map-dialog,html.resort-visual #fd-map-dialog::backdrop{background:transparent!important}
