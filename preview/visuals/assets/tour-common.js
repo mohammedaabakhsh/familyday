@@ -60,7 +60,15 @@ var FD_TOUR_COMMON = (function () {
           var forward=button.dataset.specDirection==='next'?1:-1;
           var card=strip.querySelector('.dt-card');
           var step=card.getBoundingClientRect().width+(parseFloat(getComputedStyle(strip).columnGap)||0);
+          if(root.id==='panoramic-tour' && new URLSearchParams(location.search).get('layout')!=='previous'){
+            // A bounded, immediate step cannot queue or reverse an unfinished animation.
+            var max=strip.scrollWidth-strip.clientWidth;
+            var position=Math.max(0,Math.min(max,Math.abs(strip.scrollLeft)));
+            strip.scrollTo({left:direction*Math.max(0,Math.min(max,position+forward*step)),behavior:'instant'});
+            updateSpecNavigation(details);
+          } else {
           strip.scrollBy({left:direction*forward*step,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+          }
         });
       });
       requestAnimationFrame(function(){updateSpecNavigation(details);});

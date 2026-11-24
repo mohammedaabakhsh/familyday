@@ -109,3 +109,10 @@ Add `?layout=previous` to Panoramic exploration or `?cabin=10&layout=previous` t
 ### Panoramic Kitchen grouping (resort-v43)
 
 The preview-only Panoramic snapshot groups the existing dining-table fact into Kitchen, leaving eight selectable facilities and one Kitchen hotspot/leader at the original coordinates. Kitchen retains every source appliance and minibar disclosure with its existing scrolling controls. All text within the floating facility cards now uses the same light color; icon turquoise and the surrounding layout remain. `layout=previous` keeps the original nine selections and separate dining entry. The adapter is generated in `build-site.py`; do not edit the production module.
+
+
+### Balanced Panoramic controls and deterministic specification arrows (resort-v44)
+
+Dining is now the first Kitchen fact. The indoor-tub button occupies the former dining slot in the six top controls; Outdoor and Pool share the two equal bottom slots. Original hotspot coordinates and source facts remain. On larger layouts the tub uses the former dining label position and right-side leader routing. The comparison URL retains the original arrangement.
+
+Panoramic specification arrows use immediate bounded steps rather than queuing smooth relative scrolling. Source touch scrolling, snap behavior, navigation labels, disabled boundary states and other tours remain intact; the branch is scoped to Panoramic outside `layout=previous` in the generated common snapshot.

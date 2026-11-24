@@ -11,6 +11,8 @@ html.panoramic-details-trial #ov #panoramic-tour .dt-card span{font-size:10px!im
 html.panoramic-details-trial #ov #panoramic-tour .dt-card strong span{font:inherit!important}
 html.panoramic-details-trial #ov #panoramic-tour .dt-note{font-size:12px!important;line-height:1.6!important;margin:8px 0 0!important;color:#a4bbc5}
 html.panoramic-details-trial #ov #panoramic-tour .dt-spec-navigation{margin-top:8px}
+@media(max-width:599px){html.panoramic-details-trial #ov #panoramic-tour .dt-labels--bottom{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:600px){html.panoramic-details-trial #ov #panoramic-tour .dt-label--tub{left:auto;right:0;top:32%;bottom:auto}}
 html.panoramic-map-trial #fd-map-dialog::after{display:none!important}
 html.panoramic-map-trial #fd-map-dialog .fd-map-panel{width:calc(100% - 24px);max-width:520px;align-self:center;margin:8px auto 12px;border:0!important;background:transparent!important;overflow:visible;max-height:none}
 html.panoramic-map-trial #fd-map-dialog .fd-map-info{padding:0!important;background:transparent!important;overflow:visible}
