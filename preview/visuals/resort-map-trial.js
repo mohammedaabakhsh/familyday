@@ -44,11 +44,7 @@
     road.forEach(function(box,i){box.x=size*(i%2?.75:.25);box.y=size-box.h/2-4-(i<2?box.h+7:0);box.priority=0;});
    }
    // Resolve labels as actual measured text boxes, including short-phone selections.
-   var placed=[],tools=viewport.querySelector('.resort-map-tools');
-   if(tools&&tools.offsetWidth&&view.scale===1){
-    var tr=tools.getBoundingClientRect(),vr=viewport.getBoundingClientRect();
-    placed.push({x:tr.left-vr.left-view.x+tr.width/2,y:tr.top-vr.top-view.y+tr.height/2,w:tr.width,h:tr.height});
-   }
+   var placed=[];
    boxes.slice().sort(function(a,b){return (a.priority==null?1:0)-(b.priority==null?1:0)||a.y-b.y;}).forEach(function(box){
     if(placed.some(function(other){return overlaps(box,other);})){
      var best=null;
@@ -78,17 +74,7 @@
    syncToolbar();
   }
  };
- function mountTools(){
-  var viewport=document.querySelector('.fd-map-viewport');if(!viewport)return;
-  var tools=document.createElement('div');tools.className='resort-map-tools';tools.setAttribute('role','group');tools.setAttribute('aria-label','التحكم بالخريطة');
-  [['+','تكبير الخريطة','+'],['−','تصغير الخريطة','-'],['','عرض الخريطة كاملة','Home']].forEach(function(item){
-   var button=document.createElement('button');button.type='button';button.textContent=item[0];button.setAttribute('aria-label',item[1]);
-   if(item[2]==='Home')button.innerHTML='<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 9V4h5m6 0h5v5M4 15v5h5m6 0h5v-5"/></svg>';
-   button.addEventListener('pointerdown',function(event){event.stopPropagation();});
-   button.addEventListener('click',function(event){event.stopPropagation();viewport.dispatchEvent(new KeyboardEvent('keydown',{key:item[2],bubbles:true}));});tools.appendChild(button);
-  });
-  viewport.appendChild(tools);
-  viewport.dispatchEvent(new KeyboardEvent('keydown',{key:'Home',bubbles:true}));
+ function mountSummary(){
   function updateCard(){
    var card=document.querySelector('#fd-map-card');if(!card||card.hidden)return;
    var garden=card.classList.contains('is-shared');
@@ -106,5 +92,5 @@
   }
   document.addEventListener('fd-map-selection-change',updateCard);updateCard();
  }
- if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mountTools);else mountTools();
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mountSummary);else mountSummary();
 })();

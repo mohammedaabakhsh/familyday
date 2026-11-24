@@ -135,3 +135,8 @@ The new default map uses `resort-map-trial.js`/`.css`: measured pill labels rema
 ### Compact connecting-cabin summaries and lower Panoramic label (resort-v47)
 
 Classic and Royal use a single-line compact description with their internal-door connection in parentheses. Their redundant third connection fact is hidden in the new map only, leaving the same two equal primary facts as other cabins. The source descriptions and comparison modes are unchanged. Panoramic now joins Rural, French and Palm along the bottom road instead of the left edge. If the four measured names cannot fit, the selected short-phone map uses two balanced rows; all labels stay inside the image. Physical coordinates and leader origins remain unchanged.
+
+
+### Map toolbar removal (resort-v48)
+
+Removed the added zoom-out/zoom-in/Fit group and its styling/label-obstacle logic from the new map. The original gesture and keyboard map engine remains; cabin summaries and the lower Panoramic label are retained.
