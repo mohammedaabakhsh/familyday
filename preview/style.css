@@ -277,3 +277,16 @@ body.legacy-resort-services #main{width:100%;max-width:none;height:100dvh;min-he
 .resort-scope #main:has(.promotion-guide){padding-bottom:calc(108px + env(safe-area-inset-bottom,0px))}
 @media(max-width:360px){.promotion-reward{padding:16px}.promotion-reward h2{font-size:18px}.promotion-stamps{gap:7px}.promotion-stamps li{padding:12px 2px}.promotion-email{gap:8px}.promotion-email bdi{font-size:12px}}
 @media(max-width:999px) and (max-height:740px){.promotion-guide .page-heading{margin-bottom:14px}.promotion-reward{padding:15px;margin-bottom:16px}.promotion-reward h2{font-size:18px}.promotion-how{margin-bottom:16px}.promotion-steps{gap:10px}.promotion-actions,.promotion-contact{margin-top:16px}}
+
+/* Resort FAQ: one subject at a time, with search across all four subjects. */
+.faq-guide{max-width:720px;margin-inline:auto}.faq-guide .page-heading{margin-bottom:16px}.faq-guide .page-heading>.eyebrow{display:none}
+.faq-tools{position:sticky;top:calc(64px + env(safe-area-inset-top,0px));z-index:5;padding:8px 0 12px;background:var(--bg)}
+.faq-categories{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding:4px;border:1px solid var(--line);border-radius:12px;background:var(--surface-soft);margin-bottom:12px}
+.faq-categories button{min-width:0;min-height:42px;padding:8px 3px;background:transparent;border-radius:8px;color:var(--muted);font-size:13px;font-weight:700;line-height:1.5}.faq-categories button[aria-pressed="true"]{color:#05202a;background:var(--teal)}
+.faq-guide .search-field{min-height:44px;margin:0;padding:0 12px;border-radius:10px}.faq-guide .search-field input{min-height:42px;font-size:13px}.faq-guide .search-field .icon{width:19px;height:19px}.faq-guide .search-field:focus-within{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal)}
+.faq-search-feedback{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px}.faq-search-feedback p{font-size:12px;color:var(--muted);line-height:1.7}.faq-search-feedback .text-link{background:transparent;border:0;padding:4px 0;font-size:12px}
+.faq-guide [hidden]{display:none!important}.faq-guide .faq-list{margin-top:0}.faq-group>h2{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.faq-guide.is-searching .faq-group>h2{position:static;width:auto;height:auto;overflow:visible;clip-path:none;white-space:normal;font-size:14px;line-height:1.6;color:var(--teal);margin:18px 0 4px}
+.faq-guide .faq summary{min-height:56px;padding:15px 2px;font-size:14px;line-height:1.7;gap:12px}.faq-guide .faq[open] summary,.faq-guide .faq[open] summary .icon{color:var(--teal)}.faq-guide .faq summary .icon{width:16px;height:16px}
+.faq-guide .faq-answer{padding:0 2px 16px}.faq-guide .faq-answer p{font-size:13px;line-height:1.85;padding:0;margin:0}.faq-guide .faq-answer p+p{margin-top:9px}.faq-answer-links{display:flex;align-items:center;flex-wrap:wrap;gap:8px 18px;margin-top:12px}.faq-guide .faq-answer .text-link{font-size:12px;white-space:normal;margin:0;min-height:32px}
+.resort-scope #main:has(.faq-guide){padding-bottom:calc(108px + env(safe-area-inset-bottom,0px))}
+@media(max-width:360px){.faq-categories button{font-size:12px}.faq-guide .faq summary{font-size:13px;padding-block:13px}.faq-guide .page-heading{margin-bottom:12px}}
