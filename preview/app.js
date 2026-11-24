@@ -7,7 +7,7 @@ paths.star='<path d="m12 3 2.8 5.7 6.3.9-4.5 4.4 1.1 6.2-5.7-3-5.7 3 1.1-6.2L3.2
 paths.android='<path d="m7 7-2-3m12 3 2-3M4 14a8 8 0 0 1 16 0v5H4Z"/><path d="M8 12v1m8-1v1"/>';
 paths.apple='<path d="M16.7 3.4c.8-1 1.2-2.2 1.1-3.4-1.2.1-2.6.8-3.4 1.7-.7.8-1.3 2.1-1.1 3.3 1.3.1 2.6-.6 3.4-1.6ZM20.7 17.1c-.5 1.2-.8 1.7-1.5 2.8-.9 1.4-2.2 3.1-3.8 3.1-1.4 0-1.8-.9-3.7-.9s-2.3.9-3.7.9c-1.6 0-2.8-1.5-3.8-2.9C1.5 16.2.8 10.8 2.6 8c1.3-2 3.4-3.2 5.4-3.2 1.6 0 2.6.9 3.8.9s2-.9 3.8-.9c1.7 0 3.5 1 4.8 2.5-4.2 2.3-3.5 8.2.3 9.8Z"/>';
 const icon=(n,cl='')=>`<svg class="icon ${cl}" viewBox="0 0 24 24" aria-hidden="true">${paths[n]||paths.spark}</svg>`;
-const ROOT='/preview/',VERSION='20261123-resort-v18';
+const ROOT='/preview/',VERSION='20261123-resort-v19';
 const main=$('#main'),viewer=$('#viewer');
 let catalog,route,photoIndex=0,filter=0,modalPhotos=null,returnFocus=null,toastTimer,compare=new Set();
 const scrollPositions=new Map();let previousURL=location.href;
@@ -165,12 +165,13 @@ function cabinNavigation(u){
 
 function specificationIcon(title){return /^داخل/.test(title)?'home':/المجلس/.test(title)?'sofa':/الخارجية|المسبح/.test(title)?'water':/المطبخ/.test(title)?'coffee':/معلومات/.test(title)?'clock':'spark';}
 function unitSpecifications(u){
- const boxes=items=>`<div class="spec-list">${items.map(t=>`<div class="spec-item ${t.length>52?'wide':''}">${safe(t)}</div>`).join('')}</div>`;
+ const boxes=(items,amenities=false)=>`<div class="spec-list">${items.map(t=>`<div class="spec-item ${t.length>52||amenities&&/سماعات|غرفة سائق/.test(t)?'wide':''}">${safe(t)}</div>`).join('')}</div>`;
  return `<div class="specs">${u.sections.map(s=>{
+  const resort=u.venue==='resort',stack=resort&&/^(داخل الكوخ|المنطقة الخارجية)/.test(s.title),amenities=resort&&s.title==='مميزات الإقامة',compact=resort&&(stack||amenities||s.title==='تجهيزات المطبخ');
   const groups=s.groups||[],grouped=new Set(groups.flatMap(g=>g.items));
-  const items=groups.length?groups.map(g=>`<section class="spec-floor"><h3>${safe(g.title)}</h3>${boxes(g.items)}</section>`).join('')+boxes(s.items.filter(t=>!grouped.has(t))):boxes(s.items);
+  const items=groups.length?groups.map(g=>`<section class="spec-floor"><h3>${safe(g.title)}</h3>${boxes(g.items)}</section>`).join('')+boxes(s.items.filter(t=>!grouped.has(t))):boxes(s.items,amenities);
   const notes=u.venue==='resort'?s.notes:s.notes.flatMap(n=>n.split(/(?=يُرجى إشراف)/).map(t=>t.trim()).filter(Boolean));
-  return `<details class="spec"><summary>${icon(specificationIcon(s.title))}${safe(s.title)}${icon('down','chevron')}</summary><div class="spec-content">${items}${s.times.length?`<div class="spec-list">${s.times.map(t=>`<div class="spec-item"><small>${safe(t.label)}</small><br><strong>${safe(t.value)}</strong></div>`).join('')}</div>`:''}${notes.map(n=>`<p class="note">${safe(n)}</p>`).join('')}</div></details>`;
+  return `<details class="spec${compact?' spec-compact':''}${stack?' spec-stacked':''}"><summary>${icon(specificationIcon(s.title))}${safe(s.title)}${icon('down','chevron')}</summary><div class="spec-content">${items}${s.times.length?`<div class="spec-list">${s.times.map(t=>`<div class="spec-item"><small>${safe(t.label)}</small><br><strong>${safe(t.value)}</strong></div>`).join('')}</div>`:''}${notes.map(n=>`<p class="note">${safe(n)}</p>`).join('')}</div></details>`;
  }).join('')}${u.extras.map(e=>`<aside class="extra-note"><h3>${safe(e.title)}</h3><p>${safe(e.text)}</p></aside>`).join('')}</div>`;
 }
 function stayNavigation(u){
