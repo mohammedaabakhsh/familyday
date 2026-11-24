@@ -1,0 +1,371 @@
+{
+  "errors": [],
+  "routes": [
+    {
+      "path": "/preview/chalet-map/",
+      "title": "استكشف الشاليه من الداخل",
+      "share": {
+        "text": "http://127.0.0.1:8112/preview/chalet-map/?share=text-v50"
+      }
+    },
+    {
+      "path": "/preview/chalet/",
+      "title": "شاليه يوم العائلة",
+      "share": {
+        "text": "http://127.0.0.1:8112/preview/chalet/?share=text-v50"
+      }
+    },
+    {
+      "path": "/preview/chalet/checkout/",
+      "title": "خدمات الشاليه | شاليه يوم العائلة",
+      "share": {
+        "text": "http://127.0.0.1:8112/preview/chalet/services/?share=text-v50"
+      }
+    },
+    {
+      "path": "/preview/chalet/contact/",
+      "title": "الموقع والتواصل | شاليه يوم العائلة",
+      "share": {
+        "text": "http://127.0.0.1:8112/preview/chalet/contact/?share=text-v50"
+      }
+    },
+    {
+      "path": "/preview/chalet/details/",
+      "title": "تعرّف على تفاصيل شاليه يوم العائلة",
+      "share": {
+        "text": "http://127.0.0.1:8112/preview/chalet/details/?share=text-v50"
+      }
+    },
+    {
+      "path": "/preview/chalet/faq/",
+      "title": "الأسئلة الشائعة | شاليه يوم العائلة",
+      "share": {
+        "text": "http://127.0.0.1:8112/preview/chalet/faq/?share=text-v50"
+      }
+    },
+    {
+      "path": "/preview/chalet/guest-services/",
+      "title": "خدمات إقامتك | شاليه يوم العائلة",
+      "share": {
+        "text": "http://127.0.0.1:8112/preview/chalet/guest-services/?share=text-v50"
+      }
+    },
+    {
+      "path": "/preview/chalet/order/",
+      "title": "خدمات الشاليه | شاليه يوم العائلة",
+      "share": {
+        "text": "http://127.0.0.1:8112/preview/chalet/services/?share=text-v50"
+      }
+    },
+    {
+      "path": "/preview/chalet/services/",
+      "title": "خدمات الشاليه | شاليه يوم العائلة",
+      "share": {
+        "text": "http://127.0.0.1:8112/preview/chalet/services/?share=text-v50"
+      }
+    },
+    {
+      "path": "/preview/chalet/services/games/",
+      "title": "الألعاب الترفيهية | شاليه يوم العائلة",
+      "share": {
+        "text": "http://127.0.0.1:8112/preview/chalet/services/games/?share=text-v50"
+      }
+    },
+    {
+      "path": "/preview/chalet/services/water-games/",
+      "title": "الألعاب المائية | شاليه يوم العائلة",
+      "share": {
+        "text": "http://127.0.0.1:8112/preview/chalet/services/water-games/?share=text-v50"
+      }
+    }
+  ],
+  "sizes": [
+    {
+      "width": 320,
+      "height": 568,
+      "path": "/preview/chalet/"
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "path": "/preview/chalet/contact/"
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "path": "/preview/chalet/faq/"
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "path": "/preview/chalet-map/"
+    },
+    {
+      "width": 375,
+      "height": 667,
+      "path": "/preview/chalet/"
+    },
+    {
+      "width": 375,
+      "height": 667,
+      "path": "/preview/chalet/contact/"
+    },
+    {
+      "width": 375,
+      "height": 667,
+      "path": "/preview/chalet/faq/"
+    },
+    {
+      "width": 375,
+      "height": 667,
+      "path": "/preview/chalet-map/"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "path": "/preview/chalet/"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "path": "/preview/chalet/contact/"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "path": "/preview/chalet/faq/"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "path": "/preview/chalet-map/"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "path": "/preview/chalet/"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "path": "/preview/chalet/contact/"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "path": "/preview/chalet/faq/"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "path": "/preview/chalet-map/"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "path": "/preview/chalet/"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "path": "/preview/chalet/contact/"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "path": "/preview/chalet/faq/"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "path": "/preview/chalet-map/"
+    }
+  ],
+  "faq": {
+    "sourceQuestions": 19,
+    "displayEntries": 14,
+    "searchArabicDigitsAndSafety": true,
+    "clearRestoresCategory": true
+  },
+  "tour": {
+    "factsPreserved": true,
+    "diningMergedFirst": true,
+    "states": [
+      {
+        "key": "upper",
+        "facts": [
+          "سرير مزدوج",
+          "حمام خاصداخل غرفة النوم الرئيسية",
+          "تلفزيون ذكي"
+        ],
+        "floor": [
+          "الدور العلوي"
+        ]
+      },
+      {
+        "key": "ground",
+        "facts": [
+          "سريران مفردان"
+        ],
+        "floor": [
+          "الدور الأرضي"
+        ]
+      },
+      {
+        "key": "living",
+        "facts": [
+          "تتسع لـ15 شخصًا",
+          "إطلالة على المسبح",
+          "باب مباشر لساحة المسبح",
+          "تلفزيون ذكي"
+        ],
+        "floor": [
+          "الدور الأرضي"
+        ]
+      },
+      {
+        "key": "kitchen",
+        "facts": [
+          "طاولة طعام تتسع لـ8 أشخاص",
+          "موقد كهربائي",
+          "موقد غاز",
+          "فرن",
+          "ميكروويف",
+          "ثلاجة",
+          "غلاية",
+          "أدوات مطبخ أساسية"
+        ],
+        "floor": [
+          "الدور الأرضي"
+        ]
+      },
+      {
+        "key": "play",
+        "facts": [
+          "ألعاب للأطفال",
+          "إطلالة على المسبح"
+        ],
+        "floor": [
+          "الدور الأرضي"
+        ]
+      },
+      {
+        "key": "pool",
+        "facts": [
+          "العمق60 سم",
+          "زحليقة مزدوجة"
+        ],
+        "floor": [
+          "المنطقة الخارجية"
+        ]
+      },
+      {
+        "key": "shower",
+        "facts": [
+          "كرسي تشميس",
+          "دش خارجي"
+        ],
+        "floor": []
+      },
+      {
+        "key": "majlis",
+        "facts": [
+          "يتسع لـ10 أشخاص",
+          "مدخل خاص",
+          "حمام خاص بالمجلس المستقل",
+          "تلفزيون ذكي"
+        ],
+        "floor": [
+          "المنطقة الخارجية"
+        ]
+      },
+      {
+        "key": "groundBath",
+        "facts": [
+          "حمام"
+        ],
+        "floor": [
+          "الدور الأرضي"
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "allNineOriginalLinksPreserved": true
+  },
+  "regressions": [
+    "/preview/resort/",
+    "/preview/cabins/",
+    "/preview/resort/contact/",
+    "/preview/resort/faq/",
+    "/preview/services/cinema/",
+    "/preview/panoramic-tour/",
+    "/preview/resort-map/",
+    "/preview/stay/",
+    "/preview/stay/sections/",
+    "/preview/stay/contact/"
+  ],
+  "galleryImages": 18,
+  "originalPortalLoads": true,
+  "textOnlyMetadataRoutes": [
+    "/resort/",
+    "/resort/contact/",
+    "/stay/",
+    "/stay/contact/",
+    "/chalet/",
+    "/chalet/services/",
+    "/chalet/services/games/",
+    "/chalet/services/water-games/",
+    "/chalet/contact/",
+    "/resort/faq/",
+    "/stay/faq/",
+    "/chalet/faq/",
+    "/cabins/",
+    "/stay/sections/",
+    "/chalet/details/",
+    "/services/",
+    "/services/hospitality/packages/",
+    "/services/coordination/",
+    "/services/cinema/",
+    "/services/water-games/",
+    "/services/outdoor-seating/",
+    "/services/games/",
+    "/services/dining-tables/",
+    "/services/share-and-win/",
+    "/services/loyalty/",
+    "/contest/",
+    "/menu/",
+    "/resort-map/",
+    "/chalet-map/",
+    "/cabins/dome-1/",
+    "/cabins/dome-2/",
+    "/cabins/pyramid/",
+    "/cabins/classic/",
+    "/cabins/greek-1/",
+    "/cabins/greek-2/",
+    "/cabins/palm-beach/",
+    "/cabins/bohemian/",
+    "/cabins/french/",
+    "/cabins/rustic/",
+    "/cabins/royal/",
+    "/cabins/panoramic/",
+    "/cabins/shared-garden/",
+    "/stay/ground-floor/",
+    "/stay/upper-floor/",
+    "/dome-tour/",
+    "/pyramid-tour/",
+    "/classic-tour/",
+    "/greek-tour/",
+    "/palm-tour/",
+    "/bohemian-tour/",
+    "/french-tour/",
+    "/rustic-tour/",
+    "/royal-tour/",
+    "/panoramic-tour/",
+    "/guest-services/",
+    "/services-guide/",
+    "/arrangements/",
+    "/"
+  ],
+  "catalogSha256": "79848e6e550232c66732b2af92795dc42bd1cbfc530a117f1496ce2a22394ac8"
+}

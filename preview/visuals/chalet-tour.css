@@ -1,0 +1,25 @@
+/* Reversible chalet presentation. Original illustration coordinates and floor facts are retained. */
+html.chalet-details-trial #fd-chalet-map .cm-details{display:block;align-self:start;max-height:none;overflow:visible;padding:12px;border:1px solid #315967;border-radius:18px;background:#102b39}
+html.chalet-details-trial #fd-chalet-map .cm-detail-heading,html.chalet-details-trial #fd-chalet-map .cm-detail-heading h3{display:block;text-align:right}
+html.chalet-details-trial #fd-chalet-map .cm-detail-heading{margin:0 0 10px}
+html.chalet-details-trial #fd-chalet-map .cm-detail-heading h3{font-size:13px;font-weight:700;line-height:1.5;color:#f1f7f8;margin:0}
+html.chalet-details-trial #fd-chalet-map .cm-detail-heading p{font-size:10px;line-height:1.5;color:#a4bbc5;margin:2px 0 0}
+html.chalet-details-trial #fd-chalet-map .cm-cards{gap:8px}
+html.chalet-details-trial #fd-chalet-map .cm-card{padding:10px 7px;min-height:70px;background:#153744;border:1px solid #315967;border-radius:10px;box-shadow:none;color:#f1f7f8}
+html.chalet-details-trial #fd-chalet-map .cm-card strong{font-size:12px;font-weight:500;line-height:1.6;color:#f1f7f8}
+html.chalet-details-trial #fd-chalet-map .cm-card span{font-size:10px;line-height:1.5;color:#f1f7f8}
+html.chalet-details-trial #fd-chalet-map .cm-card svg{width:18px;height:18px;color:#6dced2;stroke:#6dced2}
+html.chalet-details-trial #fd-chalet-map .cm-cards:not(.is-scrollable) .cm-card{flex:1;max-width:none;min-width:0}
+html.chalet-details-trial #fd-chalet-map .cm-cards:has(.cm-card:only-child) .cm-card{flex-direction:row;gap:8px;min-height:48px}
+html.chalet-details-trial #fd-chalet-map .cm-spec-navigation{gap:10px;margin-top:8px}
+html.chalet-details-trial #fd-chalet-map .cm-spec-navigation button{width:32px;height:32px;flex-basis:32px;border-color:#315967;color:#6dced2}
+html.chalet-details-trial #fd-chalet-map .cm-spec-navigation span{color:#a4bbc5;font-size:10px}
+html.chalet-details-trial #fd-chalet-map .cm-occupancy{color:#a4bbc5;font-size:12px;line-height:1.5}
+html.chalet-details-trial #fd-chalet-map .cm-leaders path{stroke:#6dced2;opacity:.15}
+html.chalet-details-trial #fd-chalet-map .cm-leaders .is-selected path{opacity:1}
+@media(max-width:899px){
+ html.chalet-details-trial #fd-chalet-map .cm-workspace{grid-template-rows:minmax(150px,1fr) max-content auto;gap:10px}
+ html.chalet-details-trial #fd-chalet-map .cm-details{width:calc(100% - 16px);margin-inline:8px;box-sizing:border-box}
+ html.chalet-details-trial #fd-chalet-map .cm-leaders g:not(.is-selected){visibility:hidden}
+ html.chalet-details-trial #fd-chalet-map .cm-cards.is-scrollable .cm-card{flex:0 0 108px;min-width:108px}
+}

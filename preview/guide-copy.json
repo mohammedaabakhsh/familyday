@@ -276,6 +276,164 @@
           ]
         }
       ]
+    },
+    "chalet": {
+      "groups": [
+        {
+          "id": "booking",
+          "label": "الحجز",
+          "title": "الحجز وأوقات الدخول",
+          "items": [
+            {
+              "id": "chalet-location",
+              "sources": [
+                "أين يقع شاليه يوم العائلة؟",
+                "كيف يمكنني التواصل معكم؟"
+              ],
+              "question": "أين يقع الشاليه وكيف أتواصل معكم؟",
+              "links": [
+                {
+                  "path": "/chalet/contact/",
+                  "text": "الموقع والتواصل"
+                }
+              ]
+            },
+            {
+              "id": "chalet-times",
+              "sources": [
+                "ما أوقات الدخول والخروج؟"
+              ]
+            },
+            {
+              "id": "chalet-booking",
+              "sources": [
+                "كيف يمكنني الحجز؟",
+                "ما طرق الدفع المتاحة؟"
+              ],
+              "question": "كيف أحجز وما طرق الدفع؟",
+              "links": [
+                {
+                  "path": "/chalet/contact/",
+                  "text": "الحجز والتطبيقات"
+                }
+              ]
+            },
+            {
+              "id": "chalet-cancel",
+              "sources": [
+                "هل يمكن تعديل أو إلغاء الحجز؟"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cabins",
+          "label": "الشاليه",
+          "title": "الغرف والمرافق",
+          "items": [
+            {
+              "id": "chalet-guests",
+              "sources": [
+                "هل سعة الضيوف المذكورة للاستقبال أم للمبيت؟",
+                "كم عدد الضيوف في الشاليه؟"
+              ],
+              "question": "كم سعة الشاليه للاستقبال والمبيت؟"
+            },
+            {
+              "id": "chalet-rooms",
+              "sources": [
+                "كم عدد غرف النوم في الشاليه؟",
+                "كم عدد الحمامات في الشاليه؟"
+              ],
+              "question": "ما تفاصيل غرف النوم والحمامات؟"
+            },
+            {
+              "id": "chalet-majlis",
+              "sources": [
+                "هل يوجد مجلس مستقل في الشاليه؟"
+              ]
+            },
+            {
+              "id": "chalet-play",
+              "sources": [
+                "هل توجد غرفة ألعاب للأطفال؟"
+              ]
+            },
+            {
+              "id": "chalet-pool",
+              "sources": [
+                "هل المسبح بخصوصية كاملة؟",
+                "هل يوجد مسبح في الشاليه؟"
+              ],
+              "question": "ما تفاصيل المسبح وخصوصيته؟"
+            },
+            {
+              "id": "chalet-kitchen",
+              "sources": [
+                "ما تجهيزات المطبخ المتوفرة؟"
+              ]
+            },
+            {
+              "id": "chalet-explore",
+              "sources": [
+                "كيف أستكشف الشاليه من الداخل؟",
+                "أين أجد صور الشاليه ومواصفاته؟"
+              ],
+              "question": "أين أجد الصور والتفاصيل والاستكشاف؟",
+              "links": [
+                {
+                  "path": "/chalet/details/",
+                  "text": "التفاصيل والصور"
+                },
+                {
+                  "path": "/chalet-map/",
+                  "text": "استكشف الشاليه"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "services",
+          "label": "الخدمات",
+          "title": "الخدمات أثناء الإقامة",
+          "items": [
+            {
+              "id": "chalet-services",
+              "sources": [],
+              "question": "ما الخدمات التي يمكن طلبها أثناء الإقامة؟",
+              "answers": [
+                "تتوفر الألعاب الترفيهية والألعاب المائية. تعرّف على الأسعار والمحتويات في دليل الخدمات، ثم انتقل إلى صفحة خدمات الشاليه لاختيار طلبك وإرساله عبر واتساب."
+              ],
+              "links": [
+                {
+                  "path": "/chalet/services/",
+                  "text": "خدمات الشاليه"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rules",
+          "label": "التعليمات",
+          "title": "تعليمات الإقامة والسلامة",
+          "items": [
+            {
+              "id": "chalet-speakers",
+              "sources": [
+                "هل يُسمح بإحضار سماعات خارجية؟"
+              ]
+            },
+            {
+              "id": "chalet-safety",
+              "sources": [
+                "ما تعليمات استخدام المسبح؟"
+              ]
+            }
+          ]
+        }
+      ]
     }
   },
   "serviceImageSizes": {
@@ -451,5 +609,13 @@
       1200,
       1200
     ]
+  },
+  "venueContacts": {
+    "chalet": {
+      "booking": "https://familyday-sa.com/ar/listings/6abb996392a258b8171230a3",
+      "iphone": "https://apps.apple.com/sa/app/%D9%8A%D9%88%D9%85-%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9/id6475359813",
+      "android": "https://play.google.com/store/apps/details?id=com.familydaysa",
+      "review": "https://search.google.com/local/writereview?placeid=ChIJBx9eaoVnwRURtljowMtrzV4"
+    }
   }
 }

@@ -310,6 +310,8 @@
     if(kitchenItem)return kitchenItem.icon;
     return {'تلفزيون':'tv','دش زجاجي':'shower','مغسلة':'basin','دورة مياه':'toilet','ألعاب للأطفال':'toy','إطلالة على المسبح':'window','ألعاب مائية':'pool','زحليقة مزدوجة':'slide','ثلاجة':'fridge','فرن':'oven','ميكروويف':'microwave','موقد غاز وكهرباء':'hob','غلاية':'kettle','أدوات مطبخ أساسية':'utensils','باب مباشر لساحة المسبح':'door','مظلة':'outdoor','كرسي تشميس':'chair','دش خارجي':'shower','مدخل خاص':'door','حمام خاص':'shower'}[text]||'kitchen';
   }
+  var mergeDining=!!window.FD_RESORT_SCROLL;
+  if(mergeDining)rooms=rooms.filter(function(room){return room.key!=='dining';});
   function renderDetails(room){
     var details=room;
     var floor=room.floor?(room.floor):'';
@@ -319,6 +321,7 @@
 
       cards.push({label:['upper','ground','dining','living','majlis'].includes(room.key)?'':f[0],value:room.key==='dining'?'تتّسع لـ'+value:value,numeric:numeric,icon:room.key==='dining'?'dining':{'العمق':'water','السرير':'bed','الأسرّة':'bed','الحمام':'shower','السعة':'people'}[ar]||'size'});
     });
+    if(mergeDining&&room.key==='kitchen')cards.push({value:'طاولة طعام تتسع لـ'+specifications.diningCapacity+' أشخاص',icon:'dining'});
     (details.facts||[]).forEach(function(f,i){cards.push({value:f,icon:factIcon(room.facts[i])});});
     if(room.key==='groundBath')cards.push({value:'حمام',icon:'shower'});
     if(room.key==='stairs')cards.push({value:details.text,icon:'stairs'});
@@ -333,7 +336,8 @@
         var direction=getComputedStyle(strip).direction==='rtl'?-1:1;
         var forward=button.dataset.specDirection==='next'?1:-1;
         var step=strip.querySelector('.cm-card').getBoundingClientRect().width+(parseFloat(getComputedStyle(strip).columnGap)||0);
-        strip.scrollBy({left:direction*forward*step,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+        if(window.FD_RESORT_SCROLL)FD_RESORT_SCROLL(strip,direction,forward*step,updateDetailsOverflow);
+        else strip.scrollBy({left:direction*forward*step,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
       });
     });
     requestAnimationFrame(updateDetailsOverflow);
@@ -392,7 +396,7 @@
       ['play','pool'].forEach(function(key,i){
         place(key,rail/2+2,view.imageY+view.imageSize*(i ? .57 : .30),rail);
       });
-      ['groundBath','kitchen','dining','living'].forEach(function(key,i){
+      ['groundBath','kitchen','dining','living'].filter(function(key){return !mergeDining||key!=='dining';}).forEach(function(key,i){
         place(key,view.w-rail/2-2,view.imageY+view.imageSize*.17+i*Math.max(42,view.imageSize*.13),rail);
       });
       return;
@@ -405,7 +409,7 @@
     });
     [
       {keys:['ground','play','pool'],x:left,start:.24},
-      {keys:['groundBath','kitchen','dining','living'],x:right,start:.12}
+      {keys:['groundBath','kitchen','dining','living'].filter(function(key){return !mergeDining||key!=='dining';}),x:right,start:.12}
     ].forEach(function(side){
       var first=Math.max(64,view.imageY+view.imageSize*side.start);
       var step=Math.max(44,view.imageSize*.16);

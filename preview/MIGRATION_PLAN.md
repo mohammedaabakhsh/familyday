@@ -47,3 +47,5 @@
 6. نشر النسخة النهائية دفعة واحدة مع الاحتفاظ بنقطة رجوع، ثم حذف ملفات الواجهة القديمة التي لم يعد لها اعتماد. تبقى الصور والخطوط وملفات البوابتين التي لا تزال مطلوبة.
 
 لا تحذف مجلدات الصور أو الخطوط باعتبارها من الواجهة القديمة؛ الجديد وبوابات الطلب ما زالوا يستخدمونها.
+
+Chalet v51: preserve the existing `/chalet/guest-services/` public ordering portal at cutover. New chalet service guides hand off there; its data still comes from the existing shared guest-services source module and `/index.html`. The production data extraction prerequisite therefore also protects chalet orders. New `/preview/chalet/order/` and `/preview/chalet/checkout/` resolve to the informational service directory. Chalet original canonical/share URLs remain unchanged; no root cutover has happened.

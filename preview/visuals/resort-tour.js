@@ -56,8 +56,8 @@
   });
   return true;
  };
- if(/\/(?:dome|pyramid|classic|greek|palm|bohemian|french|rustic|royal|panoramic)-tour\//.test(location.pathname)){
-  document.documentElement.classList.add('resort-details-trial');
+ if(/\/(?:(?:dome|pyramid|classic|greek|palm|bohemian|french|rustic|royal|panoramic)-tour|chalet-map)\//.test(location.pathname)){
+  document.documentElement.classList.add(location.pathname.includes('/chalet-map/')?'chalet-details-trial':'resort-details-trial');
   var animation=null;
   function stopSliding(){
    if(!animation)return;
