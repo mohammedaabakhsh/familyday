@@ -111,3 +111,7 @@ Run `scripts/check-approved-mobile-review.py` plus the existing format, Back, ca
 ## Arrangements WhatsApp copy — v74
 
 Owner-approved independent request greetings now distinguish coordination, dining setup and outdoor seating. Seating capacity appears once beside the session name on the same message line. Both standalone and native resort requests use this shared builder. Prices, recipient numbers, public shares and catalogue data are unchanged. `check-arrangement-orders.py` verifies the three greetings and all six session lines (including the optional add-on); `check-resort-native-orders.py` compares both request surfaces. Rollback: `pre-arrangements-message-copy-20261125`.
+
+## Cinema portal move — v75
+
+[Implementation and checks](../docs/cinema-portal-move-v75.md): the arrangements portal is ordered coordination → outdoor seating → dining → cinema. Cinema uses the same independent request design, its original services recipient, price, duration, times and canonical share URL. Its old guest-portal tile, panel and controller logic are removed; old `#cinema` entries redirect with their queries preserved. Main-site cinema orders use the new portal in place. No catalogue facts or image files are duplicated. Rollback: `pre-cinema-portal-move-20261125`.

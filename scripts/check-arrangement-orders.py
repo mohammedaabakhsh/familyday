@@ -4,7 +4,7 @@ from pathlib import Path
 from urllib.parse import urlparse,parse_qs
 from playwright.sync_api import sync_playwright,expect
 R=Path(__file__).resolve().parents[1];BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8132'
-SOURCE=json.loads((R/'data/services.json').read_text());A=SOURCE['arrangements'];out={'version':'20261125-arrangements-v74','viewports':[],'messagesSent':False,'errors':[]}
+SOURCE=json.loads((R/'data/services.json').read_text());A=SOURCE['arrangements'];out={'version':'20261125-live-v75','viewports':[],'messagesSent':False,'errors':[]}
 old_html=subprocess.check_output(['git','show','pre-arrangements-ordering-20261125:services-guide/index.html']).decode().replace('guide.js?v=20261125-live-v54','guide-baseline.js')
 old_js=subprocess.check_output(['git','show','pre-arrangements-ordering-20261125:services-guide/guide.js']).decode()
 metrics="(selector)=>[...document.querySelectorAll(selector)].map(e=>{const s=getComputedStyle(e),r=e.getBoundingClientRect();return [r.width,r.height,s.padding,s.borderRadius,s.backgroundColor,s.fontSize]})"
@@ -46,4 +46,4 @@ with sync_playwright() as p:
   out['viewports'].append({'width':width,'height':height,'originalClosedCardGeometry':True,'fullPageBrowse':True,'packages':6,'sessions':6,'exactIndependentWhatsAppDrafts':True,'originalTextOnlyShares':True,'optionalSeatingExtra':True,'singleDiningChoice':True,'backAndCancel':True});c.close();print(width,height,'PASS',flush=True)
  b.close()
 assert not out['errors'],out
-(R/'site/audits/arrangements-messages-v74.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False))
+(R/'site/audits/arrangements-browse-v75.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False))

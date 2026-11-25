@@ -60,3 +60,7 @@ body.resort-order-embedded .menu-category.is-selected>summary{background:#1b4552
 body.resort-order-embedded #water-service.is-complete .selection-rows .extra-row.is-selected{background:#176174;color:#fff;border-color:#79ccd0}
 body.resort-order-embedded .extra-row.is-selected .extra-copy h3::after,body.resort-order-embedded .menu-row.is-selected h3::after{content:none}
 body.resort-order-embedded #water-service.is-complete #water-count{color:#b9e5e1}
+body.resort-order-embedded #cinema-session{display:none}
+body.resort-order-embedded .arrangement-cinema-time select{background:#0b2531;color:#edf5f6;border-color:#557984;color-scheme:dark}
+body.resort-order-embedded .arrangement-cinema-time small{color:#a4bbc3}
+body.resort-order-embedded #guide-content{padding:16px;scrollbar-gutter:auto}

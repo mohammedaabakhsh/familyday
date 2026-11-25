@@ -18,12 +18,12 @@ with sync_playwright() as p:
    assert page.locator('#dining .fd-dining-row').count()==5
    assert page.locator('#seating .package-card').count()==6
    assert page.locator('.seating-extra-offer strong').all_text_contents()==['كيك وعصير','170 ريال']
-   for section in ['coordination','dining','seating']:
+   for section in ['coordination','seating','dining','cinema']:
     page.goto(BASE+'/services-guide/#'+section,wait_until='networkidle')
     assert page.locator('#'+section).is_visible()
     if section!='dining':
      first=page.locator('#'+section+' .seating-collapsed-details').first
-     first.locator('summary').click()
+     first.locator(':scope > summary').click()
      assert first.locator('img').first.is_visible()
      assert first.locator('.package-details-body').inner_text()
    assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')
@@ -36,6 +36,6 @@ with sync_playwright() as p:
   page.reload(wait_until='networkidle')
   assert page.locator('.seating-extra-price').inner_text()=='171 ريال'
   assert not errors,errors
-  print(width,'PASS original links, three sections, expansion, independent catalogue update and overflow',flush=True)
+  print(width,'PASS original links, four sections, expansion, independent catalogue update and overflow',flush=True)
   page.close()
  browser.close()

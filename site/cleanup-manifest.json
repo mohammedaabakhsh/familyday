@@ -2294,22 +2294,22 @@
     "data/services.json": "8904201ec0ef1e658373cd0613239faeb6da9f8af4d1b6b29b0703bb22267b7c",
     "guest-services/README.md": "1ad3a3d1df387c6f92547d236015ff1c975e01b67890162dfa0d0e750b23ec7a",
     "guest-services/guest-services.css": "207545d3740a44c6e0ab8ded3731b255151478ecf82109d0344cdb5dc7e61a36",
-    "guest-services/guest-services.js": "5c26a1f4194e8b785e3c36d818456dfed5996a793dcf1cea18961243d7189630",
-    "guest-services/index.html": "fbc2344476958a7e85631b14b1c445619e1e2d6ba458c23286f8b19029121ec9",
+    "guest-services/guest-services.js": "39651a20a49226ae37b8c28cdd3d42278e767ada3e9e74d9839f093b6b3be83a",
+    "guest-services/index.html": "bae1f2b0b2f808ea4adf849f568738a4f512d4ea25c170ce68c3e2890a65f5ee",
     "guest-services/service-source.js": "e0da9d9065eea4864558446730954129ccefb495b97c4c7070b8e4a6a6803b3e",
     "guest-services/share.js": "a207ab25177d5b69bb1e8a4cc37bc0755c9a2157b7024561d3c15b2652c4323b",
     "js/dining-cards.js": "a80c8a1fcbc623019426cc46184f52f6dc0b109570afbd848e39571726be4097",
     "js/menu-order-message.js": "78e54cc83d01bb6b5a44de14d4ce709d8f900517d6f09b1bda0d7a63067abaa9",
     "services-guide/README.md": "e3c7f53ebcd6efe67fab2cc72f75c7a6ff274c181880110891817c3beab79499",
     "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
-    "services-guide/guide.css": "2e4164a051b4ef782483e5ebb342f877b6d055fd836996aee6554fd1ba263f35",
-    "services-guide/guide.js": "2c0c2dcc6d024cc4eff933519cc675f1b525d8f93955d841045055aa3b9e4c0b",
-    "services-guide/index.html": "3529704f336431f39d5b1e343d57860a0f87c40609d06db80367e00807e017eb",
+    "services-guide/guide.css": "ac2cf6918cb70b22ac197b253ef43acad4ce5465bb1f120577f19dcff223f4b7",
+    "services-guide/guide.js": "144a3a9300c513f65db7e0eb1a465e23a1acba635628c3056434eb420485e546",
+    "services-guide/index.html": "8ee29d617b61b5d0279963fb198a9d594ba334e01e8479f3971544b2bb5a7440",
     "services-guide/share-entry.js": "05dac99bc60dfc4b2d2d1b08c131735f22d72f29cf93f1861b85df47c89dffa2",
     "guest-services/resort-refinements.css": "5ccfd5e08d6538ebb7f37eb93f5dc52ac270dbf309ee57b38c82078ee0b31520",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
-    "services-guide/guide-orders.js": "5543bf943da39cb568ca252aa96f5a5acecb0fe08aabb78b39793bb836038262",
-    "services-guide/guide-orders.css": "a10208b1a9069509a1560151832f1788d98dbec143291f70a11e7acc1b62c017"
+    "services-guide/guide-orders.js": "2ee27f22ff7795ba7a7bcfeca41bfa8d5cad1ddaad29883fc41d901ae8310232",
+    "services-guide/guide-orders.css": "52dfd6d82f6dc9a92ff73392ba2df5dc3139a4ada6f786f0e6852902cce41636"
   },
   "preservedCompatibility": [
     "preview redirects",
@@ -2599,6 +2599,41 @@
       "services-guide/index.html": {
         "previousSha256": "ea221f1920da5114cd6eae1fe4d4f055e2e7763b3cdce855b50e58cd69aabc70",
         "reason": "Owner-approved service-specific WhatsApp greeting and seating capacity on the same line as its name; original prices, recipient and public links retained"
+      }
+    }
+  },
+  "approvedCinemaPortalMove": {
+    "version": "20261125-live-v75",
+    "rollbackTag": "pre-cinema-portal-move-20261125",
+    "reason": "Arrange the standalone guide as coordination, outdoor seating, dining, cinema; remove cinema from the other portal while preserving canonical shares and old entries.",
+    "protectedChanges": {
+      "services-guide/index.html": {
+        "previousSha256": "3529704f336431f39d5b1e343d57860a0f87c40609d06db80367e00807e017eb",
+        "reason": "Owner-approved move of cinema to the arrangements/seating portal, ordered independently with the original services recipient; guest portal removes cinema and preserves old-link redirects"
+      },
+      "services-guide/guide.js": {
+        "previousSha256": "2c0c2dcc6d024cc4eff933519cc675f1b525d8f93955d841045055aa3b9e4c0b",
+        "reason": "Owner-approved move of cinema to the arrangements/seating portal, ordered independently with the original services recipient; guest portal removes cinema and preserves old-link redirects"
+      },
+      "services-guide/guide-orders.js": {
+        "previousSha256": "5543bf943da39cb568ca252aa96f5a5acecb0fe08aabb78b39793bb836038262",
+        "reason": "Owner-approved move of cinema to the arrangements/seating portal, ordered independently with the original services recipient; guest portal removes cinema and preserves old-link redirects"
+      },
+      "services-guide/guide.css": {
+        "previousSha256": "2e4164a051b4ef782483e5ebb342f877b6d055fd836996aee6554fd1ba263f35",
+        "reason": "Owner-approved move of cinema to the arrangements/seating portal, ordered independently with the original services recipient; guest portal removes cinema and preserves old-link redirects"
+      },
+      "services-guide/guide-orders.css": {
+        "previousSha256": "a10208b1a9069509a1560151832f1788d98dbec143291f70a11e7acc1b62c017",
+        "reason": "Owner-approved move of cinema to the arrangements/seating portal, ordered independently with the original services recipient; guest portal removes cinema and preserves old-link redirects"
+      },
+      "guest-services/index.html": {
+        "previousSha256": "fbc2344476958a7e85631b14b1c445619e1e2d6ba458c23286f8b19029121ec9",
+        "reason": "Owner-approved move of cinema to the arrangements/seating portal, ordered independently with the original services recipient; guest portal removes cinema and preserves old-link redirects"
+      },
+      "guest-services/guest-services.js": {
+        "previousSha256": "5c26a1f4194e8b785e3c36d818456dfed5996a793dcf1cea18961243d7189630",
+        "reason": "Owner-approved move of cinema to the arrangements/seating portal, ordered independently with the original services recipient; guest portal removes cinema and preserves old-link redirects"
       }
     }
   }

@@ -8,13 +8,18 @@
   favicon.rel='icon';favicon.type='image/webp';favicon.href='/imgs/img01.webp';
   document.head.appendChild(favicon);
   var isChalet = document.body.dataset.venue==='chalet';
+  function redirectCinema(){
+    if(isChalet || !/^#cinema(?:-service)?$/.test(location.hash))return false;
+    var destination=new URL('/services-guide/',location.origin);destination.search=location.search;destination.hash='cinema';location.replace(destination.href);return true;
+  }
+  if(redirectCinema())return;
   var gameOptions = isChalet ? ['box'] : ['box','table'];
   var storageKey = isChalet ? 'familyday.chalet-guest-orders.v1' : 'familyday.guest-orders.v2';
   var directService=!isChalet && parent!==window && new URLSearchParams(location.search).get('embed')==='resort-order' ? new URLSearchParams(location.search).get('direct') : '';
-  if(['restaurant','hospitality','water','games','cinema','extras'].indexOf(directService)===-1) directService='';
+  if(['restaurant','hospitality','water','games','extras'].indexOf(directService)===-1) directService='';
   var identityKey='familyday.resort-direct-identity.v1';
   var cabins;
-  var state = {name:'', cabin:'', notes:'', restaurantNotes:'', quantities:{}, hospitality:{}, water:null, cinema:'', games:'', menu:{}};
+  var state = {name:'', cabin:'', notes:'', restaurantNotes:'', quantities:{}, hospitality:{}, water:null, games:'', menu:{}};
   var catalog;
   document.getElementById('reload-services').addEventListener('click',function(){location.reload();});
   try {catalog=await FD_GUEST_SOURCE.load();}
@@ -34,7 +39,6 @@
   var menuCatalog = Object.create(null), menuRows = [], hospitalityRows = [];
   var form = document.getElementById('extras-order');
   var restaurantForm = document.getElementById('restaurant-order');
-  var time = document.getElementById('cinema-time');
   var extras = Array.from(document.querySelectorAll('[data-extra]')).map(function (row) {
     return {id:row.dataset.extra, name:row.querySelector('h3').textContent,
       price:Number(row.querySelector('.extra-price bdi').textContent), row:row};
@@ -50,7 +54,6 @@
     return value && Number.isInteger(value.adults) && Number.isInteger(value.children) &&
       value.adults>=0 && value.children>=0 && value.adults+value.children>0 && value.adults+value.children===catalog.water.size*(Number.isInteger(value.packages)?value.packages:1) && (value.packages===undefined || Number.isInteger(value.packages) && value.packages>=1 && value.packages<=20);
   }
-  function validTime(value) { return !!time && Array.from(time.options).some(function(option){return option.value===value && !!value;}); }
   function save() {
     try { sessionStorage.setItem(directService ? identityKey : storageKey,JSON.stringify(directService ? {name:state.name,cabin:state.cabin} : state)); }
     catch (_) { /* Ordering also works without browser storage. */ }
@@ -66,7 +69,6 @@
       extras.forEach(function(item){state.quantities[item.id]=quantity(saved.quantities && saved.quantities[item.id]);});
       if(document.getElementById('hospitality-card')) catalog.hospitality.packages.forEach(function(pack){state.hospitality[pack.id]=quantity(saved.hospitality && saved.hospitality[pack.id]);});
       if (validWater(saved.water)) state.water={adults:saved.water.adults,children:saved.water.children,packages:saved.water.packages || 1};
-      if (validTime(saved.cinema)) state.cinema=saved.cinema;
       if (gameOptions.indexOf(saved.games)!==-1) state.games=saved.games;
       Object.keys(menuCatalog).forEach(function(key){
         var item=saved.menu && saved.menu[key];
@@ -217,8 +219,6 @@
     if(data.water) lines.push({id:'water',group:'water',name:catalog.water.name,qty:data.water.packages || 1,price:incompleteWater(data) ? 0 : catalog.water.price*(data.water.packages || 1),
       pending:incompleteWater(data),details:['للكبار: '+data.water.adults,'للأطفال: '+data.water.children]});
     if(data.games){var pack=catalog.games.packages[data.games];lines.push({id:'games',group:'games',name:pack.name,price:pack.price,details:[]});}
-    if(data.cinema) lines.push({id:'cinema',group:'cinema',name:catalog.cinema.name,price:catalog.cinema.price,
-      details:['مدة الجلسة: '+catalog.cinema.duration,'وقت بداية الجلسة: '+time.querySelector('option[value="'+data.cinema+'"]').textContent]});
     catalog.hospitality.packages.forEach(function(pack){
       var qty=data.hospitality[pack.id] || 0;
       if(qty) lines.push({id:'hospitality:'+pack.id,group:'hospitality',name:pack.name,qty:qty,price:pack.price*qty,details:[]});
@@ -290,18 +290,6 @@
     restaurantForm.querySelector('.send-order').disabled=!lines.length;
     updateCard('restaurant',lines);
   }
-  function cinemaTimeRange(value) {
-    var start=Number(value),match=catalog.cinema.duration.match(/\d+(?:\.\d+)?/);
-    if(!Number.isFinite(start) || !match) return 'وقت بداية الجلسة: '+time.options[time.selectedIndex].textContent;
-    var end=start+Number(match[0]);
-    function label(hour) {
-      var minutes=Math.round(hour*60),h=Math.floor(minutes/60)%24,m=minutes%60;
-      var number=new Intl.NumberFormat('ar-SA-u-nu-latn',{useGrouping:false});
-      var clock=number.format(h%12 || 12)+(m ? ':'+number.format(m).padStart(2,'0') : '');
-      return clock+(h===0 && m===0 ? ' منتصف الليل' : h<12 ? ' صباحًا' : h===12 ? ' ظهرًا' : ' مساءً');
-    }
-    return 'من '+label(start)+' إلى '+label(end)+(Math.floor(end/24)>Math.floor(start/24) ? ' (اليوم التالي)' : '');
-  }
   function renderServiceControls() {
     var data=selection(),water=waterSelection(data), total=water.adults+water.children,required=catalog.water.size*(water.packages || 1);
     document.getElementById('water-packages-count').textContent=String(water.packages || 1);
@@ -310,12 +298,10 @@
     ['adults','children'].forEach(function(key){setCounter(document.getElementById('water-'+key).parentNode,water[key],water[key]+required-total);});
     document.getElementById('water-service').classList.toggle('is-complete',total===required);
     document.getElementById('water-count').textContent=total===required ? '✓ اكتمل اختيار الألعاب' : 'اخترت '+total+' من '+required;
-    if(time){time.value=data.cinema;time.classList.toggle('is-selected',!!data.cinema);}
     document.querySelectorAll('[name="games-package"]').forEach(function(input){
       input.checked=input.value===data.games;
       input.closest('label').classList.toggle('is-selected',!!data.games && input.checked);
     });
-    if(time) document.getElementById('cinema-status').textContent=data.cinema ? cinemaTimeRange(data.cinema) : '';
     document.getElementById('games-status').textContent=data.games ? 'تم اختيار الباقة' : '';
   }
   function updateShortcut() {
@@ -328,7 +314,7 @@
   function renderResort() {
     var lines=resortLines();
     renderSummary(document.getElementById('order-items'),lines,function(id){
-      if(id.startsWith('hospitality:')) delete state.hospitality[id.slice(12)];else if(id==='water') state.water=null;else if(id==='cinema' || id==='games') state[id]='';else state.quantities[id]=0;
+      if(id.startsWith('hospitality:')) delete state.hospitality[id.slice(12)];else if(id==='water') state.water=null;else if(id==='games') state[id]='';else state.quantities[id]=0;
       renderOrders();save();
     });
     document.getElementById('order-count').textContent=lines.length ? 'عدد الاختيارات: '+lines.length : '';
@@ -337,7 +323,7 @@
     form.querySelector('.send-order').disabled=!lines.length || incompleteWater();
     var warning=document.getElementById('order-warning');warning.hidden=!incompleteWater();
     warning.textContent=incompleteWater() ? 'أكمل اختيار '+catalog.water.size*(waterSelection().packages || 1)+' ألعاب مائية أو احذف الباقة قبل متابعة الطلب.' : '';
-    ['water','games','cinema','hospitality','extras'].forEach(function(key){updateCard(key,lines.filter(function(line){return line.group===key;}));});
+    ['water','games','hospitality','extras'].forEach(function(key){updateCard(key,lines.filter(function(line){return line.group===key;}));});
   }
   function submit(event, restaurant) {
     event.preventDefault();var target=restaurant ? restaurantForm : form;
@@ -451,13 +437,14 @@
       save();renderOrders();closeEditor();
     });
     function openLinkedService(){
+      if(redirectCinema())return;
       var key=location.hash.slice(1).replace(/-service$/,'');
       if(document.getElementById(key+'-card'))openEditor(key);
     }
     window.addEventListener('hashchange',openLinkedService);openLinkedService();
   }
   function hydrateServices() {
-    ['water','cinema','games'].forEach(function(key){
+    ['water','games'].forEach(function(key){
       var section=document.getElementById(key+'-service'), data=catalog[key];
       if(!section) return;
       document.getElementById(key+'-title').textContent=data.title;
@@ -471,13 +458,6 @@
     document.querySelector('#water-service .section-note:not(.water-intro)').textContent='وزّع الألعاب بين الكبار والأطفال';
     document.querySelector('#games-service .games-intro').textContent=catalog.games.intro;
     document.querySelector('#games-service .contents-title').textContent=isChalet ? 'الألعاب المشمولة في الباقة' : 'الألعاب المشمولة في الباقتين';
-    if(time){
-      document.getElementById('cinema-duration').textContent=catalog.cinema.duration;
-      document.getElementById('cinema-price').textContent=catalog.cinema.price+' ريال';
-      document.querySelector('#cinema-service .section-note').textContent=catalog.cinema.intro;
-      catalog.cinema.times.forEach(function(slot){time.add(new Option(slot.label,slot.value));});time.disabled=false;
-      var notes=document.querySelector('#cinema-service .usage ul');catalog.cinema.notes.forEach(function(text){notes.appendChild(el('li',text));});
-    }
     var packages=document.querySelector('.game-options');
     packages.querySelector('legend').textContent=isChalet ? 'باقة الألعاب' : 'اختر باقة الألعاب';
     gameOptions.forEach(function(key){
@@ -502,7 +482,6 @@
     if(total>max){water.adults=0;water.children=0;}
     data.water=water;renderEditor();
   });});
-  if(time) time.addEventListener('change',function(){selection().cinema=time.value;renderEditor();});
   document.querySelectorAll('[name="games-package"]').forEach(function(input){input.addEventListener('change',function(){selection().games=input.value;renderEditor();});});
   extras.forEach(function(item){item.row.querySelectorAll('[data-step]').forEach(function(button){button.addEventListener('click',function(){
     var quantities=selection().quantities;

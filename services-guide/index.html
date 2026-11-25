@@ -22,16 +22,16 @@
 <link rel="preload" href="/fonts/tajawal/tajawal-arabic-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/tajawal.css?v=20261122-pdf2-v1">
 <link rel="stylesheet" href="/css/dining-cards.css?v=20261122-final-review-v1">
-<link rel="stylesheet" href="guide.css?v=20261116-reviewed-usage-v1">
+<link rel="stylesheet" href="guide.css?v=20261125-live-v75">
 <script src="guide-gallery.js?v=20261109-gallery-lifecycle-v3" defer></script>
 <script src="/js/dining-cards.js?v=20261122-final-review-v1" defer></script>
-<script src="guide-orders.js?v=20261125-arrangements-v74" defer></script>
-<script src="guide.js?v=20261125-arrangements-v73" defer></script>
+<script src="guide-orders.js?v=20261125-live-v75" defer></script>
+<script src="guide.js?v=20261125-live-v75" defer></script>
 <link rel="stylesheet" href="/css/back-navigation.css?v=20261106-stable-ring-v2">
 <link rel="stylesheet" href="/css/desktop-layout.css?v=20261110-desktop-v1" media="screen and (min-width:1024px)">
-<link rel="stylesheet" href="guide-orders.css?v=20261125-arrangements-v73">
-<link rel="stylesheet" href="/site/orders/portal-surface.css?v=20261125-live-v71">
-<script src="/site/orders/portal-surface.js?v=20261125-share-v72" defer></script>
+<link rel="stylesheet" href="guide-orders.css?v=20261125-live-v75">
+<link rel="stylesheet" href="/site/orders/portal-surface.css?v=20261125-live-v75">
+<script src="/site/orders/portal-surface.js?v=20261125-live-v75" defer></script>
 </head>
 <body>
 <a class="skip" href="#contents">انتقل إلى الخدمات</a>
@@ -48,9 +48,13 @@
   </div>
 </section>
   <nav class="contents" id="contents" aria-labelledby="contents-title"><h2 id="contents-title" class="sr-only" tabindex="-1">اختاروا تجهيزاتكم</h2><ol>
-<li class="tile-item tile-item--coordination"><a class="guide-tile" aria-haspopup="dialog" aria-controls="arrangement-dialog" href="#coordination"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8c-6-8-10-1-4 1h8c6-2 2-9-4-1ZM3 9h18v4H3ZM5 13v8h14v-8M12 9v12"/></svg></span><span class="tile-copy"><span class="tile-title">التنسيقات</span><span class="tile-description">نجهّز مناسباتكم بكل تفاصيلها</span></span><span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span></a></li>
-<li class="tile-item tile-item--dining"><a class="guide-tile" aria-haspopup="dialog" aria-controls="arrangement-dialog" href="#dining"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v6m3-6v6m3-6v6M3 7h6M6 9v12M18 3v18m0-18c-5 3-5 9 0 9"/></svg></span><span class="tile-copy"><span class="tile-title">طاولات الطعام</span><span class="tile-description">خيارات تناسب عدد ضيوفكم</span></span><span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span></a></li>
-<li class="tile-item tile-item--seating"><a class="guide-tile" aria-haspopup="dialog" aria-controls="arrangement-dialog" href="#seating"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6v9h5.5M3 15v5m4-5v5M22 6v9h-5.5M21 15v5m-4-5v5M9 12h6M12 12v8m-2 0h4"/></svg></span><span class="tile-copy"><span class="tile-title">الجلسات الخارجية</span><span class="tile-description">جلسات تجمعكم في مساحتكم الخارجية الخاصة</span></span><span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span></a></li>
+
+
+
+<li class="tile-item tile-item--coordination"><a class="guide-tile" href="#coordination"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8c-6-8-10-1-4 1h8c6-2 2-9-4-1ZM3 9h18v4H3ZM5 13v8h14v-8M12 9v12"/></svg></span><span class="tile-copy"><span class="tile-title">التنسيقات</span><span class="tile-description">نجهّز مناسباتكم بكل تفاصيلها</span></span><span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span></a></li>
+<li class="tile-item tile-item--seating"><a class="guide-tile" href="#seating"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6v9h5.5M3 15v5m4-5v5M22 6v9h-5.5M21 15v5m-4-5v5M9 12h6M12 12v8m-2 0h4"/></svg></span><span class="tile-copy"><span class="tile-title">الجلسات الخارجية</span><span class="tile-description">جلسات تجمعكم في مساحتكم الخارجية الخاصة</span></span><span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span></a></li>
+<li class="tile-item tile-item--dining"><a class="guide-tile" href="#dining"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v6m3-6v6m3-6v6M3 7h6M6 9v12M18 3v18m0-18c-5 3-5 9 0 9"/></svg></span><span class="tile-copy"><span class="tile-title">طاولات الطعام</span><span class="tile-description">خيارات تناسب عدد ضيوفكم</span></span><span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span></a></li>
+<li class="tile-item tile-item--cinema"><a class="guide-tile" href="#cinema"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="15" rx="2"/><path d="m10 8 6 4-6 4ZM8 22h8"/></svg></span><span class="tile-copy"><span class="tile-title">جلسة السينما</span><span class="tile-description">جلسة سينما في مساحتكم الخارجية الخاصة</span></span><span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span></a></li>
   </ol></nav>
 <dialog id="arrangement-dialog" class="arrangement-dialog" aria-labelledby="arrangement-dialog-title">
 <header class="arrangement-dialog-header"><h2 id="arrangement-dialog-title" tabindex="-1">اختيار التجهيزات</h2><button type="button" data-close-arrangements aria-label="إغلاق اختيار التجهيزات">×</button></header>
@@ -82,6 +86,7 @@
 <h3 id="footer-resort-title">منسّق المناسبات</h3>
 <nav class="contact-actions" aria-labelledby="footer-resort-title"><a class="contact-whatsapp" href="https://wa.me/966537009217" target="_blank" rel="noopener noreferrer" aria-label="واتساب منسّق المناسبات">واتساب</a><a class="contact-phone" href="tel:+966537009217" aria-label="اتصال بمنسّق المناسبات">اتصال</a></nav>
 </section>
+<section class="footer-contact" aria-labelledby="footer-cinema-title"><h3 id="footer-cinema-title">جلسة السينما</h3><nav class="contact-actions" aria-labelledby="footer-cinema-title"><a class="contact-whatsapp" href="https://wa.me/966556156693" target="_blank" rel="noopener noreferrer">واتساب</a><a class="contact-phone" href="tel:+966556156693">اتصال</a></nav></section>
 <div class="footer-brand">
 <p class="footer-tagline">خصوصية تليق بكم… وراحة تستحقونها</p>
 <p class="footer-address">منتجع يوم العائلة · جدة — خليج سلمان</p>

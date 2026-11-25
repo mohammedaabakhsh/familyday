@@ -4,7 +4,7 @@ from pathlib import Path
 from urllib.parse import urlparse,parse_qs
 from playwright.sync_api import sync_playwright,expect
 R=Path(__file__).resolve().parents[1];BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8127'
-SOURCE=json.loads((R/'data/services.json').read_text());links=json.loads((R/'site/orders/service-links.json').read_text())['services'];out={'version':'20261125-live-v71','profiles':[],'messagesSent':False,'errors':[]}
+SOURCE=json.loads((R/'data/services.json').read_text());links=json.loads((R/'site/orders/service-links.json').read_text())['services'];out={'version':'20261125-live-v75','profiles':[],'messagesSent':False,'errors':[]}
 TAG='pre-resort-direct-orders-20261125'
 for name in ['data/services.json','js/menu-order-message.js','chalet/guest-services/index.html','site/catalog.json','site/share-metadata.json','share-pages.json','share-extras.json']:
  assert (R/name).read_bytes()==subprocess.check_output(['git','show',TAG+':'+name]),name
@@ -32,7 +32,7 @@ def select(f,key):
   f.locator('.fd-dining-option[data-size="12"][data-option="tansiq"]').click();f.locator('.fd-dining-option[data-size="6"][data-option="plain"]').click();assert f.locator('.fd-dining-option[aria-pressed="true"]').count()==1
  else:f.locator('[data-extra="bed"] [data-step="1"]').click()
 def identity(f,key,notes=True):
- prefix='arrangement' if key in ['coordination','dining','seating'] else 'restaurant' if key=='restaurant' else 'guest'
+ prefix='arrangement' if key in ['coordination','dining','seating','cinema'] else 'restaurant' if key=='restaurant' else 'guest'
  f.locator('#'+prefix+'-name').fill('ضيف المراجعة');f.locator('#'+prefix+'-cabin').select_option('البيت اليوناني 1')
  if notes:f.locator('#'+prefix+'-notes').fill('مراجعة محلية فقط')
  return prefix
@@ -42,12 +42,14 @@ with sync_playwright() as p:
  b=p.chromium.launch(**opts)
  baseline={}
  for key,path in cases:
-  c=b.new_context(viewport={'width':390,'height':844},ignore_https_errors=True);c.add_init_script(init);page=c.new_page();guest=key not in ['coordination','dining','seating']
+  c=b.new_context(viewport={'width':390,'height':844},ignore_https_errors=True);c.add_init_script(init);page=c.new_page();guest=key not in ['coordination','dining','seating','cinema']
   page.goto(BASE+('/guest-services/' if guest else '/services-guide/'))
   if guest:page.locator('#water-card:not([disabled])').wait_for();page.locator('#'+key+'-card').click()
   else:page.locator('#guide-content.is-ready').wait_for(state='attached');page.locator('.guide-tile[href="#'+key+'"]').click()
   if guest:
    select(page,key);page.locator('#apply-selection').click()
+  elif key=='cinema':
+   page.locator('#cinema-session summary').first.click();page.locator('#cinema-session [data-request-key]').click();page.locator('#cinema-time').select_option('18')
   elif key=='dining':
    page.locator('.fd-dining-option[data-size="6"][data-option="plain"]').click()
   else:
@@ -60,8 +62,8 @@ with sync_playwright() as p:
   for key,path in cases:
    page.goto(BASE+path);page.locator('#main [data-service-portal]').click();expect(page.locator('#native-order-dialog')).to_be_visible();expect(page.locator('.native-order-loading')).to_be_hidden();expect(page.locator('.native-order-error')).to_be_hidden();assert page.url==BASE+path
    f=page.frame_locator('.native-order-frame');expect(f.locator('.resort-direct-send')).to_be_visible();assert page.locator('.native-order-shortcut,.native-order-tabs').count()==0
-   assert f.locator('.resort-direct-form').count()==1;assert not f.locator('.resort-direct-form .order-items,.resort-direct-form #arrangement-items').first.is_visible();assert not f.locator('#apply-selection').is_visible() if key not in ['coordination','dining','seating'] else not f.locator('.arrangement-dialog-footer [data-close-arrangements]').is_visible()
-   expect(f.locator('.resort-direct-send')).to_be_disabled();prefix='arrangement' if key in ['coordination','dining','seating'] else 'restaurant' if key=='restaurant' else 'guest';assert f.locator('#'+prefix+'-notes').input_value()==''
+   assert f.locator('.resort-direct-form').count()==1;assert not f.locator('.resort-direct-form .order-items,.resort-direct-form #arrangement-items').first.is_visible();assert not f.locator('#apply-selection').is_visible() if key not in ['coordination','dining','seating','cinema'] else not f.locator('.arrangement-dialog-footer [data-close-arrangements]').is_visible()
+   expect(f.locator('.resort-direct-send')).to_be_disabled();prefix='arrangement' if key in ['coordination','dining','seating','cinema'] else 'restaurant' if key=='restaurant' else 'guest';assert f.locator('#'+prefix+'-notes').input_value()==''
    if key!='cinema':assert f.locator('#'+prefix+'-name').input_value()=='ضيف المراجعة'
    select(f,key);expect(f.locator('.resort-direct-send')).to_be_enabled()
    if key=='cinema':
@@ -79,9 +81,9 @@ with sync_playwright() as p:
     Path('/tmp/resort-direct-orders-v71').mkdir(exist_ok=True);page.screenshot(path='/tmp/resort-direct-orders-v71/'+key+'.png')
    f.locator('.resort-direct-send').click();expect(page.locator('#native-order-dialog')).to_be_hidden();assert page.evaluate('opened.at(-1)')==baseline[key],(key,page.evaluate('opened.at(-1)'),baseline[key]);assert page.evaluate('(keys)=>keys.map(k=>sessionStorage.getItem(k))',keys)==saved
   # Cancel/back/reopen discards selection and notes, retaining name/cabin only.
-  page.goto(BASE+'/services/cinema/');page.locator('#main [data-service-portal]').click();expect(page.locator('.native-order-loading')).to_be_hidden();f=page.frame_locator('.native-order-frame');assert f.locator('#cinema-time').input_value()=='';f.locator('#cinema-time').select_option('18');f.locator('#guest-notes').fill('لا يستمر');page.go_back();expect(page.locator('#native-order-dialog')).to_be_hidden();page.locator('#main [data-service-portal]').click();expect(page.locator('.native-order-loading')).to_be_hidden();assert f.locator('#cinema-time').input_value()=='' and f.locator('#guest-notes').input_value()=='';page.locator('.native-order-close').click();expect(page.locator('#native-order-dialog')).to_be_hidden()
+  page.goto(BASE+'/services/cinema/');page.locator('#main [data-service-portal]').click();expect(page.locator('.native-order-loading')).to_be_hidden();f=page.frame_locator('.native-order-frame');assert f.locator('#cinema-time').input_value()=='';f.locator('#cinema-time').select_option('18');f.locator('#arrangement-notes').fill('لا يستمر');page.go_back();expect(page.locator('#native-order-dialog')).to_be_hidden();page.locator('#main [data-service-portal]').click();expect(page.locator('.native-order-loading')).to_be_hidden();assert f.locator('#cinema-time').input_value()=='' and f.locator('#arrangement-notes').input_value()=='';page.locator('.native-order-close').click();expect(page.locator('#native-order-dialog')).to_be_hidden()
   page.reload();assert page.locator('.native-order-shortcut').count()==0
   out['profiles'].append({'width':width,'height':height,'independentServices':len(cases),'exactOriginalDraftsAndRecipients':True,'standaloneDraftsUntouched':True,'identityOnlyRemembered':True,'noSummaryOrCart':True,'backAndCancel':True});c.close();print(width,height,'PASS',flush=True)
- c=b.new_context(viewport={'width':390,'height':430});page=c.new_page();page.route('**/data/services.json?*',lambda r:r.fulfill(status=503,body='Unavailable'));page.goto(BASE+'/services/cinema/');page.locator('#main [data-service-portal]').click();expect(page.locator('.native-order-error')).to_be_visible(timeout=10000);assert page.locator('.native-order-external').get_attribute('data-url')=='/guest-services/#cinema';page.unroute('**/data/services.json?*');page.locator('.native-order-retry').click();expect(page.locator('.native-order-loading')).to_be_hidden();expect(page.frame_locator('.native-order-frame').locator('#cinema-time')).to_be_visible();out['sourceRetryInPlace']=True;c.close();b.close()
+ c=b.new_context(viewport={'width':390,'height':430});page=c.new_page();page.route('**/data/services.json?*',lambda r:r.fulfill(status=503,body='Unavailable'));page.goto(BASE+'/services/cinema/');page.locator('#main [data-service-portal]').click();expect(page.locator('.native-order-error')).to_be_visible(timeout=10000);assert page.locator('.native-order-external').get_attribute('data-url')=='/services-guide/#cinema';page.unroute('**/data/services.json?*');page.locator('.native-order-retry').click();expect(page.locator('.native-order-loading')).to_be_hidden();expect(page.frame_locator('.native-order-frame').locator('#cinema-time')).to_be_visible();out['sourceRetryInPlace']=True;c.close();b.close()
 assert not out['errors'],out
-(R/'site/audits/resort-direct-orders-v71.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False))
+(R/'site/audits/resort-direct-orders-v75.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False))

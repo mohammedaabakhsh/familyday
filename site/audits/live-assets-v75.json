@@ -1,0 +1,87 @@
+{
+  "retainedImages": 222,
+  "illustrations": [
+    {
+      "unit": 1,
+      "src": "http://127.0.0.1:8136/imgs/dome-tour-15-clarity-v1.png",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "unit": 12,
+      "src": "http://127.0.0.1:8136/imgs/dome-tour-16-clarity-v1.png",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "unit": 2,
+      "src": "http://127.0.0.1:8136/imgs/pyramid-tour-17-clarity-v1.png",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "unit": 3,
+      "src": "http://127.0.0.1:8136/imgs/classic-tour-18-clarity-v1.png",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "unit": 4,
+      "src": "http://127.0.0.1:8136/imgs/greek-tour-10-clarity-v1.png",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "unit": 13,
+      "src": "http://127.0.0.1:8136/imgs/greek-tour-11-clarity-v1.png",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "unit": 5,
+      "src": "http://127.0.0.1:8136/imgs/palm-tour-12-clarity-v1.png",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "unit": 6,
+      "src": "http://127.0.0.1:8136/imgs/bohemian-tour-20-clarity-v1.png",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "unit": 7,
+      "src": "http://127.0.0.1:8136/imgs/french-tour-13-clarity-v1.png",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "unit": 8,
+      "src": "http://127.0.0.1:8136/imgs/rustic-tour-14-clarity-v1.png",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "unit": 9,
+      "src": "http://127.0.0.1:8136/imgs/royal-tour-19-clarity-v1.png",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "unit": 10,
+      "src": "http://127.0.0.1:8136/imgs/panoramic-tour-21-clarity-v1.png",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "unit": 30,
+      "src": "http://127.0.0.1:8136/imgs/chalet-tour-clarity-v1.png",
+      "width": 1254,
+      "height": 1254
+    }
+  ],
+  "badResponses": [],
+  "errors": [],
+  "mapImage": "imgs/resort-map-v7-clear-road.png",
+  "version": "20261125-live-v75"
+}

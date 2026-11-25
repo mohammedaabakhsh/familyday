@@ -61,9 +61,9 @@
   function enhance(){
     if(!metadata?.services)return;
     if(guest){
-      for(const key of ['water','games','cinema','hospitality']){
+      for(const key of ['water','games','hospitality']){
         const service=metadata.services[key],panel=document.getElementById(key+'-service');if(!service||!panel)continue;
-        if(!embedded&&['cinema','games'].includes(key))photo(service,panel);
+        if(!embedded&&key==='games')photo(service,panel);
       }
     }
     updateShare();

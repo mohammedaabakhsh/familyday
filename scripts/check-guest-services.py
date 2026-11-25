@@ -66,9 +66,9 @@ with sync_playwright() as p:
         page.on('request',lambda r:documents.append(r.url) if r.resource_type=='document' else images.append(r.url) if r.resource_type=='image' else None)
         page.goto(BASE+'/guest-services/',wait_until='networkidle');page.evaluate('document.fonts.ready');preview(page)
         assert page.locator('#services-error').is_hidden()
-        assert page.locator('.resort-service-photo img').count()==2 and page.get_by_role('img',name='يوم العائلة',exact=True).is_visible()
+        assert page.locator('.resort-service-photo img').count()==1 and page.get_by_role('img',name='يوم العائلة',exact=True).is_visible()
         assert all(any(path in url for path in ['/imgs/img01.webp','/site/brand/logo-original.png','/site/media/']) for url in images)
-        assert page.locator('[data-service]').evaluate_all('(els)=>els.map(e=>e.dataset.service)')==['restaurant','hospitality','water','games','cinema','extras']
+        assert page.locator('[data-service]').evaluate_all('(els)=>els.map(e=>e.dataset.service)')==['restaurant','hospitality','water','games','extras']
         assert page.locator('.guest-service-fold,.service-nav').count()==0
         assert page.locator('.menu-row').count()==page.evaluate('async()=>Object.values((await FD_GUEST_SOURCE.load()).menu).flat().length')
         assert page.locator('[data-extra] .extra-price bdi').all_text_contents()==['20','20','15','25','30']
@@ -111,19 +111,13 @@ with sync_playwright() as p:
         open_service(page,'water');assert page.locator('#water-children').text_content()=='2'
         page.mouse.click(1,1);expect(page.locator('#service-dialog')).to_be_hidden()
         open_service(page,'games');page.locator('[name="games-package"][value="table"]').check();apply_service(page)
-        open_service(page,'cinema')
-        assert page.locator('#cinema-time option[value=""]').text_content()=='اختر وقت بداية الجلسة'
-        for slot,expected in [('20','من 8 مساءً إلى 11 مساءً'),('21','من 9 مساءً إلى 12 منتصف الليل (اليوم التالي)'),('23','من 11 مساءً إلى 2 صباحًا (اليوم التالي)'),('26','من 2 صباحًا إلى 5 صباحًا'),('24','من 12 منتصف الليل إلى 3 صباحًا')]:
-            page.locator('#cinema-time').select_option(slot)
-            assert page.locator('#cinema-status').text_content()==expected
-        apply_service(page)
         open_service(page,'extras')
         page.locator('[data-extra="robe"] [data-step="1"]').click(click_count=2)
         page.locator('[data-extra="incense"] [data-step="1"]').click();apply_service(page)
-        assert page.locator('#order-total').text_content()=='410'
-        assert page.locator('.service-tile.is-selected').count()==4
-        assert page.locator('#order-items>.order-group').evaluate_all('(els)=>els.map(e=>e.dataset.group)')==['water','games','cinema','extras']
-        assert page.locator('#order-items .order-group-heading>strong').all_text_contents()==['50 ريال','150 ريال','150 ريال','60 ريال']
+        assert page.locator('#order-total').text_content()=='260'
+        assert page.locator('.service-tile.is-selected').count()==3
+        assert page.locator('#order-items>.order-group').evaluate_all('(els)=>els.map(e=>e.dataset.group)')==['water','games','extras']
+        assert page.locator('#order-items .order-group-heading>strong').all_text_contents()==['50 ريال','150 ريال','60 ريال']
         assert len(documents)==1 and page.url==BASE+'/guest-services/'
         assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')
         if width<640:
@@ -146,20 +140,18 @@ with sync_playwright() as p:
             'الاسم: ضيف الاختبار', 'اسم الكوخ: بيت الدوم 1', 'رقم الكوخ: 15', '', 'الطلبات:', '',
             'الألعاب المائية:', 'باقة ألعاب مائية × 1 = 50 ريال', 'للكبار: 1', 'للأطفال: 2', '',
             'الألعاب الترفيهية:', 'طاولة مع بوكس الألعاب × 1 = 150 ريال', '',
-            'جلسة السينما:', 'جلسة السينما × 1 = 150 ريال', 'مدة الجلسة: 3 ساعات', 'وقت بداية الجلسة: 12:00 ص (منتصف الليل)', '',
             'طلبات إضافية:', 'روب ومناشف لشخص واحد × 2 = 40 ريال', 'تبخير الكوخ × 1 = 20 ريال',
-            '', 'إجمالي الطلب: 410 ريال', '', 'ملاحظات: أعمار الأطفال 5 و7 سنوات'])
+            '', 'إجمالي الطلب: 260 ريال', '', 'ملاحظات: أعمار الأطفال 5 و7 سنوات'])
         open_service(page,'games');page.locator('[name="games-package"][value="box"]').check();apply_service(page)
-        assert page.locator('#order-total').text_content()=='310'
-        open_service(page,'cinema');page.locator('#cinema-time').select_option('26');apply_service(page)
+        assert page.locator('#order-total').text_content()=='160'
         open_service(page,'water');page.locator('[data-water="children"][data-step="-1"]').click(click_count=2)
         assert page.locator('#apply-selection').is_disabled()
-        assert page.locator('#order-total').text_content()=='310'
+        assert page.locator('#order-total').text_content()=='160'
         page.locator('[data-water="adults"][data-step="1"]').click(click_count=2);apply_service(page)
         send.click();message=captured(page,'966556156693')
-        assert 'للكبار: 3\nللأطفال: 0' in message and 'وقت بداية الجلسة: 2:00 ص' in message
+        assert 'للكبار: 3\nللأطفال: 0' in message and 'سينما' not in message
         page.get_by_role('button',name='حذف روب ومناشف لشخص واحد',exact=True).click()
-        assert page.locator('#order-total').text_content()=='270'
+        assert page.locator('#order-total').text_content()=='120'
         open_service(page,'extras');assert page.locator('[data-extra="robe"] output').text_content()=='0';page.locator('.dialog-close').click()
         # The restaurant also commits from the dialog, with its own recipient and bill.
         open_service(page,'restaurant');page.locator('[data-category="ساندويتشات"] summary').click()
@@ -175,7 +167,7 @@ with sync_playwright() as p:
         assert page.locator('#restaurant-total').text_content()=='200'
         assert page.get_by_role('heading',name='ملخص طلب المطعم',exact=True).is_visible()
         assert page.get_by_role('heading',name='ملخص طلب الخدمات',exact=True).is_visible()
-        assert page.locator('#order-total').text_content()=='270'
+        assert page.locator('#order-total').text_content()=='120'
         assert page.locator('#restaurant-items .order-group-heading h4').all_text_contents()==['ساندويتشات','بوكسات الشواء','مشروبات باردة']
         page.locator('#restaurant-notes').fill('بدون بصل');page.locator('#restaurant-order .send-order').click();message=captured(page,'966537006531')
         assert 'ساندويتشات:\nساندويتش دجاج زنجر × 2 = 22 ريال' in message and 'إضافة جبنة × 2 = 2 ريال' in message
@@ -185,16 +177,15 @@ with sync_playwright() as p:
         page.screenshot(path=str(OUT/f'tiles-selected-{width}.png'),full_page=True)
         page.goto(BASE+'/guest-services.html?review=1',wait_until='networkidle');page.wait_for_url(BASE+'/guest-services/?review=1');preview(page)
         assert page.locator('#service-dialog').is_hidden()
-        assert page.locator('.service-tile.is-selected').count()==5
-        assert page.locator('#order-total').text_content()=='270' and page.locator('#restaurant-total').text_content()=='200'
+        assert page.locator('.service-tile.is-selected').count()==4
+        assert page.locator('#order-total').text_content()=='120' and page.locator('#restaurant-total').text_content()=='200'
         assert page.locator('#guest-notes').input_value()=='أعمار الأطفال 5 و7 سنوات'
         assert page.locator('#restaurant-notes').input_value()=='بدون بصل'
         page.locator('#guest-notes').fill('');page.locator('#extras-order .send-order').click()
         assert 'ملاحظات:' not in captured(page,'966556156693')
         # Remove games directly from the order summary.
         page.get_by_role('button',name='حذف بوكس الألعاب',exact=True).click()
-        assert page.locator('#order-total').text_content()=='220'
-        open_service(page,'cinema');page.locator('#cinema-time').select_option('');apply_service(page)
+        assert page.locator('#order-total').text_content()=='70'
         assert page.locator('#order-total').text_content()=='70'
         while page.locator('#order-items button').count():page.locator('#order-items button').first.click()
         assert page.locator('#order-total').text_content()=='0' and page.locator('#extras-order .order-details').is_hidden()
@@ -211,7 +202,7 @@ with sync_playwright() as p:
     # Small phone height: scroll only the editor body; actions remain reachable.
     ctx=context(browser,320);page=ctx.new_page();page.set_viewport_size({'width':320,'height':568})
     page.goto(BASE+'/guest-services/',wait_until='networkidle')
-    for key in ['hospitality','water','games','cinema','extras','restaurant']:
+    for key in ['hospitality','water','games','extras','restaurant']:
         open_service(page,key)
         if key=='restaurant':page.locator('[data-category="ساندويتشات"] summary').click()
         page.locator('.dialog-body').evaluate('(e)=>e.scrollTop=e.scrollHeight')
@@ -236,20 +227,14 @@ with sync_playwright() as p:
     ctx.route('**/index.html',lambda r:r.fulfill(status=503,body='Legacy home is unavailable'))
     requests=[];page.on('request',lambda r:requests.append(r.url))
     page.goto(BASE+'/guest-services/',wait_until='networkidle');preview(page)
-    assert 'بوكس فشار كبير' in page.locator('#cinema-service .contents-list').text_content()
+    assert page.locator('#cinema-card,#cinema-service').count()==0
     assert 'بلوت جديد' in page.locator('.games-contents').text_content()
     open_service(page, 'water')
     assert '60 ريال' in page.locator('#water-offer').text_content()
     page.locator('[data-water="adults"][data-step="1"]').click(click_count=3);apply_service(page)
     open_service(page, 'games')
     page.locator('[name="games-package"][value="box"]').check();apply_service(page)
-    open_service(page, 'cinema')
-    assert page.locator('#cinema-duration').text_content()=='4 ساعات'
-    page.locator('#cinema-time').select_option('23')
-    assert page.locator('#cinema-status').text_content()=='من 11 مساءً إلى 3 صباحًا (اليوم التالي)'
-    assert page.locator('#cinema-price').text_content()=='175 ريال'
-    page.locator('#cinema-time').select_option('18');apply_service(page)
-    assert page.locator('#order-total').text_content()=='300'  # 60 + 65 + 175.
+    assert page.locator('#order-total').text_content()=='125'  # 60 + 65; cinema is ordered independently in its new portal.
     open_service(page, 'restaurant')
     page.locator('[data-category="ساندويتشات"] summary').click();menu_row(page,'برجر لحم').locator('[data-step="1"]').click()
     menu_row(page,'برجر لحم').locator('[type=checkbox]').check();apply_service(page)
@@ -264,11 +249,11 @@ with sync_playwright() as p:
     ctx=context(browser);ctx.route('**/data/services.json?*',lambda r:r.fulfill(status=503,body='Unavailable'))
     page=ctx.new_page();page.goto(BASE+'/guest-services/',wait_until='networkidle')
     assert page.locator('#services-error').is_visible()
-    assert page.locator('#cinema-time').is_disabled()
+    assert page.locator('#restaurant-card').is_disabled()
     assert page.locator('#extras-order .send-order').is_disabled()
     preview(page);ctx.close()
     drafts=[('familyday.guest-extras.v1',{'cabin':'15','quantities':{'bed':2}},'60'),
-            ('familyday.guest-orders.v2',{'quantities':{'robe':-2,'bath':100,'incense':1},'water':{'adults':5,'children':-2},'cinema':'17','games':'other','menu':{'fake':{'qty':1,'price':1}}},'20')]
+            ('familyday.guest-orders.v2',{'quantities':{'robe':-2,'bath':100,'incense':1},'water':{'adults':5,'children':-2},'cinema':'18','games':'other','menu':{'fake':{'qty':1,'price':1}}},'20')]
     for key,draft,total in drafts:
         ctx=context(browser);ctx.add_init_script('sessionStorage.setItem('+json.dumps(key)+','+json.dumps(json.dumps(draft))+')')
         page=ctx.new_page();page.goto(BASE+'/guest-services/',wait_until='networkidle')

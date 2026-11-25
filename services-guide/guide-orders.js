@@ -2,7 +2,7 @@
 (function () {
   'use strict';
   const params=new URLSearchParams(location.search);
-  const directService=parent!==window&&params.get('embed')==='resort-order'&&['coordination','dining','seating'].includes(params.get('direct'))?params.get('direct'):'';
+  const directService=parent!==window&&params.get('embed')==='resort-order'&&['coordination','dining','seating','cinema'].includes(params.get('direct'))?params.get('direct'):'';
   const browseOrders=!(parent!==window&&params.get('embed')==='resort-order');
   const independent=!!directService||browseOrders;
   const identityKey='familyday.resort-direct-identity.v1';
@@ -11,10 +11,10 @@
   const form=document.getElementById('arrangement-order');
   const shortcut=document.getElementById('arrangement-shortcut');
   const fields={name:document.getElementById('arrangement-name'),cabin:document.getElementById('arrangement-cabin'),notes:document.getElementById('arrangement-notes')};
-  const state={quantities:{},name:'',cabin:'',notes:''};
-  const entries=new Map();let cabins={},ready=false;
+  const state={quantities:{},name:'',cabin:'',notes:'',cinemaTime:''};
+  const entries=new Map();let cabins={},ready=false,cinemaConfig,cinemaTime,cinemaTimeField;
   let requestDialog,requestEntry,requestTrigger,requestScroll=0,requestURL='';
-  const groups=[['coordination','التنسيقات'],['dining','طاولات الطعام'],['seating','الجلسات الخارجية'],['extra','إضافة اختيارية']];
+  const groups=[['coordination','التنسيقات'],['dining','طاولات الطعام'],['seating','الجلسات الخارجية'],['extra','إضافة اختيارية'],['cinema','جلسة السينما']];
   const node=(tag,text,cls)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;};
   const quantity=value=>Number.isInteger(value)&&value>=0&&value<=99?value:0;
   function save(){try{sessionStorage.setItem(independent?identityKey:storageKey,JSON.stringify(independent?{name:state.name,cabin:state.cabin}:state));}catch(_){/* The form also works without storage. */}}
@@ -27,6 +27,19 @@
   }catch(_){/* Ignore malformed or obsolete drafts. */}}
   const price=value=>{const n=Number(String(value).match(/\d+(?:\.\d+)?/)?.[0]);if(!Number.isFinite(n)||n<=0)throw Error('Invalid arrangement price');return n;};
   const lines=()=>Array.from(entries.values()).filter(e=>quantity(state.quantities[e.key])>0).map(e=>({...e,qty:state.quantities[e.key],total:e.price*state.quantities[e.key]}));
+  const cinemaChosen=()=>quantity(state.quantities['cinema-session'])>0;
+  const validCinemaTime=()=>!!cinemaConfig?.times.some(slot=>slot.value===state.cinemaTime);
+  function cinemaTimeRange(value){
+    const start=Number(value),duration=Number(cinemaConfig.duration.match(/\d+(?:\.\d+)?/)?.[0]);
+    if(!duration)return 'مدة الجلسة: '+cinemaConfig.duration;
+    const end=start+duration;
+    function label(hour){
+      const minutes=Math.round(hour*60),h=Math.floor(minutes/60)%24,m=minutes%60;
+      const clock=String(h%12||12)+(m?':'+String(m).padStart(2,'0'):'');
+      return clock+(h===0&&m===0?' منتصف الليل':h<12?' صباحًا':h===12?' ظهرًا':' مساءً');
+    }
+    return 'من '+label(start)+' إلى '+label(end)+(Math.floor(end/24)>Math.floor(start/24)?' (اليوم التالي)':'');
+  }
   const seatsChosen=()=>Array.from(entries.values()).some(e=>e.group==='seating'&&quantity(state.quantities[e.key])>0);
   function counter(entry){
     const group=node('div',undefined,'arrangement-quantity');group.setAttribute('role','group');group.setAttribute('aria-label','عدد '+entry.name);group.dataset.quantity=entry.key;
@@ -54,6 +67,7 @@
       const controls=actions(entry);controls.classList.add('arrangement-browse-actions');
       host.querySelector('.seating-collapsed-content').append(controls);return;
     }
+    if(entry.group==='cinema')return;
     const controls=node('div',undefined,'arrangement-controls');controls.dataset.entry=entry.key;controls.append(counter(entry),actions(entry));host.append(controls);
   }
   function jump(){summary.focus({preventScroll:true});window.scrollTo({top:Math.max(0,scrollY+summary.getBoundingClientRect().top-18),behavior:'instant'});updateShortcut();}
@@ -90,7 +104,7 @@
     }
     const missingSeat=!!state.quantities['seating-extra']&&!seatsChosen();
     const warning=document.getElementById('arrangement-warning');warning.hidden=!missingSeat;warning.textContent=missingSeat?'اختر جلسة خارجية لإضافة الكيك والعصير، أو احذف الإضافة.':'';
-    form.querySelector('[type="submit"]').disabled=!chosen.length||missingSeat;
+    form.querySelector('[type="submit"]').disabled=!chosen.length||missingSeat||(cinemaChosen()&&!validCinemaTime());
     for(const key of entries.keys()){
       const entry=entries.get(key),qty=quantity(state.quantities[key]);
       document.querySelectorAll('[data-quantity="'+key+'"]').forEach(group=>{
@@ -101,11 +115,17 @@
       const card=document.getElementById(entry.card);if(card)card.classList.toggle('has-selection',!browseOrders&&qty>0);
       if(entry.size){const button=document.querySelector('.fd-dining-option[data-size="'+entry.size+'"][data-option="'+entry.option+'"]');button.classList.toggle('is-selected',qty>0);button.setAttribute('aria-pressed',String(qty>0));}
     }
-    for(const group of ['coordination','dining','seating']){
+    for(const group of ['coordination','dining','seating','cinema']){
       const tile=document.querySelector('.contents a[href="#'+group+'"]');const selected=chosen.filter(e=>e.group===group);tile.classList.toggle('is-selected',!browseOrders&&!!selected.length);
     }
     document.getElementById('arrangement-cabin-number').hidden=!state.cabin;
     document.getElementById('arrangement-cabin-number').textContent=state.cabin?'رقم الكوخ: '+cabins[state.cabin]:'';
+    if(cinemaTimeField){
+      const selectingCinema=browseOrders?requestEntry?.group==='cinema':directService==='cinema';
+      cinemaTimeField.hidden=!selectingCinema;cinemaTime.required=selectingCinema;
+      cinemaTimeField.querySelector('small').textContent=state.cinemaTime?cinemaTimeRange(state.cinemaTime):'مدة الجلسة: '+cinemaConfig.duration;
+      form.querySelector('.arrangement-confirmation').textContent=selectingCinema?'تابع طلبك مع فريق خدمات المنتجع عبر واتساب لتأكيد الموعد.':'تابع طلبك مع منسّق المناسبات عبر واتساب لتأكيد التفاصيل والموعد.';
+    }
     if(browseOrders&&requestEntry){
       requestDialog.querySelector('.request-total-label').textContent='إجمالي الخدمة';
       requestDialog.querySelector('[data-request-extra]').checked=!!state.quantities['seating-extra'];
@@ -113,7 +133,7 @@
     save();updateShortcut();
   }
   function closeRequestUI(){
-    requestDialog.close();state.quantities={};state.notes='';fields.notes.value='';requestEntry=null;render();
+    requestDialog.close();state.quantities={};state.notes='';state.cinemaTime='';if(cinemaTime)cinemaTime.value='';fields.notes.value='';requestEntry=null;render();
     document.body.classList.remove('arrangement-request-open');window.scrollTo({top:requestScroll,behavior:'instant'});if(requestTrigger?.isConnected)requestTrigger.focus({preventScroll:true});
   }
   function closeRequest(){
@@ -122,11 +142,11 @@
   }
   function openRequest(entry,trigger){
     requestEntry=entry;requestTrigger=trigger;requestScroll=scrollY;requestURL=location.href;
-    state.quantities={[entry.key]:1};state.notes='';fields.notes.value='';
+    state.quantities={[entry.key]:1};state.notes='';state.cinemaTime='';if(cinemaTime)cinemaTime.value='';fields.notes.value='';
     document.getElementById('arrangement-request-title').textContent='طلب '+entry.name;
     const amount=requestDialog.querySelector('.arrangement-request-quantity');amount.replaceChildren();
-    if(entry.group!=='dining'){amount.append(node('span','الكمية'),counter(entry));}
-    amount.hidden=entry.group==='dining';
+    if(!['dining','cinema'].includes(entry.group)){amount.append(node('span','الكمية'),counter(entry));}
+    amount.hidden=['dining','cinema'].includes(entry.group);
     const extra=requestDialog.querySelector('.arrangement-request-extra');extra.hidden=entry.group!=='seating';
     const addon=entries.get('seating-extra');extra.querySelector('span').textContent=addon?addon.name+' — '+addon.price+' ريال':'';
     render();history.pushState({...history.state,arrangementRequest:true},'',location.href);
@@ -149,7 +169,7 @@
   }
   if(browseOrders)setupBrowseRequest();
   document.addEventListener('fd:guide-ready',event=>{
-    if(ready)return;const catalog=event.detail,data=catalog.arrangements;cabins=catalog.guest.cabins;
+    if(ready)return;const catalog=event.detail,data=catalog.arrangements;cabins=catalog.guest.cabins;cinemaConfig=catalog.guest.cinema;
     data.coordination.packages.forEach(pack=>{
       const suffix=pack.id.replace('hd-coordination-package-',''),card=suffix==='resort'?'package-complete':'package-'+suffix;
       add({key:card,card,group:'coordination',name:pack.name,price:price(pack.price),path:pack.path},document.getElementById(card));
@@ -158,6 +178,13 @@
     const diningActions=node('div',undefined,'dining-order-actions');const diningShare=node('button','مشاركة طاولات الطعام','arrangement-share');diningShare.type='button';diningShare.dataset.sharePath=data.dining.path;diningActions.append(diningShare);document.getElementById('dining').append(diningActions);
     data.seating.sessions.forEach((session,i)=>{const card='session-'+(i+1);add({key:card,card,group:'seating',name:session.name,capacity:session.persons,price:price(session.price),path:data.seating.path+'?session='+(i+1)},document.getElementById(card));});
     add({key:'seating-extra',group:'extra',name:data.seating.extra.name,price:price(data.seating.extra.price),path:data.seating.path},document.querySelector('.seating-extra'));
+    add({key:'cinema-session',card:'cinema-session',group:'cinema',name:cinemaConfig.name,price:cinemaConfig.price,path:'/services/cinema/'},document.getElementById('cinema-session'));
+    cinemaTimeField=node('label',undefined,'arrangement-cinema-time');cinemaTimeField.append(node('span','وقت بداية الجلسة'));
+    cinemaTime=node('select');cinemaTime.id='cinema-time';cinemaTime.setAttribute('form','arrangement-order');cinemaTime.add(new Option('اختر وقت بداية الجلسة',''));
+    cinemaConfig.times.forEach(slot=>cinemaTime.add(new Option(slot.label,slot.value)));const timeStatus=node('small','مدة الجلسة: '+cinemaConfig.duration);timeStatus.id='cinema-status';timeStatus.setAttribute('role','status');cinemaTimeField.append(cinemaTime,timeStatus);
+    (browseOrders?requestDialog.querySelector('.arrangement-request-body'):document.getElementById('cinema')).prepend(cinemaTimeField);
+    cinemaTime.addEventListener('change',()=>{state.cinemaTime=cinemaTime.value;render();});
+    if(directService==='cinema')state.quantities['cinema-session']=1;
     for(const name of Object.keys(cabins))fields.cabin.add(new Option(name,name));
     restore();for(const key of Object.keys(fields))fields[key].value=state[key];ready=true;render();
   });
@@ -177,9 +204,9 @@
   });
   for(const [key,field] of Object.entries(fields))field.addEventListener(key==='cabin'?'change':'input',()=>{state[key]=field.value;save();if(key==='cabin')render();});
   function submitOrder(event){
-    event.preventDefault();const chosen=lines();if(!ready||!chosen.length||!form.reportValidity()||!state.name.trim()||!Object.hasOwn(cabins,state.cabin)||state.quantities['seating-extra']&&!seatsChosen())return;
+    event.preventDefault();const chosen=lines();if(!ready||!chosen.length||(cinemaChosen()&&!validCinemaTime())||(cinemaChosen()&&chosen.some(entry=>entry.group!=='cinema'))||!form.reportValidity()||!state.name.trim()||!Object.hasOwn(cabins,state.cabin)||state.quantities['seating-extra']&&!seatsChosen())return;
     const requestedGroups=[...new Set(chosen.filter(entry=>entry.group!=='extra').map(entry=>entry.group))];
-    const requestLabel=requestedGroups.length===1?({coordination:'تنسيق',dining:'تجهيز طاولة طعام',seating:'جلسة خارجية'}[requestedGroups[0]]||'الخدمات التالية'):'الخدمات التالية';
+    const requestLabel=requestedGroups.length===1?({coordination:'تنسيق',dining:'تجهيز طاولة طعام',seating:'جلسة خارجية',cinema:'جلسة سينما'}[requestedGroups[0]]||'الخدمات التالية'):'الخدمات التالية';
     const parts=['السلام عليكم، أرغب بطلب '+requestLabel+':','','الاسم: '+state.name.trim(),'اسم الكوخ: '+state.cabin,'رقم الكوخ: '+cabins[state.cabin],'','الطلبات:'];
     for(const [group,title] of groups){
       const items=chosen.filter(entry=>entry.group===group);if(!items.length)continue;
@@ -188,11 +215,12 @@
         // Capacity belongs beside the session name, never on a separate message line.
         const name=entry.group==='seating'?entry.name.replace(/\s+لـ?\s*\d+\s+(?:أشخاص|شخصًا|شخصاً)\s*$/u,'')+' — '+(entry.capacity.startsWith('ل')?entry.capacity:'لـ'+entry.capacity):entry.name;
         parts.push(name+' × '+entry.qty+' = '+entry.total+' ريال');
+        if(entry.group==='cinema')parts.push('مدة الجلسة: '+cinemaConfig.duration,'وقت بداية الجلسة: '+cinemaConfig.times.find(slot=>slot.value===state.cinemaTime).label);
       }
     }
     parts.push('','إجمالي الطلب: '+chosen.reduce((sum,e)=>sum+e.total,0)+' ريال');if(state.notes.trim())parts.push('','ملاحظات: '+state.notes.trim());save();
     // Open a text draft only; the guest reviews and sends it from WhatsApp.
-    window.open('https://wa.me/966537009217?text='+encodeURIComponent(parts.join('\n')),'_blank','noopener,noreferrer');
+    window.open('https://wa.me/'+(cinemaChosen()?'966556156693':'966537009217')+'?text='+encodeURIComponent(parts.join('\n')),'_blank','noopener,noreferrer');
     return true;
   }
   form.addEventListener('submit',event=>{if(submitOrder(event)===true&&browseOrders)closeRequest();});
