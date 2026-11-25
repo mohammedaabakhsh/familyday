@@ -2303,13 +2303,13 @@
     "services-guide/README.md": "e3c7f53ebcd6efe67fab2cc72f75c7a6ff274c181880110891817c3beab79499",
     "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
     "services-guide/guide.css": "2e4164a051b4ef782483e5ebb342f877b6d055fd836996aee6554fd1ba263f35",
-    "services-guide/guide.js": "9d680329705d9e43a10333e915ab8dcb85b0743dc2145cd7083c5e4c6e23b474",
-    "services-guide/index.html": "82e71e5cf956d5723c59ff16ec729af4c4259307b9c0198b326848e8052c6362",
+    "services-guide/guide.js": "2c0c2dcc6d024cc4eff933519cc675f1b525d8f93955d841045055aa3b9e4c0b",
+    "services-guide/index.html": "ea221f1920da5114cd6eae1fe4d4f055e2e7763b3cdce855b50e58cd69aabc70",
     "services-guide/share-entry.js": "05dac99bc60dfc4b2d2d1b08c131735f22d72f29cf93f1861b85df47c89dffa2",
     "guest-services/resort-refinements.css": "5ccfd5e08d6538ebb7f37eb93f5dc52ac270dbf309ee57b38c82078ee0b31520",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
-    "services-guide/guide-orders.js": "f69c8641812c5413d8384dd2d109295027c869e7b1938cc88baa722e140a3fbf",
-    "services-guide/guide-orders.css": "09d6eca5c57a49566cd8f3949163a92c25a3b2c60491a013ae8c289126ce90bc"
+    "services-guide/guide-orders.js": "446ce0a79119559841dda63dbc542c9ea99fa8b7dc898939cb74869a744f8f87",
+    "services-guide/guide-orders.css": "a10208b1a9069509a1560151832f1788d98dbec143291f70a11e7acc1b62c017"
   },
   "preservedCompatibility": [
     "preview redirects",
@@ -2561,6 +2561,29 @@
       "services-guide/index.html": {
         "previousSha256": "67f2fb1dffbe0c370415e63f6dfb7cf717189c3f64dd6040858e02b079888553",
         "reason": "Refresh share helper to keep the original 20px page-share icon, matching arrangements and chalet"
+      }
+    }
+  },
+  "approvedArrangementsBrowseRestore": {
+    "version": "20261125-arrangements-v73",
+    "rollbackTag": "pre-arrangements-browse-restore-20261125",
+    "reason": "Owner explicitly requested the pre-ordering catalogue design for coordination and outdoor seating, retaining a simple WhatsApp ordering method.",
+    "protectedChanges": {
+      "services-guide/index.html": {
+        "previousSha256": "82e71e5cf956d5723c59ff16ec729af4c4259307b9c0198b326848e8052c6362",
+        "reason": "Restore original standalone full-page browsing and original closed package/session cards; place independent WhatsApp request and share actions inside details. Embedded main-site requests retained."
+      },
+      "services-guide/guide.js": {
+        "previousSha256": "9d680329705d9e43a10333e915ab8dcb85b0743dc2145cd7083c5e4c6e23b474",
+        "reason": "Restore original standalone full-page browsing and original closed package/session cards; place independent WhatsApp request and share actions inside details. Embedded main-site requests retained."
+      },
+      "services-guide/guide-orders.js": {
+        "previousSha256": "f69c8641812c5413d8384dd2d109295027c869e7b1938cc88baa722e140a3fbf",
+        "reason": "Restore original standalone full-page browsing and original closed package/session cards; place independent WhatsApp request and share actions inside details. Embedded main-site requests retained."
+      },
+      "services-guide/guide-orders.css": {
+        "previousSha256": "09d6eca5c57a49566cd8f3949163a92c25a3b2c60491a013ae8c289126ce90bc",
+        "reason": "Restore original standalone full-page browsing and original closed package/session cards; place independent WhatsApp request and share actions inside details. Embedded main-site requests retained."
       }
     }
   }

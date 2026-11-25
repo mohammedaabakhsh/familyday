@@ -3,6 +3,8 @@
   'use strict';
   const params=new URLSearchParams(location.search);
   const directService=parent!==window&&params.get('embed')==='resort-order'&&['coordination','dining','seating'].includes(params.get('direct'))?params.get('direct'):'';
+  const browseOrders=!(parent!==window&&params.get('embed')==='resort-order');
+  const independent=!!directService||browseOrders;
   const identityKey='familyday.resort-direct-identity.v1';
   const storageKey='familyday.arrangements-orders.v1';
   const summary=document.getElementById('arrangement-summary');
@@ -11,15 +13,16 @@
   const fields={name:document.getElementById('arrangement-name'),cabin:document.getElementById('arrangement-cabin'),notes:document.getElementById('arrangement-notes')};
   const state={quantities:{},name:'',cabin:'',notes:''};
   const entries=new Map();let cabins={},ready=false;
+  let requestDialog,requestEntry,requestTrigger,requestScroll=0,requestURL='';
   const groups=[['coordination','التنسيقات'],['dining','طاولات الطعام'],['seating','الجلسات الخارجية'],['extra','إضافة اختيارية']];
   const node=(tag,text,cls)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;};
   const quantity=value=>Number.isInteger(value)&&value>=0&&value<=99?value:0;
-  function save(){try{sessionStorage.setItem(directService?identityKey:storageKey,JSON.stringify(directService?{name:state.name,cabin:state.cabin}:state));}catch(_){/* The form also works without storage. */}}
+  function save(){try{sessionStorage.setItem(independent?identityKey:storageKey,JSON.stringify(independent?{name:state.name,cabin:state.cabin}:state));}catch(_){/* The form also works without storage. */}}
   function restore(){try{
-    const saved=JSON.parse(sessionStorage.getItem(directService?identityKey:storageKey));if(!saved||typeof saved!=='object')return;
-    for(const key of (directService?['name']:['name','notes']))if(typeof saved[key]==='string')state[key]=saved[key].slice(0,key==='name'?100:1000);
+    const saved=JSON.parse(sessionStorage.getItem(independent?identityKey:storageKey));if(!saved||typeof saved!=='object')return;
+    for(const key of (independent?['name']:['name','notes']))if(typeof saved[key]==='string')state[key]=saved[key].slice(0,key==='name'?100:1000);
     if(Object.hasOwn(cabins,saved.cabin))state.cabin=saved.cabin;
-    if(directService)return;
+    if(independent)return;
     for(const key of entries.keys())state.quantities[key]=quantity(saved.quantities?.[key]);
   }catch(_){/* Ignore malformed or obsolete drafts. */}}
   const price=value=>{const n=Number(String(value).match(/\d+(?:\.\d+)?/)?.[0]);if(!Number.isFinite(n)||n<=0)throw Error('Invalid arrangement price');return n;};
@@ -39,14 +42,22 @@
     const share=node('button',undefined,'arrangement-share');share.type='button';share.dataset.sharePath=entry.path;share.setAttribute('aria-label','مشاركة '+entry.name);
     // Icon and text stay inside their own button, never inside an accordion summary.
     share.innerHTML='<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 16V2m-5 5 5-5 5 5M6 10H3v11h18V10h-3"/></svg><span>مشاركة</span>';
+    if(browseOrders && entry.group!=='extra'){
+      const order=node('button','اطلب عبر واتساب','arrangement-request-button');order.type='button';order.dataset.requestKey=entry.key;order.setAttribute('aria-label','طلب '+entry.name+' عبر واتساب');wrap.append(order);
+    }
     wrap.append(share);return wrap;
   }
   function add(entry,host){
     entries.set(entry.key,entry);
+    if(browseOrders){
+      if(entry.group==='extra')return;
+      const controls=actions(entry);controls.classList.add('arrangement-browse-actions');
+      host.querySelector('.seating-collapsed-content').append(controls);return;
+    }
     const controls=node('div',undefined,'arrangement-controls');controls.dataset.entry=entry.key;controls.append(counter(entry),actions(entry));host.append(controls);
   }
   function jump(){summary.focus({preventScroll:true});window.scrollTo({top:Math.max(0,scrollY+summary.getBoundingClientRect().top-18),behavior:'instant'});updateShortcut();}
-  function updateShortcut(){const rect=summary.getBoundingClientRect();shortcut.hidden=document.getElementById('arrangement-dialog').open||summary.hidden||(rect.top<innerHeight-40&&rect.bottom>80);}
+  function updateShortcut(){if(browseOrders){shortcut.hidden=true;return;}const rect=summary.getBoundingClientRect();shortcut.hidden=document.getElementById('arrangement-dialog').open||summary.hidden||(rect.top<innerHeight-40&&rect.bottom>80);}
   function limitDining(){
     let kept=false;
     for(const entry of entries.values()){
@@ -59,7 +70,7 @@
   function render(){
     limitDining();
     const chosen=lines(),total=chosen.reduce((sum,e)=>sum+e.total,0),count=chosen.reduce((sum,e)=>sum+e.qty,0);
-    summary.hidden=!chosen.length;
+    summary.hidden=browseOrders||!chosen.length;
     document.getElementById('arrangement-total').textContent=total;
     document.getElementById('arrangement-count').textContent=count+' من التجهيزات المختارة';
     shortcut.textContent='ملخص الطلب · '+count+' · '+total+' ريال';
@@ -87,16 +98,56 @@
         group.querySelector('[data-step="-1"]').disabled=!qty;
         group.querySelector('[data-step="1"]').disabled=qty===99||(entry.group==='extra'&&!seatsChosen());
       });
-      const card=document.getElementById(entry.card);if(card)card.classList.toggle('has-selection',qty>0);
+      const card=document.getElementById(entry.card);if(card)card.classList.toggle('has-selection',!browseOrders&&qty>0);
       if(entry.size){const button=document.querySelector('.fd-dining-option[data-size="'+entry.size+'"][data-option="'+entry.option+'"]');button.classList.toggle('is-selected',qty>0);button.setAttribute('aria-pressed',String(qty>0));}
     }
     for(const group of ['coordination','dining','seating']){
-      const tile=document.querySelector('.contents a[href="#'+group+'"]');const selected=chosen.filter(e=>e.group===group);tile.classList.toggle('is-selected',!!selected.length);
+      const tile=document.querySelector('.contents a[href="#'+group+'"]');const selected=chosen.filter(e=>e.group===group);tile.classList.toggle('is-selected',!browseOrders&&!!selected.length);
     }
     document.getElementById('arrangement-cabin-number').hidden=!state.cabin;
     document.getElementById('arrangement-cabin-number').textContent=state.cabin?'رقم الكوخ: '+cabins[state.cabin]:'';
+    if(browseOrders&&requestEntry){
+      requestDialog.querySelector('.request-total-label').textContent='إجمالي الخدمة';
+      requestDialog.querySelector('[data-request-extra]').checked=!!state.quantities['seating-extra'];
+    }
     save();updateShortcut();
   }
+  function closeRequestUI(){
+    requestDialog.close();state.quantities={};state.notes='';fields.notes.value='';requestEntry=null;render();
+    document.body.classList.remove('arrangement-request-open');window.scrollTo({top:requestScroll,behavior:'instant'});if(requestTrigger?.isConnected)requestTrigger.focus({preventScroll:true});
+  }
+  function closeRequest(){
+    if(!requestDialog.open)return;
+    if(history.state?.arrangementRequest)history.back();else closeRequestUI();
+  }
+  function openRequest(entry,trigger){
+    requestEntry=entry;requestTrigger=trigger;requestScroll=scrollY;requestURL=location.href;
+    state.quantities={[entry.key]:1};state.notes='';fields.notes.value='';
+    document.getElementById('arrangement-request-title').textContent='طلب '+entry.name;
+    const amount=requestDialog.querySelector('.arrangement-request-quantity');amount.replaceChildren();
+    if(entry.group!=='dining'){amount.append(node('span','الكمية'),counter(entry));}
+    amount.hidden=entry.group==='dining';
+    const extra=requestDialog.querySelector('.arrangement-request-extra');extra.hidden=entry.group!=='seating';
+    const addon=entries.get('seating-extra');extra.querySelector('span').textContent=addon?addon.name+' — '+addon.price+' ريال':'';
+    render();history.pushState({...history.state,arrangementRequest:true},'',location.href);
+    document.body.classList.add('arrangement-request-open');requestDialog.showModal();requestDialog.querySelector('.arrangement-request-body').scrollTop=0;
+  }
+  function setupBrowseRequest(){
+    requestDialog=node('dialog',undefined,'arrangement-request');requestDialog.setAttribute('aria-labelledby','arrangement-request-title');
+    requestDialog.innerHTML='<header><h2 id="arrangement-request-title" tabindex="-1"></h2><button type="button" data-close-request aria-label="إغلاق الطلب">×</button></header><div class="arrangement-request-body"><div class="arrangement-request-quantity"></div><label class="arrangement-request-extra" hidden><input type="checkbox" data-request-extra><span></span></label></div>';
+    document.body.append(requestDialog);requestDialog.querySelector('.arrangement-request-body').append(form);
+    form.setAttribute('aria-label','بيانات الطلب');form.querySelector('.arrangement-send').textContent='إرسال الطلب عبر واتساب';
+    form.querySelector('.arrangement-total>span').classList.add('request-total-label');
+    requestDialog.querySelector('[data-close-request]').addEventListener('click',closeRequest);requestDialog.addEventListener('cancel',e=>{e.preventDefault();closeRequest();});
+    requestDialog.addEventListener('click',e=>{if(e.target===requestDialog){const r=requestDialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeRequest();}});
+    requestDialog.querySelector('[data-request-extra]').addEventListener('change',e=>{state.quantities['seating-extra']=e.target.checked?1:0;render();});
+    if(history.state?.arrangementRequest){const next={...history.state};delete next.arrangementRequest;history.replaceState(next,'',location.href);}
+    window.addEventListener('popstate',e=>{
+      if(requestDialog.open){const samePage=location.href===requestURL;closeRequestUI();if(samePage)e.stopImmediatePropagation();}
+      else if(history.state?.arrangementRequest){const next={...history.state};delete next.arrangementRequest;history.replaceState(next,'',location.href);}
+    },true);
+  }
+  if(browseOrders)setupBrowseRequest();
   document.addEventListener('fd:guide-ready',event=>{
     if(ready)return;const catalog=event.detail,data=catalog.arrangements;cabins=catalog.guest.cabins;
     data.coordination.packages.forEach(pack=>{
@@ -112,11 +163,13 @@
   });
   document.addEventListener('click',event=>{
     if(!ready)return;
+    const request=event.target.closest('[data-request-key]');if(browseOrders&&request){openRequest(entries.get(request.dataset.requestKey),request);return;}
     const step=event.target.closest('[data-order-key]'),remove=event.target.closest('[data-remove]'),dining=event.target.closest('.fd-dining-option');
     if(step){const entry=entries.get(step.dataset.orderKey);if(!entry||step.disabled)return;state.quantities[entry.key]=Math.max(0,Math.min(99,quantity(state.quantities[entry.key])+Number(step.dataset.step)));render();}
     else if(remove){const key=remove.dataset.remove;state.quantities[key]=0;render();const next=summary.querySelector('[data-remove]');if(next)next.focus();else(document.getElementById(entries.get(key).card)||document.querySelector('.contents a')).focus();}
     else if(dining){
       const key='dining-'+dining.dataset.size+'-'+dining.dataset.option,next=state.quantities[key]?0:1;
+      if(browseOrders){openRequest(entries.get(key),dining);return;}
       for(const entry of entries.values())if(entry.group==='dining')state.quantities[entry.key]=0;
       state.quantities[key]=next;render();
     }
@@ -136,7 +189,7 @@
     window.open('https://wa.me/966537009217?text='+encodeURIComponent(parts.join('\n')),'_blank','noopener,noreferrer');
     return true;
   }
-  form.addEventListener('submit',submitOrder);
+  form.addEventListener('submit',event=>{if(submitOrder(event)===true&&browseOrders)closeRequest();});
   if(directService)window.FD_RESORT_DIRECT_ORDER={formId:'arrangement-order',canSubmit:()=>ready&&!form.querySelector('.arrangement-send').disabled,submit:submitOrder};
   document.addEventListener('fd:arrangement-view',updateShortcut);shortcut.addEventListener('click',jump);new IntersectionObserver(updateShortcut,{rootMargin:'-80px 0px -40px'}).observe(summary);window.addEventListener('resize',updateShortcut);
 })();

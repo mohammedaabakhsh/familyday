@@ -72,3 +72,26 @@ body.arrangement-dialog-open{overflow:hidden}
 .arrangement-dialog .arrangement-quantity button{color:#176174}
 @media(max-height:500px){.arrangement-dialog{max-height:calc(100dvh - 12px)}.arrangement-dialog-header{padding:6px 12px}.arrangement-dialog-footer{padding:8px 12px}.arrangement-dialog-footer p{display:none}}
 @media print{.arrangement-dialog{display:none!important}}
+/* Restore the original standalone catalogue; order only the item being viewed. */
+.arrangement-browse-actions{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 0;padding:0 4px}
+#coordination .arrangement-browse-actions{padding-inline:20px}
+.arrangement-request-button{min-height:44px;border:0;border-radius:10px;background:#168c99;color:#fff;padding:9px 14px;font:700 14px/1.5 Tajawal,sans-serif;flex:1}
+.arrangement-browse-actions .arrangement-share{flex:none}
+body.arrangement-request-open{overflow:hidden}
+.arrangement-request{width:min(520px,calc(100vw - 28px));max-height:calc(100dvh - 28px);padding:0;border-radius:18px;overflow:hidden}
+.arrangement-request[open]{display:flex;flex-direction:column}
+.arrangement-request>header{display:flex;align-items:center;gap:12px;flex:none;padding:14px 16px;border-bottom:1px solid var(--line)}
+.arrangement-request h2{flex:1;margin:0;font-size:19px;line-height:1.5}
+.arrangement-request>header button{flex:none;display:grid;place-items:center;width:40px;height:40px;min-height:40px;margin:0;padding:0;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--ink);font-size:26px}
+.arrangement-request-body{padding:16px;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+.arrangement-request-quantity{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:14px}
+.arrangement-request .arrangement-quantity button{margin:0;padding:0;background:#fff;color:#176174}
+.arrangement-request-extra{display:flex;align-items:center;gap:9px;padding:12px;margin:14px 0 0;border:1px solid #e9d4c7;border-radius:10px;background:#fff3ed;font-size:14px}
+.arrangement-request-extra input{width:20px;height:20px;flex:none;margin:0;padding:0;accent-color:#168c99}
+.arrangement-request #arrangement-order{padding:0;border:0;border-radius:0;background:transparent}
+.arrangement-request :is(#arrangement-items,#arrangement-count){display:none!important}
+.arrangement-request .arrangement-fields{grid-template-columns:1fr;margin:16px 0}
+.arrangement-request .arrangement-fields>label,.arrangement-request .arrangement-fields>p{grid-column:auto}
+.arrangement-request .arrangement-send{margin-top:14px;background:#168c99;color:#fff;padding:12px}
+.arrangement-request .arrangement-total{margin-top:0;padding-top:12px}
+@media print{.arrangement-browse-actions,.arrangement-request{display:none!important}}

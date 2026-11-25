@@ -46,9 +46,12 @@ with sync_playwright() as p:
   page.goto(BASE+('/guest-services/' if guest else '/services-guide/'))
   if guest:page.locator('#water-card:not([disabled])').wait_for();page.locator('#'+key+'-card').click()
   else:page.locator('#guide-content.is-ready').wait_for(state='attached');page.locator('.guide-tile[href="#'+key+'"]').click()
-  select(page,key)
-  if guest:page.locator('#apply-selection').click()
-  else:page.locator('.arrangement-dialog-footer [data-close-arrangements]').click()
+  if guest:
+   select(page,key);page.locator('#apply-selection').click()
+  elif key=='dining':
+   page.locator('.fd-dining-option[data-size="6"][data-option="plain"]').click()
+  else:
+   root=page.locator('#'+('package-1' if key=='coordination' else 'session-1'));root.locator('summary').first.click();root.locator('[data-request-key]').click()
   prefix=identity(page,key);page.locator('#'+('restaurant-order .send-order' if key=='restaurant' else 'extras-order .send-order' if guest else 'arrangement-order .arrangement-send')).click();baseline[key]=page.evaluate('opened.at(-1)');assert baseline[key];c.close()
  print('Standalone reference drafts captured',flush=True)
  for width,height in [(320,568),(390,844),(430,932),(390,430)]:

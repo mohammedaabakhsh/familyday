@@ -1,100 +1,48 @@
-"""Exercise real arrangements selection, text-only sharing and coordinator drafts; never send messages."""
-import json,sys,subprocess
+"""Verify restored standalone catalogue geometry and independent WhatsApp requests; never send."""
+import json,sys,subprocess,re
 from pathlib import Path
 from urllib.parse import urlparse,parse_qs
 from playwright.sync_api import sync_playwright,expect
-R=Path(__file__).resolve().parents[1];BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8112'
-SOURCE=json.loads((R/'data/services.json').read_text());A=SOURCE['arrangements'];out={'version':'20261125-arrangements-v65','viewports':[],'messagesSent':False,'errors':[]}
+R=Path(__file__).resolve().parents[1];BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8132'
+SOURCE=json.loads((R/'data/services.json').read_text());A=SOURCE['arrangements'];out={'version':'20261125-arrangements-v73','viewports':[],'messagesSent':False,'errors':[]}
+old_html=subprocess.check_output(['git','show','pre-arrangements-ordering-20261125:services-guide/index.html']).decode().replace('guide.js?v=20261125-live-v54','guide-baseline.js')
+old_js=subprocess.check_output(['git','show','pre-arrangements-ordering-20261125:services-guide/guide.js']).decode()
+metrics="(selector)=>[...document.querySelectorAll(selector)].map(e=>{const s=getComputedStyle(e),r=e.getBoundingClientRect();return [r.width,r.height,s.padding,s.borderRadius,s.backgroundColor,s.fontSize]})"
 with sync_playwright() as p:
- browser=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
- for width in [320,390,768,1440]:
-  context=browser.new_context(viewport={'width':width,'height':844},reduced_motion='reduce');page=context.new_page();page.on('pageerror',lambda e:out['errors'].append(str(e)))
-  page.add_init_script("window.opened=[];window.shares=[];window.open=(url)=>{opened.push(url);return null};Object.defineProperty(navigator,'share',{value:async data=>{shares.push(data)},configurable:true});")
-  def visit(path):
-   page.goto(BASE+path);page.locator('#guide-content.is-ready').wait_for(state='attached');page.evaluate('document.fonts.ready')
-  def expand(card):
+ b=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
+ for width,height in [(320,568),(390,844),(430,932),(390,430),(1440,900)]:
+  c=b.new_context(viewport={'width':width,'height':height},reduced_motion='reduce');c.add_init_script("window.opened=[];window.shares=[];window.open=u=>{opened.push(u);return null};Object.defineProperty(navigator,'share',{value:async d=>shares.push(d)})");page=c.new_page();page.on('pageerror',lambda e:out['errors'].append(str(e)))
+  page.route('**/services-guide/?baseline=old',lambda r:r.fulfill(body=old_html,content_type='text/html'));page.route('**/services-guide/guide-baseline.js',lambda r:r.fulfill(body=old_js,content_type='text/javascript'))
+  def visit(path):page.goto(BASE+path);page.locator('#guide-content.is-ready').wait_for(state='attached');page.evaluate('document.fonts.ready')
+  for section in ['coordination','seating']:
+   visit('/services-guide/?baseline=old#'+section);baseline=page.evaluate(metrics,'#'+section+' .seating-collapsed-summary');card_baseline=page.evaluate(metrics,'#'+section+' .package-card')
+   visit('/services-guide/#'+section);assert page.evaluate(metrics,'#'+section+' .seating-collapsed-summary')==baseline;assert page.evaluate(metrics,'#'+section+' .package-card')==card_baseline
+   expect(page.locator('#arrangement-dialog')).to_be_hidden();assert page.locator('#guide-content').evaluate('e=>e.parentElement.tagName')=='MAIN';assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')
+  def request(card):
    root=page.locator('#'+card);details=root.locator('details').first
    if details.get_attribute('open') is None:details.locator('summary').first.click()
-   return root
-  def step(card,value=1):
-   root=expand(card)
-   for _ in range(value):root.locator('.arrangement-controls [data-step="1"]').click()
-  visit('/services-guide/')
-  assert page.locator('.portal-branch').inner_text()=='فرع خليج سلمان'
-  assert page.locator('.portal-branch').evaluate('e=>e.previousElementSibling.textContent')=='منتجع يوم العائلة'
-  assert page.locator('.cover-logo').evaluate('e=>getComputedStyle(e).backgroundImage').endswith('logo-original.png")')
-  original=subprocess.check_output(['git','show','pre-arrangements-ordering-20261125:services-guide/index.html']).decode()
-  page.route('**/services-guide/?baseline=1',lambda r:r.fulfill(body=original.replace('guide.js?v=20261125-live-v54','guide-original.js'),content_type='text/html'))
-  old_js=subprocess.check_output(['git','show','pre-arrangements-ordering-20261125:services-guide/guide.js']).decode()
-  page.route('**/services-guide/guide-original.js',lambda r:r.fulfill(body=old_js,content_type='text/javascript'))
-  metrics="()=>[...document.querySelectorAll('.contents .guide-tile')].map(e=>{const s=getComputedStyle(e),r=e.getBoundingClientRect();return [r.width,r.height,s.padding,s.borderRadius,s.backgroundColor]})"
-  current=page.evaluate(metrics);visit('/services-guide/?baseline=1');assert page.evaluate(metrics)==current, (width,current,page.evaluate(metrics))
-  visit('/services-guide/#coordination');step('package-1',2)
-  assert page.locator('#arrangement-total').inner_text()=='240'
-  assert page.locator('#package-1').evaluate('e=>getComputedStyle(e).borderColor')=='rgb(147, 75, 101)'
-  # Share each package using the exact public URL already used by the main guide.
-  for pack in A['coordination']['packages']:
-   suffix=pack['id'].replace('hd-coordination-package-','');card='package-complete' if suffix=='resort' else 'package-'+suffix
-   root=expand(card);root.locator('[data-share-path]').click()
-   assert page.evaluate('shares.at(-1)')=={'text':BASE+pack['path']}
-  visit('/services-guide/#dining');page.locator('.fd-dining-option[data-size="12"][data-option="tansiq"]').click()
-  assert page.locator('#arrangement-total').inner_text()=='839'
-  page.locator('.fd-dining-option[data-size="6"][data-option="plain"]').click()
-  assert page.locator('#arrangement-total').inner_text()=='439'
-  assert page.locator('.fd-dining-option[aria-pressed="true"]').count()==1
-  assert page.locator('[data-tone="dining"] .arrangement-quantity').count()==0
-  page.locator('.fd-dining-option[data-size="12"][data-option="tansiq"]').click()
-  assert page.locator('#arrangement-total').inner_text()=='839'
-  page.locator('#dining [data-share-path]').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+A['dining']['path']}
-  visit('/services-guide/#seating');step('session-1');page.locator('.seating-extra [data-step="1"]').click()
-  assert page.locator('#arrangement-total').inner_text()=='1309'
-  assert page.locator('#session-1').evaluate('e=>getComputedStyle(e).borderColor')=='rgb(60, 107, 80)'
-  for i in range(1,7):
-   root=expand('session-'+str(i));root.locator('[data-share-path]').click()
-   assert page.evaluate('shares.at(-1)')=={'text':BASE+A['seating']['path']+'?session='+str(i)}
-  page.locator('#arrangement-dialog .arrangement-dialog-footer button').click();expect(page.locator('#arrangement-dialog')).not_to_be_visible()
-  page.locator('#arrangement-order [type="submit"]').click();assert not page.evaluate('opened')
-  page.locator('#arrangement-name').fill('ضيف التجربة');page.locator('#arrangement-cabin').select_option('بيت الدوم 1');page.locator('#arrangement-notes').fill('تنسيق الورد على شكل قلب')
-  page.locator('#arrangement-order [type="submit"]').click();draft=page.evaluate('opened.at(-1)');url=urlparse(draft);message=parse_qs(url.query)['text'][0]
-  assert url.netloc=='wa.me' and url.path=='/966537009217'
-  expected='\n'.join(['السلام عليكم، أرغب بطلب التنسيقات والتجهيزات التالية:','','الاسم: ضيف التجربة','اسم الكوخ: بيت الدوم 1','رقم الكوخ: 15','','الطلبات:','','التنسيقات:','باقة الورد × 2 = 240 ريال','','طاولات الطعام:','طاولة طعام لـ12 شخصًا — تجهيز مع تنسيق × 1 = 599 ريال','','الجلسات الخارجية:','جلسة بإطار مثلث × 1 = 300 ريال','','إضافة اختيارية:','كيك وعصير × 1 = 170 ريال','','إجمالي الطلب: 1309 ريال','','ملاحظات: تنسيق الورد على شكل قلب'])
-  assert message==expected,message
-  assert 'شخصين' not in message
-  assert page.locator('[data-tone="seating"] .arrangement-item-copy').inner_text().splitlines()==['جلسة بإطار مثلث','1 × 300 = 300 ريال']
-  assert 'http' not in message and '/imgs/' not in message
-  page.reload();page.locator('#guide-content.is-ready').wait_for(state='attached');assert page.locator('#arrangement-total').inner_text()=='1309'
-  assert page.locator('#arrangement-name').input_value()=='ضيف التجربة' and page.locator('#arrangement-cabin').input_value()=='بيت الدوم 1'
-  page.locator('[data-remove="session-1"]').click();expect(page.locator('#arrangement-warning')).to_be_visible();assert page.locator('#arrangement-order [type="submit"]').is_disabled()
-  page.locator('[data-remove="seating-extra"]').click();assert page.locator('#arrangement-total').inner_text()=='839';assert page.locator('#arrangement-order [type="submit"]').is_enabled()
-  visit('/services-guide/#contents');assert page.locator('.contents .is-selected').count()==2
-  colors=page.locator('.contents .is-selected').evaluate_all('es=>es.map(e=>getComputedStyle(e).borderColor)');assert len(set(colors))==2
-  page.screenshot(path=f'/tmp/arrangements-v63/home-{width}.png',full_page=True)
-  visit('/arrangements/#session-4');assert page.locator('#session-4 details').get_attribute('open') is not None
-  assert page.locator('#seating').is_visible()
-  for section in ['coordination','dining','seating']:
-   visit('/services-guide/#'+section);assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1')
-  page.screenshot(path=f'/tmp/arrangements-v63/order-{width}.png',full_page=True)
-  # The native guide and the portal publish identical canonical links, including all six new session links.
-  for i in range(1,7):
-   page.goto(BASE+A['seating']['path']+'?session='+str(i));native=page.locator('.service-guide-packages');native.wait_for()
-   assert native.locator('details.package').nth(i-1).get_attribute('open') is not None
-   assert native.locator('[data-share]').nth(i-1).get_attribute('data-share')==A['seating']['path']+'?session='+str(i)
-   assert page.locator('[data-service-portal]').get_attribute('href').endswith('/arrangements/#session-'+str(i))
-   native.locator('details.package').nth(i-1).locator('[data-share]').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+A['seating']['path']+'?session='+str(i)}
-  for pack in A['coordination']['packages']:
-   page.goto(BASE+pack['path']);button=page.locator('.share-text[data-share="'+pack['path']+'"]');button.wait_for(state='attached');assert button.count()==1
-  for path in ['/services/coordination/?package=1','/services/dining-tables/','/services/outdoor-seating/?session=1','/arrangements/']:
-   response=page.request.get(BASE+path);html=response.text();assert response.status==200
-   assert 'og:image' not in html and 'twitter:image' not in html and '<img ' not in html
-   assert 'max-image-preview:none' in html
-  out['viewports'].append({'width':width,'cardGeometryPreserved':True,'exactCoordinatorDraft':True,'selectionAndPersistence':True,'singleDiningSelection':True,'groupedWhatsApp':True,'noSeatingCapacityLine':True,'packageLinksMatch':6,'sessionLinksMatch':6,'textOnlyShare':True});print(width,'PASS',flush=True);context.close()
- # Changes in catalogue prices must drive totals; malformed drafts and unavailable storage cannot break ordering.
- context=browser.new_context(viewport={'width':390,'height':844});page=context.new_page();page.on('pageerror',lambda e:out['errors'].append(str(e)))
- changed=json.loads(json.dumps(SOURCE));changed['arrangements']['coordination']['packages'][0]['price']='121 ريال للباقة'
- page.route('**/data/services.json?*',lambda r:r.fulfill(body=json.dumps(changed),content_type='application/json'))
- page.add_init_script("sessionStorage.setItem('familyday.arrangements-orders.v1',JSON.stringify({quantities:{'package-1':2,'session-1':-4,'dining-6-plain':4,'dining-12-tansiq':7,'unknown':99},name:'اختبار',cabin:'غير صالح'}))")
- page.goto(BASE+'/services-guide/#package-1');page.locator('#guide-content.is-ready').wait_for(state='attached');assert page.locator('#arrangement-total').inner_text()=='441';assert page.locator('.fd-dining-option[aria-pressed="true"]').count()==1;assert page.locator('[data-tone="dining"] .arrangement-item-copy span').inner_text()=='1 × 199 = 199 ريال';assert page.locator('#arrangement-cabin').input_value()=='';context.close()
- context=browser.new_context();page=context.new_page();page.add_init_script("Storage.prototype.getItem=()=>{throw Error('blocked')};Storage.prototype.setItem=()=>{throw Error('blocked')}")
- page.goto(BASE+'/services-guide/#package-1');page.locator('#guide-content.is-ready').wait_for(state='attached');page.locator('#package-1 [data-step="1"]').click();assert page.locator('#arrangement-total').inner_text()=='120';context.close();browser.close()
-assert not out['errors'],out['errors']
-(R/'site/audits/arrangements-v65.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out))
+   expect(root.locator('.package-gallery img').first).to_be_visible();assert root.locator('.package-details-body').inner_text();root.locator('[data-request-key]').click();expect(page.locator('.arrangement-request')).to_be_visible();assert page.locator('#arrangement-notes').input_value()==''
+  def fields():
+   page.locator('#arrangement-name').fill('ضيف المراجعة');page.locator('#arrangement-cabin').select_option('البيت اليوناني 1');page.locator('#arrangement-notes').fill('مراجعة محلية فقط');assert page.locator('#arrangement-cabin-number').inner_text()=='رقم الكوخ: 10'
+  def send(group,items,total):
+   fields();page.locator('.arrangement-request .arrangement-send').click();expect(page.locator('.arrangement-request')).to_be_hidden();u=urlparse(page.evaluate('opened.at(-1)'));assert u.path=='/966537009217';text=parse_qs(u.query)['text'][0]
+   parts=['السلام عليكم، أرغب بطلب التنسيقات والتجهيزات التالية:','','الاسم: ضيف المراجعة','اسم الكوخ: البيت اليوناني 1','رقم الكوخ: 10','','الطلبات:','',group+':',*items,'','إجمالي الطلب: '+str(total)+' ريال','','ملاحظات: مراجعة محلية فقط'];assert text=='\n'.join(parts),(text,parts)
+   assert not page.locator('#arrangement-shortcut').is_visible()
+  visit('/services-guide/');page.locator('.guide-tile[href="#coordination"]').click();assert page.locator('body').get_attribute('data-guide-view')=='section'
+  for i,pack in enumerate(A['coordination']['packages']):
+   suffix=pack['id'].replace('hd-coordination-package-','');card='package-complete' if suffix=='resort' else 'package-'+suffix;request(card)
+   if i==0:
+    page.locator('.arrangement-request .arrangement-send').click();assert page.evaluate('opened.length')==0;page.locator('.arrangement-request [data-close-request]').click();expect(page.locator('.arrangement-request')).to_be_hidden();request(card);page.go_back();expect(page.locator('.arrangement-request')).to_be_hidden();assert page.url==BASE+'/services-guide/#coordination';request(card)
+   amount=int(re.search(r'\d+',pack['price'])[0]);send('التنسيقات',[pack['name']+' × 1 = '+str(amount)+' ريال'],amount)
+   page.locator('#'+card+' [data-share-path]').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+pack['path']}
+  page.locator('#guide-back').click();page.locator('.guide-tile[href="#seating"]').click()
+  for i,session in enumerate(A['seating']['sessions'],1):
+   request('session-'+str(i));amount=int(re.search(r'\d+',session['price'])[0]);send('الجلسات الخارجية',[session['name']+' × 1 = '+str(amount)+' ريال'],amount);page.locator('#session-'+str(i)+' [data-share-path]').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+A['seating']['path']+'?session='+str(i)}
+  request('session-1');page.locator('.arrangement-request [data-request-extra]').check();fields();page.locator('.arrangement-request .arrangement-send').click();expect(page.locator('.arrangement-request')).to_be_hidden();msg=parse_qs(urlparse(page.evaluate('opened.at(-1)')).query)['text'][0];assert '\nإضافة اختيارية:\nكيك وعصير × 1 = 170 ريال' in msg and 'إجمالي الطلب: 470 ريال' in msg
+  page.locator('#guide-back').click();page.locator('.guide-tile[href="#dining"]').click();page.locator('.fd-dining-option[data-size="6"][data-option="plain"]').click();expect(page.locator('.arrangement-request')).to_be_visible();assert page.locator('.arrangement-request-quantity').is_hidden();assert page.locator('.fd-dining-option[aria-pressed="true"]').count()==1;send('طاولات الطعام',['طاولة طعام لـ6 أشخاص — تجهيز أساسي × 1 = 199 ريال'],199)
+  # Refresh recalls identity only, and deep links keep the original package/session expansions.
+  visit('/services-guide/#session-2');assert page.locator('#session-2 details').get_attribute('open') is not None;page.locator('#session-2 [data-request-key]').click();assert page.locator('#arrangement-name').input_value()=='ضيف المراجعة';assert page.locator('#arrangement-notes').input_value()=='';page.reload();page.locator('#guide-content.is-ready').wait_for(state='attached');expect(page.locator('.arrangement-request')).to_be_hidden();assert not page.evaluate('!!history.state?.arrangementRequest');page.locator('#session-2 [data-request-key]').click();page.locator('.arrangement-request [data-close-request]').click();expect(page.locator('.arrangement-request')).to_be_hidden()
+  out['viewports'].append({'width':width,'height':height,'originalClosedCardGeometry':True,'fullPageBrowse':True,'packages':6,'sessions':6,'exactIndependentWhatsAppDrafts':True,'originalTextOnlyShares':True,'optionalSeatingExtra':True,'singleDiningChoice':True,'backAndCancel':True});c.close();print(width,height,'PASS',flush=True)
+ b.close()
+assert not out['errors'],out
+(R/'site/audits/arrangements-browse-v73.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False))

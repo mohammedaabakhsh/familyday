@@ -67,7 +67,7 @@
     const diningSource = template.content;
     const diningImage = sourceImage(diningSource,'.fd-dining-image img');
     const diningPhoto = '<div class="dining-shared-photo">' + FD_GUIDE_GALLERY.markup([diningImage.src],data.dining.name,diningImage.alt) + '<p class="fd-dining-caption">' + escape(text(diningSource,'.fd-dining-caption')) + '</p></div>';
-    const diningBody = '<p id="dining-price-help" class="dining-order-help">اضغط على السعر لاختيار عدد الأشخاص والتجهيز المطلوب.</p>' + diningPhoto + FD_DINING_CARDS.table(doc,true).outerHTML + FD_DINING_CARDS.details(doc).outerHTML;
+    const diningBody = '<p id="dining-price-help" class="dining-order-help">اضغط على السعر لطلب عدد الأشخاص والتجهيز المطلوب عبر واتساب.</p>' + diningPhoto + FD_DINING_CARDS.table(doc,true).outerHTML + FD_DINING_CARDS.details(doc).outerHTML;
     html += section('dining',data.dining.name,data.dining.intro,diningBody,true);
     const extra = data.seating.extra;
     const seatingExtra = '<aside class="seating-extra" aria-labelledby="seating-extra-title"><h3 id="seating-extra-title">إضافة اختيارية</h3><div class="seating-extra-offer"><strong>' + escape(extra.name) + '</strong><strong class="seating-extra-price">' + escape(extra.price) + '</strong></div><p>إضافة اختيارية تُضاف قيمتها لسعر الجلسة</p></aside>';
@@ -86,6 +86,8 @@
   let activeSection = null;
   const dialog=document.getElementById('arrangement-dialog');
   let dialogScrollY=0,closeRequested=false;
+  // Restore the original full-page catalogue for standalone visitors.
+  if(!embeddedOrder)document.querySelector('.contents').after(content);
   history.scrollRestoration = 'manual';
   function routeSection() {
     const id = location.hash.slice(1);
@@ -101,8 +103,8 @@
     const pendingHash = /^#package-(1|2|3|celebration|vip|complete)$/.test(location.hash) ? '#coordination' : location.hash === '#packages' || /^#session-[1-6]$/.test(location.hash) ? '#seating' : location.hash;
     const pendingTile = !content.classList.contains('is-ready') && Array.from(document.querySelectorAll('.contents a')).find(link => link.hash === pendingHash);
     const sectionView = Boolean(activeSection || pendingTile);
-    document.body.dataset.guideView = sectionView ? 'dialog' : 'home';
-    document.body.classList.toggle('arrangement-dialog-open',sectionView);
+    document.body.dataset.guideView = sectionView ? (embeddedOrder?'dialog':'section') : 'home';
+    document.body.classList.toggle('arrangement-dialog-open',embeddedOrder&&sectionView);
     document.querySelectorAll('.guide-section').forEach(section => section.classList.toggle('is-active',section === activeSection));
     const title = activeSection ? activeSection.dataset.title : pendingTile ? pendingTile.querySelector('.tile-title').textContent : '';
     back.href = sectionView ? '#contents' : homeBack.href;
@@ -110,16 +112,19 @@
     document.getElementById('guide-back-label').textContent = sectionView ? 'تنسيقات وجلسات' : 'رجوع';
     document.title = title ? title + ' | يوم العائلة' : guideTitle;
     document.getElementById('arrangement-dialog-title').textContent=title || 'اختيار التجهيزات';
-    if(sectionView && !dialog.open){dialogScrollY=window.scrollY;dialog.showModal();}
-    else if(!sectionView && dialog.open){dialog.close();}
+    if(embeddedOrder && sectionView && !dialog.open){dialogScrollY=window.scrollY;dialog.showModal();}
+    else if((!embeddedOrder || !sectionView) && dialog.open){dialog.close();}
     document.dispatchEvent(new Event('fd:arrangement-view'));
     requestAnimationFrame(() => {
       if(activeSection) {
-        if(focus) document.getElementById('arrangement-dialog-title').focus({preventScroll:true});
+        if(focus)(embeddedOrder?document.getElementById('arrangement-dialog-title'):activeSection.querySelector('h2')).focus({preventScroll:true});
         const target = document.getElementById(location.hash.slice(1));
         if(target?.matches('.package-card')) target.querySelector('details').open=true;
-        if(target && target!==activeSection) content.scrollTop+=target.getBoundingClientRect().top-content.getBoundingClientRect().top-8;
-        else content.scrollTop=0;
+        if(embeddedOrder){
+          if(target && target!==activeSection)content.scrollTop+=target.getBoundingClientRect().top-content.getBoundingClientRect().top-8;
+          else content.scrollTop=0;
+        }else if(target && target!==activeSection)target.scrollIntoView({behavior:'instant',block:'start'});
+        else window.scrollTo({top:0,behavior:'instant'});
       } else {
         const previous = history.state && history.state.guideHomeY;
         const tile = document.querySelector('.contents a[href="' + (history.state && history.state.guideTile || '#coordination') + '"]');
