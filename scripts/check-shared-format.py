@@ -18,7 +18,7 @@ async def main():
      if kind in ['services','contact','faq']:
       assert title['top']==76,(w,v,kind,title)
       if w<600:assert title['right']==w-(15 if w<=360 else 20),(w,v,kind,title)
-     widths=await page.locator('#bottom-nav a').evaluate_all('es=>es.map(e=>e.getBoundingClientRect().width)');assert len(widths)==6 and max(widths)-min(widths)<1,(v,widths)
+     widths=await page.locator('#bottom-nav a').evaluate_all('es=>es.map(e=>e.getBoundingClientRect().width)');assert len(widths)==5 and max(widths)-min(widths)<1,(v,widths)
      nav=await page.locator('#bottom-nav .nav-label').evaluate_all('es=>es.map(e=>({size:parseFloat(getComputedStyle(e).fontSize),text:e.textContent.trim()}))');assert {n['size'] for n in nav}=={10 if w<=360 else 11},(w,v,nav)
      assert await page.evaluate('document.documentElement.scrollWidth<=innerWidth+1')
      out['headings'].append({'width':w,'height':h,'venue':v,'kind':kind,'path':path,**title})

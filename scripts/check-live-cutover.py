@@ -86,10 +86,10 @@ async def main():
    for path in ['/', '/resort/','/cabins/','/resort/contact/','/resort-map/','/chalet/','/chalet/details/','/chalet-map/','/stay/','/stay/sections/','/stay/compare/','/stay/services/','/stay/contact/']:
     await visit(path);assert await page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),(path,w)
     if path!='/' and not await page.locator('body.focused-view').count():
-     widths=await page.locator('#bottom-nav a').evaluate_all('es=>es.map(e=>e.getBoundingClientRect().width)');assert len(widths)==6 and max(widths)-min(widths)<1
+     widths=await page.locator('#bottom-nav a').evaluate_all('es=>es.map(e=>e.getBoundingClientRect().width)');assert len(widths)==5 and max(widths)-min(widths)<1
     out['viewports'].append({'path':path,'width':w})
   # Older preview queries must survive the redirect and still select the correct unit/package.
-  await page.goto(BASE+'/preview/dome-tour/?cabin=12&from=details');await page.wait_for_url(BASE+'/dome-tour/?cabin=12&from=details');await page.locator('#main h1').wait_for();assert '2' in await page.locator('#main h1').inner_text()
+  await page.goto(BASE+'/preview/dome-tour/?cabin=12&from=details');await page.wait_for_url(BASE+'/dome-tour/?cabin=12&from=details');await page.locator('#main h1').wait_for();await page.frame_locator('#tour-frame').locator('.dt-image').wait_for(state='attached');assert '/dome-tour-16-' in await page.frame_locator('#tour-frame').locator('.dt-image').get_attribute('src')
   await page.goto(BASE+'/preview/services/coordination/?package=resort');await page.wait_for_url(BASE+'/services/coordination/?package=resort');await page.locator('.package[open]').wait_for();out['semanticQueryPreserved']=True
   await b.close()
  assert not out['errors'] and not out['badResponses'] and not out['badLinks'],out

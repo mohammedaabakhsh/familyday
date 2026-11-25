@@ -88,6 +88,7 @@ var FD_TOUR_COMMON = (function () {
     if(!root || !root.isConnected) return;
     var stage=root.querySelector('.dt-stage'), image=root.querySelector('.dt-image');
     FD_IMAGE_FEEDBACK.watch(image,stage);
+    if(document.documentElement.classList.contains('resort-details-trial')) root.querySelector('.dt-title').textContent=document.title;
     FD_EXPLORATION_SHARE.mount(root.querySelector('.dt-heading'),'cabin');
     if(window.FD_RESORT_DRAW_LINES&&FD_RESORT_DRAW_LINES(root,parts))return;
     var box=stage.getBoundingClientRect(), im=image.getBoundingClientRect();

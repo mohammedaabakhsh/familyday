@@ -2447,5 +2447,15 @@
     ],
     "orderPortalsUnchanged": true,
     "mapUnchanged": true
+  },
+  "approvedGuideBatch": {
+    "version": "20261125-live-v67",
+    "rollbackTag": "pre-guide-batch-20261125",
+    "rollbackCommit": "63127fb20179fce58450f6866a422e56d20daf63",
+    "scope": "User-approved collected changes: home share, twelve cabin descriptions and balanced lines, matching exploration titles, five equal venue tabs with central gold accommodation and Contact label.",
+    "originalRoutesPreserved": true,
+    "orderPortalsUnchanged": true,
+    "cabinFactsAndImagesUnchanged": true,
+    "fullPanoramicTitleFits": true
   }
 }

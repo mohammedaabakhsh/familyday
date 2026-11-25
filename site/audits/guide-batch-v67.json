@@ -1,0 +1,539 @@
+{
+  "version": "20261125-live-v67",
+  "navigation": [
+    {
+      "width": 320,
+      "venue": "resort",
+      "labels": [
+        "المنتجع",
+        "الخريطة",
+        "الأكواخ",
+        "الخدمات",
+        "التواصل"
+      ],
+      "equalWidths": true,
+      "centerGoldAccommodation": true,
+      "linksAndActiveStates": true
+    },
+    {
+      "width": 320,
+      "venue": "stay",
+      "labels": [
+        "الاستراحة",
+        "المقارنة",
+        "القسمان",
+        "الخدمات",
+        "التواصل"
+      ],
+      "equalWidths": true,
+      "centerGoldAccommodation": true,
+      "linksAndActiveStates": true
+    },
+    {
+      "width": 320,
+      "venue": "chalet",
+      "labels": [
+        "الشاليه",
+        "استكشف",
+        "التفاصيل",
+        "الخدمات",
+        "التواصل"
+      ],
+      "equalWidths": true,
+      "centerGoldAccommodation": true,
+      "linksAndActiveStates": true
+    },
+    {
+      "width": 390,
+      "venue": "resort",
+      "labels": [
+        "المنتجع",
+        "الخريطة",
+        "الأكواخ",
+        "الخدمات",
+        "التواصل"
+      ],
+      "equalWidths": true,
+      "centerGoldAccommodation": true,
+      "linksAndActiveStates": true
+    },
+    {
+      "width": 390,
+      "venue": "stay",
+      "labels": [
+        "الاستراحة",
+        "المقارنة",
+        "القسمان",
+        "الخدمات",
+        "التواصل"
+      ],
+      "equalWidths": true,
+      "centerGoldAccommodation": true,
+      "linksAndActiveStates": true
+    },
+    {
+      "width": 390,
+      "venue": "chalet",
+      "labels": [
+        "الشاليه",
+        "استكشف",
+        "التفاصيل",
+        "الخدمات",
+        "التواصل"
+      ],
+      "equalWidths": true,
+      "centerGoldAccommodation": true,
+      "linksAndActiveStates": true
+    },
+    {
+      "width": 430,
+      "venue": "resort",
+      "labels": [
+        "المنتجع",
+        "الخريطة",
+        "الأكواخ",
+        "الخدمات",
+        "التواصل"
+      ],
+      "equalWidths": true,
+      "centerGoldAccommodation": true,
+      "linksAndActiveStates": true
+    },
+    {
+      "width": 430,
+      "venue": "stay",
+      "labels": [
+        "الاستراحة",
+        "المقارنة",
+        "القسمان",
+        "الخدمات",
+        "التواصل"
+      ],
+      "equalWidths": true,
+      "centerGoldAccommodation": true,
+      "linksAndActiveStates": true
+    },
+    {
+      "width": 430,
+      "venue": "chalet",
+      "labels": [
+        "الشاليه",
+        "استكشف",
+        "التفاصيل",
+        "الخدمات",
+        "التواصل"
+      ],
+      "equalWidths": true,
+      "centerGoldAccommodation": true,
+      "linksAndActiveStates": true
+    },
+    {
+      "width": 768,
+      "venue": "resort",
+      "labels": [
+        "المنتجع",
+        "الخريطة",
+        "الأكواخ",
+        "الخدمات",
+        "التواصل"
+      ],
+      "equalWidths": true,
+      "centerGoldAccommodation": true,
+      "linksAndActiveStates": true
+    },
+    {
+      "width": 768,
+      "venue": "stay",
+      "labels": [
+        "الاستراحة",
+        "المقارنة",
+        "القسمان",
+        "الخدمات",
+        "التواصل"
+      ],
+      "equalWidths": true,
+      "centerGoldAccommodation": true,
+      "linksAndActiveStates": true
+    },
+    {
+      "width": 768,
+      "venue": "chalet",
+      "labels": [
+        "الشاليه",
+        "استكشف",
+        "التفاصيل",
+        "الخدمات",
+        "التواصل"
+      ],
+      "equalWidths": true,
+      "centerGoldAccommodation": true,
+      "linksAndActiveStates": true
+    },
+    {
+      "width": 1440,
+      "venue": "resort",
+      "labels": [
+        "المنتجع",
+        "الخريطة",
+        "الأكواخ",
+        "الخدمات",
+        "التواصل"
+      ],
+      "equalWidths": true,
+      "centerGoldAccommodation": true,
+      "linksAndActiveStates": true
+    },
+    {
+      "width": 1440,
+      "venue": "stay",
+      "labels": [
+        "الاستراحة",
+        "المقارنة",
+        "القسمان",
+        "الخدمات",
+        "التواصل"
+      ],
+      "equalWidths": true,
+      "centerGoldAccommodation": true,
+      "linksAndActiveStates": true
+    },
+    {
+      "width": 1440,
+      "venue": "chalet",
+      "labels": [
+        "الشاليه",
+        "استكشف",
+        "التفاصيل",
+        "الخدمات",
+        "التواصل"
+      ],
+      "equalWidths": true,
+      "centerGoldAccommodation": true,
+      "linksAndActiveStates": true
+    }
+  ],
+  "cabins": [
+    {
+      "width": 320,
+      "key": "dome-1",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق بيت الدوم من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 320,
+      "key": "dome-2",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق بيت الدوم من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 320,
+      "key": "pyramid",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق الكوخ الهرمي من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 320,
+      "key": "classic",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق الكوخ الكلاسيكي من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 320,
+      "key": "greek-1",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق البيت اليوناني من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 320,
+      "key": "greek-2",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق البيت اليوناني من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 320,
+      "key": "palm-beach",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق كوخ بالم بيتش من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 320,
+      "key": "bohemian",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق الكوخ البوهيمي من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 320,
+      "key": "french",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق الكوخ الفرنسي من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 320,
+      "key": "rustic",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق الكوخ الريفي من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 320,
+      "key": "royal",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق كوخ رويال من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 320,
+      "key": "panoramic",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق البيت البانورامي من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 390,
+      "key": "dome-1",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق بيت الدوم من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 390,
+      "key": "dome-2",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق بيت الدوم من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 390,
+      "key": "pyramid",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق الكوخ الهرمي من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 390,
+      "key": "classic",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق الكوخ الكلاسيكي من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 390,
+      "key": "greek-1",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق البيت اليوناني من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 390,
+      "key": "greek-2",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق البيت اليوناني من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 390,
+      "key": "palm-beach",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق كوخ بالم بيتش من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 390,
+      "key": "bohemian",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق الكوخ البوهيمي من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 390,
+      "key": "french",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق الكوخ الفرنسي من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 390,
+      "key": "rustic",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق الكوخ الريفي من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 390,
+      "key": "royal",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق كوخ رويال من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 390,
+      "key": "panoramic",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق البيت البانورامي من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 1440,
+      "key": "dome-1",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق بيت الدوم من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 1440,
+      "key": "dome-2",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق بيت الدوم من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 1440,
+      "key": "pyramid",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق الكوخ الهرمي من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 1440,
+      "key": "classic",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق الكوخ الكلاسيكي من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 1440,
+      "key": "greek-1",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق البيت اليوناني من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 1440,
+      "key": "greek-2",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق البيت اليوناني من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 1440,
+      "key": "palm-beach",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق كوخ بالم بيتش من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 1440,
+      "key": "bohemian",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق الكوخ البوهيمي من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 1440,
+      "key": "french",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق الكوخ الفرنسي من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 1440,
+      "key": "rustic",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق الكوخ الريفي من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 1440,
+      "key": "royal",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق كوخ رويال من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    },
+    {
+      "width": 1440,
+      "key": "panoramic",
+      "approvedCopy": true,
+      "explorationTitle": "استكشف مرافق البيت البانورامي من الداخل",
+      "fullTitleFits": true,
+      "staticShareMatches": true
+    }
+  ],
+  "homeShares": [
+    {
+      "width": 320,
+      "left": 16,
+      "top": 16,
+      "textOnly": true
+    },
+    {
+      "width": 390,
+      "left": 16,
+      "top": 16,
+      "textOnly": true
+    },
+    {
+      "width": 430,
+      "left": 16,
+      "top": 16,
+      "textOnly": true
+    },
+    {
+      "width": 768,
+      "left": 16,
+      "top": 16,
+      "textOnly": true
+    },
+    {
+      "width": 1440,
+      "left": 120,
+      "top": 16,
+      "textOnly": true
+    }
+  ],
+  "errors": [],
+  "badResponses": []
+}

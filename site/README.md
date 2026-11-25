@@ -81,3 +81,9 @@ Dining is limited to one configuration/quantity, including older saved drafts. S
 ## Cabin exploration order and arrows — v66
 
 [Approved placements and routing](../docs/cabin-tour-order-v66.md) implement the owner’s Dome/Pyramid/Classic swaps and room-first organization for the twelve resort cabins. Phone/tablet controls use explicit rows, while wide-screen positions remain. Arrows clear other controls and only the active arrow is visible. Source images, hotspot coordinates and facts are unchanged. Run `scripts/check-cabin-tour-order.py`; evidence is `audits/cabin-tour-order-v66.json`.
+
+## Approved guide batch — v67
+
+[User-approved copy and navigation](../docs/guide-batch-v67.md) add home sharing, remove repeated facts from the twelve resort cabin introductions, balance paragraph lines, align exploration wording across cards/pages/static share metadata, and reduce each venue’s bottom navigation to five equal tabs with accommodation highlighted in gold at the center. Contact keeps Maps and FAQ links. Original routes, source facts, images and the three ordering portals remain unchanged.
+
+Checks: `scripts/check-guide-batch.py`, `scripts/check-shared-format.py`, `scripts/check-back-navigation.py`, and `scripts/check-live-cutover.py`. Evidence is stored in the corresponding v67 audits.
