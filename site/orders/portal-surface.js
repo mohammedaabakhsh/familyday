@@ -6,7 +6,7 @@
   const guest=!!document.getElementById('service-dialog');
   const dialog=document.getElementById(guest?'service-dialog':'arrangement-dialog');
   const kind=guest?'guest':'arrangements';
-  const shareIcon='<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 16V2m-5 5 5-5 5 5M6 10H3v11h18V10h-3"/></svg>';
+  const shareIcon='<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 16V2m-5 5 5-5 5 5M6 10H3v11h18V10h-3"/></svg>';
   let metadata=null,ready=false,wasOpen=false,view=false,directForm,sendButton;
   const post=(action,data={})=>{if(embedded)parent.postMessage({type:'familyday-resort-order',kind,action,...data},location.origin);};
   function serviceKey(){
@@ -45,7 +45,6 @@
     const button=event.target.closest(guest?'#share-page':'.topbar [data-share]');if(!button)return;
     event.preventDefault();event.stopImmediatePropagation();share(guest?'/guest-services/':'/services-guide/');
   },true);
-  if(guest)document.getElementById('share-page').innerHTML=shareIcon;
   function updateShare(){shareButton.disabled=!sharePath();}
   function photo(service,panel){
     if(!service.image||panel.querySelector('.resort-service-photo'))return;
