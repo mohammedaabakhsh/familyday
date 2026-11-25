@@ -2457,5 +2457,25 @@
     "orderPortalsUnchanged": true,
     "cabinFactsAndImagesUnchanged": true,
     "fullPanoramicTitleFits": true
+  },
+  "approvedChaletStayCopy": {
+    "version": "20261125-live-v68",
+    "rollbackTag": "pre-chalet-stay-copy-20261125",
+    "rollbackCommit": "71441a4b41037699004774a4cd1f84e074a8c771",
+    "descriptions": {
+      "30": "شاليه من دورين، يضم مجلسًا مستقلًا بمدخل خاص، وغرفة ألعاب ومسبحًا للأطفال بزحليقة مزدوجة.",
+      "20": "يتميّز قسم الدور الأرضي بمسبحين خاصين للكبار والأطفال، مع مجلس كبير لجمعاتكم.",
+      "21": "يتميّز قسم الدور العلوي بمسبح خاص للكبار وملعب كرة طائرة، مع مجلس كبير لجمعاتكم.\nوتتوفر الزحليقة الهوائية الكبيرة برسوم إضافية."
+    },
+    "comparisonHeaders": [
+      "القسم الأول",
+      "القسم الثاني"
+    ],
+    "firstComparisonRow": [
+      "الدور",
+      "أرضي",
+      "علوي"
+    ],
+    "otherFactsImagesAndRoutesUnchanged": true
   }
 }

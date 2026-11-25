@@ -87,3 +87,7 @@ Dining is limited to one configuration/quantity, including older saved drafts. S
 [User-approved copy and navigation](../docs/guide-batch-v67.md) add home sharing, remove repeated facts from the twelve resort cabin introductions, balance paragraph lines, align exploration wording across cards/pages/static share metadata, and reduce each venue’s bottom navigation to five equal tabs with accommodation highlighted in gold at the center. Contact keeps Maps and FAQ links. Original routes, source facts, images and the three ordering portals remain unchanged.
 
 Checks: `scripts/check-guide-batch.py`, `scripts/check-shared-format.py`, `scripts/check-back-navigation.py`, and `scripts/check-live-cutover.py`. Evidence is stored in the corresponding v67 audits.
+
+## Chalet and rest-house introductions — v68
+
+[Approved wording](../docs/chalet-stay-copy-v68.md) removes repeated audience/capacity/bedroom facts from the three introductions, keeps the upper section’s extra-fee note, and balances their lines. The stay comparison has section-only column headings and a first specification row for the floor. All previous comparison values, photos, facts, names, routes and ordering portals are preserved. Verification: `audits/chalet-stay-copy-v68.json`.

@@ -342,3 +342,6 @@ body.resort-services #main{width:100%;max-width:none;height:100dvh;min-height:0;
 
 .resort-catalog-panel .card-explore>span{min-width:0;text-wrap:balance}
 .resort-catalog-panel .card-explore>.icon{flex:none}
+
+/* Match the approved cabin paragraph balance for chalet and rest-house introductions. */
+:is(.chalet-unit,.stay-unit) .detail-copy .description p{text-wrap:balance}

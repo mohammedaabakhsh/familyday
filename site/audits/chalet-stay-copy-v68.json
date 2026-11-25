@@ -1,0 +1,133 @@
+{
+  "version": "20261125-live-v68",
+  "pages": [
+    {
+      "width": 320,
+      "id": 20,
+      "approvedCopy": true,
+      "factsPreserved": true,
+      "balanced": true,
+      "staticMetadataMatches": true
+    },
+    {
+      "width": 320,
+      "id": 21,
+      "approvedCopy": true,
+      "factsPreserved": true,
+      "balanced": true,
+      "staticMetadataMatches": true
+    },
+    {
+      "width": 320,
+      "id": 30,
+      "approvedCopy": true,
+      "factsPreserved": true,
+      "balanced": true,
+      "staticMetadataMatches": true
+    },
+    {
+      "width": 390,
+      "id": 20,
+      "approvedCopy": true,
+      "factsPreserved": true,
+      "balanced": true,
+      "staticMetadataMatches": true
+    },
+    {
+      "width": 390,
+      "id": 21,
+      "approvedCopy": true,
+      "factsPreserved": true,
+      "balanced": true,
+      "staticMetadataMatches": true
+    },
+    {
+      "width": 390,
+      "id": 30,
+      "approvedCopy": true,
+      "factsPreserved": true,
+      "balanced": true,
+      "staticMetadataMatches": true
+    },
+    {
+      "width": 768,
+      "id": 20,
+      "approvedCopy": true,
+      "factsPreserved": true,
+      "balanced": true,
+      "staticMetadataMatches": true
+    },
+    {
+      "width": 768,
+      "id": 21,
+      "approvedCopy": true,
+      "factsPreserved": true,
+      "balanced": true,
+      "staticMetadataMatches": true
+    },
+    {
+      "width": 768,
+      "id": 30,
+      "approvedCopy": true,
+      "factsPreserved": true,
+      "balanced": true,
+      "staticMetadataMatches": true
+    },
+    {
+      "width": 1440,
+      "id": 20,
+      "approvedCopy": true,
+      "factsPreserved": true,
+      "balanced": true,
+      "staticMetadataMatches": true
+    },
+    {
+      "width": 1440,
+      "id": 21,
+      "approvedCopy": true,
+      "factsPreserved": true,
+      "balanced": true,
+      "staticMetadataMatches": true
+    },
+    {
+      "width": 1440,
+      "id": 30,
+      "approvedCopy": true,
+      "factsPreserved": true,
+      "balanced": true,
+      "staticMetadataMatches": true
+    }
+  ],
+  "comparison": [
+    {
+      "width": 320,
+      "headingsOnlySections": true,
+      "floorRowFirst": true,
+      "remainingRowsUnchanged": true,
+      "linksPreserved": true
+    },
+    {
+      "width": 390,
+      "headingsOnlySections": true,
+      "floorRowFirst": true,
+      "remainingRowsUnchanged": true,
+      "linksPreserved": true
+    },
+    {
+      "width": 768,
+      "headingsOnlySections": true,
+      "floorRowFirst": true,
+      "remainingRowsUnchanged": true,
+      "linksPreserved": true
+    },
+    {
+      "width": 1440,
+      "headingsOnlySections": true,
+      "floorRowFirst": true,
+      "remainingRowsUnchanged": true,
+      "linksPreserved": true
+    }
+  ],
+  "errors": [],
+  "badResponses": []
+}

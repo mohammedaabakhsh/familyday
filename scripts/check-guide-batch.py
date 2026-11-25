@@ -20,10 +20,11 @@ EXPECTED={'dome-1': 'تجربة إقامة مختلفة داخل قبة تجمع
 NAV={'resort':['المنتجع','الخريطة','الأكواخ','الخدمات','التواصل'],'stay':['الاستراحة','المقارنة','القسمان','الخدمات','التواصل'],'chalet':['الشاليه','استكشف','التفاصيل','الخدمات','التواصل']}
 async def main():
  catalog=json.loads((R/'site/catalog.json').read_text());old=json.loads(subprocess.check_output(['git','show','pre-guide-batch-20261125:site/catalog.json']));out={'version':'20261125-live-v67','navigation':[],'cabins':[],'homeShares':[],'errors':[],'badResponses':[]}
+ approved=json.loads((R/'site/cleanup-manifest.json').read_text()).get('approvedChaletStayCopy',{}).get('descriptions',{})
  for u,before in zip(catalog['units'],old['units']):
-  permitted={'description'} if u['venue']=='resort' and u['key'] in EXPECTED else set()
+  permitted={'description'} if u['venue']=='resort' and u['key'] in EXPECTED or str(u['id']) in approved else set()
   assert {k:v for k,v in u.items() if k not in permitted}=={k:v for k,v in before.items() if k not in permitted},u['key']
-  if permitted:assert u['description']==EXPECTED[u['key']]
+  if permitted:assert u['description']==(approved[str(u['id'])] if str(u['id']) in approved else EXPECTED[u['key']])
  manifest=json.loads((R/'site/cleanup-manifest.json').read_text())
  for path,h in manifest['protectedFiles'].items():assert hashlib.sha256((R/path).read_bytes()).hexdigest()==h,path
  async with async_playwright() as p:
