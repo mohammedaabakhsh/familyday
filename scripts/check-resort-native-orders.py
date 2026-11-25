@@ -8,8 +8,8 @@ SOURCE=json.loads((R/'data/services.json').read_text());links=json.loads((R/'sit
 TAG='pre-resort-direct-orders-20261125'
 for name in ['data/services.json','js/menu-order-message.js','chalet/guest-services/index.html','site/catalog.json','site/share-metadata.json','share-pages.json','share-extras.json']:
  assert (R/name).read_bytes()==subprocess.check_output(['git','show',TAG+':'+name]),name
-# Preserve original message assembly literally, in addition to runtime parity below.
-for name,start,end in [('guest-services/guest-services.js','    var message;','\n  function renderOrders'),('services-guide/guide-orders.js',"    const parts=['السلام", "  document.addEventListener('fd:arrangement-view'")]:
+# Guest message assembly remains unchanged. The coordinator's v74 greeting and inline capacity are owner-approved; compare its two request surfaces at runtime below.
+for name,start,end in [('guest-services/guest-services.js','    var message;','\n  function renderOrders')]:
  old=subprocess.check_output(['git','show',TAG+':'+name]).decode();new=(R/name).read_text();a=old[old.index(start):old.index(end)];b=new[new.index(start):new.index(end)]
  if name.startswith('guest'):b=b.replace('    return true;\n','')
  else:b=b[:b.index('    return true;')]+ '  });\n'

@@ -107,3 +107,7 @@ Run `scripts/check-approved-mobile-review.py` plus the existing format, Back, ca
 ## Arrangements catalogue restoration — v73
 
 [Implementation and checks](../docs/arrangements-browse-restore-v73.md): the standalone arrangements portal restores full-page browsing and the original closed package/session card geometry. Per-item order/share actions appear inside the original disclosures. Each order opens a small customer form and the original coordinator WhatsApp draft; identity alone is remembered. Dining retains one choice and seating retains its optional add-on. The main resort's embedded requests, original prices, photos and public share links remain. Rollback: `pre-arrangements-browse-restore-20261125`.
+
+## Arrangements WhatsApp copy — v74
+
+Owner-approved independent request greetings now distinguish coordination, dining setup and outdoor seating. Seating capacity appears once beside the session name on the same message line. Both standalone and native resort requests use this shared builder. Prices, recipient numbers, public shares and catalogue data are unchanged. `check-arrangement-orders.py` verifies the three greetings and all six session lines (including the optional add-on); `check-resort-native-orders.py` compares both request surfaces. Rollback: `pre-arrangements-message-copy-20261125`.

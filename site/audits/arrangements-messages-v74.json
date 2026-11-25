@@ -1,0 +1,20 @@
+{
+  "version": "20261125-arrangements-v74",
+  "viewports": [
+    {
+      "width": 390,
+      "height": 844,
+      "originalClosedCardGeometry": true,
+      "fullPageBrowse": true,
+      "packages": 6,
+      "sessions": 6,
+      "exactIndependentWhatsAppDrafts": true,
+      "originalTextOnlyShares": true,
+      "optionalSeatingExtra": true,
+      "singleDiningChoice": true,
+      "backAndCancel": true
+    }
+  ],
+  "messagesSent": false,
+  "errors": []
+}

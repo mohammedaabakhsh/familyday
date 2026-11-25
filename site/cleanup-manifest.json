@@ -2304,11 +2304,11 @@
     "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
     "services-guide/guide.css": "2e4164a051b4ef782483e5ebb342f877b6d055fd836996aee6554fd1ba263f35",
     "services-guide/guide.js": "2c0c2dcc6d024cc4eff933519cc675f1b525d8f93955d841045055aa3b9e4c0b",
-    "services-guide/index.html": "ea221f1920da5114cd6eae1fe4d4f055e2e7763b3cdce855b50e58cd69aabc70",
+    "services-guide/index.html": "3529704f336431f39d5b1e343d57860a0f87c40609d06db80367e00807e017eb",
     "services-guide/share-entry.js": "05dac99bc60dfc4b2d2d1b08c131735f22d72f29cf93f1861b85df47c89dffa2",
     "guest-services/resort-refinements.css": "5ccfd5e08d6538ebb7f37eb93f5dc52ac270dbf309ee57b38c82078ee0b31520",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
-    "services-guide/guide-orders.js": "446ce0a79119559841dda63dbc542c9ea99fa8b7dc898939cb74869a744f8f87",
+    "services-guide/guide-orders.js": "5543bf943da39cb568ca252aa96f5a5acecb0fe08aabb78b39793bb836038262",
     "services-guide/guide-orders.css": "a10208b1a9069509a1560151832f1788d98dbec143291f70a11e7acc1b62c017"
   },
   "preservedCompatibility": [
@@ -2584,6 +2584,21 @@
       "services-guide/guide-orders.css": {
         "previousSha256": "09d6eca5c57a49566cd8f3949163a92c25a3b2c60491a013ae8c289126ce90bc",
         "reason": "Restore original standalone full-page browsing and original closed package/session cards; place independent WhatsApp request and share actions inside details. Embedded main-site requests retained."
+      }
+    }
+  },
+  "approvedArrangementsMessageCopy": {
+    "version": "20261125-arrangements-v74",
+    "rollbackTag": "pre-arrangements-message-copy-20261125",
+    "reason": "Independent coordination, dining and seating requests must name their own service in the greeting; seating capacity belongs inline without duplicate capacity in session names.",
+    "protectedChanges": {
+      "services-guide/guide-orders.js": {
+        "previousSha256": "446ce0a79119559841dda63dbc542c9ea99fa8b7dc898939cb74869a744f8f87",
+        "reason": "Owner-approved service-specific WhatsApp greeting and seating capacity on the same line as its name; original prices, recipient and public links retained"
+      },
+      "services-guide/index.html": {
+        "previousSha256": "ea221f1920da5114cd6eae1fe4d4f055e2e7763b3cdce855b50e58cd69aabc70",
+        "reason": "Owner-approved service-specific WhatsApp greeting and seating capacity on the same line as its name; original prices, recipient and public links retained"
       }
     }
   }

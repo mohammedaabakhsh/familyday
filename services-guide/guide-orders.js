@@ -156,7 +156,7 @@
     });
     for(const [size,prices] of Object.entries(data.dining.prices))for(const option of ['plain','tansiq'])entries.set('dining-'+size+'-'+option,{key:'dining-'+size+'-'+option,group:'dining',name:'طاولة طعام لـ'+size+' '+(Number(size)<=10?'أشخاص':'شخصًا')+' — '+(option==='plain'?'تجهيز أساسي':'تجهيز مع تنسيق'),price:prices[option],size,option,path:data.dining.path});
     const diningActions=node('div',undefined,'dining-order-actions');const diningShare=node('button','مشاركة طاولات الطعام','arrangement-share');diningShare.type='button';diningShare.dataset.sharePath=data.dining.path;diningActions.append(diningShare);document.getElementById('dining').append(diningActions);
-    data.seating.sessions.forEach((session,i)=>{const card='session-'+(i+1);add({key:card,card,group:'seating',name:session.name,price:price(session.price),path:data.seating.path+'?session='+(i+1)},document.getElementById(card));});
+    data.seating.sessions.forEach((session,i)=>{const card='session-'+(i+1);add({key:card,card,group:'seating',name:session.name,capacity:session.persons,price:price(session.price),path:data.seating.path+'?session='+(i+1)},document.getElementById(card));});
     add({key:'seating-extra',group:'extra',name:data.seating.extra.name,price:price(data.seating.extra.price),path:data.seating.path},document.querySelector('.seating-extra'));
     for(const name of Object.keys(cabins))fields.cabin.add(new Option(name,name));
     restore();for(const key of Object.keys(fields))fields[key].value=state[key];ready=true;render();
@@ -178,11 +178,17 @@
   for(const [key,field] of Object.entries(fields))field.addEventListener(key==='cabin'?'change':'input',()=>{state[key]=field.value;save();if(key==='cabin')render();});
   function submitOrder(event){
     event.preventDefault();const chosen=lines();if(!ready||!chosen.length||!form.reportValidity()||!state.name.trim()||!Object.hasOwn(cabins,state.cabin)||state.quantities['seating-extra']&&!seatsChosen())return;
-    const parts=['السلام عليكم، أرغب بطلب التنسيقات والتجهيزات التالية:','','الاسم: '+state.name.trim(),'اسم الكوخ: '+state.cabin,'رقم الكوخ: '+cabins[state.cabin],'','الطلبات:'];
+    const requestedGroups=[...new Set(chosen.filter(entry=>entry.group!=='extra').map(entry=>entry.group))];
+    const requestLabel=requestedGroups.length===1?({coordination:'تنسيق',dining:'تجهيز طاولة طعام',seating:'جلسة خارجية'}[requestedGroups[0]]||'الخدمات التالية'):'الخدمات التالية';
+    const parts=['السلام عليكم، أرغب بطلب '+requestLabel+':','','الاسم: '+state.name.trim(),'اسم الكوخ: '+state.cabin,'رقم الكوخ: '+cabins[state.cabin],'','الطلبات:'];
     for(const [group,title] of groups){
       const items=chosen.filter(entry=>entry.group===group);if(!items.length)continue;
       parts.push('',title+':');
-      for(const entry of items)parts.push(entry.name+' × '+entry.qty+' = '+entry.total+' ريال');
+      for(const entry of items){
+        // Capacity belongs beside the session name, never on a separate message line.
+        const name=entry.group==='seating'?entry.name.replace(/\s+لـ?\s*\d+\s+(?:أشخاص|شخصًا|شخصاً)\s*$/u,'')+' — '+(entry.capacity.startsWith('ل')?entry.capacity:'لـ'+entry.capacity):entry.name;
+        parts.push(name+' × '+entry.qty+' = '+entry.total+' ريال');
+      }
     }
     parts.push('','إجمالي الطلب: '+chosen.reduce((sum,e)=>sum+e.total,0)+' ريال');if(state.notes.trim())parts.push('','ملاحظات: '+state.notes.trim());save();
     // Open a text draft only; the guest reviews and sends it from WhatsApp.

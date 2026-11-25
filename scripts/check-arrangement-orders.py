@@ -4,13 +4,13 @@ from pathlib import Path
 from urllib.parse import urlparse,parse_qs
 from playwright.sync_api import sync_playwright,expect
 R=Path(__file__).resolve().parents[1];BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8132'
-SOURCE=json.loads((R/'data/services.json').read_text());A=SOURCE['arrangements'];out={'version':'20261125-arrangements-v73','viewports':[],'messagesSent':False,'errors':[]}
+SOURCE=json.loads((R/'data/services.json').read_text());A=SOURCE['arrangements'];out={'version':'20261125-arrangements-v74','viewports':[],'messagesSent':False,'errors':[]}
 old_html=subprocess.check_output(['git','show','pre-arrangements-ordering-20261125:services-guide/index.html']).decode().replace('guide.js?v=20261125-live-v54','guide-baseline.js')
 old_js=subprocess.check_output(['git','show','pre-arrangements-ordering-20261125:services-guide/guide.js']).decode()
 metrics="(selector)=>[...document.querySelectorAll(selector)].map(e=>{const s=getComputedStyle(e),r=e.getBoundingClientRect();return [r.width,r.height,s.padding,s.borderRadius,s.backgroundColor,s.fontSize]})"
 with sync_playwright() as p:
  b=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
- for width,height in [(320,568),(390,844),(430,932),(390,430),(1440,900)]:
+ for width,height in ([(int(sys.argv[2]),844)] if len(sys.argv)>2 else [(320,568),(390,844),(430,932),(390,430),(1440,900)]):
   c=b.new_context(viewport={'width':width,'height':height},reduced_motion='reduce');c.add_init_script("window.opened=[];window.shares=[];window.open=u=>{opened.push(u);return null};Object.defineProperty(navigator,'share',{value:async d=>shares.push(d)})");page=c.new_page();page.on('pageerror',lambda e:out['errors'].append(str(e)))
   page.route('**/services-guide/?baseline=old',lambda r:r.fulfill(body=old_html,content_type='text/html'));page.route('**/services-guide/guide-baseline.js',lambda r:r.fulfill(body=old_js,content_type='text/javascript'))
   def visit(path):page.goto(BASE+path);page.locator('#guide-content.is-ready').wait_for(state='attached');page.evaluate('document.fonts.ready')
@@ -26,7 +26,8 @@ with sync_playwright() as p:
    page.locator('#arrangement-name').fill('ضيف المراجعة');page.locator('#arrangement-cabin').select_option('البيت اليوناني 1');page.locator('#arrangement-notes').fill('مراجعة محلية فقط');assert page.locator('#arrangement-cabin-number').inner_text()=='رقم الكوخ: 10'
   def send(group,items,total):
    fields();page.locator('.arrangement-request .arrangement-send').click();expect(page.locator('.arrangement-request')).to_be_hidden();u=urlparse(page.evaluate('opened.at(-1)'));assert u.path=='/966537009217';text=parse_qs(u.query)['text'][0]
-   parts=['السلام عليكم، أرغب بطلب التنسيقات والتجهيزات التالية:','','الاسم: ضيف المراجعة','اسم الكوخ: البيت اليوناني 1','رقم الكوخ: 10','','الطلبات:','',group+':',*items,'','إجمالي الطلب: '+str(total)+' ريال','','ملاحظات: مراجعة محلية فقط'];assert text=='\n'.join(parts),(text,parts)
+   greeting={'التنسيقات':'تنسيق','طاولات الطعام':'تجهيز طاولة طعام','الجلسات الخارجية':'جلسة خارجية'}[group]
+   parts=['السلام عليكم، أرغب بطلب '+greeting+':','','الاسم: ضيف المراجعة','اسم الكوخ: البيت اليوناني 1','رقم الكوخ: 10','','الطلبات:','',group+':',*items,'','إجمالي الطلب: '+str(total)+' ريال','','ملاحظات: مراجعة محلية فقط'];assert text=='\n'.join(parts),(text,parts)
    assert not page.locator('#arrangement-shortcut').is_visible()
   visit('/services-guide/');page.locator('.guide-tile[href="#coordination"]').click();assert page.locator('body').get_attribute('data-guide-view')=='section'
   for i,pack in enumerate(A['coordination']['packages']):
@@ -37,12 +38,12 @@ with sync_playwright() as p:
    page.locator('#'+card+' [data-share-path]').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+pack['path']}
   page.locator('#guide-back').click();page.locator('.guide-tile[href="#seating"]').click()
   for i,session in enumerate(A['seating']['sessions'],1):
-   request('session-'+str(i));amount=int(re.search(r'\d+',session['price'])[0]);send('الجلسات الخارجية',[session['name']+' × 1 = '+str(amount)+' ريال'],amount);page.locator('#session-'+str(i)+' [data-share-path]').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+A['seating']['path']+'?session='+str(i)}
-  request('session-1');page.locator('.arrangement-request [data-request-extra]').check();fields();page.locator('.arrangement-request .arrangement-send').click();expect(page.locator('.arrangement-request')).to_be_hidden();msg=parse_qs(urlparse(page.evaluate('opened.at(-1)')).query)['text'][0];assert '\nإضافة اختيارية:\nكيك وعصير × 1 = 170 ريال' in msg and 'إجمالي الطلب: 470 ريال' in msg
+   request('session-'+str(i));amount=int(re.search(r'\d+',session['price'])[0]);send('الجلسات الخارجية',[re.sub(r'\s+لـ\d+\s+(?:أشخاص|شخصًا)$','',session['name'])+' — '+(session['persons'] if session['persons'].startswith('ل') else 'لـ'+session['persons'])+' × 1 = '+str(amount)+' ريال'],amount);page.locator('#session-'+str(i)+' [data-share-path]').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+A['seating']['path']+'?session='+str(i)}
+  request('session-1');page.locator('.arrangement-request [data-request-extra]').check();fields();page.locator('.arrangement-request .arrangement-send').click();expect(page.locator('.arrangement-request')).to_be_hidden();msg=parse_qs(urlparse(page.evaluate('opened.at(-1)')).query)['text'][0];assert msg.startswith('السلام عليكم، أرغب بطلب جلسة خارجية:') and '\nإضافة اختيارية:\nكيك وعصير × 1 = 170 ريال' in msg and 'إجمالي الطلب: 470 ريال' in msg
   page.locator('#guide-back').click();page.locator('.guide-tile[href="#dining"]').click();page.locator('.fd-dining-option[data-size="6"][data-option="plain"]').click();expect(page.locator('.arrangement-request')).to_be_visible();assert page.locator('.arrangement-request-quantity').is_hidden();assert page.locator('.fd-dining-option[aria-pressed="true"]').count()==1;send('طاولات الطعام',['طاولة طعام لـ6 أشخاص — تجهيز أساسي × 1 = 199 ريال'],199)
   # Refresh recalls identity only, and deep links keep the original package/session expansions.
   visit('/services-guide/#session-2');assert page.locator('#session-2 details').get_attribute('open') is not None;page.locator('#session-2 [data-request-key]').click();assert page.locator('#arrangement-name').input_value()=='ضيف المراجعة';assert page.locator('#arrangement-notes').input_value()=='';page.reload();page.locator('#guide-content.is-ready').wait_for(state='attached');expect(page.locator('.arrangement-request')).to_be_hidden();assert not page.evaluate('!!history.state?.arrangementRequest');page.locator('#session-2 [data-request-key]').click();page.locator('.arrangement-request [data-close-request]').click();expect(page.locator('.arrangement-request')).to_be_hidden()
   out['viewports'].append({'width':width,'height':height,'originalClosedCardGeometry':True,'fullPageBrowse':True,'packages':6,'sessions':6,'exactIndependentWhatsAppDrafts':True,'originalTextOnlyShares':True,'optionalSeatingExtra':True,'singleDiningChoice':True,'backAndCancel':True});c.close();print(width,height,'PASS',flush=True)
  b.close()
 assert not out['errors'],out
-(R/'site/audits/arrangements-browse-v73.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False))
+(R/'site/audits/arrangements-messages-v74.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False))
