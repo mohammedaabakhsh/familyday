@@ -1,7 +1,7 @@
 """Verify canonical URLs, preview redirects, content, sharing and protected order portals.
 All outgoing messages are intercepted; no booking or message is submitted.
 """
-import asyncio,json,re,sys,hashlib,tarfile
+import asyncio,json,re,sys,hashlib
 from pathlib import Path
 from urllib.parse import urlparse
 from html.parser import HTMLParser
@@ -21,9 +21,10 @@ def clean(value,copy):
 async def main():
  routes=json.loads((S/'routes.json').read_text());catalog=json.loads((S/'catalog.json').read_text());copy=json.loads((S/'guide-copy.json').read_text());shared=json.loads((R/'data/services.json').read_text());out={'routes':[],'previewAliases':[],'legacyHashes':[],'units':[],'viewports':[],'errors':[],'badResponses':[],'badLinks':[]}
  assert shared['guest']==catalog['source']['guestCatalog']
- manifest=json.loads((R/'rollback/manifest.json').read_text());assert hashlib.sha256((R/'rollback'/manifest['archive']).read_bytes()).hexdigest()==manifest['archiveSha256'];out['rollbackVerified']=True
- with tarfile.open(R/'rollback'/manifest['archive']) as archive:
-  for file in manifest['files']:assert hashlib.sha256(archive.extractfile(file['path']).read()).hexdigest()==file['sha256']
+ manifest=json.loads((S/'cleanup-manifest.json').read_text())
+ for item in manifest['removed']:assert not (R/item['path']).exists(),item['path']
+ for path,digest in manifest['protectedFiles'].items():assert hashlib.sha256((R/path).read_bytes()).hexdigest()==digest,path
+ out['cleanupVerified']={'removedFiles':manifest['removedFileCount'],'removedBytes':manifest['removedBytes'],'protectedFiles':len(manifest['protectedFiles'])}
  originals=json.loads((R/'share-pages.json').read_text())+json.loads((R/'share-extras.json').read_text())
  for item in originals:
   h=Head();h.feed((R/item['path'].lstrip('/')/'index.html').read_text());assert h.meta['og:title']==item['title'] and h.meta['og:description']==item['description'],item['path'];assert h.meta['og:url']=='https://familydaystay.com'+item['path'];assert not h.images,item['path'];assert not any(k and k.startswith(('og:image','twitter:image')) for k in h.meta),item['path']
@@ -93,5 +94,5 @@ async def main():
   await page.goto(BASE+'/preview/services/coordination/?package=resort');await page.wait_for_url(BASE+'/services/coordination/?package=resort');await page.locator('.package[open]').wait_for();out['semanticQueryPreserved']=True
   await b.close()
  assert not out['errors'] and not out['badResponses'] and not out['badLinks'],out
- (S/'audits/live-cutover-v54.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps({'routes':len(out['routes']),'aliases':len(out['previewAliases']),'hashes':len(out['legacyHashes']),'photos':sum(u['photos'] for u in out['units']),'errors':out['errors']}))
+ (S/'audits/live-cutover-v55.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps({'routes':len(out['routes']),'aliases':len(out['previewAliases']),'hashes':len(out['legacyHashes']),'photos':sum(u['photos'] for u in out['units']),'errors':out['errors']}))
 asyncio.run(main())

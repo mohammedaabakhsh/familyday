@@ -1,0 +1,2318 @@
+{
+  "version": "20261125-live-v55",
+  "reason": "Owner-approved removal of retired interface; canonical URLs and all three ordering experiences retained.",
+  "removed": [
+    {
+      "path": "app-preview-review.html",
+      "bytes": 2435,
+      "sha256": "cba61ded5142c420fdcf26eab961403be2dd44b88d368bee68be18d891c2ab62"
+    },
+    {
+      "path": "app-preview.html",
+      "bytes": 372183,
+      "sha256": "317b780d3ffe5bac24efb47fa3188ed40c5d2c7f8286d132b9b6c8a5f445a853"
+    },
+    {
+      "path": "bohemian-tour.css",
+      "bytes": 8510,
+      "sha256": "30b2c72b8ff0ab60e063dad9e9fbeeb956bbf783ef912e24c0eb4d93738eb2b7"
+    },
+    {
+      "path": "bohemian-tour.js",
+      "bytes": 6492,
+      "sha256": "5b465d4209b9432b949f5f16cb6c083d51b014f38606dabd8b56d6e95072feae"
+    },
+    {
+      "path": "cabin-compare.css",
+      "bytes": 4847,
+      "sha256": "1ba60ed262bfe018012ec23e3fd9ea37abd3cec83fb0c4a1e9aa32d56e47d3e7"
+    },
+    {
+      "path": "cabin-compare.js",
+      "bytes": 7078,
+      "sha256": "166a02cfe9936443a94beb4784183c72b0fdf84612b31dfce8a1bc0e52088899"
+    },
+    {
+      "path": "chalet-design.js",
+      "bytes": 18350,
+      "sha256": "fbc0a5e627eb578eea6469c3130c2cd2d0eec99881ad448fbcb4dcfd393981c9"
+    },
+    {
+      "path": "chalet-map.css",
+      "bytes": 16623,
+      "sha256": "1e7c312dfaeeb5bc24c51043a03facacc1d0852f6de8adb0d814f68a812eb1b1"
+    },
+    {
+      "path": "chalet-map.js",
+      "bytes": 25026,
+      "sha256": "e30ce51cec0478c989d899f50fcf7df3a949b079d58b071e59f78663095af8cf"
+    },
+    {
+      "path": "chalet-ui.css",
+      "bytes": 8850,
+      "sha256": "cd21d2aa54799db6d42cf73eac05a27a2a6b73ba91fbf15a257a70b51a33cc2d"
+    },
+    {
+      "path": "classic-tour.css",
+      "bytes": 1776,
+      "sha256": "a72a60d49aaf4389080e8ac594a41f1f95a744dae65903b5d777b223dc0c19e6"
+    },
+    {
+      "path": "classic-tour.js",
+      "bytes": 6198,
+      "sha256": "23c45822437b243190d5548f304cf59055c63b22cd025500a418815bbf668c94"
+    },
+    {
+      "path": "css/accommodation-layout.css",
+      "bytes": 22591,
+      "sha256": "76acf81aea1e433ed914b865a52f85fb487343712e40503f56f63f642ffff734"
+    },
+    {
+      "path": "css/app-base.css",
+      "bytes": 69844,
+      "sha256": "70e15c31e3f3e97a0544c7fcef936d26931f0432c01167ffa54df03316e758ac"
+    },
+    {
+      "path": "css/cinema-layout.css",
+      "bytes": 2768,
+      "sha256": "54ab7521b9acbf858040fc66a3c4678a56c671783d9f1d67c2cb3d476c84c412"
+    },
+    {
+      "path": "css/contact-layout.css",
+      "bytes": 5721,
+      "sha256": "440c419b95c59118ee1661e8f4fdc8819190e9619d19f1dafb60b8e59c3d1af7"
+    },
+    {
+      "path": "css/exploration-share.css",
+      "bytes": 1347,
+      "sha256": "3e796ce0a916ac1a16a635f29e9340b1bc639142c630eba9575d656cd666e601"
+    },
+    {
+      "path": "css/faq-mobile.css",
+      "bytes": 877,
+      "sha256": "e71e0940d3948d52d3cf7b22fd951a0314ecf6126162ee6211628c654a3ac893"
+    },
+    {
+      "path": "css/games-layout.css",
+      "bytes": 1920,
+      "sha256": "08c3838c0b18b45d58d619fd93ef6018f7399577294a26e8f8c071f32159b7d0"
+    },
+    {
+      "path": "css/home-review.css",
+      "bytes": 1196,
+      "sha256": "9a29b803b34689f0f2f70a55ffe0140add537a4ddc713aaa0f0de3d389951cd9"
+    },
+    {
+      "path": "css/image-feedback.css",
+      "bytes": 1317,
+      "sha256": "236c8b091ea0aaf26f970d0582398a99f551d68c61f74968317b8109297e84e0"
+    },
+    {
+      "path": "css/resort-faq.css",
+      "bytes": 2684,
+      "sha256": "f9d5beb6c9709bee27a32a002f0da02240d23a54ae7f37b7ba9e930c8d65322a"
+    },
+    {
+      "path": "css/rewards-layout.css",
+      "bytes": 3238,
+      "sha256": "235b4f1e39d4cb9ea9eda8b0decfd4b70017de3998427658d186aabc2421b733"
+    },
+    {
+      "path": "css/seating-cards.css",
+      "bytes": 4929,
+      "sha256": "357441eecbd848d58359afe208b4e32b9d94df121b7a1fb6e7e27d09d73a1bc3"
+    },
+    {
+      "path": "css/service-mobile.css",
+      "bytes": 2339,
+      "sha256": "2bfd5bd26350032be78d2a6232894b74d2ae8f0efc290c103b1953c2f1b456b2"
+    },
+    {
+      "path": "css/service-orders.css",
+      "bytes": 2835,
+      "sha256": "6f851808a3b77a6d13ecb1f9785c8ff35863d4f70f158089846abc2536adb7b3"
+    },
+    {
+      "path": "css/services-index.css",
+      "bytes": 2660,
+      "sha256": "e6055c4834fed18ecf1379a6ca2074a0ba4554b8a28e3489f2623a05f414bba8"
+    },
+    {
+      "path": "css/water-games.css",
+      "bytes": 5221,
+      "sha256": "553b647942c179cdca95716074a6faca55b17b907c7d3118f6457a3c15aa8404"
+    },
+    {
+      "path": "css/water-layout.css",
+      "bytes": 2225,
+      "sha256": "8296bb7382295b4084a08c41e7d313b28adc2deb2978e27c4857cb3f4cef4a92"
+    },
+    {
+      "path": "dome-gallery.css",
+      "bytes": 7334,
+      "sha256": "a190ef62b2b326c5b2ed54a8b890a2f58f5600909052e3435077293baa24dc41"
+    },
+    {
+      "path": "dome-gallery.js",
+      "bytes": 10193,
+      "sha256": "6f80fcc4d94cc0813bed70b72a26756b8cf42b27e956428b9410cab94a60c5dd"
+    },
+    {
+      "path": "dome-tour-layout.css",
+      "bytes": 3244,
+      "sha256": "add5f71636bb93c0b3a9ce07208f58de009b3fde73b216099b89b455f2015153"
+    },
+    {
+      "path": "dome-tour.css",
+      "bytes": 7502,
+      "sha256": "0d6b967e6cc815b1a46da142a87a3d4036f65de940ecccafb28067ea54322adc"
+    },
+    {
+      "path": "dome-tour.js",
+      "bytes": 6235,
+      "sha256": "b5bd70eb7e626100fc67fe802c12f35b2d99b8ada9e4d39e738396b0d9f9d868"
+    },
+    {
+      "path": "french-tour.css",
+      "bytes": 3181,
+      "sha256": "efabfb1b6aacbfc10c7fce3509d8c9373a2a7ce7f2755ca890b2d55d24bfec46"
+    },
+    {
+      "path": "french-tour.js",
+      "bytes": 6503,
+      "sha256": "cb9de35ca0d6cc7db5797153bd39b76ed822a10a227f657b705b9f9c5d856a63"
+    },
+    {
+      "path": "greek-tour-layout.css",
+      "bytes": 4056,
+      "sha256": "abc21c8203c72482a853e2bc906605fd4259dd33dbe8f888602e305c222db273"
+    },
+    {
+      "path": "greek-tour.js",
+      "bytes": 6681,
+      "sha256": "10c795889ab74975ad4bba0b2947f509b2db0d49c6dab3bb5e7075fc880bd7f9"
+    },
+    {
+      "path": "imgs/bohemian-tour-20-v1.webp",
+      "bytes": 344016,
+      "sha256": "da1c7db879144edab562f1e249dcda85ad6b258244ac7af08eb8fc388f8a56f4"
+    },
+    {
+      "path": "imgs/chalet-map-clean-v2.webp",
+      "bytes": 224500,
+      "sha256": "d3826433928e59ead6a826f7e0146de65a50d1930f19fb0b509ea730a944be27"
+    },
+    {
+      "path": "imgs/chalet-map-dining.webp",
+      "bytes": 38232,
+      "sha256": "edf8d47207a21b5d2933c113234ed32adc899c6fc90b52517c1bd7aa21e5becb"
+    },
+    {
+      "path": "imgs/chalet-map-ground.webp",
+      "bytes": 23686,
+      "sha256": "0ac0c2f089ae30a84126ef3d6ddaf85bb2a823017c099b0d03dcc8d5e95c1c19"
+    },
+    {
+      "path": "imgs/chalet-map-kitchen.webp",
+      "bytes": 24706,
+      "sha256": "25808ef00a9c2cac72b7eea43aaf0873968b86580adb2491db572ec10dcffb9d"
+    },
+    {
+      "path": "imgs/chalet-map-living.webp",
+      "bytes": 51474,
+      "sha256": "99eeed47f2de269e0649aa341f056f31e1a398f3484610ebe74a9095ef420066"
+    },
+    {
+      "path": "imgs/chalet-map-majlis.webp",
+      "bytes": 75352,
+      "sha256": "8fd2d8e6671a9fc70a7665051b82cc87dbb22cc53051ef818f604bc6ed3f45f2"
+    },
+    {
+      "path": "imgs/chalet-map-play.webp",
+      "bytes": 54728,
+      "sha256": "176ec4051fec3505bf83564914016bab8c5ba32351695e428996538b5a9d8e80"
+    },
+    {
+      "path": "imgs/chalet-map-pool.webp",
+      "bytes": 54198,
+      "sha256": "65b43c2e34f4c68aad5feb303e09a578ec92621e5f9230680d2005d771c46c41"
+    },
+    {
+      "path": "imgs/chalet-map-shower.webp",
+      "bytes": 35516,
+      "sha256": "a69062156367ff968be288eb4f46ef5d125344373b7b47f9abf0a6155ab065ea"
+    },
+    {
+      "path": "imgs/chalet-map-stairs.webp",
+      "bytes": 27744,
+      "sha256": "b643f97ec71d8ef888977a6452d24662ff85fe81256eae69f98ee5d5cb81de23"
+    },
+    {
+      "path": "imgs/chalet-map-upper-bath.webp",
+      "bytes": 27450,
+      "sha256": "2fb7862cb5faaf9598d77b88cf15b8e204372d4199350dcf9b8a620d18cb05f3"
+    },
+    {
+      "path": "imgs/chalet-map-upper.webp",
+      "bytes": 35176,
+      "sha256": "e827279ba9a3a38a10e14ab39696c64786d18c075909c75fb5a6b462a7597b15"
+    },
+    {
+      "path": "imgs/chalet-map-v8.webp",
+      "bytes": 219644,
+      "sha256": "b3fac49921922f734383c876ae4bc0afb3da1da81d44513c2ef18176aedc32d1"
+    },
+    {
+      "path": "imgs/cinema_1.webp",
+      "bytes": 102582,
+      "sha256": "b33d661a5d9acfc3ef3c3394195d008b775b053627ba4565308cbf560dac4587"
+    },
+    {
+      "path": "imgs/classic-tour-18-v1.webp",
+      "bytes": 360272,
+      "sha256": "221cffcdce17ccc4e72e8bed8a772dbb1e559ae8fb07077ba81824cef243fe01"
+    },
+    {
+      "path": "imgs/classic-tour-18-v2.webp",
+      "bytes": 368172,
+      "sha256": "7fa851d830e4983ddc4519a0f20de1eb426756cd8d592e4a4c4106650c0bdf50"
+    },
+    {
+      "path": "imgs/contest-share-v2.jpg",
+      "bytes": 145447,
+      "sha256": "e5b865b59ee93d2eb631c51e41651454c00eb93a0c40ee2576513255f74ed3b8"
+    },
+    {
+      "path": "imgs/contest-share-wide-v3.jpg",
+      "bytes": 92359,
+      "sha256": "f78a2bb0201d0f1da5963b80a6bbb008fba05a5dac14f0674c7e54a35fb79689"
+    },
+    {
+      "path": "imgs/contest-share.png",
+      "bytes": 1607053,
+      "sha256": "d445dd21e21096f63dc94066a1f8d23e948e8e16e1f9ad533c050de2a77bf022"
+    },
+    {
+      "path": "imgs/coordination/complete/01-v2.webp",
+      "bytes": 257268,
+      "sha256": "27cc663e7e7b0ca62f1506d3d7a0011e56e55d90f28110845c9bc59cb0fc6af6"
+    },
+    {
+      "path": "imgs/coordination/complete/01.webp",
+      "bytes": 223176,
+      "sha256": "84bfb1f23544e3f49a1ab6c48f38807fe6ff3c8909a2e4a85d7af868a76dc066"
+    },
+    {
+      "path": "imgs/coordination/complete/02-v2.webp",
+      "bytes": 85260,
+      "sha256": "37d9c28193190f84e0dd81354484c11ba07e43e7817def46ef3397431c75a1d1"
+    },
+    {
+      "path": "imgs/coordination/complete/02-v3.webp",
+      "bytes": 1927132,
+      "sha256": "ca22b847e4feef33bcdb1f4642c53c0edb206371780635166563aba392b3262c"
+    },
+    {
+      "path": "imgs/coordination/complete/02.webp",
+      "bytes": 69304,
+      "sha256": "fc2b7e643dde1106d7551a4a26051a7d01d612d5409869d77e60e7e7b6d0e063"
+    },
+    {
+      "path": "imgs/coordination/complete/03-v2.webp",
+      "bytes": 443552,
+      "sha256": "2c346721d1c2bcac465aa9b04ed6b31a5006921abcc9401a0f1736cb7f9a96da"
+    },
+    {
+      "path": "imgs/coordination/complete/03-v3.webp",
+      "bytes": 2142874,
+      "sha256": "4fe27c3570b45e02016e55c69ef7ec0302a3c0c3a18bd31a2b1b49b5c8e70e37"
+    },
+    {
+      "path": "imgs/coordination/complete/03.webp",
+      "bytes": 50300,
+      "sha256": "0f0172db68fb36fae83e8695f7d37d793fcffa169500c1e8d71a67faec6fb0b4"
+    },
+    {
+      "path": "imgs/coordination/complete/04-v2.webp",
+      "bytes": 144980,
+      "sha256": "fdc675acc7a2ebcb9da10ce923253542f47b3c46d0287b0b1f20f4ba15ee8880"
+    },
+    {
+      "path": "imgs/coordination/complete/04.webp",
+      "bytes": 122238,
+      "sha256": "7b980d3a623294c47224b4e4f2545c39fc0398504b16edf9577a18618a650fad"
+    },
+    {
+      "path": "imgs/coordination/complete/05-v2.webp",
+      "bytes": 339744,
+      "sha256": "0b0fb75f57d8414bd231f1602bdb2bcd41fce91b342d02118369060b3e0e7608"
+    },
+    {
+      "path": "imgs/coordination/complete/05.webp",
+      "bytes": 261980,
+      "sha256": "ebe4d2346baef7ed84d6adb42e8299e91704ed14006a3352a005560f0c664778"
+    },
+    {
+      "path": "imgs/coordination/complete/11-v3.webp",
+      "bytes": 1609202,
+      "sha256": "a91c0f2fb649c56b7132af7316adda4cb32adcfb9ac6dfdad869fed97d8b6242"
+    },
+    {
+      "path": "imgs/coordination/complete/13-v3.webp",
+      "bytes": 1501590,
+      "sha256": "56a9a006bf386f91c010df9f227b42ab69133a2e6db65c6b5a01fd5e591accec"
+    },
+    {
+      "path": "imgs/coordination/moments/01.webp",
+      "bytes": 427074,
+      "sha256": "f41e550ad19aecfc5ea668670943c3f694374b3a2d2f17e717c0720ca76cc1cc"
+    },
+    {
+      "path": "imgs/coordination/moments/02.webp",
+      "bytes": 297568,
+      "sha256": "6bf49a2646b8bbe3cf8d8fbc2192c8aa17d5948025bd22b1b1de7c1e7870acbf"
+    },
+    {
+      "path": "imgs/coordination/moments/03.webp",
+      "bytes": 394258,
+      "sha256": "acdf38ba17e0502948ac82829a5b59203a9728d1d4de23f15eed7e9d0aa13c11"
+    },
+    {
+      "path": "imgs/coordination/moments/04.webp",
+      "bytes": 212584,
+      "sha256": "0173c994318ef85c527759c8654cb6436b709a48e6bae2b67ac898553a55ec4e"
+    },
+    {
+      "path": "imgs/coordination/moments/05.webp",
+      "bytes": 451362,
+      "sha256": "42442ec2d30ee69994659df403fb104abaeb9d03203fc25d24b6cf6c061ad9e6"
+    },
+    {
+      "path": "imgs/coordination/premium-rose/01.webp",
+      "bytes": 294030,
+      "sha256": "1d7673e7c62b35f1109152afc85c04171ffee386a9d31eafda821deb660c920a"
+    },
+    {
+      "path": "imgs/coordination/premium-rose/02.webp",
+      "bytes": 145800,
+      "sha256": "0b5d160db6acda16dda36c23e1b854efee8e78694d29dbf240fc144d75e2e268"
+    },
+    {
+      "path": "imgs/coordination/premium-rose/03.webp",
+      "bytes": 145822,
+      "sha256": "86af0c7d07da6537474a984c628320d83771c69a57c09cd52c0c95dc9d5b28aa"
+    },
+    {
+      "path": "imgs/coordination/premium-rose/04.webp",
+      "bytes": 370916,
+      "sha256": "a5131db1412b1cb2d01edc141ee4b39181303dc4a415fd6bd37335cc61fcb3cc"
+    },
+    {
+      "path": "imgs/coordination/premium-rose/05.webp",
+      "bytes": 309336,
+      "sha256": "14b3f68e5cabe72b542b6ce4012dbef8e38c8635ece00b0f6cf7105fce9f4f3e"
+    },
+    {
+      "path": "imgs/coordination/rose/01.webp",
+      "bytes": 125138,
+      "sha256": "711d9df862381524898c08fb9c62b1281a8911f3db6d8888c575f5b718d79a6a"
+    },
+    {
+      "path": "imgs/coordination/rose/02.webp",
+      "bytes": 167778,
+      "sha256": "58369e4a24964e102a02885a466da529c59f45a26650350267f47bf035ee9766"
+    },
+    {
+      "path": "imgs/coordination/rose/03.webp",
+      "bytes": 87946,
+      "sha256": "26bbc230a5418e8cf63cdba6f276d947c0abc251d877e442696cf95d8633e649"
+    },
+    {
+      "path": "imgs/coordination/rose/approved-a.webp",
+      "bytes": 260712,
+      "sha256": "2f60670a5ebc15a435dd1e41d9b9d7bc7c8a66206bd03baf8b5f3a5768454af2"
+    },
+    {
+      "path": "imgs/coordination/rose/clean-angle.webp",
+      "bytes": 237122,
+      "sha256": "ae6e2fd116860a79f072f643ae375032c91966a10d21ec2ee8ff70195f8611e1"
+    },
+    {
+      "path": "imgs/coordination/rose/clean-front.webp",
+      "bytes": 229238,
+      "sha256": "1944f103de34a5fbcb9e8a53934e9879afb0d736f2c7bb0a588c3372f5378373"
+    },
+    {
+      "path": "imgs/coordination/rose/clean-h.webp",
+      "bytes": 217336,
+      "sha256": "089478d2f1d1648f505ac12de05c91c00f1b3570700ce6ae566e1edac846ba9f"
+    },
+    {
+      "path": "imgs/coordination/vip/01.webp",
+      "bytes": 357936,
+      "sha256": "9888015a29fe4a4874d5042f69513c3acd698a04a531b3b0b75974a3b2fa3db2"
+    },
+    {
+      "path": "imgs/coordination/vip/02.webp",
+      "bytes": 364332,
+      "sha256": "13596148224850d85885c7af4ee017cf00ea07ef15255161faf77b6160c5a103"
+    },
+    {
+      "path": "imgs/coordination/vip/03.webp",
+      "bytes": 257268,
+      "sha256": "27cc663e7e7b0ca62f1506d3d7a0011e56e55d90f28110845c9bc59cb0fc6af6"
+    },
+    {
+      "path": "imgs/coordination/vip/04.webp",
+      "bytes": 387634,
+      "sha256": "ecf115c1b3f31d55aa8fa25fa9e54bdc1136092bc1113971bdaca19b8f76f038"
+    },
+    {
+      "path": "imgs/coordination/vip/05.webp",
+      "bytes": 309088,
+      "sha256": "0c552377e43adc0e7e178fbda30f5c35c452fecc307c4746d51745c8ac225b56"
+    },
+    {
+      "path": "imgs/dome-tour-15-v4.webp",
+      "bytes": 335610,
+      "sha256": "a5a46ec70584b58eda5e92bd29ab4e11f8496d258a19609c0c3b8e101416e8fe"
+    },
+    {
+      "path": "imgs/dome-tour-15-v5.webp",
+      "bytes": 401512,
+      "sha256": "a40d3ebe709133dd835d649d27cde3cca226379a85c0e995ccb856bc4527f561"
+    },
+    {
+      "path": "imgs/dome-tour-16-v4.webp",
+      "bytes": 498720,
+      "sha256": "953c57ab4fbc29ea9ea55d5c64064e8ff833c6925c693647562e42a191d057bd"
+    },
+    {
+      "path": "imgs/dome-tour-16-v5.webp",
+      "bytes": 336572,
+      "sha256": "bc463a82c7dd4de8a5bb58edf3e568c778bc24599679f6b3ced09c63f99090e8"
+    },
+    {
+      "path": "imgs/dome-tour-v1.webp",
+      "bytes": 177928,
+      "sha256": "9d57a1649089dde8b658b3512984decd10b044dc75b805d9e0f555dae9b1ed55"
+    },
+    {
+      "path": "imgs/dome-tour-v2.webp",
+      "bytes": 196576,
+      "sha256": "96dc92450190c09e30e5bbaf6c9fef89a933b29c2bd1e7cf6db1bcd4a3a910dc"
+    },
+    {
+      "path": "imgs/dome-tour-v3.webp",
+      "bytes": 224634,
+      "sha256": "6db79b6046f0415154618d26339aad24959859bab00f38a57caffc7b7b6e0cca"
+    },
+    {
+      "path": "imgs/french-tour-13-v1.webp",
+      "bytes": 452480,
+      "sha256": "568e0a34dbbefc3b7c6158d75788b6cf0ed60360b5d5567989e3dc35579a5513"
+    },
+    {
+      "path": "imgs/french-tour-13-v2.webp",
+      "bytes": 374252,
+      "sha256": "d49299ab1cb10ab9b27834a4703a3d1e3dc52d917b64b1ae64df956112d00fbd"
+    },
+    {
+      "path": "imgs/french-tour-13-v3.webp",
+      "bytes": 523264,
+      "sha256": "9e2f2ed6a3d15a48e94f36285bf19c7ca13d282a82a4db782e09aa43839115e1"
+    },
+    {
+      "path": "imgs/greek-tour-10-v2.webp",
+      "bytes": 342090,
+      "sha256": "4e048820308233fcdac57f7ffe7eb31197f79005fa5a930e12a8ebcde5b1fd97"
+    },
+    {
+      "path": "imgs/greek-tour-10-v3.webp",
+      "bytes": 433622,
+      "sha256": "0a881f55d486c17be12a8cd9d9e2ef98b7b3a31a2fd28006a138737f0cd277b8"
+    },
+    {
+      "path": "imgs/greek-tour-11-v2.webp",
+      "bytes": 337606,
+      "sha256": "84f70598e2982e66e4103516718b303447636a43a41c9a665f652afa398981c9"
+    },
+    {
+      "path": "imgs/greek-tour-11-v3.webp",
+      "bytes": 375388,
+      "sha256": "1ae6f9e4849bcb59f6e67de4e70ab93149d7492452711a9885949ca2b38e0fb4"
+    },
+    {
+      "path": "imgs/greek-tour-v1.webp",
+      "bytes": 1189686,
+      "sha256": "5b0524b8343961d76b5e92b1ab01a04dfa6e093f608d59ef48a4d1d1e5b2e3d5"
+    },
+    {
+      "path": "imgs/img00.webp",
+      "bytes": 19402,
+      "sha256": "ba93f9c6f2476c24e79dda2adf99550fdcdff095eb917474095f78524269ad67"
+    },
+    {
+      "path": "imgs/img02.webp",
+      "bytes": 52792,
+      "sha256": "a636b901dfa28d8d80d26bf9590d47a271065ba4e5aafd131aeb7c0be946655a"
+    },
+    {
+      "path": "imgs/img03.webp",
+      "bytes": 19402,
+      "sha256": "ba93f9c6f2476c24e79dda2adf99550fdcdff095eb917474095f78524269ad67"
+    },
+    {
+      "path": "imgs/img04.webp",
+      "bytes": 42680,
+      "sha256": "76de3b1921b3646a4040905da3400c00e107d12cd6862a77dded774d41fb5e71"
+    },
+    {
+      "path": "imgs/img05.webp",
+      "bytes": 82702,
+      "sha256": "c56d89e2a4b99ebd6657988514744d7ed6f5d06cb21364f4b016a2fae4bd04e5"
+    },
+    {
+      "path": "imgs/img06.webp",
+      "bytes": 55578,
+      "sha256": "4cf84af824b4a85f9993f8ead6f557cf2fffb9a4c28b34470a151826255282f1"
+    },
+    {
+      "path": "imgs/img07.webp",
+      "bytes": 53482,
+      "sha256": "069690ec56fcd1a21d43a5d044649dadf0c19d385d56289f53a865857cc808eb"
+    },
+    {
+      "path": "imgs/img08.webp",
+      "bytes": 47238,
+      "sha256": "c4fb15ae017b6dd2b3682fa9eb63cd696912e143e480c357c84e34dbcc7e8a1b"
+    },
+    {
+      "path": "imgs/img09.webp",
+      "bytes": 61426,
+      "sha256": "fbb1d048d7dcd663c2fa5d7c2a3c9cba7db5e7d6d417bae057f737cfdeaa258a"
+    },
+    {
+      "path": "imgs/img10.webp",
+      "bytes": 88066,
+      "sha256": "41e1510d75d29607ab579c4f7bf83b8349152fe5f89178aa14f2383e4b6edee1"
+    },
+    {
+      "path": "imgs/img100.webp",
+      "bytes": 29672,
+      "sha256": "ef07a7c25fbd89e17004f7cc5447b1f9425e742ffc379de8b498e3d1e50319b9"
+    },
+    {
+      "path": "imgs/img101.webp",
+      "bytes": 32962,
+      "sha256": "dfb4c7f2e94c21620e52b92abe93f7b890f649f23c8551ce950f0a278f4bbfac"
+    },
+    {
+      "path": "imgs/img102.webp",
+      "bytes": 45864,
+      "sha256": "15e12faf9355bc2285446c481e5c2198aa43067cbebe0e01805547bff08d87da"
+    },
+    {
+      "path": "imgs/img103.webp",
+      "bytes": 51414,
+      "sha256": "7cf1578f3982a7c610750a4291c56b394993b6abcd845eb7b70c0bfeddb40041"
+    },
+    {
+      "path": "imgs/img104.webp",
+      "bytes": 31874,
+      "sha256": "cf5241c00f66462f2146bf4bfe4d9b1e734fe070a1a8b0bfba24dc8aa56edc2a"
+    },
+    {
+      "path": "imgs/img105.webp",
+      "bytes": 31082,
+      "sha256": "ee71b8bfd8817570b7eea2cbe24434ea5020030911bfcb7fdf7c7fc9fe53ac69"
+    },
+    {
+      "path": "imgs/img106.webp",
+      "bytes": 33642,
+      "sha256": "8d824794e098b6806d06897deca1d3c4f1556fbd6f3bba3405e708f01b78b948"
+    },
+    {
+      "path": "imgs/img107.webp",
+      "bytes": 87008,
+      "sha256": "588f9fd8eb30f25363d8adb715929773d1bfd406180c2320864d0030d69cd24c"
+    },
+    {
+      "path": "imgs/img108.webp",
+      "bytes": 96758,
+      "sha256": "d374e7c90aff24a0c58a7807873c3a0a706e8eda3198bf7b8f7ad08c604244d9"
+    },
+    {
+      "path": "imgs/img109.webp",
+      "bytes": 74532,
+      "sha256": "f5987f965c77093170441cae9952c766f7f902c87de9f5a7897149778dc0e12e"
+    },
+    {
+      "path": "imgs/img11.webp",
+      "bytes": 61688,
+      "sha256": "4e135afb0ea89a439c40c233d792f0fd3a1f80aee68ad5ef4cf6b0a85092d16f"
+    },
+    {
+      "path": "imgs/img110.webp",
+      "bytes": 76596,
+      "sha256": "8b551eb969e003eb0c8278de611bc103de20480de4c197d9862cb463aa3fedf4"
+    },
+    {
+      "path": "imgs/img111.webp",
+      "bytes": 114562,
+      "sha256": "5639374a9cb041cac81002a025db52af1a27c8f39193eb4e284e40267b0ca349"
+    },
+    {
+      "path": "imgs/img112.webp",
+      "bytes": 105874,
+      "sha256": "ec23b7dc374b050124e306780eb74b2a0e70d46e4ee53bda9ac7feabcaa667da"
+    },
+    {
+      "path": "imgs/img113.webp",
+      "bytes": 111306,
+      "sha256": "cd7e6de74a7cb626c69aaa175ae07a0506949f89ba111f88b0b9caf71d9ea203"
+    },
+    {
+      "path": "imgs/img114.webp",
+      "bytes": 99918,
+      "sha256": "5a1fec282a1daa827a54e6ff6eff7956e733948ee231003c133461585a00a312"
+    },
+    {
+      "path": "imgs/img12.webp",
+      "bytes": 67628,
+      "sha256": "e6535c555f983d33f31ee4eede29e9c5192b9b97ef8ebae77ec2143e1704a509"
+    },
+    {
+      "path": "imgs/img13.webp",
+      "bytes": 52556,
+      "sha256": "c8f4e28cd21be335252cf01746f7da1c4733c191bbcf3bf109d3f5ff516226a2"
+    },
+    {
+      "path": "imgs/img14.webp",
+      "bytes": 75206,
+      "sha256": "38b97a1b8725e0db2e00cd0b6184836fdc36d271e0339472f2c8be9a711244ba"
+    },
+    {
+      "path": "imgs/img15.webp",
+      "bytes": 78750,
+      "sha256": "d07372b6b1a249c163839e150c1ed79e66854234d3f513da21a2e1d321dcd1fc"
+    },
+    {
+      "path": "imgs/img16.webp",
+      "bytes": 87750,
+      "sha256": "fe3f02d9297d75293912ed4c05331d8be4d1cdd92d30618955c93140dbfb8c74"
+    },
+    {
+      "path": "imgs/img17.webp",
+      "bytes": 87718,
+      "sha256": "ceaa921f1aed7c2bead1fee23fdb073eed50a1b33443f587e907cb81583cb097"
+    },
+    {
+      "path": "imgs/img18.webp",
+      "bytes": 140928,
+      "sha256": "faca3dd7ccb57276b869618c2d9f70946253aeba6fd42a660f47230a5bf6ebdd"
+    },
+    {
+      "path": "imgs/img19.webp",
+      "bytes": 105982,
+      "sha256": "866f32ce994081fd2aa7ae236e7793aa3bdf050e33118a89e2ac64f4e220a177"
+    },
+    {
+      "path": "imgs/img20.webp",
+      "bytes": 131600,
+      "sha256": "5ca2e62fe96140d1fb916dbdca5955dcaebc146fb9c13a5a5b4eafd599489b57"
+    },
+    {
+      "path": "imgs/img21.webp",
+      "bytes": 74958,
+      "sha256": "3af7ffb024bbe5d96726109b2ed18d05cd859b3e8300081e31007250d8a2fe9c"
+    },
+    {
+      "path": "imgs/img22.webp",
+      "bytes": 96180,
+      "sha256": "722c60225dd46914a98cdcc30e87959b2efd6031ec4dc7296a51151a51176423"
+    },
+    {
+      "path": "imgs/img27.webp",
+      "bytes": 101220,
+      "sha256": "7b1ef78fe6689fafb077efb8aecd33dd220ebea051789e8b4054af2eb3e7416c"
+    },
+    {
+      "path": "imgs/img28.webp",
+      "bytes": 87750,
+      "sha256": "fe3f02d9297d75293912ed4c05331d8be4d1cdd92d30618955c93140dbfb8c74"
+    },
+    {
+      "path": "imgs/img29.webp",
+      "bytes": 91544,
+      "sha256": "8861625d5c387f38f0440503256a6a5d660a7135ab4a17915d7c3c0d6e0a5a05"
+    },
+    {
+      "path": "imgs/img30.webp",
+      "bytes": 92404,
+      "sha256": "5cc43d604c2a7c6b1e05d7e430df48f00f52f01d199cb372ce9ac705cad933af"
+    },
+    {
+      "path": "imgs/img31.webp",
+      "bytes": 83424,
+      "sha256": "217c91d17f312f01030703dabbaca043c4cb19b45d49edf006b850d1c0250b9b"
+    },
+    {
+      "path": "imgs/img32.webp",
+      "bytes": 65212,
+      "sha256": "3f2c7965205be35ebde184cb35d4ee7627ee4088bf1ed8991e2146210a6543cb"
+    },
+    {
+      "path": "imgs/img33.webp",
+      "bytes": 111164,
+      "sha256": "ca5762c8fbc9cae9235a3f9fb9c2e7a4e8fb99a9f3c8fb8f8b7d464ef0fb27f2"
+    },
+    {
+      "path": "imgs/img34.webp",
+      "bytes": 101104,
+      "sha256": "0a47d54a92b2941585bb7789cc4c438298940b2770fe10f36e0cd1a10c95cc1f"
+    },
+    {
+      "path": "imgs/img35.webp",
+      "bytes": 109644,
+      "sha256": "50a715a51efe8ba24637c1bc931e2db4f32be0345f0da34d7eb45bbf2855c9bc"
+    },
+    {
+      "path": "imgs/img36.webp",
+      "bytes": 100896,
+      "sha256": "d44a9f5f2cc728f05fef52cc2f16024446da0bd8ed5aeb5a8118c1b75abbf9f5"
+    },
+    {
+      "path": "imgs/img37.webp",
+      "bytes": 108348,
+      "sha256": "2c3116d38afea1b9dd8975ae3a8e4faab72076a87c9fa3ed21990484a4a17abb"
+    },
+    {
+      "path": "imgs/img38.webp",
+      "bytes": 66796,
+      "sha256": "921fb0896aa3755e0083ed5a6a0a8240a51cd85c9d8515cc20c38a3417cd5742"
+    },
+    {
+      "path": "imgs/img39.webp",
+      "bytes": 104722,
+      "sha256": "042a6c34a8faf53ed26449b8874ae9c6004738e2529fe17c053baf67c9946bd9"
+    },
+    {
+      "path": "imgs/img40.webp",
+      "bytes": 96460,
+      "sha256": "5b8d2b78fe9ac40db8cf5da4a19444d4e4c4b14a2a56f2de6bb44091c6cc64b6"
+    },
+    {
+      "path": "imgs/img41.webp",
+      "bytes": 107292,
+      "sha256": "76f84979334384a0e8a11a72c3e7447b91bd14ea5252999672eaf4689f0d087d"
+    },
+    {
+      "path": "imgs/img42.webp",
+      "bytes": 120406,
+      "sha256": "3044987f58e045610b45bdbdd7f0e78e89a1968ee2b6a250ad2c390696977be3"
+    },
+    {
+      "path": "imgs/img43.webp",
+      "bytes": 104320,
+      "sha256": "1e2b459f15b48734477174e52254e0b0d894b222288463c48551dccf064b9dc7"
+    },
+    {
+      "path": "imgs/img44.webp",
+      "bytes": 60796,
+      "sha256": "c4b70423e06fc7f5306a2f88d0aa00780c0bfb2a8c2c55276fafd400060f08f8"
+    },
+    {
+      "path": "imgs/img45.webp",
+      "bytes": 76144,
+      "sha256": "91a8fa108d40f453d6c41bf778f982c742a334e91c4074cdc09f456bdcad662a"
+    },
+    {
+      "path": "imgs/img46.webp",
+      "bytes": 88558,
+      "sha256": "51e8fd243d90f2cf74c59ea9c33604fdcc3550526e0b8637f40282b1157189a1"
+    },
+    {
+      "path": "imgs/img47.webp",
+      "bytes": 82488,
+      "sha256": "7930eb5e59ef547d99740c219525de1170ddb35f1eb2408cef35cf60b45f3418"
+    },
+    {
+      "path": "imgs/img48.webp",
+      "bytes": 82554,
+      "sha256": "c73fa2530ca9fbece0fda0ab17f14e3dead5f480c879db448feacdeda125fca8"
+    },
+    {
+      "path": "imgs/img49.webp",
+      "bytes": 63968,
+      "sha256": "34ba7c5e403992c9065457f2fef873502e694dc26e9e58db1af554b4ccf4ecef"
+    },
+    {
+      "path": "imgs/img50.webp",
+      "bytes": 37978,
+      "sha256": "6d0e6d46ed98e8f93b9bbe3499f31a0fb2f98c72548e3627d32ddce0531445e2"
+    },
+    {
+      "path": "imgs/img51.webp",
+      "bytes": 138298,
+      "sha256": "dbf986ac2582b5d0123b0ef4ebe71eb100c3fb77c2950925df172c342d6b16b4"
+    },
+    {
+      "path": "imgs/img52.webp",
+      "bytes": 95512,
+      "sha256": "304a1ea7d95479a9a55fd03ca2f3fa455c44436d42372b08b49132f4aa1d7153"
+    },
+    {
+      "path": "imgs/img53.webp",
+      "bytes": 84916,
+      "sha256": "d48983790c0ee15e1d245ec7216fd0e5ccf86351c8a7ad1bfa1fdabf341d77b3"
+    },
+    {
+      "path": "imgs/img54.webp",
+      "bytes": 71764,
+      "sha256": "c8a6d7a730193b1668418bbc0d2339cfa48fd92659492322bf7ad33620e6e072"
+    },
+    {
+      "path": "imgs/img55.webp",
+      "bytes": 99618,
+      "sha256": "1a3f59d545fd5afe957f6789a9b195fbb9015a217761dc1ae3477ec22d3fa6e4"
+    },
+    {
+      "path": "imgs/img56.webp",
+      "bytes": 79768,
+      "sha256": "8b9f3e6ce76bb142f007489e4ce08211b01843f371893a16770eda09927f09c9"
+    },
+    {
+      "path": "imgs/img57.webp",
+      "bytes": 114188,
+      "sha256": "16222f7771fed0602d3c1d364b6390ff71362da3b1a7ab18cf1169ccbba9bb22"
+    },
+    {
+      "path": "imgs/img58.webp",
+      "bytes": 117134,
+      "sha256": "8fbdf12757a4bc94e18c82a3df312606c0f20ab69ac384da233ea6fb8ab72b94"
+    },
+    {
+      "path": "imgs/img59.webp",
+      "bytes": 86360,
+      "sha256": "538d9f55f196f4bc8e0ac093214948b88c9b0b300be80a91bbf1262a683a23bd"
+    },
+    {
+      "path": "imgs/img60.webp",
+      "bytes": 130766,
+      "sha256": "b1c6a99b3736816e70a5ca7be1a5fd2b5807e0fd753e1733aab823bcf80c0b7a"
+    },
+    {
+      "path": "imgs/img61.webp",
+      "bytes": 74892,
+      "sha256": "21a7c064b8fdfd3049a3705e45d6aebdac264d5f5dc78a46bfb20be017f43a8a"
+    },
+    {
+      "path": "imgs/img62.webp",
+      "bytes": 64162,
+      "sha256": "302b43910955a36279bc75d7e5a37b6489dd41045bf2fa8aa0476982bb924000"
+    },
+    {
+      "path": "imgs/img63.webp",
+      "bytes": 125952,
+      "sha256": "3d2d40a26d1d26ba32d1d7d57c9a6d78f44092033e24fb3cadddf091ff354e94"
+    },
+    {
+      "path": "imgs/img64.webp",
+      "bytes": 71390,
+      "sha256": "cccfdabfb873f46de9705fb2a9e841e5a8e50b9d896bb019f0fd05297a4c0dac"
+    },
+    {
+      "path": "imgs/img65.webp",
+      "bytes": 104948,
+      "sha256": "58049b6d08d8d6a037aa2ac9cc91e5771d71759bb081e69229f644cc8a3d81d5"
+    },
+    {
+      "path": "imgs/img66.webp",
+      "bytes": 74976,
+      "sha256": "77af2e2fa61e109e4deef6585062fcb5a65fafd217f819b29ffa08e4f5dc902b"
+    },
+    {
+      "path": "imgs/img67.webp",
+      "bytes": 51674,
+      "sha256": "e3cee506426d710799d963be9a31e19178c93618a6a174390c652e3d7f0c5d35"
+    },
+    {
+      "path": "imgs/img68.webp",
+      "bytes": 83494,
+      "sha256": "bf80cba1cce2d1ae4e537ad54bd7a0d086b4fb9ef26d49940d589bf92e4c418c"
+    },
+    {
+      "path": "imgs/img69.webp",
+      "bytes": 120078,
+      "sha256": "782c2386cf7e5984a93016c95b300b5fe45e434acaa5bd9aa43115d812399d53"
+    },
+    {
+      "path": "imgs/img70.webp",
+      "bytes": 71398,
+      "sha256": "0fa9ad4016ecbe77708f2047b084de1c91b802f4d3bd4cad7e33890415af8e96"
+    },
+    {
+      "path": "imgs/img71.webp",
+      "bytes": 119032,
+      "sha256": "ad05db6369a6854acb36f539c6e6b0d380531c1d162a8adfb9f1f506c686ccd6"
+    },
+    {
+      "path": "imgs/img72.webp",
+      "bytes": 93304,
+      "sha256": "9b55dfac7fbf3dcb3ff4bdf52a37eefeda8ab3204cdef1bb7c0a251e8cd4a11f"
+    },
+    {
+      "path": "imgs/img73.webp",
+      "bytes": 77750,
+      "sha256": "7f7b9b76ec596d52b1d3d264edfc1118f0ae77245cb5bcc230867024e476a2c0"
+    },
+    {
+      "path": "imgs/img74.webp",
+      "bytes": 81978,
+      "sha256": "d39a409234071259941f79525c2d6cab53d7f0850a9862db98a25e3a88b7ff97"
+    },
+    {
+      "path": "imgs/img75.webp",
+      "bytes": 137398,
+      "sha256": "d5f55ad00d9d2ea6de70101f20fd9b19eae3752ea729514e7fb7795bf184b619"
+    },
+    {
+      "path": "imgs/img76.webp",
+      "bytes": 88704,
+      "sha256": "48893bcd57847ad5590113fd8aa295aae5a5f8d19c2c164b6e1d7ee7874fda9c"
+    },
+    {
+      "path": "imgs/img77.webp",
+      "bytes": 104442,
+      "sha256": "b46369ee255d62d49db3a1fc1159cb2b688dc4f6db5898b14f02094118221416"
+    },
+    {
+      "path": "imgs/img78.webp",
+      "bytes": 81598,
+      "sha256": "340852ce0c9a7e6005f47f3ea73da74eb00b19d834611840c47391e706dbba45"
+    },
+    {
+      "path": "imgs/img79.webp",
+      "bytes": 100926,
+      "sha256": "4f8c8064f9255f05ff5b7a0b3e11b28ce5bbf17623a0518c273d90b65077d9a2"
+    },
+    {
+      "path": "imgs/img80.webp",
+      "bytes": 62236,
+      "sha256": "e220a62855dc3ec8d0d92fe15b8e3147e767969349f5304003c1e3c0960d0787"
+    },
+    {
+      "path": "imgs/img81.webp",
+      "bytes": 110446,
+      "sha256": "8d8f73b473fbc4e5a96e9cf00ccf102a097771214c1c39b919b973e3b367db4d"
+    },
+    {
+      "path": "imgs/img82.webp",
+      "bytes": 90684,
+      "sha256": "5d4e2aaff88e0e6a81711527ccbcfe289d8bdd34e8162dd73cda6bec8156e48e"
+    },
+    {
+      "path": "imgs/img83.webp",
+      "bytes": 69036,
+      "sha256": "1a41447853bb917a68fa67b123169d970588198ea98d2a0593c456fbcf93fa51"
+    },
+    {
+      "path": "imgs/img84.webp",
+      "bytes": 61812,
+      "sha256": "e7207946121e46f70f7679cc978a804a1dd01d0cd0244b8da4de1d1fdb92b7f7"
+    },
+    {
+      "path": "imgs/img85.webp",
+      "bytes": 40492,
+      "sha256": "e10426a7b5dd3d3078f92f5d62201488474fb994efbcaed3adb2d52ba68087c4"
+    },
+    {
+      "path": "imgs/img86.webp",
+      "bytes": 47964,
+      "sha256": "992d44ff09302c590874f6f2fb7823c85bc91919aab80c474537aa2e36e62838"
+    },
+    {
+      "path": "imgs/img87.webp",
+      "bytes": 95948,
+      "sha256": "b9463c3bcb0df47a45d13ddd4939668dcca8a7ea1c973c77466b112f6f50170e"
+    },
+    {
+      "path": "imgs/img88.webp",
+      "bytes": 100516,
+      "sha256": "a9a0b4d11d6383cd00f73f1a6247bf77401ee50cf9f9e1d9a7d431b02efe72a7"
+    },
+    {
+      "path": "imgs/img89.webp",
+      "bytes": 102476,
+      "sha256": "ac4d305962cca9b8a156cdef3c19003aeb5fcf0c4184294e2e2c75f9c2fbfc9f"
+    },
+    {
+      "path": "imgs/img90.webp",
+      "bytes": 97910,
+      "sha256": "5ee99b43c63ff508bea416fbfd4f989051e5453381404a2acc97a80d77dec84a"
+    },
+    {
+      "path": "imgs/img91.webp",
+      "bytes": 124710,
+      "sha256": "8c1b5b50760c27b1568f2c85bd7777130b2c3d324158a8833a2cb1add559fd94"
+    },
+    {
+      "path": "imgs/img92.webp",
+      "bytes": 101092,
+      "sha256": "dbe9081529e39cc36a20d12d697d925f5b0fd346b1e82475ed8ca63b9c408c3f"
+    },
+    {
+      "path": "imgs/img93.webp",
+      "bytes": 30270,
+      "sha256": "0d129db440517fdba563eb80d024a9d4ced0c6df2a3c7dc2ed1d2f33ccc034ad"
+    },
+    {
+      "path": "imgs/img94.webp",
+      "bytes": 26234,
+      "sha256": "9036dc800f68e7fd662bae514e0c6b4fb56fa4ce467e0b225690b46e212a3f02"
+    },
+    {
+      "path": "imgs/img95.webp",
+      "bytes": 18330,
+      "sha256": "313c0e14b05b709846ad40aaea2f1bc0c36d495b6ffb23a8a990818f65417ea7"
+    },
+    {
+      "path": "imgs/img96.webp",
+      "bytes": 24470,
+      "sha256": "55d1ec709d71037a55a61b746241a888b522d01f6718058215b3243be5e11fd8"
+    },
+    {
+      "path": "imgs/img97.webp",
+      "bytes": 20682,
+      "sha256": "faa7812849b04520957b37b06f2555925fb6841ecc7b4ad9193608e85eb62d38"
+    },
+    {
+      "path": "imgs/img98.webp",
+      "bytes": 17122,
+      "sha256": "8218a028d8a7765d1f0b4f2aa4e8fcf7d1d31d0e2e693e42cea67f818a602182"
+    },
+    {
+      "path": "imgs/img99.webp",
+      "bytes": 48544,
+      "sha256": "e29e19444327dff3522e02bf1fc226431abd9d20eb0f1228cfcf5aa8a092a36c"
+    },
+    {
+      "path": "imgs/og.png",
+      "bytes": 1664857,
+      "sha256": "01242721b9372cd0050778d519dc0197f70702bf16a7a986512e705843eed9a1"
+    },
+    {
+      "path": "imgs/palm-tour-12-v1.webp",
+      "bytes": 432450,
+      "sha256": "25b05dd44320a54963c829a0bddb9854eb80162afbcad68892915293a3de6fac"
+    },
+    {
+      "path": "imgs/palm-tour-12-v2.webp",
+      "bytes": 485866,
+      "sha256": "92d59352c962d84ece6cfb9b123f23db19baa25ce9715e78ce29b1757036193c"
+    },
+    {
+      "path": "imgs/panoramic-tour-21-approved-v14.webp",
+      "bytes": 286136,
+      "sha256": "5dd14d3e0d6e58e9a8885c77aed6dedb7b13cf62cc7538453097c4c5968fbb1e"
+    },
+    {
+      "path": "imgs/panoramic-tour-21-v1.webp",
+      "bytes": 356830,
+      "sha256": "8492ddba8ff6be713c2c91c497ead86bea8de98f6454b37106d63ceacca7b87d"
+    },
+    {
+      "path": "imgs/pyramid-tour-17-v3.webp",
+      "bytes": 359172,
+      "sha256": "1eea4f4f06e494af48ff2bba33ef2fef61d8c41ffa639b6c2814249db6852b8d"
+    },
+    {
+      "path": "imgs/pyramid-tour-17-v4.webp",
+      "bytes": 530800,
+      "sha256": "fd52e670185d1f9255c568277c6292e01a71b3b02aa4a05e4f1e11343e9c6d5c"
+    },
+    {
+      "path": "imgs/pyramid-tour-v1.webp",
+      "bytes": 460034,
+      "sha256": "f5391f6cd03e53d46cc3020cf5c13efc1e6eda37d0ead19b46c003ea1639dbc3"
+    },
+    {
+      "path": "imgs/pyramid-tour-v2.webp",
+      "bytes": 1168666,
+      "sha256": "cd1b88eeae6e36ceba5662405ab92569e8d2575c9e2cf04deaa374f4775cbcfe"
+    },
+    {
+      "path": "imgs/resort-map-v1.webp",
+      "bytes": 283660,
+      "sha256": "9eb9ec6aeb3a808372d3d9bccbfd35b27b80ee512719e968b23934f67d3a8565"
+    },
+    {
+      "path": "imgs/resort-map-v2.webp",
+      "bytes": 242540,
+      "sha256": "b5d419c6eff5c74aa8dabc6f9f9338c241b8e6161f47087fb0477ebee88e648f"
+    },
+    {
+      "path": "imgs/resort-map-v3-cool-gray.webp",
+      "bytes": 102914,
+      "sha256": "de3d57d9fd3d0b2dfb9934a6b892595662f7b21ac4504653f20bd61d242fddfa"
+    },
+    {
+      "path": "imgs/resort-map-v4-equal-dome-pools.webp",
+      "bytes": 96890,
+      "sha256": "c23f4c9e2cb6e9d7c2e5c4e87ccd3294638e58b652dc3f3722ddebd54481166b"
+    },
+    {
+      "path": "imgs/resort-map-v5-transparent.png",
+      "bytes": 1822768,
+      "sha256": "0458e09257cc4100ad0d7f5004c0f95dd8aae436c02d3f810686590659db827e"
+    },
+    {
+      "path": "imgs/resort-map-v6-garden.png",
+      "bytes": 2022479,
+      "sha256": "55bccd2d1fc7fc9e641394099f685208ef741d1ee94f84401a94ea525b940c31"
+    },
+    {
+      "path": "imgs/royal-tour-19-approved-v1.webp",
+      "bytes": 315308,
+      "sha256": "78335c168a1351056d66ca57d8c58ba1263b41ba71b20427b60f86ee5bfbe8ad"
+    },
+    {
+      "path": "imgs/royal-tour-19-lossless-v2.webp",
+      "bytes": 1156326,
+      "sha256": "09dc1ee5557bdf4deba53270214d68de46d5386db712bd033c7a545dbd58bc7c"
+    },
+    {
+      "path": "imgs/rustic-tour-14-approved-v15.webp",
+      "bytes": 1189008,
+      "sha256": "ecc9208f93937b501c85edde3af84825cb4dc4c5e11115900fa260ecaf58d4f2"
+    },
+    {
+      "path": "imgs/sec2_3.webp",
+      "bytes": 81272,
+      "sha256": "ba08284ead8d3fcc7a2aeaf1e4e21de6f97b500af6c0e916cf20a75835e36151"
+    },
+    {
+      "path": "imgs/stay/img00.webp",
+      "bytes": 19402,
+      "sha256": "ba93f9c6f2476c24e79dda2adf99550fdcdff095eb917474095f78524269ad67"
+    },
+    {
+      "path": "imgs/stay/img01.webp",
+      "bytes": 19402,
+      "sha256": "ba93f9c6f2476c24e79dda2adf99550fdcdff095eb917474095f78524269ad67"
+    },
+    {
+      "path": "imgs/stay/img02.webp",
+      "bytes": 19402,
+      "sha256": "ba93f9c6f2476c24e79dda2adf99550fdcdff095eb917474095f78524269ad67"
+    },
+    {
+      "path": "imgs/stay/img03.webp",
+      "bytes": 85654,
+      "sha256": "3c38fef8548f558c9bdde2a21827cd8402ce278f372c28985909bd11b56f9847"
+    },
+    {
+      "path": "imgs/stay/img04.webp",
+      "bytes": 81122,
+      "sha256": "5c76048fa4d187991b48b4ecf1786616591e535582aeb5a5b4244f0634eee45e"
+    },
+    {
+      "path": "imgs/stay/img05.webp",
+      "bytes": 140136,
+      "sha256": "bc2853a972e32177e1e0adda69b39ff594a078cf76189f7027065a3e6103eb37"
+    },
+    {
+      "path": "imgs/stay/img06.webp",
+      "bytes": 51680,
+      "sha256": "f426dbf6fd27f14576f204911b4c2cd2464f06b784a0436be8f0f57fc31af1f3"
+    },
+    {
+      "path": "imgs/stay/img07.webp",
+      "bytes": 29270,
+      "sha256": "6013f0c723d3384ca80480749320116483930a96335b65c13eb950ea5753ad21"
+    },
+    {
+      "path": "imgs/stay/img08.webp",
+      "bytes": 20532,
+      "sha256": "56e69f13b607282643dea7b79869762a8624f1b02b6b5365e816c94ba7990e2c"
+    },
+    {
+      "path": "imgs/stay/img09.webp",
+      "bytes": 154886,
+      "sha256": "75aa7a67e306f11322b2a0ce20622e60d75805dcd545d76d4ac253414fb3f04c"
+    },
+    {
+      "path": "imgs/stay/img10.webp",
+      "bytes": 87858,
+      "sha256": "ef23d2079edea77dcd97a9d96a19328f4303830cfae843d2564bcfe7bd5128cc"
+    },
+    {
+      "path": "imgs/stay/img11.webp",
+      "bytes": 65392,
+      "sha256": "72f63821937a7c04e8d1900268c493437fff034305326ac9390859f9a140875b"
+    },
+    {
+      "path": "imgs/stay/img12.webp",
+      "bytes": 31402,
+      "sha256": "60f62ea02f1aa8c2c7a803750561dae961960abca4b7a235322d18de63b6194f"
+    },
+    {
+      "path": "imgs/stay/img13.webp",
+      "bytes": 32230,
+      "sha256": "f05772d6842bc30fe1804ddc04b06cfe6940586244b2a9c70a81702f268e56d7"
+    },
+    {
+      "path": "imgs/stay/img14.webp",
+      "bytes": 25390,
+      "sha256": "ceca0f7b451914c83ed01c2f5b85e025cada22ddee3077d72dd518bac45f9e2d"
+    },
+    {
+      "path": "js/accessibility.js",
+      "bytes": 9103,
+      "sha256": "758e5c6784eb76833e6260af94ac7154292598536ae9d981b11e1650508c7db5"
+    },
+    {
+      "path": "js/accommodations.js",
+      "bytes": 37153,
+      "sha256": "05c040afada438873de0f014c2cecc317b8e62d0c6e461e0bd7d701219bc4543"
+    },
+    {
+      "path": "js/app-shell.js",
+      "bytes": 9917,
+      "sha256": "cf909f399729e213a89727dc74dd9c7131d9d25d16bca4844ead360fed5a51b8"
+    },
+    {
+      "path": "js/cabin-carousel.js",
+      "bytes": 3494,
+      "sha256": "f4b5eb413cfea18adc7343320f357f370ed90793351eb96aebbdebf8bba1d282"
+    },
+    {
+      "path": "js/cabin-numbers.js",
+      "bytes": 500,
+      "sha256": "de9f89492816117eafe3b8b0e186c324fd9f8b7ed84ada2b862ed53ad4965829"
+    },
+    {
+      "path": "js/cabin-toolbar.js",
+      "bytes": 400,
+      "sha256": "7beac9ff80dacf6b61b51705ca2aac4cc578f121cf337a7127f9288512658ec7"
+    },
+    {
+      "path": "js/exploration-share.js",
+      "bytes": 2653,
+      "sha256": "4df790a6a09633238ca1fd4aac1a432e1f98830376e644635974b7316abdbf8d"
+    },
+    {
+      "path": "js/fullscreen-gallery.js",
+      "bytes": 2306,
+      "sha256": "92e92b9065f07b75bf6df04d2a131dd930aa419b4be140c68dfc1fe01fc354ea"
+    },
+    {
+      "path": "js/gallery-data.js",
+      "bytes": 11563,
+      "sha256": "cd1f05a995e46737d283aece8e69b65b29f6b07c14f00e670bd78913d04ccbce"
+    },
+    {
+      "path": "js/image-feedback.js",
+      "bytes": 2341,
+      "sha256": "744d428e71aec101ed6a43206150207a52db786b405e61c0558993c7d0c844c0"
+    },
+    {
+      "path": "js/page-media.js",
+      "bytes": 1147,
+      "sha256": "68748b48b2c7606f1b4258352bdf3e49b28041f2edf0073ed4ec46117f30ee5f"
+    },
+    {
+      "path": "js/router.js",
+      "bytes": 25883,
+      "sha256": "78b9d85d3436f910f34e451b93a0bd45e6f197cd53eaf4b5c777357953c3b626"
+    },
+    {
+      "path": "js/seating-cart.js",
+      "bytes": 6617,
+      "sha256": "5e9ffbf128472e54a325737e266389d8dac5836bac5f8199f6d9bd733fa4af2b"
+    },
+    {
+      "path": "js/service-orders.js",
+      "bytes": 10180,
+      "sha256": "6843ff8266097bf08f497cfcd3bf9213be0e8130aa30945904c02f651e38c859"
+    },
+    {
+      "path": "js/service-venue.js",
+      "bytes": 1466,
+      "sha256": "8ca26b79c8fa1c06a9c2973467f5c971641e4a58033efa2b04e3c8cd2ff0923f"
+    },
+    {
+      "path": "js/services.js",
+      "bytes": 21636,
+      "sha256": "eebb5567e81db174ddec0a20d0f967e412fb1ae8b33c923f071654219c49a178"
+    },
+    {
+      "path": "js/shared-specifications.js",
+      "bytes": 2701,
+      "sha256": "64c1a513bd731db254743aef6ca7bb2a0a291311efd11f38d558cb15804d87eb"
+    },
+    {
+      "path": "js/stay-navigation.js",
+      "bytes": 5962,
+      "sha256": "18c0bf9048018f32ab94fa45daf08100bc3adf07cbcf14fe881519f73de828a7"
+    },
+    {
+      "path": "js/water-games.js",
+      "bytes": 5241,
+      "sha256": "b148c022d2d25bef84d09445def184ea38bfa3903db5b3961a4d04d74b93b298"
+    },
+    {
+      "path": "menu-experience.css",
+      "bytes": 2520,
+      "sha256": "18d7d64bbd9d1017e724fbf545a27c1123f85d3dd9caa1aa86bed10b15b3f89b"
+    },
+    {
+      "path": "menu-experience.js",
+      "bytes": 5217,
+      "sha256": "6bc72212967bdf5a1e750647639507188422ddb7c08dfaeb554a037a5362464a"
+    },
+    {
+      "path": "palm-tour.css",
+      "bytes": 934,
+      "sha256": "14562d38db02fced9235cbc8b9af2414670ea1eee0fb07f9f07f6eeb0e1160ac"
+    },
+    {
+      "path": "palm-tour.js",
+      "bytes": 6474,
+      "sha256": "d09288a8e44c34c74a96593cd49cc844764c432ed98e38be7e421a84515909cc"
+    },
+    {
+      "path": "panoramic-tour.css",
+      "bytes": 5746,
+      "sha256": "c75e08bea7281ffb872c2cf452ffa002d6767764b41a8eb2a3f19a1dd388085a"
+    },
+    {
+      "path": "panoramic-tour.js",
+      "bytes": 6769,
+      "sha256": "b5ffc02552297c3935ce2e6f6a6e752bfdcce5dc0fcaba096a5788c8233ed5f1"
+    },
+    {
+      "path": "pyramid-tour.js",
+      "bytes": 6346,
+      "sha256": "a9349732c685b9302c3c7d38f74e2f385c1c97ff471d0f70ad1937514be301ec"
+    },
+    {
+      "path": "resort-data.js",
+      "bytes": 29773,
+      "sha256": "89ac0ce174a3810bf606548f9f0c89ab784acd72d7ec0cd7014af29a3e4aa2f8"
+    },
+    {
+      "path": "resort-features.js",
+      "bytes": 4906,
+      "sha256": "09319c1729458f4593960ebe7b1d32f1d7fd98eff692d3cd3ea185e07e572691"
+    },
+    {
+      "path": "resort-home.css",
+      "bytes": 12524,
+      "sha256": "2e5c2e6ef1a30d83e4564ad61691c08be0b66e1ab95599b5cd336410eaf74b89"
+    },
+    {
+      "path": "resort-map-data.js",
+      "bytes": 3693,
+      "sha256": "f4a85b755a54d0d0d0f6a230744990c1ec694589da09908f108512e065a263a9"
+    },
+    {
+      "path": "resort-map.css",
+      "bytes": 24636,
+      "sha256": "1d6f454eec0a9d910482bf84c89b6804f64422244472ac30e03a43b8d04dcd52"
+    },
+    {
+      "path": "resort-map.js",
+      "bytes": 44313,
+      "sha256": "635a3506d118ebf8c2a3a617310e118eaa89a492405818909a1e2b30ab9ca5b7"
+    },
+    {
+      "path": "resort-ui.css",
+      "bytes": 14190,
+      "sha256": "8d4ea306da5bed226c260c071f87bb53e1435d6f194dca58cfc0ed0fbb6320e3"
+    },
+    {
+      "path": "rollback/README.md",
+      "bytes": 991,
+      "sha256": "6695103354bba84d589dce1daaf470debf01b18e3d875c62246489a086b421ae"
+    },
+    {
+      "path": "rollback/legacy-interface-20261125.tar.gz",
+      "bytes": 1308418,
+      "sha256": "367bab0e1fe24b2d34b224b23b7874c3223d99c2f0b13c4cbc39aa7878a4e99d"
+    },
+    {
+      "path": "rollback/manifest.json",
+      "bytes": 9066,
+      "sha256": "40da7790de20fd655d3bd26348540df93de138e156af3687fae74aea3dc3a537"
+    },
+    {
+      "path": "rollback/preview-builders/build-data.py",
+      "bytes": 13191,
+      "sha256": "081e6d258d7ed00c5eb809ff3668a096376d291cf97b257d8116f1e7843595d1"
+    },
+    {
+      "path": "rollback/preview-builders/build-services.py",
+      "bytes": 6327,
+      "sha256": "afab32b75a580b5b1836752ceb5f17fe4c8a6683fd0e8b4474da40f2f786fe09"
+    },
+    {
+      "path": "royal-tour.css",
+      "bytes": 3295,
+      "sha256": "193aa9220962e23e61e2649826253dceed47684e03d11c89e572e5651dc2828d"
+    },
+    {
+      "path": "royal-tour.js",
+      "bytes": 6558,
+      "sha256": "43696ee387d654a777f9b2e6cb3d95babb56c94a4a4545a02fc2f45d88f74f31"
+    },
+    {
+      "path": "rustic-tour.css",
+      "bytes": 3543,
+      "sha256": "a4ad0d6747c780fbaf5e00b4a1501df4d17ae82832f96c938bfa690f2df1f825"
+    },
+    {
+      "path": "rustic-tour.js",
+      "bytes": 6564,
+      "sha256": "e91507316d204a581ef667b0b2ee5d0915494c378cfc9b37c35c11e23693a00f"
+    },
+    {
+      "path": "scripts/build-share-pages.py",
+      "bytes": 7274,
+      "sha256": "14acd0cfbbecffb80ca4019703fa95a25f60256ee4d4b190235aa7d952d703ff"
+    },
+    {
+      "path": "scripts/check-accommodation-descriptions.py",
+      "bytes": 5556,
+      "sha256": "55df2b19d67d40ae26d35eb74d37ddd6fb4b645c1d480badd5ff7f0f0c46ac34"
+    },
+    {
+      "path": "scripts/check-approved-pdf2-interface.py",
+      "bytes": 4776,
+      "sha256": "b051875c27c70f4e5cb9a0b795b5f75928e1855166076e799c2182817fa9c554"
+    },
+    {
+      "path": "scripts/check-approved-review.py",
+      "bytes": 7414,
+      "sha256": "3df268f7de50ba72ad8cdfc4117956fbd18f151326d406fd9ee7138183691fe1"
+    },
+    {
+      "path": "scripts/check-carousel-navigation.py",
+      "bytes": 4360,
+      "sha256": "05a7643041a4ae0fe418d51af13594800c7cd1796747f41394b6a251983d67df"
+    },
+    {
+      "path": "scripts/check-chalet-navigation.py",
+      "bytes": 2957,
+      "sha256": "b1f102363382f55098c745f4b7c3f09fa167d2a739d3ec3d1efc82b8d8b73394"
+    },
+    {
+      "path": "scripts/check-chalet-photo-labels.py",
+      "bytes": 3876,
+      "sha256": "9ae7e1b9c30a944062ceadd444c4e97b105ddbad95d8bab1b5530e260756eed9"
+    },
+    {
+      "path": "scripts/check-chalet-shared-specifications.py",
+      "bytes": 4868,
+      "sha256": "b741c2ff79c30af40ce539b7caa3db8c0888d4e49aa3e9c1c8e6cd964106e1e8"
+    },
+    {
+      "path": "scripts/check-coordination-parity.py",
+      "bytes": 4836,
+      "sha256": "da8bac4a992c1f60576fccc90a6ed22903269b0345210edc11a6839e88ee9d88"
+    },
+    {
+      "path": "scripts/check-destination-loading.py",
+      "bytes": 3703,
+      "sha256": "df9864aefaa91072f8d60d94d694f29c38698c7663f5e7a9b82e6b165e6dcd13"
+    },
+    {
+      "path": "scripts/check-dining-cards.py",
+      "bytes": 6556,
+      "sha256": "556a347f6e7e805bf734e73267eaabaf545eebb665c41d72ff7451f623e314da"
+    },
+    {
+      "path": "scripts/check-dome-inline.py",
+      "bytes": 5587,
+      "sha256": "d684bda2b6e6fb27fcc341119bbf094913b160fa14fa9e48467d6d1b6a3ea481"
+    },
+    {
+      "path": "scripts/check-entry-loading.py",
+      "bytes": 3077,
+      "sha256": "5e427b63d3ab3a1ed01288cdfc3ff583d3515647d11f2ad37e466fad188ec23b"
+    },
+    {
+      "path": "scripts/check-final-review-batch.py",
+      "bytes": 9964,
+      "sha256": "aa0f7d1d8e7affe45c28fb363638347b8762b047171da015b5a1972d54a7f260"
+    },
+    {
+      "path": "scripts/check-final-shared-facts.py",
+      "bytes": 7466,
+      "sha256": "e460c940ff98da2e97aa0490287617264659d0f7e79c08a1b807db4f69444f9c"
+    },
+    {
+      "path": "scripts/check-guest-hospitality.py",
+      "bytes": 7147,
+      "sha256": "ef764955c31f2af3d81ffaa4c1fc12f9145d09f32fc380752e57cf72410543b8"
+    },
+    {
+      "path": "scripts/check-guest-water-packages.py",
+      "bytes": 5778,
+      "sha256": "f22c0ac18fa60805d1a5dffd3981e098dcd7317c673d261ee647a531d537c9fd"
+    },
+    {
+      "path": "scripts/check-guide-navigation.py",
+      "bytes": 4645,
+      "sha256": "fdd121e0b5533c586b06a11cfa0c96b2617714bca721e97e7c6c7dcd994a4f96"
+    },
+    {
+      "path": "scripts/check-link-previews.py",
+      "bytes": 7576,
+      "sha256": "32ade8f655e5795ebf49ce2e88b15a52febd37869f83706f58b771155852dd9e"
+    },
+    {
+      "path": "scripts/check-lossless-images.py",
+      "bytes": 3355,
+      "sha256": "6f69656b72310de11c2b514038e8076fd9978c7f01a1b933ad03bd7aa974fe11"
+    },
+    {
+      "path": "scripts/check-main-chalet-services.py",
+      "bytes": 6309,
+      "sha256": "27ed37be11e838c1d7a067d7271a33df0c413aeeb749737cad03f7a5c4f74fee"
+    },
+    {
+      "path": "scripts/check-menu-experience.py",
+      "bytes": 7285,
+      "sha256": "e84a41fc28421725125ea157eb300f9dfb24a8a2be2e6b1956985a35e0b7fd66"
+    },
+    {
+      "path": "scripts/check-menu-keyboard.py",
+      "bytes": 5552,
+      "sha256": "043699efee4337c1a76adf7d2c7f259f23b252ff4a1fb07d156b36c6c4c3202c"
+    },
+    {
+      "path": "scripts/check-menu-order-message.py",
+      "bytes": 4633,
+      "sha256": "77eeb855b0f46f35811ae266f2e8dcd6d93a908bbbd198b7d9b0c3d154b0132a"
+    },
+    {
+      "path": "scripts/check-native-details-and-exploration-share.py",
+      "bytes": 5099,
+      "sha256": "4f8c865ade531207173510a2523dd51c4921698a3850eed294df911dc50d04b5"
+    },
+    {
+      "path": "scripts/check-resort-map-layout.py",
+      "bytes": 3149,
+      "sha256": "639b19307abee75bc918f524b793c951585d4d66d52ab6d45ce0cbe0f14d9cd3"
+    },
+    {
+      "path": "scripts/check-review-completion.py",
+      "bytes": 7120,
+      "sha256": "7f7ee07f473c79705c9bc4c5981fd0d3c15d1ddacd066ace417a07d6273435af"
+    },
+    {
+      "path": "scripts/check-seating-cart.py",
+      "bytes": 6418,
+      "sha256": "67447a0db67e28de38abde951d888b02dcd7405b9d8bab7ccfd24aedea15103c"
+    },
+    {
+      "path": "scripts/check-service-orders.py",
+      "bytes": 6918,
+      "sha256": "35ed4f949d5b33b44ce27aa23c59ad21cd5613990335586d56a47f297194b0a6"
+    },
+    {
+      "path": "scripts/check-service-sections.py",
+      "bytes": 4671,
+      "sha256": "c6cb33135e6f88e3241cbbb26f6cb6b53f38e3943d3a4fb1bc9c09c3110c6e49"
+    },
+    {
+      "path": "scripts/check-services-guide.py",
+      "bytes": 13649,
+      "sha256": "b2086f4976c41c4260f45ba624717fe62118246500965c07052b1431f3a0a2b2"
+    },
+    {
+      "path": "scripts/check-services-index.py",
+      "bytes": 5179,
+      "sha256": "658a5ac3ac62957e83413aa98df553d71cdcf4a783623c7a02a0abbe5361f90b"
+    },
+    {
+      "path": "scripts/check-share-navigation.py",
+      "bytes": 3756,
+      "sha256": "c747dbd5eedcc8eeb5e3621244aea90ec90caf14197a31517b7a4de7edb389d0"
+    },
+    {
+      "path": "scripts/check-share-pages.py",
+      "bytes": 5408,
+      "sha256": "0c586b8c7b410169f86115c8be0a8b1006f6cfe347687ac00d341fdeb74692de"
+    },
+    {
+      "path": "scripts/check-terminology.py",
+      "bytes": 6259,
+      "sha256": "b6029ce4e771a5f246488a633dc6248458c4b4ed97d2f5228235b320df0e3401"
+    },
+    {
+      "path": "scripts/check-tour-navigation.py",
+      "bytes": 3850,
+      "sha256": "f4d60d7e26cb0fca3af1395eb5c1d5fbe90a8ad01dde82f2ffb754b75e71e62c"
+    },
+    {
+      "path": "scripts/check-water-games.py",
+      "bytes": 8132,
+      "sha256": "64542f1af2ebdb4aaba7e30a5047721c6cb732c13a3705a104f7061c2deb955a"
+    },
+    {
+      "path": "scripts/check-water-package-parity.py",
+      "bytes": 7348,
+      "sha256": "ee0102f6d795f47ca86caf580654ed4536f271cbddef9c5b07ce4cc4f7030353"
+    },
+    {
+      "path": "service-data.js",
+      "bytes": 7291,
+      "sha256": "a06fa4c109d16002ba6cfa256b6df45254bd2b33a6bcde7d1d1f71e60507b703"
+    },
+    {
+      "path": "service-sections.css",
+      "bytes": 3378,
+      "sha256": "4c1b21e9913a10019624e33115ea3e0e9e2b8eadbbe03305541ed0c9c18395ac"
+    },
+    {
+      "path": "service-sections.js",
+      "bytes": 2478,
+      "sha256": "81bdcf6e687bf5fde0ed1227bbeae5f7663dda9d7aee42981aedc1f2c3ced8fb"
+    },
+    {
+      "path": "share-pages.js",
+      "bytes": 12461,
+      "sha256": "330f8407801843179a725ec93ee51520ae65cff66ae29840517bf91937f2c268"
+    },
+    {
+      "path": "site-enhancements.js",
+      "bytes": 3316,
+      "sha256": "d289086c3df96aec29895873928e970385aad87cfaf0ce415ea863cefaf8bed0"
+    },
+    {
+      "path": "site-ui.css",
+      "bytes": 13133,
+      "sha256": "eea9d4d9799b5491adcfc1d68ed7c9dc831b3d0396a73f48792791b10fbb3087"
+    },
+    {
+      "path": "site/arrangements/index.html",
+      "bytes": 1441,
+      "sha256": "e209cf949e82f3a6b839ea49fda525146a2dfaf17d1dab43e5ca423a75b3218e"
+    },
+    {
+      "path": "site/bohemian-tour/index.html",
+      "bytes": 1416,
+      "sha256": "8f03c571df3d19e303dc68e0998ed2637745d61252542726972dad7a3535050b"
+    },
+    {
+      "path": "site/cabins/bohemian/index.html",
+      "bytes": 1627,
+      "sha256": "eb185d5fb24f7e333685fe482f835563be30d20d777a41a9d9f4ce0d77e432c7"
+    },
+    {
+      "path": "site/cabins/classic/index.html",
+      "bytes": 1745,
+      "sha256": "78ed140003de5ef891b68cf6da5fd4e89adbeba9ec9f2a0e22abc4a2f181f6db"
+    },
+    {
+      "path": "site/cabins/dome-1/index.html",
+      "bytes": 1641,
+      "sha256": "92f39e76f3e32dd0988137f6ade221b93b38530a928dc6b12b6153160a3e3b6d"
+    },
+    {
+      "path": "site/cabins/dome-2/index.html",
+      "bytes": 1641,
+      "sha256": "6505393e428e62326a174039fa93f6db436ff4a0c24acdd3be1192ce9cd139e6"
+    },
+    {
+      "path": "site/cabins/french/index.html",
+      "bytes": 1560,
+      "sha256": "20cf3e15ec090cd8ab9926cd85eecf7e2b4dd75e26624c894e43e138714747a6"
+    },
+    {
+      "path": "site/cabins/greek-1/index.html",
+      "bytes": 1556,
+      "sha256": "9bcd6feaae596b9b699d9c0acd5ceea8e445535153a3bff6b5354499d09c7181"
+    },
+    {
+      "path": "site/cabins/greek-2/index.html",
+      "bytes": 1556,
+      "sha256": "b6069c3e959b0780667d9400d25c9788e50db263b7cf7d4567d4bacdd0116ce3"
+    },
+    {
+      "path": "site/cabins/index.html",
+      "bytes": 1402,
+      "sha256": "5a2002396dcc106fe109b4f2aae94ec267e726daa9ac090791765513715caac9"
+    },
+    {
+      "path": "site/cabins/palm-beach/index.html",
+      "bytes": 1652,
+      "sha256": "9ae46e556a320fbd23d7afeea11b1875c46a29ed2ad4f8baf23ad951677c9bb7"
+    },
+    {
+      "path": "site/cabins/panoramic/index.html",
+      "bytes": 1698,
+      "sha256": "d1d7cf11783910875c305b71d92c8c7ad3e2ca8d494cfeddb6e01096e0ad94c0"
+    },
+    {
+      "path": "site/cabins/pyramid/index.html",
+      "bytes": 1580,
+      "sha256": "72ae23d626467194bd102913a6f79718062709fdc5b9780584b0bf0e9c52a38d"
+    },
+    {
+      "path": "site/cabins/royal/index.html",
+      "bytes": 1675,
+      "sha256": "08d3b811a3631593192bdd81d0f9ee9f5238944c64815c6cf1daba4abccdffc2"
+    },
+    {
+      "path": "site/cabins/rustic/index.html",
+      "bytes": 1533,
+      "sha256": "ff6960dfc93d25d798617198332768d513d06ef17f0aa9e10ef66dbe089192a3"
+    },
+    {
+      "path": "site/cabins/shared-garden/index.html",
+      "bytes": 1640,
+      "sha256": "d2707702a50069702ba408df72dba901ca6816363202c1f76729fdf75fd1d14a"
+    },
+    {
+      "path": "site/chalet-map/index.html",
+      "bytes": 1374,
+      "sha256": "57a48b97a84aab601d6e022fd55ce49c58b6a66806ce5603a99fd4c5a5651041"
+    },
+    {
+      "path": "site/chalet/checkout/index.html",
+      "bytes": 1456,
+      "sha256": "c957941dbffcdc7f824e41768a1e52081aaf40fc7d4644dc48efbc12d966ea7f"
+    },
+    {
+      "path": "site/chalet/contact/index.html",
+      "bytes": 1418,
+      "sha256": "3d651f16ded34c1198046cba26e599b9545fa0fcf4673cd199ed7cfc5af288b7"
+    },
+    {
+      "path": "site/chalet/details/index.html",
+      "bytes": 1814,
+      "sha256": "9a08c87b19e381a0c2f6789d5d08b5e661e4d5afcc04d39188790f3150a75504"
+    },
+    {
+      "path": "site/chalet/faq/index.html",
+      "bytes": 1410,
+      "sha256": "3dd0d8b5535677b4208fc5e5d151be8f9c879ab1e1eb17d074c35a48bd334dbc"
+    },
+    {
+      "path": "site/chalet/guest-services/index.html",
+      "bytes": 1486,
+      "sha256": "faa10faade67a0bd9c03bd1cbbbbfaff66a74f8edbe7f9b89364887d0538ab6e"
+    },
+    {
+      "path": "site/chalet/index.html",
+      "bytes": 1447,
+      "sha256": "e6695d84fd626fd862dfab1fdfac44d8b6e0acc210b8c64775c2d639bfc38284"
+    },
+    {
+      "path": "site/chalet/order/index.html",
+      "bytes": 1429,
+      "sha256": "d01ac75d5e67ee450dbd6a38d2427f4c62278e357e11f112e5805c5e638e181d"
+    },
+    {
+      "path": "site/chalet/services/games/index.html",
+      "bytes": 1594,
+      "sha256": "fd9429b5b7ade01a22676677fffc646a57cf484760548517c39f9f043703337f"
+    },
+    {
+      "path": "site/chalet/services/index.html",
+      "bytes": 1507,
+      "sha256": "c52b789bc689d7043cee011140a0d822a37d5a6d23d876175c9e003df6191b96"
+    },
+    {
+      "path": "site/chalet/services/water-games/index.html",
+      "bytes": 1600,
+      "sha256": "27c7cfd942f4f5cb29d2265768cf8081d69559a00d780098f711ae046fa5342b"
+    },
+    {
+      "path": "site/classic-tour/index.html",
+      "bytes": 1417,
+      "sha256": "226344c626ac83814cf911ff3df37be8db080d86c814294bf0f6d538e830febb"
+    },
+    {
+      "path": "site/contest/index.html",
+      "bytes": 1608,
+      "sha256": "5baa1cfbaf7a1b04bb0618d4b1ecd9ec3400265b6877eec2d1ca7e5ba5b7eeaa"
+    },
+    {
+      "path": "site/dome-tour/index.html",
+      "bytes": 1366,
+      "sha256": "c7cae26299f184d1a146e18cee4cbfda9f57ea8fcef45dc0879b4684b9bbf0b6"
+    },
+    {
+      "path": "site/french-tour/index.html",
+      "bytes": 1400,
+      "sha256": "21b3bdf051a126b98642dfe9251062fc9a36789aef8dff2e8e6094ca7abea560"
+    },
+    {
+      "path": "site/greek-tour/index.html",
+      "bytes": 1401,
+      "sha256": "1962badd99b0a3a3a59850f2c570e4f1af314f8ae14662388a2cd5460fc39ec2"
+    },
+    {
+      "path": "site/guest-services.html",
+      "bytes": 3097,
+      "sha256": "61d36b77c4c63369538c174e69e0cce93a6534a8cc2ba8eecfdb6d35d25191e6"
+    },
+    {
+      "path": "site/guest-services/index.html",
+      "bytes": 1595,
+      "sha256": "3aac917a83587d9c9b996ca39bd60271ffc0f5c1759fb953156967fcc9c996eb"
+    },
+    {
+      "path": "site/index.html",
+      "bytes": 1322,
+      "sha256": "fadac0bf60b9d36ad4800e1bd2ae4d1e3b2dea4697ee83e58e8f8f66ba279271"
+    },
+    {
+      "path": "site/menu/index.html",
+      "bytes": 1452,
+      "sha256": "5c90b9087a0c61b01c403d585e90d48126ff7a5f0e8c349c4e99690964c98247"
+    },
+    {
+      "path": "site/palm-tour/index.html",
+      "bytes": 1387,
+      "sha256": "958c0890e88355bc2398ce4a5b87567d234ed772af3e01062db56cb185176383"
+    },
+    {
+      "path": "site/panoramic-tour/index.html",
+      "bytes": 1433,
+      "sha256": "ce9c845c12e244f9a1af966ad89f55f2e8bb9b0e732605693c77ee46a8089c5e"
+    },
+    {
+      "path": "site/pyramid-tour/index.html",
+      "bytes": 1399,
+      "sha256": "65281dc8176cb6c373e06ad45e9a2d5d367e498621424cdfaecdd8697f55b47d"
+    },
+    {
+      "path": "site/resort-map/index.html",
+      "bytes": 1488,
+      "sha256": "d62608308958bbc73b1678a281db07a54fb663ab6fadd762ffe804d9df3c9ca8"
+    },
+    {
+      "path": "site/resort/checkout/index.html",
+      "bytes": 1456,
+      "sha256": "94c71c2edd0951876453b064d27d9f3ec252820df3d0481d12d93b3865fc4d4d"
+    },
+    {
+      "path": "site/resort/compare/index.html",
+      "bytes": 1463,
+      "sha256": "a8b9db6d75b75c93b8b3e3a8792038740fa7133854a7f42adddb8eccb846adb5"
+    },
+    {
+      "path": "site/resort/contact/index.html",
+      "bytes": 1418,
+      "sha256": "cc15f6226a4964d1a6d5d14f495dcb7be20b5ca02d6f39dd47e217daa376d609"
+    },
+    {
+      "path": "site/resort/faq/index.html",
+      "bytes": 1410,
+      "sha256": "2396e4075ba90a8cdfaed17b071563aee5fdd7d14bd60447eeee49633b70b8f0"
+    },
+    {
+      "path": "site/resort/index.html",
+      "bytes": 1366,
+      "sha256": "d2835ac38875d65996925b43741aad9c4f498b12324143a56f8df43c2ed8168f"
+    },
+    {
+      "path": "site/resort/order/index.html",
+      "bytes": 1429,
+      "sha256": "60b276f5db8b20ba077738fbc3d3da1041b782ed29ab0c83d57b78db7c67f8e6"
+    },
+    {
+      "path": "site/royal-tour/index.html",
+      "bytes": 1371,
+      "sha256": "de983ccdd7ad44a6496a6c0c56a52e000533081ecc28b920c53baa755d8ed519"
+    },
+    {
+      "path": "site/rustic-tour/index.html",
+      "bytes": 1394,
+      "sha256": "5ede1365096c0d355c720bd3ecc1375ea47b33068738b184d8f35c7f65a74409"
+    },
+    {
+      "path": "site/services-bridge.js",
+      "bytes": 7678,
+      "sha256": "c3b5892dc5e264d6b9848443a8ab81c55919892c1bb4f9a304d75fc013b3b3c1"
+    },
+    {
+      "path": "site/services-guide/index.html",
+      "bytes": 1451,
+      "sha256": "9dab7e48b0e33a344a64032e56ae77919245d87222c7103dd84e26ea0f76a8b0"
+    },
+    {
+      "path": "site/services/cinema/index.html",
+      "bytes": 1588,
+      "sha256": "c0424e0a83ae4a5c4ac3242689449e0babea794ffdc18f7793bbdc842502a8ce"
+    },
+    {
+      "path": "site/services/coordination/index.html",
+      "bytes": 1555,
+      "sha256": "507d05991d30048dcea07a1ff70a75fc2dc162cb3fc16386044f1f73a46a5502"
+    },
+    {
+      "path": "site/services/dining-tables/index.html",
+      "bytes": 1623,
+      "sha256": "d469c588f4420c72ce4f0c030199d80f7e177654faa3f99a9fba31f2b045f567"
+    },
+    {
+      "path": "site/services/games/index.html",
+      "bytes": 1559,
+      "sha256": "7488966bc7df3f4bd2feb6ebb10a1419fc7c67f20fd4372fd5be4bfc1baccaf3"
+    },
+    {
+      "path": "site/services/hospitality/packages/index.html",
+      "bytes": 1586,
+      "sha256": "1c4aeda9e9a0cdba9e9fbccbd8877eef7cde630ca91ba2392a3593d25fcfc193"
+    },
+    {
+      "path": "site/services/index.html",
+      "bytes": 1445,
+      "sha256": "2a33a4785c93f817049056ca66dd44c044b6cc8da4838c02dc88265cd4c32e15"
+    },
+    {
+      "path": "site/services/loyalty/index.html",
+      "bytes": 1533,
+      "sha256": "5a73b36f5e8c6604fc67367d2aeb29cfcc880026f5de6dc699b551790e6832a9"
+    },
+    {
+      "path": "site/services/outdoor-seating/index.html",
+      "bytes": 1669,
+      "sha256": "0d59815878d1e129c71c9995292303c3c2a49228db43d8708a32d9e2aff7a52a"
+    },
+    {
+      "path": "site/services/share-and-win/index.html",
+      "bytes": 1533,
+      "sha256": "45627c29cf59faa628b3851a89336e2795440d033e4aa1d91cda1499c411b921"
+    },
+    {
+      "path": "site/services/water-games/index.html",
+      "bytes": 1565,
+      "sha256": "510e8ebd4f80c8eec1bc8bbf95ea671c05ffbe6cbf8a447714eab793193ca487"
+    },
+    {
+      "path": "site/stay/checkout/index.html",
+      "bytes": 1458,
+      "sha256": "63870e4744a8df43ee8ae143e039afffa4854154b54c40d085121ea850e9aba5"
+    },
+    {
+      "path": "site/stay/compare/index.html",
+      "bytes": 1504,
+      "sha256": "e1d5845ecedd73fdb03d276d6b9b6aedcb3f3f114642a1f386070562ca6c5f5a"
+    },
+    {
+      "path": "site/stay/contact/index.html",
+      "bytes": 1420,
+      "sha256": "f15ceb95f9f3abde0b6cbf66f373b205e3b2863855187960fcefbed4e5074bb9"
+    },
+    {
+      "path": "site/stay/faq/index.html",
+      "bytes": 1412,
+      "sha256": "00a21b24bde57b95f77430ed19095dfc29d07f67da25abd13af7e32105d9360b"
+    },
+    {
+      "path": "site/stay/ground-floor/index.html",
+      "bytes": 1793,
+      "sha256": "051c0293da898278999e5e36ec05dc686bbb6835c47fc0892ae99781829e9b01"
+    },
+    {
+      "path": "site/stay/index.html",
+      "bytes": 1392,
+      "sha256": "21471210f0e1c16c87b250701afc4edaea590676d9ca9b9654d0ea3cd3698df7"
+    },
+    {
+      "path": "site/stay/order/index.html",
+      "bytes": 1431,
+      "sha256": "736b20b3711facf3a81d27b95a3a74ff2217f9d3df8300f3a92ffcf1359a7dd2"
+    },
+    {
+      "path": "site/stay/sections/index.html",
+      "bytes": 1380,
+      "sha256": "b15cd319fb224eb5a04e8b3c5ebd670950c433b76b6546fe400d076de33b4331"
+    },
+    {
+      "path": "site/stay/services/index.html",
+      "bytes": 1476,
+      "sha256": "c6d1827781bd61573636080209219256568e6e4e4f8b96a2bc8f1a9c42059d43"
+    },
+    {
+      "path": "site/stay/upper-floor/index.html",
+      "bytes": 1902,
+      "sha256": "55850d44ac5349bdf35b02a612d2c4ac56a7ea4ff1126750b1cbf60dcaf1f44d"
+    },
+    {
+      "path": "site/visuals/assets/css/cinema-layout.css",
+      "bytes": 2768,
+      "sha256": "54ab7521b9acbf858040fc66a3c4678a56c671783d9f1d67c2cb3d476c84c412"
+    },
+    {
+      "path": "site/visuals/assets/css/desktop-layout.css",
+      "bytes": 14178,
+      "sha256": "229a412b9f610bc2e885c19d755a217e67081725eeb247a12a565bcd6b7de9dd"
+    },
+    {
+      "path": "site/visuals/assets/css/dining-cards.css",
+      "bytes": 5013,
+      "sha256": "3ad7231ff2d86c560464effc8af9d07a673d94fb1d5a5ecf83d3d1479456bdfd"
+    },
+    {
+      "path": "site/visuals/assets/css/games-layout.css",
+      "bytes": 1920,
+      "sha256": "08c3838c0b18b45d58d619fd93ef6018f7399577294a26e8f8c071f32159b7d0"
+    },
+    {
+      "path": "site/visuals/assets/css/rewards-layout.css",
+      "bytes": 3238,
+      "sha256": "235b4f1e39d4cb9ea9eda8b0decfd4b70017de3998427658d186aabc2421b733"
+    },
+    {
+      "path": "site/visuals/assets/css/seating-cards.css",
+      "bytes": 4929,
+      "sha256": "357441eecbd848d58359afe208b4e32b9d94df121b7a1fb6e7e27d09d73a1bc3"
+    },
+    {
+      "path": "site/visuals/assets/css/service-mobile.css",
+      "bytes": 2339,
+      "sha256": "2bfd5bd26350032be78d2a6232894b74d2ae8f0efc290c103b1953c2f1b456b2"
+    },
+    {
+      "path": "site/visuals/assets/css/service-orders.css",
+      "bytes": 2835,
+      "sha256": "6f851808a3b77a6d13ecb1f9785c8ff35863d4f70f158089846abc2536adb7b3"
+    },
+    {
+      "path": "site/visuals/assets/css/water-games.css",
+      "bytes": 5221,
+      "sha256": "553b647942c179cdca95716074a6faca55b17b907c7d3118f6457a3c15aa8404"
+    },
+    {
+      "path": "site/visuals/assets/css/water-layout.css",
+      "bytes": 2225,
+      "sha256": "8296bb7382295b4084a08c41e7d313b28adc2deb2978e27c4857cb3f4cef4a92"
+    },
+    {
+      "path": "site/visuals/assets/guest-services/guest-services.css",
+      "bytes": 22836,
+      "sha256": "207545d3740a44c6e0ab8ded3731b255151478ecf82109d0344cdb5dc7e61a36"
+    },
+    {
+      "path": "site/visuals/assets/guest-services/guest-services.js",
+      "bytes": 34636,
+      "sha256": "32d2b6b3e98162c67c2caae219b8757a14803259a02f4620d863e08961f8d9eb"
+    },
+    {
+      "path": "site/visuals/assets/guest-services/service-source.js",
+      "bytes": 5522,
+      "sha256": "650d99b5174d466ee32ed7f6aacc6ab781440d5e12104e00e1f0916edc4baf61"
+    },
+    {
+      "path": "site/visuals/assets/guest-services/share.js",
+      "bytes": 1264,
+      "sha256": "a207ab25177d5b69bb1e8a4cc37bc0755c9a2157b7024561d3c15b2652c4323b"
+    },
+    {
+      "path": "site/visuals/assets/js/cabin-numbers.js",
+      "bytes": 500,
+      "sha256": "de9f89492816117eafe3b8b0e186c324fd9f8b7ed84ada2b862ed53ad4965829"
+    },
+    {
+      "path": "site/visuals/assets/js/dining-cards.js",
+      "bytes": 2916,
+      "sha256": "a80c8a1fcbc623019426cc46184f52f6dc0b109570afbd848e39571726be4097"
+    },
+    {
+      "path": "site/visuals/assets/js/menu-order-message.js",
+      "bytes": 1682,
+      "sha256": "78e54cc83d01bb6b5a44de14d4ce709d8f900517d6f09b1bda0d7a63067abaa9"
+    },
+    {
+      "path": "site/visuals/assets/js/seating-cart.js",
+      "bytes": 6632,
+      "sha256": "3ddad7b6d45754a6e3211e65346ceda77c526affe4ae945b93fa0ee35252eae4"
+    },
+    {
+      "path": "site/visuals/assets/js/service-orders.js",
+      "bytes": 10180,
+      "sha256": "6843ff8266097bf08f497cfcd3bf9213be0e8130aa30945904c02f651e38c859"
+    },
+    {
+      "path": "site/visuals/assets/js/service-venue.js",
+      "bytes": 1466,
+      "sha256": "8ca26b79c8fa1c06a9c2973467f5c971641e4a58033efa2b04e3c8cd2ff0923f"
+    },
+    {
+      "path": "site/visuals/assets/js/services.js",
+      "bytes": 21144,
+      "sha256": "be38bde6b16edac9bf8ac4dabd0c67418b7b13bbf4946f74074f964781c727a2"
+    },
+    {
+      "path": "site/visuals/assets/js/water-games.js",
+      "bytes": 5241,
+      "sha256": "b148c022d2d25bef84d09445def184ea38bfa3903db5b3961a4d04d74b93b298"
+    },
+    {
+      "path": "site/visuals/assets/menu-experience.css",
+      "bytes": 2520,
+      "sha256": "18d7d64bbd9d1017e724fbf545a27c1123f85d3dd9caa1aa86bed10b15b3f89b"
+    },
+    {
+      "path": "site/visuals/assets/menu-experience.js",
+      "bytes": 5232,
+      "sha256": "fec748d4aace227fdcda5c24a4a3fcb7d0a7cb799a6b27ec3e59704c1e321147"
+    },
+    {
+      "path": "site/visuals/assets/resort-features.js",
+      "bytes": 4906,
+      "sha256": "09319c1729458f4593960ebe7b1d32f1d7fd98eff692d3cd3ea185e07e572691"
+    },
+    {
+      "path": "site/visuals/assets/resort-ui.css",
+      "bytes": 14190,
+      "sha256": "8d4ea306da5bed226c260c071f87bb53e1435d6f194dca58cfc0ed0fbb6320e3"
+    },
+    {
+      "path": "site/visuals/assets/service-data.js",
+      "bytes": 7291,
+      "sha256": "a06fa4c109d16002ba6cfa256b6df45254bd2b33a6bcde7d1d1f71e60507b703"
+    },
+    {
+      "path": "site/visuals/assets/service-games.js",
+      "bytes": 1273,
+      "sha256": "bb2f8c50bdc1d84d45b6d1f8543c498b57fbaf0505d4dfd4d2aa0ac23f5f5206"
+    },
+    {
+      "path": "site/visuals/assets/service-sections.css",
+      "bytes": 3378,
+      "sha256": "4c1b21e9913a10019624e33115ea3e0e9e2b8eadbbe03305541ed0c9c18395ac"
+    },
+    {
+      "path": "site/visuals/assets/service-sections.js",
+      "bytes": 2478,
+      "sha256": "81bdcf6e687bf5fde0ed1227bbeae5f7663dda9d7aee42981aedc1f2c3ced8fb"
+    },
+    {
+      "path": "site/visuals/assets/services-guide/guide-gallery.js",
+      "bytes": 4777,
+      "sha256": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4"
+    },
+    {
+      "path": "site/visuals/assets/services-guide/guide.css",
+      "bytes": 28963,
+      "sha256": "2e4164a051b4ef782483e5ebb342f877b6d055fd836996aee6554fd1ba263f35"
+    },
+    {
+      "path": "site/visuals/assets/services-guide/guide.js",
+      "bytes": 15077,
+      "sha256": "ad1d0f5d76c399bf40a3093464f48997b4da7cb8d361c089b90dc075f9914474"
+    },
+    {
+      "path": "site/visuals/assets/site-enhancements.js",
+      "bytes": 3316,
+      "sha256": "d289086c3df96aec29895873928e970385aad87cfaf0ce415ea863cefaf8bed0"
+    },
+    {
+      "path": "site/visuals/services/guest.html",
+      "bytes": 25190,
+      "sha256": "42b47496aa37ecd6eeb06b33f16c72d89ed872ffd4ced1b0d0bacfd885c12cb0"
+    },
+    {
+      "path": "site/visuals/services/guide.html",
+      "bytes": 10143,
+      "sha256": "89b5d759bf646079a8e30552306f081ab9d4597964a685c0d7e70e9ca1507659"
+    },
+    {
+      "path": "site/visuals/services/index.html",
+      "bytes": 100283,
+      "sha256": "d021a35bbd15687ccdf3cbe6ea11e3822280140a6c78e810fa3c18d68f508783"
+    },
+    {
+      "path": "stay-design.js",
+      "bytes": 11939,
+      "sha256": "9be9e69dfbc092a98114467504b5e3e79cd77ff03addadf97dde5b790a768835"
+    },
+    {
+      "path": "stay-review.html",
+      "bytes": 1908,
+      "sha256": "6338f64b6f1f0bb1190b96d91107778cd675ae2ac27422d2eb7d4a86943981ba"
+    },
+    {
+      "path": "stay-ui.css",
+      "bytes": 29749,
+      "sha256": "670757e65ec918723919ddd9fcd420e015433105fde57754493dc7c66a56cf3e"
+    },
+    {
+      "path": "tour-common.js",
+      "bytes": 10752,
+      "sha256": "424c7a2a88acb253c4bd5632b1df4e8134d3e9d3eb6cc153db3eb77f68ab8dfc"
+    },
+    {
+      "path": "tour-image-edges.css",
+      "bytes": 4850,
+      "sha256": "b12c4c6a67b575653eb628661f90c1185655e27d2f7c424118cc142995e8333b"
+    },
+    {
+      "path": "tour-layout.css",
+      "bytes": 4571,
+      "sha256": "b203a47b66d923bf3b162c3ec7ee47cc33da3293cb5cb20b05589e962bf4d766"
+    },
+    {
+      "path": "tour-page.css",
+      "bytes": 3257,
+      "sha256": "11eece958d8716d787789a83808ab372e3e79b1937b94aa6138ce2cd5f7106da"
+    },
+    {
+      "path": "tour-spec-navigation.css",
+      "bytes": 1450,
+      "sha256": "82f14a1f202ff27362c216162fa1088570cd34375943364b3fc14e5b9ab26869"
+    },
+    {
+      "path": "tour-viewport.css",
+      "bytes": 9352,
+      "sha256": "ed007a59d14aa6d4926fe863ce22a2b10ec07357526eddecdedb0aa0b6a4be16"
+    },
+    {
+      "path": "venue-data.js",
+      "bytes": 1901,
+      "sha256": "3cbad3540d44e7eac1a8675bbd13b4c87ec77150802096b7582457ed1a4d5982"
+    }
+  ],
+  "protectedFiles": {
+    "arrangements/index.html": "4601ad055af1876dfe4b2ac3b9e38c19c0bca665dc3bb67b89e3bfb901b96746",
+    "chalet/guest-services/chalet-services.js": "31569fcb134a72ff38bd133d4c41aa206c1bd7312aeb8bf55b6d4dec007ee5c6",
+    "chalet/guest-services/index.html": "ad70123c230424f7488c43f42b12b0cd3dc724a7bfee609859f448d968400f10",
+    "css/back-navigation.css": "834bdb848f741ef0185f5f22b91d497ea68a55cf3bb34eaa7eac2d01864420ad",
+    "css/desktop-layout.css": "229a412b9f610bc2e885c19d755a217e67081725eeb247a12a565bcd6b7de9dd",
+    "css/dining-cards.css": "3ad7231ff2d86c560464effc8af9d07a673d94fb1d5a5ecf83d3d1479456bdfd",
+    "css/tajawal.css": "63e1c01678f45bb83983243a5b67716d42b710a8ac01e150e2af0972476ec14f",
+    "data/services.json": "85b76789f6d6e84a17d47da8de807b86eccd8f6b86289c0d74b3735cad9a0fac",
+    "guest-services/README.md": "1ad3a3d1df387c6f92547d236015ff1c975e01b67890162dfa0d0e750b23ec7a",
+    "guest-services/guest-services.css": "207545d3740a44c6e0ab8ded3731b255151478ecf82109d0344cdb5dc7e61a36",
+    "guest-services/guest-services.js": "764201e456e8522b73cbe23fd4b422b96f2ce1fc37ca23b50dfad95edc893e09",
+    "guest-services/index.html": "72ff29dfe210fa7b4a15904eaaf52d9d36f155e23d7860429ebc7febb5a76e63",
+    "guest-services/service-source.js": "e0da9d9065eea4864558446730954129ccefb495b97c4c7070b8e4a6a6803b3e",
+    "guest-services/share.js": "a207ab25177d5b69bb1e8a4cc37bc0755c9a2157b7024561d3c15b2652c4323b",
+    "js/dining-cards.js": "a80c8a1fcbc623019426cc46184f52f6dc0b109570afbd848e39571726be4097",
+    "js/menu-order-message.js": "78e54cc83d01bb6b5a44de14d4ce709d8f900517d6f09b1bda0d7a63067abaa9",
+    "services-guide/README.md": "3a88b6d5bb8772f00c1893f83740a83c4c5d789f83d1f981a605ed05a585446c",
+    "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
+    "services-guide/guide.css": "2e4164a051b4ef782483e5ebb342f877b6d055fd836996aee6554fd1ba263f35",
+    "services-guide/guide.js": "9ce518455b07c9d72990a124033acfe4ab6e4a00ffa41700630fce91014d4cea",
+    "services-guide/index.html": "7ec20c8ab5be0f97acd6e6a0c82395365f4c80aa7bf7ebfc6c5e6dd8d10a49cd",
+    "services-guide/share-entry.js": "05dac99bc60dfc4b2d2d1b08c131735f22d72f29cf93f1861b85df47c89dffa2"
+  },
+  "preservedCompatibility": [
+    "preview redirects",
+    "guest-services.html",
+    "sw.js",
+    "original canonical and QR routes"
+  ],
+  "removedBytes": 51250004,
+  "removedFileCount": 456
+}

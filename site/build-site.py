@@ -81,8 +81,6 @@ for path in CONFIG['rootRoutes']:
 # Previously shared preview URLs are compatibility entries, not a second deployed guide.
 for path in CONFIG['rootRoutes']:
  write(ROOT/'preview'/path.lstrip('/')/'index.html',redirect_page(REDIRECTS.get(path,path)))
- # Retained generated documents inside the asset folder should not become duplicate pages.
- write(SITE/path.lstrip('/')/'index.html',redirect_page(path))
 write(ROOT/'preview/guest-services.html',redirect_page('/guest-services/'))
 write(ROOT/'guest-services.html',redirect_page('/guest-services/'))
 # A cached old preview shell can load this tiny shim and recover to the same canonical URL.

@@ -26,10 +26,20 @@ The build generates canonical pages, metadata, sitemap and preview redirects. It
 
 When deploying future content/code changes, bump the version in `cutover-config.json`, its asset references and the changed portal entry scripts as appropriate. Keep original share titles/descriptions and text-only image hints. Do not reintroduce the preview cache parameter into public share links.
 
-## Retained legacy code and rollback
+## Completed legacy cleanup
 
-The old root HTML and order-source code are compressed in `../rollback/legacy-interface-20261125.tar.gz`; the manifest records exact hashes. Git tag `pre-live-cutover-20261125` records the complete prior repository. Old root runtime assets remain during owner verification. They are not loaded by the new guide.
+The owner approved removing the retired interface after the live cutover. Old application code, redundant generated documents inside `site/`, unused service snapshots, retired UI tests, superseded image variants and the deployed rollback archive have been removed. `cleanup-manifest.json` records removed paths and exact hashes of the protected ordering files. Shared original photos remain wherever used by the guide, zoom, maps or the ordering portals.
 
-The former preview-capture builders are archived under `../rollback/preview-builders/`; do not run them against the published guide. Final removal/deduplication of unused legacy files is deferred until the owner explicitly approves deletion. Keep shared original photos/fonts and the files still used by ordering or visual modules.
+The three order experiences remain `/guest-services/`, `/services-guide/` (also entered through `/arrangements/`) and `/chalet/guest-services/`. Their documents, scripts, styles, catalogue and WhatsApp message builder were not changed by cleanup. Canonical public URLs, `/preview/` redirects, `/guest-services.html` and the old service-worker unregister endpoint remain compatible. Git history and tag `pre-live-cutover-20261125` remain available for recovery; no backup copy of the old interface is deployed.
 
-The final content comparison and design references in this folder are historical review records. Current cutover evidence is `audits/live-cutover-v54.json` and `audits/cutover-source-v54.json`.
+Current regression checks:
+
+```sh
+python scripts/check-live-cutover.py http://127.0.0.1:8112
+python scripts/check-live-assets.py http://127.0.0.1:8112
+python scripts/check-guest-services.py http://127.0.0.1:8112
+python scripts/check-chalet-guest-services.py http://127.0.0.1:8112
+python scripts/check-guide-source.py http://127.0.0.1:8112
+```
+
+The design references and prior audits in this folder document approved decisions. Current cleanup evidence is `audits/live-cutover-v55.json` and `audits/live-assets-v55.json`.
