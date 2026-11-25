@@ -1,0 +1,912 @@
+[
+  {
+    "width": 320,
+    "before": true,
+    "heroHeight": 216.15625,
+    "logo": {
+      "x": 80,
+      "width": 160,
+      "center": 160
+    },
+    "heading": {
+      "font": "700 28px / 36.4px Tajawal, Arial, sans-serif",
+      "align": "center"
+    },
+    "cards": [
+      {
+        "x": 14,
+        "yFromHero": 20,
+        "width": 292,
+        "height": 106.375,
+        "padding": "14px 12px",
+        "radius": "18px",
+        "font": "700 16px / 23.2px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 14,
+        "yFromHero": 136.375,
+        "width": 292,
+        "height": 106.375,
+        "padding": "14px 12px",
+        "radius": "18px",
+        "font": "700 16px / 23.2px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 165,
+        "yFromHero": 252.75,
+        "width": 141,
+        "height": 201.5625,
+        "padding": "14px 12px",
+        "radius": "18px",
+        "font": "700 16px / 23.2px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 14,
+        "yFromHero": 252.75,
+        "width": 141,
+        "height": 201.5625,
+        "padding": "14px 12px",
+        "radius": "18px",
+        "font": "700 16px / 23.2px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 165,
+        "yFromHero": 464.3125,
+        "width": 141,
+        "height": 178.375,
+        "padding": "14px 12px",
+        "radius": "18px",
+        "font": "700 16px / 23.2px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 14,
+        "yFromHero": 464.3125,
+        "width": 141,
+        "height": 178.375,
+        "padding": "14px 12px",
+        "radius": "18px",
+        "font": "700 16px / 23.2px Tajawal, Arial, sans-serif"
+      }
+    ],
+    "helpHeight": 272.375,
+    "helpText": "تواصل مع فريق يوم العائلة أثناء إقامتك.",
+    "contactLinks": [
+      {
+        "href": "https://wa.me/966556156693",
+        "text": "واتساب"
+      },
+      {
+        "href": "tel:+966556156693",
+        "text": "اتصال"
+      },
+      {
+        "href": "https://wa.me/966537006531",
+        "text": "واتساب"
+      },
+      {
+        "href": "tel:+966537006531",
+        "text": "اتصال"
+      }
+    ],
+    "overflow": false
+  },
+  {
+    "width": 320,
+    "before": false,
+    "heroHeight": 230.015625,
+    "logo": {
+      "x": 85,
+      "width": 150,
+      "center": 160
+    },
+    "heading": {
+      "font": "700 28px / 36.4px Tajawal, Arial, sans-serif",
+      "align": "center"
+    },
+    "cards": [
+      {
+        "x": 14,
+        "yFromHero": 20,
+        "width": 292,
+        "height": 106.375,
+        "padding": "14px 12px",
+        "radius": "18px",
+        "font": "700 16px / 23.2px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 14,
+        "yFromHero": 136.375,
+        "width": 292,
+        "height": 106.375,
+        "padding": "14px 12px",
+        "radius": "18px",
+        "font": "700 16px / 23.2px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 165,
+        "yFromHero": 252.75,
+        "width": 141,
+        "height": 201.5625,
+        "padding": "14px 12px",
+        "radius": "18px",
+        "font": "700 16px / 23.2px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 14,
+        "yFromHero": 252.75,
+        "width": 141,
+        "height": 201.5625,
+        "padding": "14px 12px",
+        "radius": "18px",
+        "font": "700 16px / 23.2px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 165,
+        "yFromHero": 464.3125,
+        "width": 141,
+        "height": 178.375,
+        "padding": "14px 12px",
+        "radius": "18px",
+        "font": "700 16px / 23.2px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 14,
+        "yFromHero": 464.3125,
+        "width": 141,
+        "height": 178.375,
+        "padding": "14px 12px",
+        "radius": "18px",
+        "font": "700 16px / 23.2px Tajawal, Arial, sans-serif"
+      }
+    ],
+    "helpHeight": 201.375,
+    "helpText": "تواصل مع فريق يوم العائلة أثناء إقامتك.",
+    "contactLinks": [
+      {
+        "href": "https://wa.me/966556156693",
+        "text": "واتساب"
+      },
+      {
+        "href": "tel:+966556156693",
+        "text": "اتصال"
+      },
+      {
+        "href": "https://wa.me/966537006531",
+        "text": "واتساب"
+      },
+      {
+        "href": "tel:+966537006531",
+        "text": "اتصال"
+      }
+    ],
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "before": true,
+    "heroHeight": 223.734375,
+    "logo": {
+      "x": 107.25,
+      "width": 175.5,
+      "center": 195
+    },
+    "heading": {
+      "font": "700 28px / 36.4px Tajawal, Arial, sans-serif",
+      "align": "center"
+    },
+    "cards": [
+      {
+        "x": 18,
+        "yFromHero": 20,
+        "width": 354,
+        "height": 92,
+        "padding": "17px 15px",
+        "radius": "18px",
+        "font": "700 17px / 24.65px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 18,
+        "yFromHero": 124,
+        "width": 354,
+        "height": 92,
+        "padding": "17px 15px",
+        "radius": "18px",
+        "font": "700 17px / 24.65px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 201,
+        "yFromHero": 228,
+        "width": 171,
+        "height": 185.828125,
+        "padding": "17px 15px",
+        "radius": "18px",
+        "font": "700 17px / 24.65px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 18,
+        "yFromHero": 228,
+        "width": 171,
+        "height": 185.828125,
+        "padding": "17px 15px",
+        "radius": "18px",
+        "font": "700 17px / 24.65px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 201,
+        "yFromHero": 425.828125,
+        "width": 171,
+        "height": 185.828125,
+        "padding": "17px 15px",
+        "radius": "18px",
+        "font": "700 17px / 24.65px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 18,
+        "yFromHero": 425.828125,
+        "width": 171,
+        "height": 185.828125,
+        "padding": "17px 15px",
+        "radius": "18px",
+        "font": "700 17px / 24.65px Tajawal, Arial, sans-serif"
+      }
+    ],
+    "helpHeight": 272.375,
+    "helpText": "تواصل مع فريق يوم العائلة أثناء إقامتك.",
+    "contactLinks": [
+      {
+        "href": "https://wa.me/966556156693",
+        "text": "واتساب"
+      },
+      {
+        "href": "tel:+966556156693",
+        "text": "اتصال"
+      },
+      {
+        "href": "https://wa.me/966537006531",
+        "text": "واتساب"
+      },
+      {
+        "href": "tel:+966537006531",
+        "text": "اتصال"
+      }
+    ],
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "before": false,
+    "heroHeight": 236.765625,
+    "logo": {
+      "x": 113.109375,
+      "width": 163.796875,
+      "center": 195.0078125
+    },
+    "heading": {
+      "font": "700 28px / 36.4px Tajawal, Arial, sans-serif",
+      "align": "center"
+    },
+    "cards": [
+      {
+        "x": 18,
+        "yFromHero": 20,
+        "width": 354,
+        "height": 92,
+        "padding": "17px 15px",
+        "radius": "18px",
+        "font": "700 17px / 24.65px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 18,
+        "yFromHero": 124,
+        "width": 354,
+        "height": 92,
+        "padding": "17px 15px",
+        "radius": "18px",
+        "font": "700 17px / 24.65px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 201,
+        "yFromHero": 228,
+        "width": 171,
+        "height": 185.828125,
+        "padding": "17px 15px",
+        "radius": "18px",
+        "font": "700 17px / 24.65px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 18,
+        "yFromHero": 228,
+        "width": 171,
+        "height": 185.828125,
+        "padding": "17px 15px",
+        "radius": "18px",
+        "font": "700 17px / 24.65px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 201,
+        "yFromHero": 425.828125,
+        "width": 171,
+        "height": 185.828125,
+        "padding": "17px 15px",
+        "radius": "18px",
+        "font": "700 17px / 24.65px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 18,
+        "yFromHero": 425.828125,
+        "width": 171,
+        "height": 185.828125,
+        "padding": "17px 15px",
+        "radius": "18px",
+        "font": "700 17px / 24.65px Tajawal, Arial, sans-serif"
+      }
+    ],
+    "helpHeight": 201.375,
+    "helpText": "تواصل مع فريق يوم العائلة أثناء إقامتك.",
+    "contactLinks": [
+      {
+        "href": "https://wa.me/966556156693",
+        "text": "واتساب"
+      },
+      {
+        "href": "tel:+966556156693",
+        "text": "اتصال"
+      },
+      {
+        "href": "https://wa.me/966537006531",
+        "text": "واتساب"
+      },
+      {
+        "href": "tel:+966537006531",
+        "text": "اتصال"
+      }
+    ],
+    "overflow": false
+  },
+  {
+    "width": 768,
+    "before": true,
+    "heroHeight": 229.984375,
+    "logo": {
+      "x": 296,
+      "width": 176,
+      "center": 384
+    },
+    "heading": {
+      "font": "700 28px / 36.4px Tajawal, Arial, sans-serif",
+      "align": "center"
+    },
+    "cards": [
+      {
+        "x": 34,
+        "yFromHero": 24,
+        "width": 700,
+        "height": 92,
+        "padding": "17px 15px",
+        "radius": "18px",
+        "font": "700 17px / 24.65px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 34,
+        "yFromHero": 128,
+        "width": 700,
+        "height": 92,
+        "padding": "17px 15px",
+        "radius": "18px",
+        "font": "700 17px / 24.65px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 390,
+        "yFromHero": 232,
+        "width": 344,
+        "height": 170,
+        "padding": "17px 15px",
+        "radius": "18px",
+        "font": "700 17px / 24.65px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 34,
+        "yFromHero": 232,
+        "width": 344,
+        "height": 170,
+        "padding": "17px 15px",
+        "radius": "18px",
+        "font": "700 17px / 24.65px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 390,
+        "yFromHero": 414,
+        "width": 344,
+        "height": 170,
+        "padding": "17px 15px",
+        "radius": "18px",
+        "font": "700 17px / 24.65px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 34,
+        "yFromHero": 414,
+        "width": 344,
+        "height": 170,
+        "padding": "17px 15px",
+        "radius": "18px",
+        "font": "700 17px / 24.65px Tajawal, Arial, sans-serif"
+      }
+    ],
+    "helpHeight": 170.375,
+    "helpText": "تواصل مع فريق يوم العائلة أثناء إقامتك.",
+    "contactLinks": [
+      {
+        "href": "https://wa.me/966556156693",
+        "text": "واتساب"
+      },
+      {
+        "href": "tel:+966556156693",
+        "text": "اتصال"
+      },
+      {
+        "href": "https://wa.me/966537006531",
+        "text": "واتساب"
+      },
+      {
+        "href": "tel:+966537006531",
+        "text": "اتصال"
+      }
+    ],
+    "overflow": false
+  },
+  {
+    "width": 768,
+    "before": false,
+    "heroHeight": 242.859375,
+    "logo": {
+      "x": 302,
+      "width": 164,
+      "center": 384
+    },
+    "heading": {
+      "font": "700 28px / 36.4px Tajawal, Arial, sans-serif",
+      "align": "center"
+    },
+    "cards": [
+      {
+        "x": 34,
+        "yFromHero": 24,
+        "width": 700,
+        "height": 92,
+        "padding": "17px 15px",
+        "radius": "18px",
+        "font": "700 17px / 24.65px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 34,
+        "yFromHero": 128,
+        "width": 700,
+        "height": 92,
+        "padding": "17px 15px",
+        "radius": "18px",
+        "font": "700 17px / 24.65px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 390,
+        "yFromHero": 232,
+        "width": 344,
+        "height": 170,
+        "padding": "17px 15px",
+        "radius": "18px",
+        "font": "700 17px / 24.65px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 34,
+        "yFromHero": 232,
+        "width": 344,
+        "height": 170,
+        "padding": "17px 15px",
+        "radius": "18px",
+        "font": "700 17px / 24.65px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 390,
+        "yFromHero": 414,
+        "width": 344,
+        "height": 170,
+        "padding": "17px 15px",
+        "radius": "18px",
+        "font": "700 17px / 24.65px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 34,
+        "yFromHero": 414,
+        "width": 344,
+        "height": 170,
+        "padding": "17px 15px",
+        "radius": "18px",
+        "font": "700 17px / 24.65px Tajawal, Arial, sans-serif"
+      }
+    ],
+    "helpHeight": 144.375,
+    "helpText": "تواصل مع فريق يوم العائلة أثناء إقامتك.",
+    "contactLinks": [
+      {
+        "href": "https://wa.me/966556156693",
+        "text": "واتساب"
+      },
+      {
+        "href": "tel:+966556156693",
+        "text": "اتصال"
+      },
+      {
+        "href": "https://wa.me/966537006531",
+        "text": "واتساب"
+      },
+      {
+        "href": "tel:+966537006531",
+        "text": "اتصال"
+      }
+    ],
+    "overflow": false
+  },
+  {
+    "width": 1024,
+    "before": true,
+    "heroHeight": 151.1875,
+    "logo": {
+      "x": 791.515625,
+      "width": 176,
+      "center": 879.515625
+    },
+    "heading": {
+      "font": "700 30px / 39px Tajawal, Arial, sans-serif",
+      "align": "right"
+    },
+    "cards": [
+      {
+        "x": 677.171875,
+        "yFromHero": 32,
+        "width": 290.34375,
+        "height": 200.984375,
+        "padding": "24px",
+        "radius": "20px",
+        "font": "700 20px / 30px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 366.828125,
+        "yFromHero": 32,
+        "width": 290.34375,
+        "height": 200.984375,
+        "padding": "24px",
+        "radius": "20px",
+        "font": "700 20px / 30px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 56.484375,
+        "yFromHero": 32,
+        "width": 290.34375,
+        "height": 200.984375,
+        "padding": "24px",
+        "radius": "20px",
+        "font": "700 20px / 30px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 677.171875,
+        "yFromHero": 252.984375,
+        "width": 290.34375,
+        "height": 224.78125,
+        "padding": "24px",
+        "radius": "20px",
+        "font": "700 20px / 30px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 366.828125,
+        "yFromHero": 252.984375,
+        "width": 290.34375,
+        "height": 224.78125,
+        "padding": "24px",
+        "radius": "20px",
+        "font": "700 20px / 30px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 56.484375,
+        "yFromHero": 252.984375,
+        "width": 290.34375,
+        "height": 224.78125,
+        "padding": "24px",
+        "radius": "20px",
+        "font": "700 20px / 30px Tajawal, Arial, sans-serif"
+      }
+    ],
+    "helpHeight": 105,
+    "helpText": "تواصل مع فريق يوم العائلة أثناء إقامتك.",
+    "contactLinks": [
+      {
+        "href": "https://wa.me/966556156693",
+        "text": "واتساب"
+      },
+      {
+        "href": "tel:+966556156693",
+        "text": "اتصال"
+      },
+      {
+        "href": "https://wa.me/966537006531",
+        "text": "واتساب"
+      },
+      {
+        "href": "tel:+966537006531",
+        "text": "اتصال"
+      }
+    ],
+    "overflow": false
+  },
+  {
+    "width": 1024,
+    "before": false,
+    "heroHeight": 173.9375,
+    "logo": {
+      "x": 803.515625,
+      "width": 164,
+      "center": 885.515625
+    },
+    "heading": {
+      "font": "700 30px / 39px Tajawal, Arial, sans-serif",
+      "align": "right"
+    },
+    "cards": [
+      {
+        "x": 677.171875,
+        "yFromHero": 32,
+        "width": 290.34375,
+        "height": 200.984375,
+        "padding": "24px",
+        "radius": "20px",
+        "font": "700 20px / 30px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 366.828125,
+        "yFromHero": 32,
+        "width": 290.34375,
+        "height": 200.984375,
+        "padding": "24px",
+        "radius": "20px",
+        "font": "700 20px / 30px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 56.484375,
+        "yFromHero": 32,
+        "width": 290.34375,
+        "height": 200.984375,
+        "padding": "24px",
+        "radius": "20px",
+        "font": "700 20px / 30px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 677.171875,
+        "yFromHero": 252.984375,
+        "width": 290.34375,
+        "height": 224.78125,
+        "padding": "24px",
+        "radius": "20px",
+        "font": "700 20px / 30px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 366.828125,
+        "yFromHero": 252.984375,
+        "width": 290.34375,
+        "height": 224.78125,
+        "padding": "24px",
+        "radius": "20px",
+        "font": "700 20px / 30px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 56.484375,
+        "yFromHero": 252.984375,
+        "width": 290.34375,
+        "height": 224.78125,
+        "padding": "24px",
+        "radius": "20px",
+        "font": "700 20px / 30px Tajawal, Arial, sans-serif"
+      }
+    ],
+    "helpHeight": 81.375,
+    "helpText": "تواصل مع فريق يوم العائلة أثناء إقامتك.",
+    "contactLinks": [
+      {
+        "href": "https://wa.me/966556156693",
+        "text": "واتساب"
+      },
+      {
+        "href": "tel:+966556156693",
+        "text": "اتصال"
+      },
+      {
+        "href": "https://wa.me/966537006531",
+        "text": "واتساب"
+      },
+      {
+        "href": "tel:+966537006531",
+        "text": "اتصال"
+      }
+    ],
+    "overflow": false
+  },
+  {
+    "width": 1440,
+    "before": true,
+    "heroHeight": 151.1875,
+    "logo": {
+      "x": 1199.203125,
+      "width": 176,
+      "center": 1287.203125
+    },
+    "heading": {
+      "font": "700 30px / 39px Tajawal, Arial, sans-serif",
+      "align": "right"
+    },
+    "cards": [
+      {
+        "x": 951.75,
+        "yFromHero": 32,
+        "width": 423.453125,
+        "height": 200.984375,
+        "padding": "24px",
+        "radius": "20px",
+        "font": "700 20px / 30px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 508.28125,
+        "yFromHero": 32,
+        "width": 423.46875,
+        "height": 200.984375,
+        "padding": "24px",
+        "radius": "20px",
+        "font": "700 20px / 30px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 64.828125,
+        "yFromHero": 32,
+        "width": 423.453125,
+        "height": 200.984375,
+        "padding": "24px",
+        "radius": "20px",
+        "font": "700 20px / 30px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 951.75,
+        "yFromHero": 252.984375,
+        "width": 423.453125,
+        "height": 200.984375,
+        "padding": "24px",
+        "radius": "20px",
+        "font": "700 20px / 30px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 508.28125,
+        "yFromHero": 252.984375,
+        "width": 423.46875,
+        "height": 200.984375,
+        "padding": "24px",
+        "radius": "20px",
+        "font": "700 20px / 30px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 64.828125,
+        "yFromHero": 252.984375,
+        "width": 423.453125,
+        "height": 200.984375,
+        "padding": "24px",
+        "radius": "20px",
+        "font": "700 20px / 30px Tajawal, Arial, sans-serif"
+      }
+    ],
+    "helpHeight": 105,
+    "helpText": "تواصل مع فريق يوم العائلة أثناء إقامتك.",
+    "contactLinks": [
+      {
+        "href": "https://wa.me/966556156693",
+        "text": "واتساب"
+      },
+      {
+        "href": "tel:+966556156693",
+        "text": "اتصال"
+      },
+      {
+        "href": "https://wa.me/966537006531",
+        "text": "واتساب"
+      },
+      {
+        "href": "tel:+966537006531",
+        "text": "اتصال"
+      }
+    ],
+    "overflow": false
+  },
+  {
+    "width": 1440,
+    "before": false,
+    "heroHeight": 173.9375,
+    "logo": {
+      "x": 1211.203125,
+      "width": 164,
+      "center": 1293.203125
+    },
+    "heading": {
+      "font": "700 30px / 39px Tajawal, Arial, sans-serif",
+      "align": "right"
+    },
+    "cards": [
+      {
+        "x": 951.75,
+        "yFromHero": 32,
+        "width": 423.453125,
+        "height": 200.984375,
+        "padding": "24px",
+        "radius": "20px",
+        "font": "700 20px / 30px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 508.28125,
+        "yFromHero": 32,
+        "width": 423.46875,
+        "height": 200.984375,
+        "padding": "24px",
+        "radius": "20px",
+        "font": "700 20px / 30px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 64.828125,
+        "yFromHero": 32,
+        "width": 423.453125,
+        "height": 200.984375,
+        "padding": "24px",
+        "radius": "20px",
+        "font": "700 20px / 30px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 951.75,
+        "yFromHero": 252.984375,
+        "width": 423.453125,
+        "height": 200.984375,
+        "padding": "24px",
+        "radius": "20px",
+        "font": "700 20px / 30px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 508.28125,
+        "yFromHero": 252.984375,
+        "width": 423.46875,
+        "height": 200.984375,
+        "padding": "24px",
+        "radius": "20px",
+        "font": "700 20px / 30px Tajawal, Arial, sans-serif"
+      },
+      {
+        "x": 64.828125,
+        "yFromHero": 252.984375,
+        "width": 423.453125,
+        "height": 200.984375,
+        "padding": "24px",
+        "radius": "20px",
+        "font": "700 20px / 30px Tajawal, Arial, sans-serif"
+      }
+    ],
+    "helpHeight": 81.375,
+    "helpText": "تواصل مع فريق يوم العائلة أثناء إقامتك.",
+    "contactLinks": [
+      {
+        "href": "https://wa.me/966556156693",
+        "text": "واتساب"
+      },
+      {
+        "href": "tel:+966556156693",
+        "text": "اتصال"
+      },
+      {
+        "href": "https://wa.me/966537006531",
+        "text": "واتساب"
+      },
+      {
+        "href": "tel:+966537006531",
+        "text": "اتصال"
+      }
+    ],
+    "overflow": false
+  }
+]

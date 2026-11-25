@@ -55,3 +55,9 @@ The resort directory renders as native guide links from `guide-copy.json`, prese
 [Full review](FULL_REVIEW_20261125.md) covers all three destinations, 290 responsive page views, canonical/legacy links, image integrity, FAQ behavior, every facility/map selection, and the three protected order experiences. The only presentation fixes align the resort service heading with other internal titles and remove chalet/rest-house navigation-label overrides so all three use the approved shared scale.
 
 Run `python scripts/check-shared-format.py http://127.0.0.1:8112` to compare headings, six navigation columns, label sizes and common detail components at five viewport sizes. Evidence is `audits/full-review-v58.json`, `audits/shared-format-v58.json` and the linked review checks.
+
+## Resort portal refinements — v61
+
+[Approved changes and rollback](../docs/resort-portal-refinements-v61.md) document the resort-only revision. The existing centered mobile header and service tile geometry remain; only the slight logo reduction, branch caption, selected colors, compact supplementary bill details and help card are enabled. The return link is explicitly deferred. The shared ordering code, catalogue and other portals are unchanged.
+
+Run `python scripts/check-resort-portal-refinements.py http://127.0.0.1:8112` and the existing guest-order checks. The scoped stylesheet/helper are loaded only by `/guest-services/`; `cleanup-manifest.json` records the owner-approved exception and unchanged protected-file hashes.
