@@ -1,0 +1,463 @@
+{
+  "status": "promoted-legacy-retained",
+  "canonicalRoot": "/",
+  "assetRoot": "/site/",
+  "routes": [
+    {
+      "canonicalPath": "/",
+      "previewAlias": "/preview/",
+      "title": "يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/arrangements/",
+      "previewAlias": "/preview/arrangements/",
+      "title": "تنسيقات وجلسات | منتجع يوم العائلة",
+      "mode": "preserve-order-document"
+    },
+    {
+      "canonicalPath": "/bohemian-tour/",
+      "previewAlias": "/preview/bohemian-tour/",
+      "title": "استكشف الكوخ البوهيمي من الداخل",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/cabins/",
+      "previewAlias": "/preview/cabins/",
+      "title": "أكواخ منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/cabins/bohemian/",
+      "previewAlias": "/preview/cabins/bohemian/",
+      "title": "الكوخ البوهيمي | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/cabins/classic/",
+      "previewAlias": "/preview/cabins/classic/",
+      "title": "الكوخ الكلاسيكي | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/cabins/dome-1/",
+      "previewAlias": "/preview/cabins/dome-1/",
+      "title": "بيت الدوم 1 | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/cabins/dome-2/",
+      "previewAlias": "/preview/cabins/dome-2/",
+      "title": "بيت الدوم 2 | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/cabins/french/",
+      "previewAlias": "/preview/cabins/french/",
+      "title": "الكوخ الفرنسي | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/cabins/greek-1/",
+      "previewAlias": "/preview/cabins/greek-1/",
+      "title": "البيت اليوناني 1 | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/cabins/greek-2/",
+      "previewAlias": "/preview/cabins/greek-2/",
+      "title": "البيت اليوناني 2 | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/cabins/palm-beach/",
+      "previewAlias": "/preview/cabins/palm-beach/",
+      "title": "كوخ بالم بيتش | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/cabins/panoramic/",
+      "previewAlias": "/preview/cabins/panoramic/",
+      "title": "البيت البانورامي | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/cabins/pyramid/",
+      "previewAlias": "/preview/cabins/pyramid/",
+      "title": "الكوخ الهرمي | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/cabins/royal/",
+      "previewAlias": "/preview/cabins/royal/",
+      "title": "كوخ رويال | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/cabins/rustic/",
+      "previewAlias": "/preview/cabins/rustic/",
+      "title": "الكوخ الريفي | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/cabins/shared-garden/",
+      "previewAlias": "/preview/cabins/shared-garden/",
+      "title": "الحديقة المشتركة | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/chalet-map/",
+      "previewAlias": "/preview/chalet-map/",
+      "title": "استكشف الشاليه من الداخل",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/chalet/",
+      "previewAlias": "/preview/chalet/",
+      "title": "شاليه يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/chalet/checkout/",
+      "previewAlias": "/preview/chalet/checkout/",
+      "title": "تفاصيل طلبكم | شاليه يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/chalet/contact/",
+      "previewAlias": "/preview/chalet/contact/",
+      "title": "الموقع والتواصل | شاليه يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/chalet/details/",
+      "previewAlias": "/preview/chalet/details/",
+      "title": "تعرّف على تفاصيل شاليه يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/chalet/faq/",
+      "previewAlias": "/preview/chalet/faq/",
+      "title": "الأسئلة الشائعة | شاليه يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/chalet/guest-services/",
+      "previewAlias": "/preview/chalet/guest-services/",
+      "title": "خدمات إقامتك | شاليه يوم العائلة",
+      "mode": "preserve-order-document"
+    },
+    {
+      "canonicalPath": "/chalet/order/",
+      "previewAlias": "/preview/chalet/order/",
+      "title": "ملخص طلبكم | شاليه يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/chalet/services/",
+      "previewAlias": "/preview/chalet/services/",
+      "title": "خدمات الشاليه | شاليه يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/chalet/services/games/",
+      "previewAlias": "/preview/chalet/services/games/",
+      "title": "الألعاب الترفيهية | شاليه يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/chalet/services/water-games/",
+      "previewAlias": "/preview/chalet/services/water-games/",
+      "title": "الألعاب المائية | شاليه يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/classic-tour/",
+      "previewAlias": "/preview/classic-tour/",
+      "title": "استكشف الكوخ الكلاسيكي من الداخل",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/contest/",
+      "previewAlias": "/preview/contest/",
+      "title": "شارك بفيديو… ويومك الجاي علينا | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/dome-tour/",
+      "previewAlias": "/preview/dome-tour/",
+      "title": "استكشف بيت الدوم من الداخل",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/french-tour/",
+      "previewAlias": "/preview/french-tour/",
+      "title": "استكشف الكوخ الفرنسي من الداخل",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/greek-tour/",
+      "previewAlias": "/preview/greek-tour/",
+      "title": "استكشف البيت اليوناني من الداخل",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/guest-services/",
+      "previewAlias": "/preview/guest-services/",
+      "title": "خدمات إقامتك | منتجع يوم العائلة",
+      "mode": "preserve-order-document"
+    },
+    {
+      "canonicalPath": "/menu/",
+      "previewAlias": "/preview/menu/",
+      "title": "المطعم | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/palm-tour/",
+      "previewAlias": "/preview/palm-tour/",
+      "title": "استكشف كوخ بالم بيتش من الداخل",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/panoramic-tour/",
+      "previewAlias": "/preview/panoramic-tour/",
+      "title": "استكشف البيت البانورامي من الداخل",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/pyramid-tour/",
+      "previewAlias": "/preview/pyramid-tour/",
+      "title": "استكشف الكوخ الهرمي من الداخل",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/resort-map/",
+      "previewAlias": "/preview/resort-map/",
+      "title": "خريطة الأكواخ التفاعلية | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/resort/",
+      "previewAlias": "/preview/resort/",
+      "title": "منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/resort/checkout/",
+      "previewAlias": "/preview/resort/checkout/",
+      "title": "تفاصيل طلبكم | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/resort/compare/",
+      "previewAlias": "/preview/resort/compare/",
+      "title": "مقارنة الأكواخ | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/resort/contact/",
+      "previewAlias": "/preview/resort/contact/",
+      "title": "الموقع والتواصل | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/resort/faq/",
+      "previewAlias": "/preview/resort/faq/",
+      "title": "الأسئلة الشائعة | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/resort/order/",
+      "previewAlias": "/preview/resort/order/",
+      "title": "ملخص طلبكم | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/royal-tour/",
+      "previewAlias": "/preview/royal-tour/",
+      "title": "استكشف كوخ رويال من الداخل",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/rustic-tour/",
+      "previewAlias": "/preview/rustic-tour/",
+      "title": "استكشف الكوخ الريفي من الداخل",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/services-guide/",
+      "previewAlias": "/preview/services-guide/",
+      "title": "تنسيقات وجلسات | منتجع يوم العائلة",
+      "mode": "preserve-order-document"
+    },
+    {
+      "canonicalPath": "/services/",
+      "previewAlias": "/preview/services/",
+      "title": "خدمات منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/services/cinema/",
+      "previewAlias": "/preview/services/cinema/",
+      "title": "جلسة السينما | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/services/coordination/",
+      "previewAlias": "/preview/services/coordination/",
+      "title": "التنسيقات | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/services/dining-tables/",
+      "previewAlias": "/preview/services/dining-tables/",
+      "title": "طاولات الطعام | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/services/games/",
+      "previewAlias": "/preview/services/games/",
+      "title": "الألعاب الترفيهية | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/services/hospitality/packages/",
+      "previewAlias": "/preview/services/hospitality/packages/",
+      "title": "الضيافة | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/services/loyalty/",
+      "previewAlias": "/preview/services/loyalty/",
+      "title": "بطاقة الولاء | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/services/outdoor-seating/",
+      "previewAlias": "/preview/services/outdoor-seating/",
+      "title": "الجلسات الخارجية | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/services/share-and-win/",
+      "previewAlias": "/preview/services/share-and-win/",
+      "title": "شارك واربح | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/services/water-games/",
+      "previewAlias": "/preview/services/water-games/",
+      "title": "الألعاب المائية | منتجع يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/stay/",
+      "previewAlias": "/preview/stay/",
+      "title": "استراحة يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/stay/checkout/",
+      "previewAlias": "/preview/stay/checkout/",
+      "title": "تفاصيل طلبكم | استراحة يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/stay/compare/",
+      "previewAlias": "/preview/stay/compare/",
+      "title": "مقارنة قسمي الاستراحة | استراحة يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/stay/contact/",
+      "previewAlias": "/preview/stay/contact/",
+      "title": "الموقع والتواصل | استراحة يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/stay/faq/",
+      "previewAlias": "/preview/stay/faq/",
+      "title": "الأسئلة الشائعة | استراحة يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/stay/ground-floor/",
+      "previewAlias": "/preview/stay/ground-floor/",
+      "title": "القسم الأول – الدور الأرضي | استراحة يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/stay/order/",
+      "previewAlias": "/preview/stay/order/",
+      "title": "ملخص طلبكم | استراحة يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/stay/sections/",
+      "previewAlias": "/preview/stay/sections/",
+      "title": "أقسام استراحة يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/stay/services/",
+      "previewAlias": "/preview/stay/services/",
+      "title": "خدمات الاستراحة | استراحة يوم العائلة",
+      "mode": "approved-guide"
+    },
+    {
+      "canonicalPath": "/stay/upper-floor/",
+      "previewAlias": "/preview/stay/upper-floor/",
+      "title": "القسم الثاني – الدور العلوي | استراحة يوم العائلة",
+      "mode": "approved-guide"
+    }
+  ],
+  "legacyHashes": {
+    "home=resort": "/resort/",
+    "contact=resort": "/resort/contact/",
+    "home=stay": "/stay/",
+    "contact=stay": "/stay/contact/",
+    "home=chalet": "/chalet/",
+    "services=chalet": "/chalet/services/",
+    "tarfihi=chalet": "/chalet/services/games/",
+    "maiya=chalet": "/chalet/services/water-games/",
+    "contact=chalet": "/chalet/contact/",
+    "faq": "/resort/faq/",
+    "faq2": "/stay/faq/",
+    "chalet-faq": "/chalet/faq/",
+    "resort": "/cabins/",
+    "chalet": "/stay/sections/",
+    "chalet-detail": "/chalet/details/",
+    "services": "/services/",
+    "hospitality=hospitality": "/services/hospitality/packages/",
+    "hospitality=coordination": "/services/coordination/",
+    "setups=cinema": "/services/cinema/",
+    "maiya": "/services/water-games/",
+    "setups=seating": "/services/outdoor-seating/",
+    "tarfihi": "/services/games/",
+    "setups=dining": "/services/dining-tables/",
+    "sharik": "/services/share-and-win/",
+    "walaa": "/services/loyalty/",
+    "contest": "/contest/",
+    "menu": "/menu/",
+    "map": "/resort-map/",
+    "chalet-map": "/chalet-map/",
+    "cabin=1": "/cabins/dome-1/",
+    "cabin=12": "/cabins/dome-2/",
+    "cabin=2": "/cabins/pyramid/",
+    "cabin=3": "/cabins/classic/",
+    "cabin=4": "/cabins/greek-1/",
+    "cabin=13": "/cabins/greek-2/",
+    "cabin=5": "/cabins/palm-beach/",
+    "cabin=6": "/cabins/bohemian/",
+    "cabin=7": "/cabins/french/",
+    "cabin=8": "/cabins/rustic/",
+    "cabin=9": "/cabins/royal/",
+    "cabin=10": "/cabins/panoramic/",
+    "cabin=11": "/cabins/shared-garden/",
+    "cabin=20": "/stay/ground-floor/",
+    "cabin=21": "/stay/upper-floor/"
+  },
+  "rollbackTag": "pre-live-cutover-20261125",
+  "deletionApproved": false
+}

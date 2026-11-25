@@ -1,203 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#04111e">
-  <title>شارك بفيديو… ويومك الجاي علينا | منتجع يوم العائلة</title>
-  <meta name="description" content="انشر الفيديو ونافس بالمشاهدات | منتجع يوم العائلة">
-  <link rel="canonical" href="https://familydaystay.com/contest/">
-  <!-- Share this standalone contest page as text without a website thumbnail. -->
-  <meta name="robots" content="max-image-preview:none">
-  <link rel="icon" data-page-href="data:,">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="منتجع يوم العائلة">
-  <meta property="og:locale" content="ar_SA">
-  <meta property="og:url" content="https://familydaystay.com/contest/">
-  <meta property="og:title" content="شارك بفيديو… ويومك الجاي علينا | منتجع يوم العائلة">
-  <meta property="og:description" content="انشر الفيديو ونافس بالمشاهدات | منتجع يوم العائلة">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="شارك بفيديو… ويومك الجاي علينا | منتجع يوم العائلة">
-  <meta name="twitter:description" content="انشر الفيديو ونافس بالمشاهدات | منتجع يوم العائلة">
-
-  <link rel="preload" href="/fonts/tajawal/tajawal-arabic-400.woff2" as="font" type="font/woff2" crossorigin>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#071a26">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>شارك بفيديو… ويومك الجاي علينا | منتجع يوم العائلة</title>
+<link rel="icon" type="image/png" data-page-href="/imgs/icon.png">
 <link rel="preload" href="/fonts/tajawal/tajawal-arabic-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/tajawal.css?v=20261122-pdf2-v1">
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%;background:#04111e;color:#f4f8fa;font-family:'Tajawal',sans-serif}
-    /* Share and win */
-:is(#sharik-detail,#contest-detail) .sw-shell{box-sizing:border-box;width:100%;max-width:600px;margin:0 auto;padding:24px 20px calc(32px + env(safe-area-inset-bottom,0px));font-family:'Tajawal',sans-serif;text-align:right;direction:rtl}
-:is(#sharik-detail,#contest-detail) .sw-header{margin-bottom:22px}
-:is(#sharik-detail,#contest-detail) .sw-heading{display:flex;align-items:center;gap:14px}
-:is(#sharik-detail,#contest-detail) .sw-back{display:inline-flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;padding:0;border:1px solid #29434f;border-radius:50%;background:rgba(255,255,255,.05);color:#d6e9ef;cursor:pointer}
-:is(#sharik-detail,#contest-detail) .sw-title{margin:0;color:#f0f5f7;font-weight:800;line-height:1.4}
-:is(#sharik-detail,#contest-detail) .sw-layout{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"lead" "conditions" "contact";gap:26px;align-items:start}
-:is(#sharik-detail,#contest-detail) .sw-lead{grid-area:lead;min-width:0}
-:is(#sharik-detail,#contest-detail) .sw-prize{padding:24px 20px;border:1px solid #397782;border-radius:20px;background:linear-gradient(145deg,#164452,#102c3a);text-align:center}
-:is(#sharik-detail,#contest-detail) .sw-prize-intro{margin:0 0 14px;color:#9fc6cf;font-size:14px;font-weight:500;line-height:1.6}
-:is(#sharik-detail,#contest-detail) .sw-prize-title{margin:0;font-weight:600;line-height:1.6}
-:is(#sharik-detail,#contest-detail) .sw-prize-kicker{display:block;color:#c7e5e7;font-size:16px}
-:is(#sharik-detail,#contest-detail) .sw-prize-highlight{display:block;margin:5px 0;color:#f5fbfb;font-size:34px;font-weight:800;line-height:1.4}
-:is(#sharik-detail,#contest-detail) .sw-prize-detail{display:block;color:#c7e5e7;font-size:18px}
-:is(#sharik-detail,#contest-detail) .sw-section-title{margin:0 0 16px;color:#f0f5f7;font-size:18px;font-weight:700;line-height:1.5}
-:is(#sharik-detail,#contest-detail) .sw-how{margin-top:26px}
-:is(#sharik-detail,#contest-detail) .sw-steps{display:flex;flex-direction:column;gap:18px;margin:0;padding:0;list-style:none}
-:is(#sharik-detail,#contest-detail) .sw-step{display:grid;grid-template-columns:32px minmax(0,1fr);align-items:start;gap:12px}
-:is(#sharik-detail,#contest-detail) .sw-step-number{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid #315967;border-radius:50%;background:#102938;color:#8fd5e4;font-size:15px;font-weight:700;line-height:1}
-:is(#sharik-detail,#contest-detail) .sw-step-title{margin:1px 0 4px;color:#f0f5f7;font-size:16px;font-weight:700;line-height:1.5}
-:is(#sharik-detail,#contest-detail) .sw-step-copy{margin:0;color:#b6cbd6;font-size:15px;line-height:1.8}
-:is(#sharik-detail,#contest-detail) .sw-guidelines{grid-area:conditions;min-width:0;padding:22px;border:1px solid #29434f;border-radius:18px;background:#0b2130}
-:is(#sharik-detail,#contest-detail) .sw-terms{display:flex;flex-direction:column;gap:12px;margin:0;padding:0;list-style:none;color:#b6cbd6;font-size:15px;line-height:1.8;overflow-wrap:break-word}
-:is(#sharik-detail,#contest-detail) .sw-terms li{position:relative;padding-inline-start:13px}
-:is(#sharik-detail,#contest-detail) .sw-terms li::before{content:"";position:absolute;inset-inline-start:0;top:.8em;width:4px;height:4px;border-radius:50%;background:#608694}
-:is(#sharik-detail,#contest-detail) .sw-criteria{margin-top:24px;padding-top:22px;border-top:1px solid #29434f}
-:is(#sharik-detail,#contest-detail) .sw-criteria-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0;padding:10px 0;border-radius:12px;background:#102e3e;list-style:none;color:#8fd5e4;text-align:center;font-size:14px;font-weight:700;line-height:1.6}
-:is(#sharik-detail,#contest-detail) .sw-criteria-list li{display:flex;align-items:center;justify-content:center;min-height:28px;padding:0 6px}
-:is(#sharik-detail,#contest-detail) .sw-criteria-list li+li{border-inline-start:1px solid #315967}
-:is(#sharik-detail,#contest-detail) .sw-criteria-copy{margin:14px 0 0;color:#b6cbd6;font-size:14px;line-height:1.8;text-align:center}
-:is(#sharik-detail,#contest-detail) .sw-contact{grid-area:contact;min-width:0;padding:16px;border:1px solid #315967;border-radius:16px;background:#0d293a}
-:is(#sharik-detail,#contest-detail) .sw-contact .sw-section-title{margin-bottom:12px}
-:is(#sharik-detail,#contest-detail) .sw-email-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 12px}
-:is(#sharik-detail,#contest-detail) .sw-email-address{min-width:0;color:#d6e9ef;font-size:15px;font-weight:600;line-height:1.7;direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere;user-select:all;-webkit-user-select:all}
-:is(#sharik-detail,#contest-detail) .sw-copy{flex-shrink:0;min-width:84px;min-height:40px;padding:8px 10px;border:1px solid #527487;border-radius:11px;background:#153244;color:#d6e9ef;font-family:inherit;font-size:14px;font-weight:600;line-height:1.5;cursor:pointer}
-:is(#sharik-detail,#contest-detail) .sw-copy-status{margin:8px 0 0;color:#8fd5e4;font-size:13px;line-height:1.6}
-:is(#sharik-detail,#contest-detail) .sw-copy-status:empty{display:none}
-:is(#sharik-detail,#contest-detail) .sw-email-button{box-sizing:border-box;display:flex;align-items:center;justify-content:center;width:100%;min-height:52px;margin-top:16px;padding:12px 14px;border:1px solid #3aa9b9;border-radius:14px;background:#147a8c;color:#fff;font-family:inherit;font-size:18px;font-weight:700;line-height:1.5;text-align:center;text-decoration:none;cursor:pointer}
-:is(#sharik-detail,#contest-detail) .sw-email-hint{margin:10px 0 0;color:#b6cbd6;font-size:13px;line-height:1.7;text-align:center}
-:is(#sharik-detail,#contest-detail) .sw-shell :is(button,a):focus-visible{outline:2px solid #8fd5e4;outline-offset:3px}
-@media(hover:hover){:is(#sharik-detail,#contest-detail) .sw-back:hover,:is(#sharik-detail,#contest-detail) .sw-copy:hover{background:#1c4456}:is(#sharik-detail,#contest-detail) .sw-email-button:hover{background:#168b9e}}
-@media(max-width:360px){:is(#sharik-detail,#contest-detail) .sw-shell{padding-inline:16px}:is(#sharik-detail,#contest-detail) .sw-guidelines{padding:18px}:is(#sharik-detail,#contest-detail) .sw-contact{padding:14px}}
-@media(min-width:900px){:is(#sharik-detail,#contest-detail) .sw-shell{max-width:1100px;padding-top:28px}:is(#sharik-detail,#contest-detail) .sw-header{margin-bottom:26px}:is(#sharik-detail,#contest-detail) .sw-layout{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"lead conditions" "contact conditions";gap:26px 32px}:is(#sharik-detail,#contest-detail) .sw-prize{padding:28px 24px}:is(#sharik-detail,#contest-detail) .sw-prize-highlight{font-size:38px}:is(#sharik-detail,#contest-detail) .sw-guidelines{padding:26px}}
-
-    
-#contest-detail .sw-header{position:static}
-@media(min-width:900px){#contest-detail .sw-layout{grid-template-rows:min-content 1fr}}
-#contest-detail .contest-social{margin-top:24px;padding-top:22px;border-top:1px solid #29434f}
-#contest-detail .contest-social-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-#contest-detail .contest-social-card{min-width:0;padding:14px 10px;border:1px solid #315967;border-radius:14px;background:#0d293a}
-#contest-detail .contest-social-info h4{margin:0 0 7px;color:#f0f5f7;font-size:15px;font-weight:700;line-height:1.5}
-#contest-detail .contest-social-handle{display:block;color:#b6cbd6;font-size:12px;line-height:1.6;text-align:right;user-select:text;overflow-wrap:anywhere}
-#contest-detail .contest-social-actions{display:grid;gap:8px;margin-top:14px}
-#contest-detail .contest-social-actions :is(a,button){display:flex;align-items:center;justify-content:center;box-sizing:border-box;min-height:44px;width:100%;margin:0;padding:8px 6px;border:1px solid #397782;border-radius:10px;background:#143848;color:#e4f2f5;text-decoration:none;font-family:inherit;font-size:13px;font-weight:700;line-height:1.5;cursor:pointer}
-#contest-detail .contest-social-actions button{background:transparent;color:#a9d4de}
-#contest-detail .contest-copy-status{margin:10px 0 0;min-height:20px;color:#a9d4de;font-size:13px;line-height:1.6}
-@media(hover:hover){#contest-detail .contest-social-actions :is(a,button):hover{background:#1c4456}}
-@media(max-width:599px){
-#contest-detail .sw-header .sw-title{font-size:clamp(14px,4vw,18px)!important;white-space:nowrap}
-#contest-detail .contest-social-grid{grid-template-columns:minmax(0,1fr)}
-#contest-detail .contest-social-card{padding:14px}
-#contest-detail .contest-social-info{display:flex;align-items:center;justify-content:space-between;gap:8px}
-#contest-detail .contest-social-info h4{margin:0}
-#contest-detail .contest-social-handle{font-size:13px}
-#contest-detail .contest-social-actions{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:12px}
-}
-
-  </style>
-  <link rel="stylesheet" href="/resort-ui.css?v=20261122-approved-review-v1">
-  <link rel="stylesheet" href="/site-ui.css?v=20261105-shared-captions-v1">
-<link rel="stylesheet" href="/css/back-navigation.css?v=20261106-stable-ring-v2">
-<link rel="stylesheet" href="/css/rewards-layout.css?v=20261106-unified-v1">
-<script src="/js/page-media.js?v=20261107-text-previews-v1"></script>
+<link rel="stylesheet" href="/site/style.css?v=20261125-live-v54">
+<script type="module" src="/site/app.js?v=20261125-live-v54"></script>
+<script src="/site/text-only-head.js?v=20261125-live-v54" defer></script><link rel="stylesheet" href="/site/chalet.css?v=20261125-live-v54"><link rel="stylesheet" href="/site/stay.css?v=20261125-live-v54"><meta name="description" content="انشر الفيديو ونافس بالمشاهدات | منتجع يوم العائلة">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="يوم العائلة">
+<meta property="og:locale" content="ar_SA">
+<meta property="og:title" content="شارك بفيديو… ويومك الجاي علينا | منتجع يوم العائلة">
+<meta property="og:description" content="انشر الفيديو ونافس بالمشاهدات | منتجع يوم العائلة">
+<meta property="og:url" content="https://familydaystay.com/contest/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="شارك بفيديو… ويومك الجاي علينا | منتجع يوم العائلة">
+<meta name="twitter:description" content="انشر الفيديو ونافس بالمشاهدات | منتجع يوم العائلة">
+<meta name="robots" content="index,follow,max-image-preview:none">
+<link rel="canonical" href="https://familydaystay.com/contest/">
 </head>
-<body>
-<div id="contest-detail" style="position:fixed;inset:0;z-index:10000;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
-<main class="sw-shell">
-<header class="sw-header">
-<div class="sw-heading">
-<button type="button" class="sw-back" onclick="closeContestDetail()" aria-label="العودة إلى الخدمات"><svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-<h1 class="sw-title">شارك بفيديو… ويومك الجاي علينا</h1>
-</div>
-</header>
-<div class="sw-layout">
-<section class="sw-lead" aria-labelledby="contest-title">
-<div class="sw-prize">
-<p class="sw-prize-intro">مسابقة منتجع يوم العائلة</p>
-<h2 id="contest-title" class="sw-prize-title"><span class="sw-prize-kicker">شارك بفيديو…</span><strong class="sw-prize-highlight">ويومك الجاي علينا</strong></h2>
-<p class="sw-prize-description">اختر فيديو من فيديوهات المسابقة وانشره على حسابك، وتنافس على يوم مجاني بالفيديو الأكثر مشاهدة.</p>
-</div>
-</section>
-<section class="sw-contact contest-videos" aria-labelledby="contest-videos-title">
-<h2 id="contest-videos-title" class="sw-section-title">اختر فيديو للمشاركة</h2>
-<p class="sw-step-copy">حمّل الفيديو من Google Drive وانشره على حسابك.</p>
-<a class="sw-email-button" href="https://drive.google.com/drive/folders/16I5HHt6xZO4JKVhA9KdFB0ymcUZ5RfGj?usp=sharing" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M5 16v5h14v-5"/></svg>تصفّح فيديوهات المسابقة</a>
-</section>
-<section class="sw-guidelines" aria-labelledby="contest-terms-title">
-<h2 id="contest-terms-title" class="sw-section-title">شروط المشاركة</h2>
-<ul class="sw-terms">
-<li>انشر الفيديو على إنستقرام ريلز أو تيك توك أو أضواء سناب شات؛ الستوري لا يُحتسب.</li>
-<li>اذكر اسم منتجع يوم العائلة في الفيديو أو الوصف، وأضف منشن لحسابنا على المنصة.</li>
-<li>يجب أن يكون حسابك عامًا.</li>
-</ul>
-<section class="sw-criteria" aria-labelledby="contest-criteria-title">
-<h3 id="contest-criteria-title" class="sw-section-title">معيار اختيار الفائز</h3>
-<p class="sw-step-copy">تُحتسب مشاهدات كل فيديو خلال أول 14 يومًا من نشره، ويفوز صاحب الفيديو الأكثر مشاهدة بيوم مجاني في منتجع يوم العائلة.</p>
-</section>
-
-<section class="contest-social" aria-labelledby="contest-social-title">
-<h3 id="contest-social-title" class="sw-section-title">حساباتنا للمنشن</h3>
-<div class="contest-social-grid">
-<div class="contest-social-card">
-<div class="contest-social-info"><h4>إنستقرام</h4><span class="contest-social-handle" dir="ltr">@familydayresort</span></div>
-<div class="contest-social-actions">
-<a href="https://instagram.com/FAMILYDAYRESORT" target="_blank" rel="noopener noreferrer" aria-label="زيارة حساب إنستقرام">زيارة الحساب</a>
-<button type="button" onclick="copyContestHandle(this)" aria-label="نسخ اسم مستخدم إنستقرام">نسخ اسم المستخدم</button>
-</div>
-</div>
-<div class="contest-social-card">
-<div class="contest-social-info"><h4>سناب شات</h4><span class="contest-social-handle" dir="ltr">@familyday5</span></div>
-<div class="contest-social-actions">
-<a href="https://www.snapchat.com/add/familyday5" target="_blank" rel="noopener noreferrer" aria-label="زيارة حساب سناب شات">زيارة الحساب</a>
-<button type="button" onclick="copyContestHandle(this)" aria-label="نسخ اسم مستخدم سناب شات">نسخ اسم المستخدم</button>
-</div>
-</div>
-<div class="contest-social-card">
-<div class="contest-social-info"><h4>تيك توك</h4><span class="contest-social-handle" dir="ltr">@familydayresort</span></div>
-<div class="contest-social-actions">
-<a href="https://tiktok.com/@familydayresort" target="_blank" rel="noopener noreferrer" aria-label="زيارة حساب تيك توك">زيارة الحساب</a>
-<button type="button" onclick="copyContestHandle(this)" aria-label="نسخ اسم مستخدم تيك توك">نسخ اسم المستخدم</button>
-</div>
-</div>
-</div>
-<p id="contest-copy-status" class="contest-copy-status" role="status" aria-live="polite"></p>
-</section>
-</section>
-
-<section class="sw-contact contest-submit" aria-labelledby="contest-submit-title">
-<h3 id="contest-submit-title" class="sw-section-title">أرسل مشاركتك</h3>
-<p class="sw-step-copy">بعد نشر الفيديو، أرسل رابط مشاركتك على واتساب.</p>
-<a class="sw-email-button" href="https://wa.me/966556615018?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D9%85%D8%B4%D8%A7%D8%B1%D9%83%D8%A9%20%D9%81%D9%8A%20%D9%85%D8%B3%D8%A7%D8%A8%D9%82%D8%A9%20%C2%AB%D8%B4%D8%A7%D8%B1%D9%83%20%D8%A8%D9%81%D9%8A%D8%AF%D9%8A%D9%88%E2%80%A6%20%D9%88%D9%8A%D9%88%D9%85%D9%83%20%D8%A7%D9%84%D8%AC%D8%A7%D9%8A%20%D8%B9%D9%84%D9%8A%D9%86%D8%A7%C2%BB.%0A%0A%D8%A7%D9%84%D8%A7%D8%B3%D9%85%3A%0A%D8%A7%D9%84%D9%85%D9%86%D8%B5%D8%A9%3A%0A%D8%B1%D8%A7%D8%A8%D8%B7%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%3A%0A%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE%20%D9%86%D8%B4%D8%B1%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%3A" target="_blank" rel="noopener noreferrer">أرسل مشاركتك على واتساب</a>
-</section>
-</div>
-</main>
-</div>
-<script>
-function closeContestDetail(){ window.location.assign('/#services'); }
-async function copyContestHandle(button){
-  var address = button.closest('.contest-social-card').querySelector('.contest-social-handle');
-  var status = document.getElementById('contest-copy-status');
-  var copied = false;
-  button.disabled = true;
-  try {
-    await navigator.clipboard.writeText(address.textContent.trim());
-    copied = true;
-  } catch(error) {
-    try {
-      var selection = window.getSelection();
-      var range = document.createRange();
-      range.selectNodeContents(address);
-      selection.removeAllRanges();
-      selection.addRange(range);
-      copied = document.execCommand('copy');
-      if(copied) selection.removeAllRanges();
-    } catch(fallbackError) { copied = false; }
-  }
-  button.disabled = false;
-  document.querySelectorAll('#contest-detail .contest-social-actions button').forEach(function(item){item.textContent='نسخ اسم المستخدم';});
-  button.textContent = copied ? 'تم النسخ ✓' : 'نسخ اسم المستخدم';
-  status.textContent = copied ? 'تم نسخ اسم مستخدم ' + button.closest('.contest-social-card').querySelector('h4').textContent + '.' : 'حدد اسم الحساب واضغط «نسخ».';
-}
-
-</script>
+<body class="complete-flow">
+<header class="header"><div class="header-wrap"><nav class="header-start" aria-label="الوجهات"><a class="destination-return" href="/">الوجهات</a></nav><span class="header-identity">يوم العائلة</span><div class="header-actions" id="header-actions"></div></div></header>
+<main id="main" tabindex="-1"><div class="initial-loading" role="status"><span class="loading-dot"></span><p>يومكم يبدأ من هنا</p></div></main>
+<nav class="bottom-nav" id="bottom-nav" aria-label="التنقل الرئيسي"></nav>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="sr-only" id="announcer" aria-live="polite"></div>
+<dialog id="viewer" class="viewer" aria-labelledby="viewer-title"><div class="viewer-shell"><header class="viewer-header"><h2 id="viewer-title"></h2><button class="icon-button" data-close aria-label="إغلاق العرض"></button></header><div id="viewer-body"></div></div></dialog>
+<noscript><p class="noscript">فعّل JavaScript لعرض المعاينة</p></noscript>
 </body>
 </html>

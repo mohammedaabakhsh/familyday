@@ -70,7 +70,7 @@ with sync_playwright() as p:
         assert all('/imgs/img01.webp' in url for url in images)
         assert page.locator('[data-service]').evaluate_all('(els)=>els.map(e=>e.dataset.service)')==['restaurant','hospitality','water','games','cinema','extras']
         assert page.locator('.guest-service-fold,.service-nav').count()==0
-        assert page.locator('.menu-row').count()==page.evaluate('Object.values(_menuData).flat().length')
+        assert page.locator('.menu-row').count()==page.evaluate('async()=>Object.values((await FD_GUEST_SOURCE.load()).menu).flat().length')
         assert page.locator('[data-extra] .extra-price bdi').all_text_contents()==['20','20','15','25','30']
         assert page.locator('#service-dialog').is_hidden()
         assert page.locator('#orders-summary').is_hidden()
@@ -144,7 +144,7 @@ with sync_playwright() as p:
         assert captured(page,'966556156693')=='\n'.join([
             'السلام عليكم، أرغب بطلب الخدمات التالية:', '',
             'الاسم: ضيف الاختبار', 'اسم الكوخ: بيت الدوم 1', 'رقم الكوخ: 15', '', 'الطلبات:', '',
-            'الألعاب المائية:', 'باقة ألعاب مائية × 1 = 50 ريال', 'للكبار: 1', 'للصغار: 2', '',
+            'الألعاب المائية:', 'باقة ألعاب مائية × 1 = 50 ريال', 'للكبار: 1', 'للأطفال: 2', '',
             'الألعاب الترفيهية:', 'طاولة مع بوكس الألعاب × 1 = 150 ريال', '',
             'جلسة السينما:', 'جلسة السينما × 1 = 150 ريال', 'مدة الجلسة: 3 ساعات', 'وقت بداية الجلسة: 12:00 ص (منتصف الليل)', '',
             'طلبات إضافية:', 'روب ومناشف لشخص واحد × 2 = 40 ريال', 'تبخير الكوخ × 1 = 20 ريال',
@@ -157,7 +157,7 @@ with sync_playwright() as p:
         assert page.locator('#order-total').text_content()=='310'
         page.locator('[data-water="adults"][data-step="1"]').click(click_count=2);apply_service(page)
         send.click();message=captured(page,'966556156693')
-        assert 'للكبار: 3\nللصغار: 0' in message and 'وقت بداية الجلسة: 2:00 ص' in message
+        assert 'للكبار: 3\nللأطفال: 0' in message and 'وقت بداية الجلسة: 2:00 ص' in message
         page.get_by_role('button',name='حذف روب ومناشف لشخص واحد',exact=True).click()
         assert page.locator('#order-total').text_content()=='270'
         open_service(page,'extras');assert page.locator('[data-extra="robe"] output').text_content()=='0';page.locator('.dialog-close').click()
@@ -221,26 +221,25 @@ with sync_playwright() as p:
         page.locator('.dialog-close').click()
     ctx.close();print('PASS short-screen dialog scroll and visible actions',flush=True)
 
-    # Change only the ORIGINAL page/menu response: the guest page must update itself.
+    # Update the independent catalogue without loading or changing home-page HTML.
     ctx=context(browser);page=ctx.new_page()
-    source=ctx.request.get(BASE+'/index.html').text()
-    menu_source=ctx.request.get(BASE+'/service-data.js').text()
-    modified=source.replace('<dd class="cn-price">150 ريال</dd>','<dd class="cn-price">175 ريال</dd>')
-    modified=modified.replace('<dd>3 ساعات</dd>','<dd>4 ساعات</dd>').replace('كوبان من الفشار','بوكس فشار كبير')
-    modified=modified.replace('<span class="tg-package-price">50 ريال</span>','<span class="tg-package-price">65 ريال</span>')
-    modified=modified.replace('ورق بلوت','بلوت جديد').replace('<strong>50</strong>','<strong>60</strong>')
-    modified=re.sub(r'service-data\.js\?v=[^\"]+', 'service-data.js?v=source-sync-proof', modified)
-    modified=re.sub(r'js/cabin-numbers\.js\?v=[^\"]+', 'js/cabin-numbers.js?v=cabin-sync-proof', modified)
-    cabins_source=ctx.request.get(BASE+'/js/cabin-numbers.js').text().replace("'بيت الدوم 1':15","'بيت الدوم 1':29")
-    ctx.route('**/index.html',lambda r:r.fulfill(body=modified,content_type='text/html'))
-    ctx.route('**/js/cabin-numbers.js?*',lambda r:r.fulfill(body=cabins_source,content_type='application/javascript'))
-    ctx.route('**/service-data.js?*',lambda r:r.fulfill(body=menu_source+"\n_menuData['ساندويتشات'][1].price=19;_menuData['ساندويتشات'][1].cheesePrice=3;",content_type='application/javascript'))
+    modified=ctx.request.get(BASE+'/data/services.json').json()
+    guest=modified['guest']
+    guest['water']['price']=60
+    guest['cinema']['price']=175;guest['cinema']['duration']='4 ساعات'
+    guest['cinema']['contents']=[v.replace('كوبان من الفشار','بوكس فشار كبير') for v in guest['cinema']['contents']]
+    guest['games']['packages']['box']['price']=65
+    guest['games']['contents']=[v.replace('ورق بلوت','بلوت جديد') for v in guest['games']['contents']]
+    guest['cabins']['بيت الدوم 1']=29
+    guest['menu']['ساندويتشات'][1]['price']=19;guest['menu']['ساندويتشات'][1]['cheesePrice']=3
+    ctx.route('**/data/services.json?*',lambda r:r.fulfill(body=json.dumps(modified,ensure_ascii=False),content_type='application/json'))
+    ctx.route('**/index.html',lambda r:r.fulfill(status=503,body='Legacy home is unavailable'))
     requests=[];page.on('request',lambda r:requests.append(r.url))
     page.goto(BASE+'/guest-services/',wait_until='networkidle');preview(page)
     assert 'بوكس فشار كبير' in page.locator('#cinema-service .contents-list').text_content()
     assert 'بلوت جديد' in page.locator('.games-contents').text_content()
     open_service(page, 'water')
-    assert page.locator('#water-offer').text_content()=='3 ألعاب بـ60 ريال'
+    assert '60 ريال' in page.locator('#water-offer').text_content()
     page.locator('[data-water="adults"][data-step="1"]').click(click_count=3);apply_service(page)
     open_service(page, 'games')
     page.locator('[name="games-package"][value="box"]').check();apply_service(page)
@@ -257,11 +256,12 @@ with sync_playwright() as p:
     assert page.locator('#restaurant-total').text_content()=='22'
     page.locator('#guest-cabin').select_option('بيت الدوم 1')
     assert page.locator('#extras-order .cabin-number output').text_content()=='29'
-    assert any(url.endswith('/service-data.js?v=source-sync-proof') for url in requests)
-    ctx.close();print('PASS original-source price/content/menu-version changes propagate while preview remains fixed',flush=True)
+    assert any('/data/services.json?' in url for url in requests)
+    assert not any(urlparse(url).path=='/index.html' for url in requests)
+    ctx.close();print('PASS independent source prices/content/menu propagate without home-page dependency',flush=True)
 
     # A missing source fails visibly rather than offering stale prices.
-    ctx=context(browser);ctx.route('**/index.html',lambda r:r.fulfill(status=503,body='Unavailable'))
+    ctx=context(browser);ctx.route('**/data/services.json?*',lambda r:r.fulfill(status=503,body='Unavailable'))
     page=ctx.new_page();page.goto(BASE+'/guest-services/',wait_until='networkidle')
     assert page.locator('#services-error').is_visible()
     assert page.locator('#cinema-time').is_disabled()

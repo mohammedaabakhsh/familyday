@@ -1,0 +1,44 @@
+/* Chalet adopts the approved resort design; venue facts stay chalet-specific. */
+.chalet-scope .bottom-nav{grid-template-columns:repeat(5,minmax(0,1fr))}.chalet-scope .bottom-nav a{font-size:11px;gap:5px}.chalet-scope .bottom-nav .icon{width:22px;height:22px}.chalet-scope .context-back{display:flex;align-items:center;gap:8px;min-height:44px;max-width:190px;font-size:13px;font-weight:700;color:var(--teal);line-height:1.5}.chalet-scope .context-back>.icon-button{width:40px;height:40px;flex:0 0 40px}.chalet-scope .context-back>span:last-child{min-width:0}.chalet-scope .header-wrap{grid-template-columns:auto minmax(0,1fr) 40px}.chalet-scope .header-identity{font-size:13px}.chalet-scope .header-start{max-width:180px}.chalet-scope.focused-view .header-wrap{grid-template-columns:auto minmax(0,1fr) 40px}.chalet-scope.focused-view .context-back>span:last-child{max-width:105px;font-size:12px}
+@media(max-width:360px){.chalet-scope .header-identity{font-size:11px}.chalet-scope .context-back{font-size:12px;gap:6px}.chalet-scope .header-start{max-width:145px}.chalet-scope .bottom-nav a{font-size:10px}.chalet-scope .bottom-nav{padding-inline:3px;gap:1px}.chalet-scope .resort-intro h1{font-size:24px}.chalet-scope .resort-intro p{font-size:14px}.chalet-scope .catalog-heading{gap:8px}.chalet-scope .catalog-heading h1{font-size:25px}.chalet-scope .catalog-heading .text-link{font-size:12px}.chalet-scope .resort-contact-panel .page-heading h1{font-size:26px}.chalet-scope .resort-catalog-panel .filter{font-size:12px;padding:10px 14px}}
+.chalet-scope .bottom-nav{grid-template-rows:54px;isolation:isolate}.chalet-scope .bottom-nav a{min-width:0;border-radius:0;touch-action:manipulation;isolation:isolate}.chalet-scope .bottom-nav a[aria-current=page]{background:transparent}.chalet-scope .bottom-nav a::before{content:"";position:absolute;inset:0;border-radius:15px;z-index:-1;pointer-events:none}.chalet-scope .bottom-nav a[aria-current=page]::before{background:#1b4350}.chalet-scope .bottom-nav .nav-services[aria-current=page]::before{background:#21434a}.chalet-scope .bottom-nav .nav-icon,.chalet-scope .bottom-nav .nav-label{pointer-events:none}
+ body.chalet-home #main>.view{height:100%;min-height:0}.chalet-home .resort-overview{height:100%;min-height:0}.chalet-home .resort-intro{flex:0 0 auto;margin-bottom:15px}.chalet-home .resort-overview .hero{flex:1;min-height:0}.chalet-home .resort-overview .hero-content{height:100%;min-height:0;padding:22px}.chalet-home .resort-overview .facts-strip{flex:0 0 auto;margin-top:9px}.chalet-home .resort-reviews{margin-top:4px;min-height:32px}
+@media(max-width:999px) and (min-height:568px) and (max-height:740px){.chalet-home .resort-intro{margin-bottom:12px}.chalet-home .resort-intro h1{font-size:23px;line-height:1.4;margin-bottom:5px}.chalet-home .resort-intro p{font-size:13px;line-height:1.75}.chalet-home .resort-overview .hero-content{padding:17px}.chalet-home .resort-overview .hero h2{font-size:27px}.chalet-home .resort-overview .hero p{font-size:13px;line-height:1.7;margin-top:7px}.chalet-home .resort-overview .hero .eyebrow{font-size:11px;margin-bottom:6px}.chalet-home .resort-overview .facts-strip>div{font-size:11px}.chalet-home .resort-overview .facts-strip .icon{width:19px;height:19px}.chalet-home .resort-reviews{min-height:30px;font-size:11px}}
+@media(min-width:1000px) and (min-height:700px){body.chalet-home #main{height:100dvh;min-height:0;padding-top:82px;padding-bottom:102px}body.chalet-home #main>.view{height:100%;min-height:0}.chalet-home .resort-overview{height:100%;min-height:0}.chalet-home .resort-intro{flex:0 0 auto}.chalet-home .resort-overview .hero{flex:1;min-height:0}.chalet-home .resort-overview .hero-content{height:100%;min-height:0}.chalet-home .resort-overview .facts-strip{flex:0 0 auto}}
+.chalet-scope:not(.chalet-home) #main h1{font-size:20px;line-height:1.5}.chalet-services .page-heading{margin-bottom:16px}.chalet-services .service-group h2{font-size:15px;line-height:1.6;margin:18px 0 8px}.chalet-services .services-list{gap:8px}.chalet-services .service-card{min-height:54px;padding:12px 14px;gap:10px;border-radius:12px}.chalet-services .service-card h3{font-size:16px;line-height:1.55}.chalet-services .service-card p{font-size:12px;line-height:1.6;margin-top:3px}.chalet-services .section-heading h2{font-size:16px}.chalet-services .section-heading{margin-top:18px}.chalet-services .explore-link{font-size:14px;min-height:48px;padding:12px 14px}.chalet-unit .detail-actions:empty{display:none}
+@media(min-width:1000px){.chalet-scope:not(.chalet-home) #main h1{font-size:22px}.chalet-scope .resort-contact-expanded{gap:20px}.chalet-scope .resort-contact-expanded .button{min-height:48px}.chalet-scope .resort-contact-expanded .quick-link{min-height:60px}.chalet-scope .resort-app-link{min-height:60px}}
+.chalet-unit .spec-compact .spec-list{gap:8px}
+.chalet-unit .spec-compact .spec-item{display:flex;align-items:center;min-height:44px;padding:10px 12px;line-height:1.55}
+.chalet-unit .spec-stacked .spec-list{grid-template-columns:minmax(0,1fr)}
+body.chalet-scope:not(.focused-view) #main{padding-top:calc(64px + env(safe-area-inset-top,0px) + 12px)}
+.chalet-scope #main .page-heading{display:flex;flex-direction:column;margin-top:0}
+.chalet-scope #main .page-heading h1{order:-1;margin-top:0}
+.chalet-scope #main .page-heading>.eyebrow{margin-top:5px}
+.chalet-home .resort-intro h1{font-size:22px;line-height:1.5}
+.chalet-home .resort-overview .hero h2{font-size:26px}
+@media(max-width:999px) and (max-height:740px){.chalet-home .resort-intro h1{font-size:21px}.chalet-home .resort-overview .hero h2{font-size:24px}}
+@media(min-width:1000px){.chalet-home .resort-intro h1{font-size:26px}.chalet-home .resort-overview .hero h2{font-size:36px}}
+.chalet-scope .bottom-nav.six-items{grid-template-columns:repeat(6,minmax(0,1fr))}
+.chalet-service .service-guide .package-body,.chalet-service .dining-guide-details{padding-inline:12px}
+.chalet-service :is(.service-guide,.dining-guide) .package-gallery{align-items:flex-start;margin:6px 0 14px;background:transparent}
+.chalet-service :is(.service-guide,.dining-guide) .package-gallery .package-image{width:100%;flex:0 0 100%;height:auto;aspect-ratio:auto;align-self:flex-start;padding:0;border:0;background:transparent;box-shadow:none}
+.chalet-service :is(.service-guide,.dining-guide) .package-image img{display:block;width:100%;height:auto;max-height:none;aspect-ratio:auto;object-fit:contain}
+.chalet-service :is(.service-guide,.dining-guide) .inclusions{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-block:12px}
+.chalet-service :is(.service-guide,.dining-guide) .inclusions li{min-width:0;padding:8px 10px;font-size:13px;line-height:1.65}
+.chalet-service :is(.service-guide,.dining-guide) .inclusions .inclusion-wide{grid-column:1/-1}
+.chalet-scope .page-heading>.eyebrow{display:none}
+.chalet-scope .detail-actions:empty{display:none}
+.chalet-scope .spec-floor h3{font-size:13px;color:var(--teal);margin:12px 0 8px}
+.chalet-scope .spec-floor:first-child h3{margin-top:0}
+.chalet-scope .spec-floor+.spec-floor{margin-top:16px}
+.chalet-scope .spec-stacked .spec-item.wide{grid-column:auto}
+.chalet-scope .spec-item:empty,.chalet-scope .spec-list:empty{display:none}
+.chalet-scope .service-guide-prices:has(article:only-child){grid-template-columns:1fr}
+.chalet-tour .tour-view{display:flex;flex-direction:column}
+.chalet-tour #main h1.resort-visual-title{flex:0 0 auto;margin:0;padding:8px 16px 6px;font-size:14px;font-weight:700;line-height:1.5;text-align:center}
+.chalet-tour .tour-frame{flex:1;min-height:0;background:transparent}
+.chalet-scope .bottom-nav.six-items{grid-template-columns:repeat(6,minmax(0,1fr))}
+
+.chalet-scope .bottom-nav .nav-label{font-size:11px}
+.chalet-scope #main:has(.service-guide,.faq-guide){padding-bottom:calc(108px + env(safe-area-inset-bottom,0px))}
+@media(min-width:1000px){.chalet-scope .bottom-nav .nav-label{font-size:13px}}

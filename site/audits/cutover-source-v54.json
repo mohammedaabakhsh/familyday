@@ -1,0 +1,15 @@
+{
+  "guestExactMatch": true,
+  "originalIndexSha256": "0767c307b60736b7e7dfe29c6569d95186e089e7211f5d5f9af61cad4beec3e1",
+  "phaseOneVerifiedAt": "2026-11-25T01:10:54.343714+00:00",
+  "portalHtmlCacheControl": "max-age=600",
+  "guestCatalogueExact": true,
+  "legacyHomeNotRequested": true,
+  "arrangementsReady": true,
+  "orderingFunctionalChecks": "passed",
+  "chaletFunctionalChecks": "passed",
+  "arrangementsCatalogueChecks": "passed",
+  "catalogueBusinessDataUnchanged": true,
+  "originalPhotosAndFontsChanged": false,
+  "legacyDeletionApproved": false
+}

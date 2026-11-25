@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://familydaystay.com/</loc></url>
+  <url><loc>https://familydaystay.com/arrangements/</loc></url>
   <url><loc>https://familydaystay.com/bohemian-tour/</loc></url>
   <url><loc>https://familydaystay.com/cabins/</loc></url>
   <url><loc>https://familydaystay.com/cabins/bohemian/</loc></url>
@@ -21,6 +22,7 @@
   <url><loc>https://familydaystay.com/chalet/contact/</loc></url>
   <url><loc>https://familydaystay.com/chalet/details/</loc></url>
   <url><loc>https://familydaystay.com/chalet/faq/</loc></url>
+  <url><loc>https://familydaystay.com/chalet/guest-services/</loc></url>
   <url><loc>https://familydaystay.com/chalet/services/</loc></url>
   <url><loc>https://familydaystay.com/chalet/services/games/</loc></url>
   <url><loc>https://familydaystay.com/chalet/services/water-games/</loc></url>
@@ -29,12 +31,14 @@
   <url><loc>https://familydaystay.com/dome-tour/</loc></url>
   <url><loc>https://familydaystay.com/french-tour/</loc></url>
   <url><loc>https://familydaystay.com/greek-tour/</loc></url>
+  <url><loc>https://familydaystay.com/guest-services/</loc></url>
   <url><loc>https://familydaystay.com/menu/</loc></url>
   <url><loc>https://familydaystay.com/palm-tour/</loc></url>
   <url><loc>https://familydaystay.com/panoramic-tour/</loc></url>
   <url><loc>https://familydaystay.com/pyramid-tour/</loc></url>
   <url><loc>https://familydaystay.com/resort-map/</loc></url>
   <url><loc>https://familydaystay.com/resort/</loc></url>
+  <url><loc>https://familydaystay.com/resort/compare/</loc></url>
   <url><loc>https://familydaystay.com/resort/contact/</loc></url>
   <url><loc>https://familydaystay.com/resort/faq/</loc></url>
   <url><loc>https://familydaystay.com/royal-tour/</loc></url>
@@ -51,9 +55,11 @@
   <url><loc>https://familydaystay.com/services/share-and-win/</loc></url>
   <url><loc>https://familydaystay.com/services/water-games/</loc></url>
   <url><loc>https://familydaystay.com/stay/</loc></url>
+  <url><loc>https://familydaystay.com/stay/compare/</loc></url>
   <url><loc>https://familydaystay.com/stay/contact/</loc></url>
   <url><loc>https://familydaystay.com/stay/faq/</loc></url>
   <url><loc>https://familydaystay.com/stay/ground-floor/</loc></url>
   <url><loc>https://familydaystay.com/stay/sections/</loc></url>
+  <url><loc>https://familydaystay.com/stay/services/</loc></url>
   <url><loc>https://familydaystay.com/stay/upper-floor/</loc></url>
 </urlset>

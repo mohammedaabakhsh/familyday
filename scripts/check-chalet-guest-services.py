@@ -87,7 +87,7 @@ with sync_playwright() as p:
    assert page.locator('#share-dialog').is_visible();assert page.locator('#share-link').input_value()==BASE+PATH
   ctx.close()
  # Missing source is retryable; unsupported services and malformed saved orders cannot be restored.
- ctx=b.new_context();ctx.route('**/index.html',lambda r:r.fulfill(status=503,body='Unavailable'))
+ ctx=b.new_context();ctx.route('**/data/services.json?*',lambda r:r.fulfill(status=503,body='Unavailable'))
  page=ctx.new_page();page.goto(BASE+PATH,wait_until='networkidle')
  assert page.locator('#services-error').is_visible() and page.locator('#reload-services').is_visible()
  assert page.locator('#water-card').is_disabled();ctx.close()

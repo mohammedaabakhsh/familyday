@@ -1,7 +1,7 @@
 """Guard the guide's read-only catalogue against changes in main-site card templates."""
 from pathlib import Path
 from playwright.sync_api import sync_playwright
-import sys
+import sys,json
 BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8042'
 with sync_playwright() as p:
  browser=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
@@ -27,13 +27,15 @@ with sync_playwright() as p:
      assert first.locator('img').first.is_visible()
      assert first.locator('.package-details-body').inner_text()
    assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')
-  # Add-on copy must come from the shared source, even though it is inside <template>.
-  source=Path('index.html').read_text().replace('class="jl-addon-price">170 ريال','class="jl-addon-price">171 ريال')
-  page.route('**/index.html',lambda route:route.fulfill(body=source,content_type='text/html'))
+  # The add-on is owned by the shared independent catalogue.
+  source=json.loads(Path('data/services.json').read_text())
+  source['arrangements']['seating']['extra']['price']='171 ريال'
+  page.route('**/data/services.json?*',lambda route:route.fulfill(body=json.dumps(source,ensure_ascii=False),content_type='application/json'))
+  page.route('**/index.html',lambda route:route.fulfill(status=503,body='Legacy home is unavailable'))
   page.goto(BASE+'/services-guide/#seating',wait_until='networkidle')
   page.reload(wait_until='networkidle')
   assert page.locator('.seating-extra-price').inner_text()=='171 ريال'
   assert not errors,errors
-  print(width,'PASS main/WhatsApp links, all three sections, package expansion, template source and overflow',flush=True)
+  print(width,'PASS original links, three sections, expansion, independent catalogue update and overflow',flush=True)
   page.close()
  browser.close()

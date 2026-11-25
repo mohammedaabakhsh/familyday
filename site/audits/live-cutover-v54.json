@@ -1,0 +1,719 @@
+{
+  "routes": [
+    {
+      "path": "/",
+      "finalPath": "/"
+    },
+    {
+      "path": "/arrangements/",
+      "finalPath": "/services-guide/"
+    },
+    {
+      "path": "/bohemian-tour/",
+      "finalPath": "/bohemian-tour/"
+    },
+    {
+      "path": "/cabins/",
+      "finalPath": "/cabins/"
+    },
+    {
+      "path": "/cabins/bohemian/",
+      "finalPath": "/cabins/bohemian/"
+    },
+    {
+      "path": "/cabins/classic/",
+      "finalPath": "/cabins/classic/"
+    },
+    {
+      "path": "/cabins/dome-1/",
+      "finalPath": "/cabins/dome-1/"
+    },
+    {
+      "path": "/cabins/dome-2/",
+      "finalPath": "/cabins/dome-2/"
+    },
+    {
+      "path": "/cabins/french/",
+      "finalPath": "/cabins/french/"
+    },
+    {
+      "path": "/cabins/greek-1/",
+      "finalPath": "/cabins/greek-1/"
+    },
+    {
+      "path": "/cabins/greek-2/",
+      "finalPath": "/cabins/greek-2/"
+    },
+    {
+      "path": "/cabins/palm-beach/",
+      "finalPath": "/cabins/palm-beach/"
+    },
+    {
+      "path": "/cabins/panoramic/",
+      "finalPath": "/cabins/panoramic/"
+    },
+    {
+      "path": "/cabins/pyramid/",
+      "finalPath": "/cabins/pyramid/"
+    },
+    {
+      "path": "/cabins/royal/",
+      "finalPath": "/cabins/royal/"
+    },
+    {
+      "path": "/cabins/rustic/",
+      "finalPath": "/cabins/rustic/"
+    },
+    {
+      "path": "/cabins/shared-garden/",
+      "finalPath": "/cabins/shared-garden/"
+    },
+    {
+      "path": "/chalet-map/",
+      "finalPath": "/chalet-map/"
+    },
+    {
+      "path": "/chalet/",
+      "finalPath": "/chalet/"
+    },
+    {
+      "path": "/chalet/checkout/",
+      "finalPath": "/chalet/services/"
+    },
+    {
+      "path": "/chalet/contact/",
+      "finalPath": "/chalet/contact/"
+    },
+    {
+      "path": "/chalet/details/",
+      "finalPath": "/chalet/details/"
+    },
+    {
+      "path": "/chalet/faq/",
+      "finalPath": "/chalet/faq/"
+    },
+    {
+      "path": "/chalet/guest-services/",
+      "finalPath": "/chalet/guest-services/"
+    },
+    {
+      "path": "/chalet/order/",
+      "finalPath": "/chalet/services/"
+    },
+    {
+      "path": "/chalet/services/",
+      "finalPath": "/chalet/services/"
+    },
+    {
+      "path": "/chalet/services/games/",
+      "finalPath": "/chalet/services/games/"
+    },
+    {
+      "path": "/chalet/services/water-games/",
+      "finalPath": "/chalet/services/water-games/"
+    },
+    {
+      "path": "/classic-tour/",
+      "finalPath": "/classic-tour/"
+    },
+    {
+      "path": "/contest/",
+      "finalPath": "/contest/"
+    },
+    {
+      "path": "/dome-tour/",
+      "finalPath": "/dome-tour/"
+    },
+    {
+      "path": "/french-tour/",
+      "finalPath": "/french-tour/"
+    },
+    {
+      "path": "/greek-tour/",
+      "finalPath": "/greek-tour/"
+    },
+    {
+      "path": "/guest-services/",
+      "finalPath": "/guest-services/"
+    },
+    {
+      "path": "/menu/",
+      "finalPath": "/menu/"
+    },
+    {
+      "path": "/palm-tour/",
+      "finalPath": "/palm-tour/"
+    },
+    {
+      "path": "/panoramic-tour/",
+      "finalPath": "/panoramic-tour/"
+    },
+    {
+      "path": "/pyramid-tour/",
+      "finalPath": "/pyramid-tour/"
+    },
+    {
+      "path": "/resort-map/",
+      "finalPath": "/resort-map/"
+    },
+    {
+      "path": "/resort/",
+      "finalPath": "/resort/"
+    },
+    {
+      "path": "/resort/checkout/",
+      "finalPath": "/services/"
+    },
+    {
+      "path": "/resort/compare/",
+      "finalPath": "/resort/compare/"
+    },
+    {
+      "path": "/resort/contact/",
+      "finalPath": "/resort/contact/"
+    },
+    {
+      "path": "/resort/faq/",
+      "finalPath": "/resort/faq/"
+    },
+    {
+      "path": "/resort/order/",
+      "finalPath": "/services/"
+    },
+    {
+      "path": "/royal-tour/",
+      "finalPath": "/royal-tour/"
+    },
+    {
+      "path": "/rustic-tour/",
+      "finalPath": "/rustic-tour/"
+    },
+    {
+      "path": "/services-guide/",
+      "finalPath": "/services-guide/"
+    },
+    {
+      "path": "/services/",
+      "finalPath": "/services/"
+    },
+    {
+      "path": "/services/cinema/",
+      "finalPath": "/services/cinema/"
+    },
+    {
+      "path": "/services/coordination/",
+      "finalPath": "/services/coordination/"
+    },
+    {
+      "path": "/services/dining-tables/",
+      "finalPath": "/services/dining-tables/"
+    },
+    {
+      "path": "/services/games/",
+      "finalPath": "/services/games/"
+    },
+    {
+      "path": "/services/hospitality/packages/",
+      "finalPath": "/services/hospitality/packages/"
+    },
+    {
+      "path": "/services/loyalty/",
+      "finalPath": "/services/loyalty/"
+    },
+    {
+      "path": "/services/outdoor-seating/",
+      "finalPath": "/services/outdoor-seating/"
+    },
+    {
+      "path": "/services/share-and-win/",
+      "finalPath": "/services/share-and-win/"
+    },
+    {
+      "path": "/services/water-games/",
+      "finalPath": "/services/water-games/"
+    },
+    {
+      "path": "/stay/",
+      "finalPath": "/stay/"
+    },
+    {
+      "path": "/stay/checkout/",
+      "finalPath": "/stay/services/"
+    },
+    {
+      "path": "/stay/compare/",
+      "finalPath": "/stay/compare/"
+    },
+    {
+      "path": "/stay/contact/",
+      "finalPath": "/stay/contact/"
+    },
+    {
+      "path": "/stay/faq/",
+      "finalPath": "/stay/faq/"
+    },
+    {
+      "path": "/stay/ground-floor/",
+      "finalPath": "/stay/ground-floor/"
+    },
+    {
+      "path": "/stay/order/",
+      "finalPath": "/stay/services/"
+    },
+    {
+      "path": "/stay/sections/",
+      "finalPath": "/stay/sections/"
+    },
+    {
+      "path": "/stay/services/",
+      "finalPath": "/stay/services/"
+    },
+    {
+      "path": "/stay/upper-floor/",
+      "finalPath": "/stay/upper-floor/"
+    }
+  ],
+  "previewAliases": [
+    "/",
+    "/arrangements/",
+    "/bohemian-tour/",
+    "/cabins/",
+    "/cabins/bohemian/",
+    "/cabins/classic/",
+    "/cabins/dome-1/",
+    "/cabins/dome-2/",
+    "/cabins/french/",
+    "/cabins/greek-1/",
+    "/cabins/greek-2/",
+    "/cabins/palm-beach/",
+    "/cabins/panoramic/",
+    "/cabins/pyramid/",
+    "/cabins/royal/",
+    "/cabins/rustic/",
+    "/cabins/shared-garden/",
+    "/chalet-map/",
+    "/chalet/",
+    "/chalet/checkout/",
+    "/chalet/contact/",
+    "/chalet/details/",
+    "/chalet/faq/",
+    "/chalet/guest-services/",
+    "/chalet/order/",
+    "/chalet/services/",
+    "/chalet/services/games/",
+    "/chalet/services/water-games/",
+    "/classic-tour/",
+    "/contest/",
+    "/dome-tour/",
+    "/french-tour/",
+    "/greek-tour/",
+    "/guest-services/",
+    "/menu/",
+    "/palm-tour/",
+    "/panoramic-tour/",
+    "/pyramid-tour/",
+    "/resort-map/",
+    "/resort/",
+    "/resort/checkout/",
+    "/resort/compare/",
+    "/resort/contact/",
+    "/resort/faq/",
+    "/resort/order/",
+    "/royal-tour/",
+    "/rustic-tour/",
+    "/services-guide/",
+    "/services/",
+    "/services/cinema/",
+    "/services/coordination/",
+    "/services/dining-tables/",
+    "/services/games/",
+    "/services/hospitality/packages/",
+    "/services/loyalty/",
+    "/services/outdoor-seating/",
+    "/services/share-and-win/",
+    "/services/water-games/",
+    "/stay/",
+    "/stay/checkout/",
+    "/stay/compare/",
+    "/stay/contact/",
+    "/stay/faq/",
+    "/stay/ground-floor/",
+    "/stay/order/",
+    "/stay/sections/",
+    "/stay/services/",
+    "/stay/upper-floor/"
+  ],
+  "legacyHashes": [
+    {
+      "hash": "home=resort",
+      "target": "/resort/"
+    },
+    {
+      "hash": "contact=resort",
+      "target": "/resort/contact/"
+    },
+    {
+      "hash": "home=stay",
+      "target": "/stay/"
+    },
+    {
+      "hash": "contact=stay",
+      "target": "/stay/contact/"
+    },
+    {
+      "hash": "home=chalet",
+      "target": "/chalet/"
+    },
+    {
+      "hash": "services=chalet",
+      "target": "/chalet/services/"
+    },
+    {
+      "hash": "tarfihi=chalet",
+      "target": "/chalet/services/games/"
+    },
+    {
+      "hash": "maiya=chalet",
+      "target": "/chalet/services/water-games/"
+    },
+    {
+      "hash": "contact=chalet",
+      "target": "/chalet/contact/"
+    },
+    {
+      "hash": "faq",
+      "target": "/resort/faq/"
+    },
+    {
+      "hash": "faq2",
+      "target": "/stay/faq/"
+    },
+    {
+      "hash": "chalet-faq",
+      "target": "/chalet/faq/"
+    },
+    {
+      "hash": "resort",
+      "target": "/cabins/"
+    },
+    {
+      "hash": "chalet",
+      "target": "/stay/sections/"
+    },
+    {
+      "hash": "chalet-detail",
+      "target": "/chalet/details/"
+    },
+    {
+      "hash": "services",
+      "target": "/services/"
+    },
+    {
+      "hash": "hospitality=hospitality",
+      "target": "/services/hospitality/packages/"
+    },
+    {
+      "hash": "hospitality=coordination",
+      "target": "/services/coordination/"
+    },
+    {
+      "hash": "setups=cinema",
+      "target": "/services/cinema/"
+    },
+    {
+      "hash": "maiya",
+      "target": "/services/water-games/"
+    },
+    {
+      "hash": "setups=seating",
+      "target": "/services/outdoor-seating/"
+    },
+    {
+      "hash": "tarfihi",
+      "target": "/services/games/"
+    },
+    {
+      "hash": "setups=dining",
+      "target": "/services/dining-tables/"
+    },
+    {
+      "hash": "sharik",
+      "target": "/services/share-and-win/"
+    },
+    {
+      "hash": "walaa",
+      "target": "/services/loyalty/"
+    },
+    {
+      "hash": "contest",
+      "target": "/contest/"
+    },
+    {
+      "hash": "menu",
+      "target": "/menu/"
+    },
+    {
+      "hash": "map",
+      "target": "/resort-map/"
+    },
+    {
+      "hash": "chalet-map",
+      "target": "/chalet-map/"
+    },
+    {
+      "hash": "cabin=1",
+      "target": "/cabins/dome-1/"
+    },
+    {
+      "hash": "cabin=12",
+      "target": "/cabins/dome-2/"
+    },
+    {
+      "hash": "cabin=2",
+      "target": "/cabins/pyramid/"
+    },
+    {
+      "hash": "cabin=3",
+      "target": "/cabins/classic/"
+    },
+    {
+      "hash": "cabin=4",
+      "target": "/cabins/greek-1/"
+    },
+    {
+      "hash": "cabin=13",
+      "target": "/cabins/greek-2/"
+    },
+    {
+      "hash": "cabin=5",
+      "target": "/cabins/palm-beach/"
+    },
+    {
+      "hash": "cabin=6",
+      "target": "/cabins/bohemian/"
+    },
+    {
+      "hash": "cabin=7",
+      "target": "/cabins/french/"
+    },
+    {
+      "hash": "cabin=8",
+      "target": "/cabins/rustic/"
+    },
+    {
+      "hash": "cabin=9",
+      "target": "/cabins/royal/"
+    },
+    {
+      "hash": "cabin=10",
+      "target": "/cabins/panoramic/"
+    },
+    {
+      "hash": "cabin=11",
+      "target": "/cabins/shared-garden/"
+    },
+    {
+      "hash": "cabin=20",
+      "target": "/stay/ground-floor/"
+    },
+    {
+      "hash": "cabin=21",
+      "target": "/stay/upper-floor/"
+    }
+  ],
+  "units": [
+    {
+      "id": 1,
+      "photos": 8,
+      "facts": 31
+    },
+    {
+      "id": 12,
+      "photos": 8,
+      "facts": 31
+    },
+    {
+      "id": 2,
+      "photos": 8,
+      "facts": 31
+    },
+    {
+      "id": 3,
+      "photos": 8,
+      "facts": 32
+    },
+    {
+      "id": 4,
+      "photos": 9,
+      "facts": 31
+    },
+    {
+      "id": 13,
+      "photos": 9,
+      "facts": 31
+    },
+    {
+      "id": 5,
+      "photos": 9,
+      "facts": 31
+    },
+    {
+      "id": 6,
+      "photos": 9,
+      "facts": 31
+    },
+    {
+      "id": 7,
+      "photos": 9,
+      "facts": 31
+    },
+    {
+      "id": 8,
+      "photos": 9,
+      "facts": 31
+    },
+    {
+      "id": 9,
+      "photos": 9,
+      "facts": 33
+    },
+    {
+      "id": 10,
+      "photos": 10,
+      "facts": 32
+    },
+    {
+      "id": 11,
+      "photos": 5,
+      "facts": 4
+    },
+    {
+      "id": 20,
+      "photos": 12,
+      "facts": 26
+    },
+    {
+      "id": 21,
+      "photos": 13,
+      "facts": 24
+    },
+    {
+      "id": 30,
+      "photos": 18,
+      "facts": 31
+    }
+  ],
+  "viewports": [
+    {
+      "path": "/",
+      "width": 320
+    },
+    {
+      "path": "/resort/",
+      "width": 320
+    },
+    {
+      "path": "/cabins/",
+      "width": 320
+    },
+    {
+      "path": "/resort/contact/",
+      "width": 320
+    },
+    {
+      "path": "/resort-map/",
+      "width": 320
+    },
+    {
+      "path": "/chalet/",
+      "width": 320
+    },
+    {
+      "path": "/chalet/details/",
+      "width": 320
+    },
+    {
+      "path": "/chalet-map/",
+      "width": 320
+    },
+    {
+      "path": "/stay/",
+      "width": 320
+    },
+    {
+      "path": "/stay/sections/",
+      "width": 320
+    },
+    {
+      "path": "/stay/compare/",
+      "width": 320
+    },
+    {
+      "path": "/stay/services/",
+      "width": 320
+    },
+    {
+      "path": "/stay/contact/",
+      "width": 320
+    },
+    {
+      "path": "/",
+      "width": 1440
+    },
+    {
+      "path": "/resort/",
+      "width": 1440
+    },
+    {
+      "path": "/cabins/",
+      "width": 1440
+    },
+    {
+      "path": "/resort/contact/",
+      "width": 1440
+    },
+    {
+      "path": "/resort-map/",
+      "width": 1440
+    },
+    {
+      "path": "/chalet/",
+      "width": 1440
+    },
+    {
+      "path": "/chalet/details/",
+      "width": 1440
+    },
+    {
+      "path": "/chalet-map/",
+      "width": 1440
+    },
+    {
+      "path": "/stay/",
+      "width": 1440
+    },
+    {
+      "path": "/stay/sections/",
+      "width": 1440
+    },
+    {
+      "path": "/stay/compare/",
+      "width": 1440
+    },
+    {
+      "path": "/stay/services/",
+      "width": 1440
+    },
+    {
+      "path": "/stay/contact/",
+      "width": 1440
+    }
+  ],
+  "errors": [],
+  "badResponses": [],
+  "badLinks": [],
+  "rollbackVerified": true,
+  "originalMetadataRoutes": 58,
+  "portalHandoffIsDocumentNavigation": true,
+  "semanticQueryPreserved": true
+}

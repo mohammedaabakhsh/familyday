@@ -1,0 +1,3016 @@
+{
+  "reviewDate": "2026-11-25",
+  "auditedCommit": "0fca20e7755a24202d567d669d6628daa6dda9aa",
+  "publishedVersion": "20261125-live-v54",
+  "scope": "Read-only comparison; no UI or production edits",
+  "rendered": {
+    "routes": [
+      {
+        "path": "/preview/",
+        "heading": "اختر وجهتك"
+      },
+      {
+        "path": "/preview/arrangements/",
+        "heading": "تجهيز مناسبتكم"
+      },
+      {
+        "path": "/preview/bohemian-tour/",
+        "heading": "استكشف الكوخ البوهيمي"
+      },
+      {
+        "path": "/preview/cabins/",
+        "heading": "اختر كوخكم"
+      },
+      {
+        "path": "/preview/cabins/bohemian/",
+        "heading": "الكوخ البوهيمي (مناسب للعائلات)"
+      },
+      {
+        "path": "/preview/cabins/classic/",
+        "heading": "الكوخ الكلاسيكي (مناسب للعائلات)"
+      },
+      {
+        "path": "/preview/cabins/dome-1/",
+        "heading": "بيت الدوم 1 (مناسب للأزواج)"
+      },
+      {
+        "path": "/preview/cabins/dome-2/",
+        "heading": "بيت الدوم 2 (مناسب للأزواج)"
+      },
+      {
+        "path": "/preview/cabins/french/",
+        "heading": "الكوخ الفرنسي (مناسب للعائلات)"
+      },
+      {
+        "path": "/preview/cabins/greek-1/",
+        "heading": "البيت اليوناني 1 (مناسب للعائلات)"
+      },
+      {
+        "path": "/preview/cabins/greek-2/",
+        "heading": "البيت اليوناني 2 (مناسب للعائلات)"
+      },
+      {
+        "path": "/preview/cabins/palm-beach/",
+        "heading": "كوخ بالم بيتش (مناسب للعائلات)"
+      },
+      {
+        "path": "/preview/cabins/panoramic/",
+        "heading": "البيت البانورامي (مناسب للعائلات)"
+      },
+      {
+        "path": "/preview/cabins/pyramid/",
+        "heading": "الكوخ الهرمي (مناسب للأزواج)"
+      },
+      {
+        "path": "/preview/cabins/royal/",
+        "heading": "كوخ رويال (مناسب للعائلات)"
+      },
+      {
+        "path": "/preview/cabins/rustic/",
+        "heading": "الكوخ الريفي (مناسب للعائلات)"
+      },
+      {
+        "path": "/preview/cabins/shared-garden/",
+        "heading": "الحديقة المشتركة"
+      },
+      {
+        "path": "/preview/chalet-map/",
+        "heading": "استكشف الشاليه من الداخل"
+      },
+      {
+        "path": "/preview/chalet/",
+        "heading": "دليلكم لشاليه يوم العائلة"
+      },
+      {
+        "path": "/preview/chalet/checkout/",
+        "heading": "خدمات الشاليه"
+      },
+      {
+        "path": "/preview/chalet/contact/",
+        "heading": "الموقع والتواصل"
+      },
+      {
+        "path": "/preview/chalet/details/",
+        "heading": "شاليه يوم العائلة (مناسب للعائلات)"
+      },
+      {
+        "path": "/preview/chalet/faq/",
+        "heading": "الأسئلة الشائعة"
+      },
+      {
+        "path": "/preview/chalet/guest-services/",
+        "heading": "خدمات إقامتك"
+      },
+      {
+        "path": "/preview/chalet/order/",
+        "heading": "خدمات الشاليه"
+      },
+      {
+        "path": "/preview/chalet/services/",
+        "heading": "خدمات الشاليه"
+      },
+      {
+        "path": "/preview/chalet/services/games/",
+        "heading": "الألعاب الترفيهية"
+      },
+      {
+        "path": "/preview/chalet/services/water-games/",
+        "heading": "الألعاب المائية"
+      },
+      {
+        "path": "/preview/classic-tour/",
+        "heading": "استكشف الكوخ الكلاسيكي"
+      },
+      {
+        "path": "/preview/contest/",
+        "heading": "شارك بفيديو… ويومك الجاي علينا"
+      },
+      {
+        "path": "/preview/dome-tour/",
+        "heading": "استكشف بيت الدوم 1"
+      },
+      {
+        "path": "/preview/french-tour/",
+        "heading": "استكشف الكوخ الفرنسي"
+      },
+      {
+        "path": "/preview/greek-tour/",
+        "heading": "استكشف البيت اليوناني 1"
+      },
+      {
+        "path": "/preview/guest-services/",
+        "heading": "خدمات إقامتك"
+      },
+      {
+        "path": "/preview/menu/",
+        "heading": "المطعم"
+      },
+      {
+        "path": "/preview/palm-tour/",
+        "heading": "استكشف كوخ بالم بيتش"
+      },
+      {
+        "path": "/preview/panoramic-tour/",
+        "heading": "استكشف البيت البانورامي"
+      },
+      {
+        "path": "/preview/pyramid-tour/",
+        "heading": "استكشف الكوخ الهرمي"
+      },
+      {
+        "path": "/preview/resort-map/",
+        "heading": "خريطة الأكواخ التفاعلية"
+      },
+      {
+        "path": "/preview/resort/",
+        "heading": "دليلكم لمنتجع يوم العائلة"
+      },
+      {
+        "path": "/preview/resort/checkout/",
+        "heading": "خدمات المنتجع"
+      },
+      {
+        "path": "/preview/resort/compare/",
+        "heading": "مقارنة الأكواخ"
+      },
+      {
+        "path": "/preview/resort/contact/",
+        "heading": "الموقع والتواصل"
+      },
+      {
+        "path": "/preview/resort/faq/",
+        "heading": "الأسئلة الشائعة"
+      },
+      {
+        "path": "/preview/resort/order/",
+        "heading": "خدمات المنتجع"
+      },
+      {
+        "path": "/preview/royal-tour/",
+        "heading": "استكشف كوخ رويال"
+      },
+      {
+        "path": "/preview/rustic-tour/",
+        "heading": "استكشف الكوخ الريفي"
+      },
+      {
+        "path": "/preview/services-guide/",
+        "heading": "تجهيز مناسبتكم"
+      },
+      {
+        "path": "/preview/services/",
+        "heading": "خدمات المنتجع"
+      },
+      {
+        "path": "/preview/services/cinema/",
+        "heading": "جلسة السينما"
+      },
+      {
+        "path": "/preview/services/coordination/",
+        "heading": "التنسيقات"
+      },
+      {
+        "path": "/preview/services/dining-tables/",
+        "heading": "طاولات الطعام"
+      },
+      {
+        "path": "/preview/services/games/",
+        "heading": "الألعاب الترفيهية"
+      },
+      {
+        "path": "/preview/services/hospitality/packages/",
+        "heading": "الضيافة"
+      },
+      {
+        "path": "/preview/services/loyalty/",
+        "heading": "بطاقة الولاء"
+      },
+      {
+        "path": "/preview/services/outdoor-seating/",
+        "heading": "الجلسات الخارجية"
+      },
+      {
+        "path": "/preview/services/share-and-win/",
+        "heading": "شارك واربح"
+      },
+      {
+        "path": "/preview/services/water-games/",
+        "heading": "الألعاب المائية"
+      },
+      {
+        "path": "/preview/stay/",
+        "heading": "دليلكم لاستراحة يوم العائلة"
+      },
+      {
+        "path": "/preview/stay/checkout/",
+        "heading": "خدمات الاستراحة"
+      },
+      {
+        "path": "/preview/stay/compare/",
+        "heading": "مقارنة قسمي الاستراحة"
+      },
+      {
+        "path": "/preview/stay/contact/",
+        "heading": "الموقع والتواصل"
+      },
+      {
+        "path": "/preview/stay/faq/",
+        "heading": "الأسئلة الشائعة"
+      },
+      {
+        "path": "/preview/stay/ground-floor/",
+        "heading": "القسم الأول – الدور الأرضي (مناسب للتجمعات الكبيرة)"
+      },
+      {
+        "path": "/preview/stay/order/",
+        "heading": "خدمات الاستراحة"
+      },
+      {
+        "path": "/preview/stay/sections/",
+        "heading": "اختر قسمكم"
+      },
+      {
+        "path": "/preview/stay/services/",
+        "heading": "خدمات الاستراحة"
+      },
+      {
+        "path": "/preview/stay/upper-floor/",
+        "heading": "القسم الثاني – الدور العلوي (مناسب للتجمعات الكبيرة)"
+      }
+    ],
+    "units": [
+      {
+        "path": "/cabins/dome-1/",
+        "images": 8,
+        "sections": 5,
+        "missing": []
+      },
+      {
+        "path": "/cabins/dome-2/",
+        "images": 8,
+        "sections": 5,
+        "missing": []
+      },
+      {
+        "path": "/cabins/pyramid/",
+        "images": 8,
+        "sections": 5,
+        "missing": []
+      },
+      {
+        "path": "/cabins/classic/",
+        "images": 8,
+        "sections": 5,
+        "missing": []
+      },
+      {
+        "path": "/cabins/greek-1/",
+        "images": 9,
+        "sections": 5,
+        "missing": []
+      },
+      {
+        "path": "/cabins/greek-2/",
+        "images": 9,
+        "sections": 5,
+        "missing": []
+      },
+      {
+        "path": "/cabins/palm-beach/",
+        "images": 9,
+        "sections": 5,
+        "missing": []
+      },
+      {
+        "path": "/cabins/bohemian/",
+        "images": 9,
+        "sections": 5,
+        "missing": []
+      },
+      {
+        "path": "/cabins/french/",
+        "images": 9,
+        "sections": 5,
+        "missing": []
+      },
+      {
+        "path": "/cabins/rustic/",
+        "images": 9,
+        "sections": 5,
+        "missing": []
+      },
+      {
+        "path": "/cabins/royal/",
+        "images": 9,
+        "sections": 5,
+        "missing": []
+      },
+      {
+        "path": "/cabins/panoramic/",
+        "images": 10,
+        "sections": 5,
+        "missing": []
+      },
+      {
+        "path": "/cabins/shared-garden/",
+        "images": 5,
+        "sections": 0,
+        "missing": []
+      },
+      {
+        "path": "/stay/ground-floor/",
+        "images": 12,
+        "sections": 5,
+        "missing": []
+      },
+      {
+        "path": "/stay/upper-floor/",
+        "images": 13,
+        "sections": 5,
+        "missing": []
+      },
+      {
+        "path": "/chalet/details/",
+        "images": 18,
+        "sections": 5,
+        "missing": []
+      }
+    ],
+    "services": [
+      {
+        "id": "menu",
+        "path": "/menu/",
+        "expectedFacts": 7,
+        "missing": [],
+        "portal": [
+          "https://familydaystay.com/guest-services/#restaurant"
+        ]
+      },
+      {
+        "id": "dining",
+        "path": "/services/dining-tables/",
+        "expectedFacts": 16,
+        "missing": [],
+        "portal": [
+          "https://familydaystay.com/arrangements/#dining"
+        ]
+      },
+      {
+        "id": "games",
+        "path": "/services/games/",
+        "expectedFacts": 13,
+        "missing": [],
+        "portal": [
+          "https://familydaystay.com/guest-services/#games"
+        ]
+      },
+      {
+        "id": "water",
+        "path": "/services/water-games/",
+        "expectedFacts": 2,
+        "missing": [],
+        "portal": [
+          "https://familydaystay.com/guest-services/#water"
+        ]
+      },
+      {
+        "id": "cinema",
+        "path": "/services/cinema/",
+        "expectedFacts": 9,
+        "missing": [],
+        "portal": [
+          "https://familydaystay.com/guest-services/#cinema"
+        ]
+      },
+      {
+        "id": "hospitality",
+        "path": "/services/hospitality/packages/",
+        "expectedFacts": 26,
+        "missing": [],
+        "portal": [
+          "https://familydaystay.com/guest-services/#hospitality"
+        ]
+      },
+      {
+        "id": "coordination",
+        "path": "/services/coordination/",
+        "expectedFacts": 104,
+        "missing": [],
+        "portal": [
+          "https://familydaystay.com/arrangements/#coordination"
+        ]
+      },
+      {
+        "id": "seating",
+        "path": "/services/outdoor-seating/",
+        "expectedFacts": 27,
+        "missing": [],
+        "portal": [
+          "https://familydaystay.com/arrangements/#seating"
+        ]
+      },
+      {
+        "id": "competition",
+        "path": "/contest/",
+        "expectedFacts": 0,
+        "missing": [],
+        "portal": []
+      },
+      {
+        "id": "video",
+        "path": "/services/share-and-win/",
+        "expectedFacts": 0,
+        "missing": [],
+        "portal": []
+      },
+      {
+        "id": "loyalty",
+        "path": "/services/loyalty/",
+        "expectedFacts": 0,
+        "missing": [],
+        "portal": []
+      }
+    ],
+    "campaigns": [
+      {
+        "id": "competition",
+        "missingItems": [],
+        "paragraphsToReview": [],
+        "missingLinks": []
+      },
+      {
+        "id": "video",
+        "missingItems": [],
+        "paragraphsToReview": [],
+        "missingLinks": []
+      },
+      {
+        "id": "loyalty",
+        "missingItems": [],
+        "paragraphsToReview": [],
+        "missingLinks": []
+      }
+    ],
+    "contacts": [
+      {
+        "venue": "resort",
+        "originalLinks": 9,
+        "missing": []
+      },
+      {
+        "venue": "stay",
+        "originalLinks": 9,
+        "missing": []
+      },
+      {
+        "venue": "chalet",
+        "originalLinks": 9,
+        "missing": []
+      }
+    ],
+    "faqs": {
+      "resort": {
+        "original": 29,
+        "newEntries": 22,
+        "coverage": "each original once"
+      },
+      "stay": {
+        "original": 22,
+        "newEntries": 16,
+        "coverage": "each original once"
+      },
+      "chalet": {
+        "original": 19,
+        "newEntries": 14,
+        "coverage": "each original once"
+      }
+    },
+    "legacyHashes": [
+      {
+        "hash": "home=resort",
+        "path": "/resort/"
+      },
+      {
+        "hash": "contact=resort",
+        "path": "/resort/contact/"
+      },
+      {
+        "hash": "home=stay",
+        "path": "/stay/"
+      },
+      {
+        "hash": "contact=stay",
+        "path": "/stay/contact/"
+      },
+      {
+        "hash": "home=chalet",
+        "path": "/chalet/"
+      },
+      {
+        "hash": "services=chalet",
+        "path": "/chalet/services/"
+      },
+      {
+        "hash": "tarfihi=chalet",
+        "path": "/chalet/services/games/"
+      },
+      {
+        "hash": "maiya=chalet",
+        "path": "/chalet/services/water-games/"
+      },
+      {
+        "hash": "contact=chalet",
+        "path": "/chalet/contact/"
+      },
+      {
+        "hash": "faq",
+        "path": "/resort/faq/"
+      },
+      {
+        "hash": "faq2",
+        "path": "/stay/faq/"
+      },
+      {
+        "hash": "chalet-faq",
+        "path": "/chalet/faq/"
+      },
+      {
+        "hash": "resort",
+        "path": "/cabins/"
+      },
+      {
+        "hash": "chalet",
+        "path": "/stay/sections/"
+      },
+      {
+        "hash": "chalet-detail",
+        "path": "/chalet/details/"
+      },
+      {
+        "hash": "services",
+        "path": "/services/"
+      },
+      {
+        "hash": "hospitality=hospitality",
+        "path": "/services/hospitality/packages/"
+      },
+      {
+        "hash": "hospitality=coordination",
+        "path": "/services/coordination/"
+      },
+      {
+        "hash": "setups=cinema",
+        "path": "/services/cinema/"
+      },
+      {
+        "hash": "maiya",
+        "path": "/services/water-games/"
+      },
+      {
+        "hash": "setups=seating",
+        "path": "/services/outdoor-seating/"
+      },
+      {
+        "hash": "tarfihi",
+        "path": "/services/games/"
+      },
+      {
+        "hash": "setups=dining",
+        "path": "/services/dining-tables/"
+      },
+      {
+        "hash": "sharik",
+        "path": "/services/share-and-win/"
+      },
+      {
+        "hash": "walaa",
+        "path": "/services/loyalty/"
+      },
+      {
+        "hash": "contest",
+        "path": "/contest/"
+      },
+      {
+        "hash": "menu",
+        "path": "/menu/"
+      },
+      {
+        "hash": "map",
+        "path": "/resort-map/"
+      },
+      {
+        "hash": "chalet-map",
+        "path": "/chalet-map/"
+      },
+      {
+        "hash": "cabin=1",
+        "path": "/cabins/dome-1/"
+      },
+      {
+        "hash": "cabin=12",
+        "path": "/cabins/dome-2/"
+      },
+      {
+        "hash": "cabin=2",
+        "path": "/cabins/pyramid/"
+      },
+      {
+        "hash": "cabin=3",
+        "path": "/cabins/classic/"
+      },
+      {
+        "hash": "cabin=4",
+        "path": "/cabins/greek-1/"
+      },
+      {
+        "hash": "cabin=13",
+        "path": "/cabins/greek-2/"
+      },
+      {
+        "hash": "cabin=5",
+        "path": "/cabins/palm-beach/"
+      },
+      {
+        "hash": "cabin=6",
+        "path": "/cabins/bohemian/"
+      },
+      {
+        "hash": "cabin=7",
+        "path": "/cabins/french/"
+      },
+      {
+        "hash": "cabin=8",
+        "path": "/cabins/rustic/"
+      },
+      {
+        "hash": "cabin=9",
+        "path": "/cabins/royal/"
+      },
+      {
+        "hash": "cabin=10",
+        "path": "/cabins/panoramic/"
+      },
+      {
+        "hash": "cabin=11",
+        "path": "/cabins/shared-garden/"
+      },
+      {
+        "hash": "cabin=20",
+        "path": "/stay/ground-floor/"
+      },
+      {
+        "hash": "cabin=21",
+        "path": "/stay/upper-floor/"
+      }
+    ],
+    "errors": [],
+    "missingContent": [],
+    "badLinks": [],
+    "badResponses": [],
+    "tourStates": [],
+    "bookingLinks": [
+      {
+        "path": "/cabins/dome-1/",
+        "original": "https://familyday-sa.com/ar/listings/69cea3e03a421f1c8de8cb42",
+        "visibleOnDetail": false
+      },
+      {
+        "path": "/cabins/dome-2/",
+        "original": "https://familyday-sa.com/ar/listings/69cea40091aebf200fef69e9",
+        "visibleOnDetail": false
+      },
+      {
+        "path": "/cabins/pyramid/",
+        "original": "https://familyday-sa.com/ar/listings/69cea44391aebf200fef69ea",
+        "visibleOnDetail": false
+      },
+      {
+        "path": "/cabins/classic/",
+        "original": "https://familyday-sa.com/ar/listings/69cea4d091aebf200fef69eb",
+        "visibleOnDetail": false
+      },
+      {
+        "path": "/cabins/greek-1/",
+        "original": "https://familyday-sa.com/ar/listings/69cea0ecc17a7072098dbd38",
+        "visibleOnDetail": false
+      },
+      {
+        "path": "/cabins/greek-2/",
+        "original": "https://familyday-sa.com/ar/listings/69cea28b4b817e1124e35e57",
+        "visibleOnDetail": false
+      },
+      {
+        "path": "/cabins/palm-beach/",
+        "original": "https://familyday-sa.com/ar/listings/69cea2c891aebf200fef69e6",
+        "visibleOnDetail": false
+      },
+      {
+        "path": "/cabins/bohemian/",
+        "original": "https://familyday-sa.com/ar/listings/69cea392c17a7072098dbd3b",
+        "visibleOnDetail": false
+      },
+      {
+        "path": "/cabins/french/",
+        "original": "https://familyday-sa.com/ar/listings/69cea2f391aebf200fef69e7",
+        "visibleOnDetail": false
+      },
+      {
+        "path": "/cabins/rustic/",
+        "original": "https://familyday-sa.com/ar/listings/69cea32191aebf200fef69e8",
+        "visibleOnDetail": false
+      },
+      {
+        "path": "/cabins/royal/",
+        "original": "https://familyday-sa.com/ar/listings/69cea50991aebf200fef69ec",
+        "visibleOnDetail": false
+      },
+      {
+        "path": "/cabins/panoramic/",
+        "original": "https://familyday-sa.com/ar/listings/69cea36a5123111b7e72de33",
+        "visibleOnDetail": false
+      },
+      {
+        "path": "/stay/ground-floor/",
+        "original": "https://familyday-sa.com/ar/listings/69cea5753a421f1c8de8cb43",
+        "visibleOnDetail": false
+      },
+      {
+        "path": "/stay/upper-floor/",
+        "original": "https://familyday-sa.com/ar/listings/69cea610f9674d785069b3c5",
+        "visibleOnDetail": false
+      },
+      {
+        "path": "/chalet/details/",
+        "original": "https://familyday-sa.com/ar/listings/6abb996392a258b8171230a3",
+        "visibleOnDetail": false
+      }
+    ],
+    "sourceContentExactMatch": true,
+    "productionSourceDiff": "",
+    "shareMetadata": [
+      "/resort/",
+      "/resort/contact/",
+      "/stay/",
+      "/stay/contact/",
+      "/chalet/",
+      "/chalet/services/",
+      "/chalet/services/games/",
+      "/chalet/services/water-games/",
+      "/chalet/contact/",
+      "/resort/faq/",
+      "/stay/faq/",
+      "/chalet/faq/",
+      "/cabins/",
+      "/stay/sections/",
+      "/chalet/details/",
+      "/services/",
+      "/services/hospitality/packages/",
+      "/services/coordination/",
+      "/services/cinema/",
+      "/services/water-games/",
+      "/services/outdoor-seating/",
+      "/services/games/",
+      "/services/dining-tables/",
+      "/services/share-and-win/",
+      "/services/loyalty/",
+      "/contest/",
+      "/menu/",
+      "/resort-map/",
+      "/chalet-map/",
+      "/cabins/dome-1/",
+      "/cabins/dome-2/",
+      "/cabins/pyramid/",
+      "/cabins/classic/",
+      "/cabins/greek-1/",
+      "/cabins/greek-2/",
+      "/cabins/palm-beach/",
+      "/cabins/bohemian/",
+      "/cabins/french/",
+      "/cabins/rustic/",
+      "/cabins/royal/",
+      "/cabins/panoramic/",
+      "/cabins/shared-garden/",
+      "/stay/ground-floor/",
+      "/stay/upper-floor/",
+      "/dome-tour/",
+      "/pyramid-tour/",
+      "/classic-tour/",
+      "/greek-tour/",
+      "/palm-tour/",
+      "/bohemian-tour/",
+      "/french-tour/",
+      "/rustic-tour/",
+      "/royal-tour/",
+      "/panoramic-tour/",
+      "/guest-services/",
+      "/services-guide/",
+      "/arrangements/",
+      "/"
+    ],
+    "homes": [
+      {
+        "venue": "resort",
+        "version": "original",
+        "content": [
+          {
+            "tag": "BUTTON",
+            "text": "الوجهات",
+            "href": null
+          },
+          {
+            "tag": "H1",
+            "text": "منتجع يوم العائلة",
+            "href": null
+          },
+          {
+            "tag": "P",
+            "text": "خصوصية تليق بكم… وراحة تستحقونها",
+            "href": null
+          },
+          {
+            "tag": "BUTTON",
+            "text": "الأكواخ\n            أكواخ خاصة · مسابح مستقلة · حديقة مشتركة",
+            "href": null
+          },
+          {
+            "tag": "A",
+            "text": "خريطة الأكواخ التفاعلية\n          اختر الكوخ وشاهد موقعه ومميزاته",
+            "href": "/resort-map/"
+          },
+          {
+            "tag": "A",
+            "text": "خدمات المنتجع\n          تعرّف على خدمات المنتجع وتجارب الترفيه",
+            "href": "/services/"
+          },
+          {
+            "tag": "A",
+            "text": "الموقع والتواصل\n          احجز إقامتك وتواصل معنا",
+            "href": "/resort/contact/"
+          },
+          {
+            "tag": "A",
+            "text": "الأسئلة الشائعة\n          إجابات تساعدك قبل الزيارة",
+            "href": "/resort/faq/"
+          },
+          {
+            "tag": "A",
+            "text": "★★★★★\n        4.7من 5\n        آراء ضيوفنا",
+            "href": "https://maps.app.goo.gl/FLmawLadNaa3uYpJ8?g_st=ic"
+          },
+          {
+            "tag": "BUTTON",
+            "text": "❮ العودة إلى الأكواخ",
+            "href": null
+          },
+          {
+            "tag": "BUTTON",
+            "text": "›",
+            "href": null
+          },
+          {
+            "tag": "BUTTON",
+            "text": "‹",
+            "href": null
+          },
+          {
+            "tag": "BUTTON",
+            "text": "العودة إلى الأكواخ",
+            "href": null
+          },
+          {
+            "tag": "BUTTON",
+            "text": "السابق",
+            "href": null
+          },
+          {
+            "tag": "BUTTON",
+            "text": "التالي",
+            "href": null
+          },
+          {
+            "tag": "A",
+            "text": "الأسعار والتوفر",
+            "href": "https://familyday-sa.com/ar"
+          },
+          {
+            "tag": "A",
+            "text": "تواصل عبر واتساب",
+            "href": "https://wa.me/966556156693"
+          }
+        ]
+      },
+      {
+        "venue": "resort",
+        "version": "new",
+        "content": [
+          {
+            "tag": "A",
+            "text": "الوجهات",
+            "href": "http://127.0.0.1:8112/preview/"
+          },
+          {
+            "tag": "H1",
+            "text": "دليلكم لمنتجع يوم العائلة",
+            "href": null
+          },
+          {
+            "tag": "P",
+            "text": "منتجع بأكواخ متنوعة للأزواج والعائلاتومساحات خاصة لجمعات الأهل والأصدقاء",
+            "href": null
+          },
+          {
+            "tag": "H2",
+            "text": "منتجع يوم العائلة",
+            "href": null
+          },
+          {
+            "tag": "P",
+            "text": "خصوصية تليق بكم وراحة تستحقونها",
+            "href": null
+          },
+          {
+            "tag": "A",
+            "text": "★★★★★4.7 من 5آراء ضيوفنا",
+            "href": "https://maps.app.goo.gl/FLmawLadNaa3uYpJ8?g_st=ic"
+          },
+          {
+            "tag": "A",
+            "text": "المنتجع",
+            "href": "/preview/resort/"
+          },
+          {
+            "tag": "A",
+            "text": "الأكواخ",
+            "href": "/preview/cabins/"
+          },
+          {
+            "tag": "A",
+            "text": "الخريطة",
+            "href": "/preview/resort-map/"
+          },
+          {
+            "tag": "A",
+            "text": "الخدمات",
+            "href": "/preview/services/"
+          },
+          {
+            "tag": "A",
+            "text": "المعلومات",
+            "href": "/preview/resort/contact/"
+          },
+          {
+            "tag": "A",
+            "text": "الموقع",
+            "href": "https://maps.app.goo.gl/FLmawLadNaa3uYpJ8?g_st=ic"
+          }
+        ]
+      },
+      {
+        "venue": "chalet",
+        "version": "original",
+        "content": [
+          {
+            "tag": "BUTTON",
+            "text": "الوجهات",
+            "href": null
+          },
+          {
+            "tag": "H1",
+            "text": "شاليه يوم العائلة",
+            "href": null
+          },
+          {
+            "tag": "P",
+            "text": "خصوصية تليق بكم… وراحة تستحقونها",
+            "href": null
+          },
+          {
+            "tag": "A",
+            "text": "الشاليه\n            شاليه من دورين · مسبح أطفال · مجلس مستقل",
+            "href": "/chalet/details/"
+          },
+          {
+            "tag": "BUTTON",
+            "text": "استكشف الشاليه من الداخل\n          تعرّف على الغرف والمرافق",
+            "href": null
+          },
+          {
+            "tag": "A",
+            "text": "خدمات الشاليه\n          ألعاب مائية وترفيهية لأوقاتكم في الشاليه",
+            "href": "/chalet/services/"
+          },
+          {
+            "tag": "A",
+            "text": "الموقع والتواصل\n          احجز إقامتك وتواصل معنا",
+            "href": "/chalet/contact/"
+          },
+          {
+            "tag": "A",
+            "text": "الأسئلة الشائعة\n          إجابات تساعدك قبل الزيارة",
+            "href": "/chalet/faq/"
+          },
+          {
+            "tag": "BUTTON",
+            "text": "❮ العودة إلى الأكواخ",
+            "href": null
+          },
+          {
+            "tag": "BUTTON",
+            "text": "›",
+            "href": null
+          },
+          {
+            "tag": "BUTTON",
+            "text": "‹",
+            "href": null
+          },
+          {
+            "tag": "BUTTON",
+            "text": "العودة إلى الأكواخ",
+            "href": null
+          },
+          {
+            "tag": "BUTTON",
+            "text": "السابق",
+            "href": null
+          },
+          {
+            "tag": "BUTTON",
+            "text": "التالي",
+            "href": null
+          },
+          {
+            "tag": "A",
+            "text": "الأسعار والتوفر",
+            "href": "https://familyday-sa.com/ar"
+          },
+          {
+            "tag": "A",
+            "text": "تواصل عبر واتساب",
+            "href": "https://wa.me/966556156693"
+          }
+        ]
+      },
+      {
+        "venue": "chalet",
+        "version": "new",
+        "content": [
+          {
+            "tag": "A",
+            "text": "الوجهات",
+            "href": "http://127.0.0.1:8112/preview/"
+          },
+          {
+            "tag": "H1",
+            "text": "دليلكم لشاليه يوم العائلة",
+            "href": null
+          },
+          {
+            "tag": "P",
+            "text": "شاليه من دورين بمجلس مستقل بمدخل خاصوغرفة ألعاب ومسبح أطفال بزحليقة مزدوجة",
+            "href": null
+          },
+          {
+            "tag": "H2",
+            "text": "شاليه يوم العائلة",
+            "href": null
+          },
+          {
+            "tag": "P",
+            "text": "خصوصية تليق بكم وراحة تستحقونها",
+            "href": null
+          },
+          {
+            "tag": "A",
+            "text": "الشاليه",
+            "href": "/preview/chalet/"
+          },
+          {
+            "tag": "A",
+            "text": "التفاصيل",
+            "href": "/preview/chalet/details/"
+          },
+          {
+            "tag": "A",
+            "text": "استكشف",
+            "href": "/preview/chalet-map/"
+          },
+          {
+            "tag": "A",
+            "text": "الخدمات",
+            "href": "/preview/chalet/services/"
+          },
+          {
+            "tag": "A",
+            "text": "المعلومات",
+            "href": "/preview/chalet/contact/"
+          },
+          {
+            "tag": "A",
+            "text": "الموقع",
+            "href": "https://maps.app.goo.gl/np6uD3XvCQTCr4ff7"
+          }
+        ]
+      },
+      {
+        "venue": "stay",
+        "version": "original",
+        "content": [
+          {
+            "tag": "BUTTON",
+            "text": "الوجهات",
+            "href": null
+          },
+          {
+            "tag": "H1",
+            "text": "استراحة يوم العائلة",
+            "href": null
+          },
+          {
+            "tag": "P",
+            "text": "خصوصية تليق بكم… وراحة تستحقونها",
+            "href": null
+          },
+          {
+            "tag": "BUTTON",
+            "text": "أقسام الاستراحة\n            قسمان مستقلان · مسابح كبيرة · مناسبة للتجمعات الكبيرة",
+            "href": null
+          },
+          {
+            "tag": "P",
+            "text": "يمكن حجز قسم واحد أو القسمين معًا",
+            "href": null
+          },
+          {
+            "tag": "A",
+            "text": "قارن بين القسمين",
+            "href": "/stay/sections/?compare=1"
+          },
+          {
+            "tag": "A",
+            "text": "الموقع والتواصل\n          احجز إقامتك وتواصل معنا",
+            "href": "/stay/contact/"
+          },
+          {
+            "tag": "A",
+            "text": "الأسئلة الشائعة\n          إجابات تساعدك قبل الزيارة",
+            "href": "/stay/faq/"
+          },
+          {
+            "tag": "BUTTON",
+            "text": "❮ العودة إلى الأكواخ",
+            "href": null
+          },
+          {
+            "tag": "BUTTON",
+            "text": "›",
+            "href": null
+          },
+          {
+            "tag": "BUTTON",
+            "text": "‹",
+            "href": null
+          },
+          {
+            "tag": "BUTTON",
+            "text": "العودة إلى الأكواخ",
+            "href": null
+          },
+          {
+            "tag": "BUTTON",
+            "text": "السابق",
+            "href": null
+          },
+          {
+            "tag": "BUTTON",
+            "text": "التالي",
+            "href": null
+          },
+          {
+            "tag": "A",
+            "text": "الأسعار والتوفر",
+            "href": "https://familyday-sa.com/ar"
+          },
+          {
+            "tag": "A",
+            "text": "تواصل عبر واتساب",
+            "href": "https://wa.me/966556156693"
+          }
+        ]
+      },
+      {
+        "venue": "stay",
+        "version": "new",
+        "content": [
+          {
+            "tag": "A",
+            "text": "الوجهات",
+            "href": "http://127.0.0.1:8112/preview/"
+          },
+          {
+            "tag": "H1",
+            "text": "دليلكم لاستراحة يوم العائلة",
+            "href": null
+          },
+          {
+            "tag": "P",
+            "text": "قسمان مستقلان بمداخل ومرافق خاصةومساحات واسعة لجمعات الأهل والأصدقاء",
+            "href": null
+          },
+          {
+            "tag": "H2",
+            "text": "استراحة يوم العائلة",
+            "href": null
+          },
+          {
+            "tag": "P",
+            "text": "خصوصية تليق بكم وراحة تستحقونها",
+            "href": null
+          },
+          {
+            "tag": "P",
+            "text": "يمكن حجز قسم واحد أو القسمين معًا",
+            "href": null
+          },
+          {
+            "tag": "A",
+            "text": "الاستراحة",
+            "href": "/preview/stay/"
+          },
+          {
+            "tag": "A",
+            "text": "القسمان",
+            "href": "/preview/stay/sections/"
+          },
+          {
+            "tag": "A",
+            "text": "المقارنة",
+            "href": "/preview/stay/compare/"
+          },
+          {
+            "tag": "A",
+            "text": "الخدمات",
+            "href": "/preview/stay/services/"
+          },
+          {
+            "tag": "A",
+            "text": "المعلومات",
+            "href": "/preview/stay/contact/"
+          },
+          {
+            "tag": "A",
+            "text": "الموقع",
+            "href": "https://maps.app.goo.gl/i7BhZbfkRLyV68eFA?g_st=ic"
+          }
+        ]
+      }
+    ]
+  },
+  "explorations": {
+    "tours": [
+      {
+        "unit": 1,
+        "oldParts": 7,
+        "newParts": 7,
+        "old": {
+          "bedroom": [
+            "سرير مزدوج"
+          ],
+          "bathroom": [
+            "حمام خاصداخل غرفة النوم الرئيسية"
+          ],
+          "kitchen": [
+            "موقد كهربائي",
+            "ميكروويف",
+            "ثلاجة",
+            "غلاية",
+            "ماكينة قهوة",
+            "أدوات مطبخ أساسية",
+            "ميني بارمشروبات وسناكسبرسوم إضافية"
+          ],
+          "outdoor": [
+            "جلسة خارجية",
+            "شواية",
+            "دش خارجي"
+          ],
+          "living": [
+            "تلفزيون ذكي",
+            "سماعات داخلية(ساوند بار)",
+            "واي فاي مجاني"
+          ],
+          "tub": [
+            "بانيو داخلي بغرفة النوم"
+          ],
+          "pool": [
+            "المقاس7 × 4 م",
+            "العمق140 سم",
+            "جاكوزي داخل المسبح",
+            "سرير تشميس داخل المسبح",
+            "كراسي تشميس"
+          ]
+        },
+        "new": {
+          "bathroom": [
+            "حمام خاصداخل غرفة النوم الرئيسية"
+          ],
+          "kitchen": [
+            "موقد كهربائي",
+            "ميكروويف",
+            "ثلاجة",
+            "غلاية",
+            "ماكينة قهوة",
+            "أدوات مطبخ أساسية",
+            "ميني بارمشروبات وسناكسبرسوم إضافية"
+          ],
+          "tub": [
+            "بانيو داخلي بغرفة النوم"
+          ],
+          "living": [
+            "تلفزيون ذكي",
+            "سماعات داخلية(ساوند بار)",
+            "واي فاي مجاني"
+          ],
+          "bedroom": [
+            "سرير مزدوج"
+          ],
+          "outdoor": [
+            "جلسة خارجية",
+            "شواية",
+            "دش خارجي"
+          ],
+          "pool": [
+            "المقاس7 × 4 م",
+            "العمق140 سم",
+            "جاكوزي داخل المسبح",
+            "سرير تشميس داخل المسبح",
+            "كراسي تشميس"
+          ]
+        }
+      },
+      {
+        "unit": 12,
+        "oldParts": 7,
+        "newParts": 7,
+        "old": {
+          "bedroom": [
+            "سرير مزدوج"
+          ],
+          "bathroom": [
+            "حمام خاصداخل غرفة النوم الرئيسية"
+          ],
+          "kitchen": [
+            "موقد كهربائي",
+            "ميكروويف",
+            "ثلاجة",
+            "غلاية",
+            "ماكينة قهوة",
+            "أدوات مطبخ أساسية",
+            "ميني بارمشروبات وسناكسبرسوم إضافية"
+          ],
+          "outdoor": [
+            "جلسة خارجية",
+            "شواية",
+            "دش خارجي"
+          ],
+          "living": [
+            "تلفزيون ذكي",
+            "سماعات داخلية(ساوند بار)",
+            "واي فاي مجاني"
+          ],
+          "tub": [
+            "بانيو داخلي بغرفة النوم"
+          ],
+          "pool": [
+            "المقاس7 × 4 م",
+            "العمق140 سم",
+            "جاكوزي داخل المسبح",
+            "سرير تشميس داخل المسبح",
+            "كراسي تشميس"
+          ]
+        },
+        "new": {
+          "bathroom": [
+            "حمام خاصداخل غرفة النوم الرئيسية"
+          ],
+          "kitchen": [
+            "موقد كهربائي",
+            "ميكروويف",
+            "ثلاجة",
+            "غلاية",
+            "ماكينة قهوة",
+            "أدوات مطبخ أساسية",
+            "ميني بارمشروبات وسناكسبرسوم إضافية"
+          ],
+          "tub": [
+            "بانيو داخلي بغرفة النوم"
+          ],
+          "living": [
+            "تلفزيون ذكي",
+            "سماعات داخلية(ساوند بار)",
+            "واي فاي مجاني"
+          ],
+          "bedroom": [
+            "سرير مزدوج"
+          ],
+          "outdoor": [
+            "جلسة خارجية",
+            "شواية",
+            "دش خارجي"
+          ],
+          "pool": [
+            "المقاس7 × 4 م",
+            "العمق140 سم",
+            "جاكوزي داخل المسبح",
+            "سرير تشميس داخل المسبح",
+            "كراسي تشميس"
+          ]
+        }
+      },
+      {
+        "unit": 2,
+        "oldParts": 8,
+        "newParts": 7,
+        "old": {
+          "bedroom": [
+            "سرير مزدوج"
+          ],
+          "living": [
+            "تلفزيون ذكي",
+            "سماعات داخلية(ساوند بار)",
+            "واي فاي مجاني"
+          ],
+          "bathroom": [
+            "حمام خاصداخل غرفة النوم الرئيسية"
+          ],
+          "kitchen": [
+            "موقد كهربائي",
+            "ميكروويف",
+            "ثلاجة",
+            "غلاية",
+            "ماكينة قهوة",
+            "أدوات مطبخ أساسية",
+            "ميني بارمشروبات وسناكسبرسوم إضافية"
+          ],
+          "dining": [
+            "طاولة الطعام"
+          ],
+          "pool": [
+            "المقاس4 × 4 م",
+            "العمق140 سم",
+            "كراسي تشميس"
+          ],
+          "tub": [
+            "بانيو خارجي بخصوصية كاملة"
+          ],
+          "outdoor": [
+            "جلسات خارجية",
+            "شواية",
+            "دش خارجي"
+          ]
+        },
+        "new": {
+          "bedroom": [
+            "سرير مزدوج"
+          ],
+          "tub": [
+            "بانيو خارجي بخصوصية كاملة"
+          ],
+          "kitchen": [
+            "طاولة الطعام",
+            "موقد كهربائي",
+            "ميكروويف",
+            "ثلاجة",
+            "غلاية",
+            "ماكينة قهوة",
+            "أدوات مطبخ أساسية",
+            "ميني بارمشروبات وسناكسبرسوم إضافية"
+          ],
+          "living": [
+            "تلفزيون ذكي",
+            "سماعات داخلية(ساوند بار)",
+            "واي فاي مجاني"
+          ],
+          "bathroom": [
+            "حمام خاصداخل غرفة النوم الرئيسية"
+          ],
+          "pool": [
+            "المقاس4 × 4 م",
+            "العمق140 سم",
+            "كراسي تشميس"
+          ],
+          "outdoor": [
+            "جلسات خارجية",
+            "شواية",
+            "دش خارجي"
+          ]
+        }
+      },
+      {
+        "unit": 3,
+        "oldParts": 7,
+        "newParts": 6,
+        "old": {
+          "bedroom": [
+            "سرير مزدوج"
+          ],
+          "living": [
+            "تلفزيون ذكي",
+            "سماعات داخلية(ساوند بار)",
+            "واي فاي مجاني"
+          ],
+          "bathroom": [
+            "حمام خاصداخل غرفة النوم الرئيسية"
+          ],
+          "kitchen": [
+            "موقد كهربائي",
+            "ميكروويف",
+            "ثلاجة",
+            "غلاية",
+            "ماكينة قهوة",
+            "أدوات مطبخ أساسية",
+            "ميني بارمشروبات وسناكسبرسوم إضافية"
+          ],
+          "dining": [
+            "طاولة الطعام"
+          ],
+          "pool": [
+            "المقاس7 × 4 م",
+            "العمق140 سم",
+            "كراسي تشميس"
+          ],
+          "outdoor": [
+            "جلسات خارجية",
+            "شواية",
+            "دش خارجي"
+          ]
+        },
+        "new": {
+          "bathroom": [
+            "حمام خاصداخل غرفة النوم الرئيسية"
+          ],
+          "bedroom": [
+            "سرير مزدوج"
+          ],
+          "kitchen": [
+            "طاولة الطعام",
+            "موقد كهربائي",
+            "ميكروويف",
+            "ثلاجة",
+            "غلاية",
+            "ماكينة قهوة",
+            "أدوات مطبخ أساسية",
+            "ميني بارمشروبات وسناكسبرسوم إضافية"
+          ],
+          "living": [
+            "تلفزيون ذكي",
+            "سماعات داخلية(ساوند بار)",
+            "واي فاي مجاني"
+          ],
+          "outdoor": [
+            "جلسات خارجية",
+            "شواية",
+            "دش خارجي"
+          ],
+          "pool": [
+            "المقاس7 × 4 م",
+            "العمق140 سم",
+            "كراسي تشميس"
+          ]
+        }
+      },
+      {
+        "unit": 4,
+        "oldParts": 8,
+        "newParts": 7,
+        "old": {
+          "bedroom": [
+            "سرير مزدوج"
+          ],
+          "twin": [
+            "سريران مفردان"
+          ],
+          "living": [
+            "تلفزيون ذكي",
+            "سماعات داخلية(ساوند بار)",
+            "واي فاي مجاني"
+          ],
+          "bathroom": [
+            "حمام خاصداخل غرفة النوم الرئيسية",
+            "حمام مشترك"
+          ],
+          "kitchen": [
+            "موقد كهربائي",
+            "ميكروويف",
+            "ثلاجة",
+            "غلاية",
+            "ماكينة قهوة",
+            "أدوات مطبخ أساسية",
+            "ميني بارمشروبات وسناكسبرسوم إضافية"
+          ],
+          "dining": [
+            "طاولة الطعام"
+          ],
+          "outdoor": [
+            "جلسات خارجية",
+            "شواية",
+            "دش خارجي"
+          ],
+          "pool": [
+            "المقاس7 × 4 م",
+            "العمق140 سم",
+            "كراسي تشميس"
+          ]
+        },
+        "new": {
+          "twin": [
+            "سريران مفردان"
+          ],
+          "living": [
+            "تلفزيون ذكي",
+            "سماعات داخلية(ساوند بار)",
+            "واي فاي مجاني"
+          ],
+          "bathroom": [
+            "حمام خاصداخل غرفة النوم الرئيسية",
+            "حمام مشترك"
+          ],
+          "bedroom": [
+            "سرير مزدوج"
+          ],
+          "kitchen": [
+            "طاولة الطعام",
+            "موقد كهربائي",
+            "ميكروويف",
+            "ثلاجة",
+            "غلاية",
+            "ماكينة قهوة",
+            "أدوات مطبخ أساسية",
+            "ميني بارمشروبات وسناكسبرسوم إضافية"
+          ],
+          "outdoor": [
+            "جلسات خارجية",
+            "شواية",
+            "دش خارجي"
+          ],
+          "pool": [
+            "المقاس7 × 4 م",
+            "العمق140 سم",
+            "كراسي تشميس"
+          ]
+        }
+      },
+      {
+        "unit": 13,
+        "oldParts": 8,
+        "newParts": 7,
+        "old": {
+          "bedroom": [
+            "سرير مزدوج"
+          ],
+          "twin": [
+            "سريران مفردان"
+          ],
+          "living": [
+            "تلفزيون ذكي",
+            "سماعات داخلية(ساوند بار)",
+            "واي فاي مجاني"
+          ],
+          "bathroom": [
+            "حمام خاصداخل غرفة النوم الرئيسية",
+            "حمام مشترك"
+          ],
+          "kitchen": [
+            "موقد كهربائي",
+            "ميكروويف",
+            "ثلاجة",
+            "غلاية",
+            "ماكينة قهوة",
+            "أدوات مطبخ أساسية",
+            "ميني بارمشروبات وسناكسبرسوم إضافية"
+          ],
+          "dining": [
+            "طاولة الطعام"
+          ],
+          "outdoor": [
+            "جلسات خارجية",
+            "شواية",
+            "دش خارجي"
+          ],
+          "pool": [
+            "المقاس7 × 4 م",
+            "العمق140 سم",
+            "كراسي تشميس"
+          ]
+        },
+        "new": {
+          "twin": [
+            "سريران مفردان"
+          ],
+          "living": [
+            "تلفزيون ذكي",
+            "سماعات داخلية(ساوند بار)",
+            "واي فاي مجاني"
+          ],
+          "bathroom": [
+            "حمام خاصداخل غرفة النوم الرئيسية",
+            "حمام مشترك"
+          ],
+          "bedroom": [
+            "سرير مزدوج"
+          ],
+          "kitchen": [
+            "طاولة الطعام",
+            "موقد كهربائي",
+            "ميكروويف",
+            "ثلاجة",
+            "غلاية",
+            "ماكينة قهوة",
+            "أدوات مطبخ أساسية",
+            "ميني بارمشروبات وسناكسبرسوم إضافية"
+          ],
+          "outdoor": [
+            "جلسات خارجية",
+            "شواية",
+            "دش خارجي"
+          ],
+          "pool": [
+            "المقاس7 × 4 م",
+            "العمق140 سم",
+            "كراسي تشميس"
+          ]
+        }
+      },
+      {
+        "unit": 5,
+        "oldParts": 8,
+        "newParts": 7,
+        "old": {
+          "bedroom": [
+            "سرير مزدوج"
+          ],
+          "twin": [
+            "سريران مفردان"
+          ],
+          "living": [
+            "تلفزيون ذكي",
+            "سماعات داخلية(ساوند بار)",
+            "واي فاي مجاني"
+          ],
+          "bathroom": [
+            "حمام خاصداخل غرفة النوم الرئيسية",
+            "حمام مشترك"
+          ],
+          "kitchen": [
+            "موقد كهربائي",
+            "ميكروويف",
+            "ثلاجة",
+            "غلاية",
+            "ماكينة قهوة",
+            "أدوات مطبخ أساسية",
+            "ميني بارمشروبات وسناكسبرسوم إضافية"
+          ],
+          "dining": [
+            "طاولة الطعام"
+          ],
+          "outdoor": [
+            "جلسات خارجية",
+            "شواية",
+            "دش خارجي"
+          ],
+          "pool": [
+            "المقاس7 × 4 م",
+            "العمق140 سم",
+            "كراسي تشميس"
+          ]
+        },
+        "new": {
+          "twin": [
+            "سريران مفردان"
+          ],
+          "kitchen": [
+            "طاولة الطعام",
+            "موقد كهربائي",
+            "ميكروويف",
+            "ثلاجة",
+            "غلاية",
+            "ماكينة قهوة",
+            "أدوات مطبخ أساسية",
+            "ميني بارمشروبات وسناكسبرسوم إضافية"
+          ],
+          "bedroom": [
+            "سرير مزدوج"
+          ],
+          "living": [
+            "تلفزيون ذكي",
+            "سماعات داخلية(ساوند بار)",
+            "واي فاي مجاني"
+          ],
+          "bathroom": [
+            "حمام خاصداخل غرفة النوم الرئيسية",
+            "حمام مشترك"
+          ],
+          "outdoor": [
+            "جلسات خارجية",
+            "شواية",
+            "دش خارجي"
+          ],
+          "pool": [
+            "المقاس7 × 4 م",
+            "العمق140 سم",
+            "كراسي تشميس"
+          ]
+        }
+      },
+      {
+        "unit": 6,
+        "oldParts": 8,
+        "newParts": 7,
+        "old": {
+          "bedroom": [
+            "سرير مزدوج"
+          ],
+          "twin": [
+            "سريران مفردان"
+          ],
+          "living": [
+            "تلفزيون ذكي",
+            "سماعات داخلية(ساوند بار)",
+            "واي فاي مجاني"
+          ],
+          "bathroom": [
+            "حمام خاصداخل غرفة النوم الرئيسية",
+            "حمام مشترك"
+          ],
+          "kitchen": [
+            "موقد كهربائي",
+            "ميكروويف",
+            "ثلاجة",
+            "غلاية",
+            "ماكينة قهوة",
+            "أدوات مطبخ أساسية",
+            "ميني بارمشروبات وسناكسبرسوم إضافية"
+          ],
+          "dining": [
+            "طاولة الطعام"
+          ],
+          "pool": [
+            "المقاس7 × 4 م",
+            "العمق140 سم",
+            "كراسي تشميس"
+          ],
+          "outdoor": [
+            "جلسات خارجية",
+            "شواية",
+            "دش خارجي"
+          ]
+        },
+        "new": {
+          "twin": [
+            "سريران مفردان"
+          ],
+          "bedroom": [
+            "سرير مزدوج"
+          ],
+          "kitchen": [
+            "طاولة الطعام",
+            "موقد كهربائي",
+            "ميكروويف",
+            "ثلاجة",
+            "غلاية",
+            "ماكينة قهوة",
+            "أدوات مطبخ أساسية",
+            "ميني بارمشروبات وسناكسبرسوم إضافية"
+          ],
+          "living": [
+            "تلفزيون ذكي",
+            "سماعات داخلية(ساوند بار)",
+            "واي فاي مجاني"
+          ],
+          "bathroom": [
+            "حمام خاصداخل غرفة النوم الرئيسية",
+            "حمام مشترك"
+          ],
+          "pool": [
+            "المقاس7 × 4 م",
+            "العمق140 سم",
+            "كراسي تشميس"
+          ],
+          "outdoor": [
+            "جلسات خارجية",
+            "شواية",
+            "دش خارجي"
+          ]
+        }
+      },
+      {
+        "unit": 7,
+        "oldParts": 8,
+        "newParts": 7,
+        "old": {
+          "bedroom": [
+            "سرير مزدوج"
+          ],
+          "twin": [
+            "سريران مفردان"
+          ],
+          "living": [
+            "تلفزيون ذكي",
+            "سماعات داخلية(ساوند بار)",
+            "واي فاي مجاني"
+          ],
+          "bathroom": [
+            "حمام خاصداخل غرفة النوم الرئيسية",
+            "حمام مشترك"
+          ],
+          "kitchen": [
+            "موقد كهربائي",
+            "ميكروويف",
+            "ثلاجة",
+            "غلاية",
+            "ماكينة قهوة",
+            "أدوات مطبخ أساسية",
+            "ميني بارمشروبات وسناكسبرسوم إضافية"
+          ],
+          "dining": [
+            "طاولة الطعام"
+          ],
+          "outdoor": [
+            "جلسات خارجية",
+            "شواية",
+            "دش خارجي"
+          ],
+          "pool": [
+            "المقاس7 × 4 م",
+            "العمق140 سم",
+            "كراسي تشميس"
+          ]
+        },
+        "new": {
+          "twin": [
+            "سريران مفردان"
+          ],
+          "bedroom": [
+            "سرير مزدوج"
+          ],
+          "kitchen": [
+            "طاولة الطعام",
+            "موقد كهربائي",
+            "ميكروويف",
+            "ثلاجة",
+            "غلاية",
+            "ماكينة قهوة",
+            "أدوات مطبخ أساسية",
+            "ميني بارمشروبات وسناكسبرسوم إضافية"
+          ],
+          "living": [
+            "تلفزيون ذكي",
+            "سماعات داخلية(ساوند بار)",
+            "واي فاي مجاني"
+          ],
+          "bathroom": [
+            "حمام خاصداخل غرفة النوم الرئيسية",
+            "حمام مشترك"
+          ],
+          "outdoor": [
+            "جلسات خارجية",
+            "شواية",
+            "دش خارجي"
+          ],
+          "pool": [
+            "المقاس7 × 4 م",
+            "العمق140 سم",
+            "كراسي تشميس"
+          ]
+        }
+      },
+      {
+        "unit": 8,
+        "oldParts": 8,
+        "newParts": 7,
+        "old": {
+          "bedroom": [
+            "سرير مزدوج"
+          ],
+          "twin": [
+            "سريران مفردان"
+          ],
+          "living": [
+            "تلفزيون ذكي",
+            "سماعات داخلية(ساوند بار)",
+            "واي فاي مجاني"
+          ],
+          "bathroom": [
+            "حمام خاصداخل غرفة النوم الرئيسية",
+            "حمام مشترك"
+          ],
+          "kitchen": [
+            "موقد كهربائي",
+            "ميكروويف",
+            "ثلاجة",
+            "غلاية",
+            "ماكينة قهوة",
+            "أدوات مطبخ أساسية",
+            "ميني بارمشروبات وسناكسبرسوم إضافية"
+          ],
+          "dining": [
+            "طاولة الطعام"
+          ],
+          "pool": [
+            "المقاس7 × 4 م",
+            "العمق140 سم",
+            "كراسي تشميس"
+          ],
+          "outdoor": [
+            "جلسات خارجية",
+            "شواية",
+            "دش خارجي"
+          ]
+        },
+        "new": {
+          "bathroom": [
+            "حمام خاصداخل غرفة النوم الرئيسية",
+            "حمام مشترك"
+          ],
+          "bedroom": [
+            "سرير مزدوج"
+          ],
+          "kitchen": [
+            "طاولة الطعام",
+            "موقد كهربائي",
+            "ميكروويف",
+            "ثلاجة",
+            "غلاية",
+            "ماكينة قهوة",
+            "أدوات مطبخ أساسية",
+            "ميني بارمشروبات وسناكسبرسوم إضافية"
+          ],
+          "living": [
+            "تلفزيون ذكي",
+            "سماعات داخلية(ساوند بار)",
+            "واي فاي مجاني"
+          ],
+          "twin": [
+            "سريران مفردان"
+          ],
+          "pool": [
+            "المقاس7 × 4 م",
+            "العمق140 سم",
+            "كراسي تشميس"
+          ],
+          "outdoor": [
+            "جلسات خارجية",
+            "شواية",
+            "دش خارجي"
+          ]
+        }
+      },
+      {
+        "unit": 9,
+        "oldParts": 8,
+        "newParts": 7,
+        "old": {
+          "bedroom": [
+            "سرير مزدوج"
+          ],
+          "twin": [
+            "سريران مفردان"
+          ],
+          "living": [
+            "تلفزيون ذكي",
+            "سماعات داخلية(ساوند بار)",
+            "واي فاي مجاني"
+          ],
+          "bathroom": [
+            "حمام خاصداخل غرفة النوم الرئيسية",
+            "حمام مشترك"
+          ],
+          "kitchen": [
+            "موقد كهربائي",
+            "ميكروويف",
+            "ثلاجة",
+            "غلاية",
+            "ماكينة قهوة",
+            "أدوات مطبخ أساسية",
+            "ميني بارمشروبات وسناكسبرسوم إضافية"
+          ],
+          "dining": [
+            "طاولة الطعام"
+          ],
+          "pool": [
+            "المقاس7 × 4 م",
+            "العمق140 سم",
+            "كراسي تشميس"
+          ],
+          "outdoor": [
+            "جلسات خارجية",
+            "شواية",
+            "دش خارجي"
+          ]
+        },
+        "new": {
+          "kitchen": [
+            "طاولة الطعام",
+            "موقد كهربائي",
+            "ميكروويف",
+            "ثلاجة",
+            "غلاية",
+            "ماكينة قهوة",
+            "أدوات مطبخ أساسية",
+            "ميني بارمشروبات وسناكسبرسوم إضافية"
+          ],
+          "bathroom": [
+            "حمام خاصداخل غرفة النوم الرئيسية",
+            "حمام مشترك"
+          ],
+          "twin": [
+            "سريران مفردان"
+          ],
+          "bedroom": [
+            "سرير مزدوج"
+          ],
+          "living": [
+            "تلفزيون ذكي",
+            "سماعات داخلية(ساوند بار)",
+            "واي فاي مجاني"
+          ],
+          "pool": [
+            "المقاس7 × 4 م",
+            "العمق140 سم",
+            "كراسي تشميس"
+          ],
+          "outdoor": [
+            "جلسات خارجية",
+            "شواية",
+            "دش خارجي"
+          ]
+        }
+      },
+      {
+        "unit": 10,
+        "oldParts": 9,
+        "newParts": 8,
+        "old": {
+          "bedroom": [
+            "سرير مزدوج"
+          ],
+          "twin": [
+            "سريران مفردان"
+          ],
+          "living": [
+            "تلفزيون ذكي",
+            "سماعات داخلية(ساوند بار)",
+            "واي فاي مجاني"
+          ],
+          "bathroom": [
+            "حمام خاصداخل غرفة النوم الرئيسية",
+            "حمام مشترك"
+          ],
+          "kitchen": [
+            "موقد كهربائي",
+            "ميكروويف",
+            "ثلاجة",
+            "غلاية",
+            "ماكينة قهوة",
+            "أدوات مطبخ أساسية",
+            "ميني بارمشروبات وسناكسبرسوم إضافية"
+          ],
+          "dining": [
+            "طاولة الطعام"
+          ],
+          "outdoor": [
+            "جلسات خارجية",
+            "شواية",
+            "دش خارجي"
+          ],
+          "tub": [
+            "بانيو مع جاكوزي بغرفة النوم"
+          ],
+          "pool": [
+            "المقاس7 × 4 م",
+            "العمق140 سم",
+            "كراسي تشميس"
+          ]
+        },
+        "new": {
+          "bedroom": [
+            "سرير مزدوج"
+          ],
+          "twin": [
+            "سريران مفردان"
+          ],
+          "living": [
+            "تلفزيون ذكي",
+            "سماعات داخلية(ساوند بار)",
+            "واي فاي مجاني"
+          ],
+          "bathroom": [
+            "حمام خاصداخل غرفة النوم الرئيسية",
+            "حمام مشترك"
+          ],
+          "kitchen": [
+            "طاولة الطعام",
+            "موقد كهربائي",
+            "ميكروويف",
+            "ثلاجة",
+            "غلاية",
+            "ماكينة قهوة",
+            "أدوات مطبخ أساسية",
+            "ميني بارمشروبات وسناكسبرسوم إضافية"
+          ],
+          "tub": [
+            "بانيو مع جاكوزي بغرفة النوم"
+          ],
+          "outdoor": [
+            "جلسات خارجية",
+            "شواية",
+            "دش خارجي"
+          ],
+          "pool": [
+            "المقاس7 × 4 م",
+            "العمق140 سم",
+            "كراسي تشميس"
+          ]
+        }
+      }
+    ],
+    "errors": [],
+    "mismatches": [],
+    "map": [
+      {
+        "width": 320,
+        "allSelections": 13,
+        "physicalLocationsUnchanged": true
+      },
+      {
+        "width": 390,
+        "allSelections": 13,
+        "physicalLocationsUnchanged": true
+      },
+      {
+        "width": 1440,
+        "allSelections": 13,
+        "physicalLocationsUnchanged": true
+      }
+    ],
+    "chalet": {
+      "parts": 10,
+      "factsExactMatch": true
+    }
+  },
+  "responsiveAndLive": {
+    "responsive": [
+      {
+        "path": "/preview/",
+        "width": 320
+      },
+      {
+        "path": "/preview/arrangements/",
+        "width": 320
+      },
+      {
+        "path": "/preview/bohemian-tour/",
+        "width": 320
+      },
+      {
+        "path": "/preview/cabins/",
+        "width": 320
+      },
+      {
+        "path": "/preview/cabins/bohemian/",
+        "width": 320
+      },
+      {
+        "path": "/preview/cabins/classic/",
+        "width": 320
+      },
+      {
+        "path": "/preview/cabins/dome-1/",
+        "width": 320
+      },
+      {
+        "path": "/preview/cabins/dome-2/",
+        "width": 320
+      },
+      {
+        "path": "/preview/cabins/french/",
+        "width": 320
+      },
+      {
+        "path": "/preview/cabins/greek-1/",
+        "width": 320
+      },
+      {
+        "path": "/preview/cabins/greek-2/",
+        "width": 320
+      },
+      {
+        "path": "/preview/cabins/palm-beach/",
+        "width": 320
+      },
+      {
+        "path": "/preview/cabins/panoramic/",
+        "width": 320
+      },
+      {
+        "path": "/preview/cabins/pyramid/",
+        "width": 320
+      },
+      {
+        "path": "/preview/cabins/royal/",
+        "width": 320
+      },
+      {
+        "path": "/preview/cabins/rustic/",
+        "width": 320
+      },
+      {
+        "path": "/preview/cabins/shared-garden/",
+        "width": 320
+      },
+      {
+        "path": "/preview/chalet-map/",
+        "width": 320
+      },
+      {
+        "path": "/preview/chalet/",
+        "width": 320
+      },
+      {
+        "path": "/preview/chalet/checkout/",
+        "width": 320
+      },
+      {
+        "path": "/preview/chalet/contact/",
+        "width": 320
+      },
+      {
+        "path": "/preview/chalet/details/",
+        "width": 320
+      },
+      {
+        "path": "/preview/chalet/faq/",
+        "width": 320
+      },
+      {
+        "path": "/preview/chalet/guest-services/",
+        "width": 320
+      },
+      {
+        "path": "/preview/chalet/order/",
+        "width": 320
+      },
+      {
+        "path": "/preview/chalet/services/",
+        "width": 320
+      },
+      {
+        "path": "/preview/chalet/services/games/",
+        "width": 320
+      },
+      {
+        "path": "/preview/chalet/services/water-games/",
+        "width": 320
+      },
+      {
+        "path": "/preview/classic-tour/",
+        "width": 320
+      },
+      {
+        "path": "/preview/contest/",
+        "width": 320
+      },
+      {
+        "path": "/preview/dome-tour/",
+        "width": 320
+      },
+      {
+        "path": "/preview/french-tour/",
+        "width": 320
+      },
+      {
+        "path": "/preview/greek-tour/",
+        "width": 320
+      },
+      {
+        "path": "/preview/guest-services/",
+        "width": 320
+      },
+      {
+        "path": "/preview/menu/",
+        "width": 320
+      },
+      {
+        "path": "/preview/palm-tour/",
+        "width": 320
+      },
+      {
+        "path": "/preview/panoramic-tour/",
+        "width": 320
+      },
+      {
+        "path": "/preview/pyramid-tour/",
+        "width": 320
+      },
+      {
+        "path": "/preview/resort-map/",
+        "width": 320
+      },
+      {
+        "path": "/preview/resort/",
+        "width": 320
+      },
+      {
+        "path": "/preview/resort/checkout/",
+        "width": 320
+      },
+      {
+        "path": "/preview/resort/compare/",
+        "width": 320
+      },
+      {
+        "path": "/preview/resort/contact/",
+        "width": 320
+      },
+      {
+        "path": "/preview/resort/faq/",
+        "width": 320
+      },
+      {
+        "path": "/preview/resort/order/",
+        "width": 320
+      },
+      {
+        "path": "/preview/royal-tour/",
+        "width": 320
+      },
+      {
+        "path": "/preview/rustic-tour/",
+        "width": 320
+      },
+      {
+        "path": "/preview/services-guide/",
+        "width": 320
+      },
+      {
+        "path": "/preview/services/",
+        "width": 320
+      },
+      {
+        "path": "/preview/services/cinema/",
+        "width": 320
+      },
+      {
+        "path": "/preview/services/coordination/",
+        "width": 320
+      },
+      {
+        "path": "/preview/services/dining-tables/",
+        "width": 320
+      },
+      {
+        "path": "/preview/services/games/",
+        "width": 320
+      },
+      {
+        "path": "/preview/services/hospitality/packages/",
+        "width": 320
+      },
+      {
+        "path": "/preview/services/loyalty/",
+        "width": 320
+      },
+      {
+        "path": "/preview/services/outdoor-seating/",
+        "width": 320
+      },
+      {
+        "path": "/preview/services/share-and-win/",
+        "width": 320
+      },
+      {
+        "path": "/preview/services/water-games/",
+        "width": 320
+      },
+      {
+        "path": "/preview/stay/",
+        "width": 320
+      },
+      {
+        "path": "/preview/stay/checkout/",
+        "width": 320
+      },
+      {
+        "path": "/preview/stay/compare/",
+        "width": 320
+      },
+      {
+        "path": "/preview/stay/contact/",
+        "width": 320
+      },
+      {
+        "path": "/preview/stay/faq/",
+        "width": 320
+      },
+      {
+        "path": "/preview/stay/ground-floor/",
+        "width": 320
+      },
+      {
+        "path": "/preview/stay/order/",
+        "width": 320
+      },
+      {
+        "path": "/preview/stay/sections/",
+        "width": 320
+      },
+      {
+        "path": "/preview/stay/services/",
+        "width": 320
+      },
+      {
+        "path": "/preview/stay/upper-floor/",
+        "width": 320
+      },
+      {
+        "path": "/preview/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/arrangements/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/bohemian-tour/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/cabins/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/cabins/bohemian/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/cabins/classic/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/cabins/dome-1/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/cabins/dome-2/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/cabins/french/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/cabins/greek-1/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/cabins/greek-2/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/cabins/palm-beach/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/cabins/panoramic/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/cabins/pyramid/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/cabins/royal/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/cabins/rustic/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/cabins/shared-garden/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/chalet-map/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/chalet/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/chalet/checkout/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/chalet/contact/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/chalet/details/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/chalet/faq/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/chalet/guest-services/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/chalet/order/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/chalet/services/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/chalet/services/games/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/chalet/services/water-games/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/classic-tour/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/contest/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/dome-tour/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/french-tour/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/greek-tour/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/guest-services/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/menu/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/palm-tour/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/panoramic-tour/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/pyramid-tour/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/resort-map/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/resort/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/resort/checkout/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/resort/compare/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/resort/contact/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/resort/faq/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/resort/order/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/royal-tour/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/rustic-tour/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/services-guide/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/services/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/services/cinema/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/services/coordination/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/services/dining-tables/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/services/games/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/services/hospitality/packages/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/services/loyalty/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/services/outdoor-seating/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/services/share-and-win/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/services/water-games/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/stay/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/stay/checkout/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/stay/compare/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/stay/contact/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/stay/faq/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/stay/ground-floor/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/stay/order/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/stay/sections/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/stay/services/",
+        "width": 1440
+      },
+      {
+        "path": "/preview/stay/upper-floor/",
+        "width": 1440
+      }
+    ],
+    "live": [
+      "/preview/resort/",
+      "/preview/cabins/",
+      "/preview/services/cinema/",
+      "/preview/chalet/",
+      "/preview/chalet/contact/",
+      "/preview/chalet-map/",
+      "/preview/stay/",
+      "/preview/stay/services/",
+      "/preview/stay/compare/",
+      "/guest-services/",
+      "/chalet/guest-services/",
+      "/arrangements/#dining"
+    ],
+    "liveAssets": {
+      "catalog.json": true,
+      "guide-copy.json": true,
+      "app.js": true,
+      "style.css": true,
+      "chalet.css": true,
+      "stay.css": true
+    },
+    "issues": []
+  },
+  "bookingComparison": [
+    {
+      "path": "/cabins/dome-1/",
+      "originalButton": "الأسعار والتوفر",
+      "originalLink": "https://familyday-sa.com/ar/listings/69cea3e03a421f1c8de8cb42",
+      "originalVisible": true,
+      "newDetailBookingButton": false
+    },
+    {
+      "path": "/cabins/dome-2/",
+      "originalButton": "الأسعار والتوفر",
+      "originalLink": "https://familyday-sa.com/ar/listings/69cea40091aebf200fef69e9",
+      "originalVisible": true,
+      "newDetailBookingButton": false
+    },
+    {
+      "path": "/cabins/pyramid/",
+      "originalButton": "الأسعار والتوفر",
+      "originalLink": "https://familyday-sa.com/ar/listings/69cea44391aebf200fef69ea",
+      "originalVisible": true,
+      "newDetailBookingButton": false
+    },
+    {
+      "path": "/cabins/classic/",
+      "originalButton": "الأسعار والتوفر",
+      "originalLink": "https://familyday-sa.com/ar/listings/69cea4d091aebf200fef69eb",
+      "originalVisible": true,
+      "newDetailBookingButton": false
+    },
+    {
+      "path": "/cabins/greek-1/",
+      "originalButton": "الأسعار والتوفر",
+      "originalLink": "https://familyday-sa.com/ar/listings/69cea0ecc17a7072098dbd38",
+      "originalVisible": true,
+      "newDetailBookingButton": false
+    },
+    {
+      "path": "/cabins/greek-2/",
+      "originalButton": "الأسعار والتوفر",
+      "originalLink": "https://familyday-sa.com/ar/listings/69cea28b4b817e1124e35e57",
+      "originalVisible": true,
+      "newDetailBookingButton": false
+    },
+    {
+      "path": "/cabins/palm-beach/",
+      "originalButton": "الأسعار والتوفر",
+      "originalLink": "https://familyday-sa.com/ar/listings/69cea2c891aebf200fef69e6",
+      "originalVisible": true,
+      "newDetailBookingButton": false
+    },
+    {
+      "path": "/cabins/bohemian/",
+      "originalButton": "الأسعار والتوفر",
+      "originalLink": "https://familyday-sa.com/ar/listings/69cea392c17a7072098dbd3b",
+      "originalVisible": true,
+      "newDetailBookingButton": false
+    },
+    {
+      "path": "/cabins/french/",
+      "originalButton": "الأسعار والتوفر",
+      "originalLink": "https://familyday-sa.com/ar/listings/69cea2f391aebf200fef69e7",
+      "originalVisible": true,
+      "newDetailBookingButton": false
+    },
+    {
+      "path": "/cabins/rustic/",
+      "originalButton": "الأسعار والتوفر",
+      "originalLink": "https://familyday-sa.com/ar/listings/69cea32191aebf200fef69e8",
+      "originalVisible": true,
+      "newDetailBookingButton": false
+    },
+    {
+      "path": "/cabins/royal/",
+      "originalButton": "الأسعار والتوفر",
+      "originalLink": "https://familyday-sa.com/ar/listings/69cea50991aebf200fef69ec",
+      "originalVisible": true,
+      "newDetailBookingButton": false
+    },
+    {
+      "path": "/cabins/panoramic/",
+      "originalButton": "الأسعار والتوفر",
+      "originalLink": "https://familyday-sa.com/ar/listings/69cea36a5123111b7e72de33",
+      "originalVisible": true,
+      "newDetailBookingButton": false
+    },
+    {
+      "path": "/stay/ground-floor/",
+      "originalButton": "الأسعار والتوفر",
+      "originalLink": "https://familyday-sa.com/ar/listings/69cea5753a421f1c8de8cb43",
+      "originalVisible": true,
+      "newDetailBookingButton": false
+    },
+    {
+      "path": "/stay/upper-floor/",
+      "originalButton": "الأسعار والتوفر",
+      "originalLink": "https://familyday-sa.com/ar/listings/69cea610f9674d785069b3c5",
+      "originalVisible": true,
+      "newDetailBookingButton": false
+    },
+    {
+      "path": "/chalet/details/",
+      "originalButton": "الأسعار والتوفر",
+      "originalLink": "https://familyday-sa.com/ar/listings/6abb996392a258b8171230a3",
+      "originalVisible": true,
+      "newDetailBookingButton": false
+    }
+  ],
+  "serviceImages": {
+    "count": 43,
+    "sourceHashesUnchanged": true,
+    "fullDimensionsRetained": true
+  },
+  "orderingChecks": {
+    "chalet": "Passed original script at 320,390,1440; outgoing URLs intercepted",
+    "arrangements": "Passed original source guard and all three sections at 390,1440",
+    "resort": "Functional selections, totals, WhatsApp messages and recipients passed at 320,390,768,1440 after updating the temporary fixture from للصغار to current source للأطفال. The subsequent source-mutation assertion expects an obsolete water-offer caption and is not counted as passing. Production unchanged."
+  },
+  "findings": [
+    {
+      "id": "ordering-source-dependency",
+      "type": "cutover-blocker",
+      "summary": "The three ordering entries still obtain data through /index.html; extract a stable source before root replacement/deletion."
+    },
+    {
+      "id": "direct-booking-buttons",
+      "type": "presentation-difference-for-confirmation",
+      "summary": "15 original unit detail pages show a direct availability/booking CTA; none of the new detail pages shows it. Contact booking remains, including the chalet-specific listing. All 15 original listing URLs remain stored in catalog.json. Resort removal was documented previously; no silent UI restoration during this review."
+    },
+    {
+      "id": "rest-house-order-portal",
+      "type": "deferred-by-owner",
+      "summary": "Large inflatable slide information exists; its external order link is intentionally deferred. Charcoal ordering is intentionally removed."
+    },
+    {
+      "id": "portal-return-link",
+      "type": "deferred-by-owner",
+      "summary": "The return link from the existing ordering portals to the new service guide is intentionally deferred."
+    }
+  ],
+  "limitations": [
+    "Chromium at desktop/mobile viewport sizes; not a physical iPhone test.",
+    "WhatsApp outgoing URLs/messages were intercepted; no real messages or bookings submitted.",
+    "External booking/map/app addresses were compared with originals; no external payment or booking was completed.",
+    "Preview has not been promoted to public root; QR URL preservation still requires the documented cutover build."
+  ]
+}

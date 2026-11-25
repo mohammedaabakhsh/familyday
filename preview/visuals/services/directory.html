@@ -1,82 +1,13 @@
-<!doctype html><html lang="ar" dir="rtl"><head><base href="/"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,max-image-preview:none"><title>خدمات المنتجع</title><link rel="stylesheet" href="/preview/visuals/assets/css/tajawal.css?v=20261124-stay-v53"><link rel="stylesheet" href="/preview/visuals/assets/css/app-base.css?v=20261124-stay-v53"><link rel="stylesheet" href="/preview/visuals/assets/css/services-index.css?v=20261124-stay-v53"><link rel="stylesheet" href="/preview/services-theme.css?v=20261124-stay-v53"><style>#services-overlay .svcs-description{color:#b6cbd6!important}</style></head><body class="original-service-ui"><div id="services-overlay" class="hide" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:9500;background:linear-gradient(170deg,#04111e 0%,#030c18 45%,#04101c 100%);overflow-y:auto;-webkit-overflow-scrolling:touch;">
-  <div class="svcs-header">
-    <button type="button" class="svcs-back" onclick="closeServices()" aria-label="العودة">
-      <svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5L1.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-    <h1 class="svcs-title">خدمات المنتجع</h1>
-  </div>
-  <div class="svcs-content">
-    <section aria-labelledby="svcs-group-0">
-      <h2 id="svcs-group-0" class="svcs-section-title">طعام ومشروبات</h2>
-      <div class="svcs-grid svcs-grid--single">
-        <button type="button" class="svcs-card" onclick="openMenuDetail()" aria-label="المطعم">
-          <span class="svcs-copy"><span class="svcs-name">المطعم</span></span>
-          <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
-        </button>
-        <a class="svcs-card" href="/preview/services/dining-tables/" onclick="return openPreparationService(event,'dining')" aria-label="طاولات الطعام">
-          <span class="svcs-copy"><span class="svcs-name">طاولات الطعام</span></span>
-          <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
-        </a>
-      </div>
-    </section>
-    <section aria-labelledby="svcs-group-1">
-      <h2 id="svcs-group-1" class="svcs-section-title">ترفيه</h2>
-      <div class="svcs-grid">
-        <button type="button" class="svcs-card" onclick="showTarfihi()" aria-label="الألعاب الترفيهية">
-          <span class="svcs-copy"><span class="svcs-name">الألعاب الترفيهية</span></span>
-          <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
-        </button>
-        <button type="button" class="svcs-card" onclick="showMaiya()" aria-label="الألعاب المائية">
-          <span class="svcs-copy"><span class="svcs-name">الألعاب المائية</span></span>
-          <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
-        </button>
-        <a class="svcs-card" href="/preview/services/cinema/" onclick="return openPreparationService(event,'cinema')" aria-label="جلسة السينما" aria-describedby="svcs-cinema-description">
-          <span class="svcs-copy"><span class="svcs-name">جلسة السينما</span><span class="svcs-description" id="svcs-cinema-description">استمتع بتجربة سينما في مساحتكم الخاصة</span></span>
-          <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
-        </a>
-      </div>
-    </section>
-    <section aria-labelledby="svcs-group-2">
-      <h2 id="svcs-group-2" class="svcs-section-title">تجهيز مناسبتك</h2>
-      <div class="svcs-grid svcs-grid--preparation">
-        <a class="svcs-card" href="/preview/services/hospitality/packages/" onclick="return openPreparationService(event,'hospitality')" aria-label="الضيافة">
-          <span class="svcs-copy"><span class="svcs-name">الضيافة</span></span>
-          <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
-        </a>
-        <a class="svcs-card" href="/preview/services/coordination/" onclick="return openPreparationService(event,'coordination')" aria-label="التنسيقات" aria-describedby="svcs-coordination-description">
-          <span class="svcs-copy"><span class="svcs-name">التنسيقات</span><span class="svcs-description" id="svcs-coordination-description">نجهّز مناسباتكم بكل تفاصيلها</span></span>
-          <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
-        </a>
-        <a class="svcs-card" href="/preview/services/outdoor-seating/" onclick="return openPreparationService(event,'seating')" aria-label="الجلسات الخارجية" aria-describedby="svcs-seating-description">
-          <span class="svcs-copy"><span class="svcs-name">الجلسات الخارجية</span><span class="svcs-description" id="svcs-seating-description">جلسات تجمعكم في مساحتكم الخارجية الخاصة</span></span>
-          <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
-        </a>
-      </div>
-    </section>
-    <section aria-labelledby="svcs-group-3">
-      <h2 id="svcs-group-3" class="svcs-section-title">عروض وامتيازات</h2>
-      <div class="svcs-grid svcs-grid--rewards">
-        <a class="svcs-card svcs-reward" href="/preview/contest/" onclick="event.preventDefault();showContest()" style="text-decoration:none" aria-label="شارك بفيديو… ويومك الجاي علينا">
-          <span class="svcs-copy"><span class="svcs-name">شارك بفيديو… ويومك الجاي علينا</span><span class="svcs-description">انشر الفيديو ونافس بالمشاهدات</span></span>
-          <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
-        </a>
-        <button type="button" class="svcs-card svcs-reward" onclick="showSharik()" aria-label="شارك واربح">
-          <span class="svcs-copy"><span class="svcs-name">شارك واربح</span><span class="svcs-description">صوّر تجربتكم وأرسلها لنا</span></span>
-          <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
-        </button>
-        <button type="button" class="svcs-card svcs-reward" onclick="showWalaa()" aria-label="بطاقة الولاء">
-          <span class="svcs-copy"><span class="svcs-name">بطاقة الولاء</span></span>
-          <svg class="svcs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
-        </button>
-      </div>
-    </section>
-  </div>
-
-
-<!-- HOSPITALITY & COORDINATION DETAIL -->
-
-
-
-<!-- SINEMA DETAIL OVERLAY -->
-
-</div><script src="/preview/services-directory.js?v=20261124-stay-v53"></script></body></html>
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>خدمات منتجع يوم العائلة</title><meta http-equiv="refresh" content="0;url=/services/"><script>const destination=new URL("/services/",location.origin);destination.search=location.search;destination.hash=location.hash;location.replace(destination.href);</script><meta name="description" content="تعرّف على خدمات المنتجع واختر ما يناسب إقامتك">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="يوم العائلة">
+<meta property="og:locale" content="ar_SA">
+<meta property="og:title" content="خدمات منتجع يوم العائلة">
+<meta property="og:description" content="تعرّف على خدمات المنتجع واختر ما يناسب إقامتك">
+<meta property="og:url" content="https://familydaystay.com/services/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="خدمات منتجع يوم العائلة">
+<meta name="twitter:description" content="تعرّف على خدمات المنتجع واختر ما يناسب إقامتك">
+<meta name="robots" content="noindex,nofollow,noarchive,max-image-preview:none">
+<link rel="canonical" href="https://familydaystay.com/services/">
+</head><body><a href="/services/">فتح الصفحة</a></body></html>

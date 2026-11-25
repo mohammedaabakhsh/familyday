@@ -1,0 +1,98 @@
+"""Build the canonical guide at its original URLs, plus temporary preview redirects.
+Visual modules are maintained under site/visuals; this builder never reads the old home page.
+"""
+from pathlib import Path
+import html,json,re
+ROOT=Path(__file__).resolve().parents[1]
+SITE=ROOT/'site'
+CONFIG=json.loads((SITE/'cutover-config.json').read_text())
+VERSION=CONFIG['version']
+app=SITE/'app.js'
+app.write_text(re.sub(r"VERSION='[^']+'","VERSION='"+VERSION+"'",app.read_text(),count=1))
+PORTALS=set(CONFIG['protectedPortals'])
+REDIRECTS={p:('/chalet/services/' if p.startswith('/chalet/') else '/stay/services/' if p.startswith('/stay/') else '/services/') for p in CONFIG['rootRoutes'] if p.endswith(('/order/','/checkout/'))}
+CATALOG=json.loads((SITE/'catalog.json').read_text())
+# data/services.json is authoritative for service prices/content on both ordering and guide surfaces.
+SERVICES=json.loads((ROOT/'data/services.json').read_text())
+CATALOG['source']['guestCatalog']=SERVICES['guest']
+for service in CATALOG['services']:
+ key=service['id']
+ if key in SERVICES['arrangements']:
+  data=SERVICES['arrangements'][key]
+  service.update({k:data[k] for k in list(service) if k in data})
+ elif key=='menu':service['menu']=SERVICES['guest']['menu']
+ elif key in ['games','water','cinema','hospitality']:
+  data=SERVICES['guest'][key]
+  if key=='games':
+   service['items']=data['contents']
+   for package,name in zip(service['packages'],['box','table']):
+    source=data['packages'][name];package.update(name=source['name'],note=source['description']);package['price']=re.sub(r'\d+(?:\.\d+)?',str(source['price']),package['price'],count=1)
+  elif key=='water':service['notes']=data['notes'];service['offer']='باقة '+str(data['size'])+' ألعاب بـ'+str(data['price'])+' ريال'
+  elif key=='cinema':
+   service['items']=data['contents'];service['stats'][0]['value']=data['duration'];service['stats'][1]['value']=str(data['price'])+' ريال'
+  else:
+   for package,source in zip(service['packages'],data['packages']):
+    package.update(name=source['name'],description=source['description'],items=source['contents'],note=source['note']);package['price']=re.sub(r'\d+(?:\.\d+)?',str(source['price']),package['price'],count=1)
+(SITE/'catalog.json').write_text(json.dumps(CATALOG,ensure_ascii=False,indent=2)+'\n')
+COPY=json.loads((SITE/'guide-copy.json').read_text())
+SHARES=json.loads((SITE/'share-metadata.json').read_text())
+for venue,faq in COPY['faqs'].items():
+ questions=[q for g in faq['groups'] for i in g['items'] for q in i['sources']]
+ assert sorted(questions)==sorted(q['question'] for q in CATALOG['venues'][venue]['faqs']),venue+' FAQ coverage'
+
+def metadata(page,path,info,redirect=False):
+ def remove(match):
+  tag=match[0];m=re.search(r'(?:name|property)=["\']([^"\']+)',tag,re.I);key=m[1].lower() if m else ''
+  return '' if key.startswith(('og:','twitter:')) or key in ['description','robots'] else tag
+ page=re.sub(r'<meta\b[^>]*>\n?',remove,page,flags=re.I)
+ page=re.sub(r'<link\b[^>]*rel=["\']canonical["\'][^>]*>\n?','',page,flags=re.I)
+ page=re.sub(r'<title>.*?</title>','<title>'+html.escape(info['title'])+'</title>',page,flags=re.S)
+ url='https://familydaystay.com'+path
+ values=[('name','description',info['description']),('property','og:type','website'),('property','og:site_name','يوم العائلة'),('property','og:locale','ar_SA'),('property','og:title',info['title']),('property','og:description',info['description']),('property','og:url',url),('name','twitter:card','summary'),('name','twitter:title',info['title']),('name','twitter:description',info['description']),('name','robots',('noindex,nofollow,noarchive' if redirect else 'index,follow')+',max-image-preview:none')]
+ tags='\n'.join('<meta '+attr+'="'+key+'" content="'+html.escape(value,quote=True)+'">' for attr,key,value in values)+'\n<link rel="canonical" href="'+url+'">\n'
+ return page.replace('</head>',tags+'</head>')
+
+def redirect_page(target):
+ assert target.startswith('/') and not target.startswith('//')
+ literal=json.dumps(target,ensure_ascii=False)
+ page='<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>يوم العائلة</title><meta http-equiv="refresh" content="0;url='+html.escape(target,quote=True)+'"><script>const destination=new URL('+literal+',location.origin);destination.search=location.search;destination.hash=location.hash;location.replace(destination.href);</script></head><body><a href="'+html.escape(target,quote=True)+'">فتح الصفحة</a></body></html>'
+ info=SHARES.get(target,SHARES['/'])
+ return metadata(page,target,info,True)
+
+def write(path,page):
+ path.parent.mkdir(parents=True,exist_ok=True);path.write_text(page)
+
+template=(SITE/'template.html').read_text()
+template=re.sub(r'(/site/[^"?]+\.(?:js|css)[?]v=)[^\"]+',lambda m:m[1]+VERSION,template)
+native=[]
+for path in CONFIG['rootRoutes']:
+ if path in PORTALS:continue
+ if path in REDIRECTS:
+  write(ROOT/path.lstrip('/')/'index.html',redirect_page(REDIRECTS[path]));continue
+ page=template
+ page=re.sub(r'<body[^>]*>','<body class="'+('destination-flow' if path=='/' else 'complete-flow')+'">',page)
+ write(ROOT/path.lstrip('/')/'index.html',metadata(page,path,SHARES[path]));native.append(path)
+# Previously shared preview URLs are compatibility entries, not a second deployed guide.
+for path in CONFIG['rootRoutes']:
+ write(ROOT/'preview'/path.lstrip('/')/'index.html',redirect_page(REDIRECTS.get(path,path)))
+ # Retained generated documents inside the asset folder should not become duplicate pages.
+ write(SITE/path.lstrip('/')/'index.html',redirect_page(path))
+write(ROOT/'preview/guest-services.html',redirect_page('/guest-services/'))
+write(ROOT/'guest-services.html',redirect_page('/guest-services/'))
+# A cached old preview shell can load this tiny shim and recover to the same canonical URL.
+write(ROOT/'preview/app.js',"const destination=new URL(location.href);destination.pathname=destination.pathname.replace(/^\\/preview(?=\\/|$)/,'')||'/';location.replace(destination.href);\n")
+for name in ['style.css','chalet.css','stay.css']:
+ write(ROOT/'preview'/name,'@import url("/site/'+name+'?v='+VERSION+'");\n')
+# Compatibility for preview visual documents that were occasionally opened directly.
+for name in ['dome','pyramid','classic','greek','palm','bohemian','french','rustic','royal','panoramic']:
+ write(ROOT/'preview/visuals'/(name+'-tour')/'index.html',redirect_page('/'+name+'-tour/'))
+for name in ['resort-map','chalet-map']:
+ write(ROOT/'preview/visuals'/name/'index.html',redirect_page('/'+name+'/'))
+for name,target in [('directory','/services/'),('index','/services/'),('guest','/guest-services/'),('guide','/arrangements/')]:
+ write(ROOT/'preview/visuals/services'/(name+'.html'),redirect_page(target))
+manifest={'version':VERSION,'routes':CONFIG['rootRoutes'],'nativeRoutes':native,'redirectRoutes':REDIRECTS,'protectedPortals':sorted(PORTALS),'previewRedirectCount':len(CONFIG['rootRoutes']),'unitCount':len(CATALOG['units']),'rollbackTag':CONFIG['rollbackTag']}
+(SITE/'routes.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
+# Same original sitemap destinations, with the additional approved guide pages.
+urls=sorted(set(CONFIG['rootRoutes'])-set(REDIRECTS))
+(ROOT/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join('  <url><loc>https://familydaystay.com'+html.escape(p)+'</loc></url>\n' for p in urls)+'</urlset>\n')
+print(json.dumps({'nativePages':len(native),'protectedPortals':len(PORTALS),'previewRedirects':len(CONFIG['rootRoutes'])}))
