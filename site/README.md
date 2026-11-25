@@ -44,6 +44,8 @@ python scripts/check-guide-source.py http://127.0.0.1:8112
 
 The design references and prior audits in this folder document approved decisions. Current cleanup evidence is `audits/live-cutover-v55.json` and `audits/live-assets-v55.json`.
 
-## Back navigation
+## Back navigation and the resort directory
 
-Back through the header or browser history renders the restored content at full opacity. Forward navigation keeps the approved entrance effect. `python scripts/check-back-navigation.py http://127.0.0.1:8112` samples the first rendered frames at mobile/desktop widths and with reduced motion; evidence is `audits/back-navigation-v56.json`.
+The resort directory renders as native guide links from `guide-copy.json`, preserving its approved titles, descriptions, sizes and colors. It no longer mounts a nested document. The three venue overviews and the resort directory reuse their existing DOM nodes, retaining decoded hero images and restoring directory scroll. Views render without fade/slide entrance effects, and the document canvas retains the shared background.
+
+`python scripts/check-back-navigation.py http://127.0.0.1:8112` checks the first rendered frames, exact hero-image pixels and image-node reuse while further hero requests are blocked, directory scroll, header/browser Back, and mobile/desktop/reduced-motion layouts. Evidence is `audits/back-navigation-v57.json`, `audits/directory-layout-v57.json` and `audits/live-cutover-v57.json`.

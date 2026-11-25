@@ -48,7 +48,6 @@ async def main():
    if path in routes['nativeRoutes']:
     if path!='/':
      await page.locator('.header [data-share]').click();payload=await page.evaluate('window.__shares.at(-1)');assert set(payload)=={'text'},(path,payload);assert '/preview/' not in payload['text'] and '/site/' not in payload['text'] and 'share=text-v50' not in payload['text'],payload
-    if await page.locator('#services-frame').count():await page.frame_locator('#services-frame').locator('.svcs-card').first.wait_for()
     if await page.locator('#tour-frame').count():await page.frame_locator('#tour-frame').locator('button').first.wait_for(state='attached')
    for frame in page.frames:
     for href in await frame.locator('a[href]').evaluate_all('es=>es.map(e=>e.href)'):
@@ -76,9 +75,9 @@ async def main():
    links=await page.locator('#main a').evaluate_all('es=>es.map(e=>e.getAttribute("href"))')
    for link in [*expected.values(),catalog['venues'][venue]['map'],*catalog['venues'][venue]['social']]:assert link in links,(venue,link)
    await visit('/'+venue+'/faq/');assert await page.locator('.faq').count()==sum(len(g['items']) for g in copy['faqs'][venue]['groups'])
-  # Verify service-directory clicks still open the native pages in the parent app.
-  await visit('/services/');f=page.frame_locator('#services-frame');await f.locator('a[href="/services/cinema/"]').click();await page.wait_for_url(BASE+'/services/cinema/');assert await page.locator('.service-guide').count()==1
-  await page.locator('.context-back').click();await page.wait_for_url(BASE+'/services/');await page.frame_locator('#services-frame').locator('a[href="/services/dining-tables/"]').click();await page.wait_for_url(BASE+'/services/dining-tables/')
+  # The directory is native; its approved links open service guides without another document.
+  await visit('/services/');f=page.locator('#resort-service-directory');assert await page.locator('#services-frame').count()==0;await f.locator('a[href="/services/cinema/"]').click();await page.wait_for_url(BASE+'/services/cinema/');assert await page.locator('.service-guide').count()==1
+  await page.locator('.context-back').click();await page.wait_for_url(BASE+'/services/');await page.locator('#resort-service-directory a[href="/services/dining-tables/"]').click();await page.wait_for_url(BASE+'/services/dining-tables/')
   # Same-origin order links must cause a full document navigation, never mount the guide again.
   await page.locator('[data-service-portal]').evaluate('e=>{const u=new URL(e.href);e.href=location.origin+u.pathname+u.hash}');await page.locator('[data-service-portal]').click();await page.wait_for_url(BASE+'/services-guide/#dining');await page.locator('#guide-content.is-ready').wait_for(state='attached')
   assert not await page.locator('#main').count();out['portalHandoffIsDocumentNavigation']=True
