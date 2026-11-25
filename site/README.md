@@ -77,3 +77,7 @@ The owner found the separate service views and per-item WhatsApp shortcuts confu
 ### Arrangements order details — v65
 
 Dining is limited to one configuration/quantity, including older saved drafts. Seating capacity is no longer repeated in summary/draft lines. WhatsApp drafts now group items under the same category headings as the summary. Source-backed prices and existing share URLs remain unchanged.
+
+## Cabin exploration order and arrows — v66
+
+[Approved placements and routing](../docs/cabin-tour-order-v66.md) implement the owner’s Dome/Pyramid/Classic swaps and room-first organization for the twelve resort cabins. Phone/tablet controls use explicit rows, while wide-screen positions remain. Arrows clear other controls and only the active arrow is visible. Source images, hotspot coordinates and facts are unchanged. Run `scripts/check-cabin-tour-order.py`; evidence is `audits/cabin-tour-order-v66.json`.

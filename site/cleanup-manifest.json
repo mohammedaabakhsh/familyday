@@ -2412,5 +2412,40 @@
       "seatingCapacityLineRemoved": true,
       "groupedWhatsApp": true
     }
+  },
+  "approvedTourOrdering": {
+    "version": "20261125-tours-v66",
+    "rollbackTag": "pre-cabin-order-20261125",
+    "rollbackCommit": "42d6de79563a24211769741b419f63d0a28e0cd0",
+    "scope": "Owner-approved cabin control order and obstacle-free active arrows; preserve wide-screen label positions, all source facts/images and hotspot coordinates.",
+    "sourceHashes": {
+      "site/visuals/assets/dome-tour.js": "3868155187d4fc9148b05bf3af4215b429596da2550c7bf7c14fac98fe33a91e",
+      "site/visuals/assets/pyramid-tour.js": "55cc44a218f42f5c6a4c0fa3a24549af1b78cd19f3c82af2d905a7ea667a4d32",
+      "site/visuals/assets/classic-tour.js": "a9cc0ace193413fb02db6c934b257b58990ca33d602fc4f4db05165dca1afb89",
+      "site/visuals/assets/greek-tour.js": "1bad31a8db26f0ce8460e272132da40791e774188ea596c0fa298567bdcccfaf",
+      "site/visuals/assets/palm-tour.js": "c7555ad0d08ab868e9f542e77d5c0008562c3139d66e8c10c331d730f21d16d8",
+      "site/visuals/assets/bohemian-tour.js": "8866e64519df88417ad907473c61ff7f29d0c6e703b3090ec32e5d0fe313ddfa",
+      "site/visuals/assets/french-tour.js": "d287e792b12e81ad69d46d28964c2607af118cf334436ca728a49669408b683f",
+      "site/visuals/assets/rustic-tour.js": "8d21a29461b3c2d936b43ed25018526f6c630531b7ddae3233360c0f67844f33",
+      "site/visuals/assets/royal-tour.js": "5b0797a14bfe1ae315e6dcb6f09f0f22d0da4b934959ae47da75af214c294e2b",
+      "site/visuals/assets/panoramic-tour.js": "bc35d10c03003113d840f4f9ffef43fc0d207d964241b362e637a3f1f1d54280",
+      "site/visuals/assets/resort-data.js": "cca38afb576acfaf67fa1ce79d9568d7d91c43b1504c2975ca5bce72c7dffc8e"
+    },
+    "changedVisuals": [
+      "site/visuals/resort-tour.js",
+      "site/visuals/resort-tour.css",
+      "site/visuals/dome-tour/index.html",
+      "site/visuals/pyramid-tour/index.html",
+      "site/visuals/classic-tour/index.html",
+      "site/visuals/greek-tour/index.html",
+      "site/visuals/palm-tour/index.html",
+      "site/visuals/bohemian-tour/index.html",
+      "site/visuals/french-tour/index.html",
+      "site/visuals/rustic-tour/index.html",
+      "site/visuals/royal-tour/index.html",
+      "site/visuals/panoramic-tour/index.html"
+    ],
+    "orderPortalsUnchanged": true,
+    "mapUnchanged": true
   }
 }

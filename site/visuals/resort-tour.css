@@ -12,8 +12,8 @@ html.resort-details-trial #ov .dt-tour .dt-card strong span{font:inherit!importa
 html.resort-details-trial #ov .dt-tour .dt-note{font-size:12px!important;line-height:1.6!important;margin:8px 0 0!important;color:#a4bbc5}
 html.resort-details-trial #ov .dt-tour .dt-spec-navigation{margin-top:8px}
 html.resort-details-trial #ov .dt-tour{border:0!important;border-radius:0!important;background:transparent!important;overflow:visible}
-html.resort-details-trial #ov .dt-tour .dt-lines path:not(.is-selected){opacity:.23}
-@media(max-width:599px){
+html.resort-details-trial #ov .dt-tour .dt-lines path:not(.is-selected){opacity:0}
+@media(max-width:899px){
  html.resort-details-trial #ov .dt-tour{display:grid!important;grid-template-columns:minmax(0,1fr)!important;height:100dvh;margin:0!important;padding-inline:0!important}
  html.resort-details-trial #ov .dt-tour .dt-stage{display:grid!important;grid-template-rows:auto minmax(0,1fr) auto!important;gap:12px!important;min-height:0;direction:ltr;padding-inline:0!important}
  html.resort-details-trial #ov .dt-tour .dt-labels{display:grid!important;position:relative!important;inset:auto!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-template-rows:none!important;grid-auto-flow:row!important;gap:10px 24px!important;padding:0 8px!important;margin:0!important;direction:rtl;order:0!important}
@@ -26,3 +26,13 @@ html.resort-details-trial #ov .dt-tour .dt-lines path:not(.is-selected){opacity:
  html.resort-details-trial #ov .dt-tour .dt-cards.is-scrollable .dt-card{flex:0 0 108px!important;min-width:108px!important;scroll-snap-align:start}
 }
 @media(max-height:620px){html.resort-details-trial #ov .dt-tour .dt-details:not(.is-empty){padding:10px!important}}
+
+/* Keep the original full-height phone stage; tablets have room for a natural-height drawing. */
+@media(min-width:600px) and (max-width:899px){
+ html.resort-details-trial #ov .dt-tour{height:auto!important;min-height:0!important;grid-template-rows:0 auto auto auto!important;gap:12px!important}
+ html.resort-details-trial #ov .dt-tour>.dt-stage{grid-row:2!important;grid-template-rows:auto auto auto!important;min-height:0!important;padding-top:0!important}
+ html.resort-details-trial #ov .dt-tour>.dt-details{grid-row:3!important}
+ html.resort-details-trial #ov .dt-tour>.dt-occupancy,html.resort-details-trial #ov .dt-tour>.dt-tour-footer{grid-row:4!important}
+ html.resort-details-trial #ov .dt-tour .dt-image-space{height:auto!important}
+ html.resort-details-trial #ov .dt-tour .dt-image{width:94%!important;max-height:none!important}
+}
