@@ -1,5 +1,4 @@
-/* Read service copy directly from the existing page; never maintain a second catalogue here.
-   Dynamic prices and galleries are shared via /service-data.js. See README.md in this folder. */
+/* Render the independent shared catalogue; the home page can change without affecting services. */
 (function () {
   'use strict';
   const back = document.getElementById('guide-back');
@@ -47,36 +46,32 @@
       + (expandable ? '<details class="package-details"><summary><span>' + escape(label) + '</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="package-details-body">' + body + '</div></details>' : '<div class="package-details-body">' + body + '</div>') + '</div></article>';
   }
   const section = (id, title, intro, body, showTitle = false) => '<section class="guide-section" id="' + id + '" data-title="' + escape(title) + '" aria-labelledby="title-' + id + '"><header class="section-heading' + (showTitle ? ' section-heading--titled' : '') + '"><h2 tabindex="-1" id="title-' + id + '">' + escape(showTitle ? title : intro) + '</h2>' + (showTitle ? '<p>' + escape(intro) + '</p>' : '') + '</header>' + body + '</section>';
-  function packages(doc, key) {
-    const panel = doc.querySelector('#hd-' + key + '-panel');
-    if (!panel) throw new Error('Missing package panel');
-    return '<div class="package-grid">' + Array.from(panel.querySelectorAll('.hd-package')).map(card => {
-      const title = text(card, '.hd-package-name');
-      const description = card.querySelector('.hd-package-description');
-      const price = card.querySelector('.hd-package-price');
-      const contents = list(card, '.hd-item span:last-child');
-      const note = card.querySelector('.hd-package-note');
-      const body = (description ? '<p class="package-description">' + escape(description.textContent.trim()) + '</p>' : '') + items(contents)
-        + (note ? '<p class="package-usage-note">' + escape(note.textContent.trim()) + '</p>' : '');
-      const complete = Boolean(card.querySelector('#hd-coordination-package-resort'));
-      const sharedPhotos = _coordinationPhotos[card.getAttribute('aria-labelledby')];
-      const photos = key === 'hospitality' ? [] : sharedPhotos || [];
-      return serviceCard({title,price:price ? price.textContent.trim().replace(/\s*للباقة\s*$/, '') : '',priceUnit:'للباقة',photos,imageAlt:sharedPhotos ? 'تنسيق ' + title : undefined,body,className:key === 'coordination' ? 'coordination-card' : '',label:'تفاصيل الباقة',id:complete ? 'package-complete' : ''});
+  function packages(values) {
+    return '<div class="package-grid">' + values.map(pack => {
+      const body = (pack.description ? '<p class="package-description">' + escape(pack.description) + '</p>' : '') + items(pack.items)
+        + (pack.note ? '<p class="package-usage-note">' + escape(pack.note) + '</p>' : '');
+      return serviceCard({title:pack.name,price:pack.price.replace(/\s*للباقة\s*$/, ''),priceUnit:'للباقة',photos:pack.images,
+        imageAlt:'تنسيق ' + pack.name,body,className:'coordination-card',label:'تفاصيل الباقة',id:pack.id === 'hd-coordination-package-resort' ? 'package-complete' : ''});
     }).join('') + '</div>';
   }
-  function render(doc) {
-    let html = section('coordination','التنسيقات','تجهيزات متكاملة لمناسباتكم', packages(doc,'coordination'), true);
-    const diningSource = doc.querySelector('#dining-card-template').content;
+  function render(catalog) {
+    const data = catalog.arrangements;
+    if (catalog.schemaVersion !== 1 || !data || !data.coordination.packages.length || !data.seating.sessions.length || !data.dining.template) throw new Error('Invalid arrangements catalogue');
+    // Keep the approved shared dining layout using its small, inert template.
+    const doc = document.implementation.createHTMLDocument('');
+    const template = doc.createElement('template');template.id = 'dining-card-template';template.innerHTML = data.dining.template;doc.body.append(template);
+    window._tawilatPrices = data.dining.prices;
+    window._tawilatInclusions = data.dining.items;
+    let html = section('coordination',data.coordination.name,'تجهيزات متكاملة لمناسباتكم',packages(data.coordination.packages),true);
+    const diningSource = template.content;
     const diningImage = sourceImage(diningSource,'.fd-dining-image img');
-    const diningPhoto = '<div class="dining-shared-photo">' + FD_GUIDE_GALLERY.markup([diningImage.src],text(doc,'.tw-title'),diningImage.alt) + '<p class="fd-dining-caption">' + escape(text(diningSource,'.fd-dining-caption')) + '</p></div>';
+    const diningPhoto = '<div class="dining-shared-photo">' + FD_GUIDE_GALLERY.markup([diningImage.src],data.dining.name,diningImage.alt) + '<p class="fd-dining-caption">' + escape(text(diningSource,'.fd-dining-caption')) + '</p></div>';
     const diningBody = diningPhoto + FD_DINING_CARDS.table(doc,false).outerHTML + FD_DINING_CARDS.details(doc).outerHTML;
-    html += section('dining',text(doc,'.tw-title'),text(doc,'.tw-intro'),diningBody,true);
-    // The ordering page keeps each session's add-on inside an inert card template.
-    const seatingTemplate = doc.querySelector('#jalsat-card-template');
-    const seatingSource = seatingTemplate ? seatingTemplate.content : doc;
-    const seatingExtra = '<aside class="seating-extra" aria-labelledby="seating-extra-title"><h3 id="seating-extra-title">إضافة اختيارية</h3><div class="seating-extra-offer"><strong>' + escape(text(seatingSource,'.jl-addon-name')) + '</strong><strong class="seating-extra-price">' + escape(text(seatingSource,'.jl-addon-price')) + '</strong></div><p>إضافة اختيارية تُضاف قيمتها لسعر الجلسة</p></aside>';
-    const seatingUsage = '<details class="guide-usage"><summary>تعليمات الاستخدام</summary><ul>' + list(doc,'.jl-notes-list li').map(note => '<li>' + escape(note) + '</li>').join('') + '</ul></details>';
-    html += section('seating',text(doc,'.jl-title'),'جلسات نجهّزها لكم في المساحة الخارجية الخاصة بالكوخ', '<div class="photo-grid">' + _jalsatAllSessions.map(s => serviceCard({title:s.name,price:s.price,priceUnit:'للجلسة',photos:[s.img],imageAlt:s.name,className:'photo-card',capacity:s.persons,label:'تفاصيل الجلسة',body:'<p class="session-description">' + escape(s.desc) + '</p>'})).join('') + '</div>' + seatingExtra + seatingUsage, true);
+    html += section('dining',data.dining.name,data.dining.intro,diningBody,true);
+    const extra = data.seating.extra;
+    const seatingExtra = '<aside class="seating-extra" aria-labelledby="seating-extra-title"><h3 id="seating-extra-title">إضافة اختيارية</h3><div class="seating-extra-offer"><strong>' + escape(extra.name) + '</strong><strong class="seating-extra-price">' + escape(extra.price) + '</strong></div><p>إضافة اختيارية تُضاف قيمتها لسعر الجلسة</p></aside>';
+    const seatingUsage = '<details class="guide-usage"><summary>تعليمات الاستخدام</summary><ul>' + data.seating.notes.map(note => '<li>' + escape(note) + '</li>').join('') + '</ul></details>';
+    html += section('seating',data.seating.name,'جلسات نجهّزها لكم في المساحة الخارجية الخاصة بالكوخ', '<div class="photo-grid">' + data.seating.sessions.map(s => serviceCard({title:s.name,price:s.price,priceUnit:'للجلسة',photos:[s.img],imageAlt:s.name,className:'photo-card',capacity:s.persons,label:'تفاصيل الجلسة',body:'<p class="session-description">' + escape(s.desc) + '</p>'})).join('') + '</div>' + seatingExtra + seatingUsage,true);
     content.innerHTML = html;
     FD_GUIDE_GALLERY.mount();
     content.setAttribute('aria-busy','false');
@@ -144,9 +139,9 @@
     loading = true;
     content.setAttribute('aria-busy','true');
     try {
-      const response = await fetch('/index.html',{cache:'no-cache'});
+      const response = await fetch('/data/services.json?v=20261125-live-v54',{cache:'no-cache'});
       if (!response.ok) throw new Error('Service source unavailable');
-      render(new DOMParser().parseFromString(await response.text(),'text/html'));
+      render(await response.json());
     } catch(error) {
       content.innerHTML = '<div class="load-error"><h2>تعذّر تحميل التجهيزات</h2><p>حاولوا مرة ثانية لعرض التفاصيل هنا.</p><button type="button" id="retry-guide">إعادة المحاولة</button></div>';
       content.setAttribute('aria-busy','false');

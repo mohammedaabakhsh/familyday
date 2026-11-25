@@ -1,0 +1,258 @@
+{
+  "status": "retained-until-owner-approves-deletion",
+  "baseCommit": "0fca20e7755a24202d567d669d6628daa6dda9aa",
+  "tag": "pre-live-cutover-20261125",
+  "archive": "legacy-interface-20261125.tar.gz",
+  "archiveSha256": "367bab0e1fe24b2d34b224b23b7874c3223d99c2f0b13c4cbc39aa7878a4e99d",
+  "files": [
+    {
+      "path": "arrangements/index.html",
+      "sha256": "442b5e29fc1bc9e721c8d3d859dd99d5c52a6cd1382ec5cc01713bbb61a7169a"
+    },
+    {
+      "path": "bohemian-tour/index.html",
+      "sha256": "8d2f58e39cd441f556537d8003ceff5648c203f19a2fb5676d13be5f3fb0e955"
+    },
+    {
+      "path": "cabins/bohemian/index.html",
+      "sha256": "c5bc3484cac5e0353cf1ff143fc4c93fe20970f0ec7e835d8b1effcf30613f6e"
+    },
+    {
+      "path": "cabins/classic/index.html",
+      "sha256": "d0c029d7b16eb3d2517b6f41b3572042593007ae3785364b44abcbf6ee71f025"
+    },
+    {
+      "path": "cabins/dome-1/index.html",
+      "sha256": "ab5969e7c4f094ac357a284af8678d6bc05a22a2e121793097fc6f5e56836a85"
+    },
+    {
+      "path": "cabins/dome-2/index.html",
+      "sha256": "872e335aa960b2e17089cb6a548775afcddc2e024000817a4cfac2740673286c"
+    },
+    {
+      "path": "cabins/french/index.html",
+      "sha256": "7d5cd83f13609e6d6c187e047f229d79d534cb0fee9cabc65fe3f400dcfbe4dc"
+    },
+    {
+      "path": "cabins/greek-1/index.html",
+      "sha256": "996ac3fcfa3748236da4dfcdff15937c7419d1642fddc468cd71dd122e13e62a"
+    },
+    {
+      "path": "cabins/greek-2/index.html",
+      "sha256": "5b9b92be013b82044f4d03d4df57f63dc74ec8d88c02c3d949af2ea5db59a6fb"
+    },
+    {
+      "path": "cabins/index.html",
+      "sha256": "f17dd6de4d9389ba6f88400af62a890508920ea329c6a3a945cc4a0666f8831c"
+    },
+    {
+      "path": "cabins/palm-beach/index.html",
+      "sha256": "ab6e0c102c8c435e329ef000c2c7c59e6a961c871f33818cdc74379143f47197"
+    },
+    {
+      "path": "cabins/panoramic/index.html",
+      "sha256": "8129c27a4017d3f86b5eb2b052977c62146f3cd0ae4de541c57ccbe40376f8a3"
+    },
+    {
+      "path": "cabins/pyramid/index.html",
+      "sha256": "34b0bc1b132421f6f1c77e456e1142ea666f9c7fa0248af295bc9001c68b930f"
+    },
+    {
+      "path": "cabins/royal/index.html",
+      "sha256": "144d9c8b74ee0d7215169ca880d712944a04690656409efa75583b562ca85847"
+    },
+    {
+      "path": "cabins/rustic/index.html",
+      "sha256": "e420cebff8c8c307a8ae9f1a8f4bff2cd5989043856ec6cc59ba9f14fd363d9e"
+    },
+    {
+      "path": "cabins/shared-garden/index.html",
+      "sha256": "2c43ce2a75a0dae734eb9c0d1014581a65679b2b1b249408b5175ce4afa4dbda"
+    },
+    {
+      "path": "chalet-map/index.html",
+      "sha256": "3e4796cc3adb4b52b6c380913ef829684358a4de03dadac9e6cfcf890c68ef94"
+    },
+    {
+      "path": "chalet/contact/index.html",
+      "sha256": "678f75988a3a8dcff69ef65c1d246f68ecc432a3b3efaaff8a6d1f0ddb9c3ce6"
+    },
+    {
+      "path": "chalet/details/index.html",
+      "sha256": "86e495ac40aa59bfca9be4988af96b84b77787d3f68b186c9af3f252784c8ea5"
+    },
+    {
+      "path": "chalet/faq/index.html",
+      "sha256": "8a279755e95765939fd8917d5e4338fc3f5d6620a4f8e58ef31e968ece48417f"
+    },
+    {
+      "path": "chalet/guest-services/index.html",
+      "sha256": "bb27ad34bc284925db1dadf528afff7cde5333f1f40d844dcb9f21440413ee4f"
+    },
+    {
+      "path": "chalet/index.html",
+      "sha256": "ee9e37fd44bd9dc16f42e489e0d75d4090ec19517914036637a31197b3a3ca07"
+    },
+    {
+      "path": "chalet/services/games/index.html",
+      "sha256": "27316ec4797cffeb0a4c11bf3c4c367566d95e48503e076fda0395a9367cc472"
+    },
+    {
+      "path": "chalet/services/index.html",
+      "sha256": "902104c7aa91d4fb1e3bb8cbaedd4f053727d5ac600142f1b43128b1612c7884"
+    },
+    {
+      "path": "chalet/services/water-games/index.html",
+      "sha256": "26a285d9ccc6cd71abb72d6a399377c62d7e5e55ba58c5a383bbbe55e90ea1f7"
+    },
+    {
+      "path": "classic-tour/index.html",
+      "sha256": "9acdb189c9a1746db9d47386f8fb837a2e4f50d3a3c86b880f09d2b47065ef0f"
+    },
+    {
+      "path": "contest/index.html",
+      "sha256": "bf16faa839ac73eb1f1a59467149a1478d8fb61068c7facf23db416a539d81cf"
+    },
+    {
+      "path": "dome-tour/index.html",
+      "sha256": "f5b0ba8b44af8a871bb33eedd2850e03b7e3e8f67378138dd041db8e4f28dab7"
+    },
+    {
+      "path": "french-tour/index.html",
+      "sha256": "7c6d08544d3b77b34a0c5de057fa8967dba8e344f0f12485086ee8e102ee21d0"
+    },
+    {
+      "path": "greek-tour/index.html",
+      "sha256": "9c855475908c716642819e3de99c2c370eee73d4183888573aaf3a349e2b71e0"
+    },
+    {
+      "path": "guest-services/index.html",
+      "sha256": "571928121da00cb62d5342f7ca89b1dc18d4f89027a8fa9dbac3d6400ca40608"
+    },
+    {
+      "path": "guest-services/service-source.js",
+      "sha256": "2782686b4d695aa8ea5ddecc6d9674b6105ec9f598d090e4af911dbb8ebe8ebc"
+    },
+    {
+      "path": "index.html",
+      "sha256": "0767c307b60736b7e7dfe29c6569d95186e089e7211f5d5f9af61cad4beec3e1"
+    },
+    {
+      "path": "menu/index.html",
+      "sha256": "101f6f1b87c054afa5177c5077370ce0205ec744c3a1e83b5490e51aef49d544"
+    },
+    {
+      "path": "palm-tour/index.html",
+      "sha256": "195b942a76b26efe848696a0b4c86fbcbba1ca605aef0de4d368c981cb6957f9"
+    },
+    {
+      "path": "panoramic-tour/index.html",
+      "sha256": "a0c16179bafe10381cf6ec188985fa86f7110e1cd0e143d7968c45470c8f9225"
+    },
+    {
+      "path": "preview/index.html",
+      "sha256": "7d3ee206339f1730a00f2f66cc3c61472e4f6b72b0d2584a5eab26bbc61ddfdc"
+    },
+    {
+      "path": "pyramid-tour/index.html",
+      "sha256": "d0c11081d1d5f3a05f30b87f5b68d78d67cd21d89b2030a6273cde1540e283ec"
+    },
+    {
+      "path": "resort-map/index.html",
+      "sha256": "0dcac66636b4296c43620b641a20decae3e56da76f6d3fa589fee58520ad7c02"
+    },
+    {
+      "path": "resort/contact/index.html",
+      "sha256": "b908673cd899c71f2f9c78a2b2bdb4ada32f75257436764794a04c0c8a0f3e41"
+    },
+    {
+      "path": "resort/faq/index.html",
+      "sha256": "9991c796ef8b7b0a42d326412fada4f3c62c4fb6e1b8c6f9011d4e4e1fb8d283"
+    },
+    {
+      "path": "resort/index.html",
+      "sha256": "51cfea9755001fa83811913b51e2ae1f56f92d074b025f26b9226903bddb966f"
+    },
+    {
+      "path": "royal-tour/index.html",
+      "sha256": "2f55a3d2ec7d1f5cb5dbfb9bdde4d4885c1084faeae7a79be2d7005a8618d7af"
+    },
+    {
+      "path": "rustic-tour/index.html",
+      "sha256": "e03e0be81d93f00290286a193356ded36de9b41cde9b300b9a2f8ce37e80e5f2"
+    },
+    {
+      "path": "services-guide/guide.js",
+      "sha256": "36ebefa0334e87198608011c4791e9faec422ef19c2adc0486359f7585b6fd6e"
+    },
+    {
+      "path": "services-guide/index.html",
+      "sha256": "18aa7289c58fd05206c23aefaff1293110c6c455bef5e9fa151aeeb36fed0c39"
+    },
+    {
+      "path": "services/cinema/index.html",
+      "sha256": "4ea1528a9e68a1defeac6d17621db4579fe7e3b8ddb6601bae3ed861ebb785ab"
+    },
+    {
+      "path": "services/coordination/index.html",
+      "sha256": "50f759562e48ad9abe8661628c07dc2d754f93347382dd2fdd19c503e8d4c5d0"
+    },
+    {
+      "path": "services/dining-tables/index.html",
+      "sha256": "86c170ea6f34d31127c70855e09472fb96f27cfe2b7f15c60af522059cb8f673"
+    },
+    {
+      "path": "services/games/index.html",
+      "sha256": "153fb250e0ab6bbae2dce4d977aaef4d4e9fd1c16d251958e69f6c6753b54d52"
+    },
+    {
+      "path": "services/hospitality/packages/index.html",
+      "sha256": "32708872051f054c70913cea444f5e175bad259b1485964eb3ee462ec14ae54c"
+    },
+    {
+      "path": "services/index.html",
+      "sha256": "d0fff6d2ab9701cfebfc37c592a9aca83d929d6c8b0097671c8d828162576b1d"
+    },
+    {
+      "path": "services/loyalty/index.html",
+      "sha256": "d1efc0cc2e359521be3474089f3c8f652aa5c639240cf38f7ebe37c0a1c646c4"
+    },
+    {
+      "path": "services/outdoor-seating/index.html",
+      "sha256": "34ec9c2f154e1376348a0e460fc8d63b52b8b151a890ec6d61b93369ecedeb64"
+    },
+    {
+      "path": "services/share-and-win/index.html",
+      "sha256": "004a00ca3f73506cb1f91b681f5d0df23a4cb74bad487292453c4a67f4d6d0ba"
+    },
+    {
+      "path": "services/water-games/index.html",
+      "sha256": "83e64a8de63f1432d4cca94a5a4490df310b66ecdee2de1cbb9650563a678b37"
+    },
+    {
+      "path": "stay/contact/index.html",
+      "sha256": "5d36dd110ffec63532b83b876f55911d9035f7020aed7615344ea61fd5070fea"
+    },
+    {
+      "path": "stay/faq/index.html",
+      "sha256": "0e0c501ab8fecf6b906560946b820b3f60e00bd635af3302dbe5583508affdfa"
+    },
+    {
+      "path": "stay/ground-floor/index.html",
+      "sha256": "6dab56fe02c9789198b3044c8941f0e0283759b175b208e16a991caf908f86fa"
+    },
+    {
+      "path": "stay/index.html",
+      "sha256": "ee91c2cf036c083cd9f5fabb71e6b4dd44038f2ece21e916f9c747d15dba48c8"
+    },
+    {
+      "path": "stay/sections/index.html",
+      "sha256": "4b08c96d009d88ddfbde53916f876b2cbc252a9c0320632319702dfa348d445c"
+    },
+    {
+      "path": "stay/upper-floor/index.html",
+      "sha256": "e3085780acdc03bdcdf5a2fb1f3285d7501111cb3158bd52f028d9c16848f8a0"
+    }
+  ],
+  "rollback": "Revert the cutover commit, or restore the full repository from the named Git tag. Existing photos/fonts and old runtime assets remain present during review."
+}
