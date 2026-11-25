@@ -43,3 +43,7 @@ python scripts/check-guide-source.py http://127.0.0.1:8112
 ```
 
 The design references and prior audits in this folder document approved decisions. Current cleanup evidence is `audits/live-cutover-v55.json` and `audits/live-assets-v55.json`.
+
+## Back navigation
+
+Back through the header or browser history renders the restored content at full opacity. Forward navigation keeps the approved entrance effect. `python scripts/check-back-navigation.py http://127.0.0.1:8112` samples the first rendered frames at mobile/desktop widths and with reduced motion; evidence is `audits/back-navigation-v56.json`.

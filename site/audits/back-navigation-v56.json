@@ -1,0 +1,89 @@
+{
+  "checks": [
+    {
+      "width": 320,
+      "motion": "no-preference",
+      "target": "/resort/",
+      "frames": 12,
+      "minimumOpacity": 1
+    },
+    {
+      "width": 320,
+      "motion": "no-preference",
+      "target": "/services/",
+      "frames": 12,
+      "minimumOpacity": 1
+    },
+    {
+      "width": 320,
+      "motion": "no-preference",
+      "target": "/",
+      "frames": 12,
+      "minimumOpacity": 1
+    },
+    {
+      "width": 390,
+      "motion": "no-preference",
+      "target": "/resort/",
+      "frames": 12,
+      "minimumOpacity": 1
+    },
+    {
+      "width": 390,
+      "motion": "no-preference",
+      "target": "/services/",
+      "frames": 12,
+      "minimumOpacity": 1
+    },
+    {
+      "width": 390,
+      "motion": "no-preference",
+      "target": "/",
+      "frames": 12,
+      "minimumOpacity": 1
+    },
+    {
+      "width": 1440,
+      "motion": "no-preference",
+      "target": "/resort/",
+      "frames": 12,
+      "minimumOpacity": 1
+    },
+    {
+      "width": 1440,
+      "motion": "no-preference",
+      "target": "/services/",
+      "frames": 12,
+      "minimumOpacity": 1
+    },
+    {
+      "width": 1440,
+      "motion": "no-preference",
+      "target": "/",
+      "frames": 12,
+      "minimumOpacity": 1
+    },
+    {
+      "width": 390,
+      "motion": "reduce",
+      "target": "/resort/",
+      "frames": 12,
+      "minimumOpacity": 1
+    },
+    {
+      "width": 390,
+      "motion": "reduce",
+      "target": "/services/",
+      "frames": 12,
+      "minimumOpacity": 1
+    },
+    {
+      "width": 390,
+      "motion": "reduce",
+      "target": "/",
+      "frames": 12,
+      "minimumOpacity": 1
+    }
+  ],
+  "errors": []
+}

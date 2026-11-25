@@ -94,5 +94,5 @@ async def main():
   await page.goto(BASE+'/preview/services/coordination/?package=resort');await page.wait_for_url(BASE+'/services/coordination/?package=resort');await page.locator('.package[open]').wait_for();out['semanticQueryPreserved']=True
   await b.close()
  assert not out['errors'] and not out['badResponses'] and not out['badLinks'],out
- (S/'audits/live-cutover-v55.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps({'routes':len(out['routes']),'aliases':len(out['previewAliases']),'hashes':len(out['legacyHashes']),'photos':sum(u['photos'] for u in out['units']),'errors':out['errors']}))
+ (S/'audits'/('live-cutover-'+routes['version'].rsplit('-',1)[-1]+'.json')).write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps({'routes':len(out['routes']),'aliases':len(out['previewAliases']),'hashes':len(out['legacyHashes']),'photos':sum(u['photos'] for u in out['units']),'errors':out['errors']}))
 asyncio.run(main())
