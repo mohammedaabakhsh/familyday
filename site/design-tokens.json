@@ -1,6 +1,6 @@
 {
-  "version": "resort-v50",
-  "scope": "approved resort reference; do not apply other venue facts",
+  "version": "live-v58",
+  "scope": "shared approved formatting for resort, chalet and rest house; retain venue-specific content",
   "fontFamily": "Tajawal, Arial, sans-serif",
   "colors": {
     "background": "#071a26",
@@ -24,7 +24,7 @@
       "mobile": 20,
       "desktop": 22,
       "lineHeight": 1.5,
-      "weight": 700
+      "weight": 800
     },
     "overviewIntro": {
       "mobile": 22,
@@ -66,7 +66,8 @@
     },
     "bottomNavigation": {
       "size": 11,
-      "smallMobile": 10
+      "smallMobile": 10,
+      "desktop": 11
     }
   },
   "navigation": {
@@ -93,7 +94,6 @@
   },
   "references": [
     "style.css",
-    "services-theme.css",
     "visuals/resort-tour.css",
     "visuals/resort-tour.js",
     "visuals/panoramic-trial.css",

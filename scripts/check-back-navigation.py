@@ -40,5 +40,5 @@ async def main():
    assert not errors,errors
    await page.close()
   await b.close()
- out={'checks':results,'errors':[]};(R/'site/audits/back-navigation-v57.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out))
+ out={'checks':results,'errors':[]};(R/'site/audits'/('back-navigation-'+json.loads((R/'site/routes.json').read_text())['version'].rsplit('-',1)[-1]+'.json')).write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out))
 asyncio.run(main())

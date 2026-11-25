@@ -39,6 +39,4 @@ body.chalet-scope:not(.focused-view) #main{padding-top:calc(64px + env(safe-area
 .chalet-tour .tour-frame{flex:1;min-height:0;background:transparent}
 .chalet-scope .bottom-nav.six-items{grid-template-columns:repeat(6,minmax(0,1fr))}
 
-.chalet-scope .bottom-nav .nav-label{font-size:11px}
 .chalet-scope #main:has(.service-guide,.faq-guide){padding-bottom:calc(108px + env(safe-area-inset-bottom,0px))}
-@media(min-width:1000px){.chalet-scope .bottom-nav .nav-label{font-size:13px}}

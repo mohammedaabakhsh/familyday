@@ -49,3 +49,9 @@ The design references and prior audits in this folder document approved decision
 The resort directory renders as native guide links from `guide-copy.json`, preserving its approved titles, descriptions, sizes and colors. It no longer mounts a nested document. The three venue overviews and the resort directory reuse their existing DOM nodes, retaining decoded hero images and restoring directory scroll. Views render without fade/slide entrance effects, and the document canvas retains the shared background.
 
 `python scripts/check-back-navigation.py http://127.0.0.1:8112` checks the first rendered frames, exact hero-image pixels and image-node reuse while further hero requests are blocked, directory scroll, header/browser Back, and mobile/desktop/reduced-motion layouts. Evidence is `audits/back-navigation-v57.json`, `audits/directory-layout-v57.json` and `audits/live-cutover-v57.json`.
+
+## Cross-venue review — v58
+
+[Full review](FULL_REVIEW_20261125.md) covers all three destinations, 290 responsive page views, canonical/legacy links, image integrity, FAQ behavior, every facility/map selection, and the three protected order experiences. The only presentation fixes align the resort service heading with other internal titles and remove chalet/rest-house navigation-label overrides so all three use the approved shared scale.
+
+Run `python scripts/check-shared-format.py http://127.0.0.1:8112` to compare headings, six navigation columns, label sizes and common detail components at five viewport sizes. Evidence is `audits/full-review-v58.json`, `audits/shared-format-v58.json` and the linked review checks.

@@ -1,0 +1,332 @@
+{
+  "version": "20261125-live-v58",
+  "date": "2026-11-25",
+  "browser": "Chromium; mobile, tablet and desktop viewports; not a physical iPhone test",
+  "venues": [
+    "resort",
+    "chalet",
+    "stay"
+  ],
+  "nativeRoutes": 58,
+  "allPublicRoutes": 68,
+  "previewRedirects": 68,
+  "legacyHashRoutes": 44,
+  "responsivePageChecks": 290,
+  "viewportSizes": [
+    [
+      320,
+      568
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      430,
+      932
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      1440,
+      900
+    ]
+  ],
+  "uniqueRenderedLinks": 89,
+  "links": [
+    "http://127.0.0.1:8112/",
+    "http://127.0.0.1:8112/bohemian-tour/?from=details&cabin=6",
+    "http://127.0.0.1:8112/cabins/",
+    "http://127.0.0.1:8112/cabins/bohemian/",
+    "http://127.0.0.1:8112/cabins/classic/",
+    "http://127.0.0.1:8112/cabins/dome-1/",
+    "http://127.0.0.1:8112/cabins/dome-2/",
+    "http://127.0.0.1:8112/cabins/french/",
+    "http://127.0.0.1:8112/cabins/greek-1/",
+    "http://127.0.0.1:8112/cabins/greek-2/",
+    "http://127.0.0.1:8112/cabins/palm-beach/",
+    "http://127.0.0.1:8112/cabins/panoramic/",
+    "http://127.0.0.1:8112/cabins/pyramid/",
+    "http://127.0.0.1:8112/cabins/royal/",
+    "http://127.0.0.1:8112/cabins/rustic/",
+    "http://127.0.0.1:8112/cabins/shared-garden/",
+    "http://127.0.0.1:8112/chalet-map/",
+    "http://127.0.0.1:8112/chalet-map/?from=chalet-details",
+    "http://127.0.0.1:8112/chalet/",
+    "http://127.0.0.1:8112/chalet/contact/",
+    "http://127.0.0.1:8112/chalet/details/",
+    "http://127.0.0.1:8112/chalet/faq/",
+    "http://127.0.0.1:8112/chalet/services/",
+    "http://127.0.0.1:8112/chalet/services/games/",
+    "http://127.0.0.1:8112/chalet/services/water-games/",
+    "http://127.0.0.1:8112/classic-tour/?from=details&cabin=3",
+    "http://127.0.0.1:8112/contest/",
+    "http://127.0.0.1:8112/dome-tour/?from=details&cabin=1",
+    "http://127.0.0.1:8112/dome-tour/?from=details&cabin=12",
+    "http://127.0.0.1:8112/french-tour/?from=details&cabin=7",
+    "http://127.0.0.1:8112/greek-tour/?from=details&cabin=13",
+    "http://127.0.0.1:8112/greek-tour/?from=details&cabin=4",
+    "http://127.0.0.1:8112/menu/",
+    "http://127.0.0.1:8112/palm-tour/?from=details&cabin=5",
+    "http://127.0.0.1:8112/panoramic-tour/?from=details&cabin=10",
+    "http://127.0.0.1:8112/pyramid-tour/?from=details&v=map-return-20261028-v3",
+    "http://127.0.0.1:8112/resort-map/",
+    "http://127.0.0.1:8112/resort/",
+    "http://127.0.0.1:8112/resort/compare/",
+    "http://127.0.0.1:8112/resort/contact/",
+    "http://127.0.0.1:8112/resort/faq/",
+    "http://127.0.0.1:8112/royal-tour/?from=details&cabin=9",
+    "http://127.0.0.1:8112/rustic-tour/?from=details&cabin=8",
+    "http://127.0.0.1:8112/services/",
+    "http://127.0.0.1:8112/services/cinema/",
+    "http://127.0.0.1:8112/services/coordination/",
+    "http://127.0.0.1:8112/services/dining-tables/",
+    "http://127.0.0.1:8112/services/games/",
+    "http://127.0.0.1:8112/services/hospitality/packages/",
+    "http://127.0.0.1:8112/services/loyalty/",
+    "http://127.0.0.1:8112/services/outdoor-seating/",
+    "http://127.0.0.1:8112/services/share-and-win/",
+    "http://127.0.0.1:8112/services/water-games/",
+    "http://127.0.0.1:8112/stay/",
+    "http://127.0.0.1:8112/stay/compare/",
+    "http://127.0.0.1:8112/stay/contact/",
+    "http://127.0.0.1:8112/stay/faq/",
+    "http://127.0.0.1:8112/stay/ground-floor/",
+    "http://127.0.0.1:8112/stay/sections/",
+    "http://127.0.0.1:8112/stay/services/",
+    "http://127.0.0.1:8112/stay/upper-floor/",
+    "https://apps.apple.com/sa/app/%D9%8A%D9%88%D9%85-%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9/id6475359813",
+    "https://drive.google.com/drive/folders/16I5HHt6xZO4JKVhA9KdFB0ymcUZ5RfGj?usp=sharing",
+    "https://familyday-sa.com/ar",
+    "https://familyday-sa.com/ar/listings/6abb996392a258b8171230a3",
+    "https://familydaystay.com/arrangements/#coordination",
+    "https://familydaystay.com/arrangements/#dining",
+    "https://familydaystay.com/arrangements/#seating",
+    "https://familydaystay.com/chalet/guest-services/",
+    "https://familydaystay.com/guest-services/#cinema",
+    "https://familydaystay.com/guest-services/#games",
+    "https://familydaystay.com/guest-services/#hospitality",
+    "https://familydaystay.com/guest-services/#restaurant",
+    "https://familydaystay.com/guest-services/#water",
+    "https://instagram.com/FAMILYDAYRESORT",
+    "https://loyapro.com/c/MjUyNg==",
+    "https://maps.app.goo.gl/FLmawLadNaa3uYpJ8?g_st=ic",
+    "https://maps.app.goo.gl/i7BhZbfkRLyV68eFA?g_st=ic",
+    "https://maps.app.goo.gl/np6uD3XvCQTCr4ff7",
+    "https://play.google.com/store/apps/details?id=com.familydaysa",
+    "https://search.google.com/local/writereview?placeid=ChIJ9cqaFpNnwRURFlcvpptWW_4",
+    "https://search.google.com/local/writereview?placeid=ChIJBx9eaoVnwRURtljowMtrzV4",
+    "https://search.google.com/local/writereview?placeid=ChIJkfXGX69nwRURYJSW6ifyHqY",
+    "https://tiktok.com/@familydayresort",
+    "https://wa.me/966556156693",
+    "https://wa.me/966556615018?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D9%85%D8%B4%D8%A7%D8%B1%D9%83%D8%A9%20%D9%81%D9%8A%20%D9%85%D8%B3%D8%A7%D8%A8%D9%82%D8%A9%20%C2%AB%D8%B4%D8%A7%D8%B1%D9%83%20%D8%A8%D9%81%D9%8A%D8%AF%D9%8A%D9%88%E2%80%A6%20%D9%88%D9%8A%D9%88%D9%85%D9%83%20%D8%A7%D9%84%D8%AC%D8%A7%D9%8A%20%D8%B9%D9%84%D9%8A%D9%86%D8%A7%C2%BB.%0A%0A%D8%A7%D9%84%D8%A7%D8%B3%D9%85%3A%0A%D8%A7%D9%84%D9%85%D9%86%D8%B5%D8%A9%3A%0A%D8%B1%D8%A7%D8%A8%D8%B7%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%3A%0A%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE%20%D9%86%D8%B4%D8%B1%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%3A",
+    "https://www.snapchat.com/add/familyday5",
+    "mailto:family999day@gmail.com?subject=%D9%85%D8%B4%D8%A7%D8%B1%D9%83%D8%A9%20-%20%D8%B4%D8%A7%D8%B1%D9%83%20%D9%88%D8%A7%D8%B1%D8%A8%D8%AD%20-%20%D9%85%D9%86%D8%AA%D8%AC%D8%B9%20%D9%8A%D9%88%D9%85%20%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9&body=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D9%85%D8%B4%D8%A7%D8%B1%D9%83%D8%A9%20%D9%81%D9%8A%20%C2%AB%D8%B4%D8%A7%D8%B1%D9%83%20%D9%88%D8%A7%D8%B1%D8%A8%D8%AD%C2%BB.%0A%0A%D8%A7%D9%84%D8%A7%D8%B3%D9%85%3A%0A%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE%20%D8%A7%D9%84%D8%B2%D9%8A%D8%A7%D8%B1%D8%A9%3A%0A%D8%B1%D9%82%D9%85%20%D8%A7%D9%84%D8%AC%D9%88%D8%A7%D9%84%3A",
+    "tel:+966556156693"
+  ],
+  "internalLinksMissing": [],
+  "externalReachability": [
+    {
+      "url": "https://apps.apple.com/sa/app/%D9%8A%D9%88%D9%85-%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9/id6475359813",
+      "status": 200,
+      "finalURL": "https://apps.apple.com/sa/app/%D9%8A%D9%88%D9%85-%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9/id6475359813",
+      "type": "text/html",
+      "error": null
+    },
+    {
+      "url": "https://drive.google.com/drive/folders/16I5HHt6xZO4JKVhA9KdFB0ymcUZ5RfGj?usp=sharing",
+      "status": 200,
+      "finalURL": "https://drive.google.com/drive/folders/16I5HHt6xZO4JKVhA9KdFB0ymcUZ5RfGj?usp=sharing",
+      "type": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://familyday-sa.com/ar",
+      "status": 200,
+      "finalURL": "https://familyday-sa.com/ar",
+      "type": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://familyday-sa.com/ar/listings/6abb996392a258b8171230a3",
+      "status": 200,
+      "finalURL": "https://familyday-sa.com/ar/listings/6abb996392a258b8171230a3",
+      "type": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://instagram.com/FAMILYDAYRESORT",
+      "status": 200,
+      "finalURL": "https://www.instagram.com/FAMILYDAYRESORT",
+      "type": "text/html; charset=\"utf-8\"",
+      "error": null
+    },
+    {
+      "url": "https://loyapro.com/c/MjUyNg==",
+      "status": 200,
+      "finalURL": "https://loyapro.com/c/MjUyNg==",
+      "type": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://maps.app.goo.gl/FLmawLadNaa3uYpJ8?g_st=ic",
+      "status": 204,
+      "finalURL": "https://maps.google.com/?q=V29V+HR+%D9%85%D8%AC%D9%85%D8%B9+%D9%8A%D9%88%D9%85+%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9%D8%8C+%D8%B9%D9%85%D8%B1+%D8%A8%D9%86+%D8%A7%D9%84%D8%AE%D8%B7%D8%A7%D8%A8+%D8%B1%D8%B6%D9%8A+%D8%A7%D9%84%D9%84%D9%87+%D8%B9%D9%86%D9%87%D8%8C+%D8%B0%D9%87%D8%A8%D8%A7%D9%86+22225&ftid=0x15c167af5fc6f591:0xa61ef227ea969460&entry=gps&shh=CAE&lucs=,94297699,100826475,94231188,94280568,47071704,94218641,94282134,94286869,100820247,100822504&g_ep=CAISEjI2LjMzLjEuOTYxODkxNDMyMBgAIIgnKl0sOTQyOTc2OTksMTAwODI2NDc1LDk0MjMxMTg4LDk0MjgwNTY4LDQ3MDcxNzA0LDk0MjE4NjQxLDk0MjgyMTM0LDk0Mjg2ODY5LDEwMDgyMDI0NywxMDA4MjI1MDRCAlNB&skid=7ba0ea07-65ce-42d0-ac93-5fcf6b11923d&g_st=ic",
+      "type": "text/html",
+      "error": null
+    },
+    {
+      "url": "https://maps.app.goo.gl/i7BhZbfkRLyV68eFA?g_st=ic",
+      "status": 204,
+      "finalURL": "https://maps.google.com/?q=%D8%A7%D8%B3%D8%AA%D8%B1%D8%A7%D8%AD%D8%A9+%D9%8A%D9%88%D9%85+%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9%D8%8C+%D8%A7%D9%84%D8%AE%D9%84%D9%8A%D8%AC%D8%8C+Unnamed+Road+23846%D8%8C%D8%8C+jeddah+21421&ftid=0x15c16793169acaf5:0xfe5b569ba62f5716&entry=gps&shh=CAE&lucs=,94297699,100826475,94231188,94280568,47071704,94218641,94282134,94286869,100820247,100822504&g_ep=CAISEjI2LjMzLjEuOTYxODkxNDMyMBgAIIgnKl0sOTQyOTc2OTksMTAwODI2NDc1LDk0MjMxMTg4LDk0MjgwNTY4LDQ3MDcxNzA0LDk0MjE4NjQxLDk0MjgyMTM0LDk0Mjg2ODY5LDEwMDgyMDI0NywxMDA4MjI1MDRCAlNB&skid=59c51ee8-344b-45a2-85b4-84bf77642a00&g_st=ic",
+      "type": "text/html",
+      "error": null
+    },
+    {
+      "url": "https://maps.app.goo.gl/np6uD3XvCQTCr4ff7",
+      "status": 204,
+      "finalURL": "https://www.google.com/maps/place/%D8%B4%D8%A7%D9%84%D9%8A%D9%87+%D9%8A%D9%88%D9%85+%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9%E2%80%AD/@21.853173,39.0073283,189m/data=!3m1!1e3!4m6!3m5!1s0x15c167856a5e1f07:0x5ecd6bcbc0e858b6!8m2!3d21.8532963!4d39.0076907!16s%2Fg%2F11zz15slq3?authuser=0&entry=tts&g_ep=EgoyMDI2MDkyMy4wIPu8ASoASAFQAw%3D%3D&skid=c65a6d21-83b7-457e-8ea2-5f798a64d4de",
+      "type": "text/html",
+      "error": null
+    },
+    {
+      "url": "https://play.google.com/store/apps/details?id=com.familydaysa",
+      "status": 200,
+      "finalURL": "https://play.google.com/store/apps/details?id=com.familydaysa",
+      "type": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://search.google.com/local/writereview?placeid=ChIJ9cqaFpNnwRURFlcvpptWW_4",
+      "status": 204,
+      "finalURL": "https://search.google.com/local/writereview?placeid=ChIJ9cqaFpNnwRURFlcvpptWW_4",
+      "type": "text/html",
+      "error": null
+    },
+    {
+      "url": "https://search.google.com/local/writereview?placeid=ChIJBx9eaoVnwRURtljowMtrzV4",
+      "status": 204,
+      "finalURL": "https://search.google.com/local/writereview?placeid=ChIJBx9eaoVnwRURtljowMtrzV4",
+      "type": "text/html",
+      "error": null
+    },
+    {
+      "url": "https://search.google.com/local/writereview?placeid=ChIJkfXGX69nwRURYJSW6ifyHqY",
+      "status": 204,
+      "finalURL": "https://search.google.com/local/writereview?placeid=ChIJkfXGX69nwRURYJSW6ifyHqY",
+      "type": "text/html",
+      "error": null
+    },
+    {
+      "url": "https://tiktok.com/@familydayresort",
+      "status": 200,
+      "finalURL": "https://www.tiktok.com/@familydayresort",
+      "type": "text/html",
+      "error": null
+    },
+    {
+      "url": "https://www.snapchat.com/add/familyday5",
+      "status": 200,
+      "finalURL": "https://www.snapchat.com/@familyday5",
+      "type": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://my.matterport.com/show/?m=S7Z2CF9tdwm",
+      "status": 200,
+      "finalURL": "https://my.matterport.com/show/?m=S7Z2CF9tdwm",
+      "type": "text/html; encoding=utf-8",
+      "error": null
+    }
+  ],
+  "faq": {
+    "resort": {
+      "sourceQuestions": 29,
+      "displayedAnswers": 22,
+      "groups": [
+        "الحجز",
+        "الأكواخ",
+        "الخدمات",
+        "التعليمات"
+      ]
+    },
+    "chalet": {
+      "sourceQuestions": 19,
+      "displayedAnswers": 14,
+      "groups": [
+        "الحجز",
+        "الشاليه",
+        "الخدمات",
+        "التعليمات"
+      ]
+    },
+    "stay": {
+      "sourceQuestions": 22,
+      "displayedAnswers": 16,
+      "groups": [
+        "الحجز",
+        "القسمان",
+        "الخدمات",
+        "التعليمات"
+      ]
+    }
+  },
+  "galleryPlacements": 153,
+  "uniqueGalleryFiles": 136,
+  "identicalImageFileDuplicates": [],
+  "deepInteractions": {
+    "faqVenues": 3,
+    "tourFacilitySelections": 282,
+    "mapSelections": 39,
+    "errors": []
+  },
+  "sharedFormatChecks": {
+    "headings": 75,
+    "detailComponentGroups": 15,
+    "errors": []
+  },
+  "fixes": [
+    {
+      "component": "resort services title",
+      "before": {
+        "top": 88,
+        "weight": 700
+      },
+      "after": {
+        "top": 76,
+        "weight": 800
+      },
+      "description": "Align with contact, FAQ and service titles across the three venues."
+    },
+    {
+      "component": "chalet and rest-house bottom navigation labels",
+      "before": {
+        "smallMobile": 11,
+        "desktop": 13
+      },
+      "after": {
+        "smallMobile": 10,
+        "mobile": 11,
+        "desktop": 11
+      },
+      "description": "Inherit the same label scale as the resort; retain six equal columns and the gold service circle."
+    }
+  ],
+  "runtimeErrors": [],
+  "badLocalResponses": [],
+  "horizontalOverflow": [],
+  "clippedHeadingsOrButtons": [],
+  "unnamedVisibleControls": [],
+  "protectedOrderFilesVerified": 22,
+  "messagesActuallySent": false,
+  "preservedDecisions": [
+    "Original public and QR URLs remain unchanged.",
+    "Three independent order portals retain their design, data and message recipients.",
+    "Rest house has the large inflatable slide only; external ordering remains deferred.",
+    "Rest house uses comparison instead of a map.",
+    "No per-unit price/availability buttons were reintroduced.",
+    "Map/tour titles stay centered at 14px; inner-page titles are 20px mobile/22px desktop."
+  ]
+}

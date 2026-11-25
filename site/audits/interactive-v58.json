@@ -1,0 +1,1932 @@
+{
+  "faq": [
+    {
+      "venue": "resort",
+      "groups": [
+        "الحجز",
+        "الأكواخ",
+        "الخدمات",
+        "التعليمات"
+      ],
+      "search": true,
+      "singleOpenAnswer": true,
+      "stateRestored": true
+    },
+    {
+      "venue": "chalet",
+      "groups": [
+        "الحجز",
+        "الشاليه",
+        "الخدمات",
+        "التعليمات"
+      ],
+      "search": true,
+      "singleOpenAnswer": true,
+      "stateRestored": true
+    },
+    {
+      "venue": "stay",
+      "groups": [
+        "الحجز",
+        "القسمان",
+        "الخدمات",
+        "التعليمات"
+      ],
+      "search": true,
+      "singleOpenAnswer": true,
+      "stateRestored": true
+    }
+  ],
+  "tourSelections": [
+    {
+      "width": 320,
+      "unit": 1,
+      "facility": "حمام",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 1,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 1,
+      "facility": "البانيو الداخلي",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 1,
+      "facility": "صالة داخلية مدمجة مع غرفة النوم",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 1,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 1,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 1,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 12,
+      "facility": "حمام",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 12,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 12,
+      "facility": "البانيو الداخلي",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 12,
+      "facility": "صالة داخلية مدمجة مع غرفة النوم",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 12,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 12,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 12,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 2,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 2,
+      "facility": "البانيو الخارجي",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 2,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 2,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 2,
+      "facility": "حمام",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 2,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 2,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 3,
+      "facility": "حمام",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 3,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 3,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 3,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 3,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 3,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 4,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 4,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 4,
+      "facility": "الحمامات",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 4,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 4,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 4,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 4,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 13,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 13,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 13,
+      "facility": "الحمامات",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 13,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 13,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 13,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 13,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 5,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 5,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 5,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 5,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 5,
+      "facility": "الحمامات",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 5,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 5,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 6,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 6,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 6,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 6,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 6,
+      "facility": "الحمامات",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 6,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 6,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 7,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 7,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 7,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 7,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 7,
+      "facility": "الحمامات",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 7,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 7,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 8,
+      "facility": "الحمامات",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 8,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 8,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 8,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 8,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 8,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 8,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 9,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 9,
+      "facility": "الحمامات",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 9,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 9,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 9,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 9,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 9,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 10,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 10,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 10,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 10,
+      "facility": "الحمامات",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 10,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 10,
+      "facility": "البانيو الداخلي",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 10,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 10,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 30,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 30,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 30,
+      "facility": "صالة داخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 30,
+      "facility": "المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 30,
+      "facility": "طاولة الطعام",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 30,
+      "facility": "غرفة ألعاب الأطفال",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 30,
+      "facility": "مسبح الأطفال",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 30,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 30,
+      "facility": "المجلس المستقل",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 320,
+      "unit": 30,
+      "facility": "حمام",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 1,
+      "facility": "حمام",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 1,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 1,
+      "facility": "البانيو الداخلي",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 1,
+      "facility": "صالة داخلية مدمجة مع غرفة النوم",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 1,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 1,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 1,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 12,
+      "facility": "حمام",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 12,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 12,
+      "facility": "البانيو الداخلي",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 12,
+      "facility": "صالة داخلية مدمجة مع غرفة النوم",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 12,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 12,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 12,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 2,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 2,
+      "facility": "البانيو الخارجي",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 2,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 2,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 2,
+      "facility": "حمام",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 2,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 2,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 3,
+      "facility": "حمام",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 3,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 3,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 3,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 3,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 3,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 4,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 4,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 4,
+      "facility": "الحمامات",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 4,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 4,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 4,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 4,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 13,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 13,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 13,
+      "facility": "الحمامات",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 13,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 13,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 13,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 13,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 5,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 5,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 5,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 5,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 5,
+      "facility": "الحمامات",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 5,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 5,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 6,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 6,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 6,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 6,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 6,
+      "facility": "الحمامات",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 6,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 6,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 7,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 7,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 7,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 7,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 7,
+      "facility": "الحمامات",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 7,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 7,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 8,
+      "facility": "الحمامات",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 8,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 8,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 8,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 8,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 8,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 8,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 9,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 9,
+      "facility": "الحمامات",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 9,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 9,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 9,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 9,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 9,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 10,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 10,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 10,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 10,
+      "facility": "الحمامات",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 10,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 10,
+      "facility": "البانيو الداخلي",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 10,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 10,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 30,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 30,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 30,
+      "facility": "صالة داخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 30,
+      "facility": "المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 30,
+      "facility": "طاولة الطعام",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 30,
+      "facility": "غرفة ألعاب الأطفال",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 30,
+      "facility": "مسبح الأطفال",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 30,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 30,
+      "facility": "المجلس المستقل",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 390,
+      "unit": 30,
+      "facility": "حمام",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 1,
+      "facility": "حمام",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 1,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 1,
+      "facility": "البانيو الداخلي",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 1,
+      "facility": "صالة داخلية مدمجة مع غرفة النوم",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 1,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 1,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 1,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 12,
+      "facility": "حمام",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 12,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 12,
+      "facility": "البانيو الداخلي",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 12,
+      "facility": "صالة داخلية مدمجة مع غرفة النوم",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 12,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 12,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 12,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 2,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 2,
+      "facility": "البانيو الخارجي",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 2,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 2,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 2,
+      "facility": "حمام",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 2,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 2,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 3,
+      "facility": "حمام",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 3,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 3,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 3,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 3,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 3,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 4,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 4,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 4,
+      "facility": "الحمامات",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 4,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 4,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 4,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 4,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 13,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 13,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 13,
+      "facility": "الحمامات",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 13,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 13,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 13,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 13,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 5,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 5,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 5,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 5,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 5,
+      "facility": "الحمامات",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 5,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 5,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 6,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 6,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 6,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 6,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 6,
+      "facility": "الحمامات",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 6,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 6,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 7,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 7,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 7,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 7,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 7,
+      "facility": "الحمامات",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 7,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 7,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 8,
+      "facility": "الحمامات",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 8,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 8,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 8,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 8,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 8,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 8,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 9,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 9,
+      "facility": "الحمامات",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 9,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 9,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 9,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 9,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 9,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 10,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 10,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 10,
+      "facility": "الصالة الداخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 10,
+      "facility": "الحمامات",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 10,
+      "facility": "ركن المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 10,
+      "facility": "البانيو الداخلي",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 10,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 10,
+      "facility": "المسبح",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 30,
+      "facility": "غرفة النوم الرئيسية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 30,
+      "facility": "غرفة النوم الثانية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 30,
+      "facility": "صالة داخلية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 30,
+      "facility": "المطبخ",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 30,
+      "facility": "طاولة الطعام",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 30,
+      "facility": "غرفة ألعاب الأطفال",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 30,
+      "facility": "مسبح الأطفال",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 30,
+      "facility": "المنطقة الخارجية",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 30,
+      "facility": "المجلس المستقل",
+      "valueColor": "rgb(241, 247, 248)"
+    },
+    {
+      "width": 1440,
+      "unit": 30,
+      "facility": "حمام",
+      "valueColor": "rgb(241, 247, 248)"
+    }
+  ],
+  "mapSelections": [
+    {
+      "width": 320,
+      "key": "pyramid",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 320,
+      "key": "dome-upper",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 320,
+      "key": "dome-lower",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 320,
+      "key": "classic",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 320,
+      "key": "royal",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 320,
+      "key": "bohemian",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 320,
+      "key": "panoramic",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 320,
+      "key": "rural",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 320,
+      "key": "french",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 320,
+      "key": "greek-one",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 320,
+      "key": "greek-two",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 320,
+      "key": "palm-beach",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 320,
+      "key": "shared-garden",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 390,
+      "key": "pyramid",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 390,
+      "key": "dome-upper",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 390,
+      "key": "dome-lower",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 390,
+      "key": "classic",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 390,
+      "key": "royal",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 390,
+      "key": "bohemian",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 390,
+      "key": "panoramic",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 390,
+      "key": "rural",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 390,
+      "key": "french",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 390,
+      "key": "greek-one",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 390,
+      "key": "greek-two",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 390,
+      "key": "palm-beach",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 390,
+      "key": "shared-garden",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 1440,
+      "key": "pyramid",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 1440,
+      "key": "dome-upper",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 1440,
+      "key": "dome-lower",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 1440,
+      "key": "classic",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 1440,
+      "key": "royal",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 1440,
+      "key": "bohemian",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 1440,
+      "key": "panoramic",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 1440,
+      "key": "rural",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 1440,
+      "key": "french",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 1440,
+      "key": "greek-one",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 1440,
+      "key": "greek-two",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 1440,
+      "key": "palm-beach",
+      "labelsDoNotOverlap": true
+    },
+    {
+      "width": 1440,
+      "key": "shared-garden",
+      "labelsDoNotOverlap": true
+    }
+  ],
+  "errors": []
+}
