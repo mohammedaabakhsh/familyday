@@ -1,6 +1,9 @@
 /* Independent arrangements draft. Catalogue prices are always read afresh, never restored. */
 (function () {
   'use strict';
+  const params=new URLSearchParams(location.search);
+  const directService=parent!==window&&params.get('embed')==='resort-order'&&['coordination','dining','seating'].includes(params.get('direct'))?params.get('direct'):'';
+  const identityKey='familyday.resort-direct-identity.v1';
   const storageKey='familyday.arrangements-orders.v1';
   const summary=document.getElementById('arrangement-summary');
   const form=document.getElementById('arrangement-order');
@@ -11,11 +14,12 @@
   const groups=[['coordination','التنسيقات'],['dining','طاولات الطعام'],['seating','الجلسات الخارجية'],['extra','إضافة اختيارية']];
   const node=(tag,text,cls)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;};
   const quantity=value=>Number.isInteger(value)&&value>=0&&value<=99?value:0;
-  function save(){try{sessionStorage.setItem(storageKey,JSON.stringify(state));}catch(_){/* The form also works without storage. */}}
+  function save(){try{sessionStorage.setItem(directService?identityKey:storageKey,JSON.stringify(directService?{name:state.name,cabin:state.cabin}:state));}catch(_){/* The form also works without storage. */}}
   function restore(){try{
-    const saved=JSON.parse(sessionStorage.getItem(storageKey));if(!saved||typeof saved!=='object')return;
-    for(const key of ['name','notes'])if(typeof saved[key]==='string')state[key]=saved[key].slice(0,key==='name'?100:1000);
+    const saved=JSON.parse(sessionStorage.getItem(directService?identityKey:storageKey));if(!saved||typeof saved!=='object')return;
+    for(const key of (directService?['name']:['name','notes']))if(typeof saved[key]==='string')state[key]=saved[key].slice(0,key==='name'?100:1000);
     if(Object.hasOwn(cabins,saved.cabin))state.cabin=saved.cabin;
+    if(directService)return;
     for(const key of entries.keys())state.quantities[key]=quantity(saved.quantities?.[key]);
   }catch(_){/* Ignore malformed or obsolete drafts. */}}
   const price=value=>{const n=Number(String(value).match(/\d+(?:\.\d+)?/)?.[0]);if(!Number.isFinite(n)||n<=0)throw Error('Invalid arrangement price');return n;};
@@ -119,7 +123,7 @@
 
   });
   for(const [key,field] of Object.entries(fields))field.addEventListener(key==='cabin'?'change':'input',()=>{state[key]=field.value;save();if(key==='cabin')render();});
-  form.addEventListener('submit',event=>{
+  function submitOrder(event){
     event.preventDefault();const chosen=lines();if(!ready||!chosen.length||!form.reportValidity()||!state.name.trim()||!Object.hasOwn(cabins,state.cabin)||state.quantities['seating-extra']&&!seatsChosen())return;
     const parts=['السلام عليكم، أرغب بطلب التنسيقات والتجهيزات التالية:','','الاسم: '+state.name.trim(),'اسم الكوخ: '+state.cabin,'رقم الكوخ: '+cabins[state.cabin],'','الطلبات:'];
     for(const [group,title] of groups){
@@ -130,6 +134,9 @@
     parts.push('','إجمالي الطلب: '+chosen.reduce((sum,e)=>sum+e.total,0)+' ريال');if(state.notes.trim())parts.push('','ملاحظات: '+state.notes.trim());save();
     // Open a text draft only; the guest reviews and sends it from WhatsApp.
     window.open('https://wa.me/966537009217?text='+encodeURIComponent(parts.join('\n')),'_blank','noopener,noreferrer');
-  });
+    return true;
+  }
+  form.addEventListener('submit',submitOrder);
+  if(directService)window.FD_RESORT_DIRECT_ORDER={formId:'arrangement-order',canSubmit:()=>ready&&!form.querySelector('.arrangement-send').disabled,submit:submitOrder};
   document.addEventListener('fd:arrangement-view',updateShortcut);shortcut.addEventListener('click',jump);new IntersectionObserver(updateShortcut,{rootMargin:'-80px 0px -40px'}).observe(summary);window.addEventListener('resize',updateShortcut);
 })();

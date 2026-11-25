@@ -10,6 +10,9 @@
   var isChalet = document.body.dataset.venue==='chalet';
   var gameOptions = isChalet ? ['box'] : ['box','table'];
   var storageKey = isChalet ? 'familyday.chalet-guest-orders.v1' : 'familyday.guest-orders.v2';
+  var directService=!isChalet && parent!==window && new URLSearchParams(location.search).get('embed')==='resort-order' ? new URLSearchParams(location.search).get('direct') : '';
+  if(['restaurant','hospitality','water','games','cinema','extras'].indexOf(directService)===-1) directService='';
+  var identityKey='familyday.resort-direct-identity.v1';
   var cabins;
   var state = {name:'', cabin:'', notes:'', restaurantNotes:'', quantities:{}, hospitality:{}, water:null, cinema:'', games:'', menu:{}};
   var catalog;
@@ -49,15 +52,16 @@
   }
   function validTime(value) { return !!time && Array.from(time.options).some(function(option){return option.value===value && !!value;}); }
   function save() {
-    try { sessionStorage.setItem(storageKey,JSON.stringify(state)); }
+    try { sessionStorage.setItem(directService ? identityKey : storageKey,JSON.stringify(directService ? {name:state.name,cabin:state.cabin} : state)); }
     catch (_) { /* Ordering also works without browser storage. */ }
   }
   function restore() {
     try {
-      var saved=JSON.parse(sessionStorage.getItem(storageKey) || (!isChalet && sessionStorage.getItem('familyday.guest-extras.v1')));
+      var saved=JSON.parse(directService ? sessionStorage.getItem(identityKey) : sessionStorage.getItem(storageKey) || (!isChalet && sessionStorage.getItem('familyday.guest-extras.v1')));
       if (!saved || typeof saved!=='object') return;
       if (typeof saved.name==='string') state.name=saved.name.slice(0,100);
       state.cabin=Object.keys(cabins).find(function(name){return saved.cabin===name || String(saved.cabin)===String(cabins[name]);}) || '';
+      if(directService) return; // Independent requests remember identity only, never an earlier selection.
       ['notes','restaurantNotes'].forEach(function(key){if(typeof saved[key]==='string') state[key]=saved[key].slice(0,1000);});
       extras.forEach(function(item){state.quantities[item.id]=quantity(saved.quantities && saved.quantities[item.id]);});
       if(document.getElementById('hospitality-card')) catalog.hospitality.packages.forEach(function(pack){state.hospitality[pack.id]=quantity(saved.hospitality && saved.hospitality[pack.id]);});
@@ -363,6 +367,7 @@
     save();
     // Prepare a draft only. Opening WhatsApp does not send or confirm the order.
     window.open('https://wa.me/'+(restaurant ? '966537006531' : '966556156693')+'?text='+encodeURIComponent(message),'_blank','noopener,noreferrer');
+    return true;
   }
 
   function renderOrders(){renderResort();renderMenu();updateShortcut();}
@@ -516,4 +521,21 @@
   form.addEventListener('submit',function(event){submit(event,false);});
   if(restaurantForm) restaurantForm.addEventListener('submit',function(event){submit(event,true);});
   renderCabins();renderOrders();renderEditor();setupDialogs();
+  if(directService) window.FD_RESORT_DIRECT_ORDER={
+    formId:directService==='restaurant' ? 'restaurant-order' : 'extras-order',
+    canSubmit:function(){
+      if(activeService!==directService || !draft) return false;
+      var lines=serviceLines(directService,draft);
+      return !!lines.length && !lines.some(function(line){return line.pending;});
+    },
+    submit:function(event){
+      event.preventDefault();
+      if(!this.canSubmit()) return false;
+      var target=directService==='restaurant' ? restaurantForm : form;
+      if(!target.reportValidity() || !state.name.trim() || !Object.prototype.hasOwnProperty.call(cabins,state.cabin)) return false;
+      var key=directService==='restaurant' ? 'menu' : directService==='extras' ? 'quantities' : directService;
+      state[key]=draft[key];
+      return submit(event,directService==='restaurant');
+    }
+  };
 })();

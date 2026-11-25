@@ -2294,8 +2294,8 @@
     "data/services.json": "8904201ec0ef1e658373cd0613239faeb6da9f8af4d1b6b29b0703bb22267b7c",
     "guest-services/README.md": "1ad3a3d1df387c6f92547d236015ff1c975e01b67890162dfa0d0e750b23ec7a",
     "guest-services/guest-services.css": "207545d3740a44c6e0ab8ded3731b255151478ecf82109d0344cdb5dc7e61a36",
-    "guest-services/guest-services.js": "764201e456e8522b73cbe23fd4b422b96f2ce1fc37ca23b50dfad95edc893e09",
-    "guest-services/index.html": "2d2984a3c5eb9ae45c52a8132842d3fdd9f6d0725cefbb42514b297766b799f6",
+    "guest-services/guest-services.js": "5c26a1f4194e8b785e3c36d818456dfed5996a793dcf1cea18961243d7189630",
+    "guest-services/index.html": "a04846a5338f0b22f3bc19a71f51f269411e749cde9d214dfca018cda4939146",
     "guest-services/service-source.js": "e0da9d9065eea4864558446730954129ccefb495b97c4c7070b8e4a6a6803b3e",
     "guest-services/share.js": "a207ab25177d5b69bb1e8a4cc37bc0755c9a2157b7024561d3c15b2652c4323b",
     "js/dining-cards.js": "a80c8a1fcbc623019426cc46184f52f6dc0b109570afbd848e39571726be4097",
@@ -2304,11 +2304,11 @@
     "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
     "services-guide/guide.css": "2e4164a051b4ef782483e5ebb342f877b6d055fd836996aee6554fd1ba263f35",
     "services-guide/guide.js": "9d680329705d9e43a10333e915ab8dcb85b0743dc2145cd7083c5e4c6e23b474",
-    "services-guide/index.html": "9b105fb2b0253e3d183869fbb92d62db7d855320a948ecbfe54f1c45f31fc9a4",
+    "services-guide/index.html": "67f2fb1dffbe0c370415e63f6dfb7cf717189c3f64dd6040858e02b079888553",
     "services-guide/share-entry.js": "05dac99bc60dfc4b2d2d1b08c131735f22d72f29cf93f1861b85df47c89dffa2",
     "guest-services/resort-refinements.css": "5ccfd5e08d6538ebb7f37eb93f5dc52ac270dbf309ee57b38c82078ee0b31520",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
-    "services-guide/guide-orders.js": "f88e49eaacfb2ef851b661a39ea1d2acb0a017cacb2c3e27073cc1d71464e7ce",
+    "services-guide/guide-orders.js": "f69c8641812c5413d8384dd2d109295027c869e7b1938cc88baa722e140a3fbf",
     "services-guide/guide-orders.css": "09d6eca5c57a49566cd8f3949163a92c25a3b2c60491a013ae8c289126ce90bc"
   },
   "preservedCompatibility": [
@@ -2525,5 +2525,28 @@
       "js/menu-order-message.js"
     ],
     "unchangedCatalogue": "data/services.json"
+  },
+  "approvedResortDirectOrders": {
+    "version": "20261125-live-v71",
+    "rollbackTag": "pre-resort-direct-orders-20261125",
+    "reason": "Owner requested one service per WhatsApp request in the main resort guide, with no native cart or summary. Independent portals retain their cart flows.",
+    "protectedChanges": {
+      "guest-services/guest-services.js": {
+        "previousSha256": "764201e456e8522b73cbe23fd4b422b96f2ce1fc37ca23b50dfad95edc893e09",
+        "reason": "Direct independent native requests with isolated identity-only storage; standalone order flow and original message formatting retained"
+      },
+      "services-guide/guide-orders.js": {
+        "previousSha256": "f88e49eaacfb2ef851b661a39ea1d2acb0a017cacb2c3e27073cc1d71464e7ce",
+        "reason": "Direct independent native requests with isolated identity-only storage; standalone order flow and original message formatting retained"
+      },
+      "guest-services/index.html": {
+        "previousSha256": "2d2984a3c5eb9ae45c52a8132842d3fdd9f6d0725cefbb42514b297766b799f6",
+        "reason": "Direct independent native requests with isolated identity-only storage; standalone order flow and original message formatting retained"
+      },
+      "services-guide/index.html": {
+        "previousSha256": "9b105fb2b0253e3d183869fbb92d62db7d855320a948ecbfe54f1c45f31fc9a4",
+        "reason": "Direct independent native requests with isolated identity-only storage; standalone order flow and original message formatting retained"
+      }
+    }
   }
 }

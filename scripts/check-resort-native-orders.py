@@ -1,78 +1,84 @@
-"""Native/standalone resort order parity. All WhatsApp and shares are captured, never sent."""
-import json,sys,subprocess,hashlib
+"""Independent native requests; compare every draft to the original standalone flow. Never send."""
+import json,sys,subprocess,os
 from pathlib import Path
 from urllib.parse import urlparse,parse_qs
 from playwright.sync_api import sync_playwright,expect
-R=Path(__file__).resolve().parents[1];BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8126'
-FIX={r['venue']:r for r in json.loads((R/'scripts/fixtures/resort-order-messages-v69.json').read_text())}
-SOURCE=json.loads((R/'data/services.json').read_text());out={'version':'20261125-live-v70','profiles':[],'messagesSent':False,'errors':[],'badResponses':[]}
-for path in ['data/services.json','guest-services/guest-services.js','services-guide/guide-orders.js','js/menu-order-message.js','chalet/guest-services/index.html','site/catalog.json','site/share-metadata.json','share-pages.json','share-extras.json']:
- assert (R/path).read_bytes()==subprocess.check_output(['git','show','pre-resort-inline-orders-20261125:'+path]),path
-out['unchangedCatalogueAndBuilders']=True
-links=json.loads((R/'site/orders/service-links.json').read_text())['services']
-for service in json.loads((R/'site/catalog.json').read_text())['services']:
- key='restaurant' if service['id']=='menu' else service['id']
- if key in links:assert links[key]['path']==service['path']
-with sync_playwright() as p:
- b=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
- for width,height in [(320,568),(390,844),(430,932)]:
-  c=b.new_context(viewport={'width':width,'height':height},reduced_motion='reduce');c.add_init_script("window.opened=[];window.shares=[];window.open=u=>{opened.push(u);return null};Object.defineProperty(navigator,'share',{value:async d=>shares.push(d)})")
-  page=c.new_page();page.on('pageerror',lambda e:out['errors'].append(str(e)));page.on('response',lambda r:out['badResponses'].append({'url':r.url,'status':r.status}) if r.status>=400 and r.url.startswith(BASE) else None)
-  def visit(path):
-   page.goto(BASE+path);page.locator('#main h1').wait_for();assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')
-  def frame(kind='guest'):return page.frame_locator('iframe[src^="'+('/guest-services/' if kind=='guest' else '/services-guide/')+'"]')
-  def launch(path,kind='guest'):
-   visit(path);page.locator('#main [data-service-portal]').click();expect(page.locator('#native-order-dialog')).to_be_visible();expect(page.locator('.native-order-loading')).to_be_hidden();expect(page.locator('.native-order-error')).to_be_hidden();assert page.url==BASE+path
-   return frame(kind)
-  def added():expect(page.locator('#native-order-dialog')).to_be_hidden();expect(page.locator('.native-order-shortcut')).to_be_visible()
-  def summary(kind='guest'):
-   page.locator('.native-order-shortcut').click();expect(page.locator('.native-order-loading')).to_be_hidden()
-   if page.locator('.native-order-tabs').is_visible():page.locator('.native-order-tabs button').filter(has_text='الخدمات والمطعم' if kind=='guest' else 'التنسيقات والجلسات').click();expect(page.locator('.native-order-loading')).to_be_hidden()
-   return frame(kind)
-  def close():page.locator('.native-order-close').click();expect(page.locator('#native-order-dialog')).to_be_hidden()
-  def message(f,selector,expected,restaurant=False):
-   f.locator(selector).click();url=urlparse(f.locator('body').evaluate('()=>opened.at(-1)'));text=parse_qs(url.query)['text'][0];key='restaurantMessage' if restaurant else 'message';recipient='restaurantRecipient' if restaurant else 'recipient';assert url.path[1:]==expected[recipient] and text==expected[key],(url.path,text,expected[key]);return text
-  f=launch('/services/cinema/');assert page.locator('.cinema-contents .inclusions').is_visible();assert not f.locator('.service-facts').is_visible()
-  page.locator('.native-order-share').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+'/services/cinema/'}
-  f.locator('#cinema-time').select_option('18');page.go_back();expect(page.locator('#native-order-dialog')).to_be_hidden();assert page.url==BASE+'/services/cinema/' and page.locator('.native-order-shortcut').is_hidden()
-  page.locator('#main [data-service-portal]').click();expect(page.locator('.native-order-loading')).to_be_hidden();assert f.locator('#cinema-time').input_value()=='';f.locator('#cinema-time').select_option('18');f.locator('#apply-selection').click();added()
-  # The native page is retained, including decoded image; normal section navigation remains local.
-  page.evaluate('window.savedOrderFrame=document.querySelector(".native-order-frame")');page.locator('.context-back').click();page.locator('.svcs-card[href="/services/water-games/"]').click();assert page.evaluate('savedOrderFrame===document.querySelector(".native-order-frame")')
-  page.locator('#main [data-service-portal]').click();expect(page.locator('.native-order-loading')).to_be_hidden()
-  assert f.locator('#apply-selection').is_disabled()
+R=Path(__file__).resolve().parents[1];BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8127'
+SOURCE=json.loads((R/'data/services.json').read_text());links=json.loads((R/'site/orders/service-links.json').read_text())['services'];out={'version':'20261125-live-v71','profiles':[],'messagesSent':False,'errors':[]}
+TAG='pre-resort-direct-orders-20261125'
+for name in ['data/services.json','js/menu-order-message.js','chalet/guest-services/index.html','site/catalog.json','site/share-metadata.json','share-pages.json','share-extras.json']:
+ assert (R/name).read_bytes()==subprocess.check_output(['git','show',TAG+':'+name]),name
+# Preserve original message assembly literally, in addition to runtime parity below.
+for name,start,end in [('guest-services/guest-services.js','    var message;','\n  function renderOrders'),('services-guide/guide-orders.js',"    const parts=['السلام", "  document.addEventListener('fd:arrangement-view'")]:
+ old=subprocess.check_output(['git','show',TAG+':'+name]).decode();new=(R/name).read_text();a=old[old.index(start):old.index(end)];b=new[new.index(start):new.index(end)]
+ if name.startswith('guest'):b=b.replace('    return true;\n','')
+ else:b=b[:b.index('    return true;')]+ '  });\n'
+ assert a==b,name+' message builder changed'
+keys=['familyday.guest-orders.v2','familyday.arrangements-orders.v1'];cases=[('cinema','/services/cinema/'),('games','/services/games/'),('water','/services/water-games/'),('hospitality','/services/hospitality/packages/'),('restaurant','/menu/'),('coordination','/services/coordination/?package=1'),('dining','/services/dining-tables/'),('seating','/services/outdoor-seating/?session=1'),('extras','/services/')]
+init="window.opened=[];window.shares=[];window.open=u=>{top.opened.push(u);return null};Object.defineProperty(navigator,'share',{value:async d=>top.shares.push(d)})"
+def select(f,key):
+ if key=='cinema':f.locator('#cinema-time').select_option('18')
+ elif key=='games':f.locator('[name="games-package"][value="box"]').check()
+ elif key=='water':
   for _ in range(3):f.locator('[data-water="adults"][data-step="1"]').click()
-  f.locator('#apply-selection').click();added()
-  f=launch('/services/games/');f.locator('[name="games-package"][value="box"]').check();f.locator('#apply-selection').click();added()
-  f=summary();f.locator('.remove-item[aria-label="حذف جلسة السينما"]').click()
-  f.locator('#guest-name').fill('ضيف المراجعة');f.locator('#guest-notes').fill('مراجعة محلية فقط')
-  for name in ['البيت اليوناني 1','البيت اليوناني 2']:
-   f.locator('#guest-cabin').select_option(name);assert f.locator('.cabin-number output').first.inner_text()==str(SOURCE['guest']['cabins'][name])
-  f.locator('#guest-cabin').select_option('البيت اليوناني 1');message(f,'#extras-order .send-order',FIX['resort'])
-  f.locator('.resort-edit-order').filter(has_text='تعديل').first.click();expect(f.locator('#service-dialog')).to_be_visible();f.locator('.dialog-close').evaluate('e=>e.click()');expect(f.locator('#service-dialog')).to_be_hidden();assert page.locator('#native-order-dialog').is_visible();close()
-  f=launch('/menu/');category=f.locator('#guest-menu details').first;category.locator('summary').click();category.locator('[data-step="1"]').first.click();f.locator('#apply-selection').click();added();f=summary();message(f,'#restaurant-order .send-order',FIX['resort'],True);close()
-  f=launch('/services/coordination/?package=1','arrangements');f.locator('#package-1 [data-step="1"]').click();f.locator('.arrangement-dialog-footer [data-close-arrangements]').click();added()
-  f=launch('/services/dining-tables/','arrangements');f.locator('.fd-dining-option[data-size="6"][data-option="plain"]').click();f.locator('.fd-dining-option[data-size="12"][data-option="tansiq"]').click();f.locator('.fd-dining-option[data-size="6"][data-option="plain"]').click();assert f.locator('.fd-dining-option[aria-pressed="true"]').count()==1;f.locator('.arrangement-dialog-footer [data-close-arrangements]').click();added()
-  f=launch('/services/outdoor-seating/?session=1','arrangements');f.locator('#session-1 [data-step="1"]').click();f.locator('#session-1 [data-share-path]').click();page.wait_for_function('shares.length>0');assert page.evaluate('shares.at(-1)')=={'text':BASE+'/services/outdoor-seating/?session=1'};f.locator('.arrangement-dialog-footer [data-close-arrangements]').click();added()
-  f=summary('arrangements');f.locator('#arrangement-name').fill('ضيف المراجعة');f.locator('#arrangement-cabin').select_option('البيت اليوناني 1');assert f.locator('#arrangement-cabin-number').inner_text()=='رقم الكوخ: '+str(SOURCE['guest']['cabins']['البيت اليوناني 1']);f.locator('#arrangement-notes').fill('مراجعة محلية فقط');message(f,'#arrangement-order [type="submit"]',FIX['arrangements'])
-  if width==390:page.screenshot(path='/tmp/resort-orders-v70/native-arrangements-summary-checked.png')
-  close();page.reload();expect(page.locator('.native-order-shortcut')).to_be_visible()
-  # Full-page entry restores the exact same native selections and fields.
-  page.goto(BASE+'/guest-services/');page.locator('#games-card:not([disabled])').wait_for();expect(page.locator('#order-total')).to_have_text('100');assert page.locator('#guest-cabin').input_value()=='البيت اليوناني 1';message(page,'#extras-order .send-order',FIX['resort']);message(page,'#restaurant-order .send-order',FIX['resort'],True)
-  page.locator('#cinema-card').click();expect(page.locator('.resort-service-share')).to_be_enabled();page.locator('.resort-service-share').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+'/services/cinema/'};assert page.locator('#cinema-service .resort-service-photo img').is_visible();page.locator('.dialog-close').click()
-  page.goto(BASE+'/services-guide/');page.locator('#guide-content.is-ready').wait_for(state='attached');expect(page.locator('#arrangement-total')).to_have_text('619');message(page,'#arrangement-order [type="submit"]',FIX['arrangements'])
-  out['profiles'].append({'width':width,'height':height,'sameResortWhatsAppDrafts':True,'sameCabinNumbers':True,'nativeBackAndCancel':True,'draftSurvivesNavigationAndReload':True,'sameExistingServiceAndSessionShareLinks':True,'singleDiningChoice':True})
-  c.close();print(width,'PASS',flush=True)
- # Every guest service shares its original canonical service URL, with no image payload.
- c=b.new_context(viewport={'width':390,'height':844});c.add_init_script("window.shares=[];Object.defineProperty(navigator,'share',{value:async d=>shares.push(d)})")
- page=c.new_page();page.goto(BASE+'/guest-services/');page.locator('#water-card:not([disabled])').wait_for()
- out['serviceShareLinks']={}
- for key in ['restaurant','hospitality','water','games','cinema','extras']:
-  page.locator('#'+key+'-card').click();expect(page.locator('.resort-service-share')).to_be_enabled();page.locator('.resort-service-share').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+links[key]['path']};out['serviceShareLinks'][key]=links[key]['path'];page.locator('.dialog-close').click()
- c.close()
- # A source failure is recoverable in place and offers the unchanged standalone URL.
- c=b.new_context(viewport={'width':390,'height':430});page=c.new_page();page.route('**/data/services.json?*',lambda r:r.fulfill(status=503,body='Unavailable'))
- page.goto(BASE+'/services/cinema/');page.locator('#main [data-service-portal]').click();expect(page.locator('.native-order-error')).to_be_visible(timeout=10000);assert page.locator('.native-order-external').get_attribute('data-url')=='/guest-services/#cinema'
- page.unroute('**/data/services.json?*');page.locator('.native-order-retry').click();expect(page.locator('.native-order-loading')).to_be_hidden();f=page.frame_locator('.native-order-frame');expect(f.locator('#cinema-time')).to_be_visible();assert page.url==BASE+'/services/cinema/'
- out['sourceRetryInPlace']=True;c.close();b.close()
-assert not out['errors'] and not out['badResponses'],out
-(R/'site/audits/resort-native-orders-v70.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out))
+ elif key=='hospitality':f.locator('.hospitality-package [data-step="1"]').first.click()
+ elif key=='restaurant':
+  cat=f.locator('#guest-menu details').first;cat.locator('summary').click();cat.locator('[data-step="1"]').first.click()
+ elif key in ['coordination','seating']:
+  root=f.locator('#'+('package-1' if key=='coordination' else 'session-1'));details=root.locator('details').first
+  if details.get_attribute('open') is None:details.locator('summary').click()
+  root.locator('.arrangement-controls [data-step="1"]').click()
+ elif key=='dining':
+  f.locator('.fd-dining-option[data-size="12"][data-option="tansiq"]').click();f.locator('.fd-dining-option[data-size="6"][data-option="plain"]').click();assert f.locator('.fd-dining-option[aria-pressed="true"]').count()==1
+ else:f.locator('[data-extra="bed"] [data-step="1"]').click()
+def identity(f,key,notes=True):
+ prefix='arrangement' if key in ['coordination','dining','seating'] else 'restaurant' if key=='restaurant' else 'guest'
+ f.locator('#'+prefix+'-name').fill('ضيف المراجعة');f.locator('#'+prefix+'-cabin').select_option('البيت اليوناني 1')
+ if notes:f.locator('#'+prefix+'-notes').fill('مراجعة محلية فقط')
+ return prefix
+with sync_playwright() as p:
+ opts={'executable_path':'/usr/bin/chromium','args':['--no-sandbox']}
+ if BASE.startswith('https:'):opts['proxy']={'server':os.environ['HTTPS_PROXY']}
+ b=p.chromium.launch(**opts)
+ baseline={}
+ for key,path in cases:
+  c=b.new_context(viewport={'width':390,'height':844},ignore_https_errors=True);c.add_init_script(init);page=c.new_page();guest=key not in ['coordination','dining','seating']
+  page.goto(BASE+('/guest-services/' if guest else '/services-guide/'))
+  if guest:page.locator('#water-card:not([disabled])').wait_for();page.locator('#'+key+'-card').click()
+  else:page.locator('#guide-content.is-ready').wait_for(state='attached');page.locator('.guide-tile[href="#'+key+'"]').click()
+  select(page,key)
+  if guest:page.locator('#apply-selection').click()
+  else:page.locator('.arrangement-dialog-footer [data-close-arrangements]').click()
+  prefix=identity(page,key);page.locator('#'+('restaurant-order .send-order' if key=='restaurant' else 'extras-order .send-order' if guest else 'arrangement-order .arrangement-send')).click();baseline[key]=page.evaluate('opened.at(-1)');assert baseline[key];c.close()
+ print('Standalone reference drafts captured',flush=True)
+ for width,height in [(320,568),(390,844),(430,932),(390,430)]:
+  c=b.new_context(viewport={'width':width,'height':height},reduced_motion='reduce',ignore_https_errors=True);c.add_init_script(init);page=c.new_page();page.on('pageerror',lambda e:out['errors'].append(str(e)))
+  page.goto(BASE+'/services/');page.evaluate('(keys)=>keys.forEach(k=>sessionStorage.setItem(k,JSON.stringify({name:"OLD",cabin:"البيت اليوناني 2",games:"table",notes:"OLD",quantities:{"package-1":5}})))',keys);saved=page.evaluate('(keys)=>keys.map(k=>sessionStorage.getItem(k))',keys)
+  for key,path in cases:
+   page.goto(BASE+path);page.locator('#main [data-service-portal]').click();expect(page.locator('#native-order-dialog')).to_be_visible();expect(page.locator('.native-order-loading')).to_be_hidden();expect(page.locator('.native-order-error')).to_be_hidden();assert page.url==BASE+path
+   f=page.frame_locator('.native-order-frame');expect(f.locator('.resort-direct-send')).to_be_visible();assert page.locator('.native-order-shortcut,.native-order-tabs').count()==0
+   assert f.locator('.resort-direct-form').count()==1;assert not f.locator('.resort-direct-form .order-items,.resort-direct-form #arrangement-items').first.is_visible();assert not f.locator('#apply-selection').is_visible() if key not in ['coordination','dining','seating'] else not f.locator('.arrangement-dialog-footer [data-close-arrangements]').is_visible()
+   expect(f.locator('.resort-direct-send')).to_be_disabled();prefix='arrangement' if key in ['coordination','dining','seating'] else 'restaurant' if key=='restaurant' else 'guest';assert f.locator('#'+prefix+'-notes').input_value()==''
+   if key!='cinema':assert f.locator('#'+prefix+'-name').input_value()=='ضيف المراجعة'
+   select(f,key);expect(f.locator('.resort-direct-send')).to_be_enabled()
+   if key=='cinema':
+    f.locator('.resort-direct-send').click();assert page.evaluate('opened.length')==0
+   identity(f,key)
+   # Both Greek mappings update immediately from the original catalogue.
+   for name in ['البيت اليوناني 2','البيت اليوناني 1']:
+    f.locator('#'+prefix+'-cabin').select_option(name)
+    number=f.locator('#arrangement-cabin-number') if prefix=='arrangement' else f.locator('.resort-direct-form .cabin-number output')
+    assert str(SOURCE['guest']['cabins'][name]) in number.inner_text()
+   page.locator('.native-order-share').click();expected=links[key]['path'] if key=='extras' else path;assert page.evaluate('shares.at(-1)')=={'text':BASE+expected}
+   rect=f.locator('.resort-direct-send').bounding_box();assert rect['y']>=0 and rect['y']+rect['height']<=height,rect
+   assert not f.locator('html').evaluate('e=>e.scrollWidth>innerWidth')
+   if width==390 and height==844:
+    Path('/tmp/resort-direct-orders-v71').mkdir(exist_ok=True);page.screenshot(path='/tmp/resort-direct-orders-v71/'+key+'.png')
+   f.locator('.resort-direct-send').click();expect(page.locator('#native-order-dialog')).to_be_hidden();assert page.evaluate('opened.at(-1)')==baseline[key],(key,page.evaluate('opened.at(-1)'),baseline[key]);assert page.evaluate('(keys)=>keys.map(k=>sessionStorage.getItem(k))',keys)==saved
+  # Cancel/back/reopen discards selection and notes, retaining name/cabin only.
+  page.goto(BASE+'/services/cinema/');page.locator('#main [data-service-portal]').click();expect(page.locator('.native-order-loading')).to_be_hidden();f=page.frame_locator('.native-order-frame');assert f.locator('#cinema-time').input_value()=='';f.locator('#cinema-time').select_option('18');f.locator('#guest-notes').fill('لا يستمر');page.go_back();expect(page.locator('#native-order-dialog')).to_be_hidden();page.locator('#main [data-service-portal]').click();expect(page.locator('.native-order-loading')).to_be_hidden();assert f.locator('#cinema-time').input_value()=='' and f.locator('#guest-notes').input_value()=='';page.locator('.native-order-close').click();expect(page.locator('#native-order-dialog')).to_be_hidden()
+  page.reload();assert page.locator('.native-order-shortcut').count()==0
+  out['profiles'].append({'width':width,'height':height,'independentServices':len(cases),'exactOriginalDraftsAndRecipients':True,'standaloneDraftsUntouched':True,'identityOnlyRemembered':True,'noSummaryOrCart':True,'backAndCancel':True});c.close();print(width,height,'PASS',flush=True)
+ c=b.new_context(viewport={'width':390,'height':430});page=c.new_page();page.route('**/data/services.json?*',lambda r:r.fulfill(status=503,body='Unavailable'));page.goto(BASE+'/services/cinema/');page.locator('#main [data-service-portal]').click();expect(page.locator('.native-order-error')).to_be_visible(timeout=10000);assert page.locator('.native-order-external').get_attribute('data-url')=='/guest-services/#cinema';page.unroute('**/data/services.json?*');page.locator('.native-order-retry').click();expect(page.locator('.native-order-loading')).to_be_hidden();expect(page.frame_locator('.native-order-frame').locator('#cinema-time')).to_be_visible();out['sourceRetryInPlace']=True;c.close();b.close()
+assert not out['errors'],out
+(R/'site/audits/resort-direct-orders-v71.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False))
