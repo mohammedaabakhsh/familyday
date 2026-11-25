@@ -4,7 +4,7 @@ from pathlib import Path
 from urllib.parse import urlparse,parse_qs
 from playwright.sync_api import sync_playwright,expect
 R=Path(__file__).resolve().parents[1];BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8112'
-SOURCE=json.loads((R/'data/services.json').read_text());A=SOURCE['arrangements'];out={'version':'20261125-arrangements-v64','viewports':[],'messagesSent':False,'errors':[]}
+SOURCE=json.loads((R/'data/services.json').read_text());A=SOURCE['arrangements'];out={'version':'20261125-arrangements-v65','viewports':[],'messagesSent':False,'errors':[]}
 with sync_playwright() as p:
  browser=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
  for width in [320,390,768,1440]:
@@ -39,6 +39,12 @@ with sync_playwright() as p:
    assert page.evaluate('shares.at(-1)')=={'text':BASE+pack['path']}
   visit('/services-guide/#dining');page.locator('.fd-dining-option[data-size="12"][data-option="tansiq"]').click()
   assert page.locator('#arrangement-total').inner_text()=='839'
+  page.locator('.fd-dining-option[data-size="6"][data-option="plain"]').click()
+  assert page.locator('#arrangement-total').inner_text()=='439'
+  assert page.locator('.fd-dining-option[aria-pressed="true"]').count()==1
+  assert page.locator('[data-tone="dining"] .arrangement-quantity').count()==0
+  page.locator('.fd-dining-option[data-size="12"][data-option="tansiq"]').click()
+  assert page.locator('#arrangement-total').inner_text()=='839'
   page.locator('#dining [data-share-path]').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+A['dining']['path']}
   visit('/services-guide/#seating');step('session-1');page.locator('.seating-extra [data-step="1"]').click()
   assert page.locator('#arrangement-total').inner_text()=='1309'
@@ -51,8 +57,10 @@ with sync_playwright() as p:
   page.locator('#arrangement-name').fill('ضيف التجربة');page.locator('#arrangement-cabin').select_option('بيت الدوم 1');page.locator('#arrangement-notes').fill('تنسيق الورد على شكل قلب')
   page.locator('#arrangement-order [type="submit"]').click();draft=page.evaluate('opened.at(-1)');url=urlparse(draft);message=parse_qs(url.query)['text'][0]
   assert url.netloc=='wa.me' and url.path=='/966537009217'
-  expected='\n'.join(['السلام عليكم، أرغب بطلب التنسيقات والتجهيزات التالية:','','الاسم: ضيف التجربة','اسم الكوخ: بيت الدوم 1','رقم الكوخ: 15','','الطلبات:','باقة الورد × 2 = 240 ريال','طاولة طعام لـ12 شخصًا — تجهيز مع تنسيق × 1 = 599 ريال','جلسة بإطار مثلث × 1 = 300 ريال','شخصين','كيك وعصير × 1 = 170 ريال','','إجمالي الطلب: 1309 ريال','','ملاحظات: تنسيق الورد على شكل قلب'])
+  expected='\n'.join(['السلام عليكم، أرغب بطلب التنسيقات والتجهيزات التالية:','','الاسم: ضيف التجربة','اسم الكوخ: بيت الدوم 1','رقم الكوخ: 15','','الطلبات:','','التنسيقات:','باقة الورد × 2 = 240 ريال','','طاولات الطعام:','طاولة طعام لـ12 شخصًا — تجهيز مع تنسيق × 1 = 599 ريال','','الجلسات الخارجية:','جلسة بإطار مثلث × 1 = 300 ريال','','إضافة اختيارية:','كيك وعصير × 1 = 170 ريال','','إجمالي الطلب: 1309 ريال','','ملاحظات: تنسيق الورد على شكل قلب'])
   assert message==expected,message
+  assert 'شخصين' not in message
+  assert page.locator('[data-tone="seating"] .arrangement-item-copy').inner_text().splitlines()==['جلسة بإطار مثلث','1 × 300 = 300 ريال']
   assert 'http' not in message and '/imgs/' not in message
   page.reload();page.locator('#guide-content.is-ready').wait_for(state='attached');assert page.locator('#arrangement-total').inner_text()=='1309'
   assert page.locator('#arrangement-name').input_value()=='ضيف التجربة' and page.locator('#arrangement-cabin').input_value()=='بيت الدوم 1'
@@ -79,14 +87,14 @@ with sync_playwright() as p:
    response=page.request.get(BASE+path);html=response.text();assert response.status==200
    assert 'og:image' not in html and 'twitter:image' not in html and '<img ' not in html
    assert 'max-image-preview:none' in html
-  out['viewports'].append({'width':width,'cardGeometryPreserved':True,'exactCoordinatorDraft':True,'selectionAndPersistence':True,'packageLinksMatch':6,'sessionLinksMatch':6,'textOnlyShare':True});print(width,'PASS',flush=True);context.close()
+  out['viewports'].append({'width':width,'cardGeometryPreserved':True,'exactCoordinatorDraft':True,'selectionAndPersistence':True,'singleDiningSelection':True,'groupedWhatsApp':True,'noSeatingCapacityLine':True,'packageLinksMatch':6,'sessionLinksMatch':6,'textOnlyShare':True});print(width,'PASS',flush=True);context.close()
  # Changes in catalogue prices must drive totals; malformed drafts and unavailable storage cannot break ordering.
  context=browser.new_context(viewport={'width':390,'height':844});page=context.new_page();page.on('pageerror',lambda e:out['errors'].append(str(e)))
  changed=json.loads(json.dumps(SOURCE));changed['arrangements']['coordination']['packages'][0]['price']='121 ريال للباقة'
  page.route('**/data/services.json?*',lambda r:r.fulfill(body=json.dumps(changed),content_type='application/json'))
- page.add_init_script("sessionStorage.setItem('familyday.arrangements-orders.v1',JSON.stringify({quantities:{'package-1':2,'session-1':-4,'unknown':99},name:'اختبار',cabin:'غير صالح'}))")
- page.goto(BASE+'/services-guide/#package-1');page.locator('#guide-content.is-ready').wait_for(state='attached');assert page.locator('#arrangement-total').inner_text()=='242';assert page.locator('#arrangement-cabin').input_value()=='';context.close()
+ page.add_init_script("sessionStorage.setItem('familyday.arrangements-orders.v1',JSON.stringify({quantities:{'package-1':2,'session-1':-4,'dining-6-plain':4,'dining-12-tansiq':7,'unknown':99},name:'اختبار',cabin:'غير صالح'}))")
+ page.goto(BASE+'/services-guide/#package-1');page.locator('#guide-content.is-ready').wait_for(state='attached');assert page.locator('#arrangement-total').inner_text()=='441';assert page.locator('.fd-dining-option[aria-pressed="true"]').count()==1;assert page.locator('[data-tone="dining"] .arrangement-item-copy span').inner_text()=='1 × 199 = 199 ريال';assert page.locator('#arrangement-cabin').input_value()=='';context.close()
  context=browser.new_context();page=context.new_page();page.add_init_script("Storage.prototype.getItem=()=>{throw Error('blocked')};Storage.prototype.setItem=()=>{throw Error('blocked')}")
  page.goto(BASE+'/services-guide/#package-1');page.locator('#guide-content.is-ready').wait_for(state='attached');page.locator('#package-1 [data-step="1"]').click();assert page.locator('#arrangement-total').inner_text()=='120';context.close();browser.close()
 assert not out['errors'],out['errors']
-(R/'site/audits/arrangements-v64.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out))
+(R/'site/audits/arrangements-v65.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out))

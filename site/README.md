@@ -73,3 +73,7 @@ At the owner’s request, the help section uses its original styling again. The 
 ### Arrangements flow simplified — v64
 
 The owner found the separate service views and per-item WhatsApp shortcuts confusing. The portal now opens each service in a selection dialog, exposes package/session counters without expanding photos, and keeps the summary and its single teal WhatsApp action on the home page. Selected dining cells have explicit readable foreground/background colors. Canonical links, prices, coordinator, saved choices and other portals remain unchanged. See [flow details](../docs/arrangements-flow-v64.md).
+
+### Arrangements order details — v65
+
+Dining is limited to one configuration/quantity, including older saved drafts. Seating capacity is no longer repeated in summary/draft lines. WhatsApp drafts now group items under the same category headings as the summary. Source-backed prices and existing share URLs remain unchanged.

@@ -8,6 +8,7 @@
   const fields={name:document.getElementById('arrangement-name'),cabin:document.getElementById('arrangement-cabin'),notes:document.getElementById('arrangement-notes')};
   const state={quantities:{},name:'',cabin:'',notes:''};
   const entries=new Map();let cabins={},ready=false;
+  const groups=[['coordination','التنسيقات'],['dining','طاولات الطعام'],['seating','الجلسات الخارجية'],['extra','إضافة اختيارية']];
   const node=(tag,text,cls)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;};
   const quantity=value=>Number.isInteger(value)&&value>=0&&value<=99?value:0;
   function save(){try{sessionStorage.setItem(storageKey,JSON.stringify(state));}catch(_){/* The form also works without storage. */}}
@@ -42,7 +43,17 @@
   }
   function jump(){summary.focus({preventScroll:true});window.scrollTo({top:Math.max(0,scrollY+summary.getBoundingClientRect().top-18),behavior:'instant'});updateShortcut();}
   function updateShortcut(){const rect=summary.getBoundingClientRect();shortcut.hidden=document.getElementById('arrangement-dialog').open||summary.hidden||(rect.top<innerHeight-40&&rect.bottom>80);}
+  function limitDining(){
+    let kept=false;
+    for(const entry of entries.values()){
+      if(entry.group!=='dining')continue;
+      const selected=!kept&&quantity(state.quantities[entry.key])>0;
+      state.quantities[entry.key]=selected?1:0;
+      if(selected)kept=true;
+    }
+  }
   function render(){
+    limitDining();
     const chosen=lines(),total=chosen.reduce((sum,e)=>sum+e.total,0),count=chosen.reduce((sum,e)=>sum+e.qty,0);
     summary.hidden=!chosen.length;
     document.getElementById('arrangement-total').textContent=total;
@@ -50,16 +61,16 @@
     shortcut.textContent='ملخص الطلب · '+count+' · '+total+' ريال';
     document.getElementById('arrangement-dialog-status').textContent=count?'إجمالي الطلب: '+total+' ريال':'اختر الكمية بالموجب والسالب';
     const list=document.getElementById('arrangement-items');list.replaceChildren();
-    for(const group of ['coordination','dining','seating','extra']){
+    for(const [group,title] of groups){
       const items=chosen.filter(e=>e.group===group);if(!items.length)continue;
       const section=node('li',undefined,'arrangement-group');section.dataset.tone=group;
-      section.append(node('h3',({coordination:'التنسيقات',dining:'طاولات الطعام',seating:'الجلسات الخارجية',extra:'إضافة اختيارية'})[group]));
+      section.append(node('h3',title));
       const rows=node('ul');section.append(rows);
       for(const entry of items){
         const row=node('li');const copy=node('div',undefined,'arrangement-item-copy');copy.append(node('strong',entry.name),node('span',entry.qty+' × '+entry.price+' = '+entry.total+' ريال'));
         if(entry.detail)copy.append(node('span',entry.detail));
         const remove=node('button','حذف','arrangement-remove');remove.type='button';remove.dataset.remove=entry.key;remove.setAttribute('aria-label','حذف '+entry.name);
-        row.append(copy,counter(entry),remove);rows.append(row);
+        row.append(copy);if(entry.group!=='dining')row.append(counter(entry));row.append(remove);rows.append(row);
       }list.append(section);
     }
     const missingSeat=!!state.quantities['seating-extra']&&!seatsChosen();
@@ -90,7 +101,7 @@
     });
     for(const [size,prices] of Object.entries(data.dining.prices))for(const option of ['plain','tansiq'])entries.set('dining-'+size+'-'+option,{key:'dining-'+size+'-'+option,group:'dining',name:'طاولة طعام لـ'+size+' '+(Number(size)<=10?'أشخاص':'شخصًا')+' — '+(option==='plain'?'تجهيز أساسي':'تجهيز مع تنسيق'),price:prices[option],size,option,path:data.dining.path});
     const diningActions=node('div',undefined,'dining-order-actions');const diningShare=node('button','مشاركة طاولات الطعام','arrangement-share');diningShare.type='button';diningShare.dataset.sharePath=data.dining.path;diningActions.append(diningShare);document.getElementById('dining').append(diningActions);
-    data.seating.sessions.forEach((session,i)=>{const card='session-'+(i+1);add({key:card,card,group:'seating',name:session.name,detail:session.persons,price:price(session.price),path:data.seating.path+'?session='+(i+1)},document.getElementById(card));});
+    data.seating.sessions.forEach((session,i)=>{const card='session-'+(i+1);add({key:card,card,group:'seating',name:session.name,price:price(session.price),path:data.seating.path+'?session='+(i+1)},document.getElementById(card));});
     add({key:'seating-extra',group:'extra',name:data.seating.extra.name,price:price(data.seating.extra.price),path:data.seating.path},document.querySelector('.seating-extra'));
     for(const name of Object.keys(cabins))fields.cabin.add(new Option(name,name));
     restore();for(const key of Object.keys(fields))fields[key].value=state[key];ready=true;render();
@@ -100,14 +111,22 @@
     const step=event.target.closest('[data-order-key]'),remove=event.target.closest('[data-remove]'),dining=event.target.closest('.fd-dining-option');
     if(step){const entry=entries.get(step.dataset.orderKey);if(!entry||step.disabled)return;state.quantities[entry.key]=Math.max(0,Math.min(99,quantity(state.quantities[entry.key])+Number(step.dataset.step)));render();}
     else if(remove){const key=remove.dataset.remove;state.quantities[key]=0;render();const next=summary.querySelector('[data-remove]');if(next)next.focus();else(document.getElementById(entries.get(key).card)||document.querySelector('.contents a')).focus();}
-    else if(dining){const key='dining-'+dining.dataset.size+'-'+dining.dataset.option;state.quantities[key]=state.quantities[key]?0:1;render();}
+    else if(dining){
+      const key='dining-'+dining.dataset.size+'-'+dining.dataset.option,next=state.quantities[key]?0:1;
+      for(const entry of entries.values())if(entry.group==='dining')state.quantities[entry.key]=0;
+      state.quantities[key]=next;render();
+    }
 
   });
   for(const [key,field] of Object.entries(fields))field.addEventListener(key==='cabin'?'change':'input',()=>{state[key]=field.value;save();if(key==='cabin')render();});
   form.addEventListener('submit',event=>{
     event.preventDefault();const chosen=lines();if(!ready||!chosen.length||!form.reportValidity()||!state.name.trim()||!Object.hasOwn(cabins,state.cabin)||state.quantities['seating-extra']&&!seatsChosen())return;
     const parts=['السلام عليكم، أرغب بطلب التنسيقات والتجهيزات التالية:','','الاسم: '+state.name.trim(),'اسم الكوخ: '+state.cabin,'رقم الكوخ: '+cabins[state.cabin],'','الطلبات:'];
-    for(const entry of chosen){parts.push(entry.name+' × '+entry.qty+' = '+entry.total+' ريال');if(entry.detail)parts.push(entry.detail);}
+    for(const [group,title] of groups){
+      const items=chosen.filter(entry=>entry.group===group);if(!items.length)continue;
+      parts.push('',title+':');
+      for(const entry of items)parts.push(entry.name+' × '+entry.qty+' = '+entry.total+' ريال');
+    }
     parts.push('','إجمالي الطلب: '+chosen.reduce((sum,e)=>sum+e.total,0)+' ريال');if(state.notes.trim())parts.push('','ملاحظات: '+state.notes.trim());save();
     // Open a text draft only; the guest reviews and sends it from WhatsApp.
     window.open('https://wa.me/966537009217?text='+encodeURIComponent(parts.join('\n')),'_blank','noopener,noreferrer');

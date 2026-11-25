@@ -21,3 +21,7 @@ Home tiles open a service selection dialog over the same page. Every package/ses
 Per-item WhatsApp shortcuts were removed; the single teal submit action is in the summary. Sharing remains available on each card using the same canonical URLs. Selected dining prices use an explicit dark teal background and white foreground, avoiding the previous pale-background/white-text conflict.
 
 Run `scripts/check-arrangement-flow.py` in addition to the existing order/source checks. Current evidence: `site/audits/arrangements-v64.json` and `site/audits/arrangements-flow-v64.json`.
+
+## Dining limit and grouped draft — v65
+
+Dining is a single configuration with quantity one. Selecting a new size/setup replaces the earlier choice; the summary offers deletion rather than a quantity counter. Older saved drafts with several dining configurations or larger quantities normalize to one known choice at quantity one. The seating capacity badge remains in service details, while its redundant standalone capacity line is removed from the order summary and WhatsApp draft. WhatsApp items use the same category headings as the summary. Current evidence: `site/audits/arrangements-v65.json`.

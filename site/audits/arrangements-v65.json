@@ -1,0 +1,55 @@
+{
+  "version": "20261125-arrangements-v65",
+  "viewports": [
+    {
+      "width": 320,
+      "cardGeometryPreserved": true,
+      "exactCoordinatorDraft": true,
+      "selectionAndPersistence": true,
+      "singleDiningSelection": true,
+      "groupedWhatsApp": true,
+      "noSeatingCapacityLine": true,
+      "packageLinksMatch": 6,
+      "sessionLinksMatch": 6,
+      "textOnlyShare": true
+    },
+    {
+      "width": 390,
+      "cardGeometryPreserved": true,
+      "exactCoordinatorDraft": true,
+      "selectionAndPersistence": true,
+      "singleDiningSelection": true,
+      "groupedWhatsApp": true,
+      "noSeatingCapacityLine": true,
+      "packageLinksMatch": 6,
+      "sessionLinksMatch": 6,
+      "textOnlyShare": true
+    },
+    {
+      "width": 768,
+      "cardGeometryPreserved": true,
+      "exactCoordinatorDraft": true,
+      "selectionAndPersistence": true,
+      "singleDiningSelection": true,
+      "groupedWhatsApp": true,
+      "noSeatingCapacityLine": true,
+      "packageLinksMatch": 6,
+      "sessionLinksMatch": 6,
+      "textOnlyShare": true
+    },
+    {
+      "width": 1440,
+      "cardGeometryPreserved": true,
+      "exactCoordinatorDraft": true,
+      "selectionAndPersistence": true,
+      "singleDiningSelection": true,
+      "groupedWhatsApp": true,
+      "noSeatingCapacityLine": true,
+      "packageLinksMatch": 6,
+      "sessionLinksMatch": 6,
+      "textOnlyShare": true
+    }
+  ],
+  "messagesSent": false,
+  "errors": []
+}
