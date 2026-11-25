@@ -49,7 +49,7 @@ with sync_playwright() as p:
   if guest:
    select(page,key);page.locator('#apply-selection').click()
   elif key=='cinema':
-   page.locator('#cinema-session summary').first.click();page.locator('#cinema-session [data-request-key]').click();page.locator('#cinema-time').select_option('18')
+   page.locator('#cinema-session [data-request-key]').click();page.locator('#cinema-time').select_option('18')
   elif key=='dining':
    page.locator('.fd-dining-option[data-size="6"][data-option="plain"]').click()
   else:

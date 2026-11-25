@@ -1,0 +1,60 @@
+{
+  "version": "20261125-cinema-v76",
+  "viewports": [
+    {
+      "width": 320,
+      "height": 568,
+      "exactOrder": true,
+      "cinemaRemovedFromGuest": true,
+      "sameCanonicalShare": true,
+      "legacyRedirects": true,
+      "sameRecipientPriceDurationAndTimes": true,
+      "independentRequest": true,
+      "photoReady": true,
+      "photoVisibleInitially": true,
+      "matchesDiningPhotoSize": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "exactOrder": true,
+      "cinemaRemovedFromGuest": true,
+      "sameCanonicalShare": true,
+      "legacyRedirects": true,
+      "sameRecipientPriceDurationAndTimes": true,
+      "independentRequest": true,
+      "photoReady": true,
+      "photoVisibleInitially": true,
+      "matchesDiningPhotoSize": true
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "exactOrder": true,
+      "cinemaRemovedFromGuest": true,
+      "sameCanonicalShare": true,
+      "legacyRedirects": true,
+      "sameRecipientPriceDurationAndTimes": true,
+      "independentRequest": true,
+      "photoReady": true,
+      "photoVisibleInitially": true,
+      "matchesDiningPhotoSize": true
+    },
+    {
+      "width": 390,
+      "height": 430,
+      "exactOrder": true,
+      "cinemaRemovedFromGuest": true,
+      "sameCanonicalShare": true,
+      "legacyRedirects": true,
+      "sameRecipientPriceDurationAndTimes": true,
+      "independentRequest": true,
+      "photoReady": true,
+      "photoVisibleInitially": true,
+      "matchesDiningPhotoSize": true
+    }
+  ],
+  "messagesSent": false,
+  "errors": [],
+  "independentCataloguePropagation": true
+}

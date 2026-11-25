@@ -65,7 +65,7 @@
     if(browseOrders){
       if(entry.group==='extra')return;
       const controls=actions(entry);controls.classList.add('arrangement-browse-actions');
-      host.querySelector('.seating-collapsed-content').append(controls);return;
+      host.querySelector('.seating-collapsed-content,.cinema-service-body').append(controls);return;
     }
     if(entry.group==='cinema')return;
     const controls=node('div',undefined,'arrangement-controls');controls.dataset.entry=entry.key;controls.append(counter(entry),actions(entry));host.append(controls);

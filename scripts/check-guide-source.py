@@ -21,11 +21,14 @@ with sync_playwright() as p:
    for section in ['coordination','seating','dining','cinema']:
     page.goto(BASE+'/services-guide/#'+section,wait_until='networkidle')
     assert page.locator('#'+section).is_visible()
-    if section!='dining':
+    if section not in ['dining','cinema']:
      first=page.locator('#'+section+' .seating-collapsed-details').first
      first.locator(':scope > summary').click()
      assert first.locator('img').first.is_visible()
      assert first.locator('.package-details-body').inner_text()
+    elif section=='cinema':
+     assert page.locator('#cinema-session img').is_visible()
+     assert page.locator('#cinema-session [data-request-key]').is_visible()
    assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')
   # The add-on is owned by the shared independent catalogue.
   source=json.loads(Path('data/services.json').read_text())

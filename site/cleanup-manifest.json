@@ -2302,14 +2302,14 @@
     "js/menu-order-message.js": "78e54cc83d01bb6b5a44de14d4ce709d8f900517d6f09b1bda0d7a63067abaa9",
     "services-guide/README.md": "e3c7f53ebcd6efe67fab2cc72f75c7a6ff274c181880110891817c3beab79499",
     "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
-    "services-guide/guide.css": "ac2cf6918cb70b22ac197b253ef43acad4ce5465bb1f120577f19dcff223f4b7",
-    "services-guide/guide.js": "144a3a9300c513f65db7e0eb1a465e23a1acba635628c3056434eb420485e546",
-    "services-guide/index.html": "8ee29d617b61b5d0279963fb198a9d594ba334e01e8479f3971544b2bb5a7440",
+    "services-guide/guide.css": "0671ba0d08e0d6bbefc44d3b1d37cb58a73488a713165d56e315ceb7c2e7075f",
+    "services-guide/guide.js": "f9496472aedeb57f0013cd97b2cc4014969f18835b2c8310b973999c5f821438",
+    "services-guide/index.html": "3162cfa87a6bbc611d43193a02295dbe35972c3a7faf23997e591e15b3bedaf1",
     "services-guide/share-entry.js": "05dac99bc60dfc4b2d2d1b08c131735f22d72f29cf93f1861b85df47c89dffa2",
     "guest-services/resort-refinements.css": "5ccfd5e08d6538ebb7f37eb93f5dc52ac270dbf309ee57b38c82078ee0b31520",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
-    "services-guide/guide-orders.js": "2ee27f22ff7795ba7a7bcfeca41bfa8d5cad1ddaad29883fc41d901ae8310232",
-    "services-guide/guide-orders.css": "52dfd6d82f6dc9a92ff73392ba2df5dc3139a4ada6f786f0e6852902cce41636"
+    "services-guide/guide-orders.js": "f33a0cdfd7dbfdd3f2c9dfd7737617ba1d4a5374792c2d30854caca5ae56c95f",
+    "services-guide/guide-orders.css": "de24eb4d8edb98f753299b6cd0e58bb28fc16766bef7050eca08ba33046b5088"
   },
   "preservedCompatibility": [
     "preview redirects",
@@ -2634,6 +2634,32 @@
       "guest-services/guest-services.js": {
         "previousSha256": "5c26a1f4194e8b785e3c36d818456dfed5996a793dcf1cea18961243d7189630",
         "reason": "Owner-approved move of cinema to the arrangements/seating portal, ordered independently with the original services recipient; guest portal removes cinema and preserves old-link redirects"
+      }
+    }
+  },
+  "approvedCinemaPhotoLayout": {
+    "version": "20261125-cinema-v76",
+    "rollbackTag": "pre-cinema-photo-layout-20261125",
+    "protectedChanges": {
+      "services-guide/index.html": {
+        "previousSha256": "8ee29d617b61b5d0279963fb198a9d594ba334e01e8479f3971544b2bb5a7440",
+        "reason": "Owner requested cinema photo visible immediately at the same dimensions as dining, with existing direct order and share controls visible below"
+      },
+      "services-guide/guide.js": {
+        "previousSha256": "144a3a9300c513f65db7e0eb1a465e23a1acba635628c3056434eb420485e546",
+        "reason": "Owner requested cinema photo visible immediately at the same dimensions as dining, with existing direct order and share controls visible below"
+      },
+      "services-guide/guide-orders.js": {
+        "previousSha256": "2ee27f22ff7795ba7a7bcfeca41bfa8d5cad1ddaad29883fc41d901ae8310232",
+        "reason": "Owner requested cinema photo visible immediately at the same dimensions as dining, with existing direct order and share controls visible below"
+      },
+      "services-guide/guide.css": {
+        "previousSha256": "ac2cf6918cb70b22ac197b253ef43acad4ce5465bb1f120577f19dcff223f4b7",
+        "reason": "Owner requested cinema photo visible immediately at the same dimensions as dining, with existing direct order and share controls visible below"
+      },
+      "services-guide/guide-orders.css": {
+        "previousSha256": "52dfd6d82f6dc9a92ff73392ba2df5dc3139a4ada6f786f0e6852902cce41636",
+        "reason": "Owner requested cinema photo visible immediately at the same dimensions as dining, with existing direct order and share controls visible below"
       }
     }
   }

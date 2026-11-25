@@ -25,13 +25,13 @@
   };
   function serviceCard({title, price, priceUnit = '', photos = [], body, id = '', label = 'تفاصيل الخدمة', imageAlt, className = '', capacity = '', expandable = true}) {
     const priceMarkup = '<strong class="price">' + escape(price) + (priceUnit ? '<span class="price-unit"> ' + escape(priceUnit) + '</span>' : '') + '</strong>';
-    if (!photos.length && !['coordination-card','cinema-card'].includes(className)) {
+    if (!photos.length && className !== 'coordination-card') {
       return '<article class="package-card package-card--text"><details class="package-details hospitality-details">'
         + '<summary class="package-heading"><h3>' + escape(title) + '</h3>' + priceMarkup + ''
         + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>'
         + '<div class="package-details-body">' + body + '</div></details></article>';
     }
-    if (['photo-card','coordination-card','cinema-card'].includes(className)) {
+    if (className === 'photo-card' || className === 'coordination-card') {
       return '<article class="package-card seating-collapsed-card"' + (id ? ' id="' + escape(id) + '"' : '') + '><details class="seating-collapsed-details">'
         + '<summary class="seating-collapsed-summary"><span class="seating-collapsed-main"><span class="seating-collapsed-title">' + escape(title) + '</span>'
         + (capacity ? '<span class="seating-capacity-badge">' + escape(capacity) + '</span>' : '') + '</span>'
@@ -76,8 +76,9 @@
     html += section('seating',data.seating.name,'جلسات نجهّزها لكم في المساحة الخارجية الخاصة بالكوخ', '<div class="photo-grid">' + data.seating.sessions.map((s,i) => serviceCard({id:'session-'+(i+1),title:s.name,price:s.price,priceUnit:'للجلسة',photos:[s.img],imageAlt:s.name,className:'photo-card',capacity:s.persons,label:'تفاصيل الجلسة',body:'<p class="session-description">' + escape(s.desc) + '</p>'})).join('') + '</div>' + seatingExtra + seatingUsage,true);
     html += diningSection;
     const cinema=catalog.guest.cinema, cinemaMedia=serviceLinks.cinema;
-    const cinemaDetails='<p class="cinema-duration">مدة الجلسة: '+escape(cinema.duration)+'</p>'+items(cinema.contents)+'<details class="guide-usage"><summary>تعليمات الاستخدام</summary>'+items(cinema.notes)+'</details>';
-    html += section('cinema',cinema.title,cinema.intro,serviceCard({id:'cinema-session',title:cinema.title,price:cinema.price+' ريال',priceUnit:'للجلسة',photos:cinemaMedia?.image?[cinemaMedia.image]:[],imageAlt:cinema.title,className:'cinema-card',body:cinemaDetails}),true);
+    const cinemaPhoto=cinemaMedia?.image?'<div class="dining-shared-photo cinema-shared-photo">'+FD_GUIDE_GALLERY.markup([cinemaMedia.image],cinema.title,cinema.title)+'</div>':'';
+    const cinemaDetails='<div class="cinema-service-price"><strong class="price">'+escape(cinema.price)+' ريال</strong><span class="cinema-duration">مدة الجلسة: '+escape(cinema.duration)+'</span></div>'+items(cinema.contents)+'<details class="guide-usage"><summary>تعليمات الاستخدام</summary>'+items(cinema.notes)+'</details>';
+    html += section('cinema',cinema.title,cinema.intro,'<article id="cinema-session" class="cinema-service-panel">'+cinemaPhoto+'<div class="cinema-service-body package-details-body">'+cinemaDetails+'</div></article>',true);
     content.innerHTML = html;
     content.querySelectorAll('#cinema-session img').forEach(img=>{img.loading='eager';img.fetchPriority='high';});
     FD_GUIDE_GALLERY.mount();

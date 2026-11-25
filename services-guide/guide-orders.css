@@ -98,10 +98,11 @@ body.arrangement-request-open{overflow:hidden}
 .arrangement-cinema-time{display:grid;gap:6px;margin:0 0 16px;font-size:14px;font-weight:700}
 .arrangement-cinema-time select{display:block;width:100%;min-height:48px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);font:inherit;font-size:16px}
 .arrangement-cinema-time small{font-size:12px;font-weight:400;color:var(--muted)}
-#cinema .seating-collapsed-card{max-width:680px;margin:auto}
-#cinema .seating-collapsed-content{padding:0 0 18px}
-#cinema .seating-collapsed-content .package-photo{border-radius:0}
-#cinema .package-details-body,#cinema .arrangement-browse-actions{padding-inline:20px}
-#cinema .cinema-duration{margin-top:14px;font-size:14px;color:var(--muted)}
+/* Cinema uses the same always-visible photo sizing as dining. */
+.cinema-service-panel{max-width:680px;margin:auto}
+.cinema-service-price{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+.cinema-service-price .price{font-size:22px;color:#176078}
+#cinema .cinema-duration{font-size:14px;color:var(--muted)}
+#cinema .arrangement-browse-actions{padding-inline:0}
 #cinema .inclusions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 #cinema .guide-usage .inclusions{display:block}

@@ -210,34 +210,34 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 
 /* Coordination and seating share one disclosure for photos and contents. */
 #seating .photo-grid{gap:12px}
-:is(#seating,#coordination,#cinema) .seating-collapsed-card{background:#f5f8f8;border:1px solid #dce7e9;border-radius:16px;overflow:hidden;transition:border-color .18s,box-shadow .18s}
-:is(#seating,#coordination,#cinema) .seating-collapsed-card:has(.seating-collapsed-details[open]){border-color:#45938f;box-shadow:0 0 0 1px #45938f}
-:is(#seating,#coordination,#cinema) .seating-collapsed-details{display:block}
-:is(#seating,#coordination,#cinema) .seating-collapsed-summary{display:flex;flex-direction:column;gap:15px;padding:16px;min-height:118px;cursor:pointer;list-style:none}
-:is(#seating,#coordination,#cinema) .seating-collapsed-summary::-webkit-details-marker{display:none}
-:is(#seating,#coordination,#cinema) .seating-collapsed-summary::marker{content:''}
-:is(#seating,#coordination,#cinema) .seating-collapsed-summary:focus-visible{outline:3px solid #168c99;outline-offset:-4px;border-radius:15px}
-:is(#seating,#coordination,#cinema) .seating-collapsed-main{display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:0}
-:is(#seating,#coordination,#cinema) .seating-collapsed-title{flex:1;min-width:0;font-size:16px;font-weight:700;line-height:1.55;color:#193c49}
-:is(#seating,#coordination,#cinema) .seating-capacity-badge{flex:none;white-space:nowrap;padding:4px 9px;border:1px solid #c9e0df;border-radius:7px;background:#e4f0ef;color:#285d69;font-size:11px;font-weight:700;line-height:1.4}
-:is(#seating,#coordination,#cinema) .seating-summary-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px}
-:is(#seating,#coordination,#cinema) .seating-summary-bottom .price{display:block;margin:0;padding:0;background:transparent;border:0;font-size:21px;font-weight:800;line-height:1.25;color:#176078}
-:is(#seating,#coordination,#cinema) .seating-summary-bottom .price-unit{display:block;margin-top:3px;text-align:right;font-size:11px;line-height:1.4;font-weight:500;color:#657e85}
-:is(#seating,#coordination,#cinema) .seating-detail-footer{display:inline-flex;align-items:center;gap:7px;flex:none;color:#285d69}
-:is(#seating,#coordination,#cinema) .seating-detail-hint{font-size:12px;font-weight:700;white-space:nowrap}
-:is(#seating,#coordination,#cinema) .seating-collapsed-chevron{flex:none;width:34px;height:34px;padding:8px;border:1px solid #c9e0df;border-radius:50%;background:#e4f0ef;transition:transform .18s}
-:is(#seating,#coordination,#cinema) .seating-collapsed-details[open] .seating-collapsed-chevron{transform:rotate(180deg);background:#d8ebe8;border-color:#78aaa5;color:#215e58}
-:is(#seating,#coordination,#cinema) .seating-collapsed-content{padding:0 12px 16px}
-:is(#seating,#coordination,#cinema) .seating-collapsed-content .package-photo{margin:0;border-radius:11px;overflow:hidden}
-:is(#seating,#coordination,#cinema) .seating-collapsed-content .package-details-body{padding:0 4px}
+:is(#seating,#coordination) .seating-collapsed-card{background:#f5f8f8;border:1px solid #dce7e9;border-radius:16px;overflow:hidden;transition:border-color .18s,box-shadow .18s}
+:is(#seating,#coordination) .seating-collapsed-card:has(.seating-collapsed-details[open]){border-color:#45938f;box-shadow:0 0 0 1px #45938f}
+:is(#seating,#coordination) .seating-collapsed-details{display:block}
+:is(#seating,#coordination) .seating-collapsed-summary{display:flex;flex-direction:column;gap:15px;padding:16px;min-height:118px;cursor:pointer;list-style:none}
+:is(#seating,#coordination) .seating-collapsed-summary::-webkit-details-marker{display:none}
+:is(#seating,#coordination) .seating-collapsed-summary::marker{content:''}
+:is(#seating,#coordination) .seating-collapsed-summary:focus-visible{outline:3px solid #168c99;outline-offset:-4px;border-radius:15px}
+:is(#seating,#coordination) .seating-collapsed-main{display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:0}
+:is(#seating,#coordination) .seating-collapsed-title{flex:1;min-width:0;font-size:16px;font-weight:700;line-height:1.55;color:#193c49}
+:is(#seating,#coordination) .seating-capacity-badge{flex:none;white-space:nowrap;padding:4px 9px;border:1px solid #c9e0df;border-radius:7px;background:#e4f0ef;color:#285d69;font-size:11px;font-weight:700;line-height:1.4}
+:is(#seating,#coordination) .seating-summary-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px}
+:is(#seating,#coordination) .seating-summary-bottom .price{display:block;margin:0;padding:0;background:transparent;border:0;font-size:21px;font-weight:800;line-height:1.25;color:#176078}
+:is(#seating,#coordination) .seating-summary-bottom .price-unit{display:block;margin-top:3px;text-align:right;font-size:11px;line-height:1.4;font-weight:500;color:#657e85}
+:is(#seating,#coordination) .seating-detail-footer{display:inline-flex;align-items:center;gap:7px;flex:none;color:#285d69}
+:is(#seating,#coordination) .seating-detail-hint{font-size:12px;font-weight:700;white-space:nowrap}
+:is(#seating,#coordination) .seating-collapsed-chevron{flex:none;width:34px;height:34px;padding:8px;border:1px solid #c9e0df;border-radius:50%;background:#e4f0ef;transition:transform .18s}
+:is(#seating,#coordination) .seating-collapsed-details[open] .seating-collapsed-chevron{transform:rotate(180deg);background:#d8ebe8;border-color:#78aaa5;color:#215e58}
+:is(#seating,#coordination) .seating-collapsed-content{padding:0 12px 16px}
+:is(#seating,#coordination) .seating-collapsed-content .package-photo{margin:0;border-radius:11px;overflow:hidden}
+:is(#seating,#coordination) .seating-collapsed-content .package-details-body{padding:0 4px}
 #seating .seating-extra{margin-top:16px}
 @media(max-width:359px){
- :is(#seating,#coordination,#cinema) .seating-collapsed-summary{padding:14px;gap:13px}
- :is(#seating,#coordination,#cinema) .seating-collapsed-title{font-size:15px}
- :is(#seating,#coordination,#cinema) .seating-detail-hint{font-size:11px}
- :is(#seating,#coordination,#cinema) .seating-summary-bottom{gap:8px}
+ :is(#seating,#coordination) .seating-collapsed-summary{padding:14px;gap:13px}
+ :is(#seating,#coordination) .seating-collapsed-title{font-size:15px}
+ :is(#seating,#coordination) .seating-detail-hint{font-size:11px}
+ :is(#seating,#coordination) .seating-summary-bottom{gap:8px}
 }
-@media(prefers-reduced-motion:reduce){:is(#seating,#coordination,#cinema) .seating-collapsed-card,:is(#seating,#coordination,#cinema) .seating-collapsed-chevron{transition:none}}
+@media(prefers-reduced-motion:reduce){:is(#seating,#coordination) .seating-collapsed-card,:is(#seating,#coordination) .seating-collapsed-chevron{transition:none}}
 
 /* Distinguish only the final optional cake add-on from seating cards. */
 #seating .seating-extra{background:#fff3ed!important;border:1px solid #e9d4c7!important;border-radius:14px!important}
@@ -250,17 +250,17 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 #coordination .seating-collapsed-content .package-photo{border-radius:0}
 #coordination .seating-collapsed-content .package-details-body{padding:0 20px}
 @media print{
- :is(#coordination,#seating,#cinema) .seating-collapsed-card{display:block;box-shadow:none}
+ :is(#coordination,#seating) .seating-collapsed-card{display:block;box-shadow:none}
  .seating-collapsed-details::details-content{display:block;content-visibility:visible}
- :is(#coordination,#seating,#cinema) .seating-detail-footer{display:none}
- :is(#coordination,#seating,#cinema) .seating-collapsed-summary{min-height:0;padding:12px;gap:6px}
+ :is(#coordination,#seating) .seating-detail-footer{display:none}
+ :is(#coordination,#seating) .seating-collapsed-summary{min-height:0;padding:12px;gap:6px}
 }
 
 #coordination .package-usage-note{margin:14px 0 0;padding-top:12px;border-top:1px solid var(--line);font-size:12px;line-height:1.8;color:var(--muted)}
 
-#dining .dining-shared-photo{max-width:680px;margin:0 auto 20px}
-#dining .dining-shared-photo .package-photo{margin:0;border-radius:16px;overflow:hidden}
-#dining .dining-shared-photo .fd-dining-caption{margin:8px 0 0}
+:is(#dining,#cinema) .dining-shared-photo{max-width:680px;margin:0 auto 20px}
+:is(#dining,#cinema) .dining-shared-photo .package-photo{margin:0;border-radius:16px;overflow:hidden}
+:is(#dining,#cinema) .dining-shared-photo .fd-dining-caption{margin:8px 0 0}
 
 /* Match the main site: show the complete pyramid-tent photograph. */
 #seating .package-gallery .gallery-slide img[src$="/jalsat_2.webp"]{aspect-ratio:1;object-fit:contain}
