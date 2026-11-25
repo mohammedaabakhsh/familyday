@@ -82,6 +82,7 @@
   }
   const homeBack = {href:back.href, label:back.getAttribute('aria-label')};
   const guideTitle = document.title;
+  const embeddedOrder=parent!==window&&new URLSearchParams(location.search).get('embed')==='resort-order';
   let activeSection = null;
   const dialog=document.getElementById('arrangement-dialog');
   let dialogScrollY=0,closeRequested=false;
@@ -130,7 +131,7 @@
   }
   function closeSelection(){
     if(closeRequested)return;closeRequested=true;
-    if(history.state && history.state.guideFromHome) history.back();
+    if(!embeddedOrder && history.state && history.state.guideFromHome) history.back();
     else {history.replaceState(null,'','#contents');scrollToHash(true);}
   }
   dialog.querySelectorAll('[data-close-arrangements]').forEach(button=>button.addEventListener('click',closeSelection));
@@ -150,11 +151,11 @@
     if(link.matches('.contents a')) {
       event.preventDefault();
       history.replaceState({...history.state,guideHomeY:window.scrollY,guideTile:link.hash},'',location.href);
-      history.pushState({guideFromHome:true},'',link.hash);
+      history[embeddedOrder?'replaceState':'pushState']({guideFromHome:true},'',link.hash);
       scrollToHash(true);
     } else if(link === back && activeSection) {
       event.preventDefault();
-      if(history.state && history.state.guideFromHome) history.back();
+      if(!embeddedOrder && history.state && history.state.guideFromHome) history.back();
       else {history.replaceState(null,'','#contents');scrollToHash(true);}
     }
   });

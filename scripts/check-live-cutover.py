@@ -78,9 +78,14 @@ async def main():
   # The directory is native; its approved links open service guides without another document.
   await visit('/services/');f=page.locator('#resort-service-directory');assert await page.locator('#services-frame').count()==0;await f.locator('a[href="/services/cinema/"]').click();await page.wait_for_url(BASE+'/services/cinema/');assert await page.locator('.service-guide').count()==1
   await page.locator('.context-back').click();await page.wait_for_url(BASE+'/services/');await page.locator('#resort-service-directory a[href="/services/dining-tables/"]').click();await page.wait_for_url(BASE+'/services/dining-tables/')
-  # Same-origin order links must cause a full document navigation, never mount the guide again.
-  await page.locator('[data-service-portal]').evaluate('e=>{const u=new URL(e.href);e.href=location.origin+u.pathname+u.hash}');await page.locator('[data-service-portal]').click();await page.wait_for_url(BASE+'/services-guide/#dining');await page.locator('#guide-content.is-ready').wait_for(state='attached')
-  assert not await page.locator('#main').count();out['portalHandoffIsDocumentNavigation']=True
+  # Resort selection stays on the guide and reuses the original order document.
+  await page.locator('[data-service-portal]').click();await page.locator('#native-order-dialog').wait_for();await page.locator('.native-order-loading').wait_for(state='hidden')
+  assert page.url==BASE+'/services/dining-tables/' and await page.locator('#main').count()==1
+  await page.frame_locator('.native-order-frame').locator('.fd-dining-option').first.wait_for()
+  await page.locator('.native-order-close').click();await page.locator('#native-order-dialog').wait_for(state='hidden');out['nativeOrderReusesOriginalPortal']=True
+  # Distributed standalone links still work as full document entries.
+  await page.goto(BASE+'/services-guide/#dining');await page.locator('#guide-content.is-ready').wait_for(state='attached')
+  assert not await page.locator('#main').count();out['standaloneOrderEntryPreserved']=True
   for w,h in [(320,568),(1440,900)]:
    await page.set_viewport_size({'width':w,'height':h})
    for path in ['/', '/resort/','/cabins/','/resort/contact/','/resort-map/','/chalet/','/chalet/details/','/chalet-map/','/stay/','/stay/sections/','/stay/compare/','/stay/services/','/stay/contact/']:

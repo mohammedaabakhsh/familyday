@@ -1,0 +1,225 @@
+{
+  "version": "20261125-live-v70",
+  "layout": [
+    {
+      "footerFits": true,
+      "overflow": false,
+      "path": "/services/cinema/",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "footerFits": true,
+      "overflow": false,
+      "path": "/services/hospitality/packages/",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "footerFits": true,
+      "overflow": false,
+      "path": "/services/games/",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "footerFits": true,
+      "overflow": false,
+      "path": "/services/water-games/",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "footerFits": true,
+      "overflow": false,
+      "path": "/menu/",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "footerFits": true,
+      "overflow": false,
+      "path": "/services/coordination/?package=1",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "footerFits": true,
+      "overflow": false,
+      "path": "/services/dining-tables/",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "footerFits": true,
+      "overflow": false,
+      "path": "/services/outdoor-seating/?session=1",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "footerFits": true,
+      "overflow": false,
+      "path": "/services/cinema/",
+      "width": 390,
+      "height": 430
+    },
+    {
+      "footerFits": true,
+      "overflow": false,
+      "path": "/services/hospitality/packages/",
+      "width": 390,
+      "height": 430
+    },
+    {
+      "footerFits": true,
+      "overflow": false,
+      "path": "/services/games/",
+      "width": 390,
+      "height": 430
+    },
+    {
+      "footerFits": true,
+      "overflow": false,
+      "path": "/services/water-games/",
+      "width": 390,
+      "height": 430
+    },
+    {
+      "footerFits": true,
+      "overflow": false,
+      "path": "/menu/",
+      "width": 390,
+      "height": 430
+    },
+    {
+      "footerFits": true,
+      "overflow": false,
+      "path": "/services/coordination/?package=1",
+      "width": 390,
+      "height": 430
+    },
+    {
+      "footerFits": true,
+      "overflow": false,
+      "path": "/services/dining-tables/",
+      "width": 390,
+      "height": 430
+    },
+    {
+      "footerFits": true,
+      "overflow": false,
+      "path": "/services/outdoor-seating/?session=1",
+      "width": 390,
+      "height": 430
+    }
+  ],
+  "readability": [
+    {
+      "path": "/services/hospitality/packages/",
+      "textContrasts": [
+        {
+          "text": "الضيافة السعودية",
+          "color": "rgb(237, 245, 246)",
+          "background": "rgb(18, 50, 63)",
+          "contrast": 12.22
+        },
+        {
+          "text": "59 ريال للباقة",
+          "color": "rgb(241, 200, 211)",
+          "background": "rgb(18, 50, 63)",
+          "contrast": 8.97
+        },
+        {
+          "text": "0",
+          "color": "rgb(237, 245, 246)",
+          "background": "rgb(11, 37, 49)",
+          "contrast": 14.35
+        },
+        {
+          "text": "+",
+          "color": "rgb(198, 239, 240)",
+          "background": "rgb(11, 37, 49)",
+          "contrast": 12.85
+        },
+        {
+          "text": "ضيافة الاسترخاء",
+          "color": "rgb(237, 245, 246)",
+          "background": "rgb(18, 50, 63)",
+          "contrast": 12.22
+        },
+        {
+          "text": "75 ريال للباقة",
+          "color": "rgb(241, 200, 211)",
+          "background": "rgb(18, 50, 63)",
+          "contrast": 8.97
+        },
+        {
+          "text": "0",
+          "color": "rgb(237, 245, 246)",
+          "background": "rgb(11, 37, 49)",
+          "contrast": 14.35
+        },
+        {
+          "text": "+",
+          "color": "rgb(198, 239, 240)",
+          "background": "rgb(11, 37, 49)",
+          "contrast": 12.85
+        },
+        {
+          "text": "الضيافة العائلية",
+          "color": "rgb(237, 245, 246)",
+          "background": "rgb(18, 50, 63)",
+          "contrast": 12.22
+        },
+        {
+          "text": "85 ريال للباقة",
+          "color": "rgb(241, 200, 211)",
+          "background": "rgb(18, 50, 63)",
+          "contrast": 8.97
+        },
+        {
+          "text": "0",
+          "color": "rgb(237, 245, 246)",
+          "background": "rgb(11, 37, 49)",
+          "contrast": 14.35
+        },
+        {
+          "text": "+",
+          "color": "rgb(198, 239, 240)",
+          "background": "rgb(11, 37, 49)",
+          "contrast": 12.85
+        }
+      ]
+    },
+    {
+      "path": "/services/dining-tables/",
+      "textContrasts": [
+        {
+          "text": "اضغط على السعر لاختيار عدد الأشخاص والتجهيز المطلوب.",
+          "color": "rgb(164, 187, 195)",
+          "background": "rgb(18, 50, 63)",
+          "contrast": 6.74
+        },
+        {
+          "text": "طاولات وكراسي فقط",
+          "color": "rgb(164, 187, 195)",
+          "background": "rgb(18, 50, 63)",
+          "contrast": 6.74
+        },
+        {
+          "text": "طاولات وكراسي مع تجهيز الطاولة",
+          "color": "rgb(164, 187, 195)",
+          "background": "rgb(18, 50, 63)",
+          "contrast": 6.74
+        },
+        {
+          "text": "يشمل:",
+          "color": "rgb(164, 187, 195)",
+          "background": "rgb(18, 50, 63)",
+          "contrast": 6.74
+        }
+      ]
+    }
+  ]
+}

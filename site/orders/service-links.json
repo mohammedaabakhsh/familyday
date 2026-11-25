@@ -1,0 +1,78 @@
+{
+  "services": {
+    "restaurant": {
+      "path": "/menu/",
+      "title": "المطعم",
+      "intro": "تصفّح قائمة الطعام والمشروبات"
+    },
+    "dining": {
+      "path": "/services/dining-tables/",
+      "title": "طاولات الطعام",
+      "intro": "طاولة طعام تجمعكم في المساحة الخارجية الخاصة بالكوخ",
+      "image": "/site/media/service-68b7cdf57e8c.webp",
+      "originalImage": "/imgs/tawilat_1.webp?v=20261110-natural-photos-v1",
+      "size": [
+        2400,
+        2400
+      ]
+    },
+    "games": {
+      "path": "/services/games/",
+      "title": "الألعاب الترفيهية",
+      "intro": "استمتع بوقتك مع ألعابنا الترفيهية",
+      "image": "/site/media/service-c6afc21e9234.webp",
+      "originalImage": "/imgs/tarfihi_1.webp?v=20261110-natural-photos-v1",
+      "size": [
+        2400,
+        2400
+      ]
+    },
+    "water": {
+      "path": "/services/water-games/",
+      "title": "الألعاب المائية",
+      "intro": "استمتع بألعاب مائية للكبار والأطفال"
+    },
+    "cinema": {
+      "path": "/services/cinema/",
+      "title": "جلسة السينما",
+      "intro": "جلسة سينما خارجية في المساحة الخاصة بالكوخ",
+      "image": "/site/media/service-7d2ca2d506cd.webp",
+      "originalImage": "/imgs/coordination/complete/13-lighting-v4.webp",
+      "size": [
+        1448,
+        1086
+      ]
+    },
+    "hospitality": {
+      "path": "/services/hospitality/packages/",
+      "title": "الضيافة",
+      "intro": "اختر باقة الضيافة المناسبة لك"
+    },
+    "coordination": {
+      "path": "/services/coordination/",
+      "title": "التنسيقات",
+      "intro": "نجهّز مناسباتكم بكل تفاصيلها",
+      "image": "/site/media/service-d1b98b382b4d.webp",
+      "originalImage": "/imgs/coordination/rose/front-a-v4.webp",
+      "size": [
+        1448,
+        1086
+      ]
+    },
+    "seating": {
+      "path": "/services/outdoor-seating/",
+      "title": "الجلسات الخارجية",
+      "intro": "جلسات نجهّزها لكم في المساحة الخارجية الخاصة بالكوخ",
+      "image": "/site/media/service-788fe35fcd8e.webp",
+      "originalImage": "/imgs/jalsat_1.webp",
+      "size": [
+        1200,
+        1200
+      ]
+    },
+    "extras": {
+      "path": "/guest-services/#extras",
+      "title": "طلبات إضافية"
+    }
+  }
+}

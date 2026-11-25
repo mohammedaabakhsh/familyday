@@ -66,8 +66,8 @@ with sync_playwright() as p:
         page.on('request',lambda r:documents.append(r.url) if r.resource_type=='document' else images.append(r.url) if r.resource_type=='image' else None)
         page.goto(BASE+'/guest-services/',wait_until='networkidle');page.evaluate('document.fonts.ready');preview(page)
         assert page.locator('#services-error').is_hidden()
-        assert page.locator('img').count()==0 and page.get_by_role('img',name='يوم العائلة',exact=True).is_visible()
-        assert all(any(path in url for path in ['/imgs/img01.webp','/site/brand/logo-original.png']) for url in images)
+        assert page.locator('.resort-service-photo img').count()==2 and page.get_by_role('img',name='يوم العائلة',exact=True).is_visible()
+        assert all(any(path in url for path in ['/imgs/img01.webp','/site/brand/logo-original.png','/site/media/']) for url in images)
         assert page.locator('[data-service]').evaluate_all('(els)=>els.map(e=>e.dataset.service)')==['restaurant','hospitality','water','games','cinema','extras']
         assert page.locator('.guest-service-fold,.service-nav').count()==0
         assert page.locator('.menu-row').count()==page.evaluate('async()=>Object.values((await FD_GUEST_SOURCE.load()).menu).flat().length')

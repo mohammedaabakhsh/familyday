@@ -2295,7 +2295,7 @@
     "guest-services/README.md": "1ad3a3d1df387c6f92547d236015ff1c975e01b67890162dfa0d0e750b23ec7a",
     "guest-services/guest-services.css": "207545d3740a44c6e0ab8ded3731b255151478ecf82109d0344cdb5dc7e61a36",
     "guest-services/guest-services.js": "764201e456e8522b73cbe23fd4b422b96f2ce1fc37ca23b50dfad95edc893e09",
-    "guest-services/index.html": "7e4ad12dd0b9c55e0b95185318011c42076e531ebca2b1260de78d09ab5647c0",
+    "guest-services/index.html": "2d2984a3c5eb9ae45c52a8132842d3fdd9f6d0725cefbb42514b297766b799f6",
     "guest-services/service-source.js": "e0da9d9065eea4864558446730954129ccefb495b97c4c7070b8e4a6a6803b3e",
     "guest-services/share.js": "a207ab25177d5b69bb1e8a4cc37bc0755c9a2157b7024561d3c15b2652c4323b",
     "js/dining-cards.js": "a80c8a1fcbc623019426cc46184f52f6dc0b109570afbd848e39571726be4097",
@@ -2303,8 +2303,8 @@
     "services-guide/README.md": "e3c7f53ebcd6efe67fab2cc72f75c7a6ff274c181880110891817c3beab79499",
     "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
     "services-guide/guide.css": "2e4164a051b4ef782483e5ebb342f877b6d055fd836996aee6554fd1ba263f35",
-    "services-guide/guide.js": "b7d8d6c76e16531a1a3f1b08e83245e701312469c62f9a62e177058b2ffa8a1f",
-    "services-guide/index.html": "a556576131a5a93c77e315a674bf82792b11259e69dbd245203a7057fdb27782",
+    "services-guide/guide.js": "9d680329705d9e43a10333e915ab8dcb85b0743dc2145cd7083c5e4c6e23b474",
+    "services-guide/index.html": "9b105fb2b0253e3d183869fbb92d62db7d855320a948ecbfe54f1c45f31fc9a4",
     "services-guide/share-entry.js": "05dac99bc60dfc4b2d2d1b08c131735f22d72f29cf93f1861b85df47c89dffa2",
     "guest-services/resort-refinements.css": "5ccfd5e08d6538ebb7f37eb93f5dc52ac270dbf309ee57b38c82078ee0b31520",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
@@ -2500,5 +2500,30 @@
         "reason": "Use approved Instagram spelling in existing accessibility labels"
       }
     }
+  },
+  "approvedResortNativeOrders": {
+    "version": "20261125-live-v70",
+    "rollbackTag": "pre-resort-inline-orders-20261125",
+    "reason": "Owner-authorized resort ordering in both the native guide and the existing independent portals, with exact existing service links, prices, cabin/number selection and WhatsApp message builders. Chalet/stay deferred.",
+    "protectedChanges": {
+      "guest-services/index.html": {
+        "previousSha256": "7e4ad12dd0b9c55e0b95185318011c42076e531ebca2b1260de78d09ab5647c0",
+        "reason": "Load scoped shared order surface and service sharing; preserve public URL/metadata/layout"
+      },
+      "services-guide/index.html": {
+        "previousSha256": "a556576131a5a93c77e315a674bf82792b11259e69dbd245203a7057fdb27782",
+        "reason": "Load scoped shared order surface and service sharing; preserve public URL/metadata/layout"
+      },
+      "services-guide/guide.js": {
+        "previousSha256": "b7d8d6c76e16531a1a3f1b08e83245e701312469c62f9a62e177058b2ffa8a1f",
+        "reason": "Prevent child history from taking the parent away during embedded order selection; normal standalone history remains"
+      }
+    },
+    "unchangedOrderBuilders": [
+      "guest-services/guest-services.js",
+      "services-guide/guide-orders.js",
+      "js/menu-order-message.js"
+    ],
+    "unchangedCatalogue": "data/services.json"
   }
 }

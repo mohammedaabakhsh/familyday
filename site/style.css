@@ -352,3 +352,5 @@ body.resort-services #main{width:100%;max-width:none;height:100dvh;min-height:0;
 
 /* Match the approved cabin paragraph balance for chalet and rest-house introductions. */
 :is(.chalet-unit,.stay-unit) .detail-copy .description p{text-wrap:balance}
+
+.cinema-contents{margin:16px 0}.cinema-contents h2{font-size:14px;line-height:1.6;margin-bottom:10px}.cinema-contents+.service-guide-details{margin-top:16px}

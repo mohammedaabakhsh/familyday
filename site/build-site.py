@@ -35,6 +35,22 @@ for service in CATALOG['services']:
     package.update(name=source['name'],description=source['description'],items=source['contents'],note=source['note']);package['price']=re.sub(r'\d+(?:\.\d+)?',str(source['price']),package['price'],count=1)
 (SITE/'catalog.json').write_text(json.dumps(CATALOG,ensure_ascii=False,indent=2)+'\n')
 COPY=json.loads((SITE/'guide-copy.json').read_text())
+
+# A generated index of existing public service links and photo references; no second price catalogue.
+RUNTIME=json.loads((SITE/'runtime-config.json').read_text())
+order_links={}
+for service in CATALOG['services']:
+ if service['id'] not in ['menu','water','games','cinema','hospitality','coordination','dining','seating']:continue
+ key='restaurant' if service['id']=='menu' else service['id']
+ data=SERVICES['guest'].get(key,{})
+ image=service.get('image')
+ order_links[key]={'path':service['path'],'title':service['name'],'intro':data.get('intro',service.get('intro',''))}
+ if image:
+  raw=image.split('?')[0]
+  order_links[key].update(image=RUNTIME.get('serviceImages',{}).get(raw,image),originalImage=image,size=COPY.get('serviceImageSizes',{}).get(raw))
+order_links['extras']={'path':'/guest-services/#extras','title':'طلبات إضافية'}
+(SITE/'orders/service-links.json').write_text(json.dumps({'services':order_links},ensure_ascii=False,indent=2)+'\n')
+
 SHARES=json.loads((SITE/'share-metadata.json').read_text())
 STRUCTURED=json.loads((SITE/'structured-data.json').read_text())
 for venue,faq in COPY['faqs'].items():

@@ -1,0 +1,54 @@
+/* Shared sharing affordance; standalone ordering keeps its established design. */
+.resort-service-share{display:grid;place-items:center;flex:0 0 40px;width:40px;height:40px;padding:9px;border:1px solid #cfe1e5;border-radius:50%;background:transparent;color:#133548;cursor:pointer}
+.resort-service-share svg{width:20px;height:20px}.resort-service-share:disabled{opacity:.45}
+:is(.dialog-header,.arrangement-dialog-header)>div:first-child{flex:1;min-width:0}
+.resort-service-photo{margin:0 0 18px}.resort-service-photo button{display:block;width:100%;padding:0;border:0;border-radius:14px;overflow:hidden;background:transparent;cursor:zoom-in}.resort-service-photo img{display:block;width:100%;height:auto}
+.resort-service-photo-viewer{padding:44px 10px 10px;border:0;border-radius:16px;background:#071a26;max-width:95vw;max-height:95dvh}.resort-service-photo-viewer::backdrop{background:#000b}.resort-service-photo-viewer img{display:block;max-width:90vw;max-height:80dvh;object-fit:contain}.resort-service-photo-viewer>button{position:absolute;top:5px;left:10px;background:transparent;border:0;color:white;font-size:28px}
+/* Embedded selections are the existing live controls, without repeated service information. */
+html.resort-order-embedded,body.resort-order-embedded{margin:0;min-height:100%;background:#0b2531;color:#edf5f6;scroll-behavior:auto;--ink:#edf5f6;--muted:#a4bbc3;--paper:#0b2531;--line:#35535f;--deep:#e2f0f2;--soft:#143642;--tint:#143642;--accent:#79ccd0;--green:#6bcbd0;--order-accent:#168c99}
+.resort-order-embedded :is(.page,.book,#order-shortcut,#arrangement-shortcut){display:none!important}
+.resort-embedded-summary{padding:14px;min-height:100dvh}body.resort-order-embedded:not([data-order-surface="summary"]) .resort-embedded-summary{display:none}
+.resort-order-embedded :is(.service-dialog,.arrangement-dialog)[open]{position:fixed;inset:0;display:flex;flex-direction:column;width:100%;max-width:none;height:100dvh;max-height:none;margin:0;padding:0;border:0;border-radius:0;box-shadow:none;background:#0b2531;color:#edf5f6}
+.resort-order-embedded :is(.service-dialog,.arrangement-dialog)::backdrop{background:transparent}
+.resort-order-embedded :is(.dialog-header,.arrangement-dialog-header){display:none}
+.resort-order-embedded :is(.dialog-body,.arrangement-dialog-body){min-height:0;flex:1;overflow-y:auto;padding:16px;overscroll-behavior:contain}
+.resort-order-embedded :is(.dialog-footer,.arrangement-dialog-footer){flex:none;padding:12px 16px;background:#102e3b;border-color:#35535f}
+.resort-order-embedded :is(.resort-service-photo,.service-panel>.section-note:first-child,.service-panel>.service-facts,.service-panel>.contents-title,.service-panel>.contents-list,.usage,.usage-note,.hospitality-details,.section-heading,.seating-collapsed-content,.guide-usage){display:none!important}
+.resort-order-embedded :is(.guide-section,.package-card,.hospitality-card,.game-options label,.menu-row,.extra-row,.order-box,.order-group,.fd-dining-option,.seating-extra){background:#12323f;color:#edf5f6;border-color:#35535f}
+.resort-order-embedded :is(.guide-section){padding:0;border:0}.resort-order-embedded .package-grid{gap:12px}
+.resort-order-embedded :is(input,select,textarea){background:#0b2531;color:#edf5f6;border-color:#557984;color-scheme:dark}
+.resort-order-embedded :is(.price,.extra-price,.order-total strong,.dialog-total strong){color:#83d2d4}
+.resort-order-embedded :is(.apply-selection,.arrangement-dialog-done,.send-order,.arrangement-send){background:#168c99;color:white}
+.resort-order-embedded .order-section{padding:0!important;margin:0 0 20px!important}
+.resort-order-embedded #orders-summary{margin-top:0}.resort-order-embedded .order-box{border:1px solid #35535f}
+.resort-order-embedded :is(.package-heading,.seating-collapsed-summary,.arrangement-controls,.seating-extra){color:#edf5f6}
+.resort-order-embedded :is(.quantity button,.arrangement-quantity button,.arrangement-share,.remove-item,.arrangement-remove){background:transparent;border-color:#557984;color:#c6eff0}
+.resort-order-embedded .fd-dining-option[aria-pressed="true"],.resort-order-embedded .game-options .is-selected{background:#176174!important;color:white!important}
+.resort-order-embedded .game-options .is-selected *{color:inherit}
+.resort-order-embedded :is(.dialog-status,.arrangement-dialog-status,.section-note,.extra-note,.small-note,.order-count,.seating-detail-hint){color:#a4bbc3}
+.resort-order-empty{text-align:center;padding:40px 10px;color:#a4bbc3}.resort-embedded-extra{width:100%;padding:12px;border:1px solid #557984;border-radius:10px;background:transparent;color:#c6eff0;font:inherit;cursor:pointer}
+.resort-order-embedded :is(.fd-dining-description,.dining-details,.fd-dining-details){display:none}
+@media(max-width:520px){.resort-order-embedded .package-grid{grid-template-columns:minmax(0,1fr)}}
+.resort-order-embedded .order-group-heading{background:#1b4552!important;color:#e1f4f5!important}.resort-order-embedded .order-group-heading *{color:inherit!important}
+.resort-order-embedded .resort-edit-order{border:1px solid #557984;border-radius:8px;background:transparent;color:#c6eff0;padding:5px 8px;font:700 12px Tajawal,sans-serif;cursor:pointer;margin-inline-start:8px}
+.resort-order-embedded .order-group-heading{flex-wrap:wrap}.resort-order-embedded .order-group-heading h4{flex:1}
+.resort-order-embedded .dialog-cancel{display:block;background:transparent;color:#c6eff0;border-color:#557984}.resort-order-embedded .dialog-actions{display:flex;gap:10px}.resort-order-embedded .dialog-actions>*{width:auto;flex:1}
+/* Scope dark native presentation above the standalone portal's ID-specific card rules. */
+body.resort-order-embedded :is(#coordination,#seating) .seating-collapsed-card,body.resort-order-embedded #arrangement-order{background:#12323f!important;color:#edf5f6!important;border-color:#35535f!important}
+body.resort-order-embedded #arrangement-summary .arrangement-group{--order-fill:#1b4552;--order-ink:#edf5f6}
+body.resort-order-embedded :is(#coordination,#seating) :is(.seating-collapsed-title,.seating-capacity-badge){color:#edf5f6}
+body.resort-order-embedded :is(#coordination,#seating) .price{color:#83d2d4}
+body.resort-order-embedded .seating-detail-footer,body.resort-order-embedded .dining-shared-photo{display:none!important}
+body.resort-order-embedded .seating-collapsed-summary{cursor:default}
+body.resort-order-embedded #dining .fd-dining-table{background:#12323f;color:#edf5f6;border-color:#35535f}
+body.resort-order-embedded #dining .fd-dining-table thead th{background:#1b4552;color:#d4e8ec}
+body.resort-order-embedded #dining .fd-dining-capacity{background:#1b4552;color:#d4e8ec;border-color:#557984}
+body.resort-order-embedded #arrangement-order :is(input,select,textarea){background:#0b2531;color:#edf5f6;border-color:#557984}
+body.resort-order-embedded :is(#coordination,#seating) .seating-capacity-badge{background:#1b4552;border-color:#557984;color:#d4e8ec}
+body.resort-order-embedded .hospitality-package{background:#12323f;color:#edf5f6;border-color:#35535f}
+body.resort-order-embedded .hospitality-price{color:#f1c8d3}
+body.resort-order-embedded #dining,body.resort-order-embedded #dining #hd-dining-panel{--fd-dining-ink:#edf5f6;--fd-dining-muted:#a4bbc3;--fd-dining-accent:#83d2d4;--fd-dining-bg:#12323f;--fd-dining-box:#1b4552;--fd-dining-line:#35535f}
+body.resort-order-embedded #dining :is(.fd-dining-option-desc,.fd-dining-includes-label){color:#a4bbc3}
+body.resort-order-embedded .quantity{background:#0b2531;border-color:#557984}
+body.resort-order-embedded .quantity output{color:#edf5f6}
+body.resort-order-embedded :is(#water-count,#cinema-status,#games-status){color:#b9e5e1}

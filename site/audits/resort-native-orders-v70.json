@@ -1,0 +1,48 @@
+{
+  "version": "20261125-live-v70",
+  "profiles": [
+    {
+      "width": 320,
+      "height": 568,
+      "sameCabinNumbers": true,
+      "nativeBackAndCancel": true,
+      "draftSurvivesNavigationAndReload": true,
+      "sameExistingServiceAndSessionShareLinks": true,
+      "singleDiningChoice": true,
+      "sameResortWhatsAppDrafts": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "sameCabinNumbers": true,
+      "nativeBackAndCancel": true,
+      "draftSurvivesNavigationAndReload": true,
+      "sameExistingServiceAndSessionShareLinks": true,
+      "singleDiningChoice": true,
+      "sameResortWhatsAppDrafts": true
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "sameCabinNumbers": true,
+      "nativeBackAndCancel": true,
+      "draftSurvivesNavigationAndReload": true,
+      "sameExistingServiceAndSessionShareLinks": true,
+      "singleDiningChoice": true,
+      "sameResortWhatsAppDrafts": true
+    }
+  ],
+  "messagesSent": false,
+  "errors": [],
+  "badResponses": [],
+  "unchangedCatalogueAndBuilders": true,
+  "serviceShareLinks": {
+    "restaurant": "/menu/",
+    "hospitality": "/services/hospitality/packages/",
+    "water": "/services/water-games/",
+    "games": "/services/games/",
+    "cinema": "/services/cinema/",
+    "extras": "/guest-services/#extras"
+  },
+  "sourceRetryInPlace": true
+}
