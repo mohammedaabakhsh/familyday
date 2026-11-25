@@ -4,7 +4,7 @@ var FD_DOME_TOUR = (function () {
   var root, observer, frame, cabin, selected = 'bedroom';
   var parts = [
     {id:'bedroom', ar:'غرفة النوم الرئيسية', x:.50, y:.34},
-    {id:'bathroom', ar:'حمام', x:.55, y:.26},
+    {id:'bathroom', ar:'الحمام', x:.55, y:.26},
     {id:'living', ar:'صالة داخلية مدمجة مع غرفة النوم', x:.43, y:.39},
     {id:'kitchen', ar:'ركن المطبخ', x:.44, y:.29},
     {id:'tub', ar:'البانيو الداخلي', x:.40, y:.37},

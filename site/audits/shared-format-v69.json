@@ -1,0 +1,1717 @@
+{
+  "headings": [
+    {
+      "width": 320,
+      "height": 568,
+      "venue": "resort",
+      "kind": "home",
+      "path": "/resort/",
+      "text": "دليلكم لمنتجع يوم العائلة",
+      "size": 21,
+      "weight": "800",
+      "lineHeight": 31.5,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 305
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "venue": "resort",
+      "kind": "contact",
+      "path": "/resort/contact/",
+      "text": "الموقع والتواصل",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 305
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "venue": "resort",
+      "kind": "faq",
+      "path": "/resort/faq/",
+      "text": "الأسئلة الشائعة",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 305
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "venue": "resort",
+      "kind": "services",
+      "path": "/services/",
+      "text": "خدمات المنتجع",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 305
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "venue": "resort",
+      "kind": "detail",
+      "path": "/cabins/classic/",
+      "text": "الكوخ الكلاسيكي (مناسب للعائلات)",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 486,
+      "right": 305
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "venue": "chalet",
+      "kind": "home",
+      "path": "/chalet/",
+      "text": "دليلكم لشاليه يوم العائلة",
+      "size": 21,
+      "weight": "800",
+      "lineHeight": 31.5,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 305
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "venue": "chalet",
+      "kind": "contact",
+      "path": "/chalet/contact/",
+      "text": "الموقع والتواصل",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 305
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "venue": "chalet",
+      "kind": "faq",
+      "path": "/chalet/faq/",
+      "text": "الأسئلة الشائعة",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 305
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "venue": "chalet",
+      "kind": "services",
+      "path": "/chalet/services/",
+      "text": "خدمات الشاليه",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 305
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "venue": "chalet",
+      "kind": "detail",
+      "path": "/chalet/details/",
+      "text": "شاليه يوم العائلة (مناسب للعائلات)",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 486,
+      "right": 305
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "venue": "stay",
+      "kind": "home",
+      "path": "/stay/",
+      "text": "دليلكم لاستراحة يوم العائلة",
+      "size": 21,
+      "weight": "800",
+      "lineHeight": 31.5,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 305
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "venue": "stay",
+      "kind": "contact",
+      "path": "/stay/contact/",
+      "text": "الموقع والتواصل",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 305
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "venue": "stay",
+      "kind": "faq",
+      "path": "/stay/faq/",
+      "text": "الأسئلة الشائعة",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 305
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "venue": "stay",
+      "kind": "services",
+      "path": "/stay/services/",
+      "text": "خدمات الاستراحة",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 305
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "venue": "stay",
+      "kind": "detail",
+      "path": "/stay/ground-floor/",
+      "text": "القسم الأول – الدور الأرضي (مناسب للتجمعات الكبيرة)",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 486,
+      "right": 305
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "venue": "resort",
+      "kind": "home",
+      "path": "/resort/",
+      "text": "دليلكم لمنتجع يوم العائلة",
+      "size": 22,
+      "weight": "800",
+      "lineHeight": 33,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 370
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "venue": "resort",
+      "kind": "contact",
+      "path": "/resort/contact/",
+      "text": "الموقع والتواصل",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 370
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "venue": "resort",
+      "kind": "faq",
+      "path": "/resort/faq/",
+      "text": "الأسئلة الشائعة",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 370
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "venue": "resort",
+      "kind": "services",
+      "path": "/services/",
+      "text": "خدمات المنتجع",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 370
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "venue": "resort",
+      "kind": "detail",
+      "path": "/cabins/classic/",
+      "text": "الكوخ الكلاسيكي (مناسب للعائلات)",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 546,
+      "right": 370
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "venue": "chalet",
+      "kind": "home",
+      "path": "/chalet/",
+      "text": "دليلكم لشاليه يوم العائلة",
+      "size": 22,
+      "weight": "800",
+      "lineHeight": 33,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 370
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "venue": "chalet",
+      "kind": "contact",
+      "path": "/chalet/contact/",
+      "text": "الموقع والتواصل",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 370
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "venue": "chalet",
+      "kind": "faq",
+      "path": "/chalet/faq/",
+      "text": "الأسئلة الشائعة",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 370
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "venue": "chalet",
+      "kind": "services",
+      "path": "/chalet/services/",
+      "text": "خدمات الشاليه",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 370
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "venue": "chalet",
+      "kind": "detail",
+      "path": "/chalet/details/",
+      "text": "شاليه يوم العائلة (مناسب للعائلات)",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 546,
+      "right": 370
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "venue": "stay",
+      "kind": "home",
+      "path": "/stay/",
+      "text": "دليلكم لاستراحة يوم العائلة",
+      "size": 22,
+      "weight": "800",
+      "lineHeight": 33,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 370
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "venue": "stay",
+      "kind": "contact",
+      "path": "/stay/contact/",
+      "text": "الموقع والتواصل",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 370
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "venue": "stay",
+      "kind": "faq",
+      "path": "/stay/faq/",
+      "text": "الأسئلة الشائعة",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 370
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "venue": "stay",
+      "kind": "services",
+      "path": "/stay/services/",
+      "text": "خدمات الاستراحة",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 370
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "venue": "stay",
+      "kind": "detail",
+      "path": "/stay/ground-floor/",
+      "text": "القسم الأول – الدور الأرضي (مناسب للتجمعات الكبيرة)",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 546,
+      "right": 370
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "venue": "resort",
+      "kind": "home",
+      "path": "/resort/",
+      "text": "دليلكم لمنتجع يوم العائلة",
+      "size": 22,
+      "weight": "800",
+      "lineHeight": 33,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 410
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "venue": "resort",
+      "kind": "contact",
+      "path": "/resort/contact/",
+      "text": "الموقع والتواصل",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 410
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "venue": "resort",
+      "kind": "faq",
+      "path": "/resort/faq/",
+      "text": "الأسئلة الشائعة",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 410
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "venue": "resort",
+      "kind": "services",
+      "path": "/services/",
+      "text": "خدمات المنتجع",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 410
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "venue": "resort",
+      "kind": "detail",
+      "path": "/cabins/classic/",
+      "text": "الكوخ الكلاسيكي (مناسب للعائلات)",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 586,
+      "right": 410
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "venue": "chalet",
+      "kind": "home",
+      "path": "/chalet/",
+      "text": "دليلكم لشاليه يوم العائلة",
+      "size": 22,
+      "weight": "800",
+      "lineHeight": 33,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 410
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "venue": "chalet",
+      "kind": "contact",
+      "path": "/chalet/contact/",
+      "text": "الموقع والتواصل",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 410
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "venue": "chalet",
+      "kind": "faq",
+      "path": "/chalet/faq/",
+      "text": "الأسئلة الشائعة",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 410
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "venue": "chalet",
+      "kind": "services",
+      "path": "/chalet/services/",
+      "text": "خدمات الشاليه",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 410
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "venue": "chalet",
+      "kind": "detail",
+      "path": "/chalet/details/",
+      "text": "شاليه يوم العائلة (مناسب للعائلات)",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 586,
+      "right": 410
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "venue": "stay",
+      "kind": "home",
+      "path": "/stay/",
+      "text": "دليلكم لاستراحة يوم العائلة",
+      "size": 22,
+      "weight": "800",
+      "lineHeight": 33,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 410
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "venue": "stay",
+      "kind": "contact",
+      "path": "/stay/contact/",
+      "text": "الموقع والتواصل",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 410
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "venue": "stay",
+      "kind": "faq",
+      "path": "/stay/faq/",
+      "text": "الأسئلة الشائعة",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 410
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "venue": "stay",
+      "kind": "services",
+      "path": "/stay/services/",
+      "text": "خدمات الاستراحة",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 410
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "venue": "stay",
+      "kind": "detail",
+      "path": "/stay/ground-floor/",
+      "text": "القسم الأول – الدور الأرضي (مناسب للتجمعات الكبيرة)",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 586,
+      "right": 410
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "venue": "resort",
+      "kind": "home",
+      "path": "/resort/",
+      "text": "دليلكم لمنتجع يوم العائلة",
+      "size": 22,
+      "weight": "800",
+      "lineHeight": 33,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 748
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "venue": "resort",
+      "kind": "contact",
+      "path": "/resort/contact/",
+      "text": "الموقع والتواصل",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 744
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "venue": "resort",
+      "kind": "faq",
+      "path": "/resort/faq/",
+      "text": "الأسئلة الشائعة",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 744
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "venue": "resort",
+      "kind": "services",
+      "path": "/services/",
+      "text": "خدمات المنتجع",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 748
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "venue": "resort",
+      "kind": "detail",
+      "path": "/cabins/classic/",
+      "text": "الكوخ الكلاسيكي (مناسب للعائلات)",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 924,
+      "right": 748
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "venue": "chalet",
+      "kind": "home",
+      "path": "/chalet/",
+      "text": "دليلكم لشاليه يوم العائلة",
+      "size": 22,
+      "weight": "800",
+      "lineHeight": 33,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 748
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "venue": "chalet",
+      "kind": "contact",
+      "path": "/chalet/contact/",
+      "text": "الموقع والتواصل",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 744
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "venue": "chalet",
+      "kind": "faq",
+      "path": "/chalet/faq/",
+      "text": "الأسئلة الشائعة",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 744
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "venue": "chalet",
+      "kind": "services",
+      "path": "/chalet/services/",
+      "text": "خدمات الشاليه",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 748
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "venue": "chalet",
+      "kind": "detail",
+      "path": "/chalet/details/",
+      "text": "شاليه يوم العائلة (مناسب للعائلات)",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 924,
+      "right": 748
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "venue": "stay",
+      "kind": "home",
+      "path": "/stay/",
+      "text": "دليلكم لاستراحة يوم العائلة",
+      "size": 22,
+      "weight": "800",
+      "lineHeight": 33,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 748
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "venue": "stay",
+      "kind": "contact",
+      "path": "/stay/contact/",
+      "text": "الموقع والتواصل",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 744
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "venue": "stay",
+      "kind": "faq",
+      "path": "/stay/faq/",
+      "text": "الأسئلة الشائعة",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 744
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "venue": "stay",
+      "kind": "services",
+      "path": "/stay/services/",
+      "text": "خدمات الاستراحة",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 744
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "venue": "stay",
+      "kind": "detail",
+      "path": "/stay/ground-floor/",
+      "text": "القسم الأول – الدور الأرضي (مناسب للتجمعات الكبيرة)",
+      "size": 20,
+      "weight": "800",
+      "lineHeight": 30,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 924,
+      "right": 748
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "venue": "resort",
+      "kind": "home",
+      "path": "/resort/",
+      "text": "دليلكم لمنتجع يوم العائلة",
+      "size": 26,
+      "weight": "800",
+      "lineHeight": 39,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 1170
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "venue": "resort",
+      "kind": "contact",
+      "path": "/resort/contact/",
+      "text": "الموقع والتواصل",
+      "size": 22,
+      "weight": "800",
+      "lineHeight": 33,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 1080
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "venue": "resort",
+      "kind": "faq",
+      "path": "/resort/faq/",
+      "text": "الأسئلة الشائعة",
+      "size": 22,
+      "weight": "800",
+      "lineHeight": 33,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 1080
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "venue": "resort",
+      "kind": "services",
+      "path": "/services/",
+      "text": "خدمات المنتجع",
+      "size": 22,
+      "weight": "800",
+      "lineHeight": 33,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 1250
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "venue": "resort",
+      "kind": "detail",
+      "path": "/cabins/classic/",
+      "text": "الكوخ الكلاسيكي (مناسب للعائلات)",
+      "size": 22,
+      "weight": "800",
+      "lineHeight": 33,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 102,
+      "right": 623.84375
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "venue": "chalet",
+      "kind": "home",
+      "path": "/chalet/",
+      "text": "دليلكم لشاليه يوم العائلة",
+      "size": 26,
+      "weight": "800",
+      "lineHeight": 39,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 1170
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "venue": "chalet",
+      "kind": "contact",
+      "path": "/chalet/contact/",
+      "text": "الموقع والتواصل",
+      "size": 22,
+      "weight": "800",
+      "lineHeight": 33,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 1080
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "venue": "chalet",
+      "kind": "faq",
+      "path": "/chalet/faq/",
+      "text": "الأسئلة الشائعة",
+      "size": 22,
+      "weight": "800",
+      "lineHeight": 33,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 1080
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "venue": "chalet",
+      "kind": "services",
+      "path": "/chalet/services/",
+      "text": "خدمات الشاليه",
+      "size": 22,
+      "weight": "800",
+      "lineHeight": 33,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 1280
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "venue": "chalet",
+      "kind": "detail",
+      "path": "/chalet/details/",
+      "text": "شاليه يوم العائلة (مناسب للعائلات)",
+      "size": 22,
+      "weight": "800",
+      "lineHeight": 33,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 102,
+      "right": 623.84375
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "venue": "stay",
+      "kind": "home",
+      "path": "/stay/",
+      "text": "دليلكم لاستراحة يوم العائلة",
+      "size": 26,
+      "weight": "800",
+      "lineHeight": 39,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 1170
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "venue": "stay",
+      "kind": "contact",
+      "path": "/stay/contact/",
+      "text": "الموقع والتواصل",
+      "size": 22,
+      "weight": "800",
+      "lineHeight": 33,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 1080
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "venue": "stay",
+      "kind": "faq",
+      "path": "/stay/faq/",
+      "text": "الأسئلة الشائعة",
+      "size": 22,
+      "weight": "800",
+      "lineHeight": 33,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 1080
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "venue": "stay",
+      "kind": "services",
+      "path": "/stay/services/",
+      "text": "خدمات الاستراحة",
+      "size": 22,
+      "weight": "800",
+      "lineHeight": 33,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 76,
+      "right": 1080
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "venue": "stay",
+      "kind": "detail",
+      "path": "/stay/ground-floor/",
+      "text": "القسم الأول – الدور الأرضي (مناسب للتجمعات الكبيرة)",
+      "size": 22,
+      "weight": "800",
+      "lineHeight": 33,
+      "font": "Tajawal, Arial, sans-serif",
+      "color": "rgb(241, 247, 248)",
+      "top": 102,
+      "right": 623.84375
+    }
+  ],
+  "detailComponents": [
+    {
+      "width": 320,
+      "venue": "resort",
+      "metrics": {
+        ".fact-box small": {
+          "size": "11px",
+          "weight": "400",
+          "lineHeight": "16.5px",
+          "color": "rgb(164, 187, 197)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".fact-box strong": {
+          "size": "14px",
+          "weight": "700",
+          "lineHeight": "22.4px",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec summary": {
+          "size": "17px",
+          "weight": "700",
+          "lineHeight": "normal",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec-item": {
+          "size": "13px",
+          "weight": "400",
+          "lineHeight": "20.15px",
+          "color": "rgb(196, 216, 223)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".explore-link": {
+          "size": "14px",
+          "weight": "700",
+          "lineHeight": "normal",
+          "color": "rgb(5, 32, 42)",
+          "font": "Tajawal, Arial, sans-serif"
+        }
+      }
+    },
+    {
+      "width": 320,
+      "venue": "chalet",
+      "metrics": {
+        ".fact-box small": {
+          "size": "11px",
+          "weight": "400",
+          "lineHeight": "16.5px",
+          "color": "rgb(164, 187, 197)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".fact-box strong": {
+          "size": "14px",
+          "weight": "700",
+          "lineHeight": "22.4px",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec summary": {
+          "size": "17px",
+          "weight": "700",
+          "lineHeight": "normal",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec-item": {
+          "size": "13px",
+          "weight": "400",
+          "lineHeight": "20.15px",
+          "color": "rgb(196, 216, 223)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".explore-link": {
+          "size": "14px",
+          "weight": "700",
+          "lineHeight": "normal",
+          "color": "rgb(5, 32, 42)",
+          "font": "Tajawal, Arial, sans-serif"
+        }
+      }
+    },
+    {
+      "width": 320,
+      "venue": "stay",
+      "metrics": {
+        ".fact-box small": {
+          "size": "11px",
+          "weight": "400",
+          "lineHeight": "16.5px",
+          "color": "rgb(164, 187, 197)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".fact-box strong": {
+          "size": "14px",
+          "weight": "700",
+          "lineHeight": "22.4px",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec summary": {
+          "size": "17px",
+          "weight": "700",
+          "lineHeight": "normal",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec-item": {
+          "size": "13px",
+          "weight": "400",
+          "lineHeight": "20.15px",
+          "color": "rgb(196, 216, 223)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".explore-link": null
+      }
+    },
+    {
+      "width": 390,
+      "venue": "resort",
+      "metrics": {
+        ".fact-box small": {
+          "size": "11px",
+          "weight": "400",
+          "lineHeight": "16.5px",
+          "color": "rgb(164, 187, 197)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".fact-box strong": {
+          "size": "16px",
+          "weight": "700",
+          "lineHeight": "25.6px",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec summary": {
+          "size": "17px",
+          "weight": "700",
+          "lineHeight": "normal",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec-item": {
+          "size": "13px",
+          "weight": "400",
+          "lineHeight": "20.15px",
+          "color": "rgb(196, 216, 223)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".explore-link": {
+          "size": "14px",
+          "weight": "700",
+          "lineHeight": "normal",
+          "color": "rgb(5, 32, 42)",
+          "font": "Tajawal, Arial, sans-serif"
+        }
+      }
+    },
+    {
+      "width": 390,
+      "venue": "chalet",
+      "metrics": {
+        ".fact-box small": {
+          "size": "11px",
+          "weight": "400",
+          "lineHeight": "16.5px",
+          "color": "rgb(164, 187, 197)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".fact-box strong": {
+          "size": "16px",
+          "weight": "700",
+          "lineHeight": "25.6px",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec summary": {
+          "size": "17px",
+          "weight": "700",
+          "lineHeight": "normal",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec-item": {
+          "size": "13px",
+          "weight": "400",
+          "lineHeight": "20.15px",
+          "color": "rgb(196, 216, 223)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".explore-link": {
+          "size": "14px",
+          "weight": "700",
+          "lineHeight": "normal",
+          "color": "rgb(5, 32, 42)",
+          "font": "Tajawal, Arial, sans-serif"
+        }
+      }
+    },
+    {
+      "width": 390,
+      "venue": "stay",
+      "metrics": {
+        ".fact-box small": {
+          "size": "11px",
+          "weight": "400",
+          "lineHeight": "16.5px",
+          "color": "rgb(164, 187, 197)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".fact-box strong": {
+          "size": "16px",
+          "weight": "700",
+          "lineHeight": "25.6px",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec summary": {
+          "size": "17px",
+          "weight": "700",
+          "lineHeight": "normal",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec-item": {
+          "size": "13px",
+          "weight": "400",
+          "lineHeight": "20.15px",
+          "color": "rgb(196, 216, 223)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".explore-link": null
+      }
+    },
+    {
+      "width": 430,
+      "venue": "resort",
+      "metrics": {
+        ".fact-box small": {
+          "size": "11px",
+          "weight": "400",
+          "lineHeight": "16.5px",
+          "color": "rgb(164, 187, 197)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".fact-box strong": {
+          "size": "16px",
+          "weight": "700",
+          "lineHeight": "25.6px",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec summary": {
+          "size": "17px",
+          "weight": "700",
+          "lineHeight": "normal",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec-item": {
+          "size": "13px",
+          "weight": "400",
+          "lineHeight": "20.15px",
+          "color": "rgb(196, 216, 223)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".explore-link": {
+          "size": "14px",
+          "weight": "700",
+          "lineHeight": "normal",
+          "color": "rgb(5, 32, 42)",
+          "font": "Tajawal, Arial, sans-serif"
+        }
+      }
+    },
+    {
+      "width": 430,
+      "venue": "chalet",
+      "metrics": {
+        ".fact-box small": {
+          "size": "11px",
+          "weight": "400",
+          "lineHeight": "16.5px",
+          "color": "rgb(164, 187, 197)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".fact-box strong": {
+          "size": "16px",
+          "weight": "700",
+          "lineHeight": "25.6px",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec summary": {
+          "size": "17px",
+          "weight": "700",
+          "lineHeight": "normal",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec-item": {
+          "size": "13px",
+          "weight": "400",
+          "lineHeight": "20.15px",
+          "color": "rgb(196, 216, 223)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".explore-link": {
+          "size": "14px",
+          "weight": "700",
+          "lineHeight": "normal",
+          "color": "rgb(5, 32, 42)",
+          "font": "Tajawal, Arial, sans-serif"
+        }
+      }
+    },
+    {
+      "width": 430,
+      "venue": "stay",
+      "metrics": {
+        ".fact-box small": {
+          "size": "11px",
+          "weight": "400",
+          "lineHeight": "16.5px",
+          "color": "rgb(164, 187, 197)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".fact-box strong": {
+          "size": "16px",
+          "weight": "700",
+          "lineHeight": "25.6px",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec summary": {
+          "size": "17px",
+          "weight": "700",
+          "lineHeight": "normal",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec-item": {
+          "size": "13px",
+          "weight": "400",
+          "lineHeight": "20.15px",
+          "color": "rgb(196, 216, 223)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".explore-link": null
+      }
+    },
+    {
+      "width": 768,
+      "venue": "resort",
+      "metrics": {
+        ".fact-box small": {
+          "size": "11px",
+          "weight": "400",
+          "lineHeight": "16.5px",
+          "color": "rgb(164, 187, 197)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".fact-box strong": {
+          "size": "16px",
+          "weight": "700",
+          "lineHeight": "25.6px",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec summary": {
+          "size": "17px",
+          "weight": "700",
+          "lineHeight": "normal",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec-item": {
+          "size": "13px",
+          "weight": "400",
+          "lineHeight": "20.15px",
+          "color": "rgb(196, 216, 223)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".explore-link": {
+          "size": "14px",
+          "weight": "700",
+          "lineHeight": "normal",
+          "color": "rgb(5, 32, 42)",
+          "font": "Tajawal, Arial, sans-serif"
+        }
+      }
+    },
+    {
+      "width": 768,
+      "venue": "chalet",
+      "metrics": {
+        ".fact-box small": {
+          "size": "11px",
+          "weight": "400",
+          "lineHeight": "16.5px",
+          "color": "rgb(164, 187, 197)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".fact-box strong": {
+          "size": "16px",
+          "weight": "700",
+          "lineHeight": "25.6px",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec summary": {
+          "size": "17px",
+          "weight": "700",
+          "lineHeight": "normal",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec-item": {
+          "size": "13px",
+          "weight": "400",
+          "lineHeight": "20.15px",
+          "color": "rgb(196, 216, 223)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".explore-link": {
+          "size": "14px",
+          "weight": "700",
+          "lineHeight": "normal",
+          "color": "rgb(5, 32, 42)",
+          "font": "Tajawal, Arial, sans-serif"
+        }
+      }
+    },
+    {
+      "width": 768,
+      "venue": "stay",
+      "metrics": {
+        ".fact-box small": {
+          "size": "11px",
+          "weight": "400",
+          "lineHeight": "16.5px",
+          "color": "rgb(164, 187, 197)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".fact-box strong": {
+          "size": "16px",
+          "weight": "700",
+          "lineHeight": "25.6px",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec summary": {
+          "size": "17px",
+          "weight": "700",
+          "lineHeight": "normal",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec-item": {
+          "size": "13px",
+          "weight": "400",
+          "lineHeight": "20.15px",
+          "color": "rgb(196, 216, 223)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".explore-link": null
+      }
+    },
+    {
+      "width": 1440,
+      "venue": "resort",
+      "metrics": {
+        ".fact-box small": {
+          "size": "11px",
+          "weight": "400",
+          "lineHeight": "16.5px",
+          "color": "rgb(164, 187, 197)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".fact-box strong": {
+          "size": "16px",
+          "weight": "700",
+          "lineHeight": "25.6px",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec summary": {
+          "size": "17px",
+          "weight": "700",
+          "lineHeight": "normal",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec-item": {
+          "size": "13px",
+          "weight": "400",
+          "lineHeight": "20.15px",
+          "color": "rgb(196, 216, 223)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".explore-link": {
+          "size": "14px",
+          "weight": "700",
+          "lineHeight": "normal",
+          "color": "rgb(5, 32, 42)",
+          "font": "Tajawal, Arial, sans-serif"
+        }
+      }
+    },
+    {
+      "width": 1440,
+      "venue": "chalet",
+      "metrics": {
+        ".fact-box small": {
+          "size": "11px",
+          "weight": "400",
+          "lineHeight": "16.5px",
+          "color": "rgb(164, 187, 197)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".fact-box strong": {
+          "size": "16px",
+          "weight": "700",
+          "lineHeight": "25.6px",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec summary": {
+          "size": "17px",
+          "weight": "700",
+          "lineHeight": "normal",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec-item": {
+          "size": "13px",
+          "weight": "400",
+          "lineHeight": "20.15px",
+          "color": "rgb(196, 216, 223)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".explore-link": {
+          "size": "14px",
+          "weight": "700",
+          "lineHeight": "normal",
+          "color": "rgb(5, 32, 42)",
+          "font": "Tajawal, Arial, sans-serif"
+        }
+      }
+    },
+    {
+      "width": 1440,
+      "venue": "stay",
+      "metrics": {
+        ".fact-box small": {
+          "size": "11px",
+          "weight": "400",
+          "lineHeight": "16.5px",
+          "color": "rgb(164, 187, 197)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".fact-box strong": {
+          "size": "16px",
+          "weight": "700",
+          "lineHeight": "25.6px",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec summary": {
+          "size": "17px",
+          "weight": "700",
+          "lineHeight": "normal",
+          "color": "rgb(241, 247, 248)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".spec-item": {
+          "size": "13px",
+          "weight": "400",
+          "lineHeight": "20.15px",
+          "color": "rgb(196, 216, 223)",
+          "font": "Tajawal, Arial, sans-serif"
+        },
+        ".explore-link": null
+      }
+    }
+  ],
+  "errors": []
+}

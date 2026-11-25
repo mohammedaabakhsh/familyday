@@ -1,0 +1,6200 @@
+{
+  "version": "20261125-live-v69",
+  "sourceFactsUnchanged": true,
+  "cases": [
+    {
+      "tour": "dome",
+      "query": "",
+      "width": 320,
+      "height": 844,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 4.8828125045474735e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 7.93457031442393e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.178784661795276e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 3.860202216492588e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "tub",
+          "hits": [],
+          "outside": [],
+          "error": 3.9672851834473895e-06,
+          "visible": [
+            "tub"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 8.566692391505215e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 7.450290284610258e-06,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "pyramid",
+      "query": "",
+      "width": 320,
+      "height": 844,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.4990313895793537e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.5731922536581323e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 7.831788124225968e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 4.35707232784064e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "tub",
+          "hits": [],
+          "outside": [],
+          "error": 1.5053798837009713e-05,
+          "visible": [
+            "tub"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 9.58465746997211e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 4.6386718963731255e-06,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "classic",
+      "query": "",
+      "width": 320,
+      "height": 844,
+      "controls": 6,
+      "checks": [
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 6.693027407938312e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 7.304865368231291e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 4.232162066420445e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 5.232318639700578e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 7.3252359386515025e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.2994612671955198e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "greek",
+      "query": "",
+      "width": 320,
+      "height": 844,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.2582719523495692e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 4.87823271072638e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 9.3740144697462e-06,
+          "visible": [
+            "twin"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 6.606474172969492e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 1.4589828196795519e-05,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 7.818458222198058e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.4794700290764597e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "palm",
+      "query": "",
+      "width": 320,
+      "height": 844,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.1091785775504195e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.2207031261368684e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 1.2744514785087286e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.364787553417832e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 6.22438905490165e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 4.8828125045474735e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.2343596454795958e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "bohemian",
+      "query": "",
+      "width": 320,
+      "height": 844,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.216300658106473e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.1231132178061117e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 1.3022104856061327e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.1254326786816773e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 2.880962817294993e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 5.179004733764236e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.5286717586366852e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "french",
+      "query": "",
+      "width": 320,
+      "height": 844,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.3619458671659501e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 6.958007816137979e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 1.4437362756860314e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 3.9672851834473895e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 5.05118929479011e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.1118622150802838e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 2.7104007769925797e-06,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "rustic",
+      "query": "",
+      "width": 320,
+      "height": 844,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.287538029632585e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 8.101827896709386e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 5.860646422317755e-06,
+          "visible": [
+            "twin"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 5.136027693981622e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 9.161171604439857e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.594221456234156e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.48957045945371e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "royal",
+      "query": "",
+      "width": 320,
+      "height": 844,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.1542585577660166e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 7.915768006837335e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 4.452220775547098e-06,
+          "visible": [
+            "twin"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 4.991840026470897e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 2.8601988625895443e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.50701227015185e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.2709975903832009e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "panoramic",
+      "query": "",
+      "width": 320,
+      "height": 844,
+      "controls": 8,
+      "checks": [
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 5.7203976997059e-06,
+          "visible": [
+            "twin"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 9.877894692962671e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 9.72280651518501e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 6.390063119752467e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "tub",
+          "hits": [],
+          "outside": [],
+          "error": 7.812738445031801e-06,
+          "visible": [
+            "tub"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 7.836305587918657e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.2343596454795958e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 7.720404423997443e-06,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "dome",
+      "query": "?cabin=12",
+      "width": 320,
+      "height": 844,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 4.8828125045474735e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 7.93457031442393e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.178784661795276e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 3.860202216492588e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "tub",
+          "hits": [],
+          "outside": [],
+          "error": 3.9672851834473895e-06,
+          "visible": [
+            "tub"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 8.566692391505215e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 7.450290284610258e-06,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "greek",
+      "query": "?cabin=13",
+      "width": 320,
+      "height": 844,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.2582719523495692e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 4.87823271072638e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 9.3740144697462e-06,
+          "visible": [
+            "twin"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 6.606474172969492e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 1.4589828196795519e-05,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 7.818458222198058e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.4794700290764597e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "dome",
+      "query": "",
+      "width": 390,
+      "height": 844,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 6.1035156022626325e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 6.1035156022626325e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 6.823937894194908e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 8.631674583069972e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "tub",
+          "hits": [],
+          "outside": [],
+          "error": 1.2207031261368684e-05,
+          "visible": [
+            "tub"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.2302029047217856e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.2207031261368684e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "pyramid",
+      "query": "",
+      "width": 390,
+      "height": 844,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 4.443426456088363e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.3931533479922506e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.4850494472566486e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 8.211440456559952e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "tub",
+          "hits": [],
+          "outside": [],
+          "error": 5.6271633502496455e-06,
+          "visible": [
+            "tub"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.2976252243611755e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 4.8828125045474735e-06,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "classic",
+      "query": "",
+      "width": 390,
+      "height": 844,
+      "controls": 6,
+      "checks": [
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 3.051757815342171e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 4.76699808854679e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 6.959078511365512e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 3.662109378410605e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.563262754735406e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 8.631674615225464e-06,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "greek",
+      "query": "",
+      "width": 390,
+      "height": 844,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 6.823937900550195e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 3.860202198517121e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 1.4699212124761872e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.0986328106810106e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 7.549631886429341e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.4962952494564317e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.4749812007335578e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "palm",
+      "query": "",
+      "width": 390,
+      "height": 844,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 6.1035156022626325e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 0,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 6.1035156022626325e-06,
+          "visible": [
+            "twin"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 8.631674562972787e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 6.103515630684342e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 6.1035156022626325e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.2207031261368684e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "bohemian",
+      "query": "",
+      "width": 390,
+      "height": 844,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.2283088234971984e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.5295366305384532e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 4.4013077134056644e-06,
+          "visible": [
+            "twin"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.2022531481557904e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 1.930101108246294e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 3.452669833227989e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 9.884115450431168e-06,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "french",
+      "query": "",
+      "width": 390,
+      "height": 844,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.5012663405360522e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 5.493164081826762e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 6.103515630684342e-06,
+          "visible": [
+            "twin"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.2207031261368684e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 5.758045122377126e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 5.925441846875026e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 8.631674607186591e-06,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "rustic",
+      "query": "",
+      "width": 390,
+      "height": 844,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 8.631674562972787e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.0429692091613751e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 1.3203923116568703e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 3.558930598321394e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 9.765625009094947e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.2744514801421122e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 3.28684374686011e-06,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "royal",
+      "query": "",
+      "width": 390,
+      "height": 844,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 6.224389032605827e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.3483106694685802e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 7.481476245832977e-06,
+          "visible": [
+            "twin"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 6.224389060475607e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 7.93457031442393e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.2267914585160906e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.220703097715159e-06,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "panoramic",
+      "query": "",
+      "width": 390,
+      "height": 844,
+      "controls": 8,
+      "checks": [
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 1.4727695950496737e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 4.920811616771975e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 4.8828125045474735e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 6.713867179541921e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "tub",
+          "hits": [],
+          "outside": [],
+          "error": 1.509926377975196e-05,
+          "visible": [
+            "tub"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.6422880913119905e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 3.0517578011313162e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 2.0716018999367932e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "dome",
+      "query": "?cabin=12",
+      "width": 390,
+      "height": 844,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 6.1035156022626325e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 6.1035156022626325e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 6.823937894194908e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 8.631674583069972e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "tub",
+          "hits": [],
+          "outside": [],
+          "error": 1.2207031261368684e-05,
+          "visible": [
+            "tub"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.2302029047217856e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.2207031261368684e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "greek",
+      "query": "?cabin=13",
+      "width": 390,
+      "height": 844,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 6.823937900550195e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 3.860202198517121e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 1.4699212124761872e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.0986328106810106e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 7.549631886429341e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.4962952494564317e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.4749812007335578e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "dome",
+      "query": "",
+      "width": 430,
+      "height": 932,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 3.6621094068323146e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.0231356589841784e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.5258789072731816e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 9.296598064400833e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "tub",
+          "hits": [],
+          "outside": [],
+          "error": 7.816313751483405e-06,
+          "visible": [
+            "tub"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.3647875597731195e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.6422880951146144e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "pyramid",
+      "query": "",
+      "width": 430,
+      "height": 932,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.2515630468687783e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.1309799616385957e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 7.78575133386808e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 1.4812315746598368e-05,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "tub",
+          "hits": [],
+          "outside": [],
+          "error": 1.5411830163807765e-05,
+          "visible": [
+            "tub"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 4.740353433586245e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 4.150390623181011e-06,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "classic",
+      "query": "",
+      "width": 430,
+      "height": 932,
+      "controls": 6,
+      "checks": [
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 4.105720227223691e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.3726262464432971e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 9.569097963865784e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 9.72280649734321e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 8.300781236330829e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.4648437468167685e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "greek",
+      "query": "",
+      "width": 430,
+      "height": 932,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 8.550369742505306e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.260342724432927e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 1.139904053553347e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 5.350245844220229e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 4.938947346481336e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 5.867316898150203e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.009278639716424e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "palm",
+      "query": "",
+      "width": 430,
+      "height": 932,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.586914062884786e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 6.1035156022626325e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 7.117861196642788e-06,
+          "visible": [
+            "twin"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 8.566692449216658e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 1.050088535213302e-05,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 3.6621094068323146e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.4749811955587235e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "bohemian",
+      "query": "",
+      "width": 430,
+      "height": 932,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.7142079768523285e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 9.24597001462314e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 1.8992822573523954e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 9.278146832591347e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 7.390044381258689e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.4964446223631754e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 4.45222071885578e-06,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "french",
+      "query": "",
+      "width": 430,
+      "height": 932,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.0300304254306353e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 3.906249986584953e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 1.2744514755686381e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 7.816313751483405e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 5.258950003420622e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 8.167771908046815e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 6.573687513775779e-06,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "rustic",
+      "query": "",
+      "width": 430,
+      "height": 932,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.6113743639999263e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.3847315371052718e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 7.6203559611466025e-06,
+          "visible": [
+            "twin"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 1.361289244875631e-05,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.564406182582904e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 8.66957074096622e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.172272295788654e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "royal",
+      "query": "",
+      "width": 430,
+      "height": 932,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.487105018638894e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.3190938544624126e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 3.625817092825913e-06,
+          "visible": [
+            "twin"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 3.694518056991662e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 9.456313664478245e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.6788995329601243e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.40863004942373e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "panoramic",
+      "query": "",
+      "width": 430,
+      "height": 932,
+      "controls": 8,
+      "checks": [
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 1.2510867191355175e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 3.831141304588795e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 6.408400728026921e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.2498950922205226e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "tub",
+          "hits": [],
+          "outside": [],
+          "error": 7.3981055012785535e-06,
+          "visible": [
+            "tub"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.3536051034113535e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 6.3722573734875e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.69180821667394e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "dome",
+      "query": "?cabin=12",
+      "width": 430,
+      "height": 932,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 3.6621094068323146e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.0231356589841784e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.5258789072731816e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 9.296598064400833e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "tub",
+          "hits": [],
+          "outside": [],
+          "error": 7.816313751483405e-06,
+          "visible": [
+            "tub"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.3647875597731195e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.6422880951146144e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "greek",
+      "query": "?cabin=13",
+      "width": 430,
+      "height": 932,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 8.550369742505306e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.260342724432927e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 1.139904053553347e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 5.350245844220229e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 4.938947346481336e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 5.867316898150203e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.009278639716424e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "dome",
+      "query": "",
+      "width": 768,
+      "height": 1024,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.2207031204525265e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.2207031261368684e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.3647875788389816e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 1.7263349166139944e-05,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "tub",
+          "hits": [],
+          "outside": [],
+          "error": 6.1035156022626325e-06,
+          "visible": [
+            "tub"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 6.823937906905483e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 2.4414062522737368e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "pyramid",
+      "query": "",
+      "width": 768,
+      "height": 1024,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 8.886852927792812e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.4749812007335578e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 5.03308791969071e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 1.6422880913119905e-05,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "tub",
+          "hits": [],
+          "outside": [],
+          "error": 1.125432671283036e-05,
+          "visible": [
+            "tub"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 2.3701767387500105e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 9.765625009094947e-06,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "classic",
+      "query": "",
+      "width": 768,
+      "height": 1024,
+      "controls": 6,
+      "checks": [
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 6.103515630684342e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 9.53399617709358e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 4.094362736516945e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 7.32421875682121e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 2.6772109631753248e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.3647875834147886e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "greek",
+      "query": "",
+      "width": 768,
+      "height": 1024,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.3647875851942691e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 7.720404450960645e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 2.456617646994397e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 8.544921911379788e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 1.5099263772858682e-05,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 6.22438905490165e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.2744514730641164e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "palm",
+      "query": "",
+      "width": 768,
+      "height": 1024,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 3.0517578011313162e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 0,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 1.2207031204525265e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.7263349166139944e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 1.2207031261368684e-05,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.2207031261368684e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 2.4414062522737368e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "bohemian",
+      "query": "",
+      "width": 768,
+      "height": 1024,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.3918157052644008e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.5099263786645238e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 8.802615426811329e-06,
+          "visible": [
+            "twin"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.2976252243611755e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 3.8602022254803226e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 6.905339666455978e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.1402308195986129e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "french",
+      "query": "",
+      "width": 768,
+      "height": 1024,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.3918157037687515e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.0986328163653525e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 1.2207031261368684e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 6.1035156022626325e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 1.1516090244754252e-05,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.1850883646908693e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.7263349214373182e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "rustic",
+      "query": "",
+      "width": 768,
+      "height": 1024,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.7263349125945575e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 2.085938416326844e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 1.695854979328185e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 7.117861182019939e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.0986328106810106e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 2.5489029586508407e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 6.573687514831336e-06,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "royal",
+      "query": "",
+      "width": 768,
+      "height": 1024,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.2448778065211654e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 4.401307737053957e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 3.1121945135159357e-06,
+          "visible": [
+            "twin"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 3.908156875741702e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.586914062884786e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 6.573687467331324e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 2.441406195430318e-06,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "panoramic",
+      "query": "",
+      "width": 768,
+      "height": 1024,
+      "controls": 8,
+      "checks": [
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 3.28684374422122e-06,
+          "visible": [
+            "twin"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 9.84162323354395e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 5.493164053405053e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.3427734359083843e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "tub",
+          "hits": [],
+          "outside": [],
+          "error": 7.425247231610744e-06,
+          "visible": [
+            "tub"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 2.280461628243296e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 6.1035156022626325e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 2.932229531290342e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "dome",
+      "query": "?cabin=12",
+      "width": 768,
+      "height": 1024,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.2207031204525265e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.2207031261368684e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.3647875788389816e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 1.7263349166139944e-05,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "tub",
+          "hits": [],
+          "outside": [],
+          "error": 6.1035156022626325e-06,
+          "visible": [
+            "tub"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 6.823937906905483e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 2.4414062522737368e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "greek",
+      "query": "?cabin=13",
+      "width": 768,
+      "height": 1024,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.3647875851942691e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": "left",
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 7.720404450960645e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 2.456617646994397e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": "right",
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 8.544921911379788e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 1.5099263772858682e-05,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": "bottom",
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 6.22438905490165e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.2744514730641164e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "dome",
+      "query": "",
+      "width": 1024,
+      "height": 900,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.2207031545585778e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.8310547034161573e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 7.816313751483405e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 1.4235722412782708e-05,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "tub",
+          "hits": [],
+          "outside": [],
+          "error": 6.713867179541921e-06,
+          "visible": [
+            "tub"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 6.28395395484702e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 2.5165439515734223e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "pyramid",
+      "query": "",
+      "width": 1024,
+      "height": 900,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 3.7604789857957004e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 8.188725511165614e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.3136603335577664e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 1.4287963744798835e-05,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "tub",
+          "hits": [],
+          "outside": [],
+          "error": 1.3454895276928844e-05,
+          "visible": [
+            "tub"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 2.282943301773824e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 5.7373046900011104e-06,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "classic",
+      "query": "",
+      "width": 1024,
+      "height": 900,
+      "controls": 6,
+      "checks": [
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 8.631674562972787e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 7.055833002190463e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.4988325677438844e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 6.591796875454747e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 2.499790184441045e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.0268428158201561e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "greek",
+      "query": "",
+      "width": 1024,
+      "height": 900,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 9.533996195288718e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 9.777824420199783e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 2.7120771044499063e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.5869140668200998e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 1.6269733488277473e-05,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.0107539830587124e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.2209472424324796e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "palm",
+      "query": "",
+      "width": 1024,
+      "height": 900,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 2.7465820267025265e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 3.051757815342171e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 1.2582719816459967e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.4235722412782708e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 7.32421875682121e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.220703097715159e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 2.729575160220078e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "bohemian",
+      "query": "",
+      "width": 1024,
+      "height": 900,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.5413763768004126e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 6.3476562454175455e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 4.914751491192202e-06,
+          "visible": [
+            "twin"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 9.665163224606159e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 1.4689578471446054e-05,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.111845466328356e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 6.177529719508933e-06,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "french",
+      "query": "",
+      "width": 1024,
+      "height": 900,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 7.328286637967238e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.3427734415927262e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 6.583880132055081e-06,
+          "visible": [
+            "twin"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 6.713867179541921e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 1.0867000598355713e-05,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.533622926973441e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 8.300781313236631e-06,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "rustic",
+      "query": "",
+      "width": 1024,
+      "height": 900,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.3147375029662672e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.3886537660353431e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 2.9118311513388236e-06,
+          "visible": [
+            "twin"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 6.936558888878341e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 7.324218813664629e-07,
+          "visible": [
+            "living"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 2.7517583636909432e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.5644061836917746e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "royal",
+      "query": "",
+      "width": 1024,
+      "height": 900,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.0918300681554153e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.1647324667313296e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 1.2854531318623708e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 9.841623237069228e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 7.971107302062918e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.042969208163422e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.563262754735406e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "panoramic",
+      "query": "",
+      "width": 1024,
+      "height": 900,
+      "controls": 8,
+      "checks": [
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 8.134866750322855e-06,
+          "visible": [
+            "twin"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.284061324135144e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 1.3287733416373685e-05,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.4306723904131802e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "tub",
+          "hits": [],
+          "outside": [],
+          "error": 9.290184412744557e-06,
+          "visible": [
+            "tub"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 4.541278128358301e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.2744514730641164e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.657281520753322e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "dome",
+      "query": "?cabin=12",
+      "width": 1024,
+      "height": 900,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.2207031545585778e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.8310547034161573e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 7.816313751483405e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 1.4235722412782708e-05,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "tub",
+          "hits": [],
+          "outside": [],
+          "error": 6.713867179541921e-06,
+          "visible": [
+            "tub"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 6.28395395484702e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 2.5165439515734223e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "greek",
+      "query": "?cabin=13",
+      "width": 1024,
+      "height": 900,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 9.533996195288718e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 9.777824420199783e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 2.7120771044499063e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.5869140668200998e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 1.6269733488277473e-05,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.0107539830587124e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.2209472424324796e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "dome",
+      "query": "",
+      "width": 1440,
+      "height": 900,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 5.493164081826762e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 6.103515772792889e-07,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.050088535213302e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 1.2448778120951214e-05,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "tub",
+          "hits": [],
+          "outside": [],
+          "error": 7.32421875682121e-06,
+          "visible": [
+            "tub"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.8147056572186935e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 2.729575157677963e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "pyramid",
+      "query": "",
+      "width": 1440,
+      "height": 900,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 2.3011468070303688e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.7133384896408355e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 5.9602322332763585e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 1.2875380344829306e-05,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "tub",
+          "hits": [],
+          "outside": [],
+          "error": 2.0692988400463236e-05,
+          "visible": [
+            "tub"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.9555648840399565e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.5136718786834535e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "classic",
+      "query": "",
+      "width": 1440,
+      "height": 900,
+      "controls": 6,
+      "checks": [
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 6.823937894194908e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 6.486977639309603e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 6.300531176918662e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 6.958007816137979e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 2.4574970254442272e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 5.6785660541314045e-06,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "greek",
+      "query": "",
+      "width": 1440,
+      "height": 900,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 6.57368748844244e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 4.606436113567716e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 2.1974012508697186e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.2695312534560799e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 5.720397681510765e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 6.995385123571447e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.2362293800592436e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "palm",
+      "query": "",
+      "width": 1440,
+      "height": 900,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 6.713867179541921e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 6.103515630684342e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 1.3647875902784988e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.2448778065211654e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 2.4414062522737368e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 9.765625009094947e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 2.5165439626026657e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "bohemian",
+      "query": "",
+      "width": 1440,
+      "height": 900,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.9537352580302105e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.468957835595196e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 1.0532057952183652e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.1264914070999875e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 7.434272449144432e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.4517645285280203e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.743683724592657e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "french",
+      "query": "",
+      "width": 1440,
+      "height": 900,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.7201088891992454e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.9531250018189894e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 9.456313715476249e-06,
+          "visible": [
+            "twin"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 7.32421875682121e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 1.2207031261368684e-05,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 9.033203095466004e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.7105531263683026e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "rustic",
+      "query": "",
+      "width": 1440,
+      "height": 900,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.4900580569220516e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.9654457600854373e-05,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 1.4871050074403942e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 7.380965047475313e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 5.859375022509994e-06,
+          "visible": [
+            "living"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 2.638639529334759e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 9.164220860888757e-06,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "royal",
+      "query": "",
+      "width": 1440,
+      "height": 900,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 8.886852912176727e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 5.568600938908079e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 1.2326079604166885e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 6.011265740778952e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 2.657546672830678e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 2.729575221230837e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 6.573687509553556e-06,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "panoramic",
+      "query": "",
+      "width": 1440,
+      "height": 900,
+      "controls": 8,
+      "checks": [
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 1.3488079081987216e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 6.344134016772832e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 6.225585934771516e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 1.3770158939585384e-05,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "tub",
+          "hits": [],
+          "outside": [],
+          "error": 8.082492801427396e-06,
+          "visible": [
+            "tub"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 2.250865342566072e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 8.63167458306997e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 3.080528445703518e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "dome",
+      "query": "?cabin=12",
+      "width": 1440,
+      "height": 900,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 5.493164081826762e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 6.103515772792889e-07,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.050088535213302e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 1.2448778120951214e-05,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "tub",
+          "hits": [],
+          "outside": [],
+          "error": 7.32421875682121e-06,
+          "visible": [
+            "tub"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 1.8147056572186935e-05,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 2.729575157677963e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    },
+    {
+      "tour": "greek",
+      "query": "?cabin=13",
+      "width": 1440,
+      "height": 900,
+      "controls": 7,
+      "checks": [
+        {
+          "id": "bedroom",
+          "hits": [],
+          "outside": [],
+          "error": 6.57368748844244e-06,
+          "visible": [
+            "bedroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "bathroom",
+          "hits": [],
+          "outside": [],
+          "error": 4.606436113567716e-06,
+          "visible": [
+            "bathroom"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "twin",
+          "hits": [],
+          "outside": [],
+          "error": 2.1974012508697186e-05,
+          "visible": [
+            "twin"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "living",
+          "hits": [],
+          "outside": [],
+          "error": 1.2695312534560799e-05,
+          "visible": [
+            "living"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "kitchen",
+          "hits": [],
+          "outside": [],
+          "error": 5.720397681510765e-06,
+          "visible": [
+            "kitchen"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "pool",
+          "hits": [],
+          "outside": [],
+          "error": 6.995385123571447e-06,
+          "visible": [
+            "pool"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        },
+        {
+          "id": "outdoor",
+          "hits": [],
+          "outside": [],
+          "error": 1.2362293800592436e-05,
+          "visible": [
+            "outdoor"
+          ],
+          "exit": null,
+          "bodyOverflow": false
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "badResponses": []
+}

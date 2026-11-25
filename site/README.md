@@ -91,3 +91,9 @@ Checks: `scripts/check-guide-batch.py`, `scripts/check-shared-format.py`, `scrip
 ## Chalet and rest-house introductions — v68
 
 [Approved wording](../docs/chalet-stay-copy-v68.md) removes repeated audience/capacity/bedroom facts from the three introductions, keeps the upper section’s extra-fee note, and balances their lines. The stay comparison has section-only column headings and a first specification row for the floor. All previous comparison values, photos, facts, names, routes and ordering portals are preserved. Verification: `audits/chalet-stay-copy-v68.json`.
+
+## Approved mobile PDF review — v69
+
+[Approved scope and deferred proposals](../docs/approved-mobile-review-v69.md): correct guest grammar; retain the upper home title and remove the duplicate title inside each hero; simplify cabin/garden navigation status; unify selected terminology; isolate complete pool measurements; display the cinema/games/dining photo before collapsed contents; add capacity to the stay comparison; and reuse the chalet's first detail image on its two cover entries. No new photos, recompression, font changes or desktop redesign. The ordering portals only receive the approved Instagram accessibility spelling and two source seating-capacity labels; their layout, logic, prices and links remain.
+
+Run `scripts/check-approved-mobile-review.py` plus the existing format, Back, cabin-arrow and cutover checks. Evidence: `audits/*v69.json`; rollback: `pre-approved-pdf-batch-20261125`.

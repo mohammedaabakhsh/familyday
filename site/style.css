@@ -333,6 +333,13 @@ body.resort-services #main{width:100%;max-width:none;height:100dvh;min-height:0;
 .resort-service :is(.service-guide,.dining-guide) .inclusions{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-block:12px}
 .resort-service :is(.service-guide,.dining-guide) .inclusions li{min-width:0;padding:8px 10px;font-size:13px;line-height:1.65}
 .resort-service :is(.service-guide,.dining-guide) .inclusions .inclusion-wide{grid-column:1/-1}
+/* Approved mobile review: keep dimensions together and show each main service photo. */
+.measurement{display:inline-block;white-space:nowrap}
+.service-main-photo{margin:0 0 18px}
+:is(.service-guide,.dining-guide) .service-main-photo .package-gallery{margin:0;background:transparent}
+:is(.service-guide,.dining-guide) .service-main-photo .package-image{width:100%;flex:0 0 100%;height:auto;aspect-ratio:auto;padding:0;border:0;background:transparent}
+.service-main-photo .package-image img{display:block;width:100%;height:auto;max-height:none;object-fit:contain}
+.service-main-photo figcaption{margin-top:7px;color:var(--muted);font-size:12px;line-height:1.6}
 
 /* Owner-approved five-tab navigation, balanced cabin copy and entry sharing. */
 .resort-unit .description p{text-wrap:balance}

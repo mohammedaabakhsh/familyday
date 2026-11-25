@@ -748,8 +748,7 @@ function formatSpecificationText(text) {
   text = localizeSpecificationUnits(text);
   if (!/\d+\s*×\s*\d+|\d+\s*(?:سم|م)(?:[ .،]|$)/.test(text)) return text;
   return '<span>' + text.replace(/(\d+(?:\.\d+)?(?:\s*×\s*\d+(?:\.\d+)?)?)(\s*(?:سم|م)(?=$|[\s.,،<]))?/g, function(match,number,unit){
-    var digits='<bdi dir="ltr">'+number+'</bdi>';
-    return unit ? '<span class="fd-measurement" style="white-space:nowrap">'+digits+unit+'</span>' : digits;
+    return '<bdi class="fd-measurement" dir="ltr" style="display:inline-block;white-space:nowrap">'+number+(unit||'')+'</bdi>';
   }) + '</span>';
 }
 

@@ -1,0 +1,39 @@
+{
+  "version": "20261125-live-v69",
+  "profiles": [
+    {
+      "width": 320,
+      "height": 568,
+      "coverConsistency": true,
+      "singleCounterAndGarden": true,
+      "rtlMeasurements": true,
+      "visibleServicePhotosAndZoom": true,
+      "capacityRow": true,
+      "textOnlySharing": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "coverConsistency": true,
+      "singleCounterAndGarden": true,
+      "rtlMeasurements": true,
+      "visibleServicePhotosAndZoom": true,
+      "capacityRow": true,
+      "textOnlySharing": true
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "coverConsistency": true,
+      "singleCounterAndGarden": true,
+      "rtlMeasurements": true,
+      "visibleServicePhotosAndZoom": true,
+      "capacityRow": true,
+      "textOnlySharing": true
+    }
+  ],
+  "errors": [],
+  "badResponses": [],
+  "sourceFactsAndPricesUnchanged": true,
+  "deferredChoicesPreserved": true
+}
