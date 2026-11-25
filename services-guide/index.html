@@ -25,8 +25,11 @@
 <link rel="stylesheet" href="guide.css?v=20261116-reviewed-usage-v1">
 <script src="guide-gallery.js?v=20261109-gallery-lifecycle-v3" defer></script>
 <script src="/js/dining-cards.js?v=20261122-final-review-v1" defer></script>
-<script src="guide.js?v=20261125-live-v54" defer></script>
+<script src="guide-orders.js?v=20261125-arrangements-v63" defer></script>
+<script src="guide.js?v=20261125-arrangements-v63" defer></script>
 <link rel="stylesheet" href="/css/back-navigation.css?v=20261106-stable-ring-v2">
+<link rel="stylesheet" href="/css/desktop-layout.css?v=20261110-desktop-v1" media="screen and (min-width:1024px)">
+<link rel="stylesheet" href="guide-orders.css?v=20261125-arrangements-v63">
 </head>
 <body>
 <a class="skip" href="#contents">انتقل إلى الخدمات</a>
@@ -37,6 +40,7 @@
   <div class="welcome">
     <div class="cover-logo-frame"><span class="cover-logo" role="img" aria-label="منتجع يوم العائلة"></span></div>
     <p class="eyebrow">منتجع يوم العائلة</p>
+    <p class="portal-branch">فرع خليج سلمان</p>
     <h1 id="guide-title">تنسيقات وجلسات</h1>
     <div class="intro"><p>كل ما تحتاجونه لتجهيز مناسبتكم</p></div>
   </div>
@@ -48,6 +52,22 @@
   </ol></nav>
 <div id="guide-content" tabindex="-1" aria-busy="true"><p class="loading" role="status">لحظة ونجهّز الخيارات…</p></div>
 <noscript><p class="loading">فعّل JavaScript لعرض الباقات والتفاصيل هنا.</p></noscript>
+<section id="arrangement-summary" class="arrangement-summary" aria-labelledby="arrangement-summary-title" tabindex="-1" hidden>
+<h2 id="arrangement-summary-title">ملخص طلب التنسيقات والجلسات</h2>
+<form id="arrangement-order">
+<p id="arrangement-count" role="status"></p><ul id="arrangement-items"></ul>
+<div class="arrangement-total"><span>إجمالي الطلب</span><strong><bdi id="arrangement-total">0</bdi> ريال</strong></div>
+<div class="arrangement-fields">
+<label for="arrangement-name">الاسم<input id="arrangement-name" name="name" autocomplete="name" maxlength="100" required></label>
+<label for="arrangement-cabin">اسم الكوخ<select id="arrangement-cabin" name="cabin" required><option value="">اختر الكوخ</option></select></label>
+<p id="arrangement-cabin-number" hidden></p>
+<label for="arrangement-notes">ملاحظات الطلب <span>(اختياري)</span><textarea id="arrangement-notes" name="notes" maxlength="1000" rows="2"></textarea></label>
+</div>
+<p id="arrangement-warning" role="status" hidden></p>
+<button type="submit" class="arrangement-send">إكمال الطلب عبر واتساب</button>
+<p class="arrangement-confirmation">تابع طلبك مع منسّق المناسبات عبر واتساب لتأكيد التفاصيل والموعد.</p>
+</form></section>
+<button type="button" id="arrangement-shortcut" hidden>عرض ملخص الطلب</button>
 </main>
 <footer class="footer"><div class="footer-inner">
 <div class="footer-links">
@@ -70,6 +90,6 @@
 </div>
 <div id="share-status" class="toast" role="status"></div>
 <dialog id="share-dialog"><h2>رابط تنسيقات وجلسات</h2><p>انسخ الرابط وأرسله لمن تحب.</p><input id="share-link" type="url" readonly aria-label="رابط المشاركة" dir="ltr"><button type="button" id="close-share">إغلاق</button></dialog>
-<link rel="stylesheet" href="/css/desktop-layout.css?v=20261110-desktop-v1" media="screen and (min-width:1024px)">
+
 </body>
 </html>

@@ -65,3 +65,7 @@ Run `python scripts/check-resort-portal-refinements.py http://127.0.0.1:8112` an
 ### Help styling restored — v62
 
 At the owner’s request, the help section uses its original styling again. The other accepted v61 refinements remain enabled; contact copy, numbers and links are unchanged. Current verification: `audits/resort-refinements-v62.json`.
+
+## Arrangements ordering and matching shares — v63
+
+[Implementation and checks](../docs/arrangements-ordering-v63.md): the independent arrangements portal now supports a coordinator draft and summary, with its original cards/contact layout, branch caption and service-specific selection colors. Public package/dining links match the native guide; all six outdoor sessions gain individual share URLs. The other two order portals remain unchanged.

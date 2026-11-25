@@ -4,6 +4,12 @@
 
 The independent `../data/services.json` supplies coordination, dining, seating, photos, prices and usage notes. The guide no longer fetches home-page HTML or loads the old service-data script. Its small inert dining template and `js/dining-cards.js` preserve the approved table/details layout. Update the catalogue, then run `python site/build-site.py` to synchronize the native guide as well.
 
+The arrangements order helper `guide-orders.js` uses the same independent catalogue for quantities and current totals, stores a separate session draft, and opens a text-only WhatsApp draft to the existing events coordinator (966537009217). Name and cabin are required as in the guest portal. The cake/juice add-on requires a seating selection. The original contact footer remains.
+
+Package shares reuse the exact native public `/services/coordination/?package=…` URLs, dining uses `/services/dining-tables/`, and each session uses `/services/outdoor-seating/?session=1` through `6` on both surfaces. No images/files are passed to sharing. Existing gallery photos remain visible within the guide. Native pages remain informational; order entry links open the corresponding arrangements card.
+
 The hash router preserves direct links, Back/Forward, home scroll position and keyboard focus. `#coordination`, `#dining`, `#seating`, legacy `#packages` and `#package-complete` remain supported. Hospitality/cinema anchors still hand off to the existing guest-order page. Gallery originals, contact destinations and share metadata remain unchanged.
 
 Run `python scripts/check-guide-source.py http://127.0.0.1:8112` to check all three sections and independent-source updates. Failed loading offers a retry rather than stale prices.
+
+New direct anchors `#package-1`, `#package-2`, `#package-3`, `#package-celebration`, `#package-vip` and `#session-1` through `#session-6` open their card. Run `python scripts/check-arrangement-orders.py http://127.0.0.1:8112` for quantities, exact messages, matching links, validation, current prices and draft persistence.

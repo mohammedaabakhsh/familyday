@@ -51,12 +51,13 @@
       const body = (pack.description ? '<p class="package-description">' + escape(pack.description) + '</p>' : '') + items(pack.items)
         + (pack.note ? '<p class="package-usage-note">' + escape(pack.note) + '</p>' : '');
       return serviceCard({title:pack.name,price:pack.price.replace(/\s*للباقة\s*$/, ''),priceUnit:'للباقة',photos:pack.images,
-        imageAlt:'تنسيق ' + pack.name,body,className:'coordination-card',label:'تفاصيل الباقة',id:pack.id === 'hd-coordination-package-resort' ? 'package-complete' : ''});
+        imageAlt:'تنسيق ' + pack.name,body,className:'coordination-card',label:'تفاصيل الباقة',id:pack.id === 'hd-coordination-package-resort' ? 'package-complete' : 'package-'+pack.id.replace('hd-coordination-package-','')});
     }).join('') + '</div>';
   }
   function render(catalog) {
     const data = catalog.arrangements;
     if (catalog.schemaVersion !== 1 || !data || !data.coordination.packages.length || !data.seating.sessions.length || !data.dining.template) throw new Error('Invalid arrangements catalogue');
+    if(!catalog.guest?.cabins || !Object.keys(catalog.guest.cabins).length) throw new Error('Guest cabins unavailable');
     // Keep the approved shared dining layout using its small, inert template.
     const doc = document.implementation.createHTMLDocument('');
     const template = doc.createElement('template');template.id = 'dining-card-template';template.innerHTML = data.dining.template;doc.body.append(template);
@@ -66,16 +67,17 @@
     const diningSource = template.content;
     const diningImage = sourceImage(diningSource,'.fd-dining-image img');
     const diningPhoto = '<div class="dining-shared-photo">' + FD_GUIDE_GALLERY.markup([diningImage.src],data.dining.name,diningImage.alt) + '<p class="fd-dining-caption">' + escape(text(diningSource,'.fd-dining-caption')) + '</p></div>';
-    const diningBody = diningPhoto + FD_DINING_CARDS.table(doc,false).outerHTML + FD_DINING_CARDS.details(doc).outerHTML;
+    const diningBody = '<p id="dining-price-help" class="dining-order-help">اضغط على السعر لاختيار عدد الأشخاص والتجهيز المطلوب.</p>' + diningPhoto + FD_DINING_CARDS.table(doc,true).outerHTML + FD_DINING_CARDS.details(doc).outerHTML;
     html += section('dining',data.dining.name,data.dining.intro,diningBody,true);
     const extra = data.seating.extra;
     const seatingExtra = '<aside class="seating-extra" aria-labelledby="seating-extra-title"><h3 id="seating-extra-title">إضافة اختيارية</h3><div class="seating-extra-offer"><strong>' + escape(extra.name) + '</strong><strong class="seating-extra-price">' + escape(extra.price) + '</strong></div><p>إضافة اختيارية تُضاف قيمتها لسعر الجلسة</p></aside>';
     const seatingUsage = '<details class="guide-usage"><summary>تعليمات الاستخدام</summary><ul>' + data.seating.notes.map(note => '<li>' + escape(note) + '</li>').join('') + '</ul></details>';
-    html += section('seating',data.seating.name,'جلسات نجهّزها لكم في المساحة الخارجية الخاصة بالكوخ', '<div class="photo-grid">' + data.seating.sessions.map(s => serviceCard({title:s.name,price:s.price,priceUnit:'للجلسة',photos:[s.img],imageAlt:s.name,className:'photo-card',capacity:s.persons,label:'تفاصيل الجلسة',body:'<p class="session-description">' + escape(s.desc) + '</p>'})).join('') + '</div>' + seatingExtra + seatingUsage,true);
+    html += section('seating',data.seating.name,'جلسات نجهّزها لكم في المساحة الخارجية الخاصة بالكوخ', '<div class="photo-grid">' + data.seating.sessions.map((s,i) => serviceCard({id:'session-'+(i+1),title:s.name,price:s.price,priceUnit:'للجلسة',photos:[s.img],imageAlt:s.name,className:'photo-card',capacity:s.persons,label:'تفاصيل الجلسة',body:'<p class="session-description">' + escape(s.desc) + '</p>'})).join('') + '</div>' + seatingExtra + seatingUsage,true);
     content.innerHTML = html;
     FD_GUIDE_GALLERY.mount();
     content.setAttribute('aria-busy','false');
     content.classList.add('is-ready');
+    document.dispatchEvent(new CustomEvent('fd:guide-ready',{detail:catalog}));
     scrollToHash();
   }
   const homeBack = {href:back.href, label:back.getAttribute('aria-label')};
@@ -92,7 +94,7 @@
     const nextSection = routeSection();
     if(activeSection && activeSection !== nextSection) FD_GUIDE_GALLERY.reset(activeSection);
     activeSection = nextSection;
-    const pendingHash = location.hash === '#package-complete' ? '#coordination' : location.hash === '#packages' ? '#seating' : location.hash;
+    const pendingHash = /^#package-(1|2|3|celebration|vip|complete)$/.test(location.hash) ? '#coordination' : location.hash === '#packages' || /^#session-[1-6]$/.test(location.hash) ? '#seating' : location.hash;
     const pendingTile = !content.classList.contains('is-ready') && Array.from(document.querySelectorAll('.contents a')).find(link => link.hash === pendingHash);
     const sectionView = Boolean(activeSection || pendingTile);
     document.body.dataset.guideView = sectionView ? 'section' : 'home';
@@ -105,8 +107,9 @@
     requestAnimationFrame(() => {
       if(activeSection) {
         if(focus) activeSection.querySelector('h2').focus({preventScroll:true});
-        const target = location.hash === '#package-complete' ? document.getElementById('package-complete') : null;
-        if(target) target.scrollIntoView({behavior:'instant',block:'start'});
+        const target = document.getElementById(location.hash.slice(1));
+        if(target?.matches('.package-card')) target.querySelector('details').open=true;
+        if(target && target!==activeSection) target.scrollIntoView({behavior:'instant',block:'start'});
         else window.scrollTo({top:0,behavior:'instant'});
       } else {
         const previous = history.state && history.state.guideHomeY;
@@ -156,17 +159,17 @@
     clearTimeout(statusTimeout); statusTimeout=setTimeout(() => el.classList.remove('visible'),3500);
   }
   document.addEventListener('click',async event => {
-    const button = event.target.closest('[data-share]');
+    const button = event.target.closest('[data-share],[data-share-path]');
     if(!button) return;
-    const id = activeSection ? (location.hash === '#package-complete' ? 'package-complete' : activeSection.id) : button.dataset.share;
-    // A separate text-only entry avoids the original guide's cached logo preview.
-    const url = new URL('/arrangements/',location.origin);
-    if(id) url.hash=id;
+    const id = button.dataset.share || (activeSection ? activeSection.id : '');
+    // Reuse the native guide URLs for individual services; their static previews are text-only.
+    const url = new URL(button.dataset.sharePath || ({coordination:'/services/coordination/',dining:'/services/dining-tables/',seating:'/services/outdoor-seating/'}[id]) || '/arrangements/',location.origin);
+    if(!button.dataset.sharePath && id && !['coordination','dining','seating'].includes(id)) url.hash=id;
     try {
-      if (navigator.share) {await navigator.share({title:document.title,url:url.href});return;}
+      if (navigator.share) {await navigator.share({text:url.href});return;}
       if (!navigator.clipboard) throw new Error('Clipboard unavailable');
       await navigator.clipboard.writeText(url.href);
-      status(id ? 'تم نسخ رابط القسم' : 'تم نسخ رابط تنسيقات وجلسات');
+      status(button.dataset.sharePath ? 'تم نسخ رابط الخدمة' : id ? 'تم نسخ رابط القسم' : 'تم نسخ رابط تنسيقات وجلسات');
     } catch(error) {
       if(error.name === 'AbortError') return;
       const dialog = document.getElementById('share-dialog');

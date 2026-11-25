@@ -1,4 +1,4 @@
-"""Guard the guide's read-only catalogue against changes in main-site card templates."""
+"""Guard the guide's independent catalogue against changes in main-site card templates."""
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 import sys,json

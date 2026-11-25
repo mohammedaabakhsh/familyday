@@ -1,0 +1,54 @@
+/* Arrangements-only additions; preserve the original catalogue layout and palette. */
+.cover .cover-logo-frame{width:clamp(150px,42vw,164px)}
+.cover .cover-logo{background-image:url('/site/brand/logo-original.png')}
+.welcome .portal-branch{margin:3px 0 0;font-size:10.5px;font-weight:400;line-height:1.5;color:var(--muted)}
+.contents .guide-tile.is-selected{border-color:var(--tile-ink);background:var(--tile-fill);background:color-mix(in srgb,var(--tile-ink) 5%,var(--tile-fill));box-shadow:inset 0 0 0 1px var(--tile-ink)}
+.contents .guide-tile.is-selected .tile-icon{background:var(--tile-ink);color:#fff}
+#coordination{--order-ink:#934b65;--order-fill:#fcf0f2}
+#dining{--order-ink:#806024;--order-fill:#fffaf0}
+#seating{--order-ink:#3c6b50;--order-fill:#eff7f1}
+:is(#coordination,#seating) .package-card.has-selection,:is(#coordination,#seating) .package-card.has-selection:has(details[open]){border-color:var(--order-ink);box-shadow:inset 0 0 0 1px var(--order-ink)}
+.arrangement-controls{padding:14px 16px;display:grid;grid-template-columns:minmax(0,1fr);gap:12px;align-items:center;border-top:1px solid var(--line)}
+.arrangement-quantity{display:flex;align-items:center;gap:4px;flex:none}
+.arrangement-quantity button{display:grid;place-items:center;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--order-ink,var(--ink));width:40px;height:42px;font-size:20px;line-height:1}
+.arrangement-quantity output{min-width:24px;text-align:center;font-size:15px;font-weight:700}
+.arrangement-quantity button:disabled{opacity:.4;cursor:default}
+.arrangement-controls>.arrangement-quantity::before{content:"الكمية";font-size:13px;color:var(--muted);margin-inline-end:auto}
+.arrangement-actions{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}
+.arrangement-request,.arrangement-share{min-height:44px;border:1px solid var(--order-ink,var(--line));border-radius:10px;padding:8px 12px;font-size:13px;font-weight:700;line-height:1.5;color:var(--order-ink,var(--ink));background:var(--order-fill,#fff);display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.arrangement-request{flex:1}.arrangement-share{background:#fff;flex:none}.arrangement-share svg,.arrangement-request svg{width:18px;height:18px}
+.dining-order-help{margin:0 auto 16px;text-align:center;font-size:13px;color:var(--muted)}
+.dining-order-actions{margin-top:20px;text-align:center}
+.fd-dining-option.is-selected{border-color:var(--order-ink);box-shadow:inset 0 0 0 1px var(--order-ink);background:var(--order-fill)}
+.seating-extra .arrangement-controls{margin-top:12px;padding:12px 0 0}
+.arrangement-summary{max-width:828px;margin:24px auto 36px;padding:0 18px;scroll-margin-top:86px}
+.arrangement-summary h2{font-size:20px;margin:0 0 12px;text-align:right}
+#arrangement-order{border:1px solid var(--line);border-radius:16px;background:#fff;padding:16px}
+#arrangement-count{font-size:13px;color:var(--muted);margin-bottom:12px}
+#arrangement-items,#arrangement-items ul{list-style:none;padding:0;margin:0}
+#arrangement-items{display:grid;gap:12px}
+.arrangement-group{border:1px solid var(--line);border-radius:12px;overflow:hidden;--order-ink:#3c6b50;--order-fill:#eff7f1}
+.arrangement-group[data-tone="coordination"]{--order-ink:#934b65;--order-fill:#fcf0f2}
+.arrangement-group[data-tone="dining"]{--order-ink:#806024;--order-fill:#fffaf0}
+.arrangement-group h3{padding:9px 12px;background:var(--order-fill);font-size:14px;color:var(--order-ink)}
+.arrangement-group ul>li{padding:12px;display:flex;align-items:center;flex-wrap:wrap;gap:8px;border-top:1px solid var(--line)}
+.arrangement-item-copy{flex:1 1 170px;font-size:14px;min-width:0}
+.arrangement-item-copy span{display:block;color:var(--muted);font-size:12px}
+.arrangement-remove{border:0;background:transparent;color:#a14242;min-height:42px;padding:8px;font-size:12px}
+.arrangement-total{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid var(--line);margin-top:16px;padding-top:16px;font-size:15px}
+.arrangement-total strong{font-size:22px}
+.arrangement-fields{display:grid;gap:14px;margin:22px 0}
+.arrangement-fields label{display:block;font-size:14px;font-weight:700}
+.arrangement-fields label>span{font-size:12px;font-weight:400;color:var(--muted)}
+.arrangement-fields :is(input,select,textarea){display:block;width:100%;max-width:100%;margin-top:6px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;min-height:46px;background:#fff;color:var(--ink);font:inherit;font-size:16px}
+.arrangement-fields textarea{resize:vertical}
+#arrangement-cabin-number{font-size:13px;color:var(--accent)}
+.arrangement-send{border:0;border-radius:12px;padding:12px;min-height:48px;width:100%;background:#168c99;color:#fff;font-size:15px;font-weight:700}
+.arrangement-send:disabled{opacity:.5;cursor:default}
+.arrangement-confirmation{margin-top:10px;text-align:center;font-size:12px;color:var(--muted)}
+#arrangement-warning{padding:12px;margin-bottom:12px;border-radius:10px;background:#fff4db;color:#805713;font-size:13px}
+#arrangement-shortcut{position:fixed;bottom:max(16px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:15;width:calc(100% - 36px);max-width:550px;min-height:48px;border:1px solid #168c99;border-radius:14px;background:#168c99;color:#fff;box-shadow:0 6px 22px #13354826;font-weight:700;font-size:14px;padding:10px 16px}
+body:has(#arrangement-shortcut:not([hidden])) .footer{padding-bottom:90px}
+@media(min-width:640px){.arrangement-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.arrangement-fields label:last-child,.arrangement-fields p{grid-column:1/-1}.arrangement-summary{padding-inline:34px}}
+@media(max-width:359px){.arrangement-controls{padding-inline:12px}.arrangement-actions{flex-basis:100%}.arrangement-summary{padding-inline:14px}#arrangement-order{padding:12px}}
+@media print{.arrangement-controls,.dining-order-actions,.dining-order-help,.arrangement-summary,#arrangement-shortcut{display:none!important}}
