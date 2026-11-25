@@ -29,23 +29,10 @@ body.resort-portal-refinements .hero .logo-frame{width:clamp(150px,42vw,164px)}
 .resort-portal-refinements .order-total strong{font-size:21px}
 .resort-portal-refinements .order-section:not([hidden])~.order-section:not([hidden]){margin-top:24px;padding-top:24px}
 
-/* The same help copy and four contact links, grouped into a compact card. */
-body.resort-portal-refinements .help{display:block;width:calc(100% - 36px);max-width:720px;margin-inline:auto;padding:16px 14px 10px;border:1px solid var(--line);border-radius:16px;background:#ffffffb3;text-align:center}
-.resort-portal-refinements .help-contacts{display:grid;grid-template-columns:minmax(0,1fr);gap:0;margin-top:12px}
-.resort-portal-refinements .help-contact{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 0;border-top:1px solid var(--line)}
-.resort-portal-refinements .help-contact h3{margin:0;font-size:14px;line-height:1.5;text-align:right}
-.resort-portal-refinements .help-actions{display:flex;flex:none;gap:6px}
-.resort-portal-refinements .help-actions a{min-height:44px;padding:0 10px;border-radius:10px;font-size:12px}
-.resort-portal-refinements .help-actions a:first-child{background:var(--soft);border-color:#bfdde3}
-@media(max-width:360px){body.resort-portal-refinements .help{width:calc(100% - 28px);padding-inline:12px}.resort-portal-refinements .help-contact h3{font-size:13px}}
-@media(min-width:640px){.resort-portal-refinements .help-contacts{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}}
 @media(min-width:1024px){
  .resort-portal-refinements #orders-summary{margin-top:0}
  body.resort-portal-refinements .hero .logo-frame{grid-row:1/span 4}
  .resort-portal-refinements .hero>.portal-branch{grid-column:2;grid-row:2}
  .resort-portal-refinements .hero>h1{grid-row:3}
  .resort-portal-refinements .hero>p:last-child{grid-row:4}
- body.resort-portal-refinements .help{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.6fr);align-items:center;gap:24px;width:100%;max-width:none;padding:16px;text-align:right}
- .resort-portal-refinements .help-contacts{margin:0;gap:20px}
- .resort-portal-refinements .help-contact{border-top:0;padding-block:0}
 }

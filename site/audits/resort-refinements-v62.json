@@ -1,0 +1,69 @@
+{
+  "version": "20261125-resort-refinements-v62",
+  "unchangedProtectedFiles": 21,
+  "returnLinkDeferred": true,
+  "viewports": [
+    {
+      "width": 320,
+      "logoWidth": 150,
+      "idleAndSelectedCardGeometryPreserved": true,
+      "helpHeightBefore": 272.375,
+      "helpHeightAfter": 272.375,
+      "helpCopyAndLinksPreserved": true,
+      "originalHelpDesignRestored": true,
+      "distinctSelectionColors": 6,
+      "supplementaryDetails": true,
+      "ordersPersist": true
+    },
+    {
+      "width": 390,
+      "logoWidth": 163.796875,
+      "idleAndSelectedCardGeometryPreserved": true,
+      "helpHeightBefore": 272.375,
+      "helpHeightAfter": 272.375,
+      "helpCopyAndLinksPreserved": true,
+      "originalHelpDesignRestored": true,
+      "distinctSelectionColors": 6,
+      "supplementaryDetails": true,
+      "ordersPersist": true
+    },
+    {
+      "width": 768,
+      "logoWidth": 164,
+      "idleAndSelectedCardGeometryPreserved": true,
+      "helpHeightBefore": 170.375,
+      "helpHeightAfter": 170.375,
+      "helpCopyAndLinksPreserved": true,
+      "originalHelpDesignRestored": true,
+      "distinctSelectionColors": 6,
+      "supplementaryDetails": true,
+      "ordersPersist": true
+    },
+    {
+      "width": 1024,
+      "logoWidth": 164,
+      "idleAndSelectedCardGeometryPreserved": true,
+      "helpHeightBefore": 105,
+      "helpHeightAfter": 105,
+      "helpCopyAndLinksPreserved": true,
+      "originalHelpDesignRestored": true,
+      "distinctSelectionColors": 6,
+      "supplementaryDetails": true,
+      "ordersPersist": true
+    },
+    {
+      "width": 1440,
+      "logoWidth": 164,
+      "idleAndSelectedCardGeometryPreserved": true,
+      "helpHeightBefore": 105,
+      "helpHeightAfter": 105,
+      "helpCopyAndLinksPreserved": true,
+      "originalHelpDesignRestored": true,
+      "distinctSelectionColors": 6,
+      "supplementaryDetails": true,
+      "ordersPersist": true
+    }
+  ],
+  "errors": [],
+  "messagesSent": false
+}

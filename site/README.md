@@ -61,3 +61,7 @@ Run `python scripts/check-shared-format.py http://127.0.0.1:8112` to compare hea
 [Approved changes and rollback](../docs/resort-portal-refinements-v61.md) document the resort-only revision. The existing centered mobile header and service tile geometry remain; only the slight logo reduction, branch caption, selected colors, compact supplementary bill details and help card are enabled. The return link is explicitly deferred. The shared ordering code, catalogue and other portals are unchanged.
 
 Run `python scripts/check-resort-portal-refinements.py http://127.0.0.1:8112` and the existing guest-order checks. The scoped stylesheet/helper are loaded only by `/guest-services/`; `cleanup-manifest.json` records the owner-approved exception and unchanged protected-file hashes.
+
+### Help styling restored — v62
+
+At the owner’s request, the help section uses its original styling again. The other accepted v61 refinements remain enabled; contact copy, numbers and links are unchanged. Current verification: `audits/resort-refinements-v62.json`.

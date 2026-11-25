@@ -29,7 +29,7 @@ async def main():
    assert await page.locator('.portal-branch').evaluate('e=>parseFloat(getComputedStyle(e).fontSize)<parseFloat(getComputedStyle(e.previousElementSibling).fontSize)')
    assert await page.locator('a[href="/"],a[href="/resort/"],a[href="/services/"]').count()==0
    assert await page.locator('.help p').inner_text()==before['helpText']
-   help_box=await page.locator('.help').bounding_box();assert help_box['height']<before['helpHeight']
+   help_box=await page.locator('.help').bounding_box();assert help_box['height']==before['helpHeight']
    assert await page.locator('.help-actions a').evaluate_all('es=>es.map(e=>({href:e.getAttribute("href"),text:e.textContent}))')==before['contactLinks']
    if width<640:
     first,second=await page.locator('.help-contact').evaluate_all('es=>es.map(e=>e.getBoundingClientRect().y)');assert second>first
@@ -55,8 +55,8 @@ async def main():
    selected=await page.evaluate(METRICS);await page.screenshot(path=f'/tmp/portal-refinements/selected-{width}.png',full_page=True)
    # Same saved choices in the untouched prior HTML: prove that tile geometry also stays unchanged after selection.
    await page.goto(B+'/guest-services/?baseline=1');await ready();assert await page.evaluate(METRICS)==selected
-   out['viewports'].append({'width':width,'logoWidth':logo['width'],'idleAndSelectedCardGeometryPreserved':True,'helpHeightBefore':before['helpHeight'],'helpHeightAfter':help_box['height'],'helpCopyAndLinksPreserved':True,'distinctSelectionColors':6,'supplementaryDetails':True,'ordersPersist':True})
+   out['viewports'].append({'width':width,'logoWidth':logo['width'],'idleAndSelectedCardGeometryPreserved':True,'helpHeightBefore':before['helpHeight'],'helpHeightAfter':help_box['height'],'helpCopyAndLinksPreserved':True,'originalHelpDesignRestored':True,'distinctSelectionColors':6,'supplementaryDetails':True,'ordersPersist':True})
    await context.close()
   await browser.close()
- assert not out['errors'],out['errors'];(R/'site/audits/resort-refinements-v61.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out))
+ assert not out['errors'],out['errors'];(R/'site/audits/resort-refinements-v62.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out))
 asyncio.run(main())

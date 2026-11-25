@@ -2295,7 +2295,7 @@
     "guest-services/README.md": "1ad3a3d1df387c6f92547d236015ff1c975e01b67890162dfa0d0e750b23ec7a",
     "guest-services/guest-services.css": "207545d3740a44c6e0ab8ded3731b255151478ecf82109d0344cdb5dc7e61a36",
     "guest-services/guest-services.js": "764201e456e8522b73cbe23fd4b422b96f2ce1fc37ca23b50dfad95edc893e09",
-    "guest-services/index.html": "5542c580c9efe83beeae8b019a06cecd99ffa15cc0744ab6881442e55f87e657",
+    "guest-services/index.html": "e148700638171c1a21e2f72402dc77f4b5dbdf5a4d4cc20c362a72fa0c1ce580",
     "guest-services/service-source.js": "e0da9d9065eea4864558446730954129ccefb495b97c4c7070b8e4a6a6803b3e",
     "guest-services/share.js": "a207ab25177d5b69bb1e8a4cc37bc0755c9a2157b7024561d3c15b2652c4323b",
     "js/dining-cards.js": "a80c8a1fcbc623019426cc46184f52f6dc0b109570afbd848e39571726be4097",
@@ -2306,7 +2306,7 @@
     "services-guide/guide.js": "9ce518455b07c9d72990a124033acfe4ab6e4a00ffa41700630fce91014d4cea",
     "services-guide/index.html": "7ec20c8ab5be0f97acd6e6a0c82395365f4c80aa7bf7ebfc6c5e6dd8d10a49cd",
     "services-guide/share-entry.js": "05dac99bc60dfc4b2d2d1b08c131735f22d72f29cf93f1861b85df47c89dffa2",
-    "guest-services/resort-refinements.css": "74774cad033250ff19ec3459f97f7ab41bebbace689989cad90b3fb158defcdc",
+    "guest-services/resort-refinements.css": "5ccfd5e08d6538ebb7f37eb93f5dc52ac270dbf309ee57b38c82078ee0b31520",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6"
   },
   "preservedCompatibility": [
@@ -2318,10 +2318,10 @@
   "removedBytes": 51250004,
   "removedFileCount": 456,
   "approvedPortalRefinements": {
-    "version": "20261125-resort-refinements-v61",
+    "version": "20261125-resort-refinements-v62",
     "rollbackTag": "pre-resort-portal-refinements-20261125",
     "rollbackCommit": "d4a267473c87a7c05741f9f442f8cbb4bc6dfa6d",
-    "scope": "Second owner-approved resort-only revision: keep original header stack and tile geometry; refine logo, branch, selected colors, bill details and help.",
+    "scope": "Owner-approved resort-only refinements; restore original help styling while keeping the accepted header, cards and bill details.",
     "changedFiles": [
       "guest-services/index.html",
       "guest-services/resort-refinements.css",
@@ -2354,6 +2354,7 @@
       "services-guide/share-entry.js": "05dac99bc60dfc4b2d2d1b08c131735f22d72f29cf93f1861b85df47c89dffa2"
     },
     "returnLinkDeferred": true,
-    "orderLogicAndCatalogueUnchanged": true
+    "orderLogicAndCatalogueUnchanged": true,
+    "originalHelpDesignRestored": true
   }
 }
