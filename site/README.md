@@ -69,3 +69,7 @@ At the owner’s request, the help section uses its original styling again. The 
 ## Arrangements ordering and matching shares — v63
 
 [Implementation and checks](../docs/arrangements-ordering-v63.md): the independent arrangements portal now supports a coordinator draft and summary, with its original cards/contact layout, branch caption and service-specific selection colors. Public package/dining links match the native guide; all six outdoor sessions gain individual share URLs. The other two order portals remain unchanged.
+
+### Arrangements flow simplified — v64
+
+The owner found the separate service views and per-item WhatsApp shortcuts confusing. The portal now opens each service in a selection dialog, exposes package/session counters without expanding photos, and keeps the summary and its single teal WhatsApp action on the home page. Selected dining cells have explicit readable foreground/background colors. Canonical links, prices, coordinator, saved choices and other portals remain unchanged. See [flow details](../docs/arrangements-flow-v64.md).

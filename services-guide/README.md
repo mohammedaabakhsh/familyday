@@ -13,3 +13,11 @@ The hash router preserves direct links, Back/Forward, home scroll position and k
 Run `python scripts/check-guide-source.py http://127.0.0.1:8112` to check all three sections and independent-source updates. Failed loading offers a retry rather than stale prices.
 
 New direct anchors `#package-1`, `#package-2`, `#package-3`, `#package-celebration`, `#package-vip` and `#session-1` through `#session-6` open their card. Run `python scripts/check-arrangement-orders.py http://127.0.0.1:8112` for quantities, exact messages, matching links, validation, current prices and draft persistence.
+
+## Single-page selection — v64
+
+Home tiles open a service selection dialog over the same page. Every package/session counter remains visible while its photo/details accordion is closed. Quantities update the home summary immediately; Done, close, Escape, Back and backdrop dismissal return to that summary without a second service page. Focus stays in the dialog, its footer stays visible, and the inner catalogue scrolls independently. Existing hashes still open their corresponding section/card in the dialog.
+
+Per-item WhatsApp shortcuts were removed; the single teal submit action is in the summary. Sharing remains available on each card using the same canonical URLs. Selected dining prices use an explicit dark teal background and white foreground, avoiding the previous pale-background/white-text conflict.
+
+Run `scripts/check-arrangement-flow.py` in addition to the existing order/source checks. Current evidence: `site/audits/arrangements-v64.json` and `site/audits/arrangements-flow-v64.json`.

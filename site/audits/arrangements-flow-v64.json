@@ -1,0 +1,57 @@
+{
+  "version": "20261125-arrangements-v64",
+  "viewports": [
+    {
+      "width": 320,
+      "height": 844,
+      "singlePageModalFlow": true,
+      "alwaysVisibleCounters": true,
+      "noPerItemWhatsApp": true,
+      "diningContrast": 7.0,
+      "keyboardAndBack": true,
+      "sameOrderDraft": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "singlePageModalFlow": true,
+      "alwaysVisibleCounters": true,
+      "noPerItemWhatsApp": true,
+      "diningContrast": 7.0,
+      "keyboardAndBack": true,
+      "sameOrderDraft": true
+    },
+    {
+      "width": 768,
+      "height": 844,
+      "singlePageModalFlow": true,
+      "alwaysVisibleCounters": true,
+      "noPerItemWhatsApp": true,
+      "diningContrast": 7.0,
+      "keyboardAndBack": true,
+      "sameOrderDraft": true
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "singlePageModalFlow": true,
+      "alwaysVisibleCounters": true,
+      "noPerItemWhatsApp": true,
+      "diningContrast": 7.0,
+      "keyboardAndBack": true,
+      "sameOrderDraft": true
+    },
+    {
+      "width": 390,
+      "height": 430,
+      "singlePageModalFlow": true,
+      "alwaysVisibleCounters": true,
+      "noPerItemWhatsApp": true,
+      "diningContrast": 7.0,
+      "keyboardAndBack": true,
+      "sameOrderDraft": true
+    }
+  ],
+  "errors": [],
+  "messagesSent": false
+}

@@ -4,7 +4,7 @@ from pathlib import Path
 from urllib.parse import urlparse,parse_qs
 from playwright.sync_api import sync_playwright,expect
 R=Path(__file__).resolve().parents[1];BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8112'
-SOURCE=json.loads((R/'data/services.json').read_text());A=SOURCE['arrangements'];out={'version':'20261125-arrangements-v63','viewports':[],'messagesSent':False,'errors':[]}
+SOURCE=json.loads((R/'data/services.json').read_text());A=SOURCE['arrangements'];out={'version':'20261125-arrangements-v64','viewports':[],'messagesSent':False,'errors':[]}
 with sync_playwright() as p:
  browser=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
  for width in [320,390,768,1440]:
@@ -46,6 +46,7 @@ with sync_playwright() as p:
   for i in range(1,7):
    root=expand('session-'+str(i));root.locator('[data-share-path]').click()
    assert page.evaluate('shares.at(-1)')=={'text':BASE+A['seating']['path']+'?session='+str(i)}
+  page.locator('#arrangement-dialog .arrangement-dialog-footer button').click();expect(page.locator('#arrangement-dialog')).not_to_be_visible()
   page.locator('#arrangement-order [type="submit"]').click();assert not page.evaluate('opened')
   page.locator('#arrangement-name').fill('ضيف التجربة');page.locator('#arrangement-cabin').select_option('بيت الدوم 1');page.locator('#arrangement-notes').fill('تنسيق الورد على شكل قلب')
   page.locator('#arrangement-order [type="submit"]').click();draft=page.evaluate('opened.at(-1)');url=urlparse(draft);message=parse_qs(url.query)['text'][0]
@@ -88,4 +89,4 @@ with sync_playwright() as p:
  context=browser.new_context();page=context.new_page();page.add_init_script("Storage.prototype.getItem=()=>{throw Error('blocked')};Storage.prototype.setItem=()=>{throw Error('blocked')}")
  page.goto(BASE+'/services-guide/#package-1');page.locator('#guide-content.is-ready').wait_for(state='attached');page.locator('#package-1 [data-step="1"]').click();assert page.locator('#arrangement-total').inner_text()=='120';context.close();browser.close()
 assert not out['errors'],out['errors']
-(R/'site/audits/arrangements-v63.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out))
+(R/'site/audits/arrangements-v64.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out))

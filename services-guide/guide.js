@@ -83,6 +83,8 @@
   const homeBack = {href:back.href, label:back.getAttribute('aria-label')};
   const guideTitle = document.title;
   let activeSection = null;
+  const dialog=document.getElementById('arrangement-dialog');
+  let dialogScrollY=0,closeRequested=false;
   history.scrollRestoration = 'manual';
   function routeSection() {
     const id = location.hash.slice(1);
@@ -90,6 +92,7 @@
     return target && (target.matches('.guide-section') ? target : target.closest('.guide-section'));
   }
   function scrollToHash(focus = false) {
+    closeRequested=false;
     if(['#hospitality','#cinema'].includes(location.hash)){location.replace('/guest-services/'+location.hash);return;}
     const nextSection = routeSection();
     if(activeSection && activeSection !== nextSection) FD_GUIDE_GALLERY.reset(activeSection);
@@ -97,30 +100,50 @@
     const pendingHash = /^#package-(1|2|3|celebration|vip|complete)$/.test(location.hash) ? '#coordination' : location.hash === '#packages' || /^#session-[1-6]$/.test(location.hash) ? '#seating' : location.hash;
     const pendingTile = !content.classList.contains('is-ready') && Array.from(document.querySelectorAll('.contents a')).find(link => link.hash === pendingHash);
     const sectionView = Boolean(activeSection || pendingTile);
-    document.body.dataset.guideView = sectionView ? 'section' : 'home';
+    document.body.dataset.guideView = sectionView ? 'dialog' : 'home';
+    document.body.classList.toggle('arrangement-dialog-open',sectionView);
     document.querySelectorAll('.guide-section').forEach(section => section.classList.toggle('is-active',section === activeSection));
     const title = activeSection ? activeSection.dataset.title : pendingTile ? pendingTile.querySelector('.tile-title').textContent : '';
     back.href = sectionView ? '#contents' : homeBack.href;
     back.setAttribute('aria-label',sectionView ? 'العودة إلى تنسيقات وجلسات' : homeBack.label);
     document.getElementById('guide-back-label').textContent = sectionView ? 'تنسيقات وجلسات' : 'رجوع';
     document.title = title ? title + ' | يوم العائلة' : guideTitle;
+    document.getElementById('arrangement-dialog-title').textContent=title || 'اختيار التجهيزات';
+    if(sectionView && !dialog.open){dialogScrollY=window.scrollY;dialog.showModal();}
+    else if(!sectionView && dialog.open){dialog.close();}
+    document.dispatchEvent(new Event('fd:arrangement-view'));
     requestAnimationFrame(() => {
       if(activeSection) {
-        if(focus) activeSection.querySelector('h2').focus({preventScroll:true});
+        if(focus) document.getElementById('arrangement-dialog-title').focus({preventScroll:true});
         const target = document.getElementById(location.hash.slice(1));
         if(target?.matches('.package-card')) target.querySelector('details').open=true;
-        if(target && target!==activeSection) target.scrollIntoView({behavior:'instant',block:'start'});
-        else window.scrollTo({top:0,behavior:'instant'});
+        if(target && target!==activeSection) content.scrollTop+=target.getBoundingClientRect().top-content.getBoundingClientRect().top-8;
+        else content.scrollTop=0;
       } else {
         const previous = history.state && history.state.guideHomeY;
         const tile = document.querySelector('.contents a[href="' + (history.state && history.state.guideTile || '#coordination') + '"]');
         if(focus) (tile || document.getElementById('contents-title')).focus({preventScroll:true});
         if(typeof previous === 'number') window.scrollTo({top:previous,behavior:'instant'});
-        else if(location.hash === '#contents') document.getElementById('contents').scrollIntoView({behavior:'instant'});
-        else window.scrollTo({top:0,behavior:'instant'});
+        else window.scrollTo({top:dialogScrollY,behavior:'instant'});
       }
     });
   }
+  function closeSelection(){
+    if(closeRequested)return;closeRequested=true;
+    if(history.state && history.state.guideFromHome) history.back();
+    else {history.replaceState(null,'','#contents');scrollToHash(true);}
+  }
+  dialog.querySelectorAll('[data-close-arrangements]').forEach(button=>button.addEventListener('click',closeSelection));
+  dialog.addEventListener('cancel',event=>{event.preventDefault();closeSelection();});
+  dialog.addEventListener('keydown',event=>{
+    if(event.key!=='Tab')return;
+    const controls=Array.from(dialog.querySelectorAll('button:not(:disabled),a[href],input:not(:disabled),select:not(:disabled),textarea:not(:disabled),summary,[tabindex="0"]')).filter(el=>el.getClientRects().length&&getComputedStyle(el).visibility!=='hidden');
+    const first=controls[0],last=controls[controls.length-1],current=document.activeElement;
+    if(!first){event.preventDefault();document.getElementById('arrangement-dialog-title').focus();return;}
+    if(event.shiftKey&&(current===first||!controls.includes(current))){event.preventDefault();last.focus();}
+    else if(!event.shiftKey&&(current===last||!controls.includes(current))){event.preventDefault();first.focus();}
+  });
+  dialog.addEventListener('click',event=>{if(event.target===dialog){const rect=dialog.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)closeSelection();}});
   document.addEventListener('click',event => {
     const link = event.target.closest('a');
     if(!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;

@@ -25,11 +25,11 @@
 <link rel="stylesheet" href="guide.css?v=20261116-reviewed-usage-v1">
 <script src="guide-gallery.js?v=20261109-gallery-lifecycle-v3" defer></script>
 <script src="/js/dining-cards.js?v=20261122-final-review-v1" defer></script>
-<script src="guide-orders.js?v=20261125-arrangements-v63" defer></script>
-<script src="guide.js?v=20261125-arrangements-v63" defer></script>
+<script src="guide-orders.js?v=20261125-arrangements-v64" defer></script>
+<script src="guide.js?v=20261125-arrangements-v64" defer></script>
 <link rel="stylesheet" href="/css/back-navigation.css?v=20261106-stable-ring-v2">
 <link rel="stylesheet" href="/css/desktop-layout.css?v=20261110-desktop-v1" media="screen and (min-width:1024px)">
-<link rel="stylesheet" href="guide-orders.css?v=20261125-arrangements-v63">
+<link rel="stylesheet" href="guide-orders.css?v=20261125-arrangements-v64">
 </head>
 <body>
 <a class="skip" href="#contents">انتقل إلى الخدمات</a>
@@ -46,11 +46,15 @@
   </div>
 </section>
   <nav class="contents" id="contents" aria-labelledby="contents-title"><h2 id="contents-title" class="sr-only" tabindex="-1">اختاروا تجهيزاتكم</h2><ol>
-<li class="tile-item tile-item--coordination"><a class="guide-tile" href="#coordination"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8c-6-8-10-1-4 1h8c6-2 2-9-4-1ZM3 9h18v4H3ZM5 13v8h14v-8M12 9v12"/></svg></span><span class="tile-copy"><span class="tile-title">التنسيقات</span><span class="tile-description">نجهّز مناسباتكم بكل تفاصيلها</span></span><span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span></a></li>
-<li class="tile-item tile-item--dining"><a class="guide-tile" href="#dining"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v6m3-6v6m3-6v6M3 7h6M6 9v12M18 3v18m0-18c-5 3-5 9 0 9"/></svg></span><span class="tile-copy"><span class="tile-title">طاولات الطعام</span><span class="tile-description">خيارات تناسب عدد ضيوفكم</span></span><span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span></a></li>
-<li class="tile-item tile-item--seating"><a class="guide-tile" href="#seating"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6v9h5.5M3 15v5m4-5v5M22 6v9h-5.5M21 15v5m-4-5v5M9 12h6M12 12v8m-2 0h4"/></svg></span><span class="tile-copy"><span class="tile-title">الجلسات الخارجية</span><span class="tile-description">جلسات تجمعكم في مساحتكم الخارجية الخاصة</span></span><span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span></a></li>
+<li class="tile-item tile-item--coordination"><a class="guide-tile" aria-haspopup="dialog" aria-controls="arrangement-dialog" href="#coordination"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8c-6-8-10-1-4 1h8c6-2 2-9-4-1ZM3 9h18v4H3ZM5 13v8h14v-8M12 9v12"/></svg></span><span class="tile-copy"><span class="tile-title">التنسيقات</span><span class="tile-description">نجهّز مناسباتكم بكل تفاصيلها</span></span><span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span></a></li>
+<li class="tile-item tile-item--dining"><a class="guide-tile" aria-haspopup="dialog" aria-controls="arrangement-dialog" href="#dining"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v6m3-6v6m3-6v6M3 7h6M6 9v12M18 3v18m0-18c-5 3-5 9 0 9"/></svg></span><span class="tile-copy"><span class="tile-title">طاولات الطعام</span><span class="tile-description">خيارات تناسب عدد ضيوفكم</span></span><span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span></a></li>
+<li class="tile-item tile-item--seating"><a class="guide-tile" aria-haspopup="dialog" aria-controls="arrangement-dialog" href="#seating"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6v9h5.5M3 15v5m4-5v5M22 6v9h-5.5M21 15v5m-4-5v5M9 12h6M12 12v8m-2 0h4"/></svg></span><span class="tile-copy"><span class="tile-title">الجلسات الخارجية</span><span class="tile-description">جلسات تجمعكم في مساحتكم الخارجية الخاصة</span></span><span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span></a></li>
   </ol></nav>
+<dialog id="arrangement-dialog" class="arrangement-dialog" aria-labelledby="arrangement-dialog-title">
+<header class="arrangement-dialog-header"><h2 id="arrangement-dialog-title" tabindex="-1">اختيار التجهيزات</h2><button type="button" data-close-arrangements aria-label="إغلاق اختيار التجهيزات">×</button></header>
 <div id="guide-content" tabindex="-1" aria-busy="true"><p class="loading" role="status">لحظة ونجهّز الخيارات…</p></div>
+<footer class="arrangement-dialog-footer"><p id="arrangement-dialog-status" role="status">اختر الكمية بالموجب والسالب</p><button type="button" data-close-arrangements>تم الاختيار</button></footer>
+</dialog>
 <noscript><p class="loading">فعّل JavaScript لعرض الباقات والتفاصيل هنا.</p></noscript>
 <section id="arrangement-summary" class="arrangement-summary" aria-labelledby="arrangement-summary-title" tabindex="-1" hidden>
 <h2 id="arrangement-summary-title">ملخص طلب التنسيقات والجلسات</h2>

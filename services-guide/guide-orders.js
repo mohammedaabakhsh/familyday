@@ -31,24 +31,24 @@
   }
   function actions(entry){
     const wrap=node('div',undefined,'arrangement-actions');
-    const order=node('button',undefined,'arrangement-request');order.innerHTML='<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a9 9 0 0 1-13.4 7.8L3 21l1.5-4.5A9 9 0 1 1 21 11.5Z"/><path d="m9 7-1 2q1 4 5 5l2-1-2-2-1 1-2-2 1-1Z"/></svg><span>الطلب عبر واتساب</span>';order.type='button';order.dataset.orderNow=entry.key;order.setAttribute('aria-controls','arrangement-summary');
     const share=node('button',undefined,'arrangement-share');share.type='button';share.dataset.sharePath=entry.path;share.setAttribute('aria-label','مشاركة '+entry.name);
     // Icon and text stay inside their own button, never inside an accordion summary.
     share.innerHTML='<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 16V2m-5 5 5-5 5 5M6 10H3v11h18V10h-3"/></svg><span>مشاركة</span>';
-    wrap.append(order,share);return wrap;
+    wrap.append(share);return wrap;
   }
   function add(entry,host){
     entries.set(entry.key,entry);
     const controls=node('div',undefined,'arrangement-controls');controls.dataset.entry=entry.key;controls.append(counter(entry),actions(entry));host.append(controls);
   }
   function jump(){summary.focus({preventScroll:true});window.scrollTo({top:Math.max(0,scrollY+summary.getBoundingClientRect().top-18),behavior:'instant'});updateShortcut();}
-  function updateShortcut(){const rect=summary.getBoundingClientRect();shortcut.hidden=summary.hidden||(rect.top<innerHeight-40&&rect.bottom>80);}
+  function updateShortcut(){const rect=summary.getBoundingClientRect();shortcut.hidden=document.getElementById('arrangement-dialog').open||summary.hidden||(rect.top<innerHeight-40&&rect.bottom>80);}
   function render(){
     const chosen=lines(),total=chosen.reduce((sum,e)=>sum+e.total,0),count=chosen.reduce((sum,e)=>sum+e.qty,0);
     summary.hidden=!chosen.length;
     document.getElementById('arrangement-total').textContent=total;
     document.getElementById('arrangement-count').textContent=count+' من التجهيزات المختارة';
     shortcut.textContent='ملخص الطلب · '+count+' · '+total+' ريال';
+    document.getElementById('arrangement-dialog-status').textContent=count?'إجمالي الطلب: '+total+' ريال':'اختر الكمية بالموجب والسالب';
     const list=document.getElementById('arrangement-items');list.replaceChildren();
     for(const group of ['coordination','dining','seating','extra']){
       const items=chosen.filter(e=>e.group===group);if(!items.length)continue;
@@ -86,22 +86,22 @@
     if(ready)return;const catalog=event.detail,data=catalog.arrangements;cabins=catalog.guest.cabins;
     data.coordination.packages.forEach(pack=>{
       const suffix=pack.id.replace('hd-coordination-package-',''),card=suffix==='resort'?'package-complete':'package-'+suffix;
-      add({key:card,card,group:'coordination',name:pack.name,price:price(pack.price),path:pack.path},document.querySelector('#'+card+' .seating-collapsed-content'));
+      add({key:card,card,group:'coordination',name:pack.name,price:price(pack.price),path:pack.path},document.getElementById(card));
     });
     for(const [size,prices] of Object.entries(data.dining.prices))for(const option of ['plain','tansiq'])entries.set('dining-'+size+'-'+option,{key:'dining-'+size+'-'+option,group:'dining',name:'طاولة طعام لـ'+size+' '+(Number(size)<=10?'أشخاص':'شخصًا')+' — '+(option==='plain'?'تجهيز أساسي':'تجهيز مع تنسيق'),price:prices[option],size,option,path:data.dining.path});
     const diningActions=node('div',undefined,'dining-order-actions');const diningShare=node('button','مشاركة طاولات الطعام','arrangement-share');diningShare.type='button';diningShare.dataset.sharePath=data.dining.path;diningActions.append(diningShare);document.getElementById('dining').append(diningActions);
-    data.seating.sessions.forEach((session,i)=>{const card='session-'+(i+1);add({key:card,card,group:'seating',name:session.name,detail:session.persons,price:price(session.price),path:data.seating.path+'?session='+(i+1)},document.querySelector('#'+card+' .seating-collapsed-content'));});
+    data.seating.sessions.forEach((session,i)=>{const card='session-'+(i+1);add({key:card,card,group:'seating',name:session.name,detail:session.persons,price:price(session.price),path:data.seating.path+'?session='+(i+1)},document.getElementById(card));});
     add({key:'seating-extra',group:'extra',name:data.seating.extra.name,price:price(data.seating.extra.price),path:data.seating.path},document.querySelector('.seating-extra'));
     for(const name of Object.keys(cabins))fields.cabin.add(new Option(name,name));
     restore();for(const key of Object.keys(fields))fields[key].value=state[key];ready=true;render();
   });
   document.addEventListener('click',event=>{
     if(!ready)return;
-    const step=event.target.closest('[data-order-key]'),remove=event.target.closest('[data-remove]'),now=event.target.closest('[data-order-now]'),dining=event.target.closest('.fd-dining-option');
+    const step=event.target.closest('[data-order-key]'),remove=event.target.closest('[data-remove]'),dining=event.target.closest('.fd-dining-option');
     if(step){const entry=entries.get(step.dataset.orderKey);if(!entry||step.disabled)return;state.quantities[entry.key]=Math.max(0,Math.min(99,quantity(state.quantities[entry.key])+Number(step.dataset.step)));render();}
     else if(remove){const key=remove.dataset.remove;state.quantities[key]=0;render();const next=summary.querySelector('[data-remove]');if(next)next.focus();else(document.getElementById(entries.get(key).card)||document.querySelector('.contents a')).focus();}
     else if(dining){const key='dining-'+dining.dataset.size+'-'+dining.dataset.option;state.quantities[key]=state.quantities[key]?0:1;render();}
-    else if(now){const entry=entries.get(now.dataset.orderNow);if(entry.group==='extra'&&!seatsChosen())return;state.quantities[entry.key]=state.quantities[entry.key]||1;render();jump();fields.name.focus({preventScroll:true});}
+
   });
   for(const [key,field] of Object.entries(fields))field.addEventListener(key==='cabin'?'change':'input',()=>{state[key]=field.value;save();if(key==='cabin')render();});
   form.addEventListener('submit',event=>{
@@ -112,5 +112,5 @@
     // Open a text draft only; the guest reviews and sends it from WhatsApp.
     window.open('https://wa.me/966537009217?text='+encodeURIComponent(parts.join('\n')),'_blank','noopener,noreferrer');
   });
-  shortcut.addEventListener('click',jump);new IntersectionObserver(updateShortcut,{rootMargin:'-80px 0px -40px'}).observe(summary);window.addEventListener('resize',updateShortcut);
+  document.addEventListener('fd:arrangement-view',updateShortcut);shortcut.addEventListener('click',jump);new IntersectionObserver(updateShortcut,{rootMargin:'-80px 0px -40px'}).observe(summary);window.addEventListener('resize',updateShortcut);
 })();
