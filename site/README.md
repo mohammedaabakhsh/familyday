@@ -55,3 +55,9 @@ The resort directory renders as native guide links from `guide-copy.json`, prese
 [Full review](FULL_REVIEW_20261125.md) covers all three destinations, 290 responsive page views, canonical/legacy links, image integrity, FAQ behavior, every facility/map selection, and the three protected order experiences. The only presentation fixes align the resort service heading with other internal titles and remove chalet/rest-house navigation-label overrides so all three use the approved shared scale.
 
 Run `python scripts/check-shared-format.py http://127.0.0.1:8112` to compare headings, six navigation columns, label sizes and common detail components at five viewport sizes. Evidence is `audits/full-review-v58.json`, `audits/shared-format-v58.json` and the linked review checks.
+
+## Resort ordering prototype — v59
+
+The owner approved a resort-only visual prototype after choosing its changes one question at a time. `/guest-services/` opts into `guest-services/resort-refresh.css` and `guest-services/resort-refresh.js`; the shared ordering engine, catalogue, chalet and arrangements portal files remain unchanged. [Approved scope and rollback](../docs/resort-portal-prototype-v59.md) records the decisions and the Git restore point.
+
+Run `python scripts/check-resort-portal-prototype.py http://127.0.0.1:8112` alongside the existing ordering tests. `cleanup-manifest.json` records this explicitly approved update and the hashes of the other protected files that must remain unchanged during the prototype.
