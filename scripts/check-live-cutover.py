@@ -27,6 +27,12 @@ async def main():
  originals=json.loads((R/'share-pages.json').read_text())+json.loads((R/'share-extras.json').read_text())
  for item in originals:
   h=Head();h.feed((R/item['path'].lstrip('/')/'index.html').read_text());assert h.meta['og:title']==item['title'] and h.meta['og:description']==item['description'],item['path'];assert h.meta['og:url']=='https://familydaystay.com'+item['path'];assert not h.images,item['path'];assert not any(k and k.startswith(('og:image','twitter:image')) for k in h.meta),item['path']
+ structured=json.loads((S/'structured-data.json').read_text())
+ for path,refs in structured['routes'].items():
+  page=(R/path.lstrip('/')/'index.html').read_text()
+  actual=[json.loads(text) for text in re.findall(r'<script[^>]*type="application/ld\+json"[^>]*>(.*?)</script>',page,re.S)]
+  assert actual==[structured['schemas'][key]['data'] for key in refs],path
+ out['structuredMetadataRoutes']=len(structured['routes'])
  out['originalMetadataRoutes']=len(originals)
  async with async_playwright() as p:
   b=await p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox']);page=await b.new_page(viewport={'width':390,'height':844},reduced_motion='reduce',ignore_https_errors=True);page.on('pageerror',lambda e:out['errors'].append({'page':page.url,'error':str(e)}));page.on('response',lambda r:out['badResponses'].append({'url':r.url,'status':r.status}) if r.status>=400 and r.url.startswith(BASE) else None)

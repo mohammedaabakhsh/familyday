@@ -10,6 +10,7 @@ The canonical implementation is under `site/`; generated public HTML stays at th
 - `guide-copy.json`: FAQ organization, room wording and destination-specific contact links.
 - `../data/services.json`: authoritative service/restaurant catalogue. Both the established ordering portals and the guide build consume it. `build-site.py` synchronizes service content into the guide catalogue without changing accommodation/campaign data.
 - `template.html`: native document shell. Edit this instead of generated route HTML.
+- `structured-data.json`: the original search-engine schema graphs, deduplicated across their 42 original page destinations; the build preserves them exactly.
 - `visuals/`: the approved illustrations and map modules, their isolated CSS, data and parent-navigation bridges. Their physical source coordinates remain unchanged.
 - `runtime-config.json`, `media-manifest.json`, `media/`: service display images. Full originals are kept for zoom.
 

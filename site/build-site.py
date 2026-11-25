@@ -36,6 +36,7 @@ for service in CATALOG['services']:
 (SITE/'catalog.json').write_text(json.dumps(CATALOG,ensure_ascii=False,indent=2)+'\n')
 COPY=json.loads((SITE/'guide-copy.json').read_text())
 SHARES=json.loads((SITE/'share-metadata.json').read_text())
+STRUCTURED=json.loads((SITE/'structured-data.json').read_text())
 for venue,faq in COPY['faqs'].items():
  questions=[q for g in faq['groups'] for i in g['items'] for q in i['sources']]
  assert sorted(questions)==sorted(q['question'] for q in CATALOG['venues'][venue]['faqs']),venue+' FAQ coverage'
@@ -50,6 +51,11 @@ def metadata(page,path,info,redirect=False):
  url='https://familydaystay.com'+path
  values=[('name','description',info['description']),('property','og:type','website'),('property','og:site_name','يوم العائلة'),('property','og:locale','ar_SA'),('property','og:title',info['title']),('property','og:description',info['description']),('property','og:url',url),('name','twitter:card','summary'),('name','twitter:title',info['title']),('name','twitter:description',info['description']),('name','robots',('noindex,nofollow,noarchive' if redirect else 'index,follow')+',max-image-preview:none')]
  tags='\n'.join('<meta '+attr+'="'+key+'" content="'+html.escape(value,quote=True)+'">' for attr,key,value in values)+'\n<link rel="canonical" href="'+url+'">\n'
+ if not redirect:
+  for key in STRUCTURED['routes'].get(path,[]):
+   schema=STRUCTURED['schemas'][key]
+   content=json.dumps(schema['data'],ensure_ascii=False).replace('<','\\u003c')
+   tags+='<script type="application/ld+json"'+(' id="'+html.escape(schema['id'],quote=True)+'"' if schema['id'] else '')+'>'+content+'</script>\n'
  return page.replace('</head>',tags+'</head>')
 
 def redirect_page(target):

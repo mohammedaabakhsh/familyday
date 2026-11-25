@@ -1,0 +1,207 @@
+{
+  "source": "pre-live-cutover-20261125",
+  "schemas": {
+    "c5aa6eda5a1ed228": {
+      "id": "fd-venue-schema",
+      "data": {
+        "@context": "https://schema.org",
+        "@type": "Resort",
+        "name": "منتجع يوم العائلة",
+        "url": "https://familydaystay.com/resort/",
+        "telephone": "+966556156693",
+        "sameAs": [
+          "https://instagram.com/FAMILYDAYRESORT",
+          "https://www.snapchat.com/add/familyday5"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "جدة",
+          "addressRegion": "خليج سلمان",
+          "addressCountry": "SA"
+        }
+      }
+    },
+    "a6ecfc4884928dab": {
+      "id": "fd-venue-schema",
+      "data": {
+        "@context": "https://schema.org",
+        "@type": "LodgingBusiness",
+        "name": "شاليه يوم العائلة",
+        "url": "https://familydaystay.com/chalet/",
+        "telephone": "+966556156693",
+        "sameAs": [
+          "https://instagram.com/FAMILYDAYRESORT",
+          "https://www.snapchat.com/add/familyday5"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "جدة",
+          "addressRegion": "المروج",
+          "addressCountry": "SA"
+        }
+      }
+    },
+    "205aaab87d0a2c09": {
+      "id": "fd-venue-schema",
+      "data": {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "يوم العائلة",
+        "url": "https://familydaystay.com/",
+        "telephone": "+966556156693",
+        "sameAs": [
+          "https://instagram.com/FAMILYDAYRESORT",
+          "https://www.snapchat.com/add/familyday5"
+        ]
+      }
+    },
+    "43ddecdac1a2d697": {
+      "id": "fd-venue-schema",
+      "data": {
+        "@context": "https://schema.org",
+        "@type": "LodgingBusiness",
+        "name": "استراحة يوم العائلة",
+        "url": "https://familydaystay.com/stay/",
+        "telephone": "+966556156693",
+        "sameAs": [
+          "https://instagram.com/FAMILYDAYRESORT",
+          "https://www.snapchat.com/add/familyday5"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "جدة",
+          "addressRegion": "خليج سلمان",
+          "addressCountry": "SA"
+        }
+      }
+    }
+  },
+  "routes": {
+    "/cabins/bohemian/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/cabins/classic/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/cabins/dome-1/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/cabins/dome-2/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/cabins/french/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/cabins/greek-1/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/cabins/greek-2/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/cabins/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/cabins/palm-beach/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/cabins/panoramic/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/cabins/pyramid/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/cabins/royal/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/cabins/rustic/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/cabins/shared-garden/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/chalet/contact/": [
+      "a6ecfc4884928dab"
+    ],
+    "/chalet/details/": [
+      "a6ecfc4884928dab"
+    ],
+    "/chalet/faq/": [
+      "a6ecfc4884928dab"
+    ],
+    "/chalet/": [
+      "a6ecfc4884928dab"
+    ],
+    "/chalet/services/games/": [
+      "a6ecfc4884928dab"
+    ],
+    "/chalet/services/": [
+      "a6ecfc4884928dab"
+    ],
+    "/chalet/services/water-games/": [
+      "a6ecfc4884928dab"
+    ],
+    "/": [
+      "205aaab87d0a2c09"
+    ],
+    "/menu/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/resort/contact/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/resort/faq/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/resort/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/services/cinema/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/services/coordination/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/services/dining-tables/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/services/games/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/services/hospitality/packages/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/services/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/services/loyalty/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/services/outdoor-seating/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/services/share-and-win/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/services/water-games/": [
+      "c5aa6eda5a1ed228"
+    ],
+    "/stay/contact/": [
+      "43ddecdac1a2d697"
+    ],
+    "/stay/faq/": [
+      "43ddecdac1a2d697"
+    ],
+    "/stay/ground-floor/": [
+      "43ddecdac1a2d697"
+    ],
+    "/stay/": [
+      "43ddecdac1a2d697"
+    ],
+    "/stay/sections/": [
+      "43ddecdac1a2d697"
+    ],
+    "/stay/upper-floor/": [
+      "43ddecdac1a2d697"
+    ]
+  }
+}
