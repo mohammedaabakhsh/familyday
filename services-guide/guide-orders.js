@@ -17,8 +17,8 @@
   const groups=[['coordination','التنسيقات'],['dining','طاولات الطعام'],['seating','الجلسات الخارجية'],['extra','إضافة اختيارية'],['cinema','جلسة السينما']];
   const node=(tag,text,cls)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;};
   const quantity=value=>Number.isInteger(value)&&value>=0&&value<=99?value:0;
-  function save(){try{sessionStorage.setItem(independent?identityKey:storageKey,JSON.stringify(independent?{name:state.name,cabin:state.cabin}:state));}catch(_){/* The form also works without storage. */}}
-  function restore(){try{
+  function save(){if(directService)return;try{sessionStorage.setItem(independent?identityKey:storageKey,JSON.stringify(independent?{name:state.name,cabin:state.cabin}:state));}catch(_){/* The form also works without storage. */}}
+  function restore(){if(directService)return;try{
     const saved=JSON.parse(sessionStorage.getItem(independent?identityKey:storageKey));if(!saved||typeof saved!=='object')return;
     for(const key of (independent?['name']:['name','notes']))if(typeof saved[key]==='string')state[key]=saved[key].slice(0,key==='name'?100:1000);
     if(Object.hasOwn(cabins,saved.cabin))state.cabin=saved.cabin;

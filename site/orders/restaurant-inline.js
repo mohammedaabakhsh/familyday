@@ -1,37 +1,33 @@
 /* Main-site restaurant basket. The original portal owns the shared WhatsApp message format. */
 export function createRestaurantInline({menu,cabins,messageBuilder}){
- const identityKey='familyday.resort-direct-identity.v1',recipient='966537006531';
+ const recipient='966537006531';let currentRoot=null;
  const products=new Map(),controllers=new WeakMap(),selection=new Map();
  const customer={name:'',cabin:'',notes:''};let activeCategory=0;
  for(const [category,items] of Object.entries(menu))for(const product of items)for(const variant of product.bbq?['لحم','دجاج']:['']){
   const key=product.name+(variant?' — '+variant:'');products.set(key,{key,category,product});
  }
- function restoreIdentity(){try{const saved=JSON.parse(sessionStorage.getItem(identityKey));if(typeof saved?.name==='string')customer.name=saved.name.slice(0,100);if(Object.hasOwn(cabins,saved?.cabin))customer.cabin=saved.cabin;}catch(_){/* Storage is optional. */}}
- restoreIdentity();
  const node=(tag,text,cls)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;};
  const chosen=()=>[...products.values()].filter(p=>selection.has(p.key)).map(p=>({...p,...selection.get(p.key)}));
  const lineTotal=p=>(p.product.price+(p.cheese?p.product.cheesePrice:0))*p.qty;
- function saveIdentity(){try{sessionStorage.setItem(identityKey,JSON.stringify({name:customer.name,cabin:customer.cabin}));}catch(_){}}
  function bind(root){
-  if(!root)return;
-  restoreIdentity();
+  if(!root)return;currentRoot=root;if(!selection.size)root.querySelectorAll('.inline-menu-option select').forEach(select=>select.selectedIndex=0);
   if(controllers.has(root)){controllers.get(root).render();return;}
   const rows=[],fields={};
   const summary=node('section',undefined,'inline-restaurant-summary');summary.id='inline-restaurant-summary';summary.hidden=true;summary.setAttribute('aria-labelledby','inline-restaurant-summary-title');
   const header=node('header'),title=node('h2','ملخص طلب المطعم');title.id='inline-restaurant-summary-title';
   header.append(title);summary.append(header);
-  const form=node('form',undefined,'inline-restaurant-form');form.id='inline-restaurant-order';
+  const form=node('form',undefined,'inline-restaurant-form');form.id='inline-restaurant-order';form.autocomplete='off';
   const count=node('p',undefined,'inline-restaurant-count sr-only');count.setAttribute('role','status');
   const list=node('div',undefined,'inline-restaurant-items');
   const total=node('div',undefined,'inline-restaurant-total'),amount=node('strong');total.append(node('span','إجمالي المطعم'),amount);
   form.append(count,list,total);
   for(const [key,label] of [['name','الاسم'],['cabin','اسم الكوخ'],['notes','ملاحظات الطلب (اختياري)']]){
    const wrap=node('label',label,'inline-restaurant-field'),input=node(key==='cabin'?'select':key==='notes'?'textarea':'input');
-   input.id='inline-restaurant-'+key;input.name=key;input.required=key!=='notes';
-   if(key==='name'){input.type='text';input.autocomplete='name';input.maxLength=100;}
+   input.id='inline-restaurant-'+key;input.name=key;input.autocomplete='off';input.required=key!=='notes';
+   if(key==='name'){input.type='text';input.autocomplete='off';input.maxLength=100;}
    if(key==='notes'){input.rows=3;input.maxLength=1000;input.placeholder='مثل بدون بصل أو أي تفاصيل تخص طلب المطعم';}
    if(key==='cabin'){input.add(new Option('اختر الكوخ',''));for(const name of Object.keys(cabins))input.add(new Option(name,name));}
-   input.value=customer[key];input.addEventListener(key==='cabin'?'change':'input',()=>{customer[key]=input.value;if(key!=='notes')saveIdentity();if(key==='cabin')renderCabin();});
+   input.value=customer[key];input.addEventListener(key==='cabin'?'change':'input',()=>{customer[key]=input.value;if(key==='cabin')renderCabin();});
    fields[key]=input;wrap.append(input);form.append(wrap);
    if(key==='cabin'){const number=node('p',undefined,'inline-restaurant-cabin-number');number.hidden=true;form.append(number);}
   }
@@ -69,7 +65,7 @@ export function createRestaurantInline({menu,cabins,messageBuilder}){
     row.append(controls);rows.push({row,quantity,cheese,keyFor,category});
    });
   });
-  function render(){
+  function render(forceFields=false){
    const items=chosen(),sum=items.reduce((n,p)=>n+lineTotal(p),0);
    for(const row of rows){const item=selection.get(row.keyFor()),qty=item?.qty||0;row.quantity.querySelector('output').textContent=qty;row.quantity.querySelector('[data-step="-1"]').disabled=!qty;row.quantity.querySelector('[data-step="-1"]').hidden=!qty;row.quantity.querySelector('output').hidden=!qty;row.quantity.querySelector('[data-step="1"]').disabled=qty===99;row.row.classList.toggle('has-selection',!!qty);if(row.cheese){row.cheese.checked=!!item?.cheese;row.cheese.disabled=!qty;row.cheese.parentElement.hidden=!qty;}}
    summary.hidden=!items.length;send.disabled=!items.length;count.textContent='عدد الأصناف: '+items.length;amount.textContent=sum+' ريال';
@@ -84,14 +80,14 @@ export function createRestaurantInline({menu,cabins,messageBuilder}){
     if(list.children[position]!==row)list.insertBefore(row,list.children[position]||null);position++;
 
    }
-   for(const key of Object.keys(fields))if(fields[key]!==document.activeElement)fields[key].value=customer[key];renderCabin();
+   for(const key of Object.keys(fields))if(forceFields===true||fields[key]!==document.activeElement)fields[key].value=customer[key];renderCabin();
   }
   form.addEventListener('submit',event=>{
    event.preventDefault();if(!chosen().length||!form.reportValidity()||!customer.name.trim()||!Object.hasOwn(cabins,customer.cabin))return;
    const message=messageBuilder.build(menu,key=>{const item=selection.get(key);return item?{qty:item.qty,cheeseQty:item.cheese?item.qty:0}:null;},{name:customer.name,cabin:customer.cabin,number:cabins[customer.cabin],notes:customer.notes});
-   if(message){saveIdentity();window.open('https://wa.me/'+recipient+'?text='+encodeURIComponent(message),'_blank','noopener,noreferrer');}
+   if(message){window.open('https://wa.me/'+recipient+'?text='+encodeURIComponent(message),'_blank','noopener,noreferrer');}
   });
   controllers.set(root,{render});render();
  }
- return {bind};
+ return {bind,reset(){selection.clear();customer.name='';customer.cabin='';customer.notes='';if(currentRoot){currentRoot.querySelectorAll('.inline-menu-option select').forEach(select=>select.selectedIndex=0);controllers.get(currentRoot)?.render(true);}}};
 }

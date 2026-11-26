@@ -26,8 +26,8 @@ export function createResortOrders({version,services,share}){
   document.body.classList.add('native-order-open');dialog.showModal();show(descriptor);
  }
  function closeUI(){
-  active=null;dispose();dialog.close();document.body.classList.remove('native-order-open');
-  window.scrollTo({top:savedY,behavior:'instant'});if(trigger?.isConnected)trigger.focus({preventScroll:true});
+  const restoreFocus=active?.keyboard;active=null;dispose();dialog.close();document.body.classList.remove('native-order-open');
+  window.scrollTo({top:savedY,behavior:'instant'});if(trigger?.isConnected){if(restoreFocus)trigger.focus({preventScroll:true});else trigger.blur();}
  }
  function requestClose(){if(!dialog.open)return;if(history.state?.fdResortOrder===active?.token)history.back();else closeUI();}
  dialog.querySelector('.native-order-close').addEventListener('click',requestClose);
@@ -55,7 +55,7 @@ export function createResortOrders({version,services,share}){
   const selected=services.find(s=>s.path===context.path),service=link.dataset.resortService||(selected?.id==='menu'?'restaurant':selected?.id);
   if(!service)return;
   const record=selected||services.find(s=>(s.id==='menu'?'restaurant':s.id)===service);
-  event.preventDefault();open({kind,service,entry:link.dataset.resortOrderKey||'',anchor:target.hash.slice(1)||service,title:record?.name||'طلبات إضافية أثناء الإقامة',path:service==='extras'?'/guest-services/#extras':record?.path||context.path},link);
+  event.preventDefault();open({kind,service,keyboard:event.detail===0,entry:link.dataset.resortOrderKey||'',anchor:target.hash.slice(1)||service,title:record?.name||'طلبات إضافية أثناء الإقامة',path:service==='extras'?'/guest-services/#extras':record?.path||context.path},link);
  });
  window.addEventListener('message',event=>{
   if(event.origin!==location.origin||event.data?.type!=='familyday-resort-order'||!item||event.source!==item.iframe.contentWindow||event.data.kind!==active?.kind)return;
@@ -72,6 +72,7 @@ export function createResortOrders({version,services,share}){
  });
  return {
   isOpen:()=>dialog.open,
+  reset:()=>{if(dialog.open&&active)show(active);},
   setContext(next){context=next;},
   handlePopstate(){
    const token=history.state?.fdResortOrder;

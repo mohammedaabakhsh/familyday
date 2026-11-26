@@ -65,7 +65,7 @@ with sync_playwright() as p:
    assert f.locator('.resort-direct-form').count()==1;assert not f.locator('.resort-direct-form .order-items,.resort-direct-form #arrangement-items').first.is_visible();assert not f.locator('#apply-selection').is_visible() if key not in ['coordination','dining','seating','cinema'] else not f.locator('.arrangement-dialog-footer [data-close-arrangements]').is_visible()
    if key not in ['coordination','dining','seating']:expect(f.locator('.resort-direct-send')).to_be_disabled()
    prefix='arrangement' if key in ['coordination','dining','seating','cinema'] else 'restaurant' if key=='restaurant' else 'guest';assert f.locator('#'+prefix+'-notes').input_value()==''
-   if key!='cinema':assert f.locator('#'+prefix+'-name').input_value()=='ضيف المراجعة'
+   assert f.locator('#'+prefix+'-name').input_value()==''
    select(f,key);expect(f.locator('.resort-direct-send')).to_be_enabled()
    if key=='cinema':
     f.locator('.resort-direct-send').click();assert page.evaluate('opened.length')==0
@@ -84,7 +84,7 @@ with sync_playwright() as p:
   # Cancel/back/reopen discards selection and notes, retaining name/cabin only.
   page.goto(BASE+'/services/cinema/');page.locator('#main [data-service-portal]').click();expect(page.locator('.native-order-loading')).to_be_hidden();f=page.frame_locator('.native-order-frame');assert f.locator('#cinema-time').input_value()=='';f.locator('#cinema-time').select_option('18');f.locator('#arrangement-notes').fill('لا يستمر');page.go_back();expect(page.locator('#native-order-dialog')).to_be_hidden();page.locator('#main [data-service-portal]').click();expect(page.locator('.native-order-loading')).to_be_hidden();assert f.locator('#cinema-time').input_value()=='' and f.locator('#arrangement-notes').input_value()=='';page.locator('.native-order-close').click();expect(page.locator('#native-order-dialog')).to_be_hidden()
   page.reload();assert page.locator('.native-order-shortcut').count()==0
-  out['profiles'].append({'width':width,'height':height,'independentServices':len(cases),'exactOriginalDraftsAndRecipients':True,'standaloneDraftsUntouched':True,'identityOnlyRemembered':True,'noSummaryOrCart':True,'backAndCancel':True});c.close();print(width,height,'PASS',flush=True)
+  out['profiles'].append({'width':width,'height':height,'independentServices':len(cases),'exactOriginalDraftsAndRecipients':True,'standaloneDraftsUntouched':True,'noRememberedIdentity':True,'noSummaryOrCart':True,'backAndCancel':True});c.close();print(width,height,'PASS',flush=True)
  c=b.new_context(viewport={'width':390,'height':430});page=c.new_page();page.route('**/data/services.json?*',lambda r:r.fulfill(status=503,body='Unavailable'));page.goto(BASE+'/services/cinema/');page.locator('#main [data-service-portal]').click();expect(page.locator('.native-order-error')).to_be_visible(timeout=10000);assert page.locator('.native-order-external').get_attribute('data-url')=='/services-guide/#cinema';page.unroute('**/data/services.json?*');page.locator('.native-order-retry').click();expect(page.locator('.native-order-loading')).to_be_hidden();expect(page.frame_locator('.native-order-frame').locator('#cinema-time')).to_be_visible();out['sourceRetryInPlace']=True;c.close();b.close()
 assert not out['errors'],out
 (R/'site/audits/resort-direct-orders-v82.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False))

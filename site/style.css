@@ -460,3 +460,6 @@ body.resort-services #main{width:100%;max-width:none;height:100dvh;min-height:0;
 
 .restaurant-menu-category .menu-row:has(.inline-menu-option) .inline-menu-info{grid-column:1/-1}
 .restaurant-menu-category .menu-row:has(.inline-menu-option) .inline-menu-controls{grid-column:1/-1;grid-row:auto;flex-direction:row;align-items:center;justify-content:space-between}
+
+/* Touch returns do not leave a selected-looking ring; keyboard focus stays visible in teal. */
+[data-service-portal]:focus-visible{outline:2px solid var(--teal);outline-offset:3px}

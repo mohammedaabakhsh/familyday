@@ -78,6 +78,7 @@
     document.documentElement.classList.add('resort-order-embedded');document.body.classList.add('resort-order-embedded');
     document.body.append(dialog);
     directForm=document.getElementById(api.formId);directForm.classList.add('resort-direct-form');directForm.removeAttribute('aria-labelledby');directForm.setAttribute('aria-label','بيانات الطلب');
+    directForm.autocomplete='off';document.querySelectorAll('input,select,textarea').forEach(field=>field.setAttribute('autocomplete','off'));
     dialog.querySelector(guest?'.dialog-body':'#guide-content').append(directForm);
     sendButton=document.createElement('button');sendButton.type='submit';sendButton.setAttribute('form',api.formId);sendButton.className='resort-direct-send';sendButton.textContent='إرسال الطلب';
     const footer=dialog.querySelector('footer');footer.append(sendButton);

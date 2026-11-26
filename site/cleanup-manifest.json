@@ -2294,8 +2294,8 @@
     "data/services.json": "8904201ec0ef1e658373cd0613239faeb6da9f8af4d1b6b29b0703bb22267b7c",
     "guest-services/README.md": "1ad3a3d1df387c6f92547d236015ff1c975e01b67890162dfa0d0e750b23ec7a",
     "guest-services/guest-services.css": "207545d3740a44c6e0ab8ded3731b255151478ecf82109d0344cdb5dc7e61a36",
-    "guest-services/guest-services.js": "cad096714539c19c5b49891cc56885b43047c4f8ddeab51c3a5545bd319badff",
-    "guest-services/index.html": "623c33be494c32539fcd2525aa816be5f0623dfbdc7160fd4f0f74f99392120c",
+    "guest-services/guest-services.js": "9289c57a7be52ebfb36bdc5463abe97b98166c81b5599742a5d4e68953ff8167",
+    "guest-services/index.html": "87069bebaeea118cfa77ad287238e511a2e75c9443a57304c17adc50be2430ec",
     "guest-services/service-source.js": "e0da9d9065eea4864558446730954129ccefb495b97c4c7070b8e4a6a6803b3e",
     "guest-services/share.js": "a207ab25177d5b69bb1e8a4cc37bc0755c9a2157b7024561d3c15b2652c4323b",
     "js/dining-cards.js": "a80c8a1fcbc623019426cc46184f52f6dc0b109570afbd848e39571726be4097",
@@ -2304,11 +2304,11 @@
     "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
     "services-guide/guide.css": "05a6712458ca7b87e7aa9aa63b803fdf0145079c018cfb780aa0aba8f7be3f7e",
     "services-guide/guide.js": "e92ec781d9ed8f87383a284bdff437548e3f6c2ce556e88bee3b66a919316e66",
-    "services-guide/index.html": "36b90067faefe718756e38a382b9d3cf44ec78db7cffdeb9bfbc2e75442656b5",
+    "services-guide/index.html": "817915d40d0dd287d3bf19158b1986826771d48237e83a00a526d8fcdb71d14e",
     "services-guide/share-entry.js": "05dac99bc60dfc4b2d2d1b08c131735f22d72f29cf93f1861b85df47c89dffa2",
     "guest-services/resort-refinements.css": "5ccfd5e08d6538ebb7f37eb93f5dc52ac270dbf309ee57b38c82078ee0b31520",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
-    "services-guide/guide-orders.js": "1e41335aea145e8dc5044d95fbba0b687d85a88a0ce24a0ec12c4aac85fbcb6f",
+    "services-guide/guide-orders.js": "741406db1d38a936d021156e7ec295a17d5e30102409a6562a07e92b295a1989",
     "services-guide/guide-orders.css": "a82967e285da041f6180ba91547908785e12056bbde3017017b3f3afab4f9a11"
   },
   "preservedCompatibility": [
@@ -2946,5 +2946,23 @@
     "version": "20261126-live-v94",
     "rollbackTag": "pre-remove-request-share-20261126",
     "reason": "Owner found the share-link action in the main request popup redundant because sharing already exists on the service page. Removed that action from the shared main request header; close, ordering and service-page sharing remain available. Standalone portals unchanged."
+  },
+  "approvedMainOrderPrivacy": {
+    "version": "20261126-live-v95",
+    "rollbackTag": "pre-order-privacy-focus-20261126",
+    "reason": "Owner disliked the gold outline when returning from a request and retained order information after leaving the phone. Main pointer requests no longer restore focus onto the trigger; keyboard focus remains visible in teal. Embedded main forms skip identity saving/restoration and disable autocomplete. Main startup purges known historical order storage, and background/browser-cache returns reset order details and restaurant selections. Standalone source save/restore remains unchanged outside embedded requests.",
+    "updatedProtectedFiles": [
+      "guest-services/guest-services.js",
+      "guest-services/index.html",
+      "services-guide/index.html",
+      "services-guide/guide-orders.js"
+    ],
+    "preserved": [
+      "prices and cabin mappings",
+      "original WhatsApp message assembly and recipients",
+      "public routes and service-page sharing",
+      "normal selection within an active restaurant visit",
+      "standalone portal behavior"
+    ]
   }
 }

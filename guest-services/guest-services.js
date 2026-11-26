@@ -55,10 +55,12 @@
       value.adults>=0 && value.children>=0 && value.adults+value.children>0 && value.adults+value.children===catalog.water.size*(Number.isInteger(value.packages)?value.packages:1) && (value.packages===undefined || Number.isInteger(value.packages) && value.packages>=1 && value.packages<=20);
   }
   function save() {
+    if(directService) return;
     try { sessionStorage.setItem(directService ? identityKey : storageKey,JSON.stringify(directService ? {name:state.name,cabin:state.cabin} : state)); }
     catch (_) { /* Ordering also works without browser storage. */ }
   }
   function restore() {
+    if(directService) return;
     try {
       var saved=JSON.parse(directService ? sessionStorage.getItem(identityKey) : sessionStorage.getItem(storageKey) || (!isChalet && sessionStorage.getItem('familyday.guest-extras.v1')));
       if (!saved || typeof saved!=='object') return;
