@@ -23,12 +23,12 @@
 <script src="/guest-services/share.js?v=20261108-shared-venues-v2" defer></script>
 <script src="/guest-services/service-source.js?v=20261125-live-v54" defer></script>
 <script src="/js/order-privacy.js?v=20261126-live-v98" defer></script>
-<script src="/guest-services/guest-services.js?v=20261126-live-v98" defer></script>
+<script src="/guest-services/guest-services.js?v=20261126-live-v100" defer></script>
 <link rel="stylesheet" href="/css/desktop-layout.css?v=20261110-desktop-v1" media="screen and (min-width:1024px)">
 <link rel="stylesheet" href="/guest-services/resort-refinements.css?v=20261125-resort-refinements-v62">
 <script src="/guest-services/resort-refinements.js?v=20261125-resort-refinements-v61" defer></script>
 <link rel="stylesheet" href="/site/orders/portal-surface.css?v=20261126-live-v82">
-<script src="/site/orders/portal-surface.js?v=20261126-live-v97" defer></script>
+<script src="/site/orders/portal-surface.js?v=20261126-live-v100" defer></script>
 </head>
 <body class="resort-portal-refinements">
 <div class="page">
@@ -48,7 +48,7 @@
       <button type="button" id="restaurant-card" class="service-tile" data-service="restaurant" data-tone="restaurant" aria-haspopup="dialog" aria-controls="service-dialog" aria-labelledby="restaurant-title" aria-describedby="restaurant-default" disabled>
         <span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v7m3-7v7M3 7h7M6.5 10v11M18 3v18m0-18c-5 3-5 9 0 9"/></svg></span>
         <span class="tile-copy"><span class="tile-title" id="restaurant-title">المطعم</span><span class="tile-default" id="restaurant-default">اختر وجبتك ومشروبك</span><span class="tile-selection" id="restaurant-selection" hidden></span></span>
-        <span class="tile-action">عرض التفاصيل <span aria-hidden="true">←</span></span>
+        <span class="tile-action">عرض المنيو <span aria-hidden="true">←</span></span>
       </button>
       <button type="button" id="hospitality-card" class="service-tile" data-service="hospitality" data-tone="hospitality" aria-haspopup="dialog" aria-controls="service-dialog" aria-labelledby="hospitality-title" aria-describedby="hospitality-default" disabled>
         <span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h12v7a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5ZM16 9h2a3 3 0 0 1 0 6h-2M7 3v2m4-2v2M2 22h17"/></svg></span>
@@ -79,8 +79,8 @@
           <ul id="restaurant-items" class="order-items"></ul>
           <div class="order-total"><span>إجمالي المطعم</span><strong><bdi id="restaurant-total">0</bdi> ريال</strong></div>
           <div class="customer-fields" data-scope="restaurant"></div>
-          <button class="send-order" type="submit" disabled>إكمال طلب المطعم عبر واتساب</button>
-          <p class="confirmation-note">تابع طلبك عبر واتساب المطعم</p>
+          <button class="send-order" type="submit" disabled>إرسال الطلب</button>
+          <p class="confirmation-note">تابع طلبك مع المطعم على واتساب</p>
         </form>
       </section>
       <section id="resort-summary" class="order-section" aria-labelledby="resort-summary-title" hidden>
@@ -135,7 +135,7 @@
   <div class="dialog-body">
       <section id="restaurant-service" class="service-panel" hidden>
         <p id="restaurant-hours" class="restaurant-hours"></p>
-        <p class="section-note">للمطعم رقم واتساب مستقل لاستقبال الطلبات</p>
+        <p class="section-note">تصفّح قائمة الطعام والمشروبات</p>
         <div id="guest-menu" class="menu-categories"></div>
       </section>
       <section id="hospitality-service" class="service-panel" hidden>

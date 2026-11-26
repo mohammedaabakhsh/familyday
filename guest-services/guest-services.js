@@ -16,6 +16,20 @@
   var gameOptions = isChalet ? ['box'] : ['box','table'];
   var directService=!isChalet && parent!==window && new URLSearchParams(location.search).get('embed')==='resort-order' ? new URLSearchParams(location.search).get('direct') : '';
   if(['restaurant','hospitality','water','games','extras'].indexOf(directService)===-1) directService='';
+  var homeTitle=document.title;
+  var homeMetadata=Array.from(document.querySelectorAll('meta[name="description"],meta[property="og:title"],meta[property="og:description"],meta[property="og:url"],meta[name="twitter:title"],meta[name="twitter:description"],link[rel="canonical"]')).map(function(node){return {node:node,value:node.getAttribute(node.tagName==='LINK'?'href':'content')};});
+  function restaurantLocation(open){
+    if(isChalet || directService)return;
+    if(open || location.pathname.replace(/index\.html$/,'')==='/guest-services/restaurant/'){
+      var destination=new URL(location.href);destination.pathname=open?'/guest-services/restaurant/':'/guest-services/';destination.hash='';history.replaceState(history.state,'',destination.href);
+    }
+    document.title=open?'المطعم | منتجع يوم العائلة':homeTitle;
+    homeMetadata.forEach(function(item){
+      var node=item.node,attr=node.tagName==='LINK'?'href':'content',key=node.getAttribute('property')||node.getAttribute('name');
+      var value=!open?item.value:attr==='href'||key==='og:url'?new URL('/guest-services/restaurant/',location.origin).href:key==='og:title'||key==='twitter:title'?document.title:document.querySelector('#restaurant-service .section-note').textContent;
+      node.setAttribute(attr,value);
+    });
+  }
   var cabins;
   var state = {name:'', cabin:'', notes:'', restaurantNotes:'', quantities:{}, hospitality:{}, water:null, games:'', menu:{}};
   var catalog;
@@ -76,7 +90,10 @@
 
       });
     });
-    if(scope==='restaurant') container.querySelector('textarea').placeholder='مثل بدون بصل أو أي تفاصيل تخص طلب المطعم';
+    if(scope==='restaurant'){
+      container.querySelector('textarea').placeholder='مثل بدون بصل أو أي تفاصيل تخص طلب المطعم';
+      container.querySelector('[data-for="notes"]').textContent='ملاحظات الطلب (اختياري)';
+    }
   }
   function renderCabins() {
     document.querySelectorAll('.cabin-number').forEach(function(row){
@@ -188,7 +205,7 @@
     return Object.keys(menuCatalog).filter(function(key){return data.menu[key] && data.menu[key].qty;}).map(function(key){
       var item=data.menu[key],product=menuCatalog[key];
       return {id:key,group:product.group,name:product.name,qty:item.qty,price:(product.price+(item.cheese ? product.cheesePrice : 0))*item.qty,
-        details:item.cheese ? ['إضافة جبنة: '+item.qty+' × '+product.cheesePrice+' ريال'] : []};
+        details:item.cheese ? ['إضافة جبنة × '+item.qty+' = '+(item.qty*product.cheesePrice)+' ريال'] : []};
     });
   }
   function waterSelection(data) {return (data || state).water || {adults:0,children:0,packages:1};}
@@ -350,7 +367,7 @@
     status.replaceChildren();
     if(pending) status.textContent='أكمل اختيار الألعاب';
     else if(lines.length) status.append(document.createTextNode('✓ تمت الإضافة · '),el('bdi',sum(lines)+' ريال'));
-    card.querySelector('.tile-action').textContent=lines.length ? 'تعديل الطلب ←' : 'عرض التفاصيل ←';
+    card.querySelector('.tile-action').textContent=lines.length ? 'تعديل الطلب ←' : key==='restaurant'?'عرض المنيو ←':'عرض التفاصيل ←';
   }
   function serviceLines(key,data){
     return key==='restaurant' ? menuLines(data) : resortLines(data).filter(function(line){return line.group===key;});
@@ -375,6 +392,7 @@
   }
   function openEditor(key){
     if(dialog.open) return;
+    restaurantLocation(key==='restaurant');
     activeService=key;draft=JSON.parse(JSON.stringify(state));
     if(key==='water' && !draft.water) draft.water=waterSelection(draft);
     dialogTrigger=document.getElementById(key+'-card');
@@ -389,6 +407,7 @@
     updateShortcut();
   }
   function closeEditor(){
+    restaurantLocation(false);
     dialog.close();draft=null;activeService='';document.body.classList.remove('dialog-open');
     if(dialogTrigger) dialogTrigger.focus({preventScroll:true});
     updateShortcut();
@@ -418,7 +437,7 @@
     });
     function openLinkedService(){
       if(redirectCinema())return;
-      var key=location.hash.slice(1).replace(/-service$/,'');
+      var key=location.hash.slice(1).replace(/-service$/,'') || (location.pathname.replace(/index\.html$/,'')==='/guest-services/restaurant/'?'restaurant':'');
       if(document.getElementById(key+'-card')){
         if(dialog.open&&activeService!==key)closeEditor();
         openEditor(key);

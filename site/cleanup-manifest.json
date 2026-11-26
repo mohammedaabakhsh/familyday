@@ -2286,7 +2286,7 @@
   "protectedFiles": {
     "arrangements/index.html": "4601ad055af1876dfe4b2ac3b9e38c19c0bca665dc3bb67b89e3bfb901b96746",
     "chalet/guest-services/chalet-services.js": "31569fcb134a72ff38bd133d4c41aa206c1bd7312aeb8bf55b6d4dec007ee5c6",
-    "chalet/guest-services/index.html": "91525f7136af69db0df78ec009e00f23e6813b8d441c9a9685c00fe7c52a0c5d",
+    "chalet/guest-services/index.html": "92e9a000ecf61757cf9b7fb423e85cf7958785933b8a3382823ef67f6fcc13b1",
     "css/back-navigation.css": "834bdb848f741ef0185f5f22b91d497ea68a55cf3bb34eaa7eac2d01864420ad",
     "css/desktop-layout.css": "229a412b9f610bc2e885c19d755a217e67081725eeb247a12a565bcd6b7de9dd",
     "css/dining-cards.css": "2e495ae12b2014ea0e14330afe839b602e38f86a81d9194004b3e6caa43e9dfb",
@@ -2294,8 +2294,8 @@
     "data/services.json": "8904201ec0ef1e658373cd0613239faeb6da9f8af4d1b6b29b0703bb22267b7c",
     "guest-services/README.md": "1ad3a3d1df387c6f92547d236015ff1c975e01b67890162dfa0d0e750b23ec7a",
     "guest-services/guest-services.css": "207545d3740a44c6e0ab8ded3731b255151478ecf82109d0344cdb5dc7e61a36",
-    "guest-services/guest-services.js": "a410df62fc9759b68032268186c6adbb5471e08be3277b2ae43878984f9a7561",
-    "guest-services/index.html": "594de95dc96d787fab9d824eab066dd779c76d5dd731b8061f9c0be6170156b4",
+    "guest-services/guest-services.js": "5330beef1c6d0b36fd0bd3982cce84ed168d260efa97a359b664d0fd2739a413",
+    "guest-services/index.html": "c5eb993f9aaa45506d99905abb490cdd04d925e0ff9d9378d6a19072410fce19",
     "guest-services/service-source.js": "e0da9d9065eea4864558446730954129ccefb495b97c4c7070b8e4a6a6803b3e",
     "guest-services/share.js": "a207ab25177d5b69bb1e8a4cc37bc0755c9a2157b7024561d3c15b2652c4323b",
     "js/dining-cards.js": "680892b1c9ad23058a3fdcfbc42633dd4bc659a35b848c0b5e35ccd055b3dd5e",
@@ -2304,8 +2304,8 @@
     "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
     "services-guide/guide.css": "05a6712458ca7b87e7aa9aa63b803fdf0145079c018cfb780aa0aba8f7be3f7e",
     "services-guide/guide.js": "dabc904fb83c86d2e1e426a04117f047de35bf95b98133b98552762cbd1660fc",
-    "services-guide/index.html": "e303b76de06b56e49f9af0748afdff87bfb3336d525d4b4cc546b9381c444249",
-    "services-guide/share-entry.js": "9b3eb8e097d90ec21c2e2a19b8e890dbefe21157ed79ad3541e33071483b8a53",
+    "services-guide/index.html": "4f5e2f1adc83d33a143758b155a21d4727455cce009331a4822bb484b009af11",
+    "services-guide/share-entry.js": "72de1a301e0da0de127f52b55714dab77b23548b1125915272e33bf4b1fc09a8",
     "guest-services/resort-refinements.css": "5ccfd5e08d6538ebb7f37eb93f5dc52ac270dbf309ee57b38c82078ee0b31520",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
     "services-guide/guide-orders.js": "06cf97f2c9c1b7f81c58185625852d84cf12f4449961ea79df0aca82dccfb87b",
@@ -3032,5 +3032,18 @@
       "js/dining-cards.js",
       "css/dining-cards.css"
     ]
+  },
+  "approvedRestaurantReview": {
+    "date": "2026-11-26",
+    "rollbackTag": "pre-approved-restaurant-review-20261126",
+    "reason": "Owner approved four reviewed points: match restaurant send/follow-up copy, give standalone restaurant an own text-only share preview that opens in its portal, align inner introduction/notes and use عرض المنيو on the card, and explain per-piece cheese price and invoice addition value. Preserve menu/prices, WhatsApp recipient/message builder, standalone menu design, main inline ordering and no-save policy.",
+    "updatedProtectedFiles": [
+      "guest-services/guest-services.js",
+      "guest-services/index.html",
+      "services-guide/share-entry.js",
+      "services-guide/index.html",
+      "chalet/guest-services/index.html"
+    ],
+    "generatedEntry": "guest-services/restaurant/index.html"
   }
 }

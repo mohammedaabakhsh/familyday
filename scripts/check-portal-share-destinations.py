@@ -1,10 +1,10 @@
 """Shares reopen their own interface; requests still use the unchanged WhatsApp builder."""
-import json,os,sys,subprocess
+import json,os,sys,subprocess,re
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse
 from playwright.sync_api import sync_playwright,expect
-R=Path(__file__).resolve().parents[1];BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8150';out={'version':'20261126-live-v97','services':[],'guestServices':[],'errors':[],'messagesSent':False}
+R=Path(__file__).resolve().parents[1];BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8150';out={'version':'20261126-live-v100','services':[],'guestServices':[],'errors':[],'messagesSent':False}
 sections={'coordination':'/services/coordination/','seating':'/services/outdoor-seating/','dining':'/services/dining-tables/','cinema':'/services/cinema/'}
 class Preview(HTMLParser):
  def __init__(self):super().__init__();self.meta={};self.images=[];self.canonical=''
@@ -18,7 +18,7 @@ portal=lambda key:'/services-guide/'+key+'/'
 # The correction must not alter how an order is assembled or who receives it.
 for name in ['data/services.json']:
  assert (R/name).read_bytes()==subprocess.check_output(['git','show','pre-portal-share-destinations-20261126:'+name]),name
-old=subprocess.check_output(['git','show','pre-portal-share-destinations-20261126:guest-services/guest-services.js']).decode();new=(R/'guest-services/guest-services.js').read_text();start='    var message;';end='\n  function renderOrders';assert old[old.index(start):old.index(end)]==new[new.index(start):new.index(end)]
+old=subprocess.check_output(['git','show','pre-portal-share-destinations-20261126:guest-services/guest-services.js']).decode();new=(R/'guest-services/guest-services.js').read_text();start='    var message;';end='\n  function renderOrders';assert re.sub(r'\s+','',old[old.index(start):old.index(end)].replace('save();',''))==re.sub(r'\s+','',new[new.index(start):new.index(end)])
 with sync_playwright() as p:
  options={'executable_path':'/usr/bin/chromium','args':['--no-sandbox']}
  if BASE.startswith('https:'):options['proxy']={'server':os.environ['HTTPS_PROXY']}
@@ -43,8 +43,8 @@ with sync_playwright() as p:
  # The other resort portal has the same own-interface rule.
  page.goto(BASE+'/guest-services/');page.locator('#water-card:not([disabled])').wait_for();page.locator('#share-page').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+'/guest-services/'}
  for key in ['water','games','hospitality','restaurant']:
-  page.locator('#'+key+'-card').click();share=page.locator('#service-dialog .resort-service-share');expect(share).to_be_enabled();share.click();assert page.evaluate('shares.at(-1)')=={'text':BASE+'/guest-services/#'+key}
-  receiver.goto(BASE+'/guest-services/#'+key);receiver.locator('#water-card:not([disabled])').wait_for();expect(receiver.locator('#service-dialog')).to_be_visible();expect(receiver.locator('#service-dialog')).to_have_attribute('data-tone',key)
+  page.locator('#'+key+'-card').click();share=page.locator('#service-dialog .resort-service-share');expect(share).to_be_enabled();share.click();expected=BASE+('/guest-services/restaurant/' if key=='restaurant' else '/guest-services/#'+key);assert page.evaluate('shares.at(-1)')=={'text':expected}
+  receiver.goto(expected);receiver.locator('#water-card:not([disabled])').wait_for();expect(receiver.locator('#service-dialog')).to_be_visible();expect(receiver.locator('#service-dialog')).to_have_attribute('data-tone',key)
   page.locator('#service-dialog .dialog-close').click();expect(page.locator('#service-dialog')).to_be_hidden();out['guestServices'].append(key)
  # The chalet portal already shares its own public URL; leave its design and controller alone.
  page.goto(BASE+'/chalet/guest-services/');page.locator('#share-page').click();payload=page.evaluate('shares.at(-1)');assert urlparse(payload.get('url',payload.get('text'))).path=='/chalet/guest-services/';out['chaletOwnURLPreserved']=True
@@ -56,4 +56,4 @@ with sync_playwright() as p:
  c=b.new_context();c.add_init_script("window.copied=[];Object.defineProperty(navigator,'share',{value:undefined});Object.defineProperty(navigator,'clipboard',{value:{writeText:async u=>copied.push(u)}})");page=c.new_page();page.goto(BASE+'/services-guide/#coordination');page.locator('#guide-content.is-ready').wait_for(state='attached');page.locator('.topbar [data-share]').click();assert page.evaluate('copied.at(-1)')==BASE+portal('coordination');out['clipboardOwnPortalURL']=True;c.close()
  # The manual copy dialog also identifies the section and offers its dedicated URL.
  c=b.new_context();c.add_init_script("Object.defineProperty(navigator,'share',{value:undefined});Object.defineProperty(navigator,'clipboard',{value:undefined})");page=c.new_page();page.goto(BASE+portal('seating'));page.locator('#guide-content.is-ready').wait_for(state='attached');page.locator('.topbar [data-share]').click();expect(page.locator('#share-dialog')).to_be_visible();expect(page.locator('#share-dialog h2')).to_have_text('رابط الجلسات الخارجية');expect(page.locator('#share-link')).to_have_value(BASE+portal('seating'));out['manualCopySectionTitle']=True;c.close();b.close()
-assert not out['errors'],out;(R/'site/audits/portal-share-destinations-v97.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False))
+assert not out['errors'],out;(R/'site/audits/portal-share-destinations-v100.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False))

@@ -16,7 +16,7 @@
   function sharePath(){
     const key=serviceKey(),service=metadata?.services?.[key];if(!service)return null;
     if(embedded)return service.path;
-    return guest?'/guest-services/#'+key:service.portalSharePath||'/services-guide/'+key+'/';
+    return service.portalSharePath||(guest?'/guest-services/#'+key:'/services-guide/'+key+'/');
   }
   async function share(path){
     if(typeof path!=='string'||!path.startsWith('/')||path.startsWith('//'))return;
@@ -28,6 +28,7 @@
       const status=document.getElementById('share-status');status.textContent='تم نسخ الرابط';status.classList.add('visible');setTimeout(()=>status.classList.remove('visible'),3000);
     }catch(error){
       if(error.name==='AbortError')return;
+      if(guest)document.querySelector('#share-dialog h2').textContent=path===metadata?.services?.restaurant?.portalSharePath?'رابط المطعم':'رابط خدمات إقامتك';
       const field=document.getElementById('share-link');field.value=url;document.getElementById('share-dialog').showModal();field.select();
     }
   }

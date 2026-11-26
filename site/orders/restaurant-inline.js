@@ -61,7 +61,7 @@ export function createRestaurantInline({menu,cabins,messageBuilder}){
     if(product.bbq){const wrap=node('label','نوع البوكس','inline-menu-option');variant=node('select');variant.setAttribute('aria-label','نوع '+base);variant.add(new Option('لحم','لحم'));variant.add(new Option('دجاج','دجاج'));variant.addEventListener('change',render);wrap.append(variant);controls.append(wrap);}
     const keyFor=()=>base+(variant?' — '+variant.value:'');
     const quantity=counter(base,keyFor);controls.append(quantity);let cheese;
-    if(product.cheesePrice){const wrap=node('label',undefined,'inline-menu-cheese');cheese=node('input');cheese.type='checkbox';cheese.addEventListener('change',()=>{const selected=selection.get(keyFor());if(selected)selected.cheese=cheese.checked;render();});wrap.append(cheese,node('span','إضافة جبنة · '+product.cheesePrice+' ريال'));row.append(wrap);}
+    if(product.cheesePrice){const wrap=node('label',undefined,'inline-menu-cheese');cheese=node('input');cheese.type='checkbox';cheese.addEventListener('change',()=>{const selected=selection.get(keyFor());if(selected)selected.cheese=cheese.checked;render();});wrap.append(cheese,node('span','إضافة جبنة · '+product.cheesePrice+' ريال لكل قطعة'));row.append(wrap);}
     row.append(controls);rows.push({row,quantity,cheese,keyFor,category});
    });
   });
@@ -74,8 +74,9 @@ export function createRestaurantInline({menu,cabins,messageBuilder}){
    let position=0;
    for(const item of items){
     let row=[...list.children].find(e=>e.dataset.menuKey===item.key);
-    if(!row){row=node('article',undefined,'inline-restaurant-item');row.dataset.menuKey=item.key;const copy=node('div',undefined,'inline-restaurant-item-copy');copy.append(node('h3',item.key),node('p',undefined,'inline-restaurant-item-price'));const price=node('strong',undefined,'inline-restaurant-item-total'),remove=node('button','×','inline-restaurant-remove');remove.type='button';remove.setAttribute('aria-label','حذف '+item.key);remove.addEventListener('click',()=>{selection.delete(item.key);render();});row.append(copy,price,remove);}
-    row.querySelector('.inline-restaurant-item-price').textContent=item.qty+' × '+item.product.price+' ريال'+(item.cheese?' + جبنة × '+item.qty:'');
+    if(!row){row=node('article',undefined,'inline-restaurant-item');row.dataset.menuKey=item.key;const copy=node('div',undefined,'inline-restaurant-item-copy');copy.append(node('h3',item.key),node('p',undefined,'inline-restaurant-item-price'),node('p',undefined,'inline-restaurant-item-price inline-restaurant-cheese-price'));const price=node('strong',undefined,'inline-restaurant-item-total'),remove=node('button','×','inline-restaurant-remove');remove.type='button';remove.setAttribute('aria-label','حذف '+item.key);remove.addEventListener('click',()=>{selection.delete(item.key);render();});row.append(copy,price,remove);}
+    row.querySelector('.inline-restaurant-item-price').textContent=item.qty+' × '+item.product.price+' ريال';
+    const cheesePrice=row.querySelector('.inline-restaurant-cheese-price');cheesePrice.hidden=!item.cheese;cheesePrice.textContent=item.cheese?'إضافة جبنة × '+item.qty+' = '+(item.qty*item.product.cheesePrice)+' ريال':'';
     row.querySelector('.inline-restaurant-item-total').textContent=lineTotal(item)+' ريال';
     if(list.children[position]!==row)list.insertBefore(row,list.children[position]||null);position++;
 

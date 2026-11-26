@@ -3,7 +3,8 @@
     "restaurant": {
       "path": "/menu/",
       "title": "المطعم",
-      "intro": "تصفّح قائمة الطعام والمشروبات"
+      "intro": "تصفّح قائمة الطعام والمشروبات",
+      "portalSharePath": "/guest-services/restaurant/"
     },
     "dining": {
       "path": "/services/dining-tables/",

@@ -1,0 +1,42 @@
+{
+  "version": "20261126-live-v100",
+  "profiles": [
+    {
+      "width": 390,
+      "height": 844,
+      "approvedCopyMatches": true,
+      "perPieceCheeseAndInvoice": true,
+      "sameWhatsAppDraftAndRecipient": true,
+      "oldAndNewLinksStayInPortal": true,
+      "canonicalURLAndReload": true,
+      "homeSharePreserved": true,
+      "noRememberedOrder": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "approvedCopyMatches": true,
+      "perPieceCheeseAndInvoice": true,
+      "sameWhatsAppDraftAndRecipient": true,
+      "oldAndNewLinksStayInPortal": true,
+      "canonicalURLAndReload": true,
+      "homeSharePreserved": true,
+      "noRememberedOrder": true
+    },
+    {
+      "width": 390,
+      "height": 430,
+      "approvedCopyMatches": true,
+      "perPieceCheeseAndInvoice": true,
+      "sameWhatsAppDraftAndRecipient": true,
+      "oldAndNewLinksStayInPortal": true,
+      "canonicalURLAndReload": true,
+      "homeSharePreserved": true,
+      "noRememberedOrder": true
+    }
+  ],
+  "errors": [],
+  "messagesSent": false,
+  "serverReadableTextOnlyRestaurantPreview": true,
+  "clipboardAndManualCopyUseOwnRestaurantURL": true
+}

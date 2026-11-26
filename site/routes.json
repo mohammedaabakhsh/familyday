@@ -1,5 +1,5 @@
 {
-  "version": "20261126-live-v99",
+  "version": "20261126-live-v100",
   "routes": [
     "/",
     "/arrangements/",
@@ -173,6 +173,9 @@
     "seating": "/services-guide/seating/",
     "dining": "/services-guide/dining/",
     "cinema": "/services-guide/cinema/"
+  },
+  "guestPortalShareSections": {
+    "restaurant": "/guest-services/restaurant/"
   },
   "previewRedirectCount": 80,
   "unitCount": 16,

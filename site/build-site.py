@@ -56,6 +56,9 @@ for service in CATALOG['services']:
 for key,path in CONFIG.get('portalShareSections',{}).items():
  assert path=='/services-guide/'+key+'/' and key in order_links
  order_links[key]['portalSharePath']=path
+for key,path in CONFIG.get('guestPortalShareSections',{}).items():
+ assert path=='/guest-services/'+key+'/' and key in order_links
+ order_links[key]['portalSharePath']=path
 order_links['extras']={'path':'/guest-services/#extras','title':'طلبات إضافية'}
 (SITE/'orders/service-links.json').write_text(json.dumps({'services':order_links},ensure_ascii=False,indent=2)+'\n')
 
@@ -119,7 +122,9 @@ for name in ['resort-map','chalet-map']:
 for name,target in [('directory','/services/'),('index','/services/'),('guest','/guest-services/'),('guide','/arrangements/')]:
  write(ROOT/'preview/visuals/services'/(name+'.html'),redirect_page(target))
 # Crawler-readable section previews: no images, icons or stylesheet candidates.
-for key,path in CONFIG.get('portalShareSections',{}).items():
+share_sections={**CONFIG.get('portalShareSections',{}),**CONFIG.get('guestPortalShareSections',{})}
+for key,path in share_sections.items():
+ portal_base='/guest-services/' if key in CONFIG.get('guestPortalShareSections',{}) else '/services-guide/'
  info=order_links[key];title=html.escape(info['title']+' | منتجع يوم العائلة',quote=True);description=html.escape(info['intro'],quote=True);url='https://familydaystay.com'+path
  page=f'''<!doctype html>
 <html lang="ar" dir="rtl"><head>
@@ -131,13 +136,14 @@ for key,path in CONFIG.get('portalShareSections',{}).items():
 <meta property="og:title" content="{title}"><meta property="og:description" content="{description}"><meta property="og:url" content="{url}">
 <meta name="twitter:card" content="summary"><meta name="twitter:title" content="{title}"><meta name="twitter:description" content="{description}">
 <meta name="familyday:portal-section" content="{key}">
+<meta name="familyday:portal-base" content="{portal_base}">
 <script src="/services-guide/share-entry.js?v={VERSION}" defer></script>
-</head><body><h1>{html.escape(info['title'])}</h1><p>{description}</p><a href="/services-guide/#{key}">فتح {html.escape(info['title'])}</a></body></html>
+</head><body><h1>{html.escape(info['title'])}</h1><p>{description}</p><a href="{portal_base}#{key}">فتح {html.escape(info['title'])}</a></body></html>
 '''
  write(ROOT/path.lstrip('/')/'index.html',page)
-manifest={'version':VERSION,'routes':CONFIG['rootRoutes'],'nativeRoutes':native,'redirectRoutes':REDIRECTS,'protectedPortals':sorted(PORTALS),'portalShareSections':CONFIG.get('portalShareSections',{}),'previewRedirectCount':len(CONFIG['rootRoutes']),'unitCount':len(CATALOG['units']),'rollbackTag':CONFIG['rollbackTag']}
+manifest={'version':VERSION,'routes':CONFIG['rootRoutes'],'nativeRoutes':native,'redirectRoutes':REDIRECTS,'protectedPortals':sorted(PORTALS),'portalShareSections':CONFIG.get('portalShareSections',{}),'guestPortalShareSections':CONFIG.get('guestPortalShareSections',{}),'previewRedirectCount':len(CONFIG['rootRoutes']),'unitCount':len(CATALOG['units']),'rollbackTag':CONFIG['rollbackTag']}
 (SITE/'routes.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
 # Same original sitemap destinations, with the additional approved guide pages.
 urls=sorted(set(CONFIG['rootRoutes'])-set(REDIRECTS))
 (ROOT/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join('  <url><loc>https://familydaystay.com'+html.escape(p)+'</loc></url>\n' for p in urls)+'</urlset>\n')
-print(json.dumps({'nativePages':len(native),'protectedPortals':len(PORTALS),'previewRedirects':len(CONFIG['rootRoutes']),'portalShareEntries':len(CONFIG.get('portalShareSections',{}))}))
+print(json.dumps({'nativePages':len(native),'protectedPortals':len(PORTALS),'previewRedirects':len(CONFIG['rootRoutes']),'portalShareEntries':len(share_sections)}))
