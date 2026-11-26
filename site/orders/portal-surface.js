@@ -16,7 +16,7 @@
   function sharePath(){
     const key=serviceKey(),service=metadata?.services?.[key];if(!service)return null;
     if(embedded)return service.path;
-    return (guest?'/guest-services/':'/services-guide/')+'#'+key;
+    return guest?'/guest-services/#'+key:service.portalSharePath||'/services-guide/'+key+'/';
   }
   async function share(path){
     if(typeof path!=='string'||!path.startsWith('/')||path.startsWith('//'))return;

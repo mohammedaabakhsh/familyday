@@ -15,7 +15,7 @@ with sync_playwright() as p:
   c=b.new_context(viewport={'width':width,'height':height},reduced_motion='reduce');c.add_init_script("window.shares=[];Object.defineProperty(navigator,'share',{value:async d=>shares.push(d)})");page=c.new_page();page.on('pageerror',lambda e:out['errors'].append(str(e)))
   page.goto(BASE+'/services-guide/');page.locator('#guide-content.is-ready').wait_for(state='attached');page.locator('.topbar [data-share]').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+'/services-guide/'}
   for section,path in sections.items():
-   page.goto(BASE+'/services-guide/#'+section);page.locator('#guide-content.is-ready').wait_for(state='attached');page.locator('.topbar [data-share]').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+'/services-guide/#'+section}
+   page.goto(BASE+'/services-guide/#'+section);page.locator('#guide-content.is-ready').wait_for(state='attached');page.locator('.topbar [data-share]').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+'/services-guide/'+section+'/'}
    if section in ['coordination','seating']:
     assert page.locator('#'+section+' .package-card').count()==6
     assert page.locator('#'+section+' [data-share-path],#'+section+' .arrangement-share').count()==0
@@ -29,6 +29,6 @@ with sync_playwright() as p:
   for path in ['/services/coordination/?package=1&from=qr','/services/outdoor-seating/?session=2&from=qr']:
    page.goto(BASE+path);page.wait_for_url(BASE+urlparse(path).path+'?from=qr');assert page.locator('.service-guide-packages>.package').count()==6
   out['viewports'].append({'width':width,'height':height,'wholeSectionSharesOnly':True,'noItemShareButtons':True,'individualOrderButtonsRetained':True,'twelveRetiredLinksWork':True,'oldQueriesOpenCompleteSection':True});c.close();print(width,'PASS',flush=True)
- c=b.new_context();c.add_init_script("window.copied=[];Object.defineProperty(navigator,'share',{value:undefined});Object.defineProperty(navigator,'clipboard',{value:{writeText:async u=>copied.push(u)}})");page=c.new_page();page.goto(BASE+'/services-guide/#seating');page.locator('#guide-content.is-ready').wait_for(state='attached');page.locator('.topbar [data-share]').click();assert page.evaluate('copied.at(-1)')==BASE+'/services-guide/#seating';out['clipboardFallback']=True;c.close();b.close()
+ c=b.new_context();c.add_init_script("window.copied=[];Object.defineProperty(navigator,'share',{value:undefined});Object.defineProperty(navigator,'clipboard',{value:{writeText:async u=>copied.push(u)}})");page=c.new_page();page.goto(BASE+'/services-guide/#seating');page.locator('#guide-content.is-ready').wait_for(state='attached');page.locator('.topbar [data-share]').click();assert page.evaluate('copied.at(-1)')==BASE+'/services-guide/seating/';out['clipboardFallback']=True;c.close();b.close()
 assert not out['errors'],out
 (R/'site/audits/service-share-scope-v81.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False))

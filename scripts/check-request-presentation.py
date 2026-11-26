@@ -29,7 +29,7 @@ with sync_playwright() as p:
      if kind=='coordination':assert f.locator('.resort-entry-selection').inner_text().startswith('الكمية')
      assert page.locator('.native-order-share').count()==0;assert page.locator('.native-order-header button').count()==1
     else:
-     page.locator('#guide-content.is-ready').wait_for(state='attached');page.locator('.topbar [data-share]').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+'/services-guide/#'+kind}
+     page.locator('#guide-content.is-ready').wait_for(state='attached');page.locator('.topbar [data-share]').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+'/services-guide/'+kind+'/'}
      if kind=='coordination':page.locator('#package-2 summary').first.click();page.locator('#package-2 [data-request-key]').click()
      elif kind=='dining':
       expect(page.locator('[data-dining-request]')).to_have_text('اطلب هذه الطاولة');assert page.locator('#dining .fd-dining-info').evaluate("e=>!!(e.compareDocumentPosition(document.querySelector('#dining .fd-dining-table')) & Node.DOCUMENT_POSITION_FOLLOWING)");assert page.locator('#dining .fd-dining-info').evaluate("e=>!!(e.compareDocumentPosition(document.querySelector('[data-dining-request]')) & Node.DOCUMENT_POSITION_FOLLOWING)");page.locator('.fd-dining-option[data-size="6"][data-option="plain"]').click();assert page.locator('.arrangement-request').is_hidden();page.locator('[data-dining-request]').click()

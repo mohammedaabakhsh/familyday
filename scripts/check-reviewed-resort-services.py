@@ -27,7 +27,7 @@ with sync_playwright() as p:
   def portalVisit(kind):
    portal.goto(BASE+'/services-guide/#'+kind);portal.locator('#guide-content.is-ready').wait_for(state='attached');assert not portal.evaluate('document.documentElement.scrollWidth>innerWidth')
   def share(page,selector,kind):
-   page.locator(selector).click();target='/services-guide/#'+kind if selector.startswith('.topbar') else paths[kind];assert page.evaluate('shares.at(-1)')=={'text':BASE+target}
+   page.locator(selector).click();target='/services-guide/'+kind+'/' if selector.startswith('.topbar') else paths[kind];assert page.evaluate('shares.at(-1)')=={'text':BASE+target}
   def send(page,f,mode,kind,name,price,qty=1):
    send=f.locator('.resort-direct-send' if mode=='main' else '.arrangement-request .arrangement-send')
    f.locator('#arrangement-name').fill('');f.locator('#arrangement-cabin').select_option('');before=page.evaluate('opened.length')

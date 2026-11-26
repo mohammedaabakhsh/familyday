@@ -17,7 +17,8 @@
       "size": [
         2400,
         2400
-      ]
+      ],
+      "portalSharePath": "/services-guide/dining/"
     },
     "games": {
       "path": "/services/games/",
@@ -46,7 +47,8 @@
       "size": [
         1448,
         1086
-      ]
+      ],
+      "portalSharePath": "/services-guide/cinema/"
     },
     "hospitality": {
       "path": "/services/hospitality/packages/",
@@ -69,7 +71,8 @@
       "size": [
         1448,
         1086
-      ]
+      ],
+      "portalSharePath": "/services-guide/coordination/"
     },
     "seating": {
       "path": "/services/outdoor-seating/",
@@ -87,7 +90,8 @@
       "size": [
         1200,
         1200
-      ]
+      ],
+      "portalSharePath": "/services-guide/seating/"
     },
     "extras": {
       "path": "/guest-services/#extras",

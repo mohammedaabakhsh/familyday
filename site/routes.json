@@ -1,5 +1,5 @@
 {
-  "version": "20261126-live-v96",
+  "version": "20261126-live-v97",
   "routes": [
     "/",
     "/arrangements/",
@@ -168,6 +168,12 @@
     "/guest-services/",
     "/services-guide/"
   ],
+  "portalShareSections": {
+    "coordination": "/services-guide/coordination/",
+    "seating": "/services-guide/seating/",
+    "dining": "/services-guide/dining/",
+    "cinema": "/services-guide/cinema/"
+  },
   "previewRedirectCount": 80,
   "unitCount": 16,
   "rollbackTag": "pre-live-cutover-20261125"

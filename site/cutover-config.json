@@ -1,5 +1,5 @@
 {
-  "version": "20261126-live-v96",
+  "version": "20261126-live-v97",
   "rootRoutes": [
     "/",
     "/arrangements/",
@@ -184,5 +184,11 @@
     "/services/outdoor-seating/session-4/": "/services/outdoor-seating/",
     "/services/outdoor-seating/session-5/": "/services/outdoor-seating/",
     "/services/outdoor-seating/session-6/": "/services/outdoor-seating/"
+  },
+  "portalShareSections": {
+    "coordination": "/services-guide/coordination/",
+    "seating": "/services-guide/seating/",
+    "dining": "/services-guide/dining/",
+    "cinema": "/services-guide/cinema/"
   }
 }

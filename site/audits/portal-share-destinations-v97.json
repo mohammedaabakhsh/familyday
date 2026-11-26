@@ -1,0 +1,52 @@
+{
+  "version": "20261126-live-v97",
+  "services": [
+    {
+      "id": "coordination",
+      "portalURL": "/services-guide/coordination/",
+      "mainURL": "/services/coordination/",
+      "receivedPortalLinkStaysInPortal": true,
+      "serverPreviewHasOwnTitle": true,
+      "previewHasNoImages": true,
+      "addressBarHasOwnURL": true
+    },
+    {
+      "id": "seating",
+      "portalURL": "/services-guide/seating/",
+      "mainURL": "/services/outdoor-seating/",
+      "receivedPortalLinkStaysInPortal": true,
+      "serverPreviewHasOwnTitle": true,
+      "previewHasNoImages": true,
+      "addressBarHasOwnURL": true
+    },
+    {
+      "id": "dining",
+      "portalURL": "/services-guide/dining/",
+      "mainURL": "/services/dining-tables/",
+      "receivedPortalLinkStaysInPortal": true,
+      "serverPreviewHasOwnTitle": true,
+      "previewHasNoImages": true,
+      "addressBarHasOwnURL": true
+    },
+    {
+      "id": "cinema",
+      "portalURL": "/services-guide/cinema/",
+      "mainURL": "/services/cinema/",
+      "receivedPortalLinkStaysInPortal": true,
+      "serverPreviewHasOwnTitle": true,
+      "previewHasNoImages": true,
+      "addressBarHasOwnURL": true
+    }
+  ],
+  "guestServices": [
+    "water",
+    "games",
+    "hospitality",
+    "restaurant"
+  ],
+  "errors": [],
+  "messagesSent": false,
+  "chaletOwnURLPreserved": true,
+  "clipboardOwnPortalURL": true,
+  "manualCopySectionTitle": true
+}
