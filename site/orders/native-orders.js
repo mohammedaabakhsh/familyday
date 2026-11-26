@@ -2,9 +2,8 @@
 export function createResortOrders({version,services,share}){
  let context=null,active=null,item=null,trigger=null,savedY=0;
  const snapshots=new Map();
- const icon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 16V2m-5 5 5-5 5 5M6 10H3v11h18V10h-3"/></svg>';
  const dialog=document.createElement('dialog');dialog.id='native-order-dialog';dialog.className='native-order-dialog';dialog.setAttribute('aria-labelledby','native-order-title');
- dialog.innerHTML='<header class="native-order-header"><h2 id="native-order-title"></h2><button type="button" class="native-order-share" aria-label="مشاركة الخدمة">'+icon+'</button><button type="button" class="native-order-close" aria-label="إغلاق الطلب">×</button></header><div class="native-order-body"><p class="native-order-loading" role="status">جاري تحميل الطلب…</p><section class="native-order-error" hidden><p>تعذر تحميل الطلب. حاول مرة أخرى.</p><button type="button" class="native-order-retry">إعادة المحاولة</button><button type="button" class="native-order-external">فتح صفحة الطلب</button></section></div>';
+ dialog.innerHTML='<header class="native-order-header"><h2 id="native-order-title"></h2><button type="button" class="native-order-close" aria-label="إغلاق الطلب">×</button></header><div class="native-order-body"><p class="native-order-loading" role="status">جاري تحميل الطلب…</p><section class="native-order-error" hidden><p>تعذر تحميل الطلب. حاول مرة أخرى.</p><button type="button" class="native-order-retry">إعادة المحاولة</button><button type="button" class="native-order-external">فتح صفحة الطلب</button></section></div>';
  document.body.append(dialog);
  const body=dialog.querySelector('.native-order-body'),loading=dialog.querySelector('.native-order-loading'),error=dialog.querySelector('.native-order-error'),title=dialog.querySelector('h2');
  if(history.state?.fdResortOrder){const state={...history.state};delete state.fdResortOrder;history.replaceState(state,'',location.href);}
@@ -34,7 +33,6 @@ export function createResortOrders({version,services,share}){
  dialog.querySelector('.native-order-close').addEventListener('click',requestClose);
  dialog.addEventListener('cancel',e=>{e.preventDefault();requestClose();});
  dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)requestClose();}});
- dialog.querySelector('.native-order-share').addEventListener('click',()=>{if(active?.path)share(active.path,title.textContent);});
  error.querySelector('.native-order-external').addEventListener('click',()=>location.assign(error.querySelector('.native-order-external').dataset.url));
  error.querySelector('.native-order-retry').addEventListener('click',()=>show(active));
  document.addEventListener('click',event=>{

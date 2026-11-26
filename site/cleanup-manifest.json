@@ -2941,5 +2941,10 @@
     "version": "20261126-live-v93",
     "rollbackTag": "pre-restaurant-followup-copy-20261126",
     "reason": "Owner approved the exact main restaurant follow-up sentence تابع طلبك مع المطعم على واتساب. Copy-only change; layout, request behavior, prices, recipient and original portal remain unchanged."
+  },
+  "approvedRemoveRequestShare": {
+    "version": "20261126-live-v94",
+    "rollbackTag": "pre-remove-request-share-20261126",
+    "reason": "Owner found the share-link action in the main request popup redundant because sharing already exists on the service page. Removed that action from the shared main request header; close, ordering and service-page sharing remain available. Standalone portals unchanged."
   }
 }

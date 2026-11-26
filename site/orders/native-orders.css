@@ -5,7 +5,6 @@
 .native-order-header{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid #35535f;flex:none}
 .native-order-header h2{flex:1;min-width:0;font-size:17px;line-height:1.5;margin:0}
 .native-order-header button{display:grid;place-items:center;flex:none;width:40px;height:40px;padding:8px;border:1px solid #466c78;border-radius:50%;background:transparent;color:#cbe9ec;cursor:pointer}.native-order-header .native-order-close{font-size:26px;line-height:1}
-.native-order-share svg{width:20px;height:20px}.native-order-share[hidden]{display:none}
 .native-order-body{position:relative;flex:1;min-height:0;overflow:hidden}.native-order-frame{width:100%;height:100%;border:0;display:block;background:#0b2531}.native-order-frame[hidden]{display:none}
 .native-order-loading{position:absolute;inset:0;display:grid;place-items:center;margin:0;padding:20px;color:#a4bbc3}.native-order-loading[hidden]{display:none}
 .native-order-error{padding:30px 18px;text-align:center;color:#bed5db}.native-order-error button,.native-order-error a{display:block;margin:16px auto;padding:10px;border:1px solid #557984;border-radius:10px;background:transparent;color:#c6eff0;font:inherit;cursor:pointer}

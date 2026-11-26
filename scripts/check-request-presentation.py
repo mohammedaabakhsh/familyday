@@ -18,7 +18,7 @@ with sync_playwright() as p:
    for mode in ['main','portal']:
     page=c.new_page();page.on('pageerror',lambda e:out['errors'].append(str(e)));page.goto(BASE+(path if mode=='main' else '/services-guide/#'+kind))
     if mode=='main':
-     page.locator('#main h1').wait_for()
+     page.locator('#main h1').wait_for();page.locator('.header [data-share]').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+path}
      if kind=='coordination':page.locator('.service-guide-packages>.package').nth(1).locator('summary').click();page.locator('[data-resort-order-key="package-2"]').click()
      elif kind=='dining':page.locator('[data-dining-size="6"][data-dining-option="plain"]').click();page.locator('.dining-guide-link').click()
      else:page.locator('#main [data-service-portal]').click()
@@ -26,7 +26,7 @@ with sync_playwright() as p:
      assert f.locator('.arrangement-total:visible').count()==1;assert f.locator('.resort-entry-total:visible,#arrangement-dialog-status:visible').count()==0
      assert f.locator('body').inner_text().count('إجمالي')==1
      if kind=='coordination':assert f.locator('.resort-entry-selection').inner_text().startswith('الكمية')
-     page.locator('.native-order-share').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+path}
+     assert page.locator('.native-order-share').count()==0;assert page.locator('.native-order-header button').count()==1
     else:
      page.locator('#guide-content.is-ready').wait_for(state='attached');page.locator('.topbar [data-share]').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+'/services-guide/#'+kind}
      if kind=='coordination':page.locator('#package-2 summary').first.click();page.locator('#package-2 [data-request-key]').click()

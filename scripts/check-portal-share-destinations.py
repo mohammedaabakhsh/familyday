@@ -23,8 +23,8 @@ with sync_playwright() as p:
   out['services'].append({'id':key,'portalURL':'/services-guide/#'+key,'mainURL':path,'receivedPortalLinkStaysInPortal':True})
  for suffix,key in [('package-1','coordination'),('package-complete','coordination'),('session-2','seating')]:
   page.goto(BASE+'/services-guide/#'+suffix);page.locator('#guide-content.is-ready').wait_for(state='attached');page.locator('.topbar [data-share]').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+'/services-guide/#'+key}
- # The native request share must still target the main service, even with a preselected package.
- page.goto(BASE+'/services/coordination/');page.locator('.service-guide-packages>.package summary').first.click();page.locator('[data-service-portal]').first.click();expect(page.locator('.native-order-loading')).to_be_hidden();page.locator('.native-order-share').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+'/services/coordination/'};page.locator('.native-order-close').click();expect(page.locator('#native-order-dialog')).to_be_hidden()
+ # Main service sharing remains on its page, with no duplicate share action inside its request.
+ page.goto(BASE+'/services/coordination/');page.locator('.header [data-share]').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+'/services/coordination/'};page.locator('.service-guide-packages>.package summary').first.click();page.locator('[data-service-portal]').first.click();expect(page.locator('.native-order-loading')).to_be_hidden();assert page.locator('.native-order-share').count()==0;assert page.locator('.native-order-header button').count()==1;page.locator('.native-order-close').click();expect(page.locator('#native-order-dialog')).to_be_hidden()
  # The other resort portal has the same own-interface rule.
  page.goto(BASE+'/guest-services/');page.locator('#water-card:not([disabled])').wait_for();page.locator('#share-page').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+'/guest-services/'}
  for key in ['water','games','hospitality','restaurant']:

@@ -45,8 +45,9 @@ with sync_playwright() as p:
    for mode in ['main','portal']:
     page.goto(BASE+('/services/outdoor-seating/' if mode=='main' else '/services-guide/#seating'))
     if mode=='main':
+     page.locator('.header [data-share]').click();assert page.evaluate('shares.at(-1).text')==BASE+'/services/outdoor-seating/'
      page.locator('.service-guide-packages>.package').nth(i).locator('summary').click();button=page.locator(f'[data-resort-order-key="session-{i+1}"]');expect(button).to_have_text('اطلب هذه الجلسة');button.click();expect(page.locator('.native-order-loading')).to_be_hidden();f=page.frame_locator('.native-order-frame');send=f.locator('.resort-direct-send');counter=f.locator('.resort-entry-selection .arrangement-quantity');extra=f.locator('.resort-entry-selection [data-request-extra]')
-     expect(page.locator('#native-order-title')).to_have_text('طلب '+session['name']);page.locator('.native-order-share').click();assert page.evaluate('shares.at(-1).text')==BASE+'/services/outdoor-seating/'
+     expect(page.locator('#native-order-title')).to_have_text('طلب '+session['name']);assert page.locator('.native-order-share').count()==0
     else:
      page.locator('#guide-content.is-ready').wait_for(state='attached');card=page.locator(f'#session-{i+1}');card.locator('summary').click();button=card.locator('[data-request-key]');expect(button).to_have_text('اطلب هذه الجلسة');button.click();f=page;send=page.locator('.arrangement-request .arrangement-send');counter=page.locator('.arrangement-request-quantity .arrangement-quantity');extra=page.locator('.arrangement-request [data-request-extra]');expect(page.locator('#arrangement-request-title')).to_have_text('طلب '+session['name'])
     expect(f.locator('#arrangement-total')).to_have_text(str(int(session['price'].split()[0])))

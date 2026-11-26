@@ -38,7 +38,7 @@ with sync_playwright() as p:
    if kind=='cinema':f.locator('#cinema-time').select_option('24')
    if qty==2:f.locator('.resort-entry-selection [data-step="1"]' if mode=='main' else '.arrangement-request-quantity [data-step="1"]').click()
    if mode=='main':
-    assert not f.locator('html').evaluate('e=>e.scrollWidth>innerWidth');share(page,'.native-order-share',kind)
+    assert not f.locator('html').evaluate('e=>e.scrollWidth>innerWidth');assert page.locator('.native-order-share').count()==0
     rect=send.bounding_box();assert rect and rect['y']>=0 and rect['y']+rect['height']<=height
    send.click();expect(page.locator('#native-order-dialog' if mode=='main' else '.arrangement-request')).to_be_hidden()
    u=urlparse(page.evaluate('opened.at(-1)'));assert u.path=='/'+'966537009217'

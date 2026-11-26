@@ -57,7 +57,7 @@ with sync_playwright() as p:
   c=b.new_context(viewport={'width':width,'height':height},reduced_motion='reduce',ignore_https_errors=True);c.add_init_script(init);page=c.new_page();page.on('pageerror',lambda e:out['errors'].append(str(e)))
   page.goto(BASE+'/services/');page.evaluate('(keys)=>keys.forEach(k=>sessionStorage.setItem(k,JSON.stringify({name:"OLD",cabin:"البيت اليوناني 2",games:"table",notes:"OLD",quantities:{"package-1":5}})))',keys);saved=page.evaluate('(keys)=>keys.map(k=>sessionStorage.getItem(k))',keys)
   for key,path in [case for case in cases if case[0] not in ['extras','restaurant']]:
-   page.goto(BASE+path)
+   page.goto(BASE+path);page.locator('.header [data-share]').click()
    if key=='dining':page.locator('[data-dining-size="6"][data-dining-option="plain"]').click()
    if key in ['coordination','seating']:page.locator('.service-guide-packages>.package summary').first.click()
    page.locator('#main [data-service-portal]').first.click();expect(page.locator('#native-order-dialog')).to_be_visible();expect(page.locator('.native-order-loading')).to_be_hidden();expect(page.locator('.native-order-error')).to_be_hidden();assert page.url==BASE+path
@@ -75,7 +75,7 @@ with sync_playwright() as p:
     f.locator('#'+prefix+'-cabin').select_option(name)
     number=f.locator('#arrangement-cabin-number') if prefix=='arrangement' else f.locator('.resort-direct-form .cabin-number output')
     assert str(SOURCE['guest']['cabins'][name]) in number.inner_text()
-   page.locator('.native-order-share').click();expected=links[key]['path'] if key=='extras' else urlparse(path).path;assert page.evaluate('shares.at(-1)')=={'text':BASE+expected}
+   assert page.locator('.native-order-share').count()==0;expected=links[key]['path'] if key=='extras' else urlparse(path).path;assert page.evaluate('shares.at(-1)')=={'text':BASE+expected}
    rect=f.locator('.resort-direct-send').bounding_box();assert rect['y']>=0 and rect['y']+rect['height']<=height,rect
    assert not f.locator('html').evaluate('e=>e.scrollWidth>innerWidth')
    if width==390 and height==844:
