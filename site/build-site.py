@@ -48,7 +48,7 @@ for service in CATALOG['services']:
  copy=COPY.get('serviceCopy',{}).get(service['id'],{})
  order_links[key]={'path':service['path'],'title':service['name'],'intro':copy.get('pageIntro',data.get('intro',service.get('intro','')))}
  if copy.get('cardIntro'):order_links[key]['cardIntro']=copy['cardIntro']
- for field in ['advanceNote','help','orderLabel','orderHint']:
+ for field in ['advanceNote','help','orderLabel','orderHint','shareDescription']:
   if copy.get(field):order_links[key][field]=copy[field]
  if image:
   raw=image.split('?')[0]
@@ -125,7 +125,7 @@ for name,target in [('directory','/services/'),('index','/services/'),('guest','
 share_sections={**CONFIG.get('portalShareSections',{}),**CONFIG.get('guestPortalShareSections',{})}
 for key,path in share_sections.items():
  portal_base='/guest-services/' if key in CONFIG.get('guestPortalShareSections',{}) else '/services-guide/'
- info=order_links[key];title=html.escape(info['title']+' | منتجع يوم العائلة',quote=True);description=html.escape(info['intro'],quote=True);url='https://familydaystay.com'+path
+ info=order_links[key];title=html.escape(info['title']+' | منتجع يوم العائلة',quote=True);description=html.escape(info.get('shareDescription',info['intro']),quote=True);url='https://familydaystay.com'+path
  page=f'''<!doctype html>
 <html lang="ar" dir="rtl"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">

@@ -37,7 +37,7 @@
         + (capacity ? '<span class="seating-capacity-badge">' + escape(capacity) + '</span>' : '') + '</span>'
         + '<span class="seating-summary-bottom">' + priceMarkup
         + '<span class="seating-detail-footer"><svg class="seating-collapsed-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>' + '' + '</span></span></summary>'
-        + '<div class="seating-collapsed-content">' + (photos.length ? FD_GUIDE_GALLERY.markup(photos,title,imageAlt) : '')
+        + '<div class="seating-collapsed-content">' + (photos.length ? className==='photo-card'?'<figure class="package-photo"><img class="seating-full-photo" src="/'+escape(photos[0].replace(/^\/+/,'') )+'" alt="'+escape(imageAlt||title)+'" width="1200" height="1200" loading="lazy" decoding="async"></figure>':FD_GUIDE_GALLERY.markup(photos,title,imageAlt) : '')
         + '<div class="package-details-body">' + body + '</div></div></details></article>';
     }
     return '<article class="package-card package-card--gallery ' + className + (photos.length ? '' : ' package-card--text') + '"' + (id ? ' id="' + escape(id) + '"' : '') + '>'
@@ -81,14 +81,14 @@
     const seating=serviceLinks.seating;
     const seatingAdvance=seating?.advanceNote?'<p class="coordination-order-note">'+escape(seating.advanceNote)+'</p>':'';
     const seatingContact=contactMarkup('seating',seating?.help,'تواصل معنا لاختيار الجلسة المناسبة لكم');
-    html += section('seating',data.seating.name,seating?.intro||'جلسات نجهّزها لكم في المساحة الخارجية الخاصة بالكوخ', seatingAdvance+'<div class="photo-grid package-grid">' + data.seating.sessions.map((s,i) => serviceCard({id:'session-'+(i+1),title:s.name,price:s.price,priceUnit:'للجلسة',photos:[s.img],imageAlt:s.name,className:'photo-card',capacity:s.persons,label:'تفاصيل الجلسة',body:'<p class="session-description">' + escape(s.desc) + '</p>'})).join('') + '</div>' + seatingContact,true);
+    html += section('seating',data.seating.name,seating?.intro||'جلسات نجهّزها لكم في المساحة الخارجية الخاصة بالكوخ', seatingAdvance+'<div class="photo-grid package-grid">' + data.seating.sessions.map((s,i) => serviceCard({id:'session-'+(i+1),title:s.name,price:s.price,photos:[s.img],imageAlt:s.name,className:'photo-card',capacity:s.persons,label:'تفاصيل الجلسة',body:'<p class="session-description">' + escape(s.desc) + '</p>'})).join('') + '</div>' + seatingContact,true);
     html += diningSection;
     const cinema=catalog.guest.cinema, cinemaMedia=serviceLinks.cinema;
     const cinemaPhoto=cinemaMedia?.image?'<div class="dining-shared-photo cinema-shared-photo">'+FD_GUIDE_GALLERY.markup([cinemaMedia.image],cinema.title,cinema.title)+'</div>':'';
     const cinemaDetails='<div class="cinema-service-price"><div class="cinema-fact"><small>مدة الجلسة</small><strong class="cinema-duration">'+escape(cinema.duration)+'</strong></div><div class="cinema-fact"><small>سعر الجلسة</small><strong class="price">'+escape(cinema.price)+' ريال</strong></div></div><h3 class="cinema-contents-title">'+escape(cinema.contentsTitle)+'</h3>'+items(cinema.contents)+'<details class="guide-usage"><summary>تعليمات الاستخدام</summary>'+items(cinema.notes)+'</details>';
     html += section('cinema',cinema.title,cinema.intro,'<article id="cinema-session" class="cinema-service-panel">'+cinemaPhoto+'<div class="cinema-service-body package-details-body">'+cinemaDetails+'</div></article>',true);
     content.innerHTML = html;
-    for(const id of ['coordination','seating','dining','cinema'])content.querySelector('#'+id).dataset.portalSharePath=serviceLinks[id]?.portalSharePath||'/services-guide/'+id+'/';
+    for(const id of ['coordination','seating','dining','cinema']){const section=content.querySelector('#'+id);section.dataset.portalSharePath=serviceLinks[id]?.portalSharePath||'/services-guide/'+id+'/';section.dataset.shareDescription=serviceLinks[id]?.shareDescription||serviceLinks[id]?.intro||'';}
     for(const id of ['cinema','dining'])content.querySelector('#'+id).dataset.orderLabel=serviceLinks[id]?.orderLabel||(id==='cinema'?'اطلب هذه الجلسة':'اطلب هذه الطاولة');
     content.querySelectorAll('#cinema-session img').forEach(img=>{img.loading='eager';img.fetchPriority='high';});
     FD_GUIDE_GALLERY.mount();
@@ -138,7 +138,7 @@
       const legacyItem=document.getElementById(anchorId);
       if(legacyItem?.matches('.package-card')&&legacyItem.closest('.guide-section')===activeSection)target.hash=anchorId;
       if(target.href!==location.href)history.replaceState(history.state,'',target);
-      const description=activeSection?.querySelector('.section-heading p')?.textContent||guideDescription;
+      const description=activeSection?.dataset.shareDescription||activeSection?.querySelector('.section-heading p')?.textContent||guideDescription;
       document.querySelector('link[rel="canonical"]').href=new URL(path,location.origin).href;
       for(const name of ['og:title','twitter:title'])document.querySelector('meta[property="'+name+'"],meta[name="'+name+'"]').content=document.title;
       for(const name of ['og:description','twitter:description','description'])document.querySelector('meta[property="'+name+'"],meta[name="'+name+'"]').content=description;
@@ -209,7 +209,7 @@
     try {
       const response = await fetch('/data/services.json?v=20261125-live-v54',{cache:'no-cache'});
       if (!response.ok) throw new Error('Service source unavailable');
-      const links=await fetch('/site/orders/service-links.json?v=20261126-live-v97').then(r=>r.ok?r.json():{}).catch(()=>({}));
+      const links=await fetch('/site/orders/service-links.json?v=20261126-live-v103').then(r=>r.ok?r.json():{}).catch(()=>({}));
       render(await response.json(),links.services||{});
     } catch(error) {
       content.innerHTML = '<div class="load-error"><h2>تعذّر تحميل التجهيزات</h2><p>حاولوا مرة ثانية لعرض التفاصيل هنا.</p><button type="button" id="retry-guide">إعادة المحاولة</button></div>';

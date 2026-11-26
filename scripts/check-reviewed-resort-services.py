@@ -45,7 +45,7 @@ with sync_playwright() as p:
    text=parse_qs(u.query)['text'][0];assert text==expected(kind,name,price,qty,kind=='cinema'),text
    return page.evaluate('opened.at(-1)')
   # Cards and internal descriptions have distinct, shared wording.
-  main.goto(BASE+'/services/');main.locator('.svcs-card').first.wait_for();portal.goto(BASE+'/services-guide/');portal.locator('#guide-content.is-ready').wait_for(state='attached')
+  main.goto(BASE+'/services/');main.locator('[data-service-group="1"]').click();main.locator('.svcs-card').first.wait_for();portal.goto(BASE+'/services-guide/');portal.locator('#guide-content.is-ready').wait_for(state='attached')
   for kind in paths:
    assert main.locator('a.svcs-card[href="'+paths[kind]+'"] .svcs-description').inner_text()==portal.locator('.guide-tile[href="#'+kind+'"] .tile-description').inner_text()==COPY[kind]['cardIntro']
   # All coordination content and photos remain in their collapsed cards; each request starts with only its own package.

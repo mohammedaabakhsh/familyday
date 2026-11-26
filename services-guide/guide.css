@@ -324,3 +324,6 @@ body.resort-order-embedded :is(#coordination,#seating) :is(.coordination-order-n
  body[data-guide-view="section"] #seating .package-grid{gap:clamp(8px,calc(var(--co-available)*.05 - 26px),16px)}
  body[data-guide-view="section"] #seating .seating-collapsed-summary{padding-block:clamp(6px,calc(var(--co-available)*.02 - 7px),9px)}
 }
+
+/* Show each outdoor seating photograph complete, with no zoom interaction. */
+#seating .seating-full-photo{display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain;cursor:default}

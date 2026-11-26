@@ -82,7 +82,7 @@ async def main():
      assert not await details.evaluate('e=>e.open');await details.locator('summary').click()
     await expect(details.locator('.inclusions')).to_be_visible()
     # Zoom and sharing are still attached to the same image/link, with no image attachments.
-    if 'dining' in path:
+    if 'dining' in path or 'cinema' in path:
      assert await page.locator('.service-main-photo button,[data-package-photo]').count()==0
      await photo.click();await expect(page.locator('#viewer')).to_be_hidden()
     else:

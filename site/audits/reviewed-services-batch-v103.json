@@ -1,0 +1,113 @@
+{
+  "version": "20261126-live-v103",
+  "profiles": [
+    {
+      "width": 390,
+      "height": 844,
+      "sharedPreviewDescriptions": true,
+      "staticCompleteSeatingAndCinemaPhotos": true,
+      "seatingPriceNoRedundantUnit": true,
+      "currencyBesideEveryPrice": true,
+      "headerFontsPreserved": true,
+      "coordinationGalleryPreserved": true,
+      "helpUnchanged": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "sharedPreviewDescriptions": true,
+      "staticCompleteSeatingAndCinemaPhotos": true,
+      "seatingPriceNoRedundantUnit": true,
+      "currencyBesideEveryPrice": true,
+      "headerFontsPreserved": true,
+      "coordinationGalleryPreserved": true,
+      "helpUnchanged": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "sharedPreviewDescriptions": true,
+      "staticCompleteSeatingAndCinemaPhotos": true,
+      "seatingPriceNoRedundantUnit": true,
+      "currencyBesideEveryPrice": true,
+      "headerFontsPreserved": true,
+      "coordinationGalleryPreserved": true,
+      "helpUnchanged": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 390,
+      "height": 430,
+      "sharedPreviewDescriptions": true,
+      "staticCompleteSeatingAndCinemaPhotos": true,
+      "seatingPriceNoRedundantUnit": true,
+      "currencyBesideEveryPrice": true,
+      "headerFontsPreserved": true,
+      "coordinationGalleryPreserved": true,
+      "helpUnchanged": true,
+      "noHorizontalOverflow": true
+    }
+  ],
+  "previews": [
+    {
+      "mode": "main",
+      "path": "/services/coordination/",
+      "description": "نجهّز مناسباتكم بكل تفاصيلها",
+      "titleOnlyBrand": true,
+      "textOnly": true
+    },
+    {
+      "mode": "portal",
+      "path": "/services-guide/coordination/",
+      "description": "نجهّز مناسباتكم بكل تفاصيلها",
+      "titleOnlyBrand": true,
+      "textOnly": true
+    },
+    {
+      "mode": "main",
+      "path": "/services/dining-tables/",
+      "description": "طاولة الطعام تجمعكم في المساحة الخارجية الخاصة بالكوخ",
+      "titleOnlyBrand": true,
+      "textOnly": true
+    },
+    {
+      "mode": "portal",
+      "path": "/services-guide/dining/",
+      "description": "طاولة الطعام تجمعكم في المساحة الخارجية الخاصة بالكوخ",
+      "titleOnlyBrand": true,
+      "textOnly": true
+    },
+    {
+      "mode": "main",
+      "path": "/services/outdoor-seating/",
+      "description": "جلسات نجهّزها لكم في المساحة الخارجية الخاصة بالكوخ",
+      "titleOnlyBrand": true,
+      "textOnly": true
+    },
+    {
+      "mode": "portal",
+      "path": "/services-guide/seating/",
+      "description": "جلسات نجهّزها لكم في المساحة الخارجية الخاصة بالكوخ",
+      "titleOnlyBrand": true,
+      "textOnly": true
+    },
+    {
+      "mode": "main",
+      "path": "/services/cinema/",
+      "description": "جلسة سينما خارجية في المساحة الخاصة بالكوخ",
+      "titleOnlyBrand": true,
+      "textOnly": true
+    },
+    {
+      "mode": "portal",
+      "path": "/services-guide/cinema/",
+      "description": "جلسة سينما خارجية في المساحة الخاصة بالكوخ",
+      "titleOnlyBrand": true,
+      "textOnly": true
+    }
+  ],
+  "errors": [],
+  "messagesSent": false
+}

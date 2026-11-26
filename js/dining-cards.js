@@ -14,7 +14,7 @@ var FD_DINING_CARDS = (function(){
     if(orderable) table.setAttribute('aria-describedby','dining-price-help');
     var head=node('thead'),heading=node('tr'),labels={};
     ['plain','tansiq'].forEach(function(option){labels[option]=copy.querySelector('[data-option="'+option+'"] .fd-dining-option-name').textContent;});
-    ['الأشخاص',labels.plain,labels.tansiq].forEach(function(label){var th=node('th','',label);th.scope='col';heading.appendChild(th);});
+    ['عدد الأشخاص',labels.plain,labels.tansiq].forEach(function(label){var th=node('th','',label);th.scope='col';heading.appendChild(th);});
     head.appendChild(heading);table.appendChild(head);
     var body=node('tbody');
     Object.keys(_tawilatPrices).forEach(function(size){

@@ -13,6 +13,7 @@
       "cardIntro": "خيارات تناسب عدد ضيوفكم",
       "orderLabel": "اطلب هذه الطاولة",
       "orderHint": "اختر عدد الأشخاص ونوع التجهيز، ثم اضغط «اطلب هذه الطاولة».",
+      "shareDescription": "طاولة الطعام تجمعكم في المساحة الخارجية الخاصة بالكوخ",
       "image": "/site/media/service-68b7cdf57e8c.webp",
       "originalImage": "/imgs/tawilat_1.webp?v=20261110-natural-photos-v1",
       "size": [
@@ -43,6 +44,7 @@
       "intro": "جلسة سينما خارجية في المساحة الخاصة بالكوخ",
       "cardIntro": "استمتعوا بتجربة سينما في مساحتكم الخاصة",
       "orderLabel": "اطلب هذه الجلسة",
+      "shareDescription": "جلسة سينما خارجية في المساحة الخاصة بالكوخ",
       "image": "/site/media/service-7d2ca2d506cd.webp",
       "originalImage": "/imgs/coordination/complete/13-lighting-v4.webp",
       "size": [
@@ -67,6 +69,7 @@
         "name": "منسّق المناسبات",
         "phone": "966537009217"
       },
+      "shareDescription": "نجهّز مناسباتكم بكل تفاصيلها",
       "image": "/site/media/service-d1b98b382b4d.webp",
       "originalImage": "/imgs/coordination/rose/front-a-v4.webp",
       "size": [
@@ -86,6 +89,7 @@
         "name": "منسّق المناسبات",
         "phone": "966537009217"
       },
+      "shareDescription": "جلسات نجهّزها لكم في المساحة الخارجية الخاصة بالكوخ",
       "image": "/site/media/service-788fe35fcd8e.webp",
       "originalImage": "/imgs/jalsat_1.webp",
       "size": [
