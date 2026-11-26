@@ -2295,7 +2295,7 @@
     "guest-services/README.md": "1ad3a3d1df387c6f92547d236015ff1c975e01b67890162dfa0d0e750b23ec7a",
     "guest-services/guest-services.css": "207545d3740a44c6e0ab8ded3731b255151478ecf82109d0344cdb5dc7e61a36",
     "guest-services/guest-services.js": "c07fdd6b347f5e93c2434b899164e266dec0a36cbf20583a422464b2cd7ff668",
-    "guest-services/index.html": "7fb9143d87725f962cf11388f0c7532d03802f77b74a896e54001aa18823d16e",
+    "guest-services/index.html": "93c9b59222edb8fa3303536a27f035a0131cb4b7db23f0bfc8beca1441efaca0",
     "guest-services/service-source.js": "e0da9d9065eea4864558446730954129ccefb495b97c4c7070b8e4a6a6803b3e",
     "guest-services/share.js": "a207ab25177d5b69bb1e8a4cc37bc0755c9a2157b7024561d3c15b2652c4323b",
     "js/dining-cards.js": "c395708cd357ec9ed6ae881efd60f12d3f9dd3751a3ff7006699bf178f7e8906",
@@ -2306,7 +2306,7 @@
     "services-guide/guide.js": "8374570e1f9c7fff60034a6211d6c920fba8d179455d451970738a0ec829556c",
     "services-guide/index.html": "e163c27757363d893a375930d5ed406e5ad0ebba9514254173698c704b92e650",
     "services-guide/share-entry.js": "72de1a301e0da0de127f52b55714dab77b23548b1125915272e33bf4b1fc09a8",
-    "guest-services/resort-refinements.css": "5ccfd5e08d6538ebb7f37eb93f5dc52ac270dbf309ee57b38c82078ee0b31520",
+    "guest-services/resort-refinements.css": "86767dab7a8046a03594948cd206054d90b81e79f1ae2de4d1d4bcb829c79e22",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
     "services-guide/guide-orders.js": "054ff6944cf99c8cd403e1eef3deeeffa458242b90044aed124f07709172fc05",
     "services-guide/guide-orders.css": "4566ed2d645963bb1345ff2ebfc7f87d6687afe586ce4ba548706aa848b14730"
@@ -3115,6 +3115,16 @@
     "updatedProtectedFiles": [
       "services-guide/guide.css",
       "services-guide/index.html"
+    ]
+  },
+  "approvedGuestServiceRows": {
+    "date": "2026-11-26",
+    "version": "20261126-portal-rows-v107",
+    "rollbackTag": "pre-guest-service-rows-20261126",
+    "reason": "Owner requests all five guest-services home tiles to use the restaurant/hospitality full-width stacked mobile layout and final order restaurant, hospitality, extras, water, games. Reorder the actual home buttons and extend the existing mobile card geometry, including small-phone action wrapping. Preserve colors, content, service dialogs, desktop layout, order behavior and links.",
+    "updatedProtectedFiles": [
+      "guest-services/index.html",
+      "guest-services/resort-refinements.css"
     ]
   }
 }

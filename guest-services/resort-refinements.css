@@ -36,3 +36,12 @@ body.resort-portal-refinements .hero .logo-frame{width:clamp(150px,42vw,164px)}
  .resort-portal-refinements .hero>h1{grid-row:3}
  .resort-portal-refinements .hero>p:last-child{grid-row:4}
 }
+
+/* All five resort services use the existing full-width mobile card layout. */
+@media(max-width:839px){
+ .resort-portal-refinements .service-tiles>.service-tile{grid-column:1/-1;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;min-height:92px}
+}
+@media(max-width:360px){
+ .resort-portal-refinements .service-tiles>.service-tile{grid-template-columns:auto minmax(0,1fr)}
+ .resort-portal-refinements .service-tiles>.service-tile .tile-action{grid-column:2}
+}
