@@ -2923,5 +2923,18 @@
       "text-only main /menu/ share links",
       "original restaurant WhatsApp wording and category/item order"
     ]
+  },
+  "approvedRestaurantLayoutRestore": {
+    "version": "20261126-live-v92",
+    "rollbackTag": "pre-restaurant-layout-restore-20261126",
+    "reason": "Owner preferred the archived restaurant design: six category buttons in two rows, compact cards for the selected category, and a clean invoice below the menu. Restored the category/card rhythm from pre-live-cutover-20261125 js/services.js, css/app-base.css and menu-experience.css within the current main-only controller. Removed the top summary jump, menu-share action inside the invoice, and عبر واتساب wording; confirmation is تابع طلبك مع المطعم. Checkout remains inline without a popup.",
+    "preserved": [
+      "all 47 menu products options prices and hours",
+      "restaurant recipient 966537006531",
+      "original shared WhatsApp message builder",
+      "standalone portal code and design",
+      "all original public URLs and share metadata",
+      "other service request flows"
+    ]
   }
 }
