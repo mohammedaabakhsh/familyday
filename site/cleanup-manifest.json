@@ -3126,5 +3126,16 @@
       "guest-services/index.html",
       "guest-services/resort-refinements.css"
     ]
+  },
+  "approvedMainServiceSpacing": {
+    "date": "2026-11-26",
+    "version": "20261126-live-v108",
+    "rollbackTag": "pre-main-service-spacing-20261126",
+    "reason": "Owner approves main-only dining/cinema intro centering, centered dining selection guidance without comma before ثم, and removal of compact mobile help overrides for coordination/outdoor seating so they use the same margins, title/description line heights and spacing as approved cinema/dining help. Pages may scroll; standalone copy and design remain unchanged.",
+    "sources": [
+      "site/style.css",
+      "site/app.js",
+      "site/guide-copy.json"
+    ]
   }
 }

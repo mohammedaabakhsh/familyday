@@ -33,7 +33,7 @@ with sync_playwright() as p:
      assert 'الصورة توضح' not in root.inner_text()
      details=root.locator('.dining-guide-details' if mode=='main' else 'details.fd-dining-contents');assert details.evaluate('e=>!e.open')
      expect(details.locator('summary')).to_have_text('محتويات التجهيز مع التنسيق');details.locator('summary').click();expect(details.locator('li')).to_have_count(6);details.locator('summary').click()
-     hint=root.locator('#dining-selection-help' if mode=='main' else '#dining-price-help');expect(hint).to_have_text(copy[kind]['orderHint'])
+     hint=root.locator('#dining-selection-help' if mode=='main' else '#dining-price-help');expect(hint).to_have_text(copy[kind].get('mainOrderHint',copy[kind]['orderHint']) if mode=='main' else copy[kind]['orderHint'])
      table=root.locator('table');assert table.evaluate('(e,sel)=>!!(e.compareDocumentPosition(document.querySelector(sel))&Node.DOCUMENT_POSITION_FOLLOWING)','#dining-selection-help' if mode=='main' else '#dining-price-help')
      btn=root.locator('[data-service-portal]' if mode=='main' else '[data-dining-request]');expect(btn).to_be_disabled()
      root.locator('[data-dining-size="18"][data-dining-option="tansiq"]' if mode=='main' else '[data-size="18"][data-option="tansiq"]').click();expect(btn).to_be_enabled();assert page.locator('#native-order-dialog' if mode=='main' else '.arrangement-request').is_hidden()
@@ -55,7 +55,7 @@ with sync_playwright() as p:
     expect(send).to_have_text('إرسال الطلب');send.click();expect(page.locator('#native-order-dialog' if mode=='main' else '.arrangement-request')).to_be_hidden()
     draft=page.evaluate('opened.at(-1)');assert urlparse(draft).path=='/966537009217';message=parse_qs(urlparse(draft).query)['text'][0];assert message==prefix(kind)+expected[kind]+'\n\nملاحظات: تجهيز للمناسبة',(mode,kind,message)
     drafts.append(draft)
-    if kind=='dining':expect(hint).to_have_text(copy[kind]['orderHint']);expect(btn).to_be_disabled()
+    if kind=='dining':expect(hint).to_have_text(copy[kind].get('mainOrderHint',copy[kind]['orderHint']) if mode=='main' else copy[kind]['orderHint']);expect(btn).to_be_disabled()
     if width==390:
      page.evaluate('scrollTo(0,0)');folder=Path('/tmp/service-copy-v104');folder.mkdir(exist_ok=True);page.screenshot(path=str(folder/(kind+'-'+mode+'.png')),full_page=kind in ['cinema','dining'])
     page.close()
