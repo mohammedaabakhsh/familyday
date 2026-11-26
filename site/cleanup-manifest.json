@@ -2936,5 +2936,10 @@
       "all original public URLs and share metadata",
       "other service request flows"
     ]
+  },
+  "approvedRestaurantFollowupCopy": {
+    "version": "20261126-live-v93",
+    "rollbackTag": "pre-restaurant-followup-copy-20261126",
+    "reason": "Owner approved the exact main restaurant follow-up sentence تابع طلبك مع المطعم على واتساب. Copy-only change; layout, request behavior, prices, recipient and original portal remain unchanged."
   }
 }

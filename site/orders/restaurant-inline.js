@@ -36,7 +36,7 @@ export function createRestaurantInline({menu,cabins,messageBuilder}){
    if(key==='cabin'){const number=node('p',undefined,'inline-restaurant-cabin-number');number.hidden=true;form.append(number);}
   }
   const send=node('button','إرسال الطلب','button primary wide');send.type='submit';
-  const note=node('p','تابع طلبك مع المطعم','inline-restaurant-confirmation');form.append(send,note);summary.append(form);
+  const note=node('p','تابع طلبك مع المطعم على واتساب','inline-restaurant-confirmation');form.append(send,note);summary.append(form);
   root.append(summary);root.querySelector('.restaurant-inline-status')?.remove();
   function showCategory(index){activeCategory=index;root.querySelectorAll('[data-menu-category]').forEach(button=>button.setAttribute('aria-pressed',String(Number(button.dataset.menuCategory)===index)));root.querySelectorAll('.restaurant-menu-category').forEach((section,i)=>section.hidden=i!==index);}
   root.querySelectorAll('[data-menu-category]').forEach(button=>button.addEventListener('click',()=>{

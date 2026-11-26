@@ -45,7 +45,7 @@ with sync_playwright() as p:
     assert not page.locator('dialog[open],iframe').count();expect(page.locator('.inline-restaurant-total strong')).to_have_text(str(expectedTotal)+' ريال');assert page.locator('.inline-restaurant-items>article').count()==6
     # Edit quantities in the menu; the receipt contains only itemized prices and removal.
     assert page.locator('.inline-restaurant-summary .inline-menu-quantity,.inline-restaurant-jump,.inline-restaurant-summary header button').count()==0
-    expect(page.locator('.inline-restaurant-confirmation')).to_have_text('تابع طلبك مع المطعم')
+    expect(page.locator('.inline-restaurant-confirmation')).to_have_text('تابع طلبك مع المطعم على واتساب')
     page.locator('.restaurant-menu-tabs button').get_by_text('ساندويتشات',exact=True).click();counter=page.locator('.menu-row').first.locator('.inline-menu-quantity');plus=counter.locator('[data-step="1"]');plus.focus();page.keyboard.press('Enter');expect(plus).to_be_focused();expect(page.locator('.inline-restaurant-total strong')).to_have_text(str(expectedTotal+12)+' ريال');counter.locator('[data-step="-1"]').click();expect(page.locator('.inline-restaurant-total strong')).to_have_text(str(expectedTotal)+' ريال')
     if mode=='directory':
      page.locator('[data-service-group="1"]').last.click();page.locator('[data-service-group="0"]').last.click();expect(page.locator('.inline-restaurant-total strong')).to_have_text(str(expectedTotal)+' ريال')
