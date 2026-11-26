@@ -2302,9 +2302,9 @@
     "js/menu-order-message.js": "78e54cc83d01bb6b5a44de14d4ce709d8f900517d6f09b1bda0d7a63067abaa9",
     "services-guide/README.md": "e3c7f53ebcd6efe67fab2cc72f75c7a6ff274c181880110891817c3beab79499",
     "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
-    "services-guide/guide.css": "ce08d6890dea17b206f1e86b352aa58189262322c076ec9c4d56da9cabe1296e",
-    "services-guide/guide.js": "cf8f32cf68be92830f4aa9a17bd29dadb10f4f1579c68b60e575134da0281c4c",
-    "services-guide/index.html": "d33c5caf7d562aecf2444e8f08e845c03582eb4887d3abb7b0a4133cbae2a0fe",
+    "services-guide/guide.css": "15fc8eb0f7a3c99bae892292eabba7da9d89a57e3feb4b577324ca1994ebd11e",
+    "services-guide/guide.js": "68f27c6f9ed9ebe219add6eb35dbb4ff7623121f648a68bb2209b8e71813bb4a",
+    "services-guide/index.html": "8e28513930653958fbc2aa8ed61c1f72793a643eaea61dc79b9c4857bd95920e",
     "services-guide/share-entry.js": "05dac99bc60dfc4b2d2d1b08c131735f22d72f29cf93f1861b85df47c89dffa2",
     "guest-services/resort-refinements.css": "5ccfd5e08d6538ebb7f37eb93f5dc52ac270dbf309ee57b38c82078ee0b31520",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
@@ -2816,6 +2816,23 @@
       "request modal presentation and short button labels",
       "each interface share destinations",
       "other services and chalet/resthouse"
+    ]
+  },
+  "approvedCoordinationScreenFit": {
+    "version": "20261126-live-v85",
+    "rollbackTag": "pre-coordination-screen-fit-20261126",
+    "reason": "Owner requested navy advance-request copy in the portal and turquoise in the main guide, removal of the redundant visible coordinator phone while retaining WhatsApp/call links, and balanced vertical spacing to keep the closed six-package overview and help on one normal mobile screen. Height-aware spacing respects safe areas and leaves expanded/short views naturally scrollable.",
+    "updatedProtectedFiles": [
+      "services-guide/guide.css",
+      "services-guide/guide.js",
+      "services-guide/index.html"
+    ],
+    "preserved": [
+      "advance wording and package contents/photos/prices",
+      "coordinator WhatsApp/call destinations",
+      "order controllers/messages/modal presentation",
+      "each interface own share URL",
+      "other services"
     ]
   }
 }

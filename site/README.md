@@ -151,3 +151,7 @@ Cinema's standalone section shows its photo immediately, using the same shared g
 ## Coordination advance guidance and coordinator help — v84
 
 [Approved guidance and help](../docs/coordination-guidance-help-v84.md) add the no-fixed-period advance-request sentence above the packages, 20px gaps between compact cards, and a light coordinator contact section below them in both interfaces. Shared copy/contact data are exported through service links; WhatsApp and call point to the original coordinator. Original catalogue data, request dialog/controllers/messages and per-interface share destinations remain unchanged. Rollback: `pre-coordination-help-20261126`.
+
+## Coordination overview fits normal mobile screens — v85
+
+[Owner-approved mobile balance](../docs/coordination-screen-fit-v85.md) uses navy/turquoise guidance per interface, removes the redundant visible phone, combines the help heading/coordinator label, and balances vertical spacing by available viewport height and safe areas. The six closed packages plus contact actions fit tested normal portrait screens; short/expanded views stay naturally scrollable. Contact destinations, content/prices, request presentation/controllers/messages and per-interface shares remain unchanged. Rollback: `pre-coordination-screen-fit-20261126`.

@@ -1,0 +1,176 @@
+{
+  "version": "20261126-live-v85",
+  "profiles": [
+    {
+      "width": 390,
+      "height": 844,
+      "interface": "main",
+      "singleScreenClosedOverview": true,
+      "advanceColor": "rgb(109, 206, 210)",
+      "numberRemovedCorrectContactsRetained": true,
+      "contentsRequestAndSharesWork": true,
+      "metrics": {
+        "height": 844,
+        "scrollHeight": 844,
+        "helpBottom": 720.21875,
+        "navTop": 760
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "interface": "portal",
+      "singleScreenClosedOverview": true,
+      "advanceColor": "rgb(19, 53, 72)",
+      "numberRemovedCorrectContactsRetained": true,
+      "contentsRequestAndSharesWork": true,
+      "metrics": {
+        "height": 844,
+        "scrollHeight": 844,
+        "helpBottom": 746.1875,
+        "navTop": 844
+      }
+    },
+    {
+      "width": 390,
+      "height": 740,
+      "interface": "main",
+      "singleScreenClosedOverview": true,
+      "advanceColor": "rgb(109, 206, 210)",
+      "numberRemovedCorrectContactsRetained": true,
+      "contentsRequestAndSharesWork": true,
+      "metrics": {
+        "height": 740,
+        "scrollHeight": 740,
+        "helpBottom": 615.25,
+        "navTop": 656
+      }
+    },
+    {
+      "width": 390,
+      "height": 740,
+      "interface": "portal",
+      "singleScreenClosedOverview": true,
+      "advanceColor": "rgb(19, 53, 72)",
+      "numberRemovedCorrectContactsRetained": true,
+      "contentsRequestAndSharesWork": true,
+      "metrics": {
+        "height": 740,
+        "scrollHeight": 740,
+        "helpBottom": 639.140625,
+        "navTop": 740
+      }
+    },
+    {
+      "width": 375,
+      "height": 667,
+      "interface": "main",
+      "singleScreenClosedOverview": true,
+      "advanceColor": "rgb(109, 206, 210)",
+      "numberRemovedCorrectContactsRetained": true,
+      "contentsRequestAndSharesWork": true,
+      "metrics": {
+        "height": 667,
+        "scrollHeight": 667,
+        "helpBottom": 563.015625,
+        "navTop": 583
+      }
+    },
+    {
+      "width": 375,
+      "height": 667,
+      "interface": "portal",
+      "singleScreenClosedOverview": true,
+      "advanceColor": "rgb(19, 53, 72)",
+      "numberRemovedCorrectContactsRetained": true,
+      "contentsRequestAndSharesWork": true,
+      "metrics": {
+        "height": 667,
+        "scrollHeight": 667,
+        "helpBottom": 585.4375,
+        "navTop": 667
+      }
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "interface": "main",
+      "singleScreenClosedOverview": false,
+      "advanceColor": "rgb(109, 206, 210)",
+      "numberRemovedCorrectContactsRetained": true,
+      "contentsRequestAndSharesWork": true,
+      "metrics": {
+        "height": 568,
+        "scrollHeight": 712,
+        "helpBottom": 608.0625,
+        "navTop": 484
+      }
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "interface": "portal",
+      "singleScreenClosedOverview": false,
+      "advanceColor": "rgb(19, 53, 72)",
+      "numberRemovedCorrectContactsRetained": true,
+      "contentsRequestAndSharesWork": true,
+      "metrics": {
+        "height": 568,
+        "scrollHeight": 620,
+        "helpBottom": 606.140625,
+        "navTop": 568
+      }
+    },
+    {
+      "width": 390,
+      "height": 430,
+      "interface": "main",
+      "singleScreenClosedOverview": false,
+      "advanceColor": "rgb(109, 206, 210)",
+      "numberRemovedCorrectContactsRetained": true,
+      "contentsRequestAndSharesWork": true,
+      "metrics": {
+        "height": 430,
+        "scrollHeight": 667,
+        "helpBottom": 562.9375,
+        "navTop": 346
+      }
+    },
+    {
+      "width": 390,
+      "height": 430,
+      "interface": "portal",
+      "singleScreenClosedOverview": false,
+      "advanceColor": "rgb(19, 53, 72)",
+      "numberRemovedCorrectContactsRetained": true,
+      "contentsRequestAndSharesWork": true,
+      "metrics": {
+        "height": 430,
+        "scrollHeight": 596,
+        "helpBottom": 582.03125,
+        "navTop": 430
+      }
+    }
+  ],
+  "errors": [],
+  "messagesSent": false,
+  "simulatedSafeArea": {
+    "top": 47,
+    "bottom": 34,
+    "method": "CSS inset layout model, not a native Safari session",
+    "profiles": [
+      {
+        "height": 844,
+        "scrollHeight": 844,
+        "helpBottom": 677.421875,
+        "navTop": 738
+      },
+      {
+        "height": 740,
+        "scrollHeight": 740,
+        "helpBottom": 601.9375,
+        "navTop": 634
+      }
+    ]
+  }
+}

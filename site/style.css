@@ -368,10 +368,26 @@ body.resort-services #main{width:100%;max-width:none;height:100dvh;min-height:0;
 /* Coordination guidance and contact use the available space without another boxed panel. */
 .resort-service .service-guide-coordination .service-guide-packages{display:grid;gap:20px}
 .resort-service .service-guide-coordination .service-guide-packages>.package{margin:0}
-.resort-service .service-guide-coordination .coordination-order-note{max-width:680px;margin:0 auto 22px;color:var(--muted);font-size:13px;line-height:1.85;text-align:center;text-wrap:pretty}
+.resort-service .service-guide-coordination .coordination-order-note{max-width:680px;margin:0 auto 22px;color:var(--teal);font-size:13px;line-height:1.85;text-align:center;text-wrap:pretty}
 .resort-service .coordination-help{margin-top:28px;padding-top:20px;border-top:1px solid var(--line);text-align:center}
 .resort-service .coordination-help h2{font-size:17px;line-height:1.6;margin:0 0 6px}
 .resort-service .coordination-help p{margin:0 0 14px;color:var(--muted);font-size:13px;line-height:1.8}
 .resort-service .coordination-help bdi{color:var(--teal);white-space:nowrap}
 .resort-service .coordination-help-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .resort-service .coordination-help-actions a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:10px;border:1px solid var(--line);border-radius:10px;color:var(--ink);font-size:14px;font-weight:700}
+
+/* Closed coordination cards share the mobile screen with guidance and contact actions. */
+@media screen and (max-width:759px){
+ .resort-service .service-guide-coordination{--co-available:calc(100svh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));--co-gap:clamp(8px,calc(var(--co-available)*.06 - 32px),20px);--co-space:clamp(6px,calc(var(--co-available)*.03 - 14px),16px)}
+ .resort-service #main:has(.service-guide-coordination){padding-top:calc(var(--header) + env(safe-area-inset-top,0px) + 4px);padding-bottom:calc(104px + env(safe-area-inset-bottom,0px))}
+ .resort-service .service-guide-coordination .page-heading{margin:0 0 var(--co-space)}
+ .resort-service .service-guide-coordination .page-heading h1{margin:0}
+ .resort-service .service-guide-coordination .page-heading p{margin-top:2px;font-size:13px;line-height:1.6}
+ .resort-service .service-guide-coordination .coordination-order-note{margin-bottom:var(--co-space);line-height:1.75}
+ .resort-service .service-guide-coordination .service-guide-packages{gap:var(--co-gap)}
+ .resort-service .service-guide-coordination .service-guide-packages>.package>summary{min-height:clamp(44px,calc(var(--co-available)*.1 - 26px),60px);padding:clamp(6px,calc(var(--co-available)*.03 - 12px),16px) 14px}
+ .resort-service .service-guide-coordination .coordination-help{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:baseline;column-gap:8px;row-gap:6px;margin-top:clamp(6px,calc(var(--co-available)*.03 - 15px),12px);padding-top:clamp(4px,calc(var(--co-available)*.02 - 10px),8px)}
+ .resort-service .service-guide-coordination .coordination-help h2{margin:0;text-align:right;font-size:16px;line-height:1.4}
+ .resort-service .service-guide-coordination .coordination-help p{margin:0;text-align:left;font-size:13px;line-height:1.5}
+ .resort-service .service-guide-coordination .coordination-help-actions{grid-column:1/-1}
+}

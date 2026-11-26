@@ -70,7 +70,7 @@
     }
     const coordination=serviceLinks.coordination,help=coordination?.help;
     const advance=coordination?.advanceNote?'<p class="coordination-order-note">'+escape(coordination.advanceNote)+'</p>':'';
-    const contact=help?'<section class="coordination-help" aria-labelledby="coordination-help-title"><h3 id="coordination-help-title">'+escape(help.title)+'</h3><p>'+escape(help.name)+' · <bdi dir="ltr">'+escape(help.phone.replace(/^966/,'0'))+'</bdi></p><nav class="coordination-help-actions" aria-label="التواصل مع منسّق المناسبات"><a href="https://wa.me/'+escape(help.phone)+'" target="_blank" rel="noopener noreferrer" aria-label="واتساب منسّق المناسبات">واتساب</a><a href="tel:+'+escape(help.phone)+'" aria-label="اتصال بمنسّق المناسبات">اتصال</a></nav></section>':'';
+    const contact=help?'<section class="coordination-help" aria-labelledby="coordination-help-title"><h3 id="coordination-help-title">'+escape(help.title)+'</h3><p>'+escape(help.name)+'</p><nav class="coordination-help-actions" aria-label="التواصل مع منسّق المناسبات"><a href="https://wa.me/'+escape(help.phone)+'" target="_blank" rel="noopener noreferrer" aria-label="واتساب منسّق المناسبات">واتساب</a><a href="tel:+'+escape(help.phone)+'" aria-label="اتصال بمنسّق المناسبات">اتصال</a></nav></section>':'';
     let html = section('coordination',data.coordination.name,coordination?.intro||data.coordination.intro,advance+packages(data.coordination.packages)+contact,true);
     const diningSource = template.content;
     const diningImage = sourceImage(diningSource,'.fd-dining-image img');

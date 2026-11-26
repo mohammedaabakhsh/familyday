@@ -286,7 +286,7 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 
 /* Give the compact coordination rows room, with advance guidance and simple contact actions. */
 #coordination .package-grid{gap:20px}
-#coordination .coordination-order-note{max-width:680px;margin:0 auto 22px;color:var(--muted);font-size:13px;line-height:1.85;text-align:center;text-wrap:pretty}
+#coordination .coordination-order-note{max-width:680px;margin:0 auto 22px;color:var(--ink);font-size:13px;line-height:1.85;text-align:center;text-wrap:pretty}
 #coordination .coordination-help{max-width:680px;margin:28px auto 0;padding-top:20px;border-top:1px solid var(--line);text-align:center}
 #coordination .coordination-help h3{font-size:17px;line-height:1.6;margin:0 0 6px}
 #coordination .coordination-help p{margin:0 0 14px;color:var(--muted);font-size:13px;line-height:1.8}
@@ -294,3 +294,17 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 #coordination .coordination-help-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 #coordination .coordination-help-actions a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:10px;border:1px solid var(--line);border-radius:10px;color:var(--ink);font-size:14px;font-weight:700}
 body.resort-order-embedded #coordination :is(.coordination-order-note,.coordination-help){display:none!important}
+
+/* Fit the coordination overview naturally; expanded packages remain scrollable. */
+@media screen and (max-width:759px){
+ body[data-guide-view="section"] #coordination{--co-available:calc(100svh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));--co-gap:clamp(8px,calc(var(--co-available)*.06 - 32px),20px);--co-space:clamp(6px,calc(var(--co-available)*.03 - 14px),16px);padding-top:clamp(10px,calc(var(--co-available)*.02),18px);padding-bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+ body[data-guide-view="section"] #coordination>.section-heading{margin-bottom:var(--co-space);padding-bottom:8px}
+ body[data-guide-view="section"] #coordination>.section-heading p{margin-top:4px;font-size:13px;line-height:1.6}
+ body[data-guide-view="section"] #coordination .coordination-order-note{margin-bottom:var(--co-space);line-height:1.75}
+ body[data-guide-view="section"] #coordination .package-grid{gap:var(--co-gap)}
+ body[data-guide-view="section"] #coordination .seating-collapsed-summary{min-height:clamp(44px,calc(var(--co-available)*.1 - 26px),60px);padding:clamp(6px,calc(var(--co-available)*.03 - 12px),16px) 14px}
+ body[data-guide-view="section"] #coordination .coordination-help{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:baseline;column-gap:8px;row-gap:6px;margin-top:clamp(6px,calc(var(--co-available)*.03 - 15px),12px);padding-top:clamp(4px,calc(var(--co-available)*.02 - 10px),8px)}
+ body[data-guide-view="section"] #coordination .coordination-help h3{margin:0;text-align:right;font-size:16px;line-height:1.4}
+ body[data-guide-view="section"] #coordination .coordination-help p{margin:0;text-align:left;font-size:13px;line-height:1.5}
+ body[data-guide-view="section"] #coordination .coordination-help-actions{grid-column:1/-1}
+}
