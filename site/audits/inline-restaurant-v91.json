@@ -1,0 +1,43 @@
+{
+  "version": "20261126-live-v91",
+  "profiles": [
+    {
+      "width": 390,
+      "height": 844,
+      "mainHasNoDialogOrIframe": true,
+      "all47MenuItemsAndPrices": true,
+      "inlineQuantityCheeseAndBbq": true,
+      "summaryRemovalAndTotals": true,
+      "summaryKeyboardFocus": true,
+      "identityValidation": true,
+      "exactPortalMessageParity": true,
+      "restaurantRecipient": "966537006531"
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "mainHasNoDialogOrIframe": true,
+      "all47MenuItemsAndPrices": true,
+      "inlineQuantityCheeseAndBbq": true,
+      "summaryRemovalAndTotals": true,
+      "summaryKeyboardFocus": true,
+      "identityValidation": true,
+      "exactPortalMessageParity": true,
+      "restaurantRecipient": "966537006531"
+    },
+    {
+      "width": 390,
+      "height": 430,
+      "mainHasNoDialogOrIframe": true,
+      "all47MenuItemsAndPrices": true,
+      "inlineQuantityCheeseAndBbq": true,
+      "summaryRemovalAndTotals": true,
+      "summaryKeyboardFocus": true,
+      "identityValidation": true,
+      "exactPortalMessageParity": true,
+      "restaurantRecipient": "966537006531"
+    }
+  ],
+  "errors": [],
+  "messagesSent": false
+}

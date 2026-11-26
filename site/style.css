@@ -414,3 +414,35 @@ body.resort-services #main{width:100%;max-width:none;height:100dvh;min-height:0;
 .restaurant-menu-category .menu-row .note{margin:4px 0 0;font-size:12px;line-height:1.8}
 .restaurant-menu-category .menu-row strong{flex:none;font-size:14px;line-height:1.8;color:var(--teal);white-space:nowrap}
 .restaurant-guide .restaurant-order-link{margin-top:16px}
+
+/* Restaurant ordering stays in the main page, with its own summary below the menu. */
+.restaurant-menu-category .menu-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start}
+.restaurant-menu-category .inline-menu-controls{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+.inline-menu-quantity{display:flex;align-items:center;gap:10px;direction:ltr}
+.inline-menu-quantity button{width:44px;min-height:44px;padding:0;border:1px solid #557984;border-radius:10px;background:transparent;color:var(--teal);font-size:21px}
+.inline-menu-quantity output{min-width:24px;text-align:center;color:var(--ink);font-weight:700;font-size:15px}
+.inline-menu-quantity button:disabled{opacity:.35;cursor:default}
+.inline-menu-cheese{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
+.inline-menu-cheese input{width:20px;height:20px;accent-color:var(--teal)}
+.inline-menu-option{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px}
+.inline-menu-option select{min-height:42px;padding:6px 10px;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:9px;font:inherit;color-scheme:dark}
+.restaurant-menu-category .menu-row.has-selection{border-color:#4e9099}
+.inline-restaurant-jump{margin:0 0 16px;font-size:14px}
+.inline-restaurant-summary{margin:24px 0 4px;padding:18px;border:1px solid var(--line);border-radius:16px;background:var(--surface);scroll-margin-top:84px}
+.inline-restaurant-summary>header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.inline-restaurant-summary h2{margin:0;font-size:18px;line-height:1.5}
+.inline-restaurant-summary>header button{font-size:12px}
+.inline-restaurant-count{font-size:13px;color:var(--muted);margin:0 0 12px}
+.inline-restaurant-item{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px;padding:14px 0;border-bottom:1px solid var(--line)}
+.inline-restaurant-item-copy{grid-column:1/-1}
+.inline-restaurant-item h3{font-size:14px;line-height:1.7;margin:0}
+.inline-restaurant-item-price{color:var(--muted);font-size:12px;line-height:1.8;margin-top:4px}
+.inline-restaurant-remove{font-size:13px;min-height:42px;background:transparent;color:var(--muted);padding:6px}
+.inline-restaurant-total{display:flex;justify-content:space-between;gap:10px;padding:18px 0;margin-bottom:8px;color:var(--muted);font-size:14px}
+.inline-restaurant-total strong{color:var(--teal);font-size:20px;white-space:nowrap}
+.inline-restaurant-field{display:block;font-size:14px;font-weight:700;margin:16px 0}
+.inline-restaurant-field :is(input,select,textarea){display:block;width:100%;min-width:0;margin-top:8px;padding:12px;border:1px solid #557984;border-radius:10px;background:#0b2531;color:var(--ink);font:inherit;font-size:16px;line-height:1.7;color-scheme:dark}
+.inline-restaurant-cabin-number{margin:0;font-size:13px;color:var(--teal)}
+.inline-restaurant-confirmation{color:var(--muted);text-align:center;font-size:12px;line-height:1.8;margin-top:10px}
+.inline-restaurant-summary .button.primary{min-height:48px;margin-top:12px}
+@media(max-width:360px){.inline-restaurant-summary{padding:12px}.inline-menu-cheese{font-size:11px}.inline-restaurant-item .inline-menu-quantity{gap:6px}}

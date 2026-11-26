@@ -52,10 +52,11 @@ with sync_playwright() as p:
    root=page.locator('#'+('package-1' if key=='coordination' else 'session-1'));root.locator('summary').first.click();root.locator('[data-request-key]').click()
   prefix=identity(page,key);page.locator('#'+('restaurant-order .send-order' if key=='restaurant' else 'extras-order .send-order' if guest else 'arrangement-order .arrangement-send')).click();baseline[key]=page.evaluate('opened.at(-1)');assert baseline[key];c.close()
  print('Standalone reference drafts captured',flush=True)
+ # Restaurant ordering is inline now; check-direct-restaurant-menu.py compares it with the source portal.
  for width,height in [(320,568),(390,844),(430,932),(390,430)]:
   c=b.new_context(viewport={'width':width,'height':height},reduced_motion='reduce',ignore_https_errors=True);c.add_init_script(init);page=c.new_page();page.on('pageerror',lambda e:out['errors'].append(str(e)))
   page.goto(BASE+'/services/');page.evaluate('(keys)=>keys.forEach(k=>sessionStorage.setItem(k,JSON.stringify({name:"OLD",cabin:"البيت اليوناني 2",games:"table",notes:"OLD",quantities:{"package-1":5}})))',keys);saved=page.evaluate('(keys)=>keys.map(k=>sessionStorage.getItem(k))',keys)
-  for key,path in [case for case in cases if case[0]!='extras']:
+  for key,path in [case for case in cases if case[0] not in ['extras','restaurant']]:
    page.goto(BASE+path)
    if key=='dining':page.locator('[data-dining-size="6"][data-dining-option="plain"]').click()
    if key in ['coordination','seating']:page.locator('.service-guide-packages>.package summary').first.click()

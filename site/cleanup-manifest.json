@@ -2910,5 +2910,18 @@
       "external portals",
       "prices and WhatsApp/share destinations"
     ]
+  },
+  "approvedInlineRestaurantOrders": {
+    "version": "20261126-live-v91",
+    "rollbackTag": "pre-inline-restaurant-order-20261126",
+    "reason": "Owner clarified that the main restaurant must allow quantities/add-ons and checkout directly in-page, with its own summary below the menu and no request dialog. Both /services/ restaurant tab and /menu/ use a main-only basket and the original js/menu-order-message.js builder, source menu/cabin data, and restaurant recipient 966537006531.",
+    "preserved": [
+      "standalone guest portal code and popup workflow",
+      "all menu data prices hours and photos",
+      "other services independent request dialogs",
+      "all public URLs",
+      "text-only main /menu/ share links",
+      "original restaurant WhatsApp wording and category/item order"
+    ]
   }
 }
