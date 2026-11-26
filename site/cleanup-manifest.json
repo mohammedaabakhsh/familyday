@@ -2302,9 +2302,9 @@
     "js/menu-order-message.js": "78e54cc83d01bb6b5a44de14d4ce709d8f900517d6f09b1bda0d7a63067abaa9",
     "services-guide/README.md": "a1170ba5394064fe4cbea3ff7c5eb19e729d949093d3b29919b2fbb03c76befb",
     "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
-    "services-guide/guide.css": "738ad1675fcaf913729663ca31399bd9b7028a9ca246dbd873b361d97763fdbf",
+    "services-guide/guide.css": "62ab917684bb86a47bf98bac6df87cc0cf1209b63987363c0b4e6dd63a338c47",
     "services-guide/guide.js": "8374570e1f9c7fff60034a6211d6c920fba8d179455d451970738a0ec829556c",
-    "services-guide/index.html": "f1cdba05c109505aea17f20db6b69a55d2d9fb1068634a091ee7e80fdd66a28a",
+    "services-guide/index.html": "e163c27757363d893a375930d5ed406e5ad0ebba9514254173698c704b92e650",
     "services-guide/share-entry.js": "72de1a301e0da0de127f52b55714dab77b23548b1125915272e33bf4b1fc09a8",
     "guest-services/resort-refinements.css": "5ccfd5e08d6538ebb7f37eb93f5dc52ac270dbf309ee57b38c82078ee0b31520",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
@@ -3104,6 +3104,16 @@
     "updatedProtectedFiles": [
       "services-guide/guide.css",
       "services-guide/guide.js",
+      "services-guide/index.html"
+    ]
+  },
+  "approvedSubtleStandaloneColors": {
+    "date": "2026-11-26",
+    "version": "20261126-portal-colors-v106",
+    "rollbackTag": "pre-subtle-standalone-colors-20261126",
+    "reason": "Owner rejects the broad v105 palette and requests the guest-services balance: pastel top/header with only small accents where needed. Keep pastel topbar/request header and service price text; restore neutral cards, navy titles/help, standard teal CTAs, default dining table/selection, borders, fields and focus colors. No content or behavior changes.",
+    "updatedProtectedFiles": [
+      "services-guide/guide.css",
       "services-guide/index.html"
     ]
   }

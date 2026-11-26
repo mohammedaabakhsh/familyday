@@ -340,28 +340,11 @@ body.resort-order-embedded :is(#coordination,#seating,#dining,#cinema) :is(.coor
 #dining details.fd-dining-contents .fd-dining-inclusions{padding-bottom:14px}
 #dining .dining-order-actions{max-width:680px;margin-inline:auto}
 
-/* Carry each home card's palette through its standalone service and request. */
+/* Keep the guest-services balance: a tinted header and small price accents. */
 body:not(.resort-order-embedded)[data-guide-tone="coordination"]{--service-fill:#fcf0f2;--service-line:#ecd5dc;--service-ink:#934b65}
 body:not(.resort-order-embedded)[data-guide-tone="seating"]{--service-fill:#eff7f1;--service-line:#cfe1d4;--service-ink:#3c6b50}
 body:not(.resort-order-embedded)[data-guide-tone="dining"]{--service-fill:#fffaf0;--service-line:#e9ddb9;--service-ink:#806024}
 body:not(.resort-order-embedded)[data-guide-tone="cinema"]{--service-fill:#f5f1fa;--service-line:#e1d7ed;--service-ink:#70508b}
-body:not(.resort-order-embedded)[data-guide-tone]{--accent:var(--service-ink);--green:var(--service-ink);--line:var(--service-line);--tint:var(--service-fill)}
-body:not(.resort-order-embedded)[data-guide-tone] .topbar{background:var(--service-fill);border-color:var(--service-line);--fd-back-ink:var(--service-ink);--fd-back-arrow:var(--service-ink);--fd-back-border:var(--service-line);--fd-back-fill:#fff}
-body:not(.resort-order-embedded)[data-guide-tone] .topbar button{background:#fff;color:var(--service-ink)}
-body:not(.resort-order-embedded)[data-guide-tone] .section-heading h2{color:var(--service-ink)}
-body:not(.resort-order-embedded)[data-guide-tone] :is(#coordination,#seating) .seating-collapsed-card{background:var(--service-fill);border-color:var(--service-line)}
-body:not(.resort-order-embedded)[data-guide-tone] :is(#coordination,#seating) .seating-collapsed-card:has(details[open]){border-color:var(--service-ink);box-shadow:0 0 0 1px var(--service-ink)}
-body:not(.resort-order-embedded)[data-guide-tone] :is(#coordination,#seating) :is(.seating-collapsed-title,.seating-summary-bottom .price,.seating-detail-footer,.seating-collapsed-chevron){color:var(--service-ink)}
-body:not(.resort-order-embedded)[data-guide-tone] :is(#coordination,#seating) .seating-capacity-badge{color:var(--service-ink);border-color:var(--service-line);background:#fff}
-body:not(.resort-order-embedded)[data-guide-tone] :is(#coordination,#seating) .seating-collapsed-chevron{background:transparent;border-color:var(--service-line)}
-body:not(.resort-order-embedded)[data-guide-tone] :is(#coordination,#seating) .seating-collapsed-summary:focus-visible{outline-color:var(--service-ink)}
-body:not(.resort-order-embedded)[data-guide-tone] :is(#coordination,#seating,#dining,#cinema) :is(.coordination-help h3,.coordination-help-actions a,.coordination-order-note,.cinema-contents-title,.cinema-fact .price,.cinema-duration){color:var(--service-ink)}
-body:not(.resort-order-embedded)[data-guide-tone] :is(.arrangement-request-button,.arrangement-request .arrangement-send){background:var(--service-ink);color:#fff}
-body:not(.resort-order-embedded)[data-guide-tone] :is(.arrangement-request-button,.arrangement-request .arrangement-send):not(:disabled):hover{filter:brightness(.94)}
-body:not(.resort-order-embedded)[data-guide-tone] #dining{--fd-dining-box:var(--service-fill);--fd-dining-bg:#fff;--fd-dining-line:var(--service-line);--fd-dining-accent:var(--service-ink);--fd-dining-badge:var(--service-fill)}
-body:not(.resort-order-embedded)[data-guide-tone] #dining .fd-dining-option[aria-pressed="true"]{background:var(--service-ink);border-color:var(--service-ink);box-shadow:inset 0 0 0 1px var(--service-ink);color:#fff}
-body:not(.resort-order-embedded)[data-guide-tone] #dining .fd-dining-capacity{background:var(--service-fill);border-color:var(--service-line);color:var(--service-ink)}
-body:not(.resort-order-embedded)[data-guide-tone] .arrangement-request{border-color:var(--service-line)}
-body:not(.resort-order-embedded)[data-guide-tone] .arrangement-request>header{background:var(--service-fill)}
-body:not(.resort-order-embedded)[data-guide-tone] .arrangement-request :is(h2,.arrangement-total strong,.arrangement-quantity button){color:var(--service-ink)}
-body:not(.resort-order-embedded)[data-guide-tone] :is(button,a,input,select,textarea,summary):focus-visible{outline-color:var(--service-ink)}
+body:not(.resort-order-embedded)[data-guide-tone] .topbar{background:var(--service-fill);border-bottom-color:var(--service-line)}
+body:not(.resort-order-embedded)[data-guide-tone] .arrangement-request>header{background:var(--service-fill);border-bottom-color:var(--service-line)}
+body:not(.resort-order-embedded)[data-guide-tone] :is(#coordination,#seating,#cinema) .price{color:var(--service-ink)}
