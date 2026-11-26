@@ -139,3 +139,7 @@ Cinema's standalone section shows its photo immediately, using the same shared g
 ## Share destinations stay in their originating interface — v81
 
 [Owner clarification](../docs/portal-share-destinations-v81.md): standalone portals share their own section URLs; the main guide and its embedded requests keep native service URLs. Only order wording is unified across surfaces. Existing section/item compatibility and text-only previews remain. Guest-portal hash links now replace an already-open different service panel. Verify with `check-portal-share-destinations.py` and `check-service-share-scope.py`. Rollback: `pre-portal-share-destinations-20261126`.
+
+## Request presentation follows the standalone portal — v82
+
+[Owner-approved request layout](../docs/request-presentation-v82.md) places quantity before one service total and customer fields, uses the selected request title, preserves the original confirmation below the action, and labels the in-dialog action `إرسال الطلب` in both surfaces. Outer request buttons, order assembly/prices/recipients, and interface-specific share destinations stay unchanged. Verify using `check-request-presentation.py` and native-order regressions. Rollback: `pre-request-presentation-20261126`.

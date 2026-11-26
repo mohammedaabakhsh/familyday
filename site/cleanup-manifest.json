@@ -2295,7 +2295,7 @@
     "guest-services/README.md": "1ad3a3d1df387c6f92547d236015ff1c975e01b67890162dfa0d0e750b23ec7a",
     "guest-services/guest-services.css": "207545d3740a44c6e0ab8ded3731b255151478ecf82109d0344cdb5dc7e61a36",
     "guest-services/guest-services.js": "cad096714539c19c5b49891cc56885b43047c4f8ddeab51c3a5545bd319badff",
-    "guest-services/index.html": "aaa6dc871f789ba05bc2b49bca261733eabe8257c0abe5200d2b214e3dac5bff",
+    "guest-services/index.html": "623c33be494c32539fcd2525aa816be5f0623dfbdc7160fd4f0f74f99392120c",
     "guest-services/service-source.js": "e0da9d9065eea4864558446730954129ccefb495b97c4c7070b8e4a6a6803b3e",
     "guest-services/share.js": "a207ab25177d5b69bb1e8a4cc37bc0755c9a2157b7024561d3c15b2652c4323b",
     "js/dining-cards.js": "a80c8a1fcbc623019426cc46184f52f6dc0b109570afbd848e39571726be4097",
@@ -2304,11 +2304,11 @@
     "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
     "services-guide/guide.css": "0671ba0d08e0d6bbefc44d3b1d37cb58a73488a713165d56e315ceb7c2e7075f",
     "services-guide/guide.js": "b89e0b2d4ba632d379447fb2b6c617abedaeedf2d603cd615745fe387a9dcde5",
-    "services-guide/index.html": "4a44f2c44d2a1b3fc898c4ba3ceda7a85e24162cbd350ea74887d536a46a0f25",
+    "services-guide/index.html": "9c62a18671ea6ecde5cbb6f9ac19ca68e815a4f917454868fda8d260b5853f8d",
     "services-guide/share-entry.js": "05dac99bc60dfc4b2d2d1b08c131735f22d72f29cf93f1861b85df47c89dffa2",
     "guest-services/resort-refinements.css": "5ccfd5e08d6538ebb7f37eb93f5dc52ac270dbf309ee57b38c82078ee0b31520",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
-    "services-guide/guide-orders.js": "4f442327ad372c6b719bafe5c5f79cfcec004fc5c269ccacb14e75b6f1e07362",
+    "services-guide/guide-orders.js": "ea33deff42a7853cad97a5c0c2f9489230bd483e20387f7dfc6b270f973a2d96",
     "services-guide/guide-orders.css": "bb28d76739a56e45213cf1333a0349dad746c47b0b5b23bdaf70721e3edddf4f"
   },
   "preservedCompatibility": [
@@ -2766,6 +2766,22 @@
       "catalogue and prices",
       "native public service routes",
       "chalet portal"
+    ]
+  },
+  "approvedRequestPresentation": {
+    "version": "20261126-live-v82",
+    "rollbackTag": "pre-request-presentation-20261126",
+    "reason": "Owner prefers the standalone request layout: show one total, keep the confirmation sentence below sending, and label the in-dialog action إرسال الطلب in both interfaces. Main coordination/dining titles and quantity rows now follow the standalone sequence, retaining each interface colors and share URLs.",
+    "updatedProtectedFiles": [
+      "guest-services/index.html",
+      "services-guide/guide-orders.js",
+      "services-guide/index.html"
+    ],
+    "preserved": [
+      "WhatsApp message assembly and recipients",
+      "prices and public links",
+      "outer request buttons",
+      "chalet ordering portal"
     ]
   }
 }

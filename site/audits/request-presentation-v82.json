@@ -1,0 +1,40 @@
+{
+  "version": "20261126-live-v82",
+  "profiles": [
+    {
+      "width": 390,
+      "height": 844,
+      "sameRequestTitleAndConfirmation": true,
+      "oneTotal": true,
+      "quantityTotalUpdates": true,
+      "sendLabel": "إرسال الطلب",
+      "confirmationBelowSend": true,
+      "exactWhatsAppParity": true,
+      "distinctShareDestinations": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "sameRequestTitleAndConfirmation": true,
+      "oneTotal": true,
+      "quantityTotalUpdates": true,
+      "sendLabel": "إرسال الطلب",
+      "confirmationBelowSend": true,
+      "exactWhatsAppParity": true,
+      "distinctShareDestinations": true
+    },
+    {
+      "width": 390,
+      "height": 430,
+      "sameRequestTitleAndConfirmation": true,
+      "oneTotal": true,
+      "quantityTotalUpdates": true,
+      "sendLabel": "إرسال الطلب",
+      "confirmationBelowSend": true,
+      "exactWhatsAppParity": true,
+      "distinctShareDestinations": true
+    }
+  ],
+  "errors": [],
+  "messagesSent": false
+}

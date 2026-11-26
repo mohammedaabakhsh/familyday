@@ -5,7 +5,7 @@ import json,os,re,sys
 from playwright.sync_api import sync_playwright,expect
 R=Path(__file__).resolve().parents[1];BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8150'
 SOURCE=json.loads((R/'data/services.json').read_text());COPY=json.loads((R/'site/guide-copy.json').read_text())['serviceCopy'];A=SOURCE['arrangements']
-out={'version':'20261126-live-v81','profiles':[],'messagesSent':False,'errors':[]}
+out={'version':'20261126-live-v82','profiles':[],'messagesSent':False,'errors':[]}
 init="window.opened=[];window.shares=[];window.open=u=>{top.opened.push(u);return null};Object.defineProperty(navigator,'share',{value:async d=>top.shares.push(d)})"
 paths={'coordination':'/services/coordination/','dining':'/services/dining-tables/','cinema':'/services/cinema/'}
 def expected(entry,name,price,qty=1,cinema=False):
@@ -61,7 +61,7 @@ with sync_playwright() as p:
    positions=m.locator('.inclusions li').evaluate_all('xs=>xs.map(x=>({left:x.offsetLeft,top:x.offsetTop,width:x.offsetWidth}))');assert len({round(x['left']) for x in positions})==1
    assert m.locator('.package-gallery img').count()==s.locator('.package-gallery img').count()==len(pack['images'])
    share(main,'.header [data-share]','coordination');share(portal,'.topbar [data-share]','coordination')
-   m.locator('[data-service-portal]').click();expect(main.locator('.native-order-loading')).to_be_hidden();f=main.frame_locator('.native-order-frame');expect(f.locator('.resort-entry-selection h2')).to_have_text(pack['name']);assert f.locator('.guide-section:visible').count()==0
+   m.locator('[data-service-portal]').click();expect(main.locator('.native-order-loading')).to_be_hidden();f=main.frame_locator('.native-order-frame');expect(main.locator('#native-order-title')).to_have_text('طلب '+pack['name']);assert f.locator('.guide-section:visible').count()==0
    price=int(re.search(r'\d+',pack['price'])[0]);qty=2 if i==0 else 1;draft=send(main,f,'main','coordination',pack['name'],price,qty)
    s.locator('[data-request-key]').click();assert send(portal,portal,'portal','coordination',pack['name'],price,qty)==draft
    m.locator('summary').click();s.locator('summary').first.click()
@@ -76,7 +76,7 @@ with sync_playwright() as p:
    assert main.locator('[data-dining-size][aria-pressed="true"]').count()==portal.locator('#dining [aria-pressed="true"]').count()==1
    share(main,'.header [data-share]','dining');share(portal,'.topbar [data-share]','dining')
    name='طاولة طعام لـ'+size+' '+('أشخاص' if int(size)<=10 else 'شخصًا')+' — '+('تجهيز أساسي' if option=='plain' else 'تجهيز مع تنسيق')
-   main.locator('.dining-guide-link').click();expect(main.locator('.native-order-loading')).to_be_hidden();f=main.frame_locator('.native-order-frame');expect(f.locator('.resort-entry-selection h2')).to_have_text(name);assert f.locator('.guide-section:visible,.arrangement-quantity:visible').count()==0
+   main.locator('.dining-guide-link').click();expect(main.locator('.native-order-loading')).to_be_hidden();f=main.frame_locator('.native-order-frame');expect(main.locator('#native-order-title')).to_have_text('طلب '+name);assert f.locator('.guide-section:visible,.arrangement-quantity:visible').count()==0
    draft=send(main,f,'main','dining',name,price);portal.locator('[data-dining-request]').click();assert portal.locator('.arrangement-request-quantity').is_hidden();assert send(portal,portal,'portal','dining',name,price)==draft
   print(width,'dining checked',flush=True)
   # Cinema shows the contents heading and uses a single header share.
@@ -99,4 +99,4 @@ with sync_playwright() as p:
     main.screenshot(path=str(folder/(kind+'-main.png')),full_page=True);portal.screenshot(path=str(folder/(kind+'-portal.png')),full_page=True)
   c.close()
  b.close()
-assert not out['errors'],out['errors'];(R/'site/audits/reviewed-resort-services-v81.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False))
+assert not out['errors'],out['errors'];(R/'site/audits/reviewed-resort-services-v82.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False))

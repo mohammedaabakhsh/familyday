@@ -63,7 +63,7 @@ export function createResortOrders({version,services,share}){
   const {action}=event.data;
   if(action==='focus'){const controls=[...dialog.querySelectorAll('.native-order-header button')];(event.data.edge==='last'?controls.at(-1):controls[0])?.focus();}
   if(action==='ready')command({action:'open',service:active.service,anchor:active.anchor,entry:active.entry});
-  if(action==='opened'){clearTimeout(item.timer);loading.hidden=true;error.hidden=true;item.iframe.hidden=false;}
+  if(action==='opened'){if(typeof event.data.title==='string'&&event.data.title)title.textContent=event.data.title;clearTimeout(item.timer);loading.hidden=true;error.hidden=true;item.iframe.hidden=false;}
   if(action==='closed'||action==='submitted')requestClose();
   if(action==='error')failed();
   if(action==='share'&&typeof event.data.path==='string'){

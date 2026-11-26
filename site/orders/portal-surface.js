@@ -7,7 +7,7 @@
   const dialog=document.getElementById(guest?'service-dialog':'arrangement-dialog');
   const kind=guest?'guest':'arrangements';
   const shareIcon='<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 16V2m-5 5 5-5 5 5M6 10H3v11h18V10h-3"/></svg>';
-  let metadata=null,ready=false,wasOpen=false,view=false,directForm,sendButton;
+  let metadata=null,ready=false,wasOpen=false,view=false,directForm,sendButton,confirmationNote;
   const post=(action,data={})=>{if(embedded)parent.postMessage({type:'familyday-resort-order',kind,action,...data},location.origin);};
   function serviceKey(){
     if(guest)return dialog.dataset.tone||'';
@@ -71,6 +71,7 @@
   }
   function syncDirect(){
     if(sendButton)sendButton.disabled=!window.FD_RESORT_DIRECT_ORDER.canSubmit();
+    if(confirmationNote)confirmationNote.textContent=directForm.querySelector('.arrangement-confirmation,.confirmation-note').textContent;
   }
   function mountDirect(){
     const api=window.FD_RESORT_DIRECT_ORDER;if(!api){post('error');return false;}
@@ -78,8 +79,11 @@
     document.body.append(dialog);
     directForm=document.getElementById(api.formId);directForm.classList.add('resort-direct-form');directForm.removeAttribute('aria-labelledby');directForm.setAttribute('aria-label','بيانات الطلب');
     dialog.querySelector(guest?'.dialog-body':'#guide-content').append(directForm);
-    sendButton=document.createElement('button');sendButton.type='submit';sendButton.setAttribute('form',api.formId);sendButton.className='resort-direct-send';sendButton.textContent='إرسال الطلب عبر واتساب';
-    dialog.querySelector('footer').append(sendButton);
+    sendButton=document.createElement('button');sendButton.type='submit';sendButton.setAttribute('form',api.formId);sendButton.className='resort-direct-send';sendButton.textContent='إرسال الطلب';
+    const footer=dialog.querySelector('footer');footer.append(sendButton);
+    const sourceNote=directForm.querySelector('.arrangement-confirmation,.confirmation-note');
+    if(sourceNote){confirmationNote=sourceNote.cloneNode(true);confirmationNote.className='resort-direct-confirmation';footer.append(confirmationNote);new MutationObserver(syncDirect).observe(sourceNote,{childList:true,subtree:true,characterData:true});}
+    if(!guest)directForm.querySelector('.arrangement-total>span').textContent='إجمالي الخدمة';
     directForm.addEventListener('submit',event=>{
       event.preventDefault();event.stopImmediatePropagation();
       if(api.submit(event)===true)post('submitted');
@@ -97,7 +101,7 @@
       if(!dialog.open){post('error');return;}
       if(command.entry&&!window.FD_RESORT_DIRECT_ORDER.selectEntry(command.entry)){post('error');return;}
     }
-    wasOpen=dialog.open;syncDirect();updateShare();post('opened');
+    wasOpen=dialog.open;syncDirect();updateShare();post('opened',{title:window.FD_RESORT_DIRECT_ORDER?.getTitle?.()});
   }
   window.addEventListener('message',event=>{
     if(!embedded||event.origin!==location.origin||event.source!==parent||event.data?.type!=='familyday-resort-order-command')return;

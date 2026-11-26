@@ -117,7 +117,6 @@
       const selected=entries.get(diningChoice);diningRequestButton.disabled=!selected;
       diningSelectionStatus.textContent=selected?selected.name+' — '+selected.price+' ريال':'اختر عدد الأشخاص ونوع التجهيز';
     }
-    if(specificEntry)document.querySelector('.resort-entry-total').textContent='الإجمالي: '+total+' ريال';
     for(const group of ['coordination','dining','seating','cinema']){
       const tile=document.querySelector('.contents a[href="#'+group+'"]');const selected=chosen.filter(e=>e.group===group);tile.classList.toggle('is-selected',!browseOrders&&!!selected.length);
     }
@@ -159,7 +158,7 @@
     requestDialog=node('dialog',undefined,'arrangement-request');requestDialog.setAttribute('aria-labelledby','arrangement-request-title');
     requestDialog.innerHTML='<header><h2 id="arrangement-request-title" tabindex="-1"></h2><button type="button" data-close-request aria-label="إغلاق الطلب">×</button></header><div class="arrangement-request-body"><div class="arrangement-request-quantity"></div><label class="arrangement-request-extra" hidden><input type="checkbox" data-request-extra><span></span></label></div>';
     document.body.append(requestDialog);requestDialog.querySelector('.arrangement-request-body').append(form);
-    form.setAttribute('aria-label','بيانات الطلب');form.querySelector('.arrangement-send').textContent='إرسال الطلب عبر واتساب';
+    form.setAttribute('aria-label','بيانات الطلب');form.querySelector('.arrangement-send').textContent='إرسال الطلب';
     form.querySelector('.arrangement-total>span').classList.add('request-total-label');
     requestDialog.querySelector('[data-close-request]').addEventListener('click',closeRequest);requestDialog.addEventListener('cancel',e=>{e.preventDefault();closeRequest();});
     requestDialog.addEventListener('click',e=>{if(e.target===requestDialog){const r=requestDialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeRequest();}});
@@ -239,10 +238,10 @@
     document.body.classList.add('resort-specific-request');
     let selected=document.querySelector('.resort-entry-selection');
     if(!selected){selected=node('section',undefined,'resort-entry-selection');selected.setAttribute('aria-label','الخدمة المختارة');form.before(selected);}
-    selected.replaceChildren(node('h2',entry.name),node('strong',undefined,'resort-entry-total'));
-    if(entry.group==='coordination')selected.append(counter(entry));
+    selected.replaceChildren();selected.hidden=entry.group!=='coordination';
+    if(entry.group==='coordination')selected.append(node('span','الكمية'),counter(entry));
     render();return true;
   }
-  if(directService)window.FD_RESORT_DIRECT_ORDER={formId:'arrangement-order',canSubmit:()=>ready&&!form.querySelector('.arrangement-send').disabled,submit:submitOrder,selectEntry};
+  if(directService)window.FD_RESORT_DIRECT_ORDER={formId:'arrangement-order',canSubmit:()=>ready&&!form.querySelector('.arrangement-send').disabled,submit:submitOrder,selectEntry,getTitle:()=>specificEntry?'طلب '+specificEntry.name:directService==='cinema'?'طلب '+cinemaConfig.name:''};
   document.addEventListener('fd:arrangement-view',updateShortcut);shortcut.addEventListener('click',jump);new IntersectionObserver(updateShortcut,{rootMargin:'-80px 0px -40px'}).observe(summary);window.addEventListener('resize',updateShortcut);
 })();

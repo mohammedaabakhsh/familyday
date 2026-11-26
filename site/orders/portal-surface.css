@@ -49,7 +49,7 @@ body.resort-order-embedded .quantity output{color:#edf5f6}
 body.resort-order-embedded :is(#water-count,#cinema-status,#games-status){color:#b9e5e1}
 /* A native request has one service, its customer fields and one WhatsApp action. */
 .resort-order-embedded .resort-direct-form{padding:16px 0 0!important;margin:18px 0 0!important;border:0!important;border-top:1px solid #35535f!important;border-radius:0!important;box-shadow:none!important;background:transparent!important}
-.resort-order-embedded .resort-direct-form :is(.order-count,.order-items,.order-total,.arrangement-total,#arrangement-items,#arrangement-count,.send-order,.arrangement-send,.confirmation-note,.arrangement-confirmation){display:none!important}
+.resort-order-embedded .resort-direct-form :is(.order-count,.order-items,.order-total,#arrangement-items,#arrangement-count,.send-order,.arrangement-send,.confirmation-note,.arrangement-confirmation){display:none!important}
 .resort-order-embedded :is(.dialog-actions,.arrangement-dialog-footer>[data-close-arrangements]){display:none!important}
 .resort-direct-send{display:block;width:100%;min-height:48px;margin-top:10px;padding:11px 14px;border:0;border-radius:12px;background:#168c99;color:#fff;font:700 16px/1.5 Tajawal,sans-serif;cursor:pointer}
 .resort-direct-send:disabled{opacity:.45;cursor:default}
@@ -68,6 +68,13 @@ body.resort-order-embedded #guide-content{padding:16px;scrollbar-gutter:auto}
 /* A selected package/table opens directly in its own request, without a second catalogue. */
 body.resort-order-embedded.resort-specific-request .guide-section{display:none!important}
 .resort-entry-selection{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin:0;color:#edf5f6}
-.resort-entry-selection h2{flex-basis:100%;margin:0;font-size:18px;line-height:1.6}
-.resort-entry-selection .resort-entry-total{color:#83d2d4;font-size:16px;line-height:1.6}
 .resort-entry-selection .arrangement-quantity{margin:0}
+
+/* Match the standalone request's quantity / total / fields / send / note sequence. */
+.resort-entry-selection[hidden]{display:none}
+.resort-entry-selection{min-height:44px;font-size:14px}
+body.resort-order-embedded.resort-specific-request .resort-direct-form{padding:0!important;margin:0!important;border-top:0!important}
+body.resort-order-embedded .resort-direct-form .arrangement-total{display:flex!important;align-items:center;justify-content:space-between;gap:12px;margin:14px 0 0;padding:14px 0 0;border-top:1px solid #35535f;color:#a4bbc3}
+body.resort-order-embedded .resort-direct-form .arrangement-total strong{color:#edf5f6;font-size:22px}
+body.resort-order-embedded .arrangement-dialog-footer>#arrangement-dialog-status{display:none!important}
+body.resort-order-embedded :is(.dialog-footer,.arrangement-dialog-footer)>.resort-direct-confirmation{display:block;margin:8px 0 0;color:#a4bbc3;font-size:12px;line-height:1.7;text-align:center}
