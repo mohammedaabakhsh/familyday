@@ -2289,7 +2289,7 @@
     "chalet/guest-services/index.html": "91525f7136af69db0df78ec009e00f23e6813b8d441c9a9685c00fe7c52a0c5d",
     "css/back-navigation.css": "834bdb848f741ef0185f5f22b91d497ea68a55cf3bb34eaa7eac2d01864420ad",
     "css/desktop-layout.css": "229a412b9f610bc2e885c19d755a217e67081725eeb247a12a565bcd6b7de9dd",
-    "css/dining-cards.css": "3ad7231ff2d86c560464effc8af9d07a673d94fb1d5a5ecf83d3d1479456bdfd",
+    "css/dining-cards.css": "2e495ae12b2014ea0e14330afe839b602e38f86a81d9194004b3e6caa43e9dfb",
     "css/tajawal.css": "63e1c01678f45bb83983243a5b67716d42b710a8ac01e150e2af0972476ec14f",
     "data/services.json": "8904201ec0ef1e658373cd0613239faeb6da9f8af4d1b6b29b0703bb22267b7c",
     "guest-services/README.md": "1ad3a3d1df387c6f92547d236015ff1c975e01b67890162dfa0d0e750b23ec7a",
@@ -2298,18 +2298,18 @@
     "guest-services/index.html": "594de95dc96d787fab9d824eab066dd779c76d5dd731b8061f9c0be6170156b4",
     "guest-services/service-source.js": "e0da9d9065eea4864558446730954129ccefb495b97c4c7070b8e4a6a6803b3e",
     "guest-services/share.js": "a207ab25177d5b69bb1e8a4cc37bc0755c9a2157b7024561d3c15b2652c4323b",
-    "js/dining-cards.js": "a80c8a1fcbc623019426cc46184f52f6dc0b109570afbd848e39571726be4097",
+    "js/dining-cards.js": "680892b1c9ad23058a3fdcfbc42633dd4bc659a35b848c0b5e35ccd055b3dd5e",
     "js/menu-order-message.js": "78e54cc83d01bb6b5a44de14d4ce709d8f900517d6f09b1bda0d7a63067abaa9",
     "services-guide/README.md": "a1170ba5394064fe4cbea3ff7c5eb19e729d949093d3b29919b2fbb03c76befb",
     "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
     "services-guide/guide.css": "05a6712458ca7b87e7aa9aa63b803fdf0145079c018cfb780aa0aba8f7be3f7e",
-    "services-guide/guide.js": "13c1b2f233c851dcc4806200d18b5a7a761ab6e09085a8384fadabc98d7b5da6",
-    "services-guide/index.html": "2e37c2fe03bdf392734a549ca93dde69c370c1be39f5c84b2f3469f24bb9b2f0",
+    "services-guide/guide.js": "dabc904fb83c86d2e1e426a04117f047de35bf95b98133b98552762cbd1660fc",
+    "services-guide/index.html": "e303b76de06b56e49f9af0748afdff87bfb3336d525d4b4cc546b9381c444249",
     "services-guide/share-entry.js": "9b3eb8e097d90ec21c2e2a19b8e890dbefe21157ed79ad3541e33071483b8a53",
     "guest-services/resort-refinements.css": "5ccfd5e08d6538ebb7f37eb93f5dc52ac270dbf309ee57b38c82078ee0b31520",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
     "services-guide/guide-orders.js": "06cf97f2c9c1b7f81c58185625852d84cf12f4449961ea79df0aca82dccfb87b",
-    "services-guide/guide-orders.css": "2ab66472a5a39ba86ddfda4a95403f2a4a7733206ee51efc835dc7a45412e059"
+    "services-guide/guide-orders.css": "4566ed2d645963bb1345ff2ebfc7f87d6687afe586ce4ba548706aa848b14730"
   },
   "preservedCompatibility": [
     "preview redirects",
@@ -3020,5 +3020,17 @@
       "chalet/guest-services/index.html"
     ],
     "sharedHelper": "js/order-privacy.js"
+  },
+  "approvedDiningCinemaLayout": {
+    "date": "2026-11-26",
+    "rollbackTag": "pre-dining-cinema-layout-20261126",
+    "reason": "Owner requests two dining setup cards followed by always-visible styled-setup contents, without an accordion arrow, in both native and standalone pages. Standalone cinema duration and price should use two cards matching the native layout. Preserve source text/prices, selection/request controls, WhatsApp drafts, share URLs and no-save behavior.",
+    "updatedProtectedFiles": [
+      "services-guide/index.html",
+      "services-guide/guide.js",
+      "services-guide/guide-orders.css",
+      "js/dining-cards.js",
+      "css/dining-cards.css"
+    ]
   }
 }

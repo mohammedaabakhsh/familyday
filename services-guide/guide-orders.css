@@ -100,9 +100,10 @@ body.arrangement-request-open{overflow:hidden}
 .arrangement-cinema-time small{font-size:12px;font-weight:400;color:var(--muted)}
 /* Cinema uses the same always-visible photo sizing as dining. */
 .cinema-service-panel{max-width:680px;margin:auto}
-.cinema-service-price{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
-.cinema-service-price .price{font-size:22px;color:#176078}
-#cinema .cinema-duration{font-size:14px;color:var(--muted)}
+.cinema-service-price{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:22px}
+.cinema-fact{min-width:0;padding:20px 8px;text-align:center;border:1px solid var(--line);border-radius:12px;background:var(--tint)}
+.cinema-fact small{display:block;font-size:13px;line-height:1.7;color:var(--muted);margin-bottom:8px}
+#cinema .cinema-fact :is(.price,.cinema-duration){display:block;font-size:22px;font-weight:700;line-height:1.6;color:var(--ink)}
 #cinema .arrangement-browse-actions{padding-inline:0}
 #cinema .inclusions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 #cinema .guide-usage .inclusions{display:block}

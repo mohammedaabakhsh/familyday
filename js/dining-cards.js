@@ -44,7 +44,14 @@ var FD_DINING_CARDS = (function(){
     if(doc===document) info.querySelectorAll('.fd-dining-option-name').forEach(function(heading){
       var replacement=node('h2',heading.className,heading.textContent);heading.replaceWith(replacement);
     });
-    _tawilatInclusions.forEach(function(text){info.querySelector('.fd-dining-inclusions').appendChild(node('li','',text));});
+    var options=node('div','fd-dining-options');
+    info.querySelectorAll('section[data-option]').forEach(function(option){options.appendChild(option);});
+    var contents=node('section','fd-dining-contents');
+    var title=node('h3','fd-dining-includes-label','محتويات التجهيز مع تنسيق');
+    var inclusions=info.querySelector('.fd-dining-inclusions') || options.querySelector('.fd-dining-inclusions');
+    options.querySelector('.fd-dining-includes-label').remove();
+    _tawilatInclusions.forEach(function(text){inclusions.appendChild(node('li','',text));});
+    contents.append(title,inclusions);info.append(options,contents);
     return info;
   }
   return {table:table,details:details};

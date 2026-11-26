@@ -78,12 +78,15 @@ async def main():
     assert await page.locator('#main img').count()==1
     assert await photo.evaluate('e=>Math.abs(e.width/e.height-e.naturalWidth/e.naturalHeight)<0.01')
     details=page.locator('.dining-guide-details' if 'dining' in path else '.service-guide-details')
-    assert not await details.evaluate('e=>e.open');await details.locator('summary').click();await expect(details.locator('.inclusions')).to_be_visible()
+    if 'dining' not in path:
+     assert not await details.evaluate('e=>e.open');await details.locator('summary').click()
+    await expect(details.locator('.inclusions')).to_be_visible()
     # Zoom and sharing are still attached to the same image/link, with no image attachments.
     await page.locator('.service-main-photo button').click();await expect(page.locator('#viewer')).to_be_visible();await page.keyboard.press('Escape')
     await page.locator('#header-actions [data-share]').click();assert list((await page.evaluate('shares.at(-1)')))==['text']
     if width==390:
-     await details.locator('summary').click();await page.screenshot(path='/tmp/familyday-v69/'+path.strip('/').replace('/','-')+'.png',full_page=True)
+     if 'dining' not in path:await details.locator('summary').click()
+     await page.screenshot(path='/tmp/familyday-v69/'+path.strip('/').replace('/','-')+'.png',full_page=True)
    await visit('/stay/compare/');row=page.locator('tbody tr').filter(has=page.locator('th',has_text='سعة الضيوف'))
    assert await row.locator('td').all_text_contents()==['25 ضيفًا، وحتى 70 برسوم إضافية']*2
    assert await page.locator('thead small').count()==0

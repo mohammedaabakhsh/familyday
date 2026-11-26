@@ -68,7 +68,7 @@ with sync_playwright() as p:
   print(width,'coordination checked',flush=True)
   # Price clicks select exactly one setup and never open a request. Only the button under the table opens the selected setup.
   mainVisit('dining');portalVisit('dining');expect(main.locator('.dining-guide-link')).to_be_disabled();expect(portal.locator('[data-dining-request]')).to_be_disabled()
-  main.locator('.dining-guide-details summary').click();assert main.locator('.dining-guide-details li span').all_text_contents()==portal.locator('#dining .fd-dining-inclusions li').all_text_contents()==A['dining']['items']
+  assert main.locator('.dining-guide-details li span').all_text_contents()==portal.locator('#dining .fd-dining-inclusions li').all_text_contents()==A['dining']['items']
   choices=[(size,option,price) for size,prices in A['dining']['prices'].items() for option,price in prices.items()] if width==390 and height==844 else [('6','plain',199),('32','tansiq',1199)]
   for size,option,price in choices:
    main.locator('[data-dining-size="'+size+'"][data-dining-option="'+option+'"]').click();portal.locator('.fd-dining-option[data-size="'+size+'"][data-option="'+option+'"]').click()

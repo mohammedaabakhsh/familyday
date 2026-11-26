@@ -1,0 +1,33 @@
+{
+  "version": "20261126-live-v99",
+  "profiles": [
+    {
+      "width": 390,
+      "height": 844,
+      "twoDiningCards": true,
+      "contentsBelowCardsWithoutAccordion": true,
+      "sameContents": true,
+      "twoCinemaCards": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "twoDiningCards": true,
+      "contentsBelowCardsWithoutAccordion": true,
+      "sameContents": true,
+      "twoCinemaCards": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 390,
+      "height": 430,
+      "twoDiningCards": true,
+      "contentsBelowCardsWithoutAccordion": true,
+      "sameContents": true,
+      "twoCinemaCards": true,
+      "noHorizontalOverflow": true
+    }
+  ],
+  "errors": []
+}

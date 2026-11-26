@@ -85,7 +85,7 @@
     html += diningSection;
     const cinema=catalog.guest.cinema, cinemaMedia=serviceLinks.cinema;
     const cinemaPhoto=cinemaMedia?.image?'<div class="dining-shared-photo cinema-shared-photo">'+FD_GUIDE_GALLERY.markup([cinemaMedia.image],cinema.title,cinema.title)+'</div>':'';
-    const cinemaDetails='<div class="cinema-service-price"><strong class="price">'+escape(cinema.price)+' ريال</strong><span class="cinema-duration">مدة الجلسة: '+escape(cinema.duration)+'</span></div><h3 class="cinema-contents-title">'+escape(cinema.contentsTitle)+'</h3>'+items(cinema.contents)+'<details class="guide-usage"><summary>تعليمات الاستخدام</summary>'+items(cinema.notes)+'</details>';
+    const cinemaDetails='<div class="cinema-service-price"><div class="cinema-fact"><small>مدة الجلسة</small><strong class="cinema-duration">'+escape(cinema.duration)+'</strong></div><div class="cinema-fact"><small>سعر الجلسة</small><strong class="price">'+escape(cinema.price)+' ريال</strong></div></div><h3 class="cinema-contents-title">'+escape(cinema.contentsTitle)+'</h3>'+items(cinema.contents)+'<details class="guide-usage"><summary>تعليمات الاستخدام</summary>'+items(cinema.notes)+'</details>';
     html += section('cinema',cinema.title,cinema.intro,'<article id="cinema-session" class="cinema-service-panel">'+cinemaPhoto+'<div class="cinema-service-body package-details-body">'+cinemaDetails+'</div></article>',true);
     content.innerHTML = html;
     for(const id of ['coordination','seating','dining','cinema'])content.querySelector('#'+id).dataset.portalSharePath=serviceLinks[id]?.portalSharePath||'/services-guide/'+id+'/';
