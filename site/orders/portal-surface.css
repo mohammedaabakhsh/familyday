@@ -64,3 +64,10 @@ body.resort-order-embedded #cinema-session{display:none}
 body.resort-order-embedded .arrangement-cinema-time select{background:#0b2531;color:#edf5f6;border-color:#557984;color-scheme:dark}
 body.resort-order-embedded .arrangement-cinema-time small{color:#a4bbc3}
 body.resort-order-embedded #guide-content{padding:16px;scrollbar-gutter:auto}
+
+/* A selected package/table opens directly in its own request, without a second catalogue. */
+body.resort-order-embedded.resort-specific-request .guide-section{display:none!important}
+.resort-entry-selection{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin:0;color:#edf5f6}
+.resort-entry-selection h2{flex-basis:100%;margin:0;font-size:18px;line-height:1.6}
+.resort-entry-selection .resort-entry-total{color:#83d2d4;font-size:16px;line-height:1.6}
+.resort-entry-selection .arrangement-quantity{margin:0}

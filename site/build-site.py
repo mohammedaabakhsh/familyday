@@ -45,7 +45,9 @@ for service in CATALOG['services']:
  key='restaurant' if service['id']=='menu' else service['id']
  data=SERVICES['guest'].get(key,{})
  image=service.get('image')
- order_links[key]={'path':service['path'],'title':service['name'],'intro':data.get('intro',service.get('intro',''))}
+ copy=COPY.get('serviceCopy',{}).get(service['id'],{})
+ order_links[key]={'path':service['path'],'title':service['name'],'intro':copy.get('pageIntro',data.get('intro',service.get('intro','')))}
+ if copy.get('cardIntro'):order_links[key]['cardIntro']=copy['cardIntro']
  if image:
   raw=image.split('?')[0]
   order_links[key].update(image=RUNTIME.get('serviceImages',{}).get(raw,image),originalImage=image,size=COPY.get('serviceImageSizes',{}).get(raw))

@@ -131,3 +131,7 @@ Cinema's standalone section shows its photo immediately, using the same shared g
 ## Complete-section sharing only — v79
 
 [Implementation and checks](../docs/section-only-sharing-v79.md): the owner cancelled individual package/session sharing. Only complete service sections are shared; card-level share actions and independent item rendering/routing are removed from both interfaces. Individual WhatsApp ordering remains. Retired item documents are compatibility redirects to their complete sections and are excluded from the sitemap. No original prices, content, photos or order message formatting change. Rollback: `pre-section-only-sharing-20261126`.
+
+## Reviewed resort cinema, coordination and dining — v80
+
+[Owner-approved unification](../docs/resort-services-unification-v80.md) aligns card/page copy, keeps one cinema header share, gives each coordination package a direct native request and one specification per row, and makes dining select one setup before its separate request action in both surfaces. Existing public URLs, source prices/inclusions/photos, recipients and WhatsApp message assembly remain unchanged. Rollback: `pre-resort-service-unification-20261126`. Verify with `check-reviewed-resort-services.py`, the arrangements/native-order checks, share scope and cutover checks; draft links are intercepted and no messages are sent.

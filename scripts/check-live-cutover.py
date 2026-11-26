@@ -84,9 +84,10 @@ async def main():
   await visit('/services/');f=page.locator('#resort-service-directory');assert await page.locator('#services-frame').count()==0;await f.locator('a[href="/services/cinema/"]').click();await page.wait_for_url(BASE+'/services/cinema/');assert await page.locator('.service-guide').count()==1
   await page.locator('.context-back').click();await page.wait_for_url(BASE+'/services/');await page.locator('#resort-service-directory a[href="/services/dining-tables/"]').click();await page.wait_for_url(BASE+'/services/dining-tables/')
   # Resort selection stays on the guide and reuses the original order document.
+  await page.locator('[data-dining-size="6"][data-dining-option="plain"]').click();assert not await page.locator('#native-order-dialog').is_visible()
   await page.locator('[data-service-portal]').click();await page.locator('#native-order-dialog').wait_for();await page.locator('.native-order-loading').wait_for(state='hidden')
   assert page.url==BASE+'/services/dining-tables/' and await page.locator('#main').count()==1
-  await page.frame_locator('.native-order-frame').locator('.fd-dining-option').first.wait_for()
+  await page.frame_locator('.native-order-frame').locator('.resort-entry-selection').wait_for()
   await page.locator('.native-order-close').click();await page.locator('#native-order-dialog').wait_for(state='hidden');out['nativeOrderReusesOriginalPortal']=True
   # Distributed standalone links still work as full document entries.
   await page.goto(BASE+'/services-guide/#dining');await page.locator('#guide-content.is-ready').wait_for(state='attached')

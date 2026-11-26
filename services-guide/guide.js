@@ -64,11 +64,15 @@
     const template = doc.createElement('template');template.id = 'dining-card-template';template.innerHTML = data.dining.template;doc.body.append(template);
     window._tawilatPrices = data.dining.prices;
     window._tawilatInclusions = data.dining.items;
-    let html = section('coordination',data.coordination.name,'تجهيزات متكاملة لمناسباتكم',packages(data.coordination.packages),true);
+    for(const id of ['coordination','cinema','dining']){
+      const tile=document.querySelector('.guide-tile[href="#'+id+'"] .tile-description');
+      if(tile&&serviceLinks[id]?.cardIntro)tile.textContent=serviceLinks[id].cardIntro;
+    }
+    let html = section('coordination',data.coordination.name,serviceLinks.coordination?.intro||data.coordination.intro,packages(data.coordination.packages),true);
     const diningSource = template.content;
     const diningImage = sourceImage(diningSource,'.fd-dining-image img');
     const diningPhoto = '<div class="dining-shared-photo">' + FD_GUIDE_GALLERY.markup([diningImage.src],data.dining.name,diningImage.alt) + '<p class="fd-dining-caption">' + escape(text(diningSource,'.fd-dining-caption')) + '</p></div>';
-    const diningBody = '<p id="dining-price-help" class="dining-order-help">اضغط على السعر لطلب عدد الأشخاص والتجهيز المطلوب عبر واتساب.</p>' + diningPhoto + FD_DINING_CARDS.table(doc,true).outerHTML + FD_DINING_CARDS.details(doc).outerHTML;
+    const diningBody = '<p id="dining-price-help" class="dining-order-help">اختر عدد الأشخاص ونوع التجهيز، ثم اضغط «اطلب عبر واتساب» أسفل الجدول.</p>' + diningPhoto + FD_DINING_CARDS.table(doc,true).outerHTML + FD_DINING_CARDS.details(doc).outerHTML;
     const diningSection = section('dining',data.dining.name,data.dining.intro,diningBody,true);
     const extra = data.seating.extra;
     const seatingExtra = '<aside class="seating-extra" aria-labelledby="seating-extra-title"><h3 id="seating-extra-title">إضافة اختيارية</h3><div class="seating-extra-offer"><strong>' + escape(extra.name) + '</strong><strong class="seating-extra-price">' + escape(extra.price) + '</strong></div><p>إضافة اختيارية تُضاف قيمتها لسعر الجلسة</p></aside>';
@@ -77,7 +81,7 @@
     html += diningSection;
     const cinema=catalog.guest.cinema, cinemaMedia=serviceLinks.cinema;
     const cinemaPhoto=cinemaMedia?.image?'<div class="dining-shared-photo cinema-shared-photo">'+FD_GUIDE_GALLERY.markup([cinemaMedia.image],cinema.title,cinema.title)+'</div>':'';
-    const cinemaDetails='<div class="cinema-service-price"><strong class="price">'+escape(cinema.price)+' ريال</strong><span class="cinema-duration">مدة الجلسة: '+escape(cinema.duration)+'</span></div>'+items(cinema.contents)+'<details class="guide-usage"><summary>تعليمات الاستخدام</summary>'+items(cinema.notes)+'</details>';
+    const cinemaDetails='<div class="cinema-service-price"><strong class="price">'+escape(cinema.price)+' ريال</strong><span class="cinema-duration">مدة الجلسة: '+escape(cinema.duration)+'</span></div><h3 class="cinema-contents-title">'+escape(cinema.contentsTitle)+'</h3>'+items(cinema.contents)+'<details class="guide-usage"><summary>تعليمات الاستخدام</summary>'+items(cinema.notes)+'</details>';
     html += section('cinema',cinema.title,cinema.intro,'<article id="cinema-session" class="cinema-service-panel">'+cinemaPhoto+'<div class="cinema-service-body package-details-body">'+cinemaDetails+'</div></article>',true);
     content.innerHTML = html;
     content.querySelectorAll('#cinema-session img').forEach(img=>{img.loading='eager';img.fetchPriority='high';});
@@ -183,7 +187,7 @@
     try {
       const response = await fetch('/data/services.json?v=20261125-live-v54',{cache:'no-cache'});
       if (!response.ok) throw new Error('Service source unavailable');
-      const links=await fetch('/site/orders/service-links.json?v=20261125-live-v75').then(r=>r.ok?r.json():{}).catch(()=>({}));
+      const links=await fetch('/site/orders/service-links.json?v=20261126-live-v80').then(r=>r.ok?r.json():{}).catch(()=>({}));
       render(await response.json(),links.services||{});
     } catch(error) {
       content.innerHTML = '<div class="load-error"><h2>تعذّر تحميل التجهيزات</h2><p>حاولوا مرة ثانية لعرض التفاصيل هنا.</p><button type="button" id="retry-guide">إعادة المحاولة</button></div>';

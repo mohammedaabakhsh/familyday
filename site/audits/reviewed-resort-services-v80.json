@@ -1,0 +1,47 @@
+{
+  "version": "20261126-live-v80",
+  "profiles": [
+    {
+      "width": 390,
+      "height": 844,
+      "coordinationPackages": 6,
+      "diningChoices": 10,
+      "exactWhatsAppParity": true,
+      "oneHeaderShare": true,
+      "selectionBeforeRequest": true,
+      "backAndCancel": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "coordinationPackages": 1,
+      "diningChoices": 2,
+      "exactWhatsAppParity": true,
+      "oneHeaderShare": true,
+      "selectionBeforeRequest": true,
+      "backAndCancel": true
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "coordinationPackages": 1,
+      "diningChoices": 2,
+      "exactWhatsAppParity": true,
+      "oneHeaderShare": true,
+      "selectionBeforeRequest": true,
+      "backAndCancel": true
+    },
+    {
+      "width": 390,
+      "height": 430,
+      "coordinationPackages": 1,
+      "diningChoices": 2,
+      "exactWhatsAppParity": true,
+      "oneHeaderShare": true,
+      "selectionBeforeRequest": true,
+      "backAndCancel": true
+    }
+  ],
+  "messagesSent": false,
+  "errors": []
+}

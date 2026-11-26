@@ -38,19 +38,31 @@ export function createResortOrders({version,services,share}){
  error.querySelector('.native-order-external').addEventListener('click',()=>location.assign(error.querySelector('.native-order-external').dataset.url));
  error.querySelector('.native-order-retry').addEventListener('click',()=>show(active));
  document.addEventListener('click',event=>{
-  const link=event.target.closest('a[data-service-portal]');
-  if(!link||context?.venue!=='resort'||event.defaultPrevented||event.button!==0||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey||dialog.contains(link))return;
-  const target=new URL(link.href,location.origin);if(target.origin!==location.origin&&target.origin!=='https://familydaystay.com')return;
+  if(context?.venue==='resort'&&!event.defaultPrevented){
+   const choice=event.target.closest('[data-dining-size]');
+   if(choice){
+    const service=services.find(s=>s.id==='dining'),size=choice.dataset.diningSize,option=choice.dataset.diningOption;
+    if(!Object.hasOwn(service.prices,size)||!['plain','tansiq'].includes(option))return;
+    const guide=choice.closest('.dining-guide'),button=guide.querySelector('[data-service-portal]');
+    guide.querySelectorAll('[data-dining-size]').forEach(item=>item.setAttribute('aria-pressed',String(item===choice)));
+    const name='طاولة طعام لـ'+size+' '+(Number(size)<=10?'أشخاص':'شخصًا')+' — '+(option==='plain'?'تجهيز أساسي':'تجهيز مع تنسيق');
+    button.dataset.resortOrderKey='dining-'+size+'-'+option;button.disabled=false;
+    guide.querySelector('.dining-selected-option').textContent=name+' — '+service.prices[size][option]+' ريال';return;
+   }
+  }
+  const link=event.target.closest('[data-service-portal]');
+  if(!link||link.disabled||context?.venue!=='resort'||event.defaultPrevented||event.button!==0||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey||dialog.contains(link))return;
+  const target=new URL(link.href||link.dataset.serviceUrl,location.origin);if(target.origin!==location.origin&&target.origin!=='https://familydaystay.com')return;
   const kind=['/arrangements/','/services-guide/'].includes(target.pathname)?'arrangements':target.pathname==='/guest-services/'?'guest':null;if(!kind)return;
   const selected=services.find(s=>s.path===context.path),service=link.dataset.resortService||(selected?.id==='menu'?'restaurant':selected?.id);
   if(!service)return;
-  event.preventDefault();open({kind,service,anchor:target.hash.slice(1)||service,title:selected?.name||'طلبات إضافية أثناء الإقامة',path:service==='extras'?'/guest-services/#extras':context.path},link);
+  event.preventDefault();open({kind,service,entry:link.dataset.resortOrderKey||'',anchor:target.hash.slice(1)||service,title:selected?.name||'طلبات إضافية أثناء الإقامة',path:service==='extras'?'/guest-services/#extras':context.path},link);
  });
  window.addEventListener('message',event=>{
   if(event.origin!==location.origin||event.data?.type!=='familyday-resort-order'||!item||event.source!==item.iframe.contentWindow||event.data.kind!==active?.kind)return;
   const {action}=event.data;
   if(action==='focus'){const controls=[...dialog.querySelectorAll('.native-order-header button')];(event.data.edge==='last'?controls.at(-1):controls[0])?.focus();}
-  if(action==='ready')command({action:'open',service:active.service,anchor:active.anchor});
+  if(action==='ready')command({action:'open',service:active.service,anchor:active.anchor,entry:active.entry});
   if(action==='opened'){clearTimeout(item.timer);loading.hidden=true;error.hidden=true;item.iframe.hidden=false;}
   if(action==='closed'||action==='submitted')requestClose();
   if(action==='error')failed();

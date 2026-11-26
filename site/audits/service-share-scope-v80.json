@@ -1,0 +1,35 @@
+{
+  "version": "20261126-live-v80",
+  "viewports": [
+    {
+      "width": 320,
+      "height": 568,
+      "wholeSectionSharesOnly": true,
+      "noItemShareButtons": true,
+      "individualOrderButtonsRetained": true,
+      "twelveRetiredLinksWork": true,
+      "oldQueriesOpenCompleteSection": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "wholeSectionSharesOnly": true,
+      "noItemShareButtons": true,
+      "individualOrderButtonsRetained": true,
+      "twelveRetiredLinksWork": true,
+      "oldQueriesOpenCompleteSection": true
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "wholeSectionSharesOnly": true,
+      "noItemShareButtons": true,
+      "individualOrderButtonsRetained": true,
+      "twelveRetiredLinksWork": true,
+      "oldQueriesOpenCompleteSection": true
+    }
+  ],
+  "messagesSent": false,
+  "errors": [],
+  "clipboardFallback": true
+}

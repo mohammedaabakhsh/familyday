@@ -4,7 +4,7 @@ from pathlib import Path
 from urllib.parse import urlparse,parse_qs
 from playwright.sync_api import sync_playwright,expect
 R=Path(__file__).resolve().parents[1];BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8127'
-SOURCE=json.loads((R/'data/services.json').read_text());links=json.loads((R/'site/orders/service-links.json').read_text())['services'];out={'version':'20261126-live-v79','profiles':[],'messagesSent':False,'errors':[]}
+SOURCE=json.loads((R/'data/services.json').read_text());links=json.loads((R/'site/orders/service-links.json').read_text())['services'];out={'version':'20261126-live-v80','profiles':[],'messagesSent':False,'errors':[]}
 TAG='pre-resort-direct-orders-20261125'
 for name in ['data/services.json','js/menu-order-message.js','chalet/guest-services/index.html','site/catalog.json','site/share-metadata.json','share-pages.json','share-extras.json']:
  assert (R/name).read_bytes()==subprocess.check_output(['git','show',TAG+':'+name]),name
@@ -24,12 +24,11 @@ def select(f,key):
  elif key=='hospitality':f.locator('.hospitality-package [data-step="1"]').first.click()
  elif key=='restaurant':
   cat=f.locator('#guest-menu details').first;cat.locator('summary').click();cat.locator('[data-step="1"]').first.click()
- elif key in ['coordination','seating']:
+ elif key=='seating':
   root=f.locator('#'+('package-1' if key=='coordination' else 'session-1'));details=root.locator('details').first
   if details.get_attribute('open') is None:details.locator('summary').click()
   root.locator('.arrangement-controls [data-step="1"]').click()
- elif key=='dining':
-  f.locator('.fd-dining-option[data-size="12"][data-option="tansiq"]').click();f.locator('.fd-dining-option[data-size="6"][data-option="plain"]').click();assert f.locator('.fd-dining-option[aria-pressed="true"]').count()==1
+ elif key in ['coordination','dining']:pass
  else:f.locator('[data-extra="bed"] [data-step="1"]').click()
 def identity(f,key,notes=True):
  prefix='arrangement' if key in ['coordination','dining','seating','cinema'] else 'restaurant' if key=='restaurant' else 'guest'
@@ -51,7 +50,7 @@ with sync_playwright() as p:
   elif key=='cinema':
    page.locator('#cinema-session [data-request-key]').click();page.locator('#cinema-time').select_option('18')
   elif key=='dining':
-   page.locator('.fd-dining-option[data-size="6"][data-option="plain"]').click()
+   page.locator('.fd-dining-option[data-size="6"][data-option="plain"]').click();page.locator('[data-dining-request]').click()
   else:
    root=page.locator('#'+('package-1' if key=='coordination' else 'session-1'));root.locator('summary').first.click();root.locator('[data-request-key]').click()
   prefix=identity(page,key);page.locator('#'+('restaurant-order .send-order' if key=='restaurant' else 'extras-order .send-order' if guest else 'arrangement-order .arrangement-send')).click();baseline[key]=page.evaluate('opened.at(-1)');assert baseline[key];c.close()
@@ -60,10 +59,14 @@ with sync_playwright() as p:
   c=b.new_context(viewport={'width':width,'height':height},reduced_motion='reduce',ignore_https_errors=True);c.add_init_script(init);page=c.new_page();page.on('pageerror',lambda e:out['errors'].append(str(e)))
   page.goto(BASE+'/services/');page.evaluate('(keys)=>keys.forEach(k=>sessionStorage.setItem(k,JSON.stringify({name:"OLD",cabin:"البيت اليوناني 2",games:"table",notes:"OLD",quantities:{"package-1":5}})))',keys);saved=page.evaluate('(keys)=>keys.map(k=>sessionStorage.getItem(k))',keys)
   for key,path in cases:
-   page.goto(BASE+path);page.locator('#main [data-service-portal]').click();expect(page.locator('#native-order-dialog')).to_be_visible();expect(page.locator('.native-order-loading')).to_be_hidden();expect(page.locator('.native-order-error')).to_be_hidden();assert page.url==BASE+path
+   page.goto(BASE+path)
+   if key=='dining':page.locator('[data-dining-size="6"][data-dining-option="plain"]').click()
+   if key=='coordination':page.locator('.service-guide-packages>.package summary').first.click()
+   page.locator('#main [data-service-portal]').first.click();expect(page.locator('#native-order-dialog')).to_be_visible();expect(page.locator('.native-order-loading')).to_be_hidden();expect(page.locator('.native-order-error')).to_be_hidden();assert page.url==BASE+path
    f=page.frame_locator('.native-order-frame');expect(f.locator('.resort-direct-send')).to_be_visible();assert page.locator('.native-order-shortcut,.native-order-tabs').count()==0
    assert f.locator('.resort-direct-form').count()==1;assert not f.locator('.resort-direct-form .order-items,.resort-direct-form #arrangement-items').first.is_visible();assert not f.locator('#apply-selection').is_visible() if key not in ['coordination','dining','seating','cinema'] else not f.locator('.arrangement-dialog-footer [data-close-arrangements]').is_visible()
-   expect(f.locator('.resort-direct-send')).to_be_disabled();prefix='arrangement' if key in ['coordination','dining','seating','cinema'] else 'restaurant' if key=='restaurant' else 'guest';assert f.locator('#'+prefix+'-notes').input_value()==''
+   if key not in ['coordination','dining']:expect(f.locator('.resort-direct-send')).to_be_disabled()
+   prefix='arrangement' if key in ['coordination','dining','seating','cinema'] else 'restaurant' if key=='restaurant' else 'guest';assert f.locator('#'+prefix+'-notes').input_value()==''
    if key!='cinema':assert f.locator('#'+prefix+'-name').input_value()=='ضيف المراجعة'
    select(f,key);expect(f.locator('.resort-direct-send')).to_be_enabled()
    if key=='cinema':
@@ -86,4 +89,4 @@ with sync_playwright() as p:
   out['profiles'].append({'width':width,'height':height,'independentServices':len(cases),'exactOriginalDraftsAndRecipients':True,'standaloneDraftsUntouched':True,'identityOnlyRemembered':True,'noSummaryOrCart':True,'backAndCancel':True});c.close();print(width,height,'PASS',flush=True)
  c=b.new_context(viewport={'width':390,'height':430});page=c.new_page();page.route('**/data/services.json?*',lambda r:r.fulfill(status=503,body='Unavailable'));page.goto(BASE+'/services/cinema/');page.locator('#main [data-service-portal]').click();expect(page.locator('.native-order-error')).to_be_visible(timeout=10000);assert page.locator('.native-order-external').get_attribute('data-url')=='/services-guide/#cinema';page.unroute('**/data/services.json?*');page.locator('.native-order-retry').click();expect(page.locator('.native-order-loading')).to_be_hidden();expect(page.frame_locator('.native-order-frame').locator('#cinema-time')).to_be_visible();out['sourceRetryInPlace']=True;c.close();b.close()
 assert not out['errors'],out
-(R/'site/audits/resort-direct-orders-v79.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False))
+(R/'site/audits/resort-direct-orders-v80.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False))

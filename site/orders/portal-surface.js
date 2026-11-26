@@ -99,6 +99,7 @@
     else{
       history.replaceState(null,'','#'+(command.anchor||command.service));window.dispatchEvent(new PopStateEvent('popstate'));
       if(!dialog.open){post('error');return;}
+      if(command.entry&&!window.FD_RESORT_DIRECT_ORDER.selectEntry(command.entry)){post('error');return;}
     }
     wasOpen=dialog.open;syncDirect();updateShare();post('opened');
   }

@@ -9,6 +9,7 @@
       "path": "/services/dining-tables/",
       "title": "طاولات الطعام",
       "intro": "طاولة طعام تجمعكم في المساحة الخارجية الخاصة بالكوخ",
+      "cardIntro": "خيارات تناسب عدد ضيوفكم",
       "image": "/site/media/service-68b7cdf57e8c.webp",
       "originalImage": "/imgs/tawilat_1.webp?v=20261110-natural-photos-v1",
       "size": [
@@ -36,6 +37,7 @@
       "path": "/services/cinema/",
       "title": "جلسة السينما",
       "intro": "جلسة سينما خارجية في المساحة الخاصة بالكوخ",
+      "cardIntro": "استمتعوا بتجربة سينما في مساحتكم الخاصة",
       "image": "/site/media/service-7d2ca2d506cd.webp",
       "originalImage": "/imgs/coordination/complete/13-lighting-v4.webp",
       "size": [
@@ -52,6 +54,7 @@
       "path": "/services/coordination/",
       "title": "التنسيقات",
       "intro": "نجهّز مناسباتكم بكل تفاصيلها",
+      "cardIntro": "تجهيزات متكاملة لمناسباتكم",
       "image": "/site/media/service-d1b98b382b4d.webp",
       "originalImage": "/imgs/coordination/rose/front-a-v4.webp",
       "size": [

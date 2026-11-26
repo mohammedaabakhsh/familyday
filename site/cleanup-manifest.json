@@ -2303,13 +2303,13 @@
     "services-guide/README.md": "e3c7f53ebcd6efe67fab2cc72f75c7a6ff274c181880110891817c3beab79499",
     "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
     "services-guide/guide.css": "0671ba0d08e0d6bbefc44d3b1d37cb58a73488a713165d56e315ceb7c2e7075f",
-    "services-guide/guide.js": "882d22c5bd3cb558e071182e644ba0cfc67e446dd93f88d2e24e3866725c9834",
-    "services-guide/index.html": "2aff2acc03c37eb42aa3855327e84a14cdec132f13747362e83c8551d8d58ce2",
+    "services-guide/guide.js": "5255839f6b18d4419c20dbabe03044ef9decf2063b32a01acdddefeac5f68d91",
+    "services-guide/index.html": "b40a7bdfad13bd3704471f3b4a63aa7c395a6428a8e3a3d56f383e3593bfd7ba",
     "services-guide/share-entry.js": "05dac99bc60dfc4b2d2d1b08c131735f22d72f29cf93f1861b85df47c89dffa2",
     "guest-services/resort-refinements.css": "5ccfd5e08d6538ebb7f37eb93f5dc52ac270dbf309ee57b38c82078ee0b31520",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
-    "services-guide/guide-orders.js": "b3a4cbf623761e36b816881c500bcb40628be8facf3cbe71ac97128d9c9d2a0a",
-    "services-guide/guide-orders.css": "de24eb4d8edb98f753299b6cd0e58bb28fc16766bef7050eca08ba33046b5088"
+    "services-guide/guide-orders.js": "4f442327ad372c6b719bafe5c5f79cfcec004fc5c269ccacb14e75b6f1e07362",
+    "services-guide/guide-orders.css": "bb28d76739a56e45213cf1333a0349dad746c47b0b5b23bdaf70721e3edddf4f"
   },
   "preservedCompatibility": [
     "preview redirects",
@@ -2724,5 +2724,31 @@
         "reason": "Owner requested sharing complete service sections only, removing per-package/session share actions and independent item presentation while keeping individual ordering"
       }
     }
+  },
+  "approvedResortServicesUnification": {
+    "version": "20261126-live-v80",
+    "rollbackTag": "pre-resort-service-unification-20261126",
+    "scope": [
+      "resort cinema",
+      "resort coordination",
+      "resort dining",
+      "same three standalone arrangements sections"
+    ],
+    "reason": "Owner reviewed one service at a time, approved direct coordination requests and full-width specifications, distinct shared card/page wording, one header share, then explicitly selected dining first and a separate request button below its table in both surfaces. Owner requested implementation after the dining review.",
+    "updatedProtectedFiles": [
+      "services-guide/guide-orders.css",
+      "services-guide/guide-orders.js",
+      "services-guide/guide.js",
+      "services-guide/index.html"
+    ],
+    "preserved": [
+      "data/services.json prices and inclusions",
+      "WhatsApp recipients and message builder",
+      "original public service URLs",
+      "shared photo files",
+      "chalet ordering portal",
+      "unreviewed outdoor seating flow",
+      "resthouse"
+    ]
   }
 }
