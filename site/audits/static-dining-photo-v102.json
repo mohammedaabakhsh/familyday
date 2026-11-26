@@ -1,0 +1,51 @@
+{
+  "version": "20261126-live-v102",
+  "profiles": [
+    {
+      "width": 390,
+      "height": 844,
+      "mainPhotoStatic": true,
+      "portalPhotoCompleteAndStatic": true,
+      "sameNaturalPhotoRatio": true,
+      "noClickOrKeyboardZoomAffordance": true,
+      "captionPreserved": true,
+      "otherServicePhotosUnchanged": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "mainPhotoStatic": true,
+      "portalPhotoCompleteAndStatic": true,
+      "sameNaturalPhotoRatio": true,
+      "noClickOrKeyboardZoomAffordance": true,
+      "captionPreserved": true,
+      "otherServicePhotosUnchanged": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "mainPhotoStatic": true,
+      "portalPhotoCompleteAndStatic": true,
+      "sameNaturalPhotoRatio": true,
+      "noClickOrKeyboardZoomAffordance": true,
+      "captionPreserved": true,
+      "otherServicePhotosUnchanged": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 390,
+      "height": 430,
+      "mainPhotoStatic": true,
+      "portalPhotoCompleteAndStatic": true,
+      "sameNaturalPhotoRatio": true,
+      "noClickOrKeyboardZoomAffordance": true,
+      "captionPreserved": true,
+      "otherServicePhotosUnchanged": true,
+      "noHorizontalOverflow": true
+    }
+  ],
+  "errors": [],
+  "messagesSent": false
+}

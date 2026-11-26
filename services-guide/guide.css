@@ -260,6 +260,7 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 
 :is(#dining,#cinema) .dining-shared-photo{max-width:680px;margin:0 auto 20px}
 :is(#dining,#cinema) .dining-shared-photo .package-photo{margin:0;border-radius:16px;overflow:hidden}
+#dining .dining-full-photo{display:block;width:100%;height:auto;max-height:none;aspect-ratio:auto;object-fit:contain;cursor:default}
 :is(#dining,#cinema) .dining-shared-photo .fd-dining-caption{margin:8px 0 0}
 
 /* Match the main site: show the complete pyramid-tent photograph. */

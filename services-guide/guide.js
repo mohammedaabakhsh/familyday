@@ -21,7 +21,7 @@
   const sourceImage = (root, selector) => {
     const image = root.querySelector(selector);
     if (!image) throw new Error('Missing service image: ' + selector);
-    return {src:image.getAttribute('data-page-src') || image.getAttribute('src'), alt:image.alt};
+    return {src:image.getAttribute('data-page-src') || image.getAttribute('src'), alt:image.alt, width:image.width, height:image.height};
   };
   function serviceCard({title, price, priceUnit = '', photos = [], body, id = '', label = 'تفاصيل الخدمة', imageAlt, className = '', capacity = '', expandable = true}) {
     const priceMarkup = '<strong class="price">' + escape(price) + (priceUnit ? '<span class="price-unit"> ' + escape(priceUnit) + '</span>' : '') + '</strong>';
@@ -75,7 +75,7 @@
     let html = section('coordination',data.coordination.name,coordination?.intro||data.coordination.intro,advance+packages(data.coordination.packages)+contact,true);
     const diningSource = template.content;
     const diningImage = sourceImage(diningSource,'.fd-dining-image img');
-    const diningPhoto = '<div class="dining-shared-photo">' + FD_GUIDE_GALLERY.markup([diningImage.src],data.dining.name,diningImage.alt) + '<p class="fd-dining-caption">' + escape(text(diningSource,'.fd-dining-caption')) + '</p></div>';
+    const diningPhoto = '<div class="dining-shared-photo"><figure class="package-photo"><img class="dining-full-photo" src="/' + escape(diningImage.src.replace(/^\/+/,'')) + '" alt="' + escape(diningImage.alt) + '" width="' + escape(diningImage.width) + '" height="' + escape(diningImage.height) + '" loading="eager" decoding="async"></figure><p class="fd-dining-caption">' + escape(text(diningSource,'.fd-dining-caption')) + '</p></div>';
     const diningBody = diningPhoto + FD_DINING_CARDS.details(doc).outerHTML + '<p id="dining-price-help" class="dining-order-help">' + escape(serviceLinks.dining?.orderHint||'اختر عدد الأشخاص ونوع التجهيز، ثم اضغط «اطلب هذه الطاولة».') + '</p>' + FD_DINING_CARDS.table(doc,true).outerHTML;
     const diningSection = section('dining',data.dining.name,data.dining.intro,diningBody,true);
     const seating=serviceLinks.seating;
