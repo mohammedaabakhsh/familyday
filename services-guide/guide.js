@@ -119,7 +119,7 @@
     document.getElementById('guide-back-label').textContent = sectionView ? 'تنسيقات وجلسات' : 'رجوع';
     document.title = title ? title + ' | يوم العائلة' : guideTitle;
     const sectionShare=document.querySelector('.topbar [data-share]');
-    sectionShare.dataset.share=activeSection?.id||pendingTile?.hash.slice(1)||'';
+    sectionShare.dataset.share=activeSection?.id||pendingTile?.hash?.slice(1)||'';
     sectionShare.setAttribute('aria-label','مشاركة '+(title||'تنسيقات وجلسات'));
     document.getElementById('arrangement-dialog-title').textContent=title || 'اختيار التجهيزات';
     if(embeddedOrder && sectionView && !dialog.open){dialogScrollY=window.scrollY;dialog.showModal();}
