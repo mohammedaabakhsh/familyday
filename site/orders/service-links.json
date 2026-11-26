@@ -55,6 +55,12 @@
       "title": "التنسيقات",
       "intro": "نجهّز مناسباتكم بكل تفاصيلها",
       "cardIntro": "تجهيزات متكاملة لمناسباتكم",
+      "advanceNote": "يُرجى طلب الباقة مسبقًا لإتاحة الوقت الكافي لتجهيزها لكم",
+      "help": {
+        "title": "تحتاج مساعدة؟",
+        "name": "منسّق المناسبات",
+        "phone": "966537009217"
+      },
       "image": "/site/media/service-d1b98b382b4d.webp",
       "originalImage": "/imgs/coordination/rose/front-a-v4.webp",
       "size": [

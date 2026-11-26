@@ -48,6 +48,8 @@ for service in CATALOG['services']:
  copy=COPY.get('serviceCopy',{}).get(service['id'],{})
  order_links[key]={'path':service['path'],'title':service['name'],'intro':copy.get('pageIntro',data.get('intro',service.get('intro','')))}
  if copy.get('cardIntro'):order_links[key]['cardIntro']=copy['cardIntro']
+ for field in ['advanceNote','help']:
+  if copy.get(field):order_links[key][field]=copy[field]
  if image:
   raw=image.split('?')[0]
   order_links[key].update(image=RUNTIME.get('serviceImages',{}).get(raw,image),originalImage=image,size=COPY.get('serviceImageSizes',{}).get(raw))

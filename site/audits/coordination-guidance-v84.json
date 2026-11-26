@@ -1,0 +1,34 @@
+{
+  "version": "20261126-live-v84",
+  "profiles": [
+    {
+      "width": 390,
+      "height": 844,
+      "sameAdvanceNote": true,
+      "twentyPixelGaps": true,
+      "coordinatorHelpBelowPackages": true,
+      "correctPhoneAndLinks": true,
+      "requestsAndOwnSharesWork": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "sameAdvanceNote": true,
+      "twentyPixelGaps": true,
+      "coordinatorHelpBelowPackages": true,
+      "correctPhoneAndLinks": true,
+      "requestsAndOwnSharesWork": true
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "sameAdvanceNote": true,
+      "twentyPixelGaps": true,
+      "coordinatorHelpBelowPackages": true,
+      "correctPhoneAndLinks": true,
+      "requestsAndOwnSharesWork": true
+    }
+  ],
+  "errors": [],
+  "messagesSent": false
+}

@@ -147,3 +147,7 @@ Cinema's standalone section shows its photo immediately, using the same shared g
 ## Compact standalone coordination cards — v83
 
 [Owner-approved coordination refinement](../docs/compact-coordination-v83.md) shortens both package request labels to `اطلب هذه الباقة` and makes the standalone closed cards compact name/price/chevron rows like the main guide. Portal colors, expandable content, request dialogs, distinct share URLs and outdoor seating geometry remain. `check-arrangement-orders.py` compares against the original stylesheet for card-size regression and preserves all original draft checks. Rollback: `pre-compact-coordination-cards-20261126`.
+
+## Coordination advance guidance and coordinator help — v84
+
+[Approved guidance and help](../docs/coordination-guidance-help-v84.md) add the no-fixed-period advance-request sentence above the packages, 20px gaps between compact cards, and a light coordinator contact section below them in both interfaces. Shared copy/contact data are exported through service links; WhatsApp and call point to the original coordinator. Original catalogue data, request dialog/controllers/messages and per-interface share destinations remain unchanged. Rollback: `pre-coordination-help-20261126`.

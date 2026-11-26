@@ -68,7 +68,10 @@
       const tile=document.querySelector('.guide-tile[href="#'+id+'"] .tile-description');
       if(tile&&serviceLinks[id]?.cardIntro)tile.textContent=serviceLinks[id].cardIntro;
     }
-    let html = section('coordination',data.coordination.name,serviceLinks.coordination?.intro||data.coordination.intro,packages(data.coordination.packages),true);
+    const coordination=serviceLinks.coordination,help=coordination?.help;
+    const advance=coordination?.advanceNote?'<p class="coordination-order-note">'+escape(coordination.advanceNote)+'</p>':'';
+    const contact=help?'<section class="coordination-help" aria-labelledby="coordination-help-title"><h3 id="coordination-help-title">'+escape(help.title)+'</h3><p>'+escape(help.name)+' · <bdi dir="ltr">'+escape(help.phone.replace(/^966/,'0'))+'</bdi></p><nav class="coordination-help-actions" aria-label="التواصل مع منسّق المناسبات"><a href="https://wa.me/'+escape(help.phone)+'" target="_blank" rel="noopener noreferrer" aria-label="واتساب منسّق المناسبات">واتساب</a><a href="tel:+'+escape(help.phone)+'" aria-label="اتصال بمنسّق المناسبات">اتصال</a></nav></section>':'';
+    let html = section('coordination',data.coordination.name,coordination?.intro||data.coordination.intro,advance+packages(data.coordination.packages)+contact,true);
     const diningSource = template.content;
     const diningImage = sourceImage(diningSource,'.fd-dining-image img');
     const diningPhoto = '<div class="dining-shared-photo">' + FD_GUIDE_GALLERY.markup([diningImage.src],data.dining.name,diningImage.alt) + '<p class="fd-dining-caption">' + escape(text(diningSource,'.fd-dining-caption')) + '</p></div>';
@@ -187,7 +190,7 @@
     try {
       const response = await fetch('/data/services.json?v=20261125-live-v54',{cache:'no-cache'});
       if (!response.ok) throw new Error('Service source unavailable');
-      const links=await fetch('/site/orders/service-links.json?v=20261126-live-v80').then(r=>r.ok?r.json():{}).catch(()=>({}));
+      const links=await fetch('/site/orders/service-links.json?v=20261126-live-v84').then(r=>r.ok?r.json():{}).catch(()=>({}));
       render(await response.json(),links.services||{});
     } catch(error) {
       content.innerHTML = '<div class="load-error"><h2>تعذّر تحميل التجهيزات</h2><p>حاولوا مرة ثانية لعرض التفاصيل هنا.</p><button type="button" id="retry-guide">إعادة المحاولة</button></div>';
