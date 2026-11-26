@@ -118,6 +118,9 @@
     back.setAttribute('aria-label',sectionView ? 'العودة إلى تنسيقات وجلسات' : homeBack.label);
     document.getElementById('guide-back-label').textContent = sectionView ? 'تنسيقات وجلسات' : 'رجوع';
     document.title = title ? title + ' | يوم العائلة' : guideTitle;
+    const sectionShare=document.querySelector('.topbar [data-share]');
+    sectionShare.dataset.share=activeSection?.id||pendingTile?.hash.slice(1)||'';
+    sectionShare.setAttribute('aria-label','مشاركة '+(title||'تنسيقات وجلسات'));
     document.getElementById('arrangement-dialog-title').textContent=title || 'اختيار التجهيزات';
     if(embeddedOrder && sectionView && !dialog.open){dialogScrollY=window.scrollY;dialog.showModal();}
     else if((!embeddedOrder || !sectionView) && dialog.open){dialog.close();}
@@ -200,7 +203,7 @@
     if(!button) return;
     const id = button.dataset.share || (activeSection ? activeSection.id : '');
     // Reuse the native guide URLs for individual services; their static previews are text-only.
-    const url = new URL(button.dataset.sharePath || ({coordination:'/services/coordination/',dining:'/services/dining-tables/',seating:'/services/outdoor-seating/',cinema:'/services/cinema/'}[id]) || '/arrangements/',location.origin);
+    const url = new URL(button.dataset.sharePath || ({coordination:'/services/coordination/',dining:'/services/dining-tables/',seating:'/services/outdoor-seating/',cinema:'/services/cinema/'}[id]) || '/services-guide/',location.origin);
     if(!button.dataset.sharePath && id && !['coordination','dining','seating','cinema'].includes(id)) url.hash=id;
     try {
       if (navigator.share) {await navigator.share({text:url.href});return;}

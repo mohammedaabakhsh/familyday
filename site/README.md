@@ -119,3 +119,7 @@ Owner-approved independent request greetings now distinguish coordination, dinin
 ## Cinema photo presentation — v76
 
 Cinema's standalone section shows its photo immediately, using the same shared gallery wrapper, width, height ratio and corners as dining. Price, contents, usage instructions and independent request/share actions follow the photo. The order model, prices, recipients and links are unchanged. The cinema browser check compares the actual photo dimensions with dining on four mobile sizes. Rollback: `pre-cinema-photo-layout-20261125`.
+
+## Service share scope — v77
+
+[Implementation and checks](../docs/service-share-scope-v77.md): section/page/order headers share the general service URL; package/session cards retain their original item query URLs. Opening an item URL reveals its selected open card under the header. Saved positions still win on Back. `check-service-share-scope.py` round-trips all twelve item links and checks header scope, clipboard fallback and Back on three phone sizes. Original catalogue facts, prices and share metadata remain. Rollback: `pre-service-share-scope-20261126`.

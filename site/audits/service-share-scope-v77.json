@@ -1,0 +1,35 @@
+{
+  "version": "20261126-live-v77",
+  "viewports": [
+    {
+      "width": 320,
+      "height": 568,
+      "homeAndFourSectionHeaders": true,
+      "twelveSpecificCardLinks": true,
+      "targetRevealed": true,
+      "mainHeaderAndCardConsistent": true,
+      "backPositionRestored": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "homeAndFourSectionHeaders": true,
+      "twelveSpecificCardLinks": true,
+      "targetRevealed": true,
+      "mainHeaderAndCardConsistent": true,
+      "backPositionRestored": true
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "homeAndFourSectionHeaders": true,
+      "twelveSpecificCardLinks": true,
+      "targetRevealed": true,
+      "mainHeaderAndCardConsistent": true,
+      "backPositionRestored": true
+    }
+  ],
+  "messagesSent": false,
+  "errors": [],
+  "clipboardFallback": true
+}

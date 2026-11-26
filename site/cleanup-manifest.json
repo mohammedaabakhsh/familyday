@@ -2295,7 +2295,7 @@
     "guest-services/README.md": "1ad3a3d1df387c6f92547d236015ff1c975e01b67890162dfa0d0e750b23ec7a",
     "guest-services/guest-services.css": "207545d3740a44c6e0ab8ded3731b255151478ecf82109d0344cdb5dc7e61a36",
     "guest-services/guest-services.js": "39651a20a49226ae37b8c28cdd3d42278e767ada3e9e74d9839f093b6b3be83a",
-    "guest-services/index.html": "bae1f2b0b2f808ea4adf849f568738a4f512d4ea25c170ce68c3e2890a65f5ee",
+    "guest-services/index.html": "410a4093afd826bca986c76ff16eb59d7334145180cd3394f081eb662f500974",
     "guest-services/service-source.js": "e0da9d9065eea4864558446730954129ccefb495b97c4c7070b8e4a6a6803b3e",
     "guest-services/share.js": "a207ab25177d5b69bb1e8a4cc37bc0755c9a2157b7024561d3c15b2652c4323b",
     "js/dining-cards.js": "a80c8a1fcbc623019426cc46184f52f6dc0b109570afbd848e39571726be4097",
@@ -2303,8 +2303,8 @@
     "services-guide/README.md": "e3c7f53ebcd6efe67fab2cc72f75c7a6ff274c181880110891817c3beab79499",
     "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
     "services-guide/guide.css": "0671ba0d08e0d6bbefc44d3b1d37cb58a73488a713165d56e315ceb7c2e7075f",
-    "services-guide/guide.js": "f9496472aedeb57f0013cd97b2cc4014969f18835b2c8310b973999c5f821438",
-    "services-guide/index.html": "3162cfa87a6bbc611d43193a02295dbe35972c3a7faf23997e591e15b3bedaf1",
+    "services-guide/guide.js": "3c1d805bee4d4bec026711acc1c1649093d8e6655ed5f92e5d4c4bf7f38c8f7e",
+    "services-guide/index.html": "e94f089bb88a20ca26304be6dfd94e7374294e5682594e8b362b422457f79fd6",
     "services-guide/share-entry.js": "05dac99bc60dfc4b2d2d1b08c131735f22d72f29cf93f1861b85df47c89dffa2",
     "guest-services/resort-refinements.css": "5ccfd5e08d6538ebb7f37eb93f5dc52ac270dbf309ee57b38c82078ee0b31520",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
@@ -2660,6 +2660,25 @@
       "services-guide/guide-orders.css": {
         "previousSha256": "52dfd6d82f6dc9a92ff73392ba2df5dc3139a4ada6f786f0e6852902cce41636",
         "reason": "Owner requested cinema photo visible immediately at the same dimensions as dining, with existing direct order and share controls visible below"
+      }
+    }
+  },
+  "approvedServiceShareScope": {
+    "version": "20261126-live-v77",
+    "rollbackTag": "pre-service-share-scope-20261126",
+    "reason": "Owner requested general section sharing from headers and individual session/package sharing from cards. Existing query URLs reveal the selected item on first entry and retain Back restoration.",
+    "protectedChanges": {
+      "services-guide/guide.js": {
+        "previousSha256": "f9496472aedeb57f0013cd97b2cc4014969f18835b2c8310b973999c5f821438",
+        "reason": "Correct section header share scope while retaining exact original per-item share URLs and text-only sharing"
+      },
+      "services-guide/index.html": {
+        "previousSha256": "3162cfa87a6bbc611d43193a02295dbe35972c3a7faf23997e591e15b3bedaf1",
+        "reason": "Correct section header share scope while retaining exact original per-item share URLs and text-only sharing"
+      },
+      "guest-services/index.html": {
+        "previousSha256": "bae1f2b0b2f808ea4adf849f568738a4f512d4ea25c170ce68c3e2890a65f5ee",
+        "reason": "Correct section header share scope while retaining exact original per-item share URLs and text-only sharing"
       }
     }
   }

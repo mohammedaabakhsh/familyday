@@ -42,8 +42,9 @@
   document.addEventListener('click',event=>{
     const item=embedded&&event.target.closest('[data-share-path]');if(item){event.preventDefault();event.stopImmediatePropagation();share(item.dataset.sharePath);return;}
     if(embedded&&event.target.closest('.seating-collapsed-summary')){event.preventDefault();return;}
-    const button=event.target.closest(guest?'#share-page':'.topbar [data-share]');if(!button)return;
-    event.preventDefault();event.stopImmediatePropagation();share(guest?'/guest-services/':'/services-guide/');
+    // The guide's own handler knows the current section; keep its header share local to that section.
+    const button=guest&&event.target.closest('#share-page');if(!button)return;
+    event.preventDefault();event.stopImmediatePropagation();share('/guest-services/');
   },true);
   function updateShare(){shareButton.disabled=!sharePath();}
   function photo(service,panel){
