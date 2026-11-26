@@ -276,39 +276,50 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 .guide-usage>ul{display:grid;gap:6px;margin:0;padding:0 20px 12px 0;color:var(--muted);font-size:13px;line-height:1.7}
 
 /* Coordination uses the compact name / price / chevron row approved in the main guide. */
-#coordination .seating-collapsed-summary{flex-direction:row;align-items:center;justify-content:space-between;min-height:58px;gap:10px;padding:16px}
-#coordination .seating-collapsed-main{flex:1;min-width:0}
-#coordination .seating-summary-bottom{flex:none;gap:8px}
-#coordination .seating-summary-bottom .price{font-size:14px;line-height:1.5;white-space:nowrap}
-#coordination .seating-summary-bottom .price-unit{display:inline;margin:0;font:inherit;color:inherit}
-#coordination .seating-collapsed-chevron{width:16px;height:16px;padding:0;border:0;border-radius:0;background:transparent}
-#coordination .seating-collapsed-details[open] .seating-collapsed-chevron{background:transparent;border:0;color:inherit}
+:is(#coordination,#seating) .seating-collapsed-summary{flex-direction:row;align-items:center;justify-content:space-between;min-height:58px;gap:10px;padding:16px}
+:is(#coordination,#seating) .seating-collapsed-main{flex:1;min-width:0}
+:is(#coordination,#seating) .seating-summary-bottom{flex:none;gap:8px}
+:is(#coordination,#seating) .seating-summary-bottom .price{font-size:14px;line-height:1.5;white-space:nowrap}
+:is(#coordination,#seating) .seating-summary-bottom .price-unit{display:inline;margin:0;font:inherit;color:inherit}
+:is(#coordination,#seating) .seating-collapsed-chevron{width:16px;height:16px;padding:0;border:0;border-radius:0;background:transparent}
+:is(#coordination,#seating) .seating-collapsed-details[open] .seating-collapsed-chevron{background:transparent;border:0;color:inherit}
 
 /* Give the compact coordination rows room, with advance guidance and simple contact actions. */
-#coordination .package-grid{gap:20px}
-#coordination .coordination-order-note{max-width:680px;margin:0 auto 22px;color:var(--ink);font-size:13px;line-height:1.85;text-align:center;text-wrap:pretty}
-#coordination .coordination-help{max-width:680px;margin:28px auto 0;padding-top:20px;border-top:1px solid var(--line);text-align:center}
-#coordination .coordination-help h3{font-size:17px;line-height:1.6;margin:0 0 6px;color:#102f40;font-weight:700}
-#coordination .coordination-help p{margin:0 0 14px;color:var(--muted);font-size:13px;line-height:1.8}
-#coordination .coordination-help .coordination-help-description{font-size:12px;line-height:1.6;color:var(--muted)}
-#coordination .coordination-help .coordination-help-name{font-size:15px;line-height:1.4;font-weight:700;color:#102f40}
-#coordination .coordination-help bdi{color:var(--accent);white-space:nowrap}
-#coordination .coordination-help-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-#coordination .coordination-help-actions a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:10px;border:1px solid var(--line);border-radius:10px;color:var(--ink);font-size:14px;font-weight:700}
-body.resort-order-embedded #coordination :is(.coordination-order-note,.coordination-help){display:none!important}
+:is(#coordination,#seating) .package-grid{gap:20px}
+:is(#coordination,#seating) .coordination-order-note{max-width:680px;margin:0 auto 22px;color:var(--ink);font-size:13px;line-height:1.85;text-align:center;text-wrap:pretty}
+:is(#coordination,#seating) .coordination-help{max-width:680px;margin:28px auto 0;padding-top:20px;border-top:1px solid var(--line);text-align:center}
+:is(#coordination,#seating) .coordination-help h3{font-size:17px;line-height:1.6;margin:0 0 6px;color:#102f40;font-weight:700}
+:is(#coordination,#seating) .coordination-help p{margin:0 0 14px;color:var(--muted);font-size:13px;line-height:1.8}
+:is(#coordination,#seating) .coordination-help .coordination-help-description{font-size:12px;line-height:1.6;color:var(--muted)}
+:is(#coordination,#seating) .coordination-help .coordination-help-name{font-size:15px;line-height:1.4;font-weight:700;color:#102f40}
+:is(#coordination,#seating) .coordination-help bdi{color:var(--accent);white-space:nowrap}
+:is(#coordination,#seating) .coordination-help-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+:is(#coordination,#seating) .coordination-help-actions a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:10px;border:1px solid var(--line);border-radius:10px;color:var(--ink);font-size:14px;font-weight:700}
+body.resort-order-embedded :is(#coordination,#seating) :is(.coordination-order-note,.coordination-help){display:none!important}
 
 /* Fit the coordination overview naturally; expanded packages remain scrollable. */
 @media screen and (max-width:759px){
- body[data-guide-view="section"] #coordination{--co-available:calc(100svh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));--co-gap:clamp(8px,calc(var(--co-available)*.06 - 32px),20px);--co-space:clamp(6px,calc(var(--co-available)*.03 - 14px),16px);padding-top:clamp(10px,calc(var(--co-available)*.02),18px);padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
- body[data-guide-view="section"] #coordination>.section-heading{margin-bottom:var(--co-space);padding-bottom:8px}
- body[data-guide-view="section"] #coordination>.section-heading p{margin-top:4px;font-size:13px;line-height:1.6}
- body[data-guide-view="section"] #coordination .coordination-order-note{margin-bottom:var(--co-space);line-height:1.75}
- body[data-guide-view="section"] #coordination .package-grid{gap:var(--co-gap)}
- body[data-guide-view="section"] #coordination .seating-collapsed-summary{min-height:clamp(44px,calc(var(--co-available)*.1 - 26px),60px);padding:clamp(6px,calc(var(--co-available)*.03 - 12px),16px) 14px}
- body[data-guide-view="section"] #coordination .coordination-help{display:grid;grid-template-columns:minmax(0,1fr);align-items:center;row-gap:5px;margin-top:clamp(10px,calc(var(--co-available)*.03 - 12px),16px);padding-top:clamp(4px,calc(var(--co-available)*.02 - 10px),8px)}
- body[data-guide-view="section"] #coordination .coordination-help h3{margin:0;text-align:center;font-size:18px;line-height:1.4}
- body[data-guide-view="section"] #coordination .coordination-help p{margin:0;text-align:center;font-size:13px;line-height:1.5}
- body[data-guide-view="section"] #coordination .coordination-help .coordination-help-description{font-size:12px;line-height:1.6;color:var(--muted)}
- body[data-guide-view="section"] #coordination .coordination-help .coordination-help-name{font-size:15px;line-height:1.4;font-weight:700;color:#102f40}
- body[data-guide-view="section"] #coordination .coordination-help-actions{grid-column:1/-1}
+ body[data-guide-view="section"] :is(#coordination,#seating){--co-available:calc(100svh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));--co-gap:clamp(8px,calc(var(--co-available)*.06 - 32px),20px);--co-space:clamp(6px,calc(var(--co-available)*.03 - 14px),16px);padding-top:clamp(10px,calc(var(--co-available)*.02),18px);padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
+ body[data-guide-view="section"] :is(#coordination,#seating)>.section-heading{margin-bottom:var(--co-space);padding-bottom:8px}
+ body[data-guide-view="section"] :is(#coordination,#seating)>.section-heading p{margin-top:4px;font-size:13px;line-height:1.6}
+ body[data-guide-view="section"] :is(#coordination,#seating) .coordination-order-note{margin-bottom:var(--co-space);line-height:1.75}
+ body[data-guide-view="section"] :is(#coordination,#seating) .package-grid{gap:var(--co-gap)}
+ body[data-guide-view="section"] :is(#coordination,#seating) .seating-collapsed-summary{min-height:clamp(44px,calc(var(--co-available)*.1 - 26px),60px);padding:clamp(6px,calc(var(--co-available)*.03 - 12px),16px) 14px}
+ body[data-guide-view="section"] :is(#coordination,#seating) .coordination-help{display:grid;grid-template-columns:minmax(0,1fr);align-items:center;row-gap:5px;margin-top:clamp(10px,calc(var(--co-available)*.03 - 12px),16px);padding-top:clamp(4px,calc(var(--co-available)*.02 - 10px),8px)}
+ body[data-guide-view="section"] :is(#coordination,#seating) .coordination-help h3{margin:0;text-align:center;font-size:18px;line-height:1.4}
+ body[data-guide-view="section"] :is(#coordination,#seating) .coordination-help p{margin:0;text-align:center;font-size:13px;line-height:1.5}
+ body[data-guide-view="section"] :is(#coordination,#seating) .coordination-help .coordination-help-description{font-size:12px;line-height:1.6;color:var(--muted)}
+ body[data-guide-view="section"] :is(#coordination,#seating) .coordination-help .coordination-help-name{font-size:15px;line-height:1.4;font-weight:700;color:#102f40}
+ body[data-guide-view="section"] :is(#coordination,#seating) .coordination-help-actions{grid-column:1/-1}
+}
+
+#seating .package-grid{grid-template-columns:minmax(0,1fr);max-width:680px;margin-inline:auto}
+#seating .seating-collapsed-content{padding:0 0 18px}
+#seating .seating-collapsed-content .package-details-body{padding:0 20px}
+#seating .seating-collapsed-main{display:flex;align-items:center;gap:8px}
+#seating .seating-capacity-badge{flex:none;font-size:11px;padding:3px 5px}
+#seating .seating-collapsed-title{font-size:14px;line-height:1.5}
+@media(max-width:759px){
+ body[data-guide-view="section"] #seating .package-grid{gap:clamp(8px,calc(var(--co-available)*.05 - 26px),16px)}
+ body[data-guide-view="section"] #seating .seating-collapsed-summary{padding-block:clamp(6px,calc(var(--co-available)*.02 - 7px),9px)}
 }

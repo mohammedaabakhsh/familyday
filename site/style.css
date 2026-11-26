@@ -391,3 +391,16 @@ body.resort-services #main{width:100%;max-width:none;height:100dvh;min-height:0;
  .resort-service .service-guide-coordination .coordination-help p{margin:0;text-align:left;font-size:13px;line-height:1.5}
  .resort-service .service-guide-coordination .coordination-help-actions{grid-column:1/-1}
 }
+
+/* Four service categories use the same controls as the reviewed FAQ. */
+.resort-service-directory .service-categories{margin:0 0 12px}
+.resort-service-directory .service-categories button{font-size:12px;min-height:48px}
+.resort-service-directory .svcs-content{gap:0}
+.resort-service-directory .svcs-grid{gap:12px}
+.resort-service-directory .svcs-card{min-height:70px;padding:12px 14px}
+.service-guide-seating .package>summary>span:first-child{min-width:0;font-size:14px}
+.service-guide-seating .service-guide-capacity{font-size:11px;line-height:1.4}
+@media(max-width:759px){
+ .resort-service .service-guide-seating .service-guide-packages{gap:clamp(8px,calc(var(--co-available)*.05 - 26px),16px)}
+ .resort-service .service-guide-seating .service-guide-packages>.package>summary{padding-block:clamp(5px,calc(var(--co-available)*.02 - 7px),9px)}
+}

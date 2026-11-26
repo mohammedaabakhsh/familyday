@@ -36,7 +36,7 @@
         + '<summary class="seating-collapsed-summary"><span class="seating-collapsed-main"><span class="seating-collapsed-title">' + escape(title) + '</span>'
         + (capacity ? '<span class="seating-capacity-badge">' + escape(capacity) + '</span>' : '') + '</span>'
         + '<span class="seating-summary-bottom">' + priceMarkup
-        + '<span class="seating-detail-footer"><svg class="seating-collapsed-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>' + (className === 'coordination-card' ? '' : '<span class="seating-detail-hint">الصورة والتفاصيل</span>') + '</span></span></summary>'
+        + '<span class="seating-detail-footer"><svg class="seating-collapsed-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>' + '' + '</span></span></summary>'
         + '<div class="seating-collapsed-content">' + (photos.length ? FD_GUIDE_GALLERY.markup(photos,title,imageAlt) : '')
         + '<div class="package-details-body">' + body + '</div></div></details></article>';
     }
@@ -70,17 +70,18 @@
     }
     const coordination=serviceLinks.coordination,help=coordination?.help;
     const advance=coordination?.advanceNote?'<p class="coordination-order-note">'+escape(coordination.advanceNote)+'</p>':'';
-    const contact=help?'<section class="coordination-help" aria-labelledby="coordination-help-title"><h3 id="coordination-help-title">'+escape(help.title)+'</h3><p class="coordination-help-description">تواصل معنا لاختيار التنسيق المناسب لكم</p><p class="coordination-help-name">'+escape(help.name)+'</p><nav class="coordination-help-actions" aria-label="التواصل مع منسّق المناسبات"><a href="https://wa.me/'+escape(help.phone)+'" target="_blank" rel="noopener noreferrer" aria-label="واتساب منسّق المناسبات">واتساب</a><a href="tel:+'+escape(help.phone)+'" aria-label="اتصال بمنسّق المناسبات">اتصال</a></nav></section>':'';
+    const contactMarkup=(id,help,description)=>help?'<section class="coordination-help" aria-labelledby="'+escape(id)+'-help-title"><h3 id="'+escape(id)+'-help-title">'+escape(help.title)+'</h3><p class="coordination-help-description">'+escape(description)+'</p><p class="coordination-help-name">'+escape(help.name)+'</p><nav class="coordination-help-actions" aria-label="التواصل مع منسّق المناسبات"><a href="https://wa.me/'+escape(help.phone)+'" target="_blank" rel="noopener noreferrer" aria-label="واتساب منسّق المناسبات">واتساب</a><a href="tel:+'+escape(help.phone)+'" aria-label="اتصال بمنسّق المناسبات">اتصال</a></nav></section>':'';
+    const contact=contactMarkup('coordination',help,'تواصل معنا لاختيار التنسيق المناسب لكم');
     let html = section('coordination',data.coordination.name,coordination?.intro||data.coordination.intro,advance+packages(data.coordination.packages)+contact,true);
     const diningSource = template.content;
     const diningImage = sourceImage(diningSource,'.fd-dining-image img');
     const diningPhoto = '<div class="dining-shared-photo">' + FD_GUIDE_GALLERY.markup([diningImage.src],data.dining.name,diningImage.alt) + '<p class="fd-dining-caption">' + escape(text(diningSource,'.fd-dining-caption')) + '</p></div>';
     const diningBody = '<p id="dining-price-help" class="dining-order-help">اختر عدد الأشخاص ونوع التجهيز، ثم اضغط «اطلب عبر واتساب» أسفل الجدول.</p>' + diningPhoto + FD_DINING_CARDS.table(doc,true).outerHTML + FD_DINING_CARDS.details(doc).outerHTML;
     const diningSection = section('dining',data.dining.name,data.dining.intro,diningBody,true);
-    const extra = data.seating.extra;
-    const seatingExtra = '<aside class="seating-extra" aria-labelledby="seating-extra-title"><h3 id="seating-extra-title">إضافة اختيارية</h3><div class="seating-extra-offer"><strong>' + escape(extra.name) + '</strong><strong class="seating-extra-price">' + escape(extra.price) + '</strong></div><p>إضافة اختيارية تُضاف قيمتها لسعر الجلسة</p></aside>';
-    const seatingUsage = '<details class="guide-usage"><summary>تعليمات الاستخدام</summary><ul>' + data.seating.notes.map(note => '<li>' + escape(note) + '</li>').join('') + '</ul></details>';
-    html += section('seating',data.seating.name,'جلسات نجهّزها لكم في المساحة الخارجية الخاصة بالكوخ', '<div class="photo-grid">' + data.seating.sessions.map((s,i) => serviceCard({id:'session-'+(i+1),title:s.name,price:s.price,priceUnit:'للجلسة',photos:[s.img],imageAlt:s.name,className:'photo-card',capacity:s.persons,label:'تفاصيل الجلسة',body:'<p class="session-description">' + escape(s.desc) + '</p>'})).join('') + '</div>' + seatingExtra + seatingUsage,true);
+    const seating=serviceLinks.seating;
+    const seatingAdvance=seating?.advanceNote?'<p class="coordination-order-note">'+escape(seating.advanceNote)+'</p>':'';
+    const seatingContact=contactMarkup('seating',seating?.help,'تواصل معنا لاختيار الجلسة المناسبة لكم');
+    html += section('seating',data.seating.name,seating?.intro||'جلسات نجهّزها لكم في المساحة الخارجية الخاصة بالكوخ', seatingAdvance+'<div class="photo-grid package-grid">' + data.seating.sessions.map((s,i) => serviceCard({id:'session-'+(i+1),title:s.name,price:s.price,priceUnit:'للجلسة',photos:[s.img],imageAlt:s.name,className:'photo-card',capacity:s.persons,label:'تفاصيل الجلسة',body:'<p class="session-description">' + escape(s.desc) + '</p>'})).join('') + '</div>' + seatingContact,true);
     html += diningSection;
     const cinema=catalog.guest.cinema, cinemaMedia=serviceLinks.cinema;
     const cinemaPhoto=cinemaMedia?.image?'<div class="dining-shared-photo cinema-shared-photo">'+FD_GUIDE_GALLERY.markup([cinemaMedia.image],cinema.title,cinema.title)+'</div>':'';
@@ -190,7 +191,7 @@
     try {
       const response = await fetch('/data/services.json?v=20261125-live-v54',{cache:'no-cache'});
       if (!response.ok) throw new Error('Service source unavailable');
-      const links=await fetch('/site/orders/service-links.json?v=20261126-live-v84').then(r=>r.ok?r.json():{}).catch(()=>({}));
+      const links=await fetch('/site/orders/service-links.json?v=20261126-live-v88').then(r=>r.ok?r.json():{}).catch(()=>({}));
       render(await response.json(),links.services||{});
     } catch(error) {
       content.innerHTML = '<div class="load-error"><h2>تعذّر تحميل التجهيزات</h2><p>حاولوا مرة ثانية لعرض التفاصيل هنا.</p><button type="button" id="retry-guide">إعادة المحاولة</button></div>';

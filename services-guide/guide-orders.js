@@ -53,7 +53,7 @@
   function actions(entry){
     const wrap=node('div',undefined,'arrangement-actions');
     if(browseOrders && entry.group!=='extra'){
-      const order=node('button',entry.group==='coordination'?'اطلب هذه الباقة':'اطلب عبر واتساب','arrangement-request-button');order.type='button';order.dataset.requestKey=entry.key;order.setAttribute('aria-label','طلب '+entry.name+(entry.group==='coordination'?'':' عبر واتساب'));wrap.append(order);
+      const order=node('button',entry.group==='coordination'?'اطلب هذه الباقة':entry.group==='seating'?'اطلب هذه الجلسة':'اطلب عبر واتساب','arrangement-request-button');order.type='button';order.dataset.requestKey=entry.key;order.setAttribute('aria-label','طلب '+entry.name+(entry.group==='coordination'?'':' عبر واتساب'));wrap.append(order);
     }
     // Each service is shared once, using its header and complete public section.
     return wrap;
@@ -65,7 +65,7 @@
       const controls=actions(entry);controls.classList.add('arrangement-browse-actions');
       host.querySelector('.seating-collapsed-content,.cinema-service-body').append(controls);return;
     }
-    if(entry.group==='cinema')return;
+    if(entry.group==='cinema'||entry.group==='extra')return;
     const controls=node('div',undefined,'arrangement-controls');controls.dataset.entry=entry.key;controls.append(counter(entry));const shareActions=actions(entry);if(shareActions.childElementCount)controls.append(shareActions);host.append(controls);
   }
   function jump(){summary.focus({preventScroll:true});window.scrollTo({top:Math.max(0,scrollY+summary.getBoundingClientRect().top-18),behavior:'instant'});updateShortcut();}
@@ -126,7 +126,7 @@
       const selectingCinema=browseOrders?requestEntry?.group==='cinema':directService==='cinema';
       cinemaTimeField.hidden=!selectingCinema;cinemaTime.required=selectingCinema;
       cinemaTimeField.querySelector('small').textContent=state.cinemaTime?cinemaTimeRange(state.cinemaTime):'مدة الجلسة: '+cinemaConfig.duration;
-      form.querySelector('.arrangement-confirmation').textContent=selectingCinema?'تابع طلبك مع فريق خدمات المنتجع عبر واتساب لتأكيد الموعد.':'تابع طلبك مع منسّق المناسبات عبر واتساب لتأكيد التفاصيل والموعد.';
+      form.querySelector('.arrangement-confirmation').textContent='تابع طلبك مع منسّق المناسبات عبر واتساب لتأكيد التفاصيل والموعد.';
     }
     if(browseOrders&&requestEntry){
       requestDialog.querySelector('.request-total-label').textContent='إجمالي الخدمة';
@@ -228,18 +228,24 @@
     }
     parts.push('','إجمالي الطلب: '+chosen.reduce((sum,e)=>sum+e.total,0)+' ريال');if(state.notes.trim())parts.push('','ملاحظات: '+state.notes.trim());save();
     // Open a text draft only; the guest reviews and sends it from WhatsApp.
-    window.open('https://wa.me/'+(cinemaChosen()?'966556156693':'966537009217')+'?text='+encodeURIComponent(parts.join('\n')),'_blank','noopener,noreferrer');
+    window.open('https://wa.me/966537009217?text='+encodeURIComponent(parts.join('\n')),'_blank','noopener,noreferrer');
     return true;
   }
   form.addEventListener('submit',event=>{if(submitOrder(event)===true&&browseOrders)closeRequest();});
   function selectEntry(key){
-    const entry=entries.get(key);if(!ready||!entry||entry.group!==directService||!['coordination','dining'].includes(entry.group))return false;
+    const entry=entries.get(key);if(!ready||!entry||entry.group!==directService||!['coordination','dining','seating'].includes(entry.group))return false;
     specificEntry=entry;state.quantities={[key]:1};state.notes='';fields.notes.value='';
     document.body.classList.add('resort-specific-request');
     let selected=document.querySelector('.resort-entry-selection');
     if(!selected){selected=node('section',undefined,'resort-entry-selection');selected.setAttribute('aria-label','الخدمة المختارة');form.before(selected);}
-    selected.replaceChildren();selected.hidden=entry.group!=='coordination';
-    if(entry.group==='coordination')selected.append(node('span','الكمية'),counter(entry));
+    selected.replaceChildren();selected.hidden=entry.group==='dining';
+    if(['coordination','seating'].includes(entry.group))selected.append(node('span','الكمية'),counter(entry));
+    if(entry.group==='seating'){
+      const addon=entries.get('seating-extra'),extra=node('label',undefined,'arrangement-request-extra');
+      const check=node('input');check.type='checkbox';check.dataset.requestExtra='';
+      check.addEventListener('change',()=>{state.quantities['seating-extra']=check.checked?1:0;render();});
+      extra.append(check,node('span',addon.name+' — '+addon.price+' ريال'));selected.append(extra);
+    }
     render();return true;
   }
   if(directService)window.FD_RESORT_DIRECT_ORDER={formId:'arrangement-order',canSubmit:()=>ready&&!form.querySelector('.arrangement-send').disabled,submit:submitOrder,selectEntry,getTitle:()=>specificEntry?'طلب '+specificEntry.name:directService==='cinema'?'طلب '+cinemaConfig.name:''};

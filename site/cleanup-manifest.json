@@ -2300,16 +2300,16 @@
     "guest-services/share.js": "a207ab25177d5b69bb1e8a4cc37bc0755c9a2157b7024561d3c15b2652c4323b",
     "js/dining-cards.js": "a80c8a1fcbc623019426cc46184f52f6dc0b109570afbd848e39571726be4097",
     "js/menu-order-message.js": "78e54cc83d01bb6b5a44de14d4ce709d8f900517d6f09b1bda0d7a63067abaa9",
-    "services-guide/README.md": "e3c7f53ebcd6efe67fab2cc72f75c7a6ff274c181880110891817c3beab79499",
+    "services-guide/README.md": "a1170ba5394064fe4cbea3ff7c5eb19e729d949093d3b29919b2fbb03c76befb",
     "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
-    "services-guide/guide.css": "430060f110d1e039b4588b0beb9dc4cb3d57189645156c43caa00faa6da196e9",
-    "services-guide/guide.js": "b0ba0551c8e279861d19b67881cc49e45dc5558c1c798ee47da3c488860cc663",
-    "services-guide/index.html": "c3884fe355b02c5d54c08843dee004424dcb44cd229d1f07e484c18636dea310",
+    "services-guide/guide.css": "05a6712458ca7b87e7aa9aa63b803fdf0145079c018cfb780aa0aba8f7be3f7e",
+    "services-guide/guide.js": "e92ec781d9ed8f87383a284bdff437548e3f6c2ce556e88bee3b66a919316e66",
+    "services-guide/index.html": "36b90067faefe718756e38a382b9d3cf44ec78db7cffdeb9bfbc2e75442656b5",
     "services-guide/share-entry.js": "05dac99bc60dfc4b2d2d1b08c131735f22d72f29cf93f1861b85df47c89dffa2",
     "guest-services/resort-refinements.css": "5ccfd5e08d6538ebb7f37eb93f5dc52ac270dbf309ee57b38c82078ee0b31520",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
-    "services-guide/guide-orders.js": "e3a224a6e90e0d418d0c87bf7c73fcbe275d929fe6b4bfbb7f19f6b0b052064a",
-    "services-guide/guide-orders.css": "bb28d76739a56e45213cf1333a0349dad746c47b0b5b23bdaf70721e3edddf4f"
+    "services-guide/guide-orders.js": "1e41335aea145e8dc5044d95fbba0b687d85a88a0ce24a0ec12c4aac85fbcb6f",
+    "services-guide/guide-orders.css": "a82967e285da041f6180ba91547908785e12056bbde3017017b3f3afab4f9a11"
   },
   "preservedCompatibility": [
     "preview redirects",
@@ -2866,6 +2866,27 @@
       "contact targets",
       "request dialogs/controllers/messages",
       "own-interface share URLs"
+    ]
+  },
+  "approvedResortServicesBatch": {
+    "version": "20261126-live-v88",
+    "rollbackTag": "pre-resort-services-batch-20261126",
+    "reason": "Owner approved four resort directory categories, loyalty moved to contact, extras directory CTA removed, outdoor seating uses coordination as presentation reference with independent requests and private optional cake/juice, and cinema requests/footer use the sole event coordinator.",
+    "updatedProtectedFiles": [
+      "services-guide/guide.css",
+      "services-guide/guide.js",
+      "services-guide/index.html",
+      "services-guide/guide-orders.js",
+      "services-guide/guide-orders.css",
+      "services-guide/README.md"
+    ],
+    "preserved": [
+      "all public and QR routes",
+      "source catalogue prices/photos/cabin numbers",
+      "coordination approved design",
+      "guest and restaurant phone targets",
+      "separate main versus portal sharing URLs",
+      "text-only WhatsApp drafts"
     ]
   }
 }

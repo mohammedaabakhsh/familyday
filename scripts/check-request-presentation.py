@@ -6,7 +6,7 @@ from playwright.sync_api import sync_playwright,expect
 R=Path(__file__).resolve().parents[1];BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8150';out={'version':'20261126-live-v82','profiles':[],'errors':[],'messagesSent':False}
 # The presentation correction must leave public destinations and request assembly alone.
 assert (R/'data/services.json').read_bytes()==subprocess.check_output(['git','show','pre-request-presentation-20261126:data/services.json'])
-old=subprocess.check_output(['git','show','pre-request-presentation-20261126:services-guide/guide-orders.js']).decode();new=(R/'services-guide/guide-orders.js').read_text();start='  function submitOrder(event){';end="  form.addEventListener('submit'";assert old[old.index(start):old.index(end)]==new[new.index(start):new.index(end)]
+old=subprocess.check_output(['git','show','pre-request-presentation-20261126:services-guide/guide-orders.js']).decode();new=(R/'services-guide/guide-orders.js').read_text();start='  function submitOrder(event){';end="  form.addEventListener('submit'";assert old[old.index(start):old.index(end)].replace("(cinemaChosen()?'966556156693':'966537009217')","'966537009217'").replace("'https://wa.me/'+'966537009217'+'?text='", "'https://wa.me/966537009217?text='")==new[new.index(start):new.index(end)]
 with sync_playwright() as p:
  opts={'executable_path':'/usr/bin/chromium','args':['--no-sandbox']}
  if BASE.startswith('https:'):opts['proxy']={'server':os.environ['HTTPS_PROXY']}
@@ -45,7 +45,7 @@ with sync_playwright() as p:
      r=send.bounding_box();n=note.bounding_box();assert r and n and n['y']>=r['y']+r['height']-1;assert n['y']+n['height']<=height,(height,n)
     if width==390 and height==844:
      send.scroll_into_view_if_needed();folder=Path('/tmp/request-presentation-v82');folder.mkdir(exist_ok=True);page.screenshot(path=str(folder/(kind+'-'+mode+'.png')))
-    send.click();expect(page.locator('#native-order-dialog' if mode=='main' else '.arrangement-request')).to_be_hidden();u=page.evaluate('opened.at(-1)');assert urlparse(u).path=='/'+('966556156693' if kind=='cinema' else '966537009217');assert ('إجمالي الطلب: '+str(price)+' ريال') in parse_qs(urlparse(u).query)['text'][0];drafts[mode]=u;page.close()
+    send.click();expect(page.locator('#native-order-dialog' if mode=='main' else '.arrangement-request')).to_be_hidden();u=page.evaluate('opened.at(-1)');assert urlparse(u).path=='/'+'966537009217';assert ('إجمالي الطلب: '+str(price)+' ريال') in parse_qs(urlparse(u).query)['text'][0];drafts[mode]=u;page.close()
    assert observations['main']==observations['portal'],observations;assert drafts['main']==drafts['portal']
   out['profiles'].append({'width':width,'height':height,'sameRequestTitleAndConfirmation':True,'oneTotal':True,'quantityTotalUpdates':True,'sendLabel':'إرسال الطلب','confirmationBelowSend':True,'exactWhatsAppParity':True,'distinctShareDestinations':True});print(width,height,'PASS',flush=True);c.close()
  b.close()

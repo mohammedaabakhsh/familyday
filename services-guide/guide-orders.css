@@ -113,3 +113,8 @@ body.arrangement-request-open{overflow:hidden}
 #dining .dining-order-actions .arrangement-request-button:disabled{opacity:.45;cursor:default}
 .dining-selection-status{min-height:24px;margin:0 0 10px;color:var(--ink);font-size:14px;line-height:1.7}
 .cinema-contents-title{margin:20px 0 10px;font-size:17px;line-height:1.6}
+
+.resort-entry-selection:has(.arrangement-request-extra){flex-wrap:wrap}
+.resort-entry-selection>.arrangement-request-extra{flex-basis:100%;width:100%;margin-top:12px}
+body.resort-order-embedded .resort-entry-selection>.arrangement-request-extra{background:#12323f;border-color:#35535f;color:#edf5f6}
+body.resort-order-embedded .resort-entry-selection>.arrangement-request-extra input{color-scheme:dark}

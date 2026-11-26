@@ -72,6 +72,13 @@
       "path": "/services/outdoor-seating/",
       "title": "الجلسات الخارجية",
       "intro": "جلسات نجهّزها لكم في المساحة الخارجية الخاصة بالكوخ",
+      "cardIntro": "جلسات تجمعكم في مساحتكم الخارجية الخاصة",
+      "advanceNote": "يُرجى طلب الجلسة مسبقًا لإتاحة الوقت الكافي لتجهيزها لكم",
+      "help": {
+        "title": "تحتاج مساعدة؟",
+        "name": "منسّق المناسبات",
+        "phone": "966537009217"
+      },
       "image": "/site/media/service-788fe35fcd8e.webp",
       "originalImage": "/imgs/jalsat_1.webp",
       "size": [

@@ -1,0 +1,108 @@
+{
+  "version": "20261126-live-v88",
+  "errors": [],
+  "profiles": [
+    {
+      "width": 390,
+      "height": 844,
+      "geometry": {
+        "main": {
+          "helpBottom": 707,
+          "availableBottom": 760,
+          "documentHeight": 844
+        },
+        "portal": {
+          "helpBottom": 793,
+          "availableBottom": 844,
+          "documentHeight": 844
+        }
+      },
+      "directoryStatePreserved": true
+    },
+    {
+      "width": 390,
+      "height": 740,
+      "geometry": {
+        "main": {
+          "helpBottom": 645,
+          "availableBottom": 656,
+          "documentHeight": 749
+        },
+        "portal": {
+          "helpBottom": 716,
+          "availableBottom": 740,
+          "documentHeight": 740
+        }
+      },
+      "directoryStatePreserved": true
+    },
+    {
+      "width": 375,
+      "height": 667,
+      "geometry": {
+        "main": {
+          "helpBottom": 652,
+          "availableBottom": 583,
+          "documentHeight": 756
+        },
+        "portal": {
+          "helpBottom": 747,
+          "availableBottom": 667,
+          "documentHeight": 771
+        }
+      },
+      "directoryStatePreserved": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "geometry": {
+        "main": {
+          "helpBottom": 703,
+          "availableBottom": 484,
+          "documentHeight": 807
+        },
+        "portal": {
+          "helpBottom": 1016,
+          "availableBottom": 568,
+          "documentHeight": 1040
+        }
+      },
+      "directoryStatePreserved": true
+    }
+  ],
+  "drafts": [
+    {
+      "session": "جلسة بإطار مثلث",
+      "exactParity": true,
+      "addOnAndQuantity": true
+    },
+    {
+      "session": "الخيمة الهرمية",
+      "exactParity": true,
+      "addOnAndQuantity": true
+    },
+    {
+      "session": "الجلسة الأرضية",
+      "exactParity": true,
+      "addOnAndQuantity": true
+    },
+    {
+      "session": "جلسة أرضية بإطار خشبي لـ4 أشخاص",
+      "exactParity": true,
+      "addOnAndQuantity": true
+    },
+    {
+      "session": "جلسة أرضية بإطار خشبي لـ8 أشخاص",
+      "exactParity": true,
+      "addOnAndQuantity": true
+    },
+    {
+      "session": "جلسة أرضية بإطار خشبي لـ12 شخصًا",
+      "exactParity": true,
+      "addOnAndQuantity": true
+    }
+  ],
+  "messagesSent": false,
+  "cinemaDraftParity": true
+}

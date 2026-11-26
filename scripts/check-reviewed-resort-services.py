@@ -41,7 +41,7 @@ with sync_playwright() as p:
     assert not f.locator('html').evaluate('e=>e.scrollWidth>innerWidth');share(page,'.native-order-share',kind)
     rect=send.bounding_box();assert rect and rect['y']>=0 and rect['y']+rect['height']<=height
    send.click();expect(page.locator('#native-order-dialog' if mode=='main' else '.arrangement-request')).to_be_hidden()
-   u=urlparse(page.evaluate('opened.at(-1)'));assert u.path=='/'+('966556156693' if kind=='cinema' else '966537009217')
+   u=urlparse(page.evaluate('opened.at(-1)'));assert u.path=='/'+'966537009217'
    text=parse_qs(u.query)['text'][0];assert text==expected(kind,name,price,qty,kind=='cinema'),text
    return page.evaluate('opened.at(-1)')
   # Cards and internal descriptions have distinct, shared wording.

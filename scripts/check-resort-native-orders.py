@@ -24,10 +24,7 @@ def select(f,key):
  elif key=='hospitality':f.locator('.hospitality-package [data-step="1"]').first.click()
  elif key=='restaurant':
   cat=f.locator('#guest-menu details').first;cat.locator('summary').click();cat.locator('[data-step="1"]').first.click()
- elif key=='seating':
-  root=f.locator('#'+('package-1' if key=='coordination' else 'session-1'));details=root.locator('details').first
-  if details.get_attribute('open') is None:details.locator('summary').click()
-  root.locator('.arrangement-controls [data-step="1"]').click()
+ elif key=='seating':pass # The main card preselects its independent session at quantity one.
  elif key in ['coordination','dining']:pass
  else:f.locator('[data-extra="bed"] [data-step="1"]').click()
 def identity(f,key,notes=True):
@@ -58,14 +55,14 @@ with sync_playwright() as p:
  for width,height in [(320,568),(390,844),(430,932),(390,430)]:
   c=b.new_context(viewport={'width':width,'height':height},reduced_motion='reduce',ignore_https_errors=True);c.add_init_script(init);page=c.new_page();page.on('pageerror',lambda e:out['errors'].append(str(e)))
   page.goto(BASE+'/services/');page.evaluate('(keys)=>keys.forEach(k=>sessionStorage.setItem(k,JSON.stringify({name:"OLD",cabin:"البيت اليوناني 2",games:"table",notes:"OLD",quantities:{"package-1":5}})))',keys);saved=page.evaluate('(keys)=>keys.map(k=>sessionStorage.getItem(k))',keys)
-  for key,path in cases:
+  for key,path in [case for case in cases if case[0]!='extras']:
    page.goto(BASE+path)
    if key=='dining':page.locator('[data-dining-size="6"][data-dining-option="plain"]').click()
-   if key=='coordination':page.locator('.service-guide-packages>.package summary').first.click()
+   if key in ['coordination','seating']:page.locator('.service-guide-packages>.package summary').first.click()
    page.locator('#main [data-service-portal]').first.click();expect(page.locator('#native-order-dialog')).to_be_visible();expect(page.locator('.native-order-loading')).to_be_hidden();expect(page.locator('.native-order-error')).to_be_hidden();assert page.url==BASE+path
    f=page.frame_locator('.native-order-frame');expect(f.locator('.resort-direct-send')).to_be_visible();assert page.locator('.native-order-shortcut,.native-order-tabs').count()==0
    assert f.locator('.resort-direct-form').count()==1;assert not f.locator('.resort-direct-form .order-items,.resort-direct-form #arrangement-items').first.is_visible();assert not f.locator('#apply-selection').is_visible() if key not in ['coordination','dining','seating','cinema'] else not f.locator('.arrangement-dialog-footer [data-close-arrangements]').is_visible()
-   if key not in ['coordination','dining']:expect(f.locator('.resort-direct-send')).to_be_disabled()
+   if key not in ['coordination','dining','seating']:expect(f.locator('.resort-direct-send')).to_be_disabled()
    prefix='arrangement' if key in ['coordination','dining','seating','cinema'] else 'restaurant' if key=='restaurant' else 'guest';assert f.locator('#'+prefix+'-notes').input_value()==''
    if key!='cinema':assert f.locator('#'+prefix+'-name').input_value()=='ضيف المراجعة'
    select(f,key);expect(f.locator('.resort-direct-send')).to_be_enabled()

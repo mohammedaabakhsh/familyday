@@ -1,5 +1,19 @@
 # Services guide
 
+## Current approved behavior — v88
+
+The public portal retains coordination, outdoor seating, dining and cinema in that order. Its compact coordination and seating cards expand to show the original photos and details. Each package/session has its own request; dining selects one configuration before the request button. There is no combined customer cart. The cake/juice option is inside each seating request, never a standalone service. Seating advance guidance and coordinator help follow coordination's approved presentation.
+
+All four services open text-only WhatsApp drafts to the event coordinator, **966537009217**. Cinema retains its price, duration and required start time. The home footer has one coordinator contact block with WhatsApp and call actions. Other resort guest/restaurant recipients remain separate.
+
+Main and portal share the same catalogue, wording, prices and request controller, while links stay within the interface being shared: native service paths in the main site, `/services-guide/#coordination`, `#seating`, `#dining` and `#cinema` in this portal. Sharing covers complete sections. Retired per-item URLs and old anchors still resolve without publishing new item pages. WhatsApp sharing never includes an image.
+
+The main `/services/` directory uses four FAQ-style category controls. Loyalty is in `/resort/contact/`; its existing URL remains available. The extras shortcut is removed from this directory only; original extras ordering remains in the guest portal.
+
+Run `python site/build-site.py` after editing shared copy/catalogue. Functional checks: `scripts/check-resort-services-batch.py`, `scripts/check-reviewed-resort-services.py`, `scripts/check-request-presentation.py`, `scripts/check-arrangement-orders.py`, `scripts/check-portal-share-destinations.py`, and `scripts/check-live-cutover.py`. Every messaging check intercepts drafts without sending.
+
+## Historical implementation notes (superseded by v88)
+
 `/services-guide/` retains the approved “تنسيقات وجلسات” design, section tiles and shareable anchors. `/arrangements/` remains its text-only share entry and preserves query strings and hashes.
 
 The independent `../data/services.json` supplies coordination, dining, seating, photos, prices and usage notes. The guide no longer fetches home-page HTML or loads the old service-data script. Its small inert dining template and `js/dining-cards.js` preserve the approved table/details layout. Update the catalogue, then run `python site/build-site.py` to synchronize the native guide as well.
