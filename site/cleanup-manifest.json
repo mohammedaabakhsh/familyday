@@ -2304,11 +2304,11 @@
     "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
     "services-guide/guide.css": "0671ba0d08e0d6bbefc44d3b1d37cb58a73488a713165d56e315ceb7c2e7075f",
     "services-guide/guide.js": "882d22c5bd3cb558e071182e644ba0cfc67e446dd93f88d2e24e3866725c9834",
-    "services-guide/index.html": "4b0cb1f9c4518302b42cbd514251b200fdfff1aca51d2c68f346d46bd3d1ed73",
+    "services-guide/index.html": "2aff2acc03c37eb42aa3855327e84a14cdec132f13747362e83c8551d8d58ce2",
     "services-guide/share-entry.js": "05dac99bc60dfc4b2d2d1b08c131735f22d72f29cf93f1861b85df47c89dffa2",
     "guest-services/resort-refinements.css": "5ccfd5e08d6538ebb7f37eb93f5dc52ac270dbf309ee57b38c82078ee0b31520",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
-    "services-guide/guide-orders.js": "3ed0049dce62b5ed53570d59e4ec646b07f51dc88404b1595750e7cf5fab7041",
+    "services-guide/guide-orders.js": "b3a4cbf623761e36b816881c500bcb40628be8facf3cbe71ac97128d9c9d2a0a",
     "services-guide/guide-orders.css": "de24eb4d8edb98f753299b6cd0e58bb28fc16766bef7050eca08ba33046b5088"
   },
   "preservedCompatibility": [
@@ -2707,6 +2707,21 @@
       "services-guide/guide-orders.js": {
         "previousSha256": "f33a0cdfd7dbfdd3f2c9dfd7737617ba1d4a5374792c2d30854caca5ae56c95f",
         "reason": "Share independent package/session documents through stable item URLs; item requests open with just the selected item and quantity one"
+      }
+    }
+  },
+  "approvedSectionOnlySharing": {
+    "version": "20261126-live-v79",
+    "rollbackTag": "pre-section-only-sharing-20261126",
+    "reason": "Remove independent item pages and share buttons from both site and portal. Retired item URLs redirect to their complete section; individual WhatsApp ordering is retained.",
+    "protectedChanges": {
+      "services-guide/index.html": {
+        "previousSha256": "4b0cb1f9c4518302b42cbd514251b200fdfff1aca51d2c68f346d46bd3d1ed73",
+        "reason": "Owner requested sharing complete service sections only, removing per-package/session share actions and independent item presentation while keeping individual ordering"
+      },
+      "services-guide/guide-orders.js": {
+        "previousSha256": "3ed0049dce62b5ed53570d59e4ec646b07f51dc88404b1595750e7cf5fab7041",
+        "reason": "Owner requested sharing complete service sections only, removing per-package/session share actions and independent item presentation while keeping individual ordering"
       }
     }
   }

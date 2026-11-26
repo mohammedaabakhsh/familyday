@@ -127,3 +127,7 @@ Cinema's standalone section shows its photo immediately, using the same shared g
 ## Independent package/session pages — v78
 
 [Implementation and checks](../docs/independent-service-items-v78.md): twelve real item documents show one package/session each, with their own text-only metadata and existing photos/content/order form. Shared route helpers keep card shares consistent across the main site and portal. Old query links resolve to their item documents without losing tracking queries. The item is preselected alone in the order dialog. No price catalogue, message builder, JS bundle or photo asset is duplicated. The guide-home initialization fix was published and verified before this work; rollback `pre-independent-service-items-20261126` points to that fixed version.
+
+## Complete-section sharing only — v79
+
+[Implementation and checks](../docs/section-only-sharing-v79.md): the owner cancelled individual package/session sharing. Only complete service sections are shared; card-level share actions and independent item rendering/routing are removed from both interfaces. Individual WhatsApp ordering remains. Retired item documents are compatibility redirects to their complete sections and are excluded from the sitemap. No original prices, content, photos or order message formatting change. Rollback: `pre-section-only-sharing-20261126`.

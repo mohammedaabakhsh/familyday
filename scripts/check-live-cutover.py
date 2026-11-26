@@ -19,12 +19,10 @@ def clean(value,copy):
  for a,b in copy['roomWording']:s=s.replace(a,b)
  return re.sub(r'[\s\W_]+','',s)
 def canonical_item_url(path):
- u=urlparse(path);q=parse_qs(u.query);group='coordination' if u.path=='/services/coordination/' else 'seating' if u.path=='/services/outdoor-seating/' else None
- parameter='package' if group=='coordination' else 'session';key=q.get(parameter,[None])[0]
- valid=['1','2','3','celebration','vip','resort'] if group=='coordination' else ['1','2','3','4','5','6']
- if group and key in valid:
-  q.pop(parameter);return urlunparse(('', '',u.path+('package-' if group=='coordination' else 'session-')+key+'/', '',urlencode(q,doseq=True),u.fragment))
- return path
+ u=urlparse(path);q=parse_qs(u.query)
+ for parent,key in [('/services/coordination/','package'),('/services/outdoor-seating/','session')]:
+  if u.path==parent and key in q:q.pop(key)
+ return urlunparse(('', '',u.path,'',urlencode(q,doseq=True),u.fragment))
 async def main():
  routes=json.loads((S/'routes.json').read_text());catalog=json.loads((S/'catalog.json').read_text());copy=json.loads((S/'guide-copy.json').read_text());shared=json.loads((R/'data/services.json').read_text());out={'routes':[],'previewAliases':[],'legacyHashes':[],'units':[],'viewports':[],'errors':[],'badResponses':[],'badLinks':[]}
  assert shared['guest']==catalog['source']['guestCatalog']
@@ -102,7 +100,7 @@ async def main():
     out['viewports'].append({'path':path,'width':w})
   # Older preview queries must survive the redirect and still select the correct unit/package.
   await page.goto(BASE+'/preview/dome-tour/?cabin=12&from=details');await page.wait_for_url(BASE+'/dome-tour/?cabin=12&from=details');await page.locator('#main h1').wait_for();await page.frame_locator('#tour-frame').locator('.dt-image').wait_for(state='attached');assert '/dome-tour-16-' in await page.frame_locator('#tour-frame').locator('.dt-image').get_attribute('src')
-  await page.goto(BASE+'/preview/services/coordination/?package=resort');await page.wait_for_url(BASE+'/services/coordination/package-resort/');await page.locator('.service-item-guide').wait_for();out['semanticQueryPreserved']=True
+  await page.goto(BASE+'/preview/services/coordination/?package=resort');await page.wait_for_url(BASE+'/services/coordination/');await page.locator('.service-guide-packages').wait_for();assert await page.locator('.service-guide-packages>.package').count()==6;out['retiredItemQueriesOpenWholeSection']=True
   await b.close()
  assert not out['errors'] and not out['badResponses'] and not out['badLinks'],out
  (S/'audits'/('live-cutover-'+routes['version'].rsplit('-',1)[-1]+'.json')).write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps({'routes':len(out['routes']),'aliases':len(out['previewAliases']),'hashes':len(out['legacyHashes']),'photos':sum(u['photos'] for u in out['units']),'errors':out['errors']}))

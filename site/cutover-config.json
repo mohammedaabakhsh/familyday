@@ -1,5 +1,5 @@
 {
-  "version": "20261126-live-v78",
+  "version": "20261126-live-v79",
   "rootRoutes": [
     "/",
     "/arrangements/",
@@ -170,5 +170,19 @@
     "/preview/stay/services/",
     "/preview/stay/upper-floor/"
   ],
-  "rollbackTag": "pre-live-cutover-20261125"
+  "rollbackTag": "pre-live-cutover-20261125",
+  "retiredServiceItemRoutes": {
+    "/services/coordination/package-1/": "/services/coordination/",
+    "/services/coordination/package-2/": "/services/coordination/",
+    "/services/coordination/package-3/": "/services/coordination/",
+    "/services/coordination/package-celebration/": "/services/coordination/",
+    "/services/coordination/package-resort/": "/services/coordination/",
+    "/services/coordination/package-vip/": "/services/coordination/",
+    "/services/outdoor-seating/session-1/": "/services/outdoor-seating/",
+    "/services/outdoor-seating/session-2/": "/services/outdoor-seating/",
+    "/services/outdoor-seating/session-3/": "/services/outdoor-seating/",
+    "/services/outdoor-seating/session-4/": "/services/outdoor-seating/",
+    "/services/outdoor-seating/session-5/": "/services/outdoor-seating/",
+    "/services/outdoor-seating/session-6/": "/services/outdoor-seating/"
+  }
 }

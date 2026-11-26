@@ -354,8 +354,3 @@ body.resort-services #main{width:100%;max-width:none;height:100dvh;min-height:0;
 :is(.chalet-unit,.stay-unit) .detail-copy .description p{text-wrap:balance}
 
 .cinema-contents{margin:16px 0}.cinema-contents h2{font-size:14px;line-height:1.6;margin-bottom:10px}.cinema-contents+.service-guide-details{margin-top:16px}
-
-/* Individual service pages reuse the guide's shared photos, facts and actions. */
-.service-item-guide>.service-guide-capacity{display:flex;align-items:center;gap:8px;margin:14px 0}
-.service-item-actions{display:grid;gap:10px;margin-top:20px}
-.service-item-actions .service-guide-link{margin:0}
