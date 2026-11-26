@@ -379,7 +379,7 @@ body.resort-services #main{width:100%;max-width:none;height:100dvh;min-height:0;
 /* Closed coordination cards share the mobile screen with guidance and contact actions. */
 @media screen and (max-width:759px){
  .resort-service .service-guide-coordination{--co-available:calc(100svh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));--co-gap:clamp(8px,calc(var(--co-available)*.06 - 32px),20px);--co-space:clamp(6px,calc(var(--co-available)*.03 - 14px),16px)}
- .resort-service #main:has(.service-guide-coordination){padding-top:calc(var(--header) + env(safe-area-inset-top,0px) + 4px);padding-bottom:calc(104px + env(safe-area-inset-bottom,0px))}
+ .resort-service #main:has(.service-guide-coordination){min-height:100svh;padding-top:calc(var(--header) + env(safe-area-inset-top,0px) + 4px);padding-bottom:calc(104px + env(safe-area-inset-bottom,0px))}
  .resort-service .service-guide-coordination .page-heading{margin:0 0 var(--co-space)}
  .resort-service .service-guide-coordination .page-heading h1{margin:0}
  .resort-service .service-guide-coordination .page-heading p{margin-top:2px;font-size:13px;line-height:1.6}
