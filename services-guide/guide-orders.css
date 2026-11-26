@@ -108,7 +108,7 @@ body.arrangement-request-open{overflow:hidden}
 #cinema .guide-usage .inclusions{display:block}
 
 /* Select the dining setup first; request it using the action below the prices. */
-#dining .dining-order-actions{display:block;margin:-4px 0 20px}
+#dining .dining-order-actions{display:block;margin:20px 0 0}
 #dining .dining-order-actions .arrangement-request-button{width:100%}
 #dining .dining-order-actions .arrangement-request-button:disabled{opacity:.45;cursor:default}
 .dining-selection-status{min-height:24px;margin:0 0 10px;color:var(--ink);font-size:14px;line-height:1.7}

@@ -2303,13 +2303,13 @@
     "services-guide/README.md": "a1170ba5394064fe4cbea3ff7c5eb19e729d949093d3b29919b2fbb03c76befb",
     "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
     "services-guide/guide.css": "05a6712458ca7b87e7aa9aa63b803fdf0145079c018cfb780aa0aba8f7be3f7e",
-    "services-guide/guide.js": "e92ec781d9ed8f87383a284bdff437548e3f6c2ce556e88bee3b66a919316e66",
-    "services-guide/index.html": "817915d40d0dd287d3bf19158b1986826771d48237e83a00a526d8fcdb71d14e",
+    "services-guide/guide.js": "a2261f7ea9a3e5fff58f4df92c5ff416c9bc090d9487abba48884de00dbaefc1",
+    "services-guide/index.html": "72218b06d308c71cff164984b8c5a88b58c7d6fb13c84aea0b5cfd31dc3d6a42",
     "services-guide/share-entry.js": "05dac99bc60dfc4b2d2d1b08c131735f22d72f29cf93f1861b85df47c89dffa2",
     "guest-services/resort-refinements.css": "5ccfd5e08d6538ebb7f37eb93f5dc52ac270dbf309ee57b38c82078ee0b31520",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
-    "services-guide/guide-orders.js": "741406db1d38a936d021156e7ec295a17d5e30102409a6562a07e92b295a1989",
-    "services-guide/guide-orders.css": "a82967e285da041f6180ba91547908785e12056bbde3017017b3f3afab4f9a11"
+    "services-guide/guide-orders.js": "86cc9f34fd153b0952ee972b71ec2e30937db432e75d31446a4af25b421dbde4",
+    "services-guide/guide-orders.css": "2ab66472a5a39ba86ddfda4a95403f2a4a7733206ee51efc835dc7a45412e059"
   },
   "preservedCompatibility": [
     "preview redirects",
@@ -2963,6 +2963,24 @@
       "public routes and service-page sharing",
       "normal selection within an active restaurant visit",
       "standalone portal behavior"
+    ]
+  },
+  "approvedCinemaDiningOrderLayout": {
+    "version": "20261126-live-v96",
+    "rollbackTag": "pre-service-order-copy-layout-20261126",
+    "reason": "Owner requested cinema/dining request labels consistent with packages and seating, and dining contents before the order action. Shared copy defines اطلب هذه الجلسة and اطلب هذه الطاولة, including the dining selection hint. Main and standalone dining now place contents before the pricing/selection table and final request action. Arrangement follow-up uses على واتساب instead of عبر واتساب, following the approved restaurant wording.",
+    "updatedProtectedFiles": [
+      "services-guide/guide.js",
+      "services-guide/index.html",
+      "services-guide/guide-orders.js",
+      "services-guide/guide-orders.css"
+    ],
+    "preserved": [
+      "all original prices items media and cabin mappings",
+      "single dining selection before request",
+      "original WhatsApp drafts and recipients",
+      "service-page sharing",
+      "main no-save behavior and pointer focus fix"
     ]
   }
 }

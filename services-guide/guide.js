@@ -76,7 +76,7 @@
     const diningSource = template.content;
     const diningImage = sourceImage(diningSource,'.fd-dining-image img');
     const diningPhoto = '<div class="dining-shared-photo">' + FD_GUIDE_GALLERY.markup([diningImage.src],data.dining.name,diningImage.alt) + '<p class="fd-dining-caption">' + escape(text(diningSource,'.fd-dining-caption')) + '</p></div>';
-    const diningBody = '<p id="dining-price-help" class="dining-order-help">اختر عدد الأشخاص ونوع التجهيز، ثم اضغط «اطلب عبر واتساب» أسفل الجدول.</p>' + diningPhoto + FD_DINING_CARDS.table(doc,true).outerHTML + FD_DINING_CARDS.details(doc).outerHTML;
+    const diningBody = diningPhoto + FD_DINING_CARDS.details(doc).outerHTML + '<p id="dining-price-help" class="dining-order-help">' + escape(serviceLinks.dining?.orderHint||'اختر عدد الأشخاص ونوع التجهيز، ثم اضغط «اطلب هذه الطاولة».') + '</p>' + FD_DINING_CARDS.table(doc,true).outerHTML;
     const diningSection = section('dining',data.dining.name,data.dining.intro,diningBody,true);
     const seating=serviceLinks.seating;
     const seatingAdvance=seating?.advanceNote?'<p class="coordination-order-note">'+escape(seating.advanceNote)+'</p>':'';
@@ -88,6 +88,7 @@
     const cinemaDetails='<div class="cinema-service-price"><strong class="price">'+escape(cinema.price)+' ريال</strong><span class="cinema-duration">مدة الجلسة: '+escape(cinema.duration)+'</span></div><h3 class="cinema-contents-title">'+escape(cinema.contentsTitle)+'</h3>'+items(cinema.contents)+'<details class="guide-usage"><summary>تعليمات الاستخدام</summary>'+items(cinema.notes)+'</details>';
     html += section('cinema',cinema.title,cinema.intro,'<article id="cinema-session" class="cinema-service-panel">'+cinemaPhoto+'<div class="cinema-service-body package-details-body">'+cinemaDetails+'</div></article>',true);
     content.innerHTML = html;
+    for(const id of ['cinema','dining'])content.querySelector('#'+id).dataset.orderLabel=serviceLinks[id]?.orderLabel||(id==='cinema'?'اطلب هذه الجلسة':'اطلب هذه الطاولة');
     content.querySelectorAll('#cinema-session img').forEach(img=>{img.loading='eager';img.fetchPriority='high';});
     FD_GUIDE_GALLERY.mount();
     content.setAttribute('aria-busy','false');
@@ -191,7 +192,7 @@
     try {
       const response = await fetch('/data/services.json?v=20261125-live-v54',{cache:'no-cache'});
       if (!response.ok) throw new Error('Service source unavailable');
-      const links=await fetch('/site/orders/service-links.json?v=20261126-live-v88').then(r=>r.ok?r.json():{}).catch(()=>({}));
+      const links=await fetch('/site/orders/service-links.json?v=20261126-live-v96').then(r=>r.ok?r.json():{}).catch(()=>({}));
       render(await response.json(),links.services||{});
     } catch(error) {
       content.innerHTML = '<div class="load-error"><h2>تعذّر تحميل التجهيزات</h2><p>حاولوا مرة ثانية لعرض التفاصيل هنا.</p><button type="button" id="retry-guide">إعادة المحاولة</button></div>';

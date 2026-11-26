@@ -53,7 +53,7 @@
   function actions(entry){
     const wrap=node('div',undefined,'arrangement-actions');
     if(browseOrders && entry.group!=='extra'){
-      const order=node('button',entry.group==='coordination'?'اطلب هذه الباقة':entry.group==='seating'?'اطلب هذه الجلسة':'اطلب عبر واتساب','arrangement-request-button');order.type='button';order.dataset.requestKey=entry.key;order.setAttribute('aria-label','طلب '+entry.name+(entry.group==='coordination'?'':' عبر واتساب'));wrap.append(order);
+      const order=node('button',document.getElementById(entry.group)?.dataset.orderLabel||(entry.group==='coordination'?'اطلب هذه الباقة':'اطلب هذه الجلسة'),'arrangement-request-button');order.type='button';order.dataset.requestKey=entry.key;order.setAttribute('aria-label','طلب '+entry.name);wrap.append(order);
     }
     // Each service is shared once, using its header and complete public section.
     return wrap;
@@ -126,7 +126,7 @@
       const selectingCinema=browseOrders?requestEntry?.group==='cinema':directService==='cinema';
       cinemaTimeField.hidden=!selectingCinema;cinemaTime.required=selectingCinema;
       cinemaTimeField.querySelector('small').textContent=state.cinemaTime?cinemaTimeRange(state.cinemaTime):'مدة الجلسة: '+cinemaConfig.duration;
-      form.querySelector('.arrangement-confirmation').textContent='تابع طلبك مع منسّق المناسبات عبر واتساب لتأكيد التفاصيل والموعد.';
+      form.querySelector('.arrangement-confirmation').textContent='تابع طلبك مع منسّق المناسبات على واتساب لتأكيد التفاصيل والموعد.';
     }
     if(browseOrders&&requestEntry){
       requestDialog.querySelector('.request-total-label').textContent='إجمالي الخدمة';
@@ -180,8 +180,8 @@
     if(browseOrders){
       const diningActions=node('div',undefined,'dining-order-actions');
       diningSelectionStatus=node('p','اختر عدد الأشخاص ونوع التجهيز','dining-selection-status');diningSelectionStatus.setAttribute('role','status');diningSelectionStatus.setAttribute('aria-live','polite');
-      diningRequestButton=node('button','اطلب عبر واتساب','arrangement-request-button');diningRequestButton.type='button';diningRequestButton.dataset.diningRequest='';diningRequestButton.disabled=true;
-      diningActions.append(diningSelectionStatus,diningRequestButton);document.querySelector('#dining .fd-dining-table').after(diningActions);
+      diningRequestButton=node('button',document.getElementById('dining').dataset.orderLabel||'اطلب هذه الطاولة','arrangement-request-button');diningRequestButton.type='button';diningRequestButton.dataset.diningRequest='';diningRequestButton.disabled=true;
+      diningActions.append(diningSelectionStatus,diningRequestButton);document.getElementById('dining').append(diningActions);
     }
     data.seating.sessions.forEach((session,i)=>{const card='session-'+(i+1);add({key:card,card,group:'seating',name:session.name,capacity:session.persons,price:price(session.price),path:data.seating.path+'?session='+(i+1)},document.getElementById(card));});
     add({key:'seating-extra',group:'extra',name:data.seating.extra.name,price:price(data.seating.extra.price),path:data.seating.path},document.querySelector('.seating-extra'));

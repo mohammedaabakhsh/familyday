@@ -20,8 +20,9 @@ with sync_playwright() as p:
     if mode=='main':
      page.locator('#main h1').wait_for();page.locator('.header [data-share]').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+path}
      if kind=='coordination':page.locator('.service-guide-packages>.package').nth(1).locator('summary').click();page.locator('[data-resort-order-key="package-2"]').click()
-     elif kind=='dining':page.locator('[data-dining-size="6"][data-dining-option="plain"]').click();page.locator('.dining-guide-link').click()
-     else:page.locator('#main [data-service-portal]').click()
+     elif kind=='dining':
+      expect(page.locator('.dining-guide-link')).to_have_text('اطلب هذه الطاولة');page.locator('.dining-guide-details summary').click();assert page.locator('.dining-guide-details').evaluate("e=>!!(e.compareDocumentPosition(document.querySelector('.dining-guide-prices')) & Node.DOCUMENT_POSITION_FOLLOWING)");assert page.locator('.dining-guide-details').evaluate("e=>!!(e.compareDocumentPosition(document.querySelector('.dining-guide-link')) & Node.DOCUMENT_POSITION_FOLLOWING)");page.locator('[data-dining-size="6"][data-dining-option="plain"]').click();page.locator('.dining-guide-link').click()
+     else:expect(page.locator('#main [data-service-portal]')).to_have_text('اطلب هذه الجلسة');page.locator('#main [data-service-portal]').click()
      expect(page.locator('.native-order-loading')).to_be_hidden();f=page.frame_locator('.native-order-frame');send=f.locator('.resort-direct-send');note=f.locator('.resort-direct-confirmation');title=page.locator('#native-order-title').inner_text()
      assert f.locator('.arrangement-total:visible').count()==1;assert f.locator('.resort-entry-total:visible,#arrangement-dialog-status:visible').count()==0
      assert f.locator('body').inner_text().count('إجمالي')==1
@@ -30,8 +31,9 @@ with sync_playwright() as p:
     else:
      page.locator('#guide-content.is-ready').wait_for(state='attached');page.locator('.topbar [data-share]').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+'/services-guide/#'+kind}
      if kind=='coordination':page.locator('#package-2 summary').first.click();page.locator('#package-2 [data-request-key]').click()
-     elif kind=='dining':page.locator('.fd-dining-option[data-size="6"][data-option="plain"]').click();assert page.locator('.arrangement-request').is_hidden();page.locator('[data-dining-request]').click()
-     else:page.locator('#cinema-session [data-request-key]').click()
+     elif kind=='dining':
+      expect(page.locator('[data-dining-request]')).to_have_text('اطلب هذه الطاولة');assert page.locator('#dining .fd-dining-info').evaluate("e=>!!(e.compareDocumentPosition(document.querySelector('#dining .fd-dining-table')) & Node.DOCUMENT_POSITION_FOLLOWING)");assert page.locator('#dining .fd-dining-info').evaluate("e=>!!(e.compareDocumentPosition(document.querySelector('[data-dining-request]')) & Node.DOCUMENT_POSITION_FOLLOWING)");page.locator('.fd-dining-option[data-size="6"][data-option="plain"]').click();assert page.locator('.arrangement-request').is_hidden();page.locator('[data-dining-request]').click()
+     else:expect(page.locator('#cinema-session [data-request-key]')).to_have_text('اطلب هذه الجلسة');page.locator('#cinema-session [data-request-key]').click()
      f=page;send=f.locator('.arrangement-request .arrangement-send');note=f.locator('.arrangement-request .arrangement-confirmation');title=page.locator('#arrangement-request-title').inner_text()
     expect(send).to_have_text('إرسال الطلب');expect(note).to_be_visible();assert note.inner_text().startswith('تابع طلبك')
     if kind=='coordination':

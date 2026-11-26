@@ -10,6 +10,8 @@
       "title": "طاولات الطعام",
       "intro": "طاولة طعام تجمعكم في المساحة الخارجية الخاصة بالكوخ",
       "cardIntro": "خيارات تناسب عدد ضيوفكم",
+      "orderLabel": "اطلب هذه الطاولة",
+      "orderHint": "اختر عدد الأشخاص ونوع التجهيز، ثم اضغط «اطلب هذه الطاولة».",
       "image": "/site/media/service-68b7cdf57e8c.webp",
       "originalImage": "/imgs/tawilat_1.webp?v=20261110-natural-photos-v1",
       "size": [
@@ -38,6 +40,7 @@
       "title": "جلسة السينما",
       "intro": "جلسة سينما خارجية في المساحة الخاصة بالكوخ",
       "cardIntro": "استمتعوا بتجربة سينما في مساحتكم الخاصة",
+      "orderLabel": "اطلب هذه الجلسة",
       "image": "/site/media/service-7d2ca2d506cd.webp",
       "originalImage": "/imgs/coordination/complete/13-lighting-v4.webp",
       "size": [
