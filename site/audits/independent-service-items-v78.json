@@ -1,0 +1,37 @@
+{
+  "version": "20261126-live-v78",
+  "profiles": [
+    {
+      "width": 320,
+      "height": 568,
+      "twelveStandaloneDocuments": true,
+      "uniqueItemOnly": true,
+      "exactItemWhatsApp": true,
+      "itemPreselected": true,
+      "oldQueriesPreserved": true,
+      "samePortalAndPageShares": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "twelveStandaloneDocuments": true,
+      "uniqueItemOnly": true,
+      "exactItemWhatsApp": true,
+      "itemPreselected": true,
+      "oldQueriesPreserved": true,
+      "samePortalAndPageShares": true
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "twelveStandaloneDocuments": true,
+      "uniqueItemOnly": true,
+      "exactItemWhatsApp": true,
+      "itemPreselected": true,
+      "oldQueriesPreserved": true,
+      "samePortalAndPageShares": true
+    }
+  ],
+  "messagesSent": false,
+  "errors": []
+}

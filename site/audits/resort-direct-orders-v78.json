@@ -1,0 +1,48 @@
+{
+  "version": "20261126-live-v78",
+  "profiles": [
+    {
+      "width": 320,
+      "height": 568,
+      "independentServices": 9,
+      "exactOriginalDraftsAndRecipients": true,
+      "standaloneDraftsUntouched": true,
+      "identityOnlyRemembered": true,
+      "noSummaryOrCart": true,
+      "backAndCancel": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "independentServices": 9,
+      "exactOriginalDraftsAndRecipients": true,
+      "standaloneDraftsUntouched": true,
+      "identityOnlyRemembered": true,
+      "noSummaryOrCart": true,
+      "backAndCancel": true
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "independentServices": 9,
+      "exactOriginalDraftsAndRecipients": true,
+      "standaloneDraftsUntouched": true,
+      "identityOnlyRemembered": true,
+      "noSummaryOrCart": true,
+      "backAndCancel": true
+    },
+    {
+      "width": 390,
+      "height": 430,
+      "independentServices": 9,
+      "exactOriginalDraftsAndRecipients": true,
+      "standaloneDraftsUntouched": true,
+      "identityOnlyRemembered": true,
+      "noSummaryOrCart": true,
+      "backAndCancel": true
+    }
+  ],
+  "messagesSent": false,
+  "errors": [],
+  "sourceRetryInPlace": true
+}

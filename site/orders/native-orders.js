@@ -18,7 +18,7 @@ export function createResortOrders({version,services,share}){
   error.querySelector('.native-order-external').dataset.url=fallback(descriptor.kind)+'#'+descriptor.anchor;
   const iframe=document.createElement('iframe');iframe.className='native-order-frame';iframe.title='طلب '+descriptor.title;iframe.allow='clipboard-write; web-share';iframe.hidden=true;
   item={iframe,timer:setTimeout(failed,25000)};body.append(iframe);
-  iframe.src=fallback(descriptor.kind)+'?embed=resort-order&direct='+encodeURIComponent(descriptor.service)+'&v='+encodeURIComponent(version);
+  iframe.src=fallback(descriptor.kind)+'?embed=resort-order&direct='+encodeURIComponent(descriptor.service)+(descriptor.itemKey?'&item='+encodeURIComponent(descriptor.itemKey):'')+'&v='+encodeURIComponent(version);
  }
  function open(descriptor,source){
   trigger=source||document.activeElement;savedY=scrollY;
@@ -42,9 +42,9 @@ export function createResortOrders({version,services,share}){
   if(!link||context?.venue!=='resort'||event.defaultPrevented||event.button!==0||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey||dialog.contains(link))return;
   const target=new URL(link.href,location.origin);if(target.origin!==location.origin&&target.origin!=='https://familydaystay.com')return;
   const kind=['/arrangements/','/services-guide/'].includes(target.pathname)?'arrangements':target.pathname==='/guest-services/'?'guest':null;if(!kind)return;
-  const selected=services.find(s=>s.path===context.path),service=link.dataset.resortService||(selected?.id==='menu'?'restaurant':selected?.id);
+  const selected=context.service||services.find(s=>s.path===context.path),service=link.dataset.resortService||(selected?.id==='menu'?'restaurant':selected?.id);
   if(!service)return;
-  event.preventDefault();open({kind,service,anchor:target.hash.slice(1)||service,title:selected?.name||'طلبات إضافية أثناء الإقامة',path:service==='extras'?'/guest-services/#extras':context.path},link);
+  event.preventDefault();open({kind,service,itemKey:context.itemKey,anchor:target.hash.slice(1)||service,title:context.item?.name||selected?.name||'طلبات إضافية أثناء الإقامة',path:service==='extras'?'/guest-services/#extras':context.path},link);
  });
  window.addEventListener('message',event=>{
   if(event.origin!==location.origin||event.data?.type!=='familyday-resort-order'||!item||event.source!==item.iframe.contentWindow||event.data.kind!==active?.kind)return;
@@ -55,7 +55,7 @@ export function createResortOrders({version,services,share}){
   if(action==='closed'||action==='submitted')requestClose();
   if(action==='error')failed();
   if(action==='share'&&typeof event.data.path==='string'){
-   const u=new URL(event.data.path,location.origin);if(u.origin!==location.origin||!services.some(s=>s.path===u.pathname)&&u.pathname!=='/guest-services/')return;
+   const u=new URL(event.data.path,location.origin);if(u.origin!==location.origin||!services.some(s=>s.path===u.pathname)&&!FD_SERVICE_ITEM_ROUTES.parse(u.pathname)&&u.pathname!=='/guest-services/')return;
    share(u.pathname+u.search+u.hash,document.title);
   }
  });

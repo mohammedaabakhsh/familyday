@@ -52,6 +52,14 @@ order_links['extras']={'path':'/guest-services/#extras','title':'طلبات إض
 (SITE/'orders/service-links.json').write_text(json.dumps({'services':order_links},ensure_ascii=False,indent=2)+'\n')
 
 SHARES=json.loads((SITE/'share-metadata.json').read_text())
+# Build twelve real item documents without duplicating catalogue facts or photo assets.
+ITEM_PAGES={}
+for pack in SERVICES['arrangements']['coordination']['packages']:
+ key=pack['id'].replace('hd-coordination-package-','')
+ ITEM_PAGES['/services/coordination/package-'+key+'/']={'title':pack['name']+' | منتجع يوم العائلة','description':pack.get('description') or 'صور وتفاصيل '+pack['name']+' وطلبها عبر واتساب'}
+for index,session in enumerate(SERVICES['arrangements']['seating']['sessions'],1):
+ ITEM_PAGES['/services/outdoor-seating/session-'+str(index)+'/']={'title':session['name']+' | منتجع يوم العائلة','description':session['desc']}
+SHARES.update(ITEM_PAGES)
 STRUCTURED=json.loads((SITE/'structured-data.json').read_text())
 for venue,faq in COPY['faqs'].items():
  questions=[q for g in faq['groups'] for i in g['items'] for q in i['sources']]
@@ -85,7 +93,7 @@ def write(path,page):
  path.parent.mkdir(parents=True,exist_ok=True);path.write_text(page)
 
 template=(SITE/'template.html').read_text()
-template=re.sub(r'(/site/[^"?]+\.(?:js|css)[?]v=)[^\"]+',lambda m:m[1]+VERSION,template)
+template=re.sub(r'(/(?:site|js)/[^"?]+\.(?:js|css)[?]v=)[^\"]+',lambda m:m[1]+VERSION,template)
 native=[]
 for path in CONFIG['rootRoutes']:
  if path in PORTALS:continue

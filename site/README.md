@@ -123,3 +123,7 @@ Cinema's standalone section shows its photo immediately, using the same shared g
 ## Service share scope — v77
 
 [Implementation and checks](../docs/service-share-scope-v77.md): section/page/order headers share the general service URL; package/session cards retain their original item query URLs. Opening an item URL reveals its selected open card under the header. Saved positions still win on Back. `check-service-share-scope.py` round-trips all twelve item links and checks header scope, clipboard fallback and Back on three phone sizes. Original catalogue facts, prices and share metadata remain. Rollback: `pre-service-share-scope-20261126`.
+
+## Independent package/session pages — v78
+
+[Implementation and checks](../docs/independent-service-items-v78.md): twelve real item documents show one package/session each, with their own text-only metadata and existing photos/content/order form. Shared route helpers keep card shares consistent across the main site and portal. Old query links resolve to their item documents without losing tracking queries. The item is preselected alone in the order dialog. No price catalogue, message builder, JS bundle or photo asset is duplicated. The guide-home initialization fix was published and verified before this work; rollback `pre-independent-service-items-20261126` points to that fixed version.

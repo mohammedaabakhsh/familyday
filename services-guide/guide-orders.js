@@ -172,11 +172,11 @@
     if(ready)return;const catalog=event.detail,data=catalog.arrangements;cabins=catalog.guest.cabins;cinemaConfig=catalog.guest.cinema;
     data.coordination.packages.forEach(pack=>{
       const suffix=pack.id.replace('hd-coordination-package-',''),card=suffix==='resort'?'package-complete':'package-'+suffix;
-      add({key:card,card,group:'coordination',name:pack.name,price:price(pack.price),path:pack.path},document.getElementById(card));
+      add({key:card,card,group:'coordination',name:pack.name,price:price(pack.price),path:FD_SERVICE_ITEM_ROUTES.path('coordination',suffix)},document.getElementById(card));
     });
     for(const [size,prices] of Object.entries(data.dining.prices))for(const option of ['plain','tansiq'])entries.set('dining-'+size+'-'+option,{key:'dining-'+size+'-'+option,group:'dining',name:'طاولة طعام لـ'+size+' '+(Number(size)<=10?'أشخاص':'شخصًا')+' — '+(option==='plain'?'تجهيز أساسي':'تجهيز مع تنسيق'),price:prices[option],size,option,path:data.dining.path});
     const diningActions=node('div',undefined,'dining-order-actions');const diningShare=node('button','مشاركة طاولات الطعام','arrangement-share');diningShare.type='button';diningShare.dataset.sharePath=data.dining.path;diningActions.append(diningShare);document.getElementById('dining').append(diningActions);
-    data.seating.sessions.forEach((session,i)=>{const card='session-'+(i+1);add({key:card,card,group:'seating',name:session.name,capacity:session.persons,price:price(session.price),path:data.seating.path+'?session='+(i+1)},document.getElementById(card));});
+    data.seating.sessions.forEach((session,i)=>{const card='session-'+(i+1);add({key:card,card,group:'seating',name:session.name,capacity:session.persons,price:price(session.price),path:FD_SERVICE_ITEM_ROUTES.path('seating',String(i+1))},document.getElementById(card));});
     add({key:'seating-extra',group:'extra',name:data.seating.extra.name,price:price(data.seating.extra.price),path:data.seating.path},document.querySelector('.seating-extra'));
     add({key:'cinema-session',card:'cinema-session',group:'cinema',name:cinemaConfig.name,price:cinemaConfig.price,path:'/services/cinema/'},document.getElementById('cinema-session'));
     cinemaTimeField=node('label',undefined,'arrangement-cinema-time');cinemaTimeField.append(node('span','وقت بداية الجلسة'));
@@ -184,6 +184,12 @@
     cinemaConfig.times.forEach(slot=>cinemaTime.add(new Option(slot.label,slot.value)));const timeStatus=node('small','مدة الجلسة: '+cinemaConfig.duration);timeStatus.id='cinema-status';timeStatus.setAttribute('role','status');cinemaTimeField.append(cinemaTime,timeStatus);
     (browseOrders?requestDialog.querySelector('.arrangement-request-body'):document.getElementById('cinema')).prepend(cinemaTimeField);
     cinemaTime.addEventListener('change',()=>{state.cinemaTime=cinemaTime.value;render();});
+    const itemKey=params.get('item');
+    const selectedKey=directService==='coordination'?(itemKey==='resort'?'package-complete':'package-'+itemKey):directService==='seating'?'session-'+itemKey:null;
+    if(itemKey&&entries.get(selectedKey)?.group===directService){
+      state.quantities[selectedKey]=1;
+      document.querySelectorAll('#'+directService+' .package-card').forEach(card=>{card.hidden=card.id!==selectedKey;});
+    }
     if(directService==='cinema')state.quantities['cinema-session']=1;
     for(const name of Object.keys(cabins))fields.cabin.add(new Option(name,name));
     restore();for(const key of Object.keys(fields))fields[key].value=state[key];ready=true;render();

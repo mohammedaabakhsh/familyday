@@ -4,7 +4,7 @@ from pathlib import Path
 from urllib.parse import urlparse,parse_qs
 from playwright.sync_api import sync_playwright,expect
 R=Path(__file__).resolve().parents[1];BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8127'
-SOURCE=json.loads((R/'data/services.json').read_text());links=json.loads((R/'site/orders/service-links.json').read_text())['services'];out={'version':'20261126-live-v77','profiles':[],'messagesSent':False,'errors':[]}
+SOURCE=json.loads((R/'data/services.json').read_text());links=json.loads((R/'site/orders/service-links.json').read_text())['services'];out={'version':'20261126-live-v78','profiles':[],'messagesSent':False,'errors':[]}
 TAG='pre-resort-direct-orders-20261125'
 for name in ['data/services.json','js/menu-order-message.js','chalet/guest-services/index.html','site/catalog.json','site/share-metadata.json','share-pages.json','share-extras.json']:
  assert (R/name).read_bytes()==subprocess.check_output(['git','show',TAG+':'+name]),name
@@ -14,7 +14,7 @@ for name,start,end in [('guest-services/guest-services.js','    var message;','\
  if name.startswith('guest'):b=b.replace('    return true;\n','')
  else:b=b[:b.index('    return true;')]+ '  });\n'
  assert a==b,name+' message builder changed'
-keys=['familyday.guest-orders.v2','familyday.arrangements-orders.v1'];cases=[('cinema','/services/cinema/'),('games','/services/games/'),('water','/services/water-games/'),('hospitality','/services/hospitality/packages/'),('restaurant','/menu/'),('coordination','/services/coordination/?package=1'),('dining','/services/dining-tables/'),('seating','/services/outdoor-seating/?session=1'),('extras','/services/')]
+keys=['familyday.guest-orders.v2','familyday.arrangements-orders.v1'];cases=[('cinema','/services/cinema/'),('games','/services/games/'),('water','/services/water-games/'),('hospitality','/services/hospitality/packages/'),('restaurant','/menu/'),('coordination','/services/coordination/'),('dining','/services/dining-tables/'),('seating','/services/outdoor-seating/'),('extras','/services/')]
 init="window.opened=[];window.shares=[];window.open=u=>{top.opened.push(u);return null};Object.defineProperty(navigator,'share',{value:async d=>top.shares.push(d)})"
 def select(f,key):
  if key=='cinema':f.locator('#cinema-time').select_option('18')
@@ -86,4 +86,4 @@ with sync_playwright() as p:
   out['profiles'].append({'width':width,'height':height,'independentServices':len(cases),'exactOriginalDraftsAndRecipients':True,'standaloneDraftsUntouched':True,'identityOnlyRemembered':True,'noSummaryOrCart':True,'backAndCancel':True});c.close();print(width,height,'PASS',flush=True)
  c=b.new_context(viewport={'width':390,'height':430});page=c.new_page();page.route('**/data/services.json?*',lambda r:r.fulfill(status=503,body='Unavailable'));page.goto(BASE+'/services/cinema/');page.locator('#main [data-service-portal]').click();expect(page.locator('.native-order-error')).to_be_visible(timeout=10000);assert page.locator('.native-order-external').get_attribute('data-url')=='/services-guide/#cinema';page.unroute('**/data/services.json?*');page.locator('.native-order-retry').click();expect(page.locator('.native-order-loading')).to_be_hidden();expect(page.frame_locator('.native-order-frame').locator('#cinema-time')).to_be_visible();out['sourceRetryInPlace']=True;c.close();b.close()
 assert not out['errors'],out
-(R/'site/audits/resort-direct-orders-v77.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False))
+(R/'site/audits/resort-direct-orders-v78.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False))

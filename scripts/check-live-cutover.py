@@ -3,7 +3,7 @@ All outgoing messages are intercepted; no booking or message is submitted.
 """
 import asyncio,json,re,sys,hashlib
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import urlparse,parse_qs,urlencode,urlunparse
 from html.parser import HTMLParser
 from playwright.async_api import async_playwright
 R=Path(__file__).resolve().parents[1];S=R/'site';BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8112'
@@ -18,6 +18,13 @@ def clean(value,copy):
  s=str(value or '').translate(str.maketrans('٠١٢٣٤٥٦٧٨٩','0123456789'))
  for a,b in copy['roomWording']:s=s.replace(a,b)
  return re.sub(r'[\s\W_]+','',s)
+def canonical_item_url(path):
+ u=urlparse(path);q=parse_qs(u.query);group='coordination' if u.path=='/services/coordination/' else 'seating' if u.path=='/services/outdoor-seating/' else None
+ parameter='package' if group=='coordination' else 'session';key=q.get(parameter,[None])[0]
+ valid=['1','2','3','celebration','vip','resort'] if group=='coordination' else ['1','2','3','4','5','6']
+ if group and key in valid:
+  q.pop(parameter);return urlunparse(('', '',u.path+('package-' if group=='coordination' else 'session-')+key+'/', '',urlencode(q,doseq=True),u.fragment))
+ return path
 async def main():
  routes=json.loads((S/'routes.json').read_text());catalog=json.loads((S/'catalog.json').read_text());copy=json.loads((S/'guide-copy.json').read_text());shared=json.loads((R/'data/services.json').read_text());out={'routes':[],'previewAliases':[],'legacyHashes':[],'units':[],'viewports':[],'errors':[],'badResponses':[],'badLinks':[]}
  assert shared['guest']==catalog['source']['guestCatalog']
@@ -63,7 +70,7 @@ async def main():
    await page.wait_for_url(lambda u:u.pathname==expected if hasattr(u,'pathname') else urlparse(str(u)).path==expected)
    assert 'campaign=cutover' in page.url and '#retained' in page.url,(path,page.url);out['previewAliases'].append(path)
   for key,target in json.loads((S/'runtime-config.json').read_text())['legacyRoutes'].items():
-   await page.goto(BASE+'/#'+key);await page.wait_for_url(BASE+target);out['legacyHashes'].append({'hash':key,'target':target})
+   await page.goto(BASE+'/#'+key);await page.wait_for_url(BASE+canonical_item_url(target));out['legacyHashes'].append({'hash':key,'target':target})
   print('preview aliases and legacy hashes verified',flush=True)
   for unit in catalog['units']:
    await visit(unit['path']);assert await page.locator('.thumbnails img').evaluate_all('es=>es.map(e=>e.getAttribute("src"))')==unit['images'];await page.locator('details').evaluate_all('es=>es.forEach(e=>e.open=true)');body=clean(await page.locator('#main').inner_text(),copy)
@@ -95,7 +102,7 @@ async def main():
     out['viewports'].append({'path':path,'width':w})
   # Older preview queries must survive the redirect and still select the correct unit/package.
   await page.goto(BASE+'/preview/dome-tour/?cabin=12&from=details');await page.wait_for_url(BASE+'/dome-tour/?cabin=12&from=details');await page.locator('#main h1').wait_for();await page.frame_locator('#tour-frame').locator('.dt-image').wait_for(state='attached');assert '/dome-tour-16-' in await page.frame_locator('#tour-frame').locator('.dt-image').get_attribute('src')
-  await page.goto(BASE+'/preview/services/coordination/?package=resort');await page.wait_for_url(BASE+'/services/coordination/?package=resort');await page.locator('.package[open]').wait_for();out['semanticQueryPreserved']=True
+  await page.goto(BASE+'/preview/services/coordination/?package=resort');await page.wait_for_url(BASE+'/services/coordination/package-resort/');await page.locator('.service-item-guide').wait_for();out['semanticQueryPreserved']=True
   await b.close()
  assert not out['errors'] and not out['badResponses'] and not out['badLinks'],out
  (S/'audits'/('live-cutover-'+routes['version'].rsplit('-',1)[-1]+'.json')).write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps({'routes':len(out['routes']),'aliases':len(out['previewAliases']),'hashes':len(out['legacyHashes']),'photos':sum(u['photos'] for u in out['units']),'errors':out['errors']}))
