@@ -2302,9 +2302,9 @@
     "js/menu-order-message.js": "78e54cc83d01bb6b5a44de14d4ce709d8f900517d6f09b1bda0d7a63067abaa9",
     "services-guide/README.md": "e3c7f53ebcd6efe67fab2cc72f75c7a6ff274c181880110891817c3beab79499",
     "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
-    "services-guide/guide.css": "89ec4ea140c8fd004aa301300bf78c56766b030e0d85ee2f761ebed27bee77c7",
-    "services-guide/guide.js": "68f27c6f9ed9ebe219add6eb35dbb4ff7623121f648a68bb2209b8e71813bb4a",
-    "services-guide/index.html": "f0cf1c006258073642d8eb26972a43e5740f7428272a28b17700a051cc1fcd9c",
+    "services-guide/guide.css": "430060f110d1e039b4588b0beb9dc4cb3d57189645156c43caa00faa6da196e9",
+    "services-guide/guide.js": "b0ba0551c8e279861d19b67881cc49e45dc5558c1c798ee47da3c488860cc663",
+    "services-guide/index.html": "c3884fe355b02c5d54c08843dee004424dcb44cd229d1f07e484c18636dea310",
     "services-guide/share-entry.js": "05dac99bc60dfc4b2d2d1b08c131735f22d72f29cf93f1861b85df47c89dffa2",
     "guest-services/resort-refinements.css": "5ccfd5e08d6538ebb7f37eb93f5dc52ac270dbf309ee57b38c82078ee0b31520",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
@@ -2849,6 +2849,23 @@
       "all controllers/messages/request dialogs",
       "coordinator contact URLs",
       "each interface share destinations"
+    ]
+  },
+  "approvedPortalHelpCopy": {
+    "version": "20261126-portal-help-v87",
+    "rollbackTag": "pre-portal-help-copy-20261126",
+    "reason": "Owner requested the exact sentence تواصل معنا لاختيار التنسيق المناسب لكم below the portal coordination help heading, referring to the portal home help styling, and clearer darker navy for the help heading and coordinator name. Main guide remains approved unchanged; mobile overview stays one screen where it previously fitted.",
+    "updatedProtectedFiles": [
+      "services-guide/guide.css",
+      "services-guide/guide.js",
+      "services-guide/index.html"
+    ],
+    "preserved": [
+      "main guide code/styles",
+      "all package content photos and prices",
+      "contact targets",
+      "request dialogs/controllers/messages",
+      "own-interface share URLs"
     ]
   }
 }

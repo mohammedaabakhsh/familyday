@@ -159,3 +159,7 @@ Cinema's standalone section shows its photo immediately, using the same shared g
 ## Standalone help stacks centrally — portal v86
 
 [Owner-approved portal-only help](../docs/portal-stacked-help-v86.md) centers the help title, coordinator name and contact buttons in separate rows, with bottom breathing room and a closed single-screen overview on tested normal mobile sizes. The main guide stays byte-for-byte unchanged; only the standalone CSS cache key advances. Rollback: `pre-portal-stacked-help-20261126`.
+
+## Portal help description and stronger navy — portal v87
+
+[Owner-approved portal wording](../docs/portal-help-copy-v87.md) adds `تواصل معنا لاختيار التنسيق المناسب لكم` below the help heading and gives the heading/coordinator stronger navy hierarchy based on the portal home help. The three tested normal mobile sizes retain a single-screen closed overview. Main guide, catalogue data, contact targets, order dialogs/messages and shares are unchanged. Rollback: `pre-portal-help-copy-20261126`.

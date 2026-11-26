@@ -1,0 +1,40 @@
+{
+  "version": "20261126-portal-help-v87",
+  "profiles": [
+    {
+      "width": 390,
+      "height": 844,
+      "centeredStackedHelp": true,
+      "requestedSentence": true,
+      "darkerNavyTitleAndCoordinator": true,
+      "oneScreenClosedOverview": true,
+      "bottomBreathingRoom": 42.828125,
+      "correctContactDestinations": true,
+      "requestsAndShareWork": true
+    },
+    {
+      "width": 390,
+      "height": 740,
+      "centeredStackedHelp": true,
+      "requestedSentence": true,
+      "darkerNavyTitleAndCoordinator": true,
+      "oneScreenClosedOverview": true,
+      "bottomBreathingRoom": 45.875,
+      "correctContactDestinations": true,
+      "requestsAndShareWork": true
+    },
+    {
+      "width": 375,
+      "height": 667,
+      "centeredStackedHelp": true,
+      "requestedSentence": true,
+      "darkerNavyTitleAndCoordinator": true,
+      "oneScreenClosedOverview": true,
+      "bottomBreathingRoom": 25.578125,
+      "correctContactDestinations": true,
+      "requestsAndShareWork": true
+    }
+  ],
+  "errors": [],
+  "messagesSent": false
+}
