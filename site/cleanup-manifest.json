@@ -2302,9 +2302,9 @@
     "js/menu-order-message.js": "78e54cc83d01bb6b5a44de14d4ce709d8f900517d6f09b1bda0d7a63067abaa9",
     "services-guide/README.md": "a1170ba5394064fe4cbea3ff7c5eb19e729d949093d3b29919b2fbb03c76befb",
     "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
-    "services-guide/guide.css": "63abea41ae7baac4ad1ad03bca11a6b6ace5e5021c5161c27011392d2d9cf266",
-    "services-guide/guide.js": "6a0f5fb1209c5dfee854daf517f104a7dbf6b9d3d66459b5920e332904a13ae1",
-    "services-guide/index.html": "ad5d8f692489ccc2a86f7e24d04e9968fba8669a39deffd8b69b3bb2e27d2729",
+    "services-guide/guide.css": "738ad1675fcaf913729663ca31399bd9b7028a9ca246dbd873b361d97763fdbf",
+    "services-guide/guide.js": "8374570e1f9c7fff60034a6211d6c920fba8d179455d451970738a0ec829556c",
+    "services-guide/index.html": "f1cdba05c109505aea17f20db6b69a55d2d9fb1068634a091ee7e80fdd66a28a",
     "services-guide/share-entry.js": "72de1a301e0da0de127f52b55714dab77b23548b1125915272e33bf4b1fc09a8",
     "guest-services/resort-refinements.css": "5ccfd5e08d6538ebb7f37eb93f5dc52ac270dbf309ee57b38c82078ee0b31520",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
@@ -3094,6 +3094,17 @@
       "services-guide/guide.js",
       "services-guide/index.html",
       "services-guide/guide-orders.js"
+    ]
+  },
+  "approvedStandaloneServiceColors": {
+    "date": "2026-11-26",
+    "version": "20261126-portal-colors-v105",
+    "rollbackTag": "pre-standalone-service-colors-20261126",
+    "reason": "Owner requests the guest-services pattern: carry each arrangements home card color into the opened service header, details, prices, request actions and request header. Use existing card palettes for coordination, outdoor seating, dining and cinema. Reset theme on return home and exclude native embedded orders. No text, prices, ordering logic or links changed.",
+    "updatedProtectedFiles": [
+      "services-guide/guide.css",
+      "services-guide/guide.js",
+      "services-guide/index.html"
     ]
   }
 }

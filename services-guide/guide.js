@@ -129,6 +129,9 @@
     const pendingTile = !content.classList.contains('is-ready') && Array.from(document.querySelectorAll('.contents a')).find(link => link.hash === pendingHash);
     const sectionView = Boolean(activeSection || pendingTile);
     document.body.dataset.guideView = sectionView ? (embeddedOrder?'dialog':'section') : 'home';
+    const tone=activeSection?.id||pendingTile?.hash?.slice(1);
+    if(!embeddedOrder&&['coordination','seating','dining','cinema'].includes(tone))document.body.dataset.guideTone=tone;
+    else delete document.body.dataset.guideTone;
     document.body.classList.toggle('arrangement-dialog-open',embeddedOrder&&sectionView);
     document.querySelectorAll('.guide-section').forEach(section => section.classList.toggle('is-active',section === activeSection));
     const title = activeSection ? activeSection.dataset.title : pendingTile ? pendingTile.querySelector('.tile-title').textContent : '';
