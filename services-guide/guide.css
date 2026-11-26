@@ -286,17 +286,17 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 :is(#coordination,#seating) .seating-collapsed-details[open] .seating-collapsed-chevron{background:transparent;border:0;color:inherit}
 
 /* Give the compact coordination rows room, with advance guidance and simple contact actions. */
-:is(#coordination,#seating) .package-grid{gap:20px}
-:is(#coordination,#seating) .coordination-order-note{max-width:680px;margin:0 auto 22px;color:var(--ink);font-size:13px;line-height:1.85;text-align:center;text-wrap:pretty}
-:is(#coordination,#seating) .coordination-help{max-width:680px;margin:28px auto 0;padding-top:20px;border-top:1px solid var(--line);text-align:center}
-:is(#coordination,#seating) .coordination-help h3{font-size:17px;line-height:1.6;margin:0 0 6px;color:#102f40;font-weight:700}
-:is(#coordination,#seating) .coordination-help p{margin:0 0 14px;color:var(--muted);font-size:13px;line-height:1.8}
-:is(#coordination,#seating) .coordination-help .coordination-help-description{font-size:12px;line-height:1.6;color:var(--muted)}
-:is(#coordination,#seating) .coordination-help .coordination-help-name{font-size:15px;line-height:1.4;font-weight:700;color:#102f40}
-:is(#coordination,#seating) .coordination-help bdi{color:var(--accent);white-space:nowrap}
-:is(#coordination,#seating) .coordination-help-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-:is(#coordination,#seating) .coordination-help-actions a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:10px;border:1px solid var(--line);border-radius:10px;color:var(--ink);font-size:14px;font-weight:700}
-body.resort-order-embedded :is(#coordination,#seating) :is(.coordination-order-note,.coordination-help){display:none!important}
+:is(#coordination,#seating,#dining,#cinema) .package-grid{gap:20px}
+:is(#coordination,#seating,#dining,#cinema) .coordination-order-note{max-width:680px;margin:0 auto 22px;color:var(--ink);font-size:13px;line-height:1.85;text-align:center;text-wrap:pretty}
+:is(#coordination,#seating,#dining,#cinema) .coordination-help{max-width:680px;margin:28px auto 0;padding-top:20px;border-top:1px solid var(--line);text-align:center}
+:is(#coordination,#seating,#dining,#cinema) .coordination-help h3{font-size:17px;line-height:1.6;margin:0 0 6px;color:#102f40;font-weight:700}
+:is(#coordination,#seating,#dining,#cinema) .coordination-help p{margin:0 0 14px;color:var(--muted);font-size:13px;line-height:1.8}
+:is(#coordination,#seating,#dining,#cinema) .coordination-help .coordination-help-description{font-size:12px;line-height:1.6;color:var(--muted)}
+:is(#coordination,#seating,#dining,#cinema) .coordination-help .coordination-help-name{font-size:15px;line-height:1.4;font-weight:700;color:#102f40}
+:is(#coordination,#seating,#dining,#cinema) .coordination-help bdi{color:var(--accent);white-space:nowrap}
+:is(#coordination,#seating,#dining,#cinema) .coordination-help-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+:is(#coordination,#seating,#dining,#cinema) .coordination-help-actions a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:10px;border:1px solid var(--line);border-radius:10px;color:var(--ink);font-size:14px;font-weight:700}
+body.resort-order-embedded :is(#coordination,#seating,#dining,#cinema) :is(.coordination-order-note,.coordination-help){display:none!important}
 
 /* Fit the coordination overview naturally; expanded packages remain scrollable. */
 @media screen and (max-width:759px){
@@ -327,3 +327,15 @@ body.resort-order-embedded :is(#coordination,#seating) :is(.coordination-order-n
 
 /* Show each outdoor seating photograph complete, with no zoom interaction. */
 #seating .seating-full-photo{display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain;cursor:default}
+
+/* Help stays close to its actions, without a repeated coordinator label. */
+.footer-help h2{font-size:22px;line-height:1.5;margin:0 0 6px;color:#102f40}
+.footer-help p{font-size:14px;line-height:1.8;max-width:420px;margin-inline:auto;text-wrap:pretty}
+.footer-contact{margin-top:12px}
+#dining details.fd-dining-contents{padding:0 14px}
+#dining details.fd-dining-contents>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;padding-block:14px;cursor:pointer;font-size:14px;font-weight:700;list-style:none;color:var(--ink)}
+#dining details.fd-dining-contents>summary::-webkit-details-marker{display:none}
+#dining details.fd-dining-contents>summary::after{content:"";width:8px;height:8px;border:solid currentColor;border-width:0 1.5px 1.5px 0;transform:rotate(45deg);margin:0 4px 4px;flex:none}
+#dining details.fd-dining-contents[open]>summary::after{transform:rotate(225deg);margin-top:6px}
+#dining details.fd-dining-contents .fd-dining-inclusions{padding-bottom:14px}
+#dining .dining-order-actions{max-width:680px;margin-inline:auto}

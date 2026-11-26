@@ -70,13 +70,17 @@
     }
     const coordination=serviceLinks.coordination,help=coordination?.help;
     const advance=coordination?.advanceNote?'<p class="coordination-order-note">'+escape(coordination.advanceNote)+'</p>':'';
-    const contactMarkup=(id,help,description)=>help?'<section class="coordination-help" aria-labelledby="'+escape(id)+'-help-title"><h3 id="'+escape(id)+'-help-title">'+escape(help.title)+'</h3><p class="coordination-help-description">'+escape(description)+'</p><p class="coordination-help-name">'+escape(help.name)+'</p><nav class="coordination-help-actions" aria-label="التواصل مع منسّق المناسبات"><a href="https://wa.me/'+escape(help.phone)+'" target="_blank" rel="noopener noreferrer" aria-label="واتساب منسّق المناسبات">واتساب</a><a href="tel:+'+escape(help.phone)+'" aria-label="اتصال بمنسّق المناسبات">اتصال</a></nav></section>':'';
+    const contactMarkup=(id,help,description)=>help?'<section class="coordination-help" aria-labelledby="'+escape(id)+'-help-title"><h3 id="'+escape(id)+'-help-title">'+escape(help.title)+'</h3><p class="coordination-help-description">'+escape(description)+'</p><nav class="coordination-help-actions" aria-label="التواصل مع منسّق المناسبات"><a href="https://wa.me/'+escape(help.phone)+'" target="_blank" rel="noopener noreferrer" aria-label="واتساب منسّق المناسبات">واتساب</a><a href="tel:+'+escape(help.phone)+'" aria-label="اتصال بمنسّق المناسبات">اتصال</a></nav></section>':'';
     const contact=contactMarkup('coordination',help,'تواصل معنا لاختيار التنسيق المناسب لكم');
     let html = section('coordination',data.coordination.name,coordination?.intro||data.coordination.intro,advance+packages(data.coordination.packages)+contact,true);
     const diningSource = template.content;
     const diningImage = sourceImage(diningSource,'.fd-dining-image img');
-    const diningPhoto = '<div class="dining-shared-photo"><figure class="package-photo"><img class="dining-full-photo" src="/' + escape(diningImage.src.replace(/^\/+/,'')) + '" alt="' + escape(diningImage.alt) + '" width="' + escape(diningImage.width) + '" height="' + escape(diningImage.height) + '" loading="eager" decoding="async"></figure><p class="fd-dining-caption">' + escape(text(diningSource,'.fd-dining-caption')) + '</p></div>';
-    const diningBody = diningPhoto + FD_DINING_CARDS.details(doc).outerHTML + '<p id="dining-price-help" class="dining-order-help">' + escape(serviceLinks.dining?.orderHint||'اختر عدد الأشخاص ونوع التجهيز، ثم اضغط «اطلب هذه الطاولة».') + '</p>' + FD_DINING_CARDS.table(doc,true).outerHTML;
+    const diningPhoto = '<div class="dining-shared-photo"><figure class="package-photo"><img class="dining-full-photo" src="/' + escape(diningImage.src.replace(/^\/+/,'')) + '" alt="' + escape(diningImage.alt) + '" width="' + escape(diningImage.width) + '" height="' + escape(diningImage.height) + '" loading="eager" decoding="async"></figure></div>';
+    const diningDetails=FD_DINING_CARDS.details(doc),contents=diningDetails.querySelector('.fd-dining-contents');
+    const disclosure=document.createElement('details');disclosure.className='fd-dining-contents';
+    disclosure.innerHTML='<summary>محتويات التجهيز مع التنسيق</summary>';disclosure.append(contents.querySelector('.fd-dining-inclusions'));contents.replaceWith(disclosure);
+    const diningAdvance='<p class="coordination-order-note">'+escape(serviceLinks.dining.advanceNote)+'</p>';
+    const diningBody = diningAdvance + diningPhoto + diningDetails.outerHTML + FD_DINING_CARDS.table(doc,true).outerHTML + '<p id="dining-price-help" class="dining-order-help" data-empty-text="'+escape(serviceLinks.dining.orderHint)+'">'+escape(serviceLinks.dining.orderHint)+'</p>' + contactMarkup('dining',serviceLinks.dining.help,serviceLinks.dining.help.description);
     const diningSection = section('dining',data.dining.name,data.dining.intro,diningBody,true);
     const seating=serviceLinks.seating;
     const seatingAdvance=seating?.advanceNote?'<p class="coordination-order-note">'+escape(seating.advanceNote)+'</p>':'';
@@ -86,7 +90,7 @@
     const cinema=catalog.guest.cinema, cinemaMedia=serviceLinks.cinema;
     const cinemaPhoto=cinemaMedia?.image?'<div class="dining-shared-photo cinema-shared-photo">'+FD_GUIDE_GALLERY.markup([cinemaMedia.image],cinema.title,cinema.title)+'</div>':'';
     const cinemaDetails='<div class="cinema-service-price"><div class="cinema-fact"><small>مدة الجلسة</small><strong class="cinema-duration">'+escape(cinema.duration)+'</strong></div><div class="cinema-fact"><small>سعر الجلسة</small><strong class="price">'+escape(cinema.price)+' ريال</strong></div></div><h3 class="cinema-contents-title">'+escape(cinema.contentsTitle)+'</h3>'+items(cinema.contents)+'<details class="guide-usage"><summary>تعليمات الاستخدام</summary>'+items(cinema.notes)+'</details>';
-    html += section('cinema',cinema.title,cinema.intro,'<article id="cinema-session" class="cinema-service-panel">'+cinemaPhoto+'<div class="cinema-service-body package-details-body">'+cinemaDetails+'</div></article>',true);
+    html += section('cinema',cinema.title,cinema.intro,'<p class="coordination-order-note">'+escape(cinemaMedia.advanceNote)+'</p><article id="cinema-session" class="cinema-service-panel">'+cinemaPhoto+'<div class="cinema-service-body package-details-body">'+cinemaDetails+'</div></article>'+contactMarkup('cinema',cinemaMedia.help,cinemaMedia.help.description),true);
     content.innerHTML = html;
     for(const id of ['coordination','seating','dining','cinema']){const section=content.querySelector('#'+id);section.dataset.portalSharePath=serviceLinks[id]?.portalSharePath||'/services-guide/'+id+'/';section.dataset.shareDescription=serviceLinks[id]?.shareDescription||serviceLinks[id]?.intro||'';}
     for(const id of ['cinema','dining'])content.querySelector('#'+id).dataset.orderLabel=serviceLinks[id]?.orderLabel||(id==='cinema'?'اطلب هذه الجلسة':'اطلب هذه الطاولة');
@@ -209,7 +213,7 @@
     try {
       const response = await fetch('/data/services.json?v=20261125-live-v54',{cache:'no-cache'});
       if (!response.ok) throw new Error('Service source unavailable');
-      const links=await fetch('/site/orders/service-links.json?v=20261126-live-v103').then(r=>r.ok?r.json():{}).catch(()=>({}));
+      const links=await fetch('/site/orders/service-links.json?v=20261126-live-v104').then(r=>r.ok?r.json():{}).catch(()=>({}));
       render(await response.json(),links.services||{});
     } catch(error) {
       content.innerHTML = '<div class="load-error"><h2>تعذّر تحميل التجهيزات</h2><p>حاولوا مرة ثانية لعرض التفاصيل هنا.</p><button type="button" id="retry-guide">إعادة المحاولة</button></div>';

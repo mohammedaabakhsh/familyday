@@ -112,7 +112,7 @@
     }
     if(diningRequestButton){
       const selected=entries.get(diningChoice);diningRequestButton.disabled=!selected;
-      diningSelectionStatus.textContent=selected?selected.name+' — '+selected.price+' ريال':'اختر عدد الأشخاص ونوع التجهيز';
+      diningSelectionStatus.textContent=selected?selected.name+' — '+selected.price+' ريال':diningSelectionStatus.dataset.emptyText;
     }
     for(const group of ['coordination','dining','seating','cinema']){
       const tile=document.querySelector('.contents a[href="#'+group+'"]');const selected=chosen.filter(e=>e.group===group);tile.classList.toggle('is-selected',!browseOrders&&!!selected.length);
@@ -176,9 +176,9 @@
     for(const [size,prices] of Object.entries(data.dining.prices))for(const option of ['plain','tansiq'])entries.set('dining-'+size+'-'+option,{key:'dining-'+size+'-'+option,group:'dining',name:'طاولة طعام لـ'+size+' '+(Number(size)<=10?'أشخاص':'شخصًا')+' — '+(option==='plain'?'تجهيز أساسي':'تجهيز مع تنسيق'),price:prices[option],size,option,path:data.dining.path});
     if(browseOrders){
       const diningActions=node('div',undefined,'dining-order-actions');
-      diningSelectionStatus=node('p','اختر عدد الأشخاص ونوع التجهيز','dining-selection-status');diningSelectionStatus.setAttribute('role','status');diningSelectionStatus.setAttribute('aria-live','polite');
+      diningSelectionStatus=document.getElementById('dining-price-help');diningSelectionStatus.classList.add('dining-selection-status');diningSelectionStatus.setAttribute('role','status');diningSelectionStatus.setAttribute('aria-live','polite');
       diningRequestButton=node('button',document.getElementById('dining').dataset.orderLabel||'اطلب هذه الطاولة','arrangement-request-button');diningRequestButton.type='button';diningRequestButton.dataset.diningRequest='';diningRequestButton.disabled=true;
-      diningActions.append(diningSelectionStatus,diningRequestButton);document.getElementById('dining').append(diningActions);
+      diningActions.append(diningSelectionStatus,diningRequestButton);document.getElementById('dining').insertBefore(diningActions,document.querySelector('#dining .coordination-help'));
     }
     data.seating.sessions.forEach((session,i)=>{const card='session-'+(i+1);add({key:card,card,group:'seating',name:session.name,capacity:session.persons,price:price(session.price),path:data.seating.path+'?session='+(i+1)},document.getElementById(card));});
     add({key:'seating-extra',group:'extra',name:data.seating.extra.name,price:price(data.seating.extra.price),path:data.seating.path},document.querySelector('.seating-extra'));
@@ -211,19 +211,18 @@
   function submitOrder(event){
     event.preventDefault();const chosen=lines();if(!ready||!chosen.length||(cinemaChosen()&&!validCinemaTime())||(cinemaChosen()&&chosen.some(entry=>entry.group!=='cinema'))||!form.reportValidity()||!state.name.trim()||!Object.hasOwn(cabins,state.cabin)||state.quantities['seating-extra']&&!seatsChosen())return;
     const requestedGroups=[...new Set(chosen.filter(entry=>entry.group!=='extra').map(entry=>entry.group))];
-    const requestLabel=requestedGroups.length===1?({coordination:'تنسيق',dining:'تجهيز طاولة طعام',seating:'جلسة خارجية',cinema:'جلسة سينما'}[requestedGroups[0]]||'الخدمات التالية'):'الخدمات التالية';
-    const parts=['السلام عليكم، أرغب بطلب '+requestLabel+':','','الاسم: '+state.name.trim(),'اسم الكوخ: '+state.cabin,'رقم الكوخ: '+cabins[state.cabin],'','الطلبات:'];
-    for(const [group,title] of groups){
-      const items=chosen.filter(entry=>entry.group===group);if(!items.length)continue;
-      parts.push('',title+':');
-      for(const entry of items){
-        // Capacity belongs beside the session name, never on a separate message line.
-        const name=entry.group==='seating'?entry.name.replace(/\s+لـ?\s*\d+\s+(?:أشخاص|شخصًا|شخصاً)\s*$/u,'')+' — '+(entry.capacity.startsWith('ل')?entry.capacity:'لـ'+entry.capacity):entry.name;
-        parts.push(name+' × '+entry.qty+' = '+entry.total+' ريال');
-        if(entry.group==='cinema')parts.push('مدة الجلسة: '+cinemaConfig.duration,'وقت بداية الجلسة: '+cinemaConfig.times.find(slot=>slot.value===state.cinemaTime).label);
-      }
+    const group=requestedGroups[0],entry=chosen.find(item=>item.group===group);
+    const requestLabel={coordination:'تنسيق',dining:'طاولة طعام',seating:'جلسة خارجية',cinema:'جلسة سينما'}[group];
+    const parts=['السلام عليكم، أرغب بطلب '+requestLabel+'.','','الاسم: '+state.name.trim(),'اسم الكوخ: '+state.cabin,'رقم الكوخ: '+cabins[state.cabin],''];
+    if(group==='coordination')parts.push('الباقة: '+entry.name,'الكمية: '+entry.qty);
+    if(group==='dining')parts.push('عدد الأشخاص: '+entry.size,'نوع التجهيز: '+(entry.option==='plain'?'تجهيز أساسي':'تجهيز مع تنسيق'));
+    if(group==='cinema')parts.push('موعد الجلسة: '+cinemaTimeRange(state.cinemaTime),'مدة الجلسة: '+cinemaConfig.duration);
+    if(group==='seating'){
+      const name=entry.name.replace(/\s+لـ?\s*\d+\s+(?:أشخاص|شخصًا|شخصاً)\s*$/u,'');
+      parts.push('الجلسة: '+name+' — '+(entry.capacity.startsWith('ل')?entry.capacity:'لـ'+entry.capacity),'الكمية: '+entry.qty);
+      const extra=chosen.find(item=>item.group==='extra');if(extra)parts.push('إضافة اختيارية: '+extra.name+' — '+extra.total+' ريال');
     }
-    parts.push('','إجمالي الطلب: '+chosen.reduce((sum,e)=>sum+e.total,0)+' ريال');if(state.notes.trim())parts.push('','ملاحظات: '+state.notes.trim());
+    parts.push('إجمالي الطلب: '+chosen.reduce((sum,e)=>sum+e.total,0)+' ريال');if(state.notes.trim())parts.push('','ملاحظات: '+state.notes.trim());
     // Open a text draft only; the guest reviews and sends it from WhatsApp.
     window.open('https://wa.me/966537009217?text='+encodeURIComponent(parts.join('\n')),'_blank','noopener,noreferrer');
     return true;

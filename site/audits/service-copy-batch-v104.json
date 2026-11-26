@@ -1,0 +1,91 @@
+{
+  "version": "20261126-live-v104",
+  "profiles": [
+    {
+      "width": 390,
+      "service": "coordination",
+      "draftParity": true,
+      "layoutAndHelp": true,
+      "ownShareURLs": true
+    },
+    {
+      "width": 390,
+      "service": "seating",
+      "draftParity": true,
+      "layoutAndHelp": true,
+      "ownShareURLs": true
+    },
+    {
+      "width": 390,
+      "service": "dining",
+      "draftParity": true,
+      "layoutAndHelp": true,
+      "ownShareURLs": true
+    },
+    {
+      "width": 390,
+      "service": "cinema",
+      "draftParity": true,
+      "layoutAndHelp": true,
+      "ownShareURLs": true
+    },
+    {
+      "width": 320,
+      "service": "coordination",
+      "draftParity": true,
+      "layoutAndHelp": true,
+      "ownShareURLs": true
+    },
+    {
+      "width": 320,
+      "service": "seating",
+      "draftParity": true,
+      "layoutAndHelp": true,
+      "ownShareURLs": true
+    },
+    {
+      "width": 320,
+      "service": "dining",
+      "draftParity": true,
+      "layoutAndHelp": true,
+      "ownShareURLs": true
+    },
+    {
+      "width": 320,
+      "service": "cinema",
+      "draftParity": true,
+      "layoutAndHelp": true,
+      "ownShareURLs": true
+    },
+    {
+      "width": 430,
+      "service": "coordination",
+      "draftParity": true,
+      "layoutAndHelp": true,
+      "ownShareURLs": true
+    },
+    {
+      "width": 430,
+      "service": "seating",
+      "draftParity": true,
+      "layoutAndHelp": true,
+      "ownShareURLs": true
+    },
+    {
+      "width": 430,
+      "service": "dining",
+      "draftParity": true,
+      "layoutAndHelp": true,
+      "ownShareURLs": true
+    },
+    {
+      "width": 430,
+      "service": "cinema",
+      "draftParity": true,
+      "layoutAndHelp": true,
+      "ownShareURLs": true
+    }
+  ],
+  "errors": [],
+  "messagesSent": false
+}

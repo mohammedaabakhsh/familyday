@@ -65,7 +65,7 @@ with sync_playwright() as p:
      if main:root.locator('[data-package-photo]').first.click();expect(page.locator('#viewer')).to_be_visible();page.keyboard.press('Escape')
      else:expect(page.locator('#coordination .coordination-help-description')).to_have_text('تواصل معنا لاختيار التنسيق المناسب لكم')
     if kind=='seating':
-     if main:assert page.locator('.coordination-help-description').count()==0
+     if main:expect(page.locator('.coordination-help-description')).to_have_text('تواصل معنا لاختيار جلسة مناسبة لكم')
      else:expect(page.locator('#seating .coordination-help-description')).to_have_text('تواصل معنا لاختيار الجلسة المناسبة لكم')
     if w==390 and h==844:
      if kind=='coordination':root.locator('summary').first.click()
@@ -74,6 +74,6 @@ with sync_playwright() as p:
    for i in range(6):assert drafts[('main',i)]==drafts[('portal',i)]
   page.goto(BASE+'/services-guide/');page.locator('#guide-content.is-ready').wait_for(state='attached');expect(page.locator('.cover-logo')).to_be_visible();icon=page.locator('.guide-tile[href="#seating"] .tile-icon');assert icon.locator('svg').count()==1
   if w==390 and h==844:page.screenshot(path=str(D/'source-home.png'),full_page=True);icon.screenshot(path=str(D/'floor-seating-icon.png'))
-  out['profiles'].append({'width':w,'height':h,'sharedPreviewDescriptions':True,'staticCompleteSeatingAndCinemaPhotos':True,'seatingPriceNoRedundantUnit':True,'currencyBesideEveryPrice':True,'headerFontsPreserved':True,'coordinationGalleryPreserved':True,'helpUnchanged':True,'noHorizontalOverflow':True});c.close();print(w,h,'PASS',flush=True)
+  out['profiles'].append({'width':w,'height':h,'sharedPreviewDescriptions':True,'staticCompleteSeatingAndCinemaPhotos':True,'seatingPriceNoRedundantUnit':True,'currencyBesideEveryPrice':True,'headerFontsPreserved':True,'coordinationGalleryPreserved':True,'helpMatchesApprovedCopy':True,'noHorizontalOverflow':True});c.close();print(w,h,'PASS',flush=True)
  b.close()
 assert not out['errors'],out['errors'];report=Path('/tmp/reviewed-services-v103-live.json') if BASE.startswith('https:') else R/'site/audits/reviewed-services-batch-v103.json';report.write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False))

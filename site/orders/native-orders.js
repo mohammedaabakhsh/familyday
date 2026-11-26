@@ -13,7 +13,7 @@ export function createResortOrders({version,services,share}){
   document.querySelectorAll('.dining-guide').forEach(guide=>{
    guide.querySelectorAll('[data-dining-size]').forEach(button=>button.setAttribute('aria-pressed','false'));
    const request=guide.querySelector('[data-service-portal]');request.disabled=true;delete request.dataset.resortOrderKey;
-   guide.querySelector('.dining-selected-option').textContent='اختر عدد الأشخاص ونوع التجهيز';
+   const status=guide.querySelector('.dining-selected-option');status.textContent=status.dataset.emptyText;
   });
  }
  function discardHistoryRequest(){
