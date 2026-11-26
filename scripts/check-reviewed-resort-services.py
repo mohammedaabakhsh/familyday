@@ -5,7 +5,7 @@ import json,os,re,sys
 from playwright.sync_api import sync_playwright,expect
 R=Path(__file__).resolve().parents[1];BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8150'
 SOURCE=json.loads((R/'data/services.json').read_text());COPY=json.loads((R/'site/guide-copy.json').read_text())['serviceCopy'];A=SOURCE['arrangements']
-out={'version':'20261126-live-v80','profiles':[],'messagesSent':False,'errors':[]}
+out={'version':'20261126-live-v81','profiles':[],'messagesSent':False,'errors':[]}
 init="window.opened=[];window.shares=[];window.open=u=>{top.opened.push(u);return null};Object.defineProperty(navigator,'share',{value:async d=>top.shares.push(d)})"
 paths={'coordination':'/services/coordination/','dining':'/services/dining-tables/','cinema':'/services/cinema/'}
 def expected(entry,name,price,qty=1,cinema=False):
@@ -27,7 +27,7 @@ with sync_playwright() as p:
   def portalVisit(kind):
    portal.goto(BASE+'/services-guide/#'+kind);portal.locator('#guide-content.is-ready').wait_for(state='attached');assert not portal.evaluate('document.documentElement.scrollWidth>innerWidth')
   def share(page,selector,kind):
-   page.locator(selector).click();assert page.evaluate('shares.at(-1)')=={'text':BASE+paths[kind]}
+   page.locator(selector).click();target='/services-guide/#'+kind if selector.startswith('.topbar') else paths[kind];assert page.evaluate('shares.at(-1)')=={'text':BASE+target}
   def send(page,f,mode,kind,name,price,qty=1):
    send=f.locator('.resort-direct-send' if mode=='main' else '.arrangement-request .arrangement-send')
    f.locator('#arrangement-name').fill('');f.locator('#arrangement-cabin').select_option('');before=page.evaluate('opened.length')
@@ -99,4 +99,4 @@ with sync_playwright() as p:
     main.screenshot(path=str(folder/(kind+'-main.png')),full_page=True);portal.screenshot(path=str(folder/(kind+'-portal.png')),full_page=True)
   c.close()
  b.close()
-assert not out['errors'],out['errors'];(R/'site/audits/reviewed-resort-services-v80.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False))
+assert not out['errors'],out['errors'];(R/'site/audits/reviewed-resort-services-v81.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False))

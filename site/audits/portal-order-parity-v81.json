@@ -1,0 +1,19 @@
+{
+  "version": "20261126-live-v81",
+  "services": {
+    "coordination": {
+      "exactWhatsAppParity": true,
+      "correctSurfaceShareURL": true
+    },
+    "dining": {
+      "exactWhatsAppParity": true,
+      "correctSurfaceShareURL": true
+    },
+    "cinema": {
+      "exactWhatsAppParity": true,
+      "correctSurfaceShareURL": true
+    }
+  },
+  "errors": [],
+  "messagesSent": false
+}

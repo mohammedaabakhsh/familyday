@@ -4,7 +4,7 @@ from pathlib import Path
 from urllib.parse import urlparse,parse_qs
 from playwright.sync_api import sync_playwright,expect
 R=Path(__file__).resolve().parents[1];BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8127'
-SOURCE=json.loads((R/'data/services.json').read_text());links=json.loads((R/'site/orders/service-links.json').read_text())['services'];out={'version':'20261126-live-v80','profiles':[],'messagesSent':False,'errors':[]}
+SOURCE=json.loads((R/'data/services.json').read_text());links=json.loads((R/'site/orders/service-links.json').read_text())['services'];out={'version':'20261126-live-v81','profiles':[],'messagesSent':False,'errors':[]}
 TAG='pre-resort-direct-orders-20261125'
 for name in ['data/services.json','js/menu-order-message.js','chalet/guest-services/index.html','site/catalog.json','site/share-metadata.json','share-pages.json','share-extras.json']:
  assert (R/name).read_bytes()==subprocess.check_output(['git','show',TAG+':'+name]),name
@@ -89,4 +89,4 @@ with sync_playwright() as p:
   out['profiles'].append({'width':width,'height':height,'independentServices':len(cases),'exactOriginalDraftsAndRecipients':True,'standaloneDraftsUntouched':True,'identityOnlyRemembered':True,'noSummaryOrCart':True,'backAndCancel':True});c.close();print(width,height,'PASS',flush=True)
  c=b.new_context(viewport={'width':390,'height':430});page=c.new_page();page.route('**/data/services.json?*',lambda r:r.fulfill(status=503,body='Unavailable'));page.goto(BASE+'/services/cinema/');page.locator('#main [data-service-portal]').click();expect(page.locator('.native-order-error')).to_be_visible(timeout=10000);assert page.locator('.native-order-external').get_attribute('data-url')=='/services-guide/#cinema';page.unroute('**/data/services.json?*');page.locator('.native-order-retry').click();expect(page.locator('.native-order-loading')).to_be_hidden();expect(page.frame_locator('.native-order-frame').locator('#cinema-time')).to_be_visible();out['sourceRetryInPlace']=True;c.close();b.close()
 assert not out['errors'],out
-(R/'site/audits/resort-direct-orders-v80.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False))
+(R/'site/audits/resort-direct-orders-v81.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False))

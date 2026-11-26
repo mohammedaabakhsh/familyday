@@ -1,0 +1,39 @@
+{
+  "version": "20261126-live-v81",
+  "services": [
+    {
+      "id": "coordination",
+      "portalURL": "/services-guide/#coordination",
+      "mainURL": "/services/coordination/",
+      "receivedPortalLinkStaysInPortal": true
+    },
+    {
+      "id": "seating",
+      "portalURL": "/services-guide/#seating",
+      "mainURL": "/services/outdoor-seating/",
+      "receivedPortalLinkStaysInPortal": true
+    },
+    {
+      "id": "dining",
+      "portalURL": "/services-guide/#dining",
+      "mainURL": "/services/dining-tables/",
+      "receivedPortalLinkStaysInPortal": true
+    },
+    {
+      "id": "cinema",
+      "portalURL": "/services-guide/#cinema",
+      "mainURL": "/services/cinema/",
+      "receivedPortalLinkStaysInPortal": true
+    }
+  ],
+  "guestServices": [
+    "water",
+    "games",
+    "hospitality",
+    "restaurant"
+  ],
+  "errors": [],
+  "messagesSent": false,
+  "chaletOwnURLPreserved": true,
+  "clipboardOwnPortalURL": true
+}

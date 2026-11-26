@@ -135,3 +135,7 @@ Cinema's standalone section shows its photo immediately, using the same shared g
 ## Reviewed resort cinema, coordination and dining — v80
 
 [Owner-approved unification](../docs/resort-services-unification-v80.md) aligns card/page copy, keeps one cinema header share, gives each coordination package a direct native request and one specification per row, and makes dining select one setup before its separate request action in both surfaces. Existing public URLs, source prices/inclusions/photos, recipients and WhatsApp message assembly remain unchanged. Rollback: `pre-resort-service-unification-20261126`. Verify with `check-reviewed-resort-services.py`, the arrangements/native-order checks, share scope and cutover checks; draft links are intercepted and no messages are sent.
+
+## Share destinations stay in their originating interface — v81
+
+[Owner clarification](../docs/portal-share-destinations-v81.md): standalone portals share their own section URLs; the main guide and its embedded requests keep native service URLs. Only order wording is unified across surfaces. Existing section/item compatibility and text-only previews remain. Guest-portal hash links now replace an already-open different service panel. Verify with `check-portal-share-destinations.py` and `check-service-share-scope.py`. Rollback: `pre-portal-share-destinations-20261126`.

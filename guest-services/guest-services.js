@@ -439,7 +439,10 @@
     function openLinkedService(){
       if(redirectCinema())return;
       var key=location.hash.slice(1).replace(/-service$/,'');
-      if(document.getElementById(key+'-card'))openEditor(key);
+      if(document.getElementById(key+'-card')){
+        if(dialog.open&&activeService!==key)closeEditor();
+        openEditor(key);
+      }
     }
     window.addEventListener('hashchange',openLinkedService);openLinkedService();
   }

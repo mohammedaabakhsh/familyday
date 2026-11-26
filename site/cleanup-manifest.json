@@ -2294,8 +2294,8 @@
     "data/services.json": "8904201ec0ef1e658373cd0613239faeb6da9f8af4d1b6b29b0703bb22267b7c",
     "guest-services/README.md": "1ad3a3d1df387c6f92547d236015ff1c975e01b67890162dfa0d0e750b23ec7a",
     "guest-services/guest-services.css": "207545d3740a44c6e0ab8ded3731b255151478ecf82109d0344cdb5dc7e61a36",
-    "guest-services/guest-services.js": "39651a20a49226ae37b8c28cdd3d42278e767ada3e9e74d9839f093b6b3be83a",
-    "guest-services/index.html": "410a4093afd826bca986c76ff16eb59d7334145180cd3394f081eb662f500974",
+    "guest-services/guest-services.js": "cad096714539c19c5b49891cc56885b43047c4f8ddeab51c3a5545bd319badff",
+    "guest-services/index.html": "aaa6dc871f789ba05bc2b49bca261733eabe8257c0abe5200d2b214e3dac5bff",
     "guest-services/service-source.js": "e0da9d9065eea4864558446730954129ccefb495b97c4c7070b8e4a6a6803b3e",
     "guest-services/share.js": "a207ab25177d5b69bb1e8a4cc37bc0755c9a2157b7024561d3c15b2652c4323b",
     "js/dining-cards.js": "a80c8a1fcbc623019426cc46184f52f6dc0b109570afbd848e39571726be4097",
@@ -2303,8 +2303,8 @@
     "services-guide/README.md": "e3c7f53ebcd6efe67fab2cc72f75c7a6ff274c181880110891817c3beab79499",
     "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
     "services-guide/guide.css": "0671ba0d08e0d6bbefc44d3b1d37cb58a73488a713165d56e315ceb7c2e7075f",
-    "services-guide/guide.js": "5255839f6b18d4419c20dbabe03044ef9decf2063b32a01acdddefeac5f68d91",
-    "services-guide/index.html": "b40a7bdfad13bd3704471f3b4a63aa7c395a6428a8e3a3d56f383e3593bfd7ba",
+    "services-guide/guide.js": "b89e0b2d4ba632d379447fb2b6c617abedaeedf2d603cd615745fe387a9dcde5",
+    "services-guide/index.html": "4a44f2c44d2a1b3fc898c4ba3ceda7a85e24162cbd350ea74887d536a46a0f25",
     "services-guide/share-entry.js": "05dac99bc60dfc4b2d2d1b08c131735f22d72f29cf93f1861b85df47c89dffa2",
     "guest-services/resort-refinements.css": "5ccfd5e08d6538ebb7f37eb93f5dc52ac270dbf309ee57b38c82078ee0b31520",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
@@ -2749,6 +2749,23 @@
       "chalet ordering portal",
       "unreviewed outdoor seating flow",
       "resthouse"
+    ]
+  },
+  "approvedPortalShareDestinations": {
+    "version": "20261126-live-v81",
+    "rollbackTag": "pre-portal-share-destinations-20261126",
+    "reason": "Owner clarified that only request wording should be unified; each interface must share its own URL. Standalone arrangements and guest service shares now return to their own section in the portal, while native guide shares keep native service paths.",
+    "updatedProtectedFiles": [
+      "guest-services/guest-services.js",
+      "guest-services/index.html",
+      "services-guide/guide.js",
+      "services-guide/index.html"
+    ],
+    "preserved": [
+      "WhatsApp order builders and numbers",
+      "catalogue and prices",
+      "native public service routes",
+      "chalet portal"
     ]
   }
 }

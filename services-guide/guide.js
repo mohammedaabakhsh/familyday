@@ -206,9 +206,11 @@
     const button = event.target.closest('[data-share],[data-share-path]');
     if(!button) return;
     const id = button.dataset.share || (activeSection ? activeSection.id : '');
-    // Reuse the native guide URLs for individual services; their static previews are text-only.
-    const url = new URL(button.dataset.sharePath || ({coordination:'/services/coordination/',dining:'/services/dining-tables/',seating:'/services/outdoor-seating/',cinema:'/services/cinema/'}[id]) || '/services-guide/',location.origin);
-    if(!button.dataset.sharePath && id && !['coordination','dining','seating','cinema'].includes(id)) url.hash=id;
+    // Standalone shares return to this portal; native requests retain their guide URLs.
+    const nativePaths={coordination:'/services/coordination/',dining:'/services/dining-tables/',seating:'/services/outdoor-seating/',cinema:'/services/cinema/'};
+    const section=activeSection?.id||id;
+    const url = new URL(embeddedOrder ? nativePaths[section]||'/services-guide/' : '/services-guide/',location.origin);
+    if(!embeddedOrder&&section)url.hash=section;
     try {
       if (navigator.share) {await navigator.share({text:url.href});return;}
       if (!navigator.clipboard) throw new Error('Clipboard unavailable');

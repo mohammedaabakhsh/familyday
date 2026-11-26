@@ -15,12 +15,8 @@
   }
   function sharePath(){
     const key=serviceKey(),service=metadata?.services?.[key];if(!service)return null;
-    if(!guest){
-      const hash=location.hash.slice(1);
-      if(/^package-(1|2|3|celebration|vip|complete)$/.test(hash))return service.path+'?package='+hash.replace('package-','').replace('complete','resort');
-      if(/^session-[1-6]$/.test(hash))return service.path+'?session='+hash.replace('session-','');
-    }
-    return service.path;
+    if(embedded)return service.path;
+    return (guest?'/guest-services/':'/services-guide/')+'#'+key;
   }
   async function share(path){
     if(typeof path!=='string'||!path.startsWith('/')||path.startsWith('//'))return;
@@ -38,7 +34,7 @@
   const shareButton=document.createElement('button');shareButton.type='button';shareButton.className='resort-service-share';shareButton.innerHTML=shareIcon;shareButton.title='مشاركة الخدمة';shareButton.setAttribute('aria-label','مشاركة الخدمة');shareButton.disabled=true;
   dialog.querySelector('header').insertBefore(shareButton,dialog.querySelector('header button'));
   shareButton.addEventListener('click',()=>share(sharePath()));
-  // The page retains its original public URL; service buttons share the original native service URL.
+  // Standalone service shares stay in their portal; embedded shares stay in the native guide.
   document.addEventListener('click',event=>{
     const item=embedded&&event.target.closest('[data-share-path]');if(item){event.preventDefault();event.stopImmediatePropagation();share(item.dataset.sharePath);return;}
     if(embedded&&event.target.closest('.seating-collapsed-summary')){event.preventDefault();return;}
