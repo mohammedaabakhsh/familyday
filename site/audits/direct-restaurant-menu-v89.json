@@ -1,0 +1,31 @@
+{
+  "version": "20261126-live-v89",
+  "profiles": [
+    {
+      "width": 320,
+      "height": 568,
+      "fullMenuItems": 47,
+      "oneLineTabs": true,
+      "menuEntryDraftParity": true,
+      "sharePath": "/menu/"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "fullMenuItems": 47,
+      "oneLineTabs": true,
+      "menuEntryDraftParity": true,
+      "sharePath": "/menu/"
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "fullMenuItems": 47,
+      "oneLineTabs": true,
+      "menuEntryDraftParity": true,
+      "sharePath": "/menu/"
+    }
+  ],
+  "errors": [],
+  "messagesSent": false
+}

@@ -2888,5 +2888,16 @@
       "separate main versus portal sharing URLs",
       "text-only WhatsApp drafts"
     ]
+  },
+  "approvedDirectRestaurantMenu": {
+    "version": "20261126-live-v89",
+    "rollbackTag": "pre-direct-menu-tabs-20261126",
+    "reason": "Owner requested the full original menu directly in the main restaurant category without a category overview or extra menu navigation, and single-line category labels تنسيقات and هدايا. Reuses original menu data and main accordion/price-row styling; /menu/ stays available and native order sharing uses /menu/ from either entry. Category controls are المطعم، التنسيقات، الإقامة، هدايا, all on one line.",
+    "preserved": [
+      "external order portals unchanged",
+      "menu items descriptions options prices hours and recipient",
+      "all existing public URLs",
+      "other service categories and order flows"
+    ]
   }
 }

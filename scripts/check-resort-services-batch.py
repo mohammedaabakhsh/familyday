@@ -15,9 +15,10 @@ with sync_playwright() as p:
   c=b.new_context(viewport={'width':w,'height':h},ignore_https_errors=True,reduced_motion='reduce');c.add_init_script(init)
   page=c.new_page();page.on('pageerror',lambda e:out['errors'].append(str(e)))
   page.goto(BASE+'/services/');root=page.locator('#resort-service-directory');expect(root).to_be_visible()
-  assert root.locator('.service-categories button').all_text_contents()==['المطعم','تنسيقات وجلسات','خدمات الإقامة','عروض وهدايا']
+  assert root.locator('.service-categories button').all_text_contents()==['المطعم','التنسيقات','الإقامة','هدايا']
   for i,keys in enumerate([['menu'],['coordination','seating','dining','cinema'],['hospitality','games','water'],['competition','video']]):
-   root.locator(f'button[data-service-group="{i}"]').click();assert root.locator('.svcs-card:visible').count()==len(keys)
+   root.locator(f'button[data-service-group="{i}"]').click();assert root.locator('.svcs-card:visible').count()==(0 if i==0 else len(keys))
+   if i==0:assert root.locator('.restaurant-menu-category').count()==len(SOURCE['guest']['menu'])
   assert root.locator('a[href="/services/loyalty/"],[data-resort-service="extras"]').count()==0
   root.locator('button[data-service-group="1"]').click();root.locator('a[href="/services/outdoor-seating/"]').click();page.locator('.context-back').click();expect(root.locator('button[data-service-group="1"]')).to_have_attribute('aria-pressed','true');assert root.locator('.svcs-card:visible').count()==4
   page.reload();expect(root.locator('button[data-service-group="1"]')).to_have_attribute('aria-pressed','true')

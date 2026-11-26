@@ -816,7 +816,7 @@
       ]
     },
     {
-      "title": "تنسيقات وجلسات",
+      "title": "التنسيقات",
       "items": [
         {
           "id": "coordination",
@@ -841,7 +841,7 @@
       ]
     },
     {
-      "title": "خدمات الإقامة",
+      "title": "الإقامة",
       "items": [
         {
           "id": "hospitality",
@@ -858,7 +858,7 @@
       ]
     },
     {
-      "title": "عروض وهدايا",
+      "title": "هدايا",
       "items": [
         {
           "id": "competition",

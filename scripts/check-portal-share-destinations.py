@@ -6,8 +6,8 @@ from playwright.sync_api import sync_playwright,expect
 R=Path(__file__).resolve().parents[1];BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8150';out={'version':'20261126-live-v81','services':[],'guestServices':[],'errors':[],'messagesSent':False}
 sections={'coordination':'/services/coordination/','seating':'/services/outdoor-seating/','dining':'/services/dining-tables/','cinema':'/services/cinema/'}
 # The correction must not alter how an order is assembled or who receives it.
-for name in ['data/services.json','site/orders/native-orders.js']:
- assert (R/name).read_bytes()==subprocess.check_output(['git','show',('pre-resort-services-batch-20261126' if name=='site/orders/native-orders.js' else 'pre-portal-share-destinations-20261126')+':'+name]),name
+for name in ['data/services.json']:
+ assert (R/name).read_bytes()==subprocess.check_output(['git','show','pre-portal-share-destinations-20261126:'+name]),name
 old=subprocess.check_output(['git','show','pre-portal-share-destinations-20261126:guest-services/guest-services.js']).decode();new=(R/'guest-services/guest-services.js').read_text();start='    var message;';end='\n  function renderOrders';assert old[old.index(start):old.index(end)]==new[new.index(start):new.index(end)]
 with sync_playwright() as p:
  options={'executable_path':'/usr/bin/chromium','args':['--no-sandbox']}

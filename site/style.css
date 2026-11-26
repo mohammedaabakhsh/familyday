@@ -404,3 +404,13 @@ body.resort-services #main{width:100%;max-width:none;height:100dvh;min-height:0;
  .resort-service .service-guide-seating .service-guide-packages{gap:clamp(8px,calc(var(--co-available)*.05 - 26px),16px)}
  .resort-service .service-guide-seating .service-guide-packages>.package>summary{padding-block:clamp(5px,calc(var(--co-available)*.02 - 7px),9px)}
 }
+
+/* Display the complete restaurant menu directly inside its service category. */
+.resort-service-directory .service-categories button{white-space:nowrap;padding-inline:2px}
+.restaurant-directory-menu{min-width:0;padding-top:2px}
+.restaurant-menu-category .menu-row{gap:14px}
+.restaurant-menu-category .menu-row:last-child{border-bottom:0}
+.restaurant-menu-category .menu-row h3{margin:0;font-size:15px;line-height:1.7}
+.restaurant-menu-category .menu-row .note{margin:4px 0 0;font-size:12px;line-height:1.8}
+.restaurant-menu-category .menu-row strong{flex:none;font-size:14px;line-height:1.8;color:var(--teal);white-space:nowrap}
+.restaurant-guide .restaurant-order-link{margin-top:16px}

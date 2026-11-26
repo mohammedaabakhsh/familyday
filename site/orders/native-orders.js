@@ -56,7 +56,8 @@ export function createResortOrders({version,services,share}){
   const kind=['/arrangements/','/services-guide/'].includes(target.pathname)?'arrangements':target.pathname==='/guest-services/'?'guest':null;if(!kind)return;
   const selected=services.find(s=>s.path===context.path),service=link.dataset.resortService||(selected?.id==='menu'?'restaurant':selected?.id);
   if(!service)return;
-  event.preventDefault();open({kind,service,entry:link.dataset.resortOrderKey||'',anchor:target.hash.slice(1)||service,title:selected?.name||'طلبات إضافية أثناء الإقامة',path:service==='extras'?'/guest-services/#extras':context.path},link);
+  const record=selected||services.find(s=>(s.id==='menu'?'restaurant':s.id)===service);
+  event.preventDefault();open({kind,service,entry:link.dataset.resortOrderKey||'',anchor:target.hash.slice(1)||service,title:record?.name||'طلبات إضافية أثناء الإقامة',path:service==='extras'?'/guest-services/#extras':record?.path||context.path},link);
  });
  window.addEventListener('message',event=>{
   if(event.origin!==location.origin||event.data?.type!=='familyday-resort-order'||!item||event.source!==item.iframe.contentWindow||event.data.kind!==active?.kind)return;
