@@ -53,7 +53,7 @@
   function actions(entry){
     const wrap=node('div',undefined,'arrangement-actions');
     if(browseOrders && entry.group!=='extra'){
-      const order=node('button',entry.group==='coordination'?'اطلب هذه الباقة عبر واتساب':'اطلب عبر واتساب','arrangement-request-button');order.type='button';order.dataset.requestKey=entry.key;order.setAttribute('aria-label','طلب '+entry.name+' عبر واتساب');wrap.append(order);
+      const order=node('button',entry.group==='coordination'?'اطلب هذه الباقة':'اطلب عبر واتساب','arrangement-request-button');order.type='button';order.dataset.requestKey=entry.key;order.setAttribute('aria-label','طلب '+entry.name+(entry.group==='coordination'?'':' عبر واتساب'));wrap.append(order);
     }
     // Each service is shared once, using its header and complete public section.
     return wrap;

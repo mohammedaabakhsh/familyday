@@ -2302,13 +2302,13 @@
     "js/menu-order-message.js": "78e54cc83d01bb6b5a44de14d4ce709d8f900517d6f09b1bda0d7a63067abaa9",
     "services-guide/README.md": "e3c7f53ebcd6efe67fab2cc72f75c7a6ff274c181880110891817c3beab79499",
     "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
-    "services-guide/guide.css": "0671ba0d08e0d6bbefc44d3b1d37cb58a73488a713165d56e315ceb7c2e7075f",
-    "services-guide/guide.js": "b89e0b2d4ba632d379447fb2b6c617abedaeedf2d603cd615745fe387a9dcde5",
-    "services-guide/index.html": "9c62a18671ea6ecde5cbb6f9ac19ca68e815a4f917454868fda8d260b5853f8d",
+    "services-guide/guide.css": "dcc042c513da6d0e22c25cea49f68ad17a22097abe70b43d9a6e5e20130c20a4",
+    "services-guide/guide.js": "47e468fcc26648557c91a9849ea5d9fe426a6f48c5d4a342696740e3fe285718",
+    "services-guide/index.html": "ebb4e269083ba32e6999200c960bc59a87ade220be15c89754b1799500b4382a",
     "services-guide/share-entry.js": "05dac99bc60dfc4b2d2d1b08c131735f22d72f29cf93f1861b85df47c89dffa2",
     "guest-services/resort-refinements.css": "5ccfd5e08d6538ebb7f37eb93f5dc52ac270dbf309ee57b38c82078ee0b31520",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
-    "services-guide/guide-orders.js": "ea33deff42a7853cad97a5c0c2f9489230bd483e20387f7dfc6b270f973a2d96",
+    "services-guide/guide-orders.js": "e3a224a6e90e0d418d0c87bf7c73fcbe275d929fe6b4bfbb7f19f6b0b052064a",
     "services-guide/guide-orders.css": "bb28d76739a56e45213cf1333a0349dad746c47b0b5b23bdaf70721e3edddf4f"
   },
   "preservedCompatibility": [
@@ -2782,6 +2782,24 @@
       "prices and public links",
       "outer request buttons",
       "chalet ordering portal"
+    ]
+  },
+  "approvedCompactCoordinationCards": {
+    "version": "20261126-live-v83",
+    "rollbackTag": "pre-compact-coordination-cards-20261126",
+    "reason": "Owner requested the short label اطلب هذه الباقة on both coordination surfaces, and prefers the main guide compact name/price/chevron row over the portal photos/details hint. Portal coordination cards now use that compact row while retaining its own colors, full expandable details, request flow and URLs.",
+    "updatedProtectedFiles": [
+      "services-guide/guide-orders.js",
+      "services-guide/guide.css",
+      "services-guide/guide.js",
+      "services-guide/index.html"
+    ],
+    "preserved": [
+      "package contents photos and prices",
+      "WhatsApp request builder and recipients",
+      "request dialog presentation",
+      "main/portal share destinations",
+      "outdoor seating cards"
     ]
   }
 }

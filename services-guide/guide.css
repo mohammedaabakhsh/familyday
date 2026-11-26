@@ -274,3 +274,12 @@ dialog{width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-ra
 .guide-usage[open]>summary::after{transform:rotate(225deg)}
 .guide-usage>summary:focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:6px}
 .guide-usage>ul{display:grid;gap:6px;margin:0;padding:0 20px 12px 0;color:var(--muted);font-size:13px;line-height:1.7}
+
+/* Coordination uses the compact name / price / chevron row approved in the main guide. */
+#coordination .seating-collapsed-summary{flex-direction:row;align-items:center;justify-content:space-between;min-height:58px;gap:10px;padding:16px}
+#coordination .seating-collapsed-main{flex:1;min-width:0}
+#coordination .seating-summary-bottom{flex:none;gap:8px}
+#coordination .seating-summary-bottom .price{font-size:14px;line-height:1.5;white-space:nowrap}
+#coordination .seating-summary-bottom .price-unit{display:inline;margin:0;font:inherit;color:inherit}
+#coordination .seating-collapsed-chevron{width:16px;height:16px;padding:0;border:0;border-radius:0;background:transparent}
+#coordination .seating-collapsed-details[open] .seating-collapsed-chevron{background:transparent;border:0;color:inherit}

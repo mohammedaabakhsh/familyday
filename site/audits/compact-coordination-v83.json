@@ -1,0 +1,33 @@
+{
+  "profiles": [
+    {
+      "width": 390,
+      "height": 844,
+      "sixCompactCards": true,
+      "noExtraHint": true,
+      "sameShortRequestLabel": true,
+      "rightNameLeftPriceAndChevron": true,
+      "requestsAndSharingWork": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "sixCompactCards": true,
+      "noExtraHint": true,
+      "sameShortRequestLabel": true,
+      "rightNameLeftPriceAndChevron": true,
+      "requestsAndSharingWork": true
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "sixCompactCards": true,
+      "noExtraHint": true,
+      "sameShortRequestLabel": true,
+      "rightNameLeftPriceAndChevron": true,
+      "requestsAndSharingWork": true
+    }
+  ],
+  "errors": [],
+  "messagesSent": false
+}

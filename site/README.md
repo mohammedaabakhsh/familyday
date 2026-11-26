@@ -143,3 +143,7 @@ Cinema's standalone section shows its photo immediately, using the same shared g
 ## Request presentation follows the standalone portal — v82
 
 [Owner-approved request layout](../docs/request-presentation-v82.md) places quantity before one service total and customer fields, uses the selected request title, preserves the original confirmation below the action, and labels the in-dialog action `إرسال الطلب` in both surfaces. Outer request buttons, order assembly/prices/recipients, and interface-specific share destinations stay unchanged. Verify using `check-request-presentation.py` and native-order regressions. Rollback: `pre-request-presentation-20261126`.
+
+## Compact standalone coordination cards — v83
+
+[Owner-approved coordination refinement](../docs/compact-coordination-v83.md) shortens both package request labels to `اطلب هذه الباقة` and makes the standalone closed cards compact name/price/chevron rows like the main guide. Portal colors, expandable content, request dialogs, distinct share URLs and outdoor seating geometry remain. `check-arrangement-orders.py` compares against the original stylesheet for card-size regression and preserves all original draft checks. Rollback: `pre-compact-coordination-cards-20261126`.
