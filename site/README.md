@@ -155,3 +155,7 @@ Cinema's standalone section shows its photo immediately, using the same shared g
 ## Coordination overview fits normal mobile screens — v85
 
 [Owner-approved mobile balance](../docs/coordination-screen-fit-v85.md) uses navy/turquoise guidance per interface, removes the redundant visible phone, combines the help heading/coordinator label, and balances vertical spacing by available viewport height and safe areas. The six closed packages plus contact actions fit tested normal portrait screens; short/expanded views stay naturally scrollable. Contact destinations, content/prices, request presentation/controllers/messages and per-interface shares remain unchanged. Rollback: `pre-coordination-screen-fit-20261126`.
+
+## Standalone help stacks centrally — portal v86
+
+[Owner-approved portal-only help](../docs/portal-stacked-help-v86.md) centers the help title, coordinator name and contact buttons in separate rows, with bottom breathing room and a closed single-screen overview on tested normal mobile sizes. The main guide stays byte-for-byte unchanged; only the standalone CSS cache key advances. Rollback: `pre-portal-stacked-help-20261126`.
