@@ -47,12 +47,7 @@ with sync_playwright() as p:
     assert page.locator('.inline-restaurant-summary .inline-menu-quantity,.inline-restaurant-jump,.inline-restaurant-summary header button').count()==0
     expect(page.locator('.inline-restaurant-confirmation')).to_have_text('تابع طلبك مع المطعم على واتساب')
     page.locator('.restaurant-menu-tabs button').get_by_text('ساندويتشات',exact=True).click();counter=page.locator('.menu-row').first.locator('.inline-menu-quantity');plus=counter.locator('[data-step="1"]');plus.focus();page.keyboard.press('Enter');expect(plus).to_be_focused();expect(page.locator('.inline-restaurant-total strong')).to_have_text(str(expectedTotal+12)+' ريال');counter.locator('[data-step="-1"]').click();expect(page.locator('.inline-restaurant-total strong')).to_have_text(str(expectedTotal)+' ريال')
-    if mode=='directory':
-     page.locator('[data-service-group="1"]').last.click();page.locator('[data-service-group="0"]').last.click();expect(page.locator('.inline-restaurant-total strong')).to_have_text(str(expectedTotal)+' ريال')
-    # Navigation preserves the restaurant basket and does not restore a stored guest identity.
-    if mode=='directory':
-     page.evaluate("sessionStorage.setItem('familyday.resort-direct-identity.v1',JSON.stringify({name:'اسم محفوظ',cabin:'البيت اليوناني 1'}))")
-     page.locator('.bottom-nav a[href="/resort/"]').click();page.locator('.bottom-nav a[href="/services/"]').click();page.locator('.inline-restaurant-total strong').wait_for();expect(page.locator('.inline-restaurant-total strong')).to_have_text(str(expectedTotal)+' ريال');expect(page.locator('#inline-restaurant-name')).to_have_value('');expect(page.locator('#inline-restaurant-cabin')).to_have_value('')
+    # Route/group exit resets are covered by check-order-exits.py.
     page.locator('.inline-restaurant-summary').evaluate("e=>e.scrollIntoView({block:'start'})");expect(page.locator('.inline-restaurant-summary h2')).to_be_in_viewport()
     assert page.locator('.menu-categories').evaluate("e=>!!(e.compareDocumentPosition(document.querySelector('.inline-restaurant-summary')) & Node.DOCUMENT_POSITION_FOLLOWING)")
    else:

@@ -1,0 +1,33 @@
+{
+  "version": "20261126-live-v101",
+  "profiles": [
+    {
+      "width": 390,
+      "height": 844,
+      "mainServiceCancelBackAndReturn": true,
+      "diningChoiceCleared": true,
+      "forwardCannotReviveClosedOrder": true,
+      "restaurantGroupAndRouteExitCleared": true,
+      "categoryBrowsingPreserved": true,
+      "guestAndChaletCancelCleared": true,
+      "applyToCheckoutPreserved": true,
+      "submittedDraftCleared": true,
+      "standaloneArrangementExitsCleared": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "mainServiceCancelBackAndReturn": true,
+      "diningChoiceCleared": true,
+      "forwardCannotReviveClosedOrder": true,
+      "restaurantGroupAndRouteExitCleared": true,
+      "categoryBrowsingPreserved": true,
+      "guestAndChaletCancelCleared": true,
+      "applyToCheckoutPreserved": true,
+      "submittedDraftCleared": true,
+      "standaloneArrangementExitsCleared": true
+    }
+  ],
+  "errors": [],
+  "messagesSent": false
+}

@@ -86,9 +86,10 @@ export function createRestaurantInline({menu,cabins,messageBuilder}){
   form.addEventListener('submit',event=>{
    event.preventDefault();if(!chosen().length||!form.reportValidity()||!customer.name.trim()||!Object.hasOwn(cabins,customer.cabin))return;
    const message=messageBuilder.build(menu,key=>{const item=selection.get(key);return item?{qty:item.qty,cheeseQty:item.cheese?item.qty:0}:null;},{name:customer.name,cabin:customer.cabin,number:cabins[customer.cabin],notes:customer.notes});
-   if(message){window.open('https://wa.me/'+recipient+'?text='+encodeURIComponent(message),'_blank','noopener,noreferrer');}
+   if(message){window.open('https://wa.me/'+recipient+'?text='+encodeURIComponent(message),'_blank','noopener,noreferrer');clear();}
   });
   controllers.set(root,{render});render();
  }
- return {bind,reset(){selection.clear();customer.name='';customer.cabin='';customer.notes='';if(currentRoot){currentRoot.querySelectorAll('.inline-menu-option select').forEach(select=>select.selectedIndex=0);controllers.get(currentRoot)?.render(true);}}};
+ function clear(){selection.clear();customer.name='';customer.cabin='';customer.notes='';if(currentRoot){currentRoot.querySelectorAll('.inline-menu-option select').forEach(select=>select.selectedIndex=0);controllers.get(currentRoot)?.render(true);}}
+ return {bind,reset:clear};
 }

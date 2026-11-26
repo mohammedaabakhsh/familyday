@@ -246,6 +246,11 @@
     render();return true;
   }
   if(directService)window.FD_RESORT_DIRECT_ORDER={formId:'arrangement-order',canSubmit:()=>ready&&!form.querySelector('.arrangement-send').disabled,submit:submitOrder,selectEntry,getTitle:()=>specificEntry?'طلب '+specificEntry.name:directService==='cinema'?'طلب '+cinemaConfig.name:''};
-  window.FD_ORDER_PRIVACY.register(resetRequestDetails);
+  window.FD_ORDER_PRIVACY.register(()=>{
+    if(browseOrders&&requestDialog?.open){
+      closeRequestUI();
+      if(history.state?.arrangementRequest){const next={...history.state};delete next.arrangementRequest;history.replaceState(next,'',location.href);}
+    }else resetRequestDetails();
+  });
   document.addEventListener('fd:arrangement-view',()=>{if(browseOrders)resetRequestDetails();updateShortcut();});shortcut.addEventListener('click',jump);new IntersectionObserver(updateShortcut,{rootMargin:'-80px 0px -40px'}).observe(summary);window.addEventListener('resize',updateShortcut);
 })();

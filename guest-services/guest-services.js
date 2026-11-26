@@ -350,6 +350,7 @@
 
     // Prepare a draft only. Opening WhatsApp does not send or confirm the order.
     window.open('https://wa.me/'+(restaurant ? '966537006531' : '966556156693')+'?text='+encodeURIComponent(message),'_blank','noopener,noreferrer');
+    resetOrderDetails();
     return true;
   }
 
@@ -406,9 +407,10 @@
     document.getElementById('service-dialog-title').focus({preventScroll:true});
     updateShortcut();
   }
-  function closeEditor(){
+  function closeEditor({commit=false}={}){
     restaurantLocation(false);
     dialog.close();draft=null;activeService='';document.body.classList.remove('dialog-open');
+    if(!commit)resetOrderDetails();
     if(dialogTrigger) dialogTrigger.focus({preventScroll:true});
     updateShortcut();
   }
@@ -433,7 +435,7 @@
       if(applyButton.disabled || !draft) return;
       var key=activeService==='restaurant' ? 'menu' : activeService==='extras' ? 'quantities' : activeService;
       state[key]=draft[key];
-      renderOrders();closeEditor();
+      renderOrders();closeEditor({commit:true});
     });
     function openLinkedService(){
       if(redirectCinema())return;
@@ -441,9 +443,10 @@
       if(document.getElementById(key+'-card')){
         if(dialog.open&&activeService!==key)closeEditor();
         openEditor(key);
-      }
+      }else if(dialog.open)closeEditor();
     }
-    window.addEventListener('hashchange',openLinkedService);openLinkedService();
+    function navigateLinkedService(){resetOrderDetails();openLinkedService();}
+    window.addEventListener('hashchange',navigateLinkedService);window.addEventListener('popstate',navigateLinkedService);openLinkedService();
   }
   function hydrateServices() {
     ['water','games'].forEach(function(key){

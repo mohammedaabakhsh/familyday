@@ -1,7 +1,6 @@
 /* Each resort service opens a fresh request using the original controller and message builder. */
 export function createResortOrders({version,services,share}){
  let context=null,active=null,item=null,trigger=null,savedY=0;
- const snapshots=new Map();
  const dialog=document.createElement('dialog');dialog.id='native-order-dialog';dialog.className='native-order-dialog';dialog.setAttribute('aria-labelledby','native-order-title');
  dialog.innerHTML='<header class="native-order-header"><h2 id="native-order-title"></h2><button type="button" class="native-order-close" aria-label="إغلاق الطلب">×</button></header><div class="native-order-body"><p class="native-order-loading" role="status">جاري تحميل الطلب…</p><section class="native-order-error" hidden><p>تعذر تحميل الطلب. حاول مرة أخرى.</p><button type="button" class="native-order-retry">إعادة المحاولة</button><button type="button" class="native-order-external">فتح صفحة الطلب</button></section></div>';
  document.body.append(dialog);
@@ -10,6 +9,17 @@ export function createResortOrders({version,services,share}){
  const fallback=kind=>kind==='guest'?'/guest-services/':'/services-guide/';
  function command(data){item?.iframe.contentWindow.postMessage({type:'familyday-resort-order-command',...data},location.origin);}
  function dispose(){if(!item)return;clearTimeout(item.timer);item.iframe.remove();item=null;}
+ function clearDining(){
+  document.querySelectorAll('.dining-guide').forEach(guide=>{
+   guide.querySelectorAll('[data-dining-size]').forEach(button=>button.setAttribute('aria-pressed','false'));
+   const request=guide.querySelector('[data-service-portal]');request.disabled=true;delete request.dataset.resortOrderKey;
+   guide.querySelector('.dining-selected-option').textContent='اختر عدد الأشخاص ونوع التجهيز';
+  });
+ }
+ function discardHistoryRequest(){
+  if(!history.state?.fdResortOrder)return;
+  const state={...history.state};delete state.fdResortOrder;history.replaceState(state,'',location.href);
+ }
  function failed(){if(!active||!item)return;clearTimeout(item.timer);loading.hidden=true;error.hidden=false;item.iframe.hidden=true;}
  function show(descriptor){
   dispose();active=descriptor;title.textContent=descriptor.title;
@@ -21,13 +31,14 @@ export function createResortOrders({version,services,share}){
  }
  function open(descriptor,source){
   trigger=source||document.activeElement;savedY=scrollY;
-  const token=globalThis.crypto?.randomUUID?.()||String(Date.now());descriptor={...descriptor,token,scrollY:savedY,focusElement:trigger};snapshots.set(token,descriptor);if(snapshots.size>50)snapshots.delete(snapshots.keys().next().value);
+  const token=globalThis.crypto?.randomUUID?.()||String(Date.now());descriptor={...descriptor,token,scrollY:savedY,focusElement:trigger};
   history.pushState({...history.state,fdResortOrder:token},'',location.href);
   document.body.classList.add('native-order-open');dialog.showModal();show(descriptor);
  }
  function closeUI(){
-  const restoreFocus=active?.keyboard;active=null;dispose();dialog.close();document.body.classList.remove('native-order-open');
-  window.scrollTo({top:savedY,behavior:'instant'});if(trigger?.isConnected){if(restoreFocus)trigger.focus({preventScroll:true});else trigger.blur();}
+  const restoreFocus=active?.keyboard;active=null;dispose();dialog.close();document.body.classList.remove('native-order-open');clearDining();
+  const focusTarget=trigger?.disabled?trigger.closest('.dining-guide')?.querySelector('[data-dining-size]'):trigger;
+  window.scrollTo({top:savedY,behavior:'instant'});if(focusTarget?.isConnected){if(restoreFocus)focusTarget.focus({preventScroll:true});else focusTarget.blur();}
  }
  function requestClose(){if(!dialog.open)return;if(history.state?.fdResortOrder===active?.token)history.back();else closeUI();}
  dialog.querySelector('.native-order-close').addEventListener('click',requestClose);
@@ -72,12 +83,12 @@ export function createResortOrders({version,services,share}){
  });
  return {
   isOpen:()=>dialog.open,
-  reset:()=>{if(dialog.open&&active)show(active);},
+  reset:()=>{if(dialog.open)closeUI();else dispose();clearDining();discardHistoryRequest();},
   setContext(next){context=next;},
   handlePopstate(){
    const token=history.state?.fdResortOrder;
    if(dialog.open){if(token!==active?.token)closeUI();return true;}
-   if(token&&snapshots.has(token)){const descriptor=snapshots.get(token);savedY=descriptor.scrollY;trigger=descriptor.focusElement;document.body.classList.add('native-order-open');dialog.showModal();show(descriptor);return true;}
+   if(token)discardHistoryRequest();
    return false;
   }
  };

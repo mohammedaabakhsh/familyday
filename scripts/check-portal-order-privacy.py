@@ -7,7 +7,7 @@ from playwright.sync_api import sync_playwright,expect
 R=Path(__file__).resolve().parents[1]
 BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8150'
 KEYS=['familyday.resort-direct-identity.v1','familyday.guest-orders.v2','familyday.arrangements-orders.v1','familyday.chalet-guest-orders.v1','familyday.guest-extras.v1','familyday.menu-cart.v1']
-out={'version':'20261126-live-v98','profiles':[],'errors':[],'messagesSent':False}
+out={'version':'20261126-live-v101','profiles':[],'errors':[],'messagesSent':False}
 seed="""window.opened=[];window.open=url=>{opened.push(url);return null};
 if(!sessionStorage.getItem('privacy-seeded')){
  for(const storage of [localStorage,sessionStorage]){
@@ -25,6 +25,7 @@ def blank(page,prefix):
   expect(page.locator('#'+prefix+'-'+field)).to_have_value('')
 
 def fill(page,prefix):
+ if prefix=='arrangement' and not page.locator('.arrangement-request').is_visible():page.locator('#package-1 [data-request-key]').click()
  page.locator('#'+prefix+'-name').fill('ضيف مؤقت')
  if page.locator('#'+prefix+'-cabin').count():page.locator('#'+prefix+'-cabin').select_option('بيت الدوم 1')
  page.locator('#'+prefix+'-notes').fill('تفاصيل الطلب')
@@ -82,5 +83,5 @@ with sync_playwright() as p:
  c=b.new_context(ignore_https_errors=True);c.add_init_script("for(const key of ['sessionStorage','localStorage'])Object.defineProperty(window,key,{get(){throw Error('blocked storage')}})")
  page=c.new_page();page.on('pageerror',lambda e:out['errors'].append(str(e)));page.goto(BASE+'/services-guide/coordination/');page.locator('#guide-content.is-ready').wait_for(state='attached');page.locator('#package-1 summary').click();page.locator('#package-1 [data-request-key]').click();blank(page,'arrangement');fill(page,'arrangement');expect(page.locator('.arrangement-send')).to_be_enabled();c.close();b.close()
 assert not out['errors'],out['errors']
-report=Path('/tmp/portal-order-privacy-v98-live.json') if BASE.startswith('https:') else R/'site/audits/portal-order-privacy-v98.json'
+report=Path('/tmp/portal-order-privacy-v101-live.json') if BASE.startswith('https:') else R/'site/audits/portal-order-privacy-v101.json'
 report.write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False))

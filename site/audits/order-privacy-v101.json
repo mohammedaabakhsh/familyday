@@ -1,0 +1,30 @@
+{
+  "version": "20261126-live-v101",
+  "profiles": [
+    {
+      "width": 390,
+      "height": 844,
+      "oldStoredOrdersRemoved": true,
+      "newFormsBlank": true,
+      "noStorageWrites": true,
+      "backgroundAndBackCacheReset": true,
+      "restaurantReset": true,
+      "pointerReturnHasNoRing": true,
+      "keyboardFocusTeal": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "oldStoredOrdersRemoved": true,
+      "newFormsBlank": true,
+      "noStorageWrites": true,
+      "backgroundAndBackCacheReset": true,
+      "restaurantReset": true,
+      "pointerReturnHasNoRing": true,
+      "keyboardFocusTeal": true
+    }
+  ],
+  "errors": [],
+  "messagesSent": false,
+  "standaloneWorkflowForgetsIdentity": true
+}
