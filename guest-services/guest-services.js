@@ -1,6 +1,6 @@
 /* In-stay ordering: one resort basket and a separate restaurant order.
    Service copy/prices come from the main site; extras use their visible HTML rows.
-   Only selections and guest-entered fields are saved, never trusted prices. */
+   Customer details and selections stay in memory for this visit only. */
 (async function () {
   'use strict';
   // Browser-only favicon: link scrapers should keep the guest preview text-only.
@@ -14,10 +14,8 @@
   }
   if(redirectCinema())return;
   var gameOptions = isChalet ? ['box'] : ['box','table'];
-  var storageKey = isChalet ? 'familyday.chalet-guest-orders.v1' : 'familyday.guest-orders.v2';
   var directService=!isChalet && parent!==window && new URLSearchParams(location.search).get('embed')==='resort-order' ? new URLSearchParams(location.search).get('direct') : '';
   if(['restaurant','hospitality','water','games','extras'].indexOf(directService)===-1) directService='';
-  var identityKey='familyday.resort-direct-identity.v1';
   var cabins;
   var state = {name:'', cabin:'', notes:'', restaurantNotes:'', quantities:{}, hospitality:{}, water:null, games:'', menu:{}};
   var catalog;
@@ -50,33 +48,13 @@
     return node;
   }
   function quantity(value) { return Number.isInteger(value) && value>=0 && value<=99 ? value : 0; }
-  function validWater(value) {
-    return value && Number.isInteger(value.adults) && Number.isInteger(value.children) &&
-      value.adults>=0 && value.children>=0 && value.adults+value.children>0 && value.adults+value.children===catalog.water.size*(Number.isInteger(value.packages)?value.packages:1) && (value.packages===undefined || Number.isInteger(value.packages) && value.packages>=1 && value.packages<=20);
-  }
-  function save() {
-    if(directService) return;
-    try { sessionStorage.setItem(directService ? identityKey : storageKey,JSON.stringify(directService ? {name:state.name,cabin:state.cabin} : state)); }
-    catch (_) { /* Ordering also works without browser storage. */ }
-  }
-  function restore() {
-    if(directService) return;
-    try {
-      var saved=JSON.parse(directService ? sessionStorage.getItem(identityKey) : sessionStorage.getItem(storageKey) || (!isChalet && sessionStorage.getItem('familyday.guest-extras.v1')));
-      if (!saved || typeof saved!=='object') return;
-      if (typeof saved.name==='string') state.name=saved.name.slice(0,100);
-      state.cabin=Object.keys(cabins).find(function(name){return saved.cabin===name || String(saved.cabin)===String(cabins[name]);}) || '';
-      if(directService) return; // Independent requests remember identity only, never an earlier selection.
-      ['notes','restaurantNotes'].forEach(function(key){if(typeof saved[key]==='string') state[key]=saved[key].slice(0,1000);});
-      extras.forEach(function(item){state.quantities[item.id]=quantity(saved.quantities && saved.quantities[item.id]);});
-      if(document.getElementById('hospitality-card')) catalog.hospitality.packages.forEach(function(pack){state.hospitality[pack.id]=quantity(saved.hospitality && saved.hospitality[pack.id]);});
-      if (validWater(saved.water)) state.water={adults:saved.water.adults,children:saved.water.children,packages:saved.water.packages || 1};
-      if (gameOptions.indexOf(saved.games)!==-1) state.games=saved.games;
-      Object.keys(menuCatalog).forEach(function(key){
-        var item=saved.menu && saved.menu[key];
-        if (item && quantity(item.qty)) state.menu[key]={qty:quantity(item.qty),cheese:!!item.cheese && !!menuCatalog[key].cheesePrice};
-      });
-    } catch (_) { /* Ignore invalid drafts rather than block the page. */ }
+  function resetOrderDetails(){
+    state={name:'',cabin:'',notes:'',restaurantNotes:'',quantities:{},hospitality:{},water:null,games:'',menu:{}};
+    draft=activeService?JSON.parse(JSON.stringify(state)):null;
+    if(activeService==='water')draft.water=waterSelection(draft);
+    document.querySelectorAll('[data-field]').forEach(function(field){field.value='';});
+    menuRows.forEach(function(item){if(item.select)item.select.value=item.keys[0];});
+    renderCabins();renderOrders();renderEditor();
   }
   function customerFields(container) {
     var scope=container.dataset.scope;
@@ -95,7 +73,7 @@
           document.querySelectorAll('[data-field="'+key+'"]').forEach(function(other){if(other!==field) other.value=field.value;});
           if(key==='cabin') renderCabins();
         }
-        save();
+
       });
     });
     if(scope==='restaurant') container.querySelector('textarea').placeholder='مثل بدون بصل أو أي تفاصيل تخص طلب المطعم';
@@ -286,7 +264,7 @@
   function renderMenu() {
     if(!restaurantForm) return;
     var lines=menuLines();document.getElementById('restaurant-summary').hidden=!lines.length;
-    renderSummary(document.getElementById('restaurant-items'),lines,function(id){delete state.menu[id];renderOrders();save();});
+    renderSummary(document.getElementById('restaurant-items'),lines,function(id){delete state.menu[id];renderOrders();});
     document.getElementById('restaurant-count').textContent='عدد الأصناف: '+lines.length;
     document.getElementById('restaurant-total').textContent=String(sum(lines));
     restaurantForm.querySelector('.send-order').disabled=!lines.length;
@@ -317,7 +295,7 @@
     var lines=resortLines();
     renderSummary(document.getElementById('order-items'),lines,function(id){
       if(id.startsWith('hospitality:')) delete state.hospitality[id.slice(12)];else if(id==='water') state.water=null;else if(id==='games') state[id]='';else state.quantities[id]=0;
-      renderOrders();save();
+      renderOrders();
     });
     document.getElementById('order-count').textContent=lines.length ? 'عدد الاختيارات: '+lines.length : '';
     document.getElementById('order-total').textContent=String(sum(lines));
@@ -352,7 +330,7 @@
       if(state.notes.trim()) parts.push('','ملاحظات: '+state.notes.trim());
       message=parts.join('\n');
     }
-    save();
+
     // Prepare a draft only. Opening WhatsApp does not send or confirm the order.
     window.open('https://wa.me/'+(restaurant ? '966537006531' : '966556156693')+'?text='+encodeURIComponent(message),'_blank','noopener,noreferrer');
     return true;
@@ -436,7 +414,7 @@
       if(applyButton.disabled || !draft) return;
       var key=activeService==='restaurant' ? 'menu' : activeService==='extras' ? 'quantities' : activeService;
       state[key]=draft[key];
-      save();renderOrders();closeEditor();
+      renderOrders();closeEditor();
     });
     function openLinkedService(){
       if(redirectCinema())return;
@@ -471,7 +449,7 @@
       label.append(input,copy);packages.appendChild(label);
     });
   }
-  hydrateServices();buildHospitality();buildMenu();restore();
+  hydrateServices();buildHospitality();buildMenu();
   document.querySelectorAll('.customer-fields').forEach(customerFields);
   document.querySelectorAll('[data-water]').forEach(function(button){button.addEventListener('click',function(){
     var data=selection(),water=waterSelection(data),key=button.dataset.water,step=Number(button.dataset.step),total=water.adults+water.children;
@@ -505,6 +483,7 @@
   form.addEventListener('submit',function(event){submit(event,false);});
   if(restaurantForm) restaurantForm.addEventListener('submit',function(event){submit(event,true);});
   renderCabins();renderOrders();renderEditor();setupDialogs();
+  window.FD_ORDER_PRIVACY.register(resetOrderDetails);
   if(directService) window.FD_RESORT_DIRECT_ORDER={
     formId:directService==='restaurant' ? 'restaurant-order' : 'extras-order',
     canSubmit:function(){

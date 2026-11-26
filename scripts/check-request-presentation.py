@@ -6,7 +6,7 @@ from playwright.sync_api import sync_playwright,expect
 R=Path(__file__).resolve().parents[1];BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8150';out={'version':'20261126-live-v82','profiles':[],'errors':[],'messagesSent':False}
 # The presentation correction must leave public destinations and request assembly alone.
 assert (R/'data/services.json').read_bytes()==subprocess.check_output(['git','show','pre-request-presentation-20261126:data/services.json'])
-old=subprocess.check_output(['git','show','pre-request-presentation-20261126:services-guide/guide-orders.js']).decode();new=(R/'services-guide/guide-orders.js').read_text();start='  function submitOrder(event){';end="  form.addEventListener('submit'";assert old[old.index(start):old.index(end)].replace("(cinemaChosen()?'966556156693':'966537009217')","'966537009217'").replace("'https://wa.me/'+'966537009217'+'?text='", "'https://wa.me/966537009217?text='")==new[new.index(start):new.index(end)]
+old=subprocess.check_output(['git','show','pre-request-presentation-20261126:services-guide/guide-orders.js']).decode();new=(R/'services-guide/guide-orders.js').read_text();start='  function submitOrder(event){';end="  form.addEventListener('submit'";assert old[old.index(start):old.index(end)].replace("(cinemaChosen()?'966556156693':'966537009217')","'966537009217'").replace("'https://wa.me/'+'966537009217'+'?text='", "'https://wa.me/966537009217?text='").replace('save();','')==new[new.index(start):new.index(end)]
 with sync_playwright() as p:
  opts={'executable_path':'/usr/bin/chromium','args':['--no-sandbox']}
  if BASE.startswith('https:'):opts['proxy']={'server':os.environ['HTTPS_PROXY']}

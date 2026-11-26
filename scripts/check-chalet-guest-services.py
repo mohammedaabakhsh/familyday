@@ -54,14 +54,16 @@ with sync_playwright() as p:
   expected='السلام عليكم، أرغب بطلب الخدمات التالية:\n\nالاسم: ضيف التجربة\nالمكان: شاليه يوم العائلة\n\nالطلبات:\n\nالألعاب المائية:\nباقة ألعاب مائية × 2 = 100 ريال\nللكبار: 4\nللأطفال: 2\n\nالألعاب الترفيهية:\nبوكس الألعاب × 1 = 50 ريال\n\nإجمالي الطلب: 150 ريال\n\nملاحظات: ملاحظة للشاليه'
   assert parse_qs(url.query)['text'][0]==expected
   open_('water');click('[data-water-packages][data-step="1"]');click('.dialog-cancel');assert page.locator('#order-total').inner_text()=='150'
-  page.reload(wait_until='networkidle');assert page.locator('#order-total').inner_text()=='150'
-  assert page.locator('#guest-name').input_value()=='ضيف التجربة' and page.locator('#guest-notes').input_value()=='ملاحظة للشاليه'
+  page.reload(wait_until='networkidle');assert page.locator('#order-total').inner_text()=='0'
+  assert page.locator('#guest-name').input_value()=='' and page.locator('#guest-notes').input_value()==''
   # The resort in the same tab must not reuse chalet orders, names or notes.
   page.goto(BASE+'/guest-services/',wait_until='networkidle');assert page.locator('#orders-summary').is_hidden()
   open_('games');page.locator('[name="games-package"][value="table"]').check();apply()
   page.locator('#guest-name').fill('ضيف المنتجع');page.locator('#guest-cabin').select_option(label='بيت الدوم 1')
-  page.goto(BASE+PATH,wait_until='networkidle');assert page.locator('#order-total').inner_text()=='150'
-  assert page.locator('#guest-name').input_value()=='ضيف التجربة'
+  page.goto(BASE+PATH,wait_until='networkidle');assert page.locator('#order-total').inner_text()=='0'
+  assert page.locator('#guest-name').input_value()==''
+  open_('water');click('[data-water-packages][data-step="1"]');click('[data-water="adults"][data-step="1"]',4);click('[data-water="children"][data-step="1"]',2);apply()
+  open_('games');page.locator('[name="games-package"][value="box"]').check();apply()
   page.evaluate('window.scrollTo(0,0)');page.wait_for_timeout(150)
   if not page.locator('#order-shortcut').is_hidden():
    click('#order-shortcut');assert page.locator('#orders-summary').evaluate('e=>e===document.activeElement')
@@ -76,7 +78,7 @@ with sync_playwright() as p:
   if width==390:page.screenshot(path='/tmp/fd-chalet-parity-home.png',full_page=True)
   assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')
   assert not errors,errors
-  ctx.close();print(width,'PASS fixed URL, two services, quantities, reset, bill, exact WhatsApp, sharing, persistence, venue isolation, cancel/remove and mobile focus/scroll',flush=True)
+  ctx.close();print(width,'PASS fixed URL, two services, quantities, reset, bill, exact WhatsApp, sharing, no persistence, venue isolation, cancel/remove and mobile focus/scroll',flush=True)
  # Native sharing and clipboard failures keep the chalet URL, never the resort URL.
  for mode in ['native','fallback']:
   ctx=b.new_context();ctx.add_init_script("Object.defineProperty(navigator,'share',{value:"+("async data=>{window.sharedData=data}" if mode=='native' else 'undefined')+",configurable:true});Object.defineProperty(navigator,'clipboard',{value:undefined,configurable:true})")

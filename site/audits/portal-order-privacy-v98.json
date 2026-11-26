@@ -1,0 +1,35 @@
+{
+  "version": "20261126-live-v98",
+  "profiles": [
+    {
+      "width": 390,
+      "height": 844,
+      "oldStorageRemoved": true,
+      "noStorageWrites": true,
+      "unrelatedStoragePreserved": true,
+      "activeEditingPreserved": true,
+      "cancelAndBackBlank": true,
+      "backgroundAndBFCacheBlank": true,
+      "reloadBlank": true,
+      "realNavigationBackBlank": true,
+      "guestAndChaletCartsBlank": true,
+      "validWhatsAppDraft": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "oldStorageRemoved": true,
+      "noStorageWrites": true,
+      "unrelatedStoragePreserved": true,
+      "activeEditingPreserved": true,
+      "cancelAndBackBlank": true,
+      "backgroundAndBFCacheBlank": true,
+      "reloadBlank": true,
+      "realNavigationBackBlank": true,
+      "guestAndChaletCartsBlank": true,
+      "validWhatsAppDraft": true
+    }
+  ],
+  "errors": [],
+  "messagesSent": false
+}

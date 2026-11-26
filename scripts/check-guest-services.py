@@ -175,12 +175,6 @@ with sync_playwright() as p:
         assert 'مشروبات باردة:\nعبوة ماء صغيرة × 3 = 6 ريال' in message and 'إجمالي الطلب: 200 ريال' in message
         assert 'ملاحظات: بدون بصل' in message and 'ألعاب' not in message
         page.screenshot(path=str(OUT/f'tiles-selected-{width}.png'),full_page=True)
-        page.goto(BASE+'/guest-services.html?review=1',wait_until='networkidle');page.wait_for_url(BASE+'/guest-services/?review=1');preview(page)
-        assert page.locator('#service-dialog').is_hidden()
-        assert page.locator('.service-tile.is-selected').count()==4
-        assert page.locator('#order-total').text_content()=='120' and page.locator('#restaurant-total').text_content()=='200'
-        assert page.locator('#guest-notes').input_value()=='أعمار الأطفال 5 و7 سنوات'
-        assert page.locator('#restaurant-notes').input_value()=='بدون بصل'
         page.locator('#guest-notes').fill('');page.locator('#extras-order .send-order').click()
         assert 'ملاحظات:' not in captured(page,'966556156693')
         # Remove games directly from the order summary.
@@ -194,9 +188,12 @@ with sync_playwright() as p:
         assert page.locator('#restaurant-total').text_content()=='176'
         while page.locator('#restaurant-items button').count():page.locator('#restaurant-items button').first.click()
         assert page.locator('#orders-summary').is_hidden() and page.locator('#order-shortcut').is_hidden()
+        page.goto(BASE+'/guest-services.html?review=1',wait_until='networkidle');page.wait_for_url(BASE+'/guest-services/?review=1');preview(page)
+        assert page.locator('#guest-name').input_value()=='' and page.locator('#guest-notes').input_value()==''
+        assert page.locator('#restaurant-notes').input_value()==''
         page.reload(wait_until='networkidle');assert page.locator('.service-tile.is-selected').count()==0
         assert not errors,errors
-        print(width,'PASS modal selection/apply/cancel, keyboard, grouped bills/messages, recipients, persistence and removals',flush=True)
+        print(width,'PASS modal selection/apply/cancel, keyboard, grouped bills/messages, recipients, no persistence and removals',flush=True)
         ctx.close()
 
     # Small phone height: scroll only the editor body; actions remain reachable.
@@ -257,8 +254,9 @@ with sync_playwright() as p:
     for key,draft,total in drafts:
         ctx=context(browser);ctx.add_init_script('sessionStorage.setItem('+json.dumps(key)+','+json.dumps(json.dumps(draft))+')')
         page=ctx.new_page();page.goto(BASE+'/guest-services/',wait_until='networkidle')
-        assert page.locator('#order-total').text_content()==total
-        if key.endswith('v1'):assert page.locator('#guest-cabin').input_value()=='بيت الدوم 1'
+        assert page.locator('#order-total').text_content()=='0'
+        assert page.locator('#guest-cabin').input_value()==''
+        assert page.evaluate('(key)=>sessionStorage.getItem(key)',key) is None
         ctx.close()
     ctx=context(browser);ctx.add_init_script("Object.defineProperty(window,'sessionStorage',{get(){throw new Error('blocked')}})")
     page=ctx.new_page();page.goto(BASE+'/guest-services/',wait_until='networkidle')

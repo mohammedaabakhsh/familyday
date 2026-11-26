@@ -1,12 +1,9 @@
-/* Independent arrangements draft. Catalogue prices are always read afresh, never restored. */
+/* Independent arrangements requests. Customer details stay in memory for this visit only. */
 (function () {
   'use strict';
   const params=new URLSearchParams(location.search);
   const directService=parent!==window&&params.get('embed')==='resort-order'&&['coordination','dining','seating','cinema'].includes(params.get('direct'))?params.get('direct'):'';
   const browseOrders=!(parent!==window&&params.get('embed')==='resort-order');
-  const independent=!!directService||browseOrders;
-  const identityKey='familyday.resort-direct-identity.v1';
-  const storageKey='familyday.arrangements-orders.v1';
   const summary=document.getElementById('arrangement-summary');
   const form=document.getElementById('arrangement-order');
   const shortcut=document.getElementById('arrangement-shortcut');
@@ -17,14 +14,14 @@
   const groups=[['coordination','التنسيقات'],['dining','طاولات الطعام'],['seating','الجلسات الخارجية'],['extra','إضافة اختيارية'],['cinema','جلسة السينما']];
   const node=(tag,text,cls)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;};
   const quantity=value=>Number.isInteger(value)&&value>=0&&value<=99?value:0;
-  function save(){if(directService)return;try{sessionStorage.setItem(independent?identityKey:storageKey,JSON.stringify(independent?{name:state.name,cabin:state.cabin}:state));}catch(_){/* The form also works without storage. */}}
-  function restore(){if(directService)return;try{
-    const saved=JSON.parse(sessionStorage.getItem(independent?identityKey:storageKey));if(!saved||typeof saved!=='object')return;
-    for(const key of (independent?['name']:['name','notes']))if(typeof saved[key]==='string')state[key]=saved[key].slice(0,key==='name'?100:1000);
-    if(Object.hasOwn(cabins,saved.cabin))state.cabin=saved.cabin;
-    if(independent)return;
-    for(const key of entries.keys())state.quantities[key]=quantity(saved.quantities?.[key]);
-  }catch(_){/* Ignore malformed or obsolete drafts. */}}
+  function resetRequestDetails(){
+    state.name='';state.cabin='';state.notes='';state.cinemaTime='';
+    state.quantities=requestEntry?{[requestEntry.key]:1}:directService==='cinema'?{'cinema-session':1}:{};
+    diningChoice='';
+    for(const field of Object.values(fields))field.value='';
+    if(cinemaTime)cinemaTime.value='';
+    if(ready)render();
+  }
   const price=value=>{const n=Number(String(value).match(/\d+(?:\.\d+)?/)?.[0]);if(!Number.isFinite(n)||n<=0)throw Error('Invalid arrangement price');return n;};
   const lines=()=>Array.from(entries.values()).filter(e=>quantity(state.quantities[e.key])>0).map(e=>({...e,qty:state.quantities[e.key],total:e.price*state.quantities[e.key]}));
   const cinemaChosen=()=>quantity(state.quantities['cinema-session'])>0;
@@ -132,10 +129,10 @@
       requestDialog.querySelector('.request-total-label').textContent='إجمالي الخدمة';
       requestDialog.querySelector('[data-request-extra]').checked=!!state.quantities['seating-extra'];
     }
-    save();updateShortcut();
+    updateShortcut();
   }
   function closeRequestUI(){
-    requestDialog.close();state.quantities={};state.notes='';state.cinemaTime='';if(cinemaTime)cinemaTime.value='';fields.notes.value='';requestEntry=null;render();
+    requestDialog.close();requestEntry=null;resetRequestDetails();
     document.body.classList.remove('arrangement-request-open');window.scrollTo({top:requestScroll,behavior:'instant'});if(requestTrigger?.isConnected)requestTrigger.focus({preventScroll:true});
   }
   function closeRequest(){
@@ -193,7 +190,7 @@
     cinemaTime.addEventListener('change',()=>{state.cinemaTime=cinemaTime.value;render();});
     if(directService==='cinema')state.quantities['cinema-session']=1;
     for(const name of Object.keys(cabins))fields.cabin.add(new Option(name,name));
-    restore();for(const key of Object.keys(fields))fields[key].value=state[key];ready=true;render();
+    ready=true;resetRequestDetails();
   });
   document.addEventListener('click',event=>{
     if(!ready)return;
@@ -210,7 +207,7 @@
     }
 
   });
-  for(const [key,field] of Object.entries(fields))field.addEventListener(key==='cabin'?'change':'input',()=>{state[key]=field.value;save();if(key==='cabin')render();});
+  for(const [key,field] of Object.entries(fields))field.addEventListener(key==='cabin'?'change':'input',()=>{state[key]=field.value;if(key==='cabin')render();});
   function submitOrder(event){
     event.preventDefault();const chosen=lines();if(!ready||!chosen.length||(cinemaChosen()&&!validCinemaTime())||(cinemaChosen()&&chosen.some(entry=>entry.group!=='cinema'))||!form.reportValidity()||!state.name.trim()||!Object.hasOwn(cabins,state.cabin)||state.quantities['seating-extra']&&!seatsChosen())return;
     const requestedGroups=[...new Set(chosen.filter(entry=>entry.group!=='extra').map(entry=>entry.group))];
@@ -226,7 +223,7 @@
         if(entry.group==='cinema')parts.push('مدة الجلسة: '+cinemaConfig.duration,'وقت بداية الجلسة: '+cinemaConfig.times.find(slot=>slot.value===state.cinemaTime).label);
       }
     }
-    parts.push('','إجمالي الطلب: '+chosen.reduce((sum,e)=>sum+e.total,0)+' ريال');if(state.notes.trim())parts.push('','ملاحظات: '+state.notes.trim());save();
+    parts.push('','إجمالي الطلب: '+chosen.reduce((sum,e)=>sum+e.total,0)+' ريال');if(state.notes.trim())parts.push('','ملاحظات: '+state.notes.trim());
     // Open a text draft only; the guest reviews and sends it from WhatsApp.
     window.open('https://wa.me/966537009217?text='+encodeURIComponent(parts.join('\n')),'_blank','noopener,noreferrer');
     return true;
@@ -249,5 +246,6 @@
     render();return true;
   }
   if(directService)window.FD_RESORT_DIRECT_ORDER={formId:'arrangement-order',canSubmit:()=>ready&&!form.querySelector('.arrangement-send').disabled,submit:submitOrder,selectEntry,getTitle:()=>specificEntry?'طلب '+specificEntry.name:directService==='cinema'?'طلب '+cinemaConfig.name:''};
-  document.addEventListener('fd:arrangement-view',updateShortcut);shortcut.addEventListener('click',jump);new IntersectionObserver(updateShortcut,{rootMargin:'-80px 0px -40px'}).observe(summary);window.addEventListener('resize',updateShortcut);
+  window.FD_ORDER_PRIVACY.register(resetRequestDetails);
+  document.addEventListener('fd:arrangement-view',()=>{if(browseOrders)resetRequestDetails();updateShortcut();});shortcut.addEventListener('click',jump);new IntersectionObserver(updateShortcut,{rootMargin:'-80px 0px -40px'}).observe(summary);window.addEventListener('resize',updateShortcut);
 })();

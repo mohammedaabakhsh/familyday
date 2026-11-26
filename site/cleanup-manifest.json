@@ -2286,7 +2286,7 @@
   "protectedFiles": {
     "arrangements/index.html": "4601ad055af1876dfe4b2ac3b9e38c19c0bca665dc3bb67b89e3bfb901b96746",
     "chalet/guest-services/chalet-services.js": "31569fcb134a72ff38bd133d4c41aa206c1bd7312aeb8bf55b6d4dec007ee5c6",
-    "chalet/guest-services/index.html": "6abc5085a8b387cb6ba847a0da5367db1a33f5d2b74e9989c51a06d1fe025a54",
+    "chalet/guest-services/index.html": "91525f7136af69db0df78ec009e00f23e6813b8d441c9a9685c00fe7c52a0c5d",
     "css/back-navigation.css": "834bdb848f741ef0185f5f22b91d497ea68a55cf3bb34eaa7eac2d01864420ad",
     "css/desktop-layout.css": "229a412b9f610bc2e885c19d755a217e67081725eeb247a12a565bcd6b7de9dd",
     "css/dining-cards.css": "3ad7231ff2d86c560464effc8af9d07a673d94fb1d5a5ecf83d3d1479456bdfd",
@@ -2294,8 +2294,8 @@
     "data/services.json": "8904201ec0ef1e658373cd0613239faeb6da9f8af4d1b6b29b0703bb22267b7c",
     "guest-services/README.md": "1ad3a3d1df387c6f92547d236015ff1c975e01b67890162dfa0d0e750b23ec7a",
     "guest-services/guest-services.css": "207545d3740a44c6e0ab8ded3731b255151478ecf82109d0344cdb5dc7e61a36",
-    "guest-services/guest-services.js": "9289c57a7be52ebfb36bdc5463abe97b98166c81b5599742a5d4e68953ff8167",
-    "guest-services/index.html": "39b385fc2cef2d670869607c19d9aa98b2b3404d4f4165c4c6a035a58e651dba",
+    "guest-services/guest-services.js": "a410df62fc9759b68032268186c6adbb5471e08be3277b2ae43878984f9a7561",
+    "guest-services/index.html": "594de95dc96d787fab9d824eab066dd779c76d5dd731b8061f9c0be6170156b4",
     "guest-services/service-source.js": "e0da9d9065eea4864558446730954129ccefb495b97c4c7070b8e4a6a6803b3e",
     "guest-services/share.js": "a207ab25177d5b69bb1e8a4cc37bc0755c9a2157b7024561d3c15b2652c4323b",
     "js/dining-cards.js": "a80c8a1fcbc623019426cc46184f52f6dc0b109570afbd848e39571726be4097",
@@ -2304,11 +2304,11 @@
     "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
     "services-guide/guide.css": "05a6712458ca7b87e7aa9aa63b803fdf0145079c018cfb780aa0aba8f7be3f7e",
     "services-guide/guide.js": "13c1b2f233c851dcc4806200d18b5a7a761ab6e09085a8384fadabc98d7b5da6",
-    "services-guide/index.html": "197f1b5cf2f639af9b2f34fdaabda1639c33ab6a9ad26201ba5b41d66c54daea",
+    "services-guide/index.html": "2e37c2fe03bdf392734a549ca93dde69c370c1be39f5c84b2f3469f24bb9b2f0",
     "services-guide/share-entry.js": "9b3eb8e097d90ec21c2e2a19b8e890dbefe21157ed79ad3541e33071483b8a53",
     "guest-services/resort-refinements.css": "5ccfd5e08d6538ebb7f37eb93f5dc52ac270dbf309ee57b38c82078ee0b31520",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
-    "services-guide/guide-orders.js": "86cc9f34fd153b0952ee972b71ec2e30937db432e75d31446a4af25b421dbde4",
+    "services-guide/guide-orders.js": "06cf97f2c9c1b7f81c58185625852d84cf12f4449961ea79df0aca82dccfb87b",
     "services-guide/guide-orders.css": "2ab66472a5a39ba86ddfda4a95403f2a4a7733206ee51efc835dc7a45412e059"
   },
   "preservedCompatibility": [
@@ -3007,5 +3007,18 @@
       "main request privacy/focus behavior",
       "standalone portal layout and ordering"
     ]
+  },
+  "approvedStandaloneOrderPrivacy": {
+    "date": "2026-11-26",
+    "rollbackTag": "pre-standalone-order-privacy-20261126",
+    "reason": "Owner asks standalone portals to stop recalling entered order details when returning. Remove session draft writes/restores, clear known old drafts in both storage types, disable browser autocomplete, and reset transient form/cart state on return from background or page cache. Arrangement cancel/back also clears customer details. Keep active editing and source-specific shares/prices/messages unchanged.",
+    "updatedProtectedFiles": [
+      "services-guide/guide-orders.js",
+      "services-guide/index.html",
+      "guest-services/guest-services.js",
+      "guest-services/index.html",
+      "chalet/guest-services/index.html"
+    ],
+    "sharedHelper": "js/order-privacy.js"
   }
 }
