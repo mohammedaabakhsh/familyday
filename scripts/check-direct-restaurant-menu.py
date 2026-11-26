@@ -25,7 +25,7 @@ with sync_playwright() as p:
      if item.get('cheesePrice'):assert 'إضافة جبن '+str(item['cheesePrice'])+' ريال' in row.inner_text()
    assert catalog['restaurantHours'] in menu.inner_text();assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')
    if path=='/services/':
-    root=page.locator('#resort-service-directory');buttons=root.locator('.service-categories button');assert buttons.all_text_contents()==['المطعم','التنسيقات','الإقامة','هدايا'];dims=buttons.evaluate_all('(es)=>es.map(e=>{let r=document.createRange();r.selectNodeContents(e);return {lines:r.getClientRects().length,overflow:e.scrollWidth>e.clientWidth}})');assert all(d['lines']==1 and not d['overflow'] for d in dims),dims
+    root=page.locator('#resort-service-directory');buttons=root.locator('.service-categories button');assert buttons.all_text_contents()==['المطعم','التنسيقات والجلسات','الإقامة','شارك'];dims=buttons.evaluate_all('(es)=>es.map(e=>{let r=document.createRange();r.selectNodeContents(e);return {lines:r.getClientRects().length,overflow:e.scrollWidth>e.clientWidth}})');assert all(d['lines']==1 and not d['overflow'] for d in dims),dims
     for i,count in [(1,4),(2,3),(3,2)]:buttons.nth(i).click();assert root.locator('.svcs-card:visible').count()==count
     buttons.first.click();assert menu.is_visible()
    button=menu.locator('[data-service-portal]');button.click();expect(page.locator('.native-order-loading')).to_be_hidden(timeout=45000);expect(page.locator('#native-order-title')).to_have_text('المطعم');page.locator('.native-order-share').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+'/menu/'}

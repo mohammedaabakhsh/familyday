@@ -393,7 +393,7 @@ body.resort-services #main{width:100%;max-width:none;height:100dvh;min-height:0;
 }
 
 /* Four service categories use the same controls as the reviewed FAQ. */
-.resort-service-directory .service-categories{margin:0 0 12px}
+.resort-service-directory .service-categories{margin:0 0 12px;grid-template-columns:minmax(0,1fr) max-content minmax(0,1fr) minmax(0,1fr)}
 .resort-service-directory .service-categories button{font-size:12px;min-height:48px}
 .resort-service-directory .svcs-content{gap:0}
 .resort-service-directory .svcs-grid{gap:12px}

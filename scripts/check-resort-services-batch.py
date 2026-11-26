@@ -15,7 +15,7 @@ with sync_playwright() as p:
   c=b.new_context(viewport={'width':w,'height':h},ignore_https_errors=True,reduced_motion='reduce');c.add_init_script(init)
   page=c.new_page();page.on('pageerror',lambda e:out['errors'].append(str(e)))
   page.goto(BASE+'/services/');root=page.locator('#resort-service-directory');expect(root).to_be_visible()
-  assert root.locator('.service-categories button').all_text_contents()==['المطعم','التنسيقات','الإقامة','هدايا']
+  assert root.locator('.service-categories button').all_text_contents()==['المطعم','التنسيقات والجلسات','الإقامة','شارك']
   for i,keys in enumerate([['menu'],['coordination','seating','dining','cinema'],['hospitality','games','water'],['competition','video']]):
    root.locator(f'button[data-service-group="{i}"]').click();assert root.locator('.svcs-card:visible').count()==(0 if i==0 else len(keys))
    if i==0:assert root.locator('.restaurant-menu-category').count()==len(SOURCE['guest']['menu'])

@@ -1,0 +1,32 @@
+[
+  {
+    "width": 320,
+    "singleLine": true,
+    "noClipping": true,
+    "tabsWork": true
+  },
+  {
+    "width": 360,
+    "singleLine": true,
+    "noClipping": true,
+    "tabsWork": true
+  },
+  {
+    "width": 375,
+    "singleLine": true,
+    "noClipping": true,
+    "tabsWork": true
+  },
+  {
+    "width": 390,
+    "singleLine": true,
+    "noClipping": true,
+    "tabsWork": true
+  },
+  {
+    "width": 430,
+    "singleLine": true,
+    "noClipping": true,
+    "tabsWork": true
+  }
+]

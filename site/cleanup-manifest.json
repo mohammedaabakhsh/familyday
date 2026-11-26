@@ -2899,5 +2899,16 @@
       "all existing public URLs",
       "other service categories and order flows"
     ]
+  },
+  "approvedServiceTabLabels": {
+    "version": "20261126-live-v90",
+    "rollbackTag": "pre-service-tab-labels-20261126",
+    "reason": "Owner requested شارك instead of هدايا and التنسيقات والجلسات on one line. Give the longer category its text width and let the three short categories share the remaining width. Verified no clipping or wrapping at 320–430px.",
+    "preserved": [
+      "menu content and ordering",
+      "all services and public routes",
+      "external portals",
+      "prices and WhatsApp/share destinations"
+    ]
   }
 }
