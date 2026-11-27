@@ -91,5 +91,5 @@ export function createRestaurantInline({menu,cabins,messageBuilder}){
   controllers.set(root,{render});render();
  }
  function clear(){selection.clear();customer.name='';customer.cabin='';customer.notes='';if(currentRoot){currentRoot.querySelectorAll('.inline-menu-option select').forEach(select=>select.selectedIndex=0);controllers.get(currentRoot)?.render(true);}}
- return {bind,reset:clear};
+ return {bind,reset:clear,snapshot:()=>({selection:[...selection],customer:{...customer},activeCategory}),restore(saved){if(!saved)return;selection.clear();for(const [key,item] of saved.selection||[])selection.set(key,item);Object.assign(customer,saved.customer);activeCategory=saved.activeCategory||0;if(currentRoot)controllers.get(currentRoot)?.render(true);}};
 }

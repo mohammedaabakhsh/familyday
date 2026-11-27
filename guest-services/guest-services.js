@@ -405,7 +405,10 @@
     document.getElementById('dialog-total').textContent=String(activeService==='water' ? catalog.water.price*(waterSelection(draft).packages || 1) : sum(lines));
     applyButton.disabled=pending || (!lines.length && !previous.length);
     applyButton.textContent=previous.length ? (lines.length ? 'حفظ التعديل' : 'حذف من الطلب') : 'إضافة للطلب';
-    if(independentActive)applyButton.textContent=independentCopy[activeService].orderLabel;
+    if(independentActive){applyButton.textContent=independentCopy[activeService].orderLabel;applyButton.disabled=pending||!lines.length;}
+    if(directService){
+      renderSummary(document.getElementById(directService==='restaurant'?'restaurant-items':'order-items'),lines,removeLine);
+    }
     var status=document.getElementById('dialog-status');
     status.textContent=pending ? 'أكمل اختيار '+catalog.water.size*(waterSelection(draft).packages || 1)+' ألعاب لإضافة الباقة.' : '';
   }
@@ -425,10 +428,25 @@
     document.getElementById('service-dialog-title').focus({preventScroll:true});
     updateShortcut();
   }
+  function commitDraft(){
+    if(!draft||!activeService)return;
+    var key=activeService==='restaurant'?'menu':activeService==='extras'?'quantities':activeService;
+    state[key]=draft[key];
+  }
+  function removeLine(id){
+    function remove(data){
+      if(menuCatalog[id])delete data.menu[id];
+      else if(id==='water')data.water=null;
+      else if(id==='games')data.games='';
+      else if(id.startsWith('hospitality:'))delete data.hospitality[id.slice(12)];
+      else delete data.quantities[id];
+    }
+    remove(state);if(draft)remove(draft);renderOrders();renderEditor();
+  }
   function closeEditor({commit=false}={}){
+    commitDraft();renderOrders();
     serviceLocation('');
     dialog.close();draft=null;activeService='';document.body.classList.remove('dialog-open');
-    if(!commit)resetOrderDetails();
     if(independentActive)document.dispatchEvent(new Event('fd:guest-selection-closed'));
     if(dialogTrigger) dialogTrigger.focus({preventScroll:true});
     updateShortcut();
@@ -468,7 +486,7 @@
     function navigateLinkedService(){
       // The standalone invoice owns its Back/edit transition; do not erase its active selection first.
       if(independentActive && document.getElementById('service-request-dialog').open)return;
-      resetOrderDetails();openLinkedService();
+      openLinkedService();
     }
     window.addEventListener('hashchange',navigateLinkedService);window.addEventListener('popstate',navigateLinkedService);openLinkedService();
   }
@@ -531,6 +549,7 @@
   renderCabins();renderOrders();renderEditor();setupDialogs();
   window.FD_ORDER_PRIVACY.register(resetOrderDetails);
   if(independentRequests){
+    window.FD_ORDER_VISIT?.register('portal:guest-selection',()=>{commitDraft();return JSON.parse(JSON.stringify(state));},saved=>{if(!saved)return;state=JSON.parse(JSON.stringify(saved));draft=activeService?JSON.parse(JSON.stringify(state)):null;renderCabins();renderOrders();renderEditor();});
     var selectionScroll=0;
     window.FD_GUEST_INDEPENDENT_ORDER={
       cabins:Object.assign({},cabins),
@@ -542,7 +561,12 @@
       },
       pause:function(){selectionScroll=dialog.querySelector('.dialog-body').scrollTop;dialog.close();},
       resume:function(){renderEditor();document.body.classList.add('dialog-open');dialog.showModal();dialog.querySelector('.dialog-body').scrollTop=selectionScroll;applyButton.focus({preventScroll:true});},
-      finish:function(){closeEditor();}
+      remove:removeLine,
+      reset:resetOrderDetails,
+      finish:function({discard=false}={}){
+        if(discard&&activeService){var key=activeService==='restaurant'?'menu':activeService==='extras'?'quantities':activeService;state[key]=key==='games'?'':key==='water'?null:{};if(draft)draft[key]=state[key];}
+        closeEditor();
+      }
     };
     document.dispatchEvent(new Event('fd:guest-requests-ready'));
   }
@@ -552,6 +576,12 @@
   }
   if(directService) window.FD_RESORT_DIRECT_ORDER={
     getTitle:function(){return window.FD_GUEST_ORDER_MESSAGE.copy[directService].title;},
+    exportDraft:function(){commitDraft();return JSON.parse(JSON.stringify(state));},
+    restoreDraft:function(saved){
+      state=JSON.parse(JSON.stringify(saved));draft=JSON.parse(JSON.stringify(state));
+      document.querySelectorAll('[data-field]').forEach(function(field){var key=field.dataset.field;field.value=key==='notes'?state[field.closest('.customer-fields').dataset.scope==='restaurant'?'restaurantNotes':'notes']:state[key];});
+      renderCabins();renderOrders();renderEditor();
+    },
     formId:directService==='restaurant' ? 'restaurant-order' : 'extras-order',
     canSubmit:function(){
       if(activeService!==directService || !draft) return false;

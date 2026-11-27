@@ -59,14 +59,14 @@ with sync_playwright() as p:
     assert page.evaluate('document.documentElement.scrollWidth<=innerWidth');out['checks'].append({'width':width,'service':kind,'advanced':advanced,'exactDraftAndRecipientParity':True,'ownInterfaceShare':True});print(width,kind,advanced,'PASS',flush=True)
   # The newly added native service must discard identity/selections on every actual exit.
   for exit in ['close','back','background','reload']:
-   page.goto(BASE+PATHS['extras']);page.locator('#main [data-service-portal]').click();expect(page.locator('.native-order-loading')).to_be_hidden();f=page.frame_locator('.native-order-frame');choose(f,'extras');fill(f,'guest')
+   page.goto(BASE+PATHS['extras']);page.reload();page.locator('#main [data-service-portal]').click();expect(page.locator('.native-order-loading')).to_be_hidden();f=page.frame_locator('.native-order-frame');choose(f,'extras');fill(f,'guest')
    if exit=='close':page.locator('.native-order-close').click()
    elif exit=='back':page.go_back()
    elif exit=='background':background(page)
    else:page.reload()
    expect(page.locator('#native-order-dialog')).to_be_hidden();page.locator('#main [data-service-portal]').click();expect(page.locator('.native-order-loading')).to_be_hidden();f=page.frame_locator('.native-order-frame')
-   for key in ['name','cabin','notes']:expect(f.locator('#guest-'+key)).to_have_value('')
-   expect(f.locator('[data-extra="robe"] output')).to_have_text('0');page.locator('.native-order-close').click()
+   for key,value in [('name','محمد'),('cabin','بيت الدوم 1'),('notes','تجربة بدون إرسال')]:expect(f.locator('#guest-'+key)).to_have_value(value if exit in ['close','back'] else '')
+   expect(f.locator('[data-extra="robe"] output')).to_have_text('1' if exit in ['close','back'] else '0');page.locator('.native-order-close').click()
   for kind,path in PATHS.items():
    source=c.request.get(BASE+'/guest-services/'+kind+'/').text();native=c.request.get(BASE+path).text();assert 'og:image' not in native and 'twitter:image' not in native
    import re

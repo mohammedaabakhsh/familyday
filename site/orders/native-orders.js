@@ -1,4 +1,4 @@
-/* Each resort service opens a fresh request using the original controller and message builder. */
+/* Independent requests remain in memory during internal navigation and are cleared on exit. */
 export function createResortOrders({version,services,share}){
  let context=null,active=null,item=null,trigger=null,savedY=0;
  const dialog=document.createElement('dialog');dialog.id='native-order-dialog';dialog.className='native-order-dialog';dialog.setAttribute('aria-labelledby','native-order-title');
@@ -6,10 +6,14 @@ export function createResortOrders({version,services,share}){
  document.body.append(dialog);
  const body=dialog.querySelector('.native-order-body'),loading=dialog.querySelector('.native-order-loading'),error=dialog.querySelector('.native-order-error'),title=dialog.querySelector('h2');
  if(history.state?.fdResortOrder){const state={...history.state};delete state.fdResortOrder;history.replaceState(state,'',location.href);}
+ const requests=new Map();
+ const keyFor=descriptor=>[descriptor.kind,descriptor.service,descriptor.entry].join(':');
  const fallback=kind=>kind==='guest'?'/guest-services/':'/services-guide/';
  function command(data){item?.iframe.contentWindow.postMessage({type:'familyday-resort-order-command',...data},location.origin);}
  function dispose(){if(!item)return;clearTimeout(item.timer);item.iframe.remove();item=null;}
+ let diningSelection=null;
  function clearDining(){
+  diningSelection=null;
   document.querySelectorAll('.dining-guide').forEach(guide=>{
    guide.querySelectorAll('[data-dining-size]').forEach(button=>button.setAttribute('aria-pressed','false'));
    const request=guide.querySelector('[data-service-portal]');request.disabled=true;delete request.dataset.resortOrderKey;
@@ -22,11 +26,12 @@ export function createResortOrders({version,services,share}){
  }
  function failed(){if(!active||!item)return;clearTimeout(item.timer);loading.hidden=true;error.hidden=false;item.iframe.hidden=true;}
  function show(descriptor){
-  dispose();active=descriptor;title.textContent=descriptor.title;
+  if(item)dispose();active=descriptor;title.textContent=descriptor.title;
+  const cached=requests.get(keyFor(descriptor));
   loading.hidden=false;error.hidden=true;
   error.querySelector('.native-order-external').dataset.url=fallback(descriptor.kind)+'#'+descriptor.anchor;
   const iframe=document.createElement('iframe');iframe.className='native-order-frame';iframe.title='طلب '+descriptor.title;iframe.allow='clipboard-write; web-share';iframe.hidden=true;
-  item={iframe,timer:setTimeout(failed,25000)};body.append(iframe);
+  item={iframe,key:keyFor(descriptor),draft:cached?.draft,ready:false,timer:setTimeout(failed,25000)};body.append(iframe);
   iframe.src=fallback(descriptor.kind)+'?embed=resort-order&direct='+encodeURIComponent(descriptor.service)+'&v='+encodeURIComponent(version);
  }
  function open(descriptor,source){
@@ -36,7 +41,9 @@ export function createResortOrders({version,services,share}){
   document.body.classList.add('native-order-open');dialog.showModal();show(descriptor);
  }
  function closeUI(){
-  const restoreFocus=active?.keyboard;active=null;dispose();dialog.close();document.body.classList.remove('native-order-open');clearDining();
+  const restoreFocus=active?.keyboard;
+  if(item){if(active?.submitted)requests.delete(item.key);else if(item.ready){const draft=item.iframe.contentWindow.FD_RESORT_DIRECT_ORDER?.exportDraft?.();if(draft)requests.set(item.key,{draft});}dispose();}
+  active=null;dialog.close();document.body.classList.remove('native-order-open');
   const focusTarget=trigger?.disabled?trigger.closest('.dining-guide')?.querySelector('[data-dining-size]'):trigger;
   window.scrollTo({top:savedY,behavior:'instant'});if(focusTarget?.isConnected){if(restoreFocus)focusTarget.focus({preventScroll:true});else focusTarget.blur();}
  }
@@ -51,6 +58,7 @@ export function createResortOrders({version,services,share}){
    const choice=event.target.closest('[data-dining-size]');
    if(choice){
     const service=services.find(s=>s.id==='dining'),size=choice.dataset.diningSize,option=choice.dataset.diningOption;
+    diningSelection={size,option};
     if(!Object.hasOwn(service.prices,size)||!['plain','tansiq'].includes(option))return;
     const guide=choice.closest('.dining-guide'),button=guide.querySelector('[data-service-portal]');
     guide.querySelectorAll('[data-dining-size]').forEach(item=>item.setAttribute('aria-pressed',String(item===choice)));
@@ -72,8 +80,9 @@ export function createResortOrders({version,services,share}){
   if(event.origin!==location.origin||event.data?.type!=='familyday-resort-order'||!item||event.source!==item.iframe.contentWindow||event.data.kind!==active?.kind)return;
   const {action}=event.data;
   if(action==='focus'){const controls=[...dialog.querySelectorAll('.native-order-header button')];(event.data.edge==='last'?controls.at(-1):controls[0])?.focus();}
-  if(action==='ready')command({action:'open',service:active.service,anchor:active.anchor,entry:active.entry});
-  if(action==='opened'){if(typeof event.data.title==='string'&&event.data.title)title.textContent=event.data.title;clearTimeout(item.timer);loading.hidden=true;error.hidden=true;item.iframe.hidden=false;}
+  if(action==='ready')command({action:'open',service:active.service,anchor:active.anchor,entry:active.entry,draft:item.draft});
+  if(action==='opened'){item.ready=true;item.title=event.data.title;if(typeof event.data.title==='string'&&event.data.title)title.textContent=event.data.title;clearTimeout(item.timer);loading.hidden=true;error.hidden=true;item.iframe.hidden=false;}
+  if(action==='submitted'){active.submitted=true;if(active.service==='dining')clearDining();}
   if(action==='closed'||action==='submitted')requestClose();
   if(action==='error')failed();
   if(action==='share'&&typeof event.data.path==='string'){
@@ -83,8 +92,10 @@ export function createResortOrders({version,services,share}){
  });
  return {
   isOpen:()=>dialog.open,
-  reset:()=>{if(dialog.open)closeUI();else dispose();clearDining();discardHistoryRequest();},
-  setContext(next){context=next;},
+  snapshot:()=>{const saved=new Map(requests);if(item?.ready)saved.set(item.key,{draft:item.iframe.contentWindow.FD_RESORT_DIRECT_ORDER.exportDraft()});return {requests:[...saved],diningSelection};},
+  restore(saved){requests.clear();for(const [key,request] of saved?.requests||[])requests.set(key,request);diningSelection=saved?.diningSelection||null;if(context)this.setContext(context);},
+  reset:()=>{if(dialog.open)closeUI();else dispose();requests.clear();clearDining();discardHistoryRequest();},
+  setContext(next){context=next;if(diningSelection&&next.path==='/services/dining-tables/')document.querySelector('[data-dining-size="'+diningSelection.size+'"][data-dining-option="'+diningSelection.option+'"]')?.click();},
   handlePopstate(){
    const token=history.state?.fdResortOrder;
    if(dialog.open){if(token!==active?.token)closeUI();return true;}

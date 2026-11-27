@@ -2294,8 +2294,8 @@
     "data/services.json": "8904201ec0ef1e658373cd0613239faeb6da9f8af4d1b6b29b0703bb22267b7c",
     "guest-services/README.md": "1ad3a3d1df387c6f92547d236015ff1c975e01b67890162dfa0d0e750b23ec7a",
     "guest-services/guest-services.css": "207545d3740a44c6e0ab8ded3731b255151478ecf82109d0344cdb5dc7e61a36",
-    "guest-services/guest-services.js": "7406e1e5ae955a1740a705c76cea4dd11c7b9922e3d51cfa93a0ff97ffb78f6e",
-    "guest-services/index.html": "c1d2be8c49d4221a2626315b59b4ce9ce5fd5f2569f2762ccd7107ee345d02c5",
+    "guest-services/guest-services.js": "835f9c3b78886fb90988941cd20467a3cc3c74909d91f49c71325550670039fe",
+    "guest-services/index.html": "374c3aebbf247d35aa3c59263099bd1275fcccce1a92f34baf95f377c6ffc350",
     "guest-services/service-source.js": "e0da9d9065eea4864558446730954129ccefb495b97c4c7070b8e4a6a6803b3e",
     "guest-services/share.js": "a207ab25177d5b69bb1e8a4cc37bc0755c9a2157b7024561d3c15b2652c4323b",
     "js/dining-cards.js": "c395708cd357ec9ed6ae881efd60f12d3f9dd3751a3ff7006699bf178f7e8906",
@@ -2304,15 +2304,17 @@
     "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
     "services-guide/guide.css": "839886ba7f4269fad31cb2da64865b8ea1bdd8971f53fc07db4bab506b268e69",
     "services-guide/guide.js": "dacd6112365b3a83f167907305c2ca79c627683dffb65832d63881b27e5fd560",
-    "services-guide/index.html": "295f4f276ea0ce4b711728c3220deea8a2029bad2ac8438b0a4822cb94bf7d25",
+    "services-guide/index.html": "395f79f75e61de81236d6a8de0659e76dcc8b66a9bd434d9c89bd82c56eccf75",
     "services-guide/share-entry.js": "72de1a301e0da0de127f52b55714dab77b23548b1125915272e33bf4b1fc09a8",
     "guest-services/resort-refinements.css": "9622d57c4ea5d9a30bbb9bcc3d93c6a3645375f73a0243b2cf8564a6efebf285",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
-    "services-guide/guide-orders.js": "054ff6944cf99c8cd403e1eef3deeeffa458242b90044aed124f07709172fc05",
+    "services-guide/guide-orders.js": "5f0a86823de373834a61f6a9cdc2f251c9f28101e987e4b698f15aca9a87a1b5",
     "services-guide/guide-orders.css": "4566ed2d645963bb1345ff2ebfc7f87d6687afe586ce4ba548706aa848b14730",
-    "guest-services/independent-orders.js": "fcfcf89eb2b7f4229cd3b0399fac86cbcc207580d3cab4a9363e873a9aa1a638",
-    "site/orders/portal-surface.js": "d1cca9f204ae528d4cabee3342294b48a2f4f9745045a343c55293a7bc495e52",
-    "js/guest-order-message.js": "6809fa5d0bae74ce1e59dc4bfb62731ff06c0a8cbcc0b76cb48b1d7cfeed79a3"
+    "guest-services/independent-orders.js": "4927df57e8b913908f85748421218258b87c8ce82f59aef9be13c862aaab24ed",
+    "site/orders/portal-surface.js": "d9b6db9297ee5fa181e96c86cbcc24f6d7c803057ccd6c7baf232f3e2efc9be7",
+    "js/guest-order-message.js": "6809fa5d0bae74ce1e59dc4bfb62731ff06c0a8cbcc0b76cb48b1d7cfeed79a3",
+    "js/order-visit.js": "8b61c4cdb00062b4c255f9b9a29d3d1dde951eb6c3b3e69fdfd3a0f3584ea662",
+    "css/order-invoices.css": "eab51e8128cd9b108ee4fd857dc799ba64380b33728d00cee03e6edf4c1f75cb"
   },
   "preservedCompatibility": [
     "preview redirects",
@@ -3211,5 +3213,23 @@
     ],
     "newSharedFormatter": "js/guest-order-message.js",
     "newNativeRoute": "/services/extras/"
+  },
+  "approvedOrderVisitAndInvoiceDeletion": {
+    "date": "2026-11-27",
+    "version": "20261127-order-session-v115",
+    "rollbackTag": "pre-order-session-20261127",
+    "reason": "Owner clarifies that internal Back, request closure and website navigation must preserve current requests, with clearing on actual website exit, background return, refresh and submit. Use in-memory per-service/item drafts and consume-once same-origin document handoff; no durable customer/order saving. Add per-item invoice removal and immediate total/send validation to all resort guest and arrangements checkouts in both surfaces. Render cabin numbers as the small arrangements-style line below the cabin selection. Preserve designs, exact shared WhatsApp formatting, recipients, own-interface shares and catalogue prices.",
+    "updatedProtectedFiles": [
+      "guest-services/guest-services.js",
+      "guest-services/index.html",
+      "services-guide/index.html",
+      "services-guide/guide-orders.js",
+      "guest-services/independent-orders.js",
+      "site/orders/portal-surface.js"
+    ],
+    "newFiles": [
+      "js/order-visit.js",
+      "css/order-invoices.css"
+    ]
   }
 }

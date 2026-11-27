@@ -1,0 +1,20 @@
+/* One quiet cabin number line, following the arrangements request reference. */
+.resort-portal-refinements .cabin-number{display:block;margin:16px 0 0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;text-align:right;font-size:13px;font-weight:400;line-height:1.7;color:#64858a}
+.resort-portal-refinements .cabin-number output{display:inline;font:inherit;color:inherit}
+.resort-portal-refinements .cabin-number[hidden]{display:none!important}
+body.resort-order-embedded .cabin-number{color:#83d2d4}
+.request-invoice-actions{display:flex;flex-direction:column;align-items:end;flex:none;gap:2px}
+.request-invoice-actions .remove-item{color:#9d4444;min-height:44px;padding:6px 8px}
+.request-empty{font-size:13px;line-height:1.8;color:var(--muted)}
+/* The existing invoice rows already own item removal and total recalculation. */
+.arrangement-request #arrangement-items{display:grid!important;gap:8px;margin:12px 0}
+.arrangement-request #arrangement-items :is(h3,.arrangement-quantity){display:none}
+.arrangement-request #arrangement-items .arrangement-group{border:0;border-radius:0}
+.arrangement-request #arrangement-items .arrangement-group ul>li{padding:12px 0;flex-wrap:nowrap}
+.arrangement-request #arrangement-items .arrangement-item-copy{flex:1 1 auto}
+body.resort-order-embedded .resort-direct-form :is(.order-items,#arrangement-items){display:block!important;margin:12px 0}
+body.resort-order-embedded .resort-direct-form :is(.order-group-heading,.arrangement-group>h3,#arrangement-items .arrangement-quantity){display:none!important}
+body.resort-order-embedded .resort-direct-form :is(.order-group,.arrangement-group){border:0;border-radius:0;margin:0;background:transparent}
+body.resort-order-embedded .resort-direct-form :is(.order-group-items>li,.arrangement-group ul>li){padding:12px 0;flex-wrap:nowrap;border-top:1px solid #35535f}
+body.resort-order-embedded .resort-direct-form .arrangement-item-copy{flex:1 1 auto}
+body.resort-order-embedded .resort-direct-form :is(.arrangement-remove,.remove-item){color:#f0c2bd}

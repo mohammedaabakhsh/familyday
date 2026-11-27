@@ -103,11 +103,13 @@
       if(!dialog.open){post('error');return;}
       if(command.entry&&!window.FD_RESORT_DIRECT_ORDER.selectEntry(command.entry)){post('error');return;}
     }
+    if(command.draft){window.FD_RESORT_DIRECT_ORDER?.restoreDraft?.(command.draft);window.FD_RESORT_DIRECT_ORDER?.resumeRequest?.();}
     wasOpen=dialog.open;syncDirect();updateShare();post('opened',{title:window.FD_RESORT_DIRECT_ORDER?.getTitle?.()});
   }
   window.addEventListener('message',event=>{
     if(!embedded||event.origin!==location.origin||event.source!==parent||event.data?.type!=='familyday-resort-order-command')return;
     if(event.data.action==='open')openCommand(event.data);
+    if(event.data.action==='resume'){window.FD_RESORT_DIRECT_ORDER?.resumeRequest?.();syncDirect();}
     if(event.data.action==='cancel'){view=false;closeSource();wasOpen=false;}
   });
   document.addEventListener('keydown',event=>{

@@ -20,6 +20,8 @@
     const number=customer.querySelector('.cabin-number');
     fields.cabin.addEventListener('change',()=>{number.hidden=!Object.hasOwn(api.cabins,fields.cabin.value);number.querySelector('output').textContent=number.hidden?'':String(api.cabins[fields.cabin.value]);});
     let order=null,token='',closing='',readyForPrivacy=false,sending=false;
+    const customers=new Map();
+    function remember(){if(order)customers.set(order.service,{name:fields.name.value,cabin:fields.cabin.value,notes:fields.notes.value});}
     function node(tag,text,className){const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(className)e.className=className;return e;}
     function quantity(item){return item.qty||1;}
     function amount(items){return items.reduce((total,item)=>total+item.price,0);}
@@ -28,24 +30,34 @@
     function discard(){order=null;token='';list.replaceChildren();form.reset();number.hidden=true;number.querySelector('output').textContent='';sending=false;send.disabled=false;}
     function close(action){
       dialog.close();clearMarker();closing='';sending=false;send.disabled=false;
+      if(action==='exit')customers.clear();else if(action==='submitted')customers.delete(order?.service);else remember();
       if(action==='edit'){api.resume();return;}
-      discard();api.finish();
+      discard();api.finish({discard:action==='submitted'||action==='exit'});
+      if(action==='exit')api.reset();
     }
     function requestClose(action){
       if(closing)return;closing=action;
       if(history.state?.guestServiceRequest===token)history.back();else close(action);
     }
-    function open(){
-      const next=api.snapshot();if(!next||!copy[next.service])return;
-      order=next;const text=copy[order.service];dialog.dataset.tone=order.service;dialog.querySelector('h2').textContent=text.title;dialog.querySelector('.confirmation-note').textContent=text.followup;
-      fields.notes.placeholder=order.service==='restaurant'?'مثل بدون بصل أو أي تفاصيل تخص طلب المطعم':'أضف أي تفاصيل تساعدنا في تجهيز طلبك';
+    function renderInvoice(){
       list.replaceChildren();
       for(const item of order.items){
         const row=node('li'),details=node('div',undefined,'request-invoice-copy');details.append(node('strong',itemName(item)),node('span','الكمية: '+quantity(item)+' · سعر الوحدة: '+item.price/quantity(item)+' ريال'));
         for(const detail of item.details)if(!/^إضافة جبنة/.test(detail))details.append(node('span',detail));
-        row.append(details,node('bdi',item.price+' ريال','request-line-total'));list.append(row);
+        const actions=node('div',undefined,'request-invoice-actions'),remove=node('button','حذف','remove-item');remove.type='button';remove.setAttribute('aria-label','حذف '+item.name);
+        remove.addEventListener('click',()=>{api.remove(item.id);order.items=order.items.filter(line=>line.id!==item.id);renderInvoice();(list.querySelector('.remove-item')||dialog.querySelector('.request-edit')).focus({preventScroll:true});});
+        actions.append(node('bdi',item.price+' ريال','request-line-total'),remove);row.append(details,actions);list.append(row);
       }
-      document.getElementById('service-request-total').textContent=String(amount(order.items));
+      if(!order.items.length)list.append(node('li','لم تختر أي أصناف. ارجع للاختيار لإضافة طلبك.','request-empty'));
+      document.getElementById('service-request-total').textContent=String(amount(order.items));send.disabled=!order.items.length;
+    }
+    function open(){
+      const next=api.snapshot();if(!next||!copy[next.service])return;
+      order=next;const text=copy[order.service];dialog.dataset.tone=order.service;dialog.querySelector('h2').textContent=text.title;dialog.querySelector('.confirmation-note').textContent=text.followup;
+      fields.notes.placeholder=order.service==='restaurant'?'مثل بدون بصل أو أي تفاصيل تخص طلب المطعم':'أضف أي تفاصيل تساعدنا في تجهيز طلبك';
+      const saved=customers.get(order.service)||{name:'',cabin:'',notes:''};
+      for(const [key,field] of Object.entries(fields))field.value=saved[key];
+      renderInvoice();
       fields.cabin.dispatchEvent(new Event('change'));
       api.pause();token=String(Date.now())+'-'+Math.random().toString(36).slice(2);history.pushState({...history.state,guestServiceRequest:token},'',location.href);dialog.showModal();dialog.querySelector('.dialog-body').scrollTop=0;dialog.querySelector('h2').focus({preventScroll:true});
     }
@@ -59,19 +71,20 @@
     dialog.addEventListener('cancel',event=>{event.preventDefault();requestClose('cancel');});
     dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)requestClose('cancel');}});
     window.addEventListener('popstate',event=>{
-      if(dialog.open&&event.state?.guestServiceRequest!==token){const key=location.hash.slice(1).replace(/-service$/,'');const action=closing||'cancel';close(action);event.stopImmediatePropagation();if(action==='cancel'&&copy[key])document.getElementById(key+'-card').click();}
+      if(dialog.open&&event.state?.guestServiceRequest!==token){const key=location.hash.slice(1).replace(/-service$/,'');const action=closing||'edit';close(action);event.stopImmediatePropagation();if(action==='cancel'&&copy[key])document.getElementById(key+'-card').click();}
       else if(!dialog.open){clearMarker();discard();}
     },true);
     window.addEventListener('hashchange',()=>{if(dialog.open){const key=location.hash.slice(1).replace(/-service$/,'');close('cancel');if(copy[key])document.getElementById(key+'-card').click();}else discard();});
-    document.addEventListener('fd:guest-selection-closed',()=>{if(dialog.open)dialog.close();clearMarker();closing='';discard();});
+    document.addEventListener('fd:guest-selection-closed',()=>{remember();if(dialog.open)dialog.close();clearMarker();closing='';discard();});
     form.addEventListener('submit',event=>{
-      event.preventDefault();if(!order||sending||!form.reportValidity()||!fields.name.value.trim()||!Object.hasOwn(api.cabins,fields.cabin.value))return;
+      event.preventDefault();if(!order||!order.items.length||sending||!form.reportValidity()||!fields.name.value.trim()||!Object.hasOwn(api.cabins,fields.cabin.value))return;
       sending=true;send.disabled=true;const url='https://wa.me/'+copy[order.service].phone+'?text='+encodeURIComponent(message());window.open(url,'_blank','noopener,noreferrer');requestClose('submitted');
     });
     window.FD_ORDER_PRIVACY.register(()=>{
       if(!readyForPrivacy)return;
-      if(dialog.open)close('cancel');else {discard();api.finish();}
+      customers.clear();if(dialog.open)close('exit');else {discard();api.finish({discard:true});api.reset();}
     });readyForPrivacy=true;
+    window.FD_ORDER_VISIT?.register('portal:guest-customers',()=>{remember();return [...customers];},saved=>{customers.clear();for(const [key,value] of saved||[])customers.set(key,value);});
     api.activate(copy);
   }
   document.addEventListener('fd:guest-requests-ready',mount);mount();
