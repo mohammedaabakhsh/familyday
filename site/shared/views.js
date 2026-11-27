@@ -96,8 +96,16 @@ export function createSharedViews(context) {
   function unitSpecifications(u) {
     const { icon, safe, specificationText } = context;
 
+    // Royal-only preview: keep the numeric value and its Arabic unit in reading order.
+    const formatItem = (text) => {
+      if (u.path !== '/cabins/royal/' || !text.includes('بمقاس')) return specificationText(text);
+      return safe(text).replace(
+        /(\d+(?:\.\d+)?(?:\s*×\s*\d+(?:\.\d+)?)?)\s*(سم|م)(?=$|[\s.،])/g,
+        '<span class="royal-pool-measurement" dir="rtl"><bdi dir="ltr">$1</bdi> <span>$2</span></span>',
+      );
+    };
     const boxes = (items, amenities = false) =>
-      `<div class="spec-list">${items.map((t) => `<div class="spec-item ${t.length > 52 || (amenities && /سماعات|غرفة سائق/.test(t)) ? 'wide' : ''}">${specificationText(t)}</div>`).join('')}</div>`;
+      `<div class="spec-list">${items.map((t) => `<div class="spec-item ${t.length > 52 || (amenities && /سماعات|غرفة سائق/.test(t)) ? 'wide' : ''}">${formatItem(t)}</div>`).join('')}</div>`;
     return `<div class="specs">${u.sections
       .map((s) => {
         const resort = ['resort', 'chalet', 'stay'].includes(u.venue),
