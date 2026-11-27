@@ -2294,8 +2294,8 @@
     "data/services.json": "8904201ec0ef1e658373cd0613239faeb6da9f8af4d1b6b29b0703bb22267b7c",
     "guest-services/README.md": "1ad3a3d1df387c6f92547d236015ff1c975e01b67890162dfa0d0e750b23ec7a",
     "guest-services/guest-services.css": "207545d3740a44c6e0ab8ded3731b255151478ecf82109d0344cdb5dc7e61a36",
-    "guest-services/guest-services.js": "6084bbb06f02022fe1027e21618fe5e86b6b54793fe2139e4deee73e6569e7ca",
-    "guest-services/index.html": "fbc8b972f0e3760f02b539022a04e0293e8eb7c71177739f26fb1fdc16f2bd66",
+    "guest-services/guest-services.js": "7406e1e5ae955a1740a705c76cea4dd11c7b9922e3d51cfa93a0ff97ffb78f6e",
+    "guest-services/index.html": "c1d2be8c49d4221a2626315b59b4ce9ce5fd5f2569f2762ccd7107ee345d02c5",
     "guest-services/service-source.js": "e0da9d9065eea4864558446730954129ccefb495b97c4c7070b8e4a6a6803b3e",
     "guest-services/share.js": "a207ab25177d5b69bb1e8a4cc37bc0755c9a2157b7024561d3c15b2652c4323b",
     "js/dining-cards.js": "c395708cd357ec9ed6ae881efd60f12d3f9dd3751a3ff7006699bf178f7e8906",
@@ -2310,8 +2310,9 @@
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
     "services-guide/guide-orders.js": "054ff6944cf99c8cd403e1eef3deeeffa458242b90044aed124f07709172fc05",
     "services-guide/guide-orders.css": "4566ed2d645963bb1345ff2ebfc7f87d6687afe586ce4ba548706aa848b14730",
-    "guest-services/independent-orders.js": "a4e57531bbb44add3a3bfabb15ddc09763707f92774e5b2b777f4365094431a3",
-    "site/orders/portal-surface.js": "d1cca9f204ae528d4cabee3342294b48a2f4f9745045a343c55293a7bc495e52"
+    "guest-services/independent-orders.js": "fcfcf89eb2b7f4229cd3b0399fac86cbcc207580d3cab4a9363e873a9aa1a638",
+    "site/orders/portal-surface.js": "d1cca9f204ae528d4cabee3342294b48a2f4f9745045a343c55293a7bc495e52",
+    "js/guest-order-message.js": "6809fa5d0bae74ce1e59dc4bfb62731ff06c0a8cbcc0b76cb48b1d7cfeed79a3"
   },
   "preservedCompatibility": [
     "preview redirects",
@@ -3197,5 +3198,18 @@
       "/guest-services/water/",
       "/guest-services/games/"
     ]
+  },
+  "approvedMainGuestParity": {
+    "date": "2026-11-27",
+    "version": "20261127-main-guest-v114",
+    "rollbackTag": "pre-main-guest-parity-20261127",
+    "reason": "Owner approves completing main resort guest-service parity with the standalone portal: service-specific request labels and follow-up, exactly matching WhatsApp messages/recipients using one shared resort formatter, native extras entry and own-interface sharing, matching card/preview descriptions, static main games photo. Preserve main restaurant inline ordering, native design, independent requests, standalone design, all catalogue prices and chalet message/controller behavior. Keep forget-on-exit privacy.",
+    "updatedProtectedFiles": [
+      "guest-services/guest-services.js",
+      "guest-services/independent-orders.js",
+      "guest-services/index.html"
+    ],
+    "newSharedFormatter": "js/guest-order-message.js",
+    "newNativeRoute": "/services/extras/"
   }
 }

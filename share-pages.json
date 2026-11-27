@@ -136,7 +136,7 @@
     "route": "maiya",
     "path": "/services/water-games/",
     "title": "الألعاب المائية | منتجع يوم العائلة",
-    "description": "تعرّف على الألعاب المائية",
+    "description": "استمتع بألعاب مائية للكبار والأطفال",
     "entry": true
   },
   {
@@ -150,7 +150,7 @@
     "route": "tarfihi",
     "path": "/services/games/",
     "title": "الألعاب الترفيهية | منتجع يوم العائلة",
-    "description": "تعرّف على الألعاب الترفيهية",
+    "description": "استمتع بوقتك مع ألعابنا الترفيهية",
     "entry": true
   },
   {
@@ -185,7 +185,7 @@
     "route": "menu",
     "path": "/menu/",
     "title": "المطعم | منتجع يوم العائلة",
-    "description": "تصفح قائمة الطعام والمشروبات",
+    "description": "تصفّح قائمة الطعام والمشروبات",
     "entry": true
   },
   {

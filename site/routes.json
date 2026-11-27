@@ -1,5 +1,5 @@
 {
-  "version": "20261127-live-v110",
+  "version": "20261127-main-guest-v114",
   "routes": [
     "/",
     "/arrangements/",
@@ -59,6 +59,7 @@
     "/services/coordination/package-resort/",
     "/services/coordination/package-vip/",
     "/services/dining-tables/",
+    "/services/extras/",
     "/services/games/",
     "/services/hospitality/packages/",
     "/services/loyalty/",
@@ -127,6 +128,7 @@
     "/services/cinema/",
     "/services/coordination/",
     "/services/dining-tables/",
+    "/services/extras/",
     "/services/games/",
     "/services/hospitality/packages/",
     "/services/loyalty/",
@@ -181,7 +183,7 @@
     "water": "/guest-services/water/",
     "games": "/guest-services/games/"
   },
-  "previewRedirectCount": 80,
+  "previewRedirectCount": 81,
   "unitCount": 16,
   "rollbackTag": "pre-live-cutover-20261125"
 }

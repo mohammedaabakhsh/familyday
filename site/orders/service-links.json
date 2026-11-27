@@ -32,6 +32,8 @@
       "path": "/services/games/",
       "title": "الألعاب الترفيهية",
       "intro": "استمتع بوقتك مع ألعابنا الترفيهية",
+      "cardIntro": "بوكس ألعاب أو طاولة مع البوكس",
+      "orderLabel": "اطلب الألعاب الترفيهية",
       "image": "/site/media/service-c6afc21e9234.webp",
       "originalImage": "/imgs/tarfihi_1.webp?v=20261110-natural-photos-v1",
       "size": [
@@ -44,6 +46,8 @@
       "path": "/services/water-games/",
       "title": "الألعاب المائية",
       "intro": "استمتع بألعاب مائية للكبار والأطفال",
+      "cardIntro": "ألعاب مائية للكبار والأطفال",
+      "orderLabel": "اطلب الألعاب المائية",
       "portalSharePath": "/guest-services/water/"
     },
     "cinema": {
@@ -71,6 +75,8 @@
       "path": "/services/hospitality/packages/",
       "title": "الضيافة",
       "intro": "اختر باقة الضيافة المناسبة لك",
+      "cardIntro": "اختر باقة الضيافة المناسبة لك",
+      "orderLabel": "اطلب الضيافة",
       "portalSharePath": "/guest-services/hospitality/"
     },
     "coordination": {
@@ -114,9 +120,11 @@
       "portalSharePath": "/services-guide/seating/"
     },
     "extras": {
-      "path": "/guest-services/#extras",
+      "path": "/services/extras/",
       "title": "طلبات إضافية",
       "intro": "مستلزمات تحتاجها أثناء الإقامة",
+      "cardIntro": "مستلزمات تحتاجها أثناء الإقامة",
+      "orderLabel": "اطلب هذه المستلزمات",
       "portalSharePath": "/guest-services/extras/"
     }
   }

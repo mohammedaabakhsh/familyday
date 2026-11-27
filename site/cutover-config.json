@@ -1,5 +1,5 @@
 {
-  "version": "20261127-live-v110",
+  "version": "20261127-main-guest-v114",
   "rootRoutes": [
     "/",
     "/arrangements/",
@@ -59,6 +59,7 @@
     "/services/coordination/package-resort/",
     "/services/coordination/package-vip/",
     "/services/dining-tables/",
+    "/services/extras/",
     "/services/games/",
     "/services/hospitality/packages/",
     "/services/loyalty/",
@@ -147,6 +148,7 @@
     "/preview/services/coordination/package-resort/",
     "/preview/services/coordination/package-vip/",
     "/preview/services/dining-tables/",
+    "/preview/services/extras/",
     "/preview/services/games/",
     "/preview/services/hospitality/packages/",
     "/preview/services/loyalty/",

@@ -72,7 +72,7 @@ with sync_playwright() as p:
   for kind in SERVICES:
    raw=c.request.get(BASE+'/guest-services/'+kind+'/').text();preview=Preview();preview.feed(raw);assert preview.meta['og:title']==TITLE[kind]+' | منتجع يوم العائلة';assert 'منتجع يوم العائلة' not in preview.meta['og:description'];assert not preview.images and 'og:image' not in preview.meta and 'twitter:image' not in preview.meta
   c.close()
- # Main's existing iframe requests deliberately retain the original controller, checkout and wording.
+ # Main retains its own checkout and uses the approved standalone wording.
  c=b.new_context(viewport={'width':390,'height':844},ignore_https_errors=True,reduced_motion='reduce');c.add_init_script("window.opened=[];window.open=u=>{top.opened.push(u);return null}");page=c.new_page();page.on('pageerror',lambda e:errors.append(str(e)))
  for kind,path in [('games','/services/games/'),('hospitality','/services/hospitality/packages/'),('water','/services/water-games/')]:
   page.goto(BASE+path);page.locator('#main [data-service-portal]').click();expect(page.locator('.native-order-loading')).to_be_hidden();frame=page.frame_locator('.native-order-frame');assert frame.locator('#service-request-dialog').count()==0;assert frame.locator('body.guest-independent-orders').count()==0
@@ -80,7 +80,7 @@ with sync_playwright() as p:
   elif kind=='hospitality':frame.locator('.hospitality-quantity [data-step="1"]').first.click()
   else:
    for _ in range(3):frame.locator('[data-water="adults"][data-step="1"]').click()
-  frame.locator('#guest-name').fill('فحص الرئيسي');frame.locator('#guest-cabin').select_option('بيت الدوم 1');frame.locator('.resort-direct-send').click();expect(page.locator('#native-order-dialog')).to_be_hidden();u=page.evaluate('opened.at(-1)');assert urlparse(u).path=='/966556156693';assert parse_qs(urlparse(u).query)['text'][0].startswith('السلام عليكم، أرغب بطلب الخدمات التالية:')
+  frame.locator('#guest-name').fill('فحص الرئيسي');frame.locator('#guest-cabin').select_option('بيت الدوم 1');frame.locator('.resort-direct-send').click();expect(page.locator('#native-order-dialog')).to_be_hidden();u=page.evaluate('opened.at(-1)');assert urlparse(u).path=='/966556156693';assert parse_qs(urlparse(u).query)['text'][0].startswith('السلام عليكم، أرغب بطلب '+GREETING[kind]+'.')
  c.close()
  c=b.new_context(viewport={'width':390,'height':844},ignore_https_errors=True);c.add_init_script("Object.defineProperty(navigator,'share',{value:undefined});Object.defineProperty(navigator,'clipboard',{value:undefined})");page=c.new_page();page.on('pageerror',lambda e:errors.append(str(e)))
  for kind in SERVICES:

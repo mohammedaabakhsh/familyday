@@ -2,13 +2,7 @@
 (function () {
   'use strict';
   if(document.body.dataset.venue==='chalet'||parent!==window&&new URLSearchParams(location.search).get('embed')==='resort-order')return;
-  const copy={
-    restaurant:{title:'طلب المطعم',orderLabel:'اطلب من المطعم',greeting:'السلام عليكم، أرغب بطلب من المطعم.',followup:'تابع طلبك مع المطعم على واتساب',phone:'966537006531'},
-    hospitality:{title:'طلب الضيافة',orderLabel:'اطلب الضيافة',greeting:'السلام عليكم، أرغب بطلب ضيافة.',followup:'تابع طلب الضيافة مع خدمات المنتجع على واتساب',phone:'966556156693'},
-    extras:{title:'طلب المستلزمات الإضافية',orderLabel:'اطلب هذه المستلزمات',greeting:'السلام عليكم، أرغب بطلب مستلزمات إضافية.',followup:'تابع طلب المستلزمات الإضافية مع خدمات المنتجع على واتساب',phone:'966556156693'},
-    water:{title:'طلب الألعاب المائية',orderLabel:'اطلب الألعاب المائية',greeting:'السلام عليكم، أرغب بطلب ألعاب مائية.',followup:'تابع طلب الألعاب المائية مع خدمات المنتجع على واتساب',phone:'966556156693'},
-    games:{title:'طلب الألعاب الترفيهية',orderLabel:'اطلب الألعاب الترفيهية',greeting:'السلام عليكم، أرغب بطلب ألعاب ترفيهية.',followup:'تابع طلب الألعاب الترفيهية مع خدمات المنتجع على واتساب',phone:'966556156693'}
-  };
+  const copy=window.FD_GUEST_ORDER_MESSAGE.copy;
   let mounted=false;
   function mount(){
     const api=window.FD_GUEST_INDEPENDENT_ORDER;if(mounted||!api)return;mounted=true;
@@ -30,7 +24,6 @@
     function quantity(item){return item.qty||1;}
     function amount(items){return items.reduce((total,item)=>total+item.price,0);}
     function itemName(item){return item.name+(item.details.some(text=>/^إضافة جبنة/.test(text))?' — مع جبنة':'');}
-    function itemLine(item){return itemName(item)+' — الكمية: '+quantity(item)+' — '+item.price+' ريال';}
     function clearMarker(){if(history.state?.guestServiceRequest){const state={...history.state};delete state.guestServiceRequest;history.replaceState(state,'',location.href);}}
     function discard(){order=null;token='';list.replaceChildren();form.reset();number.hidden=true;number.querySelector('output').textContent='';sending=false;send.disabled=false;}
     function close(action){
@@ -56,15 +49,7 @@
       fields.cabin.dispatchEvent(new Event('change'));
       api.pause();token=String(Date.now())+'-'+Math.random().toString(36).slice(2);history.pushState({...history.state,guestServiceRequest:token},'',location.href);dialog.showModal();dialog.querySelector('.dialog-body').scrollTop=0;dialog.querySelector('h2').focus({preventScroll:true});
     }
-    function message(){
-      const parts=[copy[order.service].greeting,'','الاسم: '+fields.name.value.trim(),'اسم الكوخ: '+fields.cabin.value,'رقم الكوخ: '+api.cabins[fields.cabin.value],''];
-      const item=order.items[0];
-      if(order.service==='restaurant')parts.push('الطلب:',...order.items.map(itemLine),'');
-      else if(order.service==='water')parts.push('الباقة: '+item.name,'الكمية: '+quantity(item),'ألعاب للكبار: '+order.water.adults,'ألعاب للأطفال: '+order.water.children);
-      else if(order.items.length===1)parts.push((order.service==='extras'?'الصنف: ':'الباقة: ')+item.name,'الكمية: '+quantity(item));
-      else parts.push(order.service==='extras'?'الأصناف:':'الباقات:',...order.items.map(itemLine),'');
-      parts.push('إجمالي الطلب: '+amount(order.items)+' ريال');if(fields.notes.value.trim())parts.push('','ملاحظات: '+fields.notes.value.trim());return parts.join('\n');
-    }
+    function message(){return window.FD_GUEST_ORDER_MESSAGE.build(order,{name:fields.name.value,cabin:fields.cabin.value,number:api.cabins[fields.cabin.value],notes:fields.notes.value});}
     selection.addEventListener('click',event=>{
       if(!event.target.closest('#apply-selection')||document.getElementById('apply-selection').disabled)return;
       event.preventDefault();event.stopImmediatePropagation();open();

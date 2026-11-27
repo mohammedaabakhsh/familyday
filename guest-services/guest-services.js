@@ -343,7 +343,9 @@
     if(!lines.length || (!restaurant && incompleteWater()) || !target.reportValidity()) return;
     if(!state.name.trim() || (!isChalet && !Object.prototype.hasOwnProperty.call(cabins,state.cabin))) return;
     var message;
-    if(restaurant){
+    if(directService){
+      message=window.FD_GUEST_ORDER_MESSAGE.build({service:directService,items:lines,water:directService==='water'?waterSelection(state):null},{name:state.name,cabin:state.cabin,number:cabins[state.cabin],notes:restaurant?state.restaurantNotes:state.notes});
+    } else if(restaurant){
       message=catalog.menuMessage.build(catalog.menu,function(key){
         var item=state.menu[key];
         return item ? {qty:item.qty,cheeseQty:item.cheese ? item.qty : 0} : null;
@@ -364,7 +366,7 @@
     }
 
     // Prepare a draft only. Opening WhatsApp does not send or confirm the order.
-    window.open('https://wa.me/'+(restaurant ? '966537006531' : '966556156693')+'?text='+encodeURIComponent(message),'_blank','noopener,noreferrer');
+    window.open('https://wa.me/'+(directService ? window.FD_GUEST_ORDER_MESSAGE.copy[directService].phone : restaurant ? '966537006531' : '966556156693')+'?text='+encodeURIComponent(message),'_blank','noopener,noreferrer');
     resetOrderDetails();
     return true;
   }
@@ -544,7 +546,12 @@
     };
     document.dispatchEvent(new Event('fd:guest-requests-ready'));
   }
+  if(directService){
+    var directForm=document.getElementById(directService==='restaurant'?'restaurant-order':'extras-order');
+    directForm.querySelector('.confirmation-note').textContent=window.FD_GUEST_ORDER_MESSAGE.copy[directService].followup;
+  }
   if(directService) window.FD_RESORT_DIRECT_ORDER={
+    getTitle:function(){return window.FD_GUEST_ORDER_MESSAGE.copy[directService].title;},
     formId:directService==='restaurant' ? 'restaurant-order' : 'extras-order',
     canSubmit:function(){
       if(activeService!==directService || !draft) return false;

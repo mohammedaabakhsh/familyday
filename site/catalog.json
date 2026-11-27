@@ -4485,6 +4485,14 @@
       "intro": "اختم 3 حجوزات… والرابع علينا",
       "icon": "card",
       "copy": "مزايا البطاقة"
+    },
+    {
+      "id": "extras",
+      "name": "طلبات إضافية",
+      "group": "أثناء الإقامة",
+      "path": "/services/extras/",
+      "intro": "مستلزمات تحتاجها أثناء الإقامة",
+      "icon": "services"
     }
   ],
   "venues": {
@@ -4629,7 +4637,8 @@
         "seating",
         "competition",
         "video",
-        "loyalty"
+        "loyalty",
+        "extras"
       ]
     },
     "stay": {

@@ -41,7 +41,7 @@ COPY=json.loads((SITE/'guide-copy.json').read_text())
 RUNTIME=json.loads((SITE/'runtime-config.json').read_text())
 order_links={}
 for service in CATALOG['services']:
- if service['id'] not in ['menu','water','games','cinema','hospitality','coordination','dining','seating']:continue
+ if service['id'] not in ['menu','water','games','cinema','hospitality','coordination','dining','seating','extras']:continue
  key='restaurant' if service['id']=='menu' else service['id']
  data=SERVICES['guest'].get(key,{})
  image=service.get('image')
@@ -56,7 +56,6 @@ for service in CATALOG['services']:
 for key,path in CONFIG.get('portalShareSections',{}).items():
  assert path=='/services-guide/'+key+'/' and key in order_links
  order_links[key]['portalSharePath']=path
-order_links['extras']={'path':'/guest-services/#extras','title':'طلبات إضافية','intro':'مستلزمات تحتاجها أثناء الإقامة'}
 for key,path in CONFIG.get('guestPortalShareSections',{}).items():
  assert path=='/guest-services/'+key+'/' and key in order_links
  order_links[key]['portalSharePath']=path

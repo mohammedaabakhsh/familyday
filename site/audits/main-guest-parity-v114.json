@@ -1,0 +1,112 @@
+{
+  "version": "20261127-main-guest-v114",
+  "checks": [
+    {
+      "width": 390,
+      "service": "restaurant",
+      "advanced": false,
+      "exactDraftAndRecipientParity": true,
+      "ownInterfaceShare": true
+    },
+    {
+      "width": 390,
+      "service": "hospitality",
+      "advanced": false,
+      "exactDraftAndRecipientParity": true,
+      "ownInterfaceShare": true
+    },
+    {
+      "width": 390,
+      "service": "extras",
+      "advanced": false,
+      "exactDraftAndRecipientParity": true,
+      "ownInterfaceShare": true
+    },
+    {
+      "width": 390,
+      "service": "water",
+      "advanced": false,
+      "exactDraftAndRecipientParity": true,
+      "ownInterfaceShare": true
+    },
+    {
+      "width": 390,
+      "service": "games",
+      "advanced": false,
+      "exactDraftAndRecipientParity": true,
+      "ownInterfaceShare": true
+    },
+    {
+      "width": 390,
+      "service": "restaurant",
+      "advanced": true,
+      "exactDraftAndRecipientParity": true,
+      "ownInterfaceShare": true
+    },
+    {
+      "width": 390,
+      "service": "hospitality",
+      "advanced": true,
+      "exactDraftAndRecipientParity": true,
+      "ownInterfaceShare": true
+    },
+    {
+      "width": 390,
+      "service": "extras",
+      "advanced": true,
+      "exactDraftAndRecipientParity": true,
+      "ownInterfaceShare": true
+    },
+    {
+      "width": 390,
+      "service": "water",
+      "advanced": true,
+      "exactDraftAndRecipientParity": true,
+      "ownInterfaceShare": true
+    },
+    {
+      "width": 390,
+      "service": "games",
+      "advanced": true,
+      "exactDraftAndRecipientParity": true,
+      "ownInterfaceShare": true
+    },
+    {
+      "width": 320,
+      "service": "restaurant",
+      "advanced": false,
+      "exactDraftAndRecipientParity": true,
+      "ownInterfaceShare": true
+    },
+    {
+      "width": 320,
+      "service": "hospitality",
+      "advanced": false,
+      "exactDraftAndRecipientParity": true,
+      "ownInterfaceShare": true
+    },
+    {
+      "width": 320,
+      "service": "extras",
+      "advanced": false,
+      "exactDraftAndRecipientParity": true,
+      "ownInterfaceShare": true
+    },
+    {
+      "width": 320,
+      "service": "water",
+      "advanced": false,
+      "exactDraftAndRecipientParity": true,
+      "ownInterfaceShare": true
+    },
+    {
+      "width": 320,
+      "service": "games",
+      "advanced": false,
+      "exactDraftAndRecipientParity": true,
+      "ownInterfaceShare": true
+    }
+  ],
+  "errors": [],
+  "messagesSent": false
+}
