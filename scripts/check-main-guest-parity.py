@@ -27,7 +27,7 @@ def choose(p,kind,advanced=False,main=False):
   inc(p,'[data-extra="robe"] [data-step="1"]')
   if advanced:inc(p,'[data-extra="bath"] [data-step="1"]',2)
  elif kind=='water':
-  if advanced:inc(p,'[data-water-packages][data-step="1"]')
+  inc(p,'[data-water-packages][data-step="1"]',2 if advanced else 1)
   inc(p,'[data-water="adults"][data-step="1"]',4 if advanced else 2);inc(p,'[data-water="children"][data-step="1"]',2 if advanced else 1)
  else:p.locator('[name="games-package"][value="'+('table' if advanced else 'box')+'"]').check()
 def fill(p,prefix):

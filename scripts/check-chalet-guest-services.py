@@ -24,7 +24,7 @@ def choose(p,key):
  if key=='games':
   expect(p.locator('[name="games-package"]')).to_have_count(1);expect(p.locator('[name="games-package"]')).to_have_attribute('value','box');p.locator('[name="games-package"]').check()
  else:
-  inc(p,'[data-water-packages][data-step="1"]');inc(p,'[data-water="adults"][data-step="1"]',4);inc(p,'[data-water="children"][data-step="1"]',2)
+  inc(p,'[data-water-packages][data-step="1"]',2);inc(p,'[data-water="adults"][data-step="1"]',4);inc(p,'[data-water="children"][data-step="1"]',2)
 def fill(p,prefix):p.locator('#'+prefix+'-name').fill('ضيف الشاليه');p.locator('#'+prefix+'-notes').fill('ملاحظة الشاليه')
 def identity(p,prefix):expect(p.locator('#'+prefix+'-name')).to_have_value('ضيف الشاليه');expect(p.locator('#'+prefix+'-notes')).to_have_value('ملاحظة الشاليه')
 def draft(page):

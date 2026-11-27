@@ -226,12 +226,12 @@
         details:item.cheese ? ['إضافة جبنة × '+item.qty+' = '+(item.qty*product.cheesePrice)+' ريال'] : []};
     });
   }
-  function waterSelection(data) {return (data || state).water || {adults:0,children:0,packages:1};}
-  function incompleteWater(data) {var water=(data || state).water;return !!water && water.adults+water.children!==catalog.water.size*(water.packages || 1);}
+  function waterSelection(data) {return (data || state).water || {adults:0,children:0,packages:0};}
+  function incompleteWater(data) {var water=(data || state).water;return !!water && water.packages>0 && water.adults+water.children!==catalog.water.size*(water.packages || 0);}
   function resortLines(data) {
     data=data || state;
     var lines=[];
-    if(data.water) lines.push({id:'water',group:'water',name:catalog.water.name,qty:data.water.packages || 1,price:incompleteWater(data) ? 0 : catalog.water.price*(data.water.packages || 1),
+    if(data.water && data.water.packages>0) lines.push({id:'water',group:'water',name:catalog.water.name,qty:data.water.packages || 0,price:incompleteWater(data) ? 0 : catalog.water.price*(data.water.packages || 0),
       pending:incompleteWater(data),details:['للكبار: '+data.water.adults,'للأطفال: '+data.water.children]});
     if(data.games){var pack=catalog.games.packages[data.games];lines.push({id:'games',group:'games',name:pack.name,price:pack.price,details:[]});}
     catalog.hospitality.packages.forEach(function(pack){
@@ -306,13 +306,13 @@
     updateCard('restaurant',lines);
   }
   function renderServiceControls() {
-    var data=selection(),water=waterSelection(data), total=water.adults+water.children,required=catalog.water.size*(water.packages || 1);
-    document.getElementById('water-packages-count').textContent=String(water.packages || 1);
-    document.getElementById('water-offer').textContent=((water.packages || 1)===1?'باقة ':'إجمالي الباقات: ')+required+' ألعاب بـ'+catalog.water.price*(water.packages || 1)+' ريال';
-    document.querySelectorAll('[data-water-packages]').forEach(function(button){button.disabled=Number(button.dataset.step)<0 ? (water.packages || 1)<=1 : (water.packages || 1)>=20;});
+    var data=selection(),water=waterSelection(data), total=water.adults+water.children,required=catalog.water.size*(water.packages || 0);
+    document.getElementById('water-packages-count').textContent=String(water.packages || 0);
+    document.getElementById('water-offer').textContent=water.packages>1?'إجمالي الباقات: '+required+' ألعاب بـ'+catalog.water.price*water.packages+' ريال':'باقة '+catalog.water.size+' ألعاب بـ'+catalog.water.price+' ريال';
+    document.querySelectorAll('[data-water-packages]').forEach(function(button){button.disabled=Number(button.dataset.step)<0 ? (water.packages || 0)<=0 : (water.packages || 0)>=20;});
     ['adults','children'].forEach(function(key){setCounter(document.getElementById('water-'+key).parentNode,water[key],water[key]+required-total);});
-    document.getElementById('water-service').classList.toggle('is-complete',total===required);
-    document.getElementById('water-count').textContent=total===required ? '✓ اكتمل اختيار الألعاب' : 'اخترت '+total+' من '+required;
+    document.getElementById('water-service').classList.toggle('is-complete',water.packages>0&&total===required);
+    document.getElementById('water-count').textContent=!water.packages ? 'اختر عدد الباقات أولًا' : total===required ? '✓ اكتمل اختيار الألعاب' : 'اخترت '+total+' من '+required;
     document.querySelectorAll('[name="games-package"]').forEach(function(input){
       input.checked=input.value===data.games;
       input.closest('label').classList.toggle('is-selected',!!data.games && input.checked);
@@ -338,7 +338,7 @@
     document.getElementById('resort-summary').hidden=!lines.length;
     form.querySelector('.send-order').disabled=!lines.length || incompleteWater();
     var warning=document.getElementById('order-warning');warning.hidden=!incompleteWater();
-    warning.textContent=incompleteWater() ? 'أكمل اختيار '+catalog.water.size*(waterSelection().packages || 1)+' ألعاب مائية أو احذف الباقة قبل متابعة الطلب.' : '';
+    warning.textContent=incompleteWater() ? 'أكمل اختيار '+catalog.water.size*(waterSelection().packages || 0)+' ألعاب مائية أو احذف الباقة قبل متابعة الطلب.' : '';
     ['water','games','hospitality','extras'].forEach(function(key){updateCard(key,lines.filter(function(line){return line.group===key;}));});
   }
   function submit(event, restaurant) {
@@ -406,7 +406,7 @@
     var pending=lines.some(function(line){return line.pending;});
     // Show the selected water-package price immediately, but commit only complete distributions.
     document.querySelector('.dialog-total>span').textContent=activeService==='water'?'إجمالي الباقات':'إجمالي الاختيار';
-    document.getElementById('dialog-total').textContent=String(activeService==='water' ? catalog.water.price*(waterSelection(draft).packages || 1) : sum(lines));
+    document.getElementById('dialog-total').textContent=String(activeService==='water' ? catalog.water.price*(waterSelection(draft).packages || 0) : sum(lines));
     applyButton.disabled=pending || (!lines.length && !previous.length);
     applyButton.textContent=previous.length ? (lines.length ? 'حفظ التعديل' : 'حذف من الطلب') : 'إضافة للطلب';
     if(independentActive){applyButton.textContent=independentCopy[activeService].orderLabel;applyButton.disabled=pending||!lines.length;}
@@ -414,7 +414,7 @@
       renderSummary(document.getElementById(directService==='restaurant'?'restaurant-items':'order-items'),lines,removeLine);
     }
     var status=document.getElementById('dialog-status');
-    status.textContent=pending ? 'أكمل اختيار '+catalog.water.size*(waterSelection(draft).packages || 1)+' ألعاب لإضافة الباقة.' : '';
+    status.textContent=pending ? 'أكمل اختيار '+catalog.water.size*(waterSelection(draft).packages || 0)+' ألعاب لإضافة الباقة.' : '';
   }
   function openEditor(key){
     if(dialog.open) return;
@@ -521,17 +521,17 @@
   document.querySelectorAll('.customer-fields').forEach(customerFields);
   document.querySelectorAll('[data-water]').forEach(function(button){button.addEventListener('click',function(){
     var data=selection(),water=waterSelection(data),key=button.dataset.water,step=Number(button.dataset.step),total=water.adults+water.children;
-    if(step===1 && total<catalog.water.size*(water.packages || 1) || step===-1 && water[key]>0) water[key]+=step;
+    if(step===1 && total<catalog.water.size*(water.packages || 0) || step===-1 && water[key]>0) water[key]+=step;
     data.water=water;
     renderEditor();
   });});
   document.querySelectorAll('[data-water-packages]').forEach(function(button){button.addEventListener('click',function(){
-    var data=selection(),water=waterSelection(data),next=Math.max(1,Math.min(20,(water.packages || 1)+Number(button.dataset.step)));
+    var data=selection(),water=waterSelection(data),next=Math.max(0,Math.min(20,(water.packages || 0)+Number(button.dataset.step)));
     if(next===water.packages)return;
     water.packages=next;
     var max=catalog.water.size*next,total=water.adults+water.children;
     if(total>max){water.adults=0;water.children=0;}
-    data.water=water;renderEditor();
+    data.water=next?water:null;renderEditor();
   });});
   document.querySelectorAll('[name="games-package"]').forEach(function(input){input.addEventListener('change',function(){selection().games=input.value;renderEditor();});});
   extras.forEach(function(item){item.row.querySelectorAll('[data-step]').forEach(function(button){button.addEventListener('click',function(){

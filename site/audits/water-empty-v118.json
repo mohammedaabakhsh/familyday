@@ -1,0 +1,115 @@
+{
+  "version": "20261127-water-empty-v118",
+  "cases": [
+    {
+      "width": 390,
+      "height": 844,
+      "venue": "resort",
+      "surface": "main",
+      "initialEmptyNoPhantomInvoice": true,
+      "zeroAfterDecrementDeletionAndSend": true,
+      "exactOneAndTwoPackageDrafts": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "venue": "resort",
+      "surface": "source",
+      "initialEmptyNoPhantomInvoice": true,
+      "zeroAfterDecrementDeletionAndSend": true,
+      "exactOneAndTwoPackageDrafts": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "venue": "chalet",
+      "surface": "main",
+      "initialEmptyNoPhantomInvoice": true,
+      "zeroAfterDecrementDeletionAndSend": true,
+      "exactOneAndTwoPackageDrafts": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "venue": "chalet",
+      "surface": "source",
+      "initialEmptyNoPhantomInvoice": true,
+      "zeroAfterDecrementDeletionAndSend": true,
+      "exactOneAndTwoPackageDrafts": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "venue": "resort",
+      "surface": "main",
+      "initialEmptyNoPhantomInvoice": true,
+      "zeroAfterDecrementDeletionAndSend": true,
+      "exactOneAndTwoPackageDrafts": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "venue": "resort",
+      "surface": "source",
+      "initialEmptyNoPhantomInvoice": true,
+      "zeroAfterDecrementDeletionAndSend": true,
+      "exactOneAndTwoPackageDrafts": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "venue": "chalet",
+      "surface": "main",
+      "initialEmptyNoPhantomInvoice": true,
+      "zeroAfterDecrementDeletionAndSend": true,
+      "exactOneAndTwoPackageDrafts": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "venue": "chalet",
+      "surface": "source",
+      "initialEmptyNoPhantomInvoice": true,
+      "zeroAfterDecrementDeletionAndSend": true,
+      "exactOneAndTwoPackageDrafts": true
+    },
+    {
+      "width": 390,
+      "height": 430,
+      "venue": "resort",
+      "surface": "main",
+      "initialEmptyNoPhantomInvoice": true,
+      "zeroAfterDecrementDeletionAndSend": true,
+      "exactOneAndTwoPackageDrafts": true
+    },
+    {
+      "width": 390,
+      "height": 430,
+      "venue": "resort",
+      "surface": "source",
+      "initialEmptyNoPhantomInvoice": true,
+      "zeroAfterDecrementDeletionAndSend": true,
+      "exactOneAndTwoPackageDrafts": true
+    },
+    {
+      "width": 390,
+      "height": 430,
+      "venue": "chalet",
+      "surface": "main",
+      "initialEmptyNoPhantomInvoice": true,
+      "zeroAfterDecrementDeletionAndSend": true,
+      "exactOneAndTwoPackageDrafts": true
+    },
+    {
+      "width": 390,
+      "height": 430,
+      "venue": "chalet",
+      "surface": "source",
+      "initialEmptyNoPhantomInvoice": true,
+      "zeroAfterDecrementDeletionAndSend": true,
+      "exactOneAndTwoPackageDrafts": true
+    }
+  ],
+  "errors": [],
+  "messagesSent": false
+}

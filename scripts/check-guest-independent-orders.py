@@ -26,7 +26,7 @@ def choose(page,kind):
  elif kind=='hospitality':increment(page,'.hospitality-quantity [data-step="1"]')
  elif kind=='extras':increment(page,'[data-extra="robe"] [data-step="1"]')
  elif kind=='water':
-  increment(page,'[data-water="adults"][data-step="1"]',2);expect(page.locator('#apply-selection')).to_be_disabled();increment(page,'[data-water="children"][data-step="1"]')
+  increment(page,'[data-water-packages][data-step="1"]');increment(page,'[data-water="adults"][data-step="1"]',2);expect(page.locator('#apply-selection')).to_be_disabled();increment(page,'[data-water="children"][data-step="1"]')
  else:page.locator('[name="games-package"][value="box"]').check()
 def invoice(page):
  page.locator('#apply-selection').click();expect(page.locator('#service-request-dialog')).to_be_visible();expect(page.locator('#service-dialog')).to_be_hidden();expect(page.locator('#orders-summary')).to_be_hidden();assert page.locator('#service-request-dialog [data-share],#service-request-dialog .resort-service-share').count()==0
@@ -61,7 +61,7 @@ with sync_playwright() as p:
    # Multiple packages/items and options retain their own prices and exact quantities.
    choose(page,'hospitality');increment(page,'.hospitality-quantity [data-step="1"]');increment(page,'.hospitality-package:nth-child(2) .hospitality-quantity [data-step="1"]');invoice(page);expect(page.locator('#service-request-total')).to_have_text('193');fill(page);_,text=draft(page);assert 'الضيافة السعودية — الكمية: 2 — 118 ريال' in text and 'ضيافة الاسترخاء — الكمية: 1 — 75 ريال' in text
    choose(page,'extras');increment(page,'[data-extra="bath"] [data-step="1"]',2);invoice(page);expect(page.locator('#service-request-total')).to_have_text('50');fill(page);_,text=draft(page);assert 'الأصناف:' in text and 'مجموعة مستلزمات الاستحمام — الكمية: 2 — 30 ريال' in text
-   page.locator('#water-card').click();increment(page,'[data-water-packages][data-step="1"]');increment(page,'[data-water="adults"][data-step="1"]',4);increment(page,'[data-water="children"][data-step="1"]',2);invoice(page);expect(page.locator('#service-request-total')).to_have_text('100');fill(page);_,text=draft(page);assert 'الكمية: 2\nألعاب للكبار: 4\nألعاب للأطفال: 2' in text
+   page.locator('#water-card').click();increment(page,'[data-water-packages][data-step="1"]',2);increment(page,'[data-water="adults"][data-step="1"]',4);increment(page,'[data-water="children"][data-step="1"]',2);invoice(page);expect(page.locator('#service-request-total')).to_have_text('100');fill(page);_,text=draft(page);assert 'الكمية: 2\nألعاب للكبار: 4\nألعاب للأطفال: 2' in text
    page.locator('#restaurant-card').click();page.locator('[data-category="ساندويتشات"]>summary').click();increment(page,'[data-menu-name="ساندويتش دجاج زنجر"] [data-step="1"]',2);page.locator('[data-menu-name="ساندويتش دجاج زنجر"] input[type="checkbox"]').check();page.locator('[data-category="بوكسات الشواء"]>summary').click();box=page.locator('[data-menu-name="بوكس الشواء مع الفحم"]');box.locator('select').select_option('بوكس الشواء مع الفحم — دجاج');box.locator('[data-step="1"]').click();invoice(page);expect(page.locator('#service-request-total')).to_have_text('144');fill(page);_,text=draft(page);assert 'ساندويتش دجاج زنجر — مع جبنة — الكمية: 2 — 24 ريال' in text and 'بوكس الشواء مع الفحم — دجاج — الكمية: 1 — 120 ريال' in text
   # Actual crawler HTML must identify each service without images or duplicated venue in description.
   for kind in SERVICES:
@@ -74,6 +74,7 @@ with sync_playwright() as p:
   if kind=='games':frame.locator('[name="games-package"][value="box"]').check()
   elif kind=='hospitality':frame.locator('.hospitality-quantity [data-step="1"]').first.click()
   else:
+   frame.locator('[data-water-packages][data-step="1"]').click()
    for _ in range(3):frame.locator('[data-water="adults"][data-step="1"]').click()
   frame.locator('#guest-name').fill('فحص الرئيسي');frame.locator('#guest-cabin').select_option('بيت الدوم 1');frame.locator('.resort-direct-send').click();expect(page.locator('#native-order-dialog')).to_be_hidden();u=page.evaluate('opened.at(-1)');assert urlparse(u).path=='/966556156693';assert parse_qs(urlparse(u).query)['text'][0].startswith('السلام عليكم، أرغب بطلب '+GREETING[kind]+'.')
  c.close()

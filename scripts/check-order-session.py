@@ -18,7 +18,7 @@ def choices(p,kind):
   p.locator('[data-category="ساندويتشات"]>summary').click();inc(p,'[data-menu-name="ساندويتش دجاج زنجر"] [data-step="1"]',2);p.locator('[data-category="مشروبات باردة"]>summary').click();inc(p,'[data-menu-name="بيبسي"] [data-step="1"]')
  elif kind=='hospitality':inc(p,'.hospitality-quantity [data-step="1"]',2);inc(p,'.hospitality-package:nth-child(2) .hospitality-quantity [data-step="1"]')
  elif kind=='extras':inc(p,'[data-extra="robe"] [data-step="1"]');inc(p,'[data-extra="bath"] [data-step="1"]',2)
- elif kind=='water':inc(p,'[data-water="adults"][data-step="1"]',2);inc(p,'[data-water="children"][data-step="1"]')
+ elif kind=='water':inc(p,'[data-water-packages][data-step="1"]');inc(p,'[data-water="adults"][data-step="1"]',2);inc(p,'[data-water="children"][data-step="1"]')
  elif kind=='games':p.locator('[name="games-package"][value="table"]').check()
  elif kind=='cinema':p.locator('#cinema-time').select_option('18')
  elif kind in ['coordination','seating']:
