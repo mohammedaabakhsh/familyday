@@ -46,6 +46,7 @@ async def main():
   async def visit(path):
    await page.goto(BASE+path)
    if '/services-guide/' in page.url:await page.locator('#guide-content.is-ready').wait_for(state='attached')
+   elif '/stay/guest-services/' in page.url:await page.locator('body.stay-services-ready').wait_for()
    elif '/guest-services/' in page.url:await page.locator('#games-card:not([disabled])').wait_for()
    else:await page.locator('#main h1').wait_for(state='attached')
   for path in routes['routes']:

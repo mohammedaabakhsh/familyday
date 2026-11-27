@@ -1,0 +1,31 @@
+{
+  "version": "20261127-stay-services-v122",
+  "profiles": [
+    {
+      "width": 390,
+      "height": 844,
+      "matchingMessages": true,
+      "deletionAndVisitPrivacy": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "matchingMessages": true,
+      "deletionAndVisitPrivacy": true
+    },
+    {
+      "width": 390,
+      "height": 430,
+      "matchingMessages": true,
+      "deletionAndVisitPrivacy": true
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "matchingMessages": true,
+      "deletionAndVisitPrivacy": true
+    }
+  ],
+  "messagesSent": false,
+  "errors": []
+}

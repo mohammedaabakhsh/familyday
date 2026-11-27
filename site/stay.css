@@ -58,6 +58,11 @@ body.stay-scope:not(.focused-view) #main{padding-top:calc(64px + env(safe-area-i
 .stay-scope .stay-slide-guide .package-image img{width:100%;height:auto;max-height:none;aspect-ratio:auto;object-fit:contain;display:block}
 .stay-scope .stay-slide-guide .fact-boxes .icon{width:22px;height:22px}
 .stay-scope .stay-slide-guide .fact-box{gap:8px}
+.stay-scope .stay-slide-guide .service-guide-link{margin-top:24px}
+.stay-service-help{margin:28px auto 0;padding-top:22px;border-top:1px solid var(--line);text-align:center}
+.stay-service-help h2{font-size:18px;margin:0 0 6px}
+.stay-service-help p{font-size:13px;line-height:1.8;color:var(--muted);margin:0 0 16px}
+.stay-service-help-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 @media(min-width:1000px){.stay-scope .stay-catalog-panel .catalog-heading h1{font-size:22px}.stay-compare .resort-comparison-table{font-size:14px}.stay-compare .resort-comparison-table th:first-child{font-size:14px}.stay-compare .resort-comparison-table thead strong{font-size:17px}}
 
 .stay-scope .stay-card-floor{display:block;font-size:12px;line-height:1.7;font-weight:400;color:var(--muted);margin-top:3px}

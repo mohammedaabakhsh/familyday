@@ -36,6 +36,8 @@ for service in CATALOG['services']:
     package.update(name=source['name'],description=source['description'],items=source['contents'],note=source['note']);package['price']=re.sub(r'\d+(?:\.\d+)?',str(source['price']),package['price'],count=1)
 (SITE/'catalog.json').write_text(json.dumps(CATALOG,ensure_ascii=False,indent=2)+'\n')
 COPY=json.loads((SITE/'guide-copy.json').read_text())
+COPY['stayService']=SERVICES['stay']['slide']
+(SITE/'guide-copy.json').write_text(json.dumps(COPY,ensure_ascii=False,indent=2)+'\n')
 
 # A generated index of existing public service links and photo references; no second price catalogue.
 RUNTIME=json.loads((SITE/'runtime-config.json').read_text())
@@ -127,6 +129,7 @@ for name,target in [('directory','/services/'),('index','/services/'),('guest','
 # Crawler-readable section previews: no images, icons or stylesheet candidates.
 share_sections=[(key,path,'/guest-services/' if key in CONFIG.get('guestPortalShareSections',{}) else '/services-guide/','منتجع يوم العائلة',order_links[key]) for key,path in {**CONFIG.get('portalShareSections',{}),**CONFIG.get('guestPortalShareSections',{})}.items()]
 share_sections += [(key,path,'/chalet/guest-services/','شاليه يوم العائلة',chalet_links[key]) for key,path in CONFIG.get('chaletPortalShareSections',{}).items()]
+share_sections += [(key,path,'/stay/guest-services/','استراحة يوم العائلة',{'title':SERVICES['stay']['slide']['name'],'intro':SERVICES['stay']['slide']['description']}) for key,path in CONFIG.get('stayPortalShareSections',{}).items()]
 for key,path,portal_base,brand,info in share_sections:
  title=html.escape(info['title']+' | '+brand,quote=True);description=html.escape(info.get('shareDescription',info['intro']),quote=True);url='https://familydaystay.com'+path
  page=f'''<!doctype html>
@@ -144,7 +147,7 @@ for key,path,portal_base,brand,info in share_sections:
 </head><body><h1>{html.escape(info['title'])}</h1><p>{description}</p><a href="{portal_base}#{key}">فتح {html.escape(info['title'])}</a></body></html>
 '''
  write(ROOT/path.lstrip('/')/'index.html',page)
-manifest={'version':VERSION,'routes':CONFIG['rootRoutes'],'nativeRoutes':native,'redirectRoutes':REDIRECTS,'protectedPortals':sorted(PORTALS),'portalShareSections':CONFIG.get('portalShareSections',{}),'guestPortalShareSections':CONFIG.get('guestPortalShareSections',{}),'chaletPortalShareSections':CONFIG.get('chaletPortalShareSections',{}),'previewRedirectCount':len(CONFIG['rootRoutes']),'unitCount':len(CATALOG['units']),'rollbackTag':CONFIG['rollbackTag']}
+manifest={'version':VERSION,'routes':CONFIG['rootRoutes'],'nativeRoutes':native,'redirectRoutes':REDIRECTS,'protectedPortals':sorted(PORTALS),'portalShareSections':CONFIG.get('portalShareSections',{}),'guestPortalShareSections':CONFIG.get('guestPortalShareSections',{}),'chaletPortalShareSections':CONFIG.get('chaletPortalShareSections',{}),'stayPortalShareSections':CONFIG.get('stayPortalShareSections',{}),'previewRedirectCount':len(CONFIG['rootRoutes']),'unitCount':len(CATALOG['units']),'rollbackTag':CONFIG['rollbackTag']}
 (SITE/'routes.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
 # Same original sitemap destinations, with the additional approved guide pages.
 urls=sorted(set(CONFIG['rootRoutes'])-set(REDIRECTS))

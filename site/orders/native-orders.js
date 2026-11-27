@@ -1,5 +1,6 @@
 /* Independent requests remain in memory during internal navigation and are cleared on exit. */
-export function createResortOrders({version,services,share}){
+export function createResortOrders({version,services,share,stayService}){
+ if(stayService)services=[...services,{...stayService,path:'/stay/services/'}];
  let context=null,active=null,item=null,trigger=null,savedY=0;
  const dialog=document.createElement('dialog');dialog.id='native-order-dialog';dialog.className='native-order-dialog';dialog.setAttribute('aria-labelledby','native-order-title');
  dialog.innerHTML='<header class="native-order-header"><h2 id="native-order-title"></h2><button type="button" class="native-order-close" aria-label="إغلاق الطلب">×</button></header><div class="native-order-body"><p class="native-order-loading" role="status">جاري تحميل الطلب…</p><section class="native-order-error" hidden><p>تعذر تحميل الطلب. حاول مرة أخرى.</p><button type="button" class="native-order-retry">إعادة المحاولة</button><button type="button" class="native-order-external">فتح صفحة الطلب</button></section></div>';
@@ -8,7 +9,7 @@ export function createResortOrders({version,services,share}){
  if(history.state?.fdResortOrder){const state={...history.state};delete state.fdResortOrder;history.replaceState(state,'',location.href);}
  const requests=new Map();
  const keyFor=descriptor=>[descriptor.kind,descriptor.service,descriptor.entry].join(':');
- const fallback=kind=>kind==='chalet'?'/chalet/guest-services/':kind==='guest'?'/guest-services/':'/services-guide/';
+ const fallback=kind=>kind==='stay'?'/stay/guest-services/':kind==='chalet'?'/chalet/guest-services/':kind==='guest'?'/guest-services/':'/services-guide/';
  function command(data){item?.iframe.contentWindow.postMessage({type:'familyday-resort-order-command',...data},location.origin);}
  function dispose(){if(!item)return;clearTimeout(item.timer);item.iframe.remove();item=null;}
  let diningSelection=null;
@@ -68,9 +69,9 @@ export function createResortOrders({version,services,share}){
    }
   }
   const link=event.target.closest('[data-service-portal]');
-  if(!link||link.disabled||!['resort','chalet'].includes(context?.venue)||event.defaultPrevented||event.button!==0||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey||dialog.contains(link))return;
+  if(!link||link.disabled||!['resort','chalet','stay'].includes(context?.venue)||event.defaultPrevented||event.button!==0||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey||dialog.contains(link))return;
   const target=new URL(link.href||link.dataset.serviceUrl,location.origin);if(target.origin!==location.origin&&target.origin!=='https://familydaystay.com')return;
-  const kind=['/arrangements/','/services-guide/'].includes(target.pathname)?'arrangements':target.pathname==='/guest-services/'?'guest':target.pathname==='/chalet/guest-services/'?'chalet':null;if(!kind)return;
+  const kind=['/arrangements/','/services-guide/'].includes(target.pathname)?'arrangements':target.pathname==='/guest-services/'?'guest':target.pathname==='/chalet/guest-services/'?'chalet':target.pathname==='/stay/guest-services/'?'stay':null;if(!kind)return;
   const selected=services.find(s=>s.path===context.path||context.venue==='chalet'&&['water','games'].includes(s.id)&&context.path==='/chalet/services/'+(s.id==='water'?'water-games':'games')+'/'),service=link.dataset.resortService||(selected?.id==='menu'?'restaurant':selected?.id);
   if(!service)return;
   const record=selected||services.find(s=>(s.id==='menu'?'restaurant':s.id)===service);

@@ -1,5 +1,11 @@
 # Family Day published guide
 
+The fourth standalone service portal is `/stay/guest-services/` (v122). Its single
+inflatable slide costs 450 riyals and is available in the second section, upper
+floor. Native ordering remains at `/stay/services/`. See
+[`stay-independent-service-v122.md`](../docs/stay-independent-service-v122.md)
+for the shared catalogue, request behavior and validation.
+
 The canonical implementation is under `site/`; generated public HTML stays at the original paths such as `/cabins/dome-1/`, `/services/cinema/` and `/stay/`. The domain and distributed QR destinations are unchanged. `/preview/` now contains compatibility redirects, not another application or photo tree.
 
 ## Editing and building

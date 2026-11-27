@@ -1,5 +1,5 @@
 {
-  "version": "20261127-water-empty-v118",
+  "version": "20261127-stay-services-v122",
   "routes": [
     "/",
     "/arrangements/",
@@ -81,7 +81,8 @@
     "/stay/order/",
     "/stay/sections/",
     "/stay/services/",
-    "/stay/upper-floor/"
+    "/stay/upper-floor/",
+    "/stay/guest-services/"
   ],
   "nativeRoutes": [
     "/",
@@ -168,7 +169,8 @@
     "/arrangements/",
     "/chalet/guest-services/",
     "/guest-services/",
-    "/services-guide/"
+    "/services-guide/",
+    "/stay/guest-services/"
   ],
   "portalShareSections": {
     "coordination": "/services-guide/coordination/",
@@ -187,7 +189,10 @@
     "water": "/chalet/guest-services/water/",
     "games": "/chalet/guest-services/games/"
   },
-  "previewRedirectCount": 81,
+  "stayPortalShareSections": {
+    "slide": "/stay/guest-services/slide/"
+  },
+  "previewRedirectCount": 82,
   "unitCount": 16,
   "rollbackTag": "pre-live-cutover-20261125"
 }

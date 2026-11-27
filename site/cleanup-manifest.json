@@ -2291,7 +2291,7 @@
     "css/desktop-layout.css": "229a412b9f610bc2e885c19d755a217e67081725eeb247a12a565bcd6b7de9dd",
     "css/dining-cards.css": "2e495ae12b2014ea0e14330afe839b602e38f86a81d9194004b3e6caa43e9dfb",
     "css/tajawal.css": "63e1c01678f45bb83983243a5b67716d42b710a8ac01e150e2af0972476ec14f",
-    "data/services.json": "8904201ec0ef1e658373cd0613239faeb6da9f8af4d1b6b29b0703bb22267b7c",
+    "data/services.json": "8795635c538c03bdafc4f738d83e6f9e9e10b9cf385d72793336dfdde73b26e6",
     "guest-services/README.md": "1ad3a3d1df387c6f92547d236015ff1c975e01b67890162dfa0d0e750b23ec7a",
     "guest-services/guest-services.css": "207545d3740a44c6e0ab8ded3731b255151478ecf82109d0344cdb5dc7e61a36",
     "guest-services/guest-services.js": "ca8c4f7c7a7dbf4f78af8f7864407bc0bfa09a64f77d21dc22df814dd89d2b93",
@@ -2316,7 +2316,10 @@
     "js/order-visit.js": "8b61c4cdb00062b4c255f9b9a29d3d1dde951eb6c3b3e69fdfd3a0f3584ea662",
     "css/order-invoices.css": "eab51e8128cd9b108ee4fd857dc799ba64380b33728d00cee03e6edf4c1f75cb",
     "css/portal-home.css": "47eb2f9ff7e4f5e6dbddcbfd92f3034b87def7219746b73da6960edb94e60747",
-    "site/brand/logo-booking-original.png": "70377cf2ab318605ee6c2286c51c83310808e2e4c9b0bd8eec70429792872b94"
+    "site/brand/logo-booking-original.png": "70377cf2ab318605ee6c2286c51c83310808e2e4c9b0bd8eec70429792872b94",
+    "stay/guest-services/index.html": "e65d0a9eb18c30172e9b9513a11551283b469bdc4dd39f8d75e071b0f6b98d23",
+    "stay/guest-services/stay-services.js": "631295cb1904d811e030661b7bb6856ed91a8ceb55f743ead63fe111ce3d2751",
+    "stay/guest-services/stay-services.css": "07ddd018a17f370750c793336e11d15ebdf31b441c28c453ab0c762831faea0a"
   },
   "preservedCompatibility": [
     "preview redirects",
@@ -3305,5 +3308,20 @@
       "chalet/guest-services/index.html",
       "css/portal-home.css"
     ]
+  },
+  "approvedStayIndependentService": {
+    "date": "2026-11-27",
+    "version": "20261127-stay-services-v122",
+    "rollbackTag": "pre-stay-independent-service-20261127",
+    "reason": "Owner approves arranging the existing single rest-house service on the native website, adding a fourth standalone portal using the approved header/footer and independent-request design, and setting the inflatable slide price to450riyals. Source-backed location is القسم الثاني – الدور العلوي. Use general resort-services recipient966556156693, one independent invoice with deletion/name/optional notes, matched messages across both interfaces and own-interface sharing. Preserve all resort/chalet service catalogues, messages and order behavior, static main service photo and established internal-retention/actual-exit reset policy.",
+    "updatedProtectedFiles": [
+      "data/services.json",
+      "stay/guest-services/index.html",
+      "stay/guest-services/stay-services.js",
+      "stay/guest-services/stay-services.css"
+    ],
+    "newPortal": "/stay/guest-services/",
+    "newShareEntry": "/stay/guest-services/slide/",
+    "nativeRoute": "/stay/services/"
   }
 }

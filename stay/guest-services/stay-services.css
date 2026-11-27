@@ -1,0 +1,34 @@
+/* One stay service, using the same portal header, help and invoice components. */
+body[data-venue="stay"]{background:#edf9fb}
+body[data-venue="stay"] .page{display:flex;flex-direction:column;min-height:100dvh;background:#edf9fb}
+body[data-venue="stay"] .main{background:#fff}
+body[data-venue="stay"] .service-dialog{--section-bg:#edf2fc;--section-line:#ccd9f1;--section-ink:#42658d;--order-accent:#168c99}
+body[data-venue="stay"] .service-tiles{grid-template-columns:1fr}
+body[data-venue="stay"] #slide-card{--section-line:#ccd9f1;--section-bg:#edf2fc;--section-ink:#42658d;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;min-height:104px;grid-column:1/-1}
+body[data-venue="stay"] .page-ending{display:flex;flex-direction:column;flex:1}
+body[data-venue="stay"] .footer{display:flex;flex-direction:column;flex:1;padding-bottom:max(28px,env(safe-area-inset-bottom))}
+body.portal-home-unified[data-venue="stay"] .footer-social{margin-top:auto;padding-top:28px}
+.stay-slide-photo{margin:0 0 18px}
+.stay-slide-photo img{display:block;width:100%;height:auto;border-radius:14px}
+.stay-facts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stay-facts>div{padding:14px 10px;border:1px solid var(--line);border-radius:14px;text-align:center}
+.stay-facts span{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+.stay-facts strong{font-size:16px;line-height:1.6}
+.service-request-dialog .dialog-header>h2,.dialog-header>h2{flex:1;min-width:0}
+#stay-order .customer-fields{display:grid;gap:10px}
+#stay-order .customer-fields label:not(:first-child){margin-top:12px}
+#stay-order .customer-fields label span{font-size:12px;color:var(--muted)}
+#stay-invoice{list-style:none;margin:0;padding:0}
+#stay-invoice li{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-bottom:18px}
+#stay-invoice .request-invoice-copy{min-width:0}
+#stay-invoice .request-invoice-copy strong{display:block;font-size:15px}
+#stay-invoice .request-invoice-copy span{display:block;margin-top:5px;font-size:12px;color:var(--muted)}
+.service-request-dialog .confirmation-note{margin-top:8px}
+.resort-order-embedded #stay-request-dialog .dialog-body{padding-bottom:20px}
+body.resort-order-embedded #stay-request-dialog{--section-bg:#0b2531;--section-line:#35535f;--section-ink:#83d2d4;--order-accent:#168c99}
+body.resort-order-embedded #stay-request-dialog .dialog-footer{background:#102e3b;border-color:#35535f}
+body.resort-order-embedded #stay-followup{color:#a4bbc3}
+body.resort-order-embedded #send-stay:disabled{opacity:.45}
+body.resort-order-embedded #stay-invoice .remove-item{color:#f0c2bd}
+.resort-order-embedded #stay-invoice .request-invoice-copy span{color:var(--muted)}
+@media(max-width:359px){body[data-venue="stay"] #slide-card{grid-template-columns:auto minmax(0,1fr)}body[data-venue="stay"] #slide-card .tile-action{grid-column:2}}
