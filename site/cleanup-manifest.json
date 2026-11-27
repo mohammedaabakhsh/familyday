@@ -2294,8 +2294,8 @@
     "data/services.json": "8904201ec0ef1e658373cd0613239faeb6da9f8af4d1b6b29b0703bb22267b7c",
     "guest-services/README.md": "1ad3a3d1df387c6f92547d236015ff1c975e01b67890162dfa0d0e750b23ec7a",
     "guest-services/guest-services.css": "207545d3740a44c6e0ab8ded3731b255151478ecf82109d0344cdb5dc7e61a36",
-    "guest-services/guest-services.js": "c07fdd6b347f5e93c2434b899164e266dec0a36cbf20583a422464b2cd7ff668",
-    "guest-services/index.html": "93c9b59222edb8fa3303536a27f035a0131cb4b7db23f0bfc8beca1441efaca0",
+    "guest-services/guest-services.js": "6084bbb06f02022fe1027e21618fe5e86b6b54793fe2139e4deee73e6569e7ca",
+    "guest-services/index.html": "fbc8b972f0e3760f02b539022a04e0293e8eb7c71177739f26fb1fdc16f2bd66",
     "guest-services/service-source.js": "e0da9d9065eea4864558446730954129ccefb495b97c4c7070b8e4a6a6803b3e",
     "guest-services/share.js": "a207ab25177d5b69bb1e8a4cc37bc0755c9a2157b7024561d3c15b2652c4323b",
     "js/dining-cards.js": "c395708cd357ec9ed6ae881efd60f12d3f9dd3751a3ff7006699bf178f7e8906",
@@ -2306,10 +2306,12 @@
     "services-guide/guide.js": "dacd6112365b3a83f167907305c2ca79c627683dffb65832d63881b27e5fd560",
     "services-guide/index.html": "295f4f276ea0ce4b711728c3220deea8a2029bad2ac8438b0a4822cb94bf7d25",
     "services-guide/share-entry.js": "72de1a301e0da0de127f52b55714dab77b23548b1125915272e33bf4b1fc09a8",
-    "guest-services/resort-refinements.css": "86767dab7a8046a03594948cd206054d90b81e79f1ae2de4d1d4bcb829c79e22",
+    "guest-services/resort-refinements.css": "9622d57c4ea5d9a30bbb9bcc3d93c6a3645375f73a0243b2cf8564a6efebf285",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
     "services-guide/guide-orders.js": "054ff6944cf99c8cd403e1eef3deeeffa458242b90044aed124f07709172fc05",
-    "services-guide/guide-orders.css": "4566ed2d645963bb1345ff2ebfc7f87d6687afe586ce4ba548706aa848b14730"
+    "services-guide/guide-orders.css": "4566ed2d645963bb1345ff2ebfc7f87d6687afe586ce4ba548706aa848b14730",
+    "guest-services/independent-orders.js": "a4e57531bbb44add3a3bfabb15ddc09763707f92774e5b2b777f4365094431a3",
+    "site/orders/portal-surface.js": "d1cca9f204ae528d4cabee3342294b48a2f4f9745045a343c55293a7bc495e52"
   },
   "preservedCompatibility": [
     "preview redirects",
@@ -3175,6 +3177,25 @@
       "services-guide/guide.css",
       "services-guide/guide.js",
       "services-guide/index.html"
+    ]
+  },
+  "approvedStandaloneGuestInvoices": {
+    "date": "2026-11-27",
+    "version": "20261127-guest-independent-v113",
+    "rollbackTag": "pre-standalone-guest-invoices-20261127",
+    "reason": "Owner approves standalone guest-services selection to independent invoice to sending each service separately with five reviewed WhatsApp formats and service-specific follow-up, preserving existing design. Main/native and chalet remain unchanged pending later review. Add service-only crawler-readable own-interface share URLs, brand in preview title only and plain service descriptions, preserve legacy hashes. Preserve restaurant number537006531 and other guest services556156693, catalogue prices/options and global forget-on-exit policy.",
+    "updatedProtectedFiles": [
+      "guest-services/guest-services.js",
+      "guest-services/independent-orders.js",
+      "guest-services/index.html",
+      "guest-services/resort-refinements.css",
+      "site/orders/portal-surface.js"
+    ],
+    "newShareEntries": [
+      "/guest-services/hospitality/",
+      "/guest-services/extras/",
+      "/guest-services/water/",
+      "/guest-services/games/"
     ]
   }
 }

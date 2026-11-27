@@ -42,8 +42,8 @@ with sync_playwright() as p:
  page.goto(BASE+'/services/coordination/');page.locator('.header [data-share]').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+'/services/coordination/'};page.locator('.service-guide-packages>.package summary').first.click();page.locator('[data-service-portal]').first.click();expect(page.locator('.native-order-loading')).to_be_hidden();assert page.locator('.native-order-share').count()==0;assert page.locator('.native-order-header button').count()==1;page.locator('.native-order-close').click();expect(page.locator('#native-order-dialog')).to_be_hidden()
  # The other resort portal has the same own-interface rule.
  page.goto(BASE+'/guest-services/');page.locator('#water-card:not([disabled])').wait_for();page.locator('#share-page').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+'/guest-services/'}
- for key in ['water','games','hospitality','restaurant']:
-  page.locator('#'+key+'-card').click();share=page.locator('#service-dialog .resort-service-share');expect(share).to_be_enabled();share.click();expected=BASE+('/guest-services/restaurant/' if key=='restaurant' else '/guest-services/#'+key);assert page.evaluate('shares.at(-1)')=={'text':expected}
+ for key in ['water','games','hospitality','restaurant','extras']:
+  page.locator('#'+key+'-card').click();share=page.locator('#service-dialog .resort-service-share');expect(share).to_be_enabled();share.click();expected=BASE+'/guest-services/'+key+'/';assert page.evaluate('shares.at(-1)')=={'text':expected}
   receiver.goto(expected);receiver.locator('#water-card:not([disabled])').wait_for();expect(receiver.locator('#service-dialog')).to_be_visible();expect(receiver.locator('#service-dialog')).to_have_attribute('data-tone',key)
   page.locator('#service-dialog .dialog-close').click();expect(page.locator('#service-dialog')).to_be_hidden();out['guestServices'].append(key)
  # The chalet portal already shares its own public URL; leave its design and controller alone.

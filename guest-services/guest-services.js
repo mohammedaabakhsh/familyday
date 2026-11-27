@@ -1,4 +1,4 @@
-/* In-stay ordering: one resort basket and a separate restaurant order.
+/* In-stay ordering; standalone resort services have independent invoices.
    Service copy/prices come from the main site; extras use their visible HTML rows.
    Customer details and selections stay in memory for this visit only. */
 (async function () {
@@ -16,6 +16,8 @@
   var gameOptions = isChalet ? ['box'] : ['box','table'];
   var directService=!isChalet && parent!==window && new URLSearchParams(location.search).get('embed')==='resort-order' ? new URLSearchParams(location.search).get('direct') : '';
   if(['restaurant','hospitality','water','games','extras'].indexOf(directService)===-1) directService='';
+  var independentRequests=!isChalet && !(parent!==window && new URLSearchParams(location.search).get('embed')==='resort-order');
+  var independentActive=false,independentCopy=null;
   var homeTitle=document.title;
   var homeMetadata=Array.from(document.querySelectorAll('meta[name="description"],meta[property="og:title"],meta[property="og:description"],meta[property="og:url"],meta[name="twitter:title"],meta[name="twitter:description"],link[rel="canonical"]')).map(function(node){return {node:node,value:node.getAttribute(node.tagName==='LINK'?'href':'content')};});
   function restaurantLocation(open){
@@ -28,6 +30,18 @@
       var node=item.node,attr=node.tagName==='LINK'?'href':'content',key=node.getAttribute('property')||node.getAttribute('name');
       var value=!open?item.value:attr==='href'||key==='og:url'?new URL('/guest-services/restaurant/',location.origin).href:key==='og:title'||key==='twitter:title'?document.title:document.querySelector('#restaurant-service .section-note').textContent;
       node.setAttribute(attr,value);
+    });
+  }
+  function serviceLocation(key){
+    if(!independentRequests){restaurantLocation(key==='restaurant');return;}
+    var path=key?'/guest-services/'+key+'/':'/guest-services/';
+    var destination=new URL(location.href);destination.pathname=path;destination.hash='';history.replaceState(history.state,'',destination.href);
+    var title=key?document.getElementById(key+'-title').textContent+' | منتجع يوم العائلة':homeTitle;
+    document.title=title;
+    var description=key?document.querySelector('#'+key+'-service>.section-note').textContent:'';
+    homeMetadata.forEach(function(item){
+      var node=item.node,attr=node.tagName==='LINK'?'href':'content',name=node.getAttribute('property')||node.getAttribute('name');
+      node.setAttribute(attr,!key?item.value:attr==='href'||name==='og:url'?new URL(path,location.origin).href:name==='og:title'||name==='twitter:title'?title:description);
     });
   }
   var cabins;
@@ -302,6 +316,7 @@
     document.getElementById('games-status').textContent=data.games ? 'تم اختيار الباقة' : '';
   }
   function updateShortcut() {
+    if(independentActive){orderSummary.hidden=true;shortcut.hidden=true;document.body.classList.remove('has-order-shortcut');return;}
     var hasOrders=!!(resortLines().length || menuLines().length);
     orderSummary.hidden=!hasOrders;
     var rect=orderSummary.getBoundingClientRect(),visible=rect.top<innerHeight-110 && rect.bottom>60;
@@ -388,12 +403,13 @@
     document.getElementById('dialog-total').textContent=String(activeService==='water' ? catalog.water.price*(waterSelection(draft).packages || 1) : sum(lines));
     applyButton.disabled=pending || (!lines.length && !previous.length);
     applyButton.textContent=previous.length ? (lines.length ? 'حفظ التعديل' : 'حذف من الطلب') : 'إضافة للطلب';
+    if(independentActive)applyButton.textContent=independentCopy[activeService].orderLabel;
     var status=document.getElementById('dialog-status');
     status.textContent=pending ? 'أكمل اختيار '+catalog.water.size*(waterSelection(draft).packages || 1)+' ألعاب لإضافة الباقة.' : '';
   }
   function openEditor(key){
     if(dialog.open) return;
-    restaurantLocation(key==='restaurant');
+    serviceLocation(key);
     activeService=key;draft=JSON.parse(JSON.stringify(state));
     if(key==='water' && !draft.water) draft.water=waterSelection(draft);
     dialogTrigger=document.getElementById(key+'-card');
@@ -408,9 +424,10 @@
     updateShortcut();
   }
   function closeEditor({commit=false}={}){
-    restaurantLocation(false);
+    serviceLocation('');
     dialog.close();draft=null;activeService='';document.body.classList.remove('dialog-open');
     if(!commit)resetOrderDetails();
+    if(independentActive)document.dispatchEvent(new Event('fd:guest-selection-closed'));
     if(dialogTrigger) dialogTrigger.focus({preventScroll:true});
     updateShortcut();
   }
@@ -439,13 +456,18 @@
     });
     function openLinkedService(){
       if(redirectCinema())return;
-      var key=location.hash.slice(1).replace(/-service$/,'') || (location.pathname.replace(/index\.html$/,'')==='/guest-services/restaurant/'?'restaurant':'');
+      var path=location.pathname.replace(/index\.html$/,''),linked=independentRequests?path.match(/^\/guest-services\/(restaurant|hospitality|extras|water|games)\/?$/):null;
+      var key=location.hash.slice(1).replace(/-service$/,'') || (linked?linked[1]:path==='/guest-services/restaurant/'?'restaurant':'');
       if(document.getElementById(key+'-card')){
         if(dialog.open&&activeService!==key)closeEditor();
         openEditor(key);
       }else if(dialog.open)closeEditor();
     }
-    function navigateLinkedService(){resetOrderDetails();openLinkedService();}
+    function navigateLinkedService(){
+      // The standalone invoice owns its Back/edit transition; do not erase its active selection first.
+      if(independentActive && document.getElementById('service-request-dialog').open)return;
+      resetOrderDetails();openLinkedService();
+    }
     window.addEventListener('hashchange',navigateLinkedService);window.addEventListener('popstate',navigateLinkedService);openLinkedService();
   }
   function hydrateServices() {
@@ -506,6 +528,22 @@
   if(restaurantForm) restaurantForm.addEventListener('submit',function(event){submit(event,true);});
   renderCabins();renderOrders();renderEditor();setupDialogs();
   window.FD_ORDER_PRIVACY.register(resetOrderDetails);
+  if(independentRequests){
+    var selectionScroll=0;
+    window.FD_GUEST_INDEPENDENT_ORDER={
+      cabins:Object.assign({},cabins),
+      activate:function(copy){independentCopy=copy;independentActive=true;document.body.classList.add('guest-independent-orders');renderOrders();renderEditor();},
+      snapshot:function(){
+        if(!activeService || !draft)return null;
+        var items=serviceLines(activeService,draft);if(!items.length || items.some(function(item){return item.pending;}))return null;
+        return JSON.parse(JSON.stringify({service:activeService,title:document.getElementById(activeService+'-title').textContent,items:items,water:activeService==='water'?waterSelection(draft):null}));
+      },
+      pause:function(){selectionScroll=dialog.querySelector('.dialog-body').scrollTop;dialog.close();},
+      resume:function(){renderEditor();document.body.classList.add('dialog-open');dialog.showModal();dialog.querySelector('.dialog-body').scrollTop=selectionScroll;applyButton.focus({preventScroll:true});},
+      finish:function(){closeEditor();}
+    };
+    document.dispatchEvent(new Event('fd:guest-requests-ready'));
+  }
   if(directService) window.FD_RESORT_DIRECT_ORDER={
     formId:directService==='restaurant' ? 'restaurant-order' : 'extras-order',
     canSubmit:function(){

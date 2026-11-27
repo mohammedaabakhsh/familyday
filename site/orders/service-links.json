@@ -37,12 +37,14 @@
       "size": [
         2400,
         2400
-      ]
+      ],
+      "portalSharePath": "/guest-services/games/"
     },
     "water": {
       "path": "/services/water-games/",
       "title": "الألعاب المائية",
-      "intro": "استمتع بألعاب مائية للكبار والأطفال"
+      "intro": "استمتع بألعاب مائية للكبار والأطفال",
+      "portalSharePath": "/guest-services/water/"
     },
     "cinema": {
       "path": "/services/cinema/",
@@ -68,7 +70,8 @@
     "hospitality": {
       "path": "/services/hospitality/packages/",
       "title": "الضيافة",
-      "intro": "اختر باقة الضيافة المناسبة لك"
+      "intro": "اختر باقة الضيافة المناسبة لك",
+      "portalSharePath": "/guest-services/hospitality/"
     },
     "coordination": {
       "path": "/services/coordination/",
@@ -112,7 +115,9 @@
     },
     "extras": {
       "path": "/guest-services/#extras",
-      "title": "طلبات إضافية"
+      "title": "طلبات إضافية",
+      "intro": "مستلزمات تحتاجها أثناء الإقامة",
+      "portalSharePath": "/guest-services/extras/"
     }
   }
 }

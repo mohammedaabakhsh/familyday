@@ -56,10 +56,10 @@ for service in CATALOG['services']:
 for key,path in CONFIG.get('portalShareSections',{}).items():
  assert path=='/services-guide/'+key+'/' and key in order_links
  order_links[key]['portalSharePath']=path
+order_links['extras']={'path':'/guest-services/#extras','title':'طلبات إضافية','intro':'مستلزمات تحتاجها أثناء الإقامة'}
 for key,path in CONFIG.get('guestPortalShareSections',{}).items():
  assert path=='/guest-services/'+key+'/' and key in order_links
  order_links[key]['portalSharePath']=path
-order_links['extras']={'path':'/guest-services/#extras','title':'طلبات إضافية'}
 (SITE/'orders/service-links.json').write_text(json.dumps({'services':order_links},ensure_ascii=False,indent=2)+'\n')
 
 SHARES=json.loads((SITE/'share-metadata.json').read_text())

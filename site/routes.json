@@ -175,7 +175,11 @@
     "cinema": "/services-guide/cinema/"
   },
   "guestPortalShareSections": {
-    "restaurant": "/guest-services/restaurant/"
+    "restaurant": "/guest-services/restaurant/",
+    "hospitality": "/guest-services/hospitality/",
+    "extras": "/guest-services/extras/",
+    "water": "/guest-services/water/",
+    "games": "/guest-services/games/"
   },
   "previewRedirectCount": 80,
   "unitCount": 16,

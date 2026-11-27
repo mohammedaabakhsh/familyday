@@ -28,7 +28,7 @@
       const status=document.getElementById('share-status');status.textContent='تم نسخ الرابط';status.classList.add('visible');setTimeout(()=>status.classList.remove('visible'),3000);
     }catch(error){
       if(error.name==='AbortError')return;
-      if(guest)document.querySelector('#share-dialog h2').textContent=path===metadata?.services?.restaurant?.portalSharePath?'رابط المطعم':'رابط خدمات إقامتك';
+      if(guest){const service=Object.values(metadata?.services||{}).find(item=>item.portalSharePath===path);document.querySelector('#share-dialog h2').textContent=service?'رابط '+service.title:'رابط خدمات إقامتك';}
       const field=document.getElementById('share-link');field.value=url;document.getElementById('share-dialog').showModal();field.select();
     }
   }
@@ -43,7 +43,7 @@
     const button=guest&&event.target.closest('#share-page');if(!button)return;
     event.preventDefault();event.stopImmediatePropagation();share('/guest-services/');
   },true);
-  function updateShare(){shareButton.disabled=!sharePath();}
+  function updateShare(){shareButton.disabled=!sharePath();if(guest&&!embedded){const title=metadata?.services?.[serviceKey()]?.title;shareButton.title='مشاركة '+(title||'الخدمة');shareButton.setAttribute('aria-label',shareButton.title);}}
   function photo(service,panel){
     if(!service.image||panel.querySelector('.resort-service-photo'))return;
     const figure=document.createElement('figure');figure.className='resort-service-photo';

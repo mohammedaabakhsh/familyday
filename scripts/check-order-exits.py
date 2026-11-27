@@ -70,8 +70,8 @@ with sync_playwright() as p:
    sourceRequest();fill(page,'arrangement');page.locator('.arrangement-request [data-close-request]').click();expect(page.locator('.arrangement-request')).to_be_hidden()
    if kind=='dining':expect(page.locator('[data-dining-request]')).to_be_disabled()
    sourceRequest();blank(page,'arrangement');fill(page,'arrangement');page.go_back();expect(page.locator('.arrangement-request')).to_be_hidden();sourceRequest();blank(page,'arrangement');fill(page,'arrangement');background(page);expect(page.locator('.arrangement-request')).to_be_hidden();sourceRequest();blank(page,'arrangement')
-  # Guest/chalet explicit apply advances to checkout; cancellation is an exit, not a saved draft.
-  for path in ['/guest-services/','/chalet/guest-services/']:
+  # Chalet retains its original apply-to-checkout flow; cancellation still discards the draft.
+  for path in ['/chalet/guest-services/']:
    page.goto(BASE+path);page.locator('#games-card:not([disabled])').wait_for()
    def game():page.locator('#games-card').click();page.locator('[name="games-package"][value="box"]').check();page.locator('#apply-selection').click()
    game();expect(page.locator('#orders-summary')).to_be_visible();fill(page,'guest');page.locator('#water-card').click();
@@ -79,12 +79,15 @@ with sync_playwright() as p:
    page.locator('#apply-selection').click();expect(page.locator('#order-total')).to_have_text('100');page.locator('#games-card').click();page.locator('.dialog-cancel').click();expect(page.locator('#orders-summary')).to_be_hidden();blank(page,'guest')
    page.locator('#games-card').click();assert page.locator('[name="games-package"]:checked').count()==0;page.keyboard.press('Escape');game();fill(page,'guest');page.locator('#extras-order .send-order').click();expect(page.locator('#orders-summary')).to_be_hidden();blank(page,'guest');assert urlparse(page.evaluate('opened.at(-1)')).path=='/966556156693'
    game();fill(page,'guest');page.evaluate("location.hash='games'");expect(page.locator('#service-dialog')).to_be_visible();assert page.locator('[name="games-package"]:checked').count()==0;blank(page,'guest');page.locator('.dialog-close').click();game();fill(page,'guest');page.goto(BASE+'/');page.go_back();page.locator('#games-card:not([disabled])').wait_for();expect(page.locator('#orders-summary')).to_be_hidden();blank(page,'guest')
-  # Source restaurant checkout is cleared after edit-cancel, draft preparation and leaving the page.
-  page.goto(BASE+'/guest-services/');page.locator('#restaurant-card:not([disabled])').wait_for()
+  # Standalone guest services now advance to their own invoice, never the home summary.
+  page.goto(BASE+'/guest-services/');page.locator('body.guest-independent-orders').wait_for()
+  def sourceGame():
+   page.locator('#games-card').click();page.locator('[name="games-package"][value="box"]').check();page.locator('#apply-selection').click();expect(page.locator('#service-request-dialog')).to_be_visible()
+  sourceGame();fill(page,'service-request');page.go_back();expect(page.locator('#service-request-dialog')).to_be_hidden();blank(page,'service-request');sourceGame();fill(page,'service-request');background(page);expect(page.locator('#service-request-dialog')).to_be_hidden();sourceGame();blank(page,'service-request');fill(page,'service-request');page.locator('#service-request-dialog .send-order').click();expect(page.locator('#service-request-dialog')).to_be_hidden();expect(page.locator('#orders-summary')).to_be_hidden();blank(page,'service-request');assert urlparse(page.evaluate('opened.at(-1)')).path=='/966556156693'
   def sourceMeal():
-   page.locator('#restaurant-card').click();page.locator('[data-category="ساندويتشات"] summary').click();page.locator('[data-menu-name="ساندويتش دجاج زنجر"] [data-step="1"]').click();page.locator('[data-category="مشروبات باردة"] summary').click();expect(page.locator('#dialog-total')).to_have_text('11');page.locator('#apply-selection').click();fill(page,'restaurant')
-  sourceMeal();page.locator('#restaurant-card').click();page.locator('.dialog-close').click();expect(page.locator('#restaurant-summary')).to_be_hidden();blank(page,'restaurant');sourceMeal();page.locator('#restaurant-order .send-order').click();expect(page.locator('#restaurant-summary')).to_be_hidden();blank(page,'restaurant');assert urlparse(page.evaluate('opened.at(-1)')).path=='/966537006531'
-  sourceMeal();page.reload();page.locator('#restaurant-card:not([disabled])').wait_for();expect(page.locator('#restaurant-summary')).to_be_hidden();blank(page,'restaurant')
+   page.locator('#restaurant-card').click();page.locator('[data-category="ساندويتشات"] summary').click();page.locator('[data-menu-name="ساندويتش دجاج زنجر"] [data-step="1"]').click();page.locator('[data-category="مشروبات باردة"] summary').click();expect(page.locator('#dialog-total')).to_have_text('11');page.locator('#apply-selection').click();fill(page,'service-request')
+  sourceMeal();page.locator('#service-request-dialog .dialog-close').click();expect(page.locator('#service-request-dialog')).to_be_hidden();blank(page,'service-request');sourceMeal();page.locator('#service-request-dialog .send-order').click();expect(page.locator('#service-request-dialog')).to_be_hidden();blank(page,'service-request');assert urlparse(page.evaluate('opened.at(-1)')).path=='/966537006531'
+  sourceMeal();page.reload();page.locator('body.guest-independent-orders').wait_for();expect(page.locator('#service-request-dialog')).to_be_hidden();blank(page,'service-request')
   out['profiles'].append({'width':width,'height':height,'mainServiceCancelBackAndReturn':True,'diningChoiceCleared':True,'forwardCannotReviveClosedOrder':True,'restaurantGroupAndRouteExitCleared':True,'categoryBrowsingPreserved':True,'guestAndChaletCancelCleared':True,'applyToCheckoutPreserved':True,'submittedDraftCleared':True,'standaloneArrangementExitsCleared':True});c.close();print(width,height,'PASS',flush=True)
  b.close()
 assert not out['errors'],out['errors'];report=Path('/tmp/order-exits-v101-live.json') if BASE.startswith('https:') else R/'site/audits/order-exits-v101.json';report.write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False))

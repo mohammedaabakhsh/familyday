@@ -1,0 +1,145 @@
+{
+  "version": "20261127-guest-independent-v113",
+  "cases": [
+    {
+      "width": 390,
+      "height": 844,
+      "service": "restaurant",
+      "exactApprovedDraft": true,
+      "oneIndependentInvoice": true,
+      "correctOwnURLAndPreview": true,
+      "clearsAfterDraft": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "service": "hospitality",
+      "exactApprovedDraft": true,
+      "oneIndependentInvoice": true,
+      "correctOwnURLAndPreview": true,
+      "clearsAfterDraft": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "service": "extras",
+      "exactApprovedDraft": true,
+      "oneIndependentInvoice": true,
+      "correctOwnURLAndPreview": true,
+      "clearsAfterDraft": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "service": "water",
+      "exactApprovedDraft": true,
+      "oneIndependentInvoice": true,
+      "correctOwnURLAndPreview": true,
+      "clearsAfterDraft": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "service": "games",
+      "exactApprovedDraft": true,
+      "oneIndependentInvoice": true,
+      "correctOwnURLAndPreview": true,
+      "clearsAfterDraft": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "service": "restaurant",
+      "exactApprovedDraft": true,
+      "oneIndependentInvoice": true,
+      "correctOwnURLAndPreview": true,
+      "clearsAfterDraft": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "service": "hospitality",
+      "exactApprovedDraft": true,
+      "oneIndependentInvoice": true,
+      "correctOwnURLAndPreview": true,
+      "clearsAfterDraft": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "service": "extras",
+      "exactApprovedDraft": true,
+      "oneIndependentInvoice": true,
+      "correctOwnURLAndPreview": true,
+      "clearsAfterDraft": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "service": "water",
+      "exactApprovedDraft": true,
+      "oneIndependentInvoice": true,
+      "correctOwnURLAndPreview": true,
+      "clearsAfterDraft": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "service": "games",
+      "exactApprovedDraft": true,
+      "oneIndependentInvoice": true,
+      "correctOwnURLAndPreview": true,
+      "clearsAfterDraft": true
+    },
+    {
+      "width": 390,
+      "height": 430,
+      "service": "restaurant",
+      "exactApprovedDraft": true,
+      "oneIndependentInvoice": true,
+      "correctOwnURLAndPreview": true,
+      "clearsAfterDraft": true
+    },
+    {
+      "width": 390,
+      "height": 430,
+      "service": "hospitality",
+      "exactApprovedDraft": true,
+      "oneIndependentInvoice": true,
+      "correctOwnURLAndPreview": true,
+      "clearsAfterDraft": true
+    },
+    {
+      "width": 390,
+      "height": 430,
+      "service": "extras",
+      "exactApprovedDraft": true,
+      "oneIndependentInvoice": true,
+      "correctOwnURLAndPreview": true,
+      "clearsAfterDraft": true
+    },
+    {
+      "width": 390,
+      "height": 430,
+      "service": "water",
+      "exactApprovedDraft": true,
+      "oneIndependentInvoice": true,
+      "correctOwnURLAndPreview": true,
+      "clearsAfterDraft": true
+    },
+    {
+      "width": 390,
+      "height": 430,
+      "service": "games",
+      "exactApprovedDraft": true,
+      "oneIndependentInvoice": true,
+      "correctOwnURLAndPreview": true,
+      "clearsAfterDraft": true
+    }
+  ],
+  "mainNativeUnchanged": true,
+  "multiItemsAndOptions": true,
+  "editAndExitPrivacy": true,
+  "errors": [],
+  "messagesSent": false
+}

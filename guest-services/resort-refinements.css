@@ -45,3 +45,22 @@ body.resort-portal-refinements .hero .logo-frame{width:clamp(150px,42vw,164px)}
  .resort-portal-refinements .service-tiles>.service-tile{grid-template-columns:auto minmax(0,1fr)}
  .resort-portal-refinements .service-tiles>.service-tile .tile-action{grid-column:2}
 }
+
+/* Standalone checkout stays inside the established colored service dialog. */
+.guest-independent-orders .service-request-dialog .order-box{padding:0;border:0;border-radius:0;background:transparent}
+.guest-independent-orders .service-request-dialog .dialog-header h2{font-size:21px}
+.guest-independent-orders .service-request-dialog .request-edit{display:grid;place-items:center;width:44px;height:44px;flex:none;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--ink);font-size:30px;line-height:1}
+.guest-independent-orders .request-invoice{list-style:none;margin:0;padding:0}
+.guest-independent-orders .request-invoice>li{display:flex;justify-content:space-between;align-items:start;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.guest-independent-orders .request-invoice-copy{flex:1;min-width:0}
+.guest-independent-orders .request-invoice-copy strong{display:block;font-size:15px;line-height:1.6;font-weight:700}
+.guest-independent-orders .request-invoice-copy span{display:block;margin-top:4px;font-size:12px;line-height:1.7;color:var(--muted)}
+.guest-independent-orders .request-line-total{flex:none;white-space:nowrap;color:var(--section-ink);font-size:14px;font-weight:700}
+.guest-independent-orders .service-request-dialog .order-total{margin:0 0 12px;border:0}
+.guest-independent-orders .service-request-dialog .order-total strong{color:var(--section-ink)}
+.guest-independent-orders .service-request-dialog .dialog-footer{background:#fff}
+.guest-independent-orders .service-request-dialog .confirmation-note{margin:9px 0 0}
+.guest-independent-orders #orders-summary,.guest-independent-orders #order-shortcut{display:none!important}
+@media(max-width:360px){.guest-independent-orders .service-request-dialog .dialog-header h2{font-size:19px}.guest-independent-orders .service-request-dialog .request-edit{width:40px;height:40px}.guest-independent-orders .request-invoice-copy strong{font-size:14px}}
+
+.guest-independent-orders .service-request-dialog .send-order{background:#168c99;color:#fff}
