@@ -2286,7 +2286,7 @@
   "protectedFiles": {
     "arrangements/index.html": "4601ad055af1876dfe4b2ac3b9e38c19c0bca665dc3bb67b89e3bfb901b96746",
     "chalet/guest-services/chalet-services.js": "31569fcb134a72ff38bd133d4c41aa206c1bd7312aeb8bf55b6d4dec007ee5c6",
-    "chalet/guest-services/index.html": "4150c2c00fa2123bbe4a7eb0a411c07bd4ae5081fa4d0a487e1f4cf00eedb4fb",
+    "chalet/guest-services/index.html": "50996a515e2511cea6eff53399ec5ed45473fbbe8c47ca7fcd1e174a9a04de13",
     "css/back-navigation.css": "834bdb848f741ef0185f5f22b91d497ea68a55cf3bb34eaa7eac2d01864420ad",
     "css/desktop-layout.css": "229a412b9f610bc2e885c19d755a217e67081725eeb247a12a565bcd6b7de9dd",
     "css/dining-cards.css": "2e495ae12b2014ea0e14330afe839b602e38f86a81d9194004b3e6caa43e9dfb",
@@ -2295,7 +2295,7 @@
     "guest-services/README.md": "1ad3a3d1df387c6f92547d236015ff1c975e01b67890162dfa0d0e750b23ec7a",
     "guest-services/guest-services.css": "207545d3740a44c6e0ab8ded3731b255151478ecf82109d0344cdb5dc7e61a36",
     "guest-services/guest-services.js": "ca8c4f7c7a7dbf4f78af8f7864407bc0bfa09a64f77d21dc22df814dd89d2b93",
-    "guest-services/index.html": "e31c3612ff4cc891c1bd4ccbe504e6b7eda42f8930cc567bfb7a26b5a9cbe908",
+    "guest-services/index.html": "ee303ddbdc7f459e407aad47477b015e08dfdca87a18e2a1c149bfcd35fa598a",
     "guest-services/service-source.js": "e0da9d9065eea4864558446730954129ccefb495b97c4c7070b8e4a6a6803b3e",
     "guest-services/share.js": "a207ab25177d5b69bb1e8a4cc37bc0755c9a2157b7024561d3c15b2652c4323b",
     "js/dining-cards.js": "c395708cd357ec9ed6ae881efd60f12d3f9dd3751a3ff7006699bf178f7e8906",
@@ -2304,7 +2304,7 @@
     "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
     "services-guide/guide.css": "839886ba7f4269fad31cb2da64865b8ea1bdd8971f53fc07db4bab506b268e69",
     "services-guide/guide.js": "dacd6112365b3a83f167907305c2ca79c627683dffb65832d63881b27e5fd560",
-    "services-guide/index.html": "ece4e865b3a6dd747728765f894adb923c20febd36993f30300bf3e00c278142",
+    "services-guide/index.html": "c70c17726691a0f4c2eebad925d0b96ab20a2bea18355a1529ef4ad8b966e288",
     "services-guide/share-entry.js": "72de1a301e0da0de127f52b55714dab77b23548b1125915272e33bf4b1fc09a8",
     "guest-services/resort-refinements.css": "9622d57c4ea5d9a30bbb9bcc3d93c6a3645375f73a0243b2cf8564a6efebf285",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
@@ -2315,7 +2315,7 @@
     "js/guest-order-message.js": "d083ecf3f76e279e71f43a11f8aa54fe648588b8e4dd12bb00bbea202999afde",
     "js/order-visit.js": "8b61c4cdb00062b4c255f9b9a29d3d1dde951eb6c3b3e69fdfd3a0f3584ea662",
     "css/order-invoices.css": "eab51e8128cd9b108ee4fd857dc799ba64380b33728d00cee03e6edf4c1f75cb",
-    "css/portal-home.css": "00eb2f57d0522604fc04aa0b5f928a1b6f1e84a3860e16311653ffcd609b565e",
+    "css/portal-home.css": "47eb2f9ff7e4f5e6dbddcbfd92f3034b87def7219746b73da6960edb94e60747",
     "site/brand/logo-booking-original.png": "70377cf2ab318605ee6c2286c51c83310808e2e4c9b0bd8eec70429792872b94"
   },
   "preservedCompatibility": [
@@ -3287,6 +3287,18 @@
     "version": "20261127-portal-help-v120",
     "rollbackTag": "pre-compact-portal-help-20261127",
     "reason": "Owner approves restoring the preferred small home help heading (18px) and description (12px) across all three standalone portals. Remove the redundant visible خدمات الشاليه label above chalet contact buttons, leaving accessible group/action names. Preserve approved top headers/logos, branch lines, spacious chalet footer, contact destinations and all order behavior.",
+    "updatedProtectedFiles": [
+      "guest-services/index.html",
+      "services-guide/index.html",
+      "chalet/guest-services/index.html",
+      "css/portal-home.css"
+    ]
+  },
+  "approvedPortalChromeAndBrowsePlacement": {
+    "date": "2026-11-27",
+    "version": "20261127-portal-chrome-v121",
+    "rollbackTag": "pre-portal-chrome-review-20261127",
+    "reason": "Owner approves checking upper/lower home chrome across all three standalone portals, retaining preferred chalet-sized help typography (18px/12px), resort help copy identifying منتجع يوم العائلة, and moving each reciprocal resort browse link after service cards before help. Upper mobile headers already match and are retained. Match shared contact/footer rhythm and keep guide browse link hidden on service detail pages. Preserve spacious chalet social anchoring, contact labels/counts/destinations, directions, all service/order behavior and main-site code.",
     "updatedProtectedFiles": [
       "guest-services/index.html",
       "services-guide/index.html",
