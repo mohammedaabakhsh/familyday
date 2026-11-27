@@ -182,7 +182,8 @@ main:has(.tour-view){width:100%;max-width:1200px;padding-top:calc(var(--header) 
 @media(max-width:360px){.resort-contact-expanded .button{font-size:12px;padding-inline:8px}.resort-contact-actions{gap:6px}.resort-review-row p{font-size:11px}.resort-app-link{gap:7px;padding-inline:7px}.resort-contact-expanded .resort-information-faq{font-size:13px}.resort-app-link strong{font-size:12px}}
 @media(min-width:1000px){.resort-scope:not(.resort-home) #main h1{font-size:22px}.resort-contact-expanded{gap:20px}.resort-contact-expanded .button{min-height:48px}.resort-contact-expanded .quick-link{min-height:60px}.resort-app-link{min-height:60px}}
 
-/* Approved resort contact order; other venues retain their existing layout. */
+/* Shared contact order; only the resort includes loyalty beside FAQ. */
+.resort-contact-reordered>.resort-information-faq{margin:0;min-height:54px}
 .resort-contact-shortcuts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .resort-contact-shortcuts>.explore-link{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;margin:0;min-width:0;min-height:88px;padding:12px;font-size:14px;line-height:1.5;text-align:center}
 .resort-contact-shortcuts>.explore-link .icon{width:23px;height:23px}
@@ -197,8 +198,8 @@ main:has(.tour-view){width:100%;max-width:1200px;padding-top:calc(var(--header) 
 .resort-contact-footer .resort-social-icon{width:44px;height:44px}
 .resort-contact-footer .resort-social-icon .icon{width:20px;height:20px}
 @media(max-width:999px){
- body.resort-contact #main:has(.resort-contact-reordered){height:auto;min-height:100dvh;padding-bottom:calc(108px + env(safe-area-inset-bottom,0px))}
- body.resort-contact #main>.view:has(>.resort-contact-reordered){height:auto;min-height:0}
+ body:is(.resort-contact,.chalet-contact,.stay-contact) #main:has(.resort-contact-reordered){height:auto;min-height:100dvh;padding-bottom:calc(108px + env(safe-area-inset-bottom,0px))}
+ body:is(.resort-contact,.chalet-contact,.stay-contact) #main>.view:has(>.resort-contact-reordered){height:auto;min-height:0}
  .resort-contact-reordered{height:auto;min-height:calc(100dvh - 184px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));gap:16px}
 }
 /* Compact resort specifications: long room and outdoor details get their own row. */

@@ -3360,5 +3360,15 @@
       "site/app.js",
       "site/style.css"
     ]
+  },
+  "approvedChaletStayContactParity": {
+    "date": "2026-11-27",
+    "version": "20261127-venue-contact-v126",
+    "rollbackTag": "pre-venue-contact-parity-20261127",
+    "reason": "Owner approves applying the accepted resort contact structure to chalet and rest-house with their own links and no loyalty card. Show a full-width FAQ row after applications, then the shared help heading/copy and WhatsApp/call buttons, followed by two-line review on the right and compact social icons on the left. Preserve each venue location/booking/review/FAQ/contact targets and the approved resort loyalty/FAQ card layout. Keep short-screen scrolling and all order/catalogue/portal behavior unchanged.",
+    "updatedFiles": [
+      "site/app.js",
+      "site/style.css"
+    ]
   }
 }
