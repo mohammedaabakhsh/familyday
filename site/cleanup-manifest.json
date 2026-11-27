@@ -2286,7 +2286,7 @@
   "protectedFiles": {
     "arrangements/index.html": "4601ad055af1876dfe4b2ac3b9e38c19c0bca665dc3bb67b89e3bfb901b96746",
     "chalet/guest-services/chalet-services.js": "31569fcb134a72ff38bd133d4c41aa206c1bd7312aeb8bf55b6d4dec007ee5c6",
-    "chalet/guest-services/index.html": "1435050a830bbaed0b07a1f76d8b0f78ad19bd8a95ab94a7fcfbb8ad1e38c501",
+    "chalet/guest-services/index.html": "14a432a6a00007a3d5bb56aed22fd8ce9ca196d9060ba0316e22184891e1ffa9",
     "css/back-navigation.css": "834bdb848f741ef0185f5f22b91d497ea68a55cf3bb34eaa7eac2d01864420ad",
     "css/desktop-layout.css": "229a412b9f610bc2e885c19d755a217e67081725eeb247a12a565bcd6b7de9dd",
     "css/dining-cards.css": "2e495ae12b2014ea0e14330afe839b602e38f86a81d9194004b3e6caa43e9dfb",
@@ -2295,7 +2295,7 @@
     "guest-services/README.md": "1ad3a3d1df387c6f92547d236015ff1c975e01b67890162dfa0d0e750b23ec7a",
     "guest-services/guest-services.css": "207545d3740a44c6e0ab8ded3731b255151478ecf82109d0344cdb5dc7e61a36",
     "guest-services/guest-services.js": "37293621cf04e2b0fce6bf2a81460ded19ed16c2a95ea66a5d20871433b1bc41",
-    "guest-services/index.html": "870447da8c55dfe50cb763059394adc6ac00bb7d17a884e88aef9c16b02bb2a7",
+    "guest-services/index.html": "acdd525fd18872c0501128d7c155e8cee440ddc5004f4f7bcd2ee27b5f2f50a5",
     "guest-services/service-source.js": "e0da9d9065eea4864558446730954129ccefb495b97c4c7070b8e4a6a6803b3e",
     "guest-services/share.js": "a207ab25177d5b69bb1e8a4cc37bc0755c9a2157b7024561d3c15b2652c4323b",
     "js/dining-cards.js": "c395708cd357ec9ed6ae881efd60f12d3f9dd3751a3ff7006699bf178f7e8906",
@@ -2303,8 +2303,8 @@
     "services-guide/README.md": "a1170ba5394064fe4cbea3ff7c5eb19e729d949093d3b29919b2fbb03c76befb",
     "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
     "services-guide/guide.css": "839886ba7f4269fad31cb2da64865b8ea1bdd8971f53fc07db4bab506b268e69",
-    "services-guide/guide.js": "dacd6112365b3a83f167907305c2ca79c627683dffb65832d63881b27e5fd560",
-    "services-guide/index.html": "003cec1f501aea74924dd6cb33294df46ef90f3474b978ce50dd6b9ea73478aa",
+    "services-guide/guide.js": "b26e764eb0585a8b95c8676d8e5c10887336349528bcc62bfc28a39562f66ae3",
+    "services-guide/index.html": "a4b8c84f3682af06fc191fa7848e5bbc6b6860769603420cf4702dab59850d23",
     "services-guide/share-entry.js": "72de1a301e0da0de127f52b55714dab77b23548b1125915272e33bf4b1fc09a8",
     "guest-services/resort-refinements.css": "9622d57c4ea5d9a30bbb9bcc3d93c6a3645375f73a0243b2cf8564a6efebf285",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
@@ -2317,7 +2317,7 @@
     "css/order-invoices.css": "14e87e715af9767addbaf5a426326307c04e637585ea3a71e361f0b609ebe6c3",
     "css/portal-home.css": "47eb2f9ff7e4f5e6dbddcbfd92f3034b87def7219746b73da6960edb94e60747",
     "site/brand/logo-booking-original.png": "70377cf2ab318605ee6c2286c51c83310808e2e4c9b0bd8eec70429792872b94",
-    "stay/guest-services/index.html": "5e6e383b3af0ef4f37574d197bfc9b146d0a99d6a92e7fa90b8b7288614bc15a",
+    "stay/guest-services/index.html": "70889ba0fa41b65a62f03160c11b1a549f5aaae78f6d894f388637c1ca3e484d",
     "stay/guest-services/stay-services.js": "b5af61955bc0c81e5c36ce6004a7bc990509889765d8c898e751966aeb96a959",
     "stay/guest-services/stay-services.css": "07ddd018a17f370750c793336e11d15ebdf31b441c28c453ab0c762831faea0a"
   },
@@ -3399,5 +3399,22 @@
     "updatedFiles": [
       "site/app.js"
     ]
+  },
+  "approvedFullReviewBatch": {
+    "date": "2026-11-27",
+    "version": "20261127-approved-review-v130",
+    "rollbackTag": "pre-approved-review-20261127",
+    "approvedQuestions": [
+      3,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "reason": "Owner-approved post-audit batch, discussed one question at a time. Update Snapchat identity, tour labels, FAQ layout/copy, dining introduction, chalet heading/specifications and transparent touch targets. Keep cinema duration, names/capacity labels, prices, recipients, invoice flows and portal footer directions unchanged. External booking platform is read-only.",
+    "portalChanges": "Snapchat footer href in all four portals. Arrangements dining introduction now reads the shared approved service copy, with matching script/data cache keys. Order controllers, styles, service prices, recipients and message builders unchanged."
   }
 }

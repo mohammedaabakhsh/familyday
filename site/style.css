@@ -504,3 +504,8 @@ body.resort-services #main{width:100%;max-width:none;height:100dvh;min-height:0;
 
 /* Center only the four main service page titles above their descriptions. */
 .resort-service :is(.dining-guide,.service-guide-coordination,.service-guide-cinema) .page-heading h1{text-align:center}
+
+/* Approved review: enlarge carousel/comparison hit areas without changing visible geometry. */
+.resort-catalog-panel :is(.carousel-tools .icon-button,.catalog-heading .text-link){position:relative}
+.resort-catalog-panel .carousel-tools .icon-button::after{content:"";position:absolute;left:50%;top:50%;width:44px;height:44px;transform:translate(-50%,-50%)}
+.resort-catalog-panel .catalog-heading .text-link::after{content:"";position:absolute;inset-inline:0;top:50%;height:44px;transform:translateY(-50%)}

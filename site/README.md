@@ -169,3 +169,7 @@ Cinema's standalone section shows its photo immediately, using the same shared g
 ## Portal help description and stronger navy — portal v87
 
 [Owner-approved portal wording](../docs/portal-help-copy-v87.md) adds `تواصل معنا لاختيار التنسيق المناسب لكم` below the help heading and gives the heading/coordinator stronger navy hierarchy based on the portal home help. The three tested normal mobile sizes retain a single-screen closed overview. Main guide, catalogue data, contact targets, order dialogs/messages and shares are unchanged. Rollback: `pre-portal-help-copy-20261126`.
+
+## Approved full-review batch — v130
+
+[Owner decisions and validation](../docs/approved-full-review-v130.md) apply the agreed Snapchat identity, room labels, FAQ copy/time layout, dining introduction, chalet heading/specifications and expanded touch areas. External booking pages stay read-only. Existing service prices, names/capacity labels, cinema duration, order behavior and portal layout remain. Evidence: `audits/approved-full-review-v130.json` and `audits/live-cutover-v130.json`.

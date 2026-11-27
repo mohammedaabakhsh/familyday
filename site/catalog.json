@@ -106,7 +106,7 @@
           },
           {
             "text": "زيارة الحساب",
-            "href": "https://www.snapchat.com/add/familyday5"
+            "href": "https://www.snapchat.com/add/familyday.ksa"
           },
           {
             "text": "زيارة الحساب",
@@ -157,7 +157,7 @@
               },
               {
                 "text": "زيارة الحساب",
-                "href": "https://www.snapchat.com/add/familyday5"
+                "href": "https://www.snapchat.com/add/familyday.ksa"
               },
               {
                 "text": "زيارة الحساب",
@@ -3723,13 +3723,16 @@
           "items": [
             "غرفة النوم الثانية بسريرين مفردين",
             "الصالة الداخلية تتسع لـ15 شخصًا",
+            "إطلالة الصالة الداخلية على المسبح",
+            "باب مباشر من الصالة لساحة المسبح",
+            "تلفزيون ذكي في الصالة الداخلية",
             "طاولة طعام لـ8 أشخاص",
-            "غرفة ألعاب الأطفال",
+            "غرفة ألعاب الأطفال بإطلالة على المسبح",
             "مطبخ",
             "حمام",
             "غرفة النوم الرئيسية بسرير مزدوج",
             "حمام خاص داخل غرفة النوم الرئيسية",
-            "تلفزيون ذكي"
+            "تلفزيون ذكي في غرفة النوم الرئيسية"
           ],
           "notes": [],
           "times": [],
@@ -3739,8 +3742,11 @@
               "items": [
                 "غرفة النوم الثانية بسريرين مفردين",
                 "الصالة الداخلية تتسع لـ15 شخصًا",
+                "إطلالة الصالة الداخلية على المسبح",
+                "باب مباشر من الصالة لساحة المسبح",
+                "تلفزيون ذكي في الصالة الداخلية",
                 "طاولة طعام لـ8 أشخاص",
-                "غرفة ألعاب الأطفال",
+                "غرفة ألعاب الأطفال بإطلالة على المسبح",
                 "مطبخ",
                 "حمام"
               ]
@@ -3749,7 +3755,8 @@
               "title": "الدور العلوي",
               "items": [
                 "غرفة النوم الرئيسية بسرير مزدوج",
-                "حمام خاص داخل غرفة النوم الرئيسية"
+                "حمام خاص داخل غرفة النوم الرئيسية",
+                "تلفزيون ذكي في غرفة النوم الرئيسية"
               ]
             }
           ]
@@ -3759,7 +3766,8 @@
           "items": [
             "يتسع لـ10 أشخاص",
             "مدخل خاص",
-            "حمام خاص بالمجلس المستقل"
+            "حمام خاص بالمجلس المستقل",
+            "تلفزيون ذكي في المجلس المستقل"
           ],
           "notes": [],
           "times": []
@@ -4502,7 +4510,7 @@
       "phone": "+966556156693",
       "social": [
         "https://instagram.com/FAMILYDAYRESORT",
-        "https://www.snapchat.com/add/familyday5"
+        "https://www.snapchat.com/add/familyday.ksa"
       ],
       "map": "https://maps.app.goo.gl/FLmawLadNaa3uYpJ8?g_st=ic",
       "faqs": [
@@ -4647,7 +4655,7 @@
       "phone": "+966556156693",
       "social": [
         "https://instagram.com/FAMILYDAYRESORT",
-        "https://www.snapchat.com/add/familyday5"
+        "https://www.snapchat.com/add/familyday.ksa"
       ],
       "map": "https://maps.app.goo.gl/i7BhZbfkRLyV68eFA?g_st=ic",
       "faqs": [
@@ -4751,7 +4759,7 @@
       "phone": "+966556156693",
       "social": [
         "https://instagram.com/FAMILYDAYRESORT",
-        "https://www.snapchat.com/add/familyday5"
+        "https://www.snapchat.com/add/familyday.ksa"
       ],
       "map": "https://maps.app.goo.gl/np6uD3XvCQTCr4ff7",
       "faqs": [

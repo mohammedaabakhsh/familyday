@@ -5,7 +5,7 @@ var FD_CLASSIC_TOUR = (function () {
 
   var parts = [
  {id:'kitchen', ar:'ركن المطبخ', x:0.205, y:0.2},
- {id:'bathroom', ar:'حمام', x:0.355, y:0.211},
+ {id:'bathroom', ar:'الحمام', x:0.355, y:0.211},
  {id:'bedroom', ar:'غرفة النوم الرئيسية', x:0.437, y:0.216},
  {id:'dining', ar:'طاولة الطعام', x:0.204, y:0.282},
  {id:'living', ar:'الصالة الداخلية', x:0.35, y:0.314},

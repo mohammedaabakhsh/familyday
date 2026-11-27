@@ -86,7 +86,7 @@
     disclosure.innerHTML='<summary>محتويات التجهيز مع التنسيق</summary>';disclosure.append(contents.querySelector('.fd-dining-inclusions'));contents.replaceWith(disclosure);
     const diningAdvance='<p class="coordination-order-note">'+escape(serviceLinks.dining.advanceNote)+'</p>';
     const diningBody = diningAdvance + diningPhoto + diningDetails.outerHTML + FD_DINING_CARDS.table(doc,true).outerHTML + '<p id="dining-price-help" class="dining-order-help" data-empty-text="'+escape(serviceLinks.dining.orderHint)+'">'+escape(serviceLinks.dining.orderHint)+'</p>' + contactMarkup('dining',serviceLinks.dining.help,serviceLinks.dining.help.description);
-    const diningSection = section('dining',data.dining.name,data.dining.intro,diningBody,true);
+    const diningSection = section('dining',data.dining.name,serviceLinks.dining.intro||data.dining.intro,diningBody,true);
     const seating=serviceLinks.seating;
     const seatingAdvance=seating?.advanceNote?'<p class="coordination-order-note">'+escape(seating.advanceNote)+'</p>':'';
     const seatingContact=contactMarkup('seating',seating?.help,'تواصل معنا لاختيار الجلسة المناسبة لكم');
@@ -221,7 +221,7 @@
     try {
       const response = await fetch('/data/services.json?v=20261125-live-v54',{cache:'no-cache'});
       if (!response.ok) throw new Error('Service source unavailable');
-      const links=await fetch('/site/orders/service-links.json?v=20261126-live-v104').then(r=>r.ok?r.json():{}).catch(()=>({}));
+      const links=await fetch('/site/orders/service-links.json?v=20261127-approved-review-v130').then(r=>r.ok?r.json():{}).catch(()=>({}));
       render(await response.json(),links.services||{});
     } catch(error) {
       content.innerHTML = '<div class="load-error"><h2>تعذّر تحميل التجهيزات</h2><p>حاولوا مرة ثانية لعرض التفاصيل هنا.</p><button type="button" id="retry-guide">إعادة المحاولة</button></div>';
