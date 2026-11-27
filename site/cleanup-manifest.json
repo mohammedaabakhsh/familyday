@@ -3380,5 +3380,15 @@
       "site/app.js",
       "site/style.css"
     ]
+  },
+  "approvedResortCategoryAssistance": {
+    "date": "2026-11-27",
+    "version": "20261127-category-help-v128",
+    "rollbackTag": "pre-category-assistance-20261127",
+    "reason": "Owner approves extending the restaurant assistance panel pattern to the two shown native resort service groups. Keep each existing top note and insert تحتاج مساعدة في طلبك؟ plus WhatsApp/call inside its note box: arrangements/seating group uses coordinator966537009217; accommodation uses general resort services966556156693. Source numbers from existing approved service copy. Preserve restaurant assistance/recipient966537006531, share group note, all cards/links/content and order/portal behavior.",
+    "updatedFiles": [
+      "site/app.js",
+      "site/style.css"
+    ]
   }
 }
