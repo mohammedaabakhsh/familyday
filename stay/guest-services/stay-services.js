@@ -39,10 +39,10 @@
  function restore(saved){selected=saved?.selected===true;name.value=typeof saved?.name==='string'?saved.name.slice(0,100):'';notes.value=typeof saved?.notes==='string'?saved.notes.slice(0,1000):'';renderInvoice();}
  function renderInvoice(){
   const list=$('#stay-invoice');list.replaceChildren();
-  if(selected){
+  {
    const row=document.createElement('li'),copy=document.createElement('div'),title=document.createElement('strong'),info=document.createElement('span'),remove=document.createElement('button');
-   copy.className='request-invoice-copy';title.textContent=service.name;info.textContent='الكمية: 1 — '+service.price+' ريال';copy.append(title,info);
-   remove.type='button';remove.className='remove-item';remove.textContent='حذف';remove.setAttribute('aria-label','حذف '+service.name);remove.onclick=()=>{selected=false;renderInvoice();};row.append(copy,remove);list.append(row);
+   copy.className='request-invoice-copy';title.textContent=service.name;info.textContent='الكمية: '+(selected?1:0)+' — سعر اللعبة: '+service.price+' ريال';copy.append(title,info);
+   remove.type='button';remove.className=selected?'remove-item':'restore-item';remove.textContent=selected?'حذف':'+ إضافة اللعبة';remove.setAttribute('aria-label',(selected?'حذف ':'إضافة ')+service.name);remove.onclick=()=>{selected=!selected;renderInvoice();list.querySelector('button').focus({preventScroll:true});};row.append(copy,remove);list.append(row);
   }
   $('#stay-total').textContent=String(selected?service.price:0);send.disabled=!selected;
  }

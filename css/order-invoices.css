@@ -6,6 +6,14 @@ body.resort-order-embedded .cabin-number{color:#83d2d4}
 .request-invoice-actions{display:flex;flex-direction:column;align-items:end;flex:none;gap:2px}
 .request-invoice-actions .remove-item{color:#9d4444;min-height:44px;padding:6px 8px}
 .request-empty{font-size:13px;line-height:1.8;color:var(--muted)}
+/* Removed services stay available in the same invoice until explicitly added again. */
+.request-recovery{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.request-recovery>span{flex:1;min-width:0}
+.restore-item{flex:none;min-height:44px;padding:8px 12px;border:1px solid #bfdde3;border-radius:10px;background:#fff;color:#176b76;font:700 13px/1.6 Tajawal,sans-serif;cursor:pointer}
+.restore-item:disabled{opacity:.45;cursor:default}
+body.resort-order-embedded .restore-item{background:#12323f;color:#b5eeee;border-color:#557984}
+body.resort-order-embedded .resort-direct-form .request-recovery{display:flex!important}
+@media(max-width:359px){.request-recovery{flex-wrap:wrap}.restore-item{padding-inline:9px}}
 /* The existing invoice rows already own item removal and total recalculation. */
 .arrangement-request #arrangement-items{display:grid!important;gap:8px;margin:12px 0}
 .arrangement-request #arrangement-items :is(h3,.arrangement-quantity){display:none}

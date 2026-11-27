@@ -46,10 +46,15 @@
         const row=node('li'),details=node('div',undefined,'request-invoice-copy');details.append(node('strong',itemName(item)),node('span','الكمية: '+quantity(item)+' · سعر الوحدة: '+item.price/quantity(item)+' ريال'));
         for(const detail of item.details)if(!/^إضافة جبنة/.test(detail))details.append(node('span',detail));
         const actions=node('div',undefined,'request-invoice-actions'),remove=node('button','حذف','remove-item');remove.type='button';remove.setAttribute('aria-label','حذف '+item.name);
-        remove.addEventListener('click',()=>{api.remove(item.id);order.items=order.items.filter(line=>line.id!==item.id);renderInvoice();(list.querySelector('.remove-item')||dialog.querySelector('.request-edit')).focus({preventScroll:true});});
+        remove.addEventListener('click',()=>{api.remove(item.id);order.items=order.items.filter(line=>line.id!==item.id);renderInvoice();(list.querySelector('.restore-item')||list.querySelector('.remove-item')||dialog.querySelector('.request-edit')).focus({preventScroll:true});});
         actions.append(node('bdi',item.price+' ريال','request-line-total'),remove);row.append(details,actions);list.append(row);
       }
-      if(!order.items.length)list.append(node('li','لم تختر أي أصناف. ارجع للاختيار لإضافة طلبك.','request-empty'));
+      const removed=api.removed(order.service);
+      for(const record of removed){
+        const row=node('li',undefined,'request-recovery'),label=node('span',record.line.name),restore=node('button','+ إضافة من جديد','restore-item');restore.type='button';restore.dataset.restoreItem=record.line.id;restore.setAttribute('aria-label','إضافة '+record.line.name);
+        restore.onclick=()=>{api.restore(record.line.id);const current=api.snapshot();order.items=current?.items||[];order.water=current?.water||null;renderInvoice();};row.append(label,restore);list.append(row);
+      }
+      if(!order.items.length&&!removed.length)list.append(node('li','لم تختر أي أصناف. ارجع للاختيار لإضافة طلبك.','request-empty'));
       document.getElementById('service-request-total').textContent=String(amount(order.items));send.disabled=!order.items.length;
     }
     function open(){

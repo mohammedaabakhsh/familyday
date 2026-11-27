@@ -8,7 +8,7 @@
   const form=document.getElementById('arrangement-order');
   const shortcut=document.getElementById('arrangement-shortcut');
   const fields={name:document.getElementById('arrangement-name'),cabin:document.getElementById('arrangement-cabin'),notes:document.getElementById('arrangement-notes')};
-  const state={quantities:{},name:'',cabin:'',notes:'',cinemaTime:''};
+  const state={quantities:{},name:'',cabin:'',notes:'',cinemaTime:'',removed:{}};
   const requestDrafts=new Map();let requestSubmitted=false;
   const entries=new Map();let cabins={},ready=false,cinemaConfig,cinemaTime,cinemaTimeField;
   let requestDialog,requestEntry,requestTrigger,requestScroll=0,requestURL='',diningChoice='',diningRequestButton,diningSelectionStatus,specificEntry;
@@ -17,6 +17,7 @@
   const quantity=value=>Number.isInteger(value)&&value>=0&&value<=99?value:0;
   function resetRequestDetails(){
     state.name='';state.cabin='';state.notes='';state.cinemaTime='';
+    state.removed={};
     state.quantities=requestEntry?{[requestEntry.key]:1}:directService==='cinema'?{'cinema-session':1}:{};
     diningChoice='';
     for(const field of Object.values(fields))field.value='';
@@ -79,6 +80,7 @@
   }
   function render(){
     limitDining();
+    for(const key of Object.keys(state.removed||{}))if(quantity(state.quantities[key]))delete state.removed[key];
     const chosen=lines(),total=chosen.reduce((sum,e)=>sum+e.total,0),count=chosen.reduce((sum,e)=>sum+e.qty,0);
     summary.hidden=browseOrders||!chosen.length;
     document.getElementById('arrangement-total').textContent=total;
@@ -97,6 +99,11 @@
         const remove=node('button','حذف','arrangement-remove');remove.type='button';remove.dataset.remove=entry.key;remove.setAttribute('aria-label','حذف '+entry.name);
         row.append(copy);if(entry.group!=='dining')row.append(counter(entry));row.append(remove);rows.append(row);
       }list.append(section);
+    }
+    for(const key of Object.keys(state.removed||{})){
+      const entry=entries.get(key);if(!entry)continue;
+      const row=node('li',undefined,'request-recovery'),restore=node('button','+ إضافة من جديد','restore-item');restore.type='button';restore.dataset.restoreEntry=key;restore.setAttribute('aria-label','إضافة '+entry.name);restore.disabled=entry.group==='extra'&&!seatsChosen();
+      row.append(node('span',entry.name),restore);list.append(row);
     }
     const missingSeat=!!state.quantities['seating-extra']&&!seatsChosen();
     const warning=document.getElementById('arrangement-warning');warning.hidden=!missingSeat;warning.textContent=missingSeat?'اختر جلسة خارجية لإضافة الكيك والعصير، أو احذف الإضافة.':'';
@@ -149,8 +156,8 @@
   function openRequest(entry,trigger){
     requestSubmitted=false;requestEntry=entry;requestTrigger=trigger;requestScroll=scrollY;requestURL=location.href;
     const saved=requestDrafts.get(entry.key);
-    Object.assign(state,saved?JSON.parse(JSON.stringify(saved)):{quantities:{},name:'',cabin:'',notes:'',cinemaTime:''});
-    if(!state.quantities[entry.key])state.quantities[entry.key]=1;
+    Object.assign(state,saved?JSON.parse(JSON.stringify(saved)):{quantities:{},name:'',cabin:'',notes:'',cinemaTime:'',removed:{}});
+    if(!state.quantities[entry.key]&&!state.removed?.[entry.key])state.quantities[entry.key]=1;
     for(const [key,field] of Object.entries(fields))field.value=state[key];
     if(cinemaTime)cinemaTime.value=state.cinemaTime;
     document.getElementById('arrangement-request-title').textContent='طلب '+entry.name;
@@ -208,9 +215,10 @@
     if(!ready)return;
     const request=event.target.closest('[data-request-key]');if(browseOrders&&request){openRequest(entries.get(request.dataset.requestKey),request);return;}
     const diningRequest=event.target.closest('[data-dining-request]');if(browseOrders&&diningRequest){const entry=entries.get(diningChoice);if(entry)openRequest(entry,diningRequest);return;}
-    const step=event.target.closest('[data-order-key]'),remove=event.target.closest('[data-remove]'),dining=event.target.closest('.fd-dining-option');
-    if(step){const entry=entries.get(step.dataset.orderKey);if(!entry||step.disabled)return;state.quantities[entry.key]=Math.max(0,Math.min(99,quantity(state.quantities[entry.key])+Number(step.dataset.step)));render();}
-    else if(remove){const key=remove.dataset.remove;state.quantities[key]=0;if(entries.get(key).group==='seating')state.quantities['seating-extra']=0;render();const next=form.querySelector('[data-remove]');if(next)next.focus();else if(browseOrders)requestDialog.querySelector('[data-close-request]').focus();}
+    const step=event.target.closest('[data-order-key]'),remove=event.target.closest('[data-remove]'),restore=event.target.closest('[data-restore-entry]'),dining=event.target.closest('.fd-dining-option');
+    if(restore){const key=restore.dataset.restoreEntry,entry=entries.get(key);if(!entry||restore.disabled)return;if(entry.group==='dining')for(const e of entries.values())if(e.group==='dining')state.quantities[e.key]=0;state.quantities[key]=quantity(state.removed[key])||1;delete state.removed[key];render();form.querySelector('[data-remove]')?.focus({preventScroll:true});}
+    else if(step){const entry=entries.get(step.dataset.orderKey);if(!entry||step.disabled)return;const previous=quantity(state.quantities[entry.key]),next=Math.max(0,Math.min(99,previous+Number(step.dataset.step)));if(previous&&!next)(state.removed||(state.removed={}))[entry.key]=previous;state.quantities[entry.key]=next;render();}
+    else if(remove){const key=remove.dataset.remove;(state.removed||(state.removed={}))[key]=quantity(state.quantities[key]);state.quantities[key]=0;if(entries.get(key).group==='seating'){if(state.quantities['seating-extra'])state.removed['seating-extra']=state.quantities['seating-extra'];state.quantities['seating-extra']=0;}render();const next=form.querySelector('[data-restore-entry]')||form.querySelector('[data-remove]');if(next)next.focus();else if(browseOrders)requestDialog.querySelector('[data-close-request]').focus();}
     else if(dining){
       const key='dining-'+dining.dataset.size+'-'+dining.dataset.option,next=state.quantities[key]?0:1;
       if(browseOrders){diningChoice=key;render();return;}
@@ -242,7 +250,7 @@
   form.addEventListener('submit',event=>{if(submitOrder(event)===true&&browseOrders){requestDrafts.delete(requestEntry.key);requestSubmitted=true;closeRequest();}});
   function selectEntry(key){
     const entry=entries.get(key);if(!ready||!entry||entry.group!==directService||!['coordination','dining','seating'].includes(entry.group))return false;
-    specificEntry=entry;state.quantities={[key]:1};state.notes='';fields.notes.value='';
+    specificEntry=entry;state.quantities={[key]:1};state.removed={};state.notes='';fields.notes.value='';
     document.body.classList.add('resort-specific-request');
     let selected=document.querySelector('.resort-entry-selection');
     if(!selected){selected=node('section',undefined,'resort-entry-selection');selected.setAttribute('aria-label','الخدمة المختارة');form.before(selected);}
@@ -256,7 +264,7 @@
     }
     render();return true;
   }
-  if(directService)window.FD_RESORT_DIRECT_ORDER={formId:'arrangement-order',canSubmit:()=>ready&&!form.querySelector('.arrangement-send').disabled,submit:submitOrder,selectEntry,exportDraft:()=>JSON.parse(JSON.stringify(state)),restoreDraft:saved=>{Object.assign(state,JSON.parse(JSON.stringify(saved)));for(const [key,field] of Object.entries(fields))field.value=state[key];cinemaTime.value=state.cinemaTime;document.querySelectorAll('[data-request-extra]').forEach(check=>check.checked=!!state.quantities['seating-extra']);render();},resumeRequest:()=>{if(!lines().length){const key=specificEntry?.key||(directService==='cinema'?'cinema-session':'');if(key){state.quantities[key]=1;render();}}},getTitle:()=>specificEntry?'طلب '+specificEntry.name:directService==='cinema'?'طلب '+cinemaConfig.name:''};
+  if(directService)window.FD_RESORT_DIRECT_ORDER={formId:'arrangement-order',canSubmit:()=>ready&&!form.querySelector('.arrangement-send').disabled,submit:submitOrder,selectEntry,exportDraft:()=>JSON.parse(JSON.stringify(state)),restoreDraft:saved=>{Object.assign(state,JSON.parse(JSON.stringify(saved)));for(const [key,field] of Object.entries(fields))field.value=state[key];cinemaTime.value=state.cinemaTime;document.querySelectorAll('[data-request-extra]').forEach(check=>check.checked=!!state.quantities['seating-extra']);render();},resumeRequest:()=>{if(!lines().length){const key=specificEntry?.key||(directService==='cinema'?'cinema-session':'');if(key&&!state.removed?.[key]){state.quantities[key]=1;render();}}},getTitle:()=>specificEntry?'طلب '+specificEntry.name:directService==='cinema'?'طلب '+cinemaConfig.name:''};
   window.FD_ORDER_PRIVACY.register(()=>{
     requestDrafts.clear();requestSubmitted=true;
     if(browseOrders&&requestDialog?.open){

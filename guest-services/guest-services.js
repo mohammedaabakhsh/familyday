@@ -48,7 +48,7 @@
     });
   }
   var cabins;
-  var state = {name:'', cabin:'', notes:'', restaurantNotes:'', quantities:{}, hospitality:{}, water:null, games:'', menu:{}};
+  var state = {name:'', cabin:'', notes:'', restaurantNotes:'', quantities:{}, hospitality:{}, water:null, games:'', menu:{}, removed:{}};
   var catalog;
   document.getElementById('reload-services').addEventListener('click',function(){location.reload();});
   try {catalog=await FD_GUEST_SOURCE.load();}
@@ -80,7 +80,7 @@
   }
   function quantity(value) { return Number.isInteger(value) && value>=0 && value<=99 ? value : 0; }
   function resetOrderDetails(){
-    state={name:'',cabin:'',notes:'',restaurantNotes:'',quantities:{},hospitality:{},water:null,games:'',menu:{}};
+    state={name:'',cabin:'',notes:'',restaurantNotes:'',quantities:{},hospitality:{},water:null,games:'',menu:{},removed:{}};
     draft=activeService?JSON.parse(JSON.stringify(state)):null;
     if(activeService==='water')draft.water=waterSelection(draft);
     document.querySelectorAll('[data-field]').forEach(function(field){field.value='';});
@@ -281,6 +281,14 @@
         actions.appendChild(button);row.append(copy,actions);list.appendChild(row);
       });
     });
+    if(directService&&(target.id==='restaurant-items')===(directService==='restaurant')){
+      removedLines(directService).forEach(function(record){
+        target.hidden=false;
+        var row=el('li',undefined,'request-recovery'),label=el('span',record.line.name),button=el('button','+ إضافة من جديد','restore-item');
+        button.type='button';button.setAttribute('aria-label','إضافة '+record.line.name);button.dataset.restoreItem=record.line.id;
+        button.onclick=function(){restoreLine(record.line.id);};row.append(label,button);target.append(row);
+      });
+    }
   }
   function renderMenuControls() {
     var data=selection();
@@ -403,6 +411,7 @@
     extras.forEach(function(item){setCounter(item.row.querySelector('.quantity'),selection().quantities[item.id] || 0,99);});
     if(!activeService) return;
     var lines=serviceLines(activeService,draft),previous=serviceLines(activeService,state);
+    lines.forEach(function(line){if(state.removed)delete state.removed[line.id];});
     var pending=lines.some(function(line){return line.pending;});
     // Show the selected water-package price immediately, but commit only complete distributions.
     document.querySelector('.dialog-total>span').textContent=activeService==='water'?'إجمالي الباقات':'إجمالي الاختيار';
@@ -438,6 +447,12 @@
     state[key]=draft[key];
   }
   function removeLine(id){
+    var data=draft||state,line=activeService&&serviceLines(activeService,data).find(function(item){return item.id===id;});
+    if(line){
+      var field=menuCatalog[id]?'menu':id==='water'?'water':id==='games'?'games':id.startsWith('hospitality:')?'hospitality':'quantities';
+      var key=field==='hospitality'?id.slice(12):id,value=field==='water'||field==='games'?data[field]:data[field][key];
+      (state.removed||(state.removed={}))[id]=JSON.parse(JSON.stringify({service:activeService,line:line,field:field,key:key,value:value}));
+    }
     function remove(data){
       if(menuCatalog[id])delete data.menu[id];
       else if(id==='water')data.water=null;
@@ -446,6 +461,15 @@
       else delete data.quantities[id];
     }
     remove(state);if(draft)remove(draft);renderOrders();renderEditor();
+  }
+  function removedLines(service){return Object.values(state.removed||{}).filter(function(record){return record.service===service;});}
+  function restoreLine(id){
+    var record=state.removed&&state.removed[id];if(!record||record.service!==activeService)return;
+    [state,draft].filter(Boolean).forEach(function(data){
+      var value=JSON.parse(JSON.stringify(record.value));
+      if(record.field==='water'||record.field==='games')data[record.field]=value;else data[record.field][record.key]=value;
+    });
+    delete state.removed[id];renderOrders();renderEditor();
   }
   function closeEditor({commit=false}={}){
     commitDraft();renderOrders();
@@ -567,9 +591,11 @@
       pause:function(){selectionScroll=dialog.querySelector('.dialog-body').scrollTop;dialog.close();},
       resume:function(){renderEditor();document.body.classList.add('dialog-open');dialog.showModal();dialog.querySelector('.dialog-body').scrollTop=selectionScroll;applyButton.focus({preventScroll:true});},
       remove:removeLine,
+      removed:removedLines,
+      restore:restoreLine,
       reset:resetOrderDetails,
       finish:function({discard=false}={}){
-        if(discard&&activeService){var key=activeService==='restaurant'?'menu':activeService==='extras'?'quantities':activeService;state[key]=key==='games'?'':key==='water'?null:{};if(draft)draft[key]=state[key];}
+        if(discard&&activeService){removedLines(activeService).forEach(function(record){delete state.removed[record.line.id];});var key=activeService==='restaurant'?'menu':activeService==='extras'?'quantities':activeService;state[key]=key==='games'?'':key==='water'?null:{};if(draft)draft[key]=state[key];}
         closeEditor();
       }
     };

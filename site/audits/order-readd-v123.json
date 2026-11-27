@@ -1,0 +1,155 @@
+{
+  "version": "20261127-order-readd-v123",
+  "checks": [
+    [
+      390,
+      "resort",
+      "restaurant",
+      "source+native recover/message parity"
+    ],
+    [
+      390,
+      "resort",
+      "hospitality",
+      "source+native recover/message parity"
+    ],
+    [
+      390,
+      "resort",
+      "extras",
+      "source+native recover/message parity"
+    ],
+    [
+      390,
+      "resort",
+      "water",
+      "source+native recover/message parity"
+    ],
+    [
+      390,
+      "resort",
+      "games",
+      "source+native recover/message parity"
+    ],
+    [
+      390,
+      "chalet",
+      "water",
+      "source+native recover/message parity"
+    ],
+    [
+      390,
+      "chalet",
+      "games",
+      "source+native recover/message parity"
+    ],
+    [
+      390,
+      "coordination",
+      "source+native recover/message parity"
+    ],
+    [
+      390,
+      "seating",
+      "source+native recover/message parity"
+    ],
+    [
+      390,
+      "dining",
+      "source+native recover/message parity"
+    ],
+    [
+      390,
+      "cinema",
+      "source+native recover/message parity"
+    ],
+    [
+      390,
+      "stay",
+      "source",
+      "limited to one game after repeated re-add"
+    ],
+    [
+      390,
+      "stay",
+      "native",
+      "limited to one game after repeated re-add"
+    ],
+    [
+      320,
+      "resort",
+      "restaurant",
+      "source+native recover/message parity"
+    ],
+    [
+      320,
+      "resort",
+      "hospitality",
+      "source+native recover/message parity"
+    ],
+    [
+      320,
+      "resort",
+      "extras",
+      "source+native recover/message parity"
+    ],
+    [
+      320,
+      "resort",
+      "water",
+      "source+native recover/message parity"
+    ],
+    [
+      320,
+      "resort",
+      "games",
+      "source+native recover/message parity"
+    ],
+    [
+      320,
+      "chalet",
+      "water",
+      "source+native recover/message parity"
+    ],
+    [
+      320,
+      "chalet",
+      "games",
+      "source+native recover/message parity"
+    ],
+    [
+      320,
+      "coordination",
+      "source+native recover/message parity"
+    ],
+    [
+      320,
+      "seating",
+      "source+native recover/message parity"
+    ],
+    [
+      320,
+      "dining",
+      "source+native recover/message parity"
+    ],
+    [
+      320,
+      "cinema",
+      "source+native recover/message parity"
+    ],
+    [
+      320,
+      "stay",
+      "source",
+      "limited to one game after repeated re-add"
+    ],
+    [
+      320,
+      "stay",
+      "native",
+      "limited to one game after repeated re-add"
+    ]
+  ],
+  "errors": [],
+  "messagesSent": false
+}

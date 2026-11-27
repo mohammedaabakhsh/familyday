@@ -11,7 +11,7 @@ def packages(p,n):step(p,'[data-water-packages][data-step="1"]',n)
 def allocation(p,n):step(p,'[data-water="adults"][data-step="1"]',2*n);step(p,'[data-water="children"][data-step="1"]',n)
 def empty(p,send,main=False):
  expect(p.locator('#water-packages-count')).to_have_text('0');expect(p.locator('#water-adults')).to_have_text('0');expect(p.locator('#water-children')).to_have_text('0');expect(p.locator('#dialog-total')).to_have_text('0');expect(p.locator(send)).to_be_disabled();expect(p.locator('[data-water-packages][data-step="-1"]')).to_be_disabled();expect(p.locator('[data-water="adults"][data-step="1"]')).to_be_disabled();expect(p.locator('[data-water="children"][data-step="1"]')).to_be_disabled();expect(p.locator('#water-count')).to_have_text('اختر عدد الباقات أولًا');assert 'is-complete' not in p.locator('#water-service').get_attribute('class')
- if main:expect(p.locator('#order-items li')).to_have_count(0)
+ if main:expect(p.locator('#order-items li:not(.request-recovery)')).to_have_count(0)
 with sync_playwright() as p:
  opts={'executable_path':'/usr/bin/chromium','args':['--no-sandbox']}
  if BASE.startswith('https:'):opts['proxy']={'server':os.environ['HTTPS_PROXY']}
