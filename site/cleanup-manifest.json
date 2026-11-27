@@ -3350,5 +3350,15 @@
       "site/app.js",
       "site/style.css"
     ]
+  },
+  "approvedResortContactShortcutCards": {
+    "date": "2026-11-27",
+    "version": "20261127-contact-cards-v125",
+    "rollbackTag": "pre-contact-shortcut-cards-20261127",
+    "reason": "Owner likes resort contact order but finds the full-width stack crowded. Approves equal side-by-side loyalty (right) and FAQ (left) cards, with modest icon-over-label presentation and more breathing room before help. Keep booking/location/app groups and two-line review-right/social-left footer, all link destinations, chalet/stay contact layouts, portals and order behavior.",
+    "updatedFiles": [
+      "site/app.js",
+      "site/style.css"
+    ]
   }
 }
