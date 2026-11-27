@@ -3390,5 +3390,14 @@
       "site/app.js",
       "site/style.css"
     ]
+  },
+  "approvedRemoveDuplicateCategoryAssistance": {
+    "date": "2026-11-27",
+    "version": "20261127-category-cleanup-v129",
+    "rollbackTag": "pre-category-assistance-removal-20261127",
+    "reason": "Owner reverses the recently added top-level help controls in the two native resort category tabs (arrangements/seating and accommodation) because help is already inside the services. Restore plain original category notes and remove the duplicate caption/WhatsApp/call controls there. Retain restaurant assistance and per-service contacts, all cards/routes, portal behavior and order code. Discussion of a prepared-WhatsApp-message notice above order submission remains separate and is not part of this removal.",
+    "updatedFiles": [
+      "site/app.js"
+    ]
   }
 }
