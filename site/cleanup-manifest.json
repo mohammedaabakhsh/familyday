@@ -3137,5 +3137,14 @@
       "site/app.js",
       "site/guide-copy.json"
     ]
+  },
+  "approvedMainServiceHeadingRhythm": {
+    "date": "2026-11-27",
+    "version": "20261127-live-v109",
+    "rollbackTag": "pre-main-service-heading-rhythm-20261127",
+    "reason": "Owner confirms dining as the reference and authorizes fixing top spacing differences across all four main service pages. Remove old compact coordination/seating heading and notice overrides: restore5px title/intro gap,14px intro at1.8 line height, standard22px notice separation/1.85 line height. Match all four heading-to-notice gaps to dining18px or12px on short screens. Preserve title/intro centering, generous help, card geometry, all standalone pages, content and ordering.",
+    "sources": [
+      "site/style.css"
+    ]
   }
 }

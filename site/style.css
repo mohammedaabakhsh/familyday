@@ -381,12 +381,8 @@ body.resort-services #main{width:100%;max-width:none;height:100dvh;min-height:0;
 
 /* Compact package rows remain readable while the page can scroll naturally. */
 @media screen and (max-width:759px){
- .resort-service .service-guide-coordination{--co-available:calc(100svh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));--co-gap:clamp(8px,calc(var(--co-available)*.06 - 32px),20px);--co-space:clamp(6px,calc(var(--co-available)*.03 - 14px),16px)}
+ .resort-service .service-guide-coordination{--co-available:calc(100svh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));--co-gap:clamp(8px,calc(var(--co-available)*.06 - 32px),20px)}
  .resort-service #main:has(.service-guide-coordination){min-height:100svh;padding-top:calc(var(--header) + env(safe-area-inset-top,0px) + 4px);padding-bottom:calc(104px + env(safe-area-inset-bottom,0px))}
- .resort-service .service-guide-coordination .page-heading{margin:0 0 var(--co-space)}
- .resort-service .service-guide-coordination .page-heading h1{margin:0}
- .resort-service .service-guide-coordination .page-heading p{margin-top:2px;font-size:13px;line-height:1.6}
- .resort-service .service-guide-coordination .coordination-order-note{margin-bottom:var(--co-space);line-height:1.75}
  .resort-service .service-guide-coordination .service-guide-packages{gap:var(--co-gap)}
  .resort-service .service-guide-coordination .service-guide-packages>.package>summary{min-height:clamp(44px,calc(var(--co-available)*.1 - 26px),60px);padding:clamp(6px,calc(var(--co-available)*.03 - 12px),16px) 14px}
 }
@@ -472,3 +468,9 @@ body.resort-services #main{width:100%;max-width:none;height:100dvh;min-height:0;
 /* Main service guidance and help share the approved spacious presentation. */
 .resort-service :is(.dining-guide,.service-guide-cinema) .page-heading p,
 .resort-service .dining-selected-option{text-align:center;text-wrap:pretty}
+
+/* Use the approved dining heading rhythm across the four main arrangements services. */
+.resort-service :is(.dining-guide,.service-guide-coordination,.service-guide-cinema) .page-heading{margin-bottom:18px}
+@media(max-width:999px) and (max-height:740px){
+ .resort-service :is(.dining-guide,.service-guide-coordination,.service-guide-cinema) .page-heading{margin-bottom:12px}
+}
