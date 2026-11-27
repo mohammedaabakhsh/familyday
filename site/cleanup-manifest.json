@@ -3370,5 +3370,15 @@
       "site/app.js",
       "site/style.css"
     ]
+  },
+  "approvedMainRestaurantAssistance": {
+    "date": "2026-11-27",
+    "version": "20261127-restaurant-help-v127",
+    "rollbackTag": "pre-restaurant-assistance-20261127",
+    "reason": "Owner approves adding تحتاج مساعدة في طلبك؟ with WhatsApp/call actions inside the main restaurant hours box, directly below unchanged hours and before menu categories, rather than below the invoice. Both links use restaurant recipient966537006531 from the shared approved message copy (with same-number fallback). Applies to native inline restaurant directory and /menu/ entry; retain menu categories, prices, invoice placement, outgoing order message, standalone portals and other service category notes.",
+    "updatedFiles": [
+      "site/app.js",
+      "site/style.css"
+    ]
   }
 }
