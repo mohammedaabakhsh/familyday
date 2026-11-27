@@ -326,6 +326,34 @@ body:not(.resort-order-embedded)[data-guide-tone="coordination"]{--service-fill:
 body:not(.resort-order-embedded)[data-guide-tone="seating"]{--service-fill:#eff7f1;--service-line:#cfe1d4;--service-ink:#3c6b50}
 body:not(.resort-order-embedded)[data-guide-tone="dining"]{--service-fill:#fffaf0;--service-line:#e9ddb9;--service-ink:#806024}
 body:not(.resort-order-embedded)[data-guide-tone="cinema"]{--service-fill:#f5f1fa;--service-line:#e1d7ed;--service-ink:#70508b}
-body:not(.resort-order-embedded)[data-guide-tone] .topbar{background:var(--service-fill);border-bottom-color:var(--service-line)}
 body:not(.resort-order-embedded)[data-guide-tone] .arrangement-request>header{background:var(--service-fill);border-bottom-color:var(--service-line)}
 body:not(.resort-order-embedded)[data-guide-tone] :is(#coordination,#seating,#cinema) .price{color:var(--service-ink)}
+
+/* Hospitality is the standalone typography reference; tint the title card, not navigation. */
+body:not(.resort-order-embedded){--portal-heading:21px;--portal-item:17px;--portal-price:22px;--portal-price-unit:12px;--portal-table-price:19px}
+body:not(.resort-order-embedded)[data-guide-tone] .section-heading--titled{padding:18px 20px;background:var(--service-fill);border:1px solid var(--service-line);border-radius:16px}
+body:not(.resort-order-embedded) .section-heading--titled h2{font-size:var(--portal-heading);font-weight:700;line-height:1.4}
+body:not(.resort-order-embedded) .section-heading--titled p{font-size:13px;font-weight:400;line-height:1.6}
+body:not(.resort-order-embedded) :is(#coordination,#seating) .seating-collapsed-main{flex-direction:column;align-items:flex-start;gap:5px}
+body:not(.resort-order-embedded) :is(#coordination,#seating) .seating-collapsed-title{font-size:var(--portal-item);font-weight:700;line-height:1.5}
+body:not(.resort-order-embedded) :is(#coordination,#seating) .seating-summary-bottom .price{font-size:var(--portal-price);font-weight:700;line-height:1.6}
+body:not(.resort-order-embedded) :is(#coordination,#seating,#cinema) .price-unit{display:inline;font-size:var(--portal-price-unit);font-weight:500;line-height:1.6}
+body:not(.resort-order-embedded) #cinema .cinema-fact :is(.price,.cinema-duration){font-size:var(--portal-price);font-weight:700;line-height:1.6}
+body:not(.resort-order-embedded) #dining .fd-dining-option-name{font-size:var(--portal-item);font-weight:700;line-height:1.5}
+body:not(.resort-order-embedded) #dining .fd-dining-option-desc{font-size:13px;line-height:1.6}
+body:not(.resort-order-embedded) #dining .fd-dining-price{font-size:var(--portal-table-price);font-weight:700}
+body:not(.resort-order-embedded) :is(#coordination,#seating,#cinema) :is(.inclusions li,.session-description){font-size:13px;font-weight:400;line-height:1.8}
+body:not(.resort-order-embedded) #dining .fd-dining-inclusions{font-size:13px;font-weight:400;line-height:1.8}
+body:not(.resort-order-embedded) :is(#dining .fd-dining-contents>summary,.guide-usage>summary){font-size:13px;font-weight:700;line-height:1.6}
+body:not(.resort-order-embedded) :is(.arrangement-request-button,.arrangement-send,.coordination-help-actions a){font-size:14px;font-weight:700;line-height:1.6}
+body:not(.resort-order-embedded) .arrangement-request h2{font-size:var(--portal-heading);font-weight:700;line-height:1.4}
+body:not(.resort-order-embedded) :is(.arrangement-fields label,.arrangement-request-quantity,.arrangement-cinema-time){font-size:13px}
+body:not(.resort-order-embedded) .arrangement-fields :is(input,select,textarea){font-size:16px}
+body:not(.resort-order-embedded) .arrangement-confirmation{font-size:11px;line-height:1.6}
+body:not(.resort-order-embedded) .contents .tile-title{font-size:17px;font-weight:700;line-height:1.45}
+body:not(.resort-order-embedded) .contents :is(.tile-description,.tile-action){font-size:12px;line-height:1.5}
+@media(max-width:360px){
+ body:not(.resort-order-embedded){--portal-heading:19px;--portal-item:15px;--portal-price:20px;--portal-price-unit:11px;--portal-table-price:17px}
+ body:not(.resort-order-embedded)[data-guide-tone] .section-heading--titled{padding:14px}
+ body:not(.resort-order-embedded) .contents .tile-title{font-size:16px}
+}

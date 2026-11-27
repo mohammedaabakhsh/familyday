@@ -23,8 +23,13 @@
     if (!image) throw new Error('Missing service image: ' + selector);
     return {src:image.getAttribute('data-page-src') || image.getAttribute('src'), alt:image.alt, width:image.width, height:image.height};
   };
+  function servicePrice(price, unit = '') {
+    const amount=String(price).trim().match(/^(\d+(?:\.\d+)?)\s+ريال$/);
+    const value=amount?'<span class="service-price-number">'+escape(amount[1])+'</span><span class="price-unit"> ريال'+(unit?' '+escape(unit):'')+'</span>':escape(price)+(unit?'<span class="price-unit"> '+escape(unit)+'</span>':'');
+    return '<strong class="price">'+value+'</strong>';
+  }
   function serviceCard({title, price, priceUnit = '', photos = [], body, id = '', label = 'تفاصيل الخدمة', imageAlt, className = '', capacity = '', expandable = true}) {
-    const priceMarkup = '<strong class="price">' + escape(price) + (priceUnit ? '<span class="price-unit"> ' + escape(priceUnit) + '</span>' : '') + '</strong>';
+    const priceMarkup = servicePrice(price,priceUnit);
     if (!photos.length && className !== 'coordination-card') {
       return '<article class="package-card package-card--text"><details class="package-details hospitality-details">'
         + '<summary class="package-heading"><h3>' + escape(title) + '</h3>' + priceMarkup + ''
@@ -89,7 +94,7 @@
     html += diningSection;
     const cinema=catalog.guest.cinema, cinemaMedia=serviceLinks.cinema;
     const cinemaPhoto=cinemaMedia?.image?'<div class="dining-shared-photo cinema-shared-photo">'+FD_GUIDE_GALLERY.markup([cinemaMedia.image],cinema.title,cinema.title)+'</div>':'';
-    const cinemaDetails='<div class="cinema-service-price"><div class="cinema-fact"><small>مدة الجلسة</small><strong class="cinema-duration">'+escape(cinema.duration)+'</strong></div><div class="cinema-fact"><small>سعر الجلسة</small><strong class="price">'+escape(cinema.price)+' ريال</strong></div></div><h3 class="cinema-contents-title">'+escape(cinema.contentsTitle)+'</h3>'+items(cinema.contents)+'<details class="guide-usage"><summary>تعليمات الاستخدام</summary>'+items(cinema.notes)+'</details>';
+    const cinemaDetails='<div class="cinema-service-price"><div class="cinema-fact"><small>مدة الجلسة</small><strong class="cinema-duration">'+escape(cinema.duration)+'</strong></div><div class="cinema-fact"><small>سعر الجلسة</small>'+servicePrice(cinema.price+' ريال')+'</div></div><h3 class="cinema-contents-title">'+escape(cinema.contentsTitle)+'</h3>'+items(cinema.contents)+'<details class="guide-usage"><summary>تعليمات الاستخدام</summary>'+items(cinema.notes)+'</details>';
     html += section('cinema',cinema.title,cinema.intro,'<p class="coordination-order-note">'+escape(cinemaMedia.advanceNote)+'</p><article id="cinema-session" class="cinema-service-panel">'+cinemaPhoto+'<div class="cinema-service-body package-details-body">'+cinemaDetails+'</div></article>'+contactMarkup('cinema',cinemaMedia.help,cinemaMedia.help.description),true);
     content.innerHTML = html;
     for(const id of ['coordination','seating','dining','cinema']){const section=content.querySelector('#'+id);section.dataset.portalSharePath=serviceLinks[id]?.portalSharePath||'/services-guide/'+id+'/';section.dataset.shareDescription=serviceLinks[id]?.shareDescription||serviceLinks[id]?.intro||'';}

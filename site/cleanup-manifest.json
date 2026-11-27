@@ -2302,9 +2302,9 @@
     "js/menu-order-message.js": "78e54cc83d01bb6b5a44de14d4ce709d8f900517d6f09b1bda0d7a63067abaa9",
     "services-guide/README.md": "a1170ba5394064fe4cbea3ff7c5eb19e729d949093d3b29919b2fbb03c76befb",
     "services-guide/guide-gallery.js": "73d26b21e311cdaf3bf632522af683d1361f54f74ffe5bbe1220f9fb19f87aa4",
-    "services-guide/guide.css": "a7b79f1fabd8a99f5a967e861101aadf8c77aa1af862a7d2f64995eecb1b5251",
-    "services-guide/guide.js": "8374570e1f9c7fff60034a6211d6c920fba8d179455d451970738a0ec829556c",
-    "services-guide/index.html": "f9d676d5af5bf0ac78ae3deb799e4cee2eb52e231354503f4ee4f081ed94cfc4",
+    "services-guide/guide.css": "839886ba7f4269fad31cb2da64865b8ea1bdd8971f53fc07db4bab506b268e69",
+    "services-guide/guide.js": "dacd6112365b3a83f167907305c2ca79c627683dffb65832d63881b27e5fd560",
+    "services-guide/index.html": "295f4f276ea0ce4b711728c3220deea8a2029bad2ac8438b0a4822cb94bf7d25",
     "services-guide/share-entry.js": "72de1a301e0da0de127f52b55714dab77b23548b1125915272e33bf4b1fc09a8",
     "guest-services/resort-refinements.css": "86767dab7a8046a03594948cd206054d90b81e79f1ae2de4d1d4bcb829c79e22",
     "guest-services/resort-refinements.js": "bd50f8719ccfba58fa69c48ed14314cd768f8cb38ce8e9bd0fac9d1571b90cd6",
@@ -3163,6 +3163,17 @@
     "reason": "Owner requests standalone coordination and outdoor seating to use the same comfortable top/header and lower help/WhatsApp/call spacing as dining/cinema, explicitly allowing scroll. Remove all height-aware one-screen compression for those two sections: restore standard section padding, title/intro margins and fonts, notice spacing, package row padding/gaps and shared help typography/margins. Preserve subtle colors, content, prices, request/sharing logic and main site.",
     "updatedProtectedFiles": [
       "services-guide/guide.css",
+      "services-guide/index.html"
+    ]
+  },
+  "approvedHospitalityTypographyAndTitleCards": {
+    "date": "2026-11-27",
+    "version": "20261127-portal-reference-v112",
+    "rollbackTag": "pre-portal-hospitality-reference-20261127",
+    "reason": "Owner approves hospitality as the standalone typography reference and moving subtle service color from the top navigation to a rounded title/description card across coordination, outdoor seating, dining and cinema. Match headings21/19 weight700, names17/15, prices22/20 weight700 with small units12/11, body13 and buttons14; retain compact19/17 dining table prices. Preserve comfortable scrollable layout, subtle palettes, exact content/prices/links/messages and native embedded/main presentation. Wrap monetary display parts for smaller currency units without touching catalogue/order data.",
+    "updatedProtectedFiles": [
+      "services-guide/guide.css",
+      "services-guide/guide.js",
       "services-guide/index.html"
     ]
   }
