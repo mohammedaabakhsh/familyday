@@ -1,100 +1,78 @@
-"""Chalet/resort guest-order parity. All WhatsApp and share actions are intercepted."""
+"""Independent chalet requests, own-interface sharing, exact copy, prices and visit privacy. Never send."""
 from pathlib import Path
+from html.parser import HTMLParser
 from urllib.parse import urlparse,parse_qs
-from playwright.sync_api import sync_playwright
-import sys,json
-BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8059'
-PATH='/chalet/guest-services/'
+import os,sys,json
+from playwright.sync_api import sync_playwright,expect
+R=Path(__file__).resolve().parents[1];BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8171';PORTAL='/chalet/guest-services/'
+PATH={'water':'/chalet/services/water-games/','games':'/chalet/services/games/'}
+TITLE={'water':'الألعاب المائية','games':'الألعاب الترفيهية'}
+INTRO={'water':'استمتع بألعاب مائية للكبار والأطفال','games':'استمتع بوقتك مع ألعابنا الترفيهية'}
+CARD={'water':'ألعاب مائية للكبار والأطفال','games':'بوكس الألعاب الترفيهية'}
+LABEL={'water':'اطلب الألعاب المائية','games':'اطلب الألعاب الترفيهية'}
+EXPECTED={'water':'السلام عليكم، أرغب بطلب ألعاب مائية.\n\nالاسم: ضيف الشاليه\nالمكان: شاليه يوم العائلة\n\nالباقة: باقة ألعاب مائية\nالكمية: 2\nألعاب للكبار: 4\nألعاب للأطفال: 2\nإجمالي الطلب: 100 ريال\n\nملاحظات: ملاحظة الشاليه','games':'السلام عليكم، أرغب بطلب ألعاب ترفيهية.\n\nالاسم: ضيف الشاليه\nالمكان: شاليه يوم العائلة\n\nالباقة: بوكس الألعاب\nالكمية: 1\nإجمالي الطلب: 50 ريال\n\nملاحظات: ملاحظة الشاليه'}
+FOLLOW={key:'تابع طلب '+TITLE[key]+' مع خدمات الشاليه على واتساب' for key in PATH}
+class Head(HTMLParser):
+ def __init__(self):super().__init__();self.meta={};self.images=[]
+ def handle_starttag(self,t,attrs):
+  a=dict(attrs)
+  if t=='meta':self.meta[a.get('property',a.get('name'))]=a.get('content')
+  if t in ['img','picture','source'] or t=='link' and a.get('rel') in ['stylesheet','icon','apple-touch-icon']:self.images.append(a)
+def inc(p,s,n=1):
+ for _ in range(n):p.locator(s).first.click()
+def choose(p,key):
+ if key=='games':
+  expect(p.locator('[name="games-package"]')).to_have_count(1);expect(p.locator('[name="games-package"]')).to_have_attribute('value','box');p.locator('[name="games-package"]').check()
+ else:
+  inc(p,'[data-water-packages][data-step="1"]');inc(p,'[data-water="adults"][data-step="1"]',4);inc(p,'[data-water="children"][data-step="1"]',2)
+def fill(p,prefix):p.locator('#'+prefix+'-name').fill('ضيف الشاليه');p.locator('#'+prefix+'-notes').fill('ملاحظة الشاليه')
+def identity(p,prefix):expect(p.locator('#'+prefix+'-name')).to_have_value('ضيف الشاليه');expect(p.locator('#'+prefix+'-notes')).to_have_value('ملاحظة الشاليه')
+def draft(page):
+ u=urlparse(page.evaluate('opened.at(-1)'));assert u.hostname=='wa.me' and u.path=='/966556156693';return parse_qs(u.query)['text'][0]
+def internal(page,path):
+ page.evaluate("path=>{const a=document.createElement('a');a.id='internal-portal-link';a.href=path;a.textContent='انتقال داخلي';document.body.append(a)}",path);page.locator('#internal-portal-link').click()
+def background(page):page.evaluate("Object.defineProperty(document,'hidden',{configurable:true,value:true});document.dispatchEvent(new Event('visibilitychange'));Object.defineProperty(document,'hidden',{configurable:true,value:false});document.dispatchEvent(new Event('visibilitychange'))")
+out={'version':'20261127-chalet-services-v117','profiles':[],'errors':[],'messagesSent':False}
 with sync_playwright() as p:
- b=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
- for width,height in [(320,568),(390,844),(1440,900)]:
-  ctx=b.new_context(viewport={'width':width,'height':height},reduced_motion='reduce')
-  ctx.add_init_script("window.open=url=>{window.capturedURL=url;return null};Object.defineProperty(navigator,'share',{value:undefined,configurable:true});Object.defineProperty(navigator,'clipboard',{value:{writeText:async url=>{window.copiedURL=url}},configurable:true})")
-  page=ctx.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
-  page.goto(BASE+PATH,wait_until='networkidle')
-  assert page.title()=='خدمات إقامتك | شاليه يوم العائلة'
-  assert page.locator('link[rel="canonical"]').get_attribute('href')=='https://familydaystay.com'+PATH
-  assert page.locator('meta[property^="og:image"],meta[name^="twitter:image"]').count()==0
-  assert page.locator('[data-service]').evaluate_all('els=>els.map(e=>e.dataset.service)')==['water','games']
-  assert page.locator('#restaurant-order,#guest-cabin,#cinema-service,#extras-service,#hospitality-service').count()==0
-  assert page.locator('[name="games-package"]').evaluate_all('els=>els.map(e=>e.value)')==['box']
-  assert page.locator('.footer-bottom').count()==0
-  assert page.locator('.help a[href="https://wa.me/966556156693"]').count()==1
-  def click(selector,n=1):
-   for _ in range(n):page.locator(selector).click()
-  def open_(key):
-   click('#'+key+'-card');assert page.locator('#service-dialog').is_visible()
-   assert page.evaluate('getComputedStyle(document.body).overflow')=='hidden'
-  def apply():click('#apply-selection');assert page.locator('#service-dialog').is_hidden()
-  click('#share-page');page.wait_for_function('window.copiedURL')
-  assert page.evaluate('window.copiedURL')==BASE+PATH
-  assert page.locator('#share-status').evaluate('e=>e.classList.contains("visible")')
-  open_('games');assert page.locator('.game-options .is-selected').count()==0
-  page.keyboard.press('Escape');assert page.locator('#games-card').evaluate('e=>document.activeElement===e')
-  open_('water');click('[data-water-packages][data-step="1"]')
-  assert page.locator('#water-offer').inner_text()=='إجمالي الباقات: 6 ألعاب بـ100 ريال'
-  assert page.locator('#dialog-total').inner_text()=='100'
-  assert page.locator('#apply-selection').is_disabled()
-  click('[data-water="adults"][data-step="1"]',4);click('[data-water="children"][data-step="1"]',2)
-  assert page.locator('#water-count').inner_text()=='✓ اكتمل اختيار الألعاب'
-  assert page.locator('#water-service').evaluate('e=>e.classList.contains("is-complete")')
-  if width==390:page.screenshot(path='/tmp/fd-chalet-parity-water.png')
-  click('[data-water-packages][data-step="-1"]')
-  assert page.locator('#water-adults').inner_text()=='0' and page.locator('#water-children').inner_text()=='0'
-  assert page.locator('#apply-selection').is_disabled()
-  click('[data-water-packages][data-step="1"]');click('[data-water="adults"][data-step="1"]',4);click('[data-water="children"][data-step="1"]',2);apply()
-  open_('games');page.locator('[name="games-package"][value="box"]').check();apply()
-  assert page.locator('#order-total').inner_text()=='150'
-  assert page.locator('#order-items .order-group-heading strong').all_text_contents()==['100 ريال','50 ريال']
-  assert page.locator('#order-items .order-item-copy strong').all_text_contents()==['باقة ألعاب مائية × 2','بوكس الألعاب']
-  click('#extras-order .send-order');assert page.evaluate('window.capturedURL') is None
-  page.locator('#guest-name').fill('ضيف التجربة');page.locator('#guest-notes').fill('ملاحظة للشاليه')
-  click('#extras-order .send-order');url=urlparse(page.evaluate('window.capturedURL'))
-  assert url.hostname=='wa.me' and url.path=='/966556156693'
-  expected='السلام عليكم، أرغب بطلب الخدمات التالية:\n\nالاسم: ضيف التجربة\nالمكان: شاليه يوم العائلة\n\nالطلبات:\n\nالألعاب المائية:\nباقة ألعاب مائية × 2 = 100 ريال\nللكبار: 4\nللأطفال: 2\n\nالألعاب الترفيهية:\nبوكس الألعاب × 1 = 50 ريال\n\nإجمالي الطلب: 150 ريال\n\nملاحظات: ملاحظة للشاليه'
-  assert parse_qs(url.query)['text'][0]==expected
-  open_('water');click('[data-water-packages][data-step="1"]');click('.dialog-cancel');assert page.locator('#order-total').inner_text()=='150'
-  page.reload(wait_until='networkidle');assert page.locator('#order-total').inner_text()=='0'
-  assert page.locator('#guest-name').input_value()=='' and page.locator('#guest-notes').input_value()==''
-  # The resort in the same tab must not reuse chalet orders, names or notes.
-  page.goto(BASE+'/guest-services/',wait_until='networkidle');assert page.locator('#orders-summary').is_hidden()
-  open_('games');page.locator('[name="games-package"][value="table"]').check();apply()
-  page.locator('#guest-name').fill('ضيف المنتجع');page.locator('#guest-cabin').select_option(label='بيت الدوم 1')
-  page.goto(BASE+PATH,wait_until='networkidle');assert page.locator('#order-total').inner_text()=='0'
-  assert page.locator('#guest-name').input_value()==''
-  open_('water');click('[data-water-packages][data-step="1"]');click('[data-water="adults"][data-step="1"]',4);click('[data-water="children"][data-step="1"]',2);apply()
-  open_('games');page.locator('[name="games-package"][value="box"]').check();apply()
-  page.evaluate('window.scrollTo(0,0)');page.wait_for_timeout(150)
-  if not page.locator('#order-shortcut').is_hidden():
-   click('#order-shortcut');assert page.locator('#orders-summary').evaluate('e=>e===document.activeElement')
-  open_('water');page.locator('.dialog-body').evaluate('e=>e.scrollTop=e.scrollHeight')
-  box=page.locator('#apply-selection').bounding_box();assert box['y']>=0 and box['y']+box['height']<=height
-  for _ in range(16):
-   page.keyboard.press('Tab');assert page.evaluate('document.getElementById("service-dialog").contains(document.activeElement)')
-  page.keyboard.press('Escape');assert page.evaluate('getComputedStyle(document.body).overflow')!='hidden'
-  page.get_by_role('button',name='حذف باقة ألعاب مائية',exact=True).click();assert page.locator('#order-total').inner_text()=='50'
-  page.get_by_role('button',name='حذف بوكس الألعاب',exact=True).click()
-  assert page.locator('#orders-summary').is_hidden()
-  if width==390:page.screenshot(path='/tmp/fd-chalet-parity-home.png',full_page=True)
-  assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')
-  assert not errors,errors
-  ctx.close();print(width,'PASS fixed URL, two services, quantities, reset, bill, exact WhatsApp, sharing, no persistence, venue isolation, cancel/remove and mobile focus/scroll',flush=True)
- # Native sharing and clipboard failures keep the chalet URL, never the resort URL.
- for mode in ['native','fallback']:
-  ctx=b.new_context();ctx.add_init_script("Object.defineProperty(navigator,'share',{value:"+("async data=>{window.sharedData=data}" if mode=='native' else 'undefined')+",configurable:true});Object.defineProperty(navigator,'clipboard',{value:undefined,configurable:true})")
-  page=ctx.new_page();page.goto(BASE+PATH,wait_until='networkidle');page.locator('#share-page').click()
-  if mode=='native':
-   page.wait_for_function('window.sharedData');assert page.evaluate('window.sharedData.url')==BASE+PATH
-  else:
-   assert page.locator('#share-dialog').is_visible();assert page.locator('#share-link').input_value()==BASE+PATH
-  ctx.close()
- # Missing source is retryable; unsupported services and malformed saved orders cannot be restored.
- ctx=b.new_context();ctx.route('**/data/services.json?*',lambda r:r.fulfill(status=503,body='Unavailable'))
- page=ctx.new_page();page.goto(BASE+PATH,wait_until='networkidle')
- assert page.locator('#services-error').is_visible() and page.locator('#reload-services').is_visible()
- assert page.locator('#water-card').is_disabled();ctx.close()
- ctx=b.new_context();bad={'games':'table','cinema':'18','hospitality':{'الضيافة السعودية':2},'water':{'packages':2,'adults':3,'children':0},'menu':{'ساندويتش دجاج زنجر':{'qty':2}},'quantities':{'bed':2}}
- ctx.add_init_script('sessionStorage.setItem("familyday.chalet-guest-orders.v1",'+json.dumps(json.dumps(bad))+')')
- page=ctx.new_page();page.goto(BASE+PATH,wait_until='networkidle');assert page.locator('#orders-summary').is_hidden();ctx.close()
- print('PASS native/copy/fallback sharing, source errors, unsupported and invalid saved selections',flush=True)
+ opts={'executable_path':'/usr/bin/chromium','args':['--no-sandbox']}
+ if BASE.startswith('https:'):opts['proxy']={'server':os.environ['HTTPS_PROXY']}
+ b=p.chromium.launch(**opts)
+ for width,height in ([(390,844)] if BASE.startswith('https:') else [(390,844),(320,568),(390,430),(1440,900)]):
+  c=b.new_context(viewport={'width':width,'height':height},ignore_https_errors=True,reduced_motion='reduce');c.add_init_script("window.opened=[];window.shares=[];window.open=u=>{top.opened.push(u);return null};Object.defineProperty(navigator,'share',{value:async d=>top.shares.push(d)})");page=c.new_page();page.on('pageerror',lambda e:out['errors'].append(str(e)))
+  page.goto(BASE+PORTAL);page.locator('body.guest-independent-orders').wait_for();assert page.locator('[data-service]').evaluate_all('es=>es.map(e=>e.dataset.service)')==['water','games'];expect(page.locator('#orders-summary')).to_be_hidden();expect(page.locator('#guest-cabin,#restaurant-order,#hospitality-service,#extras-service')).to_have_count(0);page.locator('#share-page').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+PORTAL}
+  for key in PATH:
+   expect(page.locator('#'+key+'-default')).to_have_text(CARD[key]);page.locator('#'+key+'-card').click();assert page.url==BASE+PORTAL+key+'/';assert page.title()==TITLE[key]+' | شاليه يوم العائلة';expect(page.locator('#'+key+'-service>.section-note').first).to_have_text(INTRO[key]);share=page.locator('#service-dialog .resort-service-share');expect(share).to_be_enabled();share.click();assert page.evaluate('shares.at(-1)')=={'text':BASE+PORTAL+key+'/'}
+   choose(page,key);expect(page.locator('#apply-selection')).to_have_text(LABEL[key]);page.locator('#apply-selection').click();expect(page.locator('#service-request-dialog')).to_be_visible();expect(page.locator('#orders-summary')).to_be_hidden();expect(page.locator('#service-request-cabin,.cabin-number')).to_have_count(0);expect(page.locator('#service-request-dialog .confirmation-note')).to_have_text(FOLLOW[key]);assert page.locator('#service-request-dialog').inner_text().count('إجمالي الطلب')==1
+   before=page.evaluate('opened.length');page.locator('#service-request-dialog .send-order').click();assert page.evaluate('opened.length')==before;fill(page,'service-request');page.go_back();expect(page.locator('#service-dialog')).to_be_visible();page.locator('#apply-selection').click();identity(page,'service-request');page.locator('#service-request-dialog .dialog-close').click();page.locator('#'+key+'-card').click();page.locator('#apply-selection').click();identity(page,'service-request');assert page.locator('#service-request-dialog').evaluate('e=>e.scrollWidth<=e.clientWidth+1')
+   if width==390 and height==844:page.screenshot(path='/tmp/chalet-v117-'+key+'-source.png')
+   page.locator('#service-request-dialog .send-order').click();expect(page.locator('#service-request-dialog')).to_be_hidden();sourceDraft=draft(page);assert sourceDraft==EXPECTED[key],sourceDraft;assert page.url==BASE+PORTAL
+   # Main stays on its native service page and matches the exact same draft.
+   page.goto(BASE+PATH[key]);page.locator('#main h1').wait_for();expect(page.locator('#main .page-heading p')).to_have_text(INTRO[key]);expect(page.locator('#main [data-package-photo]')).to_have_count(0);expect(page.locator('#main [data-service-portal]')).to_have_text(LABEL[key]);assert 'طاولة مع بوكس' not in page.locator('#main').inner_text();page.locator('.header [data-share]').click();assert page.evaluate('shares.at(-1)')=={'text':BASE+PATH[key]};page.locator('#main [data-service-portal]').click();page.locator('.native-order-loading').wait_for(state='hidden');assert page.url==BASE+PATH[key];f=page.frame_locator('.native-order-frame');choose(f,key);fill(f,'guest');expect(f.locator('#guest-cabin')).to_have_count(0);expect(f.locator('.resort-direct-confirmation')).to_have_text(FOLLOW[key]);expect(f.locator('[data-for="notes"]')).to_have_text('ملاحظات الطلب (اختياري)');page.go_back();expect(page.locator('#native-order-dialog')).to_be_hidden();page.locator('#main [data-service-portal]').click();page.locator('.native-order-loading').wait_for(state='hidden');f=page.frame_locator('.native-order-frame');identity(f,'guest')
+   if width==390 and height==844:page.screenshot(path='/tmp/chalet-v117-'+key+'-main.png')
+   f.locator('.resort-direct-send').click();expect(page.locator('#native-order-dialog')).to_be_hidden();assert draft(page)==sourceDraft;page.goto(BASE+PORTAL);page.locator('body.guest-independent-orders').wait_for();out['profiles'].append({'width':width,'height':height,'service':key,'independentMainAndSourceOrders':True,'exactSameApprovedDraftAndRecipient':True,'ownInterfaceLinksAndCopy':True});print(width,height,key,'drafts/copy/links PASS',flush=True)
+  # Source deletion changes the actual selection and prevents an empty draft.
+  page.locator('#games-card').click();choose(page,'games');page.locator('#apply-selection').click();fill(page,'service-request');page.locator('.request-invoice .remove-item').click();expect(page.locator('#service-request-total')).to_have_text('0');expect(page.locator('#service-request-dialog .send-order')).to_be_disabled();page.locator('.request-edit').click();expect(page.locator('[name="games-package"]:checked')).to_have_count(0);choose(page,'games');page.locator('#apply-selection').click();identity(page,'service-request');background(page);expect(page.locator('#service-request-dialog')).to_be_hidden();page.locator('#games-card').click();expect(page.locator('[name="games-package"]:checked')).to_have_count(0);page.reload();page.locator('body.guest-independent-orders').wait_for();expect(page.locator('[name="games-package"]:checked')).to_have_count(0)
+  # Main removal/return, lifecycle and route browsing preserve only the active visit.
+  page.goto(BASE+PATH['games']);page.locator('#main [data-service-portal]').click();page.locator('.native-order-loading').wait_for(state='hidden');f=page.frame_locator('.native-order-frame');choose(f,'games');fill(f,'guest');f.locator('.resort-direct-form .remove-item').click();expect(f.locator('.resort-direct-send')).to_be_disabled();choose(f,'games');page.locator('.native-order-close').click();page.locator('.context-back').click();expect(page.locator('.service-card p')).to_have_text([CARD['games'],CARD['water']]);page.locator('.service-card[href="'+PATH['games']+'"]').click();page.locator('#main [data-service-portal]').click();page.locator('.native-order-loading').wait_for(state='hidden');f=page.frame_locator('.native-order-frame');identity(f,'guest');background(page);expect(page.locator('#native-order-dialog')).to_be_hidden();page.locator('#main [data-service-portal]').click();page.locator('.native-order-loading').wait_for(state='hidden');f=page.frame_locator('.native-order-frame');expect(f.locator('#guest-name')).to_have_value('');expect(f.locator('[name="games-package"]:checked')).to_have_count(0);page.reload();page.locator('#main h1').wait_for();expect(page.locator('#native-order-dialog')).to_be_hidden()
+  # Main and source previews expose the venue once in the title, never the description.
+  for key,path in PATH.items():
+   previews=[]
+   for url in [path,PORTAL+key+'/']:
+    response=c.request.get(BASE+url,headers={'User-Agent':'WhatsApp/2.24'});assert response.status==200;h=Head();h.feed(response.text());assert h.meta['og:title']==TITLE[key]+' | شاليه يوم العائلة';assert h.meta['og:description']==INTRO[key];assert h.meta['twitter:description']==INTRO[key];assert 'يوم العائلة' not in h.meta['og:description'];assert 'og:image' not in h.meta and 'twitter:image' not in h.meta
+    if url.startswith(PORTAL):assert not h.images and h.meta['familyday:portal-base']==PORTAL
+   for suffix in ['', '-service']:
+    page.goto(BASE+PORTAL+'#'+key+suffix);page.locator('body.guest-independent-orders').wait_for();expect(page.locator('#service-dialog')).to_have_attribute('data-tone',key);assert page.url==BASE+PORTAL+key+'/';page.reload();page.locator('body.guest-independent-orders').wait_for();expect(page.locator('#service-dialog')).to_have_attribute('data-tone',key)
+  # Shared visit handoff must preserve each venue's own draft without copying names or cabin data.
+  if width==390 and height==844:
+   page.goto(BASE+PORTAL+'games/');page.locator('body.guest-independent-orders').wait_for();choose(page,'games');page.locator('#apply-selection').click();fill(page,'service-request')
+   page.locator('#service-request-dialog .dialog-close').click();internal(page,'/guest-services/');page.locator('body.guest-independent-orders').wait_for();page.locator('#games-card').click();expect(page.locator('[name="games-package"]')).to_have_count(2);page.locator('[name="games-package"][value="table"]').check();page.locator('#apply-selection').click();expect(page.locator('#service-request-name')).to_have_value('');expect(page.locator('#service-request-cabin')).to_have_value('');page.locator('#service-request-name').fill('ضيف المنتجع')
+   page.locator('#service-request-dialog .dialog-close').click();internal(page,PORTAL);page.locator('body.guest-independent-orders').wait_for();page.locator('#games-card').click();expect(page.locator('[name="games-package"]')).to_have_count(1);page.locator('#apply-selection').click();identity(page,'service-request');expect(page.locator('#service-request-cabin')).to_have_count(0)
+  assert page.evaluate('document.documentElement.scrollWidth<=innerWidth');c.close()
+ # Manual and clipboard fallback also retain the dedicated chalet service URL.
+ for manual in [False,True]:
+  c=b.new_context(ignore_https_errors=True);c.add_init_script("Object.defineProperty(navigator,'share',{value:undefined});Object.defineProperty(navigator,'clipboard',{value:"+('undefined' if manual else '{writeText:async u=>window.copied=u}')+"})");page=c.new_page();page.goto(BASE+PORTAL+'games/');page.locator('body.guest-independent-orders').wait_for();share=page.locator('.resort-service-share');expect(share).to_be_enabled();share.click()
+  if manual:expect(page.locator('#share-link')).to_have_value(BASE+PORTAL+'games/');expect(page.locator('#share-dialog h2')).to_have_text('رابط الألعاب الترفيهية')
+  else:page.wait_for_function('window.copied');assert page.evaluate('copied')==BASE+PORTAL+'games/'
+  c.close()
  b.close()
+assert not out['errors'],out['errors'];dest=Path('/tmp/chalet-services-v117-live.json') if BASE.startswith('https:') else R/'site/audits/chalet-services-v117.json';dest.write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print('Chalet independent ordering, prices, own-interface sharing, copy and privacy PASS')

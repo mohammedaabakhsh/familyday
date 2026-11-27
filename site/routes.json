@@ -1,5 +1,5 @@
 {
-  "version": "20261127-service-notes-v116",
+  "version": "20261127-chalet-services-v117",
   "routes": [
     "/",
     "/arrangements/",
@@ -182,6 +182,10 @@
     "extras": "/guest-services/extras/",
     "water": "/guest-services/water/",
     "games": "/guest-services/games/"
+  },
+  "chaletPortalShareSections": {
+    "water": "/chalet/guest-services/water/",
+    "games": "/chalet/guest-services/games/"
   },
   "previewRedirectCount": 81,
   "unitCount": 16,

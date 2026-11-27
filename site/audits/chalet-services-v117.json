@@ -1,0 +1,71 @@
+{
+  "version": "20261127-chalet-services-v117",
+  "profiles": [
+    {
+      "width": 390,
+      "height": 844,
+      "service": "water",
+      "independentMainAndSourceOrders": true,
+      "exactSameApprovedDraftAndRecipient": true,
+      "ownInterfaceLinksAndCopy": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "service": "games",
+      "independentMainAndSourceOrders": true,
+      "exactSameApprovedDraftAndRecipient": true,
+      "ownInterfaceLinksAndCopy": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "service": "water",
+      "independentMainAndSourceOrders": true,
+      "exactSameApprovedDraftAndRecipient": true,
+      "ownInterfaceLinksAndCopy": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "service": "games",
+      "independentMainAndSourceOrders": true,
+      "exactSameApprovedDraftAndRecipient": true,
+      "ownInterfaceLinksAndCopy": true
+    },
+    {
+      "width": 390,
+      "height": 430,
+      "service": "water",
+      "independentMainAndSourceOrders": true,
+      "exactSameApprovedDraftAndRecipient": true,
+      "ownInterfaceLinksAndCopy": true
+    },
+    {
+      "width": 390,
+      "height": 430,
+      "service": "games",
+      "independentMainAndSourceOrders": true,
+      "exactSameApprovedDraftAndRecipient": true,
+      "ownInterfaceLinksAndCopy": true
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "service": "water",
+      "independentMainAndSourceOrders": true,
+      "exactSameApprovedDraftAndRecipient": true,
+      "ownInterfaceLinksAndCopy": true
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "service": "games",
+      "independentMainAndSourceOrders": true,
+      "exactSameApprovedDraftAndRecipient": true,
+      "ownInterfaceLinksAndCopy": true
+    }
+  ],
+  "errors": [],
+  "messagesSent": false
+}

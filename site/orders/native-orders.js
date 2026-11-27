@@ -8,7 +8,7 @@ export function createResortOrders({version,services,share}){
  if(history.state?.fdResortOrder){const state={...history.state};delete state.fdResortOrder;history.replaceState(state,'',location.href);}
  const requests=new Map();
  const keyFor=descriptor=>[descriptor.kind,descriptor.service,descriptor.entry].join(':');
- const fallback=kind=>kind==='guest'?'/guest-services/':'/services-guide/';
+ const fallback=kind=>kind==='chalet'?'/chalet/guest-services/':kind==='guest'?'/guest-services/':'/services-guide/';
  function command(data){item?.iframe.contentWindow.postMessage({type:'familyday-resort-order-command',...data},location.origin);}
  function dispose(){if(!item)return;clearTimeout(item.timer);item.iframe.remove();item=null;}
  let diningSelection=null;
@@ -68,13 +68,13 @@ export function createResortOrders({version,services,share}){
    }
   }
   const link=event.target.closest('[data-service-portal]');
-  if(!link||link.disabled||context?.venue!=='resort'||event.defaultPrevented||event.button!==0||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey||dialog.contains(link))return;
+  if(!link||link.disabled||!['resort','chalet'].includes(context?.venue)||event.defaultPrevented||event.button!==0||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey||dialog.contains(link))return;
   const target=new URL(link.href||link.dataset.serviceUrl,location.origin);if(target.origin!==location.origin&&target.origin!=='https://familydaystay.com')return;
-  const kind=['/arrangements/','/services-guide/'].includes(target.pathname)?'arrangements':target.pathname==='/guest-services/'?'guest':null;if(!kind)return;
-  const selected=services.find(s=>s.path===context.path),service=link.dataset.resortService||(selected?.id==='menu'?'restaurant':selected?.id);
+  const kind=['/arrangements/','/services-guide/'].includes(target.pathname)?'arrangements':target.pathname==='/guest-services/'?'guest':target.pathname==='/chalet/guest-services/'?'chalet':null;if(!kind)return;
+  const selected=services.find(s=>s.path===context.path||context.venue==='chalet'&&['water','games'].includes(s.id)&&context.path==='/chalet/services/'+(s.id==='water'?'water-games':'games')+'/'),service=link.dataset.resortService||(selected?.id==='menu'?'restaurant':selected?.id);
   if(!service)return;
   const record=selected||services.find(s=>(s.id==='menu'?'restaurant':s.id)===service);
-  event.preventDefault();open({kind,service,keyboard:event.detail===0,entry:link.dataset.resortOrderKey||'',anchor:target.hash.slice(1)||service,title:record?.name||'طلبات إضافية أثناء الإقامة',path:record?.path||context.path},link);
+  event.preventDefault();open({kind,service,keyboard:event.detail===0,entry:link.dataset.resortOrderKey||'',anchor:target.hash.slice(1)||service,title:record?.name||'طلبات إضافية أثناء الإقامة',path:context.venue==='chalet'?context.path:record?.path||context.path},link);
  });
  window.addEventListener('message',event=>{
   if(event.origin!==location.origin||event.data?.type!=='familyday-resort-order'||!item||event.source!==item.iframe.contentWindow||event.data.kind!==active?.kind)return;
@@ -86,7 +86,7 @@ export function createResortOrders({version,services,share}){
   if(action==='closed'||action==='submitted')requestClose();
   if(action==='error')failed();
   if(action==='share'&&typeof event.data.path==='string'){
-   const u=new URL(event.data.path,location.origin);if(u.origin!==location.origin||!services.some(s=>s.path===u.pathname)&&u.pathname!=='/guest-services/')return;
+   const u=new URL(event.data.path,location.origin);if(u.origin!==location.origin||!services.some(s=>s.path===u.pathname)&&u.pathname!==active.path&&u.pathname!=='/guest-services/')return;
    share(u.pathname+u.search+u.hash,document.title);
   }
  });

@@ -59,7 +59,11 @@ for key,path in CONFIG.get('portalShareSections',{}).items():
 for key,path in CONFIG.get('guestPortalShareSections',{}).items():
  assert path=='/guest-services/'+key+'/' and key in order_links
  order_links[key]['portalSharePath']=path
-(SITE/'orders/service-links.json').write_text(json.dumps({'services':order_links},ensure_ascii=False,indent=2)+'\n')
+chalet_links={}
+for key,path in CONFIG.get('chaletPortalShareSections',{}).items():
+ assert key in ['water','games'] and path=='/chalet/guest-services/'+key+'/'
+ chalet_links[key]={**order_links[key],'path':'/chalet/services/'+('water-games' if key=='water' else 'games')+'/','portalSharePath':path,**COPY['chaletServiceCopy'][key]}
+(SITE/'orders/service-links.json').write_text(json.dumps({'services':order_links,'chaletServices':chalet_links},ensure_ascii=False,indent=2)+'\n')
 
 SHARES=json.loads((SITE/'share-metadata.json').read_text())
 STRUCTURED=json.loads((SITE/'structured-data.json').read_text())
@@ -121,10 +125,10 @@ for name in ['resort-map','chalet-map']:
 for name,target in [('directory','/services/'),('index','/services/'),('guest','/guest-services/'),('guide','/arrangements/')]:
  write(ROOT/'preview/visuals/services'/(name+'.html'),redirect_page(target))
 # Crawler-readable section previews: no images, icons or stylesheet candidates.
-share_sections={**CONFIG.get('portalShareSections',{}),**CONFIG.get('guestPortalShareSections',{})}
-for key,path in share_sections.items():
- portal_base='/guest-services/' if key in CONFIG.get('guestPortalShareSections',{}) else '/services-guide/'
- info=order_links[key];title=html.escape(info['title']+' | منتجع يوم العائلة',quote=True);description=html.escape(info.get('shareDescription',info['intro']),quote=True);url='https://familydaystay.com'+path
+share_sections=[(key,path,'/guest-services/' if key in CONFIG.get('guestPortalShareSections',{}) else '/services-guide/','منتجع يوم العائلة',order_links[key]) for key,path in {**CONFIG.get('portalShareSections',{}),**CONFIG.get('guestPortalShareSections',{})}.items()]
+share_sections += [(key,path,'/chalet/guest-services/','شاليه يوم العائلة',chalet_links[key]) for key,path in CONFIG.get('chaletPortalShareSections',{}).items()]
+for key,path,portal_base,brand,info in share_sections:
+ title=html.escape(info['title']+' | '+brand,quote=True);description=html.escape(info.get('shareDescription',info['intro']),quote=True);url='https://familydaystay.com'+path
  page=f'''<!doctype html>
 <html lang="ar" dir="rtl"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -140,7 +144,7 @@ for key,path in share_sections.items():
 </head><body><h1>{html.escape(info['title'])}</h1><p>{description}</p><a href="{portal_base}#{key}">فتح {html.escape(info['title'])}</a></body></html>
 '''
  write(ROOT/path.lstrip('/')/'index.html',page)
-manifest={'version':VERSION,'routes':CONFIG['rootRoutes'],'nativeRoutes':native,'redirectRoutes':REDIRECTS,'protectedPortals':sorted(PORTALS),'portalShareSections':CONFIG.get('portalShareSections',{}),'guestPortalShareSections':CONFIG.get('guestPortalShareSections',{}),'previewRedirectCount':len(CONFIG['rootRoutes']),'unitCount':len(CATALOG['units']),'rollbackTag':CONFIG['rollbackTag']}
+manifest={'version':VERSION,'routes':CONFIG['rootRoutes'],'nativeRoutes':native,'redirectRoutes':REDIRECTS,'protectedPortals':sorted(PORTALS),'portalShareSections':CONFIG.get('portalShareSections',{}),'guestPortalShareSections':CONFIG.get('guestPortalShareSections',{}),'chaletPortalShareSections':CONFIG.get('chaletPortalShareSections',{}),'previewRedirectCount':len(CONFIG['rootRoutes']),'unitCount':len(CATALOG['units']),'rollbackTag':CONFIG['rollbackTag']}
 (SITE/'routes.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
 # Same original sitemap destinations, with the additional approved guide pages.
 urls=sorted(set(CONFIG['rootRoutes'])-set(REDIRECTS))

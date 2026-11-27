@@ -8,15 +8,18 @@
   favicon.rel='icon';favicon.type='image/webp';favicon.href='/imgs/img01.webp';
   document.head.appendChild(favicon);
   var isChalet = document.body.dataset.venue==='chalet';
+  var portalBase=isChalet?'/chalet/guest-services/':'/guest-services/';
+  var venueName=isChalet?'شاليه يوم العائلة':'منتجع يوم العائلة';
+  var orderCopy=window.FD_GUEST_ORDER_MESSAGE?.forVenue?.(isChalet?'chalet':'resort')||window.FD_GUEST_ORDER_MESSAGE?.copy;
   function redirectCinema(){
     if(isChalet || !/^#cinema(?:-service)?$/.test(location.hash))return false;
     var destination=new URL('/services-guide/',location.origin);destination.search=location.search;destination.hash='cinema';location.replace(destination.href);return true;
   }
   if(redirectCinema())return;
   var gameOptions = isChalet ? ['box'] : ['box','table'];
-  var directService=!isChalet && parent!==window && new URLSearchParams(location.search).get('embed')==='resort-order' ? new URLSearchParams(location.search).get('direct') : '';
-  if(['restaurant','hospitality','water','games','extras'].indexOf(directService)===-1) directService='';
-  var independentRequests=!isChalet && !(parent!==window && new URLSearchParams(location.search).get('embed')==='resort-order');
+  var directService=parent!==window && new URLSearchParams(location.search).get('embed')==='resort-order' ? new URLSearchParams(location.search).get('direct') : '';
+  if((isChalet?['water','games']:['restaurant','hospitality','water','games','extras']).indexOf(directService)===-1) directService='';
+  var independentRequests=!(parent!==window && new URLSearchParams(location.search).get('embed')==='resort-order');
   var independentActive=false,independentCopy=null;
   var homeTitle=document.title;
   var homeMetadata=Array.from(document.querySelectorAll('meta[name="description"],meta[property="og:title"],meta[property="og:description"],meta[property="og:url"],meta[name="twitter:title"],meta[name="twitter:description"],link[rel="canonical"]')).map(function(node){return {node:node,value:node.getAttribute(node.tagName==='LINK'?'href':'content')};});
@@ -34,9 +37,9 @@
   }
   function serviceLocation(key){
     if(!independentRequests){restaurantLocation(key==='restaurant');return;}
-    var path=key?'/guest-services/'+key+'/':'/guest-services/';
+    var path=key?portalBase+key+'/':portalBase;
     var destination=new URL(location.href);destination.pathname=path;destination.hash='';history.replaceState(history.state,'',destination.href);
-    var title=key?document.getElementById(key+'-title').textContent+' | منتجع يوم العائلة':homeTitle;
+    var title=key?document.getElementById(key+'-title').textContent+' | '+venueName:homeTitle;
     document.title=title;
     var description=key?document.querySelector('#'+key+'-service>.section-note').textContent:'';
     homeMetadata.forEach(function(item){
@@ -104,6 +107,7 @@
 
       });
     });
+    if(isChalet)container.querySelector('[data-for="notes"]').textContent='ملاحظات الطلب (اختياري)';
     if(scope==='restaurant'){
       container.querySelector('textarea').placeholder='مثل بدون بصل أو أي تفاصيل تخص طلب المطعم';
       container.querySelector('[data-for="notes"]').textContent='ملاحظات الطلب (اختياري)';
@@ -344,7 +348,7 @@
     if(!state.name.trim() || (!isChalet && !Object.prototype.hasOwnProperty.call(cabins,state.cabin))) return;
     var message;
     if(directService){
-      message=window.FD_GUEST_ORDER_MESSAGE.build({service:directService,items:lines,water:directService==='water'?waterSelection(state):null},{name:state.name,cabin:state.cabin,number:cabins[state.cabin],notes:restaurant?state.restaurantNotes:state.notes});
+      message=window.FD_GUEST_ORDER_MESSAGE.build({service:directService,items:lines,water:directService==='water'?waterSelection(state):null},{venue:isChalet?'chalet':'resort',name:state.name,cabin:state.cabin,number:cabins[state.cabin],notes:restaurant?state.restaurantNotes:state.notes});
     } else if(restaurant){
       message=catalog.menuMessage.build(catalog.menu,function(key){
         var item=state.menu[key];
@@ -366,7 +370,7 @@
     }
 
     // Prepare a draft only. Opening WhatsApp does not send or confirm the order.
-    window.open('https://wa.me/'+(directService ? window.FD_GUEST_ORDER_MESSAGE.copy[directService].phone : restaurant ? '966537006531' : '966556156693')+'?text='+encodeURIComponent(message),'_blank','noopener,noreferrer');
+    window.open('https://wa.me/'+(directService ? orderCopy[directService].phone : restaurant ? '966537006531' : '966556156693')+'?text='+encodeURIComponent(message),'_blank','noopener,noreferrer');
     resetOrderDetails();
     return true;
   }
@@ -476,7 +480,7 @@
     });
     function openLinkedService(){
       if(redirectCinema())return;
-      var path=location.pathname.replace(/index\.html$/,''),linked=independentRequests?path.match(/^\/guest-services\/(restaurant|hospitality|extras|water|games)\/?$/):null;
+      var path=location.pathname.replace(/index\.html$/,''),linked=independentRequests?path.match(/^\/(?:chalet\/)?guest-services\/(restaurant|hospitality|extras|water|games)\/?$/):null;
       var key=location.hash.slice(1).replace(/-service$/,'') || (linked?linked[1]:path==='/guest-services/restaurant/'?'restaurant':'');
       if(document.getElementById(key+'-card')){
         if(dialog.open&&activeService!==key)closeEditor();
@@ -549,10 +553,11 @@
   renderCabins();renderOrders();renderEditor();setupDialogs();
   window.FD_ORDER_PRIVACY.register(resetOrderDetails);
   if(independentRequests){
-    window.FD_ORDER_VISIT?.register('portal:guest-selection',()=>{commitDraft();return JSON.parse(JSON.stringify(state));},saved=>{if(!saved)return;state=JSON.parse(JSON.stringify(saved));draft=activeService?JSON.parse(JSON.stringify(state)):null;renderCabins();renderOrders();renderEditor();});
+    window.FD_ORDER_VISIT?.register(isChalet?'portal:chalet-selection':'portal:guest-selection',()=>{commitDraft();return JSON.parse(JSON.stringify(state));},saved=>{if(!saved)return;state=JSON.parse(JSON.stringify(saved));draft=activeService?JSON.parse(JSON.stringify(state)):null;renderCabins();renderOrders();renderEditor();});
     var selectionScroll=0;
     window.FD_GUEST_INDEPENDENT_ORDER={
-      cabins:Object.assign({},cabins),
+      venue:isChalet?'chalet':'resort',
+      cabins:isChalet?{}:Object.assign({},cabins),
       activate:function(copy){independentCopy=copy;independentActive=true;document.body.classList.add('guest-independent-orders');renderOrders();renderEditor();},
       snapshot:function(){
         if(!activeService || !draft)return null;
@@ -572,10 +577,10 @@
   }
   if(directService){
     var directForm=document.getElementById(directService==='restaurant'?'restaurant-order':'extras-order');
-    directForm.querySelector('.confirmation-note').textContent=window.FD_GUEST_ORDER_MESSAGE.copy[directService].followup;
+    directForm.querySelector('.confirmation-note').textContent=orderCopy[directService].followup;
   }
   if(directService) window.FD_RESORT_DIRECT_ORDER={
-    getTitle:function(){return window.FD_GUEST_ORDER_MESSAGE.copy[directService].title;},
+    getTitle:function(){return orderCopy[directService].title;},
     exportDraft:function(){commitDraft();return JSON.parse(JSON.stringify(state));},
     restoreDraft:function(saved){
       state=JSON.parse(JSON.stringify(saved));draft=JSON.parse(JSON.stringify(state));
@@ -592,7 +597,7 @@
       event.preventDefault();
       if(!this.canSubmit()) return false;
       var target=directService==='restaurant' ? restaurantForm : form;
-      if(!target.reportValidity() || !state.name.trim() || !Object.prototype.hasOwnProperty.call(cabins,state.cabin)) return false;
+      if(!target.reportValidity() || !state.name.trim() || (!isChalet&&!Object.prototype.hasOwnProperty.call(cabins,state.cabin))) return false;
       var key=directService==='restaurant' ? 'menu' : directService==='extras' ? 'quantities' : directService;
       state[key]=draft[key];
       return submit(event,directService==='restaurant');

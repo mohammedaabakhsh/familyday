@@ -1,4 +1,4 @@
-/* Approved resort service wording, shared by the main site and standalone invoices. */
+/* Approved service wording shared by main-site and standalone venue requests. */
 (function(){
   'use strict';
   const copy={
@@ -13,7 +13,10 @@
   function itemName(item){return item.name+((item.details||[]).some(text=>/^إضافة جبنة/.test(text))?' — مع جبنة':'');}
   function itemLine(item){return itemName(item)+' — الكمية: '+quantity(item)+' — '+item.price+' ريال';}
     function build(order,customer){
-      const parts=[copy[order.service].greeting,'','الاسم: '+customer.name.trim(),'اسم الكوخ: '+customer.cabin,'رقم الكوخ: '+customer.number,''];
+      const parts=[copy[order.service].greeting,'','الاسم: '+customer.name.trim()];
+      if(customer.venue==='chalet')parts.push('المكان: شاليه يوم العائلة');
+      else parts.push('اسم الكوخ: '+customer.cabin,'رقم الكوخ: '+customer.number);
+      parts.push('');
       const item=order.items[0];
       if(order.service==='restaurant')parts.push('الطلب:',...order.items.map(itemLine),'');
       else if(order.service==='water')parts.push('الباقة: '+item.name,'الكمية: '+quantity(item),'ألعاب للكبار: '+order.water.adults,'ألعاب للأطفال: '+order.water.children);
@@ -33,5 +36,5 @@
     }
     return items.length?build({service:'restaurant',items},customer):'';
   }
-  window.FD_GUEST_ORDER_MESSAGE=Object.freeze({copy:Object.freeze(copy),build,restaurant});
+  window.FD_GUEST_ORDER_MESSAGE=Object.freeze({copy:Object.freeze(copy),forVenue:venue=>venue==='chalet'?Object.fromEntries(['water','games'].map(key=>[key,{...copy[key],followup:copy[key].followup.replace('خدمات المنتجع','خدمات الشاليه')}])):copy,build,restaurant});
 })();

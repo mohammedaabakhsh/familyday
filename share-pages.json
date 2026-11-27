@@ -45,14 +45,14 @@
     "route": "tarfihi=chalet",
     "path": "/chalet/services/games/",
     "title": "الألعاب الترفيهية | شاليه يوم العائلة",
-    "description": "تعرّف على الألعاب الترفيهية | شاليه يوم العائلة",
+    "description": "استمتع بوقتك مع ألعابنا الترفيهية",
     "entry": true
   },
   {
     "route": "maiya=chalet",
     "path": "/chalet/services/water-games/",
     "title": "الألعاب المائية | شاليه يوم العائلة",
-    "description": "تعرّف على الألعاب المائية | شاليه يوم العائلة",
+    "description": "استمتع بألعاب مائية للكبار والأطفال",
     "entry": true
   },
   {

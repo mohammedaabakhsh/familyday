@@ -18,7 +18,7 @@ portal=lambda key:'/services-guide/'+key+'/'
 # Preserve catalogue data and the legacy chalet branch; resort parity is checked separately.
 for name in ['data/services.json']:
  assert (R/name).read_bytes()==subprocess.check_output(['git','show','pre-portal-share-destinations-20261126:'+name]),name
-old=subprocess.check_output(['git','show','pre-main-guest-parity-20261127:guest-services/guest-services.js']).decode();new=(R/'guest-services/guest-services.js').read_text().replace("directService ? window.FD_GUEST_ORDER_MESSAGE.copy[directService].phone : ",'');start='      message=catalog.menuMessage.build';end='\n  function renderOrders';assert re.sub(r'\s+','',old[old.index(start):old.index(end)].replace('save();',''))==re.sub(r'\s+','',new[new.index(start):new.index(end)])
+old=subprocess.check_output(['git','show','pre-main-guest-parity-20261127:guest-services/guest-services.js']).decode();new=(R/'guest-services/guest-services.js').read_text().replace("directService ? orderCopy[directService].phone : ",'');start='      message=catalog.menuMessage.build';end='\n  function renderOrders';assert re.sub(r'\s+','',old[old.index(start):old.index(end)].replace('save();',''))==re.sub(r'\s+','',new[new.index(start):new.index(end)])
 with sync_playwright() as p:
  options={'executable_path':'/usr/bin/chromium','args':['--no-sandbox']}
  if BASE.startswith('https:'):options['proxy']={'server':os.environ['HTTPS_PROXY']}

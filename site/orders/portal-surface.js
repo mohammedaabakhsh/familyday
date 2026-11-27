@@ -1,11 +1,12 @@
-/* Reuse the established resort order documents, controllers and message builders. */
+/* Reuse each venue's established order document, controls and message builder. */
 (function () {
   'use strict';
   const version=new URL(document.currentScript.src).searchParams.get('v')||'1';
   const embedded=parent!==window&&new URLSearchParams(location.search).get('embed')==='resort-order';
   const guest=!!document.getElementById('service-dialog');
+  const chalet=document.body.dataset.venue==='chalet',guestBase=chalet?'/chalet/guest-services/':'/guest-services/';
   const dialog=document.getElementById(guest?'service-dialog':'arrangement-dialog');
-  const kind=guest?'guest':'arrangements';
+  const kind=chalet?'chalet':guest?'guest':'arrangements';
   const shareIcon='<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 16V2m-5 5 5-5 5 5M6 10H3v11h18V10h-3"/></svg>';
   let metadata=null,ready=false,wasOpen=false,view=false,directForm,sendButton,confirmationNote;
   const post=(action,data={})=>{if(embedded)parent.postMessage({type:'familyday-resort-order',kind,action,...data},location.origin);};
@@ -16,7 +17,7 @@
   function sharePath(){
     const key=serviceKey(),service=metadata?.services?.[key];if(!service)return null;
     if(embedded)return service.path;
-    return service.portalSharePath||(guest?'/guest-services/#'+key:'/services-guide/'+key+'/');
+    return service.portalSharePath||(guest?guestBase+'#'+key:'/services-guide/'+key+'/');
   }
   async function share(path){
     if(typeof path!=='string'||!path.startsWith('/')||path.startsWith('//'))return;
@@ -41,7 +42,7 @@
     if(embedded&&event.target.closest('.seating-collapsed-summary')){event.preventDefault();return;}
     // The guide's own handler knows the current section; keep its header share local to that section.
     const button=guest&&event.target.closest('#share-page');if(!button)return;
-    event.preventDefault();event.stopImmediatePropagation();share('/guest-services/');
+    event.preventDefault();event.stopImmediatePropagation();share(guestBase);
   },true);
   function updateShare(){shareButton.disabled=!sharePath();if(guest&&!embedded){const title=metadata?.services?.[serviceKey()]?.title;shareButton.title='مشاركة '+(title||'الخدمة');shareButton.setAttribute('aria-label',shareButton.title);}}
   function photo(service,panel){
@@ -66,7 +67,7 @@
     }
     updateShare();
   }
-  fetch('/site/orders/service-links.json?v='+encodeURIComponent(version)).then(r=>{if(!r.ok)throw Error('Service links unavailable');return r.json();}).then(data=>{metadata=data;enhance();}).catch(()=>{shareButton.title='تعذر تحميل رابط المشاركة';});
+  fetch('/site/orders/service-links.json?v='+encodeURIComponent(version)).then(r=>{if(!r.ok)throw Error('Service links unavailable');return r.json();}).then(data=>{metadata=chalet?{services:data.chaletServices}:data;enhance();}).catch(()=>{shareButton.title='تعذر تحميل رابط المشاركة';});
   function closeSource(){
     if(dialog.open)dialog.querySelector(guest?'.dialog-close':'[data-close-arrangements]').click();
   }

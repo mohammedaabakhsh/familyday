@@ -1,8 +1,9 @@
-/* Standalone resort invoices. Native main-site requests and chalet ordering retain their own flows. */
+/* Standalone resort and chalet invoices. Native requests retain their own presentation. */
 (function () {
   'use strict';
-  if(document.body.dataset.venue==='chalet'||parent!==window&&new URLSearchParams(location.search).get('embed')==='resort-order')return;
-  const copy=window.FD_GUEST_ORDER_MESSAGE.copy;
+  if(parent!==window&&new URLSearchParams(location.search).get('embed')==='resort-order')return;
+  const isChalet=document.body.dataset.venue==='chalet',venue=isChalet?'chalet':'resort';
+  const copy=window.FD_GUEST_ORDER_MESSAGE.forVenue?.(venue)||window.FD_GUEST_ORDER_MESSAGE.copy;
   let mounted=false;
   function mount(){
     const api=window.FD_GUEST_INDEPENDENT_ORDER;if(mounted||!api)return;mounted=true;
@@ -16,18 +17,18 @@
       const name=field.dataset.field;fields[name]=field;field.id='service-request-'+name;field.removeAttribute('data-field');customer.querySelector('[data-for="'+name+'"]').htmlFor=field.id;
     }
     customer.querySelector('[data-for="notes"]').textContent='ملاحظات الطلب (اختياري)';
-    for(const name of Object.keys(api.cabins))fields.cabin.add(new Option(name,name));
+    if(fields.cabin)for(const name of Object.keys(api.cabins))fields.cabin.add(new Option(name,name));
     const number=customer.querySelector('.cabin-number');
-    fields.cabin.addEventListener('change',()=>{number.hidden=!Object.hasOwn(api.cabins,fields.cabin.value);number.querySelector('output').textContent=number.hidden?'':String(api.cabins[fields.cabin.value]);});
+    fields.cabin?.addEventListener('change',()=>{number.hidden=!Object.hasOwn(api.cabins,fields.cabin.value);number.querySelector('output').textContent=number.hidden?'':String(api.cabins[fields.cabin.value]);});
     let order=null,token='',closing='',readyForPrivacy=false,sending=false;
     const customers=new Map();
-    function remember(){if(order)customers.set(order.service,{name:fields.name.value,cabin:fields.cabin.value,notes:fields.notes.value});}
+    function remember(){if(order)customers.set(order.service,{name:fields.name.value,cabin:fields.cabin?.value,notes:fields.notes.value});}
     function node(tag,text,className){const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(className)e.className=className;return e;}
     function quantity(item){return item.qty||1;}
     function amount(items){return items.reduce((total,item)=>total+item.price,0);}
     function itemName(item){return item.name+(item.details.some(text=>/^إضافة جبنة/.test(text))?' — مع جبنة':'');}
     function clearMarker(){if(history.state?.guestServiceRequest){const state={...history.state};delete state.guestServiceRequest;history.replaceState(state,'',location.href);}}
-    function discard(){order=null;token='';list.replaceChildren();form.reset();number.hidden=true;number.querySelector('output').textContent='';sending=false;send.disabled=false;}
+    function discard(){order=null;token='';list.replaceChildren();form.reset();if(number){number.hidden=true;number.querySelector('output').textContent='';}sending=false;send.disabled=false;}
     function close(action){
       dialog.close();clearMarker();closing='';sending=false;send.disabled=false;
       if(action==='exit')customers.clear();else if(action==='submitted')customers.delete(order?.service);else remember();
@@ -58,10 +59,10 @@
       const saved=customers.get(order.service)||{name:'',cabin:'',notes:''};
       for(const [key,field] of Object.entries(fields))field.value=saved[key];
       renderInvoice();
-      fields.cabin.dispatchEvent(new Event('change'));
+      fields.cabin?.dispatchEvent(new Event('change'));
       api.pause();token=String(Date.now())+'-'+Math.random().toString(36).slice(2);history.pushState({...history.state,guestServiceRequest:token},'',location.href);dialog.showModal();dialog.querySelector('.dialog-body').scrollTop=0;dialog.querySelector('h2').focus({preventScroll:true});
     }
-    function message(){return window.FD_GUEST_ORDER_MESSAGE.build(order,{name:fields.name.value,cabin:fields.cabin.value,number:api.cabins[fields.cabin.value],notes:fields.notes.value});}
+    function message(){return window.FD_GUEST_ORDER_MESSAGE.build(order,{venue,name:fields.name.value,cabin:fields.cabin?.value,number:api.cabins[fields.cabin?.value],notes:fields.notes.value});}
     selection.addEventListener('click',event=>{
       if(!event.target.closest('#apply-selection')||document.getElementById('apply-selection').disabled)return;
       event.preventDefault();event.stopImmediatePropagation();open();
@@ -77,14 +78,14 @@
     window.addEventListener('hashchange',()=>{if(dialog.open){const key=location.hash.slice(1).replace(/-service$/,'');close('cancel');if(copy[key])document.getElementById(key+'-card').click();}else discard();});
     document.addEventListener('fd:guest-selection-closed',()=>{remember();if(dialog.open)dialog.close();clearMarker();closing='';discard();});
     form.addEventListener('submit',event=>{
-      event.preventDefault();if(!order||!order.items.length||sending||!form.reportValidity()||!fields.name.value.trim()||!Object.hasOwn(api.cabins,fields.cabin.value))return;
+      event.preventDefault();if(!order||!order.items.length||sending||!form.reportValidity()||!fields.name.value.trim()||fields.cabin&&!Object.hasOwn(api.cabins,fields.cabin.value))return;
       sending=true;send.disabled=true;const url='https://wa.me/'+copy[order.service].phone+'?text='+encodeURIComponent(message());window.open(url,'_blank','noopener,noreferrer');requestClose('submitted');
     });
     window.FD_ORDER_PRIVACY.register(()=>{
       if(!readyForPrivacy)return;
       customers.clear();if(dialog.open)close('exit');else {discard();api.finish({discard:true});api.reset();}
     });readyForPrivacy=true;
-    window.FD_ORDER_VISIT?.register('portal:guest-customers',()=>{remember();return [...customers];},saved=>{customers.clear();for(const [key,value] of saved||[])customers.set(key,value);});
+    window.FD_ORDER_VISIT?.register(isChalet?'portal:chalet-customers':'portal:guest-customers',()=>{remember();return [...customers];},saved=>{customers.clear();for(const [key,value] of saved||[])customers.set(key,value);});
     api.activate(copy);
   }
   document.addEventListener('fd:guest-requests-ready',mount);mount();
