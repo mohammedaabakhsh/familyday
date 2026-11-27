@@ -3146,5 +3146,14 @@
     "sources": [
       "site/style.css"
     ]
+  },
+  "approvedCenteredMainServiceTitles": {
+    "date": "2026-11-27",
+    "version": "20261127-live-v110",
+    "rollbackTag": "pre-centered-main-service-titles-20261127",
+    "reason": "Owner requests centering only the four main page titles (coordination, outdoor seating, dining, cinema) over their already-centered descriptions. One scoped CSS rule; retain wording, spacing, content, all other headings, standalone pages and ordering.",
+    "sources": [
+      "site/style.css"
+    ]
   }
 }

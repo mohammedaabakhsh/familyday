@@ -474,3 +474,6 @@ body.resort-services #main{width:100%;max-width:none;height:100dvh;min-height:0;
 @media(max-width:999px) and (max-height:740px){
  .resort-service :is(.dining-guide,.service-guide-coordination,.service-guide-cinema) .page-heading{margin-bottom:12px}
 }
+
+/* Center only the four main service page titles above their descriptions. */
+.resort-service :is(.dining-guide,.service-guide-coordination,.service-guide-cinema) .page-heading h1{text-align:center}
