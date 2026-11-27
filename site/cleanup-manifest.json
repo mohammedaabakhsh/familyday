@@ -3340,5 +3340,15 @@
       "stay/guest-services/index.html",
       "css/order-invoices.css"
     ]
+  },
+  "approvedResortContactArrangement": {
+    "date": "2026-11-27",
+    "version": "20261127-resort-contact-v124",
+    "rollbackTag": "pre-resort-contact-arrangement-20261127",
+    "reason": "Owner approves trying the new order only on the main resort contact page: preserve location/booking/iPhone/Android group, then loyalty, FAQ, help heading نحن بخدمتك with تواصل معنا لأي استفسار أو مساعدة above existing WhatsApp/call actions, followed by two-line review prompt on the right and smaller44px Instagram/Snapchat controls on the left. Retain all link destinations and the existing design, allow scrolling on short screens and keep chalet/stay contacts and all portals/order code unchanged.",
+    "updatedFiles": [
+      "site/app.js",
+      "site/style.css"
+    ]
   }
 }
