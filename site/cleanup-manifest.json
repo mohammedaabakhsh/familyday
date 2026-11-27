@@ -3231,5 +3231,11 @@
       "js/order-visit.js",
       "css/order-invoices.css"
     ]
+  },
+  "approvedMainServiceCategoryNotes": {
+    "date": "2026-11-27",
+    "version": "20261127-service-notes-v116",
+    "rollbackTag": "pre-service-category-notes-20261127",
+    "reason": "Owner approves three short main-site service-directory notes directly under the tabs in the same box style as restaurant hours: advance ordering for arrangements, comfort/enjoyment during the stay for accommodation services, and sharing experiences/winning opportunities for Participate. Preserve restaurant hours, all cards, portal designs and order/session behavior."
   }
 }
