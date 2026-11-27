@@ -2,8 +2,8 @@
 body.portal-home-unified :is(.hero .logo-frame,.cover .cover-logo-frame){width:clamp(150px,42vw,164px);aspect-ratio:176/86;margin-bottom:2px}
 body.portal-home-unified :is(.hero .logo,.cover .cover-logo){width:100%;height:100%;aspect-ratio:auto;background-image:url('/site/brand/logo-booking-original.png');background-position:center;background-size:contain;background-repeat:no-repeat;transform:none}
 body.portal-home-unified :is(.hero,.welcome)>.portal-branch{margin:3px 0 0;font-size:10.5px;font-weight:400;line-height:1.5;color:var(--muted)}
-body.portal-home-unified :is(.help h2,.footer-help h2){font-size:22px;font-weight:700;line-height:1.5;margin:0 0 6px;color:#102f40}
-body.portal-home-unified :is(.help>div:first-child>p,.footer-help p){font-size:14px;line-height:1.8;max-width:420px;margin-inline:auto;text-wrap:pretty}
+body.portal-home-unified :is(.help h2,.footer-help h2){font-size:18px;font-weight:700;line-height:1.5;margin:0 0 3px;color:#102f40}
+body.portal-home-unified :is(.help>div:first-child>p,.footer-help p){font-size:12px;line-height:1.8;max-width:420px;margin-inline:auto;text-wrap:pretty}
 @media(min-width:1024px){
  body.portal-home-unified .hero .logo-frame{grid-row:1/span 4}
  body.portal-home-unified .hero>.portal-branch{grid-column:2;grid-row:2}
