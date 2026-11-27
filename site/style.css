@@ -509,3 +509,9 @@ body.resort-services #main{width:100%;max-width:none;height:100dvh;min-height:0;
 .resort-catalog-panel :is(.carousel-tools .icon-button,.catalog-heading .text-link){position:relative}
 .resort-catalog-panel .carousel-tools .icon-button::after{content:"";position:absolute;left:50%;top:50%;width:44px;height:44px;transform:translate(-50%,-50%)}
 .resort-catalog-panel .catalog-heading .text-link::after{content:"";position:absolute;inset-inline:0;top:50%;height:44px;transform:translateY(-50%)}
+
+/* Prefer single-line headings and facts while retaining a readable narrow-screen fallback. */
+.resort-home .facts-strip{grid-template-columns:auto auto auto;justify-content:space-between;gap:8px}
+.resort-home .facts-strip span{white-space:nowrap}
+.catalog-heading h1{white-space:nowrap}
+@media(max-width:359px){.stay-catalog-panel .catalog-heading{flex-wrap:wrap;row-gap:2px}.stay-catalog-panel .catalog-heading h1{font-size:20px}}

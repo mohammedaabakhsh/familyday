@@ -2291,7 +2291,7 @@
     "css/desktop-layout.css": "229a412b9f610bc2e885c19d755a217e67081725eeb247a12a565bcd6b7de9dd",
     "css/dining-cards.css": "2e495ae12b2014ea0e14330afe839b602e38f86a81d9194004b3e6caa43e9dfb",
     "css/tajawal.css": "63e1c01678f45bb83983243a5b67716d42b710a8ac01e150e2af0972476ec14f",
-    "data/services.json": "8795635c538c03bdafc4f738d83e6f9e9e10b9cf385d72793336dfdde73b26e6",
+    "data/services.json": "8e1a7ed12a580d270ec99eef516afea7868b28f7a46ae234b36739572749bbb1",
     "guest-services/README.md": "1ad3a3d1df387c6f92547d236015ff1c975e01b67890162dfa0d0e750b23ec7a",
     "guest-services/guest-services.css": "207545d3740a44c6e0ab8ded3731b255151478ecf82109d0344cdb5dc7e61a36",
     "guest-services/guest-services.js": "37293621cf04e2b0fce6bf2a81460ded19ed16c2a95ea66a5d20871433b1bc41",
@@ -2317,8 +2317,8 @@
     "css/order-invoices.css": "14e87e715af9767addbaf5a426326307c04e637585ea3a71e361f0b609ebe6c3",
     "css/portal-home.css": "47eb2f9ff7e4f5e6dbddcbfd92f3034b87def7219746b73da6960edb94e60747",
     "site/brand/logo-booking-original.png": "70377cf2ab318605ee6c2286c51c83310808e2e4c9b0bd8eec70429792872b94",
-    "stay/guest-services/index.html": "70889ba0fa41b65a62f03160c11b1a549f5aaae78f6d894f388637c1ca3e484d",
-    "stay/guest-services/stay-services.js": "b5af61955bc0c81e5c36ce6004a7bc990509889765d8c898e751966aeb96a959",
+    "stay/guest-services/index.html": "2e5bb09dc0544d775ef21aac41939df3d8485d26afa0b9b271035e6edd0878af",
+    "stay/guest-services/stay-services.js": "d3d15a6949cabe9bf0c41aeabe33f28414e2d9036ca08b273e6927e24312f6de",
     "stay/guest-services/stay-services.css": "07ddd018a17f370750c793336e11d15ebdf31b441c28c453ab0c762831faea0a"
   },
   "preservedCompatibility": [
@@ -3416,5 +3416,25 @@
     ],
     "reason": "Owner-approved post-audit batch, discussed one question at a time. Update Snapchat identity, tour labels, FAQ layout/copy, dining introduction, chalet heading/specifications and transparent touch targets. Keep cinema duration, names/capacity labels, prices, recipients, invoice flows and portal footer directions unchanged. External booking platform is read-only.",
     "portalChanges": "Snapchat footer href in all four portals. Arrangements dining introduction now reads the shared approved service copy, with matching script/data cache keys. Order controllers, styles, service prices, recipients and message builders unchanged."
+  },
+  "approvedPDFMaintenance": {
+    "date": "2026-11-27",
+    "version": "20261127-maintenance-v131",
+    "rollbackTag": "pre-pdf-cleanup-speed-20261127",
+    "approvedQuestions": [
+      1,
+      2,
+      3,
+      5,
+      15,
+      16
+    ],
+    "reason": "Owner approved the six PDF decisions, careful removal of proven unreachable guide render branches, readable venue/shared source modules and faster parallel startup. Retain every public route, photo, original image quality, active order controller, recipient, share target and fallback. No deletion of files with uncertain or external usage. External booking and app platforms remain read-only.",
+    "updatedProtectedFiles": [
+      "data/services.json",
+      "stay/guest-services/stay-services.js",
+      "stay/guest-services/index.html"
+    ],
+    "portalChanges": "Rest-house slide introduction reads shared pageIntro; location remains in metadata and location fact. Only rest-house entry script cache key and authoritative service catalogue gain this approved copy. Other order behavior unchanged."
   }
 }

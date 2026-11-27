@@ -38,3 +38,6 @@ body.chalet-scope:not(.focused-view) #main{padding-top:calc(64px + env(safe-area
 .chalet-tour .tour-frame{flex:1;min-height:0;background:transparent}
 
 .chalet-scope #main:has(.service-guide,.faq-guide){padding-bottom:calc(108px + env(safe-area-inset-bottom,0px))}
+
+/* Approved reception capacity clarification, below the unchanged 15-guest fact. */
+.chalet-home .venue-footnote{margin-top:7px;text-align:center;text-wrap:pretty}

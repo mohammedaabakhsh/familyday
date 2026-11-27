@@ -21,20 +21,20 @@ async def main():
    await page.route('**/imgs/panorama_2.webp',lambda request:request.abort())
    await page.evaluate('''window.backSamples=[];window.sampleBack=()=>{const v=document.querySelector('#main>.view'),s=getComputedStyle(v);const hero=document.querySelector('.hero img');window.backSamples.push({url:location.pathname,opacity:Number(s.opacity),transform:s.transform,heroReady:location.pathname!=='/resort/'||hero===window.originalHero&&hero.complete&&hero.naturalWidth>0});};window.sampleFrames=()=>{let n=0;const frame=()=>{window.sampleBack();if(++n<12)requestAnimationFrame(frame);};window.sampleBack();requestAnimationFrame(frame);};window.addEventListener('popstate',()=>window.sampleFrames());''')
    async def services():
-    await page.locator('#bottom-nav a[href="/services/"]').click();await page.locator('#resort-service-directory .svcs-card').first.wait_for();assert await page.locator('#services-frame').count()==0
+    await page.locator('#bottom-nav a[href="/services/"]').click();await page.locator('#resort-service-directory').wait_for();await page.locator('.service-categories [data-service-group="1"]').click();await page.locator('#resort-service-directory .svcs-card:visible').first.wait_for();assert await page.locator('#services-frame').count()==0
    async def stable(action,target):
     await page.evaluate('window.backSamples=[]')
     await action();await page.wait_for_url(BASE+target);await page.wait_for_function('window.backSamples.length>=13')
     samples=await page.evaluate('window.backSamples');assert all(s['url']==target and s['opacity']==1 and s['heroReady'] and s['transform'] in ['none','matrix(1, 0, 0, 1, 0, 0)'] for s in samples),samples
     assert await page.evaluate('document.documentElement.scrollWidth<=innerWidth+1')
     results.append({'width':width,'motion':motion,'target':target,'frames':len(samples),'minimumOpacity':min(s['opacity'] for s in samples),'heroReadyEveryFrame':all(s['heroReady'] for s in samples)})
-   await services();assert await page.locator('.svcs-card').count()==11
-   await page.locator('#resort-service-directory').evaluate('e=>e.scrollTop=125')
+   await services();assert await page.locator('.svcs-card').count()==10
+   directory_top=await page.locator('#resort-service-directory').evaluate('e=>{e.scrollTop=125;return e.scrollTop}');await page.evaluate('scrollTo(0,125)');page_top=await page.evaluate('scrollY')
    await stable(lambda:page.locator('.context-back').evaluate('a=>{a.click();window.sampleFrames()}'),'/resort/')
    hero_after=await hero.screenshot();assert ImageChops.difference(Image.open(io.BytesIO(hero_before)).convert('RGB'),Image.open(io.BytesIO(hero_after)).convert('RGB')).getbbox() is None;results[-1]['heroPixelsUnchanged']=True
    # Returning from a service uses the existing browser history entry.
-   await services();assert await page.locator('#resort-service-directory').evaluate('e=>e.scrollTop')==125;await page.locator('#resort-service-directory a[href="/services/cinema/"]').click();await page.wait_for_url(BASE+'/services/cinema/')
-   await stable(lambda:page.locator('.context-back').click(),'/services/');await page.locator('#resort-service-directory .svcs-card').first.wait_for();assert await page.locator('#services-frame').count()==0
+   await services();assert await page.locator('#resort-service-directory').evaluate('e=>e.scrollTop')==directory_top;assert await page.evaluate('scrollY')==page_top;await page.locator('#resort-service-directory a[href="/services/cinema/"]').click();await page.wait_for_url(BASE+'/services/cinema/')
+   await stable(lambda:page.locator('.context-back').click(),'/services/');await page.locator('#resort-service-directory').wait_for();await page.locator('.service-categories [data-service-group="1"]').click();await page.locator('#resort-service-directory .svcs-card:visible').first.wait_for();assert await page.locator('#services-frame').count()==0
    # Bottom tabs replace the section entry: browser Back returns to destinations.
    await stable(lambda:page.evaluate('history.back()'),'/')
    assert not errors,errors

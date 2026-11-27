@@ -10,7 +10,7 @@ The canonical implementation is under `site/`; generated public HTML stays at th
 
 ## Editing and building
 
-- `app.js`: client-side guide and navigation. `ROOT='/'` is for pages; `ASSETS='/site/'` is for files. Independent order URLs remain available; resort service actions can reuse their live controls inside an in-page order dialog.
+- `app.js`: navigation/history, sharing, events and order initialization. View markup is organized in `venues/resort.js`, `venues/chalet.js`, `venues/stay.js` and `shared/views.js`; mutable state is read through context getters. `ROOT='/'` is for pages; `ASSETS='/site/'` is for files. Independent order URLs remain available; resort service actions can reuse their live controls inside an in-page order dialog.
 - `style.css`, `chalet.css`, `stay.css`: approved shared and venue-specific styling.
 - `catalog.json`: accommodation details, gallery URLs, campaign copy and compiled guide service content. Original photos and fonts are still shared under `/imgs/` and `/fonts/`.
 - `guide-copy.json`: FAQ organization, room wording and destination-specific contact links.
@@ -19,6 +19,8 @@ The canonical implementation is under `site/`; generated public HTML stays at th
 - `structured-data.json`: the original search-engine schema graphs, deduplicated across their 42 original page destinations; the build preserves them exactly.
 - `visuals/`: the approved illustrations and map modules, their isolated CSS, data and parent-navigation bridges. Their physical source coordinates remain unchanged.
 - `runtime-config.json`, `media-manifest.json`, `media/`: service display images. Full originals are kept for zoom.
+
+The builder refreshes the static module cache keys and generates startup module/data preloads. Keep `template.html` as the shell source rather than editing generated route documents. No photo loading strategy changes are involved. See [v131 decisions, source map and measurements](../docs/approved-pdf-maintenance-v131.md).
 
 Run from the repository root:
 

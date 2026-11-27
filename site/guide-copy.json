@@ -870,7 +870,8 @@
     ],
     "orderLabel": "اطلب هذه اللعبة",
     "greeting": "السلام عليكم، أرغب بطلب الزحليقة الهوائية الكبيرة.",
-    "followup": "تابع طلبك مع خدمات الاستراحة على واتساب"
+    "followup": "تابع طلبك مع خدمات الاستراحة على واتساب",
+    "pageIntro": "متاحة للطلب بشكل منفصل أثناء إقامتكم"
   },
   "resortServiceDirectory": [
     {
@@ -1039,5 +1040,10 @@
       "cardIntro": "بوكس الألعاب الترفيهية",
       "orderLabel": "اطلب الألعاب الترفيهية"
     }
+  },
+  "resortReviews": {
+    "url": "https://www.google.com/maps/place/?q=place_id:ChIJkfXGX69nwRURYJSW6ifyHqY&hl=ar#lrd=0x15c167af5fc6f591:0xa61ef227ea969460,1",
+    "label": "شاهد تقييماتنا على Google",
+    "rating": 4.7
   }
 }

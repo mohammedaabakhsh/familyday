@@ -1,0 +1,1058 @@
+{
+  "version": "20261127-maintenance-v131",
+  "baselineCommit": "2c16168b301369a0a5dafb242ea9ec3821f9f257",
+  "approvedPDFQuestions": [
+    1,
+    2,
+    3,
+    5,
+    15,
+    16
+  ],
+  "runtimeComparison": {
+    "nativePages": 59,
+    "imagesAndControlsIdenticalEveryPage": true,
+    "changedTextOnlyApprovedRoutes": [
+      "/cabins/",
+      "/cabins/bohemian/",
+      "/cabins/classic/",
+      "/cabins/dome-1/",
+      "/cabins/dome-2/",
+      "/cabins/french/",
+      "/cabins/greek-1/",
+      "/cabins/greek-2/",
+      "/cabins/palm-beach/",
+      "/cabins/panoramic/",
+      "/cabins/pyramid/",
+      "/cabins/royal/",
+      "/cabins/rustic/",
+      "/chalet/",
+      "/resort/",
+      "/resort/faq/",
+      "/stay/",
+      "/stay/sections/",
+      "/stay/services/"
+    ],
+    "changedLinksOnlyResortReview": true,
+    "javascriptErrors": []
+  },
+  "preservation": {
+    "allRouteAndAliasListsUnchanged": true,
+    "noImageFontOrVideoChanged": true,
+    "filesDeleted": 0,
+    "unchangedProtectedFiles": 33,
+    "servicesDataOnlyNewSlideIntroduction": true,
+    "sharingMetadataAndSchemasUnchanged": true,
+    "orderControllersAndMessagesUnchanged": true
+  },
+  "responsive": [
+    {
+      "width": 320,
+      "path": "/resort/",
+      "overflow": false,
+      "clipped": [],
+      "notes": []
+    },
+    {
+      "width": 320,
+      "path": "/cabins/",
+      "overflow": false,
+      "clipped": [],
+      "notes": []
+    },
+    {
+      "width": 320,
+      "path": "/stay/",
+      "overflow": false,
+      "clipped": [],
+      "notes": [
+        {
+          "text": "يمكن حجز قسم واحد أو القسمين معًا",
+          "rect": {
+            "x": 168,
+            "y": 426.40625,
+            "width": 137,
+            "height": 39.59375,
+            "top": 426.40625,
+            "right": 305,
+            "bottom": 466,
+            "left": 168
+          }
+        },
+        {
+          "text": "يمكن استقبال حتى 70 ضيفًا لكل قسم برسوم إضافية",
+          "rect": {
+            "x": 15,
+            "y": 426.40625,
+            "width": 137,
+            "height": 39.59375,
+            "top": 426.40625,
+            "right": 152,
+            "bottom": 466,
+            "left": 15
+          }
+        }
+      ]
+    },
+    {
+      "width": 320,
+      "path": "/stay/sections/",
+      "overflow": false,
+      "clipped": [],
+      "notes": []
+    },
+    {
+      "width": 320,
+      "path": "/chalet/",
+      "overflow": false,
+      "clipped": [],
+      "notes": [
+        {
+          "text": "يمكن استقبال حتى 25 ضيفًا برسوم إضافية",
+          "rect": {
+            "x": 15,
+            "y": 447.3125,
+            "width": 290,
+            "height": 18.6875,
+            "top": 447.3125,
+            "right": 305,
+            "bottom": 466,
+            "left": 15
+          }
+        }
+      ]
+    },
+    {
+      "width": 320,
+      "path": "/stay/services/",
+      "overflow": false,
+      "clipped": [],
+      "notes": []
+    },
+    {
+      "width": 320,
+      "path": "/stay/guest-services/",
+      "overflow": false,
+      "clipped": [],
+      "notes": []
+    },
+    {
+      "width": 390,
+      "path": "/resort/",
+      "overflow": false,
+      "clipped": [],
+      "notes": []
+    },
+    {
+      "width": 390,
+      "path": "/cabins/",
+      "overflow": false,
+      "clipped": [],
+      "notes": []
+    },
+    {
+      "width": 390,
+      "path": "/stay/",
+      "overflow": false,
+      "clipped": [],
+      "notes": [
+        {
+          "text": "يمكن حجز قسم واحد أو القسمين معًا",
+          "rect": {
+            "x": 203,
+            "y": 702.40625,
+            "width": 167,
+            "height": 39.59375,
+            "top": 702.40625,
+            "right": 370,
+            "bottom": 742,
+            "left": 203
+          }
+        },
+        {
+          "text": "يمكن استقبال حتى 70 ضيفًا لكل قسم برسوم إضافية",
+          "rect": {
+            "x": 20,
+            "y": 702.40625,
+            "width": 167,
+            "height": 39.59375,
+            "top": 702.40625,
+            "right": 187,
+            "bottom": 742,
+            "left": 20
+          }
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "path": "/stay/sections/",
+      "overflow": false,
+      "clipped": [],
+      "notes": []
+    },
+    {
+      "width": 390,
+      "path": "/chalet/",
+      "overflow": false,
+      "clipped": [],
+      "notes": [
+        {
+          "text": "يمكن استقبال حتى 25 ضيفًا برسوم إضافية",
+          "rect": {
+            "x": 20,
+            "y": 721.609375,
+            "width": 350,
+            "height": 20.390625,
+            "top": 721.609375,
+            "right": 370,
+            "bottom": 742,
+            "left": 20
+          }
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "path": "/stay/services/",
+      "overflow": false,
+      "clipped": [],
+      "notes": []
+    },
+    {
+      "width": 390,
+      "path": "/stay/guest-services/",
+      "overflow": false,
+      "clipped": [],
+      "notes": []
+    },
+    {
+      "width": 430,
+      "path": "/resort/",
+      "overflow": false,
+      "clipped": [],
+      "notes": []
+    },
+    {
+      "width": 430,
+      "path": "/cabins/",
+      "overflow": false,
+      "clipped": [],
+      "notes": []
+    },
+    {
+      "width": 430,
+      "path": "/stay/",
+      "overflow": false,
+      "clipped": [],
+      "notes": [
+        {
+          "text": "يمكن حجز قسم واحد أو القسمين معًا",
+          "rect": {
+            "x": 223,
+            "y": 790.40625,
+            "width": 187,
+            "height": 39.59375,
+            "top": 790.40625,
+            "right": 410,
+            "bottom": 830,
+            "left": 223
+          }
+        },
+        {
+          "text": "يمكن استقبال حتى 70 ضيفًا لكل قسم برسوم إضافية",
+          "rect": {
+            "x": 20,
+            "y": 790.40625,
+            "width": 187,
+            "height": 39.59375,
+            "top": 790.40625,
+            "right": 207,
+            "bottom": 830,
+            "left": 20
+          }
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "path": "/stay/sections/",
+      "overflow": false,
+      "clipped": [],
+      "notes": []
+    },
+    {
+      "width": 430,
+      "path": "/chalet/",
+      "overflow": false,
+      "clipped": [],
+      "notes": [
+        {
+          "text": "يمكن استقبال حتى 25 ضيفًا برسوم إضافية",
+          "rect": {
+            "x": 20,
+            "y": 809.609375,
+            "width": 390,
+            "height": 20.390625,
+            "top": 809.609375,
+            "right": 410,
+            "bottom": 830,
+            "left": 20
+          }
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "path": "/stay/services/",
+      "overflow": false,
+      "clipped": [],
+      "notes": []
+    },
+    {
+      "width": 430,
+      "path": "/stay/guest-services/",
+      "overflow": false,
+      "clipped": [],
+      "notes": []
+    },
+    {
+      "width": 768,
+      "path": "/resort/",
+      "overflow": false,
+      "clipped": [],
+      "notes": []
+    },
+    {
+      "width": 768,
+      "path": "/cabins/",
+      "overflow": false,
+      "clipped": [],
+      "notes": []
+    },
+    {
+      "width": 768,
+      "path": "/stay/",
+      "overflow": false,
+      "clipped": [],
+      "notes": [
+        {
+          "text": "يمكن حجز قسم واحد أو القسمين معًا",
+          "rect": {
+            "x": 392,
+            "y": 902.203125,
+            "width": 356,
+            "height": 19.796875,
+            "top": 902.203125,
+            "right": 748,
+            "bottom": 922,
+            "left": 392
+          }
+        },
+        {
+          "text": "يمكن استقبال حتى 70 ضيفًا لكل قسم برسوم إضافية",
+          "rect": {
+            "x": 20,
+            "y": 902.203125,
+            "width": 356,
+            "height": 19.796875,
+            "top": 902.203125,
+            "right": 376,
+            "bottom": 922,
+            "left": 20
+          }
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "path": "/stay/sections/",
+      "overflow": false,
+      "clipped": [],
+      "notes": []
+    },
+    {
+      "width": 768,
+      "path": "/chalet/",
+      "overflow": false,
+      "clipped": [],
+      "notes": [
+        {
+          "text": "يمكن استقبال حتى 25 ضيفًا برسوم إضافية",
+          "rect": {
+            "x": 20,
+            "y": 901.609375,
+            "width": 728,
+            "height": 20.390625,
+            "top": 901.609375,
+            "right": 748,
+            "bottom": 922,
+            "left": 20
+          }
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "path": "/stay/services/",
+      "overflow": false,
+      "clipped": [],
+      "notes": []
+    },
+    {
+      "width": 768,
+      "path": "/stay/guest-services/",
+      "overflow": false,
+      "clipped": [],
+      "notes": []
+    },
+    {
+      "width": 1440,
+      "path": "/resort/",
+      "overflow": false,
+      "clipped": [],
+      "notes": []
+    },
+    {
+      "width": 1440,
+      "path": "/cabins/",
+      "overflow": false,
+      "clipped": [],
+      "notes": []
+    },
+    {
+      "width": 1440,
+      "path": "/stay/",
+      "overflow": false,
+      "clipped": [],
+      "notes": [
+        {
+          "text": "يمكن حجز قسم واحد أو القسمين معًا",
+          "rect": {
+            "x": 728,
+            "y": 778.203125,
+            "width": 442,
+            "height": 19.796875,
+            "top": 778.203125,
+            "right": 1170,
+            "bottom": 798,
+            "left": 728
+          }
+        },
+        {
+          "text": "يمكن استقبال حتى 70 ضيفًا لكل قسم برسوم إضافية",
+          "rect": {
+            "x": 270,
+            "y": 778.203125,
+            "width": 442,
+            "height": 19.796875,
+            "top": 778.203125,
+            "right": 712,
+            "bottom": 798,
+            "left": 270
+          }
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "path": "/stay/sections/",
+      "overflow": false,
+      "clipped": [],
+      "notes": []
+    },
+    {
+      "width": 1440,
+      "path": "/chalet/",
+      "overflow": false,
+      "clipped": [],
+      "notes": [
+        {
+          "text": "يمكن استقبال حتى 25 ضيفًا برسوم إضافية",
+          "rect": {
+            "x": 270,
+            "y": 777.609375,
+            "width": 900,
+            "height": 20.390625,
+            "top": 777.609375,
+            "right": 1170,
+            "bottom": 798,
+            "left": 270
+          }
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "path": "/stay/services/",
+      "overflow": false,
+      "clipped": [],
+      "notes": []
+    },
+    {
+      "width": 1440,
+      "path": "/stay/guest-services/",
+      "overflow": false,
+      "clipped": [],
+      "notes": []
+    }
+  ],
+  "performance": {
+    "conditions": {
+      "coldRunsPerRoute": 3,
+      "networkLatencyMs": 120,
+      "downloadBytesPerSecond": 1572864,
+      "cpuThrottle": 4,
+      "viewport": [
+        390,
+        844
+      ],
+      "server": "local http server, uncompressed, same original photos"
+    },
+    "routes": [
+      {
+        "path": "/",
+        "heading": {
+          "beforeMs": 1501,
+          "afterMs": 1054,
+          "improvementPercent": 29.8
+        },
+        "lcp": {
+          "beforeMs": 1760,
+          "afterMs": 1428,
+          "improvementPercent": 18.9
+        },
+        "fcp": {
+          "beforeMs": 492,
+          "afterMs": 488,
+          "improvementPercent": 0.8
+        }
+      },
+      {
+        "path": "/resort/",
+        "heading": {
+          "beforeMs": 1443,
+          "afterMs": 1081,
+          "improvementPercent": 25.1
+        },
+        "lcp": {
+          "beforeMs": 1548,
+          "afterMs": 1180,
+          "improvementPercent": 23.8
+        },
+        "fcp": {
+          "beforeMs": 492,
+          "afterMs": 516,
+          "improvementPercent": -4.9
+        }
+      },
+      {
+        "path": "/stay/",
+        "heading": {
+          "beforeMs": 1464,
+          "afterMs": 1092,
+          "improvementPercent": 25.4
+        },
+        "lcp": {
+          "beforeMs": 1564,
+          "afterMs": 1240,
+          "improvementPercent": 20.7
+        },
+        "fcp": {
+          "beforeMs": 492,
+          "afterMs": 508,
+          "improvementPercent": -3.3
+        }
+      },
+      {
+        "path": "/chalet/",
+        "heading": {
+          "beforeMs": 1452,
+          "afterMs": 1042,
+          "improvementPercent": 28.2
+        },
+        "lcp": {
+          "beforeMs": 1900,
+          "afterMs": 1592,
+          "improvementPercent": 16.2
+        },
+        "fcp": {
+          "beforeMs": 492,
+          "afterMs": 504,
+          "improvementPercent": -2.4
+        }
+      },
+      {
+        "path": "/services/",
+        "heading": {
+          "beforeMs": 1475,
+          "afterMs": 1108,
+          "improvementPercent": 24.9
+        },
+        "lcp": {
+          "beforeMs": 1348,
+          "afterMs": 1028,
+          "improvementPercent": 23.7
+        },
+        "fcp": {
+          "beforeMs": 488,
+          "afterMs": 496,
+          "improvementPercent": -1.6
+        }
+      },
+      {
+        "path": "/services/coordination/",
+        "heading": {
+          "beforeMs": 1473,
+          "afterMs": 1123,
+          "improvementPercent": 23.8
+        },
+        "lcp": {
+          "beforeMs": 1364,
+          "afterMs": 1056,
+          "improvementPercent": 22.6
+        },
+        "fcp": {
+          "beforeMs": 480,
+          "afterMs": 504,
+          "improvementPercent": -5.0
+        }
+      },
+      {
+        "path": "/chalet/services/",
+        "heading": {
+          "beforeMs": 1460,
+          "afterMs": 1130,
+          "improvementPercent": 22.6
+        },
+        "lcp": {
+          "beforeMs": 1312,
+          "afterMs": 1020,
+          "improvementPercent": 22.3
+        },
+        "fcp": {
+          "beforeMs": 492,
+          "afterMs": 516,
+          "improvementPercent": -4.9
+        }
+      },
+      {
+        "path": "/stay/services/",
+        "heading": {
+          "beforeMs": 1501,
+          "afterMs": 1021,
+          "improvementPercent": 32.0
+        },
+        "lcp": {
+          "beforeMs": 1712,
+          "afterMs": 1348,
+          "improvementPercent": 21.3
+        },
+        "fcp": {
+          "beforeMs": 492,
+          "afterMs": 500,
+          "improvementPercent": -1.6
+        }
+      }
+    ]
+  },
+  "cleanup": [
+    {
+      "name": "guide",
+      "bytes": 331,
+      "reason": "Protected standalone URLs always load their own documents. navigate() hands them off; native bootstrap hands off legacy portal hashes. No native route renders these retired selection screens."
+    },
+    {
+      "name": "guestServices",
+      "bytes": 225,
+      "reason": "Protected standalone URLs always load their own documents. navigate() hands them off; native bootstrap hands off legacy portal hashes. No native route renders these retired selection screens."
+    },
+    {
+      "name": "resortGuestGuide",
+      "bytes": 629,
+      "reason": "Protected standalone URLs always load their own documents. navigate() hands them off; native bootstrap hands off legacy portal hashes. No native route renders these retired selection screens."
+    },
+    {
+      "name": "services",
+      "bytes": 818,
+      "reason": "The resort/stay guards already return. The old resort-only links and conditional title in the remaining chalet branch can never appear."
+    },
+    {
+      "name": "serviceCard",
+      "bytes": 329,
+      "reason": "After protected portal handoff, generic service cards render only in the chalet service list; retired resort card rendering is unreachable."
+    },
+    {
+      "name": "venueContact",
+      "bytes": 919,
+      "reason": "All three supported venues use the approved shared contact layout; the discarded generic contact template is unreachable."
+    },
+    {
+      "name": "faq",
+      "bytes": 909,
+      "reason": "All three venues have maintained grouped FAQs, enforced by the build coverage check. The pre-grouping FAQ renderer is unreachable."
+    }
+  ],
+  "sourceOrganization": {
+    "resort": {
+      "file": "./venues/resort.js",
+      "names": [
+        "resortHome",
+        "resortCard",
+        "gardenCard",
+        "resortCabins",
+        "resortServiceDirectory",
+        "bindServiceDirectory",
+        "restaurantGuide",
+        "diningGuide",
+        "resortServiceLink",
+        "serviceGuidePackage",
+        "coordinationHelp",
+        "resortServiceGuide",
+        "promotionList",
+        "promotionDisclosure",
+        "promotionAction",
+        "promotionSteps",
+        "promotionSocial",
+        "promotionGuide",
+        "comparisonSpecials",
+        "resortComparison",
+        "cabinNavigation"
+      ],
+      "dependencies": {
+        "resortHome": [
+          "guideCopy",
+          "icon",
+          "out",
+          "safe",
+          "unit",
+          "venue"
+        ],
+        "resortCard": [
+          "compare",
+          "explorationTitle",
+          "guests",
+          "icon",
+          "link",
+          "prefix",
+          "rooms",
+          "safe"
+        ],
+        "gardenCard": [
+          "unit"
+        ],
+        "resortCabins": [
+          "filter",
+          "icon",
+          "link",
+          "unitsFor"
+        ],
+        "resortServiceDirectory": [
+          "guideCopy",
+          "icon",
+          "safe",
+          "serviceBy"
+        ],
+        "bindServiceDirectory": [
+          "$",
+          "activeEntryId",
+          "navViews",
+          "saveView"
+        ],
+        "restaurantGuide": [
+          "catalog",
+          "heading",
+          "icon",
+          "money",
+          "out",
+          "safe"
+        ],
+        "diningGuide": [
+          "guideCopy",
+          "heading",
+          "icon",
+          "safe",
+          "servicePhoto",
+          "serviceText",
+          "ul"
+        ],
+        "resortServiceLink": [
+          "guideCopy",
+          "icon",
+          "route",
+          "safe"
+        ],
+        "serviceGuidePackage": [
+          "icon",
+          "packagePhotos",
+          "paragraphs",
+          "safe",
+          "ul"
+        ],
+        "coordinationHelp": [
+          "guideCopy",
+          "safe"
+        ],
+        "resortServiceGuide": [
+          "catalog",
+          "guideContents",
+          "guideCopy",
+          "guideNotes",
+          "heading",
+          "icon",
+          "money",
+          "safe",
+          "servicePhoto",
+          "serviceText",
+          "ul"
+        ],
+        "promotionList": [
+          "safe"
+        ],
+        "promotionDisclosure": [
+          "icon",
+          "safe"
+        ],
+        "promotionAction": [
+          "icon",
+          "safe"
+        ],
+        "promotionSteps": [
+          "safe"
+        ],
+        "promotionSocial": [
+          "safe"
+        ],
+        "promotionGuide": [
+          "catalog",
+          "heading",
+          "safe",
+          "ul",
+          "unavailable"
+        ],
+        "comparisonSpecials": [],
+        "resortComparison": [
+          "compare",
+          "guests",
+          "heading",
+          "icon",
+          "link",
+          "rooms",
+          "safe",
+          "specificationText",
+          "unitsFor"
+        ],
+        "cabinNavigation": [
+          "icon",
+          "prefix",
+          "safe",
+          "unit",
+          "unitsFor"
+        ]
+      }
+    },
+    "chalet": {
+      "file": "./venues/chalet.js",
+      "names": [
+        "chaletHome",
+        "chaletServices",
+        "chaletServiceCard",
+        "chaletServiceGuide"
+      ],
+      "dependencies": {
+        "chaletHome": [
+          "venueHome"
+        ],
+        "chaletServices": [
+          "catalog",
+          "heading",
+          "safe",
+          "venue"
+        ],
+        "chaletServiceCard": [
+          "guideCopy",
+          "icon",
+          "link",
+          "safe",
+          "servicePath"
+        ],
+        "chaletServiceGuide": [
+          "catalog",
+          "guideContents",
+          "guideCopy",
+          "guideNotes",
+          "heading",
+          "icon",
+          "safe",
+          "servicePhoto"
+        ]
+      }
+    },
+    "stay": {
+      "file": "./venues/stay.js",
+      "names": [
+        "stayHome",
+        "stayCard",
+        "staySections",
+        "stayServiceGuide",
+        "stayNavigation",
+        "stayComparison"
+      ],
+      "dependencies": {
+        "stayHome": [
+          "venueHome"
+        ],
+        "stayCard": [
+          "guests",
+          "icon",
+          "link",
+          "prefix",
+          "rooms",
+          "safe"
+        ],
+        "staySections": [
+          "icon",
+          "link",
+          "unitsFor"
+        ],
+        "stayServiceGuide": [
+          "guideCopy",
+          "heading",
+          "icon",
+          "money",
+          "out",
+          "packagePhotos",
+          "safe"
+        ],
+        "stayNavigation": [
+          "icon",
+          "prefix",
+          "safe",
+          "unitsFor"
+        ],
+        "stayComparison": [
+          "heading",
+          "link",
+          "rooms",
+          "specificationText",
+          "unitsFor"
+        ]
+      }
+    },
+    "shared": {
+      "file": "./shared/views.js",
+      "names": [
+        "destinations",
+        "venueHome",
+        "venueContact",
+        "gallery",
+        "specificationIcon",
+        "unitSpecifications",
+        "detail",
+        "faqSearchText",
+        "faqGuide",
+        "bindFaqGuide",
+        "packagePhotos",
+        "guideNotes",
+        "servicePhoto",
+        "guideContents"
+      ],
+      "dependencies": {
+        "destinations": [
+          "catalog",
+          "icon",
+          "labels",
+          "prefix",
+          "safe",
+          "unit"
+        ],
+        "venueHome": [
+          "icon",
+          "safe",
+          "unitsFor",
+          "venue"
+        ],
+        "venueContact": [
+          "catalog",
+          "guideCopy",
+          "icon",
+          "labels",
+          "link",
+          "out",
+          "route",
+          "safe",
+          "venue"
+        ],
+        "gallery": [
+          "icon",
+          "photoIndex",
+          "safe"
+        ],
+        "specificationIcon": [],
+        "unitSpecifications": [
+          "icon",
+          "safe",
+          "specificationText"
+        ],
+        "detail": [
+          "cabinNavigation",
+          "currentUnit",
+          "explorationTitle",
+          "guests",
+          "icon",
+          "link",
+          "paragraphs",
+          "rooms",
+          "safe",
+          "stayNavigation",
+          "venue"
+        ],
+        "faqSearchText": [
+          "digit",
+          "roomWording"
+        ],
+        "faqGuide": [
+          "guideCopy",
+          "heading",
+          "icon",
+          "link",
+          "route",
+          "safe",
+          "venue"
+        ],
+        "bindFaqGuide": [
+          "$",
+          "activeEntryId",
+          "navViews"
+        ],
+        "packagePhotos": [
+          "displayServiceImage",
+          "guideCopy",
+          "reviewedGuide",
+          "safe"
+        ],
+        "guideNotes": [
+          "safe"
+        ],
+        "servicePhoto": [
+          "displayServiceImage",
+          "guideCopy",
+          "safe"
+        ],
+        "guideContents": [
+          "icon",
+          "safe",
+          "ul"
+        ]
+      }
+    }
+  },
+  "reviewLinkVerification": {
+    "status": 200,
+    "place": "مجمع يوم العائلة",
+    "rating": 4.7,
+    "phone": "+966 55 615 6693",
+    "limitation": "Google served its limited Maps view from the test environment; verified place identity and rating, but could not confirm expansion of the reviews drawer. Use the Maps review fragment for the verified place, not the discontinued search.google.com/local/reviews endpoint."
+  },
+  "messagesSent": false
+}

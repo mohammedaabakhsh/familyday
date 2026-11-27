@@ -8,7 +8,12 @@ SITE=ROOT/'site'
 CONFIG=json.loads((SITE/'cutover-config.json').read_text())
 VERSION=CONFIG['version']
 app=SITE/'app.js'
-app.write_text(re.sub(r"VERSION='[^']+'","VERSION='"+VERSION+"'",app.read_text(),count=1))
+app.write_text(re.sub(r"VERSION\s*=\s*'[^']+'","VERSION = '"+VERSION+"'",app.read_text(),count=1))
+# Refresh only static native ES-module imports when releasing a new asset version.
+for module in [app,*sorted((SITE/'venues').glob('*.js')),*sorted((SITE/'shared').glob('*.js'))]:
+ text=module.read_text()
+ text=re.sub(r"((?:\.\.?/)[^'\"]+\.js\?v=)[^'\"]+",lambda m:m[1]+VERSION,text)
+ module.write_text(text)
 PORTALS=set(CONFIG['protectedPortals'])
 REDIRECTS={p:('/chalet/services/' if p.startswith('/chalet/') else '/stay/services/' if p.startswith('/stay/') else '/services/') for p in CONFIG['rootRoutes'] if p.endswith(('/order/','/checkout/'))}
 REDIRECTS.update(CONFIG.get('retiredServiceItemRoutes',{}))
@@ -102,6 +107,12 @@ def write(path,page):
 
 template=(SITE/'template.html').read_text()
 template=re.sub(r'(/site/[^"?]+\.(?:js|css)[?]v=)[^\"]+',lambda m:m[1]+VERSION,template)
+# Start the existing code and JSON downloads together. No photo strategy or quality changes.
+boot_modules=['/site/venues/resort.js','/site/venues/stay.js','/site/venues/chalet.js','/site/shared/views.js','/js/order-visit.js','/site/orders/native-orders.js','/site/orders/restaurant-inline.js','/js/guest-order-message.js']
+boot_data=['/site/catalog.json','/site/share-metadata.json','/site/guide-copy.json','/site/runtime-config.json']
+preloads='\n'.join('<link rel="modulepreload" href="'+path+'?v='+VERSION+'">' for path in boot_modules)
+preloads+='\n'+'\n'.join('<link rel="preload" as="fetch" crossorigin href="'+path+'?v='+VERSION+'">' for path in boot_data)
+template=template.replace('</head>',preloads+'\n</head>')
 native=[]
 for path in CONFIG['rootRoutes']:
  if path in PORTALS:continue

@@ -12,14 +12,14 @@
  const initialSection=location.pathname===section||location.hash==='#slide';
  $('#reload-services').onclick=()=>location.reload();
  try{
-  const response=await fetch('/data/services.json?v=20261127-stay-services-v122');if(!response.ok)throw Error('catalogue');
+  const response=await fetch('/data/services.json?v=20261127-maintenance-v131');if(!response.ok)throw Error('catalogue');
   const source=(await response.json()).stay;service=source.slide;phone=source.phone;
   if(!(service.price>0)||!/^966\d{9}$/.test(phone)||!service.name||!service.image)throw Error('Invalid stay service');
  }catch(error){$('#services-loading').hidden=true;$('#services-error').hidden=false;post('error');return;}
  $('#services-loading').hidden=true;
  $('#slide-title').textContent=$('#stay-detail-title').textContent=service.name;
  $('#slide-intro').textContent=service.cardIntro;
- $('#slide-description').textContent=service.description;
+ $('#slide-description').textContent=service.pageIntro||service.description;
  $('#slide-location').textContent=service.location;
  $('#slide-price').textContent=service.price+' ريال';
  $('#slide-photo').src=service.image;$('#slide-photo').alt=service.name;
