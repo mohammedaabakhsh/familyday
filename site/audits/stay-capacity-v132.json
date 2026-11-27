@@ -1,0 +1,55 @@
+{
+  "profiles": [
+    {
+      "width": 320,
+      "lines": 1,
+      "contentWidth": 258,
+      "available": 290,
+      "font": "12px",
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "lines": 1,
+      "contentWidth": 258,
+      "available": 335,
+      "font": "12px",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "lines": 1,
+      "contentWidth": 258,
+      "available": 350,
+      "font": "12px",
+      "overflow": false
+    },
+    {
+      "width": 430,
+      "lines": 1,
+      "contentWidth": 258,
+      "available": 390,
+      "font": "12px",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "lines": 1,
+      "contentWidth": 258,
+      "available": 728,
+      "font": "12px",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "lines": 1,
+      "contentWidth": 258,
+      "available": 900,
+      "font": "12px",
+      "overflow": false
+    }
+  ],
+  "errors": [],
+  "version": "20261127-stay-capacity-v132",
+  "scope": "Rest-house home: remove booking footnote and show capacity note on one full-width centered line."
+}

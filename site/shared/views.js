@@ -32,7 +32,7 @@ export function createSharedViews(context) {
           ['users', `حتى ${u.guests} ضيفًا`],
           ['water', 'مسبح أطفال'],
         ];
-    return `<div class="venue-overview resort-overview venue-guide-overview"><section class="resort-intro"><h1>دليلكم ل${safe(venue().name)}</h1><p><span>${intro[0]}</span><br><span>${intro[1]}</span></p></section><section class="hero"><img src="${safe(u.images[0])}" alt="${safe(venue().name)}" fetchpriority="high"><div class="hero-content"><span class="eyebrow">${icon('pin')}${safe(venue().location)}</span><p>خصوصية تليق بكم وراحة تستحقونها</p></div></section><div class="facts-strip">${facts.map(([i, t]) => `<div>${icon(i)}<span>${safe(t)}</span></div>`).join('')}</div>${stay ? '<div class="venue-footnotes"><p>يمكن حجز قسم واحد أو القسمين معًا</p><p>يمكن استقبال حتى 70 ضيفًا لكل قسم برسوم إضافية</p></div>' : '<p class="venue-footnote">يمكن استقبال حتى 25 ضيفًا برسوم إضافية</p>'}</div>`;
+    return `<div class="venue-overview resort-overview venue-guide-overview"><section class="resort-intro"><h1>دليلكم ل${safe(venue().name)}</h1><p><span>${intro[0]}</span><br><span>${intro[1]}</span></p></section><section class="hero"><img src="${safe(u.images[0])}" alt="${safe(venue().name)}" fetchpriority="high"><div class="hero-content"><span class="eyebrow">${icon('pin')}${safe(venue().location)}</span><p>خصوصية تليق بكم وراحة تستحقونها</p></div></section><div class="facts-strip">${facts.map(([i, t]) => `<div>${icon(i)}<span>${safe(t)}</span></div>`).join('')}</div>${stay ? '<div class="venue-footnotes"><p>يمكن استقبال حتى 70 ضيفًا لكل قسم برسوم إضافية</p></div>' : '<p class="venue-footnote">يمكن استقبال حتى 25 ضيفًا برسوم إضافية</p>'}</div>`;
   }
 
   function venueContact() {

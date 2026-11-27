@@ -1,7 +1,7 @@
-import { createResortViews } from './venues/resort.js?v=20261127-maintenance-v131';
-import { createChaletViews } from './venues/chalet.js?v=20261127-maintenance-v131';
-import { createStayViews } from './venues/stay.js?v=20261127-maintenance-v131';
-import { createSharedViews } from './shared/views.js?v=20261127-maintenance-v131';
+import { createResortViews } from './venues/resort.js?v=20261127-stay-capacity-v132';
+import { createChaletViews } from './venues/chalet.js?v=20261127-stay-capacity-v132';
+import { createStayViews } from './venues/stay.js?v=20261127-stay-capacity-v132';
+import { createSharedViews } from './shared/views.js?v=20261127-stay-capacity-v132';
 // Published guide. Original page URLs are preserved; ordering documents remain independent.
 const $ = (s, r = document) => r.querySelector(s);
 const esc = (s) =>
@@ -58,8 +58,8 @@ const icon = (n, cl = '') =>
   `<svg class="icon ${cl}" viewBox="0 0 24 24" aria-hidden="true">${paths[n] || paths.spark}</svg>`;
 const ROOT = '/',
   ASSETS = '/site/',
-  VERSION = '20261127-maintenance-v131';
-import '../js/order-visit.js?v=20261127-maintenance-v131';
+  VERSION = '20261127-stay-capacity-v132';
+import '../js/order-visit.js?v=20261127-stay-capacity-v132';
 const main = $('#main'),
   viewer = $('#viewer');
 let resortOrders = null,

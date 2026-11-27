@@ -69,6 +69,6 @@ body.stay-scope:not(.focused-view) #main{padding-top:calc(64px + env(safe-area-i
 .stay-home .facts-strip>div{padding-inline:0;gap:6px}
 @media(max-width:360px){.stay-compare .resort-comparison-table thead strong{font-size:12px;white-space:nowrap}.stay-compare .resort-comparison-table thead small{font-size:10px}}
 
-/* Approved capacity note: two balanced facts below the existing summary strip. */
-.stay-home .venue-footnotes{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px 16px;flex:0 0 auto;margin-top:7px;color:var(--muted);font-size:12px;line-height:1.65;text-align:center}
-.stay-home .venue-footnotes p{margin:0;text-wrap:pretty}
+/* Reception capacity uses the full row beneath the unchanged summary strip. */
+.stay-home .venue-footnotes{flex:0 0 auto;margin-top:7px;color:var(--muted);font-size:12px;line-height:1.65;text-align:center}
+.stay-home .venue-footnotes p{margin:0;white-space:nowrap}

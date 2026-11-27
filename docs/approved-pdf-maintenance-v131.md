@@ -73,3 +73,7 @@ Completed checks:
 All outgoing drafts and shares are intercepted during tests; no WhatsApp message or booking is sent. Protected-file hashes are updated only for the explicitly approved catalogue and rest-house introduction reader. Historical audits are kept as history.
 
 Rebuild with `python site/build-site.py`; a second build must produce identical tracked output. To recover the previous implementation, use the rollback tag as the reference for a reviewed revert; do not delete live files or reset unrelated work.
+
+## Owner follow-up — v132
+
+The owner replaces the two-column rest-house footnotes with a single centered full-width line: `يمكن استقبال حتى 70 ضيفًا لكل قسم برسوم إضافية`. Remove `يمكن حجز قسم واحد أو القسمين معًا`. Keep the existing 12px note font and 25-guest summary. Verified on320,375,390,430,768and1440pixel widths: one rendered line, no clipping or horizontal overflow. Other destinations and all service/order data remain unchanged.
