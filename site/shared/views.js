@@ -146,7 +146,7 @@ export function createSharedViews(context) {
     const u = currentUnit(),
       garden = u.id === 11,
       v = u.venue;
-    return `<div class="detail-layout"><section class="detail-gallery" aria-label="صور الإقامة">${gallery(u)}</section><section class="detail-copy">${v === 'chalet' ? '' : `<span class="eyebrow">${safe(venue().name)}</span>`}<h1>${safe(u.name)} ${garden ? '' : `<span class="suitability-inline">(${safe(u.suitable)})</span>`}</h1><div class="description">${paragraphs(u.description)}</div>${
+    return `<div class="detail-layout"><section class="detail-gallery" aria-label="صور الإقامة">${gallery(u)}</section><section class="detail-copy"><span class="eyebrow">${safe(venue().name)}</span><h1>${safe(v === 'chalet' ? 'الشاليه' : u.name)} ${garden ? '' : `<span class="suitability-inline">(${safe(u.suitable)})</span>`}</h1><div class="description">${paragraphs(u.description)}</div>${
       garden
         ? `<div class="fact-boxes two-facts"><div class="fact-box">${icon('pin')}<small>الموقع</small><strong>وسط الأكواخ</strong></div><div class="fact-box">${icon('users')}<small>الاستخدام</small><strong>لجميع الضيوف</strong></div></div><h2 class="content-heading" id="garden-facilities-title">مرافق الحديقة</h2><ul class="spec-list garden-facilities" aria-labelledby="garden-facilities-title">${u.gardenFeatures.map((t) => `<li class="spec-item">${safe(t)}</li>`).join('')}</ul><button class="explore-link" data-virtual="${safe(u.tour)}"><span>${icon('map')}جولة ثلاثية الأبعاد للحديقة</span>${icon('arrow')}</button>`
         : `<div class="fact-boxes">${[

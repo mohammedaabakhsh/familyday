@@ -40,7 +40,7 @@ body.stay-scope:not(.focused-view) #main{padding-top:calc(64px + env(safe-area-i
 .stay-scope #main:has(.service-guide,.faq-guide){padding-bottom:calc(108px + env(safe-area-inset-bottom,0px))}
 
 .stay-scope .stay-card-title h3{font-size:21px!important;line-height:1.5}
-.stay-scope .stay-card-title .card-audience{font-size:11px}
+.stay-scope .stay-card-title .card-audience{font-size:14px;font-weight:500;line-height:1.5;display:inline-block;max-width:none;white-space:nowrap!important}
 .stay-scope .stay-catalog-panel .catalog-heading h1{font-size:20px}
 .stay-scope .stay-catalog-panel .catalog-heading .text-link{font-size:12px}
 .stay-scope .stay-comparison .comparison-scroll{margin-top:18px;border:1px solid var(--line);border-radius:14px}
@@ -76,9 +76,6 @@ body.stay-scope:not(.focused-view) #main{padding-top:calc(64px + env(safe-area-i
 /* Give each fact its natural width on current phones, keeping the approved text size. */
 @media(min-width:375px) and (max-width:999px){.stay-home .facts-strip{grid-template-columns:max-content max-content max-content;justify-content:space-between;gap:4px}.stay-home .facts-strip>div{gap:5px}.stay-home .facts-strip span{white-space:nowrap}}
 
-/* Use the available card width for the audience caption without shrinking its font. */
-@media(min-width:375px) and (max-width:999px){.stay-scope .stay-card-title .card-audience{max-width:none;flex-shrink:0;white-space:nowrap!important}}
-
 /* Balance the remaining card facts between the title and details button. */
 @media(min-width:375px) and (max-width:999px){.stay-scope .stay-catalog-panel .stay-unit-card .card-facts{margin:24px 0 18px}}
 
@@ -86,3 +83,10 @@ body.stay-scope:not(.focused-view) #main{padding-top:calc(64px + env(safe-area-i
 .stay-scope .stay-catalog-panel .stay-unit-card .card-facts{display:flex;flex-wrap:nowrap;justify-content:space-between;column-gap:4px;margin-inline:-4px;font-size:11px}
 .stay-scope .stay-catalog-panel .stay-unit-card .card-facts>span{flex:0 0 auto;gap:2px}
 .stay-scope .stay-catalog-panel .stay-unit-card .card-facts .icon{width:14px;height:14px;flex-shrink:0}
+
+/* Match the accommodation detail heading: venue above, audience beside the name. */
+.stay-scope .stay-card-venue{margin-bottom:8px}
+.stay-scope .stay-card-name{white-space:nowrap}
+.stay-scope .stay-card-title{margin-inline:-4px}
+.stay-scope .stay-card-title h3{display:grid;grid-template-columns:max-content max-content;align-items:baseline;column-gap:4px}
+.stay-scope .stay-card-floor{grid-column:1/-1}

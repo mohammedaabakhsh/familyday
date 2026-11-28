@@ -6,7 +6,7 @@ export function createStayViews(context) {
   }
 
   function stayCard(u) {
-    const { guests, icon, link, prefix, rooms, safe } = context;
+    const { guests, icon, link, prefix, rooms, safe, venue } = context;
     const outdoor = u.sections?.find((section) => section.title.startsWith('المنطقة الخارجية'))?.items || [];
     const amenities = [
       outdoor.some((item) => item.includes('مسبح خاص للكبار')) && ['water', 'مسبح للكبار'],
@@ -14,7 +14,7 @@ export function createStayViews(context) {
       outdoor.some((item) => item.includes('ملعب كرة طائرة')) && ['volleyball', 'كرة طائرة'],
     ].filter(Boolean).map(([symbol, label]) => `<span class="stay-card-facility">${icon(symbol)}${safe(label)}</span>`).join('');
 
-    return `<article class="unit-card resort-unit-card stay-unit-card" data-unit-id="${u.id}"><a class="card-photo" href="${prefix(u.path)}" aria-label="التفاصيل والصور — ${safe(u.name)}"><img src="${safe(u.images[0])}" alt="${safe(u.name)}" loading="lazy"></a><div class="card-copy"><div class="card-title-row stay-card-title"><h3>${safe(u.name.split('–')[0].trim())}<small class="stay-card-floor">${safe(u.name.split('–')[1]?.trim() || '')}</small></h3><span class="card-audience">${safe(u.suitable)}</span></div><div class="card-facts"><span>${icon('users')}${guests(u.guests)}</span><span>${icon('bed')}${rooms(u.rooms)}</span>${amenities}</div><div class="card-actions stay-card-actions">${link(u.path, 'التفاصيل والصور', 'button primary card-details')}</div></div></article>`;
+    return `<article class="unit-card resort-unit-card stay-unit-card" data-unit-id="${u.id}"><a class="card-photo" href="${prefix(u.path)}" aria-label="التفاصيل والصور — ${safe(u.name)}"><img src="${safe(u.images[0])}" alt="${safe(u.name)}" loading="lazy"></a><div class="card-copy"><span class="eyebrow stay-card-venue">${safe(venue().name)}</span><div class="card-title-row stay-card-title"><h3><span class="stay-card-name">${safe(u.name.split('–')[0].trim())}</span> <span class="card-audience suitability-inline">(${safe(u.suitable)})</span><small class="stay-card-floor">${safe(u.name.split('–')[1]?.trim() || '')}</small></h3></div><div class="card-facts"><span>${icon('users')}${guests(u.guests)}</span><span>${icon('bed')}${rooms(u.rooms)}</span>${amenities}</div><div class="card-actions stay-card-actions">${link(u.path, 'التفاصيل والصور', 'button primary card-details')}</div></div></article>`;
   }
 
   function staySections() {
