@@ -169,5 +169,5 @@ print(json.dumps({'nativePages':len(native),'protectedPortals':len(PORTALS),'pre
 # Shared measurement assets used by the native guide and independent visual documents.
 for visual in (SITE/'visuals').rglob('index.html'):
  text=visual.read_text()
- text=re.sub(r'((?:/js/specification-measurements\.js|/css/specification-measurements\.css|/site/visuals/assets/resort-data\.js)\?v=)[^"\s]+',lambda m:m[1]+VERSION,text)
+ text=re.sub(r'((?:/js/specification-measurements\.js|/css/specification-measurements\.css|/site/visuals/assets/resort-data\.js|/site/visuals/bridge\.js)\?v=)[^"\s]+',lambda m:m[1]+VERSION,text)
  visual.write_text(text)

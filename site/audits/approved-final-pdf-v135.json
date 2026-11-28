@@ -1,0 +1,667 @@
+{
+  "version": "20261128-approved-pdf-v135",
+  "baselineCommit": "f379a3c4cc5d0a085ccb2a72afb8040e58702cc0",
+  "rollbackTag": "pre-final-pdf-approved-20261128",
+  "appliedQuestionIds": [
+    1,
+    2,
+    4,
+    8,
+    9,
+    12,
+    13,
+    14,
+    15,
+    17,
+    21,
+    23,
+    24
+  ],
+  "all25Decisions": [
+    {
+      "id": 1,
+      "title": "عرض مقاسات المسابح",
+      "status": "approved_global_deferred",
+      "decision": "تعميم تنسيق مثال رويال المعتمد على عرض المقاسات ووحدات القياس في الخرائط والجولات والتفاصيل والمقارنات وجميع المواضع المماثلة للمنتجع والشاليه والاستراحة والرئيسي والفرعي حيث توجد قياسات: الرقم ثم الوحدة في ترتيب القراءة العربي مع مسافة ظاهرة، وحفظ ترتيب أرقام الأبعاد وقيمها. لا يقتصر على رويال، ولا ينفذ التعميم الآن؛ ضمن الدفعة النهائية."
+    },
+    {
+      "id": 2,
+      "title": "وصف الاستراحة في اختر وجهتك",
+      "status": "approved_deferred",
+      "decision": "تغيير تجمعات عائلية في وصف بطاقة الاستراحة بصفحة اختر وجهتك إلى للتجمعات الكبيرة، ضمن الدفعة النهائية، مع حفظ بقية وصف البطاقة وتصميمها."
+    },
+    {
+      "id": 3,
+      "title": "توضيح الحمامات الداخلية للاستراحة",
+      "status": "keep_current_after_clarification",
+      "decision": "الإبقاء على عرض الحمامات الحالي دون إضافة أو إعادة صياغة. أوضح المالك أن4إجماليًا مع3داخلية و1خارجي واضح بالفعل، فلا حاجة لزيادة التوضيح."
+    },
+    {
+      "id": 4,
+      "title": "شريط معلومات رئيسية الاستراحة",
+      "status": "approved_deferred",
+      "decision": "تعديل توزيع عرض خانات المعلومات الثلاث في رئيسية الاستراحة حسب طول العبارات وتقليل الفراغات الزائدة، مع إبقاء حجم الخط والأيقونات كما هو؛ استهداف سطر واحد لقسمان مستقلان و25ضيفًا لكل قسم حيث تسمح المساحة. حفظ ملاحظة70ضيفًا كاملة بسطر مستقل كما فيv132. ضمن الدفعة النهائية، وليس استثناء تنفيذ فوري جديدًا."
+    },
+    {
+      "id": 5,
+      "title": "المسافة داخل أزرار الشاشة الصغيرة",
+      "status": "rejected_small_old_phones",
+      "decision": "لا تعديل لأزرار الخدمات والمنيو بناءً على عرض320pxأو أجهزة قديمة. استبعاد أي اقتراح لاحق يعتمد فقط على شاشات صغيرة جدًا أو هواتف قديمة، وعدم إعادة السؤال عنها."
+    },
+    {
+      "id": 6,
+      "title": "محاذاة منيو المطعم على الكمبيوتر",
+      "status": "deferred_desktop_out_of_round",
+      "decision": "تأجيل تصميم الكمبيوتر ومساحاته خارج هذه الجولة؛ لا تعديل لمحاذاة المنيو على الكمبيوتر ولا إعادة طرح أسئلة تخص تصميم الكمبيوتر أو توزيع مساحاته."
+    },
+    {
+      "id": 7,
+      "title": "السعر في بطاقتي خدمات الشاليه",
+      "status": "rejected_keep_current",
+      "decision": "لا إضافة للسعر على بطاقتي خدمات الشاليه الخارجيتين. يبقى السعر داخل تفاصيل الخدمة فقط، والتصميم الحالي كما هو."
+    },
+    {
+      "id": 8,
+      "title": "عنوان مجموعة ترفيه بالشاليه",
+      "status": "approved_deferred",
+      "decision": "حذف عنوان المجموعة الوحيد ترفيه فوق بطاقتي الخدمات في صفحة خدمات الشاليه الرئيسية فقط، لتظهر البطاقتان تحت عنوان الصفحة مباشرة. تبقى أسماء الألعاب الترفيهية والألعاب المائية ومحتواهما كما هي. التنفيذ ضمن الدفعة النهائية."
+    },
+    {
+      "id": 9,
+      "title": "عنوان بطاقة زحليقة الاستراحة",
+      "status": "approved_with_changes_deferred",
+      "decision": "تصغير خفيف لاسم الزحليقة الهوائية الكبيرة داخل بطاقتها الخارجية بفرعي الاستراحة، مع بقاء عنوان الصفحة الرئيسي أكبر وحفظ الاسم والمحتوى. استهداف16pxبدل17pxالحالي عند التنفيذ بعد المراجعة البصرية، دون تغيير بقية عناوين البطاقات أو تكبير هيدر الصفحة. لا فرض التفاف أو تعديل تخطيط بسبب شاشات قديمة أو صغيرة جدًا. لا تغيير نص عنوان الصفحة إلى خدمات الاستراحة؛ يظل العنوان الحالي كما هو ما لم يطلب المالك ذلك صراحة."
+    },
+    {
+      "id": 10,
+      "title": "حجم تسميات الشريط وبطاقات المعلومات",
+      "status": "rejected_keep_current",
+      "decision": "الإبقاء على أحجام تسميات الشريط السفلي وعناوين خانات المعلومات بالموقع الرئيسي كما هي؛ لا تكبير عام للخطوط. لا يلغي ذلك تصغير اسم الزحليقة المحدد والمعتمد في السؤال9."
+    },
+    {
+      "id": 11,
+      "title": "صيغة موقع البوابات الأربع",
+      "status": "rejected_keep_current",
+      "decision": "الإبقاء على فرع خليج سلمان وحي المروج تحت أسماء الوجهات كما هي. لا إضافة جدة في أعلى البوابات الأربع، لأنها موجودة في آخر الصفحة ولا يريد المالك تكرارها."
+    },
+    {
+      "id": 12,
+      "title": "صيغة الجمع في الأوصاف",
+      "status": "approved_deferred",
+      "decision": "توحيد الأوصاف ومقدمات الخدمات والبوابات وعبارات وصف المسابقات إلى مخاطبة الجمع: استمتعوا، المناسبة لكم، صوّروا تجربتكم، كل ما تحتاجونه أثناء إقامتكم، ونحوها في الرئيسي والفرعي. حفظ المعنى ومعلومات الخدمات. الاعتماد يخص الأوصاف؛ لا تغيير أسماء الخدمات أو عناوين الصفحات أو أزرار اطلب أو صيغة أرغب في رسائل الضيف لمجرد هذا القرار. ضمن الدفعة النهائية."
+    },
+    {
+      "id": 13,
+      "title": "اسم صفحة التنسيقات بين الرئيسي والفرعي",
+      "status": "approved_deferred",
+      "decision": "اعتماد التنسيقات والجلسات اسمًا موحدًا في عنوان الصفحة الفرعية وروابط التصفح وعناوين المشاركة المرتبطة بها والرئيسي حيث يقصد القسم نفسه، بدل تنسيقات وجلسات. حفظ أسماء الخدمات الفردية ومقاس الخط وروابط الصفحات نفسها. ضمن الدفعة النهائية."
+    },
+    {
+      "id": 14,
+      "title": "اسم تبويب استكشف للشاليه",
+      "status": "approved_deferred",
+      "decision": "تغيير الاسم المرئي لتبويب استكشف في الشريط السفلي للشاليه إلى الجولة، مع حفظ الرابط الحالي والأيقونة ووظيفة الجولة والخريطة وأسماء الغرف والمرافق. لا إعادة تسمية عامة لأزرار الاستكشاف الأخرى ولا تعديل أوصاف قارئ الشاشة المرفوضة سابقًا. التنفيذ ضمن الدفعة النهائية."
+    },
+    {
+      "id": 15,
+      "title": "جمعتكم وجمعاتكم",
+      "status": "approved_deferred",
+      "decision": "توحيد لجمعتكم إلى لجمعاتكم في الأوصاف المتناظرة للكلاسيكي ورويال والاستراحة وما يظهر من نسخها المعتمدة، مع حفظ المعنى وحقائق المكان. لا تغيير لعبارات صحيحة مختلفة مثل لجمعات الأهل والأصدقاء لمجرد التوحيد. التنفيذ ضمن الدفعة النهائية."
+    },
+    {
+      "id": 16,
+      "title": "تكرار الوصول للحديقة المشتركة",
+      "status": "rejected_keep_current",
+      "decision": "الإبقاء على معلومة الباب الخاص للحديقة المشتركة في المقدمة وفي المرافق كما هي. لا حذف للتكرار في أي منهما."
+    },
+    {
+      "id": 17,
+      "title": "النقطة في نهاية الجمل",
+      "status": "approved_deferred",
+      "decision": "توحيد الترقيم التحريري في النصوص: لا نقطة ختامية للعناوين والعبارات القصيرة والتسميات والأوصاف المختصرة، وتوضع النقطة فقط للجمل الكاملة في الفقرات حيث تلزم. مراجعة يدوية بحسب السياق، دون إضافة نقطة آلية لكل وصف أو حذف النقاط من الأرقام العشرية والروابط أو تغيير علامات الاستفهام الصحيحة. ضمن الدفعة النهائية."
+    },
+    {
+      "id": 18,
+      "title": "ذكر سعر الزحليقة خارج صفحة الطلب",
+      "status": "rejected_keep_current",
+      "decision": "لا إضافة لسعر الزحليقة في تفاصيل القسم الثاني أو المقارنة أو الأسئلة. تبقى عبارة برسوم إضافية مفتوحة كما هي؛ يبقى السعر450ريال في صفحة الخدمة والطلب المعتمدين فقط."
+    },
+    {
+      "id": 19,
+      "title": "رسالة استفسار لأزرار واتساب العامة",
+      "status": "rejected_keep_general_chat_empty",
+      "decision": "أزرار واتساب العامة للتواصل والمساعدة تبقى تفتح محادثة بدون أي رسالة جاهزة أو استفسار مفروض؛ العميل يكتب بنفسه. لا إضافة لتحية أو اسم الوجهة لهذه الأزرار. القرار لا يغيّر رسائل إرسال الطلب الموجودة والمعتمدة."
+    },
+    {
+      "id": 20,
+      "title": "اسم المنتجع في رسائل الطلب",
+      "status": "rejected_keep_current",
+      "decision": "لا إضافة لسطر المكان: منتجع يوم العائلة في رسائل الطلب بالرئيسي أو الفرعي؛ اسم الكوخ ورقمه كافيان لتمييز المنتجع حسب المالك. تبقى رسائل الشاليه والاستراحة باسم المكان كما هي."
+    },
+    {
+      "id": 21,
+      "title": "المسافة قبل إجمالي الطلب في الرسالة",
+      "status": "approved_deferred",
+      "decision": "توحيد رسائل الطلب المهيأة بحيث يوجد سطر فارغ واحد قبل سطر الإجمالي في كل حالة، سواء صنف واحد أو أصناف متعددة، وفي الرئيسي والفرعي وجميع أنواع الخدمات ذات الرسائل المشابهة. لا مضاعفة للسطر إذا كان موجودًا أصلًا. حفظ ترتيب البيانات والمبالغ والمستلمين، وعدم المساس بواتساب التواصل العام الفارغ. ضمن الدفعة النهائية."
+    },
+    {
+      "id": 22,
+      "title": "تكرار الباقة والقسم في الرسائل",
+      "status": "rejected_keep_current_methodology",
+      "decision": "تثبيت النمط الحالي اسم الحقل ثم الاسم الكامل كما في الصفحة. لا اختصار لقيمة باقة ألعاب مائية ولا القسم الثاني – الدور العلوي لإزالة التكرار. أوضح المساعد أن هذا يحفظ الاسم نفسه بين الصفحة والرسالة، ونترك النقطة كما هي وفق طلب خليها. لا إلغاء لاعتماد السطر الفارغ قبل الإجمالي في السؤال21."
+    },
+    {
+      "id": 23,
+      "title": "توضيح إجمالي سطر المطعم",
+      "status": "approved_deferred",
+      "decision": "إضافة كلمة الإجمالي قبل مبلغ كل صنف في رسالة طلب المطعم الجاهزة بالرئيسي والفرعي، مثال الكمية:2 — الإجمالي:24ريال. المبلغ هو إجمالي كمية الصنف المحسوب حاليًا؛ لا تغيير للأسعار أو الحساب أو العدد أو أسماء الأصناف أو مستلم المطعم. هذا التوضيح لسطر المطعم فقط، مع حفظ أسماء الحقول والقيم الكاملة وفق السؤال22. ضمن الدفعة النهائية."
+    },
+    {
+      "id": 24,
+      "title": "رقم الكوخ داخل قائمة الاختيار",
+      "status": "approved_with_changes_deferred",
+      "decision": "عرض اسم الكوخ ورقمه الفعلي بين قوسين في جميع قوائم اختيار الكوخ بنماذج طلبات الرئيسي والفرعي، مثل البيت اليوناني1(10) والبيت اليوناني2(11) وكوخ رويال(19)، مع مسافات الكتابة الطبيعية. حذف السطر المرئي المنفصل لرقم الكوخ الذي كان يظهر تحت مربع الاختيار لمنع التكرار. هذا يلغي الجزء الأول من المقترح الذي كان يحتفظ بالسطر السفلي؛ آخر توجيه للمالك هو حذفه. حفظ قيم خيارات select وأرقام الربط والترتيب الحالي، وعدم تغيير رقم1ضمن اسم البيت اليوناني. تبقى رسائل الطلب تحتوي اسم الكوخ ورقمه الصحيحين كما هي. لا إضافة لحقل كوخ في طلبات الشاليه أو الاستراحة التي لا تستخدمه أصلًا. التنفيذ ضمن الدفعة النهائية."
+    },
+    {
+      "id": 25,
+      "title": "تأكيد رقم مسابقة الفيديو",
+      "status": "confirmed_keep",
+      "decision": "أكد المالك أن0556615018رقمه المعتمد لمسابقة الفيديو؛ إبقاء الرقم والرابط كما هما."
+    }
+  ],
+  "invariants": {
+    "noNumericFactPriceCapacityOrPhoneChanged": true,
+    "noPublicRouteAliasOrHrefChanged": true,
+    "allPhotosFontsAndVideosUnchanged": true,
+    "loyaltyContentUnchanged": true,
+    "gardenDescriptionAndRepeatedAccessInfoRetained": true,
+    "bathroomDataAndFAQAnswersUnchanged": true,
+    "orderLifecycleAndNativeControllerUnchanged": true,
+    "structuredSchemasUnchanged": true,
+    "noFilesDeleted": true
+  },
+  "runtimeComparedPages": 63,
+  "runtimeErrors": [],
+  "approvedStringChanges": [
+    {
+      "path": "site/catalog.json.source.campaigns.1.paragraphs.1",
+      "before": "التقط فيديو من زيارتكم للمنتجع.",
+      "after": "التقطوا فيديو من زيارتكم للمنتجع."
+    },
+    {
+      "path": "site/catalog.json.source.campaigns.1.items.0",
+      "before": "1 صوّر تجربتكم التقط فيديو من زيارتكم للمنتجع.",
+      "after": "1 صوّروا تجربتكم التقطوا فيديو من زيارتكم للمنتجع."
+    },
+    {
+      "path": "site/catalog.json.source.campaigns.1.items.2",
+      "before": "صوّر تجربتكم داخل المنتجع بأسلوب إبداعي.",
+      "after": "صوّروا تجربتكم داخل المنتجع بأسلوب إبداعي."
+    },
+    {
+      "path": "site/catalog.json.source.campaigns.1.headings.2",
+      "before": "صوّر تجربتكم",
+      "after": "صوّروا تجربتكم"
+    },
+    {
+      "path": "site/catalog.json.source.campaigns.1.sections.0.paragraphs.0",
+      "before": "التقط فيديو من زيارتكم للمنتجع.",
+      "after": "التقطوا فيديو من زيارتكم للمنتجع."
+    },
+    {
+      "path": "site/catalog.json.source.campaigns.1.sections.0.items.0",
+      "before": "1 صوّر تجربتكم التقط فيديو من زيارتكم للمنتجع.",
+      "after": "1 صوّروا تجربتكم التقطوا فيديو من زيارتكم للمنتجع."
+    },
+    {
+      "path": "site/catalog.json.source.campaigns.1.sections.1.items.0",
+      "before": "صوّر تجربتكم داخل المنتجع بأسلوب إبداعي.",
+      "after": "صوّروا تجربتكم داخل المنتجع بأسلوب إبداعي."
+    },
+    {
+      "path": "site/catalog.json.source.guestCatalog.hospitality.intro",
+      "before": "اختر باقة الضيافة المناسبة لك",
+      "after": "اختاروا باقة الضيافة المناسبة لكم"
+    },
+    {
+      "path": "site/catalog.json.source.guestCatalog.water.intro",
+      "before": "استمتع بألعاب مائية للكبار والأطفال",
+      "after": "استمتعوا بألعاب مائية للكبار والأطفال"
+    },
+    {
+      "path": "site/catalog.json.source.guestCatalog.games.intro",
+      "before": "استمتع بوقتك مع ألعابنا الترفيهية",
+      "after": "استمتعوا بوقتكم مع ألعابنا الترفيهية"
+    },
+    {
+      "path": "site/catalog.json.units.3.raw.description",
+      "before": "صالة داخلية واسعة وجلسات خارجية لجمعتكم مع غرفة نوم واحدة بسرير مزدوج\nمناسب للتجمعات العائلية حتى 15 ضيفًا\nويمكن ربطه بكوخ رويال عبر باب داخلي عند حجزهما معًا بسعة إجمالية حتى 35 ضيفًا",
+      "after": "صالة داخلية واسعة وجلسات خارجية لجمعاتكم مع غرفة نوم واحدة بسرير مزدوج\nمناسب للتجمعات العائلية حتى 15 ضيفًا\nويمكن ربطه بكوخ رويال عبر باب داخلي عند حجزهما معًا بسعة إجمالية حتى 35 ضيفًا"
+    },
+    {
+      "path": "site/catalog.json.units.3.description",
+      "before": "يتميّز بصالة داخلية واسعة لجمعتكم، بطابع كلاسيكي هادئ وأجواء مريحة.\nويمكن ربطه بكوخ رويال عبر باب داخلي عند حجزهما معًا، بسعة إجمالية تصل إلى 35 ضيفًا.",
+      "after": "يتميّز بصالة داخلية واسعة لجمعاتكم، بطابع كلاسيكي هادئ وأجواء مريحة.\nويمكن ربطه بكوخ رويال عبر باب داخلي عند حجزهما معًا، بسعة إجمالية تصل إلى 35 ضيفًا."
+    },
+    {
+      "path": "site/catalog.json.units.10.raw.description",
+      "before": "أكبر أكواخ المنتجع بطابع خشبي أنيق ومساحات واسعة لجمعتكم\nمناسب للتجمعات العائلية حتى 20 ضيفًا مع غرفتي نوم وحمامين\nويمكن ربطه بالكوخ الكلاسيكي عبر باب داخلي عند حجزهما معًا بسعة إجمالية حتى 35 ضيفًا",
+      "after": "أكبر أكواخ المنتجع بطابع خشبي أنيق ومساحات واسعة لجمعاتكم\nمناسب للتجمعات العائلية حتى 20 ضيفًا مع غرفتي نوم وحمامين\nويمكن ربطه بالكوخ الكلاسيكي عبر باب داخلي عند حجزهما معًا بسعة إجمالية حتى 35 ضيفًا"
+    },
+    {
+      "path": "site/catalog.json.units.10.description",
+      "before": "أكبر أكواخ المنتجع، بطابع خشبي أنيق ومساحات واسعة لجمعتكم.\nويمكن ربطه بالكوخ الكلاسيكي عبر باب داخلي عند حجزهما معًا، بسعة إجمالية تصل إلى 35 ضيفًا.",
+      "after": "أكبر أكواخ المنتجع، بطابع خشبي أنيق ومساحات واسعة لجمعاتكم.\nويمكن ربطه بالكوخ الكلاسيكي عبر باب داخلي عند حجزهما معًا، بسعة إجمالية تصل إلى 35 ضيفًا."
+    },
+    {
+      "path": "site/catalog.json.units.13.raw.type",
+      "before": "قسم أرضي لجمعتكم حتى 25 ضيفًا مع مجلس كبير وغرفتي نوم ومسبحين للكبار والأطفال",
+      "after": "قسم أرضي لجمعاتكم حتى 25 ضيفًا مع مجلس كبير وغرفتي نوم ومسبحين للكبار والأطفال"
+    },
+    {
+      "path": "site/catalog.json.units.13.raw.description",
+      "before": "قسم في الدور الأرضي بمجلس كبير وجلسة خارجية لجمعتكم\nمناسب للتجمعات الكبيرة حتى 25 ضيفًا مع غرفتي نوم\nويضم مسبحين خاصين للكبار والأطفال",
+      "after": "قسم في الدور الأرضي بمجلس كبير وجلسة خارجية لجمعاتكم\nمناسب للتجمعات الكبيرة حتى 25 ضيفًا مع غرفتي نوم\nويضم مسبحين خاصين للكبار والأطفال"
+    },
+    {
+      "path": "site/catalog.json.units.13.short",
+      "before": "قسم أرضي لجمعتكم حتى 25 ضيفًا مع مجلس كبير وغرفتي نوم ومسبحين للكبار والأطفال",
+      "after": "قسم أرضي لجمعاتكم حتى 25 ضيفًا مع مجلس كبير وغرفتي نوم ومسبحين للكبار والأطفال"
+    },
+    {
+      "path": "site/catalog.json.units.14.raw.description",
+      "before": "قسم في الدور العلوي بمجلس كبير وغرفة نوم وجلسة خارجية لجمعتكم\nمناسب للتجمعات الكبيرة حتى 25 ضيفًا مع مسبح خاص للكبار وملعب كرة طائرة\nوتتوفر الزحليقة الهوائية الكبيرة برسوم إضافية",
+      "after": "قسم في الدور العلوي بمجلس كبير وغرفة نوم وجلسة خارجية لجمعاتكم\nمناسب للتجمعات الكبيرة حتى 25 ضيفًا مع مسبح خاص للكبار وملعب كرة طائرة\nوتتوفر الزحليقة الهوائية الكبيرة برسوم إضافية"
+    },
+    {
+      "path": "site/catalog.json.services.2.intro",
+      "before": "استمتع بوقتك مع ألعابنا الترفيهية",
+      "after": "استمتعوا بوقتكم مع ألعابنا الترفيهية"
+    },
+    {
+      "path": "site/catalog.json.services.3.intro",
+      "before": "استمتع بألعاب مائية للكبار والأطفال",
+      "after": "استمتعوا بألعاب مائية للكبار والأطفال"
+    },
+    {
+      "path": "site/catalog.json.services.4.intro",
+      "before": "استمتع بتجربة سينما في مساحتكم الخاصة",
+      "after": "استمتعوا بتجربة سينما في مساحتكم الخاصة"
+    },
+    {
+      "path": "site/catalog.json.services.5.intro",
+      "before": "اختر باقة الضيافة المناسبة لك",
+      "after": "اختاروا باقة الضيافة المناسبة لكم"
+    },
+    {
+      "path": "site/catalog.json.services.9.intro",
+      "before": "صوّر تجربتكم وأرسلها لنا",
+      "after": "صوّروا تجربتكم وأرسلوها لنا"
+    },
+    {
+      "path": "site/catalog.json.services.11.intro",
+      "before": "مستلزمات تحتاجها أثناء الإقامة",
+      "after": "مستلزمات تحتاجونها أثناء الإقامة"
+    },
+    {
+      "path": "site/guide-copy.json.resortServiceDirectory.1.note.text",
+      "before": "يُرجى الطلب مسبقًا لإتاحة الوقت الكافي لتجهيز طلبكم.",
+      "after": "يُرجى الطلب مسبقًا لإتاحة الوقت الكافي لتجهيز طلبكم"
+    },
+    {
+      "path": "site/guide-copy.json.resortServiceDirectory.2.items.0.description",
+      "before": "اختر باقة الضيافة المناسبة لك",
+      "after": "اختاروا باقة الضيافة المناسبة لكم"
+    },
+    {
+      "path": "site/guide-copy.json.resortServiceDirectory.2.items.1.description",
+      "before": "مستلزمات تحتاجها أثناء الإقامة",
+      "after": "مستلزمات تحتاجونها أثناء الإقامة"
+    },
+    {
+      "path": "site/guide-copy.json.resortServiceDirectory.2.note.text",
+      "before": "خدمات وإضافات لراحتكم ومتعتكم أثناء الإقامة.",
+      "after": "خدمات وإضافات لراحتكم ومتعتكم أثناء الإقامة"
+    },
+    {
+      "path": "site/guide-copy.json.resortServiceDirectory.3.items.1.description",
+      "before": "صوّر تجربتكم وأرسلها لنا",
+      "after": "صوّروا تجربتكم وأرسلوها لنا"
+    },
+    {
+      "path": "site/guide-copy.json.resortServiceDirectory.3.note.text",
+      "before": "شاركوا تجربتكم معنا وتعرّفوا على فرص الفوز.",
+      "after": "شاركوا تجربتكم معنا وتعرّفوا على فرص الفوز"
+    },
+    {
+      "path": "site/guide-copy.json.serviceCopy.coordination.help.description",
+      "before": "تواصل معنا لاختيار التنسيق المناسب لكم",
+      "after": "تواصلوا معنا لاختيار التنسيق المناسب لكم"
+    },
+    {
+      "path": "site/guide-copy.json.serviceCopy.cinema.help.description",
+      "before": "تواصل معنا لترتيب جلسة السينما المناسبة لكم",
+      "after": "تواصلوا معنا لترتيب جلسة السينما المناسبة لكم"
+    },
+    {
+      "path": "site/guide-copy.json.serviceCopy.dining.orderHint",
+      "before": "اختر عدد الأشخاص ونوع التجهيز، ثم اضغط «اطلب هذه الطاولة».",
+      "after": "اختر عدد الأشخاص ونوع التجهيز، ثم اضغط «اطلب هذه الطاولة»"
+    },
+    {
+      "path": "site/guide-copy.json.serviceCopy.dining.help.description",
+      "before": "تواصل معنا لاختيار الطاولة المناسبة لكم",
+      "after": "تواصلوا معنا لاختيار الطاولة المناسبة لكم"
+    },
+    {
+      "path": "site/guide-copy.json.serviceCopy.dining.mainOrderHint",
+      "before": "اختر عدد الأشخاص ونوع التجهيز ثم اضغط «اطلب هذه الطاولة».",
+      "after": "اختر عدد الأشخاص ونوع التجهيز ثم اضغط «اطلب هذه الطاولة»"
+    },
+    {
+      "path": "site/guide-copy.json.serviceCopy.seating.help.description",
+      "before": "تواصل معنا لاختيار جلسة مناسبة لكم",
+      "after": "تواصلوا معنا لاختيار جلسة مناسبة لكم"
+    },
+    {
+      "path": "site/guide-copy.json.serviceCopy.hospitality.cardIntro",
+      "before": "اختر باقة الضيافة المناسبة لك",
+      "after": "اختاروا باقة الضيافة المناسبة لكم"
+    },
+    {
+      "path": "site/guide-copy.json.serviceCopy.hospitality.pageIntro",
+      "before": "اختر باقة الضيافة المناسبة لك",
+      "after": "اختاروا باقة الضيافة المناسبة لكم"
+    },
+    {
+      "path": "site/guide-copy.json.serviceCopy.extras.cardIntro",
+      "before": "مستلزمات تحتاجها أثناء الإقامة",
+      "after": "مستلزمات تحتاجونها أثناء الإقامة"
+    },
+    {
+      "path": "site/guide-copy.json.serviceCopy.extras.pageIntro",
+      "before": "مستلزمات تحتاجها أثناء الإقامة",
+      "after": "مستلزمات تحتاجونها أثناء الإقامة"
+    },
+    {
+      "path": "site/guide-copy.json.serviceCopy.water.pageIntro",
+      "before": "استمتع بألعاب مائية للكبار والأطفال",
+      "after": "استمتعوا بألعاب مائية للكبار والأطفال"
+    },
+    {
+      "path": "site/guide-copy.json.serviceCopy.games.pageIntro",
+      "before": "استمتع بوقتك مع ألعابنا الترفيهية",
+      "after": "استمتعوا بوقتكم مع ألعابنا الترفيهية"
+    },
+    {
+      "path": "data/services.json.guest.hospitality.intro",
+      "before": "اختر باقة الضيافة المناسبة لك",
+      "after": "اختاروا باقة الضيافة المناسبة لكم"
+    },
+    {
+      "path": "data/services.json.guest.water.intro",
+      "before": "استمتع بألعاب مائية للكبار والأطفال",
+      "after": "استمتعوا بألعاب مائية للكبار والأطفال"
+    },
+    {
+      "path": "data/services.json.guest.games.intro",
+      "before": "استمتع بوقتك مع ألعابنا الترفيهية",
+      "after": "استمتعوا بوقتكم مع ألعابنا الترفيهية"
+    }
+  ],
+  "features": {
+    "measurements": [
+      {
+        "page": "/cabins/dome-1/",
+        "count": 2,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/cabins/dome-2/",
+        "count": 2,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/cabins/pyramid/",
+        "count": 2,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/cabins/classic/",
+        "count": 2,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/cabins/greek-1/",
+        "count": 2,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/cabins/greek-2/",
+        "count": 2,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/cabins/palm-beach/",
+        "count": 2,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/cabins/bohemian/",
+        "count": 2,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/cabins/french/",
+        "count": 2,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/cabins/rustic/",
+        "count": 2,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/cabins/royal/",
+        "count": 2,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/cabins/panoramic/",
+        "count": 2,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/stay/ground-floor/",
+        "count": 4,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/stay/upper-floor/",
+        "count": 2,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/chalet/details/",
+        "count": 1,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/dome-tour/?from=details&cabin=1",
+        "count": 2,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/dome-tour/?from=details&cabin=12",
+        "count": 2,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/pyramid-tour/?from=details&v=map-return-20261028-v3",
+        "count": 2,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/classic-tour/?from=details&cabin=3",
+        "count": 2,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/greek-tour/?from=details&cabin=4",
+        "count": 2,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/greek-tour/?from=details&cabin=13",
+        "count": 2,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/palm-tour/?from=details&cabin=5",
+        "count": 2,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/bohemian-tour/?from=details&cabin=6",
+        "count": 2,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/french-tour/?from=details&cabin=7",
+        "count": 2,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/rustic-tour/?from=details&cabin=8",
+        "count": 2,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/royal-tour/?from=details&cabin=9",
+        "count": 2,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/panoramic-tour/?from=details&cabin=10",
+        "count": 2,
+        "unitsAfterValuesWithGap": true
+      },
+      {
+        "page": "/chalet-map/",
+        "count": 1,
+        "unitsAfterValuesWithGap": true
+      }
+    ],
+    "facts": [
+      {
+        "width": 375,
+        "facts": [
+          {
+            "text": "قسمان مستقلان",
+            "font": "12px",
+            "lines": 1
+          },
+          {
+            "text": "25 ضيفًا لكل قسم",
+            "font": "12px",
+            "lines": 1
+          },
+          {
+            "text": "مسابح خاصة",
+            "font": "12px",
+            "lines": 1
+          }
+        ]
+      },
+      {
+        "width": 390,
+        "facts": [
+          {
+            "text": "قسمان مستقلان",
+            "font": "12px",
+            "lines": 1
+          },
+          {
+            "text": "25 ضيفًا لكل قسم",
+            "font": "12px",
+            "lines": 1
+          },
+          {
+            "text": "مسابح خاصة",
+            "font": "12px",
+            "lines": 1
+          }
+        ]
+      },
+      {
+        "width": 430,
+        "facts": [
+          {
+            "text": "قسمان مستقلان",
+            "font": "12px",
+            "lines": 1
+          },
+          {
+            "text": "25 ضيفًا لكل قسم",
+            "font": "12px",
+            "lines": 1
+          },
+          {
+            "text": "مسابح خاصة",
+            "font": "12px",
+            "lines": 1
+          }
+        ]
+      }
+    ],
+    "cabinOptions": [
+      {
+        "path": "/menu/",
+        "all12LabelsAndValuesCorrect": true,
+        "noDuplicatedNumberBelow": true
+      },
+      {
+        "path": "/guest-services/restaurant/",
+        "all12LabelsAndValuesCorrect": true,
+        "noDuplicatedNumberBelow": true
+      },
+      {
+        "path": "/services-guide/coordination/",
+        "all12LabelsAndValuesCorrect": true,
+        "noDuplicatedNumberBelow": true
+      }
+    ],
+    "portals": [
+      {
+        "path": "/guest-services/",
+        "branchUnchanged": true,
+        "mainTitleFontUnchanged": true,
+        "generalWhatsAppStillEmpty": true
+      },
+      {
+        "path": "/services-guide/",
+        "branchUnchanged": true,
+        "mainTitleFontUnchanged": true,
+        "generalWhatsAppStillEmpty": true
+      },
+      {
+        "path": "/chalet/guest-services/",
+        "branchUnchanged": true,
+        "mainTitleFontUnchanged": true,
+        "generalWhatsAppStillEmpty": true
+      },
+      {
+        "path": "/stay/guest-services/",
+        "branchUnchanged": true,
+        "mainTitleFontUnchanged": true,
+        "generalWhatsAppStillEmpty": true
+      }
+    ],
+    "errors": [],
+    "messagesSent": false,
+    "messageFormat": {
+      "restaurant": "السلام عليكم، أرغب بطلب من المطعم.\n\nالاسم: اختبار\nاسم الكوخ: البيت اليوناني 1\nرقم الكوخ: 10\n\nالطلب:\nاختبار صنف — الكمية: 2 — الإجمالي: 24 ريال\n\nإجمالي الطلب: 24 ريال",
+      "water": "السلام عليكم، أرغب بطلب ألعاب مائية.\n\nالاسم: اختبار\nاسم الكوخ: البيت اليوناني 1\nرقم الكوخ: 10\n\nالباقة: باقة ألعاب مائية\nالكمية: 1\nألعاب للكبار: 2\nألعاب للأطفال: 1\n\nإجمالي الطلب: 50 ريال"
+    }
+  }
+}

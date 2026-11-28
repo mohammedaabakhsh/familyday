@@ -1,7 +1,7 @@
-import { createResortViews } from './venues/resort.js?v=20261128-approved-pdf-v134';
-import { createChaletViews } from './venues/chalet.js?v=20261128-approved-pdf-v134';
-import { createStayViews } from './venues/stay.js?v=20261128-approved-pdf-v134';
-import { createSharedViews } from './shared/views.js?v=20261128-approved-pdf-v134';
+import { createResortViews } from './venues/resort.js?v=20261128-approved-pdf-v135';
+import { createChaletViews } from './venues/chalet.js?v=20261128-approved-pdf-v135';
+import { createStayViews } from './venues/stay.js?v=20261128-approved-pdf-v135';
+import { createSharedViews } from './shared/views.js?v=20261128-approved-pdf-v135';
 // Published guide. Original page URLs are preserved; ordering documents remain independent.
 const $ = (s, r = document) => r.querySelector(s);
 const esc = (s) =>
@@ -58,9 +58,9 @@ const icon = (n, cl = '') =>
   `<svg class="icon ${cl}" viewBox="0 0 24 24" aria-hidden="true">${paths[n] || paths.spark}</svg>`;
 const ROOT = '/',
   ASSETS = '/site/',
-  VERSION = '20261128-approved-pdf-v134';
-import '../js/specification-measurements.js?v=20261128-approved-pdf-v134';
-import '../js/order-visit.js?v=20261128-approved-pdf-v134';
+  VERSION = '20261128-approved-pdf-v135';
+import '../js/specification-measurements.js?v=20261128-approved-pdf-v135';
+import '../js/order-visit.js?v=20261128-approved-pdf-v135';
 const main = $('#main'),
   viewer = $('#viewer');
 let resortOrders = null,
@@ -886,13 +886,19 @@ function comparison() {
   return route.venue === 'resort' ? resortComparison() : stayComparison();
 }
 
+function visualSource(path) {
+  const source = new URL(ASSETS + 'visuals' + path, location.origin);
+  source.search = location.search;
+  source.searchParams.set('assetVersion', VERSION);
+  return safe(source.pathname + source.search);
+}
 function resortMap() {
-  return `<div class="tour-view map-original"><h1 class="resort-visual-title">خريطة الأكواخ التفاعلية</h1><iframe class="tour-frame" id="tour-frame" src="${ASSETS}visuals/resort-map/${location.search}" title="خريطة الأكواخ التفاعلية" allow="clipboard-write; web-share; fullscreen" allowfullscreen></iframe></div>`;
+  return `<div class="tour-view map-original"><h1 class="resort-visual-title">خريطة الأكواخ التفاعلية</h1><iframe class="tour-frame" id="tour-frame" src="${visualSource('/resort-map/')}" title="خريطة الأكواخ التفاعلية" allow="clipboard-write; web-share; fullscreen" allowfullscreen></iframe></div>`;
 }
 function tour() {
   const chalet = route.path === '/chalet-map/',
     title = explorationTitle(chalet ? unit(30) : explorationUnit());
-  return `<div class="tour-view"><h1 class="resort-visual-title">${safe(title)}</h1><iframe class="tour-frame" id="tour-frame" src="${ASSETS}visuals${route.path}${location.search}" title="${chalet ? 'خريطة الشاليه' : 'استكشاف الكوخ'}" allow="clipboard-write; web-share; fullscreen" allowfullscreen></iframe></div>`;
+  return `<div class="tour-view"><h1 class="resort-visual-title">${safe(title)}</h1><iframe class="tour-frame" id="tour-frame" src="${visualSource(route.path)}" title="${chalet ? 'خريطة الشاليه' : 'استكشاف الكوخ'}" allow="clipboard-write; web-share; fullscreen" allowfullscreen></iframe></div>`;
 }
 
 function unavailable() {

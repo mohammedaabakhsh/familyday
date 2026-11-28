@@ -58,3 +58,9 @@ python scripts/check-approved-pdf-batch.py http://127.0.0.1:8140
 ```
 
 The focused check writes screenshots/results under `/tmp/familyday-approved-pdf-v134`; it intercepts WhatsApp actions and never sends a message. Rebuilding a second time produces identical output. The rollback tag retains the exact prior implementation.
+
+## Visual cache follow-up — v135
+
+The complete content batch is v134. Before final delivery, v135 also versions the embedded visual documents themselves with an internal `assetVersion` query parameter. Previously their asset links were versioned but the enclosing iframe HTML could stay cached, keeping an earlier formatter visible to returning guests. Original cabin/from/layout query parameters are preserved. The bridge removes this internal cache parameter from parent navigation, and public shares remain on their original URLs. No extra content, price, phone or layout decisions are introduced.
+
+The28measurement views pass again under v135. `site/audits/visual-cache-v135.json` checks both maps and a tour, retained cabin/query context, and clean parent navigation/share URLs. The final preservation evidence is `approved-final-pdf-v135.json`.

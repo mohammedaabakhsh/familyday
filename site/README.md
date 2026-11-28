@@ -180,3 +180,5 @@ Cinema's standalone section shows its photo immediately, using the same shared g
 ## Approved final PDF batch — v134
 
 [Decisions and checks](../docs/approved-final-pdf-v134.md) record the25-question review and13approved changes. Cabin option labels now contain their mapped number, replacing the separate number row below. Prepared request messages keep one blank line before the total; restaurant item amounts carry the approved total label. General-chat links stay empty. All numeric facts, recipients, prices, photos and lifecycle behavior remain unchanged. Run `scripts/check-approved-pdf-batch.py` to verify measurement geometry, cabin choices and approved portal presentation.
+
+The v135 follow-up versions iframe documents as well as their shared measurement assets. The internal `assetVersion` parameter is removed by the navigation bridge and does not enter public share links.

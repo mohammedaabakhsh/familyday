@@ -3474,6 +3474,10 @@
       "stay/guest-services/stay-services.js"
     ],
     "reason": "All25review questions completed. Apply only owner-approved measurement presentation, selected descriptions/labels/punctuation, two scoped mobile refinements, independent invoice message spacing and restaurant total label, plus cabin numbers inside options with removal of the duplicated row below. Retain all rejected copy/layout/phone/price changes. No old-small-phone or desktop redesign. General WhatsApp links stay empty.",
-    "notes": "The Royal measurement prototype is now replaced by one shared formatter in native detail/FAQ/comparison and illustrated maps/tours. Values, photos, recipients, routes, orders, lifecycle clearing and compatibility remain intact."
+    "notes": "The Royal measurement prototype is now replaced by one shared formatter in native detail/FAQ/comparison and illustrated maps/tours. Values, photos, recipients, routes, orders, lifecycle clearing and compatibility remain intact.",
+    "visualCacheFollowUp": {
+      "version": "20261128-approved-pdf-v135",
+      "reason": "Version embedded visual documents together with their approved shared measurement assets, so returning browsers do not keep the older iframe formatter. Preserve original query context and strip the internal assetVersion on parent navigation/sharing. No additional content or layout decisions."
+    }
   }
 }

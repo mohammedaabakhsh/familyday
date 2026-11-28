@@ -1,0 +1,29 @@
+{
+  "version": "20261128-approved-pdf-v135",
+  "views": [
+    {
+      "route": "/dome-tour/?cabin=12&from=details&v=original",
+      "versionedIframe": "/site/visuals/dome-tour/?cabin=12&from=details&v=original&assetVersion=20261128-approved-pdf-v135",
+      "publicShare": {
+        "text": "http://127.0.0.1:8140/dome-tour/?cabin=12"
+      }
+    },
+    {
+      "route": "/chalet-map/?from=chalet-details",
+      "versionedIframe": "/site/visuals/chalet-map/?from=chalet-details&assetVersion=20261128-approved-pdf-v135",
+      "publicShare": {
+        "text": "http://127.0.0.1:8140/chalet-map/"
+      }
+    },
+    {
+      "route": "/resort-map/?cabin=9",
+      "versionedIframe": "/site/visuals/resort-map/?cabin=9&assetVersion=20261128-approved-pdf-v135",
+      "publicShare": {
+        "text": "http://127.0.0.1:8140/resort-map/?cabin=9"
+      }
+    }
+  ],
+  "errors": [],
+  "messagesSent": false,
+  "bridgeKeepsCampaignAndDropsInternalVersion": true
+}
