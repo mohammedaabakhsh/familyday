@@ -26,10 +26,9 @@ export function createRestaurantInline({menu,cabins,messageBuilder}){
    input.id='inline-restaurant-'+key;input.name=key;input.autocomplete='off';input.required=key!=='notes';
    if(key==='name'){input.type='text';input.autocomplete='off';input.maxLength=100;}
    if(key==='notes'){input.rows=3;input.maxLength=1000;input.placeholder='مثل بدون بصل أو أي تفاصيل تخص طلب المطعم';}
-   if(key==='cabin'){input.add(new Option('اختر الكوخ',''));for(const name of Object.keys(cabins))input.add(new Option(name,name));}
-   input.value=customer[key];input.addEventListener(key==='cabin'?'change':'input',()=>{customer[key]=input.value;if(key==='cabin')renderCabin();});
+   if(key==='cabin'){input.add(new Option('اختر الكوخ',''));for(const name of Object.keys(cabins))input.add(new Option(name+' ('+cabins[name]+')',name));}
+   input.value=customer[key];input.addEventListener(key==='cabin'?'change':'input',()=>{customer[key]=input.value;});
    fields[key]=input;wrap.append(input);form.append(wrap);
-   if(key==='cabin'){const number=node('p',undefined,'inline-restaurant-cabin-number');number.hidden=true;form.append(number);}
   }
   const send=node('button','إرسال الطلب','button primary wide');send.type='submit';
   const note=node('p','تابع طلبك مع المطعم على واتساب','inline-restaurant-confirmation');form.append(send,note);summary.append(form);
@@ -45,7 +44,6 @@ export function createRestaurantInline({menu,cabins,messageBuilder}){
   }));
   showCategory(activeCategory);
 
-  function renderCabin(){const number=form.querySelector('.inline-restaurant-cabin-number');number.hidden=!Object.hasOwn(cabins,customer.cabin);number.textContent=number.hidden?'':'رقم الكوخ: '+cabins[customer.cabin];}
   function step(key,delta){const current=selection.get(key)||{qty:0,cheese:false},qty=Math.max(0,Math.min(99,current.qty+delta));if(qty)selection.set(key,{qty,cheese:current.cheese});else selection.delete(key);render();}
   function counter(label,keyFor){
    const group=node('div',undefined,'inline-menu-quantity');group.setAttribute('role','group');group.setAttribute('aria-label','كمية '+label);
@@ -81,7 +79,7 @@ export function createRestaurantInline({menu,cabins,messageBuilder}){
     if(list.children[position]!==row)list.insertBefore(row,list.children[position]||null);position++;
 
    }
-   for(const key of Object.keys(fields))if(forceFields===true||fields[key]!==document.activeElement)fields[key].value=customer[key];renderCabin();
+   for(const key of Object.keys(fields))if(forceFields===true||fields[key]!==document.activeElement)fields[key].value=customer[key];
   }
   form.addEventListener('submit',event=>{
    event.preventDefault();if(!chosen().length||!form.reportValidity()||!customer.name.trim()||!Object.hasOwn(cabins,customer.cabin))return;

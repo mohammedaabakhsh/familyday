@@ -236,7 +236,7 @@ const data = {
           "summary": "",
           "outdoorPrivacy": false
         },
-        "description": "صالة داخلية واسعة وجلسات خارجية لجمعتكم مع غرفة نوم واحدة بسرير مزدوج\nمناسب للتجمعات العائلية حتى 15 ضيفًا\nويمكن ربطه بكوخ رويال عبر باب داخلي عند حجزهما معًا بسعة إجمالية حتى 35 ضيفًا"
+        "description": "صالة داخلية واسعة وجلسات خارجية لجمعاتكم مع غرفة نوم واحدة بسرير مزدوج\nمناسب للتجمعات العائلية حتى 15 ضيفًا\nويمكن ربطه بكوخ رويال عبر باب داخلي عند حجزهما معًا بسعة إجمالية حتى 35 ضيفًا"
       },
       {
         "id": 4,
@@ -644,7 +644,7 @@ const data = {
           "summary": "",
           "outdoorPrivacy": false
         },
-        "description": "أكبر أكواخ المنتجع بطابع خشبي أنيق ومساحات واسعة لجمعتكم\nمناسب للتجمعات العائلية حتى 20 ضيفًا؛ غرفتان للنوم وحمامان\nويمكن ربطه بالكوخ الكلاسيكي عبر باب داخلي عند حجزهما معًا بسعة إجمالية حتى 35 ضيفًا"
+        "description": "أكبر أكواخ المنتجع بطابع خشبي أنيق ومساحات واسعة لجمعاتكم\nمناسب للتجمعات العائلية حتى 20 ضيفًا؛ غرفتان للنوم وحمامان\nويمكن ربطه بالكوخ الكلاسيكي عبر باب داخلي عند حجزهما معًا بسعة إجمالية حتى 35 ضيفًا"
       },
       {
         "id": 10,
@@ -745,11 +745,7 @@ function localizeSpecificationUnits(text) {
   return text.replace(/\bcm\b/g, 'سم').replace(/\bm\b/g, 'م');
 }
 function formatSpecificationText(text) {
-  text = localizeSpecificationUnits(text);
-  if (!/\d+\s*×\s*\d+|\d+\s*(?:سم|م)(?:[ .،]|$)/.test(text)) return text;
-  return '<span>' + text.replace(/(\d+(?:\.\d+)?(?:\s*×\s*\d+(?:\.\d+)?)?)(\s*(?:سم|م)(?=$|[\s.,،<]))?/g, function(match,number,unit){
-    return '<bdi class="fd-measurement" dir="ltr" style="display:inline-block;white-space:nowrap">'+number+(unit||'')+'</bdi>';
-  }) + '</span>';
+  return window.FD_MEASUREMENTS.formatEscaped(localizeSpecificationUnits(text));
 }
 
 // One factual source for the detail cards and illustrated room specifications.

@@ -125,8 +125,6 @@
     for(const group of ['coordination','dining','seating','cinema']){
       const tile=document.querySelector('.contents a[href="#'+group+'"]');const selected=chosen.filter(e=>e.group===group);tile.classList.toggle('is-selected',!browseOrders&&!!selected.length);
     }
-    document.getElementById('arrangement-cabin-number').hidden=!state.cabin;
-    document.getElementById('arrangement-cabin-number').textContent=state.cabin?'رقم الكوخ: '+cabins[state.cabin]:'';
     if(cinemaTimeField){
       const selectingCinema=browseOrders?requestEntry?.group==='cinema':directService==='cinema';
       cinemaTimeField.hidden=!selectingCinema;cinemaTime.required=selectingCinema;
@@ -207,7 +205,7 @@
     (browseOrders?requestDialog.querySelector('.arrangement-request-body'):document.getElementById('cinema')).prepend(cinemaTimeField);
     cinemaTime.addEventListener('change',()=>{state.cinemaTime=cinemaTime.value;render();});
     if(directService==='cinema')state.quantities['cinema-session']=1;
-    for(const name of Object.keys(cabins))fields.cabin.add(new Option(name,name));
+    for(const name of Object.keys(cabins))fields.cabin.add(new Option(name+' ('+cabins[name]+')',name));
     ready=true;resetRequestDetails();
     if(browseOrders)window.FD_ORDER_VISIT?.register('portal:arrangements',()=>{rememberRequest();return {requests:[...requestDrafts],diningChoice};},saved=>{requestDrafts.clear();for(const [key,value] of saved?.requests||[])requestDrafts.set(key,value);diningChoice=saved?.diningChoice||'';render();});
   });
@@ -242,6 +240,7 @@
       parts.push('الجلسة: '+name+' — '+(entry.capacity.startsWith('ل')?entry.capacity:'لـ'+entry.capacity),'الكمية: '+entry.qty);
       const extra=chosen.find(item=>item.group==='extra');if(extra)parts.push('إضافة اختيارية: '+extra.name+' — '+extra.total+' ريال');
     }
+    parts.push('');
     parts.push('إجمالي الطلب: '+chosen.reduce((sum,e)=>sum+e.total,0)+' ريال');if(state.notes.trim())parts.push('','ملاحظات: '+state.notes.trim());
     // Open a text draft only; the guest reviews and sends it from WhatsApp.
     window.open('https://wa.me/966537009217?text='+encodeURIComponent(parts.join('\n')),'_blank','noopener,noreferrer');

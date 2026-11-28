@@ -34,7 +34,7 @@ window.FD_GUEST_SOURCE = (function () {
   async function load() {
     var controller = new AbortController(), timer = setTimeout(function(){controller.abort();},15000);
     try {
-      var response = await fetch('/data/services.json?v=20261125-live-v54',{cache:'no-cache',signal:controller.signal});
+      var response = await fetch('/data/services.json?v=20261128-approved-pdf-v134',{cache:'no-cache',signal:controller.signal});
       if (!response.ok) throw new Error('Service catalogue unavailable');
       var data = await response.json(), catalog = validate(data);
       catalog.menuMessage = await loadMessageModule(data.menuMessageScript);

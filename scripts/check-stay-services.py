@@ -8,7 +8,7 @@ R=Path(__file__).resolve().parents[1]
 BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8173'
 PORTAL='/stay/guest-services/'
 NATIVE='/stay/services/'
-EXPECTED='السلام عليكم، أرغب بطلب الزحليقة الهوائية الكبيرة.\n\nالاسم: ضيف الاستراحة\nالمكان: استراحة يوم العائلة\nالقسم: القسم الثاني – الدور العلوي\n\nالخدمة: الزحليقة الهوائية الكبيرة\nالكمية: 1\nإجمالي الطلب: 450 ريال\n\nملاحظات: تجهيز اللعبة'
+EXPECTED='السلام عليكم، أرغب بطلب الزحليقة الهوائية الكبيرة.\n\nالاسم: ضيف الاستراحة\nالمكان: استراحة يوم العائلة\nالقسم: القسم الثاني – الدور العلوي\n\nالخدمة: الزحليقة الهوائية الكبيرة\nالكمية: 1\n\nإجمالي الطلب: 450 ريال\n\nملاحظات: تجهيز اللعبة'
 def ready(page): page.locator('body.stay-services-ready').wait_for()
 def fill(scope): scope.locator('#stay-name').fill('ضيف الاستراحة');scope.locator('#stay-notes').fill('تجهيز اللعبة')
 def draft(page):

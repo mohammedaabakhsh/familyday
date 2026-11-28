@@ -4,7 +4,7 @@ export function createSharedViews(context) {
     const { catalog, icon, labels, prefix, safe, unit } = context;
     return `<div class="destination-picker all-destinations"><button type="button" class="icon-button destination-share" data-share="/" aria-label="مشاركة صفحة اختر وجهتك">${icon('share')}</button><div class="destination-intro"><div class="destination-brand"><img src="/site/brand/logo-original.png" alt="شعار يوم العائلة" width="400" height="400" fetchpriority="high"></div><p class="destination-promise entry-shimmer">خصوصية تليق بكم… وراحة تستحقونها</p><h1>اختر وجهتك</h1><p class="destination-description">تعرّف على تفاصيل كل وجهة واختر ما يناسبك</p></div>${[
       ['resort', '/imgs/panorama_2.webp', 'أكواخ خاصة · مسابح مستقلة · حديقة مشتركة'],
-      ['stay', '/imgs/sec1_1.webp', 'قسمان مستقلان · مسابح كبيرة · تجمعات عائلية'],
+      ['stay', '/imgs/sec1_1.webp', 'قسمان مستقلان · مسابح كبيرة · للتجمعات الكبيرة'],
       ['chalet', unit(30).images[0], 'شاليه من دورين · مسبح أطفال · مجلس مستقل'],
     ]
       .map(
@@ -96,16 +96,8 @@ export function createSharedViews(context) {
   function unitSpecifications(u) {
     const { icon, safe, specificationText } = context;
 
-    // Royal-only preview: keep the numeric value and its Arabic unit in reading order.
-    const formatItem = (text) => {
-      if (u.path !== '/cabins/royal/' || !text.includes('بمقاس')) return specificationText(text);
-      return safe(text).replace(
-        /(\d+(?:\.\d+)?(?:\s*×\s*\d+(?:\.\d+)?)?)\s*(سم|م)(?=$|[\s.،])/g,
-        '<span class="royal-pool-measurement" dir="rtl"><bdi dir="ltr">$1</bdi> <span>$2</span></span>',
-      );
-    };
     const boxes = (items, amenities = false) =>
-      `<div class="spec-list">${items.map((t) => `<div class="spec-item ${t.length > 52 || (amenities && /سماعات|غرفة سائق/.test(t)) ? 'wide' : ''}">${formatItem(t)}</div>`).join('')}</div>`;
+      `<div class="spec-list">${items.map((t) => `<div class="spec-item ${t.length > 52 || (amenities && /سماعات|غرفة سائق/.test(t)) ? 'wide' : ''}">${specificationText(t)}</div>`).join('')}</div>`;
     return `<div class="specs">${u.sections
       .map((s) => {
         const resort = ['resort', 'chalet', 'stay'].includes(u.venue),
@@ -187,7 +179,7 @@ export function createSharedViews(context) {
   }
 
   function faqGuide() {
-    const { guideCopy, heading, icon, link, route, safe, venue } = context;
+    const { guideCopy, heading, icon, link, route, safe, specificationText, venue } = context;
     const groups = guideCopy.faqs[route.venue].groups,
       source = new Map(venue().faqs.map((q) => [q.question, q]));
     return `<section class="faq-guide" data-faq-group="${safe(groups[0].id)}">${heading('الأسئلة الشائعة')}<div class="faq-tools"><nav class="faq-categories" aria-label="أقسام الأسئلة الشائعة">${groups.map((g, i) => `<button type="button" data-faq-group="${safe(g.id)}" aria-controls="faq-group-${safe(g.id)}" aria-pressed="${i === 0}">${safe(g.label)}</button>`).join('')}</nav><label class="search-field">${icon('search')}<input type="search" id="faq-search" placeholder="ابحث في كل الأسئلة" aria-label="ابحث في كل الأسئلة" autocomplete="off"></label><div class="faq-search-feedback" hidden><p id="faq-results" role="status" aria-live="polite"></p><button type="button" id="faq-clear" class="text-link">مسح البحث</button></div></div><div class="faq-groups">${groups
@@ -201,7 +193,7 @@ export function createSharedViews(context) {
                 ),
                 question = item.question || originals[0].question,
                 index = [question, ...item.sources, ...originals.map((q) => q.answer), ...answers].join(' ');
-              return `<details class="faq" id="faq-${safe(item.id)}" data-question="${safe(index)}"><summary>${safe(question)}${icon('down')}</summary><div class="faq-answer">${answers.map((a) => `<p>${safe(a)}</p>`).join('')}${item.links ? `<div class="faq-answer-links">${item.links.map((a) => link(a.path, safe(a.text), 'text-link')).join('')}</div>` : ''}</div></details>`;
+              return `<details class="faq" id="faq-${safe(item.id)}" data-question="${safe(index)}"><summary>${safe(question)}${icon('down')}</summary><div class="faq-answer">${answers.map((a) => `<p>${specificationText(a)}</p>`).join('')}${item.links ? `<div class="faq-answer-links">${item.links.map((a) => link(a.path, safe(a.text), 'text-link')).join('')}</div>` : ''}</div></details>`;
             })
             .join('')}</div></section>`,
       )

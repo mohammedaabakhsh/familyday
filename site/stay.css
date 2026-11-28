@@ -72,3 +72,6 @@ body.stay-scope:not(.focused-view) #main{padding-top:calc(64px + env(safe-area-i
 /* Reception capacity uses the full row beneath the unchanged summary strip. */
 .stay-home .venue-footnotes{flex:0 0 auto;margin-top:7px;color:var(--muted);font-size:12px;line-height:1.65;text-align:center}
 .stay-home .venue-footnotes p{margin:0;white-space:nowrap}
+
+/* Give each fact its natural width on current phones, keeping the approved text size. */
+@media(min-width:375px) and (max-width:999px){.stay-home .facts-strip{grid-template-columns:max-content max-content max-content;justify-content:space-between;gap:4px}.stay-home .facts-strip>div{gap:5px}.stay-home .facts-strip span{white-space:nowrap}}

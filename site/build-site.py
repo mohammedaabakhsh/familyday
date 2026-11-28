@@ -107,8 +107,9 @@ def write(path,page):
 
 template=(SITE/'template.html').read_text()
 template=re.sub(r'(/site/[^"?]+\.(?:js|css)[?]v=)[^\"]+',lambda m:m[1]+VERSION,template)
+template=re.sub(r'(/css/specification-measurements\.css[?]v=)[^\"]+',lambda m:m[1]+VERSION,template)
 # Start the existing code and JSON downloads together. No photo strategy or quality changes.
-boot_modules=['/site/venues/resort.js','/site/venues/stay.js','/site/venues/chalet.js','/site/shared/views.js','/js/order-visit.js','/site/orders/native-orders.js','/site/orders/restaurant-inline.js','/js/guest-order-message.js']
+boot_modules=['/js/specification-measurements.js','/site/venues/resort.js','/site/venues/stay.js','/site/venues/chalet.js','/site/shared/views.js','/js/order-visit.js','/site/orders/native-orders.js','/site/orders/restaurant-inline.js','/js/guest-order-message.js']
 boot_data=['/site/catalog.json','/site/share-metadata.json','/site/guide-copy.json','/site/runtime-config.json']
 preloads='\n'.join('<link rel="modulepreload" href="'+path+'?v='+VERSION+'">' for path in boot_modules)
 preloads+='\n'+'\n'.join('<link rel="preload" as="fetch" crossorigin href="'+path+'?v='+VERSION+'">' for path in boot_data)
@@ -164,3 +165,9 @@ manifest={'version':VERSION,'routes':CONFIG['rootRoutes'],'nativeRoutes':native,
 urls=sorted(set(CONFIG['rootRoutes'])-set(REDIRECTS))
 (ROOT/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join('  <url><loc>https://familydaystay.com'+html.escape(p)+'</loc></url>\n' for p in urls)+'</urlset>\n')
 print(json.dumps({'nativePages':len(native),'protectedPortals':len(PORTALS),'previewRedirects':len(CONFIG['rootRoutes']),'portalShareEntries':len(share_sections)}))
+
+# Shared measurement assets used by the native guide and independent visual documents.
+for visual in (SITE/'visuals').rglob('index.html'):
+ text=visual.read_text()
+ text=re.sub(r'((?:/js/specification-measurements\.js|/css/specification-measurements\.css|/site/visuals/assets/resort-data\.js)\?v=)[^"\s]+',lambda m:m[1]+VERSION,text)
+ visual.write_text(text)

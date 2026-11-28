@@ -5,18 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#133548">
 <meta name="robots" content="max-image-preview:none">
-<title>تنسيقات وجلسات | منتجع يوم العائلة</title>
+<title>التنسيقات والجلسات | منتجع يوم العائلة</title>
 <meta name="description" content="كل ما تحتاجونه لتجهيز مناسبتكم">
 <link rel="canonical" href="https://familydaystay.com/services-guide/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ar_SA">
 <meta property="og:site_name" content="يوم العائلة">
 <!-- Text-only link preview, independent of the service photos loaded below. -->
-<meta property="og:title" content="تنسيقات وجلسات | منتجع يوم العائلة">
+<meta property="og:title" content="التنسيقات والجلسات | منتجع يوم العائلة">
 <meta property="og:description" content="كل ما تحتاجونه لتجهيز مناسبتكم">
 <meta property="og:url" content="https://familydaystay.com/services-guide/">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="تنسيقات وجلسات | منتجع يوم العائلة">
+<meta name="twitter:title" content="التنسيقات والجلسات | منتجع يوم العائلة">
 <meta name="twitter:description" content="كل ما تحتاجونه لتجهيز مناسبتكم">
 <link rel="preload" href="/fonts/tajawal/tajawal-arabic-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/tajawal/tajawal-arabic-700.woff2" as="font" type="font/woff2" crossorigin>
@@ -27,8 +27,8 @@
 <script src="/js/dining-cards.js?v=20261126-live-v103" defer></script>
 <script src="/js/order-visit.js?v=20261127-order-session-v115" defer></script>
 <script src="/js/order-privacy.js?v=20261127-order-session-v115" defer></script>
-<script src="guide-orders.js?v=20261127-order-readd-v123" defer></script>
-<script src="guide.js?v=20261127-approved-review-v130" defer></script>
+<script src="guide-orders.js?v=20261128-approved-pdf-v134" defer></script>
+<script src="guide.js?v=20261128-approved-pdf-v134" defer></script>
 <link rel="stylesheet" href="/css/back-navigation.css?v=20261106-stable-ring-v2">
 <link rel="stylesheet" href="/css/desktop-layout.css?v=20261110-desktop-v1" media="screen and (min-width:1024px)">
 <link rel="stylesheet" href="guide-orders.css?v=20261126-live-v99">
@@ -40,14 +40,14 @@
 <body class="portal-home-unified">
 <a class="skip" href="#contents">انتقل إلى الخدمات</a>
 <div class="book">
-<header class="topbar"><a class="guide-back" id="guide-back" href="/resort/" aria-label="العودة إلى المنتجع"><span class="fd-back-circle" aria-hidden="true"><svg viewBox="0 0 9 15"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg></span><span id="guide-back-label">رجوع</span></a><button type="button" data-share="" aria-label="مشاركة تنسيقات وجلسات"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 4h6v6M20 4l-9 9M9 5H4v15h15v-5"/></svg></button></header>
+<header class="topbar"><a class="guide-back" id="guide-back" href="/resort/" aria-label="العودة إلى المنتجع"><span class="fd-back-circle" aria-hidden="true"><svg viewBox="0 0 9 15"><path d="M1.5 1.5L7.5 7.5L1.5 13.5"/></svg></span><span id="guide-back-label">رجوع</span></a><button type="button" data-share="" aria-label="مشاركة التنسيقات والجلسات"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 4h6v6M20 4l-9 9M9 5H4v15h15v-5"/></svg></button></header>
 <main>
 <section class="cover" aria-labelledby="guide-title">
   <div class="welcome">
     <div class="cover-logo-frame"><span class="cover-logo" role="img" aria-label="منتجع يوم العائلة"></span></div>
     <p class="eyebrow">منتجع يوم العائلة</p>
     <p class="portal-branch">فرع خليج سلمان</p>
-    <h1 id="guide-title">تنسيقات وجلسات</h1>
+    <h1 id="guide-title">التنسيقات والجلسات</h1>
     <div class="intro"><p>كل ما تحتاجونه لتجهيز مناسبتكم</p></div>
   </div>
 </section>
@@ -74,7 +74,7 @@
 <div class="arrangement-fields">
 <label for="arrangement-name">الاسم<input id="arrangement-name" name="name" autocomplete="name" maxlength="100" required></label>
 <label for="arrangement-cabin">اسم الكوخ<select id="arrangement-cabin" name="cabin" required><option value="">اختر الكوخ</option></select></label>
-<p id="arrangement-cabin-number" hidden></p>
+
 <label for="arrangement-notes">ملاحظات الطلب <span>(اختياري)</span><textarea id="arrangement-notes" name="notes" maxlength="1000" rows="2"></textarea></label>
 </div>
 <p id="arrangement-warning" role="status" hidden></p>
@@ -86,7 +86,7 @@
 <nav class="portal-browse" aria-label="تصفّح خدمات المنتجع"><a class="guest-services-link" href="/guest-services/">تصفّح خدمات إقامتك <span aria-hidden="true">←</span></a></nav>
 <footer class="footer"><div class="footer-inner">
 <div class="footer-links">
-<div class="footer-help"><h2 id="footer-connect-title">تحتاج مساعدة؟</h2><p>تواصل معنا لاختيار التنسيق أو الجلسة المناسبة لكم</p></div>
+<div class="footer-help"><h2 id="footer-connect-title">تحتاج مساعدة؟</h2><p>تواصلوا معنا لاختيار التنسيق أو الجلسة المناسبة لكم</p></div>
 <section class="footer-contact" aria-labelledby="footer-connect-title">
 <nav class="contact-actions" aria-label="التواصل للمساعدة"><a class="contact-whatsapp" href="https://wa.me/966537009217" target="_blank" rel="noopener noreferrer" aria-label="واتساب منسّق المناسبات">واتساب</a><a class="contact-phone" href="tel:+966537009217" aria-label="اتصال بمنسّق المناسبات">اتصال</a></nav>
 </section>
@@ -102,7 +102,7 @@
 </div></footer>
 </div>
 <div id="share-status" class="toast" role="status"></div>
-<dialog id="share-dialog"><h2>رابط تنسيقات وجلسات</h2><p>انسخ الرابط وأرسله لمن تحب.</p><input id="share-link" type="url" readonly aria-label="رابط المشاركة" dir="ltr"><button type="button" id="close-share">إغلاق</button></dialog>
+<dialog id="share-dialog"><h2>رابط التنسيقات والجلسات</h2><p>انسخ الرابط وأرسله لمن تحب.</p><input id="share-link" type="url" readonly aria-label="رابط المشاركة" dir="ltr"><button type="button" id="close-share">إغلاق</button></dialog>
 
 </body>
 </html>

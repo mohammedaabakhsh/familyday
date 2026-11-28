@@ -7,7 +7,7 @@ BASE=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8168'
 R=Path(__file__).resolve().parents[1];out={'version':'20261127-main-guest-v114','checks':[],'errors':[],'messagesSent':False}
 PATHS={'restaurant':'/menu/','hospitality':'/services/hospitality/packages/','extras':'/services/extras/','water':'/services/water-games/','games':'/services/games/'}
 LABELS={'hospitality':'اطلب الضيافة','extras':'اطلب هذه المستلزمات','water':'اطلب الألعاب المائية','games':'اطلب الألعاب الترفيهية'}
-CARDS=['اختر باقة الضيافة المناسبة لك','مستلزمات تحتاجها أثناء الإقامة','ألعاب مائية للكبار والأطفال','بوكس ألعاب أو طاولة مع البوكس']
+CARDS=['اختاروا باقة الضيافة المناسبة لكم','مستلزمات تحتاجونها أثناء الإقامة','ألعاب مائية للكبار والأطفال','بوكس ألعاب أو طاولة مع البوكس']
 FOLLOW={'restaurant':'تابع طلبك مع المطعم على واتساب','hospitality':'تابع طلب الضيافة مع خدمات المنتجع على واتساب','extras':'تابع طلب المستلزمات الإضافية مع خدمات المنتجع على واتساب','water':'تابع طلب الألعاب المائية مع خدمات المنتجع على واتساب','games':'تابع طلب الألعاب الترفيهية مع خدمات المنتجع على واتساب'}
 def inc(p,selector,n=1):
  for _ in range(n):p.locator(selector).first.click()

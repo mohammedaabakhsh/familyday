@@ -17,9 +17,7 @@
       const name=field.dataset.field;fields[name]=field;field.id='service-request-'+name;field.removeAttribute('data-field');customer.querySelector('[data-for="'+name+'"]').htmlFor=field.id;
     }
     customer.querySelector('[data-for="notes"]').textContent='ملاحظات الطلب (اختياري)';
-    if(fields.cabin)for(const name of Object.keys(api.cabins))fields.cabin.add(new Option(name,name));
-    const number=customer.querySelector('.cabin-number');
-    fields.cabin?.addEventListener('change',()=>{number.hidden=!Object.hasOwn(api.cabins,fields.cabin.value);number.querySelector('output').textContent=number.hidden?'':String(api.cabins[fields.cabin.value]);});
+    if(fields.cabin)for(const name of Object.keys(api.cabins))fields.cabin.add(new Option(name+' ('+api.cabins[name]+')',name));
     let order=null,token='',closing='',readyForPrivacy=false,sending=false;
     const customers=new Map();
     function remember(){if(order)customers.set(order.service,{name:fields.name.value,cabin:fields.cabin?.value,notes:fields.notes.value});}
@@ -28,7 +26,7 @@
     function amount(items){return items.reduce((total,item)=>total+item.price,0);}
     function itemName(item){return item.name+(item.details.some(text=>/^إضافة جبنة/.test(text))?' — مع جبنة':'');}
     function clearMarker(){if(history.state?.guestServiceRequest){const state={...history.state};delete state.guestServiceRequest;history.replaceState(state,'',location.href);}}
-    function discard(){order=null;token='';list.replaceChildren();form.reset();if(number){number.hidden=true;number.querySelector('output').textContent='';}sending=false;send.disabled=false;}
+    function discard(){order=null;token='';list.replaceChildren();form.reset();sending=false;send.disabled=false;}
     function close(action){
       dialog.close();clearMarker();closing='';sending=false;send.disabled=false;
       if(action==='exit')customers.clear();else if(action==='submitted')customers.delete(order?.service);else remember();

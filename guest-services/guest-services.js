@@ -85,7 +85,7 @@
     if(activeService==='water')draft.water=waterSelection(draft);
     document.querySelectorAll('[data-field]').forEach(function(field){field.value='';});
     menuRows.forEach(function(item){if(item.select)item.select.value=item.keys[0];});
-    renderCabins();renderOrders();renderEditor();
+    renderOrders();renderEditor();
   }
   function customerFields(container) {
     var scope=container.dataset.scope;
@@ -94,7 +94,7 @@
       var key=field.dataset.field;
       field.id=scope+'-'+key;
       container.querySelector('[data-for="'+key+'"]').htmlFor=field.id;
-      if(key==='cabin') Object.keys(cabins).forEach(function(name){field.add(new Option(name,name));});
+      if(key==='cabin') Object.keys(cabins).forEach(function(name){field.add(new Option(name+' ('+cabins[name]+')',name));});
       if(key==='notes') field.value=scope==='guest' ? state.notes : state.restaurantNotes;
       else field.value=state[key];
       field.addEventListener(key==='cabin' ? 'change' : 'input',function(){
@@ -102,7 +102,6 @@
         else {
           state[key]=field.value;
           document.querySelectorAll('[data-field="'+key+'"]').forEach(function(other){if(other!==field) other.value=field.value;});
-          if(key==='cabin') renderCabins();
         }
 
       });
@@ -112,12 +111,6 @@
       container.querySelector('textarea').placeholder='مثل بدون بصل أو أي تفاصيل تخص طلب المطعم';
       container.querySelector('[data-for="notes"]').textContent='ملاحظات الطلب (اختياري)';
     }
-  }
-  function renderCabins() {
-    document.querySelectorAll('.cabin-number').forEach(function(row){
-      row.hidden=!Object.prototype.hasOwnProperty.call(cabins,state.cabin);
-      row.querySelector('output').textContent=row.hidden ? '' : String(cabins[state.cabin]);
-    });
   }
   function counter(label, onStep) {
     var group=el('div',undefined,'quantity');group.setAttribute('role','group');group.setAttribute('aria-label',label);
@@ -574,10 +567,10 @@
   window.addEventListener('resize',updateShortcut);
   form.addEventListener('submit',function(event){submit(event,false);});
   if(restaurantForm) restaurantForm.addEventListener('submit',function(event){submit(event,true);});
-  renderCabins();renderOrders();renderEditor();setupDialogs();
+  renderOrders();renderEditor();setupDialogs();
   window.FD_ORDER_PRIVACY.register(resetOrderDetails);
   if(independentRequests){
-    window.FD_ORDER_VISIT?.register(isChalet?'portal:chalet-selection':'portal:guest-selection',()=>{commitDraft();return JSON.parse(JSON.stringify(state));},saved=>{if(!saved)return;state=JSON.parse(JSON.stringify(saved));draft=activeService?JSON.parse(JSON.stringify(state)):null;renderCabins();renderOrders();renderEditor();});
+    window.FD_ORDER_VISIT?.register(isChalet?'portal:chalet-selection':'portal:guest-selection',()=>{commitDraft();return JSON.parse(JSON.stringify(state));},saved=>{if(!saved)return;state=JSON.parse(JSON.stringify(saved));draft=activeService?JSON.parse(JSON.stringify(state)):null;renderOrders();renderEditor();});
     var selectionScroll=0;
     window.FD_GUEST_INDEPENDENT_ORDER={
       venue:isChalet?'chalet':'resort',
@@ -611,7 +604,7 @@
     restoreDraft:function(saved){
       state=JSON.parse(JSON.stringify(saved));draft=JSON.parse(JSON.stringify(state));
       document.querySelectorAll('[data-field]').forEach(function(field){var key=field.dataset.field;field.value=key==='notes'?state[field.closest('.customer-fields').dataset.scope==='restaurant'?'restaurantNotes':'notes']:state[key];});
-      renderCabins();renderOrders();renderEditor();
+      renderOrders();renderEditor();
     },
     formId:directService==='restaurant' ? 'restaurant-order' : 'extras-order',
     canSubmit:function(){

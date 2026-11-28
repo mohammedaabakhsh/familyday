@@ -1,0 +1,2 @@
+/* The value precedes its unit in Arabic reading order; dimension factors stay LTR. */
+.spec-measurement{display:inline-flex;direction:rtl;unicode-bidi:isolate;align-items:baseline;gap:.3em;margin-inline:.2em;white-space:nowrap}

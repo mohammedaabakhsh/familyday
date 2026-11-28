@@ -141,8 +141,8 @@
     document.querySelectorAll('.guide-section').forEach(section => section.classList.toggle('is-active',section === activeSection));
     const title = activeSection ? activeSection.dataset.title : pendingTile ? pendingTile.querySelector('.tile-title').textContent : '';
     back.href = sectionView ? '#contents' : homeBack.href;
-    back.setAttribute('aria-label',sectionView ? 'العودة إلى تنسيقات وجلسات' : homeBack.label);
-    document.getElementById('guide-back-label').textContent = sectionView ? 'تنسيقات وجلسات' : 'رجوع';
+    back.setAttribute('aria-label',sectionView ? 'العودة إلى التنسيقات والجلسات' : homeBack.label);
+    document.getElementById('guide-back-label').textContent = sectionView ? 'التنسيقات والجلسات' : 'رجوع';
     document.title = title ? title + ' | منتجع يوم العائلة' : guideTitle;
     if(!embeddedOrder&&content.classList.contains('is-ready')){
       const path=activeSection?.dataset.portalSharePath||'/services-guide/';
@@ -158,7 +158,7 @@
     }
     const sectionShare=document.querySelector('.topbar [data-share]');
     sectionShare.dataset.share=activeSection?.id||pendingTile?.hash?.slice(1)||'';
-    sectionShare.setAttribute('aria-label','مشاركة '+(title||'تنسيقات وجلسات'));
+    sectionShare.setAttribute('aria-label','مشاركة '+(title||'التنسيقات والجلسات'));
     document.getElementById('arrangement-dialog-title').textContent=title || 'اختيار التجهيزات';
     if(embeddedOrder && sectionView && !dialog.open){dialogScrollY=window.scrollY;dialog.showModal();}
     else if((!embeddedOrder || !sectionView) && dialog.open){dialog.close();}
@@ -219,9 +219,9 @@
     loading = true;
     content.setAttribute('aria-busy','true');
     try {
-      const response = await fetch('/data/services.json?v=20261125-live-v54',{cache:'no-cache'});
+      const response = await fetch('/data/services.json?v=20261128-approved-pdf-v134',{cache:'no-cache'});
       if (!response.ok) throw new Error('Service source unavailable');
-      const links=await fetch('/site/orders/service-links.json?v=20261127-approved-review-v130').then(r=>r.ok?r.json():{}).catch(()=>({}));
+      const links=await fetch('/site/orders/service-links.json?v=20261128-approved-pdf-v134').then(r=>r.ok?r.json():{}).catch(()=>({}));
       render(await response.json(),links.services||{});
     } catch(error) {
       content.innerHTML = '<div class="load-error"><h2>تعذّر تحميل التجهيزات</h2><p>حاولوا مرة ثانية لعرض التفاصيل هنا.</p><button type="button" id="retry-guide">إعادة المحاولة</button></div>';
@@ -248,11 +248,11 @@
       if (navigator.share) {await navigator.share({text:url.href});return;}
       if (!navigator.clipboard) throw new Error('Clipboard unavailable');
       await navigator.clipboard.writeText(url.href);
-      status(button.dataset.sharePath ? 'تم نسخ رابط الخدمة' : id ? 'تم نسخ رابط القسم' : 'تم نسخ رابط تنسيقات وجلسات');
+      status(button.dataset.sharePath ? 'تم نسخ رابط الخدمة' : id ? 'تم نسخ رابط القسم' : 'تم نسخ رابط التنسيقات والجلسات');
     } catch(error) {
       if(error.name === 'AbortError') return;
       const dialog = document.getElementById('share-dialog');
-      dialog.querySelector('h2').textContent='رابط '+(activeSection?.dataset.title||'تنسيقات وجلسات');
+      dialog.querySelector('h2').textContent='رابط '+(activeSection?.dataset.title||'التنسيقات والجلسات');
       document.getElementById('share-link').value=url.href;
       dialog.showModal(); document.getElementById('share-link').select();
     }

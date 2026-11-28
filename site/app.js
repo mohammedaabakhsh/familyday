@@ -1,7 +1,7 @@
-import { createResortViews } from './venues/resort.js?v=20261127-royal-measurement-v133';
-import { createChaletViews } from './venues/chalet.js?v=20261127-royal-measurement-v133';
-import { createStayViews } from './venues/stay.js?v=20261127-royal-measurement-v133';
-import { createSharedViews } from './shared/views.js?v=20261127-royal-measurement-v133';
+import { createResortViews } from './venues/resort.js?v=20261128-approved-pdf-v134';
+import { createChaletViews } from './venues/chalet.js?v=20261128-approved-pdf-v134';
+import { createStayViews } from './venues/stay.js?v=20261128-approved-pdf-v134';
+import { createSharedViews } from './shared/views.js?v=20261128-approved-pdf-v134';
 // Published guide. Original page URLs are preserved; ordering documents remain independent.
 const $ = (s, r = document) => r.querySelector(s);
 const esc = (s) =>
@@ -58,8 +58,9 @@ const icon = (n, cl = '') =>
   `<svg class="icon ${cl}" viewBox="0 0 24 24" aria-hidden="true">${paths[n] || paths.spark}</svg>`;
 const ROOT = '/',
   ASSETS = '/site/',
-  VERSION = '20261127-royal-measurement-v133';
-import '../js/order-visit.js?v=20261127-royal-measurement-v133';
+  VERSION = '20261128-approved-pdf-v134';
+import '../js/specification-measurements.js?v=20261128-approved-pdf-v134';
+import '../js/order-visit.js?v=20261128-approved-pdf-v134';
 const main = $('#main'),
   viewer = $('#viewer');
 let resortOrders = null,
@@ -155,15 +156,11 @@ const paragraphs = (text) =>
   String(text || '')
     .split('\n')
     .filter(Boolean)
-    .map((t) => `<p>${safe(t)}</p>`)
+    .map((t) => `<p>${specificationText(t)}</p>`)
     .join('');
 const guests = (n) => (n === 2 ? 'حتى ضيفين' : `حتى ${n} ${n >= 3 && n <= 10 ? 'ضيوف' : 'ضيفًا'}`);
-// Isolate the complete measurement so Arabic flow cannot reverse or split its factors.
-const specificationText = (text) =>
-  safe(text).replace(
-    /(\d+(?:\.\d+)?\s*×\s*\d+(?:\.\d+)?)(\s*م)(?=$|[\s.،])/g,
-    '<bdi class="measurement" dir="ltr">$1$2</bdi>',
-  );
+// Shared Arabic measurement presentation, including illustrated maps.
+const specificationText = (text) => window.FD_MEASUREMENTS.formatEscaped(safe(text));
 const rooms = (n) => (n === 1 ? 'غرفة واحدة' : n === 2 ? 'غرفتان' : `${n} غرف`);
 const heading = (title, description = '') =>
   `<div class="page-heading">${['chalet', 'stay'].includes(route.venue) || ['services', 'guest', 'guide'].includes(route.type) ? '' : `<span class="eyebrow">${icon('pin')}${safe(venue().location)}</span>`}<h1>${safe(title)}</h1>${description ? `<p>${safe(description)}</p>` : ''}</div>`;
@@ -548,7 +545,7 @@ function shell() {
     v === 'resort'
       ? ['/resort-map/', 'map', 'الخريطة', 'map']
       : v === 'chalet'
-        ? ['/chalet-map/', 'map', 'استكشف', 'map']
+        ? ['/chalet-map/', 'map', 'الجولة', 'map']
         : ['/stay/compare/', 'users', 'المقارنة', 'compare'];
   const tabs = [
     [`/${v}/`, 'home', labels[v], 'home'],

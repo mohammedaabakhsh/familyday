@@ -14,7 +14,7 @@ export function createChaletViews(context) {
       groups
         .map(
           (g) =>
-            `<section class="service-group"><h2>${safe(g)}</h2><div class="services-list">${ss
+            `<section class="service-group"><div class="services-list">${ss
               .filter((s) => s.group === g)
               .map(chaletServiceCard)
               .join('')}</div></section>`,

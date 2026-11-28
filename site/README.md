@@ -12,6 +12,7 @@ The canonical implementation is under `site/`; generated public HTML stays at th
 
 - `app.js`: navigation/history, sharing, events and order initialization. View markup is organized in `venues/resort.js`, `venues/chalet.js`, `venues/stay.js` and `shared/views.js`; mutable state is read through context getters. `ROOT='/'` is for pages; `ASSETS='/site/'` is for files. Independent order URLs remain available; resort service actions can reuse their live controls inside an in-page order dialog.
 - `style.css`, `chalet.css`, `stay.css`: approved shared and venue-specific styling.
+- `../js/specification-measurements.js` and `../css/specification-measurements.css`: shared Arabic numeric/unit presentation for native details, FAQ answers, comparisons and illustrated maps. Pass escaped text to `FD_MEASUREMENTS.formatEscaped`; do not recreate local bidi wrappers.
 - `catalog.json`: accommodation details, gallery URLs, campaign copy and compiled guide service content. Original photos and fonts are still shared under `/imgs/` and `/fonts/`.
 - `guide-copy.json`: FAQ organization, room wording and destination-specific contact links.
 - `../data/services.json`: authoritative service/restaurant catalogue. Both the established ordering portals and the guide build consume it. `build-site.py` synchronizes service content into the guide catalogue without changing accommodation/campaign data.
@@ -175,3 +176,7 @@ Cinema's standalone section shows its photo immediately, using the same shared g
 ## Approved full-review batch — v130
 
 [Owner decisions and validation](../docs/approved-full-review-v130.md) apply the agreed Snapchat identity, room labels, FAQ copy/time layout, dining introduction, chalet heading/specifications and expanded touch areas. External booking pages stay read-only. Existing service prices, names/capacity labels, cinema duration, order behavior and portal layout remain. Evidence: `audits/approved-full-review-v130.json` and `audits/live-cutover-v130.json`.
+
+## Approved final PDF batch — v134
+
+[Decisions and checks](../docs/approved-final-pdf-v134.md) record the25-question review and13approved changes. Cabin option labels now contain their mapped number, replacing the separate number row below. Prepared request messages keep one blank line before the total; restaurant item amounts carry the approved total label. General-chat links stay empty. All numeric facts, recipients, prices, photos and lifecycle behavior remain unchanged. Run `scripts/check-approved-pdf-batch.py` to verify measurement geometry, cabin choices and approved portal presentation.

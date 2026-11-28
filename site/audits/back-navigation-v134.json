@@ -1,0 +1,105 @@
+{
+  "checks": [
+    {
+      "width": 320,
+      "motion": "no-preference",
+      "target": "/resort/",
+      "frames": 13,
+      "minimumOpacity": 1,
+      "heroReadyEveryFrame": true,
+      "heroPixelsUnchanged": true
+    },
+    {
+      "width": 320,
+      "motion": "no-preference",
+      "target": "/services/",
+      "frames": 13,
+      "minimumOpacity": 1,
+      "heroReadyEveryFrame": true
+    },
+    {
+      "width": 320,
+      "motion": "no-preference",
+      "target": "/",
+      "frames": 13,
+      "minimumOpacity": 1,
+      "heroReadyEveryFrame": true
+    },
+    {
+      "width": 390,
+      "motion": "no-preference",
+      "target": "/resort/",
+      "frames": 13,
+      "minimumOpacity": 1,
+      "heroReadyEveryFrame": true,
+      "heroPixelsUnchanged": true
+    },
+    {
+      "width": 390,
+      "motion": "no-preference",
+      "target": "/services/",
+      "frames": 13,
+      "minimumOpacity": 1,
+      "heroReadyEveryFrame": true
+    },
+    {
+      "width": 390,
+      "motion": "no-preference",
+      "target": "/",
+      "frames": 13,
+      "minimumOpacity": 1,
+      "heroReadyEveryFrame": true
+    },
+    {
+      "width": 1440,
+      "motion": "no-preference",
+      "target": "/resort/",
+      "frames": 13,
+      "minimumOpacity": 1,
+      "heroReadyEveryFrame": true,
+      "heroPixelsUnchanged": true
+    },
+    {
+      "width": 1440,
+      "motion": "no-preference",
+      "target": "/services/",
+      "frames": 13,
+      "minimumOpacity": 1,
+      "heroReadyEveryFrame": true
+    },
+    {
+      "width": 1440,
+      "motion": "no-preference",
+      "target": "/",
+      "frames": 13,
+      "minimumOpacity": 1,
+      "heroReadyEveryFrame": true
+    },
+    {
+      "width": 390,
+      "motion": "reduce",
+      "target": "/resort/",
+      "frames": 13,
+      "minimumOpacity": 1,
+      "heroReadyEveryFrame": true,
+      "heroPixelsUnchanged": true
+    },
+    {
+      "width": 390,
+      "motion": "reduce",
+      "target": "/services/",
+      "frames": 13,
+      "minimumOpacity": 1,
+      "heroReadyEveryFrame": true
+    },
+    {
+      "width": 390,
+      "motion": "reduce",
+      "target": "/",
+      "frames": 13,
+      "minimumOpacity": 1,
+      "heroReadyEveryFrame": true
+    }
+  ],
+  "errors": []
+}

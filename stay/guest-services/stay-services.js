@@ -12,7 +12,7 @@
  const initialSection=location.pathname===section||location.hash==='#slide';
  $('#reload-services').onclick=()=>location.reload();
  try{
-  const response=await fetch('/data/services.json?v=20261127-maintenance-v131');if(!response.ok)throw Error('catalogue');
+  const response=await fetch('/data/services.json?v=20261128-approved-pdf-v134');if(!response.ok)throw Error('catalogue');
   const source=(await response.json()).stay;service=source.slide;phone=source.phone;
   if(!(service.price>0)||!/^966\d{9}$/.test(phone)||!service.name||!service.image)throw Error('Invalid stay service');
  }catch(error){$('#services-loading').hidden=true;$('#services-error').hidden=false;post('error');return;}
@@ -69,7 +69,7 @@
  for(const d of [details,request])d.addEventListener('cancel',event=>{event.preventDefault();back();});
  window.addEventListener('popstate',()=>{if(!embedded)view(history.state?.fdStayPortal||'home');});
  function message(){
-  const lines=[service.greeting,'','الاسم: '+name.value.trim(),'المكان: استراحة يوم العائلة','القسم: '+service.location,'','الخدمة: '+service.name,'الكمية: 1','إجمالي الطلب: '+service.price+' ريال'];
+  const lines=[service.greeting,'','الاسم: '+name.value.trim(),'المكان: استراحة يوم العائلة','القسم: '+service.location,'','الخدمة: '+service.name,'الكمية: 1','','إجمالي الطلب: '+service.price+' ريال'];
   if(notes.value.trim())lines.push('','ملاحظات: '+notes.value.trim());return lines.join('\n');
  }
  $('#stay-order').addEventListener('submit',event=>{

@@ -11,17 +11,18 @@
   function quantity(item){return item.qty||1;}
   function amount(items){return items.reduce((total,item)=>total+item.price,0);}
   function itemName(item){return item.name+((item.details||[]).some(text=>/^إضافة جبنة/.test(text))?' — مع جبنة':'');}
-  function itemLine(item){return itemName(item)+' — الكمية: '+quantity(item)+' — '+item.price+' ريال';}
+  function itemLine(item,showTotalLabel=false){return itemName(item)+' — الكمية: '+quantity(item)+' — '+(showTotalLabel?'الإجمالي: ':'')+item.price+' ريال';}
     function build(order,customer){
       const parts=[copy[order.service].greeting,'','الاسم: '+customer.name.trim()];
       if(customer.venue==='chalet')parts.push('المكان: شاليه يوم العائلة');
       else parts.push('اسم الكوخ: '+customer.cabin,'رقم الكوخ: '+customer.number);
       parts.push('');
       const item=order.items[0];
-      if(order.service==='restaurant')parts.push('الطلب:',...order.items.map(itemLine),'');
+      if(order.service==='restaurant')parts.push('الطلب:',...order.items.map(item=>itemLine(item,true)),'');
       else if(order.service==='water')parts.push('الباقة: '+item.name,'الكمية: '+quantity(item),'ألعاب للكبار: '+order.water.adults,'ألعاب للأطفال: '+order.water.children);
       else if(order.items.length===1)parts.push((order.service==='extras'?'الصنف: ':'الباقة: ')+item.name,'الكمية: '+quantity(item));
-      else parts.push(order.service==='extras'?'الأصناف:':'الباقات:',...order.items.map(itemLine),'');
+      else parts.push(order.service==='extras'?'الأصناف:':'الباقات:',...order.items.map(item=>itemLine(item)),'');
+      if(parts.at(-1)!=='')parts.push('');
       parts.push('إجمالي الطلب: '+amount(order.items)+' ريال');if(customer.notes.trim())parts.push('','ملاحظات: '+customer.notes.trim());return parts.join('\n');
     }
   function restaurant(menu,selectionFor,customer){
