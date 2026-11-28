@@ -19,3 +19,9 @@ Checks at375,390and430pixels confirm that both cards contain no feature paragrap
 The owner requests pool information beside the existing guest and bedroom facts, rather than a separate description. Derive the maintained outdoor facilities from each section: ground floor `مسبحان`; upper floor `مسبح وملعب كرة طائرة`. The new text follows the bedroom fact. Preserve the full existing guest/room labels and12px fact font; distribute the three facts in one row using the available card width on current phones. The24px/18px vertical spacing from v137 remains.
 
 Browser checks at375,390and430pixels verify all three facts occupy the same row with no overlaps, correct facility wording, unchanged font sizes, no horizontal overflow, and working carousel/comparison navigation. Both card screenshots were inspected. Canonical accommodation, service, contact and structured data remain byte-identical. Evidence: `site/audits/stay-section-cards-v138.json`.
+
+## Owner correction — v139
+
+Supersede the combined v138 facility label. Preserve the original guest/room row and show two individually illustrated facility facts side by side beneath it: ground floor `مسبح للكبار` and `مسبح للأطفال`, both with pool icons; upper floor `مسبح للكبار` with a pool icon and `ملعب كرة طائرة` with a volleyball icon. Derive labels from the same maintained outdoor data. Restore the original14px column spacing and retain12px text.
+
+Checks at375,390and430pixels verify both pairs share their respective rows, all four facility icons render, captions remain on one line, no overlap/overflow occurs, and carousel/comparison navigation works. Both card screenshots were inspected. Canonical data remain unchanged. Evidence: `site/audits/stay-section-cards-v139.json`.

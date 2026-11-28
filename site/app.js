@@ -1,7 +1,7 @@
-import { createResortViews } from './venues/resort.js?v=20261128-stay-inline-facts-v138';
-import { createChaletViews } from './venues/chalet.js?v=20261128-stay-inline-facts-v138';
-import { createStayViews } from './venues/stay.js?v=20261128-stay-inline-facts-v138';
-import { createSharedViews } from './shared/views.js?v=20261128-stay-inline-facts-v138';
+import { createResortViews } from './venues/resort.js?v=20261128-stay-facility-icons-v139';
+import { createChaletViews } from './venues/chalet.js?v=20261128-stay-facility-icons-v139';
+import { createStayViews } from './venues/stay.js?v=20261128-stay-facility-icons-v139';
+import { createSharedViews } from './shared/views.js?v=20261128-stay-facility-icons-v139';
 // Published guide. Original page URLs are preserved; ordering documents remain independent.
 const $ = (s, r = document) => r.querySelector(s);
 const esc = (s) =>
@@ -15,6 +15,7 @@ const paths = {
   users:
     '<circle cx="9" cy="8" r="3"/><path d="M2 21v-3a7 7 0 0 1 14 0v3m0-16a3 3 0 0 1 0 6m3 10v-3a7 7 0 0 0-3-6"/>',
   water: '<path d="M3 20q3-4 6 0t6 0 6 0M6 15V5a2 2 0 0 1 4 0m4 10V5a2 2 0 0 1 4 0M6 9h8m-8 4h8"/>',
+  volleyball: '<circle cx="12" cy="12" r="10"/><path d="M12 2c-3 3-4 7-2 10m10.66-5c-4-1.1-8 .1-10.66 5m10.66 5c-1-4-4-7-10.66-5M12 22c3-3 4-7 2-10M3.34 17c4 1.1 8-.1 10.66-5M3.34 7c1 4 4 7 10.66 5"/>',
   map: '<path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2Zm6-2v16m6-14v16"/>',
   pin: '<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>',
   arrow: '<path d="m14 5-7 7 7 7M7 12h14"/>',
@@ -58,9 +59,9 @@ const icon = (n, cl = '') =>
   `<svg class="icon ${cl}" viewBox="0 0 24 24" aria-hidden="true">${paths[n] || paths.spark}</svg>`;
 const ROOT = '/',
   ASSETS = '/site/',
-  VERSION = '20261128-stay-inline-facts-v138';
-import '../js/specification-measurements.js?v=20261128-stay-inline-facts-v138';
-import '../js/order-visit.js?v=20261128-stay-inline-facts-v138';
+  VERSION = '20261128-stay-facility-icons-v139';
+import '../js/specification-measurements.js?v=20261128-stay-facility-icons-v139';
+import '../js/order-visit.js?v=20261128-stay-facility-icons-v139';
 const main = $('#main'),
   viewer = $('#viewer');
 let resortOrders = null,
