@@ -1,7 +1,7 @@
-import { createResortViews } from './venues/resort.js?v=20261128-stay-cards-v136';
-import { createChaletViews } from './venues/chalet.js?v=20261128-stay-cards-v136';
-import { createStayViews } from './venues/stay.js?v=20261128-stay-cards-v136';
-import { createSharedViews } from './shared/views.js?v=20261128-stay-cards-v136';
+import { createResortViews } from './venues/resort.js?v=20261128-stay-card-spacing-v137';
+import { createChaletViews } from './venues/chalet.js?v=20261128-stay-card-spacing-v137';
+import { createStayViews } from './venues/stay.js?v=20261128-stay-card-spacing-v137';
+import { createSharedViews } from './shared/views.js?v=20261128-stay-card-spacing-v137';
 // Published guide. Original page URLs are preserved; ordering documents remain independent.
 const $ = (s, r = document) => r.querySelector(s);
 const esc = (s) =>
@@ -58,9 +58,9 @@ const icon = (n, cl = '') =>
   `<svg class="icon ${cl}" viewBox="0 0 24 24" aria-hidden="true">${paths[n] || paths.spark}</svg>`;
 const ROOT = '/',
   ASSETS = '/site/',
-  VERSION = '20261128-stay-cards-v136';
-import '../js/specification-measurements.js?v=20261128-stay-cards-v136';
-import '../js/order-visit.js?v=20261128-stay-cards-v136';
+  VERSION = '20261128-stay-card-spacing-v137';
+import '../js/specification-measurements.js?v=20261128-stay-card-spacing-v137';
+import '../js/order-visit.js?v=20261128-stay-card-spacing-v137';
 const main = $('#main'),
   viewer = $('#viewer');
 let resortOrders = null,

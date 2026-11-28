@@ -78,3 +78,6 @@ body.stay-scope:not(.focused-view) #main{padding-top:calc(64px + env(safe-area-i
 
 /* Use the available card width for the audience caption without shrinking its font. */
 @media(min-width:375px) and (max-width:999px){.stay-scope .stay-card-title .card-audience{max-width:none;flex-shrink:0;white-space:nowrap!important}}
+
+/* Balance the remaining card facts between the title and details button. */
+@media(min-width:375px) and (max-width:999px){.stay-scope .stay-catalog-panel .stay-unit-card .card-facts{margin:24px 0 18px}}

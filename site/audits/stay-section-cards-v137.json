@@ -1,0 +1,380 @@
+{
+  "profiles": [
+    {
+      "width": 375,
+      "cards": [
+        {
+          "caption": "مناسب للتجمعات الكبيرة",
+          "lines": 1,
+          "font": "11px",
+          "captionBox": {
+            "x": 59,
+            "y": 501.359375,
+            "width": 112.796875,
+            "height": 17.59375,
+            "top": 501.359375,
+            "right": 171.796875,
+            "bottom": 518.953125,
+            "left": 59
+          },
+          "headingBox": {
+            "x": 220.140625,
+            "y": 482.71875,
+            "width": 117.859375,
+            "height": 54.890625,
+            "top": 482.71875,
+            "right": 338,
+            "bottom": 537.609375,
+            "left": 220.140625
+          },
+          "factsText": "حتى 25 ضيفًاغرفتان",
+          "factsBox": {
+            "x": 59,
+            "y": 561.609375,
+            "width": 279,
+            "height": 20.390625,
+            "top": 561.609375,
+            "right": 338,
+            "bottom": 582,
+            "left": 59
+          },
+          "titleBox": {
+            "x": 59,
+            "y": 482.71875,
+            "width": 279,
+            "height": 54.890625,
+            "top": 482.71875,
+            "right": 338,
+            "bottom": 537.609375,
+            "left": 59
+          },
+          "buttonBox": {
+            "x": 59,
+            "y": 600,
+            "width": 279,
+            "height": 42,
+            "top": 600,
+            "right": 338,
+            "bottom": 642,
+            "left": 59
+          },
+          "photo": "/imgs/sec1_1.webp",
+          "details": "/stay/ground-floor/"
+        },
+        {
+          "caption": "مناسب للتجمعات الكبيرة",
+          "lines": 1,
+          "font": "11px",
+          "captionBox": {
+            "x": -266,
+            "y": 501.359375,
+            "width": 112.796875,
+            "height": 17.59375,
+            "top": 501.359375,
+            "right": -153.203125,
+            "bottom": 518.953125,
+            "left": -266
+          },
+          "headingBox": {
+            "x": -108.59375,
+            "y": 482.71875,
+            "width": 121.59375,
+            "height": 54.890625,
+            "top": 482.71875,
+            "right": 13,
+            "bottom": 537.609375,
+            "left": -108.59375
+          },
+          "factsText": "حتى 25 ضيفًاغرفة واحدة",
+          "factsBox": {
+            "x": -266,
+            "y": 561.609375,
+            "width": 279,
+            "height": 20.390625,
+            "top": 561.609375,
+            "right": 13,
+            "bottom": 582,
+            "left": -266
+          },
+          "titleBox": {
+            "x": -266,
+            "y": 482.71875,
+            "width": 279,
+            "height": 54.890625,
+            "top": 482.71875,
+            "right": 13,
+            "bottom": 537.609375,
+            "left": -266
+          },
+          "buttonBox": {
+            "x": -266,
+            "y": 600,
+            "width": 279,
+            "height": 42,
+            "top": 600,
+            "right": 13,
+            "bottom": 642,
+            "left": -266
+          },
+          "photo": "/imgs/sec2_1.webp?v=20261002b",
+          "details": "/stay/upper-floor/"
+        }
+      ],
+      "topComparisonRemoved": true,
+      "bottomComparisonWorks": true,
+      "carouselWorks": true
+    },
+    {
+      "width": 390,
+      "cards": [
+        {
+          "caption": "مناسب للتجمعات الكبيرة",
+          "lines": 1,
+          "font": "11px",
+          "captionBox": {
+            "x": 59,
+            "y": 533.359375,
+            "width": 112.796875,
+            "height": 17.59375,
+            "top": 533.359375,
+            "right": 171.796875,
+            "bottom": 550.953125,
+            "left": 59
+          },
+          "headingBox": {
+            "x": 235.140625,
+            "y": 514.71875,
+            "width": 117.859375,
+            "height": 54.890625,
+            "top": 514.71875,
+            "right": 353,
+            "bottom": 569.609375,
+            "left": 235.140625
+          },
+          "factsText": "حتى 25 ضيفًاغرفتان",
+          "factsBox": {
+            "x": 59,
+            "y": 593.609375,
+            "width": 294,
+            "height": 20.390625,
+            "top": 593.609375,
+            "right": 353,
+            "bottom": 614,
+            "left": 59
+          },
+          "titleBox": {
+            "x": 59,
+            "y": 514.71875,
+            "width": 294,
+            "height": 54.890625,
+            "top": 514.71875,
+            "right": 353,
+            "bottom": 569.609375,
+            "left": 59
+          },
+          "buttonBox": {
+            "x": 59,
+            "y": 632,
+            "width": 294,
+            "height": 42,
+            "top": 632,
+            "right": 353,
+            "bottom": 674,
+            "left": 59
+          },
+          "photo": "/imgs/sec1_1.webp",
+          "details": "/stay/ground-floor/"
+        },
+        {
+          "caption": "مناسب للتجمعات الكبيرة",
+          "lines": 1,
+          "font": "11px",
+          "captionBox": {
+            "x": -281,
+            "y": 533.359375,
+            "width": 112.796875,
+            "height": 17.59375,
+            "top": 533.359375,
+            "right": -168.203125,
+            "bottom": 550.953125,
+            "left": -281
+          },
+          "headingBox": {
+            "x": -108.59375,
+            "y": 514.71875,
+            "width": 121.59375,
+            "height": 54.890625,
+            "top": 514.71875,
+            "right": 13,
+            "bottom": 569.609375,
+            "left": -108.59375
+          },
+          "factsText": "حتى 25 ضيفًاغرفة واحدة",
+          "factsBox": {
+            "x": -281,
+            "y": 593.609375,
+            "width": 294,
+            "height": 20.390625,
+            "top": 593.609375,
+            "right": 13,
+            "bottom": 614,
+            "left": -281
+          },
+          "titleBox": {
+            "x": -281,
+            "y": 514.71875,
+            "width": 294,
+            "height": 54.890625,
+            "top": 514.71875,
+            "right": 13,
+            "bottom": 569.609375,
+            "left": -281
+          },
+          "buttonBox": {
+            "x": -281,
+            "y": 632,
+            "width": 294,
+            "height": 42,
+            "top": 632,
+            "right": 13,
+            "bottom": 674,
+            "left": -281
+          },
+          "photo": "/imgs/sec2_1.webp?v=20261002b",
+          "details": "/stay/upper-floor/"
+        }
+      ],
+      "topComparisonRemoved": true,
+      "bottomComparisonWorks": true,
+      "carouselWorks": true
+    },
+    {
+      "width": 430,
+      "cards": [
+        {
+          "caption": "مناسب للتجمعات الكبيرة",
+          "lines": 1,
+          "font": "11px",
+          "captionBox": {
+            "x": 59,
+            "y": 621.359375,
+            "width": 112.796875,
+            "height": 17.59375,
+            "top": 621.359375,
+            "right": 171.796875,
+            "bottom": 638.953125,
+            "left": 59
+          },
+          "headingBox": {
+            "x": 275.140625,
+            "y": 602.71875,
+            "width": 117.859375,
+            "height": 54.890625,
+            "top": 602.71875,
+            "right": 393,
+            "bottom": 657.609375,
+            "left": 275.140625
+          },
+          "factsText": "حتى 25 ضيفًاغرفتان",
+          "factsBox": {
+            "x": 59,
+            "y": 681.609375,
+            "width": 334,
+            "height": 20.390625,
+            "top": 681.609375,
+            "right": 393,
+            "bottom": 702,
+            "left": 59
+          },
+          "titleBox": {
+            "x": 59,
+            "y": 602.71875,
+            "width": 334,
+            "height": 54.890625,
+            "top": 602.71875,
+            "right": 393,
+            "bottom": 657.609375,
+            "left": 59
+          },
+          "buttonBox": {
+            "x": 59,
+            "y": 720,
+            "width": 334,
+            "height": 42,
+            "top": 720,
+            "right": 393,
+            "bottom": 762,
+            "left": 59
+          },
+          "photo": "/imgs/sec1_1.webp",
+          "details": "/stay/ground-floor/"
+        },
+        {
+          "caption": "مناسب للتجمعات الكبيرة",
+          "lines": 1,
+          "font": "11px",
+          "captionBox": {
+            "x": -321,
+            "y": 621.359375,
+            "width": 112.796875,
+            "height": 17.59375,
+            "top": 621.359375,
+            "right": -208.203125,
+            "bottom": 638.953125,
+            "left": -321
+          },
+          "headingBox": {
+            "x": -108.59375,
+            "y": 602.71875,
+            "width": 121.59375,
+            "height": 54.890625,
+            "top": 602.71875,
+            "right": 13,
+            "bottom": 657.609375,
+            "left": -108.59375
+          },
+          "factsText": "حتى 25 ضيفًاغرفة واحدة",
+          "factsBox": {
+            "x": -321,
+            "y": 681.609375,
+            "width": 334,
+            "height": 20.390625,
+            "top": 681.609375,
+            "right": 13,
+            "bottom": 702,
+            "left": -321
+          },
+          "titleBox": {
+            "x": -321,
+            "y": 602.71875,
+            "width": 334,
+            "height": 54.890625,
+            "top": 602.71875,
+            "right": 13,
+            "bottom": 657.609375,
+            "left": -321
+          },
+          "buttonBox": {
+            "x": -321,
+            "y": 720,
+            "width": 334,
+            "height": 42,
+            "top": 720,
+            "right": 13,
+            "bottom": 762,
+            "left": -321
+          },
+          "photo": "/imgs/sec2_1.webp?v=20261002b",
+          "details": "/stay/upper-floor/"
+        }
+      ],
+      "topComparisonRemoved": true,
+      "bottomComparisonWorks": true,
+      "carouselWorks": true
+    }
+  ],
+  "errors": [],
+  "version": "20261128-stay-card-spacing-v137",
+  "baselineCommit": "d792f45dd8e437f3788768d85beb0e8a4c78728e",
+  "scope": "Remove both card feature sentences entirely. Move the existing guest-capacity/room facts lower and balance spacing between the title and details button. Keep fonts, photos and information unchanged."
+}
