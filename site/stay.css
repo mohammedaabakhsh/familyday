@@ -81,3 +81,6 @@ body.stay-scope:not(.focused-view) #main{padding-top:calc(64px + env(safe-area-i
 
 /* Balance the remaining card facts between the title and details button. */
 @media(min-width:375px) and (max-width:999px){.stay-scope .stay-catalog-panel .stay-unit-card .card-facts{margin:24px 0 18px}}
+
+/* Keep section amenities beside capacity and rooms at their existing font size. */
+@media(min-width:375px) and (max-width:999px){.stay-scope .stay-catalog-panel .stay-unit-card .card-facts{justify-content:space-between;flex-wrap:nowrap;column-gap:4px;margin-inline:-4px}}

@@ -1,0 +1,648 @@
+{
+  "profiles": [
+    {
+      "width": 375,
+      "cards": [
+        {
+          "caption": "مناسب للتجمعات الكبيرة",
+          "lines": 1,
+          "font": "11px",
+          "captionBox": {
+            "x": 59,
+            "y": 501.359375,
+            "width": 112.796875,
+            "height": 17.59375,
+            "top": 501.359375,
+            "right": 171.796875,
+            "bottom": 518.953125,
+            "left": 59
+          },
+          "headingBox": {
+            "x": 220.140625,
+            "y": 482.71875,
+            "width": 117.859375,
+            "height": 54.890625,
+            "top": 482.71875,
+            "right": 338,
+            "bottom": 537.609375,
+            "left": 220.140625
+          },
+          "factsText": "حتى 25 ضيفًاغرفتانمسبحان",
+          "factParts": [
+            {
+              "text": "حتى 25 ضيفًا",
+              "box": {
+                "x": 259.34375,
+                "y": 561.609375,
+                "width": 82.65625,
+                "height": 20.390625,
+                "top": 561.609375,
+                "right": 342,
+                "bottom": 582,
+                "left": 259.34375
+              },
+              "font": "12px"
+            },
+            {
+              "text": "غرفتان",
+              "box": {
+                "x": 151.484375,
+                "y": 561.609375,
+                "width": 53.953125,
+                "height": 20.390625,
+                "top": 561.609375,
+                "right": 205.4375,
+                "bottom": 582,
+                "left": 151.484375
+              },
+              "font": "12px"
+            },
+            {
+              "text": "مسبحان",
+              "box": {
+                "x": 55,
+                "y": 561.609375,
+                "width": 42.578125,
+                "height": 20.390625,
+                "top": 561.609375,
+                "right": 97.578125,
+                "bottom": 582,
+                "left": 55
+              },
+              "font": "12px"
+            }
+          ],
+          "factsBox": {
+            "x": 55,
+            "y": 561.609375,
+            "width": 287,
+            "height": 20.390625,
+            "top": 561.609375,
+            "right": 342,
+            "bottom": 582,
+            "left": 55
+          },
+          "titleBox": {
+            "x": 59,
+            "y": 482.71875,
+            "width": 279,
+            "height": 54.890625,
+            "top": 482.71875,
+            "right": 338,
+            "bottom": 537.609375,
+            "left": 59
+          },
+          "buttonBox": {
+            "x": 59,
+            "y": 600,
+            "width": 279,
+            "height": 42,
+            "top": 600,
+            "right": 338,
+            "bottom": 642,
+            "left": 59
+          },
+          "photo": "/imgs/sec1_1.webp",
+          "details": "/stay/ground-floor/"
+        },
+        {
+          "caption": "مناسب للتجمعات الكبيرة",
+          "lines": 1,
+          "font": "11px",
+          "captionBox": {
+            "x": -266,
+            "y": 501.359375,
+            "width": 112.796875,
+            "height": 17.59375,
+            "top": 501.359375,
+            "right": -153.203125,
+            "bottom": 518.953125,
+            "left": -266
+          },
+          "headingBox": {
+            "x": -108.59375,
+            "y": 482.71875,
+            "width": 121.59375,
+            "height": 54.890625,
+            "top": 482.71875,
+            "right": 13,
+            "bottom": 537.609375,
+            "left": -108.59375
+          },
+          "factsText": "حتى 25 ضيفًاغرفة واحدةمسبح وملعب كرة طائرة",
+          "factParts": [
+            {
+              "text": "حتى 25 ضيفًا",
+              "box": {
+                "x": -65.65625,
+                "y": 561.609375,
+                "width": 82.65625,
+                "height": 20.390625,
+                "top": 561.609375,
+                "right": 17,
+                "bottom": 582,
+                "left": -65.65625
+              },
+              "font": "12px"
+            },
+            {
+              "text": "غرفة واحدة",
+              "box": {
+                "x": -145.75,
+                "y": 561.609375,
+                "width": 75.3125,
+                "height": 20.390625,
+                "top": 561.609375,
+                "right": -70.4375,
+                "bottom": 582,
+                "left": -145.75
+              },
+              "font": "12px"
+            },
+            {
+              "text": "مسبح وملعب كرة طائرة",
+              "box": {
+                "x": -270,
+                "y": 561.609375,
+                "width": 119.46875,
+                "height": 20.390625,
+                "top": 561.609375,
+                "right": -150.53125,
+                "bottom": 582,
+                "left": -270
+              },
+              "font": "12px"
+            }
+          ],
+          "factsBox": {
+            "x": -270,
+            "y": 561.609375,
+            "width": 287,
+            "height": 20.390625,
+            "top": 561.609375,
+            "right": 17,
+            "bottom": 582,
+            "left": -270
+          },
+          "titleBox": {
+            "x": -266,
+            "y": 482.71875,
+            "width": 279,
+            "height": 54.890625,
+            "top": 482.71875,
+            "right": 13,
+            "bottom": 537.609375,
+            "left": -266
+          },
+          "buttonBox": {
+            "x": -266,
+            "y": 600,
+            "width": 279,
+            "height": 42,
+            "top": 600,
+            "right": 13,
+            "bottom": 642,
+            "left": -266
+          },
+          "photo": "/imgs/sec2_1.webp?v=20261002b",
+          "details": "/stay/upper-floor/"
+        }
+      ],
+      "topComparisonRemoved": true,
+      "bottomComparisonWorks": true,
+      "carouselWorks": true
+    },
+    {
+      "width": 390,
+      "cards": [
+        {
+          "caption": "مناسب للتجمعات الكبيرة",
+          "lines": 1,
+          "font": "11px",
+          "captionBox": {
+            "x": 59,
+            "y": 533.359375,
+            "width": 112.796875,
+            "height": 17.59375,
+            "top": 533.359375,
+            "right": 171.796875,
+            "bottom": 550.953125,
+            "left": 59
+          },
+          "headingBox": {
+            "x": 235.140625,
+            "y": 514.71875,
+            "width": 117.859375,
+            "height": 54.890625,
+            "top": 514.71875,
+            "right": 353,
+            "bottom": 569.609375,
+            "left": 235.140625
+          },
+          "factsText": "حتى 25 ضيفًاغرفتانمسبحان",
+          "factParts": [
+            {
+              "text": "حتى 25 ضيفًا",
+              "box": {
+                "x": 274.34375,
+                "y": 593.609375,
+                "width": 82.65625,
+                "height": 20.390625,
+                "top": 593.609375,
+                "right": 357,
+                "bottom": 614,
+                "left": 274.34375
+              },
+              "font": "12px"
+            },
+            {
+              "text": "غرفتان",
+              "box": {
+                "x": 158.984375,
+                "y": 593.609375,
+                "width": 53.953125,
+                "height": 20.390625,
+                "top": 593.609375,
+                "right": 212.9375,
+                "bottom": 614,
+                "left": 158.984375
+              },
+              "font": "12px"
+            },
+            {
+              "text": "مسبحان",
+              "box": {
+                "x": 55,
+                "y": 593.609375,
+                "width": 42.578125,
+                "height": 20.390625,
+                "top": 593.609375,
+                "right": 97.578125,
+                "bottom": 614,
+                "left": 55
+              },
+              "font": "12px"
+            }
+          ],
+          "factsBox": {
+            "x": 55,
+            "y": 593.609375,
+            "width": 302,
+            "height": 20.390625,
+            "top": 593.609375,
+            "right": 357,
+            "bottom": 614,
+            "left": 55
+          },
+          "titleBox": {
+            "x": 59,
+            "y": 514.71875,
+            "width": 294,
+            "height": 54.890625,
+            "top": 514.71875,
+            "right": 353,
+            "bottom": 569.609375,
+            "left": 59
+          },
+          "buttonBox": {
+            "x": 59,
+            "y": 632,
+            "width": 294,
+            "height": 42,
+            "top": 632,
+            "right": 353,
+            "bottom": 674,
+            "left": 59
+          },
+          "photo": "/imgs/sec1_1.webp",
+          "details": "/stay/ground-floor/"
+        },
+        {
+          "caption": "مناسب للتجمعات الكبيرة",
+          "lines": 1,
+          "font": "11px",
+          "captionBox": {
+            "x": -281,
+            "y": 533.359375,
+            "width": 112.796875,
+            "height": 17.59375,
+            "top": 533.359375,
+            "right": -168.203125,
+            "bottom": 550.953125,
+            "left": -281
+          },
+          "headingBox": {
+            "x": -108.59375,
+            "y": 514.71875,
+            "width": 121.59375,
+            "height": 54.890625,
+            "top": 514.71875,
+            "right": 13,
+            "bottom": 569.609375,
+            "left": -108.59375
+          },
+          "factsText": "حتى 25 ضيفًاغرفة واحدةمسبح وملعب كرة طائرة",
+          "factParts": [
+            {
+              "text": "حتى 25 ضيفًا",
+              "box": {
+                "x": -65.65625,
+                "y": 593.609375,
+                "width": 82.65625,
+                "height": 20.390625,
+                "top": 593.609375,
+                "right": 17,
+                "bottom": 614,
+                "left": -65.65625
+              },
+              "font": "12px"
+            },
+            {
+              "text": "غرفة واحدة",
+              "box": {
+                "x": -153.25,
+                "y": 593.609375,
+                "width": 75.3125,
+                "height": 20.390625,
+                "top": 593.609375,
+                "right": -77.9375,
+                "bottom": 614,
+                "left": -153.25
+              },
+              "font": "12px"
+            },
+            {
+              "text": "مسبح وملعب كرة طائرة",
+              "box": {
+                "x": -285,
+                "y": 593.609375,
+                "width": 119.46875,
+                "height": 20.390625,
+                "top": 593.609375,
+                "right": -165.53125,
+                "bottom": 614,
+                "left": -285
+              },
+              "font": "12px"
+            }
+          ],
+          "factsBox": {
+            "x": -285,
+            "y": 593.609375,
+            "width": 302,
+            "height": 20.390625,
+            "top": 593.609375,
+            "right": 17,
+            "bottom": 614,
+            "left": -285
+          },
+          "titleBox": {
+            "x": -281,
+            "y": 514.71875,
+            "width": 294,
+            "height": 54.890625,
+            "top": 514.71875,
+            "right": 13,
+            "bottom": 569.609375,
+            "left": -281
+          },
+          "buttonBox": {
+            "x": -281,
+            "y": 632,
+            "width": 294,
+            "height": 42,
+            "top": 632,
+            "right": 13,
+            "bottom": 674,
+            "left": -281
+          },
+          "photo": "/imgs/sec2_1.webp?v=20261002b",
+          "details": "/stay/upper-floor/"
+        }
+      ],
+      "topComparisonRemoved": true,
+      "bottomComparisonWorks": true,
+      "carouselWorks": true
+    },
+    {
+      "width": 430,
+      "cards": [
+        {
+          "caption": "مناسب للتجمعات الكبيرة",
+          "lines": 1,
+          "font": "11px",
+          "captionBox": {
+            "x": 59,
+            "y": 621.359375,
+            "width": 112.796875,
+            "height": 17.59375,
+            "top": 621.359375,
+            "right": 171.796875,
+            "bottom": 638.953125,
+            "left": 59
+          },
+          "headingBox": {
+            "x": 275.140625,
+            "y": 602.71875,
+            "width": 117.859375,
+            "height": 54.890625,
+            "top": 602.71875,
+            "right": 393,
+            "bottom": 657.609375,
+            "left": 275.140625
+          },
+          "factsText": "حتى 25 ضيفًاغرفتانمسبحان",
+          "factParts": [
+            {
+              "text": "حتى 25 ضيفًا",
+              "box": {
+                "x": 314.34375,
+                "y": 681.609375,
+                "width": 82.65625,
+                "height": 20.390625,
+                "top": 681.609375,
+                "right": 397,
+                "bottom": 702,
+                "left": 314.34375
+              },
+              "font": "12px"
+            },
+            {
+              "text": "غرفتان",
+              "box": {
+                "x": 178.984375,
+                "y": 681.609375,
+                "width": 53.953125,
+                "height": 20.390625,
+                "top": 681.609375,
+                "right": 232.9375,
+                "bottom": 702,
+                "left": 178.984375
+              },
+              "font": "12px"
+            },
+            {
+              "text": "مسبحان",
+              "box": {
+                "x": 55,
+                "y": 681.609375,
+                "width": 42.578125,
+                "height": 20.390625,
+                "top": 681.609375,
+                "right": 97.578125,
+                "bottom": 702,
+                "left": 55
+              },
+              "font": "12px"
+            }
+          ],
+          "factsBox": {
+            "x": 55,
+            "y": 681.609375,
+            "width": 342,
+            "height": 20.390625,
+            "top": 681.609375,
+            "right": 397,
+            "bottom": 702,
+            "left": 55
+          },
+          "titleBox": {
+            "x": 59,
+            "y": 602.71875,
+            "width": 334,
+            "height": 54.890625,
+            "top": 602.71875,
+            "right": 393,
+            "bottom": 657.609375,
+            "left": 59
+          },
+          "buttonBox": {
+            "x": 59,
+            "y": 720,
+            "width": 334,
+            "height": 42,
+            "top": 720,
+            "right": 393,
+            "bottom": 762,
+            "left": 59
+          },
+          "photo": "/imgs/sec1_1.webp",
+          "details": "/stay/ground-floor/"
+        },
+        {
+          "caption": "مناسب للتجمعات الكبيرة",
+          "lines": 1,
+          "font": "11px",
+          "captionBox": {
+            "x": -321,
+            "y": 621.359375,
+            "width": 112.796875,
+            "height": 17.59375,
+            "top": 621.359375,
+            "right": -208.203125,
+            "bottom": 638.953125,
+            "left": -321
+          },
+          "headingBox": {
+            "x": -108.59375,
+            "y": 602.71875,
+            "width": 121.59375,
+            "height": 54.890625,
+            "top": 602.71875,
+            "right": 13,
+            "bottom": 657.609375,
+            "left": -108.59375
+          },
+          "factsText": "حتى 25 ضيفًاغرفة واحدةمسبح وملعب كرة طائرة",
+          "factParts": [
+            {
+              "text": "حتى 25 ضيفًا",
+              "box": {
+                "x": -65.65625,
+                "y": 681.609375,
+                "width": 82.65625,
+                "height": 20.390625,
+                "top": 681.609375,
+                "right": 17,
+                "bottom": 702,
+                "left": -65.65625
+              },
+              "font": "12px"
+            },
+            {
+              "text": "غرفة واحدة",
+              "box": {
+                "x": -173.25,
+                "y": 681.609375,
+                "width": 75.3125,
+                "height": 20.390625,
+                "top": 681.609375,
+                "right": -97.9375,
+                "bottom": 702,
+                "left": -173.25
+              },
+              "font": "12px"
+            },
+            {
+              "text": "مسبح وملعب كرة طائرة",
+              "box": {
+                "x": -325,
+                "y": 681.609375,
+                "width": 119.46875,
+                "height": 20.390625,
+                "top": 681.609375,
+                "right": -205.53125,
+                "bottom": 702,
+                "left": -325
+              },
+              "font": "12px"
+            }
+          ],
+          "factsBox": {
+            "x": -325,
+            "y": 681.609375,
+            "width": 342,
+            "height": 20.390625,
+            "top": 681.609375,
+            "right": 17,
+            "bottom": 702,
+            "left": -325
+          },
+          "titleBox": {
+            "x": -321,
+            "y": 602.71875,
+            "width": 334,
+            "height": 54.890625,
+            "top": 602.71875,
+            "right": 13,
+            "bottom": 657.609375,
+            "left": -321
+          },
+          "buttonBox": {
+            "x": -321,
+            "y": 720,
+            "width": 334,
+            "height": 42,
+            "top": 720,
+            "right": 13,
+            "bottom": 762,
+            "left": -321
+          },
+          "photo": "/imgs/sec2_1.webp?v=20261002b",
+          "details": "/stay/upper-floor/"
+        }
+      ],
+      "topComparisonRemoved": true,
+      "bottomComparisonWorks": true,
+      "carouselWorks": true
+    }
+  ],
+  "errors": [],
+  "scope": "Inline canonical pool count and volleyball facilities after capacity and bedrooms in rest-house section cards; existing fonts and lowered facts spacing retained.",
+  "canonicalDataUnchanged": [
+    "site/catalog.json",
+    "data/services.json",
+    "site/guide-copy.json",
+    "site/structured-data.json"
+  ]
+}
