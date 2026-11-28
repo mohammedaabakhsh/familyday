@@ -82,5 +82,7 @@ body.stay-scope:not(.focused-view) #main{padding-top:calc(64px + env(safe-area-i
 /* Balance the remaining card facts between the title and details button. */
 @media(min-width:375px) and (max-width:999px){.stay-scope .stay-catalog-panel .stay-unit-card .card-facts{margin:24px 0 18px}}
 
-/* Preserve the original guest/room row, with individually illustrated facilities below. */
-@media(min-width:375px) and (max-width:999px){.stay-scope .stay-catalog-panel .stay-unit-card .card-facts{display:grid;grid-template-columns:max-content max-content;gap:8px 14px}}
+/* All four illustrated facts remain together on one line. */
+.stay-scope .stay-catalog-panel .stay-unit-card .card-facts{display:flex;flex-wrap:nowrap;justify-content:space-between;column-gap:4px;margin-inline:-4px;font-size:11px}
+.stay-scope .stay-catalog-panel .stay-unit-card .card-facts>span{flex:0 0 auto;gap:2px}
+.stay-scope .stay-catalog-panel .stay-unit-card .card-facts .icon{width:14px;height:14px;flex-shrink:0}

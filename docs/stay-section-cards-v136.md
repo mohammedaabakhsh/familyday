@@ -25,3 +25,9 @@ Browser checks at375,390and430pixels verify all three facts occupy the same row 
 Supersede the combined v138 facility label. Preserve the original guest/room row and show two individually illustrated facility facts side by side beneath it: ground floor `مسبح للكبار` and `مسبح للأطفال`, both with pool icons; upper floor `مسبح للكبار` with a pool icon and `ملعب كرة طائرة` with a volleyball icon. Derive labels from the same maintained outdoor data. Restore the original14px column spacing and retain12px text.
 
 Checks at375,390and430pixels verify both pairs share their respective rows, all four facility icons render, captions remain on one line, no overlap/overflow occurs, and carousel/comparison navigation works. Both card screenshots were inspected. Canonical data remain unchanged. Evidence: `site/audits/stay-section-cards-v139.json`.
+
+## Owner correction — v140
+
+The owner explicitly rejects the two-row arrangement: all four facts must be on one line, including each facility's individual icon. Replace the two-column grid with a non-wrapping flex row. Preserve the complete guest and bedroom labels; use `كرة طائرة` beside its volleyball icon. Use11px fact text,14px icons,2px icon/text gaps, and the available inline padding to fit the four facts without clipping. The other card text and vertical spacing remain unchanged.
+
+Checks at375,390and430pixels confirm all four facts occupy one row, remain inside the card, and do not overlap. Both card screenshots were inspected; carousel and comparison navigation still work. Canonical data remain unchanged. Evidence: `site/audits/stay-section-cards-v140.json`. This supersedes the v139 row arrangement.
