@@ -75,3 +75,6 @@ body.stay-scope:not(.focused-view) #main{padding-top:calc(64px + env(safe-area-i
 
 /* Give each fact its natural width on current phones, keeping the approved text size. */
 @media(min-width:375px) and (max-width:999px){.stay-home .facts-strip{grid-template-columns:max-content max-content max-content;justify-content:space-between;gap:4px}.stay-home .facts-strip>div{gap:5px}.stay-home .facts-strip span{white-space:nowrap}}
+
+/* Use the available card width for the audience caption without shrinking its font. */
+@media(min-width:375px) and (max-width:999px){.stay-scope .stay-card-title .card-audience{max-width:none;flex-shrink:0;white-space:nowrap!important}}
