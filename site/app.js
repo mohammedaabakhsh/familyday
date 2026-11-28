@@ -1,7 +1,7 @@
-import { createResortViews } from './venues/resort.js?v=20261128-venue-headings-v141';
-import { createChaletViews } from './venues/chalet.js?v=20261128-venue-headings-v141';
-import { createStayViews } from './venues/stay.js?v=20261128-venue-headings-v141';
-import { createSharedViews } from './shared/views.js?v=20261128-venue-headings-v141';
+import { createResortViews } from './venues/resort.js?v=20261128-unified-heading-size-v142';
+import { createChaletViews } from './venues/chalet.js?v=20261128-unified-heading-size-v142';
+import { createStayViews } from './venues/stay.js?v=20261128-unified-heading-size-v142';
+import { createSharedViews } from './shared/views.js?v=20261128-unified-heading-size-v142';
 // Published guide. Original page URLs are preserved; ordering documents remain independent.
 const $ = (s, r = document) => r.querySelector(s);
 const esc = (s) =>
@@ -59,9 +59,9 @@ const icon = (n, cl = '') =>
   `<svg class="icon ${cl}" viewBox="0 0 24 24" aria-hidden="true">${paths[n] || paths.spark}</svg>`;
 const ROOT = '/',
   ASSETS = '/site/',
-  VERSION = '20261128-venue-headings-v141';
-import '../js/specification-measurements.js?v=20261128-venue-headings-v141';
-import '../js/order-visit.js?v=20261128-venue-headings-v141';
+  VERSION = '20261128-unified-heading-size-v142';
+import '../js/specification-measurements.js?v=20261128-unified-heading-size-v142';
+import '../js/order-visit.js?v=20261128-unified-heading-size-v142';
 const main = $('#main'),
   viewer = $('#viewer');
 let resortOrders = null,

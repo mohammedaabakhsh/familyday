@@ -39,7 +39,7 @@ body.stay-scope:not(.focused-view) #main{padding-top:calc(64px + env(safe-area-i
 
 .stay-scope #main:has(.service-guide,.faq-guide){padding-bottom:calc(108px + env(safe-area-inset-bottom,0px))}
 
-.stay-scope .stay-card-title h3{font-size:21px!important;line-height:1.5}
+.stay-scope .stay-card-title h3{font-size:20px!important;line-height:1.5}
 .stay-scope .stay-card-title .card-audience{font-size:14px;font-weight:500;line-height:1.5;display:inline-block;max-width:none;white-space:nowrap!important}
 .stay-scope .stay-catalog-panel .catalog-heading h1{font-size:20px}
 .stay-scope .stay-catalog-panel .catalog-heading .text-link{font-size:12px}
